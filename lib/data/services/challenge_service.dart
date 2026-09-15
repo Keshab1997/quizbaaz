@@ -39,9 +39,14 @@ import 'package:flutter/foundation.dart';
 /// ```
 class ChallengeService {
   ChallengeService({FirebaseFirestore? firestore})
-      : _db = firestore ?? FirebaseFirestore.instance;
+      : _firestoreOverride = firestore;
 
-  final FirebaseFirestore _db;
+  final FirebaseFirestore? _firestoreOverride;
+
+  /// Resolved lazily so constructing the service never touches Firebase.
+  /// Every method fails soft (returns null/false) when Firestore is down.
+  FirebaseFirestore get _db =>
+      _firestoreOverride ?? FirebaseFirestore.instance;
 
   static const String collection = 'battle_challenges';
   static const Duration challengeExpiry = Duration(seconds: 30);

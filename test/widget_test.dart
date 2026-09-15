@@ -58,6 +58,12 @@ void main() {
       QuizBaazApp(localeProvider: LocaleProvider()..initialize()),
     );
     await tester.pump();
+    // The dashboard kicks off optional-SDK work after the first frame (UMP
+    // consent waits up to 5s per step). Advance the fake clock so those
+    // timeout timers fire before teardown, otherwise flutter_test fails
+    // with "A Timer is still pending".
+    await tester.pump(const Duration(seconds: 15));
+    await tester.pump();
 
     expect(find.byType(QuizBaazApp), findsOneWidget);
   });

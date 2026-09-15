@@ -32,7 +32,8 @@ enum AccountDeletionStatus {
 class AccountDeletionService {
   AccountDeletionService._();
 
-  static final FirebaseFirestore _db = FirebaseFirestore.instance;
+  /// Resolved lazily so referencing the class never touches Firebase.
+  static FirebaseFirestore get _db => FirebaseFirestore.instance;
 
   /// Number of writes per batch (Firestore caps a batch at 500).
   static const int _batchSize = 400;

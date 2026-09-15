@@ -29,9 +29,14 @@ import '../models/question_model.dart';
 /// `false` / empty results and the provider falls back to a bot match.
 class BattleRoomService {
   BattleRoomService({FirebaseFirestore? firestore})
-      : _db = firestore ?? FirebaseFirestore.instance;
+      : _firestoreOverride = firestore;
 
-  final FirebaseFirestore _db;
+  final FirebaseFirestore? _firestoreOverride;
+
+  /// Resolved lazily so constructing the service never touches Firebase.
+  /// Every method fails soft and the provider falls back to a bot match.
+  FirebaseFirestore get _db =>
+      _firestoreOverride ?? FirebaseFirestore.instance;
 
   static const String queueCollection = 'battle_queue';
   static const String roomsCollection = 'battle_rooms';

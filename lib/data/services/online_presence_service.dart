@@ -29,9 +29,13 @@ import 'package:flutter/foundation.dart';
 /// 5. Firestore real-time listener provides live updates of who's online.
 class OnlinePresenceService {
   OnlinePresenceService({FirebaseFirestore? firestore})
-      : _db = firestore ?? FirebaseFirestore.instance;
+      : _firestoreOverride = firestore;
 
-  final FirebaseFirestore _db;
+  final FirebaseFirestore? _firestoreOverride;
+
+  /// Resolved lazily so constructing the service never touches Firebase.
+  FirebaseFirestore get _db =>
+      _firestoreOverride ?? FirebaseFirestore.instance;
 
   static const String collection = 'online_users';
   static const Duration staleAfter = Duration(seconds: 60);

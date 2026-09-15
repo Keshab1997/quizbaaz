@@ -22,9 +22,14 @@ import '../models/localized_text.dart';
 /// ```
 class ChapterCatalogService {
   ChapterCatalogService({FirebaseFirestore? firestore})
-      : _db = firestore ?? FirebaseFirestore.instance;
+      : _firestoreOverride = firestore;
 
-  final FirebaseFirestore _db;
+  final FirebaseFirestore? _firestoreOverride;
+
+  /// Resolved lazily so constructing the service never touches Firebase.
+  /// Callers fail soft to the bundled assets when Firestore is unreachable.
+  FirebaseFirestore get _db =>
+      _firestoreOverride ?? FirebaseFirestore.instance;
 
   static const String categoriesCollection = 'question_categories';
   static const String chaptersSubcollection = 'chapters';

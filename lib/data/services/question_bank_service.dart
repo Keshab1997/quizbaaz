@@ -38,9 +38,14 @@ import 'question_fingerprint.dart';
 /// ```
 class QuestionBankService {
   QuestionBankService({FirebaseFirestore? firestore})
-      : _db = firestore ?? FirebaseFirestore.instance;
+      : _firestoreOverride = firestore;
 
-  final FirebaseFirestore _db;
+  final FirebaseFirestore? _firestoreOverride;
+
+  /// Resolved lazily so constructing the service never touches Firebase.
+  /// Hive is the source of truth; Firestore is only a mirror. This keeps
+  /// the app (and widget tests) working with no network / no Firebase app.
+  FirebaseFirestore get _db => _firestoreOverride ?? FirebaseFirestore.instance;
 
   static const String banksCollection = 'question_banks';
   static const String questionsSubcollection = 'questions';
