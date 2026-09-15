@@ -20,7 +20,7 @@ Gamified Class-10 quiz app for Indian students. Offline-first, Firebase-mirrored
 | Daily 10-question timed quiz (+ lifelines) | `presentation/screens/daily_quiz/` |
 | Chapter-wise question bank | `presentation/screens/chapter_quiz/` |
 | 1 vs 1 bot battle | `presentation/screens/battle/` |
-| Leaderboard, rewards, shop, history, profile | one folder each under `screens/` |
+| Leaderboard, rewards, shop, history, notifications, profile | one folder each under `screens/` |
 | Admin panel (author-only) | `presentation/screens/admin/` |
 
 **The four ideas that explain most of the codebase:**
@@ -46,7 +46,7 @@ lib/
 │   ├── models/       plain serialisable classes (fromJson/toJson)
 │   ├── providers/    ChangeNotifier state — the only source of UI state
 │   ├── repositories/ thin layer between providers and services
-│   └── services/     hive · firestore · sync · shop · imgbb · translation · notifications · onesignal
+│   └── services/     hive · firestore · sync · shop · imgbb · translation · notifications · inbox · onesignal
 ├── l10n/             string catalogues + generated `S` accessor      (§5)
 └── presentation/
     ├── screens/      one folder per feature, one screen per file
@@ -60,8 +60,8 @@ One public class per file.
 
 **Size map** (helps you decide what to read before editing):
 `user_provider` ~1050 · `quiz_provider` 782 · `firestore_service` 470 ·
-`hive_service` 431 · `shop_service` 418 · `sync_service` 355 ·
-`battle_provider` 1099 · `notification_service` ~220 · `onesignal_service` ~160 · `locale_provider` 90.
+`hive_service` ~620 · `shop_service` 418 · `sync_service` 355 ·
+`battle_provider` 1099 · `notification_service` ~260 · `onesignal_service` ~190 · `notification_inbox` ~180 · `locale_provider` 90.
 
 ---
 
@@ -97,7 +97,7 @@ One public class per file.
 | Box | Contents |
 |---|---|
 | `qb_user` | current `UserModel` |
-| `qb_stats` | `UserStats` |
+| `qb_stats`   | `UserStats`, quiz / purchase / notification history |
 | `qb_cache` | remote payloads with a timestamp (TTL cache) |
 | `qb_meta` | flags, schema version, language choice, sync timestamps |
 | `qb_pending` | Firestore writes queued while offline |

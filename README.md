@@ -39,7 +39,7 @@
 10. **⚔️ Real 1-vs-1 Battle Arena:**
    - Live Firestore matchmaking finds a same-difficulty opponent (with a cricket-style VS intro + confetti); no real player found → a smart bot takes over so nobody waits. Every match deals **5 questions mixed from all chapters** and **never repeats a question** until the pool cycles. Symmetric scoring (`base + speed bonus + streak bonus`) keeps it fair for both sides; win by forfeit when the opponent drops. See `docs/12_BATTLE_1V1_REAL_PLAYER_PLAN.md`.
 11. **🔔 Daily Quiz reminders (on-device):**
-   - Native OS notifications at 7:00 PM local, even if the app is killed. Completely free — scheduled on-device, restored after reboot. Streak copy when a streak is live; silent for the rest of the day once you've played. Toggle in Profile → Settings. See `docs/15_LOCAL_NOTIFICATIONS.md`.
+   - Native OS notifications at 7:00 PM local, even if the app is killed. Completely free — scheduled on-device, restored after reboot. Streak copy when a streak is live; silent for the rest of the day once you've played. Toggle in Profile → Settings. The home-screen bell opens a local notification inbox (unread badge is real). See `docs/15_LOCAL_NOTIFICATIONS.md`.
 12. **📡 Live push via OneSignal (FCM under the hood):**
    - Admin broadcasts and 1v1 pings when the app is killed. Paste the OneSignal App ID into `lib/core/constants/onesignal_config.dart` after uploading the Firebase service-account JSON to OneSignal. See `docs/16_ONESIGNAL_FCM_SETUP.md`.
 

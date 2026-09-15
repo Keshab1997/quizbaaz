@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 
 import '../models/chapter_set_progress.dart';
+import '../models/notification_item.dart';
 import '../models/user_model.dart';
 import '../models/user_stats.dart';
 
@@ -20,7 +21,7 @@ import '../models/user_stats.dart';
 /// | box          | contents                                        |
 /// |--------------|-------------------------------------------------|
 /// | `qb_user`    | current [UserModel] as JSON                     |
-/// | `qb_stats`   | [UserStats] as JSON                             |
+/// | `qb_stats`   | [UserStats], quiz/purchase/notification history |
 /// | `qb_cache`   | remote payloads with a timestamp (TTL cache)    |
 /// | `qb_meta`    | flags, schema version, last sync timestamps     |
 /// | `qb_pending` | queued Firestore writes made while offline      |
@@ -40,6 +41,7 @@ class HiveService {
   static const _statsKey = 'user_stats';
   static const _quizHistoryKey = 'quiz_history';
   static const _purchaseHistoryKey = 'purchase_history';
+  static const _notificationHistoryKey = 'notification_history';
   static const _chapterSetsKey = 'chapter_set_progress';
   static const _battleUsedQuestionsKey = 'battle_used_questions';
   static const _battleProcessedRoomsKey = 'battle_processed_rooms';
@@ -416,6 +418,37 @@ class HiveService {
     await _statsBox.delete(_purchaseHistoryKey);
   }
 
+  // ------------------------------------------------- Notification inbox --
+
+  /// Newest-first inbox rows. Empty when none have been captured yet.
+  static List<NotificationItem> loadNotificationHistory() {
+    final raw = _statsBox.get(_notificationHistoryKey);
+    if (raw is! String) return const [];
+    try {
+      final list = jsonDecode(raw) as List;
+      return list
+          .whereType<Map>()
+          .map((e) => NotificationItem.fromJson(Map<String, dynamic>.from(e)))
+          .where((e) => e.id.isNotEmpty)
+          .toList();
+    } catch (e) {
+      debugPrint('Hive: failed to decode notification history – $e');
+      return const [];
+    }
+  }
+
+  static Future<void> saveNotificationHistory(
+      List<NotificationItem> items) async {
+    await _statsBox.put(
+      _notificationHistoryKey,
+      jsonEncode(items.map((e) => e.toJson()).toList()),
+    );
+  }
+
+  static Future<void> clearNotificationHistory() async {
+    await _statsBox.delete(_notificationHistoryKey);
+  }
+
   // ------------------------------------------------------------ TTL cache --
 
   /// Stores [value] (any JSON-encodable structure) under [key] with the
@@ -570,9 +603,10 @@ class HiveService {
     // Meta keeps schema info, only sync markers are reset.
     await _metaBox.delete(metaLastSyncAt);
     await _metaBox.delete(metaLastPullAt);
-    // Clear quiz and purchase history
+    // Clear quiz, purchase and notification history
     await clearQuizHistory();
     await clearPurchaseHistory();
+    await clearNotificationHistory();
   }
 
   /// Debug helper: a snapshot of what is currently stored.

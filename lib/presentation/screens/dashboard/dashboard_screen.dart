@@ -16,6 +16,7 @@ import '../../../data/providers/user_provider.dart';
 import '../../../data/services/ad_service.dart';
 import '../../../data/services/consent_service.dart';
 import '../../../data/services/haptic_service.dart';
+import '../../../data/services/notification_inbox.dart';
 import '../../../data/services/notification_service.dart';
 import '../../../data/services/onesignal_service.dart';
 import '../../../data/services/sound_service.dart';
@@ -31,6 +32,7 @@ import '../chapter_quiz/chapter_list_screen.dart';
 import '../daily_quiz/daily_quiz_screen.dart';
 import '../leaderboard/leaderboard_screen.dart';
 import '../history/quiz_history_screen.dart';
+import '../notifications/notification_history_screen.dart';
 import '../profile/profile_screen.dart';
 import '../rewards/rewards_screen.dart';
 import '../shop/shop_screen.dart';
@@ -59,6 +61,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
       if (!mounted) return;
       unawaited(NotificationService.instance.bootstrap());
       unawaited(OneSignalService.instance.syncFromHive());
+      NotificationInbox.instance.reload();
       AppNavigator.flushPending();
       context
           .read<RewardsProvider>()
@@ -327,30 +330,81 @@ class _DashboardScreenState extends State<DashboardScreen> {
           color: AppColors.neonPurple,
         ),
         const SizedBox(width: 7),
-        GestureDetector(
-          onTap: () {
-            final on = userProvider.setting(UserProvider.settingNotifications);
-            ScaffoldMessenger.of(context).hideCurrentSnackBar();
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(on ? S.notifBellOn : S.notifBellOff)),
+        ListenableBuilder(
+          listenable: NotificationInbox.instance,
+          builder: (context, _) {
+            final unread = NotificationInbox.instance.unreadCount;
+            final on =
+                userProvider.setting(UserProvider.settingNotifications);
+            return GestureDetector(
+              onTap: () {
+                SoundService.instance.play('ui_click');
+                Haptics.tap();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (_) => const NotificationHistoryScreen(),
+                  ),
+                );
+              },
+              child: SizedBox(
+                width: 36,
+                height: 36,
+                child: Stack(
+                  clipBehavior: Clip.none,
+                  children: [
+                    Container(
+                      width: 36,
+                      height: 36,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.white.withValues(alpha: 0.055),
+                        border: Border.all(
+                            color: Colors.white.withValues(alpha: 0.10)),
+                      ),
+                      child: Icon(
+                        on
+                            ? Icons.notifications_rounded
+                            : Icons.notifications_off_outlined,
+                        color: AppColors.textPrimary,
+                        size: 19,
+                      ),
+                    ),
+                    if (unread > 0)
+                      Positioned(
+                        right: -2,
+                        top: -2,
+                        child: Container(
+                          constraints: const BoxConstraints(
+                            minWidth: 16,
+                            minHeight: 16,
+                          ),
+                          padding: const EdgeInsets.symmetric(horizontal: 3),
+                          decoration: BoxDecoration(
+                            color: AppColors.neonPink,
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(
+                              color: AppColors.bgDark,
+                              width: 1.5,
+                            ),
+                          ),
+                          child: Text(
+                            unread > 9 ? '9+' : '$unread',
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 8.5,
+                              fontWeight: FontWeight.w900,
+                              height: 1.4,
+                            ),
+                          ),
+                        ),
+                      ),
+                  ],
+                ),
+              ),
             );
           },
-          child: Container(
-            width: 36,
-            height: 36,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: Colors.white.withValues(alpha: 0.055),
-              border: Border.all(color: Colors.white.withValues(alpha: 0.10)),
-            ),
-            child: Icon(
-              userProvider.setting(UserProvider.settingNotifications)
-                  ? Icons.notifications_rounded
-                  : Icons.notifications_off_outlined,
-              color: AppColors.textPrimary,
-              size: 19,
-            ),
-          ),
         ),
       ],
     );

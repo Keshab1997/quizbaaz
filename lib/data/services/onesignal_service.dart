@@ -1,10 +1,14 @@
+import 'dart:async';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
 
 import '../../core/constants/onesignal_config.dart';
 import '../../l10n/app_strings.dart';
+import '../models/notification_item.dart';
 import 'hive_service.dart';
+import 'notification_inbox.dart';
 import 'notification_service.dart';
 
 /// OneSignal client. Android delivery still goes through FCM; we never
@@ -19,6 +23,7 @@ class OneSignalService {
 
   bool _ready = false;
   bool _clickBound = false;
+  bool _foregroundBound = false;
 
   /// Set from `main.dart` to [AppNavigator.handleOpen]. Kept as a callback
   /// so this service never imports presentation.
@@ -98,17 +103,46 @@ class OneSignalService {
       _clickBound = true;
       OneSignal.Notifications.addClickListener(_onClick);
     }
+    if (!_foregroundBound) {
+      _foregroundBound = true;
+      OneSignal.Notifications.addForegroundWillDisplayListener(_onForeground);
+    }
     _ready = true;
+  }
+
+  void _onForeground(OSNotificationWillDisplayEvent event) {
+    try {
+      _record(event.notification);
+    } catch (e) {
+      debugPrint('OneSignalService: foreground handler – $e');
+    }
   }
 
   void _onClick(OSNotificationClickEvent event) {
     try {
+      _record(event.notification);
       final data = event.notification.additionalData;
       final open = data == null ? null : data['open']?.toString();
       onNotificationOpen?.call(open);
     } catch (e) {
       debugPrint('OneSignalService: click handler – $e');
     }
+  }
+
+  void _record(OSNotification n) {
+    final title = (n.title ?? '').trim();
+    final body = (n.body ?? '').trim();
+    if (title.isEmpty && body.isEmpty) return;
+    final data = n.additionalData;
+    final open = data == null ? null : data['open']?.toString();
+    unawaited(NotificationInbox.instance.add(NotificationItem(
+      id: 'os_${n.notificationId}',
+      kind: NotificationItem.kindPush,
+      title: title.isEmpty ? S.appTitle : title,
+      body: body,
+      open: (open == null || open.isEmpty) ? null : open,
+      receivedAt: DateTime.now(),
+    )));
   }
 
   /// Prefer the Firebase uid so a reinstall still maps to the same player.

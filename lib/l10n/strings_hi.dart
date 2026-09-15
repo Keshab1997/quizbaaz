@@ -428,4 +428,16 @@ const Map<String, String> kStringsHi = {
       'रिमाइंडर बंद हैं। प्रोफ़ाइल → सेटिंग में नोटिफिकेशन चालू करें।',
   'notifChannelName': 'दैनिक रिमाइंडर',
   'notifChannelDesc': 'डेली क्विज़ और स्ट्रीक रिमाइंडर',
+  'notifInboxTitle': 'नोटिफ़िकेशन',
+  'notifInboxNone': 'अभी कोई नोटिफ़िकेशन नहीं',
+  'notifInboxEmptyBody':
+      'डेली क्विज़ रिमाइंडर और लाइव पुश यहाँ दिखेंगे।',
+  'notifInboxClear': 'सब हटाएँ',
+  'notifInboxClearConfirm':
+      'इस डिवाइस से सारे नोटिफ़िकेशन हटा दें? यह वापस नहीं आएगा।',
+  'notifInboxCleared': 'नोटिफ़िकेशन इतिहास साफ़ हो गया',
+  'notifKindReminder': 'रिमाइंडर',
+  'notifKindPush': 'पुश',
+  'notifJustNow': 'अभी',
+  'notifMinutesAgo': '{n} मि पहले',
 };

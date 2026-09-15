@@ -50,12 +50,14 @@ One reminder per day, **19:00 local time**.
 | Streak ≥ 1 and they have not played today | `notifStreakTitle` / `notifStreakBody` (`{n}` = streak) |
 | They already played today | No reminder today; next one is tomorrow 19:00 |
 
-Tap opens the app on the dashboard (OS default). Profile → Settings →
-**Notifications** (already there, previously a no-op) is the kill
-switch. Default is **on**.
+Tap (tray or inbox row) opens Daily Quiz via payload `daily_quiz`.
+Profile → Settings → **Notifications** is the kill switch. Default is
+**on**.
 
-The dashboard bell is honest: it no longer shows a fake red unread
-dot. Tap it to hear whether the 19:00 reminder is armed.
+The dashboard bell opens the on-device inbox
+(`NotificationHistoryScreen`). A real unread badge appears only when
+Hive has unread rows — never a fake red dot. Local reminder *taps*
+and OneSignal displays/taps are captured; a fresh install is empty.
 
 ---
 
@@ -117,12 +119,16 @@ No extra Info.plist usage string.
 | File | Role |
 |---|---|
 | `lib/data/services/notification_planner.dart` | Pure date math |
-| `lib/data/services/notification_service.dart` | Plugin wrapper, Hive sync, permission |
+| `lib/data/services/notification_service.dart` | Plugin wrapper, Hive sync, permission, tap → inbox |
+| `lib/data/services/notification_inbox.dart` | ChangeNotifier inbox, Hive persist |
+| `lib/data/models/notification_item.dart` | One inbox row |
 | `lib/data/providers/user_provider.dart` | `setSetting` + Daily Quiz finish → resync |
 | `lib/data/providers/locale_provider.dart` | Language change → resync (copy language) |
-| `lib/presentation/screens/dashboard/dashboard_screen.dart` | Bootstrap after first frame; honest bell |
+| `lib/presentation/screens/dashboard/dashboard_screen.dart` | Bootstrap after first frame; bell → inbox |
+| `lib/presentation/screens/notifications/notification_history_screen.dart` | Inbox UI |
 | `lib/presentation/screens/profile/profile_screen.dart` | Toggle asks OS permission |
 | `test/notification_planner_test.dart` | Planner only — no plugin |
+| `test/notification_inbox_test.dart` | Insert / dedup / Hive round-trip |
 
 Web / desktop: `NotificationService.isSupported == false`, all calls
 no-op. Widget tests must not crash if the plugin is missing.
@@ -133,7 +139,9 @@ no-op. Widget tests must not crash if the plugin is missing.
 
 - Exact-alarm permission, custom alarm sound (the empty WAVs in
   `assets/sounds/` must never be used here)
-- Notification inbox / badge counts
+- Reconstructing local reminders that fired while the app was killed
+  *and were never tapped* (the OS does not give Dart a displayed
+  callback). Those rows appear once the student taps them.
 
 Live server-push (admin broadcast, 1v1 challenge) is OneSignal + FCM —
 see `docs/16_ONESIGNAL_FCM_SETUP.md`. Do **not** add `firebase_messaging`.

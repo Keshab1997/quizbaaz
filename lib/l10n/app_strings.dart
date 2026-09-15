@@ -518,4 +518,15 @@ class S {
   static String get notifBellOff => raw('notifBellOff');
   static String get notifChannelName => raw('notifChannelName');
   static String get notifChannelDesc => raw('notifChannelDesc');
+  static String get notifInboxTitle => raw('notifInboxTitle');
+  static String get notifInboxNone => raw('notifInboxNone');
+  static String get notifInboxEmptyBody => raw('notifInboxEmptyBody');
+  static String get notifInboxClear => raw('notifInboxClear');
+  static String get notifInboxClearConfirm => raw('notifInboxClearConfirm');
+  static String get notifInboxCleared => raw('notifInboxCleared');
+  static String get notifKindReminder => raw('notifKindReminder');
+  static String get notifKindPush => raw('notifKindPush');
+  static String get notifJustNow => raw('notifJustNow');
+  static String notifMinutesAgo({required Object n}) =>
+      fill(raw('notifMinutesAgo'), {'n': n});
 }

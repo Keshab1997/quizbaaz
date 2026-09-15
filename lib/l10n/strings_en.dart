@@ -436,4 +436,16 @@ const Map<String, String> kStringsEn = {
       'Reminders are off. Turn on Notifications in Profile → Settings.',
   'notifChannelName': 'Daily reminders',
   'notifChannelDesc': 'Daily Quiz and streak reminders',
+  'notifInboxTitle': 'Notifications',
+  'notifInboxNone': 'No notifications yet',
+  'notifInboxEmptyBody':
+      'Daily Quiz reminders and live pushes will show up here.',
+  'notifInboxClear': 'Clear all',
+  'notifInboxClearConfirm':
+      'Remove every notification from this device? This cannot be undone.',
+  'notifInboxCleared': 'Notification history cleared',
+  'notifKindReminder': 'REMINDER',
+  'notifKindPush': 'PUSH',
+  'notifJustNow': 'Just now',
+  'notifMinutesAgo': '{n}m ago',
 };

@@ -18,6 +18,7 @@ import 'data/services/ad_service.dart';
 import 'data/services/consent_service.dart';
 import 'data/services/firebase_options.dart';
 import 'data/services/hive_service.dart';
+import 'data/services/notification_service.dart';
 import 'data/services/onesignal_service.dart';
 import 'data/services/sound_service.dart';
 import 'data/services/sync_service.dart';
@@ -85,6 +86,7 @@ Future<void> main() async {
   // After the first frame is scheduled — never before runApp. Click
   // listener must be up so a killed-app tap is not dropped.
   OneSignalService.onNotificationOpen = AppNavigator.handleOpen;
+  NotificationService.onNotificationOpen = AppNavigator.handleOpen;
   unawaited(OneSignalService.instance.bootstrap());
 }
 

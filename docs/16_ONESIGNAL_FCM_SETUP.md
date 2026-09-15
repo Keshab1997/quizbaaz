@@ -13,7 +13,8 @@ no App ID. OneSignal is extra, and stays off until the App ID is pasted.
 
 | Moment | Behaviour |
 |---|---|
-| After `runApp` | `OneSignal.initialize` + click listener (unawaited, 8s timeout) |
+| After `runApp` | `OneSignal.initialize` + click + foreground listeners (unawaited, 8s timeout) |
+| Foreground / tap | Row written to the Hive inbox (`NotificationInbox`) |
 | Dashboard ready | `login(firebaseUid or Hive userId)` + tags |
 | Profile → Notifications off | `pushSubscription.optOut()` **and** cancel local reminders |
 | Google sign-in / sign-out | `login` / `logout` |

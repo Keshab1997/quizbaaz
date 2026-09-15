@@ -428,4 +428,16 @@ const Map<String, String> kStringsBn = {
       'রিমাইন্ডার বন্ধ। প্রোফাইল → সেটিংসে নোটিফিকেশন চালু করুন।',
   'notifChannelName': 'দৈনিক রিমাইন্ডার',
   'notifChannelDesc': 'ডেইলি কুইজ ও স্ট্রিক রিমাইন্ডার',
+  'notifInboxTitle': 'নোটিফিকেশন',
+  'notifInboxNone': 'এখনও কোনো নোটিফিকেশন নেই',
+  'notifInboxEmptyBody':
+      'ডেইলি কুইজ রিমাইন্ডার ও লাইভ পুশ এখানে দেখা যাবে।',
+  'notifInboxClear': 'সব মুছুন',
+  'notifInboxClearConfirm':
+      'এই ডিভাইস থেকে সব নোটিফিকেশন মুছে ফেলবেন? ফেরানো যাবে না।',
+  'notifInboxCleared': 'নোটিফিকেশনের ইতিহাস মুছে গেছে',
+  'notifKindReminder': 'রিমাইন্ডার',
+  'notifKindPush': 'পুশ',
+  'notifJustNow': 'এখনই',
+  'notifMinutesAgo': '{n} মি আগে',
 };

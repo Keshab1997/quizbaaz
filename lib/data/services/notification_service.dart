@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_timezone/flutter_timezone.dart';
@@ -5,7 +7,9 @@ import 'package:timezone/data/latest.dart' as tzdata;
 import 'package:timezone/timezone.dart' as tz;
 
 import '../../l10n/app_strings.dart';
+import '../models/notification_item.dart';
 import 'hive_service.dart';
+import 'notification_inbox.dart';
 import 'notification_planner.dart';
 
 /// OS-scheduled Daily Quiz reminders. No FCM, no OneSignal, no network.
@@ -27,6 +31,13 @@ class NotificationService {
       FlutterLocalNotificationsPlugin();
 
   bool _ready = false;
+
+  /// Set from `main.dart` to [AppNavigator.handleOpen]. Kept as a callback
+  /// so this service never imports presentation.
+  static void Function(String? open)? onNotificationOpen;
+
+  String? _lastHandledKey;
+  DateTime? _lastHandledAt;
 
   /// Android + iOS only. Everywhere else the calls below are no-ops.
   static bool get isSupported {
@@ -145,8 +156,49 @@ class NotificationService {
     );
     await _plugin.initialize(
       settings: const InitializationSettings(android: android, iOS: darwin),
+      onDidReceiveNotificationResponse: _onTap,
     );
     _ready = true;
+
+    try {
+      final launch = await _plugin.getNotificationAppLaunchDetails();
+      final response = launch?.notificationResponse;
+      if (launch?.didNotificationLaunchApp == true && response != null) {
+        _onTap(response);
+      }
+    } catch (e) {
+      debugPrint('NotificationService: launch details – $e');
+    }
+  }
+
+  /// OS tap (foreground, background, or cold start). Deduped because some
+  /// devices also deliver [getNotificationAppLaunchDetails] for the same tap.
+  void _onTap(NotificationResponse response) {
+    final key = '${response.id}|${response.payload}';
+    final now = DateTime.now();
+    if (_lastHandledKey == key &&
+        _lastHandledAt != null &&
+        now.difference(_lastHandledAt!) < const Duration(seconds: 2)) {
+      return;
+    }
+    _lastHandledKey = key;
+    _lastHandledAt = now;
+
+    final user = HiveService.loadUser();
+    user?.refreshDailyFlags(now);
+    final streak = user?.dailyStreak ?? 0;
+    final id = response.id != null
+        ? 'local_${response.id}'
+        : 'local_${response.payload ?? now.millisecondsSinceEpoch}';
+    unawaited(NotificationInbox.instance.add(NotificationItem(
+      id: id,
+      kind: NotificationItem.kindReminder,
+      title: streak > 0 ? S.notifStreakTitle : S.notifDailyTitle,
+      body: streak > 0 ? S.notifStreakBody(n: streak) : S.notifDailyBody,
+      open: response.payload,
+      receivedAt: now,
+    )));
+    onNotificationOpen?.call(response.payload);
   }
 
   Future<String> _localTimezoneId() async {
