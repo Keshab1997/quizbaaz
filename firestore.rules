@@ -1,117 +1,294 @@
 rules_version = '2';
+
+// ============================================================================
+// QuizBaaz 3D — Firestore Security Rules
+// ----------------------------------------------------------------------------
+// Version: 2.0.0  (P0 security hardening — 2026-09-13)
+//
+// Authority model
+//   * "admin" means a Firebase custom claim `admin: true`, issued by the
+//     Admin SDK (functions/src/admin.ts -> `setAdmin` callable, or the
+//     Firebase console). A client-editable profile field can NEVER grant
+//     authority — the client cannot write `is_admin` at all (below).
+//   * Sensitive user state (coins, gems, xp, level, streak, inventory,
+//     played_today_daily_quiz, is_admin) is SERVER-WRITTEN ONLY. Clients may
+//     only create/update the editable profile fields listed in PROFILE_KEYS.
+//   * Competitive state (battle room scores/winner, challenge transitions,
+//     leaderboard entries) is constrained per-operation below; the trusted
+//     settlement path is the Cloud Functions in /functions.
+//
+// Contract: docs/SECURITY_P0_FIXES.md · Test matrix: tool/security/
+// ============================================================================
+
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // ================================================================
-    // Helper functions
-    // ================================================================
-    function isSignedIn() {
+    // ------------------------------------------------------------- helpers --
+    function signedIn() {
       return request.auth != null;
     }
+
     function isOwner(uid) {
-      return request.auth.uid == uid;
+      return signedIn() && request.auth.uid == uid;
     }
 
-    // ================================================================
-    // Users
-    // ================================================================
+    function isAdmin() {
+      return signedIn() && request.auth.token.admin == true;
+    }
+
+    // Sensitive fields. Only the Admin SDK / Cloud Functions may write them.
+    // Everything NOT on this list that a client sends to users/{uid} is
+    // rejected by the create/update checks below.
+    function sensitiveKeys() {
+      return [
+        'is_admin', 'coins', 'gems', 'xp', 'level',
+        'daily_streak', 'last_streak_date', 'played_today_daily_quiz',
+        'inventory',
+      ];
+    }
+
+    function validDifficulty() {
+      return ['easy', 'normal', 'hard'];
+    }
+
+    // --------------------------------------------------------------- users --
     match /users/{uid} {
-      allow read: if isSignedIn();
-      allow write: if isSignedIn() && isOwner(uid);
+      // Profiles are readable by any signed-in player (leaderboard/VS display
+      // needs them). After the P0 fix the document no longer carries wallet
+      // state from client writes, so a listed profile exposes display data
+      // only. Tightening per-field visibility is tracked as a P2.
+      allow get, list: if signedIn();
+
+      // New profile: owner only, needs a username, and it must NOT smuggle
+      // sensitive fields.
+      allow create: if isOwner(uid)
+        && request.resource.data.get('username') is string
+        && !request.resource.data.keys().hasAny(sensitiveKeys());
+
+      // Update: owner may touch profile fields only; any write that affects
+      // a sensitive field (including setting is_admin) is denied. Admin
+      // (custom claim) may edit anything.
+      allow update: if isAdmin()
+        || (isOwner(uid)
+            && !request.resource.data.diff(resource.data)
+                 .affectedKeys().hasAny(sensitiveKeys()));
+
+      allow delete: if isOwner(uid) || isAdmin();
+
+      // Display stats (games, wins, accuracy) — the player's own log.
+      match /meta/{doc} {
+        allow read, write: if isOwner(uid);
+      }
+
+      // Gifts are dispatched by the trusted backend/admin only. Clients may
+      // read their own gifts but can neither mint nor delete them.
+      match /gifts/{giftId} {
+        allow read: if isOwner(uid);
+        allow write: if isAdmin();
+      }
+
+      match /quiz_history/{doc} {
+        allow read, write: if isOwner(uid);
+      }
+
+      match /purchase_history/{doc} {
+        allow read, write: if isOwner(uid);
+      }
+
+      // Server-side idempotency markers for daily credits (written by the
+      // submitDailyResult function; clients have no write access).
+      match /daily_claims/{doc} {
+        allow read: if isOwner(uid);
+        allow write: if false; // Admin SDK only (bypasses rules)
+      }
     }
 
-    match /users/{uid}/meta/{doc} {
-      allow read: if isSignedIn();
-      allow write: if isSignedIn() && isOwner(uid);
-    }
-
-    match /users/{uid}/gifts/{giftId} {
-      allow read: if isSignedIn() && isOwner(uid);
-      allow write: if isSignedIn() && isOwner(uid);
-    }
-
-    // ================================================================
-    // Online Users (Presence)
-    // ================================================================
+    // ------------------------------------------------------ presence queue --
     match /online_users/{uid} {
-      // Anyone signed in can read the online list
-      allow read: if isSignedIn();
-      // Only the owner can write their own presence
-      allow create, update, delete: if isSignedIn() && isOwner(uid);
+      allow read: if signedIn();
+      allow write: if isOwner(uid);
     }
 
-    // ================================================================
-    // Battle Challenges
-    // ================================================================
+    // ------------------------------------------------- battle challenges --
     match /battle_challenges/{challengeId} {
-      // Both sender and receiver can read their challenges
-      allow read: if isSignedIn() &&
-        (request.auth.uid == resource.data.from_uid ||
-         request.auth.uid == resource.data.to_uid);
+      function isParticipant() {
+        return signedIn()
+          && (request.auth.uid == resource.data['from_uid']
+              || request.auth.uid == resource.data['to_uid']);
+      }
 
-      // Can create a challenge if signed in and you're the sender
-      allow create: if isSignedIn() &&
-        request.resource.data.from_uid == request.auth.uid;
+      // Queries are additionally filtered by the `get` permission below, so
+      // a signed-in user can only ever see challenges they are a part of.
+      allow get: if isParticipant();
+      allow list: if signedIn();
 
-      // Can update only if you're the receiver (accept/reject) or sender (cancel)
-      allow update: if isSignedIn() &&
-        (request.auth.uid == resource.data.from_uid ||
-         request.auth.uid == resource.data.to_uid);
+      // Only the sender may create, always as a pending challenge from
+      // themselves, with a known difficulty.
+      allow create: if signedIn()
+        && request.resource.data['from_uid'] == request.auth.uid
+        && request.resource.data['status'] == 'pending'
+        && validDifficulty().hasAny([request.resource.data.get('difficulty')]);
 
-      // Delete: only the involved users
-      allow delete: if isSignedIn() &&
-        (resource.data.from_uid == request.auth.uid ||
-         resource.data.to_uid == request.auth.uid);
+      // Legal transitions only. Identities, difficulty, timing and the
+      // display metadata are immutable after creation.
+      allow update: if signedIn()
+        && !request.resource.data.diff(resource.data).affectedKeys()
+             .hasAny([
+               'from_uid', 'to_uid', 'created_at', 'expires_at', 'difficulty',
+               'from_name', 'from_avatar', 'from_avatar_url', 'from_level',
+               'to_name', 'to_avatar', 'to_avatar_url',
+             ])
+        && (
+          // receiver: pending -> accepted | rejected | expired
+          (request.auth.uid == resource.data['to_uid']
+           && resource.data['status'] == 'pending'
+           && request.resource.data['status'] in ['accepted', 'rejected', 'expired'])
+          ||
+          // sender: pending -> cancelled | expired
+          (request.auth.uid == resource.data['from_uid']
+           && resource.data['status'] == 'pending'
+           && request.resource.data['status'] in ['cancelled', 'expired'])
+        );
+
+      allow delete: if isParticipant();
     }
 
-    // ================================================================
-    // Battle Queue (existing)
-    // ================================================================
+    // -------------------------------------------------------- battle queue --
     match /battle_queue/{uid} {
-      allow read: if isSignedIn();
-      allow create, update: if isSignedIn() && isOwner(uid);
-      allow delete: if isSignedIn() && isOwner(uid);
+      allow read: if signedIn();
+      allow write: if isOwner(uid)
+        && validDifficulty().hasAny([request.resource.data.get('difficulty')]);
     }
 
-    // ================================================================
-    // Battle Rooms (existing)
-    // ================================================================
+    // ------------------------------------------------------- battle rooms --
     match /battle_rooms/{roomId} {
-      allow read: if isSignedIn();
-      allow create: if isSignedIn();
-      // Only players in the room can update it
-      allow update: if isSignedIn() &&
-        (resource.data.players.a.uid == request.auth.uid ||
-         resource.data.players.b.uid == request.auth.uid);
+      function isPlayer() {
+        return signedIn()
+          && (request.auth.uid == resource.data.players.a.uid
+              || request.auth.uid == resource.data.players.b.uid);
+      }
+
+      allow get: if signedIn()
+        && (request.auth.uid == resource.data.players.a.uid
+            || request.auth.uid == resource.data.players.b.uid);
+      allow list: if signedIn();
+
+      // Creator must be one of the two players, room starts active with no
+      // winner.
+      allow create: if signedIn()
+        && request.resource.data['status'] == 'active'
+        && request.resource.data.get('winner') == null
+        && (request.auth.uid == request.resource.data.players.a.uid
+            || request.auth.uid == request.resource.data.players.b.uid);
+
+      // A player may update their OWN side and the shared `state` map only.
+      // The opponent's side, the question set, the difficulty and the
+      // creation time are frozen. `winner` is SERVER-set (resolveBattle
+      // function) — clients can never declare a remote winner. `status` may
+      // only move active -> finished (forfeit/shutdown).
+      allow update: if signedIn()
+        && isPlayer()
+        && request.resource.data['difficulty'] == resource.data['difficulty']
+        && request.resource.data['created_at'] == resource.data['created_at']
+        && request.resource.data.get('questions') == resource.data.get('questions')
+        && request.resource.data.get('winner') == resource.data.get('winner')
+        && (request.resource.data['status'] == resource.data['status']
+            || (resource.data['status'] == 'active'
+                && request.resource.data['status'] == 'finished'))
+        && (
+          (request.auth.uid == resource.data.players.a.uid
+           && request.resource.data.players.b == resource.data.players.b)
+          ||
+          (request.auth.uid == resource.data.players.b.uid
+           && request.resource.data.players.a == resource.data.players.a)
+        );
+
+      allow delete: if isAdmin()
+        || (isPlayer() && resource.data['status'] == 'finished');
     }
 
-    // ================================================================
-    // Leaderboard (existing)
-    // ================================================================
-    match /leaderboard/{date}/scores/{uid} {
-      allow read: if isSignedIn();
-      allow write: if isSignedIn() && isOwner(uid);
+    // ---------------------------------------------------------- leaderboard --
+    match /leaderboard/{date} {
+      match /scores/{uid} {
+        allow get, list: if signedIn();
+
+        // A player writes only their own entry, with a sane score bound
+        // (daily max is 10 questions x 10 pts x double-points = 200; 1000
+        // leaves headroom for config changes).
+        allow create: if isOwner(uid)
+          && request.resource.data['user_id'] == uid
+          && request.resource.data['score'] is number
+          && request.resource.data['score'] >= 0
+          && request.resource.data['score'] <= 1000
+          && request.resource.data.get('time_seconds') is number
+          && request.resource.data.get('time_seconds') > 0;
+
+        allow update: if isOwner(uid)
+          && request.resource.data['user_id'] == uid
+          && request.resource.data['score'] is number
+          && request.resource.data['score'] >= 0
+          && request.resource.data['score'] <= 1000;
+
+        allow delete: if isOwner(uid) || isAdmin();
+      }
     }
 
-    // ================================================================
-    // Champions (existing)
-    // ================================================================
+    // ----------------------------------------------------------- champions --
     match /champions/{date} {
-      allow read: if isSignedIn();
-      allow write: if false; // Admin only — handled by admin tooling
+      allow read: if signedIn();
+      allow write: if false; // the date doc itself is never written
+
+      match /winners/{uid} {
+        allow get, list: if signedIn();
+        allow write: if isAdmin();
+      }
     }
 
-    match /champions/{date}/winners/{uid} {
-      allow read: if isSignedIn();
-      allow write: if false; // Admin only
-    }
-
-    // ================================================================
-    // Config (existing)
-    // ================================================================
+    // ------------------------------------------------------------- config --
     match /config/{doc} {
-      allow read: if isSignedIn();
-      allow write: if false; // Admin only
+      allow get, list: if signedIn();
+      allow write: if isAdmin();
     }
+
+    // ------------------------------------------------- content collections --
+    // Question banks & chapter catalog: read by any signed-in player (admin
+    // panel content is served to students), written by admin only.
+    match /question_banks/{bankId} {
+      allow get, list: if signedIn();
+      allow write: if isAdmin();
+
+      match /questions/{questionId} {
+        allow get, list: if signedIn();
+        allow write: if isAdmin();
+      }
+    }
+
+    match /question_categories/{categoryId} {
+      allow get, list: if signedIn();
+      allow write: if isAdmin();
+
+      match /chapters/{chapterId} {
+        allow get, list: if signedIn();
+        allow write: if isAdmin();
+      }
+    }
+
+    match /shop_items/{itemId} {
+      allow get, list: if signedIn();
+      allow write: if isAdmin();
+    }
+
+    match /avatars/{avatarId} {
+      allow get, list: if signedIn();
+      allow write: if isAdmin();
+    }
+
+    // ------------------------------------------------------- audit trail --
+    match /admin_audit_logs/{logId} {
+      allow get, list, write: if isAdmin();
+    }
+
+    // ------------------------------------------------------------- catch --
+    // Anything not listed above is denied by default (no catch-all allow).
   }
 }

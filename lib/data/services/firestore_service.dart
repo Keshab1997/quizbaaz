@@ -38,12 +38,19 @@ class FirestoreService {
 
   // ---------------------------------------------------------- User CRUD --
 
-  /// Saves (upserts) the user document. Returns true on success.
+  /// Saves (upserts) the user document's **client-editable profile fields
+  /// only** and returns true on success.
+  ///
+  /// P0 (R02): the client must never write wallet/competitive/admin state
+  /// (`coins`, `gems`, `xp`, `level`, streak, inventory, `is_admin`). Those
+  /// fields are owned by the trusted backend (`/functions` — Admin SDK
+  /// bypasses the rules) and by the rules' sensitive-key deny. Sending them
+  /// would make the whole write fail under the current `firestore.rules`.
   static Future<bool> saveUser(UserModel user) async {
     if (!isReady || user.userId.isEmpty) return false;
     try {
       await _db.collection(_users).doc(user.userId).set(
-            {...user.toJson(), 'updated_at': FieldValue.serverTimestamp()},
+            {...user.profileToJson(), 'updated_at': FieldValue.serverTimestamp()},
             SetOptions(merge: true),
           );
       return true;

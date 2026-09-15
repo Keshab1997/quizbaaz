@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../core/constants/app_colors.dart';
-import '../../../data/services/imgbb_service.dart';
+import '../../../data/services/image_upload_service.dart';
 import '../../../data/services/shop_service.dart';
 import '../../widgets/glass_card.dart';
 import '../../widgets/cached_avatar.dart';
@@ -356,7 +356,7 @@ class _AddEditAvatarSheetState extends State<_AddEditAvatarSheet> {
       final XFile? image = await _picker.pickImage(source: ImageSource.gallery, maxWidth: 1024, maxHeight: 1024, imageQuality: 90);
       if (image != null) {
         setState(() { _selectedImage = File(image.path); _isUploading = true; });
-        final url = await ImgBBService.uploadFile(_selectedImage!);
+        final url = await ImageUploadService.uploadAvatar(_selectedImage!);
         if (url != null) {
           setState(() { _uploadedImageUrl = url; _isUploading = false; });
           if (mounted) ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('✅ Avatar image uploaded!'), backgroundColor: AppColors.neonGreen));

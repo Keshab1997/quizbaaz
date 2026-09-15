@@ -1,0 +1,21 @@
+{
+  "name": "quizbaaz-functions",
+  "description": "QuizBaaz 3D trusted backend: admin claims, daily credits, purchases, battle settlement",
+  "engines": {
+    "node": "22"
+  },
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "typecheck": "tsc --noEmit",
+    "deploy": "firebase deploy --only functions:quizbaaz"
+  },
+  "dependencies": {
+    "firebase-admin": "^13.0.2",
+    "firebase-functions": "^6.1.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3"
+  }
+}

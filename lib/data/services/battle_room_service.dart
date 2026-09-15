@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 
 import '../models/battle_room.dart';
 import '../models/question_model.dart';
+import 'trusted_ops_service.dart';
 
 /// Firestore-backed matchmaking + live room sync for 1-vs-1 battles.
 ///
@@ -220,7 +221,14 @@ class BattleRoomService {
     }
   }
 
-  /// Marks the room finished and writes the winner out of the current score.
+  /// Marks the room finished (remote) — the [winner] is kept **local**.
+  ///
+  /// P0 (R02): `firestore.rules` freezes the room's `winner` field against
+  /// client writes; a tampered client must not be able to declare a remote
+  /// winner. The authoritative settlement is the `resolveBattle` callable
+  /// (functions/src/battle.ts), which re-reads the room and writes
+  /// `status`/`winner`/`resolved` with the Admin SDK. Call
+  /// `TrustedOpsService.resolveBattle` right after this for online players.
   Future<void> finishRoom(String roomId, String winner) async {
     try {
       await _db
@@ -228,12 +236,14 @@ class BattleRoomService {
           .doc(roomId)
           .set({
         'status': 'finished',
-        'winner': winner,
         'state': {'phase': 'finished'},
       }, SetOptions(merge: true));
     } catch (e) {
       debugPrint('BattleRoomService: finishRoom failed – $e');
     }
+    // Fire-and-forget: the server declares the authoritative remote winner.
+    // Fail-soft (no-op when Firebase is off or functions are not deployed).
+    TrustedOpsService.resolveBattle(roomId: roomId);
   }
 }
 

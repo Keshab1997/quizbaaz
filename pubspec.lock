@@ -170,6 +170,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.7.2"
+  cloud_functions:
+    dependency: "direct main"
+    description:
+      name: cloud_functions
+      sha256: "82fa5811d184c4135d2177174507cc03744f032a085cd3be95246c0f1b006e53"
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.3.6"
+  cloud_functions_platform_interface:
+    dependency: transitive
+    description:
+      name: cloud_functions_platform_interface
+      sha256: "86842d91cd4e83b71aa2dff874fd3554e237aa6e222d8e6e54bb7692fb1bd779"
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.0.6"
+  cloud_functions_web:
+    dependency: transitive
+    description:
+      name: cloud_functions_web
+      sha256: aeca9c8f24838630f28bd75622668725a85044211be83de9f0a2fe07c4c8b643
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.1.12"
   code_assets:
     dependency: transitive
     description:
@@ -330,6 +354,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.10.0"
+  firebase_storage:
+    dependency: "direct main"
+    description:
+      name: firebase_storage
+      sha256: "6089b73ab5d4da77099eda5b8462a449f2915ecebbcc9ddd523039231ad17634"
+      url: "https://pub.dev"
+    source: hosted
+    version: "13.4.6"
+  firebase_storage_platform_interface:
+    dependency: transitive
+    description:
+      name: firebase_storage_platform_interface
+      sha256: fadbd48f9ff7bde8040ad898f68113f37873310eed68c84ff179821e618b8579
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.0.6"
+  firebase_storage_web:
+    dependency: transitive
+    description:
+      name: firebase_storage_web
+      sha256: "869c00fd45fad6da5dcfc0d24ce83d245884fb427088af48111cfa62e278e7e1"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.11.12"
   fixnum:
     dependency: transitive
     description:

@@ -24,6 +24,13 @@ dependencies:
   google_sign_in: ^7.2.0
   cached_network_image: ^3.4.1
   cloud_firestore: ^6.8.0
+  # Admin content images (avatars, shop art) are uploaded here under the
+  # caller's own Firebase Auth + storage rules. No upload secret is held by
+  # the client — the old ImgBB API key was removed (docs/SECURITY_P0_FIXES.md).
+  firebase_storage: ^13.0.0
+  # Trusted backend callables (setAdmin, submitDailyResult, purchaseItem,
+  # resolveBattle) — see /functions. Fail-soft when not deployed.
+  cloud_functions: ^6.0.0
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   http: ^1.2.0

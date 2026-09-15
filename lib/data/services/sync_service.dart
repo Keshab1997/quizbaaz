@@ -141,16 +141,16 @@ class SyncService {
     return rows;
   }
 
-  /// Mirrors a gift claim.
+  /// Gift claims are recorded locally (Hive) only.
+  ///
+  /// P0 (R02): `users/{uid}/gifts` is now **admin/server-writable only** —
+  /// the trusted backend dispatches gifts and clients may not mint, claim or
+  /// delete them remotely. Pushing claims would be denied by
+  /// `firestore.rules`, and queueing a write that can never succeed would
+  /// clog the outbox (R14). Trusted gift settlement (server-confirmed
+  /// claim state) is a P1 follow-up.
   static Future<void> pushGift(String userId, Map<String, dynamic> gift) async {
-    if (userId.isEmpty) return;
-    final ok = await FirestoreService.saveGift(userId, gift);
-    if (!ok) {
-      await HiveService.enqueuePending('save_gift', {
-        'user_id': userId,
-        'gift': gift,
-      });
-    }
+    return; // local-only by design (see comment above)
   }
 
   /// Replays everything queued while offline. Safe to call often.
@@ -191,10 +191,10 @@ class SyncService {
             );
             break;
           case 'save_gift':
-            ok = await FirestoreService.saveGift(
-              payload['user_id'] as String? ?? '',
-              (payload['gift'] as Map?)?.cast<String, dynamic>() ?? {},
-            );
+            // Legacy queued op. Gift writes are server-owned now (P0 R02),
+            // so drop it instead of replaying a write that would be denied
+            // and clog the queue.
+            ok = true;
             break;
           case 'save_quiz_history':
             ok = await FirestoreService.saveQuizHistory(

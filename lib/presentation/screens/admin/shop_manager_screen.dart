@@ -5,7 +5,7 @@ import 'package:image_picker/image_picker.dart';
 
 import '../../../core/constants/app_colors.dart';
 import '../../../data/models/shop_item.dart';
-import '../../../data/services/imgbb_service.dart';
+import '../../../data/services/image_upload_service.dart';
 import '../../../data/services/shop_service.dart';
 import '../../widgets/glass_card.dart';
 import '../../../l10n/app_strings.dart';
@@ -397,8 +397,8 @@ class _AddEditItemSheetState extends State<AddEditItemSheet> {
           _isUploading = true;
         });
 
-        // Upload to ImageBB
-        final url = await ImgBBService.uploadFile(_selectedImage!);
+        // Upload to Firebase Storage (admin claim required — storage.rules)
+        final url = await ImageUploadService.uploadShopItem(_selectedImage!);
 
         if (url != null) {
           setState(() {

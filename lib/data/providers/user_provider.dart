@@ -14,6 +14,7 @@ import '../repositories/leaderboard_repository.dart';
 import '../services/hive_service.dart';
 import '../services/push_sync.dart';
 import '../services/sync_service.dart';
+import '../services/trusted_ops_service.dart';
 
 /// Result of a shop purchase attempt.
 enum PurchaseStatus { success, insufficientFunds, alreadyOwned }
@@ -375,6 +376,17 @@ class UserProvider extends ChangeNotifier {
     notifyListeners();
     _persistUser();
     _savePurchaseHistory(item);
+
+    // P0 (R02): mirror the purchase server-side (atomic wallet ledger,
+    // idempotent per purchaseId). Fail-soft for guests/offline/not-deployed.
+    if (!_user.isGuest) {
+      final purchaseId =
+          'p${DateTime.now().millisecondsSinceEpoch}x${item.id}';
+      TrustedOpsService.purchaseItem(
+        itemId: item.id,
+        purchaseId: purchaseId,
+      );
+    }
     return PurchaseStatus.success;
   }
 

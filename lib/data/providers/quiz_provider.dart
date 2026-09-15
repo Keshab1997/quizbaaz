@@ -11,6 +11,7 @@ import '../repositories/quiz_repository.dart';
 import '../services/haptic_service.dart';
 import '../services/hive_service.dart';
 import '../services/sound_service.dart';
+import '../services/trusted_ops_service.dart';
 import 'user_provider.dart';
 import '../../l10n/app_strings.dart';
 
@@ -611,7 +612,24 @@ class QuizProvider extends ChangeNotifier {
       SoundService.instance.play('coin');
       Haptics.medium();
     }
+
+    // P0 (R02): the daily credit is also applied server-side (trusted
+    // backend, idempotent per day). Fail-soft: no-op when offline or when
+    // the functions are not deployed yet.
+    if (_isDailyQuiz && granted && !_userProvider.user.isGuest) {
+      final now = DateTime.now();
+      TrustedOpsService.submitDailyResult(
+        date: _dateKey(now),
+        score: _score,
+        correct: _correctCount,
+        total: _questions.length,
+        timeSeconds: _totalTimeSeconds,
+      );
+    }
   }
+
+  static String _dateKey(DateTime d) =>
+      '${d.year}-${d.month.toString().padLeft(2, '0')}-${d.day.toString().padLeft(2, '0')}';
 
   // -------------------------------------------------------------- Lifelines --
 

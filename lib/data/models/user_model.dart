@@ -108,6 +108,22 @@ class UserModel {
 
   // ----------------------------------------------------------------- JSON --
 
+  /// Fields the CLIENT is allowed to write to Firestore (see
+  /// `firestore.rules`, PROFILE_KEYS). Wallet, competitive and admin state
+  /// (`coins`, `gems`, `xp`, `level`, `daily_streak`, `last_streak_date`,
+  /// `played_today_daily_quiz`, `inventory`, `is_admin`) is server-written
+  /// only — the trusted backend in `/functions` owns those values.
+  Map<String, dynamic> profileToJson() => {
+        'user_id': userId,
+        'username': username,
+        'full_name': fullName,
+        'avatar_path': avatarPath,
+        'avatar_url': avatarUrl,
+        'name_effect': nameEffect,
+        'gender': gender.name,
+        'is_guest': isGuest,
+      };
+
   Map<String, dynamic> toJson() => {
         'user_id': userId,
         'username': username,

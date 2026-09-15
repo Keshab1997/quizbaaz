@@ -1,10 +1,15 @@
 rules_version = '2';
 
-// Cloud Storage rules for QuizBaaz 3D.
+// ============================================================================
+// QuizBaaz 3D — Cloud Storage rules
+// ----------------------------------------------------------------------------
+// Version: 2.0.0 (P0 security hardening — 2026-09-13)
 //
-// The app uploads avatars through ImgBB rather than Storage today, so this is
-// deliberately restrictive: it exists so `firebase deploy` succeeds and so any
-// future bucket use starts locked down rather than open.
+// Admin content images (avatars, shop art) are uploaded by the client only
+// when the caller holds the `admin` custom claim. No upload secret is held
+// by the client — the old ImgBB API key has been removed from the source
+// (see docs/SECURITY_P0_FIXES.md, R01).
+// ============================================================================
 
 service firebase.storage {
   match /b/{bucket}/o {
@@ -13,16 +18,27 @@ service firebase.storage {
       return request.auth != null;
     }
 
+    function isAdmin() {
+      return isSignedIn() && request.auth.token.admin == true;
+    }
+
     function isImage() {
       return request.resource.contentType.matches('image/.*');
     }
 
-    // Under 5 MB — enough for an avatar, small enough to bound abuse.
+    // 5 MB — enough for a content image, small enough to bound abuse.
     function isReasonableSize() {
       return request.resource.size < 5 * 1024 * 1024;
     }
 
-    // A user may only write inside their own folder.
+    // Public content served to players (avatars, shop art).
+    // Read is public (display images); write is admin-only.
+    match /content/{allPaths=**} {
+      allow read: if true;
+      allow write: if isAdmin() && isImage() && isReasonableSize();
+    }
+
+    // A user's own folder (kept for a possible user-avatar flow).
     match /users/{userId}/{allPaths=**} {
       allow read: if true;
       allow write: if isSignedIn()
