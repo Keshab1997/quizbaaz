@@ -41,3 +41,5 @@ migrate_working_dir/
 # Python tooling
 __pycache__/
 *.pyc
+# Widget Preview related
+.widget_preview/
