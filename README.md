@@ -10,7 +10,7 @@
 [![Flutter](https://img.shields.io/badge/Flutter-3.x-02569B?logo=flutter)](https://flutter.dev)
 [![Dart](https://img.shields.io/badge/Dart-3.x-0175C2?logo=dart)](https://dart.dev)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![GitHub stars](https://img.shields.io/github/stars/Keshab1997/quizbaaz-flutter?style=social)](https://github.com/Keshab1997/quizbaaz-flutter)
+[![GitHub stars](https://img.shields.io/github/stars/Keshab1997/quizbaaz?style=social)](https://github.com/Keshab1997/quizbaaz)
 
 </div>
 
@@ -63,7 +63,7 @@ All architectural and step-by-step blueprints are documented in the [`docs/`](./
 ## 🏗️ Project Architecture
 
 ```text
-quizbaaz-flutter/
+quizbaaz/
 ├── assets/
 │   ├── data/                   # JSON Question Banks, Champions & Daily Quiz
 │   ├── icons/                  # 3D Glossy Action Icons (Streak Fire, Sword, Shop, etc.)
@@ -105,4 +105,4 @@ quizbaaz-flutter/
 ## 👨‍💻 Author
 
 * **Developer:** Keshab Sarkar ([@Keshab1997](https://github.com/Keshab1997))
-* **Repository:** [https://github.com/Keshab1997/quizbaaz-flutter](https://github.com/Keshab1997/quizbaaz-flutter)
+* **Repository:** [https://github.com/Keshab1997/quizbaaz](https://github.com/Keshab1997/quizbaaz)
