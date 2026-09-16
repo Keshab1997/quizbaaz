@@ -22,8 +22,9 @@ import 'question_fingerprint.dart';
 /// * a question's **id is its document id**, and writes are `set()` on that
 ///   id — re-running a batch overwrites those same documents rather than
 ///   creating a second copy;
-/// * there is **no method that deletes a collection**. [deleteQuestion] takes
-///   a single id and nothing else;
+/// * there is **no method that deletes a collection**. [deleteQuestion] and
+///   [deleteQuestions] require explicit IDs, so the admin can remove one
+///   reviewed set without ever clearing a chapter by accident;
 /// * new ids come from [QuestionFingerprint.nextSequence], which is `max + 1`
 ///   over the ids already present, never `count + 1` — after a deletion those
 ///   differ, and reusing a number would silently replace a live question;
@@ -255,26 +256,78 @@ class QuestionBankService {
   }
 
   /// Deletes exactly one question.
-  ///
-  /// Single-id by design: there is deliberately no "delete all" or
-  /// "replace chapter" counterpart anywhere in this service.
   Future<void> deleteQuestion({
     required String chapterId,
     required String questionId,
     required String actorUid,
   }) async {
-    await _questions(chapterId).doc(questionId).delete();
+    await deleteQuestions(
+      chapterId: chapterId,
+      questionIds: [questionId],
+      actorUid: actorUid,
+      auditAction: 'question_deleted',
+    );
+  }
+
+  /// Permanently deletes only the explicitly named questions.
+  ///
+  /// The IDs are de-duplicated before writes and chunked below Firestore's
+  /// batch limit. There is intentionally no variant that accepts a chapter ID
+  /// alone, so this cannot become a "clear all questions" operation.
+  Future<DeleteQuestionsResult> deleteQuestions({
+    required String chapterId,
+    required List<String> questionIds,
+    required String actorUid,
+    String auditAction = 'questions_deleted',
+  }) async {
+    final ids = questionIds
+        .map((id) => id.trim())
+        .where((id) => id.isNotEmpty)
+        .toSet()
+        .toList();
+    final countBefore = await countQuestions(chapterId);
+
+    if (ids.isEmpty) {
+      return DeleteQuestionsResult(
+        deletedIds: const [],
+        countBefore: countBefore,
+        countAfter: countBefore,
+      );
+    }
+
+    for (var start = 0; start < ids.length; start += _maxBatchOperations) {
+      final end = (start + _maxBatchOperations).clamp(0, ids.length);
+      final batch = _db.batch();
+      for (final id in ids.sublist(start, end)) {
+        batch.delete(_questions(chapterId).doc(id));
+      }
+      await batch.commit();
+    }
+
+    final countAfter = await countQuestions(chapterId);
     await _bank(chapterId).set({
-      'question_count': await countQuestions(chapterId),
+      'question_count': countAfter,
       'updated_at': FieldValue.serverTimestamp(),
       'updated_by': actorUid,
     }, SetOptions(merge: true));
 
     await _writeAudit(
-      action: 'question_deleted',
+      action: auditAction,
       chapterId: chapterId,
       actorUid: actorUid,
-      details: {'question_id': questionId},
+      details: {
+        'question_ids': ids,
+        if (ids.length == 1) 'question_id': ids.single,
+        'requested_count': ids.length,
+        'count_before': countBefore,
+        'count_after': countAfter,
+      },
+    );
+
+    return DeleteQuestionsResult(
+      deletedIds: ids,
+      countBefore: countBefore,
+      countAfter: countAfter,
     );
   }
 
@@ -348,6 +401,21 @@ class QuestionBankService {
       debugPrint('QuestionBankService: audit write failed — $e');
     }
   }
+}
+
+/// Result of permanently removing explicitly selected questions.
+class DeleteQuestionsResult {
+  final List<String> deletedIds;
+  final int countBefore;
+  final int countAfter;
+
+  const DeleteQuestionsResult({
+    required this.deletedIds,
+    required this.countBefore,
+    required this.countAfter,
+  });
+
+  int get deletedCount => deletedIds.length;
 }
 
 /// Everything needed to append to a chapter without repeating or overwriting.

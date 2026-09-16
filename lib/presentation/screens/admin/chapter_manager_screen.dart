@@ -48,8 +48,10 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
     // chapter.totalQuestions, in one read rather than 56 aggregate queries —
     // and it means this screen and the student's chapter list can never
     // disagree about how many questions a chapter has.
-    final categories =
-        await _repository.getCategoriesAndChapters(forceRefresh: true);
+    final categories = await _repository.getCategoriesAndChapters(
+      forceRefresh: true,
+      includeDisabled: true,
+    );
 
     if (!mounted) return;
     setState(() {
@@ -340,6 +342,23 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
               ),
             ),
             IconButton(
+              tooltip: chapter.isEnabled
+                  ? 'Hide from students'
+                  : 'Show to students',
+              iconSize: 18,
+              color: chapter.isEnabled
+                  ? AppColors.neonGreen
+                  : AppColors.neonGold,
+              icon: Icon(chapter.isEnabled
+                  ? Icons.visibility_rounded
+                  : Icons.visibility_off_rounded),
+              onPressed: () => _setChapterEnabled(
+                category,
+                chapter,
+                !chapter.isEnabled,
+              ),
+            ),
+            IconButton(
               tooltip: 'Edit chapter',
               iconSize: 17,
               color: AppColors.textSecondary,
@@ -424,7 +443,7 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
         categoryName: category.categoryName,
         existing: existing,
         defaultNumber: nextNumber,
-        onSave: (id, title, description, number, unlocked) =>
+        onSave: (id, title, description, number, unlocked, enabled) =>
             _catalog.saveChapter(
           categoryId: category.categoryId,
           chapterId: id,
@@ -432,11 +451,41 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
           description: description,
           chapterNumber: number,
           isUnlocked: unlocked,
+          isEnabled: enabled,
           actorUid: _actorUid,
         ),
       ),
     );
     if (saved == true) _load();
+  }
+
+  Future<void> _setChapterEnabled(
+    CategoryModel category,
+    ChapterModel chapter,
+    bool isEnabled,
+  ) async {
+    try {
+      await _catalog.setChapterEnabled(
+        categoryId: category.categoryId,
+        chapter: chapter,
+        isEnabled: isEnabled,
+        actorUid: _actorUid,
+      );
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(isEnabled
+              ? '${chapter.titleText.resolve('en')} is now visible to students.'
+              : '${chapter.titleText.resolve('en')} is now hidden from students.'),
+        ),
+      );
+      await _load();
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Could not update chapter visibility: $e')),
+      );
+    }
   }
 }
 
@@ -578,6 +627,7 @@ class _ChapterSheet extends StatefulWidget {
     LocalizedText description,
     int number,
     bool unlocked,
+    bool enabled,
   ) onSave;
 
   const _ChapterSheet({
@@ -597,6 +647,7 @@ class _ChapterSheetState extends State<_ChapterSheet> {
   late LocalizedText _title;
   late LocalizedText _description;
   late bool _unlocked;
+  late bool _enabled;
   bool _saving = false;
   String? _error;
 
@@ -610,6 +661,7 @@ class _ChapterSheetState extends State<_ChapterSheet> {
     _title = e?.titleText ?? const LocalizedText.empty();
     _description = e?.descriptionText ?? const LocalizedText.empty();
     _unlocked = e?.isUnlocked ?? true;
+    _enabled = e?.isEnabled ?? true;
   }
 
   @override
@@ -637,6 +689,7 @@ class _ChapterSheetState extends State<_ChapterSheet> {
         _description,
         int.tryParse(_number.text.trim()) ?? widget.defaultNumber,
         _unlocked,
+        _enabled,
       );
       if (mounted) Navigator.pop(context, true);
     } catch (e) {
@@ -698,6 +751,20 @@ class _ChapterSheetState extends State<_ChapterSheet> {
         const SizedBox(height: 8),
         // Own Material so the tile ink paints above the sheet's
         // DecoratedBox (Flutter asserts otherwise).
+        Material(
+          type: MaterialType.transparency,
+          child: SwitchListTile(
+            contentPadding: EdgeInsets.zero,
+            value: _enabled,
+            activeThumbColor: AppColors.neonGreen,
+            onChanged: (v) => setState(() => _enabled = v),
+            title: const Text('Visible to students',
+                style: TextStyle(fontSize: 13.5, color: Colors.white)),
+            subtitle: const Text(
+                'Off hides this chapter from all student chapter lists.',
+                style: TextStyle(fontSize: 11, color: AppColors.textSecondary)),
+          ),
+        ),
         Material(
           type: MaterialType.transparency,
           child: SwitchListTile(

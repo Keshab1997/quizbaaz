@@ -1,9 +1,12 @@
 import 'dart:math';
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:quizbaaz/data/models/chapter_model.dart';
 import 'package:quizbaaz/data/models/chapter_set_progress.dart';
 import 'package:quizbaaz/data/models/localized_text.dart';
 import 'package:quizbaaz/data/models/question_model.dart';
+import 'package:quizbaaz/data/models/question_set.dart';
+import 'package:quizbaaz/data/repositories/quiz_repository.dart';
 import 'package:quizbaaz/data/services/question_fingerprint.dart';
 import 'package:quizbaaz/data/services/question_validator.dart';
 
@@ -307,6 +310,94 @@ void main() {
       expect(results[0].isAcceptable, isTrue);
       expect(results[1].isAcceptable, isFalse,
           reason: 'the second copy must be caught within the same batch');
+    });
+  });
+
+  group('chapter visibility', () {
+    ChapterModel chapter(String id, {bool isEnabled = true}) => ChapterModel(
+          chapterId: id,
+          chapterNumber: 1,
+          titleText: LocalizedText({'en': id}),
+          descriptionText: const LocalizedText.empty(),
+          totalQuestions: 10,
+          jsonFile: 'assets/data/questions/$id.json',
+          isUnlocked: true,
+          isEnabled: isEnabled,
+          stars: 0,
+          bestScore: 0,
+        );
+
+    CategoryModel category(String id, List<ChapterModel> chapters) =>
+        CategoryModel(
+          categoryId: id,
+          nameText: LocalizedText({'en': id}),
+          categoryIcon: '',
+          colorHex: '#000000',
+          totalChapters: chapters.length,
+          chapters: chapters,
+        );
+
+    test('legacy chapter data remains enabled by default', () {
+      final legacy = ChapterModel.fromJson({
+        'chapter_id': 'legacy',
+        'chapter_number': 1,
+        'title': {'en': 'Legacy chapter'},
+        'description': {'en': ''},
+        'total_questions': 10,
+        'json_file': 'assets/data/questions/legacy.json',
+        'is_unlocked': true,
+      });
+
+      expect(legacy.isEnabled, isTrue);
+    });
+
+    test('visibility value survives a chapter JSON round trip', () {
+      final hidden = chapter('hidden', isEnabled: false);
+      final restored = ChapterModel.fromJson(hidden.toJson());
+
+      expect(restored.isEnabled, isFalse);
+    });
+
+    test('students see only enabled chapters and non-empty subjects', () {
+      final all = [
+        category('math', [
+          chapter('shown'),
+          chapter('hidden', isEnabled: false),
+        ]),
+        category('private', [chapter('also_hidden', isEnabled: false)]),
+      ];
+
+      final studentView = QuizRepository.filterForStudents(all);
+      expect(studentView, hasLength(1));
+      expect(studentView.single.categoryId, 'math');
+      expect(studentView.single.totalChapters, 1);
+      expect(studentView.single.chapters.single.chapterId, 'shown');
+
+      final adminView =
+          QuizRepository.filterForStudents(all, includeDisabled: true);
+      expect(adminView, hasLength(2));
+      expect(adminView.first.chapters, hasLength(2));
+    });
+  });
+
+  group('admin question sets', () {
+    test('groups consecutive questions in sets of ten', () {
+      final questions = List.generate(
+        23,
+        (index) => buildQuestion(id: 'q${index + 1}'),
+      );
+
+      final sets = QuestionSet.fromQuestions(questions);
+
+      expect(sets.map((set) => set.number), [1, 2, 3]);
+      expect(sets.map((set) => set.startIndex), [0, 10, 20]);
+      expect(sets.map((set) => set.questions.length), [10, 10, 3]);
+      expect(sets[1].questions.first.id, 'q11');
+      expect(sets[2].questions.last.id, 'q23');
+    });
+
+    test('does not create an empty set', () {
+      expect(QuestionSet.fromQuestions(const []), isEmpty);
     });
   });
 
