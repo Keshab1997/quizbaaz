@@ -333,17 +333,22 @@ class _AiGenerationReviewScreenState extends State<AiGenerationReviewScreen> {
               ),
             ],
           ),
-          SwitchListTile(
-            contentPadding: EdgeInsets.zero,
-            dense: true,
-            value: _verify,
-            activeThumbColor: AppColors.neonCyan,
-            onChanged: (v) => setState(() => _verify = v),
-            title: const Text('Double-check answers',
-                style: TextStyle(fontSize: 12.5, color: Colors.white)),
-            subtitle: const Text(
-                'A second key re-reads each answer. Slower, catches mis-marked options.',
-                style: TextStyle(fontSize: 10.5, color: AppColors.textMuted)),
+          // Own Material so the tile ink paints above the card's
+          // DecoratedBox (Flutter asserts otherwise).
+          Material(
+            type: MaterialType.transparency,
+            child: SwitchListTile(
+              contentPadding: EdgeInsets.zero,
+              dense: true,
+              value: _verify,
+              activeThumbColor: AppColors.neonCyan,
+              onChanged: (v) => setState(() => _verify = v),
+              title: const Text('Double-check answers',
+                  style: TextStyle(fontSize: 12.5, color: Colors.white)),
+              subtitle: const Text(
+                  'A second key re-reads each answer. Slower, catches mis-marked options.',
+                  style: TextStyle(fontSize: 10.5, color: AppColors.textMuted)),
+            ),
           ),
         ],
       ),

@@ -696,15 +696,20 @@ class _ChapterSheetState extends State<_ChapterSheet> {
           onChanged: (v) => _description = v,
         ),
         const SizedBox(height: 8),
-        SwitchListTile(
-          contentPadding: EdgeInsets.zero,
-          value: _unlocked,
-          activeThumbColor: AppColors.neonCyan,
-          onChanged: (v) => setState(() => _unlocked = v),
-          title: const Text('Unlocked',
-              style: TextStyle(fontSize: 13.5, color: Colors.white)),
-          subtitle: const Text('Off means students must finish the previous chapter',
-              style: TextStyle(fontSize: 11, color: AppColors.textSecondary)),
+        // Own Material so the tile ink paints above the sheet's
+        // DecoratedBox (Flutter asserts otherwise).
+        Material(
+          type: MaterialType.transparency,
+          child: SwitchListTile(
+            contentPadding: EdgeInsets.zero,
+            value: _unlocked,
+            activeThumbColor: AppColors.neonCyan,
+            onChanged: (v) => setState(() => _unlocked = v),
+            title: const Text('Unlocked',
+                style: TextStyle(fontSize: 13.5, color: Colors.white)),
+            subtitle: const Text('Off means students must finish the previous chapter',
+                style: TextStyle(fontSize: 11, color: AppColors.textSecondary)),
+          ),
         ),
       ],
     );

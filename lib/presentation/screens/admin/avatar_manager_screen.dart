@@ -402,9 +402,12 @@ class _AddEditAvatarSheetState extends State<_AddEditAvatarSheet> {
             items: [const DropdownMenuItem(value: 'male', child: Text('👦 Male')), const DropdownMenuItem(value: 'female', child: Text('👧 Female')), DropdownMenuItem(value: 'premium', child: Text(S.avatarPremium))],
             onChanged: (value) => setState(() { _selectedCategory = value!; if (value == 'premium') _isPremium = true; })),
           const SizedBox(height: 16),
-          SwitchListTile(title: const Text('Premium Avatar', style: TextStyle(color: AppColors.textPrimary, fontWeight: FontWeight.w600)),
-            subtitle: const Text('Requires purchase in shop', style: TextStyle(color: AppColors.textMuted, fontSize: 11)),
-            value: _isPremium, onChanged: (value) => setState(() => _isPremium = value), activeThumbColor: AppColors.neonGold),
+          // Own Material so the tile ink paints above the sheet's
+          // DecoratedBox (Flutter asserts otherwise).
+          Material(type: MaterialType.transparency,
+            child: SwitchListTile(title: const Text('Premium Avatar', style: TextStyle(color: AppColors.textPrimary, fontWeight: FontWeight.w600)),
+              subtitle: const Text('Requires purchase in shop', style: TextStyle(color: AppColors.textMuted, fontSize: 11)),
+              value: _isPremium, onChanged: (value) => setState(() => _isPremium = value), activeThumbColor: AppColors.neonGold)),
           if (_isPremium) ...[
             const SizedBox(height: 16),
             TextField(controller: _priceController, keyboardType: TextInputType.number, style: const TextStyle(color: AppColors.textPrimary),

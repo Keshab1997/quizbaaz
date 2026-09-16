@@ -351,33 +351,38 @@ class _OnlineBattleScreenState extends State<OnlineBattleScreen>
             for (final d in ['easy', 'normal', 'hard'])
               Padding(
                 padding: const EdgeInsets.only(bottom: 12),
-                child: ListTile(
-                  tileColor: _selectedDifficulty == d
-                      ? Colors.cyan.withValues(alpha: 0.2)
-                      : Colors.white.withValues(alpha: 0.05),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12)),
-                  leading: Icon(
-                    d == 'easy'
-                        ? Icons.bolt
-                        : d == 'normal'
-                            ? Icons.balance
-                            : Icons.local_fire_department,
-                    color: d == 'easy'
-                        ? Colors.green
-                        : d == 'normal'
-                            ? Colors.cyan
-                            : Colors.orange,
+                // Own Material so the tile ink paints above the sheet's
+                // DecoratedBox (Flutter asserts otherwise).
+                child: Material(
+                  type: MaterialType.transparency,
+                  child: ListTile(
+                    tileColor: _selectedDifficulty == d
+                        ? Colors.cyan.withValues(alpha: 0.2)
+                        : Colors.white.withValues(alpha: 0.05),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12)),
+                    leading: Icon(
+                      d == 'easy'
+                          ? Icons.bolt
+                          : d == 'normal'
+                              ? Icons.balance
+                              : Icons.local_fire_department,
+                      color: d == 'easy'
+                          ? Colors.green
+                          : d == 'normal'
+                              ? Colors.cyan
+                              : Colors.orange,
+                    ),
+                    title: Text(d.toUpperCase(),
+                        style: const TextStyle(color: Colors.white)),
+                    trailing: _selectedDifficulty == d
+                        ? const Icon(Icons.check_circle, color: Colors.cyan)
+                        : null,
+                    onTap: () {
+                      setState(() => _selectedDifficulty = d);
+                      Navigator.pop(context);
+                    },
                   ),
-                  title: Text(d.toUpperCase(),
-                      style: const TextStyle(color: Colors.white)),
-                  trailing: _selectedDifficulty == d
-                      ? const Icon(Icons.check_circle, color: Colors.cyan)
-                      : null,
-                  onTap: () {
-                    setState(() => _selectedDifficulty = d);
-                    Navigator.pop(context);
-                  },
                 ),
               ),
           ],

@@ -137,34 +137,39 @@ class _OptionTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      onTap: onTap,
-      leading: Icon(
-        icon,
-        size: 20,
-        color: selected ? AppColors.neonCyan : AppColors.textSecondary,
-      ),
-      title: Text(
-        title,
-        style: TextStyle(
-          fontSize: 14.5,
-          fontWeight: selected ? FontWeight.bold : FontWeight.w500,
-          color: selected ? AppColors.neonCyan : AppColors.textPrimary,
+    // Own Material so the ripple paints above the GlassCard instead of
+    // being hidden by it (Flutter asserts otherwise).
+    return Material(
+      type: MaterialType.transparency,
+      child: ListTile(
+        onTap: onTap,
+        leading: Icon(
+          icon,
+          size: 20,
+          color: selected ? AppColors.neonCyan : AppColors.textSecondary,
         ),
-      ),
-      subtitle: subtitle == null
-          ? null
-          : Text(
-              subtitle!,
-              style: const TextStyle(
-                fontSize: 11.5,
-                color: AppColors.textSecondary,
+        title: Text(
+          title,
+          style: TextStyle(
+            fontSize: 14.5,
+            fontWeight: selected ? FontWeight.bold : FontWeight.w500,
+            color: selected ? AppColors.neonCyan : AppColors.textPrimary,
+          ),
+        ),
+        subtitle: subtitle == null
+            ? null
+            : Text(
+                subtitle!,
+                style: const TextStyle(
+                  fontSize: 11.5,
+                  color: AppColors.textSecondary,
+                ),
               ),
-            ),
-      trailing: selected
-          ? const Icon(Icons.check_circle_rounded,
-              color: AppColors.neonCyan, size: 20)
-          : null,
+        trailing: selected
+            ? const Icon(Icons.check_circle_rounded,
+                color: AppColors.neonCyan, size: 20)
+            : null,
+      ),
     );
   }
 }

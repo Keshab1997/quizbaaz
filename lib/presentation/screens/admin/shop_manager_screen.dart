@@ -547,19 +547,23 @@ class _AddEditItemSheetState extends State<AddEditItemSheet> {
               ),
               const SizedBox(height: 16),
 
-              // Is Cosmetic
-              SwitchListTile(
-                title: const Text(
-                  'Cosmetic Item',
-                  style: TextStyle(color: AppColors.textPrimary, fontWeight: FontWeight.w600),
+              // Is Cosmetic — own Material so the tile ink paints above
+              // the sheet's DecoratedBox (Flutter asserts otherwise).
+              Material(
+                type: MaterialType.transparency,
+                child: SwitchListTile(
+                  title: const Text(
+                    'Cosmetic Item',
+                    style: TextStyle(color: AppColors.textPrimary, fontWeight: FontWeight.w600),
+                  ),
+                  subtitle: const Text(
+                    'One-time unlock (cannot buy again)',
+                    style: TextStyle(color: AppColors.textMuted, fontSize: 11),
+                  ),
+                  value: _isCosmetic,
+                  onChanged: (value) => setState(() => _isCosmetic = value),
+                  activeThumbColor: AppColors.neonCyan,
                 ),
-                subtitle: const Text(
-                  'One-time unlock (cannot buy again)',
-                  style: TextStyle(color: AppColors.textMuted, fontSize: 11),
-                ),
-                value: _isCosmetic,
-                onChanged: (value) => setState(() => _isCosmetic = value),
-                activeThumbColor: AppColors.neonCyan,
               ),
               const SizedBox(height: 24),
 
