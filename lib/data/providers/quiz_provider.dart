@@ -18,10 +18,17 @@ import '../../l10n/app_strings.dart';
 /// Drives a quiz run. All timings and reward amounts come from
 /// [UserProvider.config] (Hive/Firestore), never from magic numbers here.
 class QuizProvider extends ChangeNotifier {
-  final QuizRepository _repository = QuizRepository();
+  final QuizRepository _repository;
   final UserProvider _userProvider;
 
-  QuizProvider(this._userProvider);
+  /// Changes whenever a run is started or abandoned. Timer callbacks and
+  /// delayed transitions carry the generation they belong to, so an old quiz
+  /// can never advance a new screen after the player leaves it.
+  int _runGeneration = 0;
+  bool _transitionPending = false;
+
+  QuizProvider(this._userProvider, {QuizRepository? repository})
+      : _repository = repository ?? QuizRepository();
 
   List<QuestionModel> _questions = [];
 
@@ -107,6 +114,9 @@ class QuizProvider extends ChangeNotifier {
   bool get isQuizCompleted => _isQuizCompleted;
   bool get isLoading => _isLoading;
   bool get isDailyQuiz => _isDailyQuiz;
+
+  /// A run that still owns a loading operation, questions, or its timer.
+  bool get hasActiveQuiz => _isLoading || (!_isQuizCompleted && _questions.isNotEmpty);
   int get secondsRemaining => _secondsRemaining;
   List<int> get disabledOptionIndices => _disabledOptionIndices;
 
@@ -169,13 +179,17 @@ class QuizProvider extends ChangeNotifier {
   /// Initialize the Daily Quiz.
   Future<void> startDailyQuiz() async {
     _resetQuizState();
+    final runGeneration = _runGeneration;
     _isDailyQuiz = true;
     _isLoading = true;
     notifyListeners();
 
     final sw = Stopwatch()..start();
-    _questions = _shuffleOptions(await _repository.getDailyQuizQuestions());
+    final questions = await _repository.getDailyQuizQuestions();
     await _holdIntro(sw, _dailyIntroMin);
+    if (runGeneration != _runGeneration) return;
+
+    _questions = _shuffleOptions(questions);
     _isLoading = false;
 
     // Check for active boosters
@@ -213,6 +227,7 @@ class QuizProvider extends ChangeNotifier {
     bool practice = false,
   }) async {
     _resetQuizState();
+    final runGeneration = _runGeneration;
     _isDailyQuiz = false;
     _chapterId = chapterId ?? jsonFilePath;
     _categoryTitle = categoryTitle;
@@ -230,6 +245,7 @@ class QuizProvider extends ChangeNotifier {
       jsonFilePath,
       chapterId: chapterId,
     );
+    if (runGeneration != _runGeneration) return;
     _chapterQuestionCount = all.length;
 
     final start = setStartIndex(setIndex);
@@ -314,11 +330,25 @@ class QuizProvider extends ChangeNotifier {
   List<QuestionModel> _shuffleOptions(List<QuestionModel> questions) =>
       [for (final question in questions) question.withShuffledOptions(_rng)];
 
+  /// Stops and clears a quiz without rewarding it. Called only when a player
+  /// deliberately exits a quiz; completed results stay intact for the result
+  /// screen.
+  void abandonQuiz() {
+    if (_isQuizCompleted) return;
+    _resetQuizState();
+    _isLoading = false;
+    notifyListeners();
+  }
+
   void _resetQuizState() {
+    _runGeneration++;
     _timer?.cancel();
+    _timer = null;
+    _transitionPending = false;
     // Each quiz starts in the app language; a peek at another language is a
     // per-run decision, not a hidden setting that quietly persists.
     _displayLanguage = null;
+    _isDailyQuiz = false;
     _isPractice = false;
     _setIndex = 0;
     _chapterQuestionCount = 0;
@@ -363,8 +393,16 @@ class QuizProvider extends ChangeNotifier {
 
   void _startTimer() {
     _timer?.cancel();
+    final runGeneration = _runGeneration;
     _secondsRemaining = questionTimeSec;
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (runGeneration != _runGeneration ||
+          _isQuizCompleted ||
+          _questions.isEmpty) {
+        timer.cancel();
+        return;
+      }
+
       if (_secondsRemaining > 0) {
         _secondsRemaining--;
         // Urgency tick for the final 5 seconds.
@@ -373,16 +411,36 @@ class QuizProvider extends ChangeNotifier {
         }
         notifyListeners();
       } else {
-        _timer?.cancel();
+        timer.cancel();
         _handleTimeout();
       }
+    });
+  }
+
+  void _scheduleNextQuestion(Duration delay) {
+    if (_transitionPending) return;
+    _transitionPending = true;
+    final runGeneration = _runGeneration;
+
+    Future<void>.delayed(delay, () {
+      if (runGeneration != _runGeneration ||
+          _isQuizCompleted ||
+          _questions.isEmpty) {
+        return;
+      }
+      _transitionPending = false;
+      nextQuestion();
     });
   }
 
   // ---------------------------------------------------------------- Playing --
 
   void selectOption(int index) {
-    if (_isAnswerSubmitted || _disabledOptionIndices.contains(index)) return;
+    if (currentQuestion == null ||
+        _isAnswerSubmitted ||
+        _disabledOptionIndices.contains(index)) {
+      return;
+    }
 
     _selectedOptionIndex = index;
     _isAnswerSubmitted = true;
@@ -434,8 +492,9 @@ class QuizProvider extends ChangeNotifier {
 
     notifyListeners();
 
-    // Auto next after 1.8 seconds
-    Future.delayed(const Duration(milliseconds: 1800), nextQuestion);
+    // Auto next after 1.8 seconds. This callback becomes a no-op if the
+    // player exits before the answer animation finishes.
+    _scheduleNextQuestion(const Duration(milliseconds: 1800));
   }
 
   void _handleTimeout() {
@@ -473,10 +532,11 @@ class QuizProvider extends ChangeNotifier {
 
     notifyListeners();
 
-    Future.delayed(const Duration(milliseconds: 1800), nextQuestion);
+    _scheduleNextQuestion(const Duration(milliseconds: 1800));
   }
 
   void nextQuestion() {
+    if (_questions.isEmpty || _isQuizCompleted || _transitionPending) return;
     if (_currentIndex < _questions.length - 1) {
       _currentIndex++;
       _selectedOptionIndex = null;
@@ -685,6 +745,9 @@ class QuizProvider extends ChangeNotifier {
     }
     _skipUsed = true;
     _timer?.cancel();
+    // Lock the answer buttons while the skip transition is pending, otherwise
+    // a rapid tap can enqueue both a skip and an answer transition.
+    _isAnswerSubmitted = true;
     _totalTimeSeconds += questionTimeSec - _secondsRemaining;
 
     final q = currentQuestion;
@@ -698,7 +761,7 @@ class QuizProvider extends ChangeNotifier {
       );
     }
 
-    Future.delayed(const Duration(milliseconds: 500), nextQuestion);
+    _scheduleNextQuestion(const Duration(milliseconds: 500));
     SoundService.instance.play('lifeline_skip');
     Haptics.light();
     notifyListeners();

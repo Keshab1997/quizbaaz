@@ -27,7 +27,7 @@ class DailyQuizScreen extends StatelessWidget {
 
     final currentQ = quiz.currentQuestion;
 
-    return Scaffold(
+    final screen = Scaffold(
       backgroundColor: Colors.transparent,
       appBar: AppBar(
         title: Column(
@@ -208,6 +208,14 @@ class DailyQuizScreen extends StatelessWidget {
                 ),
               ),
             ),
+    );
+
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, _) {
+        if (!didPop) _showExitDialog(context);
+      },
+      child: screen,
     );
   }
 
@@ -748,6 +756,7 @@ class DailyQuizScreen extends StatelessWidget {
           ElevatedButton(
             style: ElevatedButton.styleFrom(backgroundColor: AppColors.neonRed),
             onPressed: () {
+              context.read<QuizProvider>().abandonQuiz();
               Navigator.pop(ctx);
               Navigator.pop(context);
             },
