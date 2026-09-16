@@ -118,7 +118,8 @@ Consequences, all intentional:
 
 **Question ids are document ids.** Writing uses `set()` on a specific id, so a
 re-run cannot create a second copy, and nothing ever calls `delete()` on the
-collection. Deletion is a deliberate, single-question admin action.
+collection. Deletion is deliberate: either one explicit question or one
+admin-visible set of at most 10 explicit question IDs after confirmation.
 
 - [ ] **T1.1** `QuestionBankService` — Firestore CRUD, batched writes, counter upkeep
 - [ ] **T1.2** Extend `QuizRepository` to merge asset + Firestore banks, dedupe by id
@@ -254,7 +255,8 @@ Stream<GenerationProgress> generate({
 ### 5.2 Question Manager — `admin/question_manager_screen.dart`
 - Opened from a chapter. Lists existing questions with search and filters
   (needs translation / AI / manual / flagged).
-- Per question: expand to see all three languages, edit, delete (with confirm).
+- Questions are grouped into consecutive **sets of 10** (the final set may be shorter), so a long chapter remains reviewable.
+- Per question: expand to see all three languages, edit, delete (with confirm). A set has a separate, count-specific permanent-delete confirmation; it deletes only that set's explicit Firestore question IDs, never a whole chapter.
 - **➕ Add manually** — the trilingual form.
 - **✨ Generate 10 with AI** — the headline button.
 

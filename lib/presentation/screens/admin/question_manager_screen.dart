@@ -8,6 +8,7 @@ import '../../../core/constants/app_colors.dart';
 import '../../../data/models/chapter_model.dart';
 import '../../../data/models/localized_text.dart';
 import '../../../data/models/question_model.dart';
+import '../../../data/models/question_set.dart';
 import '../../../data/providers/auth_provider.dart';
 import '../../../data/repositories/quiz_repository.dart';
 import '../../../data/services/ai_question_generator.dart';
@@ -25,9 +26,9 @@ import 'widgets/trilingual_field.dart';
 /// I already have?" — and offers the two ways to add: by hand, or by
 /// generating a batch.
 ///
-/// Deletion is per question and confirmed. There is no "clear chapter": the
-/// service underneath has no method for it, and this screen does not invent
-/// one by looping.
+/// Questions are shown in consecutive sets of ten. An admin can still delete
+/// one question, or permanently remove the exact questions in one set after a
+/// count-specific confirmation; there is no "clear chapter" action.
 class QuestionManagerScreen extends StatefulWidget {
   final String categoryId;
 
@@ -112,36 +113,38 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
     });
   }
 
-  List<QuestionModel> get _visible {
+  bool _matchesCurrentFilter(QuestionModel question) {
     final needle = _search.trim().toLowerCase();
-    return _questions.where((q) {
-      if (needle.isNotEmpty) {
-        final haystack = [
-          q.id,
-          ...q.questionText.toJson().values,
-          for (final o in q.optionTexts) ...o.toJson().values,
-        ].join(' ').toLowerCase();
-        if (!haystack.contains(needle)) return false;
-      }
+    if (needle.isNotEmpty) {
+      final haystack = [
+        question.id,
+        ...question.questionText.toJson().values,
+        for (final option in question.optionTexts) ...option.toJson().values,
+      ].join(' ').toLowerCase();
+      if (!haystack.contains(needle)) return false;
+    }
 
-      switch (_filter) {
-        case _Filter.needsTranslation:
-          return !q.isFullyTranslated;
-        case _Filter.ai:
-        case _Filter.manual:
-          // Provenance lives on the Firestore document, not the model; until
-          // that is surfaced these behave as "all". Kept so the chips are in
-          // place for the generator work.
-          return true;
-        case _Filter.all:
-          return true;
-      }
-    }).toList();
+    switch (_filter) {
+      case _Filter.needsTranslation:
+        return !question.isFullyTranslated;
+      case _Filter.ai:
+      case _Filter.manual:
+        // Provenance lives on the Firestore document, not the model; until
+        // that is surfaced these behave as "all". Kept so the chips are in
+        // place for the generator work.
+        return true;
+      case _Filter.all:
+        return true;
+    }
   }
+
+  List<QuestionSet> get _visibleSets => QuestionSet.fromQuestions(_questions)
+      .where((set) => set.questions.any(_matchesCurrentFilter))
+      .toList();
 
   @override
   Widget build(BuildContext context) {
-    final visible = _visible;
+    final visibleSets = _visibleSets;
     final untranslated =
         _questions.where((q) => !q.isFullyTranslated).length;
 
@@ -227,7 +230,7 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
                   const SizedBox(height: 12),
                   if (_questions.isEmpty)
                     _emptyState()
-                  else if (visible.isEmpty)
+                  else if (visibleSets.isEmpty)
                     const Padding(
                       padding: EdgeInsets.only(top: 50),
                       child: Center(
@@ -235,8 +238,7 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
                             style: TextStyle(color: AppColors.textSecondary)),
                       ),
                     ),
-                  for (var i = 0; i < visible.length; i++)
-                    _questionCard(visible[i], i + 1),
+                  for (final set in visibleSets) _questionSetCard(set),
                 ],
               ),
             ),
@@ -382,6 +384,87 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
               ),
             ),
         ],
+      ),
+    );
+  }
+
+  Widget _questionSetCard(QuestionSet set) {
+    final matching = set.questions.where(_matchesCurrentFilter).toList();
+    final hasFilteredQuestions = matching.length != set.questions.length;
+    final questionLabel = set.questions.length == 1 ? 'question' : 'questions';
+
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 14),
+      child: GlassCard(
+        borderRadius: 18,
+        padding: EdgeInsets.zero,
+        child: Theme(
+          data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+          child: ExpansionTile(
+            tilePadding: const EdgeInsets.symmetric(horizontal: 16),
+            childrenPadding: const EdgeInsets.fromLTRB(8, 0, 8, 10),
+            iconColor: AppColors.textSecondary,
+            collapsedIconColor: AppColors.textSecondary,
+            leading: Container(
+              width: 38,
+              height: 38,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                color: AppColors.neonPurple.withValues(alpha: 0.16),
+                border: Border.all(
+                  color: AppColors.neonPurple.withValues(alpha: 0.42),
+                ),
+              ),
+              alignment: Alignment.center,
+              child: Text(
+                '${set.number}',
+                style: const TextStyle(
+                  color: AppColors.neonPurple,
+                  fontWeight: FontWeight.w900,
+                ),
+              ),
+            ),
+            title: Text(
+              'Set ${set.number}',
+              style: const TextStyle(
+                fontSize: 14.5,
+                fontWeight: FontWeight.w800,
+                color: Colors.white,
+              ),
+            ),
+            subtitle: Text(
+              hasFilteredQuestions
+                  ? '${matching.length} matching of ${set.questions.length} $questionLabel'
+                  : '${set.questions.length} $questionLabel',
+              style: const TextStyle(
+                fontSize: 11.5,
+                color: AppColors.textSecondary,
+              ),
+            ),
+            children: [
+              for (final question in matching)
+                _questionCard(
+                  question,
+                  set.startIndex + set.questions.indexOf(question) + 1,
+                ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(8, 2, 8, 0),
+                child: Align(
+                  alignment: Alignment.centerRight,
+                  child: OutlinedButton.icon(
+                    style: OutlinedButton.styleFrom(
+                      foregroundColor: AppColors.neonRed,
+                      side: const BorderSide(color: AppColors.neonRed),
+                    ),
+                    onPressed: () => _confirmDeleteSet(set),
+                    icon: const Icon(Icons.delete_sweep_rounded, size: 17),
+                    label: Text('Delete all ${set.questions.length}'),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -725,6 +808,54 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
   Future<void> _invalidateCaches() => _repository.invalidateQuestionCache(
         jsonFilePath: widget.chapter.jsonFile,
       );
+
+  Future<void> _confirmDeleteSet(QuestionSet set) async {
+    final count = set.questions.length;
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        backgroundColor: AppColors.bgNavy,
+        title: Text('Delete Set ${set.number}?',
+            style: const TextStyle(fontSize: 16, color: Colors.white)),
+        content: Text(
+          'This permanently deletes all $count question${count == 1 ? '' : 's'} '
+          'in Set ${set.number}. This cannot be undone.',
+          style: const TextStyle(
+              fontSize: 12.5, color: AppColors.textSecondary, height: 1.45),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx, false),
+            child: const Text('Cancel',
+                style: TextStyle(color: AppColors.textSecondary)),
+          ),
+          ElevatedButton(
+            style:
+                ElevatedButton.styleFrom(backgroundColor: AppColors.neonRed),
+            onPressed: () => Navigator.pop(ctx, true),
+            child: Text('Delete all $count',
+                style: const TextStyle(color: Colors.white)),
+          ),
+        ],
+      ),
+    );
+
+    if (confirmed != true) return;
+    try {
+      final result = await _bank.deleteQuestions(
+        chapterId: _chapterId,
+        questionIds: set.questions.map((question) => question.id).toList(),
+        actorUid: _actorUid,
+      );
+      await _invalidateCaches();
+      _toast(
+        'Deleted ${result.deletedCount} question(s) from Set ${set.number}.',
+      );
+      await _load();
+    } catch (e) {
+      _toast('Set delete failed: $e', error: true);
+    }
+  }
 
   Future<void> _confirmDelete(QuestionModel question) async {
     final confirmed = await showDialog<bool>(

@@ -5,6 +5,7 @@ import 'package:quizbaaz/data/models/chapter_model.dart';
 import 'package:quizbaaz/data/models/chapter_set_progress.dart';
 import 'package:quizbaaz/data/models/localized_text.dart';
 import 'package:quizbaaz/data/models/question_model.dart';
+import 'package:quizbaaz/data/models/question_set.dart';
 import 'package:quizbaaz/data/repositories/quiz_repository.dart';
 import 'package:quizbaaz/data/services/question_fingerprint.dart';
 import 'package:quizbaaz/data/services/question_validator.dart';
@@ -376,6 +377,27 @@ void main() {
           QuizRepository.filterForStudents(all, includeDisabled: true);
       expect(adminView, hasLength(2));
       expect(adminView.first.chapters, hasLength(2));
+    });
+  });
+
+  group('admin question sets', () {
+    test('groups consecutive questions in sets of ten', () {
+      final questions = List.generate(
+        23,
+        (index) => buildQuestion(id: 'q${index + 1}'),
+      );
+
+      final sets = QuestionSet.fromQuestions(questions);
+
+      expect(sets.map((set) => set.number), [1, 2, 3]);
+      expect(sets.map((set) => set.startIndex), [0, 10, 20]);
+      expect(sets.map((set) => set.questions.length), [10, 10, 3]);
+      expect(sets[1].questions.first.id, 'q11');
+      expect(sets[2].questions.last.id, 'q23');
+    });
+
+    test('does not create an empty set', () {
+      expect(QuestionSet.fromQuestions(const []), isEmpty);
     });
   });
 
