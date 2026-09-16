@@ -51,29 +51,34 @@ class GlassCard extends StatelessWidget {
               ),
             ],
       ),
-      child: ClipRRect(
-        borderRadius: radius,
-        child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: blur, sigmaY: blur),
-          child: Container(
-            padding: padding,
-            decoration: BoxDecoration(
-              color: backgroundColor ?? AppColors.bgCardGlass,
-              borderRadius: radius,
-              border: Border.all(
-                color: borderColor ?? AppColors.outline,
-                width: 1,
+      // RepaintBoundary isolates the blur layer during route transitions.
+      // Without it, popping a screen full of glass cards trips the
+      // '!semantics.parentDataDirty' assertion in the rendering pipeline.
+      child: RepaintBoundary(
+        child: ClipRRect(
+          borderRadius: radius,
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: blur, sigmaY: blur),
+            child: Container(
+              padding: padding,
+              decoration: BoxDecoration(
+                color: backgroundColor ?? AppColors.bgCardGlass,
+                borderRadius: radius,
+                border: Border.all(
+                  color: borderColor ?? AppColors.outline,
+                  width: 1,
+                ),
+                gradient: LinearGradient(
+                  colors: [
+                    Colors.white.withValues(alpha: 0.075),
+                    Colors.white.withValues(alpha: 0.018),
+                  ],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
               ),
-              gradient: LinearGradient(
-                colors: [
-                  Colors.white.withValues(alpha: 0.075),
-                  Colors.white.withValues(alpha: 0.018),
-                ],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              ),
+              child: child,
             ),
-            child: child,
           ),
         ),
       ),

@@ -189,10 +189,12 @@ class _CelebrationOverlayState extends State<_CelebrationOverlay>
             Positioned.fill(
               child: FadeTransition(
                 opacity: _backdropOpacity,
-                child: ClipRect(
-                  child: BackdropFilter(
-                    filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
-                    child: Container(color: const Color(0x8C0A0E21)),
+                child: RepaintBoundary(
+                  child: ClipRect(
+                    child: BackdropFilter(
+                      filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
+                      child: Container(color: const Color(0x8C0A0E21)),
+                    ),
                   ),
                 ),
               ),

@@ -231,9 +231,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
         children: [
           // AdMob banner (SizedBox.shrink until loaded — no layout jump).
           // Rebuilt when consent resolves, so EU/UK users get their banner
-          // right after answering the consent form.
+          // right after answering the consent form, and when the banner
+          // itself finishes loading.
           ListenableBuilder(
-            listenable: ConsentService.instance,
+            listenable: Listenable.merge(
+              [ConsentService.instance, AdService.instance],
+            ),
             builder: (context, _) => AdService.instance.banner(),
           ),
           _buildBottomNavigation(),
@@ -1764,31 +1767,42 @@ class _BattleArenaCardState extends State<_BattleArenaCard>
                   ),
 
                   // ── Left fighter (blue) — floats up/down ──
-                  AnimatedBuilder(
-                    animation: _floatAnim,
-                    builder: (_, __) => Positioned(
-                      left: 0,
-                      bottom: 28 + _floatAnim.value,
-                      child: const _FighterImage(
-                        asset: AppAssets.battleFighterBlue,
-                        glowColor: AppColors.neonCyan,
-                        label: 'YOU',
-                        flip: false,
+                  //
+                  // Positioned stays a direct child of the Stack: returning it
+                  // from an AnimatedBuilder breaks parent-data ordering and
+                  // trips '!semantics.parentDataDirty' every animation tick.
+                  // The bob motion is a Transform instead — visually identical.
+                  Positioned(
+                    left: 0,
+                    bottom: 28,
+                    child: AnimatedBuilder(
+                      animation: _floatAnim,
+                      builder: (_, __) => Transform.translate(
+                        offset: Offset(0, -_floatAnim.value),
+                        child: const _FighterImage(
+                          asset: AppAssets.battleFighterBlue,
+                          glowColor: AppColors.neonCyan,
+                          label: 'YOU',
+                          flip: false,
+                        ),
                       ),
                     ),
                   ),
 
                   // ── Right fighter (pink) — floats opposite phase ──
-                  AnimatedBuilder(
-                    animation: _floatAnim,
-                    builder: (_, __) => Positioned(
-                      right: 0,
-                      bottom: 28 - _floatAnim.value,
-                      child: const _FighterImage(
-                        asset: AppAssets.battleFighterPink,
-                        glowColor: AppColors.neonPink,
-                        label: 'BOT',
-                        flip: true,
+                  Positioned(
+                    right: 0,
+                    bottom: 28,
+                    child: AnimatedBuilder(
+                      animation: _floatAnim,
+                      builder: (_, __) => Transform.translate(
+                        offset: Offset(0, _floatAnim.value),
+                        child: const _FighterImage(
+                          asset: AppAssets.battleFighterPink,
+                          glowColor: AppColors.neonPink,
+                          label: 'BOT',
+                          flip: true,
+                        ),
                       ),
                     ),
                   ),

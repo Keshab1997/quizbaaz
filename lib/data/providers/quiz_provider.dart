@@ -35,6 +35,18 @@ class QuizProvider extends ChangeNotifier {
   /// True when this run is a replay and must not credit anything.
   bool _isPractice = false;
 
+  /// True after the player quits mid-run.
+  ///
+  /// Quitting must freeze the run completely: the countdown stops, and the
+  /// delayed `nextQuestion` callbacks already scheduled by an answer or a
+  /// timeout become no-ops. Otherwise the abandoned quiz keeps playing
+  /// tick/timeout sounds in the background and eventually grants rewards for
+  /// a run the player walked away from.
+  bool _abandoned = false;
+
+  /// True after [quitQuiz] until the next run starts.
+  bool get isAbandoned => _abandoned;
+
   /// Questions the whole chapter holds, for "set 2 of 7".
   int _chapterQuestionCount = 0;
 
@@ -115,13 +127,19 @@ class QuizProvider extends ChangeNotifier {
   bool get hasNoQuestions => !_isLoading && _questions.isEmpty;
 
   // Inventory stocks
-  int get fiftyFiftyStock => _userProvider.inventoryCount(ShopItemIds.fiftyFifty);
-  int get freezeTimeStock => _userProvider.inventoryCount(ShopItemIds.freezeTime);
-  int get skipQuestionStock => _userProvider.inventoryCount(ShopItemIds.skipQuestion);
-  int get hintRevealStock => _userProvider.inventoryCount(ShopItemIds.hintReveal);
-  int get audiencePollStock => _userProvider.inventoryCount(ShopItemIds.audiencePoll);
+  int get fiftyFiftyStock =>
+      _userProvider.inventoryCount(ShopItemIds.fiftyFifty);
+  int get freezeTimeStock =>
+      _userProvider.inventoryCount(ShopItemIds.freezeTime);
+  int get skipQuestionStock =>
+      _userProvider.inventoryCount(ShopItemIds.skipQuestion);
+  int get hintRevealStock =>
+      _userProvider.inventoryCount(ShopItemIds.hintReveal);
+  int get audiencePollStock =>
+      _userProvider.inventoryCount(ShopItemIds.audiencePoll);
   int get extraLifeStock => _userProvider.inventoryCount(ShopItemIds.extraLife);
-  int get doublePointsStock => _userProvider.inventoryCount(ShopItemIds.doublePoints);
+  int get doublePointsStock =>
+      _userProvider.inventoryCount(ShopItemIds.doublePoints);
 
   // Per-question usage flags
   bool get fiftyFiftyUsed => _fiftyFiftyUsed;
@@ -314,8 +332,18 @@ class QuizProvider extends ChangeNotifier {
   List<QuestionModel> _shuffleOptions(List<QuestionModel> questions) =>
       [for (final question in questions) question.withShuffledOptions(_rng)];
 
+  /// Quits the current run: stops the countdown and disarms pending delayed
+  /// advances so a quit quiz can neither play sounds nor grant rewards in
+  /// the background. The next [startDailyQuiz]/[startChapterQuiz] resets.
+  void quitQuiz() {
+    _abandoned = true;
+    _timer?.cancel();
+    notifyListeners();
+  }
+
   void _resetQuizState() {
     _timer?.cancel();
+    _abandoned = false;
     // Each quiz starts in the app language; a peek at another language is a
     // per-run decision, not a hidden setting that quietly persists.
     _displayLanguage = null;
@@ -439,7 +467,7 @@ class QuizProvider extends ChangeNotifier {
   }
 
   void _handleTimeout() {
-    if (_isAnswerSubmitted) return;
+    if (_abandoned || _isAnswerSubmitted) return;
     _isAnswerSubmitted = true;
 
     // Check for extra life on timeout
@@ -477,6 +505,11 @@ class QuizProvider extends ChangeNotifier {
   }
 
   void nextQuestion() {
+    // A delayed advance scheduled before the player quit must not resurrect
+    // the run — no sounds, no completion, no rewards.
+    if (_abandoned) {
+      return;
+    }
     if (_currentIndex < _questions.length - 1) {
       _currentIndex++;
       _selectedOptionIndex = null;
@@ -732,7 +765,9 @@ class QuizProvider extends ChangeNotifier {
 
   /// Generates a hint from the correct answer.
   String _generateHint(String answer) {
-    if (answer.length <= 3) return 'The answer is short (${answer.length} chars)';
+    if (answer.length <= 3) {
+      return 'The answer is short (${answer.length} chars)';
+    }
 
     final words = answer.split(' ');
     if (words.length == 1) {

@@ -27,187 +27,215 @@ class DailyQuizScreen extends StatelessWidget {
 
     final currentQ = quiz.currentQuestion;
 
-    return Scaffold(
-      backgroundColor: Colors.transparent,
-      appBar: AppBar(
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text(
-              'Daily Live Quiz',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-            ),
-            // Which set this is, so a chapter run never feels like it came
-            // from nowhere.
-            if (quiz.setCount > 1)
-              Text(
-                S.setsSetOf(n: quiz.setNumber, total: quiz.setCount),
-                style: const TextStyle(
-                    fontSize: 11,
-                    fontWeight: FontWeight.w500,
-                    color: AppColors.textSecondary),
+    // Native back shows the same quit dialog as the AppBar back button.
+    // A finished or already-quit run pops freely; anything else must confirm
+    // first, otherwise the countdown keeps running behind the popped route.
+    return PopScope(
+      canPop: quiz.isQuizCompleted || quiz.isAbandoned,
+      onPopInvokedWithResult: (didPop, _) {
+        if (!didPop) _showExitDialog(context);
+      },
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: AppBar(
+          title: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                'Daily Live Quiz',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
               ),
-          ],
-        ),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new, size: 20),
-          onPressed: () => _showExitDialog(context),
-        ),
-        actions: [
-          if (currentQ != null) ...[
-          // Active Boosters Indicator
-          if (quiz.doublePointsActive)
-            Container(
-              margin: const EdgeInsets.only(right: 8),
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-              decoration: BoxDecoration(
-                color: AppColors.neonPink.withValues(alpha: 0.2),
-                borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: AppColors.neonPink.withValues(alpha: 0.5)),
-              ),
-              child: const Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(Icons.double_arrow_rounded, color: AppColors.neonPink, size: 14),
-                  SizedBox(width: 4),
-                  Text('2x', style: TextStyle(fontSize: 11, fontWeight: FontWeight.w900, color: AppColors.neonPink)),
-                ],
-              ),
-            ),
-          if (quiz.extraLifeAvailable && !quiz.extraLifeUsed)
-            Container(
-              margin: const EdgeInsets.only(right: 8),
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-              decoration: BoxDecoration(
-                color: AppColors.neonRed.withValues(alpha: 0.2),
-                borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: AppColors.neonRed.withValues(alpha: 0.5)),
-              ),
-              child: const Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(Icons.favorite_rounded, color: AppColors.neonRed, size: 14),
-                  SizedBox(width: 4),
-                  Text('+1', style: TextStyle(fontSize: 11, fontWeight: FontWeight.w900, color: AppColors.neonRed)),
-                ],
-              ),
-            ),
-          // Read the question in another language without leaving the quiz.
-          QuizLanguagePills(
-            available: quiz.availableLanguages,
-            selected: quiz.displayLanguage,
-            onSelected: quiz.setDisplayLanguage,
-          ),
-
-          // Score
-          Container(
-            margin: const EdgeInsets.only(right: 16),
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-            decoration: BoxDecoration(
-              color: AppColors.neonGold.withValues(alpha: 0.15),
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: AppColors.neonGold.withValues(alpha: 0.4)),
-            ),
-            child: Row(
-              children: [
-                const Icon(Icons.stars, color: AppColors.neonGold, size: 16),
-                const SizedBox(width: 4),
+              // Which set this is, so a chapter run never feels like it came
+              // from nowhere.
+              if (quiz.setCount > 1)
                 Text(
-                  '${quiz.score} pts',
+                  S.setsSetOf(n: quiz.setNumber, total: quiz.setCount),
                   style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.neonGold,
-                    fontSize: 13,
+                      fontSize: 11,
+                      fontWeight: FontWeight.w500,
+                      color: AppColors.textSecondary),
+                ),
+            ],
+          ),
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back_ios_new, size: 20),
+            onPressed: () => _showExitDialog(context),
+          ),
+          actions: [
+            if (currentQ != null) ...[
+              // Active Boosters Indicator
+              if (quiz.doublePointsActive)
+                Container(
+                  margin: const EdgeInsets.only(right: 8),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  decoration: BoxDecoration(
+                    color: AppColors.neonPink.withValues(alpha: 0.2),
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(
+                        color: AppColors.neonPink.withValues(alpha: 0.5)),
+                  ),
+                  child: const Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(Icons.double_arrow_rounded,
+                          color: AppColors.neonPink, size: 14),
+                      SizedBox(width: 4),
+                      Text('2x',
+                          style: TextStyle(
+                              fontSize: 11,
+                              fontWeight: FontWeight.w900,
+                              color: AppColors.neonPink)),
+                    ],
                   ),
                 ),
-              ],
-            ),
-          ),
-          ],
-        ],
-      ),
-      body: currentQ == null
-          ? Center(
-              child: quiz.hasNoQuestions
-                  ? const Padding(
-                      padding: EdgeInsets.all(32),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(Icons.inbox_rounded,
-                              size: 44, color: AppColors.textMuted),
-                          SizedBox(height: 14),
-                          Text(
-                            'No questions available',
-                            style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.w800,
-                                color: Colors.white),
-                          ),
-                          SizedBox(height: 6),
-                          Text(
-                            'This question bank is empty. Please try another '
-                            'chapter or check back later.',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontSize: 12, color: AppColors.textSecondary),
-                          ),
-                        ],
-                      ),
-                    )
-                  : const DailyQuizLoadingCard(),
-            )
-          : SafeArea(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 12),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
+              if (quiz.extraLifeAvailable && !quiz.extraLifeUsed)
+                Container(
+                  margin: const EdgeInsets.only(right: 8),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  decoration: BoxDecoration(
+                    color: AppColors.neonRed.withValues(alpha: 0.2),
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(
+                        color: AppColors.neonRed.withValues(alpha: 0.5)),
+                  ),
+                  child: const Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(Icons.favorite_rounded,
+                          color: AppColors.neonRed, size: 14),
+                      SizedBox(width: 4),
+                      Text('+1',
+                          style: TextStyle(
+                              fontSize: 11,
+                              fontWeight: FontWeight.w900,
+                              color: AppColors.neonRed)),
+                    ],
+                  ),
+                ),
+              // Read the question in another language without leaving the quiz.
+              QuizLanguagePills(
+                available: quiz.availableLanguages,
+                selected: quiz.displayLanguage,
+                onSelected: quiz.setDisplayLanguage,
+              ),
+
+              // Score
+              Container(
+                margin: const EdgeInsets.only(right: 16),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                decoration: BoxDecoration(
+                  color: AppColors.neonGold.withValues(alpha: 0.15),
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(
+                      color: AppColors.neonGold.withValues(alpha: 0.4)),
+                ),
+                child: Row(
                   children: [
-                    // Practice runs credit nothing, and the player must know
-                    // that before they spend ten minutes on one.
-                    if (quiz.isPractice) ...[
-                      _practiceBanner(),
-                      const SizedBox(height: 10),
-                    ],
-
-                    // Top Progress & Timer
-                    _buildProgressAndTimer(quiz),
-                    const SizedBox(height: 14),
-
-                    // Lifelines Bar (scrollable)
-                    _buildLifelines(context, quiz),
-                    const SizedBox(height: 14),
-
-                    // Hint Display (if used)
-                    if (quiz.currentHint != null) ...[
-                      _buildHintCard(quiz.currentHint!),
-                      const SizedBox(height: 10),
-                    ],
-
-                    // Audience Poll Display (if used)
-                    if (quiz.audiencePollResults != null) ...[
-                      _buildAudiencePollCard(quiz),
-                      const SizedBox(height: 10),
-                    ],
-
-                    // Question Card
-                    _buildQuestionCard(context, currentQ),
-                    const SizedBox(height: 18),
-
-                    // 4 Options
-                    Expanded(
-                      child: ListView.builder(
-                        physics: const BouncingScrollPhysics(),
-                        itemCount: currentQ.options.length,
-                        itemBuilder: (context, index) {
-                          return _buildOptionButton(context, quiz, currentQ, index);
-                        },
+                    const Icon(Icons.stars,
+                        color: AppColors.neonGold, size: 16),
+                    const SizedBox(width: 4),
+                    Text(
+                      '${quiz.score} pts',
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: AppColors.neonGold,
+                        fontSize: 13,
                       ),
                     ),
                   ],
                 ),
               ),
-            ),
+            ],
+          ],
+        ),
+        body: currentQ == null
+            ? Center(
+                child: quiz.hasNoQuestions
+                    ? const Padding(
+                        padding: EdgeInsets.all(32),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(Icons.inbox_rounded,
+                                size: 44, color: AppColors.textMuted),
+                            SizedBox(height: 14),
+                            Text(
+                              'No questions available',
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w800,
+                                  color: Colors.white),
+                            ),
+                            SizedBox(height: 6),
+                            Text(
+                              'This question bank is empty. Please try another '
+                              'chapter or check back later.',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 12, color: AppColors.textSecondary),
+                            ),
+                          ],
+                        ),
+                      )
+                    : const DailyQuizLoadingCard(),
+              )
+            : SafeArea(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 18.0, vertical: 12),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      // Practice runs credit nothing, and the player must know
+                      // that before they spend ten minutes on one.
+                      if (quiz.isPractice) ...[
+                        _practiceBanner(),
+                        const SizedBox(height: 10),
+                      ],
+
+                      // Top Progress & Timer
+                      _buildProgressAndTimer(quiz),
+                      const SizedBox(height: 14),
+
+                      // Lifelines Bar (scrollable)
+                      _buildLifelines(context, quiz),
+                      const SizedBox(height: 14),
+
+                      // Hint Display (if used)
+                      if (quiz.currentHint != null) ...[
+                        _buildHintCard(quiz.currentHint!),
+                        const SizedBox(height: 10),
+                      ],
+
+                      // Audience Poll Display (if used)
+                      if (quiz.audiencePollResults != null) ...[
+                        _buildAudiencePollCard(quiz),
+                        const SizedBox(height: 10),
+                      ],
+
+                      // Question Card
+                      _buildQuestionCard(context, currentQ),
+                      const SizedBox(height: 18),
+
+                      // 4 Options
+                      Expanded(
+                        child: ListView.builder(
+                          physics: const BouncingScrollPhysics(),
+                          itemCount: currentQ.options.length,
+                          itemBuilder: (context, index) {
+                            return _buildOptionButton(
+                                context, quiz, currentQ, index);
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+      ),
     );
   }
 
@@ -262,7 +290,9 @@ class DailyQuizScreen extends StatelessWidget {
                 Icon(
                   Icons.timer,
                   size: 16,
-                  color: quiz.secondsRemaining <= 5 ? AppColors.neonRed : AppColors.neonCyan,
+                  color: quiz.secondsRemaining <= 5
+                      ? AppColors.neonRed
+                      : AppColors.neonCyan,
                 ),
                 const SizedBox(width: 4),
                 Text(
@@ -270,7 +300,9 @@ class DailyQuizScreen extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w900,
-                    color: quiz.secondsRemaining <= 5 ? AppColors.neonRed : AppColors.neonCyan,
+                    color: quiz.secondsRemaining <= 5
+                        ? AppColors.neonRed
+                        : AppColors.neonCyan,
                   ),
                 ),
               ],
@@ -285,7 +317,9 @@ class DailyQuizScreen extends StatelessWidget {
             minHeight: 6,
             backgroundColor: Colors.white.withValues(alpha: 0.1),
             valueColor: AlwaysStoppedAnimation<Color>(
-              quiz.secondsRemaining <= 5 ? AppColors.neonRed : AppColors.neonCyan,
+              quiz.secondsRemaining <= 5
+                  ? AppColors.neonRed
+                  : AppColors.neonCyan,
             ),
           ),
         ),
@@ -402,7 +436,8 @@ class DailyQuizScreen extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 11,
                     fontWeight: FontWeight.bold,
-                    color: disabled ? AppColors.textMuted : AppColors.textPrimary,
+                    color:
+                        disabled ? AppColors.textMuted : AppColors.textPrimary,
                   ),
                 ),
                 Text(
@@ -430,7 +465,8 @@ class DailyQuizScreen extends StatelessWidget {
       ),
       child: Row(
         children: [
-          const Icon(Icons.lightbulb_rounded, color: AppColors.neonGold, size: 20),
+          const Icon(Icons.lightbulb_rounded,
+              color: AppColors.neonGold, size: 20),
           const SizedBox(width: 10),
           Expanded(
             child: Column(
@@ -553,7 +589,8 @@ class DailyQuizScreen extends StatelessWidget {
         : quiz.fiftyFiftyUsed
             ? S.quizFiftyFiftyUsed
             : S.quizFiftyFiftyBlocked;
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text(message)));
   }
 
   void _useFreezeTime(BuildContext context, QuizProvider quiz) {
@@ -564,7 +601,8 @@ class DailyQuizScreen extends StatelessWidget {
         : quiz.freezeUsed
             ? S.quizFreezeUsed
             : S.quizFreezeBlocked;
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text(message)));
   }
 
   void _useSkipQuestion(BuildContext context, QuizProvider quiz) {
@@ -575,7 +613,8 @@ class DailyQuizScreen extends StatelessWidget {
         : quiz.skipUsed
             ? S.quizSkipUsed
             : S.quizSkipBlocked;
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text(message)));
   }
 
   void _useHintReveal(BuildContext context, QuizProvider quiz) {
@@ -586,7 +625,8 @@ class DailyQuizScreen extends StatelessWidget {
         : quiz.hintUsed
             ? S.quizHintUsed
             : S.quizHintBlocked;
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text(message)));
   }
 
   void _useAudiencePoll(BuildContext context, QuizProvider quiz) {
@@ -597,7 +637,8 @@ class DailyQuizScreen extends StatelessWidget {
         : quiz.audienceUsed
             ? S.quizPollUsed
             : S.quizPollBlocked;
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text(message)));
   }
 
   Widget _buildQuestionCard(BuildContext context, QuestionModel question) {
@@ -666,7 +707,8 @@ class DailyQuizScreen extends StatelessWidget {
       if (isCorrect) {
         borderColor = AppColors.neonGreen;
         bgColor = AppColors.neonGreen.withValues(alpha: 0.2);
-        trailingIcon = const Icon(Icons.check_circle, color: AppColors.neonGreen);
+        trailingIcon =
+            const Icon(Icons.check_circle, color: AppColors.neonGreen);
       } else if (isSelected) {
         borderColor = AppColors.neonRed;
         bgColor = AppColors.neonRed.withValues(alpha: 0.2);
@@ -688,7 +730,9 @@ class DailyQuizScreen extends StatelessWidget {
             boxShadow: isAnswerSubmitted && (isCorrect || isSelected)
                 ? [
                     BoxShadow(
-                      color: (isCorrect ? AppColors.neonGreen : AppColors.neonRed).withValues(alpha: 0.3),
+                      color:
+                          (isCorrect ? AppColors.neonGreen : AppColors.neonRed)
+                              .withValues(alpha: 0.3),
                       blurRadius: 10,
                     )
                   ]
@@ -743,15 +787,20 @@ class DailyQuizScreen extends StatelessWidget {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: Text(S.cancel, style: const TextStyle(color: AppColors.textSecondary)),
+            child: Text(S.cancel,
+                style: const TextStyle(color: AppColors.textSecondary)),
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(backgroundColor: AppColors.neonRed),
             onPressed: () {
               Navigator.pop(ctx);
+              // Stop the countdown first: it both unblocks the PopScope
+              // (via isAbandoned) and silences the run for good.
+              context.read<QuizProvider>().quitQuiz();
               Navigator.pop(context);
             },
-            child: Text(S.quizQuit, style: const TextStyle(color: Colors.white)),
+            child:
+                Text(S.quizQuit, style: const TextStyle(color: Colors.white)),
           ),
         ],
       ),

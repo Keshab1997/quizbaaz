@@ -17,7 +17,7 @@ import 'hive_service.dart';
 /// * **Consent-aware:** every ad request is gated on
 ///   [ConsentService.instance.canRequestAds], so EU/EEA/UK users never see an
 ///   ad before they have answered Google's UMP consent form (GDPR).
-class AdService {
+class AdService extends ChangeNotifier {
   AdService._();
 
   static final AdService instance = AdService._();
@@ -26,6 +26,14 @@ class AdService {
   InterstitialAd? _interstitialAd;
   bool _initialized = false;
   bool _loadingInterstitial = false;
+
+  /// True once the banner ad has loaded and has a real size.
+  ///
+  /// Before that the platform view reports an unbounded size, which crashes
+  /// layout with "given an infinite size" when mounted under the
+  /// bottom-navigation Column — and floods every frame with follow-on
+  /// semantics assertions. So [banner] stays collapsed until this flips.
+  bool _bannerReady = false;
 
   bool get isInitialized => _initialized;
 
@@ -56,11 +64,23 @@ class AdService {
         size: AdSize.banner,
         request: const AdRequest(),
         listener: BannerAdListener(
-          onAdLoaded: (ad) => debugPrint('AdService: banner loaded'),
+          onAdLoaded: (ad) {
+            debugPrint('AdService: banner loaded');
+            if (_bannerAd == ad && !_bannerReady) {
+              _bannerReady = true;
+              notifyListeners();
+            }
+          },
           onAdFailedToLoad: (ad, error) {
             debugPrint('AdService: banner failed – ${error.message}');
             ad.dispose();
-            if (_bannerAd == ad) _bannerAd = null;
+            if (_bannerAd == ad) {
+              _bannerAd = null;
+              if (_bannerReady) {
+                _bannerReady = false;
+                notifyListeners();
+              }
+            }
           },
           onAdImpression: (ad) {},
           onAdClicked: (ad) {},
@@ -68,13 +88,24 @@ class AdService {
       );
       _bannerAd = ad;
       ad.load();
+      // Not ready yet — mounting the platform view now would hand layout an
+      // unbounded (infinite) size and crash every frame until the load lands.
+      return const SizedBox.shrink();
     }
 
+    if (!_bannerReady) return const SizedBox.shrink();
+
+    // Fixed 320×50: the platform view must never size itself under the
+    // unbounded height of the bottom-navigation Column.
     return SafeArea(
       top: false,
       child: ColoredBox(
         color: Colors.black.withValues(alpha: 0.25),
-        child: AdWidget(ad: _bannerAd!),
+        child: SizedBox(
+          width: AdSize.banner.width.toDouble(),
+          height: AdSize.banner.height.toDouble(),
+          child: AdWidget(ad: _bannerAd!),
+        ),
       ),
     );
   }
@@ -154,5 +185,9 @@ class AdService {
   void disposeBanner() {
     _bannerAd?.dispose();
     _bannerAd = null;
+    if (_bannerReady) {
+      _bannerReady = false;
+      notifyListeners();
+    }
   }
 }

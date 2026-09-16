@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 
 import '../models/chapter_model.dart';
 import '../models/localized_text.dart';
+import 'hive_service.dart';
 
 /// Firestore storage for the subject → chapter catalogue.
 ///
@@ -47,25 +48,84 @@ class ChapterCatalogService {
   ///
   /// Returns an empty list rather than throwing when Firestore is unreachable:
   /// the caller then simply shows the bundled catalogue.
+  ///
+  /// Chapter overrides are also picked up through a `collectionGroup` query.
+  /// A bundled subject usually has no Firestore document of its own, so hiding
+  /// (or adding) one of its chapters would otherwise leave an orphan document
+  /// under a missing parent — written successfully, but never returned by the
+  /// parent-driven loop above, so an admin reload would "restore" the chapter.
   Future<List<CategoryModel>> fetchCategories() async {
     try {
       final categorySnapshot =
           await _categories.orderBy('priority').get();
 
-      final categories = <CategoryModel>[];
+      final byId = <String, CategoryModel>{};
+      final order = <String>[];
+      final knownChapterIds = <String, Set<String>>{};
+
       for (final doc in categorySnapshot.docs) {
         final chapterSnapshot =
             await _chapters(doc.id).orderBy('chapter_number').get();
 
-        categories.add(CategoryModel.fromJson({
+        final chapters = chapterSnapshot.docs
+            .map((c) => ChapterModel.fromJson({...c.data(), 'chapter_id': c.id}))
+            .toList();
+        knownChapterIds[doc.id] = {for (final c in chapters) c.chapterId};
+        byId[doc.id] = CategoryModel.fromJson({
           ...doc.data(),
           'category_id': doc.id,
           'chapters': chapterSnapshot.docs
               .map((c) => {...c.data(), 'chapter_id': c.id})
               .toList(),
-        }));
+        });
+        order.add(doc.id);
       }
-      return categories;
+
+      // Orphan pickup: chapters whose parent subject has no Firestore document
+      // (the normal case for a bundled subject). Without this, a visibility
+      // toggle on such a chapter is silently lost on the next read.
+      try {
+        final groupSnapshot = await _db.collectionGroup(chaptersSubcollection).get();
+        for (final doc in groupSnapshot.docs) {
+          final categoryId = doc.reference.parent.parent?.id ?? '';
+          if (categoryId.isEmpty) continue;
+          if (knownChapterIds[categoryId]?.contains(doc.id) ?? false) continue;
+
+          final chapter =
+              ChapterModel.fromJson({...doc.data(), 'chapter_id': doc.id});
+          final existing = byId[categoryId];
+          if (existing == null) {
+            // Shell only: name/icon/colour come from the bundled catalogue at
+            // merge time (`_mergeCategory` keeps the base for empty fields).
+            byId[categoryId] = CategoryModel(
+              categoryId: categoryId,
+              nameText: const LocalizedText.empty(),
+              categoryIcon: '',
+              colorHex: '',
+              totalChapters: 1,
+              chapters: [chapter],
+            );
+            order.add(categoryId);
+            knownChapterIds[categoryId] = {doc.id};
+          } else {
+            knownChapterIds[categoryId]!.add(doc.id);
+            byId[categoryId] = CategoryModel(
+              categoryId: existing.categoryId,
+              nameText: existing.nameText,
+              categoryIcon: existing.categoryIcon,
+              colorHex: existing.colorHex,
+              totalChapters: existing.chapters.length + 1,
+              chapters: [...existing.chapters, chapter],
+            );
+          }
+        }
+      } catch (e) {
+        // The parent-driven result above is still usable — orphans just stay
+        // hidden until the next successful read.
+        debugPrint('ChapterCatalogService: orphan chapter scan skipped — $e');
+      }
+
+      return [for (final id in order) byId[id]!];
     } catch (e) {
       debugPrint('ChapterCatalogService: catalogue unavailable — $e');
       return const [];
@@ -152,6 +212,42 @@ class ChapterCatalogService {
     }, SetOptions(merge: true));
 
     await _audit('category_saved', actorUid, {'category_id': categoryId});
+    await _invalidateCatalogueCache();
+  }
+
+  /// Creates the parent subject shell when it does not exist yet.
+  ///
+  /// Bundled subjects live only in `assets/data/chapters_list.json`, so the
+  /// first admin edit of one of their chapters would otherwise create an
+  /// orphan document that older readers (parent-driven only) can never see.
+  Future<void> _ensureParentCategory(
+    String categoryId,
+    String actorUid,
+  ) async {
+    try {
+      final parent = await _categories.doc(categoryId).get();
+      if (!parent.exists) {
+        await _categories.doc(categoryId).set({
+          'category_id': categoryId,
+          'updated_at': FieldValue.serverTimestamp(),
+          'updated_by': actorUid,
+        }, SetOptions(merge: true));
+      }
+    } catch (e) {
+      debugPrint('ChapterCatalogService: parent ensure skipped — $e');
+    }
+  }
+
+  /// Drops the merged catalogue cache so the next student-side read picks up
+  /// the edit instead of serving the 15-minute TTL copy.
+  Future<void> _invalidateCatalogueCache() async {
+    try {
+      if (HiveService.isInitialized) {
+        await HiveService.cacheRemove(HiveService.cacheChapters);
+      }
+    } catch (e) {
+      debugPrint('ChapterCatalogService: cache invalidate skipped — $e');
+    }
   }
 
   /// Creates or updates a chapter inside a subject.
@@ -171,6 +267,7 @@ class ChapterCatalogService {
     required String actorUid,
     String? jsonFile,
   }) async {
+    await _ensureParentCategory(categoryId, actorUid);
     await _chapters(categoryId).doc(chapterId).set({
       'chapter_id': chapterId,
       'title': title.toJson(),
@@ -187,6 +284,7 @@ class ChapterCatalogService {
       'category_id': categoryId,
       'chapter_id': chapterId,
     });
+    await _invalidateCatalogueCache();
   }
 
   /// Changes whether a chapter is visible to students without changing its
@@ -198,6 +296,7 @@ class ChapterCatalogService {
     required bool isEnabled,
     required String actorUid,
   }) async {
+    await _ensureParentCategory(categoryId, actorUid);
     await _chapters(categoryId).doc(chapter.chapterId).set({
       'chapter_id': chapter.chapterId,
       'title': chapter.titleText.toJson(),
@@ -215,6 +314,7 @@ class ChapterCatalogService {
       'chapter_id': chapter.chapterId,
       'is_enabled': isEnabled,
     });
+    await _invalidateCatalogueCache();
   }
 
   /// Writes a new order in one batch, so the list cannot end up half-reordered.
@@ -237,6 +337,7 @@ class ChapterCatalogService {
       'category_id': categoryId,
       'order': orderedChapterIds,
     });
+    await _invalidateCatalogueCache();
   }
 
   /// Removes an admin-created chapter.
@@ -256,6 +357,7 @@ class ChapterCatalogService {
       'chapter_id': chapterId,
       'note': 'questions retained in question_banks',
     });
+    await _invalidateCatalogueCache();
   }
 
   Future<void> _audit(

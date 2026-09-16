@@ -7,6 +7,7 @@ import 'package:quizbaaz/data/models/localized_text.dart';
 import 'package:quizbaaz/data/models/question_model.dart';
 import 'package:quizbaaz/data/models/question_set.dart';
 import 'package:quizbaaz/data/repositories/quiz_repository.dart';
+import 'package:quizbaaz/data/services/chapter_catalog_service.dart';
 import 'package:quizbaaz/data/services/question_fingerprint.dart';
 import 'package:quizbaaz/data/services/question_validator.dart';
 
@@ -377,6 +378,54 @@ void main() {
           QuizRepository.filterForStudents(all, includeDisabled: true);
       expect(adminView, hasLength(2));
       expect(adminView.first.chapters, hasLength(2));
+    });
+
+    test('hiding a bundled chapter works through a remote shell', () {
+      // Regression: bundled subjects have no Firestore document, so the hide
+      // override arrives as a shell category (empty name) carrying only the
+      // disabled chapter. Merging must keep the bundled subject metadata but
+      // apply the disabled flag, and the student filter must drop it.
+      final assets = [
+        category('cat_math', [chapter('math_ch_01'), chapter('math_ch_02')]),
+      ];
+      final remote = [
+        const CategoryModel(
+          categoryId: 'cat_math',
+          nameText: LocalizedText.empty(),
+          categoryIcon: '',
+          colorHex: '',
+          totalChapters: 1,
+          chapters: [],
+        ),
+      ];
+      // Rebuild the shell with the disabled override (const cannot hold it).
+      final shell = CategoryModel(
+        categoryId: 'cat_math',
+        nameText: const LocalizedText.empty(),
+        categoryIcon: '',
+        colorHex: '',
+        totalChapters: 1,
+        chapters: [chapter('math_ch_01', isEnabled: false)],
+      );
+
+      final merged = ChapterCatalogService.mergeWithAssets(assets, [shell]);
+      expect(merged, hasLength(1));
+      // Subject metadata survives the empty shell.
+      expect(merged.single.categoryName, 'cat_math');
+      expect(merged.single.chapters, hasLength(2));
+
+      final hidden = merged.single.chapters
+          .firstWhere((c) => c.chapterId == 'math_ch_01');
+      expect(hidden.isEnabled, isFalse);
+      expect(remote.single.nameText.isEmpty, isTrue);
+
+      final studentView = QuizRepository.filterForStudents(merged);
+      expect(studentView.single.chapters.map((c) => c.chapterId),
+          ['math_ch_02']);
+
+      final adminView =
+          QuizRepository.filterForStudents(merged, includeDisabled: true);
+      expect(adminView.single.chapters, hasLength(2));
     });
   });
 
