@@ -241,7 +241,9 @@ Stream<GenerationProgress> generate({
   feels familiar.
 - Per chapter: live question count, translation coverage (`en 47 · bn 47 · hi 45`).
 - **Add / Edit chapter** sheet with three-language fields for title and
-  description, chapter number, unlock toggle.
+  description, chapter number, student-visibility toggle and unlock toggle.
+  A disabled chapter is hidden from student chapter lists; it remains visible
+  to admins so it can be enabled again.
 - **Add subject** sheet with three-language name, icon and colour.
 
 - [ ] **T5.1** Chapter tree with counts and coverage
