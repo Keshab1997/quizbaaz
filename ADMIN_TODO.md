@@ -9,6 +9,7 @@
 - [x] Admin validation for required image, duplicate names, categories, and non-negative prices
 - [x] Trilingual content model (`LocalizedText`) for questions, chapters and subjects
 - [x] `tool/validate_questions.py` — schema, duplicate ids, translation coverage
+- [x] Admin question sets — questions are grouped in 10s; a confirmed set delete removes only that set's explicit question IDs
 
 Notes:
 - Audit logs are written to `admin_audit_logs` with actor uid/email when Firebase Auth is available.
