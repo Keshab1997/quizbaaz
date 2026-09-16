@@ -61,6 +61,7 @@ class QuizRepository {
   /// cold start without waiting on Firestore.
   Future<List<CategoryModel>> getCategoriesAndChapters({
     bool forceRefresh = false,
+    bool includeDisabled = false,
   }) async {
     if (!forceRefresh) {
       final cached = HiveService.cacheGetList(
@@ -68,7 +69,10 @@ class QuizRepository {
         maxAge: _remoteCacheTtl,
       );
       if (cached.isNotEmpty) {
-        return cached.map(CategoryModel.fromJson).toList();
+        return filterForStudents(
+          cached.map(CategoryModel.fromJson).toList(),
+          includeDisabled: includeDisabled,
+        );
       }
     }
 
@@ -91,7 +95,26 @@ class QuizRepository {
         merged.map((c) => c.toJson()).toList(),
       );
     }
-    return merged;
+    return filterForStudents(merged, includeDisabled: includeDisabled);
+  }
+
+  /// Removes disabled chapters and categories that contain no visible chapter.
+  /// The admin manager opts into [includeDisabled] so an admin can turn a
+  /// hidden chapter back on; all student-facing callers get the safe default.
+  static List<CategoryModel> filterForStudents(
+    List<CategoryModel> categories, {
+    bool includeDisabled = false,
+  }) {
+    if (includeDisabled) return categories;
+
+    return categories
+        .map((category) => category.copyWith(
+              chapters: category.chapters
+                  .where((chapter) => chapter.isEnabled)
+                  .toList(),
+            ))
+        .where((category) => category.chapters.isNotEmpty)
+        .toList();
   }
 
   /// Questions for one chapter: bundled asset + admin-authored, merged.

@@ -67,6 +67,11 @@ class ChapterModel {
   final int totalQuestions;
   final String jsonFile;
   final bool isUnlocked;
+
+  /// Whether this chapter is visible to students. This is deliberately
+  /// independent of [isUnlocked]: a visible chapter can still require prior
+  /// progress, while a disabled chapter is omitted from student surfaces.
+  final bool isEnabled;
   final int stars;
   final int bestScore;
 
@@ -78,6 +83,7 @@ class ChapterModel {
     required this.totalQuestions,
     required this.jsonFile,
     required this.isUnlocked,
+    this.isEnabled = true,
     required this.stars,
     required this.bestScore,
   });
@@ -100,7 +106,7 @@ class ChapterModel {
     return english.isEmpty || english == title ? null : english;
   }
 
-  ChapterModel copyWith({int? totalQuestions}) {
+  ChapterModel copyWith({int? totalQuestions, bool? isEnabled}) {
     return ChapterModel(
       chapterId: chapterId,
       chapterNumber: chapterNumber,
@@ -109,6 +115,7 @@ class ChapterModel {
       totalQuestions: totalQuestions ?? this.totalQuestions,
       jsonFile: jsonFile,
       isUnlocked: isUnlocked,
+      isEnabled: isEnabled ?? this.isEnabled,
       stars: stars,
       bestScore: bestScore,
     );
@@ -123,6 +130,9 @@ class ChapterModel {
       totalQuestions: (json['total_questions'] as num?)?.toInt() ?? 0,
       jsonFile: json['json_file'] ?? '',
       isUnlocked: json['is_unlocked'] ?? true,
+      // Existing bundled files and older Firestore documents did not have
+      // this field, so they remain visible after the feature ships.
+      isEnabled: json['is_enabled'] is bool ? json['is_enabled'] as bool : true,
       stars: (json['stars'] as num?)?.toInt() ?? 0,
       bestScore: (json['best_score'] as num?)?.toInt() ?? 0,
     );
@@ -136,6 +146,7 @@ class ChapterModel {
         'total_questions': totalQuestions,
         'json_file': jsonFile,
         'is_unlocked': isUnlocked,
+        'is_enabled': isEnabled,
         'stars': stars,
         'best_score': bestScore,
       };

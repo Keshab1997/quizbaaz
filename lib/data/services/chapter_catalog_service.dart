@@ -167,6 +167,7 @@ class ChapterCatalogService {
     required LocalizedText description,
     required int chapterNumber,
     required bool isUnlocked,
+    required bool isEnabled,
     required String actorUid,
     String? jsonFile,
   }) async {
@@ -176,6 +177,7 @@ class ChapterCatalogService {
       'description': description.toJson(),
       'chapter_number': chapterNumber,
       'is_unlocked': isUnlocked,
+      'is_enabled': isEnabled,
       'json_file': jsonFile ?? 'assets/data/questions/$chapterId.json',
       'updated_at': FieldValue.serverTimestamp(),
       'updated_by': actorUid,
@@ -184,6 +186,34 @@ class ChapterCatalogService {
     await _audit('chapter_saved', actorUid, {
       'category_id': categoryId,
       'chapter_id': chapterId,
+    });
+  }
+
+  /// Changes whether a chapter is visible to students without changing its
+  /// learning lock. A full override is stored so toggling a bundled chapter
+  /// does not erase its title, description, order, or asset mapping.
+  Future<void> setChapterEnabled({
+    required String categoryId,
+    required ChapterModel chapter,
+    required bool isEnabled,
+    required String actorUid,
+  }) async {
+    await _chapters(categoryId).doc(chapter.chapterId).set({
+      'chapter_id': chapter.chapterId,
+      'title': chapter.titleText.toJson(),
+      'description': chapter.descriptionText.toJson(),
+      'chapter_number': chapter.chapterNumber,
+      'is_unlocked': chapter.isUnlocked,
+      'is_enabled': isEnabled,
+      'json_file': chapter.jsonFile,
+      'updated_at': FieldValue.serverTimestamp(),
+      'updated_by': actorUid,
+    }, SetOptions(merge: true));
+
+    await _audit('chapter_visibility_changed', actorUid, {
+      'category_id': categoryId,
+      'chapter_id': chapter.chapterId,
+      'is_enabled': isEnabled,
     });
   }
 
