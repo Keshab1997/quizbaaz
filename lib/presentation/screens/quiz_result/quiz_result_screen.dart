@@ -206,12 +206,14 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
                             children: [
                               const Icon(Icons.workspace_premium, color: AppColors.neonCyan, size: 20),
                               const SizedBox(width: 8),
-                              Text(
-                                S.resultSaveScore,
-                                style: const TextStyle(
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.bold,
-                                  color: AppColors.neonCyan,
+                              Expanded(
+                                child: Text(
+                                  S.resultSaveScore,
+                                  style: const TextStyle(
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.bold,
+                                    color: AppColors.neonCyan,
+                                  ),
                                 ),
                               ),
                             ],
