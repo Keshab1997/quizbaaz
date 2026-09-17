@@ -456,6 +456,6 @@ const Map<String, String> kStringsEn = {
   'onboard2Title': '1v1 Live Quiz Battle Arena',
   'onboard2Desc': 'Challenge friends or online players in real-time quiz duels, speed through questions and top the leaderboard!',
   'onboard3Title': 'Chapter Bank & Daily Champion Rewards',
-  'onboard3Desc': 'Practice chapter-wise questions, view detailed notes, and shine as Yesterday's Champion on the 3D podium!',
+  'onboard3Desc': "Practice chapter-wise questions, view detailed notes, and shine as Yesterday's Champion on the 3D podium!",
   'splashTagline': 'A Next-Gen 3D Gamified Learning Platform',
 };

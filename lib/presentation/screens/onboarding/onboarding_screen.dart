@@ -251,8 +251,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       height: 180,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: glowColor.withValues(alpha: 0.22),
-                        blurRadius: 70,
+                        boxShadow: [
+                          BoxShadow(
+                            color: glowColor.withValues(alpha: 0.22),
+                            blurRadius: 70,
+                          ),
+                        ],
                       ),
                     ),
                   ),

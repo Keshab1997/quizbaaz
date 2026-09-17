@@ -24,7 +24,6 @@ import 'data/services/sound_service.dart';
 import 'data/services/sync_service.dart';
 import 'l10n/app_strings.dart';
 import 'presentation/app_navigator.dart';
-import 'presentation/screens/dashboard/dashboard_screen.dart';
 import 'presentation/screens/splash/splash_screen.dart';
 import 'presentation/widgets/app_background.dart';
 

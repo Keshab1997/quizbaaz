@@ -88,7 +88,7 @@ class _SplashScreenState extends State<SplashScreen>
       backgroundColor: AppColors.bgDark,
       body: Stack(
         children: [
-          // Background ambient ambient gradient glows
+          // Background ambient gradient glows
           Positioned(
             top: -100,
             left: -100,
@@ -97,8 +97,12 @@ class _SplashScreenState extends State<SplashScreen>
               height: 320,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: AppColors.neonPurple.withValues(alpha: 0.25),
-                blurRadius: 100,
+                boxShadow: [
+                  BoxShadow(
+                    color: AppColors.neonPurple.withValues(alpha: 0.25),
+                    blurRadius: 100,
+                  ),
+                ],
               ),
             ),
           ),
@@ -110,8 +114,12 @@ class _SplashScreenState extends State<SplashScreen>
               height: 320,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: AppColors.neonCyan.withValues(alpha: 0.20),
-                blurRadius: 100,
+                boxShadow: [
+                  BoxShadow(
+                    color: AppColors.neonCyan.withValues(alpha: 0.20),
+                    blurRadius: 100,
+                  ),
+                ],
               ),
             ),
           ),
@@ -192,7 +200,7 @@ class _SplashScreenState extends State<SplashScreen>
                     child: Text(
                       S.splashTagline,
                       textAlign: TextAlign.center,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: AppColors.textSecondary,
                         fontSize: 13,
                         fontWeight: FontWeight.w600,
@@ -212,7 +220,7 @@ class _SplashScreenState extends State<SplashScreen>
             right: 0,
             child: Column(
               children: [
-                SizedBox(
+                const SizedBox(
                   width: 32,
                   height: 32,
                   child: CircularProgressIndicator(
