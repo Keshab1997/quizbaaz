@@ -105,12 +105,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
   /// so the bottom bar never lies about where you are.
   Future<void> _openTab(int index, Widget screen) async {
     setState(() => _currentNavIndex = index);
+    await Future.delayed(const Duration(milliseconds: 16));
+    if (!mounted) return;
     await Navigator.push(context, MaterialPageRoute(builder: (_) => screen));
     if (mounted) setState(() => _currentNavIndex = 0);
   }
 
   void _onNavTap(int index) {
-    SoundService.instance.play('ui_click');
+    SoundService.instance.playClick();
     Haptics.tap();
     switch (index) {
       case 0:

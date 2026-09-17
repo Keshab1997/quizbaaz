@@ -8,8 +8,8 @@ import 'hive_service.dart';
 /// Central SFX player for the whole app — the single place every tap, ding,
 /// buzz and fanfare goes through.
 ///
-/// * Sounds are bundled under `assets/sounds/` and loaded lazily or pre-warmed.
-/// * Missing / empty / corrupt files are skipped without breaking UI taps.
+/// * Sounds are bundled under `assets/sounds/` and pre-warmed on startup.
+/// * Taps play instantly without microtask delay.
 /// * The on/off toggle lives in Profile → Settings (`setting_sound` in Hive)
 ///   and is read live on every [play].
 class SoundService {
@@ -141,26 +141,39 @@ class SoundService {
     }
   }
 
-  /// Plays [id] once. No-op when sound is disabled or the file is missing.
-  Future<void> play(String id, {double volume = 1.0}) async {
+  /// Plays [id] once immediately. Non-blocking & synchronous for pre-loaded players.
+  void play(String id, {double volume = 1.0}) {
     if (!enabled) return;
     if (!_ready) _ready = true;
-    final player = await _ensurePlayer(id);
-    if (player == null) return;
+
+    final existing = _players[id];
+    if (existing != null) {
+      _firePlay(existing, id, volume);
+      return;
+    }
+
+    _ensurePlayer(id).then((player) {
+      if (player != null) {
+        _firePlay(player, id, volume);
+      }
+    });
+  }
+
+  void _firePlay(AudioPlayer player, String id, double volume) {
     try {
-      await player.setVolume(volume);
-      await player.stop();
-      await player.seek(Duration.zero);
-      await player.resume();
+      player.setVolume(volume);
+      player.seek(Duration.zero).then((_) {
+        player.resume();
+      }).catchError((_) {
+        player.resume();
+      });
     } catch (e) {
       try {
         final file = soundFiles[id];
         if (file != null) {
-          await player.play(AssetSource('sounds/$file'), volume: volume);
+          player.play(AssetSource('sounds/$file'), volume: volume);
         }
-      } catch (e2) {
-        debugPrint('SoundService: play "$id" failed – $e2');
-      }
+      } catch (_) {}
     }
   }
 
@@ -191,14 +204,14 @@ class SoundService {
   }
 
   /// Convenience UI sound triggers
-  void playClick() => unawaited(play('ui_click'));
-  void playBack() => unawaited(play('ui_back'));
-  void playOpen() => unawaited(play('ui_open'));
-  void playDeny() => unawaited(play('ui_deny'));
-  void playWhoosh() => unawaited(play('ui_whoosh'));
-  void playCorrect() => unawaited(play('quiz_correct'));
-  void playWrong() => unawaited(play('quiz_wrong'));
-  void playCoin() => unawaited(play('coin'));
+  void playClick() => play('ui_click');
+  void playBack() => play('ui_back');
+  void playOpen() => play('ui_open');
+  void playDeny() => play('ui_deny');
+  void playWhoosh() => play('ui_whoosh');
+  void playCorrect() => play('quiz_correct');
+  void playWrong() => play('quiz_wrong');
+  void playCoin() => play('coin');
 
   /// Releases every player (app shutdown).
   Future<void> dispose() async {
