@@ -58,6 +58,7 @@ All architectural and step-by-step blueprints are documented in the [`docs/`](./
 * 🔔 **[`15_LOCAL_NOTIFICATIONS.md`](./docs/15_LOCAL_NOTIFICATIONS.md)**: On-device Daily Quiz reminders.
 * 📡 **[`16_ONESIGNAL_FCM_SETUP.md`](./docs/16_ONESIGNAL_FCM_SETUP.md)**: OneSignal + FCM live push.
 * 🏪 **[`17_PLAY_STORE_RELEASE.md`](./docs/17_PLAY_STORE_RELEASE.md)**: Signing, API 36, AdMob and Play Console release runbook.
+* ✅ **[`18_PLAY_STORE_PUBLISH_TODO.md`](./docs/18_PLAY_STORE_PUBLISH_TODO.md)**: Owner checklist from account setup through post-launch AdMob verification.
 
 ---
 
