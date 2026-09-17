@@ -12,6 +12,12 @@ class AppLinks {
   static const String terms =
       'https://keshab1997.github.io/privacy_policy/quizbaaz-terms.html';
 
+  /// External deletion pathway required for users who no longer have the app.
+  static const String accountDeletion =
+      'https://keshab1997.github.io/privacy_policy/quizbaaz-delete-account.html';
+
+  static const String supportEmail = 'keshabsarkar2018@gmail.com';
+
   /// Live only after the app is published to Google Play.
   static const String playStore =
       'https://play.google.com/store/apps/details?id=com.keshabstudios.quizbaaz';

@@ -61,12 +61,12 @@ verify the UMP consent/privacy-options flow before enabling real traffic.
 
 Before closed testing:
 
-- update the hosted privacy policy so it matches Firebase Storage, AdMob and
-  OneSignal data handling;
-- publish a dedicated external account-deletion request page and enter its URL
-  in Data safety;
+- verify the hosted privacy policy remains aligned with Firebase Storage,
+  AdMob and OneSignal data handling;
+- enter `https://keshab1997.github.io/privacy_policy/quizbaaz-delete-account.html`
+  as the external account-deletion URL in Data safety;
 - complete Data safety, Ads, Target audience, Content rating and App access;
-- use a monitored public support email;
+- monitor the public support email `keshabsarkar2018@gmail.com`;
 - provide reviewer instructions/test credentials for any gated feature.
 
 If targeting children, complete Families requirements and configure AdMob for
