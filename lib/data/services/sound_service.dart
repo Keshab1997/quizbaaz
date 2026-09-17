@@ -8,16 +8,10 @@ import 'hive_service.dart';
 /// Central SFX player for the whole app — the single place every tap, ding,
 /// buzz and fanfare goes through.
 ///
-/// * Sounds are bundled under `assets/sounds/` and loaded **lazily** on first
-///   play, with a short timeout. The repo currently ships 0-byte placeholder
-///   WAVs; `audioplayers` can hang forever on `setSource` for those, which
-///   used to freeze the native splash because [init] was awaited in `main()`.
-/// * Missing / empty / corrupt files are remembered and skipped — the tap
-///   still works, that sound just stays silent (see
-///   `docs/quizbaaz_sound_files_needed.md`).
+/// * Sounds are bundled under `assets/sounds/` and loaded lazily or pre-warmed.
+/// * Missing / empty / corrupt files are skipped without breaking UI taps.
 /// * The on/off toggle lives in Profile → Settings (`setting_sound` in Hive)
-///   and is read live on every [play], so turning it off silences the app
-///   immediately.
+///   and is read live on every [play].
 class SoundService {
   SoundService._();
 
@@ -26,14 +20,10 @@ class SoundService {
   /// Setting key shared with UserProvider (Hive meta box).
   static const String settingKey = 'setting_sound';
 
-  /// Empty/corrupt assets must not stall the UI. Native decoders have been
-  /// seen to never return on a 0-byte WAV.
-  static const Duration _loadTimeout = Duration(milliseconds: 800);
+  /// Timeout when pre-loading/setting source for an audio file.
+  static const Duration _loadTimeout = Duration(milliseconds: 3500);
 
   /// Every sound the app can play, mapped to its asset file.
-  /// Files live in `assets/sounds/` (registered in pubspec.yaml as
-  /// `assets/sounds/`). Recommended format: short **WAV** files (universally
-  /// supported on Android + iOS with the lowest latency).
   static const Map<String, String> soundFiles = {
     // ---------------- UI (navigation / taps) ----------------
     'ui_click': 'ui_click.wav', // buttons, tabs, quick actions
@@ -86,11 +76,31 @@ class SoundService {
   /// True when sound effects are enabled (profile setting, defaults ON).
   static bool get enabled => HiveService.getMeta<bool>(settingKey) ?? true;
 
-  /// Marks the service ready. Does **not** preload — placeholder WAVs in
-  /// `assets/sounds/` are 0 bytes and must not run on the startup path.
-  /// Safe to call more than once; never throws.
+  /// Marks the service ready and pre-warms lightweight UI sounds in background.
   Future<void> init() async {
     _ready = true;
+    unawaited(_preloadEssentialSounds());
+  }
+
+  /// Pre-warms essential UI sound players so tap response is instant.
+  Future<void> _preloadEssentialSounds() async {
+    if (!enabled) return;
+    const essential = [
+      'ui_click',
+      'ui_back',
+      'ui_open',
+      'ui_deny',
+      'ui_whoosh',
+      'quiz_correct',
+      'quiz_wrong',
+      'coin',
+    ];
+    for (final id in essential) {
+      if (_failed.contains(id) || _players.containsKey(id)) continue;
+      try {
+        await _ensurePlayer(id);
+      } catch (_) {}
+    }
   }
 
   Future<AudioPlayer?> _ensurePlayer(String id) {
@@ -143,12 +153,18 @@ class SoundService {
       await player.seek(Duration.zero);
       await player.resume();
     } catch (e) {
-      debugPrint('SoundService: play "$id" failed – $e');
+      try {
+        final file = soundFiles[id];
+        if (file != null) {
+          await player.play(AssetSource('sounds/$file'), volume: volume);
+        }
+      } catch (e2) {
+        debugPrint('SoundService: play "$id" failed – $e2');
+      }
     }
   }
 
-  /// Starts looping [id] (e.g. the battle search radar). Calling this again
-  /// restarts the loop; call [stop] to silence it.
+  /// Starts looping [id] (e.g. the battle search radar).
   Future<void> loop(String id) async {
     if (!enabled) return;
     if (!_ready) _ready = true;
@@ -173,6 +189,16 @@ class SoundService {
       debugPrint('SoundService: stop "$id" failed – $e');
     }
   }
+
+  /// Convenience UI sound triggers
+  void playClick() => unawaited(play('ui_click'));
+  void playBack() => unawaited(play('ui_back'));
+  void playOpen() => unawaited(play('ui_open'));
+  void playDeny() => unawaited(play('ui_deny'));
+  void playWhoosh() => unawaited(play('ui_whoosh'));
+  void playCorrect() => unawaited(play('quiz_correct'));
+  void playWrong() => unawaited(play('quiz_wrong'));
+  void playCoin() => unawaited(play('coin'));
 
   /// Releases every player (app shutdown).
   Future<void> dispose() async {

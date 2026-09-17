@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 import '../../core/constants/app_colors.dart';
+import '../../data/services/sound_service.dart';
 
 /// A soft glass surface used by cards across the app.
 class GlassCard extends StatelessWidget {
@@ -89,7 +90,10 @@ class GlassCard extends StatelessWidget {
     return Material(
       color: Colors.transparent,
       child: InkWell(
-        onTap: onTap,
+        onTap: () {
+          SoundService.instance.playClick();
+          onTap!();
+        },
         borderRadius: radius,
         splashColor: AppColors.neonCyan.withValues(alpha: 0.10),
         highlightColor: Colors.white.withValues(alpha: 0.025),

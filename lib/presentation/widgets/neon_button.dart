@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../core/constants/app_colors.dart';
+import '../../data/services/sound_service.dart';
 
 class NeonButton extends StatelessWidget {
   final String text;
@@ -49,7 +50,10 @@ class NeonButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(borderRadius),
         child: InkWell(
           borderRadius: BorderRadius.circular(borderRadius),
-          onTap: onPressed,
+          onTap: () {
+            SoundService.instance.playClick();
+            onPressed();
+          },
           child: Ink(
             decoration: BoxDecoration(
               gradient: effectiveGradient,
