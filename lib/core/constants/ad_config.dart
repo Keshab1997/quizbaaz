@@ -6,31 +6,34 @@
 ///    (https://apps.admob.com) using the package name
 ///    `com.keshabstudios.quizbaaz`.
 /// 2. Create one **Banner** ad unit and one **Interstitial** ad unit.
-/// 3. Replace [appId] with your own (from the AdMob dashboard's
-///    "App settings"), and [bannerAdUnitId] / [interstitialAdUnitId] with
-///    the IDs shown next to each ad unit.
-/// 4. Also replace `com.google.android.gms.ads.APPLICATION_ID` in
-///    `android/app/src/main/AndroidManifest.xml` and
-///    `GADApplicationIdentifier` in `ios/Runner/Info.plist`.
+/// 3. Pass the IDs at build time instead of committing them:
+///    `ADMOB_APP_ID=... flutter build appbundle --release`
+///    plus `--dart-define=ADMOB_BANNER_ID=...` and
+///    `--dart-define=ADMOB_INTERSTITIAL_ID=...`.
 ///
 /// Until then the **official Google test IDs** below are used, which show
-/// harmless test ads in every build.
+/// harmless test ads. See `docs/17_PLAY_STORE_RELEASE.md`.
 class AdConfig {
   AdConfig._();
 
-  /// Android/iOS App ID — currently the official Google *test* app ID.
-  /// Replace with `ca-app-pub-XXXXXXXXXXXXXXXX~YYYYYYYYYY` from AdMob.
-  static const String appId = 'ca-app-pub-3940256099942544~3347511713';
+  /// Informational app ID used by Dart; Android reads the matching manifest
+  /// placeholder from `ADMOB_APP_ID`.
+  static const String appId = String.fromEnvironment(
+    'ADMOB_APP_ID',
+    defaultValue: 'ca-app-pub-3940256099942544~3347511713',
+  );
 
-  /// Official Google test banner ad unit (Android).
-  /// Replace with your real banner ad unit ID from AdMob.
-  static const String bannerAdUnitId =
-      'ca-app-pub-3940256099942544/6300978111';
+  /// Real IDs are injected for release builds; local builds stay on Google's
+  /// safe test units and can never generate invalid traffic.
+  static const String bannerAdUnitId = String.fromEnvironment(
+    'ADMOB_BANNER_ID',
+    defaultValue: 'ca-app-pub-3940256099942544/6300978111',
+  );
 
-  /// Official Google test interstitial ad unit (Android).
-  /// Replace with your real interstitial ad unit ID from AdMob.
-  static const String interstitialAdUnitId =
-      'ca-app-pub-3940256099942544/1033173712';
+  static const String interstitialAdUnitId = String.fromEnvironment(
+    'ADMOB_INTERSTITIAL_ID',
+    defaultValue: 'ca-app-pub-3940256099942544/1033173712',
+  );
 
   /// Show the interstitial after every N quiz completions (2 = every 2nd
   /// quiz). Keeps ads frequent enough to earn, but never spammy.

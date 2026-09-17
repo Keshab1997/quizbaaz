@@ -11,12 +11,11 @@
         android:label="QuizBaaz"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
-        <!-- AdMob App ID — ⚠️ replace with your real ID from the AdMob
-             console (App settings) before publishing. The value below is
-             Google's official TEST app ID. -->
+        <!-- Supplied by ADMOB_APP_ID (environment or Gradle property).
+             The build uses Google's official test ID when it is omitted. -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713" />
+            android:value="${admobAppId}" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

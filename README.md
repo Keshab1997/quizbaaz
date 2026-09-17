@@ -57,6 +57,7 @@ All architectural and step-by-step blueprints are documented in the [`docs/`](./
 * 👤 **[`06_USER_AUTHENTICATION_AND_GUEST_TRIAL_FLOW.md`](./docs/06_USER_AUTHENTICATION_AND_GUEST_TRIAL_FLOW.md)**: Guest Visitor Onboarding & 1-Tap Account Upgrade.
 * 🔔 **[`15_LOCAL_NOTIFICATIONS.md`](./docs/15_LOCAL_NOTIFICATIONS.md)**: On-device Daily Quiz reminders.
 * 📡 **[`16_ONESIGNAL_FCM_SETUP.md`](./docs/16_ONESIGNAL_FCM_SETUP.md)**: OneSignal + FCM live push.
+* 🏪 **[`17_PLAY_STORE_RELEASE.md`](./docs/17_PLAY_STORE_RELEASE.md)**: Signing, API 36, AdMob and Play Console release runbook.
 
 ---
 
@@ -92,13 +93,13 @@ quizbaaz/
 ## 📱 Tech Stack & Packages
 
 * **Frontend Framework:** Flutter 3.x (Dart 3.x)
-* **State Management:** Provider / Riverpod
+* **State Management:** Provider
 * **Localisation:** `flutter_localizations` + hand-written catalogues in `lib/l10n/` (en, bn, hi)
 * **Typography:** Google Fonts (`Poppins` for en/hi, `Hind Siliguri` for bn)
 * **Visual Effects:** Custom Backdrop Filters, Dual Gradients, Box Shadows
 * **Animations:** Lottie, Custom Matrix4 Transformations
 * **Audio & Feedback:** `audioplayers`, `haptic_feedback`
-* **Local Persistence:** `shared_preferences`
+* **Local Persistence:** Hive
 
 ---
 

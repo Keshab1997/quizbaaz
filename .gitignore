@@ -1,5 +1,8 @@
 # Secrets
 github_auth.json
+android/key.properties
+*.jks
+*.keystore
 
 # Miscellaneous
 *.class
