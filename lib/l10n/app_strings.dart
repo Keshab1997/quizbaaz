@@ -529,4 +529,14 @@ class S {
   static String get notifJustNow => raw('notifJustNow');
   static String notifMinutesAgo({required Object n}) =>
       fill(raw('notifMinutesAgo'), {'n': n});
+  static String get onboardingSkip => raw('onboardingSkip');
+  static String get onboardingNext => raw('onboardingNext');
+  static String get onboardingStart => raw('onboardingStart');
+  static String get onboard1Title => raw('onboard1Title');
+  static String get onboard1Desc => raw('onboard1Desc');
+  static String get onboard2Title => raw('onboard2Title');
+  static String get onboard2Desc => raw('onboard2Desc');
+  static String get onboard3Title => raw('onboard3Title');
+  static String get onboard3Desc => raw('onboard3Desc');
+  static String get splashTagline => raw('splashTagline');
 }

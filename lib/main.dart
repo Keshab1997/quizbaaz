@@ -25,6 +25,7 @@ import 'data/services/sync_service.dart';
 import 'l10n/app_strings.dart';
 import 'presentation/app_navigator.dart';
 import 'presentation/screens/dashboard/dashboard_screen.dart';
+import 'presentation/screens/splash/splash_screen.dart';
 import 'presentation/widgets/app_background.dart';
 
 Future<void> main() async {
@@ -141,7 +142,7 @@ class QuizBaazApp extends StatelessWidget {
           builder: (context, child) => AppBackground(
             child: child ?? const SizedBox.shrink(),
           ),
-          home: const DashboardScreen(),
+          home: const SplashScreen(),
         ),
       ),
     );
