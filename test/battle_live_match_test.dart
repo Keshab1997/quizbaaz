@@ -196,6 +196,7 @@ class _FakeUserProvider extends UserProvider {
     required int correct,
     required double timeSeconds,
     required bool isDaily,
+    bool ranked = true,
     int? score,
     String? chapterId,
     String? categoryTitle,

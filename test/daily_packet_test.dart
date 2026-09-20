@@ -319,6 +319,10 @@ void main() {
         avatarPath: 'b.png',
         score: 100,
         timeSeconds: 30,
+        giftName: 'Coins',
+        giftIcon: 'coin',
+        bonusCoins: 100,
+        badgeTitle: 'Champion',
       );
       expect(championRowBelongsToUser(champion, userId: 'uid-me'), isFalse);
       expect(championRowBelongsToUser(champion, userId: 'uid-other'), isTrue);

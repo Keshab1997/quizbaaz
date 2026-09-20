@@ -816,6 +816,7 @@ class ProfileScreen extends StatelessWidget {
 
     AccountDeletionStatus status = AccountDeletionStatus.failed;
     AccountCleanupReport report = const AccountCleanupReport();
+    var accountGone = false;
     try {
       final user = auth.firebaseUser;
       if (user != null) {
@@ -824,8 +825,9 @@ class ProfileScreen extends StatelessWidget {
         final result = await AccountDeletionService.shared.deleteAccount(user);
         status = result.status;
         report = result.report;
+        accountGone = result.accountGone;
       }
-      if (result.accountGone) {
+      if (accountGone) {
         // Only once the account is really gone: wipe the local Hive profile
         // (and clear the tombstone that stopped it from being re-uploaded).
         await userProvider.signOutLocal();

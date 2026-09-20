@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
@@ -11,7 +10,6 @@ import 'package:quizbaaz/data/providers/quiz_provider.dart';
 import 'package:quizbaaz/data/providers/user_provider.dart';
 import 'package:quizbaaz/data/repositories/quiz_repository.dart';
 import 'package:quizbaaz/data/services/hive_service.dart';
-import 'package:quizbaaz/data/services/shop_service.dart';
 
 /// R08 (practice runs must change no economy) and R09 (lifelines and delayed
 /// transitions must not corrupt timing, skip answers, or complete a run twice).

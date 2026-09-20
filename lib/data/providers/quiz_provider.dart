@@ -793,9 +793,6 @@ class QuizProvider extends ChangeNotifier {
     }
   }
 
-  static String _dateKey(DateTime d) =>
-      '${d.year}-${d.month.toString().padLeft(2, '0')}-${d.day.toString().padLeft(2, '0')}';
-
   // -------------------------------------------------------------- Lifelines --
 
   /// Uses the 50-50 lifeline. Consumes one unit from the player's inventory.
