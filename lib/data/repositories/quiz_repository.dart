@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
@@ -42,9 +43,16 @@ class QuizRepository {
   final QuestionBankService _bankService;
   final ChapterCatalogService _catalogService;
 
-  /// Admin-authored questions are cached briefly — long enough to keep a quiz
-  /// snappy, short enough that a newly added batch shows up the same session.
+  /// How long a cached bank counts as *fresh* — i.e. no reason to touch the
+  /// network at all. This is a freshness window, not an expiry: older entries
+  /// are still served (a chapter the student could play a minute ago must not
+  /// vanish because the bus went into a tunnel) and refreshed in the
+  /// background by [_revalidateIfStale].
   static const _remoteCacheTtl = Duration(minutes: 15);
+
+  /// Cache keys with a refresh already in flight, so ten chapter taps do not
+  /// fire ten Firestore reads.
+  static final Set<String> _revalidating = <String>{};
 
   /// Daily quiz questions — dynamically pooled & mixed across chapters for today's date.
   Future<List<QuestionModel>> getDailyQuizQuestions() async {
@@ -66,9 +74,15 @@ class QuizRepository {
     if (!forceRefresh) {
       final cached = HiveService.cacheGetList(
         HiveService.cacheChapters,
-        maxAge: _remoteCacheTtl,
+        allowStale: true,
       );
       if (cached.isNotEmpty) {
+        // Always the student view when revalidating: the admin one is a
+        // different list and must not overwrite what students read.
+        _revalidateIfStale(
+          HiveService.cacheChapters,
+          () => getCategoriesAndChapters(forceRefresh: true),
+        );
         return filterForStudents(
           cached.map(CategoryModel.fromJson).toList(),
           includeDisabled: includeDisabled,
@@ -125,11 +139,22 @@ class QuizRepository {
   Future<List<QuestionModel>> getChapterQuestions(
     String jsonFilePath, {
     String? chapterId,
+    bool forceRefresh = false,
   }) async {
     final cacheKey = 'chapter_questions:$jsonFilePath';
-    final cached = HiveService.cacheGetList(cacheKey, maxAge: _remoteCacheTtl);
-    if (cached.isNotEmpty) {
-      return cached.map(QuestionModel.fromJson).toList();
+    if (!forceRefresh) {
+      final cached = HiveService.cacheGetList(cacheKey, allowStale: true);
+      if (cached.isNotEmpty) {
+        _revalidateIfStale(
+          cacheKey,
+          () => getChapterQuestions(
+            jsonFilePath,
+            chapterId: chapterId,
+            forceRefresh: true,
+          ),
+        );
+        return cached.map(QuestionModel.fromJson).toList();
+      }
     }
 
     final assetRows = await _readJsonList(jsonFilePath, 'questions');
@@ -228,6 +253,31 @@ class QuizRepository {
       await HiveService.cacheRemove('chapter_questions:$jsonFilePath');
     }
   }
+
+  /// Refreshes a stale cache entry without making the caller wait.
+  ///
+  /// Offline this simply fails and is swallowed — the stale value stays in use,
+  /// which is the point: the network decides how *fresh* the data can be, not
+  /// whether it is shown at all. At most one refresh per key at a time.
+  static void _revalidateIfStale(
+    String cacheKey,
+    Future<void> Function() refresh,
+  ) {
+    if (HiveService.isCacheFresh(cacheKey, _remoteCacheTtl)) return;
+    if (!_revalidating.add(cacheKey)) return;
+    unawaited(
+      refresh()
+          .catchError((Object error) => debugPrint(
+                'QuizRepository: background refresh of "$cacheKey" failed — '
+                '$error',
+              ))
+          .whenComplete(() => _revalidating.remove(cacheKey)),
+    );
+  }
+
+  /// True when a background refresh is running for [cacheKey] (tests).
+  @visibleForTesting
+  static bool isRevalidating(String cacheKey) => _revalidating.contains(cacheKey);
 
   // -------------------------------------------------------------- Helpers --
 
