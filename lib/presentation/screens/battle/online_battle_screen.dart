@@ -2,11 +2,13 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../data/providers/battle_provider.dart';
 import '../../../data/services/online_presence_service.dart';
 import '../../../data/services/challenge_service.dart';
 import '../../../data/providers/user_provider.dart';
 import '../../widgets/glass_card.dart';
 import '../../widgets/cached_avatar.dart';
+import 'battle_screen.dart';
 
 /// Screen showing online users available for 1v1 battle challenge.
 ///
@@ -66,7 +68,9 @@ class _OnlineBattleScreenState extends State<OnlineBattleScreen>
     );
 
     _presence.cleanupStaleEntries();
-    _challengeService.cleanupExpiredChallenges();
+    // Only this player's own stale challenges — a collection-wide cleanup is
+    // not something the participant-only rules allow (R17).
+    _challengeService.expireMyChallenges(user.userId);
   }
 
   void _startHeartbeat() {
@@ -132,6 +136,7 @@ class _OnlineBattleScreenState extends State<OnlineBattleScreen>
 
       if (challenge.isAccepted) {
         _startBattleWithOpponent(
+          challengeId: challenge.challengeId,
           opponentUid: challenge.toUid,
           opponentName: challenge.toName,
           opponentAvatar: challenge.toAvatar,
@@ -204,16 +209,19 @@ class _OnlineBattleScreenState extends State<OnlineBattleScreen>
   Future<void> _acceptChallenge(ChallengeData challenge) async {
     final success =
         await _challengeService.acceptChallenge(challenge.challengeId);
-    if (success) {
-      if (mounted) Navigator.of(context).pop();
-      _startBattleWithOpponent(
-        opponentUid: challenge.fromUid,
-        opponentName: challenge.fromName,
-        opponentAvatar: challenge.fromAvatar,
-        opponentAvatarUrl: challenge.fromAvatarUrl,
-        difficulty: challenge.difficulty,
-      );
+    if (!success) {
+      if (mounted) _showSnackBar('Could not accept the challenge. Try again!');
+      return;
     }
+    if (mounted) Navigator.of(context).pop();
+    await _startBattleWithOpponent(
+      challengeId: challenge.challengeId,
+      opponentUid: challenge.fromUid,
+      opponentName: challenge.fromName,
+      opponentAvatar: challenge.fromAvatar,
+      opponentAvatarUrl: challenge.fromAvatarUrl,
+      difficulty: challenge.difficulty,
+    );
   }
 
   Future<void> _rejectChallenge(ChallengeData challenge) async {
@@ -235,25 +243,31 @@ class _OnlineBattleScreenState extends State<OnlineBattleScreen>
     Navigator.of(context).pop();
   }
 
-  void _startBattleWithOpponent({
+  /// Starts the battle the challenge was about (R10).
+  ///
+  /// The opponent is *known* here — this is the exact player who accepted —
+  /// so the match is started through
+  /// [BattleProvider.startBattleWithOpponent], which creates/joins the
+  /// deterministic room for the two uids and never substitutes a random or
+  /// bot opponent. Only after the provider reports a real match does the
+  /// screen navigate — and it navigates with a typed [MaterialPageRoute] to
+  /// [BattleScreen] instead of a named route that was never registered.
+  ///
+  /// If the start fails (no questions, room refused, opponent gone) the
+  /// presence entry this screen claimed is rolled back so the player stays
+  /// visible and challengeable.
+  Future<void> _startBattleWithOpponent({
     required String opponentUid,
     required String opponentName,
     required String opponentAvatar,
-    String? opponentAvatarUrl,
     required String difficulty,
-  }) {
-    _presence.setAvailability(isAvailable: false, activity: 'battling');
-
-    // Configure the battle provider with the specific opponent
+    String? opponentAvatarUrl,
+    String? challengeId,
+  }) async {
     if (!mounted) return;
-    // TODO: Integrate with BattleProvider.startBattleWithChallengedOpponent()
-    // The existing battle_provider.dart needs a new method:
-    //   battleProvider.startBattleWithChallengedOpponent(
-    //     opponentUid: opponentUid, opponentName: opponentName,
-    //     opponentAvatar: ..., difficulty: difficulty,
-    //   );
-    // For now, navigate to existing battle screen with opponent info.
-    // See docs/13_ONLINE_BATTLE_CHALLENGE_SYSTEM.md for integration steps.
+
+    // Claim the presence slot only while we really are in a battle.
+    _presence.setAvailability(isAvailable: false, activity: 'battling');
 
     setState(() {
       _pendingChallengeToUid = null;
@@ -261,8 +275,43 @@ class _OnlineBattleScreenState extends State<OnlineBattleScreen>
       _outgoingChallenge = null;
     });
 
+    final battle = context.read<BattleProvider>();
+    final started = await battle.startBattleWithOpponent(
+      opponentUid: opponentUid,
+      opponentName: opponentName,
+      opponentAvatar: opponentAvatarUrl?.isNotEmpty == true
+          ? opponentAvatarUrl!
+          : opponentAvatar,
+      difficulty: _difficultyFrom(difficulty),
+      challengeId: challengeId,
+    );
+
+    if (!started) {
+      // Roll the presence claim back: the player is not battling after all.
+      _presence.setAvailability(isAvailable: true, activity: 'idle');
+      if (!mounted) return;
+      _showSnackBar(battle.startError ?? 'Could not start the battle.');
+      return;
+    }
+
     if (!mounted) return;
-    Navigator.of(context).pushNamed('/battle');
+    await Navigator.of(context).push(
+      MaterialPageRoute<void>(builder: (_) => const BattleScreen()),
+    );
+    // Returning from the arena frees the player for new challenges again.
+    _presence.setAvailability(isAvailable: true, activity: 'idle');
+    _watchOutgoingChallenge();
+  }
+
+  static BattleDifficulty _difficultyFrom(String value) {
+    switch (value) {
+      case 'easy':
+        return BattleDifficulty.easy;
+      case 'hard':
+        return BattleDifficulty.hard;
+      default:
+        return BattleDifficulty.normal;
+    }
   }
 
   // --------------------------------------------------------- UI Dialogs ---
@@ -574,7 +623,11 @@ class _OnlineBattleScreenState extends State<OnlineBattleScreen>
               const Spacer(),
               TextButton.icon(
                 onPressed: () {
-                  Navigator.of(context).pushNamed('/battle');
+                  Navigator.of(context).push(
+                    MaterialPageRoute<void>(
+                      builder: (_) => const BattleScreen(),
+                    ),
+                  );
                 },
                 icon:
                     const Icon(Icons.casino, color: Colors.amber, size: 18),

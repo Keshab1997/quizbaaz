@@ -93,11 +93,26 @@ class BattleRoundPoints {
 ///   An equal-score tie is broken by total answer time — the faster brain
 ///   wins, mirroring the leaderboard's tie-break rule.
 class BattleProvider extends ChangeNotifier {
-  BattleProvider(this._userProvider);
+  /// [roomService] / [challengeService] / [questionGenerator] are injectable
+  /// so the match lifecycle can be unit-tested with fakes (they default to the
+  /// real Firestore-backed implementations).
+  BattleProvider(
+    this._userProvider, {
+    BattleRoomService? roomService,
+    ChallengeService? challengeService,
+    BattleQuestionGenerator? questionGenerator,
+  })  : _roomService = roomService ?? BattleRoomService(),
+        _challengeService = challengeService ?? ChallengeService(),
+        _questionGenerator = questionGenerator ?? BattleQuestionGenerator();
 
   final UserProvider _userProvider;
-  final BattleRoomService _roomService = BattleRoomService();
+  final BattleRoomService _roomService;
+  final BattleQuestionGenerator _questionGenerator;
   final Random _rng = Random();
+
+  /// Counter that makes match ids unique even when two matches are created in
+  /// the same microsecond (rematch, rapid re-queue).
+  static int _matchCounter = 0;
 
   // ----------------------------------------------------------- questions --
 
@@ -108,7 +123,7 @@ class BattleProvider extends ChangeNotifier {
 
   BattleOpponent? _opponent;
   BattleOpponent? _lastOpponent; // persists across reset for revenge match
-  final ChallengeService _challengeService = ChallengeService();
+  final ChallengeService _challengeService;
   String? _revengeChallengeId;
   StreamSubscription<ChallengeData?>? _revengeChallengeSub;
   bool _isBotMatch = true;
@@ -168,6 +183,27 @@ class BattleProvider extends ChangeNotifier {
   int _lastHeartbeatMs = 0;
   bool _forfeitWin = false;
 
+  /// Unique id of the current match inside the deterministic room id. A
+  /// rematch reuses the room id, so rewards are guarded per match (R11).
+  String? _matchId;
+
+  /// True once a room document has actually been observed in this match.
+  /// Before that, a missing document is a creation race, not a departure.
+  bool _sawRoom = false;
+  bool _attachedWritten = false;
+  int _roomMissingSinceMs = 0;
+
+  /// Set when this match came from a challenge/rematch, i.e. the opponent is
+  /// known and a random bot fallback must never be substituted (R10).
+  bool _opponentIsKnown = false;
+
+  /// Hard matchmaking failure (missing index or denied query) — shown to the
+  /// player instead of being reported as an empty queue (R17).
+  String? _matchmakingError;
+
+  /// Why the last live match could not be started, for the setup screen.
+  String? _startError;
+
   // ------------------------------------------------------------- results --
 
   int _earnedCoins = 0;
@@ -183,6 +219,25 @@ class BattleProvider extends ChangeNotifier {
   bool get hasRematchTarget => _lastOpponent != null;
   String? get revengeChallengeId => _revengeChallengeId;
   bool get isLive => _opponent?.isBot == false;
+
+  /// Unique session id of the current live match (null for bot matches).
+  String? get matchSessionId => _matchId;
+
+  bool get hasMatchSession => (_matchId ?? '').isNotEmpty;
+
+  /// Non-null when matchmaking itself is broken (index/permission) — the UI
+  /// shows this instead of pretending nobody is online.
+  String? get matchmakingError => _matchmakingError;
+
+  /// Non-null when a live match could not be started at all.
+  String? get startError => _startError;
+
+  void clearStartError() {
+    if (_startError == null && _matchmakingError == null) return;
+    _startError = null;
+    _matchmakingError = null;
+    notifyListeners();
+  }
   bool get isBotMatch => _isBotMatch;
   bool get isForfeit => _forfeitWin;
   bool get hasNoQuestions => _emptyBank;
@@ -362,6 +417,13 @@ class BattleProvider extends ChangeNotifier {
     _lastOpponent = _opponent;
     _room = null;
     _roomId = null;
+    _matchId = null;
+    _sawRoom = false;
+    _attachedWritten = false;
+    _roomMissingSinceMs = 0;
+    _opponentIsKnown = false;
+    _matchmakingError = null;
+    _startError = null;
 
     _questions = [];
     _currentIndex = 0;
@@ -479,12 +541,13 @@ class BattleProvider extends ChangeNotifier {
         // Challenge accepted! Start the battle with this opponent.
         _revengeChallengeId = null;
         _stopRevengeChallengeWatcher();
-        _startBattleWithOpponent(
+        unawaited(startBattleWithOpponent(
           opponentUid: opponent.uid!,
           opponentName: opponent.name,
           opponentAvatar: opponent.avatar,
           difficulty: _difficulty,
-        );
+          challengeId: challengeId,
+        ));
       } else if (challenge.isRejected ||
           challenge.isExpired ||
           challenge.isCancelled) {
@@ -497,77 +560,226 @@ class BattleProvider extends ChangeNotifier {
     });
   }
   
-  /// Start a live battle with a specific opponent (used by revenge matches).
-  /// Creates a Firestore room and syncs with the opponent's client.
-  void _startBattleWithOpponent({
+  /// Starts a live match against a *known* opponent — the shared entry point
+  /// for "challenge accepted" and "revenge match" (R10).
+  ///
+  /// Unlike [startBattle] this never queues for a random player and never
+  /// substitutes a bot: the caller already knows who the opponent is. It
+  /// creates (or joins) the deterministic room for the pair, publishes the
+  /// questions when this client owns the room, and starts the VS intro.
+  ///
+  /// Returns true when the match was established. On any failure the caller
+  /// gets `false`, the room/queue writes are undone as far as possible and
+  /// [startError] explains why — the caller then restores its presence state.
+  Future<bool> startBattleWithOpponent({
     required String opponentUid,
     required String opponentName,
     required String opponentAvatar,
-    required BattleDifficulty difficulty,
+    BattleDifficulty? difficulty,
+    String? challengeId,
   }) async {
-    _userId = _userProvider.user.userId;
+    if (opponentUid.isEmpty) return false;
+    if (opponentUid == _userProvider.user.userId) return false;
+
+    _disposeTimers();
+    await _roomSub?.cancel();
+    _roomSub = null;
+    _stopRevengeChallengeWatcher();
+
+    _room = null;
+    _sawRoom = false;
+    _attachedWritten = false;
+    _roomMissingSinceMs = 0;
+    _startError = null;
+    _matchmakingError = null;
+    _forfeitWin = false;
+    _emptyBank = false;
+
+    final user = _userProvider.user;
+    _userId = user.userId;
+    _liveCapable = !user.isGuest && !_userId.startsWith('local_');
+    if (!_liveCapable) {
+      // Guests are not allowed into the live 1v1 pipeline (server rules and
+      // the leaderboard both need a real account).
+      _startError = S.battleGuestRestricted;
+      notifyListeners();
+      return false;
+    }
+
+    _difficulty = difficulty ?? _difficulty;
+    _opponentIsKnown = true;
+    _isBotMatch = false;
     _opponent = BattleOpponent(
       name: opponentName,
       avatar: opponentAvatar,
       isBot: false,
       uid: opponentUid,
     );
-    _isBotMatch = false;
-    _liveCapable = true;
-    _difficulty = difficulty;
-    
-    // Deterministic room ID (same as normal matchmaking)
+    _lastOpponent = _opponent;
+
     _roomId = BattleRoomService.roomIdFor(_userId, opponentUid);
     _side = _userId.compareTo(opponentUid) < 0 ? 'a' : 'b';
+    _matchId = _newMatchId();
+
+    // Fresh scoreboard for the new session (a rematch reuses the room id, so
+    // every per-match value has to be reset here).
+    _resetScoreboardForNewMatch();
+    _searchStartMs = DateTime.now().millisecondsSinceEpoch;
+    _searchDurationMs = 0;
+
     _phase = BattlePhase.found;
     SoundService.instance.stop('battle_search');
     SoundService.instance.play('battle_found');
     SoundService.instance.play('battle_vs');
     Haptics.medium();
+    notifyListeners();
 
-    // Watch the room
+    _ensureTickTimer();
     _roomSub = _roomService.watchRoom(_roomId!).listen(_onRoomUpdate);
-    
-    if (_side == 'a') {
-      // We are the creator: generate questions and publish the room
-      final questions = await BattleQuestionGenerator()
-          .generateBattleQuestions(count: battleQuestionCount);
-      if (questions.isEmpty || _phase != BattlePhase.found) {
-        await _abandonLiveMatch();
-        return;
-      }
-      _questions = questions;
-      _countdownUntilMs = DateTime.now().millisecondsSinceEpoch + 8000;
-      await _roomService.createRoom(
-        roomId: _roomId!,
-        difficulty: _difficulty.name,
-        questions: questions,
-        countdownUntilMs: _countdownUntilMs,
-        me: BattleRoomPlayerInfo(
-          uid: _userId,
-          name: _userProvider.user.username.isEmpty
-              ? _userProvider.user.fullName
-              : _userProvider.user.username,
-          avatar: _userProvider.user.effectiveAvatar,
-        ),
-        opponent: BattleRoomPlayerInfo(
-          uid: opponentUid,
-          name: opponentName,
-          avatar: opponentAvatar,
-        ),
-      );
-      await _writeMyPlayer({'last_seen': DateTime.now().millisecondsSinceEpoch});
+
+    if (_side != 'a') {
+      // The lexicographically smaller uid owns the room; this client just
+      // waits for it to appear and reads the questions from it.
+      return true;
     }
-    // If side == 'b', we wait for the room to appear (opponent creates it)
-    
-    // Start tick timer
-    _tickTimer?.cancel();
+
+    // Creator: generate the shared question set, then publish the room in one
+    // atomic claim.
+    final questions = await _questionGenerator
+        .generateBattleQuestions(count: battleQuestionCount);
+    if (questions.isEmpty) {
+      await _abortLiveStart(S.battleNoQuestions);
+      return false;
+    }
+    // The player may have quit (or a newer match may have started) while the
+    // questions were being generated.
+    if (_roomId == null || _phase != BattlePhase.found) return false;
+
+    _questions = questions;
+    _countdownUntilMs = DateTime.now().millisecondsSinceEpoch + 8000;
+
+    final outcome = await _roomService.claimOpponent(
+      myUid: _userId,
+      opponentUid: opponentUid,
+      difficulty: _difficulty.name,
+      matchId: _matchId!,
+      me: BattleRoomPlayerInfo(
+        uid: _userId,
+        name: user.username.isEmpty ? user.fullName : user.username,
+        avatar: user.effectiveAvatar,
+      ),
+      opponent: BattleRoomPlayerInfo(
+        uid: opponentUid,
+        name: opponentName,
+        avatar: opponentAvatar,
+      ),
+      questions: questions,
+      countdownUntilMs: _countdownUntilMs,
+    );
+
+    switch (outcome.status) {
+      case QueueClaimStatus.created:
+        break;
+      case QueueClaimStatus.alreadyExists:
+        // The opponent got there first — adopt its match id and questions so
+        // both clients settle the same session.
+        if (outcome.matchId.isNotEmpty) _matchId = outcome.matchId;
+        final room = await _roomService.readRoom(outcome.roomId);
+        if (room != null) {
+          _room = room;
+          _sawRoom = true;
+          if (room.hasQuestions) _questions = room.questions;
+          if (room.countdownUntilMs > 0) {
+            _countdownUntilMs = room.countdownUntilMs;
+          }
+        }
+        break;
+      case QueueClaimStatus.opponentGone:
+        await _abortLiveStart(S.battleOpponentLeft);
+        return false;
+      case QueueClaimStatus.failed:
+        await _abortLiveStart(S.battleStartFailed);
+        return false;
+    }
+
+    await _writeMyPlayer({'last_seen': DateTime.now().millisecondsSinceEpoch});
+    _writeAttachedOnce();
+    notifyListeners();
+    return true;
+  }
+
+  /// Cancels a match that could not be established: no room, no queue entry,
+  /// no watcher, back to the setup screen with a reason.
+  Future<void> _abortLiveStart(String message) async {
+    if (_roomId != null && _side == 'a' && _sawRoom) {
+      // We created a room the opponent may never have seen — mark it dead so a
+      // stale document can't be picked up as a live match later.
+      await _roomService.abandonRoom(_roomId!, _side);
+    }
+    await _roomSub?.cancel();
+    _roomSub = null;
+    if (_liveCapable) await _roomService.leaveQueue(_userId);
+    _disposeTimers();
+    _room = null;
+    _roomId = null;
+    _matchId = null;
+    _sawRoom = false;
+    _attachedWritten = false;
+    _opponent = null;
+    _isBotMatch = true;
+    _opponentIsKnown = false;
+    _questions = [];
+    _currentIndex = 0;
+    _startError = message;
+    _phase = BattlePhase.setup;
+    SoundService.instance.stop('battle_search');
+    notifyListeners();
+  }
+
+  /// Unique id for one match. The room id is derived from the two uids (so a
+  /// rematch reuses it) — this id is what tells two consecutive matches apart
+  /// for scoring, receipts and the local reward guard.
+  static String _newMatchId() =>
+      'm_${DateTime.now().microsecondsSinceEpoch}_${++_matchCounter}';
+
+  /// The composite key the local reward guard remembers: one award per match,
+  /// never per room (R11).
+  String get _processedMatchKey {
+    final room = _roomId;
+    final match = _matchId;
+    if (room == null) return '';
+    return match == null || match.isEmpty ? room : '$room#$match';
+  }
+
+  void _resetScoreboardForNewMatch() {
+    _currentIndex = 0;
+    _questions = [];
+    _playerScore = 0;
+    _playerCorrect = 0;
+    _playerStreak = 0;
+    _playerSelected = null;
+    _playerAnswered = false;
+    _playerTimedOut = false;
+    _lastRoundPlayer = BattleRoundPoints.zero;
+    _playerTotalMs = 0;
+    _opponentScore = 0;
+    _opponentCorrect = 0;
+    _opponentStreak = 0;
+    _opponentSelected = null;
+    _opponentAnswered = false;
+    _lastRoundOpponent = BattleRoundPoints.zero;
+    _botTotalMs = 0;
+    _earnedCoins = 0;
+    _earnedGems = 0;
+    _revealUntilMs = 0;
+  }
+
+  void _ensureTickTimer() {
+    if (_tickTimer?.isActive ?? false) return;
     _tickTimer = Timer.periodic(
       const Duration(milliseconds: 200),
       (_) => _tick(),
     );
-    
-    notifyListeners();
   }
 
   /// Cancel a pending revenge challenge.
@@ -610,12 +822,12 @@ class BattleProvider extends ChangeNotifier {
   void forfeitAndLeave() {
     _disposeTimers();
     if (isLive && _roomId != null) {
-      _roomService.finishRoom(_roomId!, _side == 'a' ? 'b' : 'a');
-      _roomService.advanceState(_roomId!, {
-        'phase': 'finished',
-        'abandoned': true,
-        'abandoned_by': _side,
-      });
+      final roomId = _roomId!;
+      _roomService.finishRoom(roomId, _side == 'a' ? 'b' : 'a',
+          matchId: _matchId);
+      // Top-level abandoned flag: the opponent's client reads the document
+      // fields, not the nested state map.
+      _roomService.abandonRoom(roomId, _side);
       _roomService.leaveQueue(_userId);
     }
     // Do not keep receiving live-room updates after the screen that owned the
@@ -691,14 +903,31 @@ class BattleProvider extends ChangeNotifier {
   Future<void> _pollMatchmaking() async {
     if (_phase != BattlePhase.searching || !_liveCapable) return;
 
-    final found = await _roomService.findOpponent(
+    final result = await _roomService.findOpponent(
       myUid: _userId,
       difficulty: _difficulty.name,
     );
-    if (found == null || _phase != BattlePhase.searching) return;
+    if (_phase != BattlePhase.searching) return;
 
+    // A denied query or a missing composite index must never be reported as
+    // "nobody is online": stop the search and say what actually happened
+    // instead of quietly serving a bot match (R17).
+    if (result.isConfigurationError) {
+      _pollTimer?.cancel();
+      _matchmakingError = S.battleMatchmakingBroken;
+      await _abandonLiveSearch();
+      notifyListeners();
+      return;
+    }
+    if (!result.hasOpponent) return; // empty or a transient failure — keep polling
+
+    final found = result.entry!;
     _roomId = BattleRoomService.roomIdFor(_userId, found.uid);
     _side = _userId.compareTo(found.uid) < 0 ? 'a' : 'b';
+    _matchId = _newMatchId();
+    _sawRoom = false;
+    _attachedWritten = false;
+    _opponentIsKnown = false;
 
     _opponent = BattleOpponent(
       name: found.name,
@@ -716,50 +945,148 @@ class BattleProvider extends ChangeNotifier {
 
     _roomSub = _roomService.watchRoom(_roomId!).listen(_onRoomUpdate);
 
-    if (_side == 'a') {
-      // Creator: generate the shared question set, then publish the room.
-      final questions = await BattleQuestionGenerator()
-          .generateBattleQuestions(count: battleQuestionCount);
-      if (questions.isEmpty || _phase != BattlePhase.found) {
+    if (_side != 'a') {
+      // The creator publishes the room; this client waits for it.
+      return;
+    }
+
+    // Creator: generate the shared question set, then claim the opponent and
+    // publish the room atomically.
+    final questions = await _questionGenerator
+        .generateBattleQuestions(count: battleQuestionCount);
+    if (questions.isEmpty || _phase != BattlePhase.found) {
+      await _abandonLiveMatch();
+      return;
+    }
+    _questions = questions;
+    _countdownUntilMs = DateTime.now().millisecondsSinceEpoch + 8000;
+
+    final outcome = await _roomService.claimOpponent(
+      myUid: _userId,
+      opponentUid: found.uid,
+      difficulty: _difficulty.name,
+      matchId: _matchId!,
+      me: BattleRoomPlayerInfo(
+        uid: _userId,
+        name: _userProvider.user.username.isEmpty
+            ? _userProvider.user.fullName
+            : _userProvider.user.username,
+        avatar: _userProvider.user.effectiveAvatar,
+      ),
+      opponent: BattleRoomPlayerInfo(
+        uid: found.uid,
+        name: found.name,
+        avatar: found.avatar,
+      ),
+      questions: questions,
+      countdownUntilMs: _countdownUntilMs,
+    );
+    if (_phase != BattlePhase.found) return;
+
+    switch (outcome.status) {
+      case QueueClaimStatus.created:
+        break;
+      case QueueClaimStatus.alreadyExists:
+        if (outcome.matchId.isNotEmpty) _matchId = outcome.matchId;
+        final room = await _roomService.readRoom(outcome.roomId);
+        if (room != null) {
+          _room = room;
+          _sawRoom = true;
+          if (room.hasQuestions) _questions = room.questions;
+          if (room.countdownUntilMs > 0) {
+            _countdownUntilMs = room.countdownUntilMs;
+          }
+        }
+        break;
+      case QueueClaimStatus.opponentGone:
+      case QueueClaimStatus.failed:
         await _abandonLiveMatch();
         return;
-      }
-      _questions = questions;
-      _countdownUntilMs = DateTime.now().millisecondsSinceEpoch + 8000;
-      await _roomService.createRoom(
-        roomId: _roomId!,
-        difficulty: _difficulty.name,
-        questions: questions,
-        countdownUntilMs: _countdownUntilMs,
-        me: BattleRoomPlayerInfo(
-          uid: _userId,
-          name: _userProvider.user.username,
-          avatar: _userProvider.user.effectiveAvatar,
-        ),
-        opponent: BattleRoomPlayerInfo(uid: found.uid, name: found.name, avatar: found.avatar),
-      );
-      await _writeMyPlayer({'last_seen': DateTime.now().millisecondsSinceEpoch});
     }
+
+    await _writeMyPlayer({'last_seen': DateTime.now().millisecondsSinceEpoch});
+    _writeAttachedOnce();
+    notifyListeners();
+  }
+
+  /// The search could not continue (configuration failure) — unwind the queue,
+  /// keep the reason in [matchmakingError] and return to setup.
+  Future<void> _abandonLiveSearch() async {
+    await _roomSub?.cancel();
+    _roomSub = null;
+    if (_liveCapable) await _roomService.leaveQueue(_userId);
+    _phase = BattlePhase.setup;
+    _opponent = null;
+    _isBotMatch = true;
+    _roomId = null;
+    _matchId = null;
+    _sawRoom = false;
+    SoundService.instance.stop('battle_search');
+    _disposeTimers();
   }
 
   Future<void> _abandonLiveMatch() async {
-    _roomService.leaveQueue(_userId);
+    _pollTimer?.cancel();
+    await _roomSub?.cancel();
+    _roomSub = null;
+    if (_liveCapable) await _roomService.leaveQueue(_userId);
+    // Top-level abandoned flag + status: the opponent's client reads those,
+    // not the nested state map.
     if (_roomId != null) {
-      await _roomService.advanceState(_roomId!, {'phase': 'finished', 'abandoned': true});
+      await _roomService.abandonRoom(_roomId!, _side);
     }
     _phase = BattlePhase.setup;
+    _room = null;
+    _roomId = null;
+    _matchId = null;
+    _sawRoom = false;
+    _opponent = null;
+    _isBotMatch = true;
+    _questions = [];
     notifyListeners();
   }
 
   void _onRoomUpdate(BattleRoomData? room) {
     if (_phase == BattlePhase.setup) return;
     if (room == null) {
-      // Room document deleted — the other side vanished.
-      if (isLive && _phase != BattlePhase.finished) {
+      if (_phase == BattlePhase.finished) return;
+      // No document yet means one of two very different things (R11):
+      //   * we have never seen the room → creation is still in flight (the
+      //     opponent's client may not even have written it). That is a race,
+      //     not a departure: wait for the grace timer instead of declaring a
+      //     free forfeit win.
+      //   * we had the room and it is gone → a real disappearance, and only
+      //     then is a forfeit the right answer.
+      if (!_sawRoom || !(isLive)) return;
+      final started = (_room?.hasStarted ?? false) ||
+          _phase == BattlePhase.question ||
+          _phase == BattlePhase.reveal;
+      if (started) {
         _forfeitWin = true;
         _finishBattle();
+      } else {
+        unawaited(_abandonLiveMatch());
       }
       return;
+    }
+    if (!_sawRoom) {
+      _sawRoom = true;
+      // The room carries the match id the creator minted — adopt it so both
+      // clients guard rewards for the same session.
+      if (_matchId == null || _matchId!.isEmpty) {
+        _matchId = room.matchId.isEmpty ? _matchId : room.matchId;
+      }
+      _writeAttachedOnce();
+    }
+    _roomMissingSinceMs = 0;
+    // Only ever adopt a room's match id when this device has none of its own.
+    // Our id was minted before the claim (or handed back by it), so both
+    // clients already agree on it; re-keying the running match from a stale
+    // document would move the reward guard's key mid-match and let the same
+    // match pay out twice (R11).
+    if (room.matchId.isNotEmpty &&
+        (_matchId == null || _matchId!.isEmpty)) {
+      _matchId = room.matchId;
     }
     _room = room;
 
@@ -846,6 +1173,21 @@ class BattleProvider extends ChangeNotifier {
   }
 
   void _tickFound(int now) {
+    // Waiting for the creator's room document (questions + countdown). Nothing
+    // can be shown until it arrives — but never wait forever: a challenge
+    // opponent has to be reported as gone, and a random queue match may still
+    // fall back to the bot (R10/R11).
+    if (isLive && (_room == null || !_room!.hasQuestions)) {
+      if (_roomMissingSinceMs == 0) _roomMissingSinceMs = now;
+      if (now - _roomMissingSinceMs > 15000) {
+        if (_opponentIsKnown) {
+          unawaited(_abortLiveStart(S.battleOpponentLeft));
+        } else {
+          unawaited(_beginBotMatch());
+        }
+      }
+      return;
+    }
     // VS intro plays until 2.8 s before countdown starts.
     if (_countdownUntilMs <= 0) return;
     if (now >= _countdownUntilMs - 2800) {
@@ -857,8 +1199,17 @@ class BattleProvider extends ChangeNotifier {
 
   void _tickCountdown(int now) {
     if (isLive && _room == null) {
+      final waited = now - _searchStartMs;
+      if (_opponentIsKnown) {
+        // A challenge/rematch opponent is not interchangeable with a bot: if
+        // the room never appears, fail the start honestly (R10).
+        if (waited > 15000) {
+          unawaited(_abortLiveStart(S.battleOpponentLeft));
+        }
+        return;
+      }
       // Room never appeared — don't hang the player, run the bot instead.
-      if (now - _searchStartMs > 12000) _beginBotMatch();
+      if (waited > 12000) _beginBotMatch();
       return;
     }
     final remainingMs = _countdownUntilMs - now;
@@ -959,6 +1310,11 @@ class BattleProvider extends ChangeNotifier {
     _opponentAnswered = false;
 
     _phase = BattlePhase.question;
+    if (isLive && _roomId != null) {
+      // First real question of the match — the room is now provably started
+      // (a disappearing document from here on is a forfeit, not a race).
+      unawaited(_roomService.markActive(_roomId!));
+    }
     SoundService.instance.play('battle_go');
     Haptics.tap();
     notifyListeners();
@@ -978,8 +1334,13 @@ class BattleProvider extends ChangeNotifier {
     // Forfeit watch for live matches.
     if (isLive) {
       final opponentPlayer = _room?.opponentOf(_side);
+      final opponentSeenMs = opponentPlayer?.lastSeenMs ?? 0;
+      // `last_seen` is written by the 5 s heartbeat, so a player who is still
+      // attaching has 0 there — a room that is seconds old must not be scored
+      // as a forfeit before the opponent's first heartbeat arrives (R11).
       if (opponentPlayer != null &&
-          now - opponentPlayer.lastSeenMs > 20000 &&
+          opponentSeenMs > 0 &&
+          now - opponentSeenMs > 20000 &&
           !opponentAnswered) {
         _forfeitWin = true;
         _roomService.finishRoom(_roomId!, _side);
@@ -1281,14 +1642,22 @@ class BattleProvider extends ChangeNotifier {
           : isDraw
               ? 'draw'
               : (_side == 'a' ? 'b' : 'a');
-      _roomService.finishRoom(_roomId!, winner);
+      unawaited(_roomService.finishRoom(_roomId!, winner, matchId: _matchId));
 
-      // Single-award guard: a room can never pay twice on this device.
-      if (HiveService.isBattleRoomProcessed(_roomId!)) {
-        notifyListeners();
-        return;
+      // Single-award guard: one award per *match*, not per room. The room id
+      // is deterministic for a pair, so a rematch reuses it — keying on the
+      // room alone silently suppressed every rematch reward (R11).
+      final guardKey = _processedMatchKey;
+      if (guardKey.isNotEmpty) {
+        if (HiveService.isBattleRoomProcessed(guardKey)) {
+          notifyListeners();
+          return;
+        }
+        // Fire-and-forget: `_finishBattle` is synchronous and the guard read
+        // above already happened; the write only has to land before the next
+        // match is scored.
+        unawaited(HiveService.markBattleRoomProcessed(guardKey));
       }
-      HiveService.markBattleRoomProcessed(_roomId!);
     }
 
     // Performance-scaled rewards: correct answers always pay something, so
@@ -1341,18 +1710,36 @@ class BattleProvider extends ChangeNotifier {
       msTaken: msTaken,
       timedOut: selected < 0,
     );
-    _writeMyPlayer({
-      'last_seen': now,
-      'score': _playerScore,
-      'correct': _playerCorrect,
-      'streak': _playerStreak,
-      'answers.$_currentIndex': answer.toJson(),
-    });
+    // The answer goes in as a nested map (`answers` → "<index>"), never as the
+    // dotted `answers.0` field path that a merge write would turn into a
+    // literal, unreadable field name (R11).
+    final roomId = _roomId;
+    if (roomId == null) return;
+    unawaited(_roomService.writeMyAnswer(
+      roomId: roomId,
+      side: _side,
+      questionIndex: _currentIndex,
+      answer: answer,
+      extraFields: {
+        'last_seen': now,
+        'score': _playerScore,
+        'correct': _playerCorrect,
+        'streak': _playerStreak,
+      },
+    ));
   }
 
   Future<void> _writeMyPlayer(Map<String, dynamic> fields) async {
     if (_roomId == null) return;
     await _roomService.updateMyPlayer(_roomId!, _side, fields);
+  }
+
+  /// Marks this client attached exactly once per match. Both flags set means
+  /// the creator can move the room to `ready` (R11).
+  void _writeAttachedOnce() {
+    if (_attachedWritten || _roomId == null) return;
+    _attachedWritten = true;
+    unawaited(_roomService.attachPlayer(_roomId!, _side));
   }
 
   // ---------------------------------------------------------------- bot --
@@ -1422,6 +1809,13 @@ class BattleProvider extends ChangeNotifier {
     _isBotMatch = true;
     _room = null;
     _roomId = null;
+    _matchId = null;
+    _sawRoom = false;
+    _attachedWritten = false;
+    _roomMissingSinceMs = 0;
+    _opponentIsKnown = false;
+    _matchmakingError = null;
+    _startError = null;
     _side = 'a';
 
     _questions = [];

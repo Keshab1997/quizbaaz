@@ -3,6 +3,8 @@ import 'package:flutter/foundation.dart';
 import '../models/app_config.dart';
 import '../models/user_model.dart';
 import '../models/user_stats.dart';
+import 'account_deletion_service.dart';
+import 'competition_clock.dart';
 import 'firestore_service.dart';
 import 'hive_service.dart';
 
@@ -28,6 +30,13 @@ class SyncService {
   /// Mirrors the user profile to Firestore, queueing it when offline.
   static Future<void> pushUser(UserModel user) async {
     if (user.isGuest || user.userId.isEmpty) return;
+    // A deletion in progress owns this profile: a late sync tick (or a queued
+    // `save_user` op) must not recreate the account the user just deleted
+    // (R15).
+    if (AccountDeletionService.isDeletionPending(user.userId)) {
+      debugPrint('Sync: skipping push for a profile being deleted');
+      return;
+    }
     final ok = await FirestoreService.saveUser(user);
     if (ok) {
       await HiveService.markSynced();
@@ -347,16 +356,18 @@ class SyncService {
     DateTime? date,
     int limit = 50,
   }) async {
-    final rows = await FirestoreService.getLeaderboard(
-      date ?? DateTime.now(),
-      limit: limit,
-    );
+    final when = date ?? DateTime.now();
+    final dateKey = CompetitionClock.dateKey(when);
+    final cacheKey = HiveService.cacheLeaderboardFor(dateKey);
 
-    // Fresh rows when they arrived, otherwise fall back to the cache — the
-    // ordering below is enforced either way so ranks stay deterministic.
+    final rows = await FirestoreService.getLeaderboard(when, limit: limit);
+
+    // Fresh rows when they arrived, otherwise fall back to *this day's* cache —
+    // never to a stale one from another day, which is how yesterday's
+    // standings used to reappear as today's (R12).
     final source = rows.isNotEmpty
         ? rows
-        : HiveService.cacheGetList(HiveService.cacheLeaderboard);
+        : HiveService.cacheGetList(cacheKey, allowStale: true);
     if (source.isEmpty) return const [];
 
     // Tie-breaker: highest score wins; on EQUAL scores the FASTEST time wins.
@@ -377,7 +388,7 @@ class SyncService {
     }
 
     if (rows.isNotEmpty) {
-      await HiveService.cachePut(HiveService.cacheLeaderboard, source);
+      await HiveService.cachePut(cacheKey, source);
       await HiveService.markPulled();
     }
     return source;
@@ -396,6 +407,7 @@ class SyncService {
     int days = 7,
   }) async {
     final today = date ?? DateTime.now();
+    final todayKey = CompetitionClock.dateKey(today);
 
     // Seed with whatever history is already cached, then overlay fresh days.
     final byKey = <String, List<Map<String, dynamic>>>{};
@@ -406,8 +418,10 @@ class SyncService {
 
     var fetchedAny = false;
     for (var i = 1; i <= days; i++) {
-      final when = today.subtract(Duration(days: i));
-      final key = FirestoreService.dateKey(when);
+      // Walk whole competition days, not "now minus 24 h × i": the day key is
+      // what the leaderboard documents are filed under (R12).
+      final key = _previousDateKey(todayKey, i);
+      final when = FirestoreService.localDateFor(key);
       final rows = await FirestoreService.getChampions(when, limit: limit);
       if (rows.isNotEmpty) {
         byKey[key] = rows.map((r) => {...r, 'date_key': key}).toList();
@@ -430,6 +444,15 @@ class SyncService {
     await HiveService.cachePut(HiveService.cacheChampions, merged);
     await HiveService.markPulled();
     return merged;
+  }
+
+  /// Competition-day key [daysBack] days before [dateKey].
+  static String _previousDateKey(String dateKey, int daysBack) {
+    var key = dateKey;
+    for (var i = 0; i < daysBack; i++) {
+      key = CompetitionClock.previousDateKey(key);
+    }
+    return key;
   }
 
   /// Loads remote config, caching it in Hive. Returns null when unchanged

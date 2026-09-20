@@ -70,7 +70,16 @@ class HiveService {
 
   /// Cache keys used across the app. Keep them here so no screen invents its
   /// own string and they can all be invalidated in one place.
+  /// Leaderboard cache is **date-scoped**: yesterday's standings must never
+  /// come back as today's when a fetch fails (R12).
+  ///
+  /// `cacheLeaderboard` is kept as the legacy (undated) key so an old cache can
+  /// still be found and cleared, but nothing reads or writes it any more.
   static const cacheLeaderboard = 'leaderboard_today';
+
+  /// Cache key for one competition day's leaderboard rows.
+  static String cacheLeaderboardFor(String dateKey) =>
+      'leaderboard_$dateKey';
   static const cacheChampions = 'champions_yesterday';
   static const cacheChapters = 'chapters_list_v2';
   static const cacheDailyQuiz = 'daily_quiz_questions';

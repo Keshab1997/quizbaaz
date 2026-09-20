@@ -11,6 +11,7 @@ import '../models/shop_item.dart';
 import '../models/user_model.dart';
 import '../models/user_stats.dart';
 import '../repositories/leaderboard_repository.dart';
+import '../services/competition_clock.dart';
 import '../services/hive_service.dart';
 import '../services/push_sync.dart';
 import '../services/sync_service.dart';
@@ -112,9 +113,10 @@ class UserProvider extends ChangeNotifier {
   /// The player's own row in today's live leaderboard, if present.
   LeaderboardItem? get myLeaderboardEntry {
     for (final item in _leaderboard) {
-      if (item.userId == _user.userId || item.username == _user.username) {
-        return item;
-      }
+      // Identity is the uid, and only the uid: usernames are mutable and not
+      // unique, so matching on them could hand one player another player's
+      // row — and another player's prize (R12).
+      if (leaderboardRowBelongsToUser(item, userId: _user.userId)) return item;
     }
     return null;
   }
@@ -146,8 +148,7 @@ class UserProvider extends ChangeNotifier {
     final myTime = todayBestTimeSeconds;
     var rank = 1;
     for (final item in _leaderboard) {
-      if (item.userId == _user.userId) continue;
-      if (item.username == _user.username) continue;
+      if (leaderboardRowBelongsToUser(item, userId: _user.userId)) continue;
       final isAhead = item.score > myScore ||
           (item.score == myScore &&
               myScore > 0 &&
@@ -489,12 +490,16 @@ class UserProvider extends ChangeNotifier {
 
   // -------------------------------------------------------------- Rewards --
 
-  static String _dateKey(DateTime d) =>
-      '${d.year}-${d.month.toString().padLeft(2, '0')}-${d.day.toString().padLeft(2, '0')}';
+  /// Day key of the *competition* day (one fixed timezone for everybody).
+  ///
+  /// The leaderboard rows, the local daily-best markers and the reward
+  /// once-per-day guards all have to agree on what "today" is: with a
+  /// device-local date a player who travels (or whose phone is in another
+  /// timezone) could post two scores for one competition day, or see a
+  /// yesterday cache as today's standings (R12).
+  static String _dateKey(DateTime d) => CompetitionClock.dateKey(d);
 
-  static String _todayKey() {
-    return _dateKey(DateTime.now());
-  }
+  static String _todayKey() => _dateKey(DateTime.now());
 
   bool get canEarnDailyRewards => _lastDailyRewardDate != _todayKey();
 
@@ -576,8 +581,10 @@ class UserProvider extends ChangeNotifier {
       var userRank = -1;
 
       for (var i = 0; i < yesterdayWinners.length; i++) {
-        if (yesterdayWinners[i].username == _user.username ||
-            yesterdayWinners[i].userId == _user.userId) {
+        if (championRowBelongsToUser(
+          yesterdayWinners[i],
+          userId: _user.userId,
+        )) {
           userRank = i + 1;
           break;
         }
@@ -733,6 +740,10 @@ class UserProvider extends ChangeNotifier {
     required int correct,
     required double timeSeconds,
     required bool isDaily,
+    /// Whether this daily run may be ranked. Unranked runs (the practice
+    /// fallback when no packet is available) are recorded as quiz history and
+    /// feed stats/streak, but never touch the day's leaderboard row (R12).
+    bool ranked = true,
     int? score,
     String? chapterId,
     String? categoryTitle,
@@ -799,7 +810,7 @@ class UserProvider extends ChangeNotifier {
     );
     await _saveQuizHistory(history);
 
-    if (isDaily && !_user.isGuest) {
+    if (isDaily && ranked && !_user.isGuest) {
       // Track today's personal best (score + the time it took), so the
       // leaderboard entry always carries TODAY's time for tie-breaking —
       // never yesterday's.

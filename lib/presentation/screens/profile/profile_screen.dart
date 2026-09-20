@@ -814,16 +814,26 @@ class ProfileScreen extends StatelessWidget {
       ),
     );
 
-    AccountDeletionStatus status = AccountDeletionStatus.success;
+    AccountDeletionStatus status = AccountDeletionStatus.failed;
+    AccountCleanupReport report = const AccountCleanupReport();
+    var accountGone = false;
     try {
       final user = auth.firebaseUser;
       if (user != null) {
-        status = await AccountDeletionService.deleteAccount(user);
+        // Re-authentication happens inside the service *before* any remote
+        // data is touched, so a cancel here changes nothing (R15).
+        final result = await AccountDeletionService.shared.deleteAccount(user);
+        status = result.status;
+        report = result.report;
+        accountGone = result.accountGone;
       }
-      // Always wipe the local Hive profile, so a later sync cannot
-      // resurrect the deleted remote account.
-      await userProvider.signOutLocal();
-      if (user != null) await auth.signOut();
+      if (accountGone) {
+        // Only once the account is really gone: wipe the local Hive profile
+        // (and clear the tombstone that stopped it from being re-uploaded).
+        await userProvider.signOutLocal();
+        await AccountDeletionService.clearTombstone();
+        if (user != null) await auth.signOut();
+      }
     } catch (e) {
       debugPrint('Delete account flow error: $e');
       status = AccountDeletionStatus.failed;
@@ -841,6 +851,20 @@ class ProfileScreen extends StatelessWidget {
       case AccountDeletionStatus.success:
         messenger.showSnackBar(
           SnackBar(content: Text(S.accountDeleted)),
+        );
+        break;
+      case AccountDeletionStatus.partial:
+        // The account is gone, but some collections could not be removed from
+        // this device — say so instead of claiming a clean deletion.
+        debugPrint('Delete account cleanup report: $report');
+        messenger.showSnackBar(
+          SnackBar(
+            content: Text(
+              '${S.accountDeletedPartial} '
+              '(${report.pending.length} hidden items)',
+            ),
+            backgroundColor: Colors.orange.shade800,
+          ),
         );
         break;
       case AccountDeletionStatus.canceled:

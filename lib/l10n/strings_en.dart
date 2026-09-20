@@ -215,6 +215,7 @@ const Map<String, String> kStringsEn = {
   'accountDeleteFailed': 'Could not delete your account. Please try again.',
   'accountDeleteReauth':
       'For your security, please sign in with Google once more and try again.',
+  'accountDeletedPartial': 'Your account was deleted. A final cleanup is finishing on our servers.',
   'accountDeleteLocalOnly': 'Your guest progress will be cleared from this device.',
   'linkOpenFailed': 'Could not open the link. Please try again.',
   'shareMsg': 'Play QuizBaaz — daily quizzes, 1v1 battles & rewards! 🎯',
@@ -374,6 +375,11 @@ const Map<String, String> kStringsEn = {
   'battleWinTitle': 'YOU WIN!',
   'battleDrawTitle': 'DRAW!',
   'battleLoseTitle': 'YOU LOSE!',
+  'battleGuestRestricted': 'Guests can\'t play live 1v1 matches. Sign in to challenge other players.',
+  'battleNoQuestions': 'No questions available right now — please try again in a moment.',
+  'battleOpponentLeft': 'That player is no longer available.',
+  'battleStartFailed': 'Couldn\'t start that match. Please try again.',
+  'battleMatchmakingBroken': 'Matchmaking is temporarily unavailable. Please try again later.',
 
   // -------------------------------------------------------------- language --
   'languageTitle': 'Language',

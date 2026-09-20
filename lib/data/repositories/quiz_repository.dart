@@ -10,6 +10,7 @@ import '../models/question_model.dart';
 import '../services/hive_service.dart';
 import '../services/chapter_catalog_service.dart';
 import '../services/daily_quiz_generator.dart';
+import '../services/daily_quiz_packet_service.dart';
 import '../services/question_bank_service.dart';
 
 /// Question-bank access.
@@ -54,14 +55,22 @@ class QuizRepository {
   /// fire ten Firestore reads.
   static final Set<String> _revalidating = <String>{};
 
-  /// Daily quiz questions — dynamically pooled & mixed across chapters for today's date.
-  Future<List<QuestionModel>> getDailyQuizQuestions() async {
+  /// Today's daily-quiz set **plus** whether the run may be ranked.
+  ///
+  /// The ranked set comes from the backend-published packet for the
+  /// competition day; anything else is an unranked practice set (R12).
+  Future<DailyQuizSet> getDailyQuizSet({bool forceRefresh = false}) async {
     final generator = DailyQuizGenerator(
       bankService: _bankService,
       quizRepository: this,
     );
-    return generator.generateDailyQuestions();
+    return generator.generateDailySet(forceRefresh: forceRefresh);
   }
+
+  /// Daily quiz questions (compatibility wrapper — loses the ranked flag;
+  /// use [getDailyQuizSet] when the flag matters).
+  Future<List<QuestionModel>> getDailyQuizQuestions() async =>
+      (await getDailyQuizSet()).questions;
 
   /// Chapter/category tree: bundled catalogue merged with admin edits.
   ///

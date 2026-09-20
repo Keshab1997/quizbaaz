@@ -264,7 +264,10 @@ class _ChapterSetsScreenState extends State<ChapterSetsScreen>
         borderRadius: 16,
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 13),
         borderColor: isNext ? widget.accent.withValues(alpha: 0.45) : null,
-        onTap: locked ? null : () => _play(index, practice: false),
+        // A finished set replayed from the list is practice too, otherwise the
+        // reward guard in QuizProvider could be bypassed by tapping the row
+        // instead of the Retry chip.
+        onTap: locked ? null : () => _play(index, practice: done != null),
         child: Row(
           children: [
             Container(
@@ -337,7 +340,9 @@ class _ChapterSetsScreenState extends State<ChapterSetsScreen>
 
   Widget _retryChip(int index) {
     return TextButton.icon(
-      onPressed: () => _play(index, practice: false),
+      // Retry means "play the finished set again" — practice, so it neither
+      // pays out again nor spends power-ups.
+      onPressed: () => _play(index, practice: true),
       style: TextButton.styleFrom(
         padding: const EdgeInsets.symmetric(horizontal: 10),
         minimumSize: const Size(0, 32),
@@ -505,7 +510,7 @@ class _ChapterSetsScreenState extends State<ChapterSetsScreen>
                 padding: const EdgeInsets.symmetric(horizontal: 12),
                 side: BorderSide(color: widget.accent.withValues(alpha: 0.5)),
               ),
-              onPressed: () => _play(entry.setIndex, practice: false),
+              onPressed: () => _play(entry.setIndex, practice: true),
               icon: Icon(Icons.refresh_rounded, size: 15, color: widget.accent),
               label: Text(S.setsRetry,
                   style: TextStyle(fontSize: 11.5, color: widget.accent)),

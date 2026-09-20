@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+
+import 'competition_clock.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 
@@ -33,8 +35,17 @@ class FirestoreService {
   /// when it did not, so the app stays fully usable offline.
   static bool get isReady => Firebase.apps.isNotEmpty;
 
-  static String dateKey(DateTime date) =>
-      '${date.year}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}';
+  /// The competition day a leaderboard bucket belongs to.
+  ///
+  /// Dates here are **not** the device's local dates: every leaderboard
+  /// document is bucketed by the single competition timezone, so a player
+  /// whose phone is set to another zone cannot submit into a second day bucket
+  /// (R12). See [CompetitionClock].
+  static String dateKey(DateTime date) => CompetitionClock.dateKey(date);
+
+  /// Local-midnight `DateTime` for a competition day key — the value the
+  /// ranking screens and the cache keys expect.
+  static DateTime localDateFor(String dateKey) => DateTime.parse(dateKey);
 
   // ---------------------------------------------------------- User CRUD --
 

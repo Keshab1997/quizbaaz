@@ -17,7 +17,14 @@ interface RoomPlayer {
  * `winner` and the `resolved` marker — fields the client is not allowed to
  * set under the Firestore rules.
  *
- * Idempotent: once `resolved === true` the room is never re-settled.
+ * The client sends the `matchId` of the session it just played. A rematch
+ * reuses the deterministic room id, so idempotency is keyed on
+ * **room + match**: the same match never settles twice, a *new* match in a
+ * previously settled room is settled as its own match (R11).
+ *
+ * Returns a receipt the client can display/log:
+ * `{ ok, winner, matchId, reason }` — `reason` is `resolved` or
+ * `already-resolved`.
  */
 export const resolveBattle = https.onCall(
   async (data, context) => {
@@ -28,6 +35,12 @@ export const resolveBattle = https.onCall(
     const roomId = typeof data?.roomId === 'string' ? data.roomId.trim() : '';
     if (!/^room_[a-zA-Z0-9_-]+_[a-zA-Z0-9_-]+$/.test(roomId)) {
       throw new https.HttpsError('invalid-argument', 'Bad roomId.');
+    }
+
+    const matchId =
+      typeof data?.matchId === 'string' ? data.matchId.trim() : '';
+    if (matchId.length > 128) {
+      throw new https.HttpsError('invalid-argument', 'Bad matchId.');
     }
 
     const roomRef = db().collection('battle_rooms').doc(roomId);
@@ -51,10 +64,15 @@ export const resolveBattle = https.onCall(
           'Only a player in this room may resolve it.',
         );
       }
-      if (room['resolved'] === true) {
+      // Same match already settled → replay the receipt (idempotent).
+      // A different matchId means a rematch in the same room: settle again.
+      const settledMatchId =
+        typeof room['match_id'] === 'string' ? room['match_id'] : '';
+      if (room['resolved'] === true && settledMatchId === matchId) {
         return {
           ok: true,
           winner: room['winner'] ?? null,
+          matchId,
           reason: 'already-resolved',
         };
       }
@@ -77,10 +95,11 @@ export const resolveBattle = https.onCall(
         status: 'finished',
         winner,
         resolved: true,
+        ...(matchId ? { match_id: matchId } : {}),
         resolved_at: admin.firestore.FieldValue.serverTimestamp(),
       });
 
-      return { ok: true, winner, reason: 'resolved' };
+      return { ok: true, winner, matchId, reason: 'resolved' };
     });
   },
 );

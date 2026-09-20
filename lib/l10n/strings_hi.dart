@@ -207,6 +207,7 @@ const Map<String, String> kStringsHi = {
   'accountDeleteFailed': 'खाता हटाया नहीं जा सका। कृपया फिर कोशिश करें।',
   'accountDeleteReauth':
       'सुरक्षा के लिए कृपया Google से दोबारा साइन इन करके प्रयास करें।',
+  'accountDeletedPartial': 'आपका खाता हटा दिया गया। बाकी सफ़ाई सर्वर पर पूरी हो रही है।',
   'accountDeleteLocalOnly': 'इस डिवाइस से आपकी गेस्ट प्रगति हटा दी जाएगी।',
   'linkOpenFailed': 'लिंक नहीं खोला जा सका। कृपया फिर कोशिश करें।',
   'shareMsg': 'QuizBaaz खेलें — दैनिक क्विज़, 1v1 बैटल और रिवार्ड्स! 🎯',
@@ -366,6 +367,11 @@ const Map<String, String> kStringsHi = {
   'battleWinTitle': 'आप जीत गए!',
   'battleDrawTitle': 'बराबरी!',
   'battleLoseTitle': 'आप हार गए!',
+  'battleGuestRestricted': 'मेहमान लाइव 1v1 मैच नहीं खेल सकते। चुनौती देने के लिए साइन इन करें।',
+  'battleNoQuestions': 'अभी कोई सवाल उपलब्ध नहीं है — थोड़ी देर बाद कोशिश करें।',
+  'battleOpponentLeft': 'वह खिलाड़ी अब उपलब्ध नहीं है।',
+  'battleStartFailed': 'यह मैच शुरू नहीं हो सका। फिर कोशिश करें।',
+  'battleMatchmakingBroken': 'मैचमेकिंग अभी उपलब्ध नहीं है। बाद में कोशिश करें।',
 
   // -------------------------------------------------------------- language --
   'languageTitle': 'भाषा',

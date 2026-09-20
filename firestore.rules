@@ -33,7 +33,10 @@ service cloud.firestore {
     }
 
     function isAdmin() {
-      return signedIn() && request.auth.token.admin == true;
+      // `.get(..., false)`: reading a missing custom claim is an error in
+      // rules ("Property admin is undefined"), which denied every update that
+      // consulted isAdmin() — including the owner's own profile edits.
+      return signedIn() && request.auth.token.get('admin', false) == true;
     }
 
     // Sensitive fields. Only the Admin SDK / Cloud Functions may write them.
@@ -62,7 +65,8 @@ service cloud.firestore {
       // New profile: owner only, needs a username, and it must NOT smuggle
       // sensitive fields.
       allow create: if isOwner(uid)
-        && request.resource.data.get('username') is string
+        && request.resource.data.get('username', '') is string
+        && request.resource.data.get('username', '').size() > 0
         && !request.resource.data.keys().hasAny(sensitiveKeys());
 
       // Update: owner may touch profile fields only; any write that affects
@@ -117,17 +121,18 @@ service cloud.firestore {
               || request.auth.uid == resource.data['to_uid']);
       }
 
-      // Queries are additionally filtered by the `get` permission below, so
-      // a signed-in user can only ever see challenges they are a part of.
-      allow get: if isParticipant();
-      allow list: if signedIn();
+      // Access control is per document — rules are not filters, so the same
+      // condition governs `get` and `list`: a query that could return someone
+      // else's challenge is denied outright, and the client therefore has to
+      // scope every challenge query to its own uid (R17).
+      allow get, list: if isParticipant();
 
       // Only the sender may create, always as a pending challenge from
       // themselves, with a known difficulty.
       allow create: if signedIn()
         && request.resource.data['from_uid'] == request.auth.uid
         && request.resource.data['status'] == 'pending'
-        && validDifficulty().hasAny([request.resource.data.get('difficulty')]);
+        && validDifficulty().hasAny([request.resource.data.get('difficulty', '')]);
 
       // Legal transitions only. Identities, difficulty, timing and the
       // display metadata are immutable after creation.
@@ -157,7 +162,7 @@ service cloud.firestore {
     match /battle_queue/{uid} {
       allow read: if signedIn();
       allow write: if isOwner(uid)
-        && validDifficulty().hasAny([request.resource.data.get('difficulty')]);
+        && validDifficulty().hasAny([request.resource.data.get('difficulty', '')]);
     }
 
     // ------------------------------------------------------- battle rooms --
@@ -168,16 +173,20 @@ service cloud.firestore {
               || request.auth.uid == resource.data.players.b.uid);
       }
 
-      allow get: if signedIn()
-        && (request.auth.uid == resource.data.players.a.uid
-            || request.auth.uid == resource.data.players.b.uid);
-      allow list: if signedIn();
+      // Rooms stay private to their two players for reads *and* list
+      // queries (the account-deletion / cleanup sweeps filter on
+      // `players.a.uid` / `players.b.uid`, which this rule allows; an
+      // unscoped sweep is denied) — R17.
+      allow get, list: if isPlayer();
 
-      // Creator must be one of the two players, room starts active with no
-      // winner.
+      // Creator must be one of the two players, room starts with no winner.
+      // `created` is the normal first state (R11); `active` stays accepted so
+      // an older client can still publish a room.
       allow create: if signedIn()
-        && request.resource.data['status'] == 'active'
-        && request.resource.data.get('winner') == null
+        && request.resource.data['status'] in ['created', 'active']
+        && request.resource.data.get('winner', null) == null
+        && request.resource.data.get('match_id', '') is string
+        && request.resource.data.get('match_id', '').size() > 0
         && (request.auth.uid == request.resource.data.players.a.uid
             || request.auth.uid == request.resource.data.players.b.uid);
 
@@ -188,11 +197,29 @@ service cloud.firestore {
       // only move active -> finished (forfeit/shutdown).
       allow update: if signedIn()
         && isPlayer()
+        // Only these keys may change. Without this, a dotted key such as
+        // `players.b.score` (which `set(..., merge)` stores as a literal field
+        // name, not a path) slipped past the per-side comparisons below.
+        && request.resource.data.diff(resource.data).affectedKeys()
+             .hasOnly(['players', 'state', 'status', 'abandoned', 'abandoned_by'])
         && request.resource.data['difficulty'] == resource.data['difficulty']
         && request.resource.data['created_at'] == resource.data['created_at']
-        && request.resource.data.get('questions') == resource.data.get('questions')
-        && request.resource.data.get('winner') == resource.data.get('winner')
+        && request.resource.data.get('questions', null) == resource.data.get('questions', null)
+        && request.resource.data.get('winner', null) == resource.data.get('winner', null)
+        // Explicit lifecycle: created -> ready -> active -> finished, with
+        // `abandoned` reachable from any live state (forfeit, failed start).
+        // Anything else (e.g. finished -> active) is rejected.
+        // `.get()` on both sides: a room created before match ids existed has
+        // no field at all, and `data['match_id']` on a missing key is a rules
+        // *error* (= denial), which would freeze every legacy room mid-match.
+        // Present-but-changed is still rejected (R11/R17).
+        && request.resource.data.get('match_id', '') == resource.data.get('match_id', '')
         && (request.resource.data['status'] == resource.data['status']
+            || request.resource.data['status'] == 'abandoned'
+            || (resource.data['status'] == 'created'
+                && request.resource.data['status'] in ['ready', 'active', 'finished'])
+            || (resource.data['status'] == 'ready'
+                && request.resource.data['status'] in ['active', 'finished'])
             || (resource.data['status'] == 'active'
                 && request.resource.data['status'] == 'finished'))
         && (
@@ -205,6 +232,30 @@ service cloud.firestore {
 
       allow delete: if isAdmin()
         || (isPlayer() && resource.data['status'] == 'finished');
+    }
+
+    // ------------------------------------------------------ daily quiz pack --
+    // The day's competition packet (question ids, version, deadline, scoring
+    // contract) is published by the trusted backend only. Clients read it and
+    // can never edit who plays what (R12).
+    match /daily_quiz_packets/{packetId} {
+      allow read: if signedIn();
+      allow write: if false;
+    }
+
+    // ------------------------------------------------------ deletion queue --
+    // A user who asked to delete their account writes one request row for
+    // their own uid. It is the client's only trace when part of the remote
+    // cleanup could not finish, so the trusted backend can complete it; no
+    // other player can read it, and nobody can fake one for someone else (R15).
+    match /deletion_requests/{uid} {
+      allow get, list: if isAdmin() || isOwner(uid);
+      allow create, update: if isOwner(uid)
+        && request.resource.data['uid'] == uid
+        && request.resource.data['requested_at'] is number
+        && request.resource.data['status'] == 'pending'
+        && request.resource.data.get('pending_collections', []) is list;
+      allow delete: if isAdmin();
     }
 
     // ---------------------------------------------------------- leaderboard --
@@ -220,8 +271,8 @@ service cloud.firestore {
           && request.resource.data['score'] is number
           && request.resource.data['score'] >= 0
           && request.resource.data['score'] <= 1000
-          && request.resource.data.get('time_seconds') is number
-          && request.resource.data.get('time_seconds') > 0;
+          && request.resource.data.get('time_seconds', 0) is number
+          && request.resource.data.get('time_seconds', 0) > 0;
 
         allow update: if isOwner(uid)
           && request.resource.data['user_id'] == uid

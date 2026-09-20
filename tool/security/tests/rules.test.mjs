@@ -21,13 +21,18 @@ import {
   initializeTestEnvironment,
   assertSucceeds,
   assertFails,
-  withSecurityRulesDisabled,
 } from '@firebase/rules-unit-testing';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const RULES = readFileSync(path.resolve(__dirname, '../../firestore.rules'), 'utf8');
+// tests/ -> security/ -> tool/ -> repo root
+const RULES = readFileSync(path.resolve(__dirname, '../../../firestore.rules'), 'utf8');
 const PROJECT = 'quizbaaz-740bd';
-const HOST = process.env.FIRESTORE_EMULATOR_HOST ?? 'localhost:8080';
+// Booted by scripts/ensure_emulator.mjs. 127.0.0.1, not `localhost`: the
+// emulator binds the IPv4 address and recent Node resolves `localhost` to ::1
+// first.
+const HOST = process.env.FIRESTORE_EMULATOR_HOST ?? '127.0.0.1:8080';
+const HOSTNAME = HOST.slice(0, HOST.lastIndexOf(':'));
+const PORT = Number(HOST.slice(HOST.lastIndexOf(':') + 1));
 
 const STUDENT = 'student-a';
 const OTHER = 'student-b';
@@ -42,27 +47,54 @@ const PROFILE = {
   is_guest: false,
 };
 
-/** Fresh namespace per environment — isolated data between tests. */
+/**
+ * One actor against the emulator, with the ruleset under test loaded.
+ *
+ * The matrix was originally written against the v2 helper API (`localHost`
+ * plus `auth` in the config, a free-standing `withSecurityRulesDisabled`).
+ * v4 takes the emulator host under `firestore`, hands out clients through
+ * `authenticatedContext()` / `unauthenticatedContext()`, and keeps
+ * `withSecurityRulesDisabled` on the environment — this wrapper keeps the
+ * tests themselves unchanged.
+ */
 async function makeEnv(uid, claims) {
-  return initializeTestEnvironment({
+  const env = await initializeTestEnvironment({
     projectId: PROJECT,
-    rules: RULES,
-    localHost: HOST,
-    auth: uid ? { uid, token: claims ?? {} } : null,
+    firestore: { host: HOSTNAME, port: PORT, rules: RULES },
   });
+  const context = uid
+    ? env.authenticatedContext(uid, claims ?? {})
+    : env.unauthenticatedContext();
+  return {
+    firestore: context.firestore(),
+    /** Bypasses the rules — used to arrange fixtures. */
+    withSecurityRulesDisabled: (callback) =>
+      env.withSecurityRulesDisabled(callback),
+    /** Drops this test's data before the client is torn down. */
+    cleanup: async () => {
+      try {
+        await env.clearFirestore();
+      } catch (_) {
+        // The emulator may already be gone; nothing left to clear then.
+      }
+      await env.cleanup();
+    },
+  };
 }
 
 async function seed(env, docs) {
-  await withSecurityRulesDisabled(async (ctx) => {
+  await env.withSecurityRulesDisabled(async (ctx) => {
     for (const [ref, data] of Object.entries(docs)) {
       const [col, doc] = ref.split('/');
-      await ctx.firestore.collection(col).doc(doc).set(data);
+      // v4 context: `firestore()` is a method returning the compat client.
+      await ctx.firestore().collection(col).doc(doc).set(data);
     }
   });
 }
 
 const ROOM_ID = 'room_student-a_student-b';
 const roomData = (status = 'active', winner = null) => ({
+  match_id: 'm_test_1', // per-match session id (R11); required at create
   difficulty: 'normal',
   status,
   created_at: 1_757_000_000_000,
@@ -102,7 +134,7 @@ test('guest: cannot read user profiles or content', async () => {
     'config/app': { daily_question_count: 10 },
   });
   await assertFails(env.firestore.collection('users').doc('student-a').get());
-  await assertFails(env.firestore.collection('users').listDocs());
+  await assertFails(env.firestore.collection('users').get());
   await assertFails(env.firestore.collection('question_banks').doc('ch1').get());
   await assertFails(env.firestore.collection('config').doc('app').get());
   await assertFails(env.firestore.collection('users').doc('student-a').set(PROFILE));
@@ -345,6 +377,159 @@ test('room: only players can read/update; finished room deletable by player', as
 });
 
 // ---------------------------------------------------------------------------
+// 6b. R17 — participant-scoped queries only
+// ---------------------------------------------------------------------------
+test('R17 challenge queries: participant-scoped allowed, stranger list denied', async () => {
+  const env = await makeEnv(STUDENT);
+  const strangerChallenge = {
+    ...challengeData,
+    from_uid: 'someone-else',
+    to_uid: 'another-someone',
+  };
+  await seed(env, {
+    'battle_challenges/mine-sent': challengeData, // STUDENT -> OTHER
+    'battle_challenges/mine-received': {
+      ...challengeData,
+      from_uid: OTHER,
+      to_uid: STUDENT,
+    },
+    'battle_challenges/not-mine': strangerChallenge,
+  });
+
+  // The queries the app actually runs (FirestoreQuerySpecs).
+  await assertSucceeds(
+    env.firestore.collection('battle_challenges')
+      .where('to_uid', '==', STUDENT).where('status', '==', 'pending').get(),
+  );
+  await assertSucceeds(
+    env.firestore.collection('battle_challenges')
+      .where('from_uid', '==', STUDENT).where('status', '==', 'pending').get(),
+  );
+  await assertSucceeds(
+    env.firestore.collection('battle_challenges')
+      .where('from_uid', '==', STUDENT).where('to_uid', '==', OTHER)
+      .where('status', '==', 'pending').get(),
+  );
+
+  // An unscoped list could return a stranger's challenge -> denied, so no
+  // client can read challenges it is not part of.
+  await assertFails(
+    env.firestore.collection('battle_challenges')
+      .where('status', '==', 'pending').get(),
+  );
+  await assertFails(env.firestore.collection('battle_challenges').get());
+  await assertFails(
+    env.firestore.collection('battle_challenges').doc('not-mine').get(),
+  );
+  await env.cleanup();
+});
+
+test('R17 room list: only rooms the caller played in are listable', async () => {
+  const player = await makeEnv(STUDENT);
+  const outsider = await makeEnv('outsider-x');
+  await seed(player, { [`battle_rooms/${ROOM_ID}`]: roomData() });
+  await seed(outsider, { [`battle_rooms/${ROOM_ID}`]: roomData() });
+
+  await assertSucceeds(
+    player.firestore.collection('battle_rooms')
+      .where('players.a.uid', '==', STUDENT).get(),
+  );
+  await assertSucceeds(
+    player.firestore.collection('battle_rooms')
+      .where('players.b.uid', '==', STUDENT).get(),
+  );
+  // The account-deletion sweep for an unrelated player must find nothing and
+  // must not be able to list our room.
+  await assertFails(
+    outsider.firestore.collection('battle_rooms')
+      .where('players.a.uid', '==', OTHER).get(),
+  );
+  await assertFails(outsider.firestore.collection('battle_rooms').get());
+  await player.cleanup();
+  await outsider.cleanup();
+});
+
+test('R17 daily packet: readable when signed in, never writable by a client', async () => {
+  const env = await makeEnv(STUDENT);
+  await seed(env, {
+    'daily_quiz_packets/2026-09-20': {
+      date_key: '2026-09-20',
+      version: 1,
+      count: 1,
+      approved: true,
+      questions: [{ chapter_id: 'bio_ch_01', question_id: 'bio_ch_01_q001' }],
+    },
+  });
+
+  await assertSucceeds(
+    env.firestore.collection('daily_quiz_packets').doc('2026-09-20').get(),
+  );
+  await assertFails(
+    env.firestore.collection('daily_quiz_packets').doc('2026-09-20')
+      .set({ approved: false }),
+  );
+  await assertFails(
+    env.firestore.collection('daily_quiz_packets').doc('2026-09-21')
+      .set({ count: 1, approved: true }),
+  );
+  await env.cleanup();
+});
+
+// ---------------------------------------------------------------------------
+// 6c. R11 — the room lifecycle the client now writes
+// ---------------------------------------------------------------------------
+test('R11 room lifecycle: created -> ready -> active -> finished is allowed', async () => {
+  const env = await makeEnv(STUDENT);
+  await assertSucceeds(
+    env.firestore.collection('battle_rooms').doc(ROOM_ID)
+      .set(roomData('created')),
+  );
+  await assertSucceeds(
+    env.firestore.collection('battle_rooms').doc(ROOM_ID)
+      .set({ status: 'ready' }, { merge: true }),
+  );
+  await assertSucceeds(
+    env.firestore.collection('battle_rooms').doc(ROOM_ID)
+      .set({ status: 'active' }, { merge: true }),
+  );
+  await assertSucceeds(
+    env.firestore.collection('battle_rooms').doc(ROOM_ID)
+      .set({ status: 'finished' }, { merge: true }),
+  );
+  // Jumping back, or inventing a status, is denied.
+  await assertFails(
+    env.firestore.collection('battle_rooms').doc(ROOM_ID)
+      .set({ status: 'ready' }, { merge: true }),
+  );
+  await assertFails(
+    env.firestore.collection('battle_rooms').doc(ROOM_ID)
+      .set({ status: 'whatever' }, { merge: true }),
+  );
+  await env.cleanup();
+});
+
+test('R11 a room cannot be created without a match id, and cannot change it', async () => {
+  const env = await makeEnv(STUDENT);
+  const { match_id: _drop, ...withoutMatchId } = roomData('created');
+  await assertFails(
+    env.firestore.collection('battle_rooms').doc(ROOM_ID).set(withoutMatchId),
+  );
+
+  await seed(env, { [`battle_rooms/${ROOM_ID}`]: roomData('active') });
+  await assertFails(
+    env.firestore.collection('battle_rooms').doc(ROOM_ID)
+      .set({ match_id: 'm_other' }, { merge: true }),
+  );
+  // A forfeit is a legal move from any live status.
+  await assertSucceeds(
+    env.firestore.collection('battle_rooms').doc(ROOM_ID)
+      .set({ status: 'abandoned', abandoned: true, abandoned_by: 'a' },
+        { merge: true }),
+  );
+  await env.cleanup();
+});
+
+// ---------------------------------------------------------------------------
 // 7. Leaderboard — own entry, bounded score
 // ---------------------------------------------------------------------------
 test('leaderboard: own bounded entry allowed; huge scores & other-user docs denied', async () => {
@@ -414,4 +599,67 @@ test('online_users & battle_queue: owner writes allowed, impersonation denied', 
   await assertFails(env.firestore.collection('battle_queue').doc(STUDENT).set({ difficulty: 'nightmare', created_at: 1 }));
   await env.cleanup();
   await other.cleanup();
+});
+
+// ---------------------------------------------------------------------------
+// 10. R17 — the two shapes the matrix used to miss
+// ---------------------------------------------------------------------------
+test('R17 legacy room without a match id can still be played out', async () => {
+  // Rooms created before match ids existed have no `match_id` field. Reading
+  // a missing key in rules is an *error* (= denial), so the immutability check
+  // has to use `.get()` on both sides or every such room freezes mid-match.
+  const env = await makeEnv(STUDENT);
+  const { match_id: _drop, ...legacyRoom } = roomData('created');
+  await seed(env, { [`battle_rooms/${ROOM_ID}`]: legacyRoom });
+
+  await assertSucceeds(
+    env.firestore.collection('battle_rooms').doc(ROOM_ID)
+      .set({ status: 'active' }, { merge: true }),
+  );
+  await assertSucceeds(
+    env.firestore.collection('battle_rooms').doc(ROOM_ID)
+      .set({ status: 'abandoned', abandoned: true, abandoned_by: 'a' },
+        { merge: true }),
+  );
+  // And a legacy room still cannot *gain* a match id mid-flight.
+  await seed(env, { [`battle_rooms/${ROOM_ID}`]: legacyRoom });
+  await assertFails(
+    env.firestore.collection('battle_rooms').doc(ROOM_ID)
+      .set({ match_id: 'm_injected' }, { merge: true }),
+  );
+  await env.cleanup();
+});
+
+test('R15 deletion_requests: owner-only, account-deletion shaped row', async () => {
+  const owner = await makeEnv(STUDENT);
+  const other = await makeEnv(OTHER);
+  const admin = await makeEnv(ADMIN, { admin: true });
+  const request = {
+    uid: STUDENT,
+    requested_at: 1_757_000_000_000,
+    pending_collections: ['battle_rooms'],
+    deleted_collections: ['users/quiz_history'],
+    status: 'pending',
+  };
+  const ref = (env, uid = STUDENT) =>
+    env.firestore.collection('deletion_requests').doc(uid);
+
+  await assertSucceeds(ref(owner).set(request));
+  await assertSucceeds(ref(owner).get());
+  await assertSucceeds(ref(admin).get());
+
+  // Nobody may file (or read) a deletion request for someone else.
+  await assertFails(ref(other).set({ ...request, uid: STUDENT }));
+  await assertFails(ref(other).get());
+  await assertFails(ref(owner, OTHER).set({ ...request, uid: OTHER }));
+
+  // A client cannot mark its own request done, or drop the columns the
+  // backend needs to finish the cleanup.
+  await assertFails(ref(owner).set({ ...request, status: 'done' }));
+  await assertFails(ref(owner).set({ ...request, pending_collections: 'nope' }));
+  await assertFails(ref(owner).delete());
+
+  await owner.cleanup();
+  await other.cleanup();
+  await admin.cleanup();
 });

@@ -53,7 +53,20 @@ class BattleScreen extends StatelessWidget {
           ],
         ),
         body: switch (battle.phase) {
-          BattlePhase.setup => const _SetupView(),
+          BattlePhase.setup => Column(
+              children: [
+                // A live match that could not be established says so here
+                // instead of silently dropping the player back on the setup
+                // screen (R10/R17).
+                if (battle.startError != null ||
+                    battle.matchmakingError != null)
+                  _BattleNoticeBanner(
+                    message: battle.startError ?? battle.matchmakingError!,
+                    onDismiss: battle.clearStartError,
+                  ),
+                const Expanded(child: _SetupView()),
+              ],
+            ),
           BattlePhase.searching => const _SearchingView(),
           BattlePhase.found => const _VsIntroView(),
           BattlePhase.countdown => _CountdownView(
@@ -2315,6 +2328,47 @@ class _ResultViewState extends State<_ResultView>
         const SizedBox(height: 2),
         Text(sub, style: const TextStyle(fontSize: 10, color: AppColors.textSecondary)),
       ],
+    );
+  }
+}
+
+/// Small dismissible banner used for live-match failures on the setup screen.
+class _BattleNoticeBanner extends StatelessWidget {
+  const _BattleNoticeBanner({required this.message, required this.onDismiss});
+
+  final String message;
+  final VoidCallback onDismiss;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      margin: const EdgeInsets.fromLTRB(16, 12, 16, 0),
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+      decoration: BoxDecoration(
+        color: Colors.red.shade900.withValues(alpha: 0.35),
+        borderRadius: BorderRadius.circular(14),
+        border: Border.all(color: Colors.redAccent.withValues(alpha: 0.5)),
+      ),
+      child: Row(
+        children: [
+          const Icon(Icons.error_outline_rounded,
+              color: Colors.redAccent, size: 20),
+          const SizedBox(width: 10),
+          Expanded(
+            child: Text(
+              message,
+              style: const TextStyle(color: Colors.white, fontSize: 13),
+            ),
+          ),
+          IconButton(
+            onPressed: onDismiss,
+            icon: const Icon(Icons.close_rounded,
+                color: Colors.white54, size: 18),
+            visualDensity: VisualDensity.compact,
+          ),
+        ],
+      ),
     );
   }
 }

@@ -58,9 +58,14 @@ async function main() {
   proc.on('exit', (code) => {
     if (code !== null && code !== 0) process.exit(code);
   });
+  // Detach: a referenced child keeps *this* node process alive, so `pretest`
+  // would never finish and `npm test` would hang forever with the emulator
+  // running happily in the background.
+  proc.unref();
 
-  // Wait up to 120 s for the emulator port.
-  for (let i = 0; i < 120; i++) {
+  // Wait up to 300 s for the emulator port: the first run downloads
+  // firebase-tools and the emulator jar before it can listen.
+  for (let i = 0; i < 300; i++) {
     if (await portOpen(port)) {
       console.log('[ensure_emulator] ready.');
       return;
