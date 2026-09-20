@@ -99,4 +99,4 @@
 1. **Daily Reward Box Popup:** প্রতিদিন প্রথমবার অ্যাপ খুললে ৩D গিফট বক্স ট্যাপ করে ফ্রি কয়েন পাওয়ার অ্যানিমেটেড পপ-আপ।
 2. **Streak Milestone Popup:** টানা ৭ দিন বা ৩০ দিন কুইজ দিলে বিশেষ ৩D ব্যাজ আনলক পপ-আপ।
 3. **Power-Up Confirmation Modal:** ৫০-৫০ বা টাইম ফ্রিজ কেনার পপ-আপ।
-4. **Exit Quiz Warning Modal:** কুইজ শেষ না করে ব্যাক বাটনে চাপ দিলে পয়েন্ট হারানোর সতর্কতা।
+4. **Exit Quiz Warning Modal:** কুইজ শেষ না করে ব্যাক বাটনে চাপ দিলে পয়েন্ট হারানোর সতর্কতা। কনফার্ম করলে কুইজের timer ও delayed next-question callback বন্ধ হয়ে route close হবে; app-bar এবং system Back একই flow ব্যবহার করবে।

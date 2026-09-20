@@ -42,6 +42,8 @@
    - Native OS notifications at 7:00 PM local, even if the app is killed. Completely free — scheduled on-device, restored after reboot. Streak copy when a streak is live; silent for the rest of the day once you've played. Toggle in Profile → Settings. The home-screen bell opens a local notification inbox (unread badge is real). See `docs/15_LOCAL_NOTIFICATIONS.md`.
 12. **📡 Live push via OneSignal (FCM under the hood):**
    - Admin broadcasts and 1v1 pings when the app is killed. Paste the OneSignal App ID into `lib/core/constants/onesignal_config.dart` after uploading the Firebase service-account JSON to OneSignal. See `docs/16_ONESIGNAL_FCM_SETUP.md`.
+13. **🧭 Safe Quiz & Match Exit:**
+   - Leaving an in-progress quiz cancels its timer and any delayed progression before the route closes. Leaving a battle also stops its timers and detaches room/challenge listeners, so a background match cannot reopen or mutate a later screen.
 
 ---
 
