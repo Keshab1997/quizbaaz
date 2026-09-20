@@ -14,11 +14,27 @@
       },
       "oauth_client": [
         {
+          "client_id": "274398480008-27mr6tgehfg6poe2t157m1ifro8bdqqv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.keshabstudios.quizbaaz",
+            "certificate_hash": "63c33ba882957cee6a8286646919dd4c73e65757"
+          }
+        },
+        {
           "client_id": "274398480008-bdfo6ls6tdgmleu2ipju2q7pkdgljj6p.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.keshabstudios.quizbaaz",
             "certificate_hash": "e96a48efb7802c1b6ec5cb99e6ef702a5b9c18b5"
+          }
+        },
+        {
+          "client_id": "274398480008-mqcrllgumqcma4rouo84d93c90rvsrb9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.keshabstudios.quizbaaz",
+            "certificate_hash": "8df01382598b74a9052bdab085efffddd38b0f4e"
           }
         },
         {
