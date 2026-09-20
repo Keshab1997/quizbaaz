@@ -26,23 +26,25 @@
    - Everyone on the home screen sees who won yesterday (#1 Podium with 3D trophy), their score, and what in-game reward they earned (Coins, Gems, Power-Ups, Shop Items).
 4. **🔥 3D Daily Streak Fire Flame:**
    - Motivating daily streak system with interactive fire animations and weekly milestone rewards.
-5. **📚 Chapter-wise JSON Question Bank:**
+5. **📥 Genuinely Offline:**<br>
+   - A cached chapter keeps working when the network drops: an aged cache is still served while a refresh is attempted in the background, so a chapter never turns into "no questions yet" mid-session.
+6. **📚 Chapter-wise JSON Question Bank:**
    - Modular JSON-driven question banks organized by Categories and Chapters (General Science, Tech, History, Geography, Math, etc.).
-6. **🚪 Zero-Friction Guest Trial Onboarding:**
+7. **🚪 Zero-Friction Guest Trial Onboarding:**
    - Visitors can explore the dashboard and play trial quizzes immediately without forced registration, boosting user acquisition.
-7. **🛡️ Dynamic Admin Web Control Panel:**
-   - Bulk JSON/Excel question uploader, Daily Quiz scheduler, Yesterday's Winner & in-game reward dispatcher.
-8. **🌍 Fully Trilingual (English · বাংলা · हिन्दी):**
+8. **🛡️ In-App Admin Control Panel (author-only):**
+   - Chapter/subject manager, question bank with search and filters, review-before-append AI question generator (10 questions per run, trilingual), shop and avatar managers, question-count sync, audit log. Gated on the Firebase `admin` custom claim, so ordinary accounts never see it.
+9. **🌍 Fully Trilingual (English · বাংলা · हिन्दी):**
    - Interface *and* quiz content in three languages from one switch. Picked automatically from the device locale, changeable any time from **Profile → Settings → Language**, stored locally and kept across restarts. The font swaps to Hind Siliguri for Bangla so no glyph is ever missing.
-9. **📚 Trilingual Question Bank:**
-   - Every question, option and explanation is authored in all three languages and shipped inside the app — so it works with no network, opens instantly, and uses correct board terminology instead of a machine's guess. `tool/validate_questions.py` refuses to let an incomplete or inconsistent bank reach a build.
-10. **⚔️ Real 1-vs-1 Battle Arena:**
+10. **📚 Trilingual Question Bank:**
+   - Every question, option and explanation is authored in all three languages and shipped inside the app — so it works with no network, opens instantly, and uses correct board terminology instead of a machine's guess. Questions are authored in the admin panel (Firestore) and copied into the bundle before a release with `tool/pull_firestore_questions.py`, so the offline copy grows without an app update; `tool/validate_questions.py` refuses to let an incomplete or inconsistent bank reach a build. Current bundle: **233 questions across 18 chapters, 100% in en/bn/hi**.
+11. **⚔️ Real 1-vs-1 Battle Arena:**
    - Live Firestore matchmaking finds a same-difficulty opponent (with a cricket-style VS intro + confetti); no real player found → a smart bot takes over so nobody waits. Every match deals **5 questions mixed from all chapters** and **never repeats a question** until the pool cycles. Symmetric scoring (`base + speed bonus + streak bonus`) keeps it fair for both sides; win by forfeit when the opponent drops. See `docs/12_BATTLE_1V1_REAL_PLAYER_PLAN.md`.
-11. **🔔 Daily Quiz reminders (on-device):**
+12. **🔔 Daily Quiz reminders (on-device):**
    - Native OS notifications at 7:00 PM local, even if the app is killed. Completely free — scheduled on-device, restored after reboot. Streak copy when a streak is live; silent for the rest of the day once you've played. Toggle in Profile → Settings. The home-screen bell opens a local notification inbox (unread badge is real). See `docs/15_LOCAL_NOTIFICATIONS.md`.
-12. **📡 Live push via OneSignal (FCM under the hood):**
+13. **📡 Live push via OneSignal (FCM under the hood):**
    - Admin broadcasts and 1v1 pings when the app is killed. Paste the OneSignal App ID into `lib/core/constants/onesignal_config.dart` after uploading the Firebase service-account JSON to OneSignal. See `docs/16_ONESIGNAL_FCM_SETUP.md`.
-13. **🧭 Safe Quiz & Match Exit:**
+14. **🧭 Safe Quiz & Match Exit:**
    - Leaving an in-progress quiz cancels its timer and any delayed progression before the route closes. Leaving a battle also stops its timers and detaches room/challenge listeners, so a background match cannot reopen or mutate a later screen.
 
 ---
@@ -57,10 +59,14 @@ All architectural and step-by-step blueprints are documented in the [`docs/`](./
 * 🚀 **[`04_PHASE_WISE_EXECUTION_PLAN.md`](./docs/04_PHASE_WISE_EXECUTION_PLAN.md)**: Phase-by-phase implementation checklist (Phase 1 to Phase 7).
 * 🛡️ **[`05_ADMIN_PANEL_AND_BACKEND_SPEC.md`](./docs/05_ADMIN_PANEL_AND_BACKEND_SPEC.md)**: Admin Web Dashboard and Backend REST API Design.
 * 👤 **[`06_USER_AUTHENTICATION_AND_GUEST_TRIAL_FLOW.md`](./docs/06_USER_AUTHENTICATION_AND_GUEST_TRIAL_FLOW.md)**: Guest Visitor Onboarding & 1-Tap Account Upgrade.
+* 🔥 **[`11_ADMIN_AI_QUESTION_GENERATOR_PLAN.md`](./docs/11_ADMIN_AI_QUESTION_GENERATOR_PLAN.md)**: The AI question generator — schema, prompts, append guarantee.
+* ⚔️ **[`14_BATTLE_ARENA_TODO.md`](./docs/14_BATTLE_ARENA_TODO.md)**: Battle arena status and remaining work.
 * 🔔 **[`15_LOCAL_NOTIFICATIONS.md`](./docs/15_LOCAL_NOTIFICATIONS.md)**: On-device Daily Quiz reminders.
 * 📡 **[`16_ONESIGNAL_FCM_SETUP.md`](./docs/16_ONESIGNAL_FCM_SETUP.md)**: OneSignal + FCM live push.
 * 🏪 **[`17_PLAY_STORE_RELEASE.md`](./docs/17_PLAY_STORE_RELEASE.md)**: Signing, API 36, AdMob and Play Console release runbook.
 * ✅ **[`18_PLAY_STORE_PUBLISH_TODO.md`](./docs/18_PLAY_STORE_PUBLISH_TODO.md)**: Owner checklist from account setup through post-launch AdMob verification.
+* 📥 **[`19_FIRESTORE_TO_BUNDLE_PULL.md`](./docs/19_FIRESTORE_TO_BUNDLE_PULL.md)**: Pull admin-authored questions into the bundled banks (offline parity), with the CI gate.
+* 🔐 **[`SECURITY_P0_FIXES.md`](./docs/SECURITY_P0_FIXES.md)**: What the P0 hardening changed, and the owner's deploy steps.
 
 ---
 
