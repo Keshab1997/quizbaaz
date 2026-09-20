@@ -150,10 +150,16 @@ void main() {
       expect(quiz.useHintReveal(), isTrue);
       expect(quiz.useFreezeTime(), isTrue);
 
-      // Wrong answer → extra life → correct answer.
-      quiz.selectOption(0);
-      expect(quiz.extraLifeUsed, isTrue);
-      quiz.selectOption(1);
+      // Wrong answer → extra life → correct answer. 50-50 has already hidden
+      // two of the options, and taps on a hidden option are ignored, so pick a
+      // wrong option that is still on screen.
+      final correct = quiz.currentQuestion!.correctIndex;
+      final wrong = [0, 1, 2, 3].firstWhere(
+        (i) => i != correct && !quiz.disabledOptionIndices.contains(i),
+      );
+      quiz.selectOption(wrong);
+      expect(quiz.extraLifeUsed, isTrue, reason: 'extra life did not fire');
+      quiz.selectOption(correct);
 
       await Future<void>.delayed(const Duration(milliseconds: 1900));
       expect(quiz.useSkipQuestion(), isTrue);

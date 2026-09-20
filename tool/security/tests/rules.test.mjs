@@ -21,13 +21,18 @@ import {
   initializeTestEnvironment,
   assertSucceeds,
   assertFails,
-  withSecurityRulesDisabled,
 } from '@firebase/rules-unit-testing';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const RULES = readFileSync(path.resolve(__dirname, '../../firestore.rules'), 'utf8');
+// tests/ -> security/ -> tool/ -> repo root
+const RULES = readFileSync(path.resolve(__dirname, '../../../firestore.rules'), 'utf8');
 const PROJECT = 'quizbaaz-740bd';
-const HOST = process.env.FIRESTORE_EMULATOR_HOST ?? 'localhost:8080';
+// Booted by scripts/ensure_emulator.mjs. 127.0.0.1, not `localhost`: the
+// emulator binds the IPv4 address and recent Node resolves `localhost` to ::1
+// first.
+const HOST = process.env.FIRESTORE_EMULATOR_HOST ?? '127.0.0.1:8080';
+const HOSTNAME = HOST.slice(0, HOST.lastIndexOf(':'));
+const PORT = Number(HOST.slice(HOST.lastIndexOf(':') + 1));
 
 const STUDENT = 'student-a';
 const OTHER = 'student-b';
@@ -42,21 +47,47 @@ const PROFILE = {
   is_guest: false,
 };
 
-/** Fresh namespace per environment — isolated data between tests. */
+/**
+ * One actor against the emulator, with the ruleset under test loaded.
+ *
+ * The matrix was originally written against the v2 helper API (`localHost`
+ * plus `auth` in the config, a free-standing `withSecurityRulesDisabled`).
+ * v4 takes the emulator host under `firestore`, hands out clients through
+ * `authenticatedContext()` / `unauthenticatedContext()`, and keeps
+ * `withSecurityRulesDisabled` on the environment — this wrapper keeps the
+ * tests themselves unchanged.
+ */
 async function makeEnv(uid, claims) {
-  return initializeTestEnvironment({
+  const env = await initializeTestEnvironment({
     projectId: PROJECT,
-    rules: RULES,
-    localHost: HOST,
-    auth: uid ? { uid, token: claims ?? {} } : null,
+    firestore: { host: HOSTNAME, port: PORT, rules: RULES },
   });
+  const context = uid
+    ? env.authenticatedContext(uid, claims ?? {})
+    : env.unauthenticatedContext();
+  return {
+    firestore: context.firestore(),
+    /** Bypasses the rules — used to arrange fixtures. */
+    withSecurityRulesDisabled: (callback) =>
+      env.withSecurityRulesDisabled(callback),
+    /** Drops this test's data before the client is torn down. */
+    cleanup: async () => {
+      try {
+        await env.clearFirestore();
+      } catch (_) {
+        // The emulator may already be gone; nothing left to clear then.
+      }
+      await env.cleanup();
+    },
+  };
 }
 
 async function seed(env, docs) {
-  await withSecurityRulesDisabled(async (ctx) => {
+  await env.withSecurityRulesDisabled(async (ctx) => {
     for (const [ref, data] of Object.entries(docs)) {
       const [col, doc] = ref.split('/');
-      await ctx.firestore.collection(col).doc(doc).set(data);
+      // v4 context: `firestore()` is a method returning the compat client.
+      await ctx.firestore().collection(col).doc(doc).set(data);
     }
   });
 }
@@ -103,7 +134,7 @@ test('guest: cannot read user profiles or content', async () => {
     'config/app': { daily_question_count: 10 },
   });
   await assertFails(env.firestore.collection('users').doc('student-a').get());
-  await assertFails(env.firestore.collection('users').listDocs());
+  await assertFails(env.firestore.collection('users').get());
   await assertFails(env.firestore.collection('question_banks').doc('ch1').get());
   await assertFails(env.firestore.collection('config').doc('app').get());
   await assertFails(env.firestore.collection('users').doc('student-a').set(PROFILE));
@@ -386,7 +417,7 @@ test('R17 challenge queries: participant-scoped allowed, stranger list denied', 
     env.firestore.collection('battle_challenges')
       .where('status', '==', 'pending').get(),
   );
-  await assertFails(env.firestore.collection('battle_challenges').listDocs());
+  await assertFails(env.firestore.collection('battle_challenges').get());
   await assertFails(
     env.firestore.collection('battle_challenges').doc('not-mine').get(),
   );
@@ -413,7 +444,7 @@ test('R17 room list: only rooms the caller played in are listable', async () => 
     outsider.firestore.collection('battle_rooms')
       .where('players.a.uid', '==', OTHER).get(),
   );
-  await assertFails(outsider.firestore.collection('battle_rooms').listDocs());
+  await assertFails(outsider.firestore.collection('battle_rooms').get());
   await player.cleanup();
   await outsider.cleanup();
 });
