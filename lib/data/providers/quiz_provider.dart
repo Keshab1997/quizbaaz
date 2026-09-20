@@ -9,6 +9,7 @@ import '../models/question_model.dart';
 import '../models/shop_item.dart';
 import '../repositories/quiz_repository.dart';
 import '../services/haptic_service.dart';
+import '../services/competition_clock.dart';
 import '../services/hive_service.dart';
 import '../services/sound_service.dart';
 import '../services/trusted_ops_service.dart';
@@ -108,6 +109,15 @@ class QuizProvider extends ChangeNotifier {
 
   // Quiz type + rewards
   bool _isDailyQuiz = false;
+
+  /// True when the current daily run may be ranked: it plays the day's
+  /// backend-published packet, so its score is comparable (R12). A daily run
+  /// that fell back to a locally assembled practice set is played normally —
+  /// coins, stats, streak — but is never submitted as a competition result.
+  bool _isDailyRanked = false;
+
+  /// Why today's daily run is not ranked, when it is not.
+  String? _dailyUnrankedReason;
   String? _chapterId;
   String? _categoryTitle;
   String? _categoryTitleBn;
@@ -142,6 +152,8 @@ class QuizProvider extends ChangeNotifier {
   bool get isQuizCompleted => _isQuizCompleted;
   bool get isLoading => _isLoading;
   bool get isDailyQuiz => _isDailyQuiz;
+  bool get isDailyRanked => _isDailyQuiz && _isDailyRanked;
+  String? get dailyUnrankedReason => _dailyUnrankedReason;
   int get secondsRemaining => _secondsRemaining;
   List<int> get disabledOptionIndices => _disabledOptionIndices;
 
@@ -216,7 +228,10 @@ class QuizProvider extends ChangeNotifier {
     notifyListeners();
 
     final sw = Stopwatch()..start();
-    final dailyQuestions = await _repository.getDailyQuizQuestions();
+    final dailySet = await _repository.getDailyQuizSet();
+    final dailyQuestions = dailySet.questions;
+    _isDailyRanked = dailySet.ranked;
+    _dailyUnrankedReason = dailySet.unrankedReason;
     await _holdIntro(sw, _dailyIntroMin);
     // The player may have quit (or started another run) while the questions
     // were loading — that request must not revive the abandoned screen.
@@ -389,6 +404,8 @@ class QuizProvider extends ChangeNotifier {
     // per-run decision, not a hidden setting that quietly persists.
     _displayLanguage = null;
     _isPractice = false;
+    _isDailyRanked = false;
+    _dailyUnrankedReason = null;
     _setIndex = 0;
     _chapterQuestionCount = 0;
     _currentIndex = 0;
@@ -719,6 +736,8 @@ class QuizProvider extends ChangeNotifier {
       correct: _correctCount,
       timeSeconds: _totalTimeSeconds,
       isDaily: _isDailyQuiz,
+      // Only a ranked daily run may touch the day's leaderboard entry (R12).
+      ranked: _isDailyRanked,
       score: _score,
       chapterId: _isDailyQuiz ? null : _chapterId,
       categoryTitle: _isDailyQuiz ? null : _categoryTitle,
@@ -760,10 +779,12 @@ class QuizProvider extends ChangeNotifier {
     // P0 (R02): the daily credit is also applied server-side (trusted
     // backend, idempotent per day). Fail-soft: no-op when offline or when
     // the functions are not deployed yet.
-    if (_isDailyQuiz && granted && !_userProvider.user.isGuest) {
+    if (_isDailyQuiz && _isDailyRanked && granted && !_userProvider.user.isGuest) {
       final now = DateTime.now();
       TrustedOpsService.submitDailyResult(
-        date: _dateKey(now),
+        // The competition day, not the device's local date — otherwise two
+        // players in different timezones would submit to different days (R12).
+        date: CompetitionClock.dateKey(now),
         score: _score,
         correct: _correctCount,
         total: _questions.length,

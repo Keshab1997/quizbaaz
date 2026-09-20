@@ -1,3 +1,11 @@
+/// Same identity rule as [leaderboardRowBelongsToUser] — uid only, never the
+/// username (R12).
+bool championRowBelongsToUser(
+  ChampionModel champion, {
+  required String userId,
+}) =>
+    userId.isNotEmpty && champion.userId == userId;
+
 class ChampionModel {
   final int rank;
   final String userId;

@@ -206,6 +206,7 @@ const Map<String, String> kStringsBn = {
   'accountDeleted': 'আপনার অ্যাকাউন্ট মুছে ফেলা হয়েছে। আপনার সব ডেটা সরিয়ে ফেলা হয়েছে।',
   'accountDeleteFailed': 'অ্যাকাউন্ট মুছে ফেলা যায়নি। আবার চেষ্টা করুন।',
   'accountDeleteReauth':
+  'accountDeletedPartial': 'আপনার অ্যাকাউন্ট মুছে ফেলা হয়েছে। বাকি ক্লিনআপ সার্ভারে শেষ হচ্ছে।',
       'নিরাপত্তার জন্য Google দিয়ে আবার সাইন ইন করে চেষ্টা করুন।',
   'accountDeleteLocalOnly': 'এই ডিভাইস থেকে আপনার গেস্ট প্রগ্রেস মুছে যাবে।',
   'linkOpenFailed': 'লিংক খোলা যায়নি। আবার চেষ্টা করুন।',

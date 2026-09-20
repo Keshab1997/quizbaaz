@@ -1,5 +1,6 @@
 import '../models/champion_model.dart';
 import '../models/leaderboard_model.dart';
+import '../services/competition_clock.dart';
 import '../services/hive_service.dart';
 import '../services/sync_service.dart';
 
@@ -10,11 +11,15 @@ import '../services/sync_service.dart';
 /// There is no bundled JSON fallback any more — if there is no data, the
 /// screens show a real empty state instead of invented players.
 class LeaderboardRepository {
-  /// Cached leaderboard rows (may be empty).
-  List<LeaderboardItem> cachedLeaderboard() {
-    return HiveService.cacheGetList(HiveService.cacheLeaderboard)
-        .map(LeaderboardItem.fromJson)
-        .toList();
+  /// Cached leaderboard rows for one competition day (may be empty).
+  ///
+  /// The cache is date-scoped, so a failed refresh on a new day shows an empty
+  /// state (correct) instead of yesterday's standings (wrong) — R12.
+  List<LeaderboardItem> cachedLeaderboard({DateTime? date}) {
+    return HiveService.cacheGetList(
+      HiveService.cacheLeaderboardFor(CompetitionClock.dateKey(date)),
+      allowStale: true,
+    ).map(LeaderboardItem.fromJson).toList();
   }
 
   /// Cached champions (may be empty).
@@ -24,9 +29,13 @@ class LeaderboardRepository {
         .toList();
   }
 
-  /// True when the cached leaderboard is still fresh enough to skip a fetch.
-  bool isLeaderboardFresh(Duration ttl) =>
-      HiveService.isCacheFresh(HiveService.cacheLeaderboard, ttl);
+  /// True when today's cached leaderboard is still fresh enough to skip a
+  /// fetch.
+  bool isLeaderboardFresh(Duration ttl, {DateTime? date}) =>
+      HiveService.isCacheFresh(
+        HiveService.cacheLeaderboardFor(CompetitionClock.dateKey(date)),
+        ttl,
+      );
 
   bool areChampionsFresh(Duration ttl) =>
       HiveService.isCacheFresh(HiveService.cacheChampions, ttl);
@@ -46,9 +55,11 @@ class LeaderboardRepository {
     return rows.map(ChampionModel.fromJson).toList();
   }
 
-  /// When the ranking data was last downloaded, or null.
+  /// When today's ranking data was last downloaded, or null.
   DateTime? get lastUpdated {
-    final age = HiveService.cacheAge(HiveService.cacheLeaderboard);
+    final age = HiveService.cacheAge(
+      HiveService.cacheLeaderboardFor(CompetitionClock.dateKey()),
+    );
     if (age == null) return null;
     return DateTime.now().subtract(age);
   }

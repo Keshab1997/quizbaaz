@@ -1642,7 +1642,10 @@ class BattleProvider extends ChangeNotifier {
           notifyListeners();
           return;
         }
-        await HiveService.markBattleRoomProcessed(guardKey);
+        // Fire-and-forget: `_finishBattle` is synchronous and the guard read
+        // above already happened; the write only has to land before the next
+        // match is scored.
+        unawaited(HiveService.markBattleRoomProcessed(guardKey));
       }
     }
 

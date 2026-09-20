@@ -6,6 +6,7 @@ import 'package:hive/hive.dart';
 import 'package:quizbaaz/data/models/app_config.dart';
 import 'package:quizbaaz/data/models/localized_text.dart';
 import 'package:quizbaaz/data/models/question_model.dart';
+import 'package:quizbaaz/data/models/shop_item.dart';
 import 'package:quizbaaz/data/providers/quiz_provider.dart';
 import 'package:quizbaaz/data/providers/user_provider.dart';
 import 'package:quizbaaz/data/repositories/quiz_repository.dart';

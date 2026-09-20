@@ -101,6 +101,14 @@ class ChallengeService {
         'status': 'pending',
         'created_at': now,
         'expires_at': now + challengeExpiry.inMilliseconds,
+        // The same instant as a real Firestore timestamp: the TTL policy in
+        // firestore.indexes.json deletes the document after this, so a
+        // challenge whose owner never reopens the app cannot linger and
+        // block the next one (R17). TTL needs a Timestamp, which is why the
+        // int `expires_at` is kept for the client's own maths.
+        'expires_at_ts': Timestamp.fromMillisecondsSinceEpoch(
+          now + challengeExpiry.inMilliseconds,
+        ),
       });
 
       return challengeId;
@@ -236,7 +244,7 @@ class ChallengeService {
       final results = await Future.wait([mine.get(), theirs.get()]);
       final count = results.fold<int>(
         0,
-        (sum, snapshot) => sum + snapshot.docs.length,
+        (total, snapshot) => total + snapshot.docs.length,
       );
       return ChallengeCheck(count: count);
     } catch (e) {

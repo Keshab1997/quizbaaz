@@ -173,7 +173,7 @@ class _FakeUserProvider extends UserProvider {
   UserModel get user => _fakeUser;
 
   @override
-  AppConfig get config => AppConfig();
+  AppConfig get config => const AppConfig();
 
   @override
   bool grantQuizRewards({
@@ -255,13 +255,13 @@ Map<String, dynamic> _roomJson({
         'countdown_until': DateTime.now().millisecondsSinceEpoch + 8000,
       },
       'players': {
-        'a': BattleRoomPlayer(
+        'a': const BattleRoomPlayer(
           uid: _myUid,
           name: 'Alpha',
           avatar: 'a.png',
           attached: true,
         ).toJson(),
-        'b': BattleRoomPlayer(
+        'b': const BattleRoomPlayer(
           uid: _opponentUid,
           name: 'Zeta',
           avatar: 'z.png',
@@ -502,7 +502,7 @@ void main() {
       final room = _roomJson();
       final players = Map<String, dynamic>.from(room['players'] as Map);
       final playerA = Map<String, dynamic>.from(players['a'] as Map);
-      playerA['answers.0'] = BattleAnswer(
+      playerA['answers.0'] = const BattleAnswer(
         selected: 1,
         correct: true,
         points: 23,
@@ -543,7 +543,7 @@ void main() {
 
     test('bothAttached needs both sides', () {
       final one = _roomJson();
-      (one['players'] as Map)['b'] = BattleRoomPlayer(
+      (one['players'] as Map)['b'] = const BattleRoomPlayer(
         uid: _opponentUid,
         name: 'Zeta',
         avatar: 'z.png',

@@ -63,6 +63,7 @@ async function seed(env, docs) {
 
 const ROOM_ID = 'room_student-a_student-b';
 const roomData = (status = 'active', winner = null) => ({
+  match_id: 'm_test_1', // per-match session id (R11); required at create
   difficulty: 'normal',
   status,
   created_at: 1_757_000_000_000,
@@ -342,6 +343,159 @@ test('room: only players can read/update; finished room deletable by player', as
   await assertSucceeds(player.firestore.collection('battle_rooms').doc(ROOM_ID).delete());
   await player.cleanup();
   await outsider.cleanup();
+});
+
+// ---------------------------------------------------------------------------
+// 6b. R17 — participant-scoped queries only
+// ---------------------------------------------------------------------------
+test('R17 challenge queries: participant-scoped allowed, stranger list denied', async () => {
+  const env = await makeEnv(STUDENT);
+  const strangerChallenge = {
+    ...challengeData,
+    from_uid: 'someone-else',
+    to_uid: 'another-someone',
+  };
+  await seed(env, {
+    'battle_challenges/mine-sent': challengeData, // STUDENT -> OTHER
+    'battle_challenges/mine-received': {
+      ...challengeData,
+      from_uid: OTHER,
+      to_uid: STUDENT,
+    },
+    'battle_challenges/not-mine': strangerChallenge,
+  });
+
+  // The queries the app actually runs (FirestoreQuerySpecs).
+  await assertSucceeds(
+    env.firestore.collection('battle_challenges')
+      .where('to_uid', '==', STUDENT).where('status', '==', 'pending').get(),
+  );
+  await assertSucceeds(
+    env.firestore.collection('battle_challenges')
+      .where('from_uid', '==', STUDENT).where('status', '==', 'pending').get(),
+  );
+  await assertSucceeds(
+    env.firestore.collection('battle_challenges')
+      .where('from_uid', '==', STUDENT).where('to_uid', '==', OTHER)
+      .where('status', '==', 'pending').get(),
+  );
+
+  // An unscoped list could return a stranger's challenge -> denied, so no
+  // client can read challenges it is not part of.
+  await assertFails(
+    env.firestore.collection('battle_challenges')
+      .where('status', '==', 'pending').get(),
+  );
+  await assertFails(env.firestore.collection('battle_challenges').listDocs());
+  await assertFails(
+    env.firestore.collection('battle_challenges').doc('not-mine').get(),
+  );
+  await env.cleanup();
+});
+
+test('R17 room list: only rooms the caller played in are listable', async () => {
+  const player = await makeEnv(STUDENT);
+  const outsider = await makeEnv('outsider-x');
+  await seed(player, { [`battle_rooms/${ROOM_ID}`]: roomData() });
+  await seed(outsider, { [`battle_rooms/${ROOM_ID}`]: roomData() });
+
+  await assertSucceeds(
+    player.firestore.collection('battle_rooms')
+      .where('players.a.uid', '==', STUDENT).get(),
+  );
+  await assertSucceeds(
+    player.firestore.collection('battle_rooms')
+      .where('players.b.uid', '==', STUDENT).get(),
+  );
+  // The account-deletion sweep for an unrelated player must find nothing and
+  // must not be able to list our room.
+  await assertFails(
+    outsider.firestore.collection('battle_rooms')
+      .where('players.a.uid', '==', OTHER).get(),
+  );
+  await assertFails(outsider.firestore.collection('battle_rooms').listDocs());
+  await player.cleanup();
+  await outsider.cleanup();
+});
+
+test('R17 daily packet: readable when signed in, never writable by a client', async () => {
+  const env = await makeEnv(STUDENT);
+  await seed(env, {
+    'daily_quiz_packets/2026-09-20': {
+      date_key: '2026-09-20',
+      version: 1,
+      count: 1,
+      approved: true,
+      questions: [{ chapter_id: 'bio_ch_01', question_id: 'bio_ch_01_q001' }],
+    },
+  });
+
+  await assertSucceeds(
+    env.firestore.collection('daily_quiz_packets').doc('2026-09-20').get(),
+  );
+  await assertFails(
+    env.firestore.collection('daily_quiz_packets').doc('2026-09-20')
+      .set({ approved: false }),
+  );
+  await assertFails(
+    env.firestore.collection('daily_quiz_packets').doc('2026-09-21')
+      .set({ count: 1, approved: true }),
+  );
+  await env.cleanup();
+});
+
+// ---------------------------------------------------------------------------
+// 6c. R11 — the room lifecycle the client now writes
+// ---------------------------------------------------------------------------
+test('R11 room lifecycle: created -> ready -> active -> finished is allowed', async () => {
+  const env = await makeEnv(STUDENT);
+  await assertSucceeds(
+    env.firestore.collection('battle_rooms').doc(ROOM_ID)
+      .set(roomData('created')),
+  );
+  await assertSucceeds(
+    env.firestore.collection('battle_rooms').doc(ROOM_ID)
+      .set({ status: 'ready' }, { merge: true }),
+  );
+  await assertSucceeds(
+    env.firestore.collection('battle_rooms').doc(ROOM_ID)
+      .set({ status: 'active' }, { merge: true }),
+  );
+  await assertSucceeds(
+    env.firestore.collection('battle_rooms').doc(ROOM_ID)
+      .set({ status: 'finished' }, { merge: true }),
+  );
+  // Jumping back, or inventing a status, is denied.
+  await assertFails(
+    env.firestore.collection('battle_rooms').doc(ROOM_ID)
+      .set({ status: 'ready' }, { merge: true }),
+  );
+  await assertFails(
+    env.firestore.collection('battle_rooms').doc(ROOM_ID)
+      .set({ status: 'whatever' }, { merge: true }),
+  );
+  await env.cleanup();
+});
+
+test('R11 a room cannot be created without a match id, and cannot change it', async () => {
+  const env = await makeEnv(STUDENT);
+  const { match_id: _drop, ...withoutMatchId } = roomData('created');
+  await assertFails(
+    env.firestore.collection('battle_rooms').doc(ROOM_ID).set(withoutMatchId),
+  );
+
+  await seed(env, { [`battle_rooms/${ROOM_ID}`]: roomData('active') });
+  await assertFails(
+    env.firestore.collection('battle_rooms').doc(ROOM_ID)
+      .set({ match_id: 'm_other' }, { merge: true }),
+  );
+  // A forfeit is a legal move from any live status.
+  await assertSucceeds(
+    env.firestore.collection('battle_rooms').doc(ROOM_ID)
+      .set({ status: 'abandoned', abandoned: true, abandoned_by: 'a' },
+        { merge: true }),
+  );
+  await env.cleanup();
 });
 
 // ---------------------------------------------------------------------------

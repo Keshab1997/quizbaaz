@@ -206,6 +206,7 @@ const Map<String, String> kStringsHi = {
   'accountDeleted': 'आपका खाता हटा दिया गया है। आपका सारा डेटा हटा दिया गया है।',
   'accountDeleteFailed': 'खाता हटाया नहीं जा सका। कृपया फिर कोशिश करें।',
   'accountDeleteReauth':
+  'accountDeletedPartial': 'आपका खाता हटा दिया गया। बाकी सफ़ाई सर्वर पर पूरी हो रही है।',
       'सुरक्षा के लिए कृपया Google से दोबारा साइन इन करके प्रयास करें।',
   'accountDeleteLocalOnly': 'इस डिवाइस से आपकी गेस्ट प्रगति हटा दी जाएगी।',
   'linkOpenFailed': 'लिंक नहीं खोला जा सका। कृपया फिर कोशिश करें।',

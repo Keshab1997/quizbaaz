@@ -1,12 +1,69 @@
 {
   "indexes": [
     {
-      "//": "Undo-batch lookup: questions written by one generation run.",
+      "//": "R17 (battle query contract): pinned question batches — undo one generation run.",
       "collectionGroup": "questions",
       "queryScope": "COLLECTION",
       "fields": [
         { "fieldPath": "batch_id", "order": "ASCENDING" },
         { "fieldPath": "created_at", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "//": "R17 (battle query contract): matchmaking queue — same difficulty, freshest first (FirestoreQuerySpecs.queueSearch).",
+      "collectionGroup": "battle_queue",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "difficulty", "order": "ASCENDING" },
+        { "fieldPath": "created_at", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "//": "R17: duplicate-challenge check in one direction (challenges.pendingFromTo).",
+      "collectionGroup": "battle_challenges",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "from_uid", "order": "ASCENDING" },
+        { "fieldPath": "to_uid", "order": "ASCENDING" },
+        { "fieldPath": "status", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "//": "R17: the receiver's pending challenge banner (challenges.incoming).",
+      "collectionGroup": "battle_challenges",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "to_uid", "order": "ASCENDING" },
+        { "fieldPath": "status", "order": "ASCENDING" },
+        { "fieldPath": "created_at", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "//": "R17: the sender's waiting dialog (challenges.outgoing, status in [pending, accepted]).",
+      "collectionGroup": "battle_challenges",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "from_uid", "order": "ASCENDING" },
+        { "fieldPath": "status", "order": "ASCENDING" },
+        { "fieldPath": "created_at", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "//": "R17: expiring the challenges this player sent when they go offline (challenges.pendingSent).",
+      "collectionGroup": "battle_challenges",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "from_uid", "order": "ASCENDING" },
+        { "fieldPath": "status", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "//": "R17: the same, for the challenges they received (challenges.pendingReceived).",
+      "collectionGroup": "battle_challenges",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "to_uid", "order": "ASCENDING" },
+        { "fieldPath": "status", "order": "ASCENDING" }
       ]
     },
     {
@@ -28,5 +85,13 @@
       ]
     }
   ],
-  "fieldOverrides": []
+  "fieldOverrides": [
+    {
+      "//": "R17: challenge expiry is a TTL policy, not a client-side collection sweep. `expires_at_ts` is a Firestore Timestamp written alongside the int `expires_at` the client reads; Firestore deletes the document after that instant, so a player who never reopens the app cannot leave a pending challenge behind.",
+      "collectionGroup": "battle_challenges",
+      "fieldPath": "expires_at_ts",
+      "ttlConfig": {},
+      "indexes": []
+    }
+  ]
 }

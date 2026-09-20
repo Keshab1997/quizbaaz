@@ -214,6 +214,7 @@ const Map<String, String> kStringsEn = {
       'Your account has been deleted. All your data has been removed.',
   'accountDeleteFailed': 'Could not delete your account. Please try again.',
   'accountDeleteReauth':
+  'accountDeletedPartial': 'Your account was deleted. A final cleanup is finishing on our servers.',
       'For your security, please sign in with Google once more and try again.',
   'accountDeleteLocalOnly': 'Your guest progress will be cleared from this device.',
   'linkOpenFailed': 'Could not open the link. Please try again.',

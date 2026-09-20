@@ -63,6 +63,36 @@ jobs:
           export GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/firebase-sa.json"
           python3 tool/pull_firestore_questions.py --check
 
+  # The Firestore emulator is the only place where firestore.rules can be
+  # checked without a live project: it answers queries exactly as production
+  # does (rules are not filters), which is what proves the participant-scoped
+  # challenge/room queries in R17 work — and that an unscoped one is denied.
+  #
+  # Runs on every push/PR; needs the emulator (Firebase CLI + JDK 21), not the
+  # Flutter toolchain.
+  rules-matrix:
+    name: firestore rules matrix (emulator)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Install the rules test dependencies
+        working-directory: tool/security
+        run: npm install --no-audit --no-fund
+
+      - name: Rules matrix (starts the Firestore emulator)
+        working-directory: tool/security
+        run: npm test
+
   refresh-question-bank:
     name: pull admin questions into the bundle
     # Deliberately NOT `needs: quality`: a failing widget test must not block the
