@@ -189,7 +189,10 @@ class UserModel {
       xp: 0,
       level: 1,
       isGuest: isGuest,
-      inventory: const {},
+      // Mutable on purpose: the very first purchase a player makes writes into
+      // this map, and a `const {}` throws UnsupportedError at that exact
+      // moment — the shop is unusable for a brand-new account (R16).
+      inventory: <String, int>{},
     );
   }
 
