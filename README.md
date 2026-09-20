@@ -41,7 +41,7 @@
 11. **⚔️ Real 1-vs-1 Battle Arena:**
    - Live Firestore matchmaking finds a same-difficulty opponent (with a cricket-style VS intro + confetti); no real player found → a smart bot takes over so nobody waits. Every match deals **5 questions mixed from all chapters** and **never repeats a question** until the pool cycles. Symmetric scoring (`base + speed bonus + streak bonus`) keeps it fair for both sides; win by forfeit when the opponent drops. See `docs/12_BATTLE_1V1_REAL_PLAYER_PLAN.md`.
 12. **🔔 Daily Quiz reminders (on-device):**
-   - Native OS notifications at 7:00 PM local, even if the app is killed. Completely free — scheduled on-device, restored after reboot. Streak copy when a streak is live; silent for the rest of the day once you've played. Toggle in Profile → Settings. The home-screen bell opens a local notification inbox (unread badge is real). See `docs/15_LOCAL_NOTIFICATIONS.md`.
+   - Native OS notifications at 7:00 PM local, even if the app is killed. Completely free — scheduled on-device, restored after reboot. Streak copy when a streak is live; silent for the rest of the day once you've played. Toggle in Profile → Settings. The home-screen bell opens a local notification inbox (unread badge is real). Implemented in `lib/data/services/notification_service.dart`.
 13. **📡 Live push via OneSignal (FCM under the hood):**
    - Admin broadcasts and 1v1 pings when the app is killed. Paste the OneSignal App ID into `lib/core/constants/onesignal_config.dart` after uploading the Firebase service-account JSON to OneSignal. See `docs/16_ONESIGNAL_FCM_SETUP.md`.
 14. **🧭 Safe Quiz & Match Exit:**
@@ -53,15 +53,12 @@
 
 All architectural and step-by-step blueprints are documented in the [`docs/`](./docs) folder:
 
-* 📄 **[`01_PROJECT_ROADMAP.md`](./docs/01_PROJECT_ROADMAP.md)**: Complete Architecture, Tech Stack, and Folder Structure.
-* 🖥️ **[`02_ALL_PAGES_AND_SCREENS.md`](./docs/02_ALL_PAGES_AND_SCREENS.md)**: Specifications for all 9 main screens and interactive modals.
 * 🗄️ **[`03_JSON_DATA_SCHEMAS.md`](./docs/03_JSON_DATA_SCHEMAS.md)**: JSON Schemas for Chapter questions, Daily Quiz, Leaderboards, and Rewards.
-* 🚀 **[`04_PHASE_WISE_EXECUTION_PLAN.md`](./docs/04_PHASE_WISE_EXECUTION_PLAN.md)**: Phase-by-phase implementation checklist (Phase 1 to Phase 7).
-* 🛡️ **[`05_ADMIN_PANEL_AND_BACKEND_SPEC.md`](./docs/05_ADMIN_PANEL_AND_BACKEND_SPEC.md)**: Admin Web Dashboard and Backend REST API Design.
-* 👤 **[`06_USER_AUTHENTICATION_AND_GUEST_TRIAL_FLOW.md`](./docs/06_USER_AUTHENTICATION_AND_GUEST_TRIAL_FLOW.md)**: Guest Visitor Onboarding & 1-Tap Account Upgrade.
+* 🔥 **[`07_FIREBASE_GOOGLE_SIGNIN_SETUP.md`](./docs/07_FIREBASE_GOOGLE_SIGNIN_SETUP.md)**: Firebase project, Google Sign-In and the admin claim.
+* 📚 **[`09_CLASS10_SUBJECT_CHAPTER_LIST.md`](./docs/09_CLASS10_SUBJECT_CHAPTER_LIST.md)**: The Class-10 subject/chapter map the banks are generated from.
+* ✍️ **[`10_QUESTION_AUTHORING_GUIDE.md`](./docs/10_QUESTION_AUTHORING_GUIDE.md)**: How to author a question batch (schema, trilingual rules, validator).
 * 🔥 **[`11_ADMIN_AI_QUESTION_GENERATOR_PLAN.md`](./docs/11_ADMIN_AI_QUESTION_GENERATOR_PLAN.md)**: The AI question generator — schema, prompts, append guarantee.
-* ⚔️ **[`14_BATTLE_ARENA_TODO.md`](./docs/14_BATTLE_ARENA_TODO.md)**: Battle arena status and remaining work.
-* 🔔 **[`15_LOCAL_NOTIFICATIONS.md`](./docs/15_LOCAL_NOTIFICATIONS.md)**: On-device Daily Quiz reminders.
+* ⚔️ **[`12_BATTLE_1V1_REAL_PLAYER_PLAN.md`](./docs/12_BATTLE_1V1_REAL_PLAYER_PLAN.md)**: The 1v1 battle arena (matching, VS intro, symmetric scoring).
 * 📡 **[`16_ONESIGNAL_FCM_SETUP.md`](./docs/16_ONESIGNAL_FCM_SETUP.md)**: OneSignal + FCM live push.
 * 🏪 **[`17_PLAY_STORE_RELEASE.md`](./docs/17_PLAY_STORE_RELEASE.md)**: Signing, API 36, AdMob and Play Console release runbook.
 * ✅ **[`18_PLAY_STORE_PUBLISH_TODO.md`](./docs/18_PLAY_STORE_PUBLISH_TODO.md)**: Owner checklist from account setup through post-launch AdMob verification.

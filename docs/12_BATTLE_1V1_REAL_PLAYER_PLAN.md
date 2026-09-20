@@ -1,8 +1,7 @@
 # ⚔️ Battle Mode 1v1 Upgrade — Real Player + Smart Bot & VS Intro
 
-> **Plan doc** · Status tracking for the Battle Arena rework.
-> Companion doc: `02_ALL_PAGES_AND_SCREENS.md` (screens), `05_ADMIN_PANEL_AND_BACKEND_SPEC.md` (backend),
-> `01_PROJECT_ROADMAP.md` (architecture).
+> **Plan doc** · The battle arena as it works today (matching, VS intro, one
+> question set per match, symmetric scoring, forfeit handling).
 
 ---
 
