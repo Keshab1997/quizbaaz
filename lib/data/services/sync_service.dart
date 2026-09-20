@@ -232,6 +232,42 @@ class SyncService {
 
   /// Merges the remote profile into [local] and returns the merged copy.
   /// Coins/gems/streak keep the higher value so nothing is ever lost.
+  /// Wallet and inventory after a pull.
+  ///
+  /// This used to take the larger of the two sides, per field and per item,
+  /// which quietly refunded everything the player had spent: the local copy is
+  /// the one that gets debited (Hive is the source of truth, and since P0 the
+  /// client no longer mirrors wallet fields to Firestore at all), so a spent
+  /// coin or a used power-up stayed alive in the remote document and came back
+  /// on the next pull. Buy something on a weak connection and you kept both the
+  /// item and the coins.
+  ///
+  /// So the local copy wins — except on a profile that has nothing yet, where
+  /// the remote document is the only record of the account and adopting it is
+  /// how a reinstall gets its balance back. An inventory key that exists but is
+  /// zero (the last power-up used) still counts as "not fresh", so it is not
+  /// mistaken for a new account.
+  static ({int coins, int gems, Map<String, int> inventory}) mergeWallet(
+    UserModel local,
+    UserModel remote,
+  ) {
+    final isFreshProfile =
+        local.coins == 0 && local.gems == 0 && local.inventory.isEmpty;
+
+    if (isFreshProfile) {
+      return (
+        coins: remote.coins,
+        gems: remote.gems,
+        inventory: Map<String, int>.from(remote.inventory),
+      );
+    }
+    return (
+      coins: local.coins,
+      gems: local.gems,
+      inventory: Map<String, int>.from(local.inventory),
+    );
+  }
+
   static Future<UserModel> pullUser(UserModel local) async {
     if (local.isGuest || local.userId.isEmpty) return local;
     final remote = await FirestoreService.loadUser(local.userId);
@@ -270,21 +306,17 @@ class SyncService {
       mergedStreak = local.dailyStreak;
     }
 
+    final wallet = mergeWallet(local, remote);
     final merged = local.copyWith(
-      coins: local.coins >= remote.coins ? local.coins : remote.coins,
-      gems: local.gems >= remote.gems ? local.gems : remote.gems,
+      coins: wallet.coins,
+      gems: wallet.gems,
+      inventory: wallet.inventory,
       dailyStreak: mergedStreak,
       isAdmin: local.isAdmin || remote.isAdmin,
       lastStreakDate: mergedDate,
       avatarUrl: local.avatarUrl ?? remote.avatarUrl,
       nameEffect: local.nameEffect ?? remote.nameEffect,
     );
-
-    // Inventory: keep the larger count per item.
-    remote.inventory.forEach((key, value) {
-      final mine = merged.inventory[key] ?? 0;
-      merged.inventory[key] = mine > value ? mine : value;
-    });
 
     await HiveService.saveUser(merged);
     await HiveService.markPulled();
