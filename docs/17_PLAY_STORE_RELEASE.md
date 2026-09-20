@@ -57,6 +57,34 @@ flutter build appbundle --release \
 Local builds deliberately use Google's test IDs. Configure `app-ads.txt` and
 verify the UMP consent/privacy-options flow before enabling real traffic.
 
+#### Or let GitHub Actions build it
+
+The same injection is wired into `.github/workflows/manual-build.yml` and
+`.github/workflows/publish-release.yml` (both call the shared
+[`Keshab1997/flutter-builder`](https://github.com/Keshab1997/flutter-builder)
+workflow). Store the three IDs once as **repository variables** — they are
+public identifiers that end up in the binary anyway, so they do not need to be
+secrets:
+
+```text
+Settings → Secrets and variables → Actions → Variables → New repository variable
+  ADMOB_APP_ID           ca-app-pub-…~…
+  ADMOB_BANNER_ID        ca-app-pub-…/…
+  ADMOB_INTERSTITIAL_ID  ca-app-pub-…/…
+```
+
+and the signing material as **secrets** (`ANDROID_KEYSTORE_BASE64`,
+`KEYSTORE_PASSWORD`, `KEY_ALIAS`, `KEY_PASSWORD`; see the builder's
+`docs/ANDROID_SIGNING.md`). Then:
+
+- **Actions → Manual Android Build → Run workflow** — `apk` or `aab`, and
+  `ads: test` (default, safe to click) or `ads: real`. The file is in the run's
+  Artifacts.
+- **Actions → Publish Android Release → Run workflow** — always real IDs;
+  refuses to start if a variable is missing or still a Google test ID. Produces
+  the `v<version>` tag, a GitHub Release with English notes, and the versioned
+  `.apk`/`.aab` + `SHA256SUMS.txt` to upload to the Play Console.
+
 ### 4. Legal and Play Console
 
 Before closed testing:
@@ -113,7 +141,9 @@ Then:
 2. Install through Play Internal testing and test fresh install, upgrade,
    guest mode, Google Sign-In, offline quiz, account deletion, ads, consent,
    notifications, Bengali/Hindi, low-memory restart and network loss.
-3. Upload `build/app/outputs/bundle/release/app-release.aab`.
+3. Upload `build/app/outputs/bundle/release/app-release.aab` — or the
+   `QuizBaaz-v<version>.aab` attached to the GitHub Release when the build
+   came from **Publish Android Release**.
 4. Review the pre-launch report and Android vitals before promotion.
 5. New personal accounts created after 13 November 2023 must complete the
    required closed test (currently 12 opted-in testers for 14 continuous days)

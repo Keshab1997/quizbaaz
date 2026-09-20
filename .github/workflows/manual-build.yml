@@ -1,0 +1,65 @@
+name: Manual Android Build
+
+# Builds a release APK (phone install / testers) or a signed AAB (Play Console)
+# through the shared Keshab1997/flutter-builder workflow. Nothing is published;
+# the file appears under the run's Artifacts. For a tagged GitHub Release use
+# "Publish Android Release" instead.
+#
+# AdMob: the real IDs live in Settings → Secrets and variables → Actions →
+# Variables (ADMOB_APP_ID, ADMOB_BANNER_ID, ADMOB_INTERSTITIAL_ID). They are
+# injected exactly the way docs/17 describes for a local release build:
+#   ADMOB_APP_ID=…  flutter build … --dart-define=ADMOB_*=…
+# Leave `ads` on "test" to build with Google's test units instead — the only
+# safe choice for a build you will click ads in yourself.
+
+on:
+  workflow_dispatch:
+    inputs:
+      format:
+        description: Which Android file should be built?
+        required: true
+        type: choice
+        options:
+          - apk
+          - aab
+        default: apk
+      ads:
+        description: AdMob IDs baked into the build
+        required: true
+        type: choice
+        options:
+          - test
+          - real
+        default: test
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    uses: Keshab1997/flutter-builder/.github/workflows/flutter-build.yml@v1.3.0
+    with:
+      flutter-channel: stable
+      # Validation already runs on every push in content-and-quality.yml;
+      # a manual build should not be blocked by a formatting nit.
+      run-format-check: false
+      run-analyze: false
+      run-tests: false
+      build-apk: ${{ inputs.format == 'apk' }}
+      build-aab: ${{ inputs.format == 'aab' }}
+      artifact-retention-days: 14
+      # Empty values are skipped by the builder, so with ads=test every key
+      # falls back to the Google test IDs compiled into AdConfig.
+      dart-defines: |
+        ADMOB_APP_ID=${{ inputs.ads == 'real' && vars.ADMOB_APP_ID || '' }}
+        ADMOB_BANNER_ID=${{ inputs.ads == 'real' && vars.ADMOB_BANNER_ID || '' }}
+        ADMOB_INTERSTITIAL_ID=${{ inputs.ads == 'real' && vars.ADMOB_INTERSTITIAL_ID || '' }}
+      # android/app/build.gradle.kts reads ADMOB_APP_ID from the environment
+      # for the AndroidManifest APPLICATION_ID placeholder.
+      build-env: |
+        ADMOB_APP_ID=${{ inputs.ads == 'real' && vars.ADMOB_APP_ID || '' }}
+    secrets:
+      ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+      KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+      KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+      KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
