@@ -205,12 +205,13 @@ python3 tool/validate_questions.py
   treats a mismatch as an error — a card promising 20 questions and delivering
   3 is worse than a card that says 3.
 - Generate new chapter scaffolding with `tool/generate_chapters.py`.
-- `docs/01`…`docs/18` are the architecture/release blueprints; `docs/10` is the
-  question authoring guide, `docs/11` the admin generator plan, `docs/15` local
-  Daily Quiz reminders, `docs/16` OneSignal/FCM live push, `docs/17` the Google
-  Play release runbook and `docs/18` the owner-facing publish checklist.
+- `docs/03` holds the JSON schemas, `docs/10` the question authoring guide,
+  `docs/11` the admin generator plan, `docs/12` the battle arena, `docs/16`
+  OneSignal/FCM live push, `docs/17` the Google Play release runbook, `docs/18`
+  the owner-facing publish checklist and `docs/19` the Firestore→bundle pull.
   **Read the matching doc before touching that subsystem.** `ADMIN_TODO.md`
-  tracks admin work.
+  tracks admin work; `PROJECT_REVIEW.md` holds the audit that the P1 sweep
+  worked through.
 
 ---
 
