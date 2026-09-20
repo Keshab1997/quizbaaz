@@ -45,6 +45,23 @@ class QuizProvider extends ChangeNotifier {
   /// a run the player walked away from.
   bool _abandoned = false;
 
+  /// True while an advance to the next question is queued (after an answer, a
+  /// timeout, or a skip). Without it, a skip and a tap inside the skip's 500 ms
+  /// window both enqueued an advance — and the second one completed the run a
+  /// second time, granting its rewards again.
+  bool _transitionPending = false;
+
+  /// Monotonic clock for the question on screen.
+  ///
+  /// Elapsed time used to be computed as `questionTimeSec - _secondsRemaining`,
+  /// which goes negative the moment a freeze-time lifeline pushes the remaining
+  /// seconds past the configured limit — poisoning the accuracy and tie-break
+  /// numbers the run reports.
+  final Stopwatch _questionClock = Stopwatch();
+
+  /// Seconds handed back by an extra life.
+  static const int kExtraLifeSeconds = 5;
+
   /// Bumped by every start and every quit. Async work carries the generation it
   /// belongs to, so a slow Firestore read that resolves after the player left
   /// cannot hand questions to a screen that is already gone.
@@ -362,6 +379,10 @@ class QuizProvider extends ChangeNotifier {
 
   void _resetQuizState() {
     _timer?.cancel();
+    _questionClock
+      ..stop()
+      ..reset();
+    _transitionPending = false;
     _runGeneration++;
     _abandoned = false;
     // Each quiz starts in the app language; a peek at another language is a
@@ -409,9 +430,21 @@ class QuizProvider extends ChangeNotifier {
     _secondsRemaining = questionTimeSec;
   }
 
-  void _startTimer() {
+  /// (Re)starts the per-question countdown.
+  ///
+  /// [seconds] overrides the starting value (an extra life hands back a few
+  /// seconds, not a fresh question), and [restartClock] is false when the
+  /// question is continuing — the elapsed clock must keep running then.
+  void _startTimer({int? seconds, bool restartClock = true}) {
     _timer?.cancel();
-    _secondsRemaining = questionTimeSec;
+    _secondsRemaining = seconds ?? questionTimeSec;
+    if (restartClock) {
+      _questionClock
+        ..reset()
+        ..start();
+    } else {
+      _questionClock.start(); // no-op when already running
+    }
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (_secondsRemaining > 0) {
         _secondsRemaining--;
@@ -430,12 +463,15 @@ class QuizProvider extends ChangeNotifier {
   // ---------------------------------------------------------------- Playing --
 
   void selectOption(int index) {
-    if (_isAnswerSubmitted || _disabledOptionIndices.contains(index)) return;
+    if (_isAnswerSubmitted ||
+        _transitionPending ||
+        _disabledOptionIndices.contains(index)) {
+      return;
+    }
 
     _selectedOptionIndex = index;
     _isAnswerSubmitted = true;
     _timer?.cancel();
-    _totalTimeSeconds += questionTimeSec - _secondsRemaining;
 
     final correctIndex = currentQuestion?.correctIndex ?? 0;
     if (index == correctIndex) {
@@ -456,11 +492,18 @@ class QuizProvider extends ChangeNotifier {
       // Wrong answer - check for extra life
       if (_extraLifeAvailable && !_extraLifeUsed) {
         _extraLifeUsed = true;
-        _userProvider.consumeItem(ShopItemIds.extraLife);
+        _spendItem(ShopItemIds.extraLife);
         _isAnswerSubmitted = false;
         _selectedOptionIndex = null;
         SoundService.instance.play('revive');
         Haptics.heavy();
+        // The timer was cancelled a few lines above. Restarting it with the
+        // time that was left is what makes the retry a second chance rather
+        // than an untimed one.
+        _startTimer(
+          seconds: _secondsRemaining <= 0 ? 1 : _secondsRemaining,
+          restartClock: false,
+        );
         notifyListeners();
         return; // Don't count as wrong, let them try again
       }
@@ -483,28 +526,31 @@ class QuizProvider extends ChangeNotifier {
     notifyListeners();
 
     // Auto next after 1.8 seconds
-    Future.delayed(const Duration(milliseconds: 1800), nextQuestion);
+    _totalTimeSeconds += _stopQuestionClock();
+    _scheduleAdvance(const Duration(milliseconds: 1800));
   }
 
   void _handleTimeout() {
-    if (_abandoned || _isAnswerSubmitted) return;
+    if (_abandoned || _isAnswerSubmitted || _transitionPending) return;
     _isAnswerSubmitted = true;
 
     // Check for extra life on timeout
     if (_extraLifeAvailable && !_extraLifeUsed) {
       _extraLifeUsed = true;
-      _userProvider.consumeItem(ShopItemIds.extraLife);
-      _secondsRemaining = 5; // Give 5 more seconds
+      _spendItem(ShopItemIds.extraLife);
       _isAnswerSubmitted = false;
       SoundService.instance.play('revive');
       Haptics.heavy();
-      _startTimer();
+      // `_startTimer()` on its own resets the countdown to the full configured
+      // question time, which silently threw away the five seconds the extra
+      // life is supposed to give back.
+      _startTimer(seconds: kExtraLifeSeconds, restartClock: false);
       notifyListeners();
       return;
     }
 
     _wrongCount++;
-    _totalTimeSeconds += questionTimeSec.toDouble();
+    _totalTimeSeconds += _stopQuestionClock();
     SoundService.instance.play('quiz_timeout');
     Haptics.error();
 
@@ -521,7 +567,7 @@ class QuizProvider extends ChangeNotifier {
 
     notifyListeners();
 
-    Future.delayed(const Duration(milliseconds: 1800), nextQuestion);
+    _scheduleAdvance(const Duration(milliseconds: 1800));
   }
 
   void nextQuestion() {
@@ -530,6 +576,12 @@ class QuizProvider extends ChangeNotifier {
     if (_abandoned) {
       return;
     }
+    // Never finish the same run twice: a second late advance used to walk the
+    // completion path again and grant the same rewards a second time.
+    if (_isQuizCompleted) {
+      return;
+    }
+    _transitionPending = false;
     if (_currentIndex < _questions.length - 1) {
       _currentIndex++;
       _selectedOptionIndex = null;
@@ -553,9 +605,9 @@ class QuizProvider extends ChangeNotifier {
       _isQuizCompleted = true;
       _timer?.cancel();
 
-      // Consume double points booster if used
+      // Consume double points booster if used (never on a practice run)
       if (_doublePointsActive) {
-        _userProvider.consumeItem(ShopItemIds.doublePoints);
+        _spendItem(ShopItemIds.doublePoints);
       }
 
       final perfect =
@@ -586,9 +638,48 @@ class QuizProvider extends ChangeNotifier {
     ));
   }
 
+  /// Stops the elapsed clock and returns whole seconds spent on this question.
+  int _stopQuestionClock() {
+    _questionClock.stop();
+    return (_questionClock.elapsedMilliseconds / 1000).round().clamp(0, 3600);
+  }
+
+  /// Queues the advance to the next question, tagged with the run it belongs to.
+  ///
+  /// `_resetQuizState()` clears `_abandoned`, so a callback left over from the
+  /// previous run would happily advance the *new* one. The run generation is
+  /// the only token that survives a reset.
+  void _scheduleAdvance(Duration delay) {
+    final generation = _runGeneration;
+    _transitionPending = true;
+    Future.delayed(delay, () {
+      if (generation != _runGeneration) return;
+      nextQuestion();
+    });
+  }
+
+  /// Takes one unit of [itemId] from the inventory.
+  ///
+  /// Practice runs are free: replaying a finished set changes no economy at
+  /// all, and a learner revising a chapter should not have to spend power-ups
+  /// to do it.
+  bool _spendItem(String itemId) =>
+      _isPractice ? true : _userProvider.consumeItem(itemId);
+
   /// Calculates coins & gems from the remote config, saves the run into the
   /// Hive-backed stats and credits the player (daily rewards once per day).
+  ///
+  /// Practice runs return before any of that: they earn no coins, gems or XP,
+  /// write no stats or history, and consume nothing from the inventory. Set
+  /// progress is still merged in [_recordSetProgress], which is how a replay
+  /// can show a better score without pretending to be a first completion.
   void _grantRewards() {
+    if (_isPractice) {
+      _earnedCoins = 0;
+      _earnedGems = 0;
+      _dailyRewardSkipped = true;
+      return;
+    }
     final config = _userProvider.config;
     final total = _questions.length;
     final isPerfect = total > 0 && _correctCount == total;
@@ -692,7 +783,7 @@ class QuizProvider extends ChangeNotifier {
     if (_fiftyFiftyUsed || _isAnswerSubmitted || currentQuestion == null) {
       return false;
     }
-    if (!_userProvider.consumeItem(ShopItemIds.fiftyFifty)) {
+    if (!_spendItem(ShopItemIds.fiftyFifty)) {
       return false;
     }
     _fiftyFiftyUsed = true;
@@ -716,7 +807,7 @@ class QuizProvider extends ChangeNotifier {
     if (_freezeUsed || _isAnswerSubmitted || currentQuestion == null) {
       return false;
     }
-    if (!_userProvider.consumeItem(ShopItemIds.freezeTime)) {
+    if (!_spendItem(ShopItemIds.freezeTime)) {
       return false;
     }
     _freezeUsed = true;
@@ -730,15 +821,18 @@ class QuizProvider extends ChangeNotifier {
   /// Skips the current question using inventory item.
   /// Returns false if can't be used.
   bool useSkipQuestion() {
-    if (_skipUsed || _isAnswerSubmitted || currentQuestion == null) {
+    if (_skipUsed ||
+        _isAnswerSubmitted ||
+        _transitionPending ||
+        currentQuestion == null) {
       return false;
     }
-    if (!_userProvider.consumeItem(ShopItemIds.skipQuestion)) {
+    if (!_spendItem(ShopItemIds.skipQuestion)) {
       return false;
     }
     _skipUsed = true;
     _timer?.cancel();
-    _totalTimeSeconds += questionTimeSec - _secondsRemaining;
+    _totalTimeSeconds += _stopQuestionClock();
 
     final q = currentQuestion;
     if (q != null) {
@@ -751,7 +845,7 @@ class QuizProvider extends ChangeNotifier {
       );
     }
 
-    Future.delayed(const Duration(milliseconds: 500), nextQuestion);
+    _scheduleAdvance(const Duration(milliseconds: 500));
     SoundService.instance.play('lifeline_skip');
     Haptics.light();
     notifyListeners();
@@ -764,7 +858,7 @@ class QuizProvider extends ChangeNotifier {
     if (_hintUsed || _isAnswerSubmitted || currentQuestion == null) {
       return false;
     }
-    if (!_userProvider.consumeItem(ShopItemIds.hintReveal)) {
+    if (!_spendItem(ShopItemIds.hintReveal)) {
       return false;
     }
     _hintUsed = true;
