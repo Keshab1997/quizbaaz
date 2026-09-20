@@ -90,6 +90,11 @@ jobs:
           printf '%s' "$FIREBASE_READONLY_SA" > "$RUNNER_TEMP/firebase-sa.json"
           echo "GOOGLE_APPLICATION_CREDENTIALS=$RUNNER_TEMP/firebase-sa.json" >> "$GITHUB_ENV"
 
+      - name: Check the service account against Firestore
+        # Prints which project/account the secret holds and how many questions
+        # are readable — the clearest evidence that FIREBASE_READONLY_SA is right.
+        run: python3 tool/check_service_account.py "$GOOGLE_APPLICATION_CREDENTIALS"
+
       - name: Pull questions from Firestore
         run: python3 tool/pull_firestore_questions.py --update-catalog-counts
 
