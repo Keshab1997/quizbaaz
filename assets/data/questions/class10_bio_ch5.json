@@ -6,5 +6,386 @@
     "hi": "हमारा पर्यावरण"
   },
   "class_standard": "Class 10",
-  "questions": []
+  "questions": [
+    {
+      "id": "bio_ch_05_q001",
+      "question": {
+        "bn": "খাদ্যশৃঙ্খলের প্রথম ট্রফিক স্তরে সাধারণত কোন জীব থাকে?",
+        "en": "Which organism is usually the first trophic level in a food chain?",
+        "hi": "खाद्य श्रृंखला के प्रथम पोषी स्तर पर सामान्यतः कौन-से जीव होते हैं?"
+      },
+      "options": [
+        {
+          "bn": "উৎপাদক",
+          "en": "Producers",
+          "hi": "उत्पादक"
+        },
+        {
+          "bn": "প্রাথমিক খাদক",
+          "en": "Primary consumers",
+          "hi": "प्राथमिक उपभोक्ता"
+        },
+        {
+          "bn": "দ্বিতীয় পর্যায়ের খাদক",
+          "en": "Secondary consumers",
+          "hi": "द्वितीयक उपभोक्ता"
+        },
+        {
+          "bn": "বিয়োজক",
+          "en": "Decomposers",
+          "hi": "अपघटक"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "উৎপাদক নিজের খাদ্য নিজে তৈরি করে এবং খাদ্যশৃঙ্খলের ভিত্তি গঠন করে। তাই তারা প্রথম ট্রফিক স্তরে থাকে।",
+        "en": "Producers make their own food and form the base of a food chain. Therefore, they occupy the first trophic level.",
+        "hi": "उत्पादक अपना भोजन स्वयं बनाते हैं और खाद्य श्रृंखला का आधार होते हैं। इसलिए वे प्रथम पोषी स्तर पर होते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_05_q002",
+      "question": {
+        "bn": "ঘাস → ফড়িং → ব্যাঙ → সাপ খাদ্যশৃঙ্খলে প্রাথমিক খাদক কোনটি?",
+        "en": "In the food chain Grass → Grasshopper → Frog → Snake, which organism is the primary consumer?",
+        "hi": "घास → टिड्डा → मेंढक → साँप खाद्य श्रृंखला में प्राथमिक उपभोक्ता कौन है?"
+      },
+      "options": [
+        {
+          "bn": "ঘাস",
+          "en": "Grass",
+          "hi": "घास"
+        },
+        {
+          "bn": "ফড়িং",
+          "en": "Grasshopper",
+          "hi": "टिड्डा"
+        },
+        {
+          "bn": "ব্যাঙ",
+          "en": "Frog",
+          "hi": "मेंढक"
+        },
+        {
+          "bn": "সাপ",
+          "en": "Snake",
+          "hi": "साँप"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "ফড়িং সরাসরি উৎপাদক ঘাসকে খাদ্য হিসেবে গ্রহণ করে। তাই ফড়িং প্রাথমিক খাদক।",
+        "en": "The grasshopper feeds directly on the producer, grass. Hence, it is the primary consumer.",
+        "hi": "टिड्डा सीधे उत्पादक घास को खाता है। इसलिए टिड्डा प्राथमिक उपभोक्ता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_05_q003",
+      "question": {
+        "bn": "একটি ট্রফিক স্তর থেকে পরবর্তী ট্রফিক স্তরে গেলে উপলব্ধ শক্তির কী ঘটে?",
+        "en": "What happens to the available energy as we move from one trophic level to the next?",
+        "hi": "एक पोषी स्तर से अगले पोषी स्तर पर जाने पर उपलब्ध ऊर्जा का क्या होता है?"
+      },
+      "options": [
+        {
+          "bn": "বৃদ্ধি পায়",
+          "en": "It increases",
+          "hi": "बढ़ती है"
+        },
+        {
+          "bn": "ঠিক একই থাকে",
+          "en": "It remains exactly the same",
+          "hi": "बिल्कुल समान रहती है"
+        },
+        {
+          "bn": "কমে যায়",
+          "en": "It decreases",
+          "hi": "कम होती है"
+        },
+        {
+          "bn": "প্রতিটি স্তরে শূন্য হয়ে যায়",
+          "en": "It becomes zero at every level",
+          "hi": "हर स्तर पर शून्य हो जाती है"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "bn": "প্রতিটি ট্রফিক স্তরে জীবনক্রিয়ায় শক্তির অনেকটা ব্যবহৃত হয় এবং তাপ হিসেবে হারিয়ে যায়। তাই উচ্চতর স্তরে কম শক্তি পাওয়া যায়।",
+        "en": "A large part of energy is used for life processes and lost as heat at each trophic transfer. Therefore, less energy is available at higher trophic levels.",
+        "hi": "प्रत्येक पोषी स्तर पर ऊर्जा का बड़ा भाग जीवन-प्रक्रियाओं में उपयोग होकर ऊष्मा के रूप में नष्ट हो जाता है। इसलिए ऊँचे पोषी स्तरों पर कम ऊर्जा उपलब्ध होती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_05_q004",
+      "question": {
+        "bn": "কোন জীব মৃত উদ্ভিদ ও প্রাণীকে ভেঙে পুষ্টি উপাদান পরিবেশে ফিরিয়ে দেয়?",
+        "en": "Which organisms break down dead plants and animals and recycle nutrients into the ecosystem?",
+        "hi": "कौन-से जीव मृत पौधों और जन्तुओं को विघटित करके पोषक तत्वों को पारितंत्र में वापस पहुँचाते हैं?"
+      },
+      "options": [
+        {
+          "bn": "উৎপাদক",
+          "en": "Producers",
+          "hi": "उत्पादक"
+        },
+        {
+          "bn": "তৃণভোজী",
+          "en": "Herbivores",
+          "hi": "शाकाहारी"
+        },
+        {
+          "bn": "বিয়োজক",
+          "en": "Decomposers",
+          "hi": "अपघटक"
+        },
+        {
+          "bn": "শীর্ষ মাংসাশী",
+          "en": "Top carnivores",
+          "hi": "शीर्ष मांसाहारी"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "bn": "ব্যাকটেরিয়া ও ছত্রাকের মতো বিয়োজক মৃত জৈব পদার্থকে ভেঙে দেয় এবং পুষ্টি উপাদান পরিবেশে ফিরিয়ে দেয়।",
+        "en": "Decomposers such as bacteria and fungi break down dead organic matter and release nutrients back into the environment.",
+        "hi": "बैक्टीरिया और कवक जैसे अपघटक मृत कार्बनिक पदार्थों को विघटित करके पोषक तत्वों को पर्यावरण में वापस पहुँचाते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_05_q005",
+      "question": {
+        "bn": "ওজোন স্তরের ক্ষয়ের জন্য প্রধানত কোন পদার্থ দায়ী?",
+        "en": "Which substance is mainly responsible for the depletion of the ozone layer?",
+        "hi": "ओजोन परत के क्षय के लिए मुख्यतः कौन-से पदार्थ जिम्मेदार हैं?"
+      },
+      "options": [
+        {
+          "bn": "ক্লোরোফ্লুরোকার্বন (CFCs)",
+          "en": "Chlorofluorocarbons (CFCs)",
+          "hi": "क्लोरोफ्लोरोकार्बन (CFCs)"
+        },
+        {
+          "bn": "অক্সিজেন",
+          "en": "Oxygen",
+          "hi": "ऑक्सीजन"
+        },
+        {
+          "bn": "নাইট্রোজেন",
+          "en": "Nitrogen",
+          "hi": "नाइट्रोजन"
+        },
+        {
+          "bn": "কার্বন ডাইঅক্সাইড",
+          "en": "Carbon dioxide",
+          "hi": "कार्बन डाइऑक्साइड"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "স্ট্র্যাটোস্ফিয়ারে CFCs থেকে ক্লোরিন মুক্তমূলক উৎপন্ন হয়, যা অনুঘটকীয়ভাবে ওজোন অণু ধ্বংস করে। তাই CFCs ওজোন-ক্ষয়কারী প্রধান পদার্থ।",
+        "en": "CFCs release chlorine radicals in the stratosphere, which catalytically destroy ozone molecules. Thus, CFCs are major ozone-depleting substances.",
+        "hi": "समतापमंडल में CFCs से क्लोरीन मूलक निकलते हैं, जो उत्प्रेरक रूप से ओजोन अणुओं को नष्ट करते हैं। इसलिए CFCs ओजोन-क्षयकारी प्रमुख पदार्थ हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_05_q006",
+      "question": {
+        "bn": "ওজোন স্তর প্রধানত কোন ধরনের বিকিরণ শোষণ করে?",
+        "en": "Which type of radiation is largely absorbed by the ozone layer?",
+        "hi": "ओजोन परत मुख्यतः किस प्रकार के विकिरण को अवशोषित करती है?"
+      },
+      "options": [
+        {
+          "bn": "অতিবেগুনি বিকিরণ",
+          "en": "Ultraviolet radiation",
+          "hi": "पराबैंगनी विकिरण"
+        },
+        {
+          "bn": "রেডিও তরঙ্গ",
+          "en": "Radio waves",
+          "hi": "रेडियो तरंगें"
+        },
+        {
+          "bn": "দৃশ্যমান আলো",
+          "en": "Visible light",
+          "hi": "दृश्य प्रकाश"
+        },
+        {
+          "bn": "শব্দ তরঙ্গ",
+          "en": "Sound waves",
+          "hi": "ध्वनि तरंगें"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "ওজোন স্তর সূর্যের ক্ষতিকর অতিবেগুনি বিকিরণের একটি বড় অংশ শোষণ করে এবং জীবের উপর এর ক্ষতিকর প্রভাব কমায়।",
+        "en": "The ozone layer absorbs a large portion of harmful ultraviolet radiation from the Sun, reducing its harmful effects on living organisms.",
+        "hi": "ओजोन परत सूर्य से आने वाले हानिकारक पराबैंगनी विकिरण के बड़े भाग को अवशोषित करके जीवों पर इसके हानिकारक प्रभाव को कम करती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_05_q007",
+      "question": {
+        "bn": "ঘাস → হরিণ → বাঘ খাদ্যশৃঙ্খলে হরিণ কোন ট্রফিক স্তরে থাকে?",
+        "en": "In the food chain Grass → Deer → Tiger, the deer occupies which trophic level?",
+        "hi": "घास → हिरण → बाघ खाद्य श्रृंखला में हिरण किस पोषी स्तर पर होता है?"
+      },
+      "options": [
+        {
+          "bn": "প্রথম ট্রফিক স্তর",
+          "en": "First trophic level",
+          "hi": "प्रथम पोषी स्तर"
+        },
+        {
+          "bn": "দ্বিতীয় ট্রফিক স্তর",
+          "en": "Second trophic level",
+          "hi": "द्वितीय पोषी स्तर"
+        },
+        {
+          "bn": "তৃতীয় ট্রফিক স্তর",
+          "en": "Third trophic level",
+          "hi": "तृतीय पोषी स्तर"
+        },
+        {
+          "bn": "চতুর্থ ট্রফিক স্তর",
+          "en": "Fourth trophic level",
+          "hi": "चतुर्थ पोषी स्तर"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "ঘাস প্রথম ট্রফিক স্তরের উৎপাদক। হরিণ ঘাস খায় বলে এটি প্রাথমিক খাদক এবং দ্বিতীয় ট্রফিক স্তরে থাকে।",
+        "en": "Grass is the producer at the first trophic level. Deer feeds on grass, so it is a primary consumer at the second trophic level.",
+        "hi": "घास प्रथम पोषी स्तर का उत्पादक है। हिरण घास खाता है, इसलिए वह प्राथमिक उपभोक्ता होकर द्वितीय पोषी स्तर पर होता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_05_q008",
+      "question": {
+        "bn": "একটি সরল খাদ্যশৃঙ্খলে ট্রফিক স্তরগুলির সঠিক ক্রম কোনটি?",
+        "en": "What is the correct order of trophic levels in a simple food chain?",
+        "hi": "एक सरल खाद्य श्रृंखला में पोषी स्तरों का सही क्रम कौन-सा है?"
+      },
+      "options": [
+        {
+          "bn": "উৎপাদক → প্রাথমিক খাদক → দ্বিতীয় পর্যায়ের খাদক",
+          "en": "Producer → Primary consumer → Secondary consumer",
+          "hi": "उत्पादक → प्राथमिक उपभोक्ता → द्वितीयक उपभोक्ता"
+        },
+        {
+          "bn": "প্রাথমিক খাদক → উৎপাদক → দ্বিতীয় পর্যায়ের খাদক",
+          "en": "Primary consumer → Producer → Secondary consumer",
+          "hi": "प्राथमिक उपभोक्ता → उत्पादक → द्वितीयक उपभोक्ता"
+        },
+        {
+          "bn": "দ্বিতীয় পর্যায়ের খাদক → উৎপাদক → প্রাথমিক খাদক",
+          "en": "Secondary consumer → Producer → Primary consumer",
+          "hi": "द्वितीयक उपभोक्ता → उत्पादक → प्राथमिक उपभोक्ता"
+        },
+        {
+          "bn": "উৎপাদক → দ্বিতীয় পর্যায়ের খাদক → প্রাথমিক খাদক",
+          "en": "Producer → Secondary consumer → Primary consumer",
+          "hi": "उत्पादक → द्वितीयक उपभोक्ता → प्राथमिक उपभोक्ता"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "উৎপাদকের মাধ্যমে খাদ্যশৃঙ্খলে শক্তি প্রবেশ করে, তারপর প্রাথমিক খাদক এবং পরবর্তীতে দ্বিতীয় পর্যায়ের খাদকের কাছে যায়। তাই প্রথম ক্রমটি সঠিক।",
+        "en": "Energy enters the food chain through producers, then passes to primary consumers and subsequently to secondary consumers. Hence, the first order is correct.",
+        "hi": "ऊर्जा उत्पादकों के माध्यम से खाद्य श्रृंखला में प्रवेश करती है, फिर प्राथमिक उपभोक्ताओं और उसके बाद द्वितीयक उपभोक्ताओं तक पहुँचती है। इसलिए पहला क्रम सही है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_05_q009",
+      "question": {
+        "bn": "খাদ্যশৃঙ্খল সাধারণত কয়েকটি ট্রফিক স্তরের মধ্যেই সীমাবদ্ধ থাকে কেন?",
+        "en": "Why are food chains generally limited to a few trophic levels?",
+        "hi": "खाद्य श्रृंखलाएँ सामान्यतः कुछ ही पोषी स्तरों तक सीमित क्यों रहती हैं?"
+      },
+      "options": [
+        {
+          "bn": "প্রতিটি পরবর্তী ট্রফিক স্তরে শক্তি অনেক কমে যায়",
+          "en": "Energy decreases greatly at each successive trophic level",
+          "hi": "प्रत्येक अगले पोषी स्तर पर ऊर्जा बहुत कम हो जाती है"
+        },
+        {
+          "bn": "উৎপাদক খাদ্য তৈরি করতে পারে না",
+          "en": "Producers cannot make food",
+          "hi": "उत्पादक भोजन नहीं बना सकते"
+        },
+        {
+          "bn": "বিয়োজক পুষ্টি পুনঃচক্রণ বন্ধ করে দেয়",
+          "en": "Decomposers stop nutrient recycling",
+          "hi": "अपघटक पोषक तत्वों का पुनर्चक्रण बंद कर देते हैं"
+        },
+        {
+          "bn": "খাদ্য থেকে খাদকরা সমস্ত শক্তি পেয়ে যায়",
+          "en": "Consumers receive all the energy from their food",
+          "hi": "उपभोक्ताओं को भोजन से पूरी ऊर्जा मिल जाती है"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "পরবর্তী ট্রফিক স্তরে শক্তির সামান্য অংশই স্থানান্তরিত হয় এবং অনেক শক্তি জীবনক্রিয়া ও তাপ হিসেবে হারিয়ে যায়। তাই বহু পরপর স্তরকে বজায় রাখার মতো শক্তি অবশিষ্ট থাকে না।",
+        "en": "Only a small fraction of energy is transferred to the next trophic level, while much is lost through life processes and heat. Thus, insufficient energy remains to support many successive levels.",
+        "hi": "अगले पोषी स्तर तक ऊर्जा का केवल एक छोटा भाग पहुँचता है और बहुत-सी ऊर्जा जीवन-प्रक्रियाओं तथा ऊष्मा के रूप में नष्ट हो जाती है। इसलिए अनेक लगातार स्तरों को बनाए रखने के लिए पर्याप्त ऊर्जा नहीं बचती।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_05_q010",
+      "question": {
+        "bn": "ওজোন স্তরের ক্ষয়ের একটি প্রধান ফল কী?",
+        "en": "What is one major consequence of ozone layer depletion?",
+        "hi": "ओजोन परत के क्षय का एक प्रमुख परिणाम क्या है?"
+      },
+      "options": [
+        {
+          "bn": "পৃথিবীর পৃষ্ঠে বেশি অতিবেগুনি বিকিরণ পৌঁছায়",
+          "en": "More ultraviolet radiation reaches Earth's surface",
+          "hi": "पृथ्वी की सतह पर अधिक पराबैंगनी विकिरण पहुँचता है"
+        },
+        {
+          "bn": "পৃথিবীর পৃষ্ঠে কম অতিবেগুনি বিকিরণ পৌঁছায়",
+          "en": "Less ultraviolet radiation reaches Earth's surface",
+          "hi": "पृथ्वी की सतह पर कम पराबैंगनी विकिरण पहुँचता है"
+        },
+        {
+          "bn": "বায়ুমণ্ডল থেকে অক্সিজেন সম্পূর্ণ অদৃশ্য হয়ে যায়",
+          "en": "Oxygen completely disappears from the atmosphere",
+          "hi": "वायुमंडल से ऑक्सीजन पूरी तरह गायब हो जाती है"
+        },
+        {
+          "bn": "নাইট্রোজেনের পরিমাণ শূন্য হয়ে যায়",
+          "en": "The amount of nitrogen becomes zero",
+          "hi": "नाइट्रोजन की मात्रा शून्य हो जाती है"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "ওজোন স্তর পাতলা হলে কম ক্ষতিকর অতিবেগুনি বিকিরণ শোষিত হয়। ফলে পৃথিবীর পৃষ্ঠে বেশি অতিবেগুনি বিকিরণ পৌঁছে জীবজগতের ক্ষতির ঝুঁকি বাড়ায়।",
+        "en": "A thinner ozone layer absorbs less harmful ultraviolet radiation. Consequently, more ultraviolet radiation reaches Earth's surface, increasing risks to living organisms.",
+        "hi": "ओजोन परत के पतले होने पर कम हानिकारक पराबैंगनी विकिरण अवशोषित होता है। परिणामस्वरूप पृथ्वी की सतह पर अधिक पराबैंगनी विकिरण पहुँचता है और जीवों के लिए जोखिम बढ़ता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    }
+  ]
 }

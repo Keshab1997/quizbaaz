@@ -6,5 +6,386 @@
     "hi": "यूरोप में राष्ट्रवाद का उदय"
   },
   "class_standard": "Class 10",
-  "questions": []
+  "questions": [
+    {
+      "id": "hist_ch_01_q001",
+      "question": {
+        "bn": "১৮৪৮ সালে কোন ফরাসি শিল্পী 'গণতান্ত্রিক ও সামাজিক প্রজাতন্ত্র'-এর স্বপ্নে গড়ে ওঠা বিশ্বের চারটি চিত্রকর্ম প্রকাশ করেছিলেন?",
+        "en": "In 1848, which French artist prepared a series of four prints visualizing his dream of a world made up of 'democratic and social Republics'?",
+        "hi": "1848 में किस फ्रांसीसी कलाकार ने 'लोकतांत्रिक और सामाजिक गणराज्यों' के अपने सपने को चित्रित करने वाले चार चित्रों की एक श्रृंखला बनाई?"
+      },
+      "options": [
+        {
+          "bn": "ফ্রেডেরিক সোরিউ",
+          "en": "Frédéric Sorrieu",
+          "hi": "फ्रेडरिक सॉरयू"
+        },
+        {
+          "bn": "লুই-লিওপোল্ড বোইলি",
+          "en": "Louis-Léopold Boilly",
+          "hi": "लुई-लियोपोल्ड बॉइली"
+        },
+        {
+          "bn": "ইউজিন দেলাক্রোয়া",
+          "en": "Eugène Delacroix",
+          "hi": "यूजीन देलाक्रोवा"
+        },
+        {
+          "bn": "আর্নেস্ট রেনান",
+          "en": "Ernest Renan",
+          "hi": "अर्न्स्ट रेनन"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "ফ্রেডেরিক সোরিউ ১৮৪৮ সালে গণতান্ত্রিক ও সামাজিক প্রজাতন্ত্রের দৃষ্টিভঙ্গি চিত্রিত করে বিখ্যাত চারটি প্রিন্টের সিরিজ তৈরি করেছিলেন।",
+        "en": "Frédéric Sorrieu created the famous series of four prints in 1848 depicting his vision of democratic and social republics.",
+        "hi": "फ्रेडरिक सॉरयू ने 1848 में लोकतांत्रिक और सामाजिक गणराज्यों के अपने दृष्टिकोण को दर्शाने वाले चार चित्रों की प्रसिद्ध श्रृंखला बनाई थी।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "hist_ch_01_q002",
+      "question": {
+        "bn": "ফরাসি বিপ্লবের পর ফরাসি জাতিকে রূপক হিসেবে উপস্থাপন করতে কোন চিত্র ব্যবহার করা হয়েছিল?",
+        "en": "Which allegory was used to personify the French nation after the French Revolution?",
+        "hi": "फ्रांसीसी क्रांति के बाद फ्रांसीसी राष्ट्र का प्रतिनिधित्व करने के लिए किस रूपक का उपयोग किया गया था?"
+      },
+      "options": [
+        {
+          "bn": "জার্মেনিয়া",
+          "en": "Germania",
+          "hi": "जर्मेनिया"
+        },
+        {
+          "bn": "মারিয়ান",
+          "en": "Marianne",
+          "hi": "मारियान"
+        },
+        {
+          "bn": "ব্রিটানিয়া",
+          "en": "Britannia",
+          "hi": "ब्रिटानिया"
+        },
+        {
+          "bn": "ভিক্টোরিয়া",
+          "en": "Victoria",
+          "hi": "विक्टोरिया"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "মারিয়ান ছিলেন ফ্রান্সের রূপক যা প্রজাতন্ত্র এবং স্বাধীনতার প্রতীক, অন্যদিকে জার্মেনিয়া ছিল জার্মানির রূপক।",
+        "en": "Marianne was the allegory of France symbolizing the Republic and Liberty, whereas Germania represented the German nation.",
+        "hi": "मारियान फ्रांस की रूपक थीं जो गणराज्य और स्वतंत्रता का प्रतीक थीं, जबकि जर्मेनिया जर्मन राष्ट्र का प्रतिनिधित्व करती थीं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "hist_ch_01_q003",
+      "question": {
+        "bn": "সিভিল কোড বা নেপোলিয়ন কোড কোন সালে চালু করা হয়েছিল?",
+        "en": "In which year was the Civil Code, also known as the Napoleonic Code, introduced?",
+        "hi": "नागरिक संहिता, जिसे नेपोलियन की संहिता भी कहा जाता है, किस वर्ष लागू की गई थी?"
+      },
+      "options": [
+        {
+          "bn": "১৭৮৯",
+          "en": "1789",
+          "hi": "1789"
+        },
+        {
+          "bn": "১৭৯৯",
+          "en": "1799",
+          "hi": "1799"
+        },
+        {
+          "bn": "১৮০৪",
+          "en": "1804",
+          "hi": "1804"
+        },
+        {
+          "bn": "১৮১৫",
+          "en": "1815",
+          "hi": "1815"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "bn": "নেপোলিয়ন কর্তৃক প্রবর্তিত ১৮০৪ সালের সিভিল কোড আইনের চোখে সমতা প্রতিষ্ঠা করে এবং সামন্ততান্ত্রিক সুবিধা বাতিল করে।",
+        "en": "The Civil Code of 1804, introduced by Napoleon, established equality before law and abolished feudal privileges.",
+        "hi": "नेपोलियन द्वारा लागू की गई 1804 की नागरिक संहिता ने कानून के समक्ष समानता स्थापित की और सामंती विशेषाधिकारों को समाप्त किया।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "hist_ch_01_q004",
+      "question": {
+        "bn": "প্রাশিয়ার উদ্যোগে ১৮৩৪ সালে গঠিত 'জোলভারাইন' (Zollverein) কী ছিল?",
+        "en": "What was 'Zollverein', formed in 1834 at the initiative of Prussia?",
+        "hi": "1834 में प्रथा की पहल पर गठित 'ज़ोलवेराइन' (Zollverein) क्या था?"
+      },
+      "options": [
+        {
+          "bn": "একটি সামরিক জোট",
+          "en": "A military alliance",
+          "hi": "एक सैन्य गठबंधन"
+        },
+        {
+          "bn": "একটি শুল্ক সংঘ",
+          "en": "A customs union",
+          "hi": "एक शुल्क संघ"
+        },
+        {
+          "bn": "একটি রাজনৈতিক দল",
+          "en": "A political party",
+          "hi": "एक राजनीतिक दल"
+        },
+        {
+          "bn": "একটি গোপন সমিতি",
+          "en": "A secret society",
+          "hi": "एक गुप्त संगठन"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "জোলভারাইন ছিল একটি শুল্ক সংঘ যা শুল্ক বাধা দূর করতে এবং মুদ্রার সংখ্যা ত্রিশের বেশি থেকে কমিয়ে দুটিতে আনতে গঠিত হয়েছিল।",
+        "en": "Zollverein was a customs union formed to abolish tariff barriers and reduce currencies from over thirty to two.",
+        "hi": "ज़ोलवेराइन एक शुल्क संघ था जिसे शुल्क अवरोधों को समाप्त करने और मुद्राओं की संख्या तीस से अधिक से घटाकर दो करने के लिए बनाया गया था।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "hist_ch_01_q005",
+      "question": {
+        "bn": "১৮১৫ সালে ভিয়েনা কংগ্রেসের আয়োজন কে করেছিলেন?",
+        "en": "Who hosted the Congress of Vienna in 1815?",
+        "hi": "1815 में विएना कांग्रेस की मेजबानी किसने की थी?"
+      },
+      "options": [
+        {
+          "bn": "ডিউক মেটারনিখ",
+          "en": "Duke Metternich",
+          "hi": "ड्यूक मेटरनिख"
+        },
+        {
+          "bn": "অটো ভন বিসমার্ক",
+          "en": "Otto von Bismarck",
+          "hi": "ऑटो वोन बिस्मार्क"
+        },
+        {
+          "bn": "জুসেপ্পে মাৎসিনি",
+          "en": "Giuseppe Mazzini",
+          "hi": "जूसेपे मेत्सिनी"
+        },
+        {
+          "bn": "নেপোলিয়ন বোনাপার্ট",
+          "en": "Napoleon Bonaparte",
+          "hi": "नेपोलियन बोनापार्ट"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "অস্ট্রিয়ার চ্যান্সেলর ডিউক মেটারনিখ নেপোলিয়নের পরাজয়ের পর ইউরোপের পুনর্বিন্যাসের জন্য ১৮১৫ সালে ভিয়েনা কংগ্রেসের আয়োজন করেছিলেন।",
+        "en": "Austrian Chancellor Duke Metternich hosted the Congress of Vienna in 1815 to draw up a settlement for Europe after Napoleon's defeat.",
+        "hi": "ऑस्ट्रिया के चांसलर ड्यूक मेटरनिख ने नेपोलियन की हार के बाद यूरोप के लिए एक समझौता तैयार करने के लिए 1815 में विएना कांग्रेस की मेजबानी की थी।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "hist_ch_01_q006",
+      "question": {
+        "bn": "জুসেপ্পে মাৎসিনি যথাক্রমে মার্সেই এবং বার্নে কোন কোন গোপন সমিতি প্রতিষ্ঠা করেছিলেন?",
+        "en": "Which secret societies were founded by Giuseppe Mazzini in Marseilles and Berne respectively?",
+        "hi": "जूसेपे मेत्सिनी द्वारा मार्सेई और बर्न में क्रमशः किन गुप्त संगठनों की स्थापना की गई थी?"
+      },
+      "options": [
+        {
+          "bn": "ইয়ং ইতালি এবং ইয়ং ইউরোপ",
+          "en": "Young Italy and Young Europe",
+          "hi": "यंग इटली और यंग यूरोप"
+        },
+        {
+          "bn": "কার্বোনারি এবং ইয়ং ইউরোপ",
+          "en": "Carbonari and Young Europe",
+          "hi": "कारबोनरी और यंग यूरोप"
+        },
+        {
+          "bn": "ইয়ং ইউরোপ এবং ইয়ং ইতালি",
+          "en": "Young Europe and Young Italy",
+          "hi": "यंग यूरोप और यंग इटली"
+        },
+        {
+          "bn": "রেড শার্টস এবং কার্বোনারি",
+          "en": "Red Shirts and Carbonari",
+          "hi": "रेड शर्ट्स और कारबोनरी"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "মাৎসিনি বৈপ্লবিক আন্দোলন গড়ে তোলার জন্য মার্সেইতে 'ইয়ং ইতালি' এবং বার্নে 'ইয়ং ইউরোপ' প্রতিষ্ঠা করেছিলেন।",
+        "en": "Mazzini founded 'Young Italy' in Marseilles and 'Young Europe' in Berne to mobilize underground revolutionary movements.",
+        "hi": "मेत्सिनी ने क्रांतिकारी अभियानों को एकजुट करने के लिए मार्सेई में 'यंग इटली' और बर्न में 'यंग यूरोप' की स्थापना की।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "hist_ch_01_q007",
+      "question": {
+        "bn": "১৮৩২ সালে কোন চুক্তির মাধ্যমে গ্রিসকে একটি স্বাধীন জাতি হিসেবে স্বীকৃতি দেওয়া হয়েছিল?",
+        "en": "Which Treaty recognized Greece as an independent nation in 1832?",
+        "hi": "1832 में किस संधि ने यूनान को एक स्वतंत्र राष्ट्र के रूप में मान्यता दी?"
+      },
+      "options": [
+        {
+          "bn": "ভিয়েনার চুক্তি",
+          "en": "Treaty of Vienna",
+          "hi": "विएना की संधि"
+        },
+        {
+          "bn": "কনস্ট্যান্টিনোপলের চুক্তি",
+          "en": "Treaty of Constantinople",
+          "hi": "कुस्तुनतुनिया की संधि"
+        },
+        {
+          "bn": "ভার্সাইয়ের চুক্তি",
+          "en": "Treaty of Versailles",
+          "hi": "वर्साय की संधि"
+        },
+        {
+          "bn": "ফ্রাঙ্কফুর্টের চুক্তি",
+          "en": "Treaty of Frankfurt",
+          "hi": "फ्रैंकफर्ट की संधि"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "১৮৩২ সালের কনস্ট্যান্টিনোপলের চুক্তি গ্রিক স্বাধীনতা যুদ্ধের অবসান ঘটিয়ে গ্রিসকে স্বাধীন জাতি হিসেবে স্বীকৃতি দেয়।",
+        "en": "The Treaty of Constantinople of 1832 recognized Greece as an independent nation, concluding the Greek War of Independence.",
+        "hi": "1832 की कुस्तुनतुनिया की संधि ने यूनानी स्वतंत्रता संग्राम का समापन करते हुए यूनान को एक स्वतंत्र राष्ट्र के रूप में मान्यता दी।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "hist_ch_01_q008",
+      "question": {
+        "bn": "১৮৭১ সালের জানুয়ারিতে ভার্সাইয়ে অনুষ্ঠিত অনুষ্ঠানে কাকে ঐক্যবদ্ধ জার্মানির সম্রাট হিসেবে ঘোষণা করা হয়েছিল?",
+        "en": "Who was proclaimed the Emperor of United Germany at a ceremony held in Versailles in January 1871?",
+        "hi": "जनवरी 1871 में वर्साय में आयोजित एक समारोह में किसे एकीकृत जर्मनी का सम्राट घोषित किया गया था?"
+      },
+      "options": [
+        {
+          "bn": "কাইজার উইলিয়াম প্রথম",
+          "en": "Kaiser William I",
+          "hi": "कैसर विलियम प्रथम"
+        },
+        {
+          "bn": "উইলিয়াম দ্বিতীয়",
+          "en": "William II",
+          "hi": "विलियम द्वितीय"
+        },
+        {
+          "bn": "ফ্রেডেরিক উইলিয়াম চতুর্থ",
+          "en": "Frederick William IV",
+          "hi": "फ्रेडरिक विलियम चतुर्थ"
+        },
+        {
+          "bn": "ভিক্টর ইমানুয়েল দ্বিতীয়",
+          "en": "Victor Emmanuel II",
+          "hi": "विक्टर इमैनुएल द्वितीय"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "জার্মান ঐক্যের পর ভার্সাইয়ের হল অফ মিররসে প্রাশিয়ার রাজা কাইজার উইলিয়াম প্রথমকে জার্মান সম্রাট হিসেবে ঘোষণা করা হয়েছিল।",
+        "en": "Prussian King Kaiser William I was proclaimed German Emperor at the Hall of Mirrors in Versailles following German unification.",
+        "hi": "जर्मन एकीकरण के बाद वर्साय के हॉल ऑफ मिरर्स में प्रथा के राजा कैसर विलियम प्रथम को जर्मन सम्राट घोषित किया गया था।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "hist_ch_01_q009",
+      "question": {
+        "bn": "উনবিংশ শতাব্দীর মাঝামাঝি ইতালির সাতটি রাজ্যের মধ্যে কোনটি একটি ইতালীয় রাজপরিবার দ্বারা শাসিত হতো?",
+        "en": "Out of the seven states of mid-nineteenth-century Italy, which one was ruled by an Italian princely house?",
+        "hi": "उन्नीसवीं सदी के मध्य के इटली के सात राज्यों में से किस पर एक इतालवी घराने का शासन था?"
+      },
+      "options": [
+        {
+          "bn": "কিংডম অব দ্য টু সিসিলিস",
+          "en": "Kingdom of the Two Sicilies",
+          "hi": "टू सिसिलीज़ का राज्य"
+        },
+        {
+          "bn": "সার্ডিনিয়া-পিডমন্ট",
+          "en": "Sardinia-Piedmont",
+          "hi": "सार्डिनिया-पीडमांट"
+        },
+        {
+          "bn": "লম্বার্ডি",
+          "en": "Lombardy",
+          "hi": "लॉम्बार्डिया"
+        },
+        {
+          "bn": "পোপের রাজ্য",
+          "en": "Papal States",
+          "hi": "पॉप के राज्य"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "কেবল সার্ডিনিয়া-পিডমন্ট ইতালীয় রাজপরিবার (ভিক্টর ইমানুয়েল দ্বিতীয়) দ্বারা শাসিত হতো; বাকি অংশগুলি বিদেশী শক্তির অধীনে ছিল।",
+        "en": "Only Sardinia-Piedmont was ruled by an Italian princely house under Victor Emmanuel II; other regions were held by Austrian, Papal, or Bourbon rulers.",
+        "hi": "केवल सार्डिनिया-पीडमांट पर विक्टर इमैनुएल द्वितीय के तहत एक इतालवी राजघराने का शासन था; अन्य क्षेत्र विदेशी शक्तियों के अधीन थे।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "hist_ch_01_q010",
+      "question": {
+        "bn": "১৮৬০ সালে দক্ষিণ ইতালি এবং কিংডম অব দ্য টু সিসিলিসে বিখ্যাত 'এক হাজারের অভিযান' (Expedition of the Thousand)-এর নেতৃত্ব কে দিয়েছিলেন?",
+        "en": "Who led the famous 'Expedition of the Thousand' to South Italy and the Kingdom of the Two Sicilies in 1860?",
+        "hi": "1860 में दक्षिण इटली और टू सिसिलीज़ के राज्य में प्रसिद्ध 'एक हजार का अभियान' (Expedition of the Thousand) का नेतृत्व किसने किया था?"
+      },
+      "options": [
+        {
+          "bn": "কাউন্ট কাভুর",
+          "en": "Count Cavour",
+          "hi": "काउंट काबूर"
+        },
+        {
+          "bn": "জুসেপ্পে গ্যারিবল্ডি",
+          "en": "Giuseppe Garibaldi",
+          "hi": "जूसेपे गैरीबॉल्डी"
+        },
+        {
+          "bn": "জুসেপ্পে মাৎসিনি",
+          "en": "Giuseppe Mazzini",
+          "hi": "जूसेपे मेत्सिनी"
+        },
+        {
+          "bn": "ভিক্টর ইমানুয়েল দ্বিতীয়",
+          "en": "Victor Emmanuel II",
+          "hi": "विक्टर इमैनुएल द्वितीय"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "জুসেপ্পে গ্যারিবল্ডি ১৮৬০ সালে স্প্যানিশ বুর্বন শাসকদের তাড়াতে দক্ষিণ ইতালিতে সশস্ত্র স্বেচ্ছাসেবকদের (রেড শার্টস) নেতৃত্ব দিয়েছিলেন।",
+        "en": "Giuseppe Garibaldi led armed volunteers (Red Shirts) into South Italy in 1860 to drive out the Bourbon rulers.",
+        "hi": "जूसेपे गैरीबॉल्डी ने 1860 में स्पेनिश स्पेनिश बॉरबॉन शासकों को हटाने के लिए दक्षिण इटली में सशस्त्र स्वयंसेवकों (रेड शर्ट्स) का नेतृत्व किया था।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    }
+  ]
 }

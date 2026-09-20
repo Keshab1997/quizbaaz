@@ -6,5 +6,386 @@
     "hi": "भारत में राष्ट्रवाद"
   },
   "class_standard": "Class 10",
-  "questions": []
+  "questions": [
+    {
+      "id": "hist_ch_02_q001",
+      "question": {
+        "bn": "জালিয়ানওয়ালাবাগ হত্যাকাণ্ড এবং খিলাফত সমস্যার প্রেক্ষিতে মহাত্মা গান্ধি 1920 সালে কোন আন্দোলন শুরু করেন?",
+        "en": "Which movement was launched by Mahatma Gandhi in 1920 in response to the Jallianwala Bagh massacre and the Khilafat issue?",
+        "hi": "जलियांवाला बाग हत्याकांड और खिलाफत मुद्दे की प्रतिक्रिया में महात्मा गांधी ने 1920 में कौन-सा आंदोलन शुरू किया?"
+      },
+      "options": [
+        {
+          "bn": "আইন অমান্য আন্দোলন",
+          "en": "Civil Disobedience Movement",
+          "hi": "सविनय अवज्ञा आंदोलन"
+        },
+        {
+          "bn": "অসহযোগ আন্দোলন",
+          "en": "Non-Cooperation Movement",
+          "hi": "असहयोग आंदोलन"
+        },
+        {
+          "bn": "ভারত ছাড়ো আন্দোলন",
+          "en": "Quit India Movement",
+          "hi": "भारत छोड़ो आंदोलन"
+        },
+        {
+          "bn": "স্বদেশি আন্দোলন",
+          "en": "Swadeshi Movement",
+          "hi": "स्वदेशी आंदोलन"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "1920 সালে ব্রিটিশ শাসনের বিরুদ্ধে অসহযোগের মাধ্যমে প্রতিবাদ এবং খিলাফত আন্দোলনকে সমর্থন করার উদ্দেশ্যে অসহযোগ আন্দোলন শুরু হয়।",
+        "en": "The Non-Cooperation Movement was launched in 1920 to oppose British rule through non-cooperation and to support the Khilafat cause.",
+        "hi": "1920 में ब्रिटिश शासन का असहयोग के माध्यम से विरोध करने और खिलाफत आंदोलन का समर्थन करने के लिए असहयोग आंदोलन शुरू किया गया था।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "hist_ch_02_q002",
+      "question": {
+        "bn": "অসহযোগ আন্দোলনের সময় আওধে কৃষক আন্দোলনের নেতৃত্ব কে দিয়েছিলেন?",
+        "en": "Who led the peasant movement in Awadh during the Non-Cooperation Movement?",
+        "hi": "असहयोग आंदोलन के दौरान अवध में किसान आंदोलन का नेतृत्व किसने किया था?"
+      },
+      "options": [
+        {
+          "bn": "বাবা রামচন্দ্র",
+          "en": "Baba Ramchandra",
+          "hi": "बाबा रामचंद्र"
+        },
+        {
+          "bn": "আল্লুরি সীতারাম রাজু",
+          "en": "Alluri Sitarama Raju",
+          "hi": "अल्लूरी सीताराम राजू"
+        },
+        {
+          "bn": "আবদুল গফ্ফার খান",
+          "en": "Abdul Ghaffar Khan",
+          "hi": "अब्दुल गफ्फार खान"
+        },
+        {
+          "bn": "সি. আর. দাস",
+          "en": "C. R. Das",
+          "hi": "सी. आर. दास"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "আওধের কৃষক আন্দোলনের সঙ্গে বাবা রামচন্দ্র যুক্ত ছিলেন; সেখানে কৃষকেরা উচ্চ খাজনা ও অত্যাচারী জমিদারদের বিরুদ্ধে প্রতিবাদ করেছিল।",
+        "en": "Baba Ramchandra was associated with the peasant movement in Awadh, where peasants opposed high rents and oppressive landlords.",
+        "hi": "बाबा रामचंद्र अवध के किसान आंदोलन से जुड़े थे, जहाँ किसानों ने ऊँचे लगान और अत्याचारी जमींदारों का विरोध किया।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "hist_ch_02_q003",
+      "question": {
+        "bn": "মহাত্মা গান্ধি কেন 1922 সালের ফেব্রুয়ারিতে অসহযোগ আন্দোলন প্রত্যাহার করে নেন?",
+        "en": "Why did Mahatma Gandhi withdraw the Non-Cooperation Movement in February 1922?",
+        "hi": "महात्मा गांधी ने फरवरी 1922 में असहयोग आंदोलन क्यों वापस ले लिया?"
+      },
+      "options": [
+        {
+          "bn": "সাইমন কমিশন ভারতে এসেছিল",
+          "en": "The Simon Commission arrived in India",
+          "hi": "साइमन कमीशन भारत आया था"
+        },
+        {
+          "bn": "চৌরি চৌরা ঘটনায় আন্দোলন হিংসাত্মক হয়ে উঠেছিল",
+          "en": "The Chauri Chaura incident turned violent",
+          "hi": "चौरी चौरा की घटना में आंदोलन हिंसक हो गया था"
+        },
+        {
+          "bn": "লবণ আইন বাতিল করা হয়েছিল",
+          "en": "The Salt Law was abolished",
+          "hi": "नमक कानून समाप्त कर दिया गया था"
+        },
+        {
+          "bn": "গান্ধি-আরউইন চুক্তি স্বাক্ষরিত হয়েছিল",
+          "en": "The Gandhi-Irwin Pact was signed",
+          "hi": "गांधी-इरविन समझौते पर हस्ताक्षर हुए थे"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "চৌরি চৌরা ঘটনায় পুলিশের ওপর হিংসাত্মক আক্রমণ হয়েছিল। গান্ধির মনে হয়েছিল আন্দোলন অহিংস পথ থেকে সরে যাচ্ছে, তাই তিনি তা প্রত্যাহার করেন।",
+        "en": "The Chauri Chaura incident involved violence against policemen, which convinced Gandhi that the movement was becoming too violent and needed to be stopped.",
+        "hi": "चौरी चौरा की घटना में पुलिसकर्मियों के विरुद्ध हिंसा हुई। गांधी को लगा कि आंदोलन अहिंसक मार्ग से हट रहा है, इसलिए उन्होंने इसे वापस ले लिया।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "hist_ch_02_q004",
+      "question": {
+        "bn": "1930 সালে আইন অমান্য আন্দোলনের সূচনার সঙ্গে কোন ঘটনাটি যুক্ত?",
+        "en": "Which event marked the beginning of the Civil Disobedience Movement in 1930?",
+        "hi": "1930 में सविनय अवज्ञा आंदोलन की शुरुआत किस घटना से जुड़ी थी?"
+      },
+      "options": [
+        {
+          "bn": "ডান্ডি অভিযান",
+          "en": "Dandi March",
+          "hi": "दांडी मार्च"
+        },
+        {
+          "bn": "চম্পারণ সত্যাগ্রহ",
+          "en": "Champaran Satyagraha",
+          "hi": "चंपारण सत्याग्रह"
+        },
+        {
+          "bn": "খেড়া সত্যাগ্রহ",
+          "en": "Kheda Satyagraha",
+          "hi": "खेड़ा सत्याग्रह"
+        },
+        {
+          "bn": "আহমেদাবাদ মিল ধর্মঘট",
+          "en": "Ahmedabad Mill Strike",
+          "hi": "अहमदाबाद मिल हड़ताल"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "গান্ধির ডান্ডি অভিযান ব্রিটিশ লবণ আইনকে চ্যালেঞ্জ করেছিল এবং এর মাধ্যমে আইন অমান্য আন্দোলন শুরু হয়।",
+        "en": "Gandhi's Dandi March challenged the British salt law and became the immediate launch of the Civil Disobedience Movement.",
+        "hi": "गांधी के दांडी मार्च ने ब्रिटिश नमक कानून को चुनौती दी और इसी के साथ सविनय अवज्ञा आंदोलन शुरू हुआ।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "hist_ch_02_q005",
+      "question": {
+        "bn": "মহাত্মা গান্ধি কেন আইন অমান্য আন্দোলনের গুরুত্বপূর্ণ প্রতীক হিসেবে লবণকে বেছে নিয়েছিলেন?",
+        "en": "Why did Mahatma Gandhi choose salt as an important symbol of the Civil Disobedience Movement?",
+        "hi": "महात्मा गांधी ने सविनय अवज्ञा आंदोलन के महत्वपूर्ण प्रतीक के रूप में नमक को क्यों चुना?"
+      },
+      "options": [
+        {
+          "bn": "লবণ শুধুমাত্র ধনী ভারতীয়রা ব্যবহার করত",
+          "en": "Salt was used only by wealthy Indians",
+          "hi": "नमक का उपयोग केवल अमीर भारतीय करते थे"
+        },
+        {
+          "bn": "লবণ কর বিভিন্ন সামাজিক শ্রেণির মানুষকে প্রভাবিত করত",
+          "en": "The salt tax affected people across social groups",
+          "hi": "नमक कर समाज के विभिन्न वर्गों के लोगों को प्रभावित करता था"
+        },
+        {
+          "bn": "লবণ ছিল ভারতের প্রধান রপ্তানি পণ্য",
+          "en": "Salt was India's main export commodity",
+          "hi": "नमक भारत की मुख्य निर्यात वस्तु थी"
+        },
+        {
+          "bn": "ব্রিটিশরা লবণ উৎপাদনকারী ফসলের চাষ নিষিদ্ধ করেছিল",
+          "en": "The British had banned the cultivation of salt-producing crops",
+          "hi": "ब्रिटिशों ने नमक पैदा करने वाली फसलों की खेती पर प्रतिबंध लगाया था"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "ধনী-দরিদ্র সকলেই লবণ ব্যবহার করত। তাই লবণ করের বিরুদ্ধে প্রতিবাদ বিভিন্ন সামাজিক শ্রেণির মানুষকে ঔপনিবেশিক শাসনের বিরুদ্ধে ঐক্যবদ্ধ করতে পারত।",
+        "en": "Salt was consumed by rich and poor alike, so the salt tax provided a simple issue through which people from different social groups could unite against colonial rule.",
+        "hi": "नमक का उपयोग अमीर और गरीब सभी करते थे। इसलिए नमक कर का विरोध विभिन्न सामाजिक वर्गों को औपनिवेशिक शासन के खिलाफ एकजुट कर सकता था।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "hist_ch_02_q006",
+      "question": {
+        "bn": "1931 সালে ব্রিটিশ সরকারের পক্ষে গান্ধি-আরউইন চুক্তিতে কে স্বাক্ষর করেছিলেন?",
+        "en": "Who signed the Gandhi-Irwin Pact on behalf of the British government in 1931?",
+        "hi": "1931 में ब्रिटिश सरकार की ओर से गांधी-इरविन समझौते पर किसने हस्ताक्षर किए थे?"
+      },
+      "options": [
+        {
+          "bn": "লর্ড আরউইন",
+          "en": "Lord Irwin",
+          "hi": "लॉर्ड इरविन"
+        },
+        {
+          "bn": "লর্ড কার্জন",
+          "en": "Lord Curzon",
+          "hi": "लॉर्ड कर्जन"
+        },
+        {
+          "bn": "লর্ড মাউন্টব্যাটেন",
+          "en": "Lord Mountbatten",
+          "hi": "लॉर्ड माउंटबेटन"
+        },
+        {
+          "bn": "লর্ড ওয়াভেল",
+          "en": "Lord Wavell",
+          "hi": "लॉर्ड वेवेल"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "1931 সালে গান্ধির সঙ্গে চুক্তি সম্পাদনের সময় লর্ড আরউইন ভারতের ভাইসরয় ছিলেন।",
+        "en": "Lord Irwin was the Viceroy of India when the pact was concluded with Gandhi in 1931.",
+        "hi": "1931 में गांधी के साथ समझौता होने के समय लॉर्ड इरविन भारत के वायसराय थे।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "hist_ch_02_q007",
+      "question": {
+        "bn": "গ্রামাঞ্চলে আইন অমান্য আন্দোলনে সক্রিয়ভাবে অংশ নিলেও পরে কোন গোষ্ঠী কংগ্রেসের প্রতি অসন্তুষ্ট হয়েছিল?",
+        "en": "Which group participated actively in the Civil Disobedience Movement in the countryside but later became dissatisfied with the Congress?",
+        "hi": "ग्रामीण क्षेत्रों में सविनय अवज्ञा आंदोलन में सक्रिय भाग लेने के बावजूद बाद में कौन-सा समूह कांग्रेस से असंतुष्ट हो गया?"
+      },
+      "options": [
+        {
+          "bn": "ধনী কৃষক",
+          "en": "Rich peasants",
+          "hi": "समृद्ध किसान"
+        },
+        {
+          "bn": "বাগান শ্রমিক",
+          "en": "Plantation workers",
+          "hi": "बागान मजदूर"
+        },
+        {
+          "bn": "ইউরোপীয় বণিক",
+          "en": "European merchants",
+          "hi": "यूरोपीय व्यापारी"
+        },
+        {
+          "bn": "ব্রিটিশ আধিকারিক",
+          "en": "British officials",
+          "hi": "ब्रिटिश अधिकारी"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "পাটিদার ও জাটদের মতো ধনী কৃষকেরা আন্দোলনকে সমর্থন করেছিল। কিন্তু রাজস্ব কমানোর দাবিগুলি পুরোপুরি পূরণ না হওয়ায় তাদের মধ্যে অসন্তোষ তৈরি হয়।",
+        "en": "Rich peasants such as the Patidars and Jats supported the movement, but their demands for reduction of revenue were not fully addressed, causing dissatisfaction.",
+        "hi": "पाटीदार और जाट जैसे समृद्ध किसानों ने आंदोलन का समर्थन किया। लेकिन लगान में कमी की उनकी माँगें पूरी तरह पूरी न होने से उनमें असंतोष पैदा हुआ।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "hist_ch_02_q008",
+      "question": {
+        "bn": "1932 সালের সেপ্টেম্বরে কোন চুক্তিতে প্রাদেশিক ও কেন্দ্রীয় আইনসভায় দলিত শ্রেণির জন্য সংরক্ষিত আসনের ব্যবস্থা করা হয়?",
+        "en": "Which agreement in September 1932 provided for reserved seats for the Depressed Classes in provincial and central legislatures?",
+        "hi": "सितंबर 1932 में किस समझौते में प्रांतीय और केंद्रीय विधानसभाओं में दलित वर्गों के लिए आरक्षित सीटों का प्रावधान किया गया?"
+      },
+      "options": [
+        {
+          "bn": "পুনা চুক্তি",
+          "en": "Poona Pact",
+          "hi": "पूना पैक्ट"
+        },
+        {
+          "bn": "গান্ধি-আরউইন চুক্তি",
+          "en": "Gandhi-Irwin Pact",
+          "hi": "गांधी-इरविन समझौता"
+        },
+        {
+          "bn": "লখনউ চুক্তি",
+          "en": "Lucknow Pact",
+          "hi": "लखनऊ समझौता"
+        },
+        {
+          "bn": "দিল্লি চুক্তি",
+          "en": "Delhi Pact",
+          "hi": "दिल्ली समझौता"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "1932 সালে গান্ধি ও বি. আর. আম্বেদকরের মধ্যে পুনা চুক্তি হয়। এতে দলিত শ্রেণির জন্য পৃথক নির্বাচকমণ্ডলীর পরিবর্তে যৌথ নির্বাচকমণ্ডলীতে সংরক্ষিত আসনের ব্যবস্থা করা হয়।",
+        "en": "The Poona Pact was reached between Gandhi and B. R. Ambedkar in 1932 and replaced separate electorates for the Depressed Classes with reserved seats in joint electorates.",
+        "hi": "1932 में गांधी और बी. आर. आंबेडकर के बीच पूना पैक्ट हुआ। इसमें दलित वर्गों के लिए पृथक निर्वाचक मंडल के बजाय संयुक्त निर्वाचक मंडल में आरक्षित सीटों की व्यवस्था की गई।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "hist_ch_02_q009",
+      "question": {
+        "bn": "ভারতে জাতীয়তাবাদের ধারণাকে বৃহত্তর সামষ্টিক আত্মপরিচয়ের অনুভূতিতে রূপ দিতে কোন বিষয়টি সাহায্য করেছিল?",
+        "en": "Which factor helped transform the idea of nationalism into a broader sense of collective belonging in India?",
+        "hi": "भारत में राष्ट्रवाद की भावना को व्यापक सामूहिक पहचान में बदलने में किस कारक ने मदद की?"
+      },
+      "options": [
+        {
+          "bn": "প্রতীক, লোককথা ও ইতিহাসের মাধ্যমে অভিন্ন আত্মপরিচয়ের অনুভূতি গড়ে তোলা",
+          "en": "The creation of a common sense of identity through symbols, folklore and history",
+          "hi": "प्रतीकों, लोककथाओं और इतिहास के माध्यम से साझा पहचान की भावना का निर्माण"
+        },
+        {
+          "bn": "ভারতীয় সাংস্কৃতিক ঐতিহ্যের সম্পূর্ণ প্রত্যাখ্যান",
+          "en": "The complete rejection of Indian cultural traditions",
+          "hi": "भारतीय सांस्कृतिक परंपराओं की पूर्ण अस्वीकृति"
+        },
+        {
+          "bn": "সমস্ত আঞ্চলিক ভাষার বিলোপ",
+          "en": "The abolition of all regional languages",
+          "hi": "सभी क्षेत्रीय भाषाओं का उन्मूलन"
+        },
+        {
+          "bn": "ব্রিটিশ প্রশাসনিক নিয়ন্ত্রণের সম্প্রসারণ",
+          "en": "The expansion of British administrative control",
+          "hi": "ब्रिटिश प्रशासनिक नियंत्रण का विस्तार"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "জাতীয়তাবাদী নেতারা প্রতীক, লোককথা, গান ও ইতিহাসের ব্যাখ্যা ব্যবহার করে বিভিন্ন অঞ্চলের মানুষের মধ্যে অভিন্ন আত্মপরিচয়ের অনুভূতি গড়ে তুলেছিলেন।",
+        "en": "Nationalist leaders used symbols, folklore, songs and interpretations of history to create a shared sense of belonging among people from different regions.",
+        "hi": "राष्ट्रवादी नेताओं ने प्रतीकों, लोककथाओं, गीतों और इतिहास की व्याख्याओं के माध्यम से विभिन्न क्षेत्रों के लोगों में साझा पहचान की भावना विकसित की।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "hist_ch_02_q010",
+      "question": {
+        "bn": "আইন অমান্য আন্দোলনের সময় একটি ঐক্যবদ্ধ জাতীয়তাবাদী আন্দোলন গড়ে উঠতে না পারার প্রধান কারণ কী ছিল?",
+        "en": "What was the main reason for the failure to achieve a unified nationalist movement during the period of Civil Disobedience?",
+        "hi": "सविनय अवज्ञा आंदोलन के दौरान एक एकीकृत राष्ट्रवादी आंदोलन के सफल न हो पाने का मुख्य कारण क्या था?"
+      },
+      "options": [
+        {
+          "bn": "বিভিন্ন সামাজিক গোষ্ঠীর রাজনৈতিক ও অর্থনৈতিক দাবি ছিল ভিন্ন",
+          "en": "Different social groups had different political and economic demands",
+          "hi": "विभिन्न सामाजिक समूहों की राजनीतिक और आर्थिक माँगें अलग-अलग थीं"
+        },
+        {
+          "bn": "কোনও ভারতীয় আন্দোলনে অংশ নেয়নি",
+          "en": "No Indian participated in the movement",
+          "hi": "किसी भी भारतीय ने आंदोलन में भाग नहीं लिया"
+        },
+        {
+          "bn": "ব্রিটিশরা অবিলম্বে পূর্ণ স্বাধীনতা দিয়ে দিয়েছিল",
+          "en": "The British immediately granted complete independence",
+          "hi": "ब्रिटिशों ने तुरंत पूर्ण स्वतंत्रता दे दी थी"
+        },
+        {
+          "bn": "আন্দোলনটি সম্পূর্ণভাবে ব্রিটিশ আধিকারিকদের মধ্যে সীমাবদ্ধ ছিল",
+          "en": "The movement was limited entirely to British officials",
+          "hi": "आंदोलन पूरी तरह ब्रिटिश अधिकारियों तक सीमित था"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "বিভিন্ন সামাজিক গোষ্ঠী ভিন্ন ভিন্ন স্বার্থ ও দাবি নিয়ে আন্দোলনে যোগ দিয়েছিল। তাদের স্বার্থ সবসময় এক না হওয়ায় সম্পূর্ণ ঐক্য বজায় রাখা কঠিন হয়েছিল।",
+        "en": "Different groups joined the movement for different reasons, and their interests did not always coincide, making it difficult to maintain complete unity.",
+        "hi": "विभिन्न सामाजिक समूह अलग-अलग हितों और माँगों के कारण आंदोलन में शामिल हुए। उनके हित हमेशा एक जैसे नहीं थे, इसलिए पूर्ण एकता बनाए रखना कठिन था।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    }
+  ]
 }

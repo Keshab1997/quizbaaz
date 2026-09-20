@@ -6,5 +6,386 @@
     "hi": "सत्ता की साझेदारी"
   },
   "class_standard": "Class 10",
-  "questions": []
+  "questions": [
+    {
+      "id": "polsci_ch_01_q001",
+      "question": {
+        "bn": "বেলজিয়ামের অধিকাংশ মানুষ কোন ভাষায় কথা বলে?",
+        "en": "Which language is spoken by the majority of people in Belgium?",
+        "hi": "बेल्जियम में अधिकांश लोग कौन-सी भाषा बोलते हैं?"
+      },
+      "options": [
+        {
+          "bn": "ফরাসি",
+          "en": "French",
+          "hi": "फ्रेंच"
+        },
+        {
+          "bn": "ডাচ",
+          "en": "Dutch",
+          "hi": "डच"
+        },
+        {
+          "bn": "জার্মান",
+          "en": "German",
+          "hi": "जर्मन"
+        },
+        {
+          "bn": "স্প্যানিশ",
+          "en": "Spanish",
+          "hi": "स्पेनिश"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "বেলজিয়ামের প্রায় 59% মানুষ ফ্লেমিশ অঞ্চলে বাস করে এবং ডাচ ভাষায় কথা বলে। তাই ডাচ হল সংখ্যাগরিষ্ঠ ভাষা।",
+        "en": "About 59% of Belgium's population lives in the Flemish region and speaks Dutch. Therefore, Dutch is the majority language.",
+        "hi": "बेल्जियम की लगभग 59% आबादी फ्लेमिश क्षेत्र में रहती है और डच बोलती है। इसलिए डच बहुसंख्यक भाषा है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "polsci_ch_01_q002",
+      "question": {
+        "bn": "1956 সালে শ্রীলঙ্কার একমাত্র সরকারি ভাষা হিসেবে কোন ভাষাকে ঘোষণা করা হয়েছিল?",
+        "en": "Which language was declared the only official language of Sri Lanka in 1956?",
+        "hi": "1956 में श्रीलंका की एकमात्र आधिकारिक भाषा के रूप में किस भाषा को घोषित किया गया था?"
+      },
+      "options": [
+        {
+          "bn": "তামিল",
+          "en": "Tamil",
+          "hi": "तमिल"
+        },
+        {
+          "bn": "সিংহলি",
+          "en": "Sinhala",
+          "hi": "सिंहला"
+        },
+        {
+          "bn": "ইংরেজি",
+          "en": "English",
+          "hi": "अंग्रेज़ी"
+        },
+        {
+          "bn": "ডাচ",
+          "en": "Dutch",
+          "hi": "डच"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "1956 সালের Sinhala Only Act-এর মাধ্যমে সিংহলিকে শ্রীলঙ্কার একমাত্র সরকারি ভাষা করা হয়, ফলে তামিলভাষীদের মধ্যে অসন্তোষ বাড়ে।",
+        "en": "The Sinhala Only Act of 1956 made Sinhala the only official language of Sri Lanka, which increased dissatisfaction among Tamil-speaking people.",
+        "hi": "1956 के Sinhala Only Act ने सिंहला को श्रीलंका की एकमात्र आधिकारिक भाषा बनाया, जिससे तमिल भाषी लोगों में असंतोष बढ़ा।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "polsci_ch_01_q003",
+      "question": {
+        "bn": "বেলজিয়ামে ক্ষমতার বণ্টন সফল হওয়ার প্রধান কারণ কী ছিল?",
+        "en": "What was a major reason for the success of power sharing in Belgium?",
+        "hi": "बेल्जियम में सत्ता की साझेदारी की सफलता का प्रमुख कारण क्या था?"
+      },
+      "options": [
+        {
+          "bn": "সরকার সমস্ত ক্ষমতা ডাচভাষী সম্প্রদায়কে দিয়েছিল",
+          "en": "The government gave all power to the Dutch-speaking community",
+          "hi": "सरकार ने सारी सत्ता डच भाषी समुदाय को दे दी"
+        },
+        {
+          "bn": "বিভিন্ন সম্প্রদায়ের স্বার্থ মেটাতে সংবিধান সংশোধন করা হয়েছিল",
+          "en": "The constitution was amended to accommodate different communities",
+          "hi": "विभिन्न समुदायों के हितों को समायोजित करने के लिए संविधान में संशोधन किया गया"
+        },
+        {
+          "bn": "ফরাসিকে একমাত্র সরকারি ভাষা করা হয়েছিল",
+          "en": "French was made the only official language",
+          "hi": "फ्रेंच को एकमात्र आधिकारिक भाषा बनाया गया"
+        },
+        {
+          "bn": "রাজধানী ব্রাসেলস থেকে সরিয়ে নেওয়া হয়েছিল",
+          "en": "The capital was removed from Brussels",
+          "hi": "राजधानी ब्रुसेल्स से हटा दी गई"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "বেলজিয়াম সংবিধানে বিভিন্ন ভাষাভাষী সম্প্রদায়কে প্রতিনিধিত্ব ও স্বায়ত্তশাসনের সুযোগ দেয়। এর ফলে তাদের মধ্যে সংঘাত কমে।",
+        "en": "Belgium adopted constitutional arrangements that gave representation and autonomy to different linguistic communities, reducing conflict between them.",
+        "hi": "बेल्जियम ने संविधान में विभिन्न भाषाई समुदायों को प्रतिनिधित्व और स्वायत्तता दी। इससे उनके बीच संघर्ष कम हुआ।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "polsci_ch_01_q004",
+      "question": {
+        "bn": "বেলজিয়ামে কোন সম্প্রদায়টি সমগ্র দেশে সংখ্যালঘু হলেও ব্রাসেলসে সংখ্যাগরিষ্ঠ ছিল?",
+        "en": "Which community in Belgium formed a minority in the country but was a majority in Brussels?",
+        "hi": "बेल्जियम में कौन-सा समुदाय पूरे देश में अल्पसंख्यक था, लेकिन ब्रुसेल्स में बहुसंख्यक था?"
+      },
+      "options": [
+        {
+          "bn": "ডাচভাষী সম্প্রদায়",
+          "en": "Dutch-speaking community",
+          "hi": "डच भाषी समुदाय"
+        },
+        {
+          "bn": "ফরাসিভাষী সম্প্রদায়",
+          "en": "French-speaking community",
+          "hi": "फ्रेंच भाषी समुदाय"
+        },
+        {
+          "bn": "জার্মানভাষী সম্প্রদায়",
+          "en": "German-speaking community",
+          "hi": "जर्मन भाषी समुदाय"
+        },
+        {
+          "bn": "তামিলভাষী সম্প্রদায়",
+          "en": "Tamil-speaking community",
+          "hi": "तमिल भाषी समुदाय"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "সমগ্র বেলজিয়ামে ফরাসিভাষীরা সংখ্যালঘু হলেও ব্রাসেলসের প্রায় 80% মানুষ ফরাসিভাষী ছিল। তাই রাজধানীর ভাষাগত গঠন দেশের সামগ্রিক চিত্র থেকে আলাদা ছিল।",
+        "en": "French-speaking people were a minority in Belgium overall but constituted about 80% of Brussels' population, making the capital linguistically different from the country as a whole.",
+        "hi": "पूरे बेल्जियम में फ्रेंच भाषी लोग अल्पसंख्यक थे, लेकिन ब्रुसेल्स की लगभग 80% आबादी फ्रेंच भाषी थी। इसलिए राजधानी की भाषाई संरचना पूरे देश से अलग थी।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "polsci_ch_01_q005",
+      "question": {
+        "bn": "সরকারের বিভিন্ন অঙ্গের মধ্যে কোন ধরনের ক্ষমতার বণ্টন ঘটে?",
+        "en": "Which form of power sharing takes place among different organs of government?",
+        "hi": "सरकार के विभिन्न अंगों के बीच किस प्रकार की सत्ता की साझेदारी होती है?"
+      },
+      "options": [
+        {
+          "bn": "অনুভূমিক ক্ষমতা বণ্টন",
+          "en": "Horizontal distribution of power",
+          "hi": "क्षैतिज सत्ता विभाजन"
+        },
+        {
+          "bn": "উল্লম্ব ক্ষমতা বণ্টন",
+          "en": "Vertical distribution of power",
+          "hi": "ऊर्ध्वाधर सत्ता विभाजन"
+        },
+        {
+          "bn": "সামাজিক গোষ্ঠীর মধ্যে ক্ষমতার বণ্টন",
+          "en": "Power sharing among social groups",
+          "hi": "सामाजिक समूहों के बीच सत्ता की साझेदारी"
+        },
+        {
+          "bn": "রাজনৈতিক দলগুলির মধ্যে ক্ষমতার বণ্টন",
+          "en": "Power sharing among political parties",
+          "hi": "राजनीतिक दलों के बीच सत्ता की साझेदारी"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "আইনসভা, কার্যনির্বাহী বিভাগ ও বিচারবিভাগ একই স্তরে বিভিন্ন ক্ষমতা প্রয়োগ করে। একে অনুভূমিক ক্ষমতা বণ্টন বলা হয়।",
+        "en": "The legislature, executive and judiciary exercise different powers at the same level of government. This is called horizontal power sharing.",
+        "hi": "विधायिका, कार्यपालिका और न्यायपालिका सरकार के समान स्तर पर अलग-अलग शक्तियों का प्रयोग करते हैं। इसे क्षैतिज सत्ता विभाजन कहा जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "polsci_ch_01_q006",
+      "question": {
+        "bn": "উল্লম্ব ক্ষমতা বণ্টন বলতে কী বোঝায়?",
+        "en": "What is meant by vertical power sharing?",
+        "hi": "ऊर्ध्वाधर सत्ता विभाजन का क्या अर्थ है?"
+      },
+      "options": [
+        {
+          "bn": "একই স্তরের বিভিন্ন অঙ্গের মধ্যে ক্ষমতা ভাগ করা",
+          "en": "Sharing power among different organs at the same level",
+          "hi": "समान स्तर के विभिन्न अंगों के बीच सत्ता बाँटना"
+        },
+        {
+          "bn": "সরকারের বিভিন্ন স্তরের মধ্যে ক্ষমতা ভাগ করা",
+          "en": "Sharing power among different levels of government",
+          "hi": "सरकार के विभिन्न स्तरों के बीच सत्ता बाँटना"
+        },
+        {
+          "bn": "শুধুমাত্র রাজনৈতিক দলগুলির মধ্যে ক্ষমতা ভাগ করা",
+          "en": "Sharing power only among political parties",
+          "hi": "केवल राजनीतिक दलों के बीच सत्ता बाँटना"
+        },
+        {
+          "bn": "শুধুমাত্র বিচারকদের মধ্যে ক্ষমতা ভাগ করা",
+          "en": "Sharing power only among judges",
+          "hi": "केवल न्यायाधीशों के बीच सत्ता बाँटना"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "কেন্দ্র, রাজ্য ও স্থানীয় সরকারের বিভিন্ন স্তরের মধ্যে ক্ষমতা ভাগ করা হলে তাকে উল্লম্ব ক্ষমতা বণ্টন বলা হয়।",
+        "en": "When power is divided among central, state and local levels of government, it is called vertical power sharing.",
+        "hi": "जब सत्ता केंद्र, राज्य और स्थानीय सरकार के विभिन्न स्तरों के बीच बाँटी जाती है, तो इसे ऊर्ध्वाधर सत्ता विभाजन कहा जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "polsci_ch_01_q007",
+      "question": {
+        "bn": "বেলজিয়ামের কেন্দ্রীয় সরকারে প্রধানমন্ত্রী ছাড়া ডাচভাষী ও ফরাসিভাষী মন্ত্রীদের সংখ্যা সমান রাখার ব্যবস্থা কোনটির উদাহরণ?",
+        "en": "Which arrangement in Belgium requires that the number of Dutch- and French-speaking ministers in the central government be equal, except for the Prime Minister?",
+        "hi": "बेल्जियम की केंद्रीय सरकार में प्रधानमंत्री को छोड़कर डच और फ्रेंच भाषी मंत्रियों की संख्या समान रखने की व्यवस्था किसका उदाहरण है?"
+      },
+      "options": [
+        {
+          "bn": "সংখ্যাগরিষ্ঠতাবাদী শাসন",
+          "en": "Majoritarian rule",
+          "hi": "बहुसंख्यकवादी शासन"
+        },
+        {
+          "bn": "সম্প্রদায়ভিত্তিক সরকার",
+          "en": "Community government",
+          "hi": "सामुदायिक सरकार"
+        },
+        {
+          "bn": "কেন্দ্রীয় সরকারে সমান প্রতিনিধিত্ব",
+          "en": "Equal representation in the central government",
+          "hi": "केंद्रीय सरकार में समान प्रतिनिधित्व"
+        },
+        {
+          "bn": "সামরিক সরকার",
+          "en": "Military government",
+          "hi": "सैन्य सरकार"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "bn": "বেলজিয়ামের ক্ষমতা বণ্টনের ব্যবস্থায় কেন্দ্রীয় সরকারে ডাচভাষী ও ফরাসিভাষী মন্ত্রীদের সমান প্রতিনিধিত্ব নিশ্চিত করা হয়, যাতে কোনও একটি গোষ্ঠী প্রাধান্য না পায়।",
+        "en": "Belgium's power-sharing arrangement ensures equal representation of Dutch- and French-speaking ministers in the central government, preventing domination by one linguistic group.",
+        "hi": "बेल्जियम की सत्ता साझेदारी व्यवस्था केंद्रीय सरकार में डच और फ्रेंच भाषी मंत्रियों को समान प्रतिनिधित्व देती है, ताकि किसी एक भाषाई समूह का प्रभुत्व न हो।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "polsci_ch_01_q008",
+      "question": {
+        "bn": "গণতন্ত্রে ক্ষমতার বণ্টন কাম্য হওয়ার কারণ কোনটি সবচেয়ে ভালোভাবে ব্যাখ্যা করে?",
+        "en": "Which statement best explains why power sharing is desirable in a democracy?",
+        "hi": "लोकतंत्र में सत्ता की साझेदारी वांछनीय क्यों है, इसे कौन-सा कथन सबसे अच्छी तरह समझाता है?"
+      },
+      "options": [
+        {
+          "bn": "এটি সামাজিক সংঘাতের সম্ভাবনা বাড়ায়",
+          "en": "It increases the possibility of social conflict",
+          "hi": "यह सामाजिक संघर्ष की संभावना बढ़ाती है"
+        },
+        {
+          "bn": "এটি সামাজিক গোষ্ঠীগুলির মধ্যে সংঘাতের সম্ভাবনা কমায়",
+          "en": "It reduces the possibility of conflict between social groups",
+          "hi": "यह सामाजिक समूहों के बीच संघर्ष की संभावना कम करती है"
+        },
+        {
+          "bn": "এটি নির্বাচনের প্রয়োজনীয়তা দূর করে",
+          "en": "It eliminates the need for elections",
+          "hi": "यह चुनावों की आवश्यकता समाप्त कर देती है"
+        },
+        {
+          "bn": "এটি সংখ্যাগরিষ্ঠকে সীমাহীন ক্ষমতা দেয়",
+          "en": "It gives unlimited power to the majority",
+          "hi": "यह बहुसंख्यक को असीमित सत्ता देती है"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "ক্ষমতা ভাগ করে দিলে বিভিন্ন গোষ্ঠী শাসনব্যবস্থায় অংশগ্রহণের সুযোগ পায় এবং সংঘাতের সম্ভাবনা কমে, ফলে রাজনৈতিক স্থিতিশীলতা বাড়ে।",
+        "en": "Sharing power gives different groups a stake in governance and helps reduce the chances of conflict, strengthening political stability.",
+        "hi": "सत्ता बाँटने से विभिन्न समूहों को शासन में भागीदारी मिलती है और संघर्ष की संभावना कम होती है, जिससे राजनीतिक स्थिरता मजबूत होती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "polsci_ch_01_q009",
+      "question": {
+        "bn": "দুই বা ততোধিক রাজনৈতিক দল জোট সরকার গঠন করলে তা কোন ধরনের ক্ষমতার বণ্টনের উদাহরণ?",
+        "en": "Which form of power sharing is represented when two or more political parties form a coalition government?",
+        "hi": "जब दो या दो से अधिक राजनीतिक दल मिलकर गठबंधन सरकार बनाते हैं, तो यह किस प्रकार की सत्ता की साझेदारी का उदाहरण है?"
+      },
+      "options": [
+        {
+          "bn": "সরকারের বিভিন্ন অঙ্গের মধ্যে ক্ষমতার বণ্টন",
+          "en": "Power sharing among different organs of government",
+          "hi": "सरकार के विभिन्न अंगों के बीच सत्ता की साझेदारी"
+        },
+        {
+          "bn": "সরকারের বিভিন্ন স্তরের মধ্যে ক্ষমতার বণ্টন",
+          "en": "Power sharing among different levels of government",
+          "hi": "सरकार के विभिन्न स्तरों के बीच सत्ता की साझेदारी"
+        },
+        {
+          "bn": "রাজনৈতিক দলগুলির মধ্যে ক্ষমতার বণ্টন",
+          "en": "Power sharing among political parties",
+          "hi": "राजनीतिक दलों के बीच सत्ता की साझेदारी"
+        },
+        {
+          "bn": "বিচারকদের মধ্যে ক্ষমতার বণ্টন",
+          "en": "Power sharing among judges",
+          "hi": "न्यायाधीशों के बीच सत्ता की साझेदारी"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "bn": "জোট সরকারে একাধিক রাজনৈতিক দল সরকারি ক্ষমতা ও দায়িত্ব ভাগ করে নেয়। তাই এটি রাজনৈতিক দলগুলির মধ্যে ক্ষমতার বণ্টন।",
+        "en": "A coalition government involves several political parties sharing governmental power and responsibilities, so it is power sharing among political parties.",
+        "hi": "गठबंधन सरकार में कई राजनीतिक दल सरकारी सत्ता और जिम्मेदारियाँ साझा करते हैं। इसलिए यह राजनीतिक दलों के बीच सत्ता की साझेदारी है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "polsci_ch_01_q010",
+      "question": {
+        "bn": "স্বাধীনতার পর শ্রীলঙ্কার সংখ্যাগরিষ্ঠতাবাদী নীতির একটি প্রধান পরিণতি কী হয়েছিল?",
+        "en": "What was a major consequence of Sri Lanka's majoritarian policies after independence?",
+        "hi": "स्वतंत्रता के बाद श्रीलंका की बहुसंख्यकवादी नीतियों का एक प्रमुख परिणाम क्या हुआ?"
+      },
+      "options": [
+        {
+          "bn": "এতে সিংহলি ও তামিল সম্প্রদায়ের মধ্যে সহযোগিতা বৃদ্ধি পেয়েছিল",
+          "en": "They strengthened cooperation between Sinhala and Tamil communities",
+          "hi": "इससे सिंहला और तमिल समुदायों के बीच सहयोग बढ़ा"
+        },
+        {
+          "bn": "এতে তামিল সম্প্রদায়ের বিচ্ছিন্নতা বেড়ে যায় এবং সংঘাতের সৃষ্টি হয়",
+          "en": "They increased alienation among the Tamil community and contributed to conflict",
+          "hi": "इससे तमिल समुदाय में अलगाव बढ़ा और संघर्ष को बढ़ावा मिला"
+        },
+        {
+          "bn": "এতে আঞ্চলিক স্বায়ত্তশাসনের সমস্ত দাবি শেষ হয়ে যায়",
+          "en": "They ended all demands for regional autonomy",
+          "hi": "इससे क्षेत्रीय स्वायत्तता की सभी माँगें समाप्त हो गईं"
+        },
+        {
+          "bn": "এতে সব সম্প্রদায়ের জন্য সমান রাজনৈতিক প্রতিনিধিত্ব প্রতিষ্ঠিত হয়",
+          "en": "They established equal political representation for all communities",
+          "hi": "इससे सभी समुदायों के लिए समान राजनीतिक प्रतिनिधित्व स्थापित हुआ"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "সিংহলি সংখ্যাগরিষ্ঠকে সুবিধা দেওয়া নীতিগুলি ভাষা, শিক্ষা ও সরকারি চাকরির ক্ষেত্রে তামিলদের বঞ্চিত করে। এর ফলে বিচ্ছিন্নতা বাড়ে এবং দীর্ঘস্থায়ী সংঘাতের সৃষ্টি হয়।",
+        "en": "Policies favouring the Sinhala majority disadvantaged Tamils in language, education and government employment, increasing alienation and contributing to prolonged conflict.",
+        "hi": "सिंहला बहुसंख्यक के पक्ष में नीतियों ने भाषा, शिक्षा और सरकारी नौकरियों में तमिलों को नुकसान पहुँचाया। इससे अलगाव बढ़ा और लंबे समय तक संघर्ष चला।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    }
+  ]
 }

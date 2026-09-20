@@ -1,0 +1,260 @@
+{
+  "_note": "Demo dump shaped exactly like a Firestore export of question_banks/{chapterId}/questions/*. Each question carries the same fields the admin panel writes, including the bookkeeping fields the tool must strip (fingerprint, source, batch_id, created_by, created_at, reviewed). Use it to rehearse the pull with --fixture before touching real data.",
+  "math_ch_01": {
+    "questions": [
+      {
+        "id": "math_ch_01_001",
+        "question": {
+          "en": "Using Euclid's division lemma on 455 and 42, what is the remainder in the first step?",
+          "bn": "455 ও 42-এর উপর ইউক্লিড বিভাজন লেমা প্রয়োগ করলে প্রথম ধাপে ভাগশেষ কত?",
+          "hi": "455 और 42 पर यूक्लिड विभाजन प्रमेयिका लगाने पर पहले चरण का शेषफल क्या है?"
+        },
+        "options": [
+          { "en": "35", "bn": "35", "hi": "35" },
+          { "en": "21", "bn": "21", "hi": "21" },
+          { "en": "7", "bn": "7", "hi": "7" },
+          { "en": "1", "bn": "1", "hi": "1" }
+        ],
+        "correct_index": 0,
+        "explanation": {
+          "en": "455 = 42 × 10 + 35, so the first remainder is 35.",
+          "bn": "455 = 42 × 10 + 35, তাই প্রথম ভাগশেষ 35।",
+          "hi": "455 = 42 × 10 + 35, अतः पहला शेषफल 35 है।"
+        },
+        "points": 10,
+        "time_limit_sec": 15,
+        "fingerprint": "b1c9f0d2e3a4",
+        "source": "ai",
+        "model": "gemini-2.0-flash",
+        "batch_id": "batch_2026_09_10_a",
+        "created_by": "admin_uid_example",
+        "created_at": { "_seconds": 1789000000 },
+        "reviewed": true
+      },
+      {
+        "id": "math_ch_01_002",
+        "question": {
+          "en": "The HCF of two numbers is 9 and their LCM is 90. If one number is 18, what is the other?",
+          "bn": "দুটি সংখ্যার গসাগু 9 এবং লসাগু 90। একটি সংখ্যা 18 হলে অপরটি কত?",
+          "hi": "दो संख्याओं का म.स. 9 और ल.स. 90 है। यदि एक संख्या 18 है, तो दूसरी क्या है?"
+        },
+        "options": [
+          { "en": "45", "bn": "45", "hi": "45" },
+          { "en": "36", "bn": "36", "hi": "36" },
+          { "en": "54", "bn": "54", "hi": "54" },
+          { "en": "90", "bn": "90", "hi": "90" }
+        ],
+        "correct_index": 0,
+        "explanation": {
+          "en": "HCF × LCM = product of the numbers, so 9 × 90 ÷ 18 = 45.",
+          "bn": "গসাগু × লসাগু = সংখ্যা দুটির গুণফল, তাই 9 × 90 ÷ 18 = 45।",
+          "hi": "म.स. × ल.स. = संख्याओं का गुणनफल, अतः 9 × 90 ÷ 18 = 45।"
+        },
+        "points": 10,
+        "time_limit_sec": 15,
+        "fingerprint": "aa77bd91cc02",
+        "source": "manual",
+        "created_by": "admin_uid_example",
+        "reviewed": true
+      },
+      {
+        "id": "math_ch_01_003",
+        "question": {
+          "en": "Which of these is an irrational number?",
+          "bn": "এর মধ্যে কোনটি অমূলদ সংখ্যা?",
+          "hi": "इनमें से कौन-सी अपरिमेय संख्या है?"
+        },
+        "options": [
+          { "en": "0.75", "bn": "0.75", "hi": "0.75" },
+          { "en": "√2", "bn": "√2", "hi": "√2" },
+          { "en": "22/7", "bn": "22/7", "hi": "22/7" },
+          { "en": "-3", "bn": "-3", "hi": "-3" }
+        ],
+        "correct_index": 1,
+        "explanation": {
+          "en": "√2 cannot be written as a fraction of two integers.",
+          "bn": "√2-কে দুটি পূর্ণসংখ্যার ভগ্নাংশ হিসেবে লেখা যায় না।",
+          "hi": "√2 को दो पूर्णांकों के भिन्न के रूप में नहीं लिखा जा सकता।"
+        },
+        "points": 10,
+        "time_limit_sec": 20,
+        "source": "ai",
+        "batch_id": "batch_2026_09_10_a",
+        "reviewed": true
+      },
+      {
+        "id": "math_ch_01_004",
+        "question": {
+          "en": "If p is a prime number, how many factors does p² have?",
+          "bn": "p যদি মৌলিক সংখ্যা হয়, তবে p²-এর কতগুলি উৎপাদক আছে?",
+          "hi": "यदि p एक अभाज्य संख्या है, तो p² के कितने गुणनखंड होते हैं?"
+        },
+        "options": [
+          { "en": "2", "bn": "2", "hi": "2" },
+          { "en": "3", "bn": "3", "hi": "3" },
+          { "en": "4", "bn": "4", "hi": "4" },
+          { "en": "p + 1", "bn": "p + 1", "hi": "p + 1" }
+        ],
+        "correct_index": 1,
+        "explanation": {
+          "en": "The factors are 1, p and p² — three of them.",
+          "bn": "উৎপাদকগুলি 1, p এবং p² — অর্থাৎ তিনটি।",
+          "hi": "गुणनखंड 1, p और p² हैं — अर्थात तीन।"
+        },
+        "points": 10,
+        "time_limit_sec": 15,
+        "source": "manual",
+        "reviewed": true
+      }
+    ]
+  },
+  "bio_ch_01": {
+    "questions": [
+      {
+        "id": "bio_ch_01_001",
+        "question": {
+          "en": "Which enzyme in saliva begins the digestion of starch?",
+          "bn": "লালারসের কোন উৎসেচক শ্বেতসার পরিপাক শুরু করে?",
+          "hi": "लार में कौन-सा एंजाइम स्टार्च का पाचन आरंभ करता है?"
+        },
+        "options": [
+          { "en": "Pepsin", "bn": "পেপসিন", "hi": "पेप्सिन" },
+          { "en": "Ptyalin", "bn": "টায়ালিন", "hi": "टायलिन" },
+          { "en": "Trypsin", "bn": "ট্রিপসিন", "hi": "ट्रिप्सिन" },
+          { "en": "Lipase", "bn": "লাইপেজ", "hi": "लाइपेज़" }
+        ],
+        "correct_index": 1,
+        "explanation": {
+          "en": "Salivary amylase (ptyalin) converts starch into maltose.",
+          "bn": "লালারসের অ্যামাইলেজ (টায়ালিন) শ্বেতসারকে মলটোজে পরিণত করে।",
+          "hi": "लार का एमाइलेज़ (टायलिन) स्टार्च को माल्टोज़ में बदलता है।"
+        },
+        "points": 10,
+        "time_limit_sec": 15,
+        "source": "ai",
+        "batch_id": "batch_2026_09_12_b",
+        "reviewed": true
+      },
+      {
+        "id": "bio_ch_01_002",
+        "question": {
+          "en": "In which part of the human body is bile produced?",
+          "bn": "মানবদেহের কোন অঙ্গে পিত্তরস তৈরি হয়?",
+          "hi": "मानव शरीर के किस अंग में पित्त बनता है?"
+        },
+        "options": [
+          { "en": "Gall bladder", "bn": "পিত্তথলি", "hi": "पित्ताशय" },
+          { "en": "Liver", "bn": "যকৃত", "hi": "यकृत" },
+          { "en": "Pancreas", "bn": "অগ্ন্যাশয়", "hi": "अग्न्याशय" },
+          { "en": "Stomach", "bn": "পাকস্থলী", "hi": "आमाशय" }
+        ],
+        "correct_index": 1,
+        "explanation": {
+          "en": "Bile is made in the liver and stored in the gall bladder.",
+          "bn": "পিত্তরস যকৃতে তৈরি হয় ও পিত্তথলিতে সঞ্চিত থাকে।",
+          "hi": "पित्त यकृत में बनता है और पित्ताशय में संचित रहता है।"
+        },
+        "points": 10,
+        "time_limit_sec": 15,
+        "source": "manual",
+        "reviewed": true
+      },
+      {
+        "id": "bio_ch_01_003",
+        "question": {
+          "en": "During which process do plants lose water vapour through stomata?",
+          "bn": "কোন প্রক্রিয়ায় উদ্ভিদ পত্ররন্ধ্র দিয়ে জলীয় বাষ্প হারায়?",
+          "hi": ""
+        },
+        "options": [
+          { "en": "Respiration", "bn": "শ্বসন", "hi": "" },
+          { "en": "Transpiration", "bn": "বাষ্পমোচন", "hi": "" },
+          { "en": "Photosynthesis", "bn": "সালোকসংশ্লেষ", "hi": "" },
+          { "en": "Guttation", "bn": "নিঃসরণ", "hi": "" }
+        ],
+        "correct_index": 1,
+        "explanation": {
+          "en": "Transpiration is water loss as vapour, mostly through stomata.",
+          "bn": "বাষ্পমোচন হলো বাষ্পরূপে জলক্ষয়, মূলত পত্ররন্ধ্রের মাধ্যমে।",
+          "hi": ""
+        },
+        "points": 10,
+        "time_limit_sec": 20,
+        "source": "ai",
+        "batch_id": "batch_2026_09_12_b",
+        "reviewed": true
+      }
+    ]
+  },
+  "sci_ch_01": {
+    "questions": [
+      {
+        "id": "sci_ch_01_001",
+        "question": {
+          "en": "Which planet has the largest number of confirmed moons?",
+          "bn": "কোন গ্রহের অনুমোদিত উপগ্রহের সংখ্যা সবচেয়ে বেশি?",
+          "hi": "किस ग्रह के पुष्ट चंद्रमाओं की संख्या सबसे अधिक है?"
+        },
+        "options": [
+          { "en": "Jupiter", "bn": "বৃহস্পতি", "hi": "बृहस्पति" },
+          { "en": "Saturn", "bn": "শনি", "hi": "शनि" },
+          { "en": "Uranus", "bn": "ইউরেনাস", "hi": "यूरेनस" },
+          { "en": "Neptune", "bn": "নেপচুন", "hi": "नेपच्यून" }
+        ],
+        "correct_index": 1,
+        "explanation": {
+          "en": "Saturn leads with over 140 confirmed moons.",
+          "bn": "শনির অনুমোদিত উপগ্রহের সংখ্যা 140-এর বেশি।",
+          "hi": "शनि के 140 से अधिक पुष्ट चंद्रमा हैं।"
+        },
+        "points": 10,
+        "time_limit_sec": 15,
+        "source": "ai",
+        "batch_id": "batch_2026_09_14_c",
+        "reviewed": true
+      },
+      {
+        "id": "sci_ch_01_002",
+        "question": {
+          "en": "Which mission first landed humans on the Moon?",
+          "bn": "কোন অভিযান প্রথমবার মানুষকে চাঁদে নামায়?",
+          "hi": "किस मिशन ने पहली बार मनुष्यों को चंद्रमा पर उतारा?"
+        },
+        "options": [
+          { "en": "Apollo 11", "bn": "অ্যাপোলো 11", "hi": "अपोलो 11" }
+        ],
+        "correct_index": 0,
+        "explanation": {
+          "en": "Apollo 11 landed on 20 July 1969.",
+          "bn": "অ্যাপোলো 11, 1969 সালের 20 জুলাই অবতরণ করে।",
+          "hi": "अपोलो 11, 20 जुलाई 1969 को उतरा।"
+        },
+        "points": 10,
+        "time_limit_sec": 15,
+        "source": "ai",
+        "batch_id": "batch_2026_09_14_c",
+        "reviewed": true
+      }
+    ]
+  },
+  "admin_added_chapter_x": {
+    "questions": [
+      {
+        "id": "admin_added_chapter_x_001",
+        "question": {
+          "en": "This chapter was created in the admin panel and is not in chapters_list.json.",
+          "bn": "এই চ্যাপ্টারটি অ্যাডমিন প্যানেল থেকে তৈরি এবং chapters_list.json-এ নেই।",
+          "hi": "यह अध्याय एडमिन पैनल से बनाया गया और chapters_list.json में नहीं है।"
+        },
+        "options": [
+          { "en": "A", "bn": "ক", "hi": "क" },
+          { "en": "B", "bn": "খ", "hi": "ख" }
+        ],
+        "correct_index": 0,
+        "explanation": { "en": "Served live from Firestore.", "bn": "Firestore থেকে সরাসরি আসে।", "hi": "Firestore से सीधे आता है।" },
+        "points": 10,
+        "time_limit_sec": 15
+      }
+    ]
+  }
+}

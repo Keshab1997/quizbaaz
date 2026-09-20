@@ -6,5 +6,842 @@
     "hi": "आनुवंशिकता"
   },
   "class_standard": "Class 10",
-  "questions": []
+  "questions": [
+    {
+      "id": "bio_ch_04_q001",
+      "question": {
+        "bn": "কাকে বংশগতিবিদ্যার জনক বলা হয়?",
+        "en": "Who is known as the father of genetics?",
+        "hi": "आनुवंशिकी का जनक किसे कहा जाता है?"
+      },
+      "options": [
+        {
+          "bn": "চার্লস ডারউইন",
+          "en": "Charles Darwin",
+          "hi": "चार्ल्स डार्विन"
+        },
+        {
+          "bn": "গ্রেগর মেন্ডেল",
+          "en": "Gregor Mendel",
+          "hi": "ग्रेगर मेंडल"
+        },
+        {
+          "bn": "জ্যঁ-বাপ্তিস্ত ল্যামার্ক",
+          "en": "Jean-Baptiste Lamarck",
+          "hi": "ज्याँ-बाप्तिस्त लामार्क"
+        },
+        {
+          "bn": "থমাস হান্ট মরগ্যান",
+          "en": "Thomas Hunt Morgan",
+          "hi": "थॉमस हंट मॉर्गन"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "গ্রেগর মেন্ডেল মটরগাছের উপর পরীক্ষা করে বংশগতির মৌলিক সূত্রগুলি প্রতিষ্ঠা করেন। তাই তাঁকে বংশগতিবিদ্যার জনক বলা হয়।",
+        "en": "Gregor Mendel studied inheritance using pea plants and formulated the basic laws of heredity. Therefore, he is known as the father of genetics.",
+        "hi": "ग्रेगर मेंडल ने मटर के पौधों पर प्रयोग करके आनुवंशिकता के मूल नियम स्थापित किए। इसलिए उन्हें आनुवंशिकी का जनक कहा जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_04_q002",
+      "question": {
+        "bn": "মেন্ডেলের মটরগাছের পরীক্ষায় খর্বাকৃতির উপর কোন বৈশিষ্ট্যটি প্রকট?",
+        "en": "In Mendel's pea plant experiments, which trait is dominant over dwarfness?",
+        "hi": "मेंडल के मटर के पौधों के प्रयोग में बौनेपन पर कौन-सा लक्षण प्रभावी था?"
+      },
+      "options": [
+        {
+          "bn": "লম্বা হওয়া",
+          "en": "Tallness",
+          "hi": "लंबापन"
+        },
+        {
+          "bn": "কুঞ্চিত বীজ",
+          "en": "Wrinkled seed",
+          "hi": "झुर्रीदार बीज"
+        },
+        {
+          "bn": "সবুজ বীজ",
+          "en": "Green seed",
+          "hi": "हरे बीज"
+        },
+        {
+          "bn": "সাদা ফুল",
+          "en": "White flower",
+          "hi": "सफेद फूल"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "মটরগাছে লম্বা হওয়ার বৈশিষ্ট্যটি খর্বাকৃতির উপর প্রকট। তাই একটি প্রকট লম্বা অ্যালিল থাকলেও লম্বা বৈশিষ্ট্য প্রকাশ পেতে পারে।",
+        "en": "In pea plants, tallness is dominant over dwarfness. Thus, a plant with one dominant tall allele can show the tall phenotype.",
+        "hi": "मटर के पौधों में लंबापन बौनेपन पर प्रभावी होता है। इसलिए एक प्रभावी लंबाई वाला एलील होने पर भी लंबा लक्षण प्रकट हो सकता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_04_q003",
+      "question": {
+        "bn": "একটি সাধারণ মেন্ডেলীয় একসংকর সংকরায়ণে F₂ জনুতে ফিনোটাইপিক অনুপাত কত?",
+        "en": "What is the phenotypic ratio in the F₂ generation of a typical Mendelian monohybrid cross?",
+        "hi": "एक सामान्य मेंडलियन एकसंकर संकरण की F₂ पीढ़ी में फीनोटाइपिक अनुपात क्या होता है?"
+      },
+      "options": [
+        {
+          "bn": "1:1",
+          "en": "1:1",
+          "hi": "1:1"
+        },
+        {
+          "bn": "2:1",
+          "en": "2:1",
+          "hi": "2:1"
+        },
+        {
+          "bn": "3:1",
+          "en": "3:1",
+          "hi": "3:1"
+        },
+        {
+          "bn": "1:2:1",
+          "en": "1:2:1",
+          "hi": "1:2:1"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "bn": "সাধারণ একসংকর সংকরায়ণে F₂ জনুতে প্রতি 1টি প্রচ্ছন্ন ফিনোটাইপের বিপরীতে 3টি প্রকট ফিনোটাইপ পাওয়া যায়। তাই অনুপাত 3:1।",
+        "en": "In a typical monohybrid cross, the F₂ generation contains three dominant-phenotype offspring for every one recessive-phenotype offspring, giving a 3:1 ratio.",
+        "hi": "सामान्य एकसंकर संकरण में F₂ पीढ़ी में प्रत्येक 1 अप्रभावी फीनोटाइप के लिए 3 प्रभावी फीनोटाइप मिलते हैं। इसलिए अनुपात 3:1 होता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_04_q004",
+      "question": {
+        "bn": "কোন মেন্ডেলীয় সূত্র অনুযায়ী গ্যামেট গঠনের সময় একটি জোড়ার দুটি অ্যালিল পৃথক হয়ে যায়?",
+        "en": "Which Mendelian law states that the two alleles of a pair separate during gamete formation?",
+        "hi": "किस मेंडलियन नियम के अनुसार युग्म के दो एलील युग्मक निर्माण के समय अलग हो जाते हैं?"
+      },
+      "options": [
+        {
+          "bn": "প্রকটতার সূত্র",
+          "en": "Law of dominance",
+          "hi": "प्रभाविता का नियम"
+        },
+        {
+          "bn": "বিচ্ছেদ সূত্র",
+          "en": "Law of segregation",
+          "hi": "पृथक्करण का नियम"
+        },
+        {
+          "bn": "স্বাধীন বিন্যাস সূত্র",
+          "en": "Law of independent assortment",
+          "hi": "स्वतंत्र अपव्यूহण का नियम"
+        },
+        {
+          "bn": "বৈচিত্র্যের সূত্র",
+          "en": "Law of variation",
+          "hi": "विविधता का नियम"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "বিচ্ছেদ সূত্র অনুযায়ী গ্যামেট গঠনের সময় জিন-জোড়ার দুটি অ্যালিল পৃথক হয় এবং প্রতিটি গ্যামেটে একটি অ্যালিল যায়।",
+        "en": "The law of segregation states that the two alleles of a gene pair separate during gamete formation, so each gamete receives only one allele.",
+        "hi": "पृथक्करण के नियम के अनुसार युग्मक निर्माण के समय जीन-युग्म के दोनों एलील अलग हो जाते हैं और प्रत्येक युग्मक में एक एलील जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_04_q005",
+      "question": {
+        "bn": "মানুষের ক্ষেত্রে কোন যৌন ক্রোমোজোমের সমন্বয় পুরুষকে নির্দেশ করে?",
+        "en": "In humans, which combination of sex chromosomes represents a male?",
+        "hi": "मनुष्यों में लैंगिक गुणसूत्रों का कौन-सा संयोजन पुरुष को दर्शाता है?"
+      },
+      "options": [
+        {
+          "bn": "XX",
+          "en": "XX",
+          "hi": "XX"
+        },
+        {
+          "bn": "XY",
+          "en": "XY",
+          "hi": "XY"
+        },
+        {
+          "bn": "YY",
+          "en": "YY",
+          "hi": "YY"
+        },
+        {
+          "bn": "XO",
+          "en": "XO",
+          "hi": "XO"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "মানুষের পুরুষদের সাধারণত একটি X এবং একটি Y যৌন ক্রোমোজোম থাকে, অর্থাৎ XY। নারীদের সাধারণত XX থাকে।",
+        "en": "Human males normally have one X and one Y sex chromosome, represented as XY. Females normally have XX.",
+        "hi": "मनुष्यों में पुरुषों के सामान्यतः एक X और एक Y लैंगिक गुणसूत्र होते हैं, जिन्हें XY लिखा जाता है। महिलाओं में सामान्यतः XX होते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_04_q006",
+      "question": {
+        "bn": "মানুষের ক্ষেত্রে সন্তানের লিঙ্গ কোন অভিভাবক নির্ধারণ করেন?",
+        "en": "Which parent determines the sex of a child in humans?",
+        "hi": "मनुष्यों में बच्चे का लिंग किस जनक द्वारा निर्धारित होता है?"
+      },
+      "options": [
+        {
+          "bn": "শুধু মা",
+          "en": "Mother only",
+          "hi": "केवल माता"
+        },
+        {
+          "bn": "শুধু বাবা",
+          "en": "Father only",
+          "hi": "केवल पिता"
+        },
+        {
+          "bn": "উভয়েই শুধুমাত্র X ক্রোমোজোমের মাধ্যমে সমানভাবে",
+          "en": "Both equally through X chromosome only",
+          "hi": "दोनों केवल X गुणसूत्र के माध्यम से समान रूप से"
+        },
+        {
+          "bn": "কোনও অভিভাবকই নয়",
+          "en": "Neither parent",
+          "hi": "कोई भी जनक नहीं"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "মায়ের ডিম্বাণুতে কেবল X ক্রোমোজোম থাকে, কিন্তু বাবার শুক্রাণুতে X অথবা Y থাকতে পারে। তাই সন্তান XX হবে নাকি XY হবে, তা বাবার গ্যামেট নির্ধারণ করে।",
+        "en": "The mother produces eggs carrying only X chromosomes, while the father produces sperm carrying either X or Y. Therefore, the father determines whether the child is XX or XY.",
+        "hi": "माता के अंडाणु में केवल X गुणसूत्र होता है, जबकि पिता के शुक्राणु में X या Y हो सकता है। इसलिए बच्चा XX होगा या XY, यह पिता के युग्मक से निर्धारित होता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_04_q007",
+      "question": {
+        "bn": "Tt জিনোটাইপের একটি লম্বা মটরগাছকে tt জিনোটাইপের একটি খর্ব মটরগাছের সঙ্গে সংকরায়ণ করলে, কত অংশ অপত্য খর্ব হবে বলে আশা করা যায়?",
+        "en": "If a tall pea plant with genotype Tt is crossed with a dwarf plant tt, what proportion of the offspring is expected to be dwarf?",
+        "hi": "यदि Tt जीनप्ररूप वाले लंबे मटर के पौधे का संकरण tt जीनप्ररूप वाले बौने पौधे से किया जाए, तो कितनी संतति बौनी होने की अपेक्षा है?"
+      },
+      "options": [
+        {
+          "bn": "0%",
+          "en": "0%",
+          "hi": "0%"
+        },
+        {
+          "bn": "25%",
+          "en": "25%",
+          "hi": "25%"
+        },
+        {
+          "bn": "50%",
+          "en": "50%",
+          "hi": "50%"
+        },
+        {
+          "bn": "100%",
+          "en": "100%",
+          "hi": "100%"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "bn": "Tt অভিভাবক T ও t গ্যামেট এবং tt অভিভাবক শুধু t গ্যামেট তৈরি করে। ফলে অপত্যের Tt ও tt অনুপাত 1:1, তাই 50% খর্ব হবে।",
+        "en": "The Tt parent produces T and t gametes, while the tt parent produces only t gametes. The offspring are Tt and tt in a 1:1 ratio, so 50% are dwarf.",
+        "hi": "Tt जनक T और t युग्मक बनाता है, जबकि tt जनक केवल t युग्मक बनाता है। संतति में Tt और tt का अनुपात 1:1 होगा, इसलिए 50% बौनी होगी।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_04_q010",
+      "question": {
+        "bn": "দুটি জিন স্বাধীনভাবে বিন্যস্ত হলে AaBb × AaBb দ্বিসংকর সংকরায়ণে প্রত্যাশিত ফিনোটাইপিক অনুপাত কত?",
+        "en": "In a dihybrid cross AaBb × AaBb, what phenotypic ratio is expected when the two genes assort independently?",
+        "hi": "यदि दोनों जीन स्वतंत्र रूप से अपव्यूहित हों, तो AaBb × AaBb द्विसंकर संकरण में अपेक्षित फीनोटाइपिक अनुपात क्या होगा?"
+      },
+      "options": [
+        {
+          "bn": "3:1",
+          "en": "3:1",
+          "hi": "3:1"
+        },
+        {
+          "bn": "1:1:1:1",
+          "en": "1:1:1:1",
+          "hi": "1:1:1:1"
+        },
+        {
+          "bn": "9:3:3:1",
+          "en": "9:3:3:1",
+          "hi": "9:3:3:1"
+        },
+        {
+          "bn": "1:2:1",
+          "en": "1:2:1",
+          "hi": "1:2:1"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "bn": "স্বাধীন বিন্যাসযুক্ত সাধারণ দ্বিসংকর সংকরায়ণে F₂ জনুতে চার ধরনের ফিনোটাইপ 9:3:3:1 অনুপাতে প্রকাশ পায়।",
+        "en": "For a typical dihybrid cross with independent assortment, the F₂ generation shows four phenotypic classes in the ratio 9:3:3:1.",
+        "hi": "स्वतंत्र अपव्यूहन वाले सामान्य द्विसंकर संकरण में F₂ पीढ़ी में चार फीनोटाइपिक वर्ग 9:3:3:1 के अनुपात में प्राप्त होते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_04_q011",
+      "question": {
+        "bn": "কোনো জীবের জিনগত গঠনকে কী বলা হয়?",
+        "en": "What is the genetic constitution of an organism called?",
+        "hi": "किसी जीव के आनुवंशिक संगठन को क्या कहा जाता है?"
+      },
+      "options": [
+        {
+          "bn": "ফিনোটাইপ",
+          "en": "Phenotype",
+          "hi": "फीनोटाइप"
+        },
+        {
+          "bn": "জিনোটাইপ",
+          "en": "Genotype",
+          "hi": "जीनोटाइप"
+        },
+        {
+          "bn": "বৈচিত্র্য",
+          "en": "Variation",
+          "hi": "विविधता"
+        },
+        {
+          "bn": "বৈশিষ্ট্য",
+          "en": "Trait",
+          "hi": "लक्षण"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "জিনোটাইপ বলতে কোনো জীবের জিনগত গঠন বা অ্যালিলের সমন্বয়কে বোঝায়, আর ফিনোটাইপ হলো প্রকাশিত বৈশিষ্ট্য।",
+        "en": "Genotype refers to the genetic constitution or allele combination of an organism, whereas phenotype refers to its observable characteristics.",
+        "hi": "जीनोटाइप किसी जीव के आनुवंशिक संगठन या एलीलों के संयोजन को दर्शाता है, जबकि फीनोटाइप उसके दिखाई देने वाले लक्षणों को दर्शाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_04_q012",
+      "question": {
+        "bn": "কোনো জীবের পর্যবেক্ষণযোগ্য বৈশিষ্ট্যকে কোন শব্দটি প্রকাশ করে?",
+        "en": "Which term describes the observable characteristics of an organism?",
+        "hi": "किसी जीव के दिखाई देने वाले लक्षणों को किस शब्द से व्यक्त किया जाता है?"
+      },
+      "options": [
+        {
+          "bn": "জিনোটাইপ",
+          "en": "Genotype",
+          "hi": "जीनोटाइप"
+        },
+        {
+          "bn": "ফিনোটাইপ",
+          "en": "Phenotype",
+          "hi": "फीनोटाइप"
+        },
+        {
+          "bn": "অ্যালিল",
+          "en": "Allele",
+          "hi": "एलील"
+        },
+        {
+          "bn": "গ্যামেট",
+          "en": "Gamete",
+          "hi": "युग्मक"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "ফিনোটাইপ বলতে জীবের পর্যবেক্ষণযোগ্য বৈশিষ্ট্যের প্রকাশকে বোঝায়। এটি জিনোটাইপ ও পরিবেশের প্রভাবে নির্ধারিত হয়।",
+        "en": "Phenotype means the observable expression of traits in an organism. It results from the genotype and environmental influences.",
+        "hi": "फीनोटाइप का अर्थ जीव में लक्षणों की दिखाई देने वाली अभिव्यक्ति है। यह जीनोटाइप और पर्यावरणीय प्रभावों से निर्धारित होता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_04_q013",
+      "question": {
+        "bn": "কোনো বৈশিষ্ট্যের জন্য দুটি একই অ্যালিলযুক্ত জীবকে কী বলা হয়?",
+        "en": "An organism having two identical alleles for a trait is called:",
+        "hi": "किसी लक्षण के लिए दो समान एलील वाले जीव को क्या कहा जाता है?"
+      },
+      "options": [
+        {
+          "bn": "সংকরজ",
+          "en": "Heterozygous",
+          "hi": "विषमयुग्मजी"
+        },
+        {
+          "bn": "সমযুগ্মজ",
+          "en": "Homozygous",
+          "hi": "समयुग्मजी"
+        },
+        {
+          "bn": "সংকর",
+          "en": "Hybrid",
+          "hi": "संकर"
+        },
+        {
+          "bn": "প্রকট",
+          "en": "Dominant",
+          "hi": "प्रभावी"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "TT বা tt-এর মতো একই দুটি অ্যালিল থাকলে জীবটি ওই বৈশিষ্ট্যের জন্য সমযুগ্মজ। ভিন্ন অ্যালিল Tt হলে তা সংকরজ হয়।",
+        "en": "An organism with two identical alleles, such as TT or tt, is homozygous for that trait. Different alleles, such as Tt, make it heterozygous.",
+        "hi": "TT या tt जैसे दो समान एलील होने पर जीव उस लक्षण के लिए समयुग्मजी होता है। Tt जैसे अलग-अलग एलील होने पर वह विषमयुग्मजी होता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_04_q014",
+      "question": {
+        "bn": "একটি মটরগাছের জিনোটাইপ Tt হলে, তাকে কী বলা হয়?",
+        "en": "If a pea plant has genotype Tt, it is described as:",
+        "hi": "यदि मटर के पौधे का जीनोटाइप Tt है, तो उसे क्या कहा जाता है?"
+      },
+      "options": [
+        {
+          "bn": "সমযুগ্মজ প্রকট",
+          "en": "Homozygous dominant",
+          "hi": "समयुग्मजी प्रभावी"
+        },
+        {
+          "bn": "সমযুগ্মজ প্রচ্ছন্ন",
+          "en": "Homozygous recessive",
+          "hi": "समयुग्मजी अप्रभावी"
+        },
+        {
+          "bn": "সংকরজ",
+          "en": "Heterozygous",
+          "hi": "विषमयुग्मजी"
+        },
+        {
+          "bn": "বিশুদ্ধ প্রজননশীল",
+          "en": "Pure breeding",
+          "hi": "शुद्ध प्रजननशील"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "bn": "Tt-তে T ও t দুটি ভিন্ন অ্যালিল রয়েছে। তাই গাছটি ওই বৈশিষ্ট্যের জন্য সংকরজ।",
+        "en": "Tt contains two different alleles, T and t. Therefore, the plant is heterozygous for the trait.",
+        "hi": "Tt में T और t दो अलग-अलग एलील होते हैं। इसलिए पौधा उस लक्षण के लिए विषमयुग्मजी है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_04_q015",
+      "question": {
+        "bn": "একটি জিনের বিকল্প রূপকে কী বলা হয়?",
+        "en": "What is an alternative form of a gene called?",
+        "hi": "जीन के वैकल्पिक रूप को क्या कहा जाता है?"
+      },
+      "options": [
+        {
+          "bn": "ক্রোমোজোম",
+          "en": "Chromosome",
+          "hi": "गुणसूत्र"
+        },
+        {
+          "bn": "অ্যালিল",
+          "en": "Allele",
+          "hi": "एलील"
+        },
+        {
+          "bn": "গ্যামেট",
+          "en": "Gamete",
+          "hi": "युग्मक"
+        },
+        {
+          "bn": "নিউক্লিয়াস",
+          "en": "Nucleus",
+          "hi": "केंद्रक"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "একই জিনের বিভিন্ন রূপকে অ্যালিল বলা হয়। যেমন, উদ্ভিদের উচ্চতার জন্য T ও t বিকল্প অ্যালিল হতে পারে।",
+        "en": "Different forms of the same gene are called alleles. For example, T and t can represent alternative alleles for plant height.",
+        "hi": "एक ही जीन के विभिन्न रूपों को एलील कहा जाता है। उदाहरण के लिए, पौधे की ऊँचाई के लिए T और t वैकल्पिक एलील हो सकते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_04_q017",
+      "question": {
+        "bn": "মানুষের একটি স্বাভাবিক দেহকোশে অটোজোমের কত জোড়া থাকে?",
+        "en": "In humans, how many pairs of autosomes are present in a normal somatic cell?",
+        "hi": "मनुष्य की एक सामान्य कायिक कोशिका में ऑटोसोम के कितने जोड़े होते हैं?"
+      },
+      "options": [
+        {
+          "bn": "22 জোড়া",
+          "en": "22 pairs",
+          "hi": "22 जोड़े"
+        },
+        {
+          "bn": "23 জোড়া",
+          "en": "23 pairs",
+          "hi": "23 जोड़े"
+        },
+        {
+          "bn": "21 জোড়া",
+          "en": "21 pairs",
+          "hi": "21 जोड़े"
+        },
+        {
+          "bn": "24 জোড়া",
+          "en": "24 pairs",
+          "hi": "24 जोड़े"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "মানুষের একটি স্বাভাবিক দেহকোশে মোট 23 জোড়া ক্রোমোজোম থাকে। এর মধ্যে 22 জোড়া অটোজোম এবং 1 জোড়া যৌন ক্রোমোজোম।",
+        "en": "A normal human somatic cell has 23 chromosome pairs in total. Of these, 22 pairs are autosomes and one pair is sex chromosomes.",
+        "hi": "मानव की सामान्य कायिक कोशिका में कुल 23 गुणसूत्र युग्म होते हैं। इनमें 22 जोड़े ऑटोसोम और 1 जोड़ा लैंगिक गुणसूत्र होता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_04_q018",
+      "question": {
+        "bn": "মানবসন্তানের যৌন ক্রোমোজোম XX হবে নাকি XY হবে, তা কোন ধরনের শুক্রাণু নির্ধারণ করে?",
+        "en": "Which type of sperm determines whether a human child will have XX or XY sex chromosomes?",
+        "hi": "मानव बच्चे में लैंगिक गुणसूत्र XX होंगे या XY, यह किस प्रकार का शुक्राणु निर्धारित करता है?"
+      },
+      "options": [
+        {
+          "bn": "শুধু X-বাহী শুক্রাণু",
+          "en": "Only X-bearing sperm",
+          "hi": "केवल X-युक्त शुक्राणु"
+        },
+        {
+          "bn": "শুধু Y-বাহী শুক্রাণু",
+          "en": "Only Y-bearing sperm",
+          "hi": "केवल Y-युक्त शुक्राणु"
+        },
+        {
+          "bn": "X-বাহী অথবা Y-বাহী শুক্রাণু",
+          "en": "Either X-bearing or Y-bearing sperm",
+          "hi": "X-युक्त या Y-युक्त शुक्राणु"
+        },
+        {
+          "bn": "X-বাহী বা Y-বাহী কোনোটিই নয়",
+          "en": "Neither X-bearing nor Y-bearing sperm",
+          "hi": "न X-युक्त और न ही Y-युक्त शुक्राणु"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "bn": "ডিম্বাণু সবসময় X দেয়, কিন্তু শুক্রাণু X অথবা Y বহন করতে পারে। X-বাহী শুক্রাণু XX এবং Y-বাহী শুক্রাণু XY সৃষ্টি করে।",
+        "en": "The egg always contributes X, while a sperm can contribute either X or Y. X-bearing sperm produces XX and Y-bearing sperm produces XY.",
+        "hi": "अंडाणु हमेशा X देता है, जबकि शुक्राणु X या Y में से कोई एक दे सकता है। X-युक्त शुक्राणु XX और Y-युक्त शुक्राणु XY बनाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_04_q019",
+      "question": {
+        "bn": "মেন্ডেল তাঁর পরীক্ষার জন্য প্রধানত মটরগাছ বেছে নিয়েছিলেন কারণ এগুলি:",
+        "en": "Mendel selected pea plants for his experiments mainly because they:",
+        "hi": "मेंडल ने अपने प्रयोगों के लिए मुख्यतः मटर के पौधों को इसलिए चुना क्योंकि वे:"
+      },
+      "options": [
+        {
+          "bn": "মাত্র এক জোড়া ক্রোমোজোম থাকে",
+          "en": "Have only one pair of chromosomes",
+          "hi": "उनमें केवल एक जोड़ी गुणसूत्र होते हैं"
+        },
+        {
+          "bn": "এদের অনেক স্পষ্ট বিপরীত বৈশিষ্ট্য আছে এবং স্বপরাগায়ণ করতে পারে",
+          "en": "Have many clear contrasting traits and can undergo self-pollination",
+          "hi": "उनमें कई स्पष्ट विपरीत लक्षण होते हैं और वे स्वपरागण कर सकते हैं"
+        },
+        {
+          "bn": "বীজের মাধ্যমে প্রজনন করতে পারে না",
+          "en": "Cannot reproduce by seeds",
+          "hi": "वे बीज द्वारा प्रजनन नहीं कर सकते"
+        },
+        {
+          "bn": "সবসময় একই রকম অপত্য উৎপন্ন করে",
+          "en": "Always produce identical offspring",
+          "hi": "वे हमेशा समान संतति उत्पन्न करते हैं"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "মটরগাছে সহজে শনাক্তযোগ্য বহু বিপরীত বৈশিষ্ট্য থাকে এবং স্বপরাগায়ণ সম্ভব, তাই নিয়ন্ত্রিত সংকরায়ণ ও বংশগতি অধ্যয়ন সহজ হয়।",
+        "en": "Pea plants have several easily distinguishable contrasting traits and can self-pollinate, making controlled crosses and inheritance studies convenient.",
+        "hi": "मटर के पौधों में आसानी से पहचाने जाने वाले कई विपरीत लक्षण होते हैं और वे स्वपरागण कर सकते हैं, जिससे नियंत्रित संकरण और आनुवंशिकता का अध्ययन आसान होता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_04_q020",
+      "question": {
+        "bn": "কোন মেন্ডেলীয় সূত্র ব্যাখ্যা করে যে সংকরজ জীবে প্রকট ও প্রচ্ছন্ন বৈশিষ্ট্য ভিন্নভাবে প্রকাশ পায়?",
+        "en": "Which Mendelian law explains that dominant and recessive traits are expressed differently in a heterozygous organism?",
+        "hi": "कौन-सा मेंडलियन नियम बताता है कि विषमयुग्मजी जीव में प्रभावी और अप्रभावी लक्षण अलग-अलग रूप से प्रकट होते हैं?"
+      },
+      "options": [
+        {
+          "bn": "প্রকটতার সূত্র",
+          "en": "Law of dominance",
+          "hi": "प्रभाविता का नियम"
+        },
+        {
+          "bn": "বিচ্ছেদ সূত্র",
+          "en": "Law of segregation",
+          "hi": "पृथक्करण का नियम"
+        },
+        {
+          "bn": "স্বাধীন বিন্যাস সূত্র",
+          "en": "Law of independent assortment",
+          "hi": "स्वतंत्र अपव्यूহण का नियम"
+        },
+        {
+          "bn": "বৈচিত্র্যের সূত্র",
+          "en": "Law of variation",
+          "hi": "विविधता का नियम"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "প্রকটতার সূত্র অনুযায়ী সংকরজ অবস্থায় প্রকট অ্যালিলের বৈশিষ্ট্য প্রকাশ পায় এবং প্রচ্ছন্ন অ্যালিলের বৈশিষ্ট্য ঢাকা থাকে।",
+        "en": "The law of dominance states that in a heterozygous condition, the dominant allele expresses its trait while the recessive allele remains masked.",
+        "hi": "प्रभाविता के नियम के अनुसार विषमयुग्मजी अवस्था में प्रभावी एलील का लक्षण प्रकट होता है, जबकि अप्रभावी एलील का लक्षण दबा रहता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_04_q023",
+      "question": {
+        "bn": "মানুষের ক্ষেত্রে কোন ক্রোমোজোম ডিম্বাণু এবং প্রতিটি স্বাভাবিক শুক্রাণুতে থাকে?",
+        "en": "In humans, which chromosome is present in both the egg and every normal sperm?",
+        "hi": "मनुष्यों में कौन-सा गुणसूत्र अंडाणु और प्रत्येक सामान्य शुक्राणु में पाया जाता है?"
+      },
+      "options": [
+        {
+          "bn": "X ক্রোমোজোম",
+          "en": "X chromosome",
+          "hi": "X गुणसूत्र"
+        },
+        {
+          "bn": "Y ক্রোমোজোম",
+          "en": "Y chromosome",
+          "hi": "Y गुणसूत्र"
+        },
+        {
+          "bn": "X ও Y উভয় ক্রোমোজোম",
+          "en": "Both X and Y chromosomes",
+          "hi": "X और Y दोनों गुणसूत्र"
+        },
+        {
+          "bn": "X বা Y কোনোটিই নয়",
+          "en": "Neither X nor Y chromosome",
+          "hi": "न X और न ही Y गुणसूत्र"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "মানব ডিম্বাণুতে সবসময় X ক্রোমোজোম থাকে, আর শুক্রাণুতে X অথবা Y থাকতে পারে। তাই প্রতিটি ডিম্বাণু এবং স্বাভাবিক শুক্রাণুর উভয় ধরনের মধ্যেই X থাকে।",
+        "en": "A human egg always carries an X chromosome, while sperm may carry X or Y. Therefore, X is present in every egg and every normal sperm type.",
+        "hi": "मानव अंडाणु में हमेशा X गुणसूत्र होता है, जबकि शुक्राणु में X या Y हो सकता है। इसलिए प्रत्येक अंडाणु और दोनों प्रकार के सामान्य शुक्राणुओं में X पाया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_04_q024",
+      "question": {
+        "bn": "প্রচ্ছন্ন বৈশিষ্ট্য সম্পর্কে কোন বক্তব্যটি সঠিক?",
+        "en": "Which statement correctly describes a recessive trait?",
+        "hi": "अप्रभावी लक्षण के बारे में कौन-सा कथन सही है?"
+      },
+      "options": [
+        {
+          "bn": "সংকরজ অবস্থায় এটি সবসময় প্রকাশিত হয়",
+          "en": "It is always expressed in a heterozygous condition",
+          "hi": "यह विषमयुग्मजी अवस्था में हमेशा प्रकट होता है"
+        },
+        {
+          "bn": "সংশ্লিষ্ট প্রকট অ্যালিল অনুপস্থিত থাকলেই এটি প্রকাশিত হয়",
+          "en": "It is expressed only when the corresponding dominant allele is absent",
+          "hi": "यह तभी प्रकट होता है जब संबंधित प्रभावी एलील अनुपस्थित हो"
+        },
+        {
+          "bn": "এটি বংশগত হতে পারে না",
+          "en": "It cannot be inherited",
+          "hi": "यह वंशागत नहीं हो सकता"
+        },
+        {
+          "bn": "এটি সবসময় প্রকট বৈশিষ্ট্যের চেয়ে বেশি সাধারণ",
+          "en": "It is always more common than a dominant trait",
+          "hi": "यह हमेशा प्रभावी लक्षण से अधिक सामान्य होता है"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "প্রকট অ্যালিল উপস্থিত থাকলে প্রচ্ছন্ন বৈশিষ্ট্য ঢাকা থাকে। প্রকট অ্যালিল অনুপস্থিত হলে, যেমন aa অবস্থায়, এটি প্রকাশ পায়।",
+        "en": "A recessive trait is masked when its dominant allele is present. It becomes visible when the dominant allele is absent, such as in aa.",
+        "hi": "प्रभावी एलील उपस्थित होने पर अप्रभावी लक्षण दबा रहता है। प्रभावी एलील अनुपस्थित होने पर, जैसे aa अवस्था में, यह प्रकट होता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_04_q027",
+      "question": {
+        "bn": "Aa ও Aa-এর মধ্যে সংকরায়ণে অপত্যের প্রত্যাশিত জিনোটাইপিক অনুপাত কত?",
+        "en": "In a cross between Aa and Aa, what is the expected genotypic ratio of the offspring?",
+        "hi": "Aa और Aa के बीच संकरण में संतति का अपेक्षित जीनप्ररूपी अनुपात क्या है?"
+      },
+      "options": [
+        {
+          "bn": "3:1",
+          "en": "3:1",
+          "hi": "3:1"
+        },
+        {
+          "bn": "1:1",
+          "en": "1:1",
+          "hi": "1:1"
+        },
+        {
+          "bn": "1:2:1",
+          "en": "1:2:1",
+          "hi": "1:2:1"
+        },
+        {
+          "bn": "9:3:3:1",
+          "en": "9:3:3:1",
+          "hi": "9:3:3:1"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "bn": "Aa × Aa সংকরায়ণে AA, Aa, Aa এবং aa পাওয়া যায়। তাই জিনোটাইপের অনুপাত 1:2:1।",
+        "en": "Aa × Aa gives AA, Aa, Aa and aa. Therefore, the genotypes occur in the ratio 1:2:1.",
+        "hi": "Aa × Aa संकरण से AA, Aa, Aa और aa प्राप्त होते हैं। इसलिए जीनप्ररूप का अनुपात 1:2:1 होता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_04_q028",
+      "question": {
+        "bn": "AaBb জিনোটাইপের একটি জীব কোন জোড়া গ্যামেট তৈরি করতে পারে?",
+        "en": "Which pair of gametes can be produced by an individual with genotype AaBb?",
+        "hi": "AaBb जीनप्ररूप वाला जीव युग्मकों का कौन-सा युग्म बना सकता है?"
+      },
+      "options": [
+        {
+          "bn": "AB এবং ab",
+          "en": "AB and ab",
+          "hi": "AB और ab"
+        },
+        {
+          "bn": "Aa এবং Bb",
+          "en": "Aa and Bb",
+          "hi": "Aa और Bb"
+        },
+        {
+          "bn": "A এবং B",
+          "en": "A and B",
+          "hi": "A और B"
+        },
+        {
+          "bn": "ABb এবং Aab",
+          "en": "ABb and Aab",
+          "hi": "ABb और Aab"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "প্রতিটি গ্যামেটে প্রতিটি জিনের একটি করে অ্যালিল যায়। তাই AaBb জীব AB, Ab, aB এবং ab গ্যামেট তৈরি করতে পারে; AB ও ab তার একটি সঠিক জোড়া।",
+        "en": "Each gamete receives one allele from each gene. Thus an AaBb individual can form AB, Ab, aB and ab gametes; AB and ab are one valid pair.",
+        "hi": "प्रत्येक युग्मक में प्रत्येक जीन का एक एलील जाता है। इसलिए AaBb जीव AB, Ab, aB और ab युग्मक बना सकता है; AB और ab उनमें से एक सही युग्म है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_04_q029",
+      "question": {
+        "bn": "Aa × aa সংকরায়ণে কত শতাংশ অপত্যের মধ্যে প্রচ্ছন্ন ফিনোটাইপ প্রকাশ পাওয়ার আশা করা যায়?",
+        "en": "In a cross Aa × aa, what percentage of offspring is expected to show the recessive phenotype?",
+        "hi": "Aa × aa संकरण में कितने प्रतिशत संतति में अप्रभावी फीनोटाइप प्रकट होने की अपेक्षा है?"
+      },
+      "options": [
+        {
+          "bn": "0%",
+          "en": "0%",
+          "hi": "0%"
+        },
+        {
+          "bn": "25%",
+          "en": "25%",
+          "hi": "25%"
+        },
+        {
+          "bn": "50%",
+          "en": "50%",
+          "hi": "50%"
+        },
+        {
+          "bn": "75%",
+          "en": "75%",
+          "hi": "75%"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "bn": "Aa থেকে A ও a গ্যামেট এবং aa থেকে শুধু a গ্যামেট তৈরি হয়। ফলে অপত্য Aa ও aa সমান অনুপাতে হয়, তাই 50% প্রচ্ছন্ন ফিনোটাইপ প্রকাশ করে।",
+        "en": "Aa produces A and a gametes, while aa produces only a gametes. The offspring are Aa and aa in equal proportions, so 50% show the recessive phenotype.",
+        "hi": "Aa से A और a युग्मक, जबकि aa से केवल a युग्मक बनते हैं। इसलिए संतति Aa और aa समान अनुपात में होती है और 50% में अप्रभावी फीनोटाइप प्रकट होता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    }
+  ]
 }

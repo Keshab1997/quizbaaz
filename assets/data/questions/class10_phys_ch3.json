@@ -6,5 +6,386 @@
     "hi": "धातु एवं अधातु"
   },
   "class_standard": "Class 10",
-  "questions": []
+  "questions": [
+    {
+      "id": "phys_ch_03_q001",
+      "question": {
+        "bn": "নিচের কোন ধাতুটি সবচেয়ে বেশি সক্রিয়?",
+        "en": "Which metal is the most reactive among the following?",
+        "hi": "निम्नलिखित में से कौन-सी धातु सबसे अधिक अभिक्रियाशील है?"
+      },
+      "options": [
+        {
+          "bn": "তামা",
+          "en": "Copper",
+          "hi": "ताँबा"
+        },
+        {
+          "bn": "লোহা",
+          "en": "Iron",
+          "hi": "लोहा"
+        },
+        {
+          "bn": "দস্তা",
+          "en": "Zinc",
+          "hi": "जस्ता"
+        },
+        {
+          "bn": "পটাশিয়াম",
+          "en": "Potassium",
+          "hi": "पोटैशियम"
+        }
+      ],
+      "correct_index": 3,
+      "explanation": {
+        "bn": "সক্রিয়তা শ্রেণিতে পটাশিয়াম দস্তা, লোহা ও তামার উপরে অবস্থান করে। তাই এদের মধ্যে পটাশিয়াম সবচেয়ে বেশি সক্রিয়।",
+        "en": "Potassium is placed above zinc, iron and copper in the reactivity series, so it is the most reactive among these metals.",
+        "hi": "क्रियाशीलता श्रेणी में पोटैशियम, जस्ता, लोहा और ताँबा से ऊपर होता है। इसलिए इनमें पोटैशियम सबसे अधिक अभिक्रियाशील है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_03_q002",
+      "question": {
+        "bn": "কোন ধাতু কপার সালফেট দ্রবণ থেকে তামাকে প্রতিস্থাপিত করতে পারে?",
+        "en": "Which metal can displace copper from copper sulphate solution?",
+        "hi": "कौन-सी धातु कॉपर सल्फेट के विलयन से ताँबे को विस्थापित कर सकती है?"
+      },
+      "options": [
+        {
+          "bn": "রূপা",
+          "en": "Silver",
+          "hi": "चाँदी"
+        },
+        {
+          "bn": "দস্তা",
+          "en": "Zinc",
+          "hi": "जस्ता"
+        },
+        {
+          "bn": "সোনা",
+          "en": "Gold",
+          "hi": "सोना"
+        },
+        {
+          "bn": "প্ল্যাটিনাম",
+          "en": "Platinum",
+          "hi": "प्लैटिनम"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "দস্তা তামার চেয়ে বেশি সক্রিয়, তাই এটি কপার সালফেট থেকে তামাকে প্রতিস্থাপিত করে: Zn + CuSO4 → ZnSO4 + Cu।",
+        "en": "Zinc is more reactive than copper, so it displaces copper from copper sulphate: Zn + CuSO4 → ZnSO4 + Cu.",
+        "hi": "जस्ता ताँबे से अधिक अभिक्रियाशील है, इसलिए यह कॉपर सल्फेट से ताँबे को विस्थापित करता है: Zn + CuSO4 → ZnSO4 + Cu।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_03_q003",
+      "question": {
+        "bn": "কোন আকরিককে সাধারণত ফেনা-ভাসমান পদ্ধতিতে ঘনীভূত করা হয়?",
+        "en": "Which ore is commonly concentrated by froth flotation?",
+        "hi": "किस अयस्क का सांद्रण सामान्यतः झाग प्लवन विधि द्वारा किया जाता है?"
+      },
+      "options": [
+        {
+          "bn": "সালফাইড আকরিক",
+          "en": "Sulphide ore",
+          "hi": "सल्फाइड अयस्क"
+        },
+        {
+          "bn": "অক্সাইড আকরিক",
+          "en": "Oxide ore",
+          "hi": "ऑक्साइड अयस्क"
+        },
+        {
+          "bn": "কার্বনেট আকরিক",
+          "en": "Carbonate ore",
+          "hi": "कार्बोनेट अयस्क"
+        },
+        {
+          "bn": "ক্লোরাইড আকরিক",
+          "en": "Chloride ore",
+          "hi": "क्लोराइड अयस्क"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "ফেনা-ভাসমান পদ্ধতিতে সালফাইড কণাগুলি ফেনার সঙ্গে যুক্ত হয়ে উপরে উঠে আসে, ফলে গ্যাং থেকে সালফাইড আকরিক পৃথক হয়।",
+        "en": "Froth flotation selectively separates sulphide minerals from gangue because sulphide particles attach to the froth and rise to the surface.",
+        "hi": "झाग प्लवन विधि में सल्फाइड कण झाग से चिपककर ऊपर आ जाते हैं, जिससे वे गैंग से अलग हो जाते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_03_q004",
+      "question": {
+        "bn": "সীমিত বায়ুর উপস্থিতিতে উত্তপ্ত করে কার্বনেট আকরিককে অক্সাইডে পরিণত করার প্রক্রিয়াকে কী বলে?",
+        "en": "Which process is used to convert a carbonate ore into its oxide by heating in limited air?",
+        "hi": "सीमित वायु की उपस्थिति में गर्म करके कार्बोनेट अयस्क को ऑक्साइड में बदलने की प्रक्रिया क्या कहलाती है?"
+      },
+      "options": [
+        {
+          "bn": "জারণ",
+          "en": "Roasting",
+          "hi": "भर्जन"
+        },
+        {
+          "bn": "দগ্ধকরণ",
+          "en": "Calcination",
+          "hi": "निस्तापन"
+        },
+        {
+          "bn": "তড়িৎ বিশ্লেষণ",
+          "en": "Electrolysis",
+          "hi": "विद्युत अपघटन"
+        },
+        {
+          "bn": "পাতন",
+          "en": "Distillation",
+          "hi": "आसवन"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "দগ্ধকরণে সীমিত বা বায়ুর অনুপস্থিতিতে কার্বনেট আকরিক উত্তপ্ত করে ধাতব অক্সাইড তৈরি করা হয় এবং কার্বন ডাইঅক্সাইড নির্গত হয়।",
+        "en": "Calcination involves heating a carbonate ore in limited or no air, producing the metal oxide and releasing carbon dioxide.",
+        "hi": "निस्तापन में कार्बोनेट अयस्क को सीमित या बिना वायु के गर्म किया जाता है, जिससे धातु ऑक्साइड और कार्बन डाइऑक्साइड बनते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_03_q005",
+      "question": {
+        "bn": "কার্বনের সাহায্যে বিজারণের পরিবর্তে তড়িৎ বিশ্লেষণের মাধ্যমে সোডিয়াম নিষ্কাশন করা হয় কেন?",
+        "en": "Why is sodium extracted by electrolysis rather than by reduction with carbon?",
+        "hi": "कार्बन द्वारा अपचयन के बजाय विद्युत अपघटन से सोडियम का निष्कर्षण क्यों किया जाता है?"
+      },
+      "options": [
+        {
+          "bn": "সোডিয়াম কার্বনের চেয়ে কম সক্রিয়",
+          "en": "Sodium is less reactive than carbon",
+          "hi": "सोडियम कार्बन से कम अभिक्रियाशील है"
+        },
+        {
+          "bn": "সোডিয়াম কার্বনের চেয়ে বেশি সক্রিয়",
+          "en": "Sodium is more reactive than carbon",
+          "hi": "सोडियम कार्बन से अधिक अभिक्रियाशील है"
+        },
+        {
+          "bn": "সোডিয়াম একটি অধাতু",
+          "en": "Sodium is a non-metal",
+          "hi": "सोडियम एक अधातु है"
+        },
+        {
+          "bn": "কার্বন সোডিয়াম ক্লোরাইডের সঙ্গে বিক্রিয়া করে একটি অ্যাসিড তৈরি করে",
+          "en": "Carbon reacts with sodium chloride to form an acid",
+          "hi": "कार्बन सोडियम क्लोराइड के साथ अभिक्रिया करके एक अम्ल बनाता है"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "সক্রিয়তা শ্রেণিতে সোডিয়াম কার্বনের উপরে থাকায় কার্বন সোডিয়ামের যৌগকে কার্যকরভাবে বিজারিত করতে পারে না। তাই সোডিয়াম নিষ্কাশনে তড়িৎ বিশ্লেষণ ব্যবহার করা হয়।",
+        "en": "Sodium is above carbon in the reactivity series, so carbon cannot effectively reduce sodium compounds. Therefore, electrolysis is used to obtain sodium.",
+        "hi": "क्रियाशीलता श्रेणी में सोडियम कार्बन से ऊपर है, इसलिए कार्बन सोडियम के यौगिकों का प्रभावी अपचयन नहीं कर सकता। अतः सोडियम के निष्कर्षण में विद्युत अपघटन किया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_03_q006",
+      "question": {
+        "bn": "মাঝারি সক্রিয়তার ধাতুগুলিকে তাদের অক্সাইড থেকে নিষ্কাশনের জন্য সাধারণত কোন পদ্ধতি ব্যবহার করা হয়?",
+        "en": "Which method is generally used to extract metals of medium reactivity from their oxides?",
+        "hi": "मध्यम अभिक्रियाशीलता वाली धातुओं को उनके ऑक्साइड से निकालने के लिए सामान्यतः कौन-सी विधि प्रयोग की जाती है?"
+      },
+      "options": [
+        {
+          "bn": "উপযুক্ত বিজারক দ্বারা বিজারণ",
+          "en": "Reduction with a suitable reducing agent",
+          "hi": "उपयुक्त अपचायक द्वारा अपचयन"
+        },
+        {
+          "bn": "সরাসরি পরিস্রবণ",
+          "en": "Direct filtration",
+          "hi": "प्रत्यक्ष निस्यंदन"
+        },
+        {
+          "bn": "আকরিককে হিমায়িত করা",
+          "en": "Freezing the ore",
+          "hi": "अयस्क को जमाना"
+        },
+        {
+          "bn": "ধাতুর বাষ্পীভবন",
+          "en": "Evaporation of the metal",
+          "hi": "धातु का वाष्पीकरण"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "লোহা ও দস্তার মতো মাঝারি সক্রিয়তার ধাতুর অক্সাইডকে কার্বন বা কার্বন মনোক্সাইডের মতো বিজারক দিয়ে বিজারিত করা যায়।",
+        "en": "Medium-reactivity metals such as iron and zinc can have their oxides reduced using agents such as carbon or carbon monoxide.",
+        "hi": "लोहा और जस्ता जैसी मध्यम अभिक्रियाशील धातुओं के ऑक्साइडों का अपचयन कार्बन या कार्बन मोनोऑक्साइड जैसे अपचायकों द्वारा किया जा सकता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_03_q007",
+      "question": {
+        "bn": "লোহার মরিচা ধরার জন্য কোন শর্তগুলি প্রয়োজনীয়?",
+        "en": "Which conditions are necessary for rusting of iron?",
+        "hi": "लोहे में जंग लगने के लिए कौन-सी परिस्थितियाँ आवश्यक हैं?"
+      },
+      "options": [
+        {
+          "bn": "শুধু অক্সিজেন",
+          "en": "Only oxygen",
+          "hi": "केवल ऑक्सीजन"
+        },
+        {
+          "bn": "শুধু জল",
+          "en": "Only water",
+          "hi": "केवल जल"
+        },
+        {
+          "bn": "অক্সিজেন ও জল উভয়ই",
+          "en": "Both oxygen and water",
+          "hi": "ऑक्सीजन और जल दोनों"
+        },
+        {
+          "bn": "শুধু কার্বন ডাইঅক্সাইড",
+          "en": "Only carbon dioxide",
+          "hi": "केवल कार्बन डाइऑक्साइड"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "bn": "লোহার মরিচা ধরার জন্য অক্সিজেন ও জল উভয়ই প্রয়োজন। আর্দ্রতা বা অক্সিজেনের যেকোনো একটি সরিয়ে দিলে মরিচা পড়া অনেকটাই প্রতিরোধ করা যায়।",
+        "en": "Rusting requires both oxygen and water. Removing either moisture or oxygen greatly prevents the rusting process.",
+        "hi": "लोहे में जंग लगने के लिए ऑक्सीजन और जल दोनों आवश्यक हैं। नमी या ऑक्सीजन में से किसी एक को हटाने पर जंग लगने की प्रक्रिया काफी हद तक रुक जाती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_03_q008",
+      "question": {
+        "bn": "লোহার উপর দস্তার একটি আস্তরণ দিয়ে ক্ষয় থেকে রক্ষা করার পদ্ধতিকে কী বলে?",
+        "en": "Which method protects iron from corrosion by coating it with a layer of zinc?",
+        "hi": "लोहे पर जस्ता की परत चढ़ाकर उसे संक्षारण से बचाने की विधि क्या कहलाती है?"
+      },
+      "options": [
+        {
+          "bn": "সংকরীকরণ",
+          "en": "Alloying",
+          "hi": "मिश्रधातুকरण"
+        },
+        {
+          "bn": "গ্যালভানাইজেশন",
+          "en": "Galvanisation",
+          "hi": "यशदीकरण"
+        },
+        {
+          "bn": "জারণ",
+          "en": "Roasting",
+          "hi": "भर्जन"
+        },
+        {
+          "bn": "দগ্ধকরণ",
+          "en": "Calcination",
+          "hi": "निस्तापन"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "গ্যালভানাইজেশনে লোহা বা ইস্পাতের উপর দস্তার আস্তরণ দেওয়া হয়, যা বায়ু ও আর্দ্রতার সংস্পর্শ রোধ করে ক্ষয় প্রতিরোধ করে।",
+        "en": "Galvanisation coats iron or steel with zinc, creating a protective barrier that prevents contact with air and moisture.",
+        "hi": "यशदीकरण में लोहे या इस्पात पर जस्ता की परत चढ़ाई जाती है, जो वायु और नमी के संपर्क को रोककर संक्षारण से बचाती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_03_q009",
+      "question": {
+        "bn": "একটি ধাতু X, আয়রন সালফেট দ্রবণ থেকে লোহাকে প্রতিস্থাপিত করে কিন্তু জিঙ্ক সালফেট দ্রবণ থেকে দস্তাকে প্রতিস্থাপিত করতে পারে না। সক্রিয়তা শ্রেণিতে X-এর অবস্থান কোথায়?",
+        "en": "A metal X displaces iron from iron sulphate solution but cannot displace zinc from zinc sulphate solution. Where is X placed in the reactivity series?",
+        "hi": "एक धातु X, आयरन सल्फेट के विलयन से लोहे को विस्थापित करती है, लेकिन जिंक सल्फेट के विलयन से जस्ता को विस्थापित नहीं कर सकती। क्रियाशीलता श्रेणी में X का स्थान कहाँ होगा?"
+      },
+      "options": [
+        {
+          "bn": "দস্তার উপরে",
+          "en": "Above zinc",
+          "hi": "जस्ता से ऊपर"
+        },
+        {
+          "bn": "দস্তা ও লোহার মধ্যে",
+          "en": "Between zinc and iron",
+          "hi": "जस्ता और लोहे के बीच"
+        },
+        {
+          "bn": "লোহার নিচে",
+          "en": "Below iron",
+          "hi": "लोहे से नीचे"
+        },
+        {
+          "bn": "তামার নিচে",
+          "en": "Below copper",
+          "hi": "ताँबे से नीचे"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "X লোহার চেয়ে বেশি সক্রিয়, কারণ এটি লোহাকে প্রতিস্থাপিত করে; আবার দস্তার চেয়ে কম সক্রিয়, কারণ এটি দস্তাকে প্রতিস্থাপিত করতে পারে না। তাই X দস্তা ও লোহার মধ্যে অবস্থান করে।",
+        "en": "X must be more reactive than iron because it displaces iron, but less reactive than zinc because it cannot displace zinc. Therefore, X lies between zinc and iron.",
+        "hi": "X लोहे से अधिक अभिक्रियाशील है क्योंकि वह लोहे को विस्थापित करती है, लेकिन जस्ता से कम अभिक्रियाशील है क्योंकि वह जस्ता को विस्थापित नहीं कर सकती। इसलिए X जस्ता और लोहे के बीच स्थित होगी।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_03_q010",
+      "question": {
+        "bn": "অ্যালুমিনিয়াম একটি সক্রিয় ধাতু হওয়া সত্ত্বেও কেন ক্ষয় প্রতিরোধ করে?",
+        "en": "Why does aluminium resist corrosion even though it is a reactive metal?",
+        "hi": "अभिक्रियाशील धातु होने के बावजूद एल्युमिनियम संक्षारण का प्रतिरोध क्यों करता है?"
+      },
+      "options": [
+        {
+          "bn": "এটি অক্সিজেনের সঙ্গে বিক্রিয়া করে না",
+          "en": "It does not react with oxygen",
+          "hi": "यह ऑक्सीजन के साथ अभिक्रिया नहीं करता"
+        },
+        {
+          "bn": "এর পৃষ্ঠে একটি পাতলা সুরক্ষামূলক অক্সাইড স্তর তৈরি হয়",
+          "en": "It forms a thin protective oxide layer on its surface",
+          "hi": "इसकी सतह पर एक पतली सुरक्षात्मक ऑक्साइड परत बन जाती है"
+        },
+        {
+          "bn": "এটি সোনার চেয়ে কম সক্রিয়",
+          "en": "It is less reactive than gold",
+          "hi": "यह सोने से कम अभिक्रियाशील है"
+        },
+        {
+          "bn": "এটি সম্পূর্ণভাবে জলে দ্রবীভূত হয়",
+          "en": "It dissolves completely in water",
+          "hi": "यह जल में पूरी तरह घुल जाता है"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "অ্যালুমিনিয়াম অক্সিজেনের সঙ্গে বিক্রিয়া করে একটি পাতলা ও দৃঢ়ভাবে লেগে থাকা অ্যালুমিনিয়াম অক্সাইড স্তর তৈরি করে, যা পরবর্তী ক্ষয় রোধ করে।",
+        "en": "Aluminium reacts with oxygen to form a thin, adherent aluminium oxide layer that prevents further contact with air and protects the metal underneath.",
+        "hi": "एल्युमिनियम ऑक्सीजन के साथ अभिक्रिया करके एक पतली और दृढ़ एल्युमिनियम ऑक्साइड परत बनाता है, जो आगे के संक्षारण को रोकती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    }
+  ]
 }

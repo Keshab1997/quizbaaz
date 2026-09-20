@@ -6,5 +6,234 @@
     "hi": "वास्तविक संख्याएँ"
   },
   "class_standard": "Class 10",
-  "questions": []
+  "questions": [
+    {
+      "id": "math_ch_01_q001",
+      "question": {
+        "bn": "ইউক্লিডের বিভাজন উপপাদ্য অনুসারে, যেকোনো দুটি ধনাত্মক পূর্ণসংখ্যা a এবং b-এর জন্য অনন্য পূর্ণসংখ্যা q এবং r বিদ্যমান যাতে a = bq + r হয়, যেখানে r-কে কোন শর্তটি পূরণ করতে হবে?",
+        "en": "According to Euclid's Division Lemma, for any two positive integers a and b, there exist unique integers q and r such that a = bq + r, where r must satisfy which condition?",
+        "hi": "यूक्लिड विभाजन प्रमेयिका के अनुसार, किन्हीं दो धनात्मक पूर्णांकों a और b के लिए अद्वितीय पूर्णांक q और r का अस्तित्व इस प्रकार होता है कि a = bq + r, जहाँ r को किस शर्त को पूरा करना अनिवार्य है?"
+      },
+      "options": [
+        {
+          "bn": "1 ≤ r < b",
+          "en": "1 ≤ r < b",
+          "hi": "1 ≤ r < b"
+        },
+        {
+          "bn": "0 ≤ r < b",
+          "en": "0 ≤ r < b",
+          "hi": "0 ≤ r < b"
+        },
+        {
+          "bn": "0 < r ≤ b",
+          "en": "0 < r ≤ b",
+          "hi": "0 < r ≤ b"
+        },
+        {
+          "bn": "0 ≤ r ≤ b",
+          "en": "0 ≤ r ≤ b",
+          "hi": "0 ≤ r ≤ b"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "ইউক্লিডের বিভাজন উপপাদ্য নির্দিষ্ট করে যে ভাগশেষ r সর্বদা অ-ঋণাত্মক এবং ভাজক b-এর চেয়ে ছোট হয়, যা 0 ≤ r < b হিসেবে লেখা হয়।",
+        "en": "Euclid's Division Lemma specifies that the remainder r is non-negative and strictly smaller than the divisor b, which is written as 0 ≤ r < b.",
+        "hi": "यूक्लिड विभाजन प्रमेयिका यह निर्दिष्ट करती है कि शेषफल r सदैव गैर-ऋणात्मक और भाजक b से छोटा होता है, जिसे 0 ≤ r < b के रूप में लिखा जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "math_ch_01_q003",
+      "question": {
+        "bn": "পাটিগণিতের মৌলিক উপপাদ্য অনুসারে, প্রতিটি যৌগিক সংখ্যাকে কোন্ ধরনের সংখ্যার গুণফল হিসেবে অনন্যভাবে প্রকাশ করা যায়?",
+        "en": "According to the Fundamental Theorem of Arithmetic, every composite number can be uniquely expressed as a product of which types of numbers?",
+        "hi": "अंकगणित की आधारभूत प्रमेय के अनुसार, प्रत्येक भाज्य संख्या को किस प्रकार की संख्याओं के गुणनफल के रूप में अद्वितीय रूप से व्यक्त किया जा सकता है?"
+      },
+      "options": [
+        {
+          "bn": "মৌলিক সংখ্যা",
+          "en": "Prime numbers",
+          "hi": "अभाज्य संख्याएँ"
+        },
+        {
+          "bn": "জোড় সংখ্যা",
+          "en": "Even numbers",
+          "hi": "सम संख्याएँ"
+        },
+        {
+          "bn": "বিজোর সংখ্যা",
+          "en": "Odd numbers",
+          "hi": "विषम संख्याएँ"
+        },
+        {
+          "bn": "অমূলদ সংখ্যা",
+          "en": "Irrational numbers",
+          "hi": "अपरिमेय संख्याएँ"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "পাটিগণিতের মৌলিক উপপাদ্য অনুযায়ী, উৎপাদকগুলোর ক্রম বিবেচনা না করলে যেকোনো যৌগিক সংখ্যাকে অনন্যভাবে মৌলিক সংখ্যার গুণফল হিসেবে প্রকাশ করা যায়।",
+        "en": "The Fundamental Theorem of Arithmetic states that every composite number can be factorized uniquely as a product of prime numbers, apart from the order of factors.",
+        "hi": "अंकगणित की आधारभूत प्रमेय कहती है कि गुणन खंडों के क्रम को छोड़कर, प्रत्येक भाज्य संख्या को अभाज्य संख्याओं के गुणनफल के रूप में अद्वितीय रूप से लिखा जा सकता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "math_ch_01_q004",
+      "question": {
+        "bn": "যদি একটি মৌলিক সংখ্যা p, a²-কে ভাগ করে (যেখানে a একটি ধনাত্মক পূর্ণসংখ্যা), তবে অমূলদতার উপপাদ্য অনুসারে p অবশ্যই কাকে ভাগ করবে?",
+        "en": "If a prime number p divides a² (where a is a positive integer), then according to the theorem on irrationality, p must also divide which quantity?",
+        "hi": "यदि एक अभाज्य संख्या p, a² को विभाजित करती है (जहाँ a एक धनात्मक पूर्णांक है), तो अपरिमेयता के प्रमेय के अनुसार p को किस राशि को भी विभाजित करना होगा?"
+      },
+      "options": [
+        {
+          "bn": "a³",
+          "en": "a³",
+          "hi": "a³"
+        },
+        {
+          "bn": "2a",
+          "en": "2a",
+          "hi": "2a"
+        },
+        {
+          "bn": "a",
+          "en": "a",
+          "hi": "a"
+        },
+        {
+          "bn": "√a",
+          "en": "√a",
+          "hi": "√a"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "bn": "বাস্তব সংখ্যার একটি মৌলিক উপপাদ্য অনুযায়ী, যদি কোনো মৌলিক সংখ্যা p ধনাত্মক পূর্ণসংখ্যা a-এর a²-কে ভাগ করে, তবে p অবশ্যই a-কেও ভাগ করবে।",
+        "en": "A fundamental theorem of real numbers states that if a prime number p divides a² for a positive integer a, then p must also divide a.",
+        "hi": "वास्तविक संख्याओं का एक मूल प्रमेय बताता है कि यदि कोई अभाज्य संख्या p धनात्मक पूर्णांक a के लिए a² को विभाजित करती है, तो p को a को भी विभाजित करना होगा।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "math_ch_01_q005",
+      "question": {
+        "bn": "যদি p একটি মৌলিক সংখ্যা হয়, তবে √p কী ধরনের সংখ্যা?",
+        "en": "If p is a prime number, what type of number is √p?",
+        "hi": "यदि p एक अभाज्य संख्या है, तो √p किस प्रकार की संख्या है?"
+      },
+      "options": [
+        {
+          "bn": "মূলদ সংখ্যা",
+          "en": "Rational number",
+          "hi": "परिमेय संख्या"
+        },
+        {
+          "bn": "অমূলদ সংখ্যা",
+          "en": "Irrational number",
+          "hi": "अपरिमेय संख्या"
+        },
+        {
+          "bn": "পূর্ণসংখ্যা",
+          "en": "Integer",
+          "hi": "पूर्णांक"
+        },
+        {
+          "bn": "স্বাভাবিক সংখ্যা",
+          "en": "Natural number",
+          "hi": "प्राकृतिक संख्या"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "যেকোনো মৌলিক সংখ্যার বর্গমূলকে দুটি পূর্ণসংখ্যার অনুপাত হিসেবে প্রকাশ করা যায় না, তাই √p একটি অমূলদ সংখ্যা।",
+        "en": "The square root of any prime number cannot be expressed as a ratio of two integers, making √p an irrational number.",
+        "hi": "किसी भी अभाज्य संख्या के वर्गमूल को दो पूर्णांकों के अनुपात के रूप में व्यक्त नहीं किया जा सकता, इसलिए √p एक अपरिमेय संख्या है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "math_ch_01_q006",
+      "question": {
+        "bn": "একটি মূলদ সংখ্যা এবং একটি অমূলদ সংখ্যার যোগফল বা বিয়োগফল সর্বদা কী ধরনের সংখ্যা হয়?",
+        "en": "The sum or difference of a rational number and an irrational number is always which type of number?",
+        "hi": "एक परिमेय संख्या और एक अपरिमेय संख्या का योग या अंतर सदैव किस प्रकार की संख्या होती है?"
+      },
+      "options": [
+        {
+          "bn": "সর্বদা মূলদ",
+          "en": "Always rational",
+          "hi": "सदैव परिमेय"
+        },
+        {
+          "bn": "সর্বদা অমূলদ",
+          "en": "Always irrational",
+          "hi": "सदैव अपरिमेय"
+        },
+        {
+          "bn": "সর্বদা পূর্ণসংখ্যা",
+          "en": "Always an integer",
+          "hi": "सदैव पूर्णांक"
+        },
+        {
+          "bn": "শূন্য",
+          "en": "Zero",
+          "hi": "शून्य"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "বাস্তব সংখ্যার ধর্ম অনুসারে, একটি মূলদ ও একটি অমূলদ সংখ্যার যোগফল বা বিয়োগফল সর্বদা একটি অমূলদ সংখ্যা হয়।",
+        "en": "By property of real numbers, adding or subtracting a rational number and an irrational number always yields an irrational number.",
+        "hi": "वास्तविक संख्याओं के गुणधर्म के अनुसार, एक परिमेय और एक अपरिमेय संख्या का योग या अंतर सदैव एक अपरिमेय संख्या देता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "math_ch_01_q007",
+      "question": {
+        "bn": "একটি অশূন্য মূলদ সংখ্যা এবং একটি অমূলদ সংখ্যার গুণফল বা ভাগফল সর্বদা কী ধরনের সংখ্যা হয়?",
+        "en": "The product or quotient of a non-zero rational number and an irrational number is always what type of number?",
+        "hi": "एक शून्यतर (non-zero) परिमेय संख्या और एक अपरिमेय संख्या का गुणनफल या भागफल सदैव किस प्रकार की संख्या होती है?"
+      },
+      "options": [
+        {
+          "bn": "অমূলদ",
+          "en": "Irrational",
+          "hi": "अपरिमेय"
+        },
+        {
+          "bn": "মূলদ",
+          "en": "Rational",
+          "hi": "परिमेय"
+        },
+        {
+          "bn": "সসীম পূর্ণসংখ্যা",
+          "en": "Terminating integer",
+          "hi": "सांत पूर्णांक"
+        },
+        {
+          "bn": "স্বাভাবিক সংখ্যা",
+          "en": "Natural number",
+          "hi": "प्राकृतिक संख्या"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "যেকোনো অশূন্য মূলদ সংখ্যাকে একটি অমূলদ সংখ্যা দিয়ে গুণ বা ভাগ করলে ফলাফল সর্বদা একটি অমূলদ সংখ্যা হয়।",
+        "en": "Multiplying or dividing any non-zero rational number by an irrational number results in an irrational number.",
+        "hi": "किसी भी शून्यतर परिमेय संख्या को अपरिमेय संख्या से गुणा या भाग करने पर परिणाम सदैव अपरिमेय संख्या होता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    }
+  ]
 }

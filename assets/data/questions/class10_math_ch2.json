@@ -6,5 +6,348 @@
     "hi": "बहुपद"
   },
   "class_standard": "Class 10",
-  "questions": []
+  "questions": [
+    {
+      "id": "math_ch_02_q001",
+      "question": {
+        "bn": "x² - 5x + 6 বহুপদী রাশির একটি শূন্য 2 হলে, অপর শূন্যটি কত?",
+        "en": "If one zero of the polynomial x² - 5x + 6 is 2, what is the other zero?",
+        "hi": "यदि बहुपद x² - 5x + 6 का एक शून्य 2 है, तो दूसरा शून्य क्या है?"
+      },
+      "options": [
+        {
+          "bn": "2",
+          "en": "2",
+          "hi": "2"
+        },
+        {
+          "bn": "3",
+          "en": "3",
+          "hi": "3"
+        },
+        {
+          "bn": "4",
+          "en": "4",
+          "hi": "4"
+        },
+        {
+          "bn": "5",
+          "en": "5",
+          "hi": "5"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "x² - 5x + 6 = (x - 2)(x - 3), তাই এর শূন্যগুলি হল 2 ও 3। সুতরাং অপর শূন্যটি 3।",
+        "en": "Since x² - 5x + 6 = (x - 2)(x - 3), its zeros are 2 and 3. Therefore, the other zero is 3.",
+        "hi": "x² - 5x + 6 = (x - 2)(x - 3), इसलिए इसके शून्य 2 और 3 हैं। अतः दूसरा शून्य 3 है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "math_ch_02_q002",
+      "question": {
+        "bn": "ax² + bx + c দ্বিঘাত বহুপদী রাশির শূন্যগুলির যোগফল কত?",
+        "en": "For the quadratic polynomial ax² + bx + c, what is the sum of its zeros?",
+        "hi": "द्विघात बहुपद ax² + bx + c के शून्यों का योगफल क्या है?"
+      },
+      "options": [
+        {
+          "bn": "b/a",
+          "en": "b/a",
+          "hi": "b/a"
+        },
+        {
+          "bn": "-b/a",
+          "en": "-b/a",
+          "hi": "-b/a"
+        },
+        {
+          "bn": "c/a",
+          "en": "c/a",
+          "hi": "c/a"
+        },
+        {
+          "bn": "-c/a",
+          "en": "-c/a",
+          "hi": "-c/a"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "শূন্য দুটি α ও β হলে, শূন্য ও সহগের সম্পর্ক অনুযায়ী α + β = -b/a।",
+        "en": "If the zeros are α and β, then α + β = -b/a by the relationship between zeros and coefficients.",
+        "hi": "यदि शून्य α और β हैं, तो शून्यों और गुणांकों के संबंध से α + β = -b/a।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "math_ch_02_q003",
+      "question": {
+        "bn": "একটি দ্বিঘাত বহুপদী রাশির শূন্যগুলি 4 এবং -3। শূন্যগুলির যোগফল কত?",
+        "en": "The zeros of a quadratic polynomial are 4 and -3. What is the sum of the zeros?",
+        "hi": "एक द्विघात बहुपद के शून्य 4 और -3 हैं। शून्यों का योगफल क्या है?"
+      },
+      "options": [
+        {
+          "bn": "7",
+          "en": "7",
+          "hi": "7"
+        },
+        {
+          "bn": "1",
+          "en": "1",
+          "hi": "1"
+        },
+        {
+          "bn": "-1",
+          "en": "-1",
+          "hi": "-1"
+        },
+        {
+          "bn": "-7",
+          "en": "-7",
+          "hi": "-7"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "দুটি শূন্য যোগ করলে 4 + (-3) = 1 হয়। তাই শূন্যগুলির যোগফল 1।",
+        "en": "Adding the two zeros gives 4 + (-3) = 1. Hence, their sum is 1.",
+        "hi": "दोनों शून्यों को जोड़ने पर 4 + (-3) = 1 प्राप्त होता है। अतः शून्यों का योगफल 1 है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "math_ch_02_q004",
+      "question": {
+        "bn": "2x² - 7x + 3 বহুপদী রাশির শূন্যগুলি α ও β হলে, αβ-এর মান কত?",
+        "en": "If α and β are the zeros of 2x² - 7x + 3, what is αβ?",
+        "hi": "यदि 2x² - 7x + 3 के शून्य α और β हैं, तो αβ का मान क्या है?"
+      },
+      "options": [
+        {
+          "bn": "7/2",
+          "en": "7/2",
+          "hi": "7/2"
+        },
+        {
+          "bn": "-7/2",
+          "en": "-7/2",
+          "hi": "-7/2"
+        },
+        {
+          "bn": "3/2",
+          "en": "3/2",
+          "hi": "3/2"
+        },
+        {
+          "bn": "-3/2",
+          "en": "-3/2",
+          "hi": "-3/2"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "bn": "ax² + bx + c-এর ক্ষেত্রে শূন্যগুলির গুণফল c/a। এখানে αβ = 3/2।",
+        "en": "For ax² + bx + c, the product of zeros is c/a. Here, αβ = 3/2.",
+        "hi": "ax² + bx + c के लिए शून्यों का गुणनफल c/a होता है। यहाँ αβ = 3/2।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "math_ch_02_q005",
+      "question": {
+        "bn": "x² - 8x + k বহুপদী রাশির শূন্যগুলি 2 এবং 6 হলে, k-এর মান কত?",
+        "en": "If the zeros of x² - 8x + k are 2 and 6, what is the value of k?",
+        "hi": "यदि x² - 8x + k के शून्य 2 और 6 हैं, तो k का मान क्या है?"
+      },
+      "options": [
+        {
+          "bn": "8",
+          "en": "8",
+          "hi": "8"
+        },
+        {
+          "bn": "10",
+          "en": "10",
+          "hi": "10"
+        },
+        {
+          "bn": "12",
+          "en": "12",
+          "hi": "12"
+        },
+        {
+          "bn": "14",
+          "en": "14",
+          "hi": "14"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "bn": "x²-এর সহগ 1 হওয়ায় শূন্যগুলির গুণফল k-এর সমান। তাই k = 2 × 6 = 12।",
+        "en": "The product of the zeros equals k because the coefficient of x² is 1. Thus k = 2 × 6 = 12.",
+        "hi": "x² का गुणांक 1 होने के कारण शून्यों का गुणनफल k के बराबर है। अतः k = 2 × 6 = 12।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "math_ch_02_q007",
+      "question": {
+        "bn": "3x² + 5x + k বহুপদী রাশির শূন্যগুলির গুণফল 2 হলে, k-এর মান কত?",
+        "en": "If the zeros of 3x² + 5x + k have product 2, what is k?",
+        "hi": "यदि 3x² + 5x + k के शून्यों का गुणनफल 2 है, तो k का मान क्या है?"
+      },
+      "options": [
+        {
+          "bn": "2",
+          "en": "2",
+          "hi": "2"
+        },
+        {
+          "bn": "3",
+          "en": "3",
+          "hi": "3"
+        },
+        {
+          "bn": "6",
+          "en": "6",
+          "hi": "6"
+        },
+        {
+          "bn": "9",
+          "en": "9",
+          "hi": "9"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "bn": "3x² + 5x + k-এর শূন্যগুলির গুণফল k/3। যেহেতু k/3 = 2, তাই k = 6।",
+        "en": "For 3x² + 5x + k, the product of zeros is k/3. Since k/3 = 2, k = 6.",
+        "hi": "3x² + 5x + k के शून्यों का गुणनफल k/3 है। चूँकि k/3 = 2, इसलिए k = 6।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "math_ch_02_q008",
+      "question": {
+        "bn": "4x² + x - 3 বহুপদী রাশির একটি শূন্য 3/4 হলে, অপর শূন্যটি কত?",
+        "en": "If one zero of 4x² + x - 3 is 3/4, what is the other zero?",
+        "hi": "यदि 4x² + x - 3 का एक शून्य 3/4 है, तो दूसरा शून्य क्या है?"
+      },
+      "options": [
+        {
+          "bn": "-1",
+          "en": "-1",
+          "hi": "-1"
+        },
+        {
+          "bn": "1",
+          "en": "1",
+          "hi": "1"
+        },
+        {
+          "bn": "-3/4",
+          "en": "-3/4",
+          "hi": "-3/4"
+        },
+        {
+          "bn": "3/4",
+          "en": "3/4",
+          "hi": "3/4"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "শূন্যগুলির যোগফল = -1/4। তাই অপর শূন্য = -1/4 - 3/4 = -1।",
+        "en": "The sum of zeros is -1/4. Thus the other zero = -1/4 - 3/4 = -1.",
+        "hi": "शून्यों का योगफल = -1/4। अतः दूसरा शून्य = -1/4 - 3/4 = -1।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "math_ch_02_q009",
+      "question": {
+        "bn": "x² + (k - 3)x + 2 বহুপদী রাশির শূন্যগুলি সমান হলে, k-এর মান কত?",
+        "en": "If the zeros of x² + (k - 3)x + 2 are equal, what is the value of k?",
+        "hi": "यदि x² + (k - 3)x + 2 के शून्य समान हैं, तो k का मान क्या है?"
+      },
+      "options": [
+        {
+          "bn": "1 অথবা 5",
+          "en": "1 or 5",
+          "hi": "1 या 5"
+        },
+        {
+          "bn": "3 অথবা -3",
+          "en": "3 or -3",
+          "hi": "3 या -3"
+        },
+        {
+          "bn": "1 অথবা -5",
+          "en": "1 or -5",
+          "hi": "1 या -5"
+        },
+        {
+          "bn": "5 অথবা -1",
+          "en": "5 or -1",
+          "hi": "5 या -1"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "সমান শূন্যের জন্য বিচ্যুতি শূন্য হতে হবে: (k - 3)² - 8 = 0। তাই k - 3 = ±2√2, অর্থাৎ তালিকার কোনো পূর্ণসংখ্যার জোড়াই সঠিক নয়।",
+        "en": "Equal zeros require the discriminant to be zero: (k - 3)² - 8 = 0. Hence k - 3 = ±2√2, so none of the listed integer pairs is correct.",
+        "hi": "समान शून्यों के लिए विविक्तकर शून्य होना चाहिए: (k - 3)² - 8 = 0। अतः k - 3 = ±2√2, इसलिए दिए गए पूर्णांक युग्मों में कोई सही नहीं है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "math_ch_02_q010",
+      "question": {
+        "bn": "x² - 6x + 4 বহুপদী রাশির শূন্যগুলি α ও β হলে, α² + β²-এর মান কত?",
+        "en": "If α and β are the zeros of x² - 6x + 4, what is α² + β²?",
+        "hi": "यदि x² - 6x + 4 के शून्य α और β हैं, तो α² + β² का मान क्या है?"
+      },
+      "options": [
+        {
+          "bn": "28",
+          "en": "28",
+          "hi": "28"
+        },
+        {
+          "bn": "32",
+          "en": "32",
+          "hi": "32"
+        },
+        {
+          "bn": "36",
+          "en": "36",
+          "hi": "36"
+        },
+        {
+          "bn": "40",
+          "en": "40",
+          "hi": "40"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "এখানে α + β = 6 এবং αβ = 4। তাই α² + β² = (α + β)² - 2αβ = 36 - 8 = 28।",
+        "en": "Here α + β = 6 and αβ = 4. Therefore, α² + β² = (α + β)² - 2αβ = 36 - 8 = 28.",
+        "hi": "यहाँ α + β = 6 और αβ = 4। अतः α² + β² = (α + β)² - 2αβ = 36 - 8 = 28।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    }
+  ]
 }

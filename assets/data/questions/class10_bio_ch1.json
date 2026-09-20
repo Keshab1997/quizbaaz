@@ -6,5 +6,766 @@
     "hi": "जैव प्रक्रम"
   },
   "class_standard": "Class 10",
-  "questions": []
+  "questions": [
+    {
+      "id": "bio_ch_01_q001",
+      "question": {
+        "bn": "মানুষের পৌষ্টিকনালীর কোন অংশে খাদ্যের সম্পূর্ণ পরিপাক ঘটে?",
+        "en": "In which part of the human alimentary canal is food completely digested?",
+        "hi": "मानव आहार नाल के किस भाग में भोजन का पूर्ण पाचन होता है?"
+      },
+      "options": [
+        {
+          "bn": "পাকস্থলী",
+          "en": "Stomach",
+          "hi": "आमाशय"
+        },
+        {
+          "bn": "ক্ষুদ্রান্ত্র",
+          "en": "Small Intestine",
+          "hi": "क्षुद्रांत्र"
+        },
+        {
+          "bn": "বৃহদন্ত্র",
+          "en": "Large Intestine",
+          "hi": "बड़ी आंत"
+        },
+        {
+          "bn": "গ্রাসনালী",
+          "en": "Oesophagus",
+          "hi": "ग्रासनली"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "যকৃৎ ও অগ্ন্যাশয় থেকে নিঃসৃত রসের সাহায্যে ক্ষুদ্রান্ত্রে কার্বোহাইড্রেট, প্রোটিন এবং ফ্যাটের সম্পূর্ণ পরিপাক ঘটে।",
+        "en": "The small intestine is the site of the complete digestion of carbohydrates, proteins, and fats with the help of secretions from the liver and pancreas.",
+        "hi": "क्षुद्रांत्र वह स्थान है जहाँ यकृत और अग्न्याशय के स्राव की सहायता से कार्बोहाइड्रेट, प्रोटीन और वसा का पूर्ण पाचन होता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_01_q002",
+      "question": {
+        "bn": "ইস্ট কোশে অবাত শ্বসনের ফলে কী উৎপন্ন হয়?",
+        "en": "What are the products of anaerobic respiration in yeast cells?",
+        "hi": "यीस्ट कोशिकाओं में अवायवीय श्वसन के उत्पाद क्या हैं?"
+      },
+      "options": [
+        {
+          "bn": "ল্যাকটিক অ্যাসিড + শক্তি",
+          "en": "Lactic acid + Energy",
+          "hi": "लैक्टिक अम्ल + ऊर्जा"
+        },
+        {
+          "bn": "ইথানল + কার্বন ডাইঅক্সাইড + শক্তি",
+          "en": "Ethanol + Carbon dioxide + Energy",
+          "hi": "इथेनॉल + कार्बन डाइऑक्साइड + ऊर्जा"
+        },
+        {
+          "bn": "কার্বন ডাইঅক্সাইড + জল + শক্তি",
+          "en": "Carbon dioxide + Water + Energy",
+          "hi": "कार्बन डाइऑक्साइड + जल + ऊर्जा"
+        },
+        {
+          "bn": "পাইরুভেট + অক্সিজেন",
+          "en": "Pyruvate + Oxygen",
+          "hi": "पाइरुवेट + ऑक्सीजन"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "অক্সিজেনের অনুপস্থিতিতে ইস্টে পাইরুভেট থেকে ইথানল এবং কার্বন ডাইঅক্সাইড উৎপন্ন হয়, যাকে সন্ধান প্রক্রিয়া বলা হয়।",
+        "en": "In yeast, pyruvate is converted into ethanol and carbon dioxide in the absence of oxygen, a process known as fermentation.",
+        "hi": "यीस्ट में, ऑक्सीजन की अनुपस्थिति में पाइरुवेट इथेनॉल और कार्बन डाइऑक्साइड में परिवर्तित हो जाता है, जिसे किण्वन कहा जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_01_q003",
+      "question": {
+        "bn": "রক্তের কোন উপাদানটি ক্ষতস্থানে রক্ততঞ্চনে সাহায্য করে?",
+        "en": "Which component of blood helps in the formation of a blood clot at the site of injury?",
+        "hi": "रक्त का कौन सा घटक चोट के स्थान पर रक्त का थक्का बनाने में मदद करता है?"
+      },
+      "options": [
+        {
+          "bn": "লোহিত রক্তকণিকা (RBC)",
+          "en": "Red Blood Cells (RBC)",
+          "hi": "लाल रक्त कोशिकाएं (RBC)"
+        },
+        {
+          "bn": "শ্বেত রক্তকণিকা (WBC)",
+          "en": "White Blood Cells (WBC)",
+          "hi": "श्वेत रक्त कोशिकाएं (WBC)"
+        },
+        {
+          "bn": "অণুচক্রিকা (Platelets)",
+          "en": "Platelets",
+          "hi": "प्लेटलेट्स"
+        },
+        {
+          "bn": "প্লাজমা",
+          "en": "Plasma",
+          "hi": "प्लाज्मा"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "bn": "অণুচক্রিকা রক্তে প্রবাহিত হয় এবং ক্ষতস্থানে রক্ত জমাট বাঁধিয়ে রক্তপাত বন্ধ করতে সাহায্য করে।",
+        "en": "Platelets circulate in the blood and help to plug leaks by forming a clot at the point of injury to prevent excessive blood loss.",
+        "hi": "प्लेटलेट्स रक्त में संचारित होते हैं और अत्यधिक रक्त हानि को रोकने के लिए चोट के स्थान पर थक्का बनाकर रिसाव को बंद करने में मदद करते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_01_q004",
+      "question": {
+        "bn": "নিচের কোনটি মানুষের বৃক্কের গঠনগত ও কার্যগত একক?",
+        "en": "Which of the following is the basic structural and functional unit of the human kidney?",
+        "hi": "निम्नलिखित में से कौन मानव वृक्क की बुनियादी संरचनात्मक और कार्यात्मक इकाई है?"
+      },
+      "options": [
+        {
+          "bn": "নিউরন",
+          "en": "Neuron",
+          "hi": "न्यूरॉन"
+        },
+        {
+          "bn": "নেফ্রন",
+          "en": "Nephron",
+          "hi": "नेफ्रॉन"
+        },
+        {
+          "bn": "অ্যালভিওলাই",
+          "en": "Alveoli",
+          "hi": "कूपिका (Alveoli)"
+        },
+        {
+          "bn": "গবিনি (Ureter)",
+          "en": "Ureter",
+          "hi": "मूत्रनली (Ureter)"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "প্রতিটি বৃক্কে প্রচুর সংখ্যক পরিশ্রবণ একক থাকে যাকে নেফ্রন বলা হয়; এটি রক্ত থেকে দূষিত পদার্থ দূর করে মূত্র উৎপন্ন করে।",
+        "en": "Each kidney contains a large number of filtration units called nephrons, which remove waste products from the blood to form urine.",
+        "hi": "प्रत्येक वृक्क में बड़ी संख्या में निस्पंदन इकाइयाँ होती हैं जिन्हें नेफ्रॉन कहा जाता है, जो मूत्र बनाने के लिए रक्त से अपशिष्ट उत्पादों को निकालते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_01_q005",
+      "question": {
+        "bn": "জাইলেম এবং ফ্লোয়েমে পরিবহনের দিক সম্পর্কে কোন উক্তিটি সঠিক?",
+        "en": "Which statement correctly describes the direction of transport in Xylem and Phloem?",
+        "hi": "जाइलम और फ्लोएम में परिवहन की दिशा के बारे में कौन सा कथन सही है?"
+      },
+      "options": [
+        {
+          "bn": "উভয় কলাই শুধুমাত্র একমুখে পদার্থ পরিবহন করে।",
+          "en": "Both transport materials in only one direction.",
+          "hi": "दोनों केवल एक ही दिशा में सामग्री का परिवहन करते हैं।"
+        },
+        {
+          "bn": "জাইলেম পরিবহন একমুখী (ঊর্ধ্বমুখী), কিন্তু ফ্লোয়েম পরিবহন দ্বিমুখী।",
+          "en": "Xylem transport is unidirectional (upwards), while Phloem transport is bidirectional.",
+          "hi": "जाइलम परिवहन एकदिशीय (ऊपर की ओर) होता है, जबकि फ्लोएम परिवहन द्विदिशीय होता है।"
+        },
+        {
+          "bn": "ফ্লোয়েম পরিবহন একমুখী (নিম্নমুখী), কিন্তু জাইলেম পরিবহন দ্বিমুখী।",
+          "en": "Phloem transport is unidirectional (downwards), while Xylem transport is bidirectional.",
+          "hi": "फ्लोएम परिवहन एकदिशीय (नीचे की ओर) होता है, जबकि जाइलम परिवहन द्विदिशीय होता है।"
+        },
+        {
+          "bn": "উভয় কলাই ঊর্ধ্বমুখী এবং নিম্নমুখী উভয় দিকেই পদার্থ পরিবহন করে।",
+          "en": "Both transport materials in both upward and downward directions.",
+          "hi": "दोनों सामग्री का ऊपर और नीचे दोनों दिशाओं में परिवहन करते हैं।"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "জাইলেম মূল থেকে জল ও খনিজ লবণ ঊর্ধ্বমুখে পরিবহন করে, কিন্তু ফ্লোয়েম পাতা থেকে তৈরি খাদ্য উদ্ভিদের মূল ও সঞ্চয়ী অঙ্গসহ সমস্ত অংশে পরিবহন করে।",
+        "en": "Xylem moves water and minerals upwards from roots, whereas Phloem translocates food from leaves to all parts of the plant, including roots and storage organs.",
+        "hi": "जाइलम जड़ों से पानी और खनिजों को ऊपर की ओर ले जाता है, जबकि फ्लोएम पत्तियों से भोजन को जड़ों और भंडारण अंगों सहित पौधे के सभी हिस्सों में स्थानांतरित करता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_01_q006",
+      "question": {
+        "bn": "মানুষের লালারসে কোন উৎসেচক থাকে যা শ্বেতসার পরিপাক শুরু করে?",
+        "en": "Which enzyme is present in human saliva that initiates the digestion of starch?",
+        "hi": "मानव लार में कौन सा एंजाइम मौजूद होता है जो स्टार्च का पाचन शुरू करता है?"
+      },
+      "options": [
+        {
+          "bn": "পেপসিন",
+          "en": "Pepsin",
+          "hi": "पेप्सिन"
+        },
+        {
+          "bn": "লালা অ্যামাইলেজ",
+          "en": "Salivary Amylase",
+          "hi": "लार एमाइलेज"
+        },
+        {
+          "bn": "ট্রিপসিন",
+          "en": "Trypsin",
+          "hi": "ट्रिप्सिन"
+        },
+        {
+          "bn": "লাইপেজ",
+          "en": "Lipase",
+          "hi": "लाइपेज"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "লালা অ্যামাইলেজ (বা টায়ালিন) মুখে জটিল শ্বেতসার অণুকে ভেঙে মলটোজের মতো সরল শর্করায় পরিণত করে।",
+        "en": "Salivary amylase (also known as ptyalin) breaks down complex starch molecules into simpler sugar like maltose in the mouth.",
+        "hi": "लार एमाइलेज (जिसे टायलिन भी कहा जाता है) मुंह में जटिल स्टार्च अणुओं को माल्टोज जैसी सरल शर्करा में तोड़ देता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_01_q007",
+      "question": {
+        "bn": "পত্ররন্ধ্র খোলা এবং বন্ধ হওয়া কোন বিশেষ কোশ দ্বারা নিয়ন্ত্রিত হয়?",
+        "en": "The opening and closing of the stomatal pore is controlled by which specific cells?",
+        "hi": "रंध्र के छिद्र का खुलना और बंद होना किन विशिष्ट कोशिकाओं द्वारा नियंत्रित होता है?"
+      },
+      "options": [
+        {
+          "bn": "এপিডার্মাল কোশ",
+          "en": "Epidermal cells",
+          "hi": "एपिडर्मल कोशिकाएं"
+        },
+        {
+          "bn": "রক্ষীকোশ",
+          "en": "Guard cells",
+          "hi": "द्वार कोशिकाएं"
+        },
+        {
+          "bn": "মেসোফিল কোশ",
+          "en": "Mesophyll cells",
+          "hi": "मेसोफिल कोशिकाएं"
+        },
+        {
+          "bn": "জাইলেম কোশ",
+          "en": "Xylem cells",
+          "hi": "जाइलम कोशिकाएं"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "রক্ষীকোশের ভেতর জল ঢুকলে সেগুলি স্ফীত হয়ে পত্ররন্ধ্রকে উন্মুক্ত করে এবং জল বেরিয়ে গেলে কোশগুলি সংকুচিত হয়ে রন্ধ্র বন্ধ করে দেয়।",
+        "en": "Guard cells swell when water flows into them, causing the stomatal pore to open, and shrink when they lose water, closing the pore.",
+        "hi": "जब द्वार कोशिकाओं के अंदर पानी जाता है, तो वे फूल जाती हैं जिससे रंध्र खुल जाता है, और पानी बाहर निकलने पर वे सिकुड़ जाती हैं जिससे रंध्र बंद हो जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_01_q008",
+      "question": {
+        "bn": "শ্বসনের প্রথম পর্যায়ে সাইটোপ্লাজমে গ্লুকোজ ভেঙে কোন তিন-কার্বনযুক্ত অণু তৈরি হয়?",
+        "en": "What is the three-carbon molecule produced when glucose breaks down in the cytoplasm during the first step of respiration?",
+        "hi": "श्वसन के पहले चरण में कोशिका द्रव्य में ग्लूकोज के टूटने पर कौन सा तीन-कार्बन वाला अणु बनता है?"
+      },
+      "options": [
+        {
+          "bn": "ইথানল",
+          "en": "Ethanol",
+          "hi": "इथेनॉल"
+        },
+        {
+          "bn": "ল্যাকটিক অ্যাসিড",
+          "en": "Lactic acid",
+          "hi": "लैक्टिक अम्ल"
+        },
+        {
+          "bn": "পাইরুভেট",
+          "en": "Pyruvate",
+          "hi": "पायरुवेट"
+        },
+        {
+          "bn": "কার্বন ডাইঅক্সাইড",
+          "en": "Carbon dioxide",
+          "hi": "कार्बन डाइऑक्साइड"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "bn": "গ্লাইকোলাইসিস প্রক্রিয়ায় সাইটোপ্লাজমে একটি ৬-কার্বনযুক্ত গ্লুকোজ অণু ভেঙে দুটি ৩-কার্বনযুক্ত পাইরুভেট অণু তৈরি হয়।",
+        "en": "In the process of glycolysis, a 6-carbon glucose molecule is broken down into two 3-carbon pyruvate molecules in the cytoplasm.",
+        "hi": "ग्लाइकोलाइसिस की प्रक्रिया में, कोशिका द्रव्य में एक 6-कार्बन वाला ग्लूकोज अणु दो 3-कार्बन वाले पायरुवेट अणुओं में टूट जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_01_q009",
+      "question": {
+        "bn": "ফুসফুস থেকে অক্সিজেনযুক্ত রক্ত কোন রক্তবাহের মাধ্যমে হৃদপিণ্ডে ফিরে আসে?",
+        "en": "Which blood vessel carries oxygenated blood from the lungs back to the heart?",
+        "hi": "कौन सी रक्त वाहिका फेफड़ों से ऑक्सीजन युक्त रक्त को वापस हृदय तक ले जाती है?"
+      },
+      "options": [
+        {
+          "bn": "ফুসফুসীয় ধমনী",
+          "en": "Pulmonary artery",
+          "hi": "फुफ्फुसीय धमनी"
+        },
+        {
+          "bn": "ফুসফুসীয় শিরা",
+          "en": "Pulmonary vein",
+          "hi": "फुफ्फुसीय शिरा"
+        },
+        {
+          "bn": "মহাশিরা",
+          "en": "Vena cava",
+          "hi": "महाशिरा"
+        },
+        {
+          "bn": "মহাধমনী",
+          "en": "Aorta",
+          "hi": "महाधमनी"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "অন্যান্য শিরার বিপরীতে, ফুসফুসীয় শিরা ফুসফুস থেকে অক্সিজেন-সমৃদ্ধ রক্ত হৃদপিণ্ডের বাম অলিন্দে বহন করে আনে।",
+        "en": "Unlike most veins, the pulmonary vein carries oxygen-rich blood from the lungs to the left atrium of the heart.",
+        "hi": "अधिकांश शिराओं के विपरीत, फुफ्फुसीय शिरा फेफड़ों से ऑक्सीजन युक्त रक्त को हृदय के बाएं अलिंद तक ले जाती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_01_q010",
+      "question": {
+        "bn": "মানুষের রেচনতন্ত্রে নেফ্রনের কোন অংশটি গ্লুকোজের মতো প্রয়োজনীয় পদার্থের নির্বাচনী পুনঃশোষণের জন্য দায়ী?",
+        "en": "In the human excretory system, which part of the nephron is responsible for the selective reabsorption of useful substances like glucose?",
+        "hi": "मानव उत्सर्जन तंत्र में, नेफ्रॉन का कौन सा भाग ग्लूकोज जैसे उपयोगी पदार्थों के चयनात्मक पुनरावशोषण के लिए जिम्मेदार है?"
+      },
+      "options": [
+        {
+          "bn": "গ্লোমেরুলাস",
+          "en": "Glomerulus",
+          "hi": "ग्लोमेरुलस"
+        },
+        {
+          "bn": "বোম্যানস ক্যাপসুল",
+          "en": "Bowman's capsule",
+          "hi": "बोमन कैप्सूल"
+        },
+        {
+          "bn": "বৃক্কীয় নালিকা",
+          "en": "Renal tubule",
+          "hi": "वृक्क नलिका"
+        },
+        {
+          "bn": "গবিনী",
+          "en": "Ureter",
+          "hi": "मूत्रवाहिनी"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "bn": "গ্লোমেরুলাসে পরিশ্রুতকরণ সম্পন্ন হলেও, বৃক্কীয় নালিকা গ্লুকোজ, অ্যামিনো অ্যাসিড এবং জলকে রক্তে নির্বাচনী পদ্ধতিতে পুনঃশোষণ করে।",
+        "en": "While filtration happens in the glomerulus, the renal tubule selectively reabsorbs glucose, amino acids, and water back into the blood.",
+        "hi": "जबकि निस्यंदन (filtration) ग्लोमेरुलस में होता है, वृक्क नलिका ग्लूकोज, अमीनो अम्ल और जल को वापस रक्त में चयनात्मक रूप से पुनरावशोषित करती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_01_q011",
+      "question": {
+        "bn": "পরিপাক প্রক্রিয়ায় পিত্তরসের প্রধান কাজ কী?",
+        "en": "What is the main function of bile juice in the process of digestion?",
+        "hi": "पाचन की प्रक्रिया में पित्त रस (bile juice) का मुख्य कार्य क्या है?"
+      },
+      "options": [
+        {
+          "bn": "প্রোটিন পরিপাক করা",
+          "en": "Digestion of proteins",
+          "hi": "प्रोटीन का पाचन"
+        },
+        {
+          "bn": "ফ্যাটের ইমালসিফিকেশন বা অবদ্রব তৈরি",
+          "en": "Emulsification of fats",
+          "hi": "वसा का इमल्सीकरण (Emulsification)"
+        },
+        {
+          "bn": "কার্বোহাইড্রেট পরিপাক করা",
+          "en": "Digestion of carbohydrates",
+          "hi": "कार्बोहाइड्रेट का पाचन"
+        },
+        {
+          "bn": "ভিটামিন শোষণ করা",
+          "en": "Absorption of vitamins",
+          "hi": "विटामिन का अवशोषण"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "পিত্তরসে কোনো উৎসেচক থাকে না; এটি ফ্যাটের বড় কণাগুলিকে ছোট কণায় ভেঙে দেয় (ইমালসিফিকেশন), যাতে লাইপেজ উৎসেচক সহজে কাজ করতে পারে।",
+        "en": "Bile juice does not contain enzymes; it breaks down large fat globules into smaller ones (emulsification) to increase the efficiency of lipase.",
+        "hi": "पित्त रस में एंजाइम नहीं होते हैं; यह वसा के बड़े गोलों को छोटे गोलों में तोड़ देता है (इमल्सीकरण) ताकि लाइपेज की क्रियाशीलता बढ़ सके।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_01_q012",
+      "question": {
+        "bn": "কোশের কোন অঙ্গাণুতে পাইরুভেটের সবাত বিভাজন ঘটে কার্বন ডাইঅক্সাইড, জল এবং শক্তি উৎপন্ন হয়?",
+        "en": "In which cell organelle does the aerobic breakdown of pyruvate into carbon dioxide, water, and energy take place?",
+        "hi": "कोशिका के किस अंगक में पायरुवेट का वायवीय विखंडन होकर कार्बन डाइऑक्साइड, जल और ऊर्जा उत्पन्न होती है?"
+      },
+      "options": [
+        {
+          "bn": "সাইটোপ্লাজম",
+          "en": "Cytoplasm",
+          "hi": "कोशिकाद्रव्य"
+        },
+        {
+          "bn": "নিউক্লিয়াস",
+          "en": "Nucleus",
+          "hi": "केंद्रक"
+        },
+        {
+          "bn": "মাইটোকনড্রিয়া",
+          "en": "Mitochondria",
+          "hi": "माइटोकॉन्ड्रिया"
+        },
+        {
+          "bn": "রাইবোজোম",
+          "en": "Ribosomes",
+          "hi": "राइबोसोम"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "bn": "গ্লুকোজ থেকে পাইরুভেটে রূপান্তর সাইটোপ্লাজমে ঘটলেও, অক্সিজেনের উপস্থিতিতে পাইরুভেটের সম্পূর্ণ বিভাজন মাইটোকনড্রিয়ার ভেতরে ঘটে।",
+        "en": "While the breakdown of glucose to pyruvate occurs in the cytoplasm, the subsequent aerobic breakdown of pyruvate occurs inside the mitochondria.",
+        "hi": "जबकि ग्लूकोज का पायरुवेट में विखंडन कोशिकाद्रव्य में होता है, पायरुवेट का ऑक्सीजन की उपस्थिति में पूर्ण विखंडन माइटोकॉन्ड्रिया के भीतर होता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_01_q013",
+      "question": {
+        "bn": "মানুষের রক্তচাপ মাপার জন্য কোন যন্ত্রটি ব্যবহার করা হয়?",
+        "en": "Which instrument is used to measure blood pressure in humans?",
+        "hi": "मनुष्य में रक्तचाप (blood pressure) मापने के लिए किस उपकरण का उपयोग किया जाता है?"
+      },
+      "options": [
+        {
+          "bn": "স্টেথোস্কোপ",
+          "en": "Stethoscope",
+          "hi": "स्टेथोस्कोप"
+        },
+        {
+          "bn": "স্ফিগমোম্যানোমিটার",
+          "en": "Sphygmomanometer",
+          "hi": "स्फ़िग्मोमैनोमीटर"
+        },
+        {
+          "bn": "থার্মোমিটার",
+          "en": "Thermometer",
+          "hi": "थर्मामीटर"
+        },
+        {
+          "bn": "মাইক্রোস্কোপ",
+          "en": "Microscope",
+          "hi": "सूक्ष्मदर्शी"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "স্ফিগমোম্যানোমিটার হলো একটি চিকিৎসাবিদ্যায় ব্যবহৃত যন্ত্র যা ধমনীর রক্তচাপ পরিমাপ করতে ব্যবহৃত হয়।",
+        "en": "A sphygmomanometer is the medical device used to measure arterial blood pressure, usually expressed as systolic and diastolic pressure.",
+        "hi": "स्फ़िग्मोमैनोमीटर एक चिकित्सा उपकरण है जिसका उपयोग धमनियों के रक्तचाप को मापने के लिए किया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_01_q014",
+      "question": {
+        "bn": "মানুষের শরীর থেকে নির্গত প্রধান নাইট্রোজেনঘটিত রেচন পদার্থ কোনটি?",
+        "en": "Which is the primary nitrogenous waste product excreted from the human body?",
+        "hi": "मानव शरीर से उत्सर्जित होने वाला मुख्य नाइट्रोजनयुक्त अपशिष्ट पदार्थ कौन सा है?"
+      },
+      "options": [
+        {
+          "bn": "অ্যামোনিয়া",
+          "en": "Ammonia",
+          "hi": "अमोनिया"
+        },
+        {
+          "bn": "ইউরিক অ্যাসিড",
+          "en": "Uric acid",
+          "hi": "यूरिक अम्ल"
+        },
+        {
+          "bn": "ইউরিয়া",
+          "en": "Urea",
+          "hi": "यूरिया"
+        },
+        {
+          "bn": "অ্যামিনো অ্যাসিড",
+          "en": "Amino acids",
+          "hi": "अमीनो अम्ल"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "bn": "মানুষ ইউরিওটেলিক প্রাণী, অর্থাৎ যকৃতে বিষাক্ত অ্যামোনিয়া ইউরিয়াতে রূপান্তরিত হয় এবং পরে বৃক্কের মাধ্যমে শরীর থেকে নির্গত হয়।",
+        "en": "Humans are ureotelic organisms, meaning they convert toxic ammonia into urea in the liver, which is then excreted by the kidneys.",
+        "hi": "मनुष्य यूरियोटेलिक जीव हैं, जिसका अर्थ है कि वे यकृत में जहरीले अमोनिया को यूरिया में बदल देते हैं, जिसे बाद में गुर्दे (kidneys) द्वारा उत्सर्जित किया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_01_q015",
+      "question": {
+        "bn": "অলিন্দের তুলনায় নিলয়ের পেশিবহুল প্রাচীর কেন বেশি পুরু হয়?",
+        "en": "Why do ventricles have thicker muscular walls compared to atria?",
+        "hi": "आलिंद की तुलना में निलय (ventricles) की पेशीय दीवारें अधिक मोटी क्यों होती हैं?"
+      },
+      "options": [
+        {
+          "bn": "বেশি পরিমাণ রক্ত সঞ্চয় করে রাখার জন্য",
+          "en": "To store a larger volume of blood",
+          "hi": "रक्त की अधिक मात्रा को संचित करने के लिए"
+        },
+        {
+          "bn": "উচ্চ চাপে দেহের বিভিন্ন অঙ্গে রক্ত পাম্প করার জন্য",
+          "en": "To pump blood into various organs with high pressure",
+          "hi": "विभिन्न अंगों में उच्च दाब पर रक्त पंप करने के लिए"
+        },
+        {
+          "bn": "অক্সিজেনযুক্ত ও অক্সিজেনহীন রক্তের মিশ্রণ রোধ করার জন্য",
+          "en": "To prevent the mixing of oxygenated and deoxygenated blood",
+          "hi": "ऑक्सीजन युक्त और ऑक्सीजन रहित रक्त के मिश्रण को रोकने के लिए"
+        },
+        {
+          "bn": "হৃদপিণ্ডের কপাটিকাগুলিকে ধরে রাখার জন্য",
+          "en": "To support the valves in the heart",
+          "hi": "हृदय के वाल्वों को सहारा देने के लिए"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "অলিন্দ শুধুমাত্র নিলয়ে রক্ত পাঠায়, কিন্তু নিলয়কে উচ্চ চাপে সারা দেহে বা ফুসফুসে রক্ত পাম্প করতে হয়, তাই নিলয়ের প্রাচীর পুরু হয়।",
+        "en": "Ventricles must pump blood to distant parts of the body (like lungs or systemic organs) at much higher pressure than atria, which only pump blood into the ventricles.",
+        "hi": "आलिंद केवल निलय में रक्त पंप करते हैं, जबकि निलय को शरीर के दूर के अंगों या फेफड़ों में उच्च दाब पर रक्त पंप करना होता है, इसलिए उनकी दीवारें मोटी होती हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_01_q016",
+      "question": {
+        "bn": "কঠোর পরিশ্রমের সময় আমাদের পেশীকোষে হঠাৎ কোন পদার্থের সঞ্চয় ঘটলে পেশীতে টান (cramps) ধরে?",
+        "en": "The sudden build-up of which substance in our muscle cells during vigorous physical exercise causes cramps?",
+        "hi": "जोरदार शारीरिक व्यायाम के दौरान हमारी मांसपेशियों की कोशिकाओं में किस पदार्थ के अचानक जमा होने से ऐंठन (cramps) होती है?"
+      },
+      "options": [
+        {
+          "bn": "ইথানল",
+          "en": "Ethanol",
+          "hi": "इथेनॉल"
+        },
+        {
+          "bn": "ল্যাকটিক অ্যাসিড",
+          "en": "Lactic acid",
+          "hi": "लैक्टिक अम्ल"
+        },
+        {
+          "bn": "কার্বন ডাইঅক্সাইড",
+          "en": "Carbon dioxide",
+          "hi": "कार्बन डाइऑक्साइड"
+        },
+        {
+          "bn": "পাইরুভেট",
+          "en": "Pyruvate",
+          "hi": "पायरूवेट"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "কঠোর পরিশ্রমের সময় অক্সিজেনের অভাবে পেশীকোষে অবাত শ্বসন ঘটে এবং ল্যাকটিক অ্যাসিড উৎপন্ন হয়, যা পেশীর ক্লান্তি ও টানের সৃষ্টি করে।",
+        "en": "During heavy exercise, oxygen is inadequate for aerobic respiration, so muscle cells perform anaerobic respiration producing lactic acid, which causes muscle fatigue and cramps.",
+        "hi": "भारी व्यायाम के दौरान, वायवीय श्वसन के लिए ऑक्सीजन अपर्याप्त होती है, इसलिए मांसपेशियों की कोशिकाएं अवायवीय श्वसन करती हैं जिससे लैक्टिक अम्ल बनता है, जो मांसपेशियों में थकान और ऐंठन का कारण बनता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_01_q017",
+      "question": {
+        "bn": "হৃৎপিণ্ড এবং শিরার মতো কিছু রক্তনালীতে উপস্থিত কপাটিকা (valves)-র প্রধান কাজ কী?",
+        "en": "What is the primary function of valves present in the heart and some blood vessels like veins?",
+        "hi": "हृदय और शिराओं जैसी कुछ रक्त वाहिकाओं में मौजूद वाल्व (valves) का मुख्य कार्य क्या है?"
+      },
+      "options": [
+        {
+          "bn": "রক্তচাপ বৃদ্ধি করা",
+          "en": "To increase the pressure of blood",
+          "hi": "रक्त के दबाव को बढ़ाना"
+        },
+        {
+          "bn": "রক্ত যাতে বিপরীত দিকে প্রবাহিত না হয় তা নিশ্চিত করা",
+          "en": "To ensure that blood does not flow backwards",
+          "hi": "यह सुनिश्चित करना कि रक्त पीछे की ओर न बहे"
+        },
+        {
+          "bn": "অক্সিজেনযুক্ত ও অক্সিজেনবিহীন রক্তকে পৃথক করা",
+          "en": "To separate oxygenated and deoxygenated blood",
+          "hi": "ऑक्सीजनयुक्त और विऑक्सीजनित रक्त को अलग करना"
+        },
+        {
+          "bn": "রক্ত থেকে বিপাকীয় বর্জ্য ছেঁকে বের করা",
+          "en": "To filter out metabolic wastes from blood",
+          "hi": "रक्त से चयापचय अपशिष्टों को छानना"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "কপাটিকাগুলি একমুখী দরজার মতো কাজ করে যা হৃৎপিণ্ডের সংকোচনের সময় বা শিরার মধ্য দিয়ে অভিকর্ষের বিপরীতে রক্ত চলাচলের সময় রক্তের বিপরীতমুখী প্রবাহ রোধ করে।",
+        "en": "Valves act as one-way gates that prevent the backflow of blood when the heart contracts or when blood moves against gravity in veins.",
+        "hi": "वाल्व एक तरफा द्वार के रूप में कार्य करते हैं जो हृदय के संकुचन के दौरान या शिराओं में गुरुत्वाकर्षण के विरुद्ध रक्त के प्रवाह के दौरान रक्त के पीछे की ओर बहाव को रोकते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_01_q018",
+      "question": {
+        "bn": "মানব পরিবহন তন্ত্রে লসিকা (lymph)-র একটি প্রধান কাজ নিচের কোনটি?",
+        "en": "Which of the following is a major function of lymph in the human transport system?",
+        "hi": "मानव परिवहन प्रणाली में लसीका (lymph) का एक प्रमुख कार्य निम्नलिखित में से कौन सा है?"
+      },
+      "options": [
+        {
+          "bn": "দেহের সমস্ত কোষে অক্সিজেন পরিবহন করা",
+          "en": "Transport of oxygen to all body cells",
+          "hi": "शरीर की सभी कोशिकाओं तक ऑक्सीजन पहुँचाना"
+        },
+        {
+          "bn": "ক্ষুদ্রান্ত্র থেকে পরিপাক হওয়া এবং শোষিত ফ্যাট বহন করা",
+          "en": "Carrying digested and absorbed fats from the intestine",
+          "hi": "आंत से पचे हुए और अवशोषित वसा को ले जाना"
+        },
+        {
+          "bn": "অক্সিজেনযুক্ত করার জন্য সরাসরি ফুসফুসে রক্ত পাম্প করা",
+          "en": "Directly pumping blood to the lungs for oxygenation",
+          "hi": "ऑक्सीजन के लिए सीधे फेफड़ों में रक्त पंप करना"
+        },
+        {
+          "bn": "রক্তে শর্করার মাত্রা নিয়ন্ত্রণ করা",
+          "en": "Regulating the concentration of sugar in the blood",
+          "hi": "रक्त में शर्करा की मात्रा को नियंत्रित करना"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "লসিকা অন্ত্র থেকে শোষিত ফ্যাট পরিবহন করে এবং কোষান্তর স্থান থেকে অতিরিক্ত তরল পুনরায় রক্তে ফিরিয়ে নিয়ে যায়।",
+        "en": "Lymph carries digested and absorbed fat from the intestine and drains excess fluid from extracellular space back into the blood.",
+        "hi": "लसीका आंत से पचे हुए और अवशोषित वसा को ले जाता है और कोशिकीय स्थान से अतिरिक्त तरल पदार्थ को वापस रक्त में पहुँचाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_01_q019",
+      "question": {
+        "bn": "গ্লোমেরুলাসে পরিশ্রুতকরণ (filtration) প্রক্রিয়ার সময়, নিচের কোন পদার্থটি সাধারণত বাউম্যানস ক্যাপসুলে প্রবেশ করে না?",
+        "en": "During the process of filtration in the glomerulus, which of these substances does NOT normally pass into the Bowman's capsule?",
+        "hi": "ग्लोमेरुलस में निस्पंदन (filtration) की प्रक्रिया के दौरान, इनमें से कौन सा पदार्थ सामान्य रूप से बोमन कैप्सूल में नहीं जाता है?"
+      },
+      "options": [
+        {
+          "bn": "গ্লুকোজ",
+          "en": "Glucose",
+          "hi": "ग्लूकोज"
+        },
+        {
+          "bn": "অ্যামিনো অ্যাসিড",
+          "en": "Amino acids",
+          "hi": "अमीनो अम्ल"
+        },
+        {
+          "bn": "বৃহৎ প্রোটিন অণু",
+          "en": "Large Proteins",
+          "hi": "बड़े प्रोटीन"
+        },
+        {
+          "bn": "ইউরিয়া",
+          "en": "Urea",
+          "hi": "यूरिया"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "bn": "গ্লোমেরুলাস একটি সূক্ষ্ম ছাঁকনি হিসেবে কাজ করে; গ্লুকোজ বা ইউরিয়ার মতো ছোট অণু এর মধ্য দিয়ে যেতে পারলেও প্রোটিন বা রক্তকণিকার মতো বড় অণুগুলি রক্তেই থেকে যায়।",
+        "en": "The glomerular membrane acts as a fine filter; while small molecules like glucose and urea pass through, large molecules like proteins and blood cells remain in the blood.",
+        "hi": "ग्लोमेरुलर झिल्ली एक महीन फिल्टर के रूप में कार्य करती है; जबकि ग्लूकोज और यूरिया जैसे छोटे अणु गुजर जाते हैं, प्रोटीन और रक्त कोशिकाओं जैसे बड़े अणु रक्त में ही रह जाते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_01_q020",
+      "question": {
+        "bn": "নিচের কোন জীবটি পরজীবী পদ্ধতিতে পুষ্টি সংগ্রহ করে?",
+        "en": "Which of the following organisms obtains nutrition through a parasitic mode?",
+        "hi": "निम्नलिखित में से कौन सा जीव परजीवी तरीके से पोषण प्राप्त करता है?"
+      },
+      "options": [
+        {
+          "bn": "ছত্রাক (Mushroom)",
+          "en": "Mushroom",
+          "hi": "मशरूम"
+        },
+        {
+          "bn": "স্বর্ণলতা (Cuscuta)",
+          "en": "Cuscuta (Amarbel)",
+          "hi": "अमरबेल (Cuscuta)"
+        },
+        {
+          "bn": "অ্যামিবা",
+          "en": "Amoeba",
+          "hi": "अमीबा"
+        },
+        {
+          "bn": "সবুজ উদ্ভিদ",
+          "en": "Green plants",
+          "hi": "हरे पौधे"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "স্বর্ণলতা একটি পরজীবী উদ্ভিদ যার ক্লোরোফিল নেই এবং এটি হস্টোরিয়া নামক বিশেষ অঙ্গের মাধ্যমে আশ্রয়দাতা উদ্ভিদ থেকে পুষ্টি গ্রহণ করে।",
+        "en": "Cuscuta is a parasitic plant that lacks chlorophyll and derives its nutrition from a host plant using specialized structures called haustoria.",
+        "hi": "अमरबेल एक परजीवी पौधा है जिसमें क्लोरोफिल की कमी होती है और यह 'हौस्टोरिया' नामक विशेष संरचनाओं का उपयोग करके पोषक पौधे से अपना पोषण प्राप्त करता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    }
+  ]
 }

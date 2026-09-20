@@ -6,5 +6,1146 @@
     "hi": "नियंत्रण एवं समन्वय"
   },
   "class_standard": "Class 10",
-  "questions": []
+  "questions": [
+    {
+      "id": "bio_ch_02_q001",
+      "question": {
+        "bn": "নিউরনের কোন অংশ অন্য নিউরন থেকে স্নায়ু-উদ্দীপনা গ্রহণ করে?",
+        "en": "Which part of the neuron receives impulses from other neurons?",
+        "hi": "न्यूरॉन का कौन-सा भाग अन्य न्यूरॉनों से तंत्रिका आवेग प्राप्त करता है?"
+      },
+      "options": [
+        {
+          "bn": "অ্যাক্সন",
+          "en": "Axon",
+          "hi": "अक्षतंतु"
+        },
+        {
+          "bn": "ডেনড্রাইট",
+          "en": "Dendrite",
+          "hi": "डेंड्राइट"
+        },
+        {
+          "bn": "মাইলিন আবরণ",
+          "en": "Myelin sheath",
+          "hi": "माइलिन आवरण"
+        },
+        {
+          "bn": "সিন্যাপ্স",
+          "en": "Synapse",
+          "hi": "सिनेप्स"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "ডেনড্রাইট অন্য নিউরন বা গ্রাহক থেকে উদ্দীপনা গ্রহণ করে এবং তা কোষদেহের দিকে পরিবহন করে।",
+        "en": "Dendrites receive signals from other neurons or receptors and conduct them toward the cell body.",
+        "hi": "डेंड्राइट अन्य न्यूरॉनों या ग्राही से संकेत प्राप्त करके उन्हें कोशिका-देह की ओर ले जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_02_q002",
+      "question": {
+        "bn": "রিফ্লেক্স আর্কের সঠিক ক্রম কোনটি?",
+        "en": "What is the correct sequence of a reflex arc?",
+        "hi": "रिफ्लेक्स आर्क का सही क्रम कौन-सा है?"
+      },
+      "options": [
+        {
+          "bn": "গ্রাহক → সংবেদী নিউরন → রিলে নিউরন → মোটর নিউরন → কার্যকরী অঙ্গ",
+          "en": "Receptor → sensory neuron → relay neuron → motor neuron → effector",
+          "hi": "ग्राही → संवेदी न्यूरॉन → रिले न्यूरॉन → मोटर न्यूरॉन → प्रभावक"
+        },
+        {
+          "bn": "গ্রাহক → মোটর নিউরন → সংবেদী নিউরন → কার্যকরী অঙ্গ → রিলে নিউরন",
+          "en": "Receptor → motor neuron → sensory neuron → effector → relay neuron",
+          "hi": "ग्राही → मोटर न्यूरॉन → संवेदी न्यूरॉन → प्रभावक → रिले न्यूरॉन"
+        },
+        {
+          "bn": "কার্যকরী অঙ্গ → সংবেদী নিউরন → গ্রাহক → মোটর নিউরন → রিলে নিউরন",
+          "en": "Effector → sensory neuron → receptor → motor neuron → relay neuron",
+          "hi": "प्रभावक → संवेदी न्यूरॉन → ग्राही → मोटर न्यूरॉन → रिले न्यूरॉन"
+        },
+        {
+          "bn": "গ্রাহক → রিলে নিউরন → সংবেদী নিউরন → মোটর নিউরন → কার্যকরী অঙ্গ",
+          "en": "Receptor → relay neuron → sensory neuron → motor neuron → effector",
+          "hi": "ग्राही → रिले न्यूरॉन → संवेदी न्यूरॉन → मोटर न्यूरॉन → प्रभावक"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "উদ্দীপনা গ্রাহক দ্বারা শনাক্ত হয়ে সংবেদী নিউরনের মাধ্যমে রিলে নিউরনে পৌঁছায় এবং পরে মোটর নিউরনের মাধ্যমে কার্যকরী অঙ্গে যায়।",
+        "en": "A stimulus is detected by a receptor, carried by a sensory neuron to the relay neuron, then passed through a motor neuron to the effector.",
+        "hi": "उद्दीपन को ग्राही पहचानता है, संवेदी न्यूरॉन इसे रिले न्यूरॉन तक पहुँचाता है और फिर मोटर न्यूरॉन के द्वारा प्रभावक तक पहुँचता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_02_q003",
+      "question": {
+        "bn": "মস্তিষ্কের কোন অংশ প্রধানত দেহের ভঙ্গি ও ভারসাম্য বজায় রাখে?",
+        "en": "Which part of the brain is mainly responsible for maintaining posture and balance?",
+        "hi": "मस्तिष्क का कौन-सा भाग मुख्य रूप से शरीर की मुद्रा और संतुलन बनाए रखता है?"
+      },
+      "options": [
+        {
+          "bn": "সেরিব্রাম",
+          "en": "Cerebrum",
+          "hi": "प्रमस्तिष्क"
+        },
+        {
+          "bn": "সেরিবেলাম",
+          "en": "Cerebellum",
+          "hi": "अनुमस्तिष्क"
+        },
+        {
+          "bn": "মেডুলা অবলংগাটা",
+          "en": "Medulla oblongata",
+          "hi": "मेडुला ऑब्लोंगाटा"
+        },
+        {
+          "bn": "হাইপোথ্যালামাস",
+          "en": "Hypothalamus",
+          "hi": "हाइपोथैलेमस"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "সেরিবেলাম পেশির ক্রিয়ার সমন্বয় ঘটিয়ে দেহের ভঙ্গি, ভারসাম্য ও চলনের সূক্ষ্মতা বজায় রাখতে সাহায্য করে।",
+        "en": "The cerebellum coordinates muscular activity and helps maintain posture, balance, and precision of movement.",
+        "hi": "अनुमस्तिष्क मांसपेशियों की क्रियाओं का समन्वय करके शरीर की मुद्रा, संतुलन और गति की सटीकता बनाए रखने में सहायता करता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_02_q004",
+      "question": {
+        "bn": "অগ্ন্যাশয় থেকে কোন হরমোন নিঃসৃত হয় এবং রক্তে গ্লুকোজের মাত্রা কমাতে সাহায্য করে?",
+        "en": "Which hormone is secreted by the pancreas and helps lower blood glucose level?",
+        "hi": "अग्न्याशय से कौन-सा हार्मोन स्रावित होता है और रक्त में ग्लूकोज़ का स्तर कम करने में सहायता करता है?"
+      },
+      "options": [
+        {
+          "bn": "অ্যাড্রেনালিন",
+          "en": "Adrenaline",
+          "hi": "एड्रेनालिन"
+        },
+        {
+          "bn": "ইনসুলিন",
+          "en": "Insulin",
+          "hi": "इंसुलिन"
+        },
+        {
+          "bn": "থাইরক্সিন",
+          "en": "Thyroxine",
+          "hi": "थायरॉक्सिन"
+        },
+        {
+          "bn": "বৃদ্ধি হরমোন",
+          "en": "Growth hormone",
+          "hi": "वृद्धि हार्मोन"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "ইনসুলিন কোষে গ্লুকোজ গ্রহণ ও সঞ্চয়ে সাহায্য করে, ফলে রক্তে গ্লুকোজের ঘনত্ব কমে।",
+        "en": "Insulin promotes uptake and storage of glucose by cells, thereby reducing the glucose concentration in the blood.",
+        "hi": "इंसुलिन कोशिकाओं द्वारा ग्लूकोज़ के ग्रहण और संचय को बढ़ाता है, जिससे रक्त में ग्लूकोज़ की मात्रा घटती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_02_q005",
+      "question": {
+        "bn": "গরম বস্তুকে স্পর্শ করার পর একজন ব্যক্তি হঠাৎ হাত সরিয়ে নেন। এই প্রতিক্রিয়াকে কী বলে?",
+        "en": "A person suddenly withdraws their hand after touching a hot object. What is this response called?",
+        "hi": "गर्म वस्तु को छूने के बाद व्यक्ति अचानक हाथ हटा लेता है। इस प्रतिक्रिया को क्या कहते हैं?"
+      },
+      "options": [
+        {
+          "bn": "ইচ্ছাধীন ক্রিয়া",
+          "en": "Voluntary action",
+          "hi": "ऐच्छिक क्रिया"
+        },
+        {
+          "bn": "প্রতিবর্ত ক্রিয়া",
+          "en": "Reflex action",
+          "hi": "प्रतिवर्ती क्रिया"
+        },
+        {
+          "bn": "বৃদ্ধিজনিত চলন",
+          "en": "Growth movement",
+          "hi": "वृद्धि गति"
+        },
+        {
+          "bn": "ট্রপিক চলন",
+          "en": "Tropic movement",
+          "hi": "अनुवर्तन गति"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "ক্ষতিকর উদ্দীপকের প্রতি হাত সরিয়ে নেওয়া একটি দ্রুত ও স্বয়ংক্রিয় প্রতিক্রিয়া, তাই এটি প্রতিবর্ত ক্রিয়া।",
+        "en": "Withdrawal of the hand is a rapid, automatic response to a harmful stimulus, so it is a reflex action.",
+        "hi": "हानिकारक उद्दीपन के प्रति हाथ का तुरंत और स्वतः हटना एक तीव्र स्वचालित प्रतिक्रिया है, इसलिए यह प्रतिवर्ती क्रिया है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_02_q006",
+      "question": {
+        "bn": "বিপাক নিয়ন্ত্রণে গুরুত্বপূর্ণ থাইরক্সিন হরমোন কোন গ্রন্থি থেকে উৎপন্ন হয়?",
+        "en": "Which gland produces thyroxine, a hormone important for regulating metabolism?",
+        "hi": "चयापचय के नियमन में महत्वपूर्ण थायरॉक्सिन हार्मोन किस ग्रंथि से बनता है?"
+      },
+      "options": [
+        {
+          "bn": "পিটুইটারি গ্রন্থি",
+          "en": "Pituitary gland",
+          "hi": "पीयूष ग्रंथि"
+        },
+        {
+          "bn": "থাইরয়েড গ্রন্থি",
+          "en": "Thyroid gland",
+          "hi": "थायरॉयड ग्रंथि"
+        },
+        {
+          "bn": "অ্যাড্রিনাল গ্রন্থি",
+          "en": "Adrenal gland",
+          "hi": "अधिवृक्क ग्रंथि"
+        },
+        {
+          "bn": "অগ্ন্যাশয়",
+          "en": "Pancreas",
+          "hi": "अग्न्याशय"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "থাইরয়েড গ্রন্থি থাইরক্সিন নিঃসরণ করে, যা দেহের বিপাকীয় কার্যকলাপ নিয়ন্ত্রণ করে।",
+        "en": "The thyroid gland secretes thyroxine, which regulates the body's metabolic activities.",
+        "hi": "थायरॉयड ग्रंथि थायरॉक्सिन स्रावित करती है, जो शरीर की चयापचयी क्रियाओं को नियंत्रित करता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_02_q007",
+      "question": {
+        "bn": "দুটি সেরিব্রাল অর্ধগোলককে কোন গঠন যুক্ত করে এবং তাদের মধ্যে যোগাযোগ ঘটায়?",
+        "en": "Which structure connects the two cerebral hemispheres and allows communication between them?",
+        "hi": "दो प्रमस्तिष्कीय गोलार्द्धों को कौन-सी संरचना जोड़ती है और उनके बीच संचार कराती है?"
+      },
+      "options": [
+        {
+          "bn": "কর্পাস ক্যালোসাম",
+          "en": "Corpus callosum",
+          "hi": "कॉर्पस कैलोसाम"
+        },
+        {
+          "bn": "মেডুলা অবলংগাটা",
+          "en": "Medulla oblongata",
+          "hi": "मेडुला ऑब्लोंगाटा"
+        },
+        {
+          "bn": "সুষুম্নাকাণ্ড",
+          "en": "Spinal cord",
+          "hi": "मेरुरज्जु"
+        },
+        {
+          "bn": "সেরিবেলাম",
+          "en": "Cerebellum",
+          "hi": "अनुमस्तिष्क"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "কর্পাস ক্যালোসাম স্নায়ুতন্তুর একটি গুচ্ছ, যা দুটি সেরিব্রাল অর্ধগোলককে যুক্ত করে এবং তাদের মধ্যে তথ্যের আদান-প্রদান ঘটায়।",
+        "en": "The corpus callosum is a band of nerve fibres that connects the two cerebral hemispheres and enables them to exchange information.",
+        "hi": "कॉर्पस कैलोसाम तंत्रिका तंतुओं का एक समूह है, जो दोनों प्रमस्तिष्कीय गोलार्द्धों को जोड़कर उनके बीच सूचना का आदान-प्रदान कराता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_02_q008",
+      "question": {
+        "bn": "জরুরি পরিস্থিতিতে হৃদস্পন্দন ও শ্বাস-প্রশ্বাসের হার বাড়িয়ে দেহকে দ্রুত প্রতিক্রিয়ার জন্য প্রস্তুত করে কোন হরমোন?",
+        "en": "Which hormone prepares the body for a rapid emergency response by increasing heart rate and breathing rate?",
+        "hi": "आपातकालीन स्थिति में हृदयगति और श्वसन दर बढ़ाकर शरीर को तीव्र प्रतिक्रिया के लिए कौन-सा हार्मोन तैयार करता है?"
+      },
+      "options": [
+        {
+          "bn": "ইনসুলিন",
+          "en": "Insulin",
+          "hi": "इंसुलिन"
+        },
+        {
+          "bn": "অ্যাড্রেনালিন",
+          "en": "Adrenaline",
+          "hi": "एड्रेनालिन"
+        },
+        {
+          "bn": "থাইরক্সিন",
+          "en": "Thyroxine",
+          "hi": "थायरॉक्सिन"
+        },
+        {
+          "bn": "অক্সিন",
+          "en": "Auxin",
+          "hi": "ऑक्सिन"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "ভয় বা জরুরি পরিস্থিতিতে অ্যাড্রেনালিন নিঃসৃত হয় এবং হৃদস্পন্দন ও শ্বাস-প্রশ্বাস বাড়িয়ে দেহকে দ্রুত কাজের জন্য প্রস্তুত করে।",
+        "en": "Adrenaline is released during stressful or emergency situations and increases heart rate and breathing to prepare the body for rapid action.",
+        "hi": "तनाव या आपातकाल में एड्रेनालिन स्रावित होता है और हृदयगति तथा श्वसन बढ़ाकर शरीर को तेजी से कार्य करने के लिए तैयार करता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_02_q009",
+      "question": {
+        "bn": "একই উদ্দীপকের প্রতি সচেতন প্রতিক্রিয়ার তুলনায় প্রতিবর্ত ক্রিয়া সাধারণত দ্রুত হয় কেন?",
+        "en": "Why is a reflex action generally faster than a conscious response to the same stimulus?",
+        "hi": "एक ही उद्दीपन के प्रति सचेत प्रतिक्रिया की तुलना में प्रतिवर्ती क्रिया सामान्यतः अधिक तेज क्यों होती है?"
+      },
+      "options": [
+        {
+          "bn": "এতে সচেতন প্রতিক্রিয়ার তুলনায় সবসময় বেশি নিউরন ব্যবহৃত হয়",
+          "en": "It always uses more neurons than a conscious response",
+          "hi": "इसमें सचेत प्रतिक्रिया की तुलना में हमेशा अधिक न्यूरॉन प्रयुक्त होते हैं"
+        },
+        {
+          "bn": "মস্তিষ্কের সচেতন প্রক্রিয়াকরণের জন্য অপেক্ষা না করে সুষুম্নাকাণ্ডের মাধ্যমে এর সমন্বয় হতে পারে",
+          "en": "It can be coordinated through the spinal cord without waiting for conscious processing by the brain",
+          "hi": "मस्तिष्क की सचेत प्रक्रिया की प्रतीक्षा किए बिना इसका समन्वय मेरुरज्जु के माध्यम से हो सकता है"
+        },
+        {
+          "bn": "এতে কোনো সংবেদী গ্রাহক জড়িত থাকে না",
+          "en": "It does not involve sensory receptors",
+          "hi": "इसमें कोई संवेदी ग्राही शामिल नहीं होता"
+        },
+        {
+          "bn": "এটি কেবল হরমোন দ্বারা নিয়ন্ত্রিত হয়",
+          "en": "It is controlled only by hormones",
+          "hi": "यह केवल हार्मोन द्वारा नियंत्रित होती है"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "অনেক প্রতিবর্ত ক্রিয়ায় সুষুম্নাকাণ্ড সংবেদী উদ্দীপনা থেকে মোটর প্রতিক্রিয়ার জন্য দ্রুত পথ দেয়; মস্তিষ্কের সচেতন প্রক্রিয়াকরণ পরে ঘটতে পারে।",
+        "en": "In many reflexes, the spinal cord provides a rapid pathway from sensory input to motor output, while conscious processing by the brain can occur afterward.",
+        "hi": "कई प्रतिवर्ती क्रियाओं में मेरुरज्जु संवेदी संकेत से मोटर प्रतिक्रिया तक तेज मार्ग प्रदान करती है; मस्तिष्क की सचेत प्रक्रिया बाद में हो सकती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_02_q010",
+      "question": {
+        "bn": "একজন ব্যক্তির অ্যান্টিডাইইউরেটিক হরমোন (ADH)-এর নিঃসরণ খুব কম। কোন প্রভাবটি সবচেয়ে সম্ভাব্য?",
+        "en": "A person has very low secretion of antidiuretic hormone (ADH). Which effect is most likely?",
+        "hi": "किसी व्यक्ति में एंटीडाययूरेटिक हार्मोन (ADH) का स्राव बहुत कम है। कौन-सा प्रभाव सबसे अधिक संभावित है?"
+      },
+      "options": [
+        {
+          "bn": "জলের পুনঃশোষণ বেড়ে যাওয়ায় মূত্রের পরিমাণ কমে যাবে",
+          "en": "Reduced urine formation due to increased water reabsorption",
+          "hi": "जल के पुनःअवशोषण में वृद्धि के कारण मूत्र निर्माण कम हो जाएगा"
+        },
+        {
+          "bn": "জলের পুনঃশোষণ কমে যাওয়ায় মূত্রের পরিমাণ বেড়ে যাবে",
+          "en": "Increased urine formation due to reduced water reabsorption",
+          "hi": "जल के पुनःअवशोषण में कमी के कारण मूत्र निर्माण बढ़ जाएगा"
+        },
+        {
+          "bn": "ইনসুলিনের নিঃসরণ কমে যাওয়ায় রক্তে গ্লুকোজ বেড়ে যাবে",
+          "en": "Increased blood glucose due to reduced insulin secretion",
+          "hi": "इंसुलिन के स्राव में कमी के कारण रक्त में ग्लूकोज़ बढ़ जाएगा"
+        },
+        {
+          "bn": "অ্যাড্রেনালিনের নিঃসরণ বেড়ে যাওয়ায় হৃদস্পন্দন বেড়ে যাবে",
+          "en": "Increased heart rate due to increased adrenaline secretion",
+          "hi": "एड्रेनालिन के स्राव में वृद्धि के कारण हृदयगति बढ़ जाएगी"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "ADH কিডনিতে জলের পুনঃশোষণ বাড়ায়। তাই ADH কম নিঃসৃত হলে কম জল পুনঃশোষিত হয় এবং মূত্রের পরিমাণ বেড়ে যায়।",
+        "en": "ADH promotes water reabsorption by the kidneys. When ADH secretion is low, less water is reabsorbed, so urine volume increases.",
+        "hi": "ADH गुर्दों में जल के पुनःअवशोषण को बढ़ाता है। इसलिए ADH कम होने पर कम जल पुनःअवशोषित होता है और मूत्र की मात्रा बढ़ जाती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_02_q011",
+      "question": {
+        "bn": "কোন উদ্ভিদ হরমোন কোশের দীর্ঘীকরণ ঘটায় এবং কাণ্ডে আলোকবর্তী চলন নিয়ন্ত্রণ করে?",
+        "en": "Which plant hormone promotes cell elongation and causes phototropism in stems?",
+        "hi": "कौन सा पादप हार्मोन कोशिका दीर्घीकरण को बढ़ावा देता है और तने में प्रकाशानुवर्तन का कारण बनता है?"
+      },
+      "options": [
+        {
+          "bn": "অক্সিন",
+          "en": "Auxin",
+          "hi": "ऑक्सिन"
+        },
+        {
+          "bn": "জিব্বেরেলিন",
+          "en": "Gibberellin",
+          "hi": "जिबरेलिन"
+        },
+        {
+          "bn": "সাইটোকাইনিন",
+          "en": "Cytokinin",
+          "hi": "साइटोकाइनिन"
+        },
+        {
+          "bn": "অ্যাবসিসিক অ্যাসিড",
+          "en": "Abscisic acid",
+          "hi": "एब्सेसिक एसिड"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "অক্সিন কাণ্ডের অন্ধকার দিকে সঞ্চিত হয়ে সেখানকার কোশগুলির দ্রুত দীর্ঘীকরণ ঘটায়, ফলে কাণ্ডটি আলোর দিকে বেঁকে যায়।",
+        "en": "Auxin accumulates on the shaded side of the shoot stem, causing cells on that side to elongate faster and bend the stem towards light.",
+        "hi": "ऑक्सिन प्ररोह के छाया वाले हिस्से में जमा होता है, जिससे उस तरफ की कोशिकाएं तेजी से लंबी होती हैं और तना प्रकाश की ओर मुड़ जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_02_q012",
+      "question": {
+        "bn": "কোন উদ্ভিদ হরমোন বীজের সুপ্তাবস্থা ভঙ্গ করে এবং কাণ্ডের দৈর্ঘ্য বৃদ্ধি ঘটায়?",
+        "en": "Which plant hormone breaks seed dormancy and promotes stem elongation?",
+        "hi": "कौन सा पादप हार्मोन बीज की सुप्तता को तोड़ता है और तने की लंबाई में वृद्धि को बढ़ावा देता है?"
+      },
+      "options": [
+        {
+          "bn": "অ্যাবসিসিক অ্যাসিড",
+          "en": "Abscisic acid",
+          "hi": "एब्सेसিক एसिड"
+        },
+        {
+          "bn": "জিব্বেরেলিন",
+          "en": "Gibberellin",
+          "hi": "जिबरेलिन"
+        },
+        {
+          "bn": "ইথিলিন",
+          "en": "Ethylene",
+          "hi": "इथाइलीन"
+        },
+        {
+          "bn": "অক্সিন",
+          "en": "Auxin",
+          "hi": "ऑक्सिन"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "জিব্বেরেলিন উৎসেচকের সক্রিয়তা বৃদ্ধি করে বীজের সুপ্তাবস্থা কাটায় এবং কাণ্ডের পর্বমধ্যের দৈর্ঘ্য বৃদ্ধি ঘটায়।",
+        "en": "Gibberellin stimulates enzyme activity to break seed dormancy and promotes internodal elongation in stems.",
+        "hi": "जिबरेलिन बीजों की सुप्तता को तोड़ने के लिए एंजाइम की गतिविधि को उत्तेजित करता है और तने के पर्व (इंटरनोड) के विस्तार को बढ़ावा देता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_02_q013",
+      "question": {
+        "bn": "কোন রাসায়নিক পদার্থ সাইন্যাপসের মাধ্যমে স্নায়ু উদ্দীপনা পরিবহনে নিউরোট্রান্সমিটার হিসেবে কাজ করে?",
+        "en": "Which chemical substance acts as a neurotransmitter to carry nerve impulses across a synapse?",
+        "hi": "कौन सा रासायनिक पदार्थ सिनैप्स के पार तंत्रिका आवेगों को ले जाने के लिए न्यूरोट्रांसमीटर के रूप में कार्य करता है?"
+      },
+      "options": [
+        {
+          "bn": "অ্যাসিটাইলকোলিন",
+          "en": "Acetylcholine",
+          "hi": "एसिटाइलकोलीन"
+        },
+        {
+          "bn": "হিমোগ্লোবিন",
+          "en": "Hemoglobin",
+          "hi": "हीमोग्लोबिन"
+        },
+        {
+          "bn": "পেপসিন",
+          "en": "Pepsin",
+          "hi": "पेप्सिन"
+        },
+        {
+          "bn": "ইনসুলিন",
+          "en": "Insulin",
+          "hi": "इंसुलिन"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "অ্যাক্সন প্রান্ত থেকে সাইন্যাপটিক ফাঁকে অ্যাসিটাইলকোলিন ক্ষরিত হয় যা পরবর্তী নিউরনে বা কারকে উদ্দীপনা পাঠায়।",
+        "en": "Acetylcholine is released from axon terminals into the synaptic cleft to transmit signals to the next neuron or effector.",
+        "hi": "एसिटाइलकोलीन एक्सॉन के सिरों से सिनैप्टिक दरार में स्रावित होता है जो अगले न्यूरॉन या प्रभावक तक संकेतों को स्थानांतरित करता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_02_q014",
+      "question": {
+        "bn": "মস্তিষ্কের কোন অংশ লাক্ষরণ, বমি এবং রক্তচাপের মতো অনৈচ্ছিক ক্রিয়াগুলি নিয়ন্ত্রণ করে?",
+        "en": "Which part of the brain controls involuntary actions like salivation, vomiting, and blood pressure?",
+        "hi": "मस्तिष्क का कौन सा भाग लार आना, उल्टी होना और रक्तचाप जैसी अनैच्छिक क्रियाओं को नियंत्रित करता है?"
+      },
+      "options": [
+        {
+          "bn": "গুরুমস্তিষ্ক",
+          "en": "Cerebrum",
+          "hi": "प्रमस्तिष्क"
+        },
+        {
+          "bn": "লঘুমস্তিষ্ক",
+          "en": "Cerebellum",
+          "hi": "अनुमस्तिष्क"
+        },
+        {
+          "bn": "মেডুলা অবলংগাটা",
+          "en": "Medulla oblongata",
+          "hi": "मेडुला ऑबलोंगेटा"
+        },
+        {
+          "bn": "পনস্",
+          "en": "Pons",
+          "hi": "पॉन्स"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "bn": "পশ্চাৎ মস্তিষ্কে অবস্থিত মেডুলা অবলংগাটা অনৈচ্ছিক কেন্দ্রগুলি পরিচালনা করে রক্তচাপ, লাক্ষরণ ও বমি নিয়ন্ত্রণ করে।",
+        "en": "The medulla oblongata in the hindbrain contains vital centers that regulate autonomic processes like blood pressure, salivation, and vomiting.",
+        "hi": "पश्च मस्तिष्क में स्थित मेडुला ऑबलोंगेटा में महत्वपूर्ण केंद्र होते हैं जो रक्तचाप, लार स्राव और उल्टी जैसी स्वायत्त प्रक्रियाओं को नियंत्रित करते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_02_q015",
+      "question": {
+        "bn": "কোন অন্তঃক্ষরা গ্রন্থিকে 'প্রভু গ্রন্থি' বলা হয় কারণ এটি অন্যান্য অনেক অন্তঃক্ষরা গ্রন্থির ক্ষরণ নিয়ন্ত্রণ করে?",
+        "en": "Which endocrine gland is known as the 'master gland' because it controls the secretions of several other endocrine glands?",
+        "hi": "किस अंतःस्रावी ग्रंथि को 'मास्टर ग्रंथि' कहा जाता है क्योंकि यह कई अन्य अंतःस्रावी ग्रंथियों के स्राव को नियंत्रित करती है?"
+      },
+      "options": [
+        {
+          "bn": "থাইরয়েড গ্রন্থি",
+          "en": "Thyroid gland",
+          "hi": "थायरॉइड ग्रंथि"
+        },
+        {
+          "bn": "অ্যাড্রেনাল গ্রন্থি",
+          "en": "Adrenal gland",
+          "hi": "एड्रेनल ग्रंथि"
+        },
+        {
+          "bn": "পিটুইটারি গ্রন্থি",
+          "en": "Pituitary gland",
+          "hi": "पिट्यूटरी ग्रंथि"
+        },
+        {
+          "bn": "অগ্ন্যাশয়",
+          "en": "Pancreas",
+          "hi": "अग्न्याशय"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "bn": "পিটুইটারি গ্রন্থি ট্রপিক হরমোন ক্ষরণ করে থাইরয়েড, অ্যাড্রেনাল এবং জনন গ্রন্থির কার্যকারিতা নিয়ন্ত্রণ করে।",
+        "en": "The pituitary gland secretes tropic hormones that regulate the activity and hormone production of thyroid, adrenal, and gonadal glands.",
+        "hi": "पिट्यूटरी ग्रंथि ट्रॉपिक हार्मोन स्रावित करती है जो थायरॉइड, एड्रेनल और जननांग ग्रंथियों की गतिविधियों को नियंत्रित करते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_02_q016",
+      "question": {
+        "bn": "মানুষের খাদ্যে আয়োডিনের অভাবে থাইরয়েড গ্রন্থি ফুলে গিয়ে কোন রোগের সৃষ্টি হয়?",
+        "en": "Deficiency of iodine in the human diet causes swelling of the thyroid gland, resulting in which condition?",
+        "hi": "मानव आहार में आयोडीन की कमी से थायरॉइड ग्रंथि में सूजन आ जाती है, जिसके परिणामस्वरूप कौन सी बीमारी होती है?"
+      },
+      "options": [
+        {
+          "bn": "ডায়াবেটিস মেলিটাস",
+          "en": "Diabetes mellitus",
+          "hi": "मधुमेह"
+        },
+        {
+          "bn": "গলগণ্ড",
+          "en": "Goitre",
+          "hi": "घेंघा (गॉइटर)"
+        },
+        {
+          "bn": "বামনত্ব",
+          "en": "Dwarfism",
+          "hi": "बौनापन"
+        },
+        {
+          "bn": "দৈত্যাকায়ত্ব",
+          "en": "Gigantism",
+          "hi": "विशालकायता"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "থাইরক্সিন সংশ্লেষণের জন্য আয়োডিন অপরিহার্য; এর অভাবে থাইরয়েড গ্রন্থি আকারে বৃদ্ধি পেয়ে গলগণ্ড রোগ ঘটায়।",
+        "en": "Iodine is essential for the synthesis of thyroxine; its deficiency forces the thyroid gland to enlarge, leading to goitre.",
+        "hi": "थायरॉक्सिन के संश्लेषण के लिए आयोडीन आवश्यक है; इसकी कमी से थायरॉइड ग्रंथि बढ़ जाती है, जिससे घेंघा रोग हो जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_02_q017",
+      "question": {
+        "bn": "লজ্জাবতী উদ্ভিদের পাতা স্পর্শ করলে তা বুজে যায়, এটি কী ধরনের উদ্ভিদ চলন?",
+        "en": "What type of plant movement occurs when leaves of Mimosa pudica fold inward upon being touched?",
+        "hi": "छुईमुई (मिमोसा पुडिका) की पत्तियों को छूने पर वे अंदर की ओर मुड़ जाती हैं, यह किस प्रकार की पादप गति है?"
+      },
+      "options": [
+        {
+          "bn": "আলোকবর্তী চলন",
+          "en": "Phototropic movement",
+          "hi": "प्रकाशानुवर्ती गति"
+        },
+        {
+          "bn": "সিজমোন্যাস্টিক চলন",
+          "en": "Seismonastic movement",
+          "hi": "कंपानुकुंचनी (सीज़मोनास्टिक) गति"
+        },
+        {
+          "bn": "রসায়নবর্তী চলন",
+          "en": "Chemotropic movement",
+          "hi": "रसायनानुवर्ती गति"
+        },
+        {
+          "bn": "জলবর্তী চলন",
+          "en": "Hydrotropic movement",
+          "hi": "जलानुवर्ती गति"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "স্পর্শ বা আঘাতের ফলে লজ্জাবতীর পাতার বুজে যাওয়া হলো উদ্দীপকের তীব্রতাভিত্তিক চলন, যাকে সিজমোন্যাস্টিক বা স্পর্শব্যাপ্ত চলন বলে।",
+        "en": "Folding of Mimosa leaves due to touch or shock is a nastic movement independent of stimulus direction, specifically called seismonastic movement.",
+        "hi": "स्पर्श या झटके के कारण छुईमुई की पत्तियों का मुड़ना उद्दीपन की दिशा से स्वतंत्र अनुकुंचनी गति है, जिसे विशेष रूप से कंपानुकुंचनी गति कहा जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_02_q018",
+      "question": {
+        "bn": "শৈশবে গ্রোথ হরমোন (GH)-এর কম ক্ষরণের ফলে কোন শারীরিক অবস্থা দেখা দেয়?",
+        "en": "Insufficient production of Growth Hormone (GH) during childhood leads to which medical condition?",
+        "hi": "बचपन के दौरान ग्रोथ हार्मोन (GH) का अपर्याप्त स्राव किस स्थिति का कारण बनता है?"
+      },
+      "options": [
+        {
+          "bn": "দৈত্যাকায়ত্ব",
+          "en": "Gigantism",
+          "hi": "विशालकायता"
+        },
+        {
+          "bn": "অ্যাক্রোমেগালি",
+          "en": "Acromegaly",
+          "hi": "एक्रोमेगाली"
+        },
+        {
+          "bn": "বামনত্ব",
+          "en": "Dwarfism",
+          "hi": "बौनापन"
+        },
+        {
+          "bn": "ডায়াবেটিস ইনসিপিডাস",
+          "en": "Diabetes insipidus",
+          "hi": "डायबिटीज इंसिपिडस"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "bn": "বৃদ্ধি পর্যায়ে গ্রোথ হরমোনের কম ক্ষরণ অস্থি ও দৈহিক বৃদ্ধি ব্যাহত করে, যার ফলে বামনত্ব ঘটে।",
+        "en": "Hyposecretion of GH during the growth phase retards bone and skeletal development, resulting in dwarfism.",
+        "hi": "विकास चरण के दौरान जीएच (GH) का कम स्राव हड्डियों और कंकाल के विकास को बाधित करता है, जिसके परिणामस्वरूप बौनापन होता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_02_q019",
+      "question": {
+        "bn": "মানুষের মস্তিষ্কের কোন অংশ শরীরের তাপমাত্রা, ক্ষুধা এবং তৃষ্ণার মতো হোমিসিওস্ট্যাটিক শারীরবৃত্তীয় কার্য নিয়ন্ত্রণ করে?",
+        "en": "Which region of the human brain maintains homeostatic functions like body temperature, hunger, and thirst?",
+        "hi": "मानव मस्तिष्क का कौन सा क्षेत्र शरीर के तापमान, भूख और प्यास जैसी समस्थिति (होमियोस्टैटिक) कार्यों को नियंत्रित करता है?"
+      },
+      "options": [
+        {
+          "bn": "থ্যালামাস",
+          "en": "Thalamus",
+          "hi": "थैलेमस"
+        },
+        {
+          "bn": "হাইপোথ্যালামাস",
+          "en": "Hypothalamus",
+          "hi": "हाइपोथैलेमस"
+        },
+        {
+          "bn": "লঘুমস্তিষ্ক",
+          "en": "Cerebellum",
+          "hi": "अनुमस्तिष्क"
+        },
+        {
+          "bn": "মেডুলা",
+          "en": "Medulla",
+          "hi": "मेडुला"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "হাইপোথ্যালামাসে শরীরের তাপমাত্রা, ক্ষুধা ও তৃষ্ণা নিয়ন্ত্রণের কেন্দ্র থাকে যা স্নায়ু ও হরমোনের কাজের সামঞ্জস্য রক্ষা করে।",
+        "en": "The hypothalamus contains sensory centers for thermoregulation, hunger, and thirst, integrating neural and endocrine signals.",
+        "hi": "हाइपोथैलेमस में शरीर के तापमान, भूख और प्यास के नियंत्रण केंद्र होते हैं, जो तंत्रिका और अंतःस्रावी संकेतों को एकीकृत करते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_02_q020",
+      "question": {
+        "bn": "কোন উদ্ভিদ হরমোন বৃদ্ধিরোধক হিসেবে কাজ করে, পাতা ঝরে পড়া ত্বরান্বিত করে এবং জলের স্ট্রেসের সময় পত্ররন্ধ্র বন্ধ করে?",
+        "en": "Which plant hormone acts as a growth inhibitor, promoting leaf abscission and stomatal closure during water stress?",
+        "hi": "कौन सा पादप हार्मोन वृद्धि रोधक के रूप में कार्य करता है, पत्तियों के झड़ने को बढ़ावा देता है और जल तनाव के दौरान रंध्र को बंद करता है?"
+      },
+      "options": [
+        {
+          "bn": "সাইটোকাইনিন",
+          "en": "Cytokinin",
+          "hi": "साइटोकाइनिन"
+        },
+        {
+          "bn": "জিব্বেরেলিন",
+          "en": "Gibberellin",
+          "hi": "जिबरेलिन"
+        },
+        {
+          "bn": "অ্যাবসিসিক অ্যাসিড",
+          "en": "Abscisic acid",
+          "hi": "एब्सेसिक एसिड"
+        },
+        {
+          "bn": "অক্সিন",
+          "en": "Auxin",
+          "hi": "ऑक्सिन"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "bn": "অ্যাবসিসিক অ্যাসিড (ABA) একটি স্ট্রেস হরমোন যা বৃদ্ধি বাধাগ্রস্ত করে, জল অপচয় রোধে পত্ররন্ধ্র বন্ধ করে এবং পাতার মোচন ত্বরান্বিত করে।",
+        "en": "Abscisic acid (ABA) functions as a stress hormone that inhibits growth, induces stomatal closure to prevent water loss, and promotes leaf detachment.",
+        "hi": "एब्सेसिक एसिड (ABA) एक तनाव हार्मोन के रूप में कार्य करता है जो वृद्धि को रोकता है, जल की हानि को रोकने के लिए रंध्र बंद करता है और पत्तियों के झड़ने को बढ़ावा देता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_02_q021",
+      "question": {
+        "bn": "কোন উদ্ভিদ হরমোন দ্রুত কোশ বিভাজন ত্বরান্বিত করে এবং ফল ও বীজে উচ্চ ঘনত্বে উপস্থিত থাকে?",
+        "en": "Which plant hormone promotes rapid cell division and is present in high concentrations in seeds and fruits?",
+        "hi": "कौन सा पादप हार्मोन तीव्र कोशिका विभाजन को बढ़ावा देता है और बीजों तथा फलों में उच्च सांद्रता में मौजूद होता है?"
+      },
+      "options": [
+        {
+          "bn": "অক্সিন",
+          "en": "Auxin",
+          "hi": "ऑक्सिन"
+        },
+        {
+          "bn": "সাইটোকাইনিন",
+          "en": "Cytokinin",
+          "hi": "साइटोकाइनिन"
+        },
+        {
+          "bn": "অ্যাবসিসিক অ্যাসিড",
+          "en": "Abscisic acid",
+          "hi": "एब्सेसिक एसिड"
+        },
+        {
+          "bn": "ইথিলিন",
+          "en": "Ethylene",
+          "hi": "इथाइलीन"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "সাইটোকাইনিন সক্রিয় কোশ বিভাজন (সাইটোকাইনেসিস) ঘটায় এবং বিকাশমান ফল ও বীজের মতো দ্রুত বিভাজনশীল কলাতে উচ্চ ঘনত্বে থাকে।",
+        "en": "Cytokinin promotes active cell division (cytokinesis) and is found in high concentrations in rapidly dividing tissues such as developing fruits and seeds.",
+        "hi": "साइटोकाइनिन सक्रिय कोशिका विभाजन (साइटोकाइनेसिस) को बढ़ावा देता है और तेजी से विभाजित होने वाले ऊतकों जैसे विकसित हो रहे फलों और बीजों में प्रचुर मात्रा में पाया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_02_q022",
+      "question": {
+        "bn": "দুটি পাশাপাশি অবস্থিত নিউরনের মধ্যবর্তী সংযোগস্থলকে কী বলা হয় যার মাধ্যমে স্নায়ু উদ্দীপনা প্রবাহিত হয়?",
+        "en": "Which gap or junction exists between two adjacent neurons across which nerve impulses pass electrically or chemically?",
+        "hi": "दो निकटवर्ती न्यूरॉन्स के बीच के संधि स्थल (जंक्शन) को क्या कहा जाता है जिससे होकर तंत्रिका आवेग गुजरते हैं?"
+      },
+      "options": [
+        {
+          "bn": "সাইন্যাপস",
+          "en": "Synapse",
+          "hi": "सिनैप्स"
+        },
+        {
+          "bn": "র্যানভিয়ারের পর্ব",
+          "en": "Node of Ranvier",
+          "hi": "रेनवियर का नोड"
+        },
+        {
+          "bn": "অ্যাক্সন হিলক",
+          "en": "Axon hillock",
+          "hi": "एक्सॉन हिलॉक"
+        },
+        {
+          "bn": "ডেনড্রন",
+          "en": "Dendron",
+          "hi": "डेंड्रॉन"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "একটি নিউরনের অ্যাক্সন প্রান্ত এবং অপর নিউরনের ডেনড্রাইট বা কোশদেহের মধ্যবর্তী অনুবীক্ষণিক সংযোগস্থল হলো সাইন্যাপস।",
+        "en": "A synapse is the microscopic junction between the axon terminal of one neuron and the dendrite or cell body of another neuron.",
+        "hi": "एक न्यूरॉन के एक्सॉन छोर और दूसरे न्यूरॉन के डेंड्राइट या कोशिका काय के बीच के सूक्ष्म संधि स्थल को सिनैप्स कहा जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_02_q023",
+      "question": {
+        "bn": "মাধ্যাকর্ষণ উদ্দীপকের প্রভাবে উদ্ভিদের কোন দিকনির্ণীত চলন ঘটে?",
+        "en": "Which plant movement is directional and occurs in response to the stimulus of gravity?",
+        "hi": "गुरुत्वाकर्षण के उद्दीपन की प्रतिक्रिया में पादप की कौन सी दिशीय गति होती है?"
+      },
+      "options": [
+        {
+          "bn": "হাইড্রোট্রোপিজম",
+          "en": "Hydrotropism",
+          "hi": "जलानुवर्तन"
+        },
+        {
+          "bn": "জিওট্রোপিজম",
+          "en": "Geotropism",
+          "hi": "गुरुत्वानुवर्तन"
+        },
+        {
+          "bn": "স্পর্শবর্তী চলন",
+          "en": "Thigmotropism",
+          "hi": "स्पर्शानुवर्तन"
+        },
+        {
+          "bn": "ফোটোন্যাস্টি",
+          "en": "Photonasty",
+          "hi": "प्रकाशानुकुंचन"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "জিওট্রোপিজম হলো মাধ্যাকর্ষণের টানে উদ্ভিদের অঙ্গের দিকনির্ণীত বৃদ্ধিভিত্তিক চলন, যার ফলে মূল নিচের দিকে বৃদ্ধি পায়।",
+        "en": "Geotropism (or gravitropism) is the directional growth movement of plant organs in response to gravity, causing roots to grow downward.",
+        "hi": "गुरुत्वानुवर्तन गुरुत्वाकर्षण के जवाब में पौधे के अंगों की दिशीय वृद्धि गति है, जिसके कारण जड़ें नीचे की ओर बढ़ती हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_02_q024",
+      "question": {
+        "bn": "অগ্ন্যাশয়ের আইলেটস অব ল্যাঙ্গারহ্যান্সের বিটা কোশ থেকে কোন হরমোন ক্ষরিত হয়?",
+        "en": "Which hormone is secreted by the beta cells of the Islets of Langerhans in the pancreas?",
+        "hi": "अग्न्याशय में लंगरहैंस के द्वीप समूह की बीटा कोशिकाओं द्वारा कौन सा हार्मोन स्रावित होता है?"
+      },
+      "options": [
+        {
+          "bn": "গ্লুকাগন",
+          "en": "Glucagon",
+          "hi": "ग्लूकागन"
+        },
+        {
+          "bn": "ইনসুলিন",
+          "en": "Insulin",
+          "hi": "इंसुलिन"
+        },
+        {
+          "bn": "সোমাটোস্ট্যাটিন",
+          "en": "Somatostatin",
+          "hi": "सोमैटोस्टैटिन"
+        },
+        {
+          "bn": "অ্যাড্রেনালিন",
+          "en": "Adrenaline",
+          "hi": "एड्रेनालीन"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "অগ্ন্যাশয়ের আইলেটস অব ল্যাঙ্গারহ্যান্সের বিটা কোশ নির্দিষ্টভাবে ইনসুলিন তৈরি করে এবং রক্তপ্রবাহে ক্ষরণ করে।",
+        "en": "Beta cells of the pancreatic Islets of Langerhans specifically synthesize and release insulin into the bloodstream.",
+        "hi": "अग्न्याशय के लैंगरहैंस के द्वीप समूह की बीटा कोशिकाएं विशेष रूप से इंसुलिन का संश्लेषण और रक्त प्रवाह में स्राव करती हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_02_q025",
+      "question": {
+        "bn": "ইনসুলিনের অপ পর্যাপ্ত উৎপাদন বা ইনসুলিনের প্রতি কোশের সাড়া না দেওয়ার ফলে কোন রোগের সৃষ্টি হয়?",
+        "en": "Insufficiency of insulin production or decreased cellular response to insulin leads to which health condition?",
+        "hi": "इंसुलिन के अपर्याप्त उत्पादन या इंसुलिन के प्रति कोशिकीय प्रतिक्रिया में कमी के कारण कौन सी बीमारी होती है?"
+      },
+      "options": [
+        {
+          "bn": "ডায়াবেটিস ইনসিপিডাস",
+          "en": "Diabetes insipidus",
+          "hi": "डायबिटीज इंसिपिडस"
+        },
+        {
+          "bn": "ডায়াবেটিস মেলিটাস",
+          "en": "Diabetes mellitus",
+          "hi": "डायबिटीज मेलेटस"
+        },
+        {
+          "bn": "কুশিং সিন্ড্রোম",
+          "en": "Cushing syndrome",
+          "hi": "कुशिंग सिंड्रोम"
+        },
+        {
+          "bn": "অ্যাডিসন ব্যাধি",
+          "en": "Addison disease",
+          "hi": "एडिसन रोग"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "ইনসুলিনের পূর্ণ বা আপেক্ষিক ঘাটতির ফলে রক্তে গ্লুকোজের পরিমাণ বৃদ্ধি পায়, যা ডায়াবেটিস মেলিটাস নামে পরিচিত।",
+        "en": "Diabetes mellitus results from absolute or relative insulin deficiency, leading to elevated blood glucose levels.",
+        "hi": "डायबिटीज मेलेटस इंसुलिन की पूर्ण या कमी के कारण होता है, जिससे रक्त शर्करा का स्तर बढ़ जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_02_q026",
+      "question": {
+        "bn": "বহু নিউরনের অ্যাক্সনকে আবৃত করে রাখা কোন রক্ষাকারী অন্তরক স্তরটি তড়িৎ উদ্দীপনা পরিবহন দ্রুততর করে?",
+        "en": "Which protective insulating layer covers the axon of many neurons and speeds up electrical impulse conduction?",
+        "hi": "कई न्यूरॉन्स के एक्सॉन को ढकने वाली कौन सी सुरक्षात्मक इन्सुलेट परत विद्युत आवेगों के संवहन को तेज करती है?"
+      },
+      "options": [
+        {
+          "bn": "মায়েলিন শিথ",
+          "en": "Myelin sheath",
+          "hi": "मायलिन शीथ"
+        },
+        {
+          "bn": "নিউরিলেমা",
+          "en": "Neurilemma",
+          "hi": "न्यूरीलेमा"
+        },
+        {
+          "bn": "মেনিনজেস",
+          "en": "Meninges",
+          "hi": "मेनिंजेस"
+        },
+        {
+          "bn": "পেরিনিউরিয়াম",
+          "en": "Perineurium",
+          "hi": "पेरीन्यूरियम"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "মায়েলিন শিথ অ্যাক্সনের চারপাশে তড়িৎ প্রবাহকরোধী স্তর গঠন করে, যা স্নায়ু উদ্দীপনার দ্রুত পরিবহন নিশ্চিত করে।",
+        "en": "The myelin sheath acts as an electrical insulator around the axon, allowing salutatory conduction of nerve impulses.",
+        "hi": "मायलिन शीथ एक्सॉन के चारों ओर एक विद्युत इन्सुलेटर के रूप में कार्य करती है, जिससे तंत्रिका आवेगों का तेजी से संचालन संभव होता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_02_q027",
+      "question": {
+        "bn": "কোন পর্দাযুক্ত আবরণ মস্তিষ্ক এবং সুষুম্নাকাণ্ডকে আবৃত করে ভৌত আঘাত থেকে রক্ষা করে?",
+        "en": "Which membrane layers enclose and protect the brain and spinal cord from physical injury?",
+        "hi": "कौन सी झिल्लीदार परतें मस्तिष्क और रीढ़ की हड्डी को घेरती हैं और उन्हें शारीरिक चोट से बचाती हैं?"
+      },
+      "options": [
+        {
+          "bn": "প্লুরা",
+          "en": "Pleura",
+          "hi": "प्लूरा"
+        },
+        {
+          "bn": "পেরিকার্ডিয়াম",
+          "en": "Pericardium",
+          "hi": "पेरिकार्डियम"
+        },
+        {
+          "bn": "মেনিনজেস",
+          "en": "Meninges",
+          "hi": "मेनिंजेस"
+        },
+        {
+          "bn": "পেরিটোনিয়াম",
+          "en": "Peritoneum",
+          "hi": "पेरिटोनियम"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "bn": "মেনিনজেস হলো তিনটি সুরক্ষামূলক ঝিল্লির স্তর (ডিউরা ম্যাটার, অ্যারাকনয়েড ম্যাটার এবং পিয়া ম্যাটার) যা কেন্দ্রীয় স্নায়ুতন্ত্রকে ঘিরে রাখে।",
+        "en": "The meninges consist of three protective membrane layers (dura mater, arachnoid mater, and pia mater) surrounding the central nervous system.",
+        "hi": "मेनिंजेस तीन सुरक्षात्मक झिल्ली परतों से बनी होती हैं जो केंद्रीय तंत्रिका तंत्र को घेरती हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_02_q028",
+      "question": {
+        "bn": "প্রধানত ফল পাকানোর জন্য দায়ী গ্যাসীয় উদ্ভিদ হরমোন কোনটি?",
+        "en": "Which gaseous plant hormone is primarily responsible for promoting fruit ripening?",
+        "hi": "फलों को पकाने के लिए मुख्य रूप से कौन सा गैसीय पादप हार्मोन जिम्मेदार है?"
+      },
+      "options": [
+        {
+          "bn": "অ্যাবসিসিক অ্যাসিড",
+          "en": "Abscisic acid",
+          "hi": "एब्सेसिक एसिड"
+        },
+        {
+          "bn": "ইথিলিন",
+          "en": "Ethylene",
+          "hi": "इथाइलीन"
+        },
+        {
+          "bn": "অক্সিন",
+          "en": "Auxin",
+          "hi": "ऑक्सिन"
+        },
+        {
+          "bn": "সাইটোকাইনিন",
+          "en": "Cytokinin",
+          "hi": "साइटोकाइनিন"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "ইথিলিন হলো একটি প্রাকৃতিক হাইড্রোকার্বন গ্যাস যা উদ্ভিদ হরমোন হিসেবে ফলের পরিপক্কতা বা পাকা প্রক্রিয়াকে ত্বরান্বিত করে।",
+        "en": "Ethylene is a natural hydrocarbon gas that acts as a plant hormone to accelerate the fruit ripening process.",
+        "hi": "इथाइलीन एक प्राकृतिक हाइड्रोकार्बन गैस है जो फलों को पकने की प्रक्रिया को तेज करने के लिए एक पादप हार्मोन के रूप में कार्य करती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_02_q029",
+      "question": {
+        "bn": "নিউরনের কোন অংশটি কোশদেহ থেকে উদ্দীপনা দূরে অন্য কোশের দিকে পরিবহন করে?",
+        "en": "Which part of the neuron transmits electrical impulses away from the cell body toward another cell?",
+        "hi": "न्यूरॉन का कौन सा भाग विद्युत आवेगों को कोशिका काय से दूर किसी अन्य कोशिका की ओर ले जाता है?"
+      },
+      "options": [
+        {
+          "bn": "ডেনড্রাইট",
+          "en": "Dendrite",
+          "hi": "डेंड्राइट"
+        },
+        {
+          "bn": "অ্যাক্সন",
+          "en": "Axon",
+          "hi": "एक्सॉन"
+        },
+        {
+          "bn": "নিসল দানা",
+          "en": "Nissl granules",
+          "hi": "निसल कण"
+        },
+        {
+          "bn": "সোয়ান কোশ",
+          "en": "Schwann cell",
+          "hi": "श्वान कोशिका"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "অ্যাক্সন হলো একটি দীর্ঘ একক স্নায়ুতন্তু যা কোশদেহ থেকে উদ্দীপনাকে পরবর্তী সাইন্যাপসের দিকে নিয়ে যায়।",
+        "en": "The axon is a long single nerve fiber that conducts action potentials away from the soma (cell body) toward terminal synapses.",
+        "hi": "एक्सॉन एक लंबा तंत्रिका फाइबर है जो एक्शन पोटेंशियल को कोशिका काय (सोमा) से दूर टर्मिनल सिनैप्स की ओर ले जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_02_q030",
+      "question": {
+        "bn": "সূর্যের আলোর তীব্রতার প্রভাবে দিনের বেলায় ফুল ফোটা কোন ধরনের উদ্ভিদ চলনের উদাহরণ?",
+        "en": "Opening of flowers during daytime in response to sunlight intensity is an example of which type of plant movement?",
+        "hi": "सूर्य के प्रकाश की तीव्रता की प्रतिक्रिया में दिन के समय फूलों का खिलना किस प्रकार की पादপ गति का उदाहरण है?"
+      },
+      "options": [
+        {
+          "bn": "আলোকবর্তী চলন",
+          "en": "Phototropism",
+          "hi": "प्रकाशानुवर्तन"
+        },
+        {
+          "bn": "ফোটোন্যাস্টি",
+          "en": "Photonasty",
+          "hi": "प्रकाशानुकुंचन (फोटोनैस्टी)"
+        },
+        {
+          "bn": "থার্মোন্যাস্টি",
+          "en": "Thermonasty",
+          "hi": "तापानुकुंचन"
+        },
+        {
+          "bn": "রসায়নবর্তী চলন",
+          "en": "Chemotropism",
+          "hi": "रसायनानुवर्तन"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "আলোর দিকের বদলে আলোর তীব্রতা দ্বারা পদ্ম বা সূর্যমুখী পাপড়ির উন্মোচন নিয়ন্ত্রিত হয়, তাই এটি ফোটোন্যাস্টিক চলন।",
+        "en": "The opening of lotus or sunflower petals driven by intensity of light rather than light direction is a photonastic movement.",
+        "hi": "प्रकाश की दिशा के बजाय प्रकाश की तीव्रता से प्रेरित होकर कमल या सूरजमुखी की पंखुड़ियों का खिलना एक प्रकाशानुकुंचनी गति है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    }
+  ]
 }

@@ -6,5 +6,386 @@
     "hi": "बांग्ला साहित्य और महान लेखक"
   },
   "class_standard": "Class 10",
-  "questions": []
+  "questions": [
+    {
+      "id": "lit_ch_01_q001",
+      "question": {
+        "bn": "'আনন্দমঠ' উপন্যাসটি কে রচনা করেন, যার মধ্যে জাতীয় গান 'বন্দে মাতরম্' রয়েছে?",
+        "en": "Who wrote the novel 'Anandamath', which contains the national song 'Vande Mataram'?",
+        "hi": "'आनंदमठ' उपन्यास किसने लिखा था, जिसमें राष्ट्रीय गीत 'वंदे मातरम' शामिल है?"
+      },
+      "options": [
+        {
+          "bn": "রবীন্দ্রনাথ ঠাকুর",
+          "en": "Rabindranath Tagore",
+          "hi": "रवींद्रनाथ टैगोर"
+        },
+        {
+          "bn": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+          "en": "Bankim Chandra Chattopadhyay",
+          "hi": "बंकिम चंद्र चट्टोपाध्याय"
+        },
+        {
+          "bn": "শরৎচন্দ্র চট্টোপাধ্যায়",
+          "en": "Sarat Chandra Chattopadhyay",
+          "hi": "शरत्चंद्र चट्टोपाध्याय"
+        },
+        {
+          "bn": "কাজী নজরুল ইসলাম",
+          "en": "Kazi Nazrul Islam",
+          "hi": "काज़ी नज़रुल इस्लाम"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "বঙ্কিমচন্দ্র চট্টোপাধ্যায় ১৮৮২ সালে 'আনন্দমঠ' উপন্যাসটি রচনা করেন, যার অন্তর্ভুক্ত হলো দেশপ্রেমমূলক গান 'বন্দে মাতরম্'।",
+        "en": "Bankim Chandra Chattopadhyay wrote 'Anandamath' in 1882, which features the patriotic poem 'Vande Mataram'.",
+        "hi": "बंकिम चंद्र चट्टोपाध्याय ने 1882 में 'आनंदमठ' उपन्यास लिखा था, जिसमें देशभक्ति गीत 'वंदे मातरम' शामिल है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "lit_ch_01_q002",
+      "question": {
+        "bn": "কোন কাব্যগ্রন্থের জন্য রবীন্দ্রনাথ ঠাকুর ১৯১৩ সালে সাহিত্যে নোবেল পুরস্কার পান?",
+        "en": "For which collection of poems was Rabindranath Tagore awarded the Nobel Prize in Literature in 1913?",
+        "hi": "रवींद्रनाथ टैगोर को 1913 में किस काव्य संग्रह के लिए साहित्य का नोबेल पुरस्कार मिला था?"
+      },
+      "options": [
+        {
+          "bn": "গীতাঞ্জলি",
+          "en": "Gitanjali",
+          "hi": "गीतांजलि"
+        },
+        {
+          "bn": "সঞ্চয়িতা",
+          "en": "Sanchayita",
+          "hi": "संचयिता"
+        },
+        {
+          "bn": "বলাকা",
+          "en": "Balaka",
+          "hi": "बलाका"
+        },
+        {
+          "bn": "সোনার তরী",
+          "en": "Sonar Tori",
+          "hi": "सोना तरी"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "রবীন্দ্রনাথ ঠাকুর প্রধানত তাঁর 'গীতাঞ্জলি' কাব্যগ্রন্থের ইংরেজি অনুবাদের জন্য ১৯১৩ সালে সাহিত্যে নোবেল পুরস্কার লাভ করেন।",
+        "en": "Rabindranath Tagore won the Nobel Prize in Literature in 1913 primarily for the English translation of 'Gitanjali' (Song Offerings).",
+        "hi": "रवींद्रनाथ टैगोर को मुख्य रूप से उनकी 'गीतांजलि' काव्य संग्रह के अंग्रेजी अनुवाद के लिए 1913 में साहित्य का नोबेल पुरस्कार मिला था।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "lit_ch_01_q003",
+      "question": {
+        "bn": "কোন বিখ্যাত বাঙালি লেখক কালজয়ী উপন্যাস 'পথের পাঁচালী' রচনা করেছিলেন?",
+        "en": "Which famous Bengali writer authored the celebrated novel 'Pather Panchali'?",
+        "hi": "प्रसिद्ध बंगाली उपन्यास 'पथेर पांचाली' के लेखक कौन हैं?"
+      },
+      "options": [
+        {
+          "bn": "তারাশঙ্কর বন্দ্যোপাধ্যায়",
+          "en": "Tarasankar Bandyopadhyay",
+          "hi": "ताराशंकर बंद्योपाध्याय"
+        },
+        {
+          "bn": "মাণিক বন্দ্যোপাধ্যায়",
+          "en": "Manik Bandyopadhyay",
+          "hi": "माणिक बंद्योपाध्याय"
+        },
+        {
+          "bn": "বিভূতিভূষণ বন্দ্যোপাধ্যায়",
+          "en": "Bibhutibhushan Bandyopadhyay",
+          "hi": "विभूतिभूषण बंद्योपाध्याय"
+        },
+        {
+          "bn": "শরদিন্দু বন্দ্যোপাধ্যায়",
+          "en": "Sharadindu Bandyopadhyay",
+          "hi": "शरदिंदु बंद्योपाध्याय"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "bn": "বিভূতিভূষণ বন্দ্যোপাধ্যায় 'পথের পাঁচালী' রচনা করেন, যেখানে অপু ও দুর্গার জীবনের মাধ্যমে বাংলার গ্রামীণ জীবন চিত্রিত হয়েছে।",
+        "en": "Bibhutibhushan Bandyopadhyay wrote 'Pather Panchali', depicting rural life in Bengal through the journey of Opu and Durga.",
+        "hi": "विभूतिभूषण बंद्योपाध्याय ने 'पथेर पांचाली' लिखी, जिसमें अपू और दुर्गा की जीवन यात्रा के माध्यम से बंगाल के ग्रामीण जीवन को दर्शाया गया है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "lit_ch_01_q004",
+      "question": {
+        "bn": "শরৎচন্দ্র চট্টোপাধ্যায়ের সৃষ্টি করা কোন বিখ্যাত চরিত্রটি 'দেবদাস' উপন্যাসের প্রধান নায়ক?",
+        "en": "Which famous literary character created by Sarat Chandra Chattopadhyay is the protagonist of 'Devdas'?",
+        "hi": "शरत्चंद्र चट्टोपाध्याय द्वारा बनाया गया कौन सा प्रसिद्ध पात्र 'देवदास' उपन्यास का मुख्य नायक है?"
+      },
+      "options": [
+        {
+          "bn": "শ্রীকান্ত",
+          "en": "Srikanta",
+          "hi": "श्रीकांत"
+        },
+        {
+          "bn": "দেবদাস",
+          "en": "Devdas",
+          "hi": "देवदास"
+        },
+        {
+          "bn": "সব্যসাচী",
+          "en": "Sabyasachi",
+          "hi": "सव्यसाची"
+        },
+        {
+          "bn": "অপূর্ব",
+          "en": "Apurba",
+          "hi": "अपूर्व"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "শরৎচন্দ্র চট্টোপাধ্যায়ের বিখ্যাত ট্র্যাজিক প্রেমের উপন্যাস 'দেবদাস'-এর প্রধান চরিত্র হলেন দেবদাস মুখোপাধ্যায়।",
+        "en": "Devdas Mukherjee is the tragic central protagonist of Sarat Chandra Chattopadhyay's famous romance novel 'Devdas'.",
+        "hi": "देवदास मुखर्जी शरत्चंद्र चट्टोपाध्याय के प्रसिद्ध दुखद प्रेम उपन्यास 'देवदास' के मुख्य पात्र हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "lit_ch_01_q005",
+      "question": {
+        "bn": "বাংলা সাহিত্যে 'বিদ্রোহী কবি' হিসেবে খ্যাত এবং বাংলাদেশের জাতীয় কবি হিসেবে সম্মানিত কে?",
+        "en": "Who is revered as the national poet of Bangladesh and famously known as the 'Bidrohi Kabi' (Rebel Poet) in Bengali literature?",
+        "hi": "बांग्ला साहित्य में 'विद्रोही कवि' के रूप में जाने जाने वाले और बांग्लादेश के राष्ट्रीय कवि के रूप में सम्मानित कौन हैं?"
+      },
+      "options": [
+        {
+          "bn": "জীবনানন্দ দাশ",
+          "en": "Jibanananda Das",
+          "hi": "जीवनानंद दास"
+        },
+        {
+          "bn": "সুকান্ত ভট্টাচার্য",
+          "en": "Sukanta Bhattacharya",
+          "hi": "सुकंत भट्टाचार्य"
+        },
+        {
+          "bn": "কাজী নজরুল ইসলাম",
+          "en": "Kazi Nazrul Islam",
+          "hi": "काज़ी नज़रুল इस्लाम"
+        },
+        {
+          "bn": "মাইকেল মধুসূদন দত্ত",
+          "en": "Michael Madhusudan Dutt",
+          "hi": "माइकल मधुसूदन दत्त"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "bn": "কাজী নজরুল ইসলাম তাঁর 'বিদ্রোহী' কবিতার মতো রচনার মাধ্যমে অত্যাচার ও অবিচারের বিরুদ্ধে প্রতিবাদের জন্য 'বিদ্রোহী কবি' নামে পরিচিত।",
+        "en": "Kazi Nazrul Islam is known as the Rebel Poet for his fierce opposition to oppression and injustice through works like 'Bidrohi'.",
+        "hi": "काज़ी नज़रुल इस्लाम को 'विद्रोही' जैसी रचनाओं के माध्यम से उत्पीड़न और अन्याय के खिलाफ जोरदार विरोध के लिए 'विद्रোही कवि' के रूप में जाना जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "lit_ch_01_q006",
+      "question": {
+        "bn": "বাংলা সাহিত্যে সত্যজিৎ রায় কোন বিখ্যাত গোয়েন্দা চরিত্রটি সৃষ্টি করেছিলেন?",
+        "en": "Which famous detective character was created by Satyajit Ray in Bengali literature?",
+        "hi": "बंगाली साहित्य में सत्यजीत रे द्वारा निर्मित प्रसिद्ध जासूस पात्र कौन सा है?"
+      },
+      "options": [
+        {
+          "bn": "ব্যোমকেশ বক্সী",
+          "en": "Byomkesh Bakshi",
+          "hi": "ब्योमकेश बख्शी"
+        },
+        {
+          "bn": "ফেলুদা",
+          "en": "Feluda",
+          "hi": "फेलुदा"
+        },
+        {
+          "bn": "কাকাবাবু",
+          "en": "Kakababu",
+          "hi": "काकाबाबू"
+        },
+        {
+          "bn": "কিরীটি রায়",
+          "en": "Kiriti Roy",
+          "hi": "किरीटी रॉय"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "সত্যজিৎ রায় প্রদোষচন্দ্র মিত্র চরিত্রটি সৃষ্টি করেন, যিনি 'ফেলুদা' নামে অত্যন্ত জনপ্রিয়।",
+        "en": "Satyajit Ray created the legendary sleuth Prodosh Chandra Mitra, popularly known as Feluda.",
+        "hi": "सत्यजीत रे ने प्रसिद्ध जासूस प्रदोष चंद्र मित्रा का चरित्र गढ़ा, जिन्हें 'फेलुदा' के नाम से जाना जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "lit_ch_01_q007",
+      "question": {
+        "bn": "অমিত্রাক্ষর ছন্দে রচিত কোন মহাকাব্যটি মাইকেল মধুসূদন দত্ত রচনা করেছিলেন?",
+        "en": "Which epic poem written in blank verse (Amitrakshar Chhanda) was composed by Michael Madhusudan Dutt?",
+        "hi": "माइकल मधुसूदन दत्त द्वारा अमित्रक्षर छंद (अतुकलकांत) में लिखा गया महाकाव्य कौन सा है?"
+      },
+      "options": [
+        {
+          "bn": "মেঘনাদবধ কাব্য",
+          "en": "Meghnad Badh Kavya",
+          "hi": "मेघनाद वध काव्य"
+        },
+        {
+          "bn": "বৃত্তসংহার",
+          "en": "Vritrasamhar",
+          "hi": "वृत्रसंहार"
+        },
+        {
+          "bn": "তিলোত্তমাসম্ভব কাব্য",
+          "en": "Tilottamasambhava Kavya",
+          "hi": "तिलोत्तमासंभव काव्य"
+        },
+        {
+          "bn": "ব্রজাঙ্গনা কাব্য",
+          "en": "Brajangana Kavya",
+          "hi": "व्रजांगना काव्य"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "'মেঘনাদবধ কাব্য' হলো মাইকেল মধুসূদন দত্তের রামায়ণভিত্তিক বিখ্যাত মহাকাব্য, যা অমিত্রাক্ষর ছন্দে রচিত।",
+        "en": "'Meghnad Badh Kavya' is the famous epic by Michael Madhusudan Dutt based on the Ramayana, introduced in blank verse.",
+        "hi": "'मेघनाद वध काव्य' रामायण पर आधारित माइकल मधुसूदन दत्त का प्रसिद्ध महाकाव्य है, जो अतुककांत छंद में रचा गया है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "lit_ch_01_q008",
+      "question": {
+        "bn": "ব্রিটিশ শাসনের অধীনে নীল চাষীদের দুর্দশা চিত্রিত করে বিখ্যাত বাংলা বিয়োগান্ত নাটক 'নীলদর্পণ' কে রচনা করেন?",
+        "en": "Who wrote the famous Bengali tragic drama 'Nildarpan', which depicted the plight of indigo farmers under British rule?",
+        "hi": "ब्रिटिश शासन के तहत नील किसानों की दुर्दशा को दर्शाने वाला प्रसिद्ध बंगाली नाटक 'नीलदर्पण' किसने लिखा था?"
+      },
+      "options": [
+        {
+          "bn": "গিরিশচন্দ্র ঘোষ",
+          "en": "Girish Chandra Ghosh",
+          "hi": "गिरीश चंद्र घोष"
+        },
+        {
+          "bn": "দ্বিজেন্দ্রলাল রায়",
+          "en": "Dwijendralal Ray",
+          "hi": "द्विजेंद्रलाल रॉय"
+        },
+        {
+          "bn": "দীনবন্ধু মিত্র",
+          "en": "Dinabandhu Mitra",
+          "hi": "दीनबंधु मित्र"
+        },
+        {
+          "bn": "রবীন্দ্রনাথ ঠাকুর",
+          "en": "Rabindranath Tagore",
+          "hi": "रवींद्रनाथ टैगोर"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "bn": "দীনবন্ধু মিত্র ১৮৬০ সালে 'নীলদর্পণ' রচনা করেন ইউরোপীয় নীলকরদের দ্বারা অত্যাচারিত ও শোষিত বাঙালি চাষীদের দুঃখ তুলে ধরার জন্য।",
+        "en": "Dinabandhu Mitra authored 'Nildarpan' in 1860 to highlight the ruthless exploitation of Bengali farmers by European indigo planters.",
+        "hi": "दीनबंधु मित्र ने 1860 में यूरोपीय नील बागान मालिकों द्वारा बंगाली किसानों के क्रूर शोषण को उजागर करने के लिए 'नीलदर्पण' लिखा था।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "lit_ch_01_q009",
+      "question": {
+        "bn": "বাংলা সাহিত্যে জনপ্রিয় ব্যঙ্গাত্মক চরিত্র 'ঘনাদা'-র স্রষ্টা কে?",
+        "en": "Who is the creator of the popular satirical character 'Ghanada' in Bengali literature?",
+        "hi": "बांग्ला साहित्य में लोकप्रिय व्यंग्यात्मक चरित्र 'घनादा' के निर्माता कौन हैं?"
+      },
+      "options": [
+        {
+          "bn": "নারায়ণ গঙ্গোপাধ্যায়",
+          "en": "Narayan Gangopadhyay",
+          "hi": "नारायण गंगोपाध्याय"
+        },
+        {
+          "bn": "প্রেমেন্দ্র মিত্র",
+          "en": "Premendra Mitra",
+          "hi": "प्रेमेंद्र मित्र"
+        },
+        {
+          "bn": "শিবরাম চক্রবর্তী",
+          "en": "Shibram Chakraborty",
+          "hi": "शिवराम चक्रवर्ती"
+        },
+        {
+          "bn": "লীলা মজুমদার",
+          "en": "Leela Majumdar",
+          "hi": "लीला मजूमदार"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "প্রেমেন্দ্র মিত্র কালজয়ী চরিত্র ঘনশ্যাম দাস (ঘনাদা) সৃষ্টি করেন, যিনি বিজ্ঞান ও কাল্পনিক গল্প বানিয়ে বানিয়ে বলতে পারদর্শী।",
+        "en": "Premendra Mitra created the iconic character Ghanashyam Das (Ghanada), who tells tall stories combining science and fiction.",
+        "hi": "प्रेमेंद्र मित्र ने घनश्याम दास (घनादा) का प्रतिष्ठित चरित्र गढ़ा, जो विज्ञान और काल्पनिक कहानियों को मिलाकर सुनाने के लिए प्रसिद्ध है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "lit_ch_01_q010",
+      "question": {
+        "bn": "কোন কবি 'রূপসী বাংলা' কাব্যগ্রন্থটি রচনা করে 'রূপসীর কবি' খেতাব অর্জন করেছিলেন?",
+        "en": "Which poet wrote the iconic collection 'Rupasi Bangla', earning him the title 'Rupashir Kabi'?",
+        "hi": "किस कवि ने प्रसिद्ध संग्रह 'रूपसी बांग्ला' लिखा, जिससे उन्हें 'रूपसीर कवि' की उपाधि मिली?"
+      },
+      "options": [
+        {
+          "bn": "জীবনানন্দ দাশ",
+          "en": "Jibanananda Das",
+          "hi": "जीवनानंद दास"
+        },
+        {
+          "bn": "বুদ্ধদেব বসু",
+          "en": "Buddhadeb Basu",
+          "hi": "बुद्धदेव बसु"
+        },
+        {
+          "bn": "বিষ্ণু দে",
+          "en": "Bishnu Dey",
+          "hi": "विष्णु दे"
+        },
+        {
+          "bn": "সুভাষ মুখোপাধ্যায়",
+          "en": "Subhash Mukhopadhyay",
+          "hi": "सुभाष मुखोपाध्याय"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "জীবনানন্দ দাশ 'রূপসী বাংলা' রচনা করেন, যেখানে গ্রামবাংলার প্রকৃতি ও রূপের অনন্য সুন্দর বিবরণ রয়েছে।",
+        "en": "Jibanananda Das wrote 'Rupasi Bangla', expressing deep love for the lush landscape and nature of rural Bengal.",
+        "hi": "जीवनानंद दास ने 'रूपसी बांग्ला' लिखी, जिसमें ग्रामीण बंगाल के सुंदर परिदृश्य और प्रकृति के प्रति उनका गहरा प्रेम व्यक्त हुआ है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    }
+  ]
 }

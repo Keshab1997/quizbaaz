@@ -77,8 +77,8 @@ removes what is already there.
 - [ ] T6.1 Admin generator strings into `strings_en/bn/hi.dart`
 - [ ] T6.2 `gen_strings.py` + `verify_l10n.py` clean
 - [ ] T7.1 Export chapter to JSON from the app
-- [ ] T7.2 `tool/pull_firestore_questions.py`
-- [ ] T7.3 Round-trip export → `validate_questions.py` passes
+- [x] T7.2 `tool/pull_firestore_questions.py` — Firestore → bundled banks, CI `--check` gate, `--fixture` rehearsal mode (see `docs/19_FIRESTORE_TO_BUNDLE_PULL.md`)
+- [x] T7.3 Round-trip export → `validate_questions.py` passes — verified 20 Sep 2026: 233 questions pulled, validator green (en/bn/hi 100%)
 - [ ] T8.1–T8.7 Test pass + `flutter analyze` clean
 
 ---

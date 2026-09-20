@@ -6,5 +6,386 @@
     "hi": "सौर मंडल और अंतरिक्ष अन्वेषण"
   },
   "class_standard": "Class 10",
-  "questions": []
+  "questions": [
+    {
+      "id": "sci_ch_01_q001",
+      "question": {
+        "bn": "ইসরো (ISRO) কোন বছরে ভারতের প্রথম চন্দ্র অভিযান, চন্দ্রযান-১ উৎক্ষেপণ করেছিল?",
+        "en": "In which year did ISRO launch India's first lunar mission, Chandrayaan-1?",
+        "hi": "इसरो (ISRO) ने किस वर्ष भारत का पहला चंद्र मिशन, चंद्रयान-1 लॉन्च किया था?"
+      },
+      "options": [
+        {
+          "bn": "২০০৮",
+          "en": "2008",
+          "hi": "2008"
+        },
+        {
+          "bn": "২০১৩",
+          "en": "2013",
+          "hi": "2013"
+        },
+        {
+          "bn": "২০১৯",
+          "en": "2019",
+          "hi": "2019"
+        },
+        {
+          "bn": "২০০৫",
+          "en": "2005",
+          "hi": "2005"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "চন্দ্রযান-১ ২০০৮ সালের ২২ অক্টোবর ইসরো দ্বারা PSLV-C11 রকেটের সাহায্যে উৎক্ষেপণ করা হয়েছিল এবং এটি সফলভাবে চাঁদের কক্ষপথে প্রবেশ করেছিল।",
+        "en": "Chandrayaan-1 was launched by ISRO on October 22, 2008, using the PSLV-C11 rocket, and successfully entered lunar orbit.",
+        "hi": "चंद्रयान-1 को 22 अक्टूबर 2008 को इसरो द्वारा PSLV-C11 रॉकेट की मदद से लॉन्च किया गया था, और इसने सफलतापूर्वक चंद्रमा की कक्षा में प्रवेश किया था।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "sci_ch_01_q002",
+      "question": {
+        "bn": "ঘন কার্বন ডাইঅক্সাইড বায়ুমণ্ডলের কারণে অনিয়ন্ত্রিত গ্রিনহাউস প্রভাবের ফলে আমাদের সৌরজগতের কোন গ্রহটি সবচেয়ে উষ্ণতম?",
+        "en": "Which planet is the hottest in our solar system due to a runaway greenhouse effect caused by a thick carbon dioxide atmosphere?",
+        "hi": "घने कार्बन डाइऑक्साइड वायुमंडल के कारण अनियंत्रित ग्रीनहाउस प्रभाव के चलते हमारे सौर मंडल का कौन सा ग्रह सबसे गर्म है?"
+      },
+      "options": [
+        {
+          "bn": "বুধ",
+          "en": "Mercury",
+          "hi": "बुध"
+        },
+        {
+          "bn": "শুক্র",
+          "en": "Venus",
+          "hi": "शुक्र"
+        },
+        {
+          "bn": "মঙ্গল",
+          "en": "Mars",
+          "hi": "मंगल"
+        },
+        {
+          "bn": "বৃহস্পতি",
+          "en": "Jupiter",
+          "hi": "बृहस्पति"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "যদিও বুধ সূর্যের সবচেয়ে কাছে অবস্থিত, তবুও শুক্র সবচেয়ে উষ্ণ গ্রহ কারণ এর ঘন বায়ুমণ্ডল গ্রিনহাউস প্রভাবের মাধ্যমে তাপকে আটকে রাখে।",
+        "en": "Although Mercury is closer to the Sun, Venus is the hottest planet because its thick atmosphere traps heat through a runaway greenhouse effect.",
+        "hi": "हालाँकि बुध सूर्य के सबसे निकट है, फिर भी शुक्र सबसे गर्म ग्रह है क्योंकि इसका घना वायुमंडल ग्रीनहाउस प्रभाव के माध्यम से ऊष्मा को रोक लेता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "sci_ch_01_q003",
+      "question": {
+        "bn": "ভারতের সৌর মিশন, আদিত্য-L1, সূর্য-পৃথিবী সিস্টেমের কোন ল্যাগ্রাঞ্জ পয়েন্টের চারপাশের একটি হ্যালো কক্ষপথে স্থাপন করা হয়েছে?",
+        "en": "India's solar mission, Aditya-L1, is placed in a halo orbit around which Lagrange point of the Sun-Earth system?",
+        "hi": "भारत के सौर मिशन, आदित्य-L1 को सूर्य-पृथ्वी प्रणाली के किस लैग्रेंज बिंदु के चारों ओर एक प्रभामंडल (halo) कक्षा में स्थापित किया गया है?"
+      },
+      "options": [
+        {
+          "bn": "L2",
+          "en": "L2",
+          "hi": "L2"
+        },
+        {
+          "bn": "L5",
+          "en": "L5",
+          "hi": "L5"
+        },
+        {
+          "bn": "L1",
+          "en": "L1",
+          "hi": "L1"
+        },
+        {
+          "bn": "L4",
+          "en": "L4",
+          "hi": "L4"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "bn": "আদিত্য-L1 সূর্য-পৃথিবী সিস্টেমের ল্যাগ্রাঞ্জ পয়েন্ট ১ (L1)-এর চারপাশের একটি হ্যালো কক্ষপথে স্থাপন করা হয়েছে, যা পৃথিবী থেকে প্রায় ১৫ লক্ষ কিমি দূরে অবস্থিত এবং এখান থেকে কোনো বাধা ছাড়াই সূর্যকে পর্যবেক্ষণ করা যায়।",
+        "en": "Aditya-L1 is placed in a halo orbit around the Lagrange point 1 (L1) of the Sun-Earth system, which is about 1.5 million km from Earth, allowing continuous viewing of the Sun.",
+        "hi": "आदित्य-L1 को सूर्य-पृथ्वी प्रणाली के लैग्रेंज बिंदु 1 (L1) के चारों ओर एक प्रभामंडल कक्षा में स्थापित किया गया है, जो पृथ्वी से लगभग 15 लाख किमी दूर है और यहाँ से बिना किसी बाधा के सूर्य का निरंतर अवलोकन किया जा सकता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "sci_ch_01_q004",
+      "question": {
+        "bn": "পৃথিবীর মহাকর্ষীয় টান এড়াতে একটি মহাকাশযানের জন্য প্রয়োজনীয় আনুমানিক মুক্তিবেগ (escape velocity) কত?",
+        "en": "What is the approximate escape velocity required for a spacecraft to escape Earth's gravitational pull?",
+        "hi": "पृथ्वी के गुरुत्वाकर्षण खिंचाव से बचने के लिए किसी अंतरिक्ष यान के लिए आवश्यक अनुमानित पलायन वेग (escape velocity) क्या है?"
+      },
+      "options": [
+        {
+          "bn": "১১.২ কিমি/সেকেন্ড",
+          "en": "11.2 km/s",
+          "hi": "11.2 किमी/सेकंड"
+        },
+        {
+          "bn": "৮.০ কিমি/সেকেন্ড",
+          "en": "8.0 km/s",
+          "hi": "8.0 किमी/सेकंड"
+        },
+        {
+          "bn": "২.৩৮ কিমি/সেকেন্ড",
+          "en": "2.38 km/s",
+          "hi": "2.38 किमी/सेकंड"
+        },
+        {
+          "bn": "৪২.১ কিমি/সেকেন্ড",
+          "en": "42.1 km/s",
+          "hi": "42.1 किमी/सेकंड"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "পৃথিবীর মুক্তিবেগ হলো প্রায় ১১.২ কিমি/সেকেন্ড, যা কোনো বস্তুর পৃথিবীর মহাকর্ষীয় ক্ষেত্র অতিক্রম করে মহাকাশে চলে যাওয়ার জন্য প্রয়োজনীয় ন্যূনতম গতিবেগ।",
+        "en": "The escape velocity of Earth is approximately 11.2 km/s, which is the minimum speed needed for an object to escape Earth's gravitational field without further propulsion.",
+        "hi": "पृथ्वी का पलायन वेग लगभग 11.2 किमी/सेकंड है, जो किसी वस्तु को पृथ्वी के गुरुत्वाकर्षण क्षेत्र से बाहर निकलने के लिए आवश्यक न्यूनतम गति है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "sci_ch_01_q005",
+      "question": {
+        "bn": "২০১৩ সালে মঙ্গলযান (Mars Orbiter Mission) উৎক্ষেপণের জন্য ইসরো (ISRO) কোন রকেট বা উৎক্ষেপণ যান ব্যবহার করেছিল?",
+        "en": "Which launch vehicle was used by ISRO to launch the Mars Orbiter Mission (Mangalyaan) in 2013?",
+        "hi": "2013 में मंगलयान (Mars Orbiter Mission) को लॉन्च करने के लिए इसरो (ISRO) द्वारा किस प्रक्षेपण यान (launch vehicle) का उपयोग किया गया था?"
+      },
+      "options": [
+        {
+          "bn": "জিএসএলভি মার্ক ৩",
+          "en": "GSLV Mk III",
+          "hi": "जीएसएलवी मार्क 3"
+        },
+        {
+          "bn": "পিএসএলভি-সি২৫",
+          "en": "PSLV-C25",
+          "hi": "पीएसएलवी-सी25"
+        },
+        {
+          "bn": "জিএসএলভি-এফ০৫",
+          "en": "GSLV-F05",
+          "hi": "जीएसएलवी-एफ05"
+        },
+        {
+          "bn": "এএসএলভি",
+          "en": "ASLV",
+          "hi": "एएसएलवी"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "ইসরো ২০১৩ সালের ৫ নভেম্বর PSLV-C25 রকেটের সাহায্যে সফলভাবে মঙ্গলযান (Mars Orbiter Mission) উৎক্ষেপণ করেছিল।",
+        "en": "ISRO successfully launched the Mars Orbiter Mission (Mangalyaan) on November 5, 2013, using the PSLV-C25 rocket.",
+        "hi": "इसरो ने 5 नवंबर 2013 को PSLV-C25 रॉकेट का उपयोग करके सफलतापूर्वक मंगलयान (Mars Orbiter Mission) लॉन्च किया था।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "sci_ch_01_q006",
+      "question": {
+        "bn": "পৃষ্ঠতলে আয়রন অক্সাইডের উপস্থিতির কারণে কোন গ্রহটি 'লাল গ্রহ' নামে পরিচিত?",
+        "en": "Which planet is known as the 'Red Planet' due to the presence of iron oxide on its surface?",
+        "hi": "इसकी सतह पर आयरन ऑक्साइड की उपस्थिति के कारण किस ग्रह को 'लाल ग्रह' के रूप में जाना जाता है?"
+      },
+      "options": [
+        {
+          "bn": "মঙ্গল",
+          "en": "Mars",
+          "hi": "मंगल"
+        },
+        {
+          "bn": "বৃহস্পতি",
+          "en": "Jupiter",
+          "hi": "बृहस्पति"
+        },
+        {
+          "bn": "শনি",
+          "en": "Saturn",
+          "hi": "शनि"
+        },
+        {
+          "bn": "শুক্র",
+          "en": "Venus",
+          "hi": "शुक्र"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "মঙ্গলের মাটিতে থাকা আয়রন খনিজগুলি জারিত হয় বা মরিচা ধরে, যার ফলে মাটি এবং বায়ুমণ্ডল লাল দেখায়।",
+        "en": "Mars appears red because iron minerals in its soil oxidize, or rust, causing the soil and atmosphere to look red.",
+        "hi": "मंगल लाल दिखता है क्योंकि इसकी मिट्टी में मौजूद लौह खनिज ऑक्सीकृत हो जाते हैं, या जंग लग जाते हैं, जिससे मिट्टी और वातावरण लाल दिखाई देता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "sci_ch_01_q007",
+      "question": {
+        "bn": "১৯৭৫ সালে উৎক্ষেপণ করা ভারতের প্রথম কৃত্রিম উপগ্রহের নাম কী ছিল?",
+        "en": "What was the name of India's first satellite, launched in 1975?",
+        "hi": "1975 में प्रक्षेपित भारत के पहले उपग्रह का नाम क्या था?"
+      },
+      "options": [
+        {
+          "bn": "ভাস্কর-১",
+          "en": "Bhaskara-I",
+          "hi": "भास्कर-I"
+        },
+        {
+          "bn": "আর্যভট্ট",
+          "en": "Aryabhata",
+          "hi": "आर्यभट्ट"
+        },
+        {
+          "bn": "রোহিণী",
+          "en": "Rohini",
+          "hi": "रोहिणी"
+        },
+        {
+          "bn": "ইনস্যাট-১এ",
+          "en": "INSAT-1A",
+          "hi": "इनसेट-1A"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "আর্যভট্ট ছিল ভারতের প্রথম উপগ্রহ, যা বিখ্যাত ভারতীয় জ্যোতির্বিজ্ঞানীর নামে নামকরণ করা হয়েছিল এবং এটি একটি সোভিয়েত রকেটের সাহায্যে উৎক্ষেপণ করা হয়েছিল।",
+        "en": "Aryabhata was India's first satellite, named after the famous Indian astronomer and launched using a Soviet rocket.",
+        "hi": "आर्यभट्ट भारत का पहला उपग्रह था, जिसका नाम प्रसिद्ध भारतीय खगोलशास्त्री के नाम पर रखा गया था और इसे सोवियत रॉकेट का उपयोग करके प्रक्षेपित किया गया था।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "sci_ch_01_q008",
+      "question": {
+        "bn": "অ্যাস্টেরয়েড বেল্ট বা গ্রহাণু বলয় কোন দুটি গ্রহের কক্ষপথের মধ্যে অবস্থিত?",
+        "en": "The Asteroid Belt is located between the orbits of which two planets?",
+        "hi": "क्षुद्रग्रह बेल्ट (Asteroid Belt) किन दो ग्रहों की कक्षाओं के बीच स्थित है?"
+      },
+      "options": [
+        {
+          "bn": "পৃথিবী ও মঙ্গল",
+          "en": "Earth and Mars",
+          "hi": "पृथ्वी और मंगल"
+        },
+        {
+          "bn": "মঙ্গল ও বৃহস্পতি",
+          "en": "Mars and Jupiter",
+          "hi": "मंगल और बृहस्पति"
+        },
+        {
+          "bn": "বৃহস্পতি ও শনি",
+          "en": "Jupiter and Saturn",
+          "hi": "बृहस्पति और शनि"
+        },
+        {
+          "bn": "শুক্র ও পৃথিবী",
+          "en": "Venus and Earth",
+          "hi": "शुक्र और पृथ्वी"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "গ্রহাণু বলয় হলো সৌরজগতের একটি অঞ্চল যা মূলত মঙ্গল এবং বৃহস্পতি গ্রহের কক্ষপথের মধ্যে অবস্থিত।",
+        "en": "The asteroid belt is a torus-shaped region in the solar system, located roughly between the orbits of the planets Mars and Jupiter.",
+        "hi": "क्षुद्रग्रह बेल्ट सौर मंडल का एक क्षेत्र है, जो मोटे तौर पर मंगल और बृहस्पति ग्रहों की कक्षाओं के बीच स्थित है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "sci_ch_01_q009",
+      "question": {
+        "bn": "চন্দ্রযান-৩-এর বিক্রম ল্যান্ডারটি চাঁদের যেখানে অবতরণ করেছিল সেই স্থানটির নাম কী?",
+        "en": "What is the name of the landing site where Chandrayaan-3's Vikram lander successfully touched down?",
+        "hi": "उस लैंडिंग साइट का नाम क्या है जहाँ चंद्रयान-3 का विक्रम लैंडर सफलतापूर्वक उतरा था?"
+      },
+      "options": [
+        {
+          "bn": "তেরঙা পয়েন্ট",
+          "en": "Tiranga Point",
+          "hi": "तिरंगा पॉइंट"
+        },
+        {
+          "bn": "শিব শক্তি পয়েন্ট",
+          "en": "Shiv Shakti Point",
+          "hi": "शिव शक्ति पॉइंट"
+        },
+        {
+          "bn": "জওহর পয়েন্ট",
+          "en": "Jawahar Point",
+          "hi": "जवाहर पॉइंट"
+        },
+        {
+          "bn": "শক্তি পয়েন্ট",
+          "en": "Shakti Point",
+          "hi": "शक्ति पॉइंट"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "চন্দ্রযান-৩-এর অবতরণ স্থলের নাম রাখা হয়েছে 'শিব শক্তি পয়েন্ট', আর চন্দ্রযান-২-এর ধ্বংসাবশেষ যেখানে পড়েছিল তার নাম 'তেরঙা পয়েন্ট' ।",
+        "en": "The landing site of Chandrayaan-3 was named 'Shiv Shakti Point', while the Chandrayaan-2 crash site was named 'Tiranga Point'.",
+        "hi": "चंद्रयान-3 के लैंडिंग स्थल का नाम 'शिव शक्ति पॉइंट' रखा गया था, जबकि चंद्रयान-2 के दुर्घटना स्थल का नाम 'तिरंगा पॉइंट' रखा गया था।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "sci_ch_01_q010",
+      "question": {
+        "bn": "২০০৬ সালে IAU দ্বারা কোন মহাজাগতিক বস্তুকে 'বামন গ্রহ' হিসেবে পুনর্নির্ধারণ করা হয়েছিল?",
+        "en": "Which celestial body was reclassified as a 'Dwarf Planet' by the IAU in 2006?",
+        "hi": "2006 में IAU द्वारा किस खगोलीय पिंड को 'बौने ग्रह' (Dwarf Planet) के रूप में पुनर्वर्गीकृत किया गया था?"
+      },
+      "options": [
+        {
+          "bn": "বুধ",
+          "en": "Mercury",
+          "hi": "बुध"
+        },
+        {
+          "bn": "নেপচুন",
+          "en": "Neptune",
+          "hi": "नेपच्यून"
+        },
+        {
+          "bn": "প্লুটো",
+          "en": "Pluto",
+          "hi": "प्लूटो"
+        },
+        {
+          "bn": "টাইটান",
+          "en": "Titan",
+          "hi": "टाइटन"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "bn": "প্লুটোকে বামন গ্রহ হিসেবে গণ্য করা হয় কারণ এটি তার কক্ষপথের আশেপাশের অঞ্চল থেকে অন্যান্য মহাজাগতিক বস্তুকে সরিয়ে দিতে পারেনি।",
+        "en": "Pluto was reclassified as a dwarf planet because it has not cleared its neighboring region of other objects.",
+        "hi": "प्लूटो को एक बौने ग्रह के रूप में पुनर्वर्गीकृत किया गया था क्योंकि इसने अपनी कक्षा के आसपास के अन्य पिंडों के क्षेत्र को साफ नहीं किया है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    }
+  ]
 }

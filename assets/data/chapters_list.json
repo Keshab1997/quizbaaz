@@ -27,7 +27,7 @@
           "description": {
             "en": "Euclid division, HCF/LCM, irrationality proofs"
           },
-          "total_questions": 0,
+          "total_questions": 6,
           "json_file": "assets/data/questions/class10_math_ch1.json",
           "is_unlocked": true,
           "stars": 0,
@@ -44,7 +44,7 @@
           "description": {
             "en": "Zeros, relationship between zeros & coefficients"
           },
-          "total_questions": 0,
+          "total_questions": 9,
           "json_file": "assets/data/questions/class10_math_ch2.json",
           "is_unlocked": true,
           "stars": 0,
@@ -278,7 +278,7 @@
           "description": {
             "en": "Combination, decomposition, displacement, redox"
           },
-          "total_questions": 0,
+          "total_questions": 10,
           "json_file": "assets/data/questions/class10_phys_ch1.json",
           "is_unlocked": true,
           "stars": 0,
@@ -295,7 +295,7 @@
           "description": {
             "en": "pH scale, neutralization, important salts"
           },
-          "total_questions": 0,
+          "total_questions": 20,
           "json_file": "assets/data/questions/class10_phys_ch2.json",
           "is_unlocked": true,
           "stars": 0,
@@ -312,7 +312,7 @@
           "description": {
             "en": "Reactivity series, extraction, corrosion"
           },
-          "total_questions": 0,
+          "total_questions": 10,
           "json_file": "assets/data/questions/class10_phys_ch3.json",
           "is_unlocked": true,
           "stars": 0,
@@ -329,7 +329,7 @@
           "description": {
             "en": "Bonding, homologous series, ethanol & ethanoic acid"
           },
-          "total_questions": 0,
+          "total_questions": 10,
           "json_file": "assets/data/questions/class10_phys_ch4.json",
           "is_unlocked": true,
           "stars": 0,
@@ -427,7 +427,7 @@
           "description": {
             "en": "Nutrition, respiration, transport, excretion"
           },
-          "total_questions": 0,
+          "total_questions": 20,
           "json_file": "assets/data/questions/class10_bio_ch1.json",
           "is_unlocked": true,
           "stars": 0,
@@ -444,7 +444,7 @@
           "description": {
             "en": "Nervous system, reflex action, hormones"
           },
-          "total_questions": 0,
+          "total_questions": 30,
           "json_file": "assets/data/questions/class10_bio_ch2.json",
           "is_unlocked": true,
           "stars": 0,
@@ -461,7 +461,7 @@
           "description": {
             "en": "Asexual & sexual reproduction, reproduction health"
           },
-          "total_questions": 0,
+          "total_questions": 10,
           "json_file": "assets/data/questions/class10_bio_ch3.json",
           "is_unlocked": true,
           "stars": 0,
@@ -478,7 +478,7 @@
           "description": {
             "en": "Mendel’s laws, sex determination, traits"
           },
-          "total_questions": 0,
+          "total_questions": 22,
           "json_file": "assets/data/questions/class10_bio_ch4.json",
           "is_unlocked": true,
           "stars": 0,
@@ -495,7 +495,7 @@
           "description": {
             "en": "Food chain, trophic levels, ozone depletion"
           },
-          "total_questions": 0,
+          "total_questions": 10,
           "json_file": "assets/data/questions/class10_bio_ch5.json",
           "is_unlocked": true,
           "stars": 0,
@@ -525,7 +525,7 @@
           "description": {
             "en": "French Revolution, unification of Germany & Italy"
           },
-          "total_questions": 0,
+          "total_questions": 10,
           "json_file": "assets/data/questions/history_ch1.json",
           "is_unlocked": true,
           "stars": 0,
@@ -542,7 +542,7 @@
           "description": {
             "en": "Freedom movement, civil disobedience, partition"
           },
-          "total_questions": 0,
+          "total_questions": 10,
           "json_file": "assets/data/questions/history_ch2.json",
           "is_unlocked": true,
           "stars": 0,
@@ -559,7 +559,7 @@
           "description": {
             "en": "Silk route, Great Depression, Bretton Woods"
           },
-          "total_questions": 0,
+          "total_questions": 10,
           "json_file": "assets/data/questions/history_ch3.json",
           "is_unlocked": true,
           "stars": 0,
@@ -755,7 +755,7 @@
           "description": {
             "en": "Belgium & Sri Lanka, forms of power sharing"
           },
-          "total_questions": 0,
+          "total_questions": 10,
           "json_file": "assets/data/questions/class10_polsci_ch1.json",
           "is_unlocked": true,
           "stars": 0,
@@ -1015,7 +1015,7 @@
           "description": {
             "en": "Planets, missions, ISRO & NASA feats"
           },
-          "total_questions": 0,
+          "total_questions": 10,
           "json_file": "assets/data/questions/sci_ch_01.json",
           "is_unlocked": true,
           "stars": 0,
@@ -1045,7 +1045,7 @@
           "description": {
             "en": "Rabindranath, Bankim, Sarat Chandra & more"
           },
-          "total_questions": 0,
+          "total_questions": 10,
           "json_file": "assets/data/questions/literature_ch1.json",
           "is_unlocked": true,
           "stars": 0,
@@ -1105,7 +1105,7 @@
           "description": {
             "en": "Latest summits, sports, science events"
           },
-          "total_questions": 0,
+          "total_questions": 16,
           "json_file": "assets/data/questions/current_affairs_ch1.json",
           "is_unlocked": true,
           "stars": 0,

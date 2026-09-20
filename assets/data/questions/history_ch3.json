@@ -6,5 +6,386 @@
     "hi": "भूमंडलीकृत विश्व का बनना"
   },
   "class_standard": "Class 10",
-  "questions": []
+  "questions": [
+    {
+      "id": "hist_ch_03_q001",
+      "question": {
+        "bn": "প্রাক্-আধুনিক বিশ্বে সিল্ক রুট প্রধানত কোন অঞ্চলগুলিকে যুক্ত করেছিল?",
+        "en": "What did the Silk Routes mainly connect in the pre-modern world?",
+        "hi": "पूर्व-आधुनिक विश्व में सिल्क रूट मुख्य रूप से किन क्षेत्रों को जोड़ते थे?"
+      },
+      "options": [
+        {
+          "bn": "শুধু ইউরোপ ও আমেরিকাকে",
+          "en": "Only Europe and America",
+          "hi": "केवल यूरोप और अमेरिका को"
+        },
+        {
+          "bn": "এশিয়ার সঙ্গে ইউরোপ ও উত্তর আফ্রিকাকে",
+          "en": "Asia with Europe and North Africa",
+          "hi": "एशिया को यूरोप और उत्तर अफ्रीका से"
+        },
+        {
+          "bn": "শুধু ভারত ও চীনকে",
+          "en": "Only India and China",
+          "hi": "केवल भारत और चीन को"
+        },
+        {
+          "bn": "শুধু আফ্রিকা ও দক্ষিণ আমেরিকাকে",
+          "en": "Only Africa and South America",
+          "hi": "केवल अफ्रीका और दक्षिण अमेरिका को"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "সিল্ক রুট ছিল বাণিজ্য ও সাংস্কৃতিক যোগাযোগের একটি জাল, যা এশিয়ার বিস্তীর্ণ অংশকে ইউরোপ ও উত্তর আফ্রিকার সঙ্গে যুক্ত করেছিল। এর মাধ্যমে পণ্যের পাশাপাশি ধারণা ও সংস্কৃতিও ছড়িয়ে পড়ত।",
+        "en": "The Silk Routes were a network of trade and cultural links connecting large parts of Asia with Europe and North Africa. They carried goods as well as ideas and cultural practices.",
+        "hi": "सिल्क रूट व्यापार और सांस्कृतिक संपर्कों का एक जाल था, जो एशिया के बड़े हिस्से को यूरोप और उत्तर अफ्रीका से जोड़ता था। इनके माध्यम से वस्तुओं के साथ विचार और सांस्कृतिक प्रथाएँ भी फैलती थीं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "hist_ch_03_q002",
+      "question": {
+        "bn": "কোন পণ্যের নাম থেকে সিল্ক রুটের নামকরণ হয়েছিল?",
+        "en": "Which commodity gave the Silk Routes their name?",
+        "hi": "किस वस्तु के नाम पर सिल्क रूट का नाम पड़ा?"
+      },
+      "options": [
+        {
+          "bn": "তুলা",
+          "en": "Cotton",
+          "hi": "कपास"
+        },
+        {
+          "bn": "রেশম",
+          "en": "Silk",
+          "hi": "रेशम"
+        },
+        {
+          "bn": "মশলা",
+          "en": "Spices",
+          "hi": "मसाले"
+        },
+        {
+          "bn": "চা",
+          "en": "Tea",
+          "hi": "चाय"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "চীনা রেশম এই পথগুলির মাধ্যমে বাণিজ্য হওয়া একটি গুরুত্বপূর্ণ বিলাসবহুল পণ্য ছিল। তাই এই বাণিজ্যপথগুলি সিল্ক রুট নামে পরিচিত হয়।",
+        "en": "Chinese silk was an important luxury product traded along these routes, so the network became known as the Silk Routes.",
+        "hi": "चीनी रेशम इन मार्गों से व्यापार की जाने वाली एक महत्वपूर्ण विलासिता की वस्तु थी। इसलिए इन व्यापारिक मार्गों को सिल्क रूट कहा गया।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "hist_ch_03_q003",
+      "question": {
+        "bn": "উনিশ শতকে কোন উন্নয়ন বিশ্ব অর্থনীতির পারস্পরিক সংযোগকে ব্যাপকভাবে বৃদ্ধি করেছিল?",
+        "en": "Which development in the nineteenth century greatly increased global economic integration?",
+        "hi": "उन्नीसवीं सदी में किस विकास ने वैश्विक आर्थिक एकीकरण को बहुत बढ़ाया?"
+      },
+      "options": [
+        {
+          "bn": "বাষ্পজাহাজ ও রেলপথের অবনতি",
+          "en": "Decline of steamships and railways",
+          "hi": "भाप के जहाजों और रेलमार्गों का पतन"
+        },
+        {
+          "bn": "রেলপথ, বাষ্পজাহাজ ও টেলিগ্রাফের সম্প্রসারণ",
+          "en": "Expansion of railways, steamships and the telegraph",
+          "hi": "रेलमार्ग, भाप के जहाजों और टेलीग्राफ का विस्तार"
+        },
+        {
+          "bn": "আন্তর্জাতিক বাণিজ্যের সম্পূর্ণ অবসান",
+          "en": "Complete end of international trade",
+          "hi": "अंतरराष्ट्रीय व्यापार का पूर्ण अंत"
+        },
+        {
+          "bn": "কারখানার পরিবর্তে হস্তশিল্পের প্রসার",
+          "en": "Replacement of factories by hand production",
+          "hi": "कारखानों के स्थान पर हस्त उत्पादन का विस्तार"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "রেলপথ ও বাষ্পজাহাজ পরিবহণের সময় ও খরচ কমিয়েছিল এবং টেলিগ্রাফ যোগাযোগকে দ্রুত করেছিল। ফলে সীমান্ত পেরিয়ে পণ্য, মানুষ ও তথ্যের চলাচল বৃদ্ধি পায়।",
+        "en": "Railways and steamships reduced transport time and costs, while the telegraph made communication faster. Together, they encouraged the movement of goods, people and information across borders.",
+        "hi": "रेलमार्ग और भाप के जहाजों ने परिवहन का समय और लागत घटाई, जबकि टेलीग्राफ ने संचार को तेज किया। इससे सीमाओं के पार वस्तुओं, लोगों और सूचनाओं का प्रवाह बढ़ा।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "hist_ch_03_q004",
+      "question": {
+        "bn": "মহামন্দা কখন শুরু হয়েছিল?",
+        "en": "When did the Great Depression begin?",
+        "hi": "महामंदी कब शुरू हुई थी?"
+      },
+      "options": [
+        {
+          "bn": "1914",
+          "en": "1914",
+          "hi": "1914"
+        },
+        {
+          "bn": "1919",
+          "en": "1919",
+          "hi": "1919"
+        },
+        {
+          "bn": "1929",
+          "en": "1929",
+          "hi": "1929"
+        },
+        {
+          "bn": "1939",
+          "en": "1939",
+          "hi": "1939"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "bn": "মার্কিন শেয়ারবাজারের পতনের পর 1929 সালের দিকে মহামন্দা শুরু হয়। আন্তর্জাতিক বাণিজ্য ও আর্থিক যোগাযোগের মাধ্যমে এটি দ্রুত অন্যান্য দেশেও ছড়িয়ে পড়ে।",
+        "en": "The Great Depression began around 1929 following the collapse of the US stock market. It soon spread through international trade and financial links.",
+        "hi": "अमेरिकी शेयर बाजार के पतन के बाद 1929 के आसपास महामंदी शुरू हुई। अंतरराष्ट्रीय व्यापार और वित्तीय संबंधों के कारण यह अन्य देशों में भी फैल गई।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "hist_ch_03_q005",
+      "question": {
+        "bn": "মহামন্দার সময় কৃষিপণ্যের দাম কমে যাওয়ায় ভারতে কোন গোষ্ঠী বিশেষভাবে ক্ষতিগ্রস্ত হয়েছিল?",
+        "en": "Which group in India was particularly affected by the fall in agricultural prices during the Great Depression?",
+        "hi": "महामंदी के दौरान कृषि उत्पादों की कीमतों में गिरावट से भारत में कौन-सा समूह विशेष रूप से प्रभावित हुआ?"
+      },
+      "options": [
+        {
+          "bn": "কৃষক ও চাষিরা",
+          "en": "Peasants and farmers",
+          "hi": "किसान और कृषक"
+        },
+        {
+          "bn": "ব্রিটিশ সরকারি কর্মচারীরা",
+          "en": "British civil servants",
+          "hi": "ब्रिटिश सरकारी कर्मचारी"
+        },
+        {
+          "bn": "ইউরোপীয় পর্যটকেরা",
+          "en": "European tourists",
+          "hi": "यूरोपीय पर्यटक"
+        },
+        {
+          "bn": "ব্রিটেনের কারখানা মালিকেরা",
+          "en": "Factory owners in Britain",
+          "hi": "ब्रिटेन के कारखाना मालिक"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "কৃষিপণ্যের দাম ব্যাপকভাবে কমে গেলেও কৃষকদের রাজস্ব ও ঋণের দায় মেটাতে হত। ফলে তাদের আয় কমে যায় এবং অর্থনৈতিক সংকট বাড়ে।",
+        "en": "Agricultural prices fell sharply, but peasants still had to meet revenue and debt obligations. This reduced their income and increased their economic difficulties.",
+        "hi": "कृषि उत्पादों की कीमतें बहुत गिर गईं, लेकिन किसानों को लगान और ऋण का भुगतान करना पड़ता था। इससे उनकी आय घटी और आर्थिक कठिनाइयाँ बढ़ीं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "hist_ch_03_q006",
+      "question": {
+        "bn": "মহামন্দার ফলে বিশ্ব বাণিজ্যের একটি প্রধান প্রভাব কী হয়েছিল?",
+        "en": "What was a major effect of the Great Depression on world trade?",
+        "hi": "महामंदी का विश्व व्यापार पर एक प्रमुख प्रभाव क्या पड़ा?"
+      },
+      "options": [
+        {
+          "bn": "বিশ্ব বাণিজ্য দ্রুত বৃদ্ধি পেয়েছিল",
+          "en": "World trade expanded rapidly",
+          "hi": "विश्व व्यापार तेजी से बढ़ा"
+        },
+        {
+          "bn": "বিশ্ব বাণিজ্য তীব্রভাবে হ্রাস পেয়েছিল",
+          "en": "World trade declined sharply",
+          "hi": "विश्व व्यापार में भारी गिरावट आई"
+        },
+        {
+          "bn": "আন্তর্জাতিক বাণিজ্য সম্পূর্ণভাবে নিষেধাজ্ঞামুক্ত হয়েছিল",
+          "en": "International trade became completely free of restrictions",
+          "hi": "अंतरराष्ट्रीय व्यापार पूरी तरह प्रतिबंध-मुक्त हो गया"
+        },
+        {
+          "bn": "শুধু বিলাসবহুল পণ্যের আন্তর্জাতিক বাণিজ্য হয়েছিল",
+          "en": "Only luxury goods were traded internationally",
+          "hi": "केवल विलासिता की वस्तुओं का अंतरराष्ट्रीय व्यापार हुआ"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "মহামন্দার ফলে উৎপাদন, আয় ও ক্রয়ক্ষমতা কমে যায় এবং পণ্যের চাহিদা হ্রাস পায়। এর ফলে আন্তর্জাতিক বাণিজ্যও তীব্রভাবে সংকুচিত হয়।",
+        "en": "The Depression caused production, incomes and purchasing power to fall, which reduced demand for goods. As a result, international trade contracted sharply.",
+        "hi": "महामंदी के कारण उत्पादन, आय और क्रय शक्ति में गिरावट आई तथा वस्तुओं की माँग कम हुई। परिणामस्वरूप अंतरराष्ट्रीय व्यापार में भारी कमी आई।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "hist_ch_03_q007",
+      "question": {
+        "bn": "কোন সালে ব্রেটন উডস সম্মেলন অনুষ্ঠিত হয়েছিল?",
+        "en": "In which year was the Bretton Woods Conference held?",
+        "hi": "ब्रेटन वुड्स सम्मेलन किस वर्ष आयोजित हुआ था?"
+      },
+      "options": [
+        {
+          "bn": "1939",
+          "en": "1939",
+          "hi": "1939"
+        },
+        {
+          "bn": "1944",
+          "en": "1944",
+          "hi": "1944"
+        },
+        {
+          "bn": "1947",
+          "en": "1947",
+          "hi": "1947"
+        },
+        {
+          "bn": "1951",
+          "en": "1951",
+          "hi": "1951"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "দ্বিতীয় বিশ্বযুদ্ধের সময় 1944 সালে ব্রেটন উডস সম্মেলন অনুষ্ঠিত হয়। এর লক্ষ্য ছিল যুদ্ধ-পরবর্তী আন্তর্জাতিক অর্থনৈতিক সহযোগিতার জন্য প্রতিষ্ঠান গড়ে তোলা।",
+        "en": "The Bretton Woods Conference was held in 1944 during the Second World War to design institutions for post-war international economic cooperation.",
+        "hi": "द्वितीय विश्व युद्ध के दौरान 1944 में ब्रेटन वुड्स सम्मेलन हुआ। इसका उद्देश्य युद्ध के बाद अंतरराष्ट्रीय आर्थिक सहयोग के लिए संस्थाएँ बनाना था।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "hist_ch_03_q008",
+      "question": {
+        "bn": "ব্রেটন উডস ব্যবস্থার ফলে কোন দুটি আন্তর্জাতিক আর্থিক প্রতিষ্ঠান প্রতিষ্ঠিত হয়েছিল?",
+        "en": "Which two international financial institutions were established as a result of the Bretton Woods arrangements?",
+        "hi": "ब्रेटन वुड्स व्यवस्था के परिणामस्वरूप किन दो अंतरराष्ट्रीय वित्तीय संस्थाओं की स्थापना हुई?"
+      },
+      "options": [
+        {
+          "bn": "IMF এবং World Bank",
+          "en": "IMF and World Bank",
+          "hi": "IMF और World Bank"
+        },
+        {
+          "bn": "WTO এবং UNESCO",
+          "en": "WTO and UNESCO",
+          "hi": "WTO और UNESCO"
+        },
+        {
+          "bn": "WHO এবং ILO",
+          "en": "WHO and ILO",
+          "hi": "WHO और ILO"
+        },
+        {
+          "bn": "NATO এবং IMF",
+          "en": "NATO and IMF",
+          "hi": "NATO और IMF"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "ব্রেটন উডস ব্যবস্থার মাধ্যমে আন্তর্জাতিক আর্থিক স্থিতিশীলতা এবং যুদ্ধ-পরবর্তী পুনর্গঠন ও উন্নয়নে সহায়তার জন্য International Monetary Fund (IMF) এবং World Bank প্রতিষ্ঠিত হয়।",
+        "en": "The Bretton Woods system created the International Monetary Fund (IMF) and the World Bank to support international monetary stability and post-war reconstruction and development.",
+        "hi": "ब्रेटन वुड्स व्यवस्था के तहत अंतरराष्ट्रीय मौद्रिक स्थिरता तथा युद्धोत्तर पुनर्निर्माण और विकास में सहायता के लिए International Monetary Fund (IMF) और World Bank की स्थापना हुई।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "hist_ch_03_q009",
+      "question": {
+        "bn": "ব্রেটন উডস ব্যবস্থার প্রধান উদ্দেশ্য কী ছিল?",
+        "en": "What was the main objective of the Bretton Woods system?",
+        "hi": "ब्रेटन वुड्स व्यवस्था का मुख्य उद्देश्य क्या था?"
+      },
+      "options": [
+        {
+          "bn": "একটি স্থিতিশীল আন্তর্জাতিক মুদ্রাব্যবস্থা গড়ে তোলা",
+          "en": "To create a stable international monetary system",
+          "hi": "एक स्थिर अंतरराष्ट्रीय मौद्रिक व्यवस्था बनाना"
+        },
+        {
+          "bn": "সমস্ত আন্তর্জাতিক বাণিজ্য বন্ধ করা",
+          "en": "To end all international trade",
+          "hi": "सभी अंतरराष्ट्रीय व्यापार को समाप्त करना"
+        },
+        {
+          "bn": "ঔপনিবেশিক একচেটিয়া বাণিজ্য পুনঃপ্রতিষ্ঠা করা",
+          "en": "To restore colonial monopolies",
+          "hi": "औपनिवेशिक एकाधिकार को पुनः स्थापित करना"
+        },
+        {
+          "bn": "সমস্ত জাতীয় মুদ্রা বিলোপ করা",
+          "en": "To abolish all national currencies",
+          "hi": "सभी राष्ट्रीय मुद्राओं को समाप्त करना"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "ব্রেটন উডস ব্যবস্থার লক্ষ্য ছিল দুই বিশ্বযুদ্ধের মধ্যবর্তী সময়ের আর্থিক অস্থিরতা এড়িয়ে একটি স্থিতিশীল আন্তর্জাতিক মুদ্রা ও আর্থিক কাঠামো তৈরি করা।",
+        "en": "The Bretton Woods arrangements aimed to prevent the instability associated with the interwar period by creating a stable international monetary and financial framework.",
+        "hi": "ब्रेटन वुड्स व्यवस्था का उद्देश्य दोनों विश्व युद्धों के बीच की आर्थिक अस्थिरता से बचते हुए एक स्थिर अंतरराष्ट्रीय मौद्रिक और वित्तीय ढाँचा बनाना था।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "hist_ch_03_q010",
+      "question": {
+        "bn": "যুদ্ধ-পরবর্তী আন্তর্জাতিক অর্থনৈতিক ব্যবস্থা কেন দেশগুলিকে স্থিতিশীল বিনিময় হার বজায় রাখতে উৎসাহিত করেছিল?",
+        "en": "Why did the post-war international economic system encourage countries to maintain stable exchange rates?",
+        "hi": "युद्ध के बाद की अंतरराष्ट्रीय आर्थिक व्यवस्था ने देशों को स्थिर विनिमय दर बनाए रखने के लिए क्यों प्रोत्साहित किया?"
+      },
+      "options": [
+        {
+          "bn": "আন্তর্জাতিক বাণিজ্য ও বিনিয়োগকে আরও পূর্বানুমানযোগ্য করার জন্য",
+          "en": "To make international trade and investment more predictable",
+          "hi": "अंतरराष्ट्रीय व्यापार और निवेश को अधिक स्थिर और पूर्वानुमान योग्य बनाने के लिए"
+        },
+        {
+          "bn": "দেশগুলির মধ্যে মূলধনের সমস্ত চলাচল বন্ধ করার জন্য",
+          "en": "To prevent all movement of capital between countries",
+          "hi": "देशों के बीच पूँजी के सभी प्रवाह को रोकने के लिए"
+        },
+        {
+          "bn": "প্রতিটি দেশ একই মুদ্রা ব্যবহার করবে তা নিশ্চিত করার জন্য",
+          "en": "To ensure that every country used the same currency",
+          "hi": "यह सुनिश्चित करने के लिए कि हर देश एक ही मुद्रा का उपयोग करे"
+        },
+        {
+          "bn": "আন্তর্জাতিক প্রতিষ্ঠানগুলির প্রয়োজনীয়তা দূর করার জন্য",
+          "en": "To eliminate the need for international institutions",
+          "hi": "अंतरराष्ट्रीय संस्थाओं की आवश्यकता समाप्त करने के लिए"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "স্থিতিশীল বিনিময় হার আন্তর্জাতিক লেনদেনে অনিশ্চয়তা কমায়। এর ফলে দুই বিশ্বযুদ্ধের মধ্যবর্তী অস্থিরতার পর দেশগুলির মধ্যে বাণিজ্য ও বিনিয়োগ সম্প্রসারণে সহায়তা হয়।",
+        "en": "Stable exchange rates reduced uncertainty in cross-border transactions. This helped countries expand international trade and investment after the disruptions of the interwar years.",
+        "hi": "स्थिर विनिमय दरों से अंतरराष्ट्रीय लेन-देन में अनिश्चितता कम हुई। इससे दोनों विश्व युद्धों के बीच की उथल-पुथल के बाद देशों के बीच व्यापार और निवेश के विस्तार में मदद मिली।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    }
+  ]
 }

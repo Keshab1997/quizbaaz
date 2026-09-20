@@ -165,6 +165,12 @@ class QuizRepository {
               chapters: category.chapters.map((chapter) {
                 final remote = remoteCounts[chapter.chapterId] ?? 0;
                 if (remote == 0) return chapter;
+                // Already bundled — most likely pulled in by
+                // tool/pull_firestore_questions.py, so the live count is a
+                // subset of what the card already shows. Adding it again
+                // would advertise double. Until the next pull refreshes
+                // total_questions, the bundle is the better number.
+                if (chapter.totalQuestions > 0) return chapter;
                 return chapter.copyWith(
                   totalQuestions: chapter.totalQuestions + remote,
                 );

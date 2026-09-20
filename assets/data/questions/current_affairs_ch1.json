@@ -6,5 +6,614 @@
     "hi": "समसामयिकी: शिखर सम्मेलन, खेल और विज्ञान"
   },
   "class_standard": "Class 10",
-  "questions": []
+  "questions": [
+    {
+      "id": "ca_ch_01_q001",
+      "question": {
+        "bn": "2026 সালের BRICS শীর্ষ সম্মেলনের আয়োজক দেশ কোনটি?",
+        "en": "Which country is hosting the 2026 BRICS Summit?",
+        "hi": "2026 BRICS शिखर सम्मेलन की मेजबानी कौन सा देश कर रहा है?"
+      },
+      "options": [
+        {
+          "bn": "ভারত",
+          "en": "India",
+          "hi": "भारत"
+        },
+        {
+          "bn": "ব্রাজিল",
+          "en": "Brazil",
+          "hi": "ब्राज़ील"
+        },
+        {
+          "bn": "চীন",
+          "en": "China",
+          "hi": "चीन"
+        },
+        {
+          "bn": "দক্ষিণ আফ্রিকা",
+          "en": "South Africa",
+          "hi": "दक्षिण अफ्रीका"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "2026 সালে ভারত BRICS-এর সভাপতিত্ব করছে এবং নয়াদিল্লিতে BRICS শীর্ষ সম্মেলনের আয়োজন করছে।",
+        "en": "India holds the BRICS chairship in 2026 and is hosting the BRICS Summit in New Delhi.",
+        "hi": "2026 में भारत BRICS की अध्यक्षता कर रहा है और नई दिल्ली में BRICS शिखर सम्मेलन की मेजबानी कर रहा है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "ca_ch_01_q002",
+      "question": {
+        "bn": "2026 সালের G20 নেতৃবৃন্দের শীর্ষ সম্মেলন কোথায় অনুষ্ঠিত হওয়ার কথা?",
+        "en": "Where is the 2026 G20 Leaders' Summit scheduled to be held?",
+        "hi": "2026 G20 नेताओं का शिखर सम्मेलन कहाँ आयोजित होने वाला है?"
+      },
+      "options": [
+        {
+          "bn": "মায়ামি, মার্কিন যুক্তরাষ্ট্র",
+          "en": "Miami, United States",
+          "hi": "मियामी, संयुक्त राज्य अमेरिका"
+        },
+        {
+          "bn": "নয়াদিল্লি, ভারত",
+          "en": "New Delhi, India",
+          "hi": "नई दिल्ली, भारत"
+        },
+        {
+          "bn": "জোহানেসবার্গ, দক্ষিণ আফ্রিকা",
+          "en": "Johannesburg, South Africa",
+          "hi": "जोहान्सबर्ग, दक्षिण अफ्रीका"
+        },
+        {
+          "bn": "সিওল, দক্ষিণ কোরিয়া",
+          "en": "Seoul, South Korea",
+          "hi": "सियोल, दक्षिण कोरिया"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "2026 সালের G20 নেতৃবৃন্দের শীর্ষ সম্মেলন 14–15 December মায়ামি, মার্কিন যুক্তরাষ্ট্রে অনুষ্ঠিত হওয়ার কথা।",
+        "en": "The 2026 G20 Leaders' Summit is scheduled for December 14–15 in Miami, United States.",
+        "hi": "2026 G20 नेताओं का शिखर सम्मेलन 14–15 December को मियामी, संयुक्त राज्य अमेरिका में होने वाला है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "ca_ch_01_q003",
+      "question": {
+        "bn": "2026 Khelo India Tribal Games-এ কোন রাজ্য পদক তালিকায় প্রথম হয়েছিল?",
+        "en": "Which Indian state topped the medal table at the Khelo India Tribal Games 2026?",
+        "hi": "2026 Khelo India Tribal Games में कौन सा राज्य पदक तालिका में शीर्ष पर रहा?"
+      },
+      "options": [
+        {
+          "bn": "ওড়িশা",
+          "en": "Odisha",
+          "hi": "ओडिशा"
+        },
+        {
+          "bn": "কর্ণাটক",
+          "en": "Karnataka",
+          "hi": "कर्नाटक"
+        },
+        {
+          "bn": "ঝাড়খণ্ড",
+          "en": "Jharkhand",
+          "hi": "झारखंड"
+        },
+        {
+          "bn": "ছত্তিশগড়",
+          "en": "Chhattisgarh",
+          "hi": "छत्तीसगढ़"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "2026 Khelo India Tribal Games-এ কর্ণাটক 23টি সোনা জিতে প্রথম স্থান অর্জন করেছিল।",
+        "en": "Karnataka finished first at the 2026 Khelo India Tribal Games, winning 23 gold medals.",
+        "hi": "2026 Khelo India Tribal Games में कर्नाटक ने 23 स्वर्ण पदक जीतकर पहला स्थान प्राप्त किया।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "ca_ch_01_q004",
+      "question": {
+        "bn": "2026 সালে BWF World Championships-এর পুরুষদের সিঙ্গলস খেতাব জয়ী প্রথম ফরাসি খেলোয়াড় কে হন?",
+        "en": "Who became the first French men's singles player to win the BWF World Championships title in 2026?",
+        "hi": "2026 में BWF World Championships का पुरुष एकल खिताब जीतने वाले पहले फ्रांसीसी खिलाड़ी कौन बने?"
+      },
+      "options": [
+        {
+          "bn": "অ্যালেক্স লানিয়ের",
+          "en": "Alex Lanier",
+          "hi": "एलेक्स लानियर"
+        },
+        {
+          "bn": "ভিক্টর অ্যাক্সেলসেন",
+          "en": "Viktor Axelsen",
+          "hi": "विक्टर एक्सेलसेन"
+        },
+        {
+          "bn": "লি জি জিয়া",
+          "en": "Lee Zii Jia",
+          "hi": "ली ज़ी जिया"
+        },
+        {
+          "bn": "কুনলাভুত ভিতিদসার্ন",
+          "en": "Kunlavut Vitidsarn",
+          "hi": "कुनलावुत वितिदसर्न"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "অ্যালেক্স লানিয়ের 2026 সালের পুরুষদের সিঙ্গলস বিশ্ব খেতাব জিতে BWF World Championships-এ এই কৃতিত্ব অর্জনকারী প্রথম ফরাসি খেলোয়াড় হন।",
+        "en": "Alex Lanier won the 2026 men's singles world title, becoming the first French player to achieve this at the BWF World Championships.",
+        "hi": "एलेक्स लानियर ने 2026 का पुरुष एकल विश्व खिताब जीतकर BWF World Championships में ऐसा करने वाले पहले फ्रांसीसी खिलाड़ी का गौरव प्राप्त किया।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "ca_ch_01_q005",
+      "question": {
+        "bn": "2026 Japan Open-এর মহিলাদের সিঙ্গলস খেতাব কোন ভারতীয় ব্যাডমিন্টন খেলোয়াড় জিতেছিলেন?",
+        "en": "Which Indian badminton player won the Japan Open 2026 women's singles title?",
+        "hi": "2026 Japan Open महिला एकल खिताब किस भारतीय बैडमिंटन खिलाड़ी ने जीता?"
+      },
+      "options": [
+        {
+          "bn": "পি. ভি. সিন্ধু",
+          "en": "P. V. Sindhu",
+          "hi": "पी. वी. सिंधु"
+        },
+        {
+          "bn": "সাইনা নেহওয়াল",
+          "en": "Saina Nehwal",
+          "hi": "साइना नेहवाल"
+        },
+        {
+          "bn": "অনমোল খারব",
+          "en": "Anmol Kharb",
+          "hi": "अनमोल खरब"
+        },
+        {
+          "bn": "মালবিকা বানসোদ",
+          "en": "Malvika Bansod",
+          "hi": "मालविका बंसोड़"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "পি. ভি. সিন্ধু 2026 সালের Japan Open-এর মহিলাদের সিঙ্গলস খেতাব জিতেছিলেন।",
+        "en": "P. V. Sindhu won the women's singles title at the Japan Open in 2026.",
+        "hi": "पी. वी. सिंधु ने 2026 Japan Open का महिला एकल खिताब जीता।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "ca_ch_01_q006",
+      "question": {
+        "bn": "NASA-এর Nancy Grace Roman Space Telescope-এর একটি প্রধান বৈজ্ঞানিক উদ্দেশ্য কী?",
+        "en": "What is a major scientific purpose of NASA's Nancy Grace Roman Space Telescope?",
+        "hi": "NASA के Nancy Grace Roman Space Telescope का एक प्रमुख वैज्ञानिक उद्देश्य क्या है?"
+      },
+      "options": [
+        {
+          "bn": "ডার্ক এনার্জি ও ডার্ক ম্যাটার নিয়ে গবেষণা করা",
+          "en": "Studying dark energy and dark matter",
+          "hi": "डार्क एनर्जी और डार्क मैटर का अध्ययन करना"
+        },
+        {
+          "bn": "মঙ্গলে মানুষ অবতরণ করানো",
+          "en": "Landing humans on Mars",
+          "hi": "मंगल पर मनुष्यों को उतारना"
+        },
+        {
+          "bn": "শুক্র গ্রহ থেকে শিলা সংগ্রহ করা",
+          "en": "Collecting rocks from Venus",
+          "hi": "शुक्र ग्रह से चट्टानें एकत्र करना"
+        },
+        {
+          "bn": "বৃহস্পতির চারদিকে একটি মহাকাশ স্টেশন তৈরি করা",
+          "en": "Building a space station around Jupiter",
+          "hi": "बृहस्पति के चारों ओर अंतरिक्ष स्टेशन बनाना"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "Roman Space Telescope-এর অন্যতম লক্ষ্য হল ডার্ক এনার্জি, ডার্ক ম্যাটার এবং দূরবর্তী জ্যোতির্বৈজ্ঞানিক বস্তু, যেমন exoplanets, নিয়ে গবেষণা করা।",
+        "en": "The Roman Space Telescope is designed to investigate dark energy, dark matter and distant astronomical objects, including exoplanets.",
+        "hi": "Roman Space Telescope का प्रमुख उद्देश्य डार्क एनर्जी, डार्क मैटर और दूरस्थ खगोलीय पिंडों, जैसे exoplanets, का अध्ययन करना है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "ca_ch_01_q007",
+      "question": {
+        "bn": "2026 সালে NISAR উপগ্রহের কোন গুরুত্বপূর্ণ বৈজ্ঞানিক সক্ষমতা বিশেষভাবে তুলে ধরা হয়েছিল?",
+        "en": "What important scientific capability of the NISAR satellite was highlighted in 2026?",
+        "hi": "2026 में NISAR उपग्रह की किस महत्वपूर्ण वैज्ञानिक क्षमता को प्रमुखता से बताया गया?"
+      },
+      "options": [
+        {
+          "bn": "রাডারের মাধ্যমে পৃথিবীর পৃষ্ঠ পর্যবেক্ষণ",
+          "en": "Radar-based observation of Earth's surface",
+          "hi": "रडार के माध्यम से पृथ्वी की सतह का अवलोकन"
+        },
+        {
+          "bn": "সূর্যের পদার্থ সরাসরি সংগ্রহ",
+          "en": "Direct collection of solar material",
+          "hi": "सूर्य के पदार्थ का सीधे संग्रह"
+        },
+        {
+          "bn": "পৃথিবী ও মঙ্গলের মধ্যে মানুষ পরিবহন",
+          "en": "Human transport between Earth and Mars",
+          "hi": "पृथ्वी और मंगल के बीच मनुष्यों का परिवहन"
+        },
+        {
+          "bn": "গ্রহাণু থেকে খনিজ উত্তোলন",
+          "en": "Mining minerals from asteroids",
+          "hi": "क्षुद्रग्रहों से खनिज निकालना"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "NISAR একটি শক্তিশালী Earth-observation satellite, যা রাডার ব্যবহার করে পৃথিবীর পৃষ্ঠের পরিবর্তন, বরফ ও ভূমির বৈশিষ্ট্য পর্যবেক্ষণ করে।",
+        "en": "NISAR is a powerful Earth-observation satellite using radar to study changes on Earth's surface, including ice and land features.",
+        "hi": "NISAR एक शक्तिशाली Earth-observation satellite है, जो रडार का उपयोग करके पृथ्वी की सतह, बर्फ और भूमि में होने वाले बदलावों का अध्ययन करता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "ca_ch_01_q010",
+      "question": {
+        "bn": "জয়পুরে অনুষ্ঠিত 2026 BRICS Industry Ministers' Meeting-এ অন্যান্য বিষয়ের সঙ্গে কোন উদীয়মান শিল্পক্ষেত্রে সহযোগিতার ওপর জোর দেওয়া হয়েছিল?",
+        "en": "The 2026 BRICS Industry Ministers' Meeting held in Jaipur focused on cooperation in which emerging industrial area among others?",
+        "hi": "जयपुर में आयोजित 2026 BRICS Industry Ministers' Meeting में अन्य विषयों के साथ किस उभरते औद्योगिक क्षेत्र में सहयोग पर जोर दिया गया?"
+      },
+      "options": [
+        {
+          "bn": "Photovoltaic শিল্প",
+          "en": "Photovoltaic industry",
+          "hi": "Photovoltaic उद्योग"
+        },
+        {
+          "bn": "গভীর সমুদ্র পর্যটন",
+          "en": "Deep-sea tourism",
+          "hi": "गहरे समुद्र का पर्यटन"
+        },
+        {
+          "bn": "শুধুমাত্র ঐতিহ্যবাহী হস্তশিল্প",
+          "en": "Traditional handicrafts only",
+          "hi": "केवल पारंपरिक हस्तशिल्प"
+        },
+        {
+          "bn": "সমুদ্রভ্রমণ বিনোদন",
+          "en": "Ocean cruise entertainment",
+          "hi": "समुद्री क्रूज़ मनोरंजन"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "2026 BRICS Industry Ministers' Meeting-এ photovoltaic শিল্পে সহযোগিতার জন্য একটি কাঠামো গ্রহণ করা হয় এবং MSMEs ও startups নিয়েও উদ্যোগ নেওয়া হয়।",
+        "en": "The 2026 BRICS Industry Ministers' Meeting adopted a framework for cooperation in the photovoltaic industry, along with initiatives for MSMEs and startups.",
+        "hi": "2026 BRICS Industry Ministers' Meeting में photovoltaic उद्योग में सहयोग के लिए एक ढाँचा अपनाया गया तथा MSMEs और startups से जुड़े पहल भी किए गए।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "ca_ch_01_q011",
+      "question": {
+        "bn": "2026 সালের 26তম SCO শীর্ষ সম্মেলন কোন শহরে অনুষ্ঠিত হবে?",
+        "en": "Which city will host the 26th SCO Summit in 2026?",
+        "hi": "2026 का 26वाँ SCO शिखर सम्मेलन किस शहर में आयोजित होगा?"
+      },
+      "options": [
+        {
+          "bn": "তাশখন্দ",
+          "en": "Tashkent",
+          "hi": "ताशकंद"
+        },
+        {
+          "bn": "বিশকেক",
+          "en": "Bishkek",
+          "hi": "बिश्केक"
+        },
+        {
+          "bn": "আস্তানা",
+          "en": "Astana",
+          "hi": "अस्ताना"
+        },
+        {
+          "bn": "দুশানবে",
+          "en": "Dushanbe",
+          "hi": "दुशानबे"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "26তম SCO শীর্ষ সম্মেলন 31 August থেকে 1 September 2026 পর্যন্ত Kyrgyz Republic-এর Bishkek-এ অনুষ্ঠিত হবে।",
+        "en": "The 26th SCO Summit is scheduled in Bishkek, Kyrgyz Republic, from 31 August to 1 September 2026.",
+        "hi": "26वाँ SCO शिखर सम्मेलन 31 August से 1 September 2026 तक Kyrgyz Republic के Bishkek में आयोजित होगा।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "ca_ch_01_q012",
+      "question": {
+        "bn": "2026 সালের 26তম SCO শীর্ষ সম্মেলন Shanghai Cooperation Organisation প্রতিষ্ঠার কত বছর পূর্তি উপলক্ষে অনুষ্ঠিত হবে?",
+        "en": "The 26th SCO Summit in 2026 will mark how many years since the establishment of the Shanghai Cooperation Organisation?",
+        "hi": "2026 का 26वाँ SCO शिखर सम्मेलन Shanghai Cooperation Organisation की स्थापना के कितने वर्ष पूरे होने का अवसर होगा?"
+      },
+      "options": [
+        {
+          "bn": "20 বছর",
+          "en": "20 years",
+          "hi": "20 वर्ष"
+        },
+        {
+          "bn": "25 বছর",
+          "en": "25 years",
+          "hi": "25 वर्ष"
+        },
+        {
+          "bn": "30 বছর",
+          "en": "30 years",
+          "hi": "30 वर्ष"
+        },
+        {
+          "bn": "15 বছর",
+          "en": "15 years",
+          "hi": "15 वर्ष"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "SCO 2001 সালে প্রতিষ্ঠিত হয়েছিল, তাই 2026 সালের শীর্ষ সম্মেলনে সংগঠনটির 25 বছর পূর্তি হচ্ছে।",
+        "en": "The SCO was established in 2001, so the 2026 summit marks its 25th anniversary.",
+        "hi": "SCO की स्थापना 2001 में हुई थी, इसलिए 2026 का शिखर सम्मेलन इसकी 25वीं वर्षगाँठ का अवसर है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "ca_ch_01_q013",
+      "question": {
+        "bn": "2026 সালের 26তম SCO শীর্ষ সম্মেলনে ভারত কোন তিনটি অগ্রাধিকার তুলে ধরবে?",
+        "en": "Which three priorities is India expected to highlight at the 26th SCO Summit in 2026?",
+        "hi": "2026 के 26वें SCO शिखर सम्मेलन में भारत किन तीन प्राथमिकताओं को प्रमुखता देगा?"
+      },
+      "options": [
+        {
+          "bn": "নিরাপত্তা, সংযোগ ও সুযোগ",
+          "en": "Security, Connectivity and Opportunity",
+          "hi": "सुरक्षा, संपर्क और अवसर"
+        },
+        {
+          "bn": "বাণিজ্য, পর্যটন ও কৃষি",
+          "en": "Trade, Tourism and Agriculture",
+          "hi": "व्यापार, पर्यटन और कृषि"
+        },
+        {
+          "bn": "শক্তি, শিক্ষা ও সংস্কৃতি",
+          "en": "Energy, Education and Culture",
+          "hi": "ऊर्जा, शिक्षा और संस्कृति"
+        },
+        {
+          "bn": "প্রতিরক্ষা, ক্রীড়া ও স্বাস্থ্য",
+          "en": "Defence, Sports and Health",
+          "hi": "रक्षा, खेल और स्वास्थ्य"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "SCO মঞ্চে ভারতের ঘোষিত অগ্রাধিকার হল নিরাপত্তা, সংযোগ ও সুযোগ, যা আঞ্চলিক স্থিতিশীলতা ও সহযোগিতার উপর গুরুত্ব দেয়।",
+        "en": "India's stated priorities for the SCO forum are Security, Connectivity and Opportunity, reflecting its focus on regional stability and cooperation.",
+        "hi": "SCO मंच पर भारत की घोषित प्राथमिकताएँ सुरक्षा, संपर्क और अवसर हैं, जो क्षेत्रीय स्थिरता और सहयोग पर जोर देती हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "ca_ch_01_q016",
+      "question": {
+        "bn": "2026 FIH Women's World Cup-এ ভারতীয় মহিলা হকি দল কোন ঐতিহাসিক সাফল্য অর্জন করে?",
+        "en": "What historic achievement did the Indian women's hockey team record at the 2026 FIH Women's World Cup?",
+        "hi": "2026 FIH Women's World Cup में भारतीय महिला हॉकी टीम ने कौन-सी ऐतिहासिक उपलब्धि हासिल की?"
+      },
+      "options": [
+        {
+          "bn": "স্বর্ণপদক জিতেছে",
+          "en": "Won the gold medal",
+          "hi": "स्वर्ण पदक जीता"
+        },
+        {
+          "bn": "পঞ্চম স্থানে শেষ করে, যা তাদের বিশ্বকাপে সেরা ফল",
+          "en": "Finished fifth, their best World Cup finish",
+          "hi": "पाँचवें स्थान पर रही, जो उसका विश्व कप में सर्वश्रेष्ठ प्रदर्शन है"
+        },
+        {
+          "bn": "রানার্স-আপ হয়েছে",
+          "en": "Finished as runners-up",
+          "hi": "उपविजेता रही"
+        },
+        {
+          "bn": "ব্রোঞ্জ পদক জিতেছে",
+          "en": "Won the bronze medal",
+          "hi": "कांस्य पदक जीता"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "শ্রেণিবিন্যাসের ম্যাচে India, Germany-কে 3-1 গোলে হারিয়ে পঞ্চম স্থানে শেষ করে, যা Women's Hockey World Cup-এ তাদের সর্বকালের সেরা ফল।",
+        "en": "India defeated Germany 3-1 in the classification match to finish fifth, their best-ever result at the Women's Hockey World Cup.",
+        "hi": "वर्गीकरण मैच में India ने Germany को 3-1 से हराकर पाँचवाँ स्थान हासिल किया, जो Women's Hockey World Cup में उसका अब तक का सर्वश्रेष्ठ परिणाम है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "ca_ch_01_q017",
+      "question": {
+        "bn": "2026 Asian Games-এর জন্য অনুমোদিত ভারতের esports দলে কতজন খেলোয়াড় ছিলেন?",
+        "en": "How many players were included in India's esports contingent approved for the 2026 Asian Games?",
+        "hi": "2026 Asian Games के लिए स्वीकृत भारत के esports दल में कितने खिलाड़ी थे?"
+      },
+      "options": [
+        {
+          "bn": "10",
+          "en": "10",
+          "hi": "10"
+        },
+        {
+          "bn": "12",
+          "en": "12",
+          "hi": "12"
+        },
+        {
+          "bn": "15",
+          "en": "15",
+          "hi": "15"
+        },
+        {
+          "bn": "20",
+          "en": "20",
+          "hi": "20"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "bn": "Ministry of Youth Affairs and Sports 2026 Asian Games-এর জন্য 15 সদস্যের ভারতীয় esports দল অনুমোদন করেছে।",
+        "en": "The Ministry of Youth Affairs and Sports approved a 15-member Indian esports contingent for the 2026 Asian Games.",
+        "hi": "Ministry of Youth Affairs and Sports ने 2026 Asian Games के लिए 15 सदस्यीय भारतीय esports दल को मंजूरी दी।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "ca_ch_01_q018",
+      "question": {
+        "bn": "August 2026-এ NISAR কোন গুরুত্বপূর্ণ মাইলফলক পূর্ণ করে?",
+        "en": "What milestone did NISAR complete in August 2026?",
+        "hi": "August 2026 में NISAR ने कौन-सा महत्वपूर्ण मील का पत्थर पूरा किया?"
+      },
+      "options": [
+        {
+          "bn": "কক্ষপথে এক বছর কার্যক্রম সম্পন্ন করেছে",
+          "en": "One year of operations in orbit",
+          "hi": "कक्षा में संचालन का एक वर्ष पूरा किया"
+        },
+        {
+          "bn": "কক্ষপথে দশ বছর কার্যক্রম সম্পন্ন করেছে",
+          "en": "Ten years of operations in orbit",
+          "hi": "कक्षा में संचालन के दस वर्ष पूरे किए"
+        },
+        {
+          "bn": "চাঁদে প্রথম মানব অবতরণ সম্পন্ন করেছে",
+          "en": "First human landing on the Moon",
+          "hi": "चंद्रमा पर पहली मानव लैंडिंग पूरी की"
+        },
+        {
+          "bn": "মঙ্গলগ্রহে প্রথম অভিযান সম্পন্ন করেছে",
+          "en": "First mission to Mars",
+          "hi": "मंगल ग्रह का पहला मिशन पूरा किया"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "August 2026-এ ISRO ও NASA NISAR-এর কক্ষপথে প্রথম বর্ষপূর্তি উদযাপন করে; এটি July 2025-এ উৎক্ষেপণের এক বছর পূর্ণ হওয়ার মাইলফলক।",
+        "en": "ISRO and NASA commemorated NISAR's first on-orbit anniversary in August 2026, marking one year since its July 2025 launch.",
+        "hi": "August 2026 में ISRO और NASA ने NISAR की कक्षा में पहली वर्षगाँठ मनाई, जो July 2025 में प्रक्षेपण के एक वर्ष पूरे होने का संकेत है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "ca_ch_01_q019",
+      "question": {
+        "bn": "August 2026-এ বিজ্ঞানীরা কোন অঞ্চলের উপরে stratospheric ozone layer-এর অস্বাভাবিক বৃদ্ধি লক্ষ্য করেন?",
+        "en": "Scientists reported an unusual enhancement of the stratospheric ozone layer above which region in August 2026?",
+        "hi": "August 2026 में वैज्ञानिकों ने किस क्षेत्र के ऊपर stratospheric ozone layer में असामान्य वृद्धि की सूचना दी?"
+      },
+      "options": [
+        {
+          "bn": "উত্তর বঙ্গোপসাগর",
+          "en": "North Bay of Bengal",
+          "hi": "उत्तरी बंगाल की खाड़ी"
+        },
+        {
+          "bn": "আরব সাগর",
+          "en": "Arabian Sea",
+          "hi": "अरब सागर"
+        },
+        {
+          "bn": "দক্ষিণ প্রশান্ত মহাসাগর",
+          "en": "South Pacific Ocean",
+          "hi": "दक्षिण प्रशांत महासागर"
+        },
+        {
+          "bn": "ভূমধ্যসাগর",
+          "en": "Mediterranean Sea",
+          "hi": "भूमध्य सागर"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "বিজ্ঞানীরা উত্তর বঙ্গোপসাগরের উপরে stratospheric ozone-এর অস্বাভাবিক বৃদ্ধি সম্পর্কে জানান, যা বায়ুমণ্ডলীয় বিজ্ঞানের একটি গুরুত্বপূর্ণ পর্যবেক্ষণ।",
+        "en": "Scientists reported an unusual stratospheric ozone enhancement over the North Bay of Bengal, making it a notable atmospheric science finding.",
+        "hi": "वैज्ञानिकों ने उत्तरी बंगाल की खाड़ी के ऊपर stratospheric ozone में असामान्य वृद्धि की सूचना दी, जो वायुमंडलीय विज्ञान की एक महत्वपूर्ण खोज है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "ca_ch_01_q020",
+      "question": {
+        "bn": "August 2026-এ Bengaluru-ভিত্তিক QpiAI কী ধরনের facility উদ্বোধন করে?",
+        "en": "What type of facility did Bengaluru-based QpiAI inaugurate in August 2026?",
+        "hi": "August 2026 में Bengaluru स्थित QpiAI ने किस प्रकार की facility का उद्घाटन किया?"
+      },
+      "options": [
+        {
+          "bn": "একটি 8-inch quantum chip foundry",
+          "en": "An 8-inch quantum chip foundry",
+          "hi": "एक 8-inch quantum chip foundry"
+        },
+        {
+          "bn": "একটি 12-inch solar panel factory",
+          "en": "A 12-inch solar panel factory",
+          "hi": "एक 12-inch solar panel factory"
+        },
+        {
+          "bn": "একটি 5G smartphone assembly plant",
+          "en": "A 5G smartphone assembly plant",
+          "hi": "एक 5G smartphone assembly plant"
+        },
+        {
+          "bn": "একটি lithium battery recycling centre",
+          "en": "A lithium battery recycling centre",
+          "hi": "एक lithium battery recycling centre"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "QpiAI Bengaluru-তে একটি 8-inch quantum processing unit manufacturing facility উদ্বোধন করে, যার লক্ষ্য ভারতের quantum hardware সক্ষমতা এগিয়ে নেওয়া।",
+        "en": "QpiAI inaugurated an 8-inch quantum processing unit manufacturing facility in Bengaluru, aimed at advancing India's quantum hardware capabilities.",
+        "hi": "QpiAI ने Bengaluru में 8-inch quantum processing unit manufacturing facility का उद्घाटन किया, जिसका उद्देश्य भारत की quantum hardware क्षमता को आगे बढ़ाना है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    }
+  ]
 }

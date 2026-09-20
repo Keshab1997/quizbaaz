@@ -6,5 +6,766 @@
     "hi": "अम्ल, क्षारक एवं लवण"
   },
   "class_standard": "Class 10",
-  "questions": []
+  "questions": [
+    {
+      "id": "phys_ch_02_q001",
+      "question": {
+        "bn": "25°C তাপমাত্রায় একটি নিরপেক্ষ দ্রবণের pH কত?",
+        "en": "What is the pH of a neutral solution at 25°C?",
+        "hi": "25°C तापमान पर एक उदासीन विलयन का pH कितना होता है?"
+      },
+      "options": [
+        {
+          "bn": "0",
+          "en": "0",
+          "hi": "0"
+        },
+        {
+          "bn": "5",
+          "en": "5",
+          "hi": "5"
+        },
+        {
+          "bn": "7",
+          "en": "7",
+          "hi": "7"
+        },
+        {
+          "bn": "14",
+          "en": "14",
+          "hi": "14"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "bn": "25°C তাপমাত্রায় নিরপেক্ষ দ্রবণে H⁺ ও OH⁻ আয়নের ঘনত্ব সমান থাকে। pH স্কেলে এর মান 7।",
+        "en": "At 25°C, a neutral solution has equal concentrations of H⁺ and OH⁻ ions. On the pH scale, this corresponds to pH 7.",
+        "hi": "25°C पर उदासीन विलयन में H⁺ और OH⁻ आयनों की सांद्रता समान होती है। pH पैमाने पर इसका मान 7 होता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_02_q002",
+      "question": {
+        "bn": "কোন পদার্থ নীল লিটমাস কাগজকে লাল করে?",
+        "en": "Which substance turns blue litmus paper red?",
+        "hi": "कौन-सा पदार्थ नीले लिटमस पत्र को लाल कर देता है?"
+      },
+      "options": [
+        {
+          "bn": "অ্যাসিড",
+          "en": "Acid",
+          "hi": "अम्ल"
+        },
+        {
+          "bn": "ক্ষারক",
+          "en": "Base",
+          "hi": "क्षारक"
+        },
+        {
+          "bn": "নিরপেক্ষ লবণ",
+          "en": "Neutral salt",
+          "hi": "उदासीन लवण"
+        },
+        {
+          "bn": "পাতিত জল",
+          "en": "Distilled water",
+          "hi": "आसुत जल"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "জলীয় দ্রবণে অ্যাসিড H⁺ আয়ন উৎপন্ন করে বলে নীল লিটমাসকে লাল করে। ক্ষারক এর বিপরীত লিটমাস পরিবর্তন ঘটায়।",
+        "en": "Acids change blue litmus to red because they produce H⁺ ions in aqueous solution. Bases show the opposite litmus change.",
+        "hi": "जल में अम्ल H⁺ आयन उत्पन्न करते हैं, इसलिए वे नीले लिटमस को लाल कर देते हैं। क्षारक इसके विपरीत लिटमस परिवर्तन करते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_02_q003",
+      "question": {
+        "bn": "নিচের কোন pH মানটি সবচেয়ে শক্তিশালী অ্যাসিডীয় দ্রবণকে নির্দেশ করে?",
+        "en": "Which pH value represents the strongest acidic solution among the following?",
+        "hi": "निम्नलिखित में से कौन-सा pH मान सबसे प्रबल अम्लीय विलयन को दर्शाता है?"
+      },
+      "options": [
+        {
+          "bn": "2",
+          "en": "2",
+          "hi": "2"
+        },
+        {
+          "bn": "5",
+          "en": "5",
+          "hi": "5"
+        },
+        {
+          "bn": "7",
+          "en": "7",
+          "hi": "7"
+        },
+        {
+          "bn": "9",
+          "en": "9",
+          "hi": "9"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "pH-এর মান যত কম, H⁺ আয়নের ঘনত্ব তত বেশি এবং দ্রবণ তত বেশি অ্যাসিডীয়। দেওয়া মানগুলির মধ্যে 2 সবচেয়ে কম।",
+        "en": "A lower pH indicates a higher concentration of H⁺ ions and therefore greater acidity. Among these values, pH 2 is the lowest.",
+        "hi": "pH जितना कम होता है, H⁺ आयनों की सांद्रता उतनी अधिक और विलयन उतना अधिक अम्लीय होता है। दिए गए मानों में 2 सबसे कम है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_02_q004",
+      "question": {
+        "bn": "অ্যাসিড ও ক্ষারকের বিক্রিয়ায় লবণ ও জল উৎপন্ন হলে সেটি কোন ধরনের বিক্রিয়া?",
+        "en": "What type of reaction occurs when an acid reacts with a base to form salt and water?",
+        "hi": "जब अम्ल और क्षारक की अभिक्रिया से लवण और जल बनते हैं, तो वह किस प्रकार की अभिक्रिया है?"
+      },
+      "options": [
+        {
+          "bn": "জারণ",
+          "en": "Oxidation",
+          "hi": "ऑक्सीकरण"
+        },
+        {
+          "bn": "নিরপেক্ষকরণ",
+          "en": "Neutralization",
+          "hi": "उदासीनीकरण"
+        },
+        {
+          "bn": "বিযোজন",
+          "en": "Decomposition",
+          "hi": "अपघटन"
+        },
+        {
+          "bn": "প্রতিস্থাপন",
+          "en": "Displacement",
+          "hi": "विस्थापन"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "নিরপেক্ষকরণ বিক্রিয়ায় অ্যাসিডের H⁺ আয়ন ক্ষারকের OH⁻ আয়নের সঙ্গে বিক্রিয়া করে জল তৈরি করে এবং অবশিষ্ট আয়নগুলি লবণ গঠন করে।",
+        "en": "In a neutralization reaction, H⁺ ions from the acid react with OH⁻ ions from the base to form water, while the remaining ions form a salt.",
+        "hi": "उदासीनीकरण अभिक्रिया में अम्ल के H⁺ आयन क्षारक के OH⁻ आयनों से अभिक्रिया करके जल बनाते हैं और शेष आयन लवण बनाते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_02_q005",
+      "question": {
+        "bn": "বেকিং সোডার প্রধান উপাদান কোন যৌগটি?",
+        "en": "Which compound is the main component of baking soda?",
+        "hi": "बेकिंग सोडा का मुख्य घटक कौन-सा यौगिक है?"
+      },
+      "options": [
+        {
+          "bn": "NaCl",
+          "en": "NaCl",
+          "hi": "NaCl"
+        },
+        {
+          "bn": "NaHCO₃",
+          "en": "NaHCO₃",
+          "hi": "NaHCO₃"
+        },
+        {
+          "bn": "Na₂CO₃",
+          "en": "Na₂CO₃",
+          "hi": "Na₂CO₃"
+        },
+        {
+          "bn": "CaSO₄·½H₂O",
+          "en": "CaSO₄·½H₂O",
+          "hi": "CaSO₄·½H₂O"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "বেকিং সোডা হল সোডিয়াম হাইড্রোজেন কার্বনেট, যার রাসায়নিক সংকেত NaHCO₃। Na₂CO₃ হল সোডিয়াম কার্বনেট, যা সাধারণত ওয়াশিং সোডার সঙ্গে যুক্ত।",
+        "en": "Baking soda is sodium hydrogen carbonate, whose chemical formula is NaHCO₃. Na₂CO₃ is sodium carbonate, commonly associated with washing soda.",
+        "hi": "बेकिंग सोडा सोडियम हाइड्रोजन कार्बोनेट है, जिसका रासायनिक सूत्र NaHCO₃ है। Na₂CO₃ सोडियम कार्बोनेट है, जो सामान्यतः वॉशिंग सोडा से संबंधित है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_02_q006",
+      "question": {
+        "bn": "কাচ, সাবান ও কাগজ তৈরিতে সাধারণত কোন লবণ ব্যবহৃত হয়?",
+        "en": "Which salt is commonly used in the manufacture of glass, soap and paper?",
+        "hi": "काँच, साबुन और कागज के निर्माण में सामान्यतः किस लवण का उपयोग किया जाता है?"
+      },
+      "options": [
+        {
+          "bn": "বেকিং সোডা",
+          "en": "Baking soda",
+          "hi": "बेकिंग सोडा"
+        },
+        {
+          "bn": "ওয়াশিং সোডা",
+          "en": "Washing soda",
+          "hi": "वॉशिंग सोडा"
+        },
+        {
+          "bn": "ব্লিচিং পাউডার",
+          "en": "Bleaching powder",
+          "hi": "विरंजक चूर्ण"
+        },
+        {
+          "bn": "প্লাস্টার অফ প্যারিস",
+          "en": "Plaster of Paris",
+          "hi": "प्लास्टर ऑफ पेरिस"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "ওয়াশিং সোডা, Na₂CO₃·10H₂O, কাচ, সাবান ও কাগজ তৈরির মতো শিল্পে ব্যবহৃত হয়। অন্য পদার্থগুলির প্রধান ব্যবহার ভিন্ন।",
+        "en": "Washing soda, Na₂CO₃·10H₂O, is used in industries including glass, soap and paper manufacture. The other substances have different major applications.",
+        "hi": "वॉशिंग सोडा, Na₂CO₃·10H₂O, का उपयोग काँच, साबुन और कागज के निर्माण जैसे उद्योगों में होता है। अन्य पदार्थों के प्रमुख उपयोग अलग हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_02_q007",
+      "question": {
+        "bn": "পানীয় জল জীবাণুমুক্ত করতে কোন পদার্থ ব্যবহার করা হয়?",
+        "en": "Which substance is used for disinfecting drinking water?",
+        "hi": "पीने के पानी को कीटाणुरहित करने के लिए किस पदार्थ का उपयोग किया जाता है?"
+      },
+      "options": [
+        {
+          "bn": "বেকিং সোডা",
+          "en": "Baking soda",
+          "hi": "बेकिंग सोडा"
+        },
+        {
+          "bn": "ব্লিচিং পাউডার",
+          "en": "Bleaching powder",
+          "hi": "विरंजक चूर्ण"
+        },
+        {
+          "bn": "প্লাস্টার অফ প্যারিস",
+          "en": "Plaster of Paris",
+          "hi": "प्लास्टर ऑफ पेरिस"
+        },
+        {
+          "bn": "ওয়াশিং সোডা",
+          "en": "Washing soda",
+          "hi": "वॉशिंग सोडा"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "ব্লিচিং পাউডার থেকে ক্লোরিন নির্গত হয়, যা জলের অনেক ক্ষতিকর অণুজীব ধ্বংস করে। তাই পানীয় জল জীবাণুমুক্ত করতে এটি ব্যবহার করা হয়।",
+        "en": "Bleaching powder releases chlorine, which kills many harmful microorganisms in water. Therefore, it is used for disinfecting drinking water.",
+        "hi": "विरंजक चूर्ण से क्लोरीन निकलती है, जो पानी में अनेक हानिकारक सूक्ष्मजीवों को नष्ट करती है। इसलिए इसका उपयोग पीने के पानी को कीटाणुरहित करने में किया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_02_q008",
+      "question": {
+        "bn": "একটি অ্যাসিডীয় দ্রবণে ধীরে ধীরে ক্ষারক যোগ করলে তার pH-এর কী পরিবর্তন হয়?",
+        "en": "What happens to the pH of an acidic solution when a base is gradually added to it?",
+        "hi": "किसी अम्लीय विलयन में धीरे-धीरे क्षारक मिलाने पर उसके pH में क्या परिवर्तन होता है?"
+      },
+      "options": [
+        {
+          "bn": "সাধারণত 7-এর দিকে বৃদ্ধি পায়",
+          "en": "It generally increases toward 7",
+          "hi": "यह सामान्यतः 7 की ओर बढ़ता है"
+        },
+        {
+          "bn": "সবসময় 0-এর দিকে কমে যায়",
+          "en": "It always decreases toward 0",
+          "hi": "यह हमेशा 0 की ओर घटता है"
+        },
+        {
+          "bn": "ঠিক একই থাকে",
+          "en": "It remains exactly unchanged",
+          "hi": "यह बिल्कुल अपरिवर्तित रहता है"
+        },
+        {
+          "bn": "সঙ্গে সঙ্গে 14 হয়ে যায়",
+          "en": "It immediately becomes 14",
+          "hi": "यह तुरंत 14 हो जाता है"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "যোগ করা ক্ষারক অ্যাসিডীয় দ্রবণের H⁺ আয়নের সঙ্গে বিক্রিয়া করে অম্লতা কমায়। তাই pH বৃদ্ধি পেয়ে নিরপেক্ষ মান 7-এর দিকে যায়।",
+        "en": "The added base reacts with H⁺ ions in the acidic solution, reducing acidity. Therefore, the pH rises toward the neutral value of 7.",
+        "hi": "मिलाया गया क्षारक अम्लीय विलयन के H⁺ आयनों से अभिक्रिया करके अम्लीयता कम करता है। इसलिए pH बढ़कर उदासीन मान 7 की ओर जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_02_q009",
+      "question": {
+        "bn": "প্লাস্টার অফ প্যারিস প্রস্তুত করতে কোন যৌগ ব্যবহার করা হয়?",
+        "en": "Which compound is used to prepare Plaster of Paris?",
+        "hi": "प्लास्टर ऑफ पेरिस बनाने के लिए किस यौगिक का उपयोग किया जाता है?"
+      },
+      "options": [
+        {
+          "bn": "CaCO₃",
+          "en": "CaCO₃",
+          "hi": "CaCO₃"
+        },
+        {
+          "bn": "CaSO₄·2H₂O",
+          "en": "CaSO₄·2H₂O",
+          "hi": "CaSO₄·2H₂O"
+        },
+        {
+          "bn": "Na₂CO₃·10H₂O",
+          "en": "Na₂CO₃·10H₂O",
+          "hi": "Na₂CO₃·10H₂O"
+        },
+        {
+          "bn": "NaHCO₃",
+          "en": "NaHCO₃",
+          "hi": "NaHCO₃"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "জিপসাম, CaSO₄·2H₂O, প্রায় 373 K তাপমাত্রায় উত্তপ্ত করলে প্লাস্টার অফ প্যারিস তৈরি হয়। এতে আংশিক জল অপসারিত হয়ে CaSO₄·½H₂O উৎপন্ন হয়।",
+        "en": "Plaster of Paris is prepared by heating gypsum, CaSO₄·2H₂O, to about 373 K. Partial loss of water produces CaSO₄·½H₂O.",
+        "hi": "जिप्सम, CaSO₄·2H₂O, को लगभग 373 K पर गर्म करने से प्लास्टर ऑफ पेरिस बनता है। इसमें आंशिक रूप से जल निकलकर CaSO₄·½H₂O बनता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_02_q010",
+      "question": {
+        "bn": "একটি দ্রবণের pH 3 এবং অন্যটির pH 5। pH 3 দ্রবণে H⁺ আয়নের ঘনত্ব কত গুণ বেশি?",
+        "en": "A solution has pH 3 and another has pH 5. How many times greater is the H⁺ ion concentration in the pH 3 solution?",
+        "hi": "एक विलयन का pH 3 और दूसरे का pH 5 है। pH 3 वाले विलयन में H⁺ आयनों की सांद्रता कितनी गुना अधिक है?"
+      },
+      "options": [
+        {
+          "bn": "2 গুণ",
+          "en": "2 times",
+          "hi": "2 गुना"
+        },
+        {
+          "bn": "10 গুণ",
+          "en": "10 times",
+          "hi": "10 गुना"
+        },
+        {
+          "bn": "100 গুণ",
+          "en": "100 times",
+          "hi": "100 गुना"
+        },
+        {
+          "bn": "1000 গুণ",
+          "en": "1000 times",
+          "hi": "1000 गुना"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "bn": "pH-এর 1 একক পার্থক্য H⁺ আয়নের ঘনত্বে 10 গুণ পার্থক্য নির্দেশ করে। pH 3 ও pH 5-এর পার্থক্য 2 একক, তাই ঘনত্বের পার্থক্য 10² = 100 গুণ।",
+        "en": "A difference of 1 pH unit represents a tenfold difference in H⁺ concentration. The difference between pH 3 and pH 5 is 2 units, so the concentration differs by 10² = 100 times.",
+        "hi": "pH की 1 इकाई का अंतर H⁺ आयनों की सांद्रता में 10 गुना अंतर दर्शाता है। pH 3 और pH 5 में 2 इकाइयों का अंतर है, इसलिए सांद्रता में अंतर 10² = 100 गुना है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_02_q011",
+      "question": {
+        "bn": "জলীয় দ্রবণের অ্যাসিডীয় ধর্মের জন্য কোন আয়ন দায়ী?",
+        "en": "Which ion is responsible for the acidic character of an aqueous solution?",
+        "hi": "जलीय विलयन के अम्लीय गुण के लिए कौन-सा आयन जिम्मेदार है?"
+      },
+      "options": [
+        {
+          "bn": "H⁺",
+          "en": "H⁺",
+          "hi": "H⁺"
+        },
+        {
+          "bn": "OH⁻",
+          "en": "OH⁻",
+          "hi": "OH⁻"
+        },
+        {
+          "bn": "Na⁺",
+          "en": "Na⁺",
+          "hi": "Na⁺"
+        },
+        {
+          "bn": "Cl⁻",
+          "en": "Cl⁻",
+          "hi": "Cl⁻"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "অ্যাসিড জলীয় দ্রবণে H⁺ আয়ন উৎপন্ন করে। এই H⁺ আয়নের উপস্থিতির জন্য দ্রবণটি অ্যাসিডীয় ধর্ম প্রদর্শন করে।",
+        "en": "Acids produce H⁺ ions in aqueous solution. The presence of these ions gives the solution its acidic character.",
+        "hi": "अम्ल जलीय विलयन में H⁺ आयन उत्पन्न करते हैं। इन आयनों की उपस्थिति के कारण विलयन अम्लीय गुण प्रदर्शित करता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_02_q012",
+      "question": {
+        "bn": "জলীয় দ্রবণে ক্ষারক কোন আয়ন উৎপন্ন করে?",
+        "en": "Which ion is produced by a base in aqueous solution?",
+        "hi": "जलीय विलयन में क्षारक कौन-सा आयन उत्पन्न करता है?"
+      },
+      "options": [
+        {
+          "bn": "H⁺",
+          "en": "H⁺",
+          "hi": "H⁺"
+        },
+        {
+          "bn": "OH⁻",
+          "en": "OH⁻",
+          "hi": "OH⁻"
+        },
+        {
+          "bn": "Cl⁻",
+          "en": "Cl⁻",
+          "hi": "Cl⁻"
+        },
+        {
+          "bn": "NO₃⁻",
+          "en": "NO₃⁻",
+          "hi": "NO₃⁻"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "ক্ষারক জলীয় দ্রবণে OH⁻ আয়ন উৎপন্ন করে। এই হাইড্রোক্সাইড আয়নের উপস্থিতির জন্য দ্রবণটি ক্ষারীয় ধর্ম প্রদর্শন করে।",
+        "en": "A base produces OH⁻ ions in aqueous solution. These hydroxide ions are responsible for the basic character of the solution.",
+        "hi": "क्षारक जलीय विलयन में OH⁻ आयन उत्पन्न करता है। ये हाइड्रॉक्साइड आयन विलयन के क्षारीय गुण के लिए जिम्मेदार होते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_02_q013",
+      "question": {
+        "bn": "ভিনিগারে কোন অ্যাসিড উপস্থিত থাকে?",
+        "en": "Which acid is present in vinegar?",
+        "hi": "सिरके में कौन-सा अम्ल उपस्थित होता है?"
+      },
+      "options": [
+        {
+          "bn": "হাইড্রোক্লোরিক অ্যাসিড",
+          "en": "Hydrochloric acid",
+          "hi": "हाइड्रोक्लोरिक अम्ल"
+        },
+        {
+          "bn": "অ্যাসিটিক অ্যাসিড",
+          "en": "Acetic acid",
+          "hi": "एसीटिक अम्ल"
+        },
+        {
+          "bn": "সালফিউরিক অ্যাসিড",
+          "en": "Sulphuric acid",
+          "hi": "सल्फ्यूरिक अम्ल"
+        },
+        {
+          "bn": "নাইট্রিক অ্যাসিড",
+          "en": "Nitric acid",
+          "hi": "नाइट्रिक अम्ल"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "ভিনিগারে পাতলা অ্যাসিটিক অ্যাসিড থাকে। ভিনিগারের টক স্বাদের প্রধান কারণ এই অ্যাসিড।",
+        "en": "Vinegar contains dilute acetic acid. The characteristic sour taste of vinegar is mainly due to this acid.",
+        "hi": "सिरके में तनु एसीटिक अम्ल होता है। सिरके के खट्टे स्वाद का मुख्य कारण यही अम्ल है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_02_q014",
+      "question": {
+        "bn": "হাইড্রোক্লোরিক অ্যাসিড ও সোডিয়াম হাইড্রোক্সাইডের বিক্রিয়ায় কোন লবণ তৈরি হয়?",
+        "en": "Which salt is formed when hydrochloric acid reacts with sodium hydroxide?",
+        "hi": "हाइड्रोक्लोरिक अम्ल और सोडियम हाइड्रॉक्साइड की अभिक्रिया से कौन-सा लवण बनता है?"
+      },
+      "options": [
+        {
+          "bn": "সোডিয়াম ক্লোরাইড",
+          "en": "Sodium chloride",
+          "hi": "सोडियम क्लोराइड"
+        },
+        {
+          "bn": "সোডিয়াম কার্বনেট",
+          "en": "Sodium carbonate",
+          "hi": "सोडियम कार्बोनेट"
+        },
+        {
+          "bn": "ক্যালসিয়াম ক্লোরাইড",
+          "en": "Calcium chloride",
+          "hi": "कैल्शियम क्लोराइड"
+        },
+        {
+          "bn": "পটাশিয়াম ক্লোরাইড",
+          "en": "Potassium chloride",
+          "hi": "पोटैशियम क्लोराइड"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "HCl + NaOH → NaCl + H₂O বিক্রিয়ায় সোডিয়াম ও ক্লোরাইড আয়ন মিলিত হয়ে সোডিয়াম ক্লোরাইড তৈরি করে।",
+        "en": "HCl reacts with NaOH as HCl + NaOH → NaCl + H₂O. The sodium and chloride ions combine to form sodium chloride.",
+        "hi": "HCl + NaOH → NaCl + H₂O अभिक्रिया में सोडियम और क्लोराइड आयन मिलकर सोडियम क्लोराइड बनाते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_02_q015",
+      "question": {
+        "bn": "ক্ষারীয় দ্রবণে কোন নির্দেশক গোলাপি রং দেয়?",
+        "en": "Which indicator gives a pink colour in a basic solution?",
+        "hi": "क्षारीय विलयन में कौन-सा सूचक गुलाबी रंग देता है?"
+      },
+      "options": [
+        {
+          "bn": "মিথাইল অরেঞ্জ",
+          "en": "Methyl orange",
+          "hi": "मिथाइल ऑरेंज"
+        },
+        {
+          "bn": "ফেনলফথ্যালিন",
+          "en": "Phenolphthalein",
+          "hi": "फेनॉल्फ्थेलिन"
+        },
+        {
+          "bn": "নীল লিটমাস",
+          "en": "Blue litmus",
+          "hi": "नीला लिटमस"
+        },
+        {
+          "bn": "হলুদ",
+          "en": "Turmeric",
+          "hi": "हल्दी"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "অ্যাসিডীয় মাধ্যমে ফেনলফথ্যালিন বর্ণহীন থাকে কিন্তু ক্ষারীয় মাধ্যমে গোলাপি হয়। তাই ক্ষারীয় দ্রবণ শনাক্ত করতে এটি ব্যবহার করা যায়।",
+        "en": "Phenolphthalein is colourless in an acidic medium but turns pink in a basic medium. This colour change is used to identify basic solutions.",
+        "hi": "अम्लीय माध्यम में फेनॉल्फ्थेलिन रंगहीन रहता है, लेकिन क्षारीय माध्यम में गुलाबी हो जाता है। इसलिए इसका उपयोग क्षारीय विलयन की पहचान में किया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_02_q016",
+      "question": {
+        "bn": "অ্যাসিড কোনো ধাতব কার্বনেটের সঙ্গে বিক্রিয়া করলে কী উৎপন্ন হয়?",
+        "en": "What happens when an acid reacts with a metal carbonate?",
+        "hi": "जब अम्ल किसी धातु कार्बोनेट से अभिक्रिया करता है, तो क्या बनता है?"
+      },
+      "options": [
+        {
+          "bn": "লবণ, জল ও কার্বন ডাইঅক্সাইড",
+          "en": "Salt, water and carbon dioxide",
+          "hi": "लवण, जल और कार्बन डाइऑक्साइड"
+        },
+        {
+          "bn": "শুধু লবণ ও হাইড্রোজেন",
+          "en": "Only salt and hydrogen",
+          "hi": "केवल लवण और हाइड्रोजन"
+        },
+        {
+          "bn": "শুধু জল ও অক্সিজেন",
+          "en": "Only water and oxygen",
+          "hi": "केवल जल और ऑक्सीजन"
+        },
+        {
+          "bn": "ক্ষারক ও হাইড্রোজেন",
+          "en": "Base and hydrogen",
+          "hi": "क्षारक और हाइड्रोजन"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "অ্যাসিড ধাতব কার্বনেটের সঙ্গে বিক্রিয়া করে লবণ, জল ও কার্বন ডাইঅক্সাইড উৎপন্ন করে। CO₂ নির্গমন এই বিক্রিয়ার একটি বৈশিষ্ট্য।",
+        "en": "An acid reacts with a metal carbonate to produce salt, water and carbon dioxide. The release of CO₂ is a characteristic test for this reaction.",
+        "hi": "अम्ल धातु कार्बोनेट से अभिक्रिया करके लवण, जल और कार्बन डाइऑक्साइड बनाता है। CO₂ का निकलना इस अभिक्रिया की विशेषता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_02_q017",
+      "question": {
+        "bn": "দুর্বল অ্যাসিড জিঙ্কের মতো কোনো ধাতুর সঙ্গে বিক্রিয়া করলে কোন গ্যাস নির্গত হয়?",
+        "en": "Which gas is released when a dilute acid reacts with a metal such as zinc?",
+        "hi": "जब तनु अम्ल जिंक जैसी धातु से अभिक्रिया करता है, तो कौन-सी गैस निकलती है?"
+      },
+      "options": [
+        {
+          "bn": "অক্সিজেন",
+          "en": "Oxygen",
+          "hi": "ऑक्सीजन"
+        },
+        {
+          "bn": "কার্বন ডাইঅক্সাইড",
+          "en": "Carbon dioxide",
+          "hi": "कार्बन डाइऑक्साइड"
+        },
+        {
+          "bn": "হাইড্রোজেন",
+          "en": "Hydrogen",
+          "hi": "हाइड्रोजन"
+        },
+        {
+          "bn": "ক্লোরিন",
+          "en": "Chlorine",
+          "hi": "क्लोरीन"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "bn": "জিঙ্ক দুর্বল অ্যাসিড থেকে হাইড্রোজেনকে প্রতিস্থাপিত করে লবণ তৈরি করে এবং H₂ গ্যাস নির্গত হয়। তাই উৎপন্ন গ্যাসটি হাইড্রোজেন।",
+        "en": "Zinc displaces hydrogen from a dilute acid, forming a salt and releasing H₂ gas. Thus, hydrogen is observed as the gaseous product.",
+        "hi": "जिंक तनु अम्ल से हाइड्रोजन को विस्थापित करके लवण बनाता है और H₂ गैस निकलती है। इसलिए गैसीय उत्पाद हाइड्रोजन है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_02_q018",
+      "question": {
+        "bn": "জলের স্থায়ী কঠিনতা দূর করতে কোন লবণ ব্যবহার করা হয়?",
+        "en": "Which salt is used to remove permanent hardness of water?",
+        "hi": "जल की स्थायी कठोरता दूर करने के लिए किस लवण का उपयोग किया जाता है?"
+      },
+      "options": [
+        {
+          "bn": "সোডিয়াম হাইড্রোজেন কার্বনেট",
+          "en": "Sodium hydrogen carbonate",
+          "hi": "सोडियम हाइड्रोजन कार्बोनेट"
+        },
+        {
+          "bn": "সোডিয়াম কার্বনেট",
+          "en": "Sodium carbonate",
+          "hi": "सोडियम कार्बोनेट"
+        },
+        {
+          "bn": "ক্যালসিয়াম সালফেট",
+          "en": "Calcium sulphate",
+          "hi": "कैल्शियम सल्फेट"
+        },
+        {
+          "bn": "সোডিয়াম ক্লোরাইড",
+          "en": "Sodium chloride",
+          "hi": "सोडियम क्लोराइड"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "সোডিয়াম কার্বনেট স্থায়ী কঠিনতার জন্য দায়ী দ্রবণীয় ক্যালসিয়াম ও ম্যাগনেসিয়াম লবণের সঙ্গে বিক্রিয়া করে অদ্রবণীয় কার্বনেট তৈরি করে।",
+        "en": "Sodium carbonate reacts with soluble calcium and magnesium salts responsible for permanent hardness and converts them into insoluble carbonates.",
+        "hi": "सोडियम कार्बोनेट स्थायी कठोरता के लिए जिम्मेदार घुलनशील कैल्शियम और मैग्नीशियम लवणों से अभिक्रिया करके अघुलनशील कार्बोनेट बनाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_02_q019",
+      "question": {
+        "bn": "ব্লিচিং পাউডারের রাসায়নিক সংকেত কী?",
+        "en": "What is the chemical formula of bleaching powder?",
+        "hi": "विरंजक चूर्ण का रासायनिक सूत्र क्या है?"
+      },
+      "options": [
+        {
+          "bn": "CaOCl₂",
+          "en": "CaOCl₂",
+          "hi": "CaOCl₂"
+        },
+        {
+          "bn": "CaCl₂",
+          "en": "CaCl₂",
+          "hi": "CaCl₂"
+        },
+        {
+          "bn": "Ca(OH)₂",
+          "en": "Ca(OH)₂",
+          "hi": "Ca(OH)₂"
+        },
+        {
+          "bn": "NaClO",
+          "en": "NaClO",
+          "hi": "NaClO"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "ব্লিচিং পাউডারকে সাধারণত CaOCl₂ সংকেত দিয়ে প্রকাশ করা হয়। শুষ্ক স্লেকড লাইমের ওপর ক্লোরিন প্রবাহিত করে এটি প্রস্তুত করা হয়।",
+        "en": "Bleaching powder is commonly represented by the formula CaOCl₂. It is prepared by passing chlorine over dry slaked lime.",
+        "hi": "विरंजक चूर्ण को सामान्यतः CaOCl₂ सूत्र से दर्शाया जाता है। इसे सूखे बुझे हुए चूने पर क्लोरीन प्रवाहित करके तैयार किया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_02_q020",
+      "question": {
+        "bn": "মুখের pH 5.5-এর নিচে নেমে গেলে দাঁতের ক্ষয় হওয়ার সম্ভাবনা কেন বেড়ে যায়?",
+        "en": "Why is tooth decay more likely when the pH of the mouth falls below 5.5?",
+        "hi": "जब मुँह का pH 5.5 से नीचे चला जाता है, तो दाँतों के क्षय की संभावना क्यों बढ़ जाती है?"
+      },
+      "options": [
+        {
+          "bn": "অ্যাসিডীয় মাধ্যম দাঁতের এনামেল ক্ষয় করতে শুরু করে",
+          "en": "The acidic medium begins to damage the tooth enamel",
+          "hi": "अम्लीय माध्यम दाँतों के इनेमल को नुकसान पहुँचाने लगता है"
+        },
+        {
+          "bn": "মুখের পরিবেশ অত্যন্ত ক্ষারীয় হয়ে যায়",
+          "en": "The mouth becomes strongly alkaline",
+          "hi": "मुँह का माध्यम बहुत अधिक क्षारीय हो जाता है"
+        },
+        {
+          "bn": "দাঁতের এনামেল অ্যাসিডে সম্পূর্ণ অদ্রবণীয় হয়ে যায়",
+          "en": "Tooth enamel becomes completely insoluble in acids",
+          "hi": "दाँतों का इनेमल अम्लों में पूरी तरह अघुलनशील हो जाता है"
+        },
+        {
+          "bn": "OH⁻ আয়নের ঘনত্ব সর্বাধিক হয়ে যায়",
+          "en": "The concentration of OH⁻ ions becomes maximum",
+          "hi": "OH⁻ आयनों की सांद्रता अधिकतम हो जाती है"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "pH 5.5-এর নিচে অ্যাসিডীয় পরিবেশ দাঁতের এনামেলের খনিজ পদার্থের ওপর আক্রমণ করে তা ক্ষয় করতে পারে। ফলে এনামেল দুর্বল হয় এবং দাঁতের ক্ষয়ের ঝুঁকি বাড়ে।",
+        "en": "Below pH 5.5, the acidic conditions can attack and dissolve minerals in tooth enamel. This weakens the enamel and increases the risk of tooth decay.",
+        "hi": "pH 5.5 से नीचे अम्लीय वातावरण दाँतों के इनेमल में मौजूद खनिजों को नुकसान पहुँचाकर घोल सकता है। इससे इनेमल कमजोर होता है और दाँतों के क्षय का खतरा बढ़ जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    }
+  ]
 }

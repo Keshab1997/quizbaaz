@@ -6,5 +6,386 @@
     "hi": "रासायनिक अभिक्रियाएँ एवं समीकरण"
   },
   "class_standard": "Class 10",
-  "questions": []
+  "questions": [
+    {
+      "id": "phys_ch_01_q001",
+      "question": {
+        "bn": "বাতাসে ম্যাগনেসিয়াম ফিতা পোড়ালে একটি সাদা গুঁড়ো উৎপন্ন হয়। এটি কী ধরনের রাসায়নিক বিক্রিয়া?",
+        "en": "When magnesium ribbon is burnt in air, a white powder is formed. What type of chemical reaction is this?",
+        "hi": "जब मैग्नीशियम रिबन को हवा में जलाया जाता है, तो एक सफेद चूर्ण बनता है। यह किस प्रकार की रासायनिक अभिक्रिया है?"
+      },
+      "options": [
+        {
+          "bn": "সংযোজন বিক্রিয়া",
+          "en": "Combination reaction",
+          "hi": "संयोजन अभिक्रिया"
+        },
+        {
+          "bn": "বিয়োজন বিক্রিয়া",
+          "en": "Decomposition reaction",
+          "hi": "अपघटन अभिक्रिया"
+        },
+        {
+          "bn": "প্রতিস্থাপন বিক্রিয়া",
+          "en": "Displacement reaction",
+          "hi": "विस्थापन अभिक्रिया"
+        },
+        {
+          "bn": "দ্বি-প্রতিস্থাপন বিক্রিয়া",
+          "en": "Double displacement reaction",
+          "hi": "द्विविस्थापन अभिक्रिया"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "ম্যাগনেসিয়াম বাতাসের অক্সিজেনের সাথে বিক্রিয়া করে ম্যাগনেসিয়াম অক্সাইড গঠন করে (2Mg + O₂ -> 2MgO)। যেহেতু দুটি বিক্রিয়ক যুক্ত হয়ে একটিমাত্র বিক্রিয়াজাত পদার্থ গঠন করে, তাই এটি একটি সংযোজন বিক্রিয়া।",
+        "en": "Magnesium reacts with oxygen in the air to form magnesium oxide (2Mg + O₂ -> 2MgO). Since two reactants combine to form a single product, it is a combination reaction.",
+        "hi": "मैग्नीशियम हवा में ऑक्सीजन के साथ अभिक्रिया करके मैग्नीशियम ऑक्साइड बनाता है (2Mg + O₂ -> 2MgO)। चूंकि दो अभिकारक मिलकर एकल उत्पाद बनाते हैं, इसलिए यह एक संयोजन अभिक्रिया है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_01_q002",
+      "question": {
+        "bn": "একটি শুষ্ক টেস্ট টিউবে লেড নাইট্রেট কেলাস উত্তপ্ত করলে একটি বাদামী রঙের গ্যাস নির্গত হয়। এই বাদামী গ্যাসটি হলো:",
+        "en": "On heating lead nitrate crystals in a dry test tube, a brown gas is evolved. This brown gas is:",
+        "hi": "एक सूखी परखनली में लेड नाइट्रेट के क्रिस्टल को गर्म करने पर भूरे रंग की गैस निकलती है। यह भूरी गैस है:"
+      },
+      "options": [
+        {
+          "bn": "অক্সিজেন (O₂)",
+          "en": "Oxygen (O₂)",
+          "hi": "ऑक्सीजन (O₂)"
+        },
+        {
+          "bn": "নাইট্রোজেন ডাইঅক্সাইড (NO₂)",
+          "en": "Nitrogen dioxide (NO₂)",
+          "hi": "नाइट्रोजन डाइऑक्साइड (NO₂)"
+        },
+        {
+          "bn": "নাইট্রোজেন মনোক্সাইড (NO)",
+          "en": "Nitrogen monoxide (NO)",
+          "hi": "नाइट्रोजन मोनोऑक्साइड (NO)"
+        },
+        {
+          "bn": "ডাইনাইট্রোজেন অক্সাইড (N₂O)",
+          "en": "Dinitrogen oxide (N₂O)",
+          "hi": "डाइनिट्रोजन ऑक्साइड (N₂O)"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "লেড নাইট্রেটের তাপীয় বিয়োজনের ফলে লেড অক্সাইড, অক্সিজেন এবং নাইট্রোজেন ডাইঅক্সাইড (NO₂) উৎপন্ন হয়। এই নাইট্রোজেন ডাইঅক্সাইড গ্যাসটি বাদামী ধোঁয়া হিসেবে নির্গত হয়।",
+        "en": "Thermal decomposition of lead nitrate produces lead oxide, oxygen, and nitrogen dioxide (NO₂). The nitrogen dioxide gas is observed as reddish-brown fumes.",
+        "hi": "लेड नाइट्रेट के तापीय अपघटन से लेड ऑक्साइड, ऑक्सीजन और नाइट्रोजन डाइऑक्साइड (NO₂) बनते हैं। नाइट्रोजन डाइऑक्साइड गैस लाल-भूरे रंग के धुएं के रूप में दिखाई देती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_01_q003",
+      "question": {
+        "bn": "একটি লোহার পেরেককে নীল রঙের কপার সালফেট দ্রবণে রাখলে, দ্রবণের রঙ হালকা সবুজ হয়ে যায়। এটি কী উৎপন্ন হওয়ার কারণে ঘটে?",
+        "en": "When an iron nail is placed in a blue copper sulfate solution, the color of the solution changes to light green. This is due to the formation of:",
+        "hi": "जब एक लोहे की कील को नीले कॉपर सल्फेट के विलयन में रखा जाता है, तो विलयन का रंग बदलकर हल्का हरा हो जाता है। ऐसा किसके बनने के कारण होता है?"
+      },
+      "options": [
+        {
+          "bn": "কপার অক্সাইড (CuO)",
+          "en": "Copper oxide (CuO)",
+          "hi": "कॉपर ऑक्साइड (CuO)"
+        },
+        {
+          "bn": "আয়রন(II) সালফেট (FeSO₄)",
+          "en": "Iron(II) sulfate (FeSO₄)",
+          "hi": "आयरन(II) सल्फेट (FeSO₄)"
+        },
+        {
+          "bn": "আয়রন(III) ক্লোরাইড (FeCl₃)",
+          "en": "Iron(III) chloride (FeCl₃)",
+          "hi": "आयरन(III) क्लोराइड (FeCl₃)"
+        },
+        {
+          "bn": "কপার কার্বনেট (CuCO₃)",
+          "en": "Copper carbonate (CuCO₃)",
+          "hi": "कॉपर कार्बोनेट (CuCO₃)"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "লোহা কপারের চেয়ে বেশি সক্রিয় হওয়ায় এটি কপার সালফেট দ্রবণ থেকে কপারকে প্রতিস্থাপিত করে হালকা সবুজ রঙের আয়রন(II) সালফেট (FeSO₄) গঠন করে।",
+        "en": "Iron, being more reactive than copper, displaces copper from copper sulfate solution to form iron(II) sulfate (FeSO₄), which is light green in color.",
+        "hi": "लोहा, कॉपर की तुलना में अधिक क्रियाशील होने के कारण, कॉपर सल्फेट के विलयन से कॉपर को विस्थापित करके आयरन(II) सल्फेट (FeSO₄) बनाता है, जो हल्के हरे रंग का होता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_01_q004",
+      "question": {
+        "bn": "MnO₂ + 4HCl -> MnCl₂ + 2H₂O + Cl₂ বিক্রিয়াটিতে কোন পদার্থটি জারিত হয়েছে?",
+        "en": "In the reaction MnO₂ + 4HCl -> MnCl₂ + 2H₂O + Cl₂, which substance is oxidized?",
+        "hi": "अभिक्रिया MnO₂ + 4HCl -> MnCl₂ + 2H₂O + Cl₂ में किस पदार्थ का ऑक्सीकरण (उपचयन) हुआ है?"
+      },
+      "options": [
+        {
+          "bn": "MnO₂",
+          "en": "MnO₂",
+          "hi": "MnO₂"
+        },
+        {
+          "bn": "HCl",
+          "en": "HCl",
+          "hi": "HCl"
+        },
+        {
+          "bn": "MnCl₂",
+          "en": "MnCl₂",
+          "hi": "MnCl₂"
+        },
+        {
+          "bn": "H₂O",
+          "en": "H₂O",
+          "hi": "H₂O"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "এই বিক্রিয়াটিতে HCl হাইড্রোজেন বর্জন করে Cl₂ গঠন করে, অর্থাৎ HCl জারিত হয়েছে। অন্যদিকে MnO₂ অক্সিজেন বর্জন করে MnCl₂ গঠন করে, অর্থাৎ MnO₂ বিজারিত হয়েছে।",
+        "en": "In this reaction, HCl loses hydrogen to form Cl₂, meaning HCl is oxidized, while MnO₂ loses oxygen to form MnCl₂, meaning MnO₂ is reduced.",
+        "hi": "इस अभिक्रिया में, HCl हाइड्रोजन खोकर Cl₂ बनाता है, जिसका अर्थ है कि HCl का ऑक्सीकरण हुआ है, जबकि MnO₂ ऑक्सीजन खोकर MnCl₂ बनाता है, जिसका अर्थ है कि MnO₂ का अपचयन हुआ है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_01_q005",
+      "question": {
+        "bn": "জলের তড়িৎবিশ্লেষণের সময় উৎপন্ন হাইড্রোজেন গ্যাস ও অক্সিজেন গ্যাসের আয়তনের অনুপাত হলো:",
+        "en": "During the electrolysis of water, the ratio of the volume of hydrogen gas to oxygen gas collected is:",
+        "hi": "जल के विद्युत अपघटन के दौरान एकत्रित हाइड्रोजन गैस और ऑक्सीजन गैस के आयतन का अनुपात होता है:"
+      },
+      "options": [
+        {
+          "bn": "1 : 2",
+          "en": "1 : 2",
+          "hi": "1 : 2"
+        },
+        {
+          "bn": "2 : 1",
+          "en": "2 : 1",
+          "hi": "2 : 1"
+        },
+        {
+          "bn": "1 : 1",
+          "en": "1 : 1",
+          "hi": "1 : 1"
+        },
+        {
+          "bn": "8 : 1",
+          "en": "8 : 1",
+          "hi": "8 : 1"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "তড়িৎবিশ্লেষণের সময় জল 2H₂O -> 2H₂ + O₂ সমীকরণ অনুযায়ী বিয়োজিত হয়। যেহেতু প্রতি অণু অক্সিজেনের বিপরীতে দুই অণু হাইড্রোজেন উৎপন্ন হয়, তাই আয়তনের অনুপাত হয় 2:1।",
+        "en": "Water decomposes during electrolysis according to the equation 2H₂O -> 2H₂ + O₂. Since two molecules of hydrogen are produced for every molecule of oxygen, the volume ratio is 2:1.",
+        "hi": "विद्युत अपघटन के दौरान जल समीकरण 2H₂O -> 2H₂ + O₂ के अनुसार अपघटित होता है। चूंकि ऑक्सीजन के प्रत्येक अणु के लिए हाइड्रोजन के दो अणु बनते हैं, इसलिए आयतन का अनुपात 2:1 होता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_01_q006",
+      "question": {
+        "bn": "পোড়াচুন (CaO) জলের সাথে তীব্রভাবে বিক্রিয়া করে কলিচুন [Ca(OH)₂] উৎপন্ন করলে এটি কী ধরণের রাসায়নিক বিক্রিয়া?",
+        "en": "What type of chemical reaction occurs when quicklime (CaO) reacts vigorously with water to form slaked lime [Ca(OH)₂]?",
+        "hi": "जब बिना बुझा हुआ चूना (CaO) पानी के साथ तेजी से अभिक्रिया करके बुझा हुआ चूना [Ca(OH)₂] बनाता है, तो यह किस प्रकार की रासायनिक अभिक्रिया है?"
+      },
+      "options": [
+        {
+          "bn": "বিয়োজন বিক্রিয়া",
+          "en": "Decomposition reaction",
+          "hi": "अपघटन अभिक्रिया"
+        },
+        {
+          "bn": "সংযোজন বিক্রিয়া",
+          "en": "Combination reaction",
+          "hi": "संयोजन अभिक्रिया"
+        },
+        {
+          "bn": "প্রতিস্থাপন বিক্রিয়া",
+          "en": "Displacement reaction",
+          "hi": "विस्थापन अभिक्रिया"
+        },
+        {
+          "bn": "দ্বি-প্রতিস্থাপন বিক্রিয়া",
+          "en": "Double displacement reaction",
+          "hi": "द्विविस्थापन अभिक्रिया"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "এই বিক্রিয়ায় দুটি বিক্রিয়ক (CaO এবং H₂O) যুক্ত হয়ে একটি মাত্র বিক্রিয়াজাত পদার্থ [Ca(OH)₂] উৎপন্ন করে, যা সংযোজন বিক্রিয়ার বৈশিষ্ট্য।",
+        "en": "In this reaction, two reactants (CaO and H₂O) combine to form a single product [Ca(OH)₂], which is the definition of a combination reaction.",
+        "hi": "इस अभिक्रिया में, दो अभिकारक (CaO और H₂O) मिलकर एक एकल उत्पाद [Ca(OH)₂] बनाते हैं, जो संयोजन अभिक्रिया की परिभाषा है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_01_q007",
+      "question": {
+        "bn": "Na₂SO₄(aq) + BaCl₂(aq) → BaSO₄(s) + 2NaCl(aq) বিক্রিয়াটি কোনটির উদাহরণ?",
+        "en": "The reaction Na₂SO₄(aq) + BaCl₂(aq) → BaSO₄(s) + 2NaCl(aq) is an example of:",
+        "hi": "अभिक्रिया Na₂SO₄(aq) + BaCl₂(aq) → BaSO₄(s) + 2NaCl(aq) किसका एक उदाहरण है?"
+      },
+      "options": [
+        {
+          "bn": "সংযোজন বিক্রিয়া",
+          "en": "Combination reaction",
+          "hi": "संयोजन अभिक्रिया"
+        },
+        {
+          "bn": "বিয়োজন বিক্রিয়া",
+          "en": "Decomposition reaction",
+          "hi": "अपघटन अभिक्रिया"
+        },
+        {
+          "bn": "প্রতিস্থাপন বিক্রিয়া",
+          "en": "Displacement reaction",
+          "hi": "विस्थापन अभिक्रिया"
+        },
+        {
+          "bn": "দ্বি-প্রতিস্থাপন বিক্রিয়া",
+          "en": "Double displacement reaction",
+          "hi": "द्विविस्थापन अभिक्रिया"
+        }
+      ],
+      "correct_index": 3,
+      "explanation": {
+        "bn": "বিক্রিয়কগুলির মধ্যে আয়নের বিনিময় (Na⁺, SO₄²⁻ এবং Ba²⁺, Cl⁻) ঘটে নতুন যৌগ উৎপন্ন হয়েছে, তাই এটি একটি দ্বি-প্রতিস্থাপন বিক্রিয়া।",
+        "en": "There is an exchange of ions between the reactants (Na⁺, SO₄²⁻ and Ba²⁺, Cl⁻) to form new compounds, making it a double displacement reaction.",
+        "hi": "अभिकारकों (Na⁺, SO₄²⁻ और Ba²⁺, Cl⁻) के बीच नए यौगिक बनाने के लिए आयनों का आदान-प्रदान होता है, जिससे यह एक द्विविस्थापन अभिक्रिया बन जाती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_01_q008",
+      "question": {
+        "bn": "CuO + H₂ → Cu + H₂O বিক্রিয়াটিতে কোন পদার্থটি বিজারক হিসেবে কাজ করে?",
+        "en": "In the reaction CuO + H₂ → Cu + H₂O, which substance acts as the reducing agent?",
+        "hi": "अभिक्रिया CuO + H₂ → Cu + H₂O में, कौन सा पदार्थ अपचायक (reducing agent) के रूप में कार्य करता है?"
+      },
+      "options": [
+        {
+          "bn": "CuO",
+          "en": "CuO",
+          "hi": "CuO"
+        },
+        {
+          "bn": "H₂",
+          "en": "H₂",
+          "hi": "H₂"
+        },
+        {
+          "bn": "Cu",
+          "en": "Cu",
+          "hi": "Cu"
+        },
+        {
+          "bn": "H₂O",
+          "en": "H₂O",
+          "hi": "H₂O"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "হাইড্রোজেন (H₂) অক্সিজেন গ্রহণ করে জলে (H₂O) পরিণত হয়; যে পদার্থ জারিত হয় সেটিই বিজারক হিসেবে কাজ করে।",
+        "en": "Hydrogen (H₂) gains oxygen to become water (H₂O), and the substance that undergoes oxidation acts as the reducing agent.",
+        "hi": "हाइड्रोजन (H₂) ऑक्सीजन प्राप्त करके जल (H₂O) बन जाता है, और जो पदार्थ ऑक्सीकृत होता है वह अपचायक के रूप में कार्य करता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_01_q009",
+      "question": {
+        "bn": "নীচের কোনটি একটি তাপশোষী বিক্রিয়া?",
+        "en": "Which of the following is an endothermic reaction?",
+        "hi": "निम्नलिखित में से कौन सी एक ऊष्माशोषी अभिक्रिया है?"
+      },
+      "options": [
+        {
+          "bn": "শ্বসন",
+          "en": "Respiration",
+          "hi": "श्वसन"
+        },
+        {
+          "bn": "কয়লার দহন",
+          "en": "Combustion of coal",
+          "hi": "कोयले का दहन"
+        },
+        {
+          "bn": "ক্যালসিয়াম কার্বনেটের বিয়োজন",
+          "en": "Decomposition of calcium carbonate",
+          "hi": "कैल्शियम कार्बोनेट का अपघटन"
+        },
+        {
+          "bn": "পোড়াচুনের সাথে জলের বিক্রিয়া",
+          "en": "Reaction of quicklime with water",
+          "hi": "बिना बुझे हुए चूने की पानी के साथ अभिक्रिया"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "bn": "ক্যালসিয়াম কার্বনেট বিয়োজিত হয়ে ক্যালসিয়াম অক্সাইড ও কার্বন ডাইঅক্সাইড তৈরি করতে তাপশক্তির শোষণের প্রয়োজন হয়।",
+        "en": "The decomposition of calcium carbonate into calcium oxide and carbon dioxide requires the absorption of heat energy.",
+        "hi": "कैल्शियम कार्बोनेट के कैल्शियम ऑक्साइड और कार्बन डाइऑक्साइड में अपघटन के लिए ऊष्मा ऊर्जा के अवशोषण की आवश्यकता होती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_01_q010",
+      "question": {
+        "bn": "সাদা সিলভার ক্লোরাইড সূর্যালোকের উপস্থিতিতে ধূসর বর্ণ ধারণ করে। এটি কী উৎপন্ন হওয়ার কারণে ঘটে?",
+        "en": "White silver chloride turns grey in sunlight. This is due to the formation of:",
+        "hi": "सफेद सिल्वर क्लोराइड सूर्य के प्रकाश में धूसर (grey) हो जाता है। यह किसके बनने के कारण होता है?"
+      },
+      "options": [
+        {
+          "bn": "সিলভার অক্সাইড",
+          "en": "Silver oxide",
+          "hi": "सिल्वर ऑक्साइड"
+        },
+        {
+          "bn": "সিলভার ধাতু",
+          "en": "Silver metal",
+          "hi": "सिल्वर धातु"
+        },
+        {
+          "bn": "ক্লোরিন গ্যাস",
+          "en": "Chlorine gas",
+          "hi": "क्लोरीन गैस"
+        },
+        {
+          "bn": "সিলভার নাইট্রেট",
+          "en": "Silver nitrate",
+          "hi": "सिल्वर नाइट्रेट"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "সূর্যালোকের প্রভাবে সিলভার ক্লোরাইডের আলোক-বিয়োজন ঘটে ধূসর বর্ণের সিলভার ধাতু এবং ক্লোরিন গ্যাস উৎপন্ন হয়।",
+        "en": "Silver chloride undergoes photolytic decomposition in sunlight to produce grey-colored silver metal and chlorine gas.",
+        "hi": "सिल्वर क्लोराइड सूर्य के प्रकाश में प्रकाश-अपघटन से गुजरता है जिससे धूसर रंग की सिल्वर धातु और क्लोरीन गैस बनती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    }
+  ]
 }

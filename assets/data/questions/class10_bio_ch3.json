@@ -6,5 +6,386 @@
     "hi": "जीव जनन कैसे करते हैं?"
   },
   "class_standard": "Class 10",
-  "questions": []
+  "questions": [
+    {
+      "id": "bio_ch_03_q001",
+      "question": {
+        "bn": "কোন ধরনের প্রজননে শুধুমাত্র একটি জনিতৃ জীব অংশগ্রহণ করে?",
+        "en": "Which type of reproduction involves only one parent?",
+        "hi": "किस प्रकार के जनन में केवल एक जनक जीव भाग लेता है?"
+      },
+      "options": [
+        {
+          "bn": "অযৌন প্রজনন",
+          "en": "Asexual reproduction",
+          "hi": "अलैंगिक जनन"
+        },
+        {
+          "bn": "যৌন প্রজনন",
+          "en": "Sexual reproduction",
+          "hi": "लैंगिक जनन"
+        },
+        {
+          "bn": "নিষেক",
+          "en": "Fertilisation",
+          "hi": "निषेचन"
+        },
+        {
+          "bn": "পরাগায়ন",
+          "en": "Pollination",
+          "hi": "परागण"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "অযৌন প্রজননে একটি মাত্র জনিতৃ জীবের প্রয়োজন হয় এবং এতে পুং ও স্ত্রী গ্যামেটের মিলন ঘটে না।",
+        "en": "Asexual reproduction requires only one parent and does not involve the fusion of male and female gametes.",
+        "hi": "अलैंगिक जनन में केवल एक जनक जीव की आवश्यकता होती है और इसमें नर तथा मादा युग्मकों का संलयन नहीं होता।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_03_q002",
+      "question": {
+        "bn": "অ্যামিবার অযৌন প্রজনন কোন পদ্ধতিতে ঘটে?",
+        "en": "Which method of asexual reproduction occurs in Amoeba?",
+        "hi": "अमीबा में अलैंगिक जनन किस विधि से होता है?"
+      },
+      "options": [
+        {
+          "bn": "মুকুলোদ্গম",
+          "en": "Budding",
+          "hi": "मुकुलन"
+        },
+        {
+          "bn": "দ্বিখণ্ডন",
+          "en": "Binary fission",
+          "hi": "द्विखंडन"
+        },
+        {
+          "bn": "খণ্ডীভবন",
+          "en": "Fragmentation",
+          "hi": "खंडन"
+        },
+        {
+          "bn": "রেণু গঠন",
+          "en": "Spore formation",
+          "hi": "बीजाणु निर्माण"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "দ্বিখণ্ডনের সময় অ্যামিবার নিউক্লিয়াস ও সাইটোপ্লাজম বিভাজিত হয়ে দুটি অপত্য কোষ তৈরি করে।",
+        "en": "During binary fission, an Amoeba divides into two daughter cells after its nucleus and cytoplasm divide.",
+        "hi": "द्विखंडन में अमीबा का केंद्रक और कोशिकाद्रव्य विभाजित होकर दो संतति कोशिकाएँ बनाते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_03_q003",
+      "question": {
+        "bn": "কোন জীব সাধারণত মুকুলোদ্গম পদ্ধতিতে প্রজনন করে?",
+        "en": "Which organism commonly reproduces by budding?",
+        "hi": "कौन-सा जीव सामान्यतः मुकुलन द्वारा जनन करता है?"
+      },
+      "options": [
+        {
+          "bn": "অ্যামিবা",
+          "en": "Amoeba",
+          "hi": "अमीबा"
+        },
+        {
+          "bn": "ইস্ট",
+          "en": "Yeast",
+          "hi": "यीस्ट"
+        },
+        {
+          "bn": "লিশম্যানিয়া",
+          "en": "Leishmania",
+          "hi": "लीशमैनिया"
+        },
+        {
+          "bn": "প্লাসমোডিয়াম",
+          "en": "Plasmodium",
+          "hi": "प्लास्मोडियम"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "ইস্টে জনিতৃ কোষের গায়ে একটি ছোট মুকুল সৃষ্টি হয়, যা বৃদ্ধি পেয়ে পরে বিচ্ছিন্ন হয়ে নতুন জীব তৈরি করে।",
+        "en": "In yeast, a small outgrowth called a bud develops on the parent cell, grows and eventually separates to form a new individual.",
+        "hi": "यीस्ट में जनक कोशिका पर एक छोटी मुकुल विकसित होती है, जो बढ़ने के बाद अलग होकर नया जीव बनाती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_03_q004",
+      "question": {
+        "bn": "অপত্যদের মধ্যে প্রকরণ সৃষ্টির ক্ষেত্রে যৌন প্রজনন গুরুত্বপূর্ণ কেন?",
+        "en": "Why is sexual reproduction important for producing variation in offspring?",
+        "hi": "संतानों में विविधता उत्पन्न करने में लैंगिक जनन महत्वपूर्ण क्यों है?"
+      },
+      "options": [
+        {
+          "bn": "এটি সর্বদা জিনগতভাবে অভিন্ন অপত্য সৃষ্টি করে",
+          "en": "It always produces genetically identical offspring",
+          "hi": "यह हमेशा आनुवंशिक रूप से समान संतति उत्पन्न करता है"
+        },
+        {
+          "bn": "এটি দুটি জনিতৃ জীবের জিনগত উপাদান একত্রিত করে",
+          "en": "It combines genetic material from two parents",
+          "hi": "यह दो जनक जीवों के आनुवंशिक पदार्थ को मिलाता है"
+        },
+        {
+          "bn": "এটি DNA-এর প্রতিলিপি গঠন প্রতিরোধ করে",
+          "en": "It prevents DNA from being copied",
+          "hi": "यह DNA की प्रतिकृति बनने से रोकता है"
+        },
+        {
+          "bn": "এতে শুধুমাত্র মাইটোসিস বিভাজন ঘটে",
+          "en": "It involves only mitotic division",
+          "hi": "इसमें केवल समसूत्री विभाजन होता है"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "যৌন প্রজননে দুটি জনিতৃ জীবের জিনগত উপাদান একত্রিত হয়, ফলে জিনের নতুন সমন্বয় তৈরি হয়ে অপত্যদের মধ্যে প্রকরণ বৃদ্ধি পায়।",
+        "en": "Sexual reproduction combines genetic material from two parents, creating new combinations of genes and therefore increasing variation among offspring.",
+        "hi": "लैंगिक जनन में दो जनक जीवों का आनुवंशिक पदार्थ मिल जाता है, जिससे जीनों के नए संयोजन बनते हैं और संतानों में विविधता बढ़ती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_03_q005",
+      "question": {
+        "bn": "মানুষের স্ত্রী প্রজননতন্ত্রে সাধারণত কোথায় নিষেক ঘটে?",
+        "en": "Where does fertilisation normally occur in the human female reproductive system?",
+        "hi": "मानव मादा जनन तंत्र में सामान्यतः निषेचन कहाँ होता है?"
+      },
+      "options": [
+        {
+          "bn": "ডিম্বাশয়",
+          "en": "Ovary",
+          "hi": "अंडाशय"
+        },
+        {
+          "bn": "জরায়ু",
+          "en": "Uterus",
+          "hi": "गर्भाशय"
+        },
+        {
+          "bn": "ফ্যালোপিয়ান নালি",
+          "en": "Fallopian tube",
+          "hi": "फैलोपियन नलिका"
+        },
+        {
+          "bn": "যোনি",
+          "en": "Vagina",
+          "hi": "योनि"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "bn": "ফ্যালোপিয়ান নালিতে সাধারণত শুক্রাণু ও ডিম্বাণুর মিলন ঘটে এবং জাইগোট তৈরি হয়, যা পরে জরায়ুর দিকে অগ্রসর হয়।",
+        "en": "The sperm and egg normally meet and fuse in the fallopian tube, forming a zygote before it moves toward the uterus.",
+        "hi": "फैलोपियन नलिका में सामान्यतः शुक्राणु और अंडाणु का संलयन होता है तथा युग्मनज बनता है, जो बाद में गर्भाशय की ओर जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_03_q006",
+      "question": {
+        "bn": "পুরুষের গৌণ যৌন বৈশিষ্ট্যগুলির বিকাশে প্রধানত কোন হরমোন দায়ী?",
+        "en": "Which hormone is mainly responsible for the development of male secondary sexual characteristics?",
+        "hi": "पुरुषों में द्वितीयक लैंगिक लक्षणों के विकास के लिए मुख्यतः कौन-सा हार्मोन उत्तरदायी है?"
+      },
+      "options": [
+        {
+          "bn": "ইস্ট্রোজেন",
+          "en": "Oestrogen",
+          "hi": "एस्ट्रोजन"
+        },
+        {
+          "bn": "প্রোজেস্টেরন",
+          "en": "Progesterone",
+          "hi": "प्रोजेस्टेरोन"
+        },
+        {
+          "bn": "টেস্টোস্টেরন",
+          "en": "Testosterone",
+          "hi": "टेस्टोस्टेरोन"
+        },
+        {
+          "bn": "ইনসুলিন",
+          "en": "Insulin",
+          "hi": "इंसुलिन"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "bn": "মূলত অণ্ডকোষ থেকে উৎপন্ন টেস্টোস্টেরন পুরুষের গৌণ যৌন বৈশিষ্ট্য যেমন কণ্ঠস্বর ভারী হওয়া ও মুখে লোম গজানোর বিকাশ ঘটায়।",
+        "en": "Testosterone, produced mainly by the testes, promotes male secondary sexual characteristics such as deeper voice and facial hair.",
+        "hi": "मुख्यतः वृषण द्वारा उत्पादित टेस्टोस्टेरोन पुरुषों में भारी आवाज और चेहरे पर बाल जैसे द्वितीयक लैंगिक लक्षणों के विकास को बढ़ावा देता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_03_q007",
+      "question": {
+        "bn": "কোন গর্ভনিরোধক পদ্ধতি যৌন সংক্রমিত রোগের ঝুঁকি কমাতেও সাহায্য করে?",
+        "en": "Which contraceptive method also helps reduce the risk of sexually transmitted infections?",
+        "hi": "कौन-सी गर्भनिरोधक विधि यौन संचारित संक्रमणों के जोखिम को कम करने में भी मदद करती है?"
+      },
+      "options": [
+        {
+          "bn": "কনডোম",
+          "en": "Condom",
+          "hi": "कंडोम"
+        },
+        {
+          "bn": "মৌখিক গর্ভনিরোধক বড়ি",
+          "en": "Oral contraceptive pill",
+          "hi": "मौखिक गर्भनिरोधक गोली"
+        },
+        {
+          "bn": "কপার-T",
+          "en": "Copper-T",
+          "hi": "कॉपर-T"
+        },
+        {
+          "bn": "ভ্যাসেকটমি",
+          "en": "Vasectomy",
+          "hi": "शुक्रवाहिनी-छेदन"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "কনডোম একটি শারীরিক প্রতিবন্ধক হিসেবে কাজ করে এবং শুক্রাণুকে ডিম্বাণুতে পৌঁছাতে বাধা দেওয়ার পাশাপাশি সংক্রমিত দেহতরলের সংস্পর্শ কমায়।",
+        "en": "A condom acts as a physical barrier that helps prevent sperm from reaching the egg and also reduces contact with infectious body fluids.",
+        "hi": "कंडोम एक भौतिक अवरोध के रूप में काम करता है और शुक्राणु को अंडाणु तक पहुँचने से रोकने के साथ संक्रमित शारीरिक द्रवों के संपर्क को भी कम करता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_03_q008",
+      "question": {
+        "bn": "গর্ভনিরোধক পদ্ধতি ব্যবহারের প্রধান উদ্দেশ্য কী?",
+        "en": "What is the main purpose of using contraceptive methods?",
+        "hi": "गर्भनिरोधक विधियों का मुख्य उद्देश्य क्या है?"
+      },
+      "options": [
+        {
+          "bn": "অনিচ্ছাকৃত গর্ভধারণ প্রতিরোধ করা",
+          "en": "To prevent unwanted pregnancy",
+          "hi": "अनचाहे गर्भधारण को रोकना"
+        },
+        {
+          "bn": "উৎপন্ন ডিম্বাণুর সংখ্যা বৃদ্ধি করা",
+          "en": "To increase the number of ova produced",
+          "hi": "उत्पन्न होने वाले अंडाणुओं की संख्या बढ़ाना"
+        },
+        {
+          "bn": "প্রতিটি ঋতুচক্রে নিষেক ঘটানো",
+          "en": "To cause fertilisation in every menstrual cycle",
+          "hi": "प्रत्येक मासिक चक्र में निषेचन कराना"
+        },
+        {
+          "bn": "স্ত্রীদেহে শুক্রাণুর উৎপাদন বৃদ্ধি করা",
+          "en": "To increase the production of sperm in females",
+          "hi": "मादा शरीर में शुक्राणुओं का उत्पादन बढ़ाना"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "গর্ভনিরোধক পদ্ধতি নিষেক বা ভ্রূণের প্রতিস্থাপন প্রতিরোধ করে অনিচ্ছাকৃত গর্ভধারণের সম্ভাবনা কমাতে ব্যবহৃত হয়।",
+        "en": "Contraceptive methods are used to prevent fertilisation or implantation and thereby reduce the chance of an unwanted pregnancy.",
+        "hi": "गर्भनिरोधक विधियाँ निषेचन या आरोपण को रोककर अनचाहे गर्भधारण की संभावना को कम करने के लिए उपयोग की जाती हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_03_q009",
+      "question": {
+        "bn": "ফুলের কোন অংশে পরাগরেণু উৎপন্ন হয়?",
+        "en": "In which part of a flower are pollen grains produced?",
+        "hi": "फूल के किस भाग में परागकण उत्पन्न होते हैं?"
+      },
+      "options": [
+        {
+          "bn": "গর্ভমুণ্ড",
+          "en": "Stigma",
+          "hi": "वर्तिकाग्र"
+        },
+        {
+          "bn": "পরাগধানী",
+          "en": "Anther",
+          "hi": "परागकोष"
+        },
+        {
+          "bn": "ডিম্বাশয়",
+          "en": "Ovary",
+          "hi": "अंडाशय"
+        },
+        {
+          "bn": "ডিম্বক",
+          "en": "Ovule",
+          "hi": "बीजांड"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "পরাগধানী পুংকেশরের পরাগরেণু উৎপাদক অংশ। পরাগরেণুর মধ্যে উদ্ভিদের পুং জননকোষ থাকে।",
+        "en": "The anther is the pollen-producing part of the stamen. The pollen grains contain the male reproductive cells of the plant.",
+        "hi": "परागकोष पुंकेसर का परागकण उत्पन्न करने वाला भाग है। परागकणों में पौधे की नर जनन कोशिकाएँ होती हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_03_q010",
+      "question": {
+        "bn": "প্রজননের সময় DNA-এর প্রতিলিপি গঠন সবসময় সম্পূর্ণ নির্ভুল হয় না কেন?",
+        "en": "Why is DNA copying during reproduction not always perfectly accurate?",
+        "hi": "जनन के दौरान DNA की प्रतिकृति बनना हमेशा पूर्णतः सटीक क्यों नहीं होता?"
+      },
+      "options": [
+        {
+          "bn": "জীবন্ত কোষে DNA-এর প্রতিলিপি তৈরি হতে পারে না",
+          "en": "DNA cannot be copied in living cells",
+          "hi": "जीवित कोशिकाओं में DNA की प्रतिकृति नहीं बन सकती"
+        },
+        {
+          "bn": "DNA প্রতিলিপি গঠনের সময় ছোটখাটো প্রতিলিপি-ত্রুটি ঘটতে পারে",
+          "en": "Small copying errors can occur during DNA replication",
+          "hi": "DNA की प्रतिकृति बनाते समय छोटी-छोटी प्रतिकृति त्रुटियाँ हो सकती हैं"
+        },
+        {
+          "bn": "প্রজননের আগে DNA সম্পূর্ণ ধ্বংস হয়ে যায়",
+          "en": "DNA is completely destroyed before reproduction",
+          "hi": "जनन से पहले DNA पूरी तरह नष्ट हो जाता है"
+        },
+        {
+          "bn": "সমস্ত অপত্য ঠিক একই DNA অনুক্রম পায়",
+          "en": "All offspring receive exactly the same DNA sequence",
+          "hi": "सभी संतानों को बिल्कुल समान DNA अनुक्रम मिलता है"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "DNA-এর প্রতিলিপি গঠন অত্যন্ত নির্ভুল হলেও সম্পূর্ণ নির্ভুল নয়, তাই মাঝে মাঝে ছোট প্রতিলিপি-ত্রুটি ঘটে এবং কিছু ক্ষেত্রে তা বংশগত হতে পারে।",
+        "en": "DNA replication is highly accurate but not perfect, so occasional small copying errors can introduce variations that may be inherited.",
+        "hi": "DNA की प्रतिकृति बनना बहुत सटीक होता है, लेकिन पूर्णतः सटीक नहीं; इसलिए कभी-कभी छोटी प्रतिकृति त्रुटियाँ होती हैं और कुछ मामलों में वे वंशानुगत हो सकती हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    }
+  ]
 }
