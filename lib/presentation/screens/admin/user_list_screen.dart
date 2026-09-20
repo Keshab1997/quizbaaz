@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../core/constants/app_colors.dart';
 import '../../../data/services/shop_service.dart';
+import '../../../data/services/trusted_ops_service.dart';
 import '../../../l10n/app_strings.dart';
 
 /// Screen to view all users or guests from Firestore.
@@ -348,7 +349,22 @@ class _UserListScreenState extends State<UserListScreen> {
   }
 
   Future<void> _toggleAdmin(Map<String, dynamic> user) async {
-    final ok = await ShopService.updateUser(_userId(user), {'is_admin': user['is_admin'] != true});
+    // Authority is the `admin` custom claim issued by the setAdmin callable
+    // (functions/src/admin.ts) — a client write to `is_admin` alone is denied
+    // by firestore.rules and can never grant authority. Issue/revoke the
+    // claim first, then mirror the display flag (succeeds when the caller
+    // already holds the claim).
+    final uid = _userId(user);
+    final grant = user['is_admin'] != true;
+    final claimOk = await TrustedOpsService.setAdmin(uid: uid, admin: grant);
+    if (!mounted) return;
+    if (!claimOk) {
+      _showSnack(
+          '❌ ${ShopService.lastError ?? 'Admin claim failed — need admin claim or bootstrap account'}',
+          false);
+      return;
+    }
+    final ok = await ShopService.updateUser(uid, {'is_admin': grant});
     if (!mounted) return;
     _showSnack(ok ? '✅ User role updated' : '❌ ${ShopService.lastError ?? 'Failed to update role'}', ok);
     if (ok) setState(_refreshUsers);

@@ -11,6 +11,8 @@ import 'package:flutter/foundation.dart';
 ///   * [submitDailyResult] — server-computed, once-per-day daily credit
 ///   * [purchaseItem]      — atomic server-side wallet deduct + grant
 ///   * [resolveBattle]     — server-declared battle winner
+///   * [setAdmin]          — grant/revoke the `admin` custom claim
+///     (functions/src/admin.ts; bootstrap via INITIAL_ADMIN_UID secret).
 ///
 /// The app stays offline-first: every call here is best-effort. When
 /// Firebase is not initialised, the functions are not deployed, the network
@@ -72,6 +74,20 @@ class TrustedOpsService {
     required String purchaseId,
   }) async {
     await _call('purchaseItem', {'itemId': itemId, 'purchaseId': purchaseId});
+  }
+
+  /// Grants or revokes the `admin` custom claim for [uid] via the
+  /// `setAdmin` callable. The caller must already hold the claim, or be the
+  /// bootstrap account (INITIAL_ADMIN_UID). Returns true on success.
+  ///
+  /// Authority lives in the custom claim — never in a client-editable
+  /// `is_admin` profile field (firestore.rules denies client writes to it).
+  static Future<bool> setAdmin({
+    required String uid,
+    required bool admin,
+  }) async {
+    final receipt = await _call('setAdmin', {'uid': uid, 'admin': admin});
+    return receipt != null && receipt['ok'] == true;
   }
 
   /// Asks the server to settle a finished room (declares the remote winner).

@@ -85,10 +85,14 @@ service cloud.firestore {
       }
 
       // Gifts are dispatched by the trusted backend/admin only. Clients may
-      // read their own gifts but can neither mint nor delete them.
+      // read their own gifts but can neither mint nor modify them. Owners may
+      // delete their own gifts so account-deletion cleanup can finish from
+      // the client; the orphan remainder is swept by the backend via
+      // deletion_requests (R15).
       match /gifts/{giftId} {
         allow read: if isOwner(uid);
-        allow write: if isAdmin();
+        allow create, update: if isAdmin();
+        allow delete: if isAdmin() || isOwner(uid);
       }
 
       match /quiz_history/{doc} {
@@ -159,10 +163,16 @@ service cloud.firestore {
     }
 
     // -------------------------------------------------------- battle queue --
+    // Matchmaking ticket. Readable for matchmaking; created/updated by the
+    // owner with a known difficulty. Delete is owner-only WITHOUT a
+    // difficulty check — `request.resource` is null on delete, so folding
+    // delete into a `write` rule with a difficulty guard would deny every
+    // account-deletion cleanup of battle_queue (R15).
     match /battle_queue/{uid} {
       allow read: if signedIn();
-      allow write: if isOwner(uid)
+      allow create, update: if isOwner(uid)
         && validDifficulty().hasAny([request.resource.data.get('difficulty', '')]);
+      allow delete: if isOwner(uid);
     }
 
     // ------------------------------------------------------- battle rooms --
@@ -265,14 +275,16 @@ service cloud.firestore {
 
         // A player writes only their own entry, with a sane score bound
         // (daily max is 10 questions x 10 pts x double-points = 200; 1000
-        // leaves headroom for config changes).
+        // leaves headroom for config changes). time_seconds may be 0 on a
+        // degenerate client clock — rejecting 0 turned a valid play into a
+        // permanently queued retry, so the bound is >= 0.
         allow create: if isOwner(uid)
           && request.resource.data['user_id'] == uid
           && request.resource.data['score'] is number
           && request.resource.data['score'] >= 0
           && request.resource.data['score'] <= 1000
           && request.resource.data.get('time_seconds', 0) is number
-          && request.resource.data.get('time_seconds', 0) > 0;
+          && request.resource.data.get('time_seconds', 0) >= 0;
 
         allow update: if isOwner(uid)
           && request.resource.data['user_id'] == uid

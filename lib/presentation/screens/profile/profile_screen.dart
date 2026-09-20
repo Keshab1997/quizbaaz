@@ -1502,6 +1502,10 @@ Future<void> _handleGoogleSignIn(BuildContext context) async {
         user.displayName ?? S.profilePlayerFallback,
         user.email ?? 'player@quizbaaz.app',
         photoURL: user.photoURL?.toString(),
+        // Identity must be the Auth uid (matches firestore.rules isOwner).
+        // Omitting this keyed the profile doc by email, splitting one human
+        // across two user docs (email-doc vs uid-doc).
+        uid: user.uid,
       );
 
       messenger.showSnackBar(
