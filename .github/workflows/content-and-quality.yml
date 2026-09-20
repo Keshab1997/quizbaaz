@@ -65,7 +65,8 @@ jobs:
 
   refresh-question-bank:
     name: pull admin questions into the bundle
-    needs: quality
+    # Deliberately NOT `needs: quality`: a failing widget test must not block the
+    # weekly content refresh. This job only opens a PR, where `quality` runs again.
     if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:

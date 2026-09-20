@@ -25,6 +25,15 @@ class OneSignalService {
   bool _clickBound = false;
   bool _foregroundBound = false;
 
+  /// Widget and unit tests have no platform channels, so the plugin's async
+  /// work (`OneSignal#initialize`, `#addNativeClickListener`) fails *after* the
+  /// test body finished and fails the test — and `addClickListener` is `void`
+  /// in the SDK, so its future cannot be awaited or caught. Tests that touch a
+  /// code path leading here (language switch, profile save, bootstrap) set this
+  /// in `setUpAll`. Production never sets it.
+  @visibleForTesting
+  static bool disabledForTests = false;
+
   /// Set from `main.dart` to [AppNavigator.handleOpen]. Kept as a callback
   /// so this service never imports presentation.
   static void Function(String? open)? onNotificationOpen;
@@ -43,7 +52,7 @@ class OneSignalService {
   /// Initialise the SDK and the click listener. Call right after `runApp`
   /// so a notification that launched a killed app still has a listener.
   Future<void> bootstrap() async {
-    if (!isSupported || !OneSignalConfig.isConfigured) return;
+    if (disabledForTests || !isSupported || !OneSignalConfig.isConfigured) return;
     try {
       await _ensureReady().timeout(const Duration(seconds: 8));
     } catch (e) {
@@ -54,7 +63,7 @@ class OneSignalService {
   /// Login, tags, and opt-in/out from Hive + Firebase. Called whenever
   /// the local reminder window is rebuilt.
   Future<void> syncFromHive() async {
-    if (!isSupported || !OneSignalConfig.isConfigured) return;
+    if (disabledForTests || !isSupported || !OneSignalConfig.isConfigured) return;
     try {
       await _ensureReady();
       final enabled =
@@ -88,7 +97,12 @@ class OneSignalService {
   }
 
   Future<void> logout() async {
-    if (!isSupported || !OneSignalConfig.isConfigured || !_ready) return;
+    if (disabledForTests ||
+        !isSupported ||
+        !OneSignalConfig.isConfigured ||
+        !_ready) {
+      return;
+    }
     try {
       await OneSignal.logout();
     } catch (e) {
@@ -98,7 +112,9 @@ class OneSignalService {
 
   Future<void> _ensureReady() async {
     if (_ready) return;
-    OneSignal.initialize(OneSignalConfig.appId);
+    // `Future<void>` in the SDK: awaiting keeps a plugin failure inside the
+    // caller's try/catch instead of leaking it as an unhandled async error.
+    await OneSignal.initialize(OneSignalConfig.appId);
     if (!_clickBound) {
       _clickBound = true;
       OneSignal.Notifications.addClickListener(_onClick);

@@ -11,6 +11,7 @@ import 'package:quizbaaz/data/providers/locale_provider.dart';
 import 'package:quizbaaz/data/providers/quiz_provider.dart';
 import 'package:quizbaaz/data/providers/user_provider.dart';
 import 'package:quizbaaz/data/services/hive_service.dart';
+import 'package:quizbaaz/data/services/onesignal_service.dart';
 import 'package:quizbaaz/l10n/app_strings.dart';
 import 'package:quizbaaz/l10n/strings_bn.dart';
 import 'package:quizbaaz/l10n/strings_en.dart';
@@ -23,6 +24,9 @@ void main() {
 
   setUpAll(() async {
     TestWidgetsFlutterBinding.ensureInitialized();
+    // No platform channels exist here, and OneSignal's click-listener call is
+    // `void` in the SDK — its failure cannot be awaited, only avoided.
+    OneSignalService.disabledForTests = true;
     tempDir = await Directory.systemTemp.createTemp('quizbaaz_test_');
     Hive.init(tempDir.path);
     await HiveService.initialize();
