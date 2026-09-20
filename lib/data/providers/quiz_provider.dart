@@ -353,6 +353,10 @@ class QuizProvider extends ChangeNotifier {
     _abandoned = true;
     _runGeneration++;
     _timer?.cancel();
+    // The run is over: nothing is loading any more. Without this the provider
+    // stayed in its loading state after a quit (the screen had already popped,
+    // so nothing noticed — except the next cold read of `isLoading`).
+    _isLoading = false;
     notifyListeners();
   }
 

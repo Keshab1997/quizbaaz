@@ -1,6 +1,9 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:hive/hive.dart';
+import 'package:quizbaaz/data/services/hive_service.dart';
 import 'package:quizbaaz/data/models/localized_text.dart';
 import 'package:quizbaaz/data/models/question_model.dart';
 import 'package:quizbaaz/data/providers/quiz_provider.dart';
@@ -32,6 +35,22 @@ QuestionModel _question(String id) => QuestionModel(
     );
 
 void main() {
+  late Directory tempDir;
+
+  setUpAll(() async {
+    TestWidgetsFlutterBinding.ensureInitialized();
+    tempDir = await Directory.systemTemp.createTemp('quizbaaz_lifecycle_test_');
+    Hive.init(tempDir.path);
+    // QuizProvider.startChapterQuiz plays a sound and reads its settings from
+    // Hive, so the box has to exist before a run can start.
+    await HiveService.initialize();
+  });
+
+  tearDownAll(() async {
+    await Hive.close();
+    if (tempDir.existsSync()) tempDir.deleteSync(recursive: true);
+  });
+
   test('quitting while a chapter is loading ignores its late result', () async {
     final result = Completer<List<QuestionModel>>();
     final quiz = QuizProvider(
