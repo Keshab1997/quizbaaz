@@ -461,14 +461,22 @@ class HiveService {
   }
 
   /// Returns the decoded cached value, or null when missing / expired.
-  /// Pass [maxAge] to reject stale entries; omit it to accept any age.
-  static dynamic cacheGet(String key, {Duration? maxAge}) {
+  ///
+  /// [maxAge] rejects entries older than the window; [allowStale] returns them
+  /// anyway. The second form is what keeps a chapter playable with no network:
+  /// a slightly old list of questions beats an empty screen, and the caller can
+  /// refresh in the background instead of blocking on a request that will fail.
+  static dynamic cacheGet(
+    String key, {
+    Duration? maxAge,
+    bool allowStale = false,
+  }) {
     final entry = _cacheBox.get(key);
     if (entry is! Map) return null;
     final ts = (entry['ts'] as num?)?.toInt();
     final raw = entry['data'];
     if (ts == null || raw is! String) return null;
-    if (maxAge != null) {
+    if (maxAge != null && !allowStale) {
       final age = DateTime.now().millisecondsSinceEpoch - ts;
       if (age > maxAge.inMilliseconds) return null;
     }
@@ -484,8 +492,9 @@ class HiveService {
   static List<Map<String, dynamic>> cacheGetList(
     String key, {
     Duration? maxAge,
+    bool allowStale = false,
   }) {
-    final value = cacheGet(key, maxAge: maxAge);
+    final value = cacheGet(key, maxAge: maxAge, allowStale: allowStale);
     if (value is! List) return const [];
     return value
         .whereType<Map>()
