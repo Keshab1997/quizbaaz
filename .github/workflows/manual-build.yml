@@ -1,0 +1,42 @@
+name: Manual Android Build
+
+# Manual APK/AAB via the shared flutter-builder workflow.
+# Actions → Manual Android Build → Run workflow → pick apk or aab.
+# AAB needs the signing secrets (see docs/17_PLAY_STORE_RELEASE.md).
+# AdMob IDs come from repo Variables when set; blank values are skipped
+# so the app falls back to Google's test ad units (see AdConfig).
+
+on:
+  workflow_dispatch:
+    inputs:
+      format:
+        description: Which Android file should be built?
+        required: true
+        type: choice
+        options:
+          - apk
+          - aab
+        default: apk
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    uses: Keshab1997/flutter-builder/.github/workflows/flutter-build.yml@v1.3.0
+    with:
+      flutter-channel: stable
+      build-apk: ${{ inputs.format == 'apk' }}
+      build-aab: ${{ inputs.format == 'aab' }}
+      artifact-retention-days: 14
+      dart-defines: |
+        ADMOB_APP_ID=${{ vars.ADMOB_APP_ID }}
+        ADMOB_BANNER_ID=${{ vars.ADMOB_BANNER_ID }}
+        ADMOB_INTERSTITIAL_ID=${{ vars.ADMOB_INTERSTITIAL_ID }}
+      build-env: |
+        ADMOB_APP_ID=${{ vars.ADMOB_APP_ID }}
+    secrets:
+      ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+      KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+      KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+      KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}

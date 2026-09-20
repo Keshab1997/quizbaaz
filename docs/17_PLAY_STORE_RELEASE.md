@@ -104,7 +104,10 @@ python3 tool/verify_l10n.py
 python3 tool/validate_questions.py
 flutter analyze
 flutter test
-# Run the AdMob-injected build command above.
+# Or build in CI (Actions tab) — AdMob IDs come from repo Variables when
+# set, otherwise the app falls back to Google's test ad units:
+#   Manual Android Build → Run workflow (apk/aab) for a test artifact;
+#   Publish Android Release → Run workflow for a signed APK+AAB GitHub Release.
 ```
 
 Then:

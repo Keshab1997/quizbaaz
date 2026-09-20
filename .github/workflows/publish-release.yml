@@ -1,0 +1,40 @@
+name: Publish Android Release
+
+# Wrapper-first caller: the release policy (build, sign, notes, tag, upload)
+# lives in the builder repo, so this file stays small.
+# Actions → Publish Android Release → Run workflow.
+# Needs signing secrets + `contents: write` (see docs/17_PLAY_STORE_RELEASE.md).
+# Bump pubspec.yaml version in a PR *before* running (e.g. "chore: bump
+# version to 1.0.1+2") — the release tag is v<version-name> from pubspec.
+
+on:
+  workflow_dispatch:
+    inputs:
+      draft:
+        description: Create the GitHub Release as a draft?
+        required: false
+        type: boolean
+        default: false
+      prerelease:
+        description: Mark this as a prerelease?
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    uses: Keshab1997/flutter-builder/.github/workflows/publish-release.yml@v1.3.0
+    with:
+      app-name: QuizBaaz
+      release-draft: ${{ inputs.draft }}
+      release-prerelease: ${{ inputs.prerelease }}
+      dart-defines: |
+        ADMOB_APP_ID=${{ vars.ADMOB_APP_ID }}
+        ADMOB_BANNER_ID=${{ vars.ADMOB_BANNER_ID }}
+        ADMOB_INTERSTITIAL_ID=${{ vars.ADMOB_INTERSTITIAL_ID }}
+      build-env: |
+        ADMOB_APP_ID=${{ vars.ADMOB_APP_ID }}
+    secrets: inherit
