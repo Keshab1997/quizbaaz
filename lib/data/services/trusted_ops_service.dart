@@ -27,20 +27,30 @@ class TrustedOpsService {
     }
   }
 
-  static Future<void> _call(String name, Map<String, dynamic> data) async {
+  /// Calls a trusted function and returns its receipt (the callable's result
+  /// data), or null when the backend is unavailable/unreachable.
+  static Future<Map<String, dynamic>?> _call(
+    String name,
+    Map<String, dynamic> data,
+  ) async {
     final functions = _functions;
-    if (functions == null) return;
+    if (functions == null) return null;
     try {
-      await functions.httpsCallable(name).call(data);
+      final result = await functions.httpsCallable(name).call(data);
+      final value = result.data;
+      if (value is Map) return Map<String, dynamic>.from(value);
+      return null;
     } catch (e) {
       // Expected while the functions are not deployed yet (or offline).
       debugPrint('TrustedOps: $name failed – $e');
+      return null;
     }
   }
 
   /// Credits today's daily quiz result server-side (idempotent per day via
   /// `users/{uid}/daily_claims/{date}`).
-  static Future<void> submitDailyResult({
+  /// Receipt of a settlement call: `{ok, winner, reason}` or null offline.
+  static Future<Map<String, dynamic>?> submitDailyResult({
     required String date,
     required int score,
     required int correct,
@@ -60,12 +70,22 @@ class TrustedOpsService {
   static Future<void> purchaseItem({
     required String itemId,
     required String purchaseId,
-  }) {
-    return _call('purchaseItem', {'itemId': itemId, 'purchaseId': purchaseId});
+  }) async {
+    await _call('purchaseItem', {'itemId': itemId, 'purchaseId': purchaseId});
   }
 
   /// Asks the server to settle a finished room (declares the remote winner).
-  static Future<void> resolveBattle({required String roomId}) {
-    return _call('resolveBattle', {'roomId': roomId});
+  ///
+  /// [matchId] identifies the session inside the room, so a rematch reusing
+  /// the same room id is settled as its own match (R11). Returns the receipt
+  /// `{ok, winner, reason}` when the backend answered, null when it did not.
+  static Future<Map<String, dynamic>?> resolveBattle({
+    required String roomId,
+    String? matchId,
+  }) {
+    return _call('resolveBattle', {
+      'roomId': roomId,
+      if (matchId != null && matchId.isNotEmpty) 'matchId': matchId,
+    });
   }
 }

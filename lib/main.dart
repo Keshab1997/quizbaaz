@@ -24,6 +24,8 @@ import 'data/services/sound_service.dart';
 import 'data/services/sync_service.dart';
 import 'l10n/app_strings.dart';
 import 'presentation/app_navigator.dart';
+import 'presentation/screens/battle/battle_screen.dart';
+import 'presentation/screens/battle/online_battle_screen.dart';
 import 'presentation/screens/splash/splash_screen.dart';
 import 'presentation/widgets/app_background.dart';
 
@@ -141,6 +143,36 @@ class QuizBaazApp extends StatelessWidget {
           builder: (context, child) => AppBackground(
             child: child ?? const SizedBox.shrink(),
           ),
+          // Named routes are registered as a safety net: the arena used to be
+          // opened with `pushNamed('/battle')` while MaterialApp had no
+          // `routes` table and no `onGenerateRoute`, so a challenge accept
+          // died with "Could not find a generator for route /battle" (R10).
+          // The screens now push typed MaterialPageRoutes; these names keep
+          // deep links (and any older call site) working.
+          onGenerateRoute: (settings) {
+            switch (settings.name) {
+              case '/battle':
+                return MaterialPageRoute<void>(
+                  settings: settings,
+                  builder: (_) => const BattleScreen(),
+                );
+              case '/online_battle':
+                return MaterialPageRoute<void>(
+                  settings: settings,
+                  builder: (_) => const OnlineBattleScreen(),
+                );
+              default:
+                // Never throw for an unknown name — a notification payload is
+                // not worth losing the app over. Land on the home screen.
+                debugPrint(
+                  'QuizBaaz: no route for "${settings.name}" — opening home.',
+                );
+                return MaterialPageRoute<void>(
+                  settings: settings,
+                  builder: (_) => const SplashScreen(),
+                );
+            }
+          },
           home: const SplashScreen(),
         ),
       ),

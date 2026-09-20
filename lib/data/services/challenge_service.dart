@@ -2,6 +2,8 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 
+import 'firestore_query_specs.dart';
+
 /// Firestore-backed challenge system for 1v1 battles.
 ///
 /// ## Collection
@@ -68,9 +70,16 @@ class ChallengeService {
     String difficulty = 'normal',
   }) async {
     try {
-      final hasPending = await _hasPendingChallenge(fromUid, targetUid);
-      if (hasPending) {
+      final check = await hasPendingChallenge(fromUid, targetUid);
+      if (check.hasPending) {
         debugPrint('ChallengeService: pending challenge already exists');
+        return null;
+      }
+      if (check.failed) {
+        // A denied/failed duplicate check must not create a second pending
+        // challenge for the same pair — the sender gets no challenge id and
+        // the UI reports it instead of silently double-sending.
+        debugPrint('ChallengeService: duplicate check failed – ${check.error}');
         return null;
       }
 
@@ -145,12 +154,9 @@ class ChallengeService {
 
   /// Watches for incoming challenges addressed to [myUid].
   Stream<ChallengeData?> watchIncomingChallenges(String myUid) {
-    return _db
-        .collection(collection)
-        .where('to_uid', isEqualTo: myUid)
-        .where('status', isEqualTo: 'pending')
-        .orderBy('created_at', descending: true)
-        .limit(1)
+    return FirestoreQuerySpecs.challengesIncoming
+        .bind(equals: {'to_uid': myUid, 'status': 'pending'})
+        .apply(_db.collection(collection))
         .snapshots()
         .map((snapshot) {
       if (snapshot.docs.isEmpty) return null;
@@ -178,12 +184,14 @@ class ChallengeService {
 
   /// Watches for outgoing challenges sent by [myUid].
   Stream<ChallengeData?> watchOutgoingChallenge(String myUid) {
-    return _db
-        .collection(collection)
-        .where('from_uid', isEqualTo: myUid)
-        .where('status', whereIn: const ['pending', 'accepted'])
-        .orderBy('created_at', descending: true)
-        .limit(1)
+    return FirestoreQuerySpecs.challengesOutgoing
+        .bind(
+          equals: {'from_uid': myUid},
+          whereIn: const {
+            'status': ['pending', 'accepted'],
+          },
+        )
+        .apply(_db.collection(collection))
         .snapshots()
         .map((snapshot) {
       if (snapshot.docs.isEmpty) return null;
@@ -197,68 +205,88 @@ class ChallengeService {
   // ----------------------------------------- Helpers --------------------
 
   /// Check if there's already a pending challenge between two users.
-  Future<bool> _hasPendingChallenge(String uidOne, String uidTwo) async {
+  ///
+  /// Two participant-scoped queries instead of one collection-wide scan
+  /// (R17): `allow list` on `battle_challenges` is participant-only, so a
+  /// query that could return a stranger's challenge is denied by the rules —
+  /// and the old scan was also filtered client-side, which rules cannot
+  /// express. The result shape carries the failure instead of reporting a
+  /// denied query as "no duplicate".
+  Future<ChallengeCheck> hasPendingChallenge(
+    String uidOne,
+    String uidTwo,
+  ) async {
+    final col = _db.collection(collection);
     try {
-      final snapshot = await _db
-          .collection(collection)
-          .where('status', isEqualTo: 'pending')
-          .get();
+      final mine = FirestoreQuerySpecs.challengesPendingFromTo
+          .bind(equals: {
+        'from_uid': uidOne,
+        'to_uid': uidTwo,
+        'status': 'pending',
+      })
+          .apply(col);
+      final theirs = FirestoreQuerySpecs.challengesPendingFromTo
+          .bind(equals: {
+        'from_uid': uidTwo,
+        'to_uid': uidOne,
+        'status': 'pending',
+      })
+          .apply(col);
 
-      for (final doc in snapshot.docs) {
-        final data = doc.data();
-        final srcUid = data['from_uid']?.toString() ?? '';
-        final dstUid = data['to_uid']?.toString() ?? '';
-        if ((srcUid == uidOne && dstUid == uidTwo) ||
-            (srcUid == uidTwo && dstUid == uidOne)) {
-          return true;
-        }
-      }
-      return false;
+      final results = await Future.wait([mine.get(), theirs.get()]);
+      final count = results.fold<int>(
+        0,
+        (sum, snapshot) => sum + snapshot.docs.length,
+      );
+      return ChallengeCheck(count: count);
     } catch (e) {
-      return false;
+      debugPrint('ChallengeService: hasPendingChallenge failed – $e');
+      return ChallengeCheck(count: 0, error: e);
     }
   }
 
-  /// Clean up expired challenges (older than 4x expiry time).
-  Future<void> cleanupExpiredChallenges() async {
-    try {
-      final cutoff = DateTime.now()
-          .subtract(const Duration(seconds: 120))
-          .millisecondsSinceEpoch;
-
-      final snapshot = await _db
-          .collection(collection)
-          .where('created_at', isLessThan: cutoff)
-          .get();
-
-      if (snapshot.docs.isEmpty) return;
-
-      final batch = _db.batch();
-      for (final doc in snapshot.docs) {
-        batch.delete(doc.reference);
-      }
-      await batch.commit();
-    } catch (e) {
-      debugPrint('ChallengeService: cleanup failed – $e');
-    }
+  /// Global cleanup of stale challenges is **not** a client job any more.
+  ///
+  /// The old version ran `where('status', ==, 'pending')` over the whole
+  /// collection and filtered by uid in Dart — a query the participant-only
+  /// rules deny, and one that would have deleted other players' documents if
+  /// the rules had been looser. Expiry is now handled by the TTL policy on
+  /// `expires_at` (see `firestore.indexes.json` + docs/13) and by each player
+  /// expiring their own challenges when they go offline:
+  /// [expireMyChallenges].
+  ///
+  /// Kept as a no-op so older call sites keep compiling; it returns whether
+  /// the caller should stop calling it (always true).
+  Future<bool> cleanupExpiredChallenges() async {
+    debugPrint(
+      'ChallengeService: global cleanup moved to the TTL policy on '
+      'battle_challenges.expires_at — nothing to do on the client.',
+    );
+    return true;
   }
 
-  /// Mark any pending challenges to/from a user as expired when they go offline.
+  /// Mark this player's own pending challenges as expired (they are going
+  /// offline, so nobody should keep waiting on them).
+  ///
+  /// Participant-scoped by construction: two queries, one per direction, each
+  /// filtered by uid + status (R17).
   Future<void> expireMyChallenges(String myUid) async {
+    final col = _db.collection(collection);
     try {
-      final snapshot = await _db
-          .collection(collection)
-          .where('status', isEqualTo: 'pending')
-          .get();
+      final sent = FirestoreQuerySpecs.challengesPendingSent
+          .bind(equals: {'from_uid': myUid, 'status': 'pending'})
+          .apply(col);
+      final received = FirestoreQuerySpecs.challengesPendingReceived
+          .bind(equals: {'to_uid': myUid, 'status': 'pending'})
+          .apply(col);
 
-      if (snapshot.docs.isEmpty) return;
+      final results = await Future.wait([sent.get(), received.get()]);
+      final docs = [...results[0].docs, ...results[1].docs];
+      if (docs.isEmpty) return;
 
       final batch = _db.batch();
-      for (final doc in snapshot.docs) {
-        final data = doc.data();
-        if (data['from_uid'] == myUid || data['to_uid'] == myUid) {
-          batch.update(doc.reference, {'status': 'expired'});
-        }
+      for (final doc in docs) {
+        batch.update(doc.reference, {'status': 'expired'});
       }
       await batch.commit();
     } catch (e) {
@@ -348,4 +376,19 @@ class ChallengeData {
       acceptedAtMs: (data['accepted_at'] as num?)?.toInt(),
     );
   }
+}
+
+/// Result of a duplicate-challenge check.
+///
+/// A denied query or a missing index used to look exactly like "no duplicate
+/// exists" — the caller then created a second challenge for the same pair.
+/// [error] keeps those two cases apart (R17).
+class ChallengeCheck {
+  final int count;
+  final Object? error;
+
+  const ChallengeCheck({required this.count, this.error});
+
+  bool get hasPending => count > 0;
+  bool get failed => error != null;
 }

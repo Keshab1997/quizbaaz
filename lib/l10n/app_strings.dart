@@ -449,6 +449,11 @@ class S {
   static String get battleWinTitle => raw('battleWinTitle');
   static String get battleDrawTitle => raw('battleDrawTitle');
   static String get battleLoseTitle => raw('battleLoseTitle');
+  static String get battleGuestRestricted => raw('battleGuestRestricted');
+  static String get battleNoQuestions => raw('battleNoQuestions');
+  static String get battleOpponentLeft => raw('battleOpponentLeft');
+  static String get battleStartFailed => raw('battleStartFailed');
+  static String get battleMatchmakingBroken => raw('battleMatchmakingBroken');
 
   // ---- language
   static String get languageTitle => raw('languageTitle');

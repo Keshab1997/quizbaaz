@@ -117,10 +117,11 @@ service cloud.firestore {
               || request.auth.uid == resource.data['to_uid']);
       }
 
-      // Queries are additionally filtered by the `get` permission below, so
-      // a signed-in user can only ever see challenges they are a part of.
-      allow get: if isParticipant();
-      allow list: if signedIn();
+      // Access control is per document — rules are not filters, so the same
+      // condition governs `get` and `list`: a query that could return someone
+      // else's challenge is denied outright, and the client therefore has to
+      // scope every challenge query to its own uid (R17).
+      allow get, list: if isParticipant();
 
       // Only the sender may create, always as a pending challenge from
       // themselves, with a known difficulty.
@@ -168,16 +169,19 @@ service cloud.firestore {
               || request.auth.uid == resource.data.players.b.uid);
       }
 
-      allow get: if signedIn()
-        && (request.auth.uid == resource.data.players.a.uid
-            || request.auth.uid == resource.data.players.b.uid);
-      allow list: if signedIn();
+      // Rooms stay private to their two players for reads *and* list
+      // queries (the account-deletion / cleanup sweeps filter on
+      // `players.a.uid` / `players.b.uid`, which this rule allows; an
+      // unscoped sweep is denied) — R17.
+      allow get, list: if isPlayer();
 
-      // Creator must be one of the two players, room starts active with no
-      // winner.
+      // Creator must be one of the two players, room starts with no winner.
+      // `created` is the normal first state (R11); `active` stays accepted so
+      // an older client can still publish a room.
       allow create: if signedIn()
-        && request.resource.data['status'] == 'active'
+        && request.resource.data['status'] in ['created', 'active']
         && request.resource.data.get('winner') == null
+        && request.resource.data.get('match_id') is string
         && (request.auth.uid == request.resource.data.players.a.uid
             || request.auth.uid == request.resource.data.players.b.uid);
 
@@ -192,7 +196,16 @@ service cloud.firestore {
         && request.resource.data['created_at'] == resource.data['created_at']
         && request.resource.data.get('questions') == resource.data.get('questions')
         && request.resource.data.get('winner') == resource.data.get('winner')
+        // Explicit lifecycle: created -> ready -> active -> finished, with
+        // `abandoned` reachable from any live state (forfeit, failed start).
+        // Anything else (e.g. finished -> active) is rejected.
+        && request.resource.data['match_id'] == resource.data.get('match_id')
         && (request.resource.data['status'] == resource.data['status']
+            || request.resource.data['status'] == 'abandoned'
+            || (resource.data['status'] == 'created'
+                && request.resource.data['status'] in ['ready', 'active', 'finished'])
+            || (resource.data['status'] == 'ready'
+                && request.resource.data['status'] in ['active', 'finished'])
             || (resource.data['status'] == 'active'
                 && request.resource.data['status'] == 'finished'))
         && (
@@ -205,6 +218,15 @@ service cloud.firestore {
 
       allow delete: if isAdmin()
         || (isPlayer() && resource.data['status'] == 'finished');
+    }
+
+    // ------------------------------------------------------ daily quiz pack --
+    // The day's competition packet (question ids, version, deadline, scoring
+    // contract) is published by the trusted backend only. Clients read it and
+    // can never edit who plays what (R12).
+    match /daily_quiz_packets/{packetId} {
+      allow read: if signedIn();
+      allow write: if false;
     }
 
     // ---------------------------------------------------------- leaderboard --

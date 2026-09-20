@@ -366,6 +366,11 @@ const Map<String, String> kStringsHi = {
   'battleWinTitle': 'आप जीत गए!',
   'battleDrawTitle': 'बराबरी!',
   'battleLoseTitle': 'आप हार गए!',
+  'battleGuestRestricted': 'मेहमान लाइव 1v1 मैच नहीं खेल सकते। चुनौती देने के लिए साइन इन करें।',
+  'battleNoQuestions': 'अभी कोई सवाल उपलब्ध नहीं है — थोड़ी देर बाद कोशिश करें।',
+  'battleOpponentLeft': 'वह खिलाड़ी अब उपलब्ध नहीं है।',
+  'battleStartFailed': 'यह मैच शुरू नहीं हो सका। फिर कोशिश करें।',
+  'battleMatchmakingBroken': 'मैचमेकिंग अभी उपलब्ध नहीं है। बाद में कोशिश करें।',
 
   // -------------------------------------------------------------- language --
   'languageTitle': 'भाषा',
