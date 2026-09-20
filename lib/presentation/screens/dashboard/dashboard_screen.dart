@@ -1576,6 +1576,27 @@ class _MarqueeTextState extends State<_MarqueeText>
 
         final textWidth = painter.width;
         final textHeight = painter.height;
+        final hasFiniteGeometry = constraints.hasBoundedWidth &&
+            constraints.maxWidth.isFinite &&
+            textWidth.isFinite &&
+            textHeight.isFinite;
+
+        if (!hasFiniteGeometry) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            if (mounted && _controller.isAnimating) {
+              _controller.stop();
+              _controller.reset();
+            }
+          });
+          return NameEffectText(
+            widget.text,
+            effectId: widget.effectId,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: widget.style,
+          );
+        }
+
         final overflow = textWidth > constraints.maxWidth;
 
         // Drive the animation controller outside of build.
@@ -1610,28 +1631,30 @@ class _MarqueeTextState extends State<_MarqueeText>
               maxWidth: double.infinity,
               child: AnimatedBuilder(
                 animation: _controller,
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    NameEffectText(
+                      widget.text,
+                      effectId: widget.effectId,
+                      maxLines: 1,
+                      style: widget.style,
+                    ),
+                    const SizedBox(width: _gap),
+                    NameEffectText(
+                      widget.text,
+                      effectId: widget.effectId,
+                      maxLines: 1,
+                      style: widget.style,
+                    ),
+                  ],
+                ),
                 builder: (context, child) {
                   final dx = -_controller.value * (textWidth + _gap);
+                  if (!dx.isFinite) return child!;
                   return Transform.translate(
                     offset: Offset(dx, 0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        NameEffectText(
-                          widget.text,
-                          effectId: widget.effectId,
-                          maxLines: 1,
-                          style: widget.style,
-                        ),
-                        const SizedBox(width: _gap),
-                        NameEffectText(
-                          widget.text,
-                          effectId: widget.effectId,
-                          maxLines: 1,
-                          style: widget.style,
-                        ),
-                      ],
-                    ),
+                    child: child,
                   );
                 },
               ),
@@ -1760,11 +1783,15 @@ class _BattleArenaCardState extends State<_BattleArenaCard>
               child: Stack(
                 children: [
                   // ── Animated background stars / sparks ──
-                  AnimatedBuilder(
-                    animation: _flashAnim,
-                    builder: (_, __) => CustomPaint(
-                      size: const Size(double.infinity, 200),
-                      painter: _ArenaBgPainter(progress: _flashAnim.value),
+                  Positioned.fill(
+                    child: IgnorePointer(
+                      child: AnimatedBuilder(
+                        animation: _flashAnim,
+                        builder: (_, __) => CustomPaint(
+                          painter: _ArenaBgPainter(progress: _flashAnim.value),
+                          child: const SizedBox.expand(),
+                        ),
+                      ),
                     ),
                   ),
 
@@ -2151,6 +2178,13 @@ class _ArenaBgPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
+    if (!size.width.isFinite ||
+        !size.height.isFinite ||
+        size.isEmpty ||
+        !progress.isFinite) {
+      return;
+    }
+
     final w = size.width;
     final h = size.height;
     final cx = w / 2;

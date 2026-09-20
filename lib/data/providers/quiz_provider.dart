@@ -18,10 +18,11 @@ import '../../l10n/app_strings.dart';
 /// Drives a quiz run. All timings and reward amounts come from
 /// [UserProvider.config] (Hive/Firestore), never from magic numbers here.
 class QuizProvider extends ChangeNotifier {
-  final QuizRepository _repository = QuizRepository();
+  final QuizRepository _repository;
   final UserProvider _userProvider;
 
-  QuizProvider(this._userProvider);
+  QuizProvider(this._userProvider, {QuizRepository? repository})
+      : _repository = repository ?? QuizRepository();
 
   List<QuestionModel> _questions = [];
 
@@ -43,6 +44,11 @@ class QuizProvider extends ChangeNotifier {
   /// tick/timeout sounds in the background and eventually grants rewards for
   /// a run the player walked away from.
   bool _abandoned = false;
+
+  /// Bumped by every start and every quit. Async work carries the generation it
+  /// belongs to, so a slow Firestore read that resolves after the player left
+  /// cannot hand questions to a screen that is already gone.
+  int _runGeneration = 0;
 
   /// True after [quitQuiz] until the next run starts.
   bool get isAbandoned => _abandoned;
@@ -187,13 +193,19 @@ class QuizProvider extends ChangeNotifier {
   /// Initialize the Daily Quiz.
   Future<void> startDailyQuiz() async {
     _resetQuizState();
+    final runGeneration = _runGeneration;
     _isDailyQuiz = true;
     _isLoading = true;
     notifyListeners();
 
     final sw = Stopwatch()..start();
-    _questions = _shuffleOptions(await _repository.getDailyQuizQuestions());
+    final dailyQuestions = await _repository.getDailyQuizQuestions();
     await _holdIntro(sw, _dailyIntroMin);
+    // The player may have quit (or started another run) while the questions
+    // were loading — that request must not revive the abandoned screen.
+    if (runGeneration != _runGeneration) return;
+
+    _questions = _shuffleOptions(dailyQuestions);
     _isLoading = false;
 
     // Check for active boosters
@@ -231,6 +243,7 @@ class QuizProvider extends ChangeNotifier {
     bool practice = false,
   }) async {
     _resetQuizState();
+    final runGeneration = _runGeneration;
     _isDailyQuiz = false;
     _chapterId = chapterId ?? jsonFilePath;
     _categoryTitle = categoryTitle;
@@ -248,6 +261,7 @@ class QuizProvider extends ChangeNotifier {
       jsonFilePath,
       chapterId: chapterId,
     );
+    if (runGeneration != _runGeneration) return;
     _chapterQuestionCount = all.length;
 
     final start = setStartIndex(setIndex);
@@ -337,12 +351,18 @@ class QuizProvider extends ChangeNotifier {
   /// the background. The next [startDailyQuiz]/[startChapterQuiz] resets.
   void quitQuiz() {
     _abandoned = true;
+    _runGeneration++;
     _timer?.cancel();
+    // The run is over: nothing is loading any more. Without this the provider
+    // stayed in its loading state after a quit (the screen had already popped,
+    // so nothing noticed — except the next cold read of `isLoading`).
+    _isLoading = false;
     notifyListeners();
   }
 
   void _resetQuizState() {
     _timer?.cancel();
+    _runGeneration++;
     _abandoned = false;
     // Each quiz starts in the app language; a peek at another language is a
     // per-run decision, not a hidden setting that quietly persists.

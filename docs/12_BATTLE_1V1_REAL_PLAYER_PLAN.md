@@ -125,7 +125,7 @@ Room doc shape:
 | phase | view | notes |
 |---|---|---|
 | `setup` | existing difficulty picker | updated copy: 5 Qs, mixed chapters, no repeats, real/bot |
-| `searching` | **NEW** radar/pulse animation, elapsed seconds, Cancel | bot fallback after `battle_search_seconds` |
+| `searching` | **NEW** radar/pulse animation, elapsed seconds, Cancel | bot fallback after `battle_search_seconds`; Cancel/Back stops timers and detaches any pending room or challenge listener |
 | `found` | **NEW** cricket-style **VS intro**: two player cards slide in, glowing "VS" slams, LIVE PLAYER / BOT badge, confetti for real matches | ~3 s, then countdown |
 | `countdown / question / reveal` | existing arena | opponent name+avatar (real) or bot; scoreboard + streak badges; points breakdown on reveal |
 | `finished` | existing result | real opponent details, forfeit banner, coins/gems |

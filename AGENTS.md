@@ -6,7 +6,7 @@ change the code so a statement below becomes false, update this file in the
 same commit.
 
 **Owner:** Keshab Sarkar ([@Keshab1997](https://github.com/Keshab1997)) ·
-**Repo:** `Keshab1997/quizbaaz-flutter` · **Stack:** Flutter 3.x / Dart 3.x
+**Repo:** `Keshab1997/quizbaaz` · **Stack:** Flutter 3.x / Dart 3.x
 
 ---
 
@@ -272,7 +272,9 @@ row. If you add a reward, gate it on `isPractice`.
 `QuizProvider` owns the timer, lifelines, scoring and anti-cheat. Read it fully
 before editing — lifeline state (`fiftyFiftyUsed`, `freezeUsed`, `skipUsed`,
 `hintUsed`, `audienceUsed`, stock counters) resets per question and the reset
-points are easy to miss.
+points are easy to miss. A deliberate exit must call `quitQuiz()` so it
+cancels the timer, clears the run, and invalidates any delayed callback before
+its route is popped; both app-bar and system Back must follow that same path.
 
 **Anything that persists**
 Write to Hive first, then enqueue/push to Firestore. Never the reverse.

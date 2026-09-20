@@ -110,6 +110,7 @@ class BattleProvider extends ChangeNotifier {
   BattleOpponent? _lastOpponent; // persists across reset for revenge match
   final ChallengeService _challengeService = ChallengeService();
   String? _revengeChallengeId;
+  StreamSubscription<ChallengeData?>? _revengeChallengeSub;
   bool _isBotMatch = true;
 
   // -------------------------------------------------------------- player --
@@ -342,6 +343,7 @@ class BattleProvider extends ChangeNotifier {
 
   Future<void> startBattle(BattleDifficulty difficulty) async {
     _disposeTimers();
+    _cancelPendingRevengeChallenge();
     await _roomSub?.cancel();
     _roomSub = null;
 
@@ -466,21 +468,29 @@ class BattleProvider extends ChangeNotifier {
   
   /// Watch a revenge challenge and start the battle when accepted.
   void _watchRevengeChallenge(String challengeId, BattleOpponent opponent) {
-    _challengeService.watchChallengeStatus(challengeId).listen((challenge) {
-      if (challenge == null) return;
-      
+    _stopRevengeChallengeWatcher();
+    _revengeChallengeSub =
+        _challengeService.watchChallengeStatus(challengeId).listen((challenge) {
+      // A listener can deliver one final event while it is being cancelled.
+      // Ignore anything that no longer belongs to the active challenge.
+      if (_revengeChallengeId != challengeId || challenge == null) return;
+
       if (challenge.isAccepted) {
-        // Challenge accepted! Start the battle with this opponent
+        // Challenge accepted! Start the battle with this opponent.
         _revengeChallengeId = null;
+        _stopRevengeChallengeWatcher();
         _startBattleWithOpponent(
           opponentUid: opponent.uid!,
           opponentName: opponent.name,
           opponentAvatar: opponent.avatar,
           difficulty: _difficulty,
         );
-      } else if (challenge.isRejected || challenge.isExpired || challenge.isCancelled) {
-        // Challenge was rejected/expired/cancelled — go back to setup
+      } else if (challenge.isRejected ||
+          challenge.isExpired ||
+          challenge.isCancelled) {
+        // Challenge was rejected/expired/cancelled — go back to setup.
         _revengeChallengeId = null;
+        _stopRevengeChallengeWatcher();
         _phase = BattlePhase.setup;
         notifyListeners();
       }
@@ -562,12 +572,35 @@ class BattleProvider extends ChangeNotifier {
 
   /// Cancel a pending revenge challenge.
   Future<void> cancelRevengeChallenge() async {
-    if (_revengeChallengeId != null) {
-      await _challengeService.cancelChallenge(_revengeChallengeId!);
-      _revengeChallengeId = null;
-      _phase = BattlePhase.setup;
-      notifyListeners();
+    final challengeId = _revengeChallengeId;
+    if (challengeId == null) return;
+
+    _revengeChallengeId = null;
+    _stopRevengeChallengeWatcher();
+    await _challengeService.cancelChallenge(challengeId);
+    _phase = BattlePhase.setup;
+    notifyListeners();
+  }
+
+  void _stopRevengeChallengeWatcher() {
+    final subscription = _revengeChallengeSub;
+    _revengeChallengeSub = null;
+    if (subscription != null) unawaited(subscription.cancel());
+  }
+
+  void _cancelPendingRevengeChallenge() {
+    final challengeId = _revengeChallengeId;
+    _revengeChallengeId = null;
+    _stopRevengeChallengeWatcher();
+    if (challengeId != null) {
+      unawaited(_challengeService.cancelChallenge(challengeId));
     }
+  }
+
+  void _stopRoomWatcher() {
+    final subscription = _roomSub;
+    _roomSub = null;
+    if (subscription != null) unawaited(subscription.cancel());
   }
 
   /// Player intentionally left mid-match → opponent wins instantly.
@@ -585,6 +618,9 @@ class BattleProvider extends ChangeNotifier {
       });
       _roomService.leaveQueue(_userId);
     }
+    // Do not keep receiving live-room updates after the screen that owned the
+    // match has been popped; a late update must not revive its result state.
+    _stopRoomWatcher();
     SoundService.instance.stop('battle_search');
     SoundService.instance.play('ui_back');
     _phase = BattlePhase.setup;
@@ -594,6 +630,7 @@ class BattleProvider extends ChangeNotifier {
   void cancelSearch() {
     if (_phase != BattlePhase.searching) return;
     if (_liveCapable) _roomService.leaveQueue(_userId);
+    _cancelPendingRevengeChallenge();
     _disposeTimers();
     SoundService.instance.stop('battle_search');
     SoundService.instance.play('ui_back');
@@ -1362,8 +1399,8 @@ class BattleProvider extends ChangeNotifier {
   @override
   void dispose() {
     _disposeTimers();
-    _roomSub?.cancel();
-    _roomSub = null;
+    _stopRoomWatcher();
+    _cancelPendingRevengeChallenge();
     if (_liveCapable) {
       _roomService.leaveQueue(_userId);
     }
@@ -1375,8 +1412,8 @@ class BattleProvider extends ChangeNotifier {
   /// Clears all scores, phase, questions, and timers.
   void resetBattle() {
     _disposeTimers();
-    _roomSub?.cancel();
-    _roomSub = null;
+    _stopRoomWatcher();
+    _cancelPendingRevengeChallenge();
 
     _phase = BattlePhase.setup;
     _forfeitWin = false;
