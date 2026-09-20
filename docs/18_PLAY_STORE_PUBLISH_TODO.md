@@ -71,6 +71,9 @@ ADMOB_BANNER_ID=
 ADMOB_INTERSTITIAL_ID=
 ```
 
+- [ ] একই তিনটি মান GitHub repo-র **Settings → Secrets and variables → Actions → Variables**-এ
+  `ADMOB_APP_ID`, `ADMOB_BANNER_ID`, `ADMOB_INTERSTITIAL_ID` নামে রাখুন — Actions-এর
+  release build এখান থেকেই ID নেয় (`docs/17` → "Or let GitHub Actions build it")।
 - [ ] Local development-এ Google test ad IDs ব্যবহার করুন।
 - [ ] নিজের physical test device AdMob test device হিসেবে register করুন।
 - [ ] UMP consent এবং **Privacy choices** entry point পরীক্ষা করুন।
@@ -148,6 +151,12 @@ flutter build appbundle --release \
 ```text
 build/app/outputs/bundle/release/app-release.aab
 ```
+
+- [ ] **অথবা GitHub Actions দিয়ে:** signing secrets (`ANDROID_KEYSTORE_BASE64`,
+  `KEYSTORE_PASSWORD`, `KEY_ALIAS`, `KEY_PASSWORD`) যোগ করে **Actions → Publish
+  Android Release → Run workflow** চালান; GitHub Release-এর
+  `QuizBaaz-v<version>.aab` Play Console-এ upload করুন। শুধু test build দরকার হলে
+  **Manual Android Build** (`ads: test`) ব্যবহার করুন।
 
 - [ ] App Bundle Explorer-এ target API 36 ও signing status যাচাই করুন।
 - [ ] 64-bit/native library ও 16 KB page-size warnings আছে কিনা দেখুন।

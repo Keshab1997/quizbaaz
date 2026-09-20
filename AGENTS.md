@@ -246,6 +246,14 @@ python3 tool/apply_const_hints.py /tmp/analyze.txt
 Run `flutter analyze` **and** `python3 tool/verify_l10n.py` before claiming any
 UI change is done.
 
+Release binaries are built by GitHub Actions, not locally: `manual-build.yml`
+(APK/AAB artifact, test or real AdMob IDs) and `publish-release.yml` (tag +
+GitHub Release, real IDs only) both call the shared
+`Keshab1997/flutter-builder` workflow. AdMob IDs come from repository
+*variables* `ADMOB_*`, signing from the four `ANDROID_KEYSTORE_BASE64` /
+`KEYSTORE_PASSWORD` / `KEY_ALIAS` / `KEY_PASSWORD` *secrets*. Never paste
+either into a workflow file or into `ad_config.dart` — see `docs/17`.
+
 ---
 
 ## 8. Task playbook

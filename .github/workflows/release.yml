@@ -1,0 +1,66 @@
+name: Android Release
+
+# Tag-triggered signed AAB artifact (no GitHub Release publishing).
+# Usage:
+#   git tag v1.0.1
+#   git push origin v1.0.1
+# For a full GitHub Release with notes, use Publish Android Release instead.
+#
+# Values come from Settings → Secrets and variables → Actions:
+#   Variables: ADMOB_APP_ID, ADMOB_BANNER_ID, ADMOB_INTERSTITIAL_ID
+#   Secrets:   ANDROID_KEYSTORE_BASE64, KEYSTORE_PASSWORD, KEY_ALIAS, KEY_PASSWORD
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: read
+
+jobs:
+  # A tag AAB is meant for the Play Console, so it must never ship with the
+  # test ad units — checked up front, mirroring publish-release.yml.
+  check-admob-config:
+    name: AdMob variables are set
+    runs-on: ubuntu-latest
+    env:
+      ADMOB_APP_ID: ${{ vars.ADMOB_APP_ID }}
+      ADMOB_BANNER_ID: ${{ vars.ADMOB_BANNER_ID }}
+      ADMOB_INTERSTITIAL_ID: ${{ vars.ADMOB_INTERSTITIAL_ID }}
+    steps:
+      - name: Validate
+        run: |
+          missing=0
+          for name in ADMOB_APP_ID ADMOB_BANNER_ID ADMOB_INTERSTITIAL_ID; do
+            if [ -z "${!name}" ]; then
+              echo "::error::Repository variable $name is not set (Settings → Secrets and variables → Actions → Variables)."
+              missing=1
+            fi
+          done
+          [ "$missing" -eq 0 ] || exit 1
+          if [[ "$ADMOB_APP_ID" == ca-app-pub-3940256099942544* ]]; then
+            echo "::error::ADMOB_APP_ID is Google's TEST app ID — a Play upload must use the real one."
+            exit 1
+          fi
+          echo "AdMob variables present and well-formed."
+
+  release-aab:
+    needs: check-admob-config
+    uses: Keshab1997/flutter-builder/.github/workflows/flutter-build.yml@v1.3.0
+    with:
+      flutter-channel: stable
+      build-apk: false
+      build-aab: true
+      artifact-retention-days: 30
+      dart-defines: |
+        ADMOB_APP_ID=${{ vars.ADMOB_APP_ID }}
+        ADMOB_BANNER_ID=${{ vars.ADMOB_BANNER_ID }}
+        ADMOB_INTERSTITIAL_ID=${{ vars.ADMOB_INTERSTITIAL_ID }}
+      build-env: |
+        ADMOB_APP_ID=${{ vars.ADMOB_APP_ID }}
+    secrets:
+      ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+      KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+      KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+      KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}

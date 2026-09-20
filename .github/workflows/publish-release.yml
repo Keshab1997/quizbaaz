@@ -1,0 +1,77 @@
+name: Publish Android Release
+
+# The Play Store path. Builds the signed APK + AAB with the REAL AdMob IDs,
+# tags v<version> from pubspec.yaml, writes English release notes from the
+# commits since the previous tag and publishes a GitHub Release with the
+# versioned files and SHA256SUMS.txt. Upload the .aab from that release to the
+# Play Console (docs/17_PLAY_STORE_RELEASE.md, "Every release").
+#
+# Before running: bump `version:` in pubspec.yaml in a normal commit — the
+# release is cut from the exact SHA that triggers this workflow, and a tag that
+# already exists makes the run fail on purpose.
+#
+# Values come from Settings → Secrets and variables → Actions:
+#   Variables: ADMOB_APP_ID, ADMOB_BANNER_ID, ADMOB_INTERSTITIAL_ID
+#   Secrets:   ANDROID_KEYSTORE_BASE64, KEYSTORE_PASSWORD, KEY_ALIAS, KEY_PASSWORD
+
+on:
+  workflow_dispatch:
+    inputs:
+      draft:
+        description: Create the GitHub Release as a draft?
+        required: false
+        type: boolean
+        default: false
+      prerelease:
+        description: Mark this as a prerelease?
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  # A release must never ship with the test ad units, so the variables are
+  # checked up front instead of discovering it in the Play Console.
+  check-admob-config:
+    name: AdMob variables are set
+    runs-on: ubuntu-latest
+    env:
+      ADMOB_APP_ID: ${{ vars.ADMOB_APP_ID }}
+      ADMOB_BANNER_ID: ${{ vars.ADMOB_BANNER_ID }}
+      ADMOB_INTERSTITIAL_ID: ${{ vars.ADMOB_INTERSTITIAL_ID }}
+    steps:
+      - name: Validate
+        run: |
+          missing=0
+          for name in ADMOB_APP_ID ADMOB_BANNER_ID ADMOB_INTERSTITIAL_ID; do
+            if [ -z "${!name}" ]; then
+              echo "::error::Repository variable $name is not set (Settings → Secrets and variables → Actions → Variables)."
+              missing=1
+            fi
+          done
+          [ "$missing" -eq 0 ] || exit 1
+          [[ "$ADMOB_APP_ID" == ca-app-pub-*~* ]] || { echo "::error::ADMOB_APP_ID should look like ca-app-pub-XXXX~YYYY"; exit 1; }
+          [[ "$ADMOB_BANNER_ID" == ca-app-pub-*/* ]] || { echo "::error::ADMOB_BANNER_ID should look like ca-app-pub-XXXX/YYYY"; exit 1; }
+          [[ "$ADMOB_INTERSTITIAL_ID" == ca-app-pub-*/* ]] || { echo "::error::ADMOB_INTERSTITIAL_ID should look like ca-app-pub-XXXX/YYYY"; exit 1; }
+          if [[ "$ADMOB_APP_ID" == ca-app-pub-3940256099942544* ]]; then
+            echo "::error::ADMOB_APP_ID is Google's TEST app ID — a Play release must use the real one."
+            exit 1
+          fi
+          echo "AdMob variables present and well-formed."
+
+  publish:
+    needs: check-admob-config
+    uses: Keshab1997/flutter-builder/.github/workflows/publish-release.yml@v1.3.0
+    with:
+      app-name: QuizBaaz
+      release-draft: ${{ inputs.draft }}
+      release-prerelease: ${{ inputs.prerelease }}
+      dart-defines: |
+        ADMOB_APP_ID=${{ vars.ADMOB_APP_ID }}
+        ADMOB_BANNER_ID=${{ vars.ADMOB_BANNER_ID }}
+        ADMOB_INTERSTITIAL_ID=${{ vars.ADMOB_INTERSTITIAL_ID }}
+      build-env: |
+        ADMOB_APP_ID=${{ vars.ADMOB_APP_ID }}
+    secrets: inherit
