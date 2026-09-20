@@ -1079,7 +1079,13 @@ class BattleProvider extends ChangeNotifier {
       _writeAttachedOnce();
     }
     _roomMissingSinceMs = 0;
-    if (room.matchId.isNotEmpty && room.matchId != _matchId) {
+    // Only ever adopt a room's match id when this device has none of its own.
+    // Our id was minted before the claim (or handed back by it), so both
+    // clients already agree on it; re-keying the running match from a stale
+    // document would move the reward guard's key mid-match and let the same
+    // match pay out twice (R11).
+    if (room.matchId.isNotEmpty &&
+        (_matchId == null || _matchId!.isEmpty)) {
       _matchId = room.matchId;
     }
     _room = room;
@@ -1328,8 +1334,13 @@ class BattleProvider extends ChangeNotifier {
     // Forfeit watch for live matches.
     if (isLive) {
       final opponentPlayer = _room?.opponentOf(_side);
+      final opponentSeenMs = opponentPlayer?.lastSeenMs ?? 0;
+      // `last_seen` is written by the 5 s heartbeat, so a player who is still
+      // attaching has 0 there — a room that is seconds old must not be scored
+      // as a forfeit before the opponent's first heartbeat arrives (R11).
       if (opponentPlayer != null &&
-          now - opponentPlayer.lastSeenMs > 20000 &&
+          opponentSeenMs > 0 &&
+          now - opponentSeenMs > 20000 &&
           !opponentAnswered) {
         _forfeitWin = true;
         _roomService.finishRoom(_roomId!, _side);

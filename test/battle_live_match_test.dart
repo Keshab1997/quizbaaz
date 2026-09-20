@@ -14,6 +14,7 @@ import 'package:quizbaaz/data/providers/user_provider.dart';
 import 'package:quizbaaz/data/services/battle_question_generator.dart';
 import 'package:quizbaaz/data/services/battle_room_service.dart';
 import 'package:quizbaaz/data/services/hive_service.dart';
+import 'package:quizbaaz/data/services/sound_service.dart';
 
 /// In-memory stand-in for the Firestore-backed room service: records every
 /// call and lets the test drive the room stream by hand.
@@ -273,6 +274,11 @@ Map<String, dynamic> _roomJson({
     };
 
 void main() {
+  // SoundService pulls in audioplayers, whose global audio scope wants a
+  // platform-channel binary messenger; without a binding the very first
+  // match-start test blows up before it can assert anything.
+  TestWidgetsFlutterBinding.ensureInitialized();
+
   late Directory tempDir;
   late _FakeRoomService rooms;
   late _FakeQuestionGenerator questions;
@@ -282,6 +288,9 @@ void main() {
     tempDir = await Directory.systemTemp.createTemp('qb_battle_test');
     Hive.init(tempDir.path);
     await HiveService.initialize();
+    // Hermetic tests: the battle flow plays win/lose stingers, and sound is a
+    // platform channel that does not exist under `flutter test`.
+    await HiveService.setMeta(SoundService.settingKey, false);
   });
 
   tearDownAll(() async {

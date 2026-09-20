@@ -5,7 +5,7 @@
   "description": "Firestore security-rules test matrix (P0 R02/R03). Run with: npm run test",
   "scripts": {
     "pretest": "node scripts/ensure_emulator.mjs",
-    "test": "node --test tests/"
+    "test": "node --test --test-force-exit tests/"
   },
   "dependencies": {
     "@firebase/rules-unit-testing": "^4.0.0"

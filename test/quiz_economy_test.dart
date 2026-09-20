@@ -55,16 +55,26 @@ void main() {
     if (tempDir.existsSync()) tempDir.deleteSync(recursive: true);
   });
 
-  /// A two-second question limit instead of the built-in fifteen, so the
-  /// timeout test does not spend fifteen seconds waiting for a clock.
-  Future<void> useFastClock() async {
+  /// Builds the provider the tests share. The app config is written first so
+  /// `initialize()` cannot pick up a clock an earlier test left behind.
+  Future<void> resetUser({int secondsPerQuestion = 15}) async {
     await HiveService.cachePut(
       'app_config',
-      const AppConfig(secondsPerQuestion: 2).toJson(),
+      AppConfig(secondsPerQuestion: secondsPerQuestion).toJson(),
     );
     user = UserProvider()..initialize();
     await Future<void>.delayed(Duration.zero);
   }
+
+  /// Every test needs an initialised provider; without this the R08 tests
+  /// (which never touch the clock) died on an uninitialised `late` variable.
+  setUp(() async {
+    await resetUser();
+  });
+
+  /// A two-second question limit instead of the built-in fifteen, so the
+  /// timeout test does not spend fifteen seconds waiting for a clock.
+  Future<void> useFastClock() => resetUser(secondsPerQuestion: 2);
 
   /// Plays a chapter to the end, answering everything correctly.
   Future<QuizProvider> playToEnd(
@@ -223,7 +233,9 @@ void main() {
       await quiz.startChapterQuiz('chapter.json', chapterId: 'test_chapter');
 
       expect(quiz.questionTimeSec, 2, reason: 'the fast clock was not applied');
-      await Future<void>.delayed(const Duration(milliseconds: 2600));
+      // The countdown ticks once per second and only times out on the tick
+      // *after* it reaches zero, so a two-second question needs ~3 s.
+      await Future<void>.delayed(const Duration(milliseconds: 3500));
       expect(quiz.extraLifeUsed, isTrue, reason: 'the timeout never fired');
       expect(quiz.secondsRemaining, lessThanOrEqualTo(QuizProvider.kExtraLifeSeconds),
           reason: 'the countdown was reset to the full question time instead');

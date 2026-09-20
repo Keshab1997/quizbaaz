@@ -569,3 +569,66 @@ test('online_users & battle_queue: owner writes allowed, impersonation denied', 
   await env.cleanup();
   await other.cleanup();
 });
+
+// ---------------------------------------------------------------------------
+// 10. R17 — the two shapes the matrix used to miss
+// ---------------------------------------------------------------------------
+test('R17 legacy room without a match id can still be played out', async () => {
+  // Rooms created before match ids existed have no `match_id` field. Reading
+  // a missing key in rules is an *error* (= denial), so the immutability check
+  // has to use `.get()` on both sides or every such room freezes mid-match.
+  const env = await makeEnv(STUDENT);
+  const { match_id: _drop, ...legacyRoom } = roomData('created');
+  await seed(env, { [`battle_rooms/${ROOM_ID}`]: legacyRoom });
+
+  await assertSucceeds(
+    env.firestore.collection('battle_rooms').doc(ROOM_ID)
+      .set({ status: 'active' }, { merge: true }),
+  );
+  await assertSucceeds(
+    env.firestore.collection('battle_rooms').doc(ROOM_ID)
+      .set({ status: 'abandoned', abandoned: true, abandoned_by: 'a' },
+        { merge: true }),
+  );
+  // And a legacy room still cannot *gain* a match id mid-flight.
+  await seed(env, { [`battle_rooms/${ROOM_ID}`]: legacyRoom });
+  await assertFails(
+    env.firestore.collection('battle_rooms').doc(ROOM_ID)
+      .set({ match_id: 'm_injected' }, { merge: true }),
+  );
+  await env.cleanup();
+});
+
+test('R15 deletion_requests: owner-only, account-deletion shaped row', async () => {
+  const owner = await makeEnv(STUDENT);
+  const other = await makeEnv(OTHER);
+  const admin = await makeEnv(ADMIN, { admin: true });
+  const request = {
+    uid: STUDENT,
+    requested_at: 1_757_000_000_000,
+    pending_collections: ['battle_rooms'],
+    deleted_collections: ['users/quiz_history'],
+    status: 'pending',
+  };
+  const ref = (env, uid = STUDENT) =>
+    env.firestore.collection('deletion_requests').doc(uid);
+
+  await assertSucceeds(ref(owner).set(request));
+  await assertSucceeds(ref(owner).get());
+  await assertSucceeds(ref(admin).get());
+
+  // Nobody may file (or read) a deletion request for someone else.
+  await assertFails(ref(other).set({ ...request, uid: STUDENT }));
+  await assertFails(ref(other).get());
+  await assertFails(ref(owner, OTHER).set({ ...request, uid: OTHER }));
+
+  // A client cannot mark its own request done, or drop the columns the
+  // backend needs to finish the cleanup.
+  await assertFails(ref(owner).set({ ...request, status: 'done' }));
+  await assertFails(ref(owner).set({ ...request, pending_collections: 'nope' }));
+  await assertFails(ref(owner).delete());
+
+  await owner.cleanup();
+  await other.cleanup();
+  await admin.cleanup();
+});

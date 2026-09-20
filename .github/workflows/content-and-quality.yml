@@ -73,6 +73,9 @@ jobs:
   rules-matrix:
     name: firestore rules matrix (emulator)
     runs-on: ubuntu-latest
+    # The emulator is a background process: never let a stuck port wait hold
+    # the whole run open for hours.
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
 
