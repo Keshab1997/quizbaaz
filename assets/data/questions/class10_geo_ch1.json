@@ -6,5 +6,386 @@
     "hi": "संसाधन एवं विकास"
   },
   "class_standard": "Class 10",
-  "questions": []
+  "questions": [
+    {
+      "id": "geo_ch_01_q001",
+      "question": {
+        "hi": "निम्नलिखित में से कौन-सा नवीकरणीय संसाधन है?",
+        "en": "Which of the following is a renewable resource?",
+        "bn": "নিচের কোনটি পুনর্নবীকরণযোগ্য সম্পদ?"
+      },
+      "options": [
+        {
+          "hi": "कोयला",
+          "en": "Coal",
+          "bn": "কয়লা"
+        },
+        {
+          "hi": "पेट्रोलियम",
+          "en": "Petroleum",
+          "bn": "পেট্রোলিয়াম"
+        },
+        {
+          "hi": "सौर ऊर्जा",
+          "en": "Solar energy",
+          "bn": "সৌরশক্তি"
+        },
+        {
+          "hi": "प्राकृतिक गैस",
+          "en": "Natural gas",
+          "bn": "প্রাকৃতিক গ্যাস"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "hi": "सौर ऊर्जा सूर्य से लगातार प्राप्त होती है और प्राकृतिक रूप से पुनः उपलब्ध हो सकती है। कोयला, पेट्रोलियम और प्राकृतिक गैस अनवीकरणीय जीवाश्म ईंधन हैं।",
+        "en": "Solar energy is continuously available from the Sun and can be naturally replenished. Coal, petroleum and natural gas are non-renewable fossil fuels.",
+        "bn": "সৌরশক্তি সূর্য থেকে নিয়মিত পাওয়া যায় এবং প্রাকৃতিকভাবে পুনরায় পূরণ হয়। কয়লা, পেট্রোলিয়াম ও প্রাকৃতিক গ্যাস হল অনবীকরণযোগ্য জীবাশ্ম জ্বালানি।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "geo_ch_01_q002",
+      "question": {
+        "hi": "विकास और उपयोग के स्तर के आधार पर किस प्रकार के संसाधनों का वर्गीकरण किया जाता है?",
+        "en": "Which type of resource is classified according to its stage of development and use?",
+        "bn": "উন্নয়ন ও ব্যবহারের পর্যায় অনুযায়ী কোন ধরনের সম্পদের শ্রেণিবিভাগ করা হয়?"
+      },
+      "options": [
+        {
+          "hi": "जैव और अजैव संसाधन",
+          "en": "Biotic and abiotic resources",
+          "bn": "জীবজ ও অজীবজ সম্পদ"
+        },
+        {
+          "hi": "संभावित, विकसित, भंडार और संचित संसाधन",
+          "en": "Potential, developed, stock and reserves",
+          "bn": "সম্ভাব্য, উন্নত, মজুত ও সংরক্ষিত সম্পদ"
+        },
+        {
+          "hi": "नवीकरणीय और अनवीकरणीय संसाधन",
+          "en": "Renewable and non-renewable resources",
+          "bn": "পুনর্নবীকরণযোগ্য ও অনবীকরণযোগ্য সম্পদ"
+        },
+        {
+          "hi": "व्यक्तिगत और सामुदायिक संसाधन",
+          "en": "Individual and community resources",
+          "bn": "ব্যক্তিগত ও সম্প্রদায়গত সম্পদ"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "hi": "विकास और उपयोग के स्तर के आधार पर संसाधनों को संभावित, विकसित, भंडार और संचित संसाधनों में बाँटा जाता है। अन्य वर्गीकरण उत्पत्ति, समाप्त होने की क्षमता या स्वामित्व जैसे अलग आधारों पर किए जाते हैं।",
+        "en": "Resources are classified as potential, developed, stock and reserves according to their level of development and use. The other classifications use different criteria such as origin, exhaustibility or ownership.",
+        "bn": "উন্নয়ন ও ব্যবহারের পর্যায় অনুযায়ী সম্পদকে সম্ভাব্য, উন্নত, মজুত ও সংরক্ষিত সম্পদে ভাগ করা হয়। অন্য শ্রেণিবিভাগগুলি উৎপত্তি, নিঃশেষযোগ্যতা বা মালিকানার মতো ভিন্ন ভিত্তির উপর নির্ভর করে।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "geo_ch_01_q003",
+      "question": {
+        "hi": "कपास की खेती के लिए कौन-सी मिट्टी सबसे उपयुक्त है?",
+        "en": "Which soil is most suitable for growing cotton?",
+        "bn": "তুলা চাষের জন্য কোন মাটি সবচেয়ে উপযুক্ত?"
+      },
+      "options": [
+        {
+          "hi": "जलोढ़ मिट्टी",
+          "en": "Alluvial soil",
+          "bn": "পলিমাটি"
+        },
+        {
+          "hi": "काली मिट्टी",
+          "en": "Black soil",
+          "bn": "কৃষ্ণমাটি"
+        },
+        {
+          "hi": "लेटराइट मिट्टी",
+          "en": "Laterite soil",
+          "bn": "ল্যাটেরাইট মাটি"
+        },
+        {
+          "hi": "शुष्क मिट्टी",
+          "en": "Arid soil",
+          "bn": "শুষ্ক মাটি"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "hi": "काली मिट्टी में नमी धारण करने की क्षमता अधिक होती है और यह कपास की खेती के लिए विशेष रूप से उपयुक्त है। भारत में इसे रेगुर मिट्टी भी कहा जाता है।",
+        "en": "Black soil has high moisture-retaining capacity and is particularly suitable for cotton cultivation. It is also called regur soil in India.",
+        "bn": "কৃষ্ণমাটির জল ধারণ ক্ষমতা বেশি এবং এটি তুলা চাষের জন্য বিশেষভাবে উপযোগী। ভারতে এই মাটিকে রেগুর মাটিও বলা হয়।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "geo_ch_01_q004",
+      "question": {
+        "hi": "वायु या जल द्वारा मिट्टी की ऊपरी उपजाऊ परत के हटने की प्रक्रिया को क्या कहा जाता है?",
+        "en": "Which process causes the removal of the top fertile layer of soil by wind or water?",
+        "bn": "বায়ু বা জলের দ্বারা মাটির উর্বর উপরিভাগের স্তর অপসারণকে কী বলে?"
+      },
+      "options": [
+        {
+          "hi": "मृदा अपरदन",
+          "en": "Soil erosion",
+          "bn": "মৃত্তিকা ক্ষয়"
+        },
+        {
+          "hi": "मृदा निर्माण",
+          "en": "Soil formation",
+          "bn": "মৃত্তিকা গঠন"
+        },
+        {
+          "hi": "मृदा संरक्षण",
+          "en": "Soil conservation",
+          "bn": "মৃত্তিকা সংরক্ষণ"
+        },
+        {
+          "hi": "मृदा उर्वरता",
+          "en": "Soil fertility",
+          "bn": "মাটির উর্বরতা"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "hi": "बहते जल और वायु जैसे प्राकृतिक कारकों द्वारा मिट्टी की ऊपरी उपजाऊ परत के हटने को मृदा अपरदन कहते हैं। इससे भूमि की उत्पादक क्षमता कम हो जाती है।",
+        "en": "Soil erosion is the removal of the upper fertile layer of soil by agents such as running water and wind. This process reduces the productive capacity of land.",
+        "bn": "প্রবাহিত জল ও বায়ুর মতো প্রাকৃতিক শক্তির দ্বারা মাটির উর্বর উপরিভাগের স্তর অপসারিত হওয়াকে মৃত্তিকা ক্ষয় বলে। এর ফলে জমির উৎপাদন ক্ষমতা কমে যায়।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "geo_ch_01_q005",
+      "question": {
+        "hi": "ढलानदार भूमि पर मृदा अपरदन को नियंत्रित करने में कौन-सी कृषि पद्धति सहायक है?",
+        "en": "Which farming practice helps control soil erosion on slopes?",
+        "bn": "ঢালু জমিতে মৃত্তিকা ক্ষয় নিয়ন্ত্রণে কোন কৃষি পদ্ধতি সাহায্য করে?"
+      },
+      "options": [
+        {
+          "hi": "समोच्च रेखीय जुताई",
+          "en": "Contour ploughing",
+          "bn": "কন্টুর বরাবর চাষ"
+        },
+        {
+          "hi": "अतिचारण",
+          "en": "Overgrazing",
+          "bn": "অতিরিক্ত পশুচারণ"
+        },
+        {
+          "hi": "वनों की कटाई",
+          "en": "Deforestation",
+          "bn": "বনধ্বংস"
+        },
+        {
+          "hi": "स्थानांतरी कृषि",
+          "en": "Shifting cultivation",
+          "bn": "স্থানান্তরিত চাষ"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "hi": "समोच्च रेखीय जुताई ढलान की प्राकृतिक समोच्च रेखाओं के साथ की जाती है, जिससे जल का बहाव धीमा होता है और मृदा अपरदन घटता है। अन्य प्रक्रियाएँ अनुचित परिस्थितियों में मृदा हानि बढ़ा सकती हैं।",
+        "en": "Contour ploughing follows the natural contours of a slope, slowing the flow of water and reducing soil erosion. The other practices can increase soil loss under unsuitable conditions.",
+        "bn": "কন্টুর বরাবর চাষ ঢালের স্বাভাবিক সমোচ্চ রেখা অনুসরণ করে, ফলে জলের প্রবাহের গতি কমে এবং মৃত্তিকা ক্ষয় হ্রাস পায়। অন্য পদ্ধতিগুলি অনুপযুক্তভাবে প্রয়োগ হলে মাটির ক্ষয় বাড়াতে পারে।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "geo_ch_01_q006",
+      "question": {
+        "hi": "उच्च तापमान और अधिक वर्षा के कारण तीव्र निक्षालन से कौन-सी मिट्टी बनती है?",
+        "en": "Which soil is formed by intense leaching under high temperature and heavy rainfall?",
+        "bn": "উচ্চ তাপমাত্রা ও প্রচুর বৃষ্টিপাতের কারণে তীব্র ধৌত প্রক্রিয়ায় কোন মাটি গঠিত হয়?"
+      },
+      "options": [
+        {
+          "hi": "काली मिट्टी",
+          "en": "Black soil",
+          "bn": "কৃষ্ণমাটি"
+        },
+        {
+          "hi": "लेटराइट मिट्टी",
+          "en": "Laterite soil",
+          "bn": "ল্যাটেরাইট মাটি"
+        },
+        {
+          "hi": "जलोढ़ मिट्टी",
+          "en": "Alluvial soil",
+          "bn": "পলিমাটি"
+        },
+        {
+          "hi": "पीटयुक्त मिट्टी",
+          "en": "Peaty soil",
+          "bn": "পিটযুক্ত মাটি"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "hi": "अधिक वर्षा मिट्टी से घुलनशील खनिजों को बहा ले जाती है, जिसे तीव्र निक्षालन कहते हैं। उच्च तापमान और अधिक वर्षा वाले क्षेत्रों में इस प्रक्रिया से लेटराइट मिट्टी बनती है।",
+        "en": "Heavy rainfall washes soluble minerals from the soil, causing intense leaching. Under high temperature and rainfall, this process leads to the formation of laterite soil.",
+        "bn": "প্রচুর বৃষ্টিপাত মাটি থেকে দ্রবণীয় খনিজ ধুয়ে নিয়ে যায়, যাকে তীব্র ধৌত প্রক্রিয়া বলে। উচ্চ তাপমাত্রা ও বৃষ্টিপাতের এই পরিবেশে ল্যাটেরাইট মাটি গঠিত হয়।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "geo_ch_01_q007",
+      "question": {
+        "hi": "शुष्क क्षेत्रों में पवन द्वारा होने वाले मृदा अपरदन को कम करने के लिए कौन-सी विधि विशेष रूप से प्रभावी है?",
+        "en": "Which method is especially effective for reducing wind erosion in arid regions?",
+        "bn": "শুষ্ক অঞ্চলে বায়ুজনিত মৃত্তিকা ক্ষয় কমাতে কোন পদ্ধতি বিশেষভাবে কার্যকর?"
+      },
+      "options": [
+        {
+          "hi": "रक्षक पट्टियाँ",
+          "en": "Shelter belts",
+          "bn": "বায়ুপ্রতিরোধী বৃক্ষবলয়"
+        },
+        {
+          "hi": "पट्टीदार खेती",
+          "en": "Strip cropping",
+          "bn": "ফালি চাষ"
+        },
+        {
+          "hi": "सीढ़ीदार खेती",
+          "en": "Terrace farming",
+          "bn": "সোপান কৃষি"
+        },
+        {
+          "hi": "समोच्च रेखीय जुताई",
+          "en": "Contour ploughing",
+          "bn": "কন্টুর বরাবর চাষ"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "hi": "रक्षक पट्टियों में पेड़ों की कतारें लगाई जाती हैं, जो हवा की गति कम करके मिट्टी को पवन अपरदन से बचाती हैं। ये शुष्क और अर्ध-शुष्क क्षेत्रों में विशेष रूप से उपयोगी हैं।",
+        "en": "Shelter belts are rows of trees planted to reduce wind speed and protect soil from wind erosion. They are particularly useful in dry and semi-arid regions.",
+        "bn": "বায়ুপ্রতিরোধী বৃক্ষবলয় হিসেবে সারিবদ্ধ গাছ লাগালে বায়ুর গতিবেগ কমে এবং মাটি বায়ুজনিত ক্ষয় থেকে রক্ষা পায়। শুষ্ক ও অর্ধশুষ্ক অঞ্চলে এটি বিশেষভাবে কার্যকর।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "geo_ch_01_q008",
+      "question": {
+        "hi": "भारत में संसाधन नियोजन का मुख्य उद्देश्य क्या है?",
+        "en": "What is the main purpose of resource planning in India?",
+        "bn": "ভারতে সম্পদ পরিকল্পনার প্রধান উদ্দেশ্য কী?"
+      },
+      "options": [
+        {
+          "hi": "भविष्य की आवश्यकताओं पर विचार किए बिना संसाधनों का उपयोग करना",
+          "en": "To use resources without considering future needs",
+          "bn": "ভবিষ্যতের প্রয়োজন বিবেচনা না করে সম্পদ ব্যবহার করা"
+        },
+        {
+          "hi": "संसाधनों का विवेकपूर्ण और सतत उपयोग सुनिश्चित करना",
+          "en": "To ensure judicious and sustainable use of resources",
+          "bn": "সম্পদের সুষ্ঠু ও টেকসই ব্যবহার নিশ্চিত করা"
+        },
+        {
+          "hi": "आयातित संसाधनों पर निर्भरता बढ़ाना",
+          "en": "To increase dependence on imported resources",
+          "bn": "আমদানিকৃত সম্পদের উপর নির্ভরতা বাড়ানো"
+        },
+        {
+          "hi": "सभी संसाधनों को एक ही क्षेत्र में केंद्रित करना",
+          "en": "To concentrate all resources in one region",
+          "bn": "সমস্ত সম্পদকে একটি অঞ্চলে কেন্দ্রীভূত করা"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "hi": "संसाधन नियोजन का उद्देश्य संसाधनों की पहचान, विकास और सावधानीपूर्वक उपयोग करना है, ताकि वर्तमान आवश्यकताओं के साथ भविष्य के लिए भी संसाधन उपलब्ध रहें।",
+        "en": "Resource planning aims to identify, develop and use resources carefully so that present needs are met without compromising their availability for the future.",
+        "bn": "সম্পদ পরিকল্পনার লক্ষ্য হল সম্পদকে চিহ্নিত, উন্নয়ন ও সুষ্ঠুভাবে ব্যবহার করা, যাতে বর্তমানের প্রয়োজন মেটানোর পাশাপাশি ভবিষ্যতের জন্যও সম্পদের প্রাপ্যতা বজায় থাকে।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "geo_ch_01_q009",
+      "question": {
+        "hi": "जब बहता हुआ जल मिट्टी में गहरी नालियाँ बना देता है, तब किस प्रकार का मृदा अपरदन होता है?",
+        "en": "Which type of soil erosion occurs when running water cuts deep channels in the soil?",
+        "bn": "প্রবাহিত জল মাটিতে গভীর খাত সৃষ্টি করলে কোন ধরনের মৃত্তিকা ক্ষয় ঘটে?"
+      },
+      "options": [
+        {
+          "hi": "चादरी अपरदन",
+          "en": "Sheet erosion",
+          "bn": "চাদর ক্ষয়"
+        },
+        {
+          "hi": "अव नालिका अपरदन",
+          "en": "Gully erosion",
+          "bn": "গালি ক্ষয়"
+        },
+        {
+          "hi": "पवन अपरदन",
+          "en": "Wind erosion",
+          "bn": "বায়ু ক্ষয়"
+        },
+        {
+          "hi": "बूंद अपरदन",
+          "en": "Splash erosion",
+          "bn": "বৃষ্টির ফোঁটার ক্ষয়"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "hi": "जब बहता हुआ जल मिट्टी में गहरी नालियाँ या गली बनाता है, तब अव नालिका अपरदन होता है। इसके विपरीत चादरी अपरदन में विस्तृत क्षेत्र से मिट्टी की पतली परत हटती है।",
+        "en": "Gully erosion occurs when running water cuts deep channels or gullies into the soil. Sheet erosion, in contrast, removes a thin layer of soil over a broad area.",
+        "bn": "প্রবাহিত জল মাটিতে গভীর খাত বা গালি তৈরি করলে গালি ক্ষয় ঘটে। এর বিপরীতে চাদর ক্ষয়ে বিস্তৃত অঞ্চল থেকে মাটির পাতলা স্তর অপসারিত হয়।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "geo_ch_01_q010",
+      "question": {
+        "hi": "कौन-सा संयोजन स्वामित्व के आधार पर संसाधनों के वर्गीकरण को दर्शाता है?",
+        "en": "Which combination represents resources classified on the basis of ownership?",
+        "bn": "কোন সমন্বয়টি মালিকানার ভিত্তিতে সম্পদের শ্রেণিবিভাগ নির্দেশ করে?"
+      },
+      "options": [
+        {
+          "hi": "नवीकरणीय और अनवीकरणीय",
+          "en": "Renewable and non-renewable",
+          "bn": "পুনর্নবীকরণযোগ্য ও অনবীকরণযোগ্য"
+        },
+        {
+          "hi": "जैव और अजैव",
+          "en": "Biotic and abiotic",
+          "bn": "জীবজ ও অজীবজ"
+        },
+        {
+          "hi": "व्यक्तिगत, सामुदायिक, राष्ट्रीय और अंतरराष्ट्रीय संसाधन",
+          "en": "Individual, community, national and international resources",
+          "bn": "ব্যক্তিগত, সম্প্রদায়গত, জাতীয় ও আন্তর্জাতিক সম্পদ"
+        },
+        {
+          "hi": "संभावित, विकसित, भंडार और संचित संसाधन",
+          "en": "Potential, developed, stock and reserves",
+          "bn": "সম্ভাব্য, উন্নত, মজুত ও সংরক্ষিত সম্পদ"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "hi": "व्यक्तिगत, सामुदायिक, राष्ट्रीय और अंतरराष्ट्रीय संसाधनों का वर्गीकरण स्वामित्व के आधार पर किया जाता है। अन्य समूह नवीकरणीयता, उत्पत्ति या विकास और उपयोग के स्तर पर आधारित हैं।",
+        "en": "Individual, community, national and international resources are grouped according to ownership. The other groups classify resources by renewability, origin, or level of development and use.",
+        "bn": "ব্যক্তিগত, সম্প্রদায়গত, জাতীয় ও আন্তর্জাতিক সম্পদ মালিকানার ভিত্তিতে শ্রেণিবদ্ধ করা হয়। অন্য সমন্বয়গুলি পুনর্নবীকরণযোগ্যতা, উৎপত্তি বা উন্নয়ন ও ব্যবহারের পর্যায়ের ভিত্তিতে করা হয়।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    }
+  ]
 }

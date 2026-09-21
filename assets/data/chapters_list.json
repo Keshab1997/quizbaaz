@@ -346,7 +346,7 @@
           "description": {
             "en": "Mirrors, lenses, power, lens formula"
           },
-          "total_questions": 0,
+          "total_questions": 10,
           "json_file": "assets/data/questions/class10_phys_ch5.json",
           "is_unlocked": true,
           "stars": 0,
@@ -363,7 +363,7 @@
           "description": {
             "en": "Defects of vision, prism, scattering, dispersion"
           },
-          "total_questions": 0,
+          "total_questions": 10,
           "json_file": "assets/data/questions/class10_phys_ch6.json",
           "is_unlocked": true,
           "stars": 0,
@@ -380,7 +380,7 @@
           "description": {
             "en": "Ohm’s law, resistivity, heating effect"
           },
-          "total_questions": 0,
+          "total_questions": 10,
           "json_file": "assets/data/questions/class10_phys_ch7.json",
           "is_unlocked": true,
           "stars": 0,
@@ -576,7 +576,7 @@
           "description": {
             "en": "Print revolution, press in India"
           },
-          "total_questions": 0,
+          "total_questions": 10,
           "json_file": "assets/data/questions/history_ch4.json",
           "is_unlocked": true,
           "stars": 0,
@@ -623,7 +623,7 @@
           "description": {
             "en": "Types of resources, soil erosion, conservation"
           },
-          "total_questions": 0,
+          "total_questions": 10,
           "json_file": "assets/data/questions/class10_geo_ch1.json",
           "is_unlocked": true,
           "stars": 0,

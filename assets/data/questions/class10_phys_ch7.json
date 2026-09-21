@@ -6,5 +6,386 @@
     "hi": "विद्युत"
   },
   "class_standard": "Class 10",
-  "questions": []
+  "questions": [
+    {
+      "id": "phys_ch_07_q001",
+      "question": {
+        "hi": "विद्युत प्रतिरोधकता का SI मात्रक क्या है?",
+        "en": "What is the SI unit of electrical resistivity?",
+        "bn": "তড়িৎ রোধাঙ্কের SI একক কী?"
+      },
+      "options": [
+        {
+          "hi": "Ω",
+          "en": "Ω",
+          "bn": "Ω"
+        },
+        {
+          "hi": "Ω · m",
+          "en": "Ω · m",
+          "bn": "Ω · m"
+        },
+        {
+          "hi": "Ω / m",
+          "en": "Ω / m",
+          "bn": "Ω / m"
+        },
+        {
+          "hi": "Ω⁻¹ · m⁻¹",
+          "en": "Ω⁻¹ · m⁻¹",
+          "bn": "Ω⁻¹ · m⁻¹"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "hi": "प्रतिरोधकता का सूत्र ρ = (R · A) / L होता है, इसलिए इसका SI मात्रक (Ω · m²) / m = Ω · m है।",
+        "en": "Resistivity is given by ρ = (R · A) / L, so its SI unit is (Ω · m²) / m = Ω · m.",
+        "bn": "রোধাঙ্কের সূত্র হল ρ = (R · A) / L, তাই এর SI একক (Ω · m²) / m = Ω · m।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_07_q002",
+      "question": {
+        "hi": "ओम के नियम के सत्यापन प्रयोग में, विभवांतर-धारा (V-I) ग्राफ की ढाल किस भौतिक राशि को दर्शाती है?",
+        "en": "In an experiment verifying Ohm's law, the slope of the voltage-current (V-I) graph represents which physical quantity?",
+        "bn": "ওহমের সূত্র যাচাইয়ের পরীক্ষায়, ভোল্টেজ-প্রবাহমাত্রা (V-I) লেখচিত্রের নতি কোন ভৌত রাশিকে নির্দেশ করে?"
+      },
+      "options": [
+        {
+          "hi": "प्रतिरोध",
+          "en": "Resistance",
+          "bn": "রোধ"
+        },
+        {
+          "hi": "चालकता",
+          "en": "Conductance",
+          "bn": "পরিবাহিতা"
+        },
+        {
+          "hi": "प्रतिरोधकता",
+          "en": "Resistivity",
+          "bn": "রোধাঙ্ক"
+        },
+        {
+          "hi": "विद्युत शक्ति",
+          "en": "Electric Power",
+          "bn": "তড়িৎ ক্ষমতা"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "hi": "ओम के नियम के अनुसार V = IR होता है, अतः V-I ग्राफ की ढाल (ΔV / ΔI) प्रतिरोध (R) के बराबर होती है।",
+        "en": "According to Ohm's law, V = IR, so the slope of the V-I plot (ΔV / ΔI) equals resistance (R).",
+        "bn": "ওহমের সূত্রানুসারে V = IR, তাই V-I লেখচিত্রের নতি (ΔV / ΔI) পরিবাহীর রোধ (R)-এর সমান হয়।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_07_q003",
+      "question": {
+        "hi": "किसी धात्विक चालक की विद्युत प्रतिरोधकता मुख्य रूप से निम्नलिखित में से किस पर निर्भर करती है?",
+        "en": "The electrical resistivity of a metallic conductor depends primarily on which of the following?",
+        "bn": "একটি ধাতব পরিবাহীর তড়িৎ রোধাঙ্ক মূলত নিচের কোনটির ওপর নির্ভর করে?"
+      },
+      "options": [
+        {
+          "hi": "चालक की लंबाई",
+          "en": "Length of the conductor",
+          "bn": "পরিবাহীর দৈর্ঘ্য"
+        },
+        {
+          "hi": "चालक के अनुप्रस्थ काट का क्षेत्रफल",
+          "en": "Area of cross-section of the conductor",
+          "bn": "পরিবাহীর প্রস্থচ্ছেদের ক্ষেত্রফল"
+        },
+        {
+          "hi": "पदार्थ की प्रकृति और तापमान",
+          "en": "Nature of the material and temperature",
+          "bn": "উপাদানের প্রকৃতি এবং তাপমাত্রা"
+        },
+        {
+          "hi": "चालक की आकृति",
+          "en": "Shape of the conductor",
+          "bn": "পরিবাহীর আকৃতি"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "hi": "प्रतिरोधकता पदार्थ का एक विशिष्ट गुण है जो तापमान के साथ बदलती है, परंतु यह चालक की विमाओं (लंबाई या क्षेत्रफल) पर निर्भर नहीं करती।",
+        "en": "Resistivity is an intrinsic characteristic property of the material and changes with temperature, but does not depend on the dimensions (length or area) of the conductor.",
+        "bn": "রোধাঙ্ক উপাদানের একটি সহজাত বৈশিষ্ট্য এবং তাপমাত্রার সাথে পরিবর্তিত হয়, কিন্তু পরিবাহীর মাত্রা (দৈর্ঘ্য বা ক্ষেত্রফল)-র ওপর নির্ভর করে না।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_07_q004",
+      "question": {
+        "hi": "R प्रतिरोध के एक बेलनाकार तार को एकसमान रूप से खींचकर उसकी लंबाई मूल लंबाई की दोगुनी कर दी जाती है। इसका नया प्रतिरोध क्या होगा?",
+        "en": "A cylindrical wire of resistance R is stretched uniformly so that its length becomes twice its original length. What is its new resistance?",
+        "bn": "R রোধের একটি চোঙাকৃতি তারকে সুষমভাবে টেনে তার দৈর্ঘ্য প্রাথমিক দৈর্ঘ্যের দ্বিগুণ করা হলো। তারটির নতুন রোধ কত হবে?"
+      },
+      "options": [
+        {
+          "hi": "2R",
+          "en": "2R",
+          "bn": "2R"
+        },
+        {
+          "hi": "4R",
+          "en": "4R",
+          "bn": "4R"
+        },
+        {
+          "hi": "R / 2",
+          "en": "R / 2",
+          "bn": "R / 2"
+        },
+        {
+          "hi": "R / 4",
+          "en": "R / 4",
+          "bn": "R / 4"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "hi": "आयतन स्थिर रहने के कारण लंबाई दोगुनी (L' = 2L) होने पर अनुप्रस्थ काट का क्षेत्रफल आधा (A' = A/2) हो जाता है, जिससे नया प्रतिरोध R' = ρ(2L)/(A/2) = 4R हो जाता है।",
+        "en": "When length doubles (L' = 2L), the cross-sectional area halves (A' = A/2) to keep volume constant, resulting in R' = ρ(2L)/(A/2) = 4R.",
+        "bn": "আয়তন স্থির থাকায় দৈর্ঘ্য দ্বিগুণ (L' = 2L) হলে প্রস্থচ্ছেদের ক্ষেত্রফল অর্ধেক (A' = A/2) হয়, ফলে নতুন রোধ R' = ρ(2L)/(A/2) = 4R হয়।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_07_q005",
+      "question": {
+        "hi": "जूल के तापन नियम के अनुसार, R प्रतिरोध वाले चालक में t समय तक I धारा प्रवाहित करने पर उत्पन्न ऊष्मा (H) का मान होगा:",
+        "en": "According to Joule's law of heating, the heat (H) generated in a resistor of resistance R carrying current I for time t is given by:",
+        "bn": "জুলের তাপীয় ফল সংক্রান্ত সূত্র অনুযায়ী, R রোধের পরিবাহীতে t সময় ধরে I প্রবাহমাত্রা পাঠালে উৎপন্ন তাপ (H) হবে:"
+      },
+      "options": [
+        {
+          "hi": "H = I · R · t",
+          "en": "H = I · R · t",
+          "bn": "H = I · R · t"
+        },
+        {
+          "hi": "H = I² · R · t",
+          "en": "H = I² · R · t",
+          "bn": "H = I² · R · t"
+        },
+        {
+          "hi": "H = I · R² · t",
+          "en": "H = I · R² · t",
+          "bn": "H = I · R² · t"
+        },
+        {
+          "hi": "H = (I² · R) / t",
+          "en": "H = (I² · R) / t",
+          "bn": "H = (I² · R) / t"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "hi": "जूल के नियमानुसार चालक में उत्पन्न ऊष्मा धारा के वर्ग, प्रतिरोध और समय के समानुपाती होती है (H = I²Rt)।",
+        "en": "Joule's law states that the heat produced in a resistor is directly proportional to the square of current, resistance, and time (H = I²Rt).",
+        "bn": "জুলের সূত্রানুসারে পরিবাহীতে উৎপন্ন তাপ প্রবাহমাত্রার বর্গের, রোধের এবং সময়ের সমানুপাতিক (H = I²Rt)।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_07_q006",
+      "question": {
+        "hi": "40 W, 220 V और 100 W, 220 V रेटिंग वाले दो विद्युत बल्बों को 220 V आपूर्ति के साथ श्रेणीक्रम में जोड़ा जाता है। कौन सा बल्ब अधिक चमकीला जलेगा?",
+        "en": "Two electric bulbs rated 40 W, 220 V and 100 W, 220 V are connected in series across a 220 V supply. Which bulb will glow brighter?",
+        "bn": "40 W, 220 V এবং 100 W, 220 V রেটিং যুক্ত দুটি বৈদ্যুতিক বাল্বকে একটি 220 V উৎসের সাথে শ্রেণি সমবায়ে যুক্ত করা হলে কোন বাল্বটি বেশি উজ্জ্বলভাবে জ্বলবে?"
+      },
+      "options": [
+        {
+          "hi": "40 W का बल्ब",
+          "en": "The 40 W bulb",
+          "bn": "40 W বাল্বটি"
+        },
+        {
+          "hi": "100 W का बल्ब",
+          "en": "The 100 W bulb",
+          "bn": "100 W বাল্বটি"
+        },
+        {
+          "hi": "दोनों बल्ब समान चमक से जलेंगे",
+          "en": "Both will glow with equal brightness",
+          "bn": "উভয় বাল্ব সমান উজ্জ্বলতায় জ্বলবে"
+        },
+        {
+          "hi": "कोई भी बल्ब नहीं जलेगा",
+          "en": "Neither bulb will glow",
+          "bn": "কোনো বাল্বই জ্বলবে না"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "hi": "R = V²/P होने से 40 W बल्ब का प्रतिरोध अधिक होता है; श्रेणीक्रम में समान धारा प्रवाहित होने के कारण 40 W बल्ब अधिक शक्ति व्यय (P = I²R) करता है और अधिक चमकीला जलता है।",
+        "en": "Since R = V²/P, the 40 W bulb has higher resistance; in series, both carry equal current, so the 40 W bulb dissipates more power (P = I²R) and glows brighter.",
+        "bn": "R = V²/P হওয়ায় 40 W বাল্বের রোধ বেশি; শ্রেণি সমবায়ে প্রবাহমাত্রা সমান থাকায় 40 W বাল্বে বেশি ক্ষমতা ব্যয় হয় (P = I²R) এবং এটি বেশি উজ্জ্বলভাবে জ্বলে।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_07_q007",
+      "question": {
+        "hi": "यदि किसी निश्चित प्रतिरोधक से प्रवाहित होने वाली विद्युत धारा को 100% बढ़ा दिया जाए, तो प्रति इकाई समय में उत्पन्न ऊष्मा में कितने प्रतिशत की वृद्धि होगी?",
+        "en": "If the current flowing through a fixed resistor is increased by 100%, the heat produced per unit time will increase by:",
+        "bn": "একটি নির্দিষ্ট রোধকের মধ্য দিয়ে প্রবাহিত তড়িৎ প্রবাহমাত্রা 100% বৃদ্ধি করা হলে, প্রতি একক সময়ে উৎপন্ন তাপ কত শতাংশ বৃদ্ধি পাবে?"
+      },
+      "options": [
+        {
+          "hi": "100%",
+          "en": "100%",
+          "bn": "100%"
+        },
+        {
+          "hi": "200%",
+          "en": "200%",
+          "bn": "200%"
+        },
+        {
+          "hi": "300%",
+          "en": "300%",
+          "bn": "300%"
+        },
+        {
+          "hi": "400%",
+          "en": "400%",
+          "bn": "400%"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "hi": "धारा 100% बढ़ाने पर यह दोगुनी (I' = 2I) हो जाती है, जिससे ऊष्मा की दर P' = (2I)²R = 4P हो जाती है; प्रतिशत वृद्धि = ((4P - P)/P) × 100% = 300% होगी।",
+        "en": "Increasing current by 100% doubles it (I' = 2I), so heat power becomes P' = (2I)²R = 4P; the percentage increase is ((4P - P)/P) × 100% = 300%.",
+        "bn": "প্রবাহমাত্রা 100% বৃদ্ধি পেলে তা দ্বিগুণ (I' = 2I) হয়, ফলে তাপের হার P' = (2I)²R = 4P হয়; শতকরা বৃদ্ধি = ((4P - P)/P) × 100% = 300%।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_07_q008",
+      "question": {
+        "hi": "विद्युत प्रेस और टोस्टर के हीटिंग एलिमेंट बनाने के लिए नाइक्रोम मिश्रधातु का उपयोग क्यों किया जाता है?",
+        "en": "Why is Nichrome alloy commonly used for making the heating elements in electric irons and toasters?",
+        "bn": "বৈদ্যুতিক ইস্ত্রি ও টোস্টারের হিটিং উপাদান তৈরিতে নাইক্রোম সংকর ধাতু কেন ব্যবহার করা হয়?"
+      },
+      "options": [
+        {
+          "hi": "इसकी प्रतिरोधकता कम और गलनांक उच्च होता है",
+          "en": "It has low resistivity and high melting point",
+          "bn": "এর রোধাঙ্ক কম এবং গলনাঙ্ক উচ্চ"
+        },
+        {
+          "hi": "इसकी प्रतिरोधकता उच्च होती है और यह उच्च तापमान पर आसानी से ऑक्सीकृत नहीं होता है",
+          "en": "It has high resistivity and does not oxidize easily at high temperatures",
+          "bn": "এর রোধাঙ্ক উচ্চ এবং উচ্চ তাপমাত্রায় সহজে জারিত হয় না"
+        },
+        {
+          "hi": "इसकी प्रतिरोधकता कम और गलनांक कम होता है",
+          "en": "It has low resistivity and low melting point",
+          "bn": "এর রোধাঙ্ক কম এবং গলনাঙ্ক কম"
+        },
+        {
+          "hi": "यह कमरे के तापमान पर एक कुचालक होता है",
+          "en": "It is an insulator at room temperature",
+          "bn": "এটি কক্ষ তাপমাত্রায় একটি অন্তরক"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "hi": "नाइक्रोम की प्रतिरोधकता और गलनांक बहुत उच्च होता है, जिससे यह रक्त-तप्त स्थिति में भी बिना ऑक्सीकृत हुए अधिक मात्रा में ऊष्मा उत्पन्न कर सकता है।",
+        "en": "Nichrome has a high resistivity and a very high melting point, allowing it to produce large amounts of heat without undergoing oxidation (burning) at red-hot temperatures.",
+        "bn": "নাইক্রোমের উচ্চ রোধাঙ্ক এবং অত্যন্ত উচ্চ গলনাঙ্ক রয়েছে, যার ফলে এটি লাল-তপ্ত অবস্থাতেও সহজে জারিত (দগ্ধ) না হয়ে প্রচুর তাপ উৎপন্ন করতে পারে।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_07_q009",
+      "question": {
+        "hi": "प्रत्येक R प्रतिरोध वाले तीन समरूप प्रतिरोधकों को पहले श्रेणीक्रम में और फिर समानांतर क्रम में समान नियत वोल्टेज स्रोत से जोड़ा जाता है। श्रेणीक्रम और समानांतर क्रम में व्यय कुल शक्ति का अनुपात (Ps : Pp) क्या होगा?",
+        "en": "Three identical resistors of resistance R are connected first in series and then in parallel across the same constant voltage source. What is the ratio of total power consumed in series to parallel (Ps : Pp)?",
+        "bn": "প্রতিটি R রোধের তিনটি অভিন্ন রোধককে প্রথমে শ্রেণি এবং পরে সমান্তরাল সমবায়ে একই স্থির ভোল্টেজ উৎসের সাথে যুক্ত করা হলো। শ্রেণি ও সমান্তরাল সমবায়ে ব্যয়িত মোট ক্ষমতার অনুপাত (Ps : Pp) কত?"
+      },
+      "options": [
+        {
+          "hi": "1 : 9",
+          "en": "1 : 9",
+          "bn": "1 : 9"
+        },
+        {
+          "hi": "9 : 1",
+          "en": "9 : 1",
+          "bn": "9 : 1"
+        },
+        {
+          "hi": "1 : 3",
+          "en": "1 : 3",
+          "bn": "1 : 3"
+        },
+        {
+          "hi": "3 : 1",
+          "en": "3 : 1",
+          "bn": "3 : 1"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "hi": "श्रेणीक्रम में Rs = 3R अतः Ps = V²/(3R); समानांतर क्रम में Rp = R/3 अतः Pp = 3V²/R। इस प्रकार अनुपात Ps : Pp = (1/3) / 3 = 1 : 9 होगा।",
+        "en": "In series, Rs = 3R so Ps = V²/(3R); in parallel, Rp = R/3 so Pp = 3V²/R. The ratio Ps : Pp is (1/3) / 3 = 1/9.",
+        "bn": "শ্রেণিতে Rs = 3R হওয়ায় Ps = V²/(3R); সমান্তরালে Rp = R/3 হওয়ায় Pp = 3V²/R। অতএব অনুপাত Ps : Pp = (1/3) / 3 = 1 : 9।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_07_q010",
+      "question": {
+        "hi": "किसी धात्विक चालक के लिए ओम का नियम किस स्थिति में पूर्णतः मान्य होता है?",
+        "en": "Under which condition is Ohm’s law strictly valid for a metallic conductor?",
+        "bn": "কোন শর্তে একটি ধাতব পরিবাহী ওহমের সূত্র যথাযথভাবে মেনে চলে?"
+      },
+      "options": [
+        {
+          "hi": "जब तापमान और अन्य भौतिक स्थितियाँ स्थिर रहती हैं",
+          "en": "When temperature and other physical conditions remain constant",
+          "bn": "যখন তাপমাত্রা এবং অন্যান্য ভৌত অবস্থা অপরিবর্তিত থাকে"
+        },
+        {
+          "hi": "जब धारा के साथ तापमान रैखिक रूप से बढ़ता है",
+          "en": "When temperature increases linearly with current",
+          "bn": "যখন প্রবাহমাত্রার সাথে তাপমাত্রা রৈখিকভাবে বৃদ্ধি পায়"
+        },
+        {
+          "hi": "जब धारा दिष्ट धारा के बजाय प्रत्यावर्ती धारा हो",
+          "en": "When current is alternating rather than direct",
+          "bn": "যখন প্রবাহমাত্রা সমপ্রবাহের পরিবর্তে পরিবর্তী প্রবাহ হয়"
+        },
+        {
+          "hi": "जब चालक को एक प्रबल चुंबकीय क्षेत्र में रखा जाता है",
+          "en": "When the conductor is kept in a strong magnetic field",
+          "bn": "যখন পরিবাহীটিকে একটি শক্তিশালী চৌম্বক ক্ষেত্রে রাখা হয়"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "hi": "ओम का नियम केवल तभी लागू होता है जब भौतिक स्थितियाँ, विशेष रूप से तापमान स्थिर रहें, क्योंकि तापमान बदलने से प्रतिरोध बदल जाता है।",
+        "en": "Ohm's law holds true only if physical conditions, especially temperature, remain constant, because resistance changes with temperature.",
+        "bn": "ওহমের সূত্র কেবল তখনই প্রযোজ্য হয় যখন ভৌত অবস্থা, বিশেষ করে তাপমাত্রা অপরিবর্তিত থাকে, কারণ তাপমাত্রা পরিবর্তনের সাথে সাথে রোধের পরিবর্তন ঘটে।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    }
+  ]
 }

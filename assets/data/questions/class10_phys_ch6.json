@@ -6,5 +6,386 @@
     "hi": "मानव नेत्र तथा रंगबिरंगा संसार"
   },
   "class_standard": "Class 10",
-  "questions": []
+  "questions": [
+    {
+      "id": "phys_ch_06_q001",
+      "question": {
+        "hi": "मायोपिया (निकट-दृष्टि दोष) नामक दृष्टि दोष को ठीक करने के लिए किस प्रकार के लेंस का उपयोग किया जाता है?",
+        "en": "Which type of lens is used to correct the vision defect known as Myopia (nearsightedness)?",
+        "bn": "মায়োপিয়া (স্বল্পদৃষ্টি) নামক চোখের ত্রুটি দূর করতে কোন ধরনের লেন্স ব্যবহার করা হয়?"
+      },
+      "options": [
+        {
+          "hi": "उत्तल लेंस",
+          "en": "Convex lens",
+          "bn": "উত্তল লেন্স"
+        },
+        {
+          "hi": "अवतल लेंस",
+          "en": "Concave lens",
+          "bn": "অবতল লেন্স"
+        },
+        {
+          "hi": "द्विफोकसी लेंस",
+          "en": "Bifocal lens",
+          "bn": "বাইফোকাল লেন্স"
+        },
+        {
+          "hi": "बेलनाकार लेंस",
+          "en": "Cylindrical lens",
+          "bn": "চোঙাকৃতি লেন্স"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "hi": "अवतल लेंस दूर की वस्तु से आने वाली समांतर प्रकाश किरणों को अपसरित करता है ताकि वे रेटिना पर केंद्रित हो सकें, जिससे मायोपिया ठीक हो जाता है।",
+        "en": "A concave lens diverges parallel light rays coming from a distant object so that they appear to focus on the retina, correcting Myopia.",
+        "bn": "অবতল লেন্স দূরবর্তী বস্তু থেকে আসা সমান্তরাল আলোক রশ্মিকে অপসারী করে, যার ফলে সেগুলি রেটিনায় মিলিত হয় এবং মায়োপিয়া দূর হয়।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_06_q002",
+      "question": {
+        "hi": "सामान्य दृष्टि वाले किसी युवा वयस्क के लिए स्पष्ट दर्शन की अल्पतम दूरी (निकट बिंदु) कितनी होती है?",
+        "en": "What is the least distance of distinct vision (near point) for a young adult with normal vision?",
+        "bn": "স্বাভাবিক চোখসম্পন্ন একজন তরুণের ক্ষেত্রে স্পষ্ট দর্শনের ন্যূনতম দূরত্ব (নিকট বিন্দু) কত?"
+      },
+      "options": [
+        {
+          "hi": "2.5 cm",
+          "en": "2.5 cm",
+          "bn": "2.5 cm"
+        },
+        {
+          "hi": "25 m",
+          "en": "25 m",
+          "bn": "25 m"
+        },
+        {
+          "hi": "25 cm",
+          "en": "25 cm",
+          "bn": "25 cm"
+        },
+        {
+          "hi": "अनंत",
+          "en": "Infinity",
+          "bn": "অসীম"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "hi": "सामान्य मानव नेत्र के लिए स्पष्ट दर्शन की न्यूनतम दूरी 25 सेमी होती है, जिससे कम दूरी पर रखी वस्तुएं बिना तनाव के स्पष्ट दिखाई नहीं देतीं।",
+        "en": "The least distance of distinct vision for a normal human eye is 25 cm, below which objects appear blurred without straining.",
+        "bn": "একটি স্বাভাবিক মানুষের চোখের জন্য স্পষ্ট দর্শনের ন্যূনতম দূরত্ব হল 25 সেমি, এর চেয়ে কম দূরত্বে থাকা বস্তু চোখের ওপর চাপ সৃষ্টি না করে স্পষ্ট দেখা যায় না।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_06_q003",
+      "question": {
+        "hi": "जब श्वेत प्रकाश किसी काँच के प्रिज्म से होकर गुजरता है, तो किस रंग का विचलन सबसे अधिक होता है?",
+        "en": "When white light passes through a glass prism, which constituent colour deviates the most?",
+        "bn": "সাদা আলো যখন একটি কাচের প্রিজমের মধ্য দিয়ে যায়, তখন কোন বর্ণের আলো সবচেয়ে বেশি বিচ্যুত হয়?"
+      },
+      "options": [
+        {
+          "hi": "लाल",
+          "en": "Red",
+          "bn": "লাল"
+        },
+        {
+          "hi": "पीला",
+          "en": "Yellow",
+          "bn": "হলুদ"
+        },
+        {
+          "hi": "हरा",
+          "en": "Green",
+          "bn": "সবুজ"
+        },
+        {
+          "hi": "बैंगनी",
+          "en": "Violet",
+          "bn": "বেগুনি"
+        }
+      ],
+      "correct_index": 3,
+      "explanation": {
+        "hi": "दृश्य प्रकाश में बैंगनी प्रकाश की तरंगदैर्घ्य सबसे कम होती है, इसलिए इसके लिए अपवर्तनांक सबसे अधिक होता है और इसका विचलन सबसे अधिक होता है।",
+        "en": "Violet light has the shortest wavelength in the visible spectrum and therefore experiences the maximum refractive index and highest deviation.",
+        "bn": "দৃশ্যমান আলোর মধ্যে বেগুনি আলোর তরঙ্গদৈর্ঘ্য সবচেয়ে কম, তাই কাচে এর প্রতিসরাঙ্ক সবচেয়ে বেশি এবং এটি সবচেয়ে বেশি বিচ্যুত হয়।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_06_q004",
+      "question": {
+        "hi": "साफ आसमान का नीला रंग मुख्य रूप से किस प्रकाशीय घटना के कारण होता है?",
+        "en": "The blue colour of the clear sky is primarily due to which optical phenomenon?",
+        "bn": "পরিষ্কার আকাশের নীল রং প্রধানত কোন আলোকীয় ঘটনার জন্য ঘটে?"
+      },
+      "options": [
+        {
+          "hi": "प्रकाश का प्रकीर्णन",
+          "en": "Scattering of light",
+          "bn": "আলোর বিক্ষেপণ"
+        },
+        {
+          "hi": "प्रकाश का विक्षेपण",
+          "en": "Dispersion of light",
+          "bn": "আলোর বিচ্ছুরণ"
+        },
+        {
+          "hi": "प्रकाश का परावर्तन",
+          "en": "Reflection of light",
+          "bn": "আলোর প্রতিফলন"
+        },
+        {
+          "hi": "प्रकाश का अपवर्तन",
+          "en": "Refraction of light",
+          "bn": "আলোর প্রতিসরণ"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "hi": "वायुमंडल में हवा के अणु और अन्य महीन कण लंबी तरंगदैर्घ्य के प्रकाश की तुलना में कम तरंगदैर्घ्य वाले नीले प्रकाश को अधिक तीव्रता से प्रकीर्णित करते हैं।",
+        "en": "Molecules of air and other fine particles in the atmosphere scatter blue light of shorter wavelengths more strongly than light of longer wavelengths.",
+        "bn": "বায়ুমণ্ডলের বাতাস এবং অন্যান্য সূক্ষ্ম কণা দীর্ঘ তরঙ্গদৈর্ঘ্যের আলোর তুলনায় কম তরঙ্গদৈর্ঘ্যের নীল আলোকে অনেক বেশি শক্তিশালীভাবে বিক্ষিপ্ত করে।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_06_q005",
+      "question": {
+        "hi": "यदि आपतन कोण तथा निर्गत कोण क्रमशः 'i₁' और 'i₂' हों, तथा प्रिज्म का कोण 'A' हो, तो विचलन कोण (δ) के लिए सही संबंध क्या है?",
+        "en": "If 'i₁' and 'i₂' are the angles of incidence and emergence, and 'A' is the angle of a prism, what is the correct relation for the angle of deviation (δ)?",
+        "bn": "যদি আপতন কোণ ও নির্গমন কোণ যথাক্রমে 'i₁' ও 'i₂' হয় এবং প্রিজমের কোণ 'A' হয়, তবে চ্যুতি কোণের (δ) সঠিক সম্পর্কটি কী?"
+      },
+      "options": [
+        {
+          "hi": "δ = i₁ + i₂ - A",
+          "en": "δ = i₁ + i₂ - A",
+          "bn": "δ = i₁ + i₂ - A"
+        },
+        {
+          "hi": "δ = i₁ + i₂ + A",
+          "en": "δ = i₁ + i₂ + A",
+          "bn": "δ = i₁ + i₂ + A"
+        },
+        {
+          "hi": "δ = i₁ - i₂ + A",
+          "en": "δ = i₁ - i₂ + A",
+          "bn": "δ = i₁ - i₂ + A"
+        },
+        {
+          "hi": "δ = A - (i₁ + i₂)",
+          "en": "δ = A - (i₁ + i₂)",
+          "bn": "δ = A - (i₁ + i₂)"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "hi": "प्रिज्म से गुजरने वाले प्रकाश का कुल विचलन, आपतन कोण और निर्गत कोण के योग में से प्रिज्म के कोण को घटाने पर प्राप्त होता है: δ = i₁ + i₂ - A।",
+        "en": "The total deviation of light passing through a prism is given by the sum of the angles of incidence and emergence minus the angle of the prism: δ = i₁ + i₂ - A.",
+        "bn": "প্রিজমের মধ্য দিয়ে আলোর প্রতিসরণে মোট চ্যুতি হল আপতন কোণ ও নির্গমন কোণের সমষ্টি থেকে প্রিজম কোণের বিয়োগফল: δ = i₁ + i₂ - A।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_06_q006",
+      "question": {
+        "hi": "जरा-दूरदृष्टिता (प्रेसबायोपिया) नामक नेत्र दोष का मुख्य कारण क्या है?",
+        "en": "What is the primary cause of the eye defect known as Presbyopia?",
+        "bn": "প্রেসবায়োপিয়া (চালশে) নামক চোখের ত্রুটির প্রধান কারণ কী?"
+      },
+      "options": [
+        {
+          "hi": "नेत्र गोलक का लंबा हो जाना",
+          "en": "Elongation of the eyeball",
+          "bn": "অক্ষিগোলকের দৈর্ঘ্য বৃদ্ধি পাওয়া"
+        },
+        {
+          "hi": "पक्ष्माभी पेशियों का धीरे-धीरे दुर्बल होना तथा क्रिस्टलीय लेंस के लचीलेपन में कमी आना",
+          "en": "Gradual weakening of ciliary muscles and diminishing flexibility of the crystalline lens",
+          "bn": "সিলিয়ারি পেশির ক্রমান্বয়ে দুর্বলতা এবং চোখের লেন্সের নমনীয়তা হ্রাস পাওয়া"
+        },
+        {
+          "hi": "नेत्र गोलक का छोटा हो जाना",
+          "en": "Shortening of the eyeball",
+          "bn": "অক্ষিগোলকের দৈর্ঘ্য হ্রাস পাওয়া"
+        },
+        {
+          "hi": "कॉर्निया की वक्रता का अनियमित होना",
+          "en": "Irregular curvature of the cornea",
+          "bn": "কর্নিয়ার বক্রতার অসমতা"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "hi": "उम्र बढ़ने के साथ पक्ष्माभी पेशियां कमजोर हो जाती हैं और क्रिस्टलीय लेंस का लचीलापन कम हो जाता है, जिससे निकट की वस्तुओं पर ध्यान केंद्रित करने की क्षमता घट जाती है।",
+        "en": "Presbyopia occurs due to aging, as the ciliary muscles weaken and the crystalline eye lens loses its elasticity to focus on nearby objects.",
+        "bn": "বয়স বাড়ার সাথে সাথে সিলিয়ারি পেশি দুর্বল হয়ে পড়ে এবং চোখের লেন্সের স্থিতিস্থাপকতা কমে যাওয়ায় নিকটবর্তী বস্তুকে ফোকাস করার ক্ষমতা হ্রাস পায়, যাকে প্রেসবায়োপিয়া বলে।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_06_q007",
+      "question": {
+        "hi": "आकाश में इंद्रधनुष के निर्माण के लिए निम्नलिखित में से कौन सी प्रकाशीय घटनाओं का संयोजन उत्तरदायी है?",
+        "en": "Which combination of optical phenomena is responsible for the formation of a rainbow in the sky?",
+        "bn": "আকাশে রামধনু সৃষ্টির জন্য নিচের কোন আলোকীয় ঘটনাগুলির সংমিশ্রণ দায়ী?"
+      },
+      "options": [
+        {
+          "hi": "अपवर्तन, विक्षेपण और आंतरिक परावर्तन",
+          "en": "Refraction, dispersion, and internal reflection",
+          "bn": "প্রতিসরণ, বিচ্ছুরণ এবং অভ্যন্তরীণ প্রতিফলন"
+        },
+        {
+          "hi": "विक्षेपण, प्रकीर्णन और पूर्ण आंतरिक परावर्तन",
+          "en": "Dispersion, scattering, and total internal reflection",
+          "bn": "বিচ্ছুরণ, বিক্ষেপণ এবং অভ্যন্তরীণ পূর্ণ প্রতিফলন"
+        },
+        {
+          "hi": "अपवर्तन, प्रकीर्णन और अवशोषण",
+          "en": "Refraction, scattering, and absorption",
+          "bn": "প্রতিসরণ, বিক্ষেপণ এবং শোষণ"
+        },
+        {
+          "hi": "परावर्तन, प्रकीर्णन और विक्षेपण",
+          "en": "Reflection, scattering, and dispersion",
+          "bn": "প্রতিফলন, বিক্ষেপণ এবং বিচ্ছুরণ"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "hi": "पानी की बूंदें छोटे प्रिज्म की तरह कार्य करती हैं, जो सूर्य के प्रकाश को अपवर्तित और विक्षेपित करती हैं, फिर आंतरिक रूप से परावर्तित करती हैं, और अंत में बाहर निकलते समय पुनः अपवर्तित करती हैं।",
+        "en": "Water droplets act like tiny prisms, refracting and dispersing sunlight, then internally reflecting it, and finally refracting it again as it exits.",
+        "bn": "জলের কণাগুলি ক্ষুদ্র প্রিজমের মতো কাজ করে, যা সূর্যের আলোকে প্রতিসরিত ও বিচ্ছুরিত করে, তারপর অভ্যন্তরীণভাবে প্রতিফলিত করে এবং সবশেষে নির্গমনের সময় আবার প্রতিসরিত করে।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_06_q008",
+      "question": {
+        "hi": "रैले के प्रकीर्णन नियम के अनुसार, तरंगदैर्घ्य से छोटे कणों के लिए प्रकीर्णित प्रकाश की तीव्रता (I) प्रकाश की तरंगदैर्घ्य (λ) पर किस प्रकार निर्भर करती है?",
+        "en": "According to Rayleigh's scattering law, how does the intensity of scattered light (I) depend on the wavelength (λ) of light for particles smaller than the wavelength?",
+        "bn": "র‌্যালির বিক্ষেপণ সূত্র অনুযায়ী, আলোর তরঙ্গদৈর্ঘ্যের চেয়ে ছোট কণার ক্ষেত্রে বিক্ষিপ্ত আলোর তীব্রতা (I) তরঙ্গের দৈর্ঘ্য (λ)-এর সাথে কীভাবে পরিবর্তিত হয়?"
+      },
+      "options": [
+        {
+          "hi": "I ∝ λ",
+          "en": "I ∝ λ",
+          "bn": "I ∝ λ"
+        },
+        {
+          "hi": "I ∝ 1/λ",
+          "en": "I ∝ 1/λ",
+          "bn": "I ∝ 1/λ"
+        },
+        {
+          "hi": "I ∝ 1/λ²",
+          "en": "I ∝ 1/λ²",
+          "bn": "I ∝ 1/λ²"
+        },
+        {
+          "hi": "I ∝ 1/λ⁴",
+          "en": "I ∝ 1/λ⁴",
+          "bn": "I ∝ 1/λ⁴"
+        }
+      ],
+      "correct_index": 3,
+      "explanation": {
+        "hi": "रैले प्रकीर्णन नियम के अनुसार, प्रकीर्णित प्रकाश की तीव्रता प्रकाश की तरंगदैर्घ्य के चतुर्थ घात के व्युत्क्रमानुपाती होती है (I ∝ 1/λ⁴)।",
+        "en": "Rayleigh scattering states that the intensity of scattered light is inversely proportional to the fourth power of the wavelength of light.",
+        "bn": "র‌্যালির বিক্ষেপণ সূত্র অনুযায়ী, বিক্ষিপ্ত আলোর তীব্রতা আলোর তরঙ্গদৈর্ঘ্যের চতুর্থ ঘাতের ব্যস্তানুপাতিক হয় (I ∝ 1/λ⁴)।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_06_q009",
+      "question": {
+        "hi": "रात में तारों के टिमटिमाते हुए दिखाई देने का कारण निम्नलिखित में से क्या है?",
+        "en": "The twinkling of stars at night is caused by which of the following?",
+        "bn": "রাতের আকাশে তারাদের মিটমিট করার কারণ নিচের কোনটি?"
+      },
+      "options": [
+        {
+          "hi": "तारों द्वारा रुक-रुक कर प्रकाश का उत्सर्जन",
+          "en": "Intermittent light emission by stars",
+          "bn": "তারাদের দ্বারা অনিয়মিত আলো নিঃসরণ"
+        },
+        {
+          "hi": "तारों के प्रकाश का वायुमंडलीय अपवर्तन",
+          "en": "Atmospheric refraction of starlight",
+          "bn": "নক্ষত্রের আলোর বায়ুমণ্ডলীয় প্রতিসরণ"
+        },
+        {
+          "hi": "तारों के प्रकाश का वायुमंडलीय प्रकीर्णन",
+          "en": "Atmospheric scattering of starlight",
+          "bn": "নক্ষত্রের আলোর বায়ুমণ্ডলীয় বিক্ষেপণ"
+        },
+        {
+          "hi": "वायु परतों में पूर्ण आंतरिक परावर्तन",
+          "en": "Total internal reflection in air layers",
+          "bn": "বায়ুস্তরের মধ্যে অভ্যন্তরীণ পূর্ণ প্রতিফলন"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "hi": "तारों का प्रकाश पृथ्वी के वायुमंडल में लगातार बदलते अपवर्तनांक वाले परतों से अपवर्तित होता है, जिससे उसकी आभासी स्थिति और चमक बदलती रहती है।",
+        "en": "The starlight undergoes continuous refraction through layers of varying refractive index in the Earth's atmosphere, shifting its apparent position and brightness.",
+        "bn": "নক্ষত্রের আলো পৃথিবীর বায়ুমণ্ডলের ভিন্ন ভিন্ন প্রতিসরাঙ্কের স্তরের মধ্য দিয়ে ক্রমাগত প্রতিসরিত হয়, যার ফলে এর আপাত অবস্থান ও উজ্জ্বলতা পরিবর্তিত হতে থাকে।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_06_q010",
+      "question": {
+        "hi": "जब मानव नेत्र की पक्ष्माभी पेशियाँ शिथिल (relax) होती हैं, तो क्रिस्टलीय लेंस __________ हो जाता है और इसकी फोकस दूरी __________ है।",
+        "en": "When the ciliary muscles of the human eye relax, the crystalline eye lens becomes __________ and its focal length __________.",
+        "bn": "যখন মানুষের চোখের সিলিয়ারি পেশিগুলি শিথিল (relax) হয়, তখন চোখের লেন্স __________ হয় এবং এর ফোকাস দৈর্ঘ্য __________।"
+      },
+      "options": [
+        {
+          "hi": "मोटा, घट जाती",
+          "en": "thick, decreases",
+          "bn": "পুরু, হ্রাস পায়"
+        },
+        {
+          "hi": "पतला, घट जाती",
+          "en": "thin, decreases",
+          "bn": "পাতলা, হ্রাস পায়"
+        },
+        {
+          "hi": "पतला, बढ़ जाती",
+          "en": "thin, increases",
+          "bn": "পাতলা, বৃদ্ধি পায়"
+        },
+        {
+          "hi": "मोटा, बढ़ जाती",
+          "en": "thick, increases",
+          "bn": "পুরু, বৃদ্ধি পায়"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "hi": "पक्ष्माभी पेशियों के शिथिल होने पर लेंस पतला हो जाता है, जिससे उसकी फोकस दूरी बढ़ जाती है और हम दूर की वस्तुओं को स्पष्ट देख पाते हैं।",
+        "en": "Relaxing the ciliary muscles pulls the suspensory ligaments tense, causing the lens to thin and increasing its focal length, which helps in seeing distant objects.",
+        "bn": "সিলিয়ারি পেশি শিথিল হলে লেন্স পাতলা হয়ে যায়, যার ফলে এর ফোকাস দৈর্ঘ্য বৃদ্ধি পায় এবং আমরা দূরের বস্তু স্পষ্ট দেখতে পাই।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    }
+  ]
 }
