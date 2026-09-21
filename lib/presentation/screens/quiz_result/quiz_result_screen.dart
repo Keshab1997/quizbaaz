@@ -163,6 +163,10 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
                             _buildStatColumn(S.gems, '+$gemsEarned', AppColors.neonPurple, Icons.diamond),
                           ],
                         ),
+                        if (quiz.isDailyQuiz && !isGuest) ...[
+                          const SizedBox(height: 12),
+                          _buildRankingNotice(quiz),
+                        ],
                         if (isPerfect) ...[
                           const SizedBox(height: 12),
                           Container(
@@ -281,6 +285,45 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
                     ),
                   ),
                 ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  /// Tells the player whether this daily run is ranked once it finishes —
+  /// a ranked run reaches today's leaderboard, an unranked (practice) one
+  /// never does. Without this, a failed packet made the score silently
+  /// disappear and nobody knew why (R12).
+  Widget _buildRankingNotice(QuizProvider quiz) {
+    final ranked = quiz.isDailyRanked;
+    final colour = ranked ? AppColors.neonGreen : AppColors.neonGold;
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+      decoration: BoxDecoration(
+        color: colour.withValues(alpha: 0.12),
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: colour.withValues(alpha: 0.45)),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(
+            ranked ? Icons.emoji_events : Icons.sports_score,
+            size: 16,
+            color: colour,
+          ),
+          const SizedBox(width: 6),
+          Flexible(
+            child: Text(
+              ranked ? S.resultDailyRankedNotice : S.resultDailyUnrankedNotice,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 11,
+                fontWeight: FontWeight.w600,
+                color: colour,
               ),
             ),
           ),

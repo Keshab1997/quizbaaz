@@ -228,6 +228,8 @@ python3 tool/gen_strings.py     # regenerate S, report translation gaps
 python3 tool/verify_l10n.py     # unknown keys · const misuse · bracket damage
 python3 tool/apply_l10n.py      # migrate raw English literals to S.* (re-runnable)
 python3 tool/validate_questions.py   # question banks: schema, ids, translations
+python3 tool/publish_daily_packet.py --dry-run   # today's daily packet, no write
+python3 tool/publish_daily_packet.py             # publish daily_quiz_packets/{today}
 
 # After removing `const` from an expression that gained an S.* getter, the
 # analyzer will flag the children that are still const-able. Feed the report

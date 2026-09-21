@@ -415,6 +415,8 @@ class S {
   static String get resultGoogleSignIn => raw('resultGoogleSignIn');
   static String get resultSigningIn => raw('resultSigningIn');
   static String get resultSignedIn => raw('resultSignedIn');
+  static String get resultDailyRankedNotice => raw('resultDailyRankedNotice');
+  static String get resultDailyUnrankedNotice => raw('resultDailyUnrankedNotice');
   static String get reviewTitle => raw('reviewTitle');
   static String get reviewNone => raw('reviewNone');
   static String get reviewYourAnswer => raw('reviewYourAnswer');

@@ -335,6 +335,10 @@ const Map<String, String> kStringsHi = {
   'resultGoogleSignIn': 'एक टैप गूगल साइन-इन',
   'resultSigningIn': 'साइन इन हो रहा है...',
   'resultSignedIn': '🎉 गूगल से साइन इन! स्कोर लीडरबोर्ड पर सेव हुआ!',
+  'resultDailyRankedNotice':
+      'कॉम्पिटीशन रन — आपका सर्वश्रेष्ठ स्कोर आज के लीडरबोर्ड पर जुड़ेगा!',
+  'resultDailyUnrankedNotice':
+      'प्रैक्टिस रन — यह स्कोर लीडरबोर्ड पर नहीं जुड़ेगा।',
   'reviewTitle': 'उत्तर समीक्षा',
   'reviewNone': 'समीक्षा के लिए अभी कोई उत्तर नहीं।',
   'reviewYourAnswer': 'आपका उत्तर',

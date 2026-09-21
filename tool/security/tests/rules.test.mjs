@@ -551,6 +551,36 @@ test('leaderboard: own bounded entry allowed; huge scores & other-user docs deni
   await env.cleanup();
 });
 
+// Pins the exact write pattern FirestoreService.saveLeaderboardEntry uses
+// (`set(..., { merge: true })` with a serverTimestamp). The matrix above only
+// covered the plain `set` (create) path; the app's daily-quiz completion and
+// self-heal both issue the merge form, and if either leg regressed the score
+// would silently stop landing.
+test('leaderboard: merge-write with serverTimestamp allowed, incl. overwriting an existing entry', async () => {
+  const env = await makeEnv(STUDENT);
+  const ref = env.firestore.collection('leaderboard').doc('2026-09-22').collection('scores').doc(STUDENT);
+  const entry = {
+    user_id: STUDENT,
+    username: 'kesab',
+    name: 'Keshab',
+    avatar_path: 'x',
+    name_effect: '',
+    score: 90,
+    time_seconds: 60.25,
+    streak: 4,
+    timestamp: new Date(),
+  };
+
+  // Day one: document does not exist yet — the merge write is a create.
+  await assertSucceeds(ref.set(entry, { merge: true }));
+  // The same player's better run later the same day — the merge write is an
+  // update over the existing doc (the path the rules' `allow update` guards).
+  await assertSucceeds(ref.set({ ...entry, score: 100, time_seconds: 55.5 }, { merge: true }));
+  // An existing entry forbids smuggling a score bound violation in.
+  await assertFails(ref.set({ ...entry, score: 5000 }, { merge: true }));
+  await env.cleanup();
+});
+
 // ---------------------------------------------------------------------------
 // 8. User subcollections — gifts admin-written, owner-deletable; history owner-owned
 // ---------------------------------------------------------------------------

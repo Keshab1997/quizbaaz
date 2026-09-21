@@ -343,6 +343,10 @@ const Map<String, String> kStringsEn = {
   'resultGoogleSignIn': '1-Tap Google Sign-In',
   'resultSigningIn': 'Signing in...',
   'resultSignedIn': '🎉 Signed in with Google! Score saved to Leaderboard!',
+  'resultDailyRankedNotice':
+      'Competition run — your best score counts for today\'s leaderboard!',
+  'resultDailyUnrankedNotice':
+      'Practice run — this score is not added to the leaderboard.',
   'reviewTitle': 'Review Answers',
   'reviewNone': 'No answers to review yet.',
   'reviewYourAnswer': 'Your answer',

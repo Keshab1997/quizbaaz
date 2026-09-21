@@ -335,6 +335,10 @@ const Map<String, String> kStringsBn = {
   'resultGoogleSignIn': 'এক ট্যাপে গুগল সাইন-ইন',
   'resultSigningIn': 'সাইন ইন হচ্ছে...',
   'resultSignedIn': '🎉 গুগল দিয়ে সাইন ইন! স্কোর লিডারবোর্ডে সেভ হয়েছে!',
+  'resultDailyRankedNotice':
+      'প্রতিযোগিতা রান — আপনার সেরা স্কোর আজকের লিডারবোর্ডে যোগ হবে!',
+  'resultDailyUnrankedNotice':
+      'অনুশীলন রান — এই স্কোর লিডারবোর্ডে যোগ হবে না।',
   'reviewTitle': 'উত্তর পর্যালোচনা',
   'reviewNone': 'পর্যালোচনা করার মতো কোনো উত্তর নেই।',
   'reviewYourAnswer': 'আপনার উত্তর',
