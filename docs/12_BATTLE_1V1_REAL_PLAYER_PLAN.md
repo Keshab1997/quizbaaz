@@ -145,7 +145,8 @@ Room doc shape:
 - [x] **BattleProvider**: new phases (`searching`, `found`), real-room state machine,
       bot fallback, symmetric scoring with streak, single-award guard per room
 - [x] **Battle screen**: searching view, VS intro view, arena/result updates, i18n keys
-- [x] **firestore.rules**: `battle_queue` (signed-in read/write own doc) + `battle_rooms`
+- [x] **firestore.rules**: `battle_queue` (signed-in read; owner writes; signed-in delete so the
+      claim transaction can evict both players' entries atomically) + `battle_rooms`
       (participants read/write), world-readable `winners` mirror after finish
 - [x] **Strings**: new key set in en / bn / hi + `gen_strings.py` regen
 

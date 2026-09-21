@@ -164,15 +164,21 @@ service cloud.firestore {
 
     // -------------------------------------------------------- battle queue --
     // Matchmaking ticket. Readable for matchmaking; created/updated by the
-    // owner with a known difficulty. Delete is owner-only WITHOUT a
-    // difficulty check — `request.resource` is null on delete, so folding
-    // delete into a `write` rule with a difficulty guard would deny every
-    // account-deletion cleanup of battle_queue (R15).
+    // owner with a known difficulty. Delete is by any signed-in player: the
+    // claim transaction of a live match (BattleRoomService.claimOpponent)
+    // evicts BOTH queue entries in one commit so a matched pair can never be
+    // re-claimed by a third player — that dual delete runs under the claimant's
+    // identity, so an owner-only delete rule would abort the whole transaction
+    // with PERMISSION_DENIED and live matchmaking could never start (R11).
+    // The queue holds transient presence data (name/avatar/difficulty, no
+    // wallet or rank state), so a crowd-delete can only delay someone's search,
+    // never corrupt their account. A client must keep a difficulty guard on
+    // create/update; delete has no `request.resource` to check it against.
     match /battle_queue/{uid} {
       allow read: if signedIn();
       allow create, update: if isOwner(uid)
         && validDifficulty().hasAny([request.resource.data.get('difficulty', '')]);
-      allow delete: if isOwner(uid);
+      allow delete: if signedIn();
     }
 
     // ------------------------------------------------------- battle rooms --

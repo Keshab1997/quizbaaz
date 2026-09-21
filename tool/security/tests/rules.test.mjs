@@ -601,6 +601,40 @@ test('online_users & battle_queue: owner writes allowed, impersonation denied', 
   await other.cleanup();
 });
 
+test('battle_queue: the matchmaking claim evicts both players in one transaction', async () => {
+  const me = await makeEnv(STUDENT);
+  const other = await makeEnv(OTHER);
+  await seed(me, {
+    'battle_queue/student-a': { name: 'K', avatar: 'x', difficulty: 'normal', created_at: 1 },
+    'battle_queue/student-b': { name: 'B', avatar: 'y', difficulty: 'normal', created_at: 2 },
+  });
+  // claimOpponent: create the room for the pair and delete BOTH queue entries
+  // under the claimant's identity. The opponent's entry is not the claimant's
+  // doc, so an owner-only delete rule denies the whole transaction — this test
+  // pins the signed-in delete that lets live matchmaking commit (R11).
+  await assertSucceeds(
+    me.firestore.runTransaction(async (tx) => {
+      tx.set(me.firestore.collection('battle_rooms').doc(ROOM_ID), {
+        match_id: 'm_test_claim',
+        difficulty: 'normal',
+        status: 'created',
+        created_at: 1_757_000_000_000,
+        questions: [{ id: 'q1' }],
+        state: { phase: 'countdown' },
+        players: {
+          a: { uid: STUDENT, name: 'K', avatar: 'x', last_seen: 1 },
+          b: { uid: OTHER, name: 'B', avatar: 'y', last_seen: 1 },
+        },
+        winner: null,
+      });
+      tx.delete(me.firestore.collection('battle_queue').doc(STUDENT));
+      tx.delete(me.firestore.collection('battle_queue').doc(OTHER));
+    }),
+  );
+  await me.cleanup();
+  await other.cleanup();
+});
+
 // ---------------------------------------------------------------------------
 // 10. R17 — the two shapes the matrix used to miss
 // ---------------------------------------------------------------------------
