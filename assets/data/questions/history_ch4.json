@@ -6,5 +6,386 @@
     "hi": "मुद्रण संस्कृति और आधुनिक विश्व"
   },
   "class_standard": "Class 10",
-  "questions": []
+  "questions": [
+    {
+      "id": "hist_ch_04_q001",
+      "question": {
+        "hi": "यूरोप में चल अक्षरों वाली धातु की मुद्रण मशीन सबसे पहले किसने विकसित की?",
+        "en": "Who developed the first printing press using movable metal type in Europe?",
+        "bn": "ইউরোপে চলনযোগ্য ধাতব অক্ষর ব্যবহার করে প্রথম মুদ্রণযন্ত্র কে তৈরি করেন?"
+      },
+      "options": [
+        {
+          "hi": "जोहान्स गुटेनबर्ग",
+          "en": "Johannes Gutenberg",
+          "bn": "জোহানেস গুটেনবার্গ"
+        },
+        {
+          "hi": "मार्टिन लूथर",
+          "en": "Martin Luther",
+          "bn": "মার্টিন লুথার"
+        },
+        {
+          "hi": "जेम्स ऑगस्टस हिकी",
+          "en": "James Augustus Hickey",
+          "bn": "জেমস অগাস্টাস হিকি"
+        },
+        {
+          "hi": "राजा राममोहन राय",
+          "en": "Raja Rammohun Roy",
+          "bn": "রাজা রামমোহন রায়"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "hi": "जोहान्स गुटेनबर्ग ने 1430 के दशक में यूरोप में चल धातु अक्षरों वाली पहली ज्ञात मुद्रण मशीन विकसित की। इससे बड़ी संख्या में पुस्तकों का उत्पादन संभव हुआ।",
+        "en": "Johannes Gutenberg developed the first known printing press using movable metal type in Europe in the 1430s. His press made the large-scale production of books possible.",
+        "bn": "জোহানেস গুটেনবার্গ 1430-এর দশকে ইউরোপে চলনযোগ্য ধাতব অক্ষর ব্যবহার করে প্রথম পরিচিত মুদ্রণযন্ত্র তৈরি করেন। তাঁর যন্ত্রে ব্যাপকভাবে বই উৎপাদন সম্ভব হয়।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "hist_ch_04_q002",
+      "question": {
+        "hi": "गुटेनबर्ग ने 1440 के दशक–1450 के दशक में किस पुस्तक को मुद्रित किया था?",
+        "en": "Which book did Gutenberg print in the 1440s–1450s?",
+        "bn": "গুটেনবার্গ 1440-এর দশক–1450-এর দশকে কোন বইটি মুদ্রণ করেছিলেন?"
+      },
+      "options": [
+        {
+          "hi": "बाइबिल",
+          "en": "The Bible",
+          "bn": "বাইবেল"
+        },
+        {
+          "hi": "रामायण",
+          "en": "The Ramayana",
+          "bn": "রামায়ণ"
+        },
+        {
+          "hi": "कुरान",
+          "en": "The Quran",
+          "bn": "কোরান"
+        },
+        {
+          "hi": "कम्युनिस्ट घोषणापत्र",
+          "en": "The Communist Manifesto",
+          "bn": "কমিউনিস্ট ম্যানিফেস্টো"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "hi": "गुटेनबर्ग ने 1450 के दशक में बाइबिल मुद्रित की और लगभग 180 प्रतियाँ तैयार कीं। यह उनकी मुद्रण मशीन से छपी शुरुआती महत्वपूर्ण पुस्तकों में से एक थी।",
+        "en": "Gutenberg printed the Bible, producing around 180 copies in the 1450s. It became one of the earliest major books printed using his press.",
+        "bn": "গুটেনবার্গ 1450-এর দশকে বাইবেল মুদ্রণ করেন এবং প্রায় 180টি কপি তৈরি হয়। তাঁর মুদ্রণযন্ত্রে এটি মুদ্রিত প্রথম দিকের গুরুত্বপূর্ণ বইগুলির একটি।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "hist_ch_04_q003",
+      "question": {
+        "hi": "यूरोप में मुद्रण क्रांति का एक प्रमुख प्रभाव क्या था?",
+        "en": "What was one major effect of the print revolution in Europe?",
+        "bn": "ইউরোপে মুদ্রণ বিপ্লবের একটি প্রধান প্রভাব কী ছিল?"
+      },
+      "options": [
+        {
+          "hi": "पुस्तकें अधिक व्यापक पाठक वर्ग के लिए उपलब्ध हो गईं",
+          "en": "Books became available to a wider readership",
+          "bn": "বই বৃহত্তর পাঠকসমাজের কাছে সহজলভ্য হয়ে ওঠে"
+        },
+        {
+          "hi": "पुस्तकें केवल राजाओं के लिए उपलब्ध हो गईं",
+          "en": "Books became available only to kings",
+          "bn": "বই শুধু রাজাদের জন্য সহজলভ্য হয়ে ওঠে"
+        },
+        {
+          "hi": "हस्तलिखित पांडुलिपियाँ तुरंत पूरी तरह समाप्त हो गईं",
+          "en": "Handwritten manuscripts completely disappeared immediately",
+          "bn": "হাতে লেখা পাণ্ডুলিপি সঙ্গে সঙ্গে সম্পূর্ণ বিলুপ্ত হয়ে যায়"
+        },
+        {
+          "hi": "धार्मिक पुस्तकों को अब मुद्रित नहीं किया जा सकता था",
+          "en": "Religious books could no longer be printed",
+          "bn": "ধর্মীয় বই আর মুদ্রণ করা সম্ভব ছিল না"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "hi": "मुद्रण से पुस्तकों के उत्पादन की लागत कम हुई और गति बढ़ी। इसलिए पहले की तुलना में बहुत अधिक पाठकों तक पुस्तकें पहुँच सकीं।",
+        "en": "Printing reduced the cost and increased the speed of producing books. As a result, books could reach a much wider group of readers than before.",
+        "bn": "মুদ্রণ বই উৎপাদনের খরচ কমায় এবং গতি বাড়ায়। ফলে আগের তুলনায় অনেক বেশি মানুষের কাছে বই পৌঁছাতে পারে।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "hist_ch_04_q004",
+      "question": {
+        "hi": "मार्टिन लूथर ने मुद्रित लेखों के व्यापक प्रसार का समर्थन क्यों किया?",
+        "en": "Why did Martin Luther support the wider circulation of printed texts?",
+        "bn": "মার্টিন লুথার কেন মুদ্রিত লেখার ব্যাপক প্রচারকে সমর্থন করেছিলেন?"
+      },
+      "options": [
+        {
+          "hi": "वे चाहते थे कि उनके धार्मिक विचार अधिक लोगों तक पहुँचें",
+          "en": "He wanted his religious ideas to reach more people",
+          "bn": "তিনি চেয়েছিলেন তাঁর ধর্মীয় ভাবনা আরও বেশি মানুষের কাছে পৌঁছাক"
+        },
+        {
+          "hi": "वे धार्मिक पुस्तकों की छपाई बंद करना चाहते थे",
+          "en": "He wanted to stop the printing of religious books",
+          "bn": "তিনি ধর্মীয় বই মুদ্রণ বন্ধ করতে চেয়েছিলেন"
+        },
+        {
+          "hi": "वे पांडुलिपियों को अधिक महँगा बनाना चाहते थे",
+          "en": "He wanted to make manuscripts more expensive",
+          "bn": "তিনি পাণ্ডুলিপিকে আরও ব্যয়বহুল করতে চেয়েছিলেন"
+        },
+        {
+          "hi": "वे चाहते थे कि मुद्रण केवल मठों तक सीमित रहे",
+          "en": "He wanted printing to remain limited to monasteries",
+          "bn": "তিনি চেয়েছিলেন মুদ্রণ শুধু মঠগুলির মধ্যে সীমাবদ্ধ থাকুক"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "hi": "लूथर ने कैथोलिक चर्च की आलोचना और अपने धार्मिक विचारों को फैलाने के लिए मुद्रण का उपयोग किया। इसलिए मुद्रित लेखों ने उनके विचारों को तेजी से बड़े पाठक वर्ग तक पहुँचाया।",
+        "en": "Luther used print to circulate his criticism of the Catholic Church and his religious ideas. Printed texts therefore helped his ideas reach a large audience quickly.",
+        "bn": "লুথার ক্যাথলিক চার্চের সমালোচনা এবং নিজের ধর্মীয় মতামত ছড়িয়ে দিতে মুদ্রণ ব্যবহার করেছিলেন। তাই মুদ্রিত লেখা দ্রুত বৃহৎ পাঠকসমাজের কাছে তাঁর ভাবনা পৌঁছে দেয়।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "hist_ch_04_q005",
+      "question": {
+        "hi": "1556 में गोवा में स्थापित भारत की पहली मुद्रण मशीन से कौन जुड़े थे?",
+        "en": "Who is associated with the first printing press in India, established at Goa in 1556?",
+        "bn": "1556 সালে গোয়ায় প্রতিষ্ঠিত ভারতের প্রথম মুদ্রণযন্ত্রের সঙ্গে কারা যুক্ত ছিলেন?"
+      },
+      "options": [
+        {
+          "hi": "पुर्तगाली मिशनरी",
+          "en": "Portuguese missionaries",
+          "bn": "পর্তুগিজ ধর্মপ্রচারকরা"
+        },
+        {
+          "hi": "ब्रिटिश सैनिक",
+          "en": "British soldiers",
+          "bn": "ব্রিটিশ সৈন্যরা"
+        },
+        {
+          "hi": "मुगल अधिकारी",
+          "en": "Mughal officials",
+          "bn": "মুঘল কর্মকর্তারা"
+        },
+        {
+          "hi": "फ्रांसीसी व्यापारी",
+          "en": "French traders",
+          "bn": "ফরাসি বণিকরা"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "hi": "भारत की पहली मुद्रण मशीन 1556 में गोवा में पुर्तगाली मिशनरियों द्वारा स्थापित की गई थी। उन्होंने धार्मिक साहित्य और अन्य लेखों के प्रसार के लिए मुद्रण का उपयोग किया।",
+        "en": "The first printing press in India was established at Goa in 1556 by Portuguese missionaries. They used printing to spread religious literature and other texts.",
+        "bn": "ভারতের প্রথম মুদ্রণযন্ত্র 1556 সালে গোয়ায় পর্তুগিজ ধর্মপ্রচারকদের উদ্যোগে প্রতিষ্ঠিত হয়। তাঁরা ধর্মীয় সাহিত্য ও অন্যান্য লেখা প্রচারে মুদ্রণ ব্যবহার করতেন।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "hist_ch_04_q006",
+      "question": {
+        "hi": "1780 में भारत का पहला अंग्रेजी समाचार पत्र Bengal Gazette किसने प्रकाशित किया?",
+        "en": "Who published the Bengal Gazette, the first English newspaper in India, in 1780?",
+        "bn": "1780 সালে ভারতের প্রথম ইংরেজি সংবাদপত্র Bengal Gazette কে প্রকাশ করেন?"
+      },
+      "options": [
+        {
+          "hi": "जेम्स ऑगस्टस हिकी",
+          "en": "James Augustus Hickey",
+          "bn": "জেমস অগাস্টাস হিকি"
+        },
+        {
+          "hi": "राजा राममोहन राय",
+          "en": "Raja Rammohun Roy",
+          "bn": "রাজা রামমোহন রায়"
+        },
+        {
+          "hi": "बाल गंगाधर तिलक",
+          "en": "Bal Gangadhar Tilak",
+          "bn": "বাল গঙ্গাধর তিলক"
+        },
+        {
+          "hi": "देशी भाषा प्रेस अधिनियम",
+          "en": "Vernacular Press Act",
+          "bn": "দেশীয় ভাষার সংবাদপত্র আইন"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "hi": "जेम्स ऑगस्टस हिकी ने 1780 में Bengal Gazette शुरू किया। इसे भारत में प्रकाशित पहला अंग्रेजी समाचार पत्र माना जाता है।",
+        "en": "James Augustus Hickey started the Bengal Gazette in 1780. It is regarded as the first English newspaper published in India.",
+        "bn": "জেমস অগাস্টাস হিকি 1780 সালে Bengal Gazette প্রকাশ করেন। এটিকে ভারতে প্রকাশিত প্রথম ইংরেজি সংবাদপত্র হিসেবে ধরা হয়।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "hist_ch_04_q007",
+      "question": {
+        "hi": "1878 के Vernacular Press Act का मुख्य उद्देश्य क्या था?",
+        "en": "What was the main purpose of the Vernacular Press Act of 1878?",
+        "bn": "1878 সালের Vernacular Press Act-এর প্রধান উদ্দেশ্য কী ছিল?"
+      },
+      "options": [
+        {
+          "hi": "देशी भाषा के समाचार पत्रों को नियंत्रित और सेंसर करना",
+          "en": "To control and censor vernacular newspapers",
+          "bn": "দেশীয় ভাষার সংবাদপত্রকে নিয়ন্ত্রণ ও সেন্সর করা"
+        },
+        {
+          "hi": "सभी भारतीयों को मुफ्त समाचार पत्र उपलब्ध कराना",
+          "en": "To provide free newspapers to all Indians",
+          "bn": "সমস্ত ভারতীয়কে বিনামূল্যে সংবাদপত্র দেওয়া"
+        },
+        {
+          "hi": "हर गाँव में मुद्रण मशीन स्थापित करना",
+          "en": "To establish printing presses in every village",
+          "bn": "প্রতিটি গ্রামে মুদ্রণযন্ত্র স্থাপন করা"
+        },
+        {
+          "hi": "समाचार पत्रों को औपनिवेशिक सरकार की आलोचना के लिए प्रोत्साहित करना",
+          "en": "To encourage newspapers to criticize the colonial government",
+          "bn": "সংবাদপত্রকে ঔপনিবেশিক সরকারের সমালোচনায় উৎসাহিত করা"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "hi": "औपनिवेशिक सरकार ने भारतीय भाषाओं के प्रकाशनों, विशेषकर औपनिवेशिक शासन की आलोचना करने वाले समाचार पत्रों को नियंत्रित करने के लिए यह कानून बनाया। इससे अधिकारियों को सेंसर और दमन करने की शक्ति मिली।",
+        "en": "The colonial government introduced the Vernacular Press Act to control publications in Indian languages, especially those critical of colonial rule. It gave authorities powers to censor and suppress such newspapers.",
+        "bn": "ঔপনিবেশিক সরকার ভারতীয় ভাষার প্রকাশনা, বিশেষত ঔপনিবেশিক শাসনের সমালোচনাকারী সংবাদপত্র নিয়ন্ত্রণ করতে এই আইন প্রণয়ন করে। এর মাধ্যমে কর্তৃপক্ষ সেন্সর ও দমন করার ক্ষমতা পায়।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "hist_ch_04_q008",
+      "question": {
+        "hi": "सामाजिक और धार्मिक सुधार के विचारों के प्रसार में राजा राममोहन राय से कौन सा समाचार पत्र जुड़ा था?",
+        "en": "Which newspaper was associated with Raja Rammohun Roy's efforts to spread social and religious reform ideas?",
+        "bn": "সামাজিক ও ধর্মীয় সংস্কারের ভাবনা প্রচারে রাজা রামমোহন রায়ের সঙ্গে কোন সংবাদপত্র যুক্ত ছিল?"
+      },
+      "options": [
+        {
+          "hi": "संवाद कौमुदी",
+          "en": "Sambad Kaumudi",
+          "bn": "সম্বাদ কৌমুদী"
+        },
+        {
+          "hi": "Bengal Gazette",
+          "en": "Bengal Gazette",
+          "bn": "Bengal Gazette"
+        },
+        {
+          "hi": "Kesari",
+          "en": "Kesari",
+          "bn": "Kesari"
+        },
+        {
+          "hi": "Young India",
+          "en": "Young India",
+          "bn": "Young India"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "hi": "राजा राममोहन राय ने संवाद कौमुदी का समर्थन किया, जिसमें सामाजिक और धार्मिक सुधार के मुद्दों पर चर्चा होती थी। यह समाचार पत्र पाठकों के बीच सुधारवादी विचारों को फैलाने का माध्यम बना।",
+        "en": "Raja Rammohun Roy supported Sambad Kaumudi, which discussed social and religious reform issues. The newspaper became a means of spreading reformist ideas among readers.",
+        "bn": "রাজা রামমোহন রায় সম্বাদ কৌমুদীকে সমর্থন করেছিলেন, যেখানে সামাজিক ও ধর্মীয় সংস্কারের বিষয় নিয়ে আলোচনা করা হত। সংবাদপত্রটি পাঠকদের মধ্যে সংস্কারবাদী ভাবনা ছড়িয়ে দেওয়ার মাধ্যম হয়ে ওঠে।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "hist_ch_04_q009",
+      "question": {
+        "hi": "कुछ अधिकारी और धार्मिक नेता मुद्रण संस्कृति के प्रसार से क्यों डरते थे?",
+        "en": "Why did some authorities and religious leaders fear the spread of print culture?",
+        "bn": "কিছু কর্তৃপক্ষ ও ধর্মীয় নেতা মুদ্রণ সংস্কৃতির প্রসারকে কেন ভয় পেতেন?"
+      },
+      "options": [
+        {
+          "hi": "मुद्रित विचार स्थापित सत्ता और मान्यताओं को चुनौती दे सकते थे",
+          "en": "Printed ideas could challenge established authority and beliefs",
+          "bn": "মুদ্রিত ভাবনা প্রতিষ্ঠিত কর্তৃত্ব ও বিশ্বাসকে চ্যালেঞ্জ করতে পারত"
+        },
+        {
+          "hi": "मुद्रण के कारण सभी पुस्तकें पढ़ना असंभव हो गया था",
+          "en": "Printing made all books impossible to read",
+          "bn": "মুদ্রণের ফলে সব বই পড়া অসম্ভব হয়ে পড়েছিল"
+        },
+        {
+          "hi": "मुद्रण ने लोगों को धर्म पर चर्चा करने से रोक दिया था",
+          "en": "Printing prevented people from discussing religion",
+          "bn": "মুদ্রণ মানুষকে ধর্ম নিয়ে আলোচনা করতে বাধা দিয়েছিল"
+        },
+        {
+          "hi": "मुद्रित पुस्तकों का उपयोग केवल सरकारी अधिकारी कर सकते थे",
+          "en": "Printed books could be used only by government officials",
+          "bn": "মুদ্রিত বই শুধু সরকারি কর্মকর্তারাই ব্যবহার করতে পারতেন"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "hi": "मुद्रण विवादास्पद विचारों और आलोचनाओं को तेजी से और व्यापक रूप से फैला सकता था। इससे अधिकारियों का नियंत्रण कमजोर हो सकता था या स्थापित धार्मिक मान्यताओं को चुनौती मिल सकती थी।",
+        "en": "Print allowed controversial ideas and criticisms to circulate widely and quickly. This could weaken the control of authorities or challenge established religious beliefs.",
+        "bn": "মুদ্রণ বিতর্কিত ভাবনা ও সমালোচনা দ্রুত ও ব্যাপকভাবে ছড়িয়ে দিতে পারত। এর ফলে কর্তৃপক্ষের নিয়ন্ত্রণ দুর্বল হতে বা প্রতিষ্ঠিত ধর্মীয় বিশ্বাস চ্যালেঞ্জের মুখে পড়তে পারত।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "hist_ch_04_q010",
+      "question": {
+        "hi": "19वीं शताब्दी के भारत में मुद्रण संस्कृति ने किसके निर्माण में सहायता की?",
+        "en": "What did print culture help create in 19th-century India?",
+        "bn": "19শ শতকের ভারতে মুদ্রণ সংস্কৃতি কী গড়ে তুলতে সাহায্য করেছিল?"
+      },
+      "options": [
+        {
+          "hi": "बहस और चर्चा के लिए एक व्यापक सार्वजनिक क्षेत्र",
+          "en": "A wider public sphere for debate and discussion",
+          "bn": "বিতর্ক ও আলোচনার জন্য একটি বৃহত্তর জনপরিসর"
+        },
+        {
+          "hi": "मौखिक परंपराओं का पूरी तरह अंत",
+          "en": "A complete end to oral traditions",
+          "bn": "মৌখিক ঐতিহ্যের সম্পূর্ণ অবসান"
+        },
+        {
+          "hi": "भारतीय भाषाओं में समाचार पत्रों पर प्रतिबंध",
+          "en": "A ban on newspapers in Indian languages",
+          "bn": "ভারতীয় ভাষায় সংবাদপত্রের উপর নিষেধাজ্ঞা"
+        },
+        {
+          "hi": "ऐसी व्यवस्था जिसमें केवल शासक ही पुस्तकें प्रकाशित कर सकते थे",
+          "en": "A system where only rulers could publish books",
+          "bn": "শুধু শাসকরাই বই প্রকাশ করতে পারতেন এমন ব্যবস্থা"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "hi": "समाचार पत्रों, पत्रिकाओं और मुद्रित पुस्तकों ने सामाजिक, धार्मिक और राजनीतिक मुद्दों पर चर्चा के लिए स्थान बनाया। इससे 19वीं शताब्दी के भारत में सार्वजनिक बहस का विस्तार हुआ।",
+        "en": "Newspapers, journals and printed books created spaces where people could discuss social, religious and political issues. This helped expand public debate in 19th-century India.",
+        "bn": "সংবাদপত্র, সাময়িকপত্র ও মুদ্রিত বই সামাজিক, ধর্মীয় ও রাজনৈতিক বিষয় নিয়ে আলোচনার ক্ষেত্র তৈরি করেছিল। এর ফলে 19শ শতকের ভারতে জনপরিসরে বিতর্কের বিস্তার ঘটে।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    }
+  ]
 }

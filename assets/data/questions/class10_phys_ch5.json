@@ -6,5 +6,386 @@
     "hi": "प्रकाश — परावर्तन तथा अपवर्तन"
   },
   "class_standard": "Class 10",
-  "questions": []
+  "questions": [
+    {
+      "id": "phys_ch_05_q001",
+      "question": {
+        "hi": "परावर्तन के नियम के अनुसार, आपतन कोण किसके बराबर होता है?",
+        "en": "According to the law of reflection, the angle of incidence is equal to the:",
+        "bn": "প্রতিফলনের সূত্র অনুযায়ী, আপতন কোণ সমান হয়:"
+      },
+      "options": [
+        {
+          "hi": "परावर्तन कोण",
+          "en": "Angle of reflection",
+          "bn": "প্রতিফলন কোণ"
+        },
+        {
+          "hi": "अपवर्तन कोण",
+          "en": "Angle of refraction",
+          "bn": "প্রতিসরণ কোণ"
+        },
+        {
+          "hi": "आपतित किरण और दर्पण के बीच का कोण",
+          "en": "Angle between the incident ray and mirror",
+          "bn": "আপতিত রশ্মি ও দর্পণের মধ্যবর্তী কোণ"
+        },
+        {
+          "hi": "परावर्तित किरण और दर्पण के बीच का कोण",
+          "en": "Angle between the reflected ray and mirror",
+          "bn": "প্রতিফলিত রশ্মি ও দর্পণের মধ্যবর্তী কোণ"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "hi": "परावर्तन के नियम के अनुसार, आपतित किरण और अभिलंब के बीच का कोण, परावर्तित किरण और अभिलंब के बीच के कोण के बराबर होता है।",
+        "en": "The law of reflection states that the angle made by the incident ray with the normal equals the angle made by the reflected ray with the normal.",
+        "bn": "প্রতিফলনের সূত্র অনুযায়ী, আপতিত রশ্মি ও অভিলম্বের মধ্যবর্তী কোণ প্রতিফলিত রশ্মি ও অভিলম্বের মধ্যবর্তী কোণের সমান।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_05_q002",
+      "question": {
+        "hi": "अवतल दर्पण के वक्रता केंद्र के बाहर एक वस्तु रखी जाती है। उसका प्रतिबिंब कहाँ बनेगा?",
+        "en": "An object is placed beyond the centre of curvature of a concave mirror. Where is its image formed?",
+        "bn": "একটি অবতল দর্পণের বক্রতার কেন্দ্রের বাইরে একটি বস্তু রাখা হল। তার প্রতিবিম্ব কোথায় গঠিত হবে?"
+      },
+      "options": [
+        {
+          "hi": "फोकस और ध्रुव के बीच",
+          "en": "Between the focus and pole",
+          "bn": "ফোকাস ও মেরুর মধ্যে"
+        },
+        {
+          "hi": "वक्रता केंद्र पर",
+          "en": "At the centre of curvature",
+          "bn": "বক্রতার কেন্দ্রে"
+        },
+        {
+          "hi": "फोकस और वक्रता केंद्र के बीच",
+          "en": "Between the focus and centre of curvature",
+          "bn": "ফোকাস ও বক্রতার কেন্দ্রের মধ্যে"
+        },
+        {
+          "hi": "वक्रता केंद्र के बाहर",
+          "en": "Beyond the centre of curvature",
+          "bn": "বক্রতার কেন্দ্রের বাইরে"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "hi": "अवतल दर्पण में C के बाहर वस्तु रखने पर परावर्तित किरणें F और C के बीच मिलती हैं और वास्तविक, उल्टा तथा छोटा प्रतिबिंब बनाती हैं।",
+        "en": "For an object beyond C in a concave mirror, the reflected rays meet between F and C, producing a real, inverted and diminished image.",
+        "bn": "অবতল দর্পণে C-এর বাইরে বস্তু রাখলে প্রতিফলিত রশ্মিগুলি F ও C-এর মধ্যে মিলিত হয় এবং বাস্তব, অবশীর্ষ ও ক্ষুদ্র প্রতিবিম্ব গঠন করে।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_05_q003",
+      "question": {
+        "hi": "वाहनों में सामान्यतः किस प्रकार के दर्पण का उपयोग रियर-व्यू मिरर के रूप में किया जाता है?",
+        "en": "Which type of mirror is commonly used as a rear-view mirror in vehicles?",
+        "bn": "যানবাহনে সাধারণত কোন ধরনের দর্পণ রিয়ার-ভিউ মিরর হিসেবে ব্যবহৃত হয়?"
+      },
+      "options": [
+        {
+          "hi": "अवतल दर्पण",
+          "en": "Concave mirror",
+          "bn": "অবতল দর্পণ"
+        },
+        {
+          "hi": "उत्तल दर्पण",
+          "en": "Convex mirror",
+          "bn": "উত্তল দর্পণ"
+        },
+        {
+          "hi": "समतल दर्पण",
+          "en": "Plane mirror",
+          "bn": "সমতল দর্পণ"
+        },
+        {
+          "hi": "परवलयिक दर्पण",
+          "en": "Parabolic mirror",
+          "bn": "প্যারাবোলিক দর্পণ"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "hi": "उत्तल दर्पण सीधा और छोटा प्रतिबिंब बनाता है तथा अधिक क्षेत्र का दृश्य देता है, जिससे चालक पीछे के अधिक भाग को देख सकता है।",
+        "en": "A convex mirror forms an erect and diminished image and provides a wider field of view, allowing the driver to see more of the traffic behind.",
+        "bn": "উত্তল দর্পণ সোজা ও ক্ষুদ্র প্রতিবিম্ব তৈরি করে এবং বেশি ক্ষেত্রজুড়ে দৃশ্য দেখায়, তাই চালক পিছনের বেশি অংশ দেখতে পারেন।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_05_q004",
+      "question": {
+        "hi": "20 cm फोकस दूरी वाले एक उत्तल लेंस की शक्ति कितनी है?",
+        "en": "What is the power of a convex lens having a focal length of 20 cm?",
+        "bn": "20 cm ফোকাস দৈর্ঘ্যের একটি উত্তল লেন্সের ক্ষমতা কত?"
+      },
+      "options": [
+        {
+          "hi": "+2 D",
+          "en": "+2 D",
+          "bn": "+2 D"
+        },
+        {
+          "hi": "+5 D",
+          "en": "+5 D",
+          "bn": "+5 D"
+        },
+        {
+          "hi": "-5 D",
+          "en": "-5 D",
+          "bn": "-5 D"
+        },
+        {
+          "hi": "+20 D",
+          "en": "+20 D",
+          "bn": "+20 D"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "hi": "P = 1/f सूत्र में f = 20 cm = 0.20 m रखने पर P = 1/0.20 = +5 D प्राप्त होता है। धनात्मक चिह्न अभिसारी उत्तल लेंस को दर्शाता है।",
+        "en": "Using P = 1/f with f = 20 cm = 0.20 m, P = 1/0.20 = +5 D. The positive sign indicates a converging convex lens.",
+        "bn": "P = 1/f সূত্রে f = 20 cm = 0.20 m বসালে P = 1/0.20 = +5 D হয়। ধনাত্মক চিহ্নটি অভিসারী উত্তল লেন্স নির্দেশ করে।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_05_q005",
+      "question": {
+        "hi": "15 cm फोकस दूरी वाले एक उत्तल लेंस के सामने 30 cm दूर एक वस्तु रखी जाती है। प्रतिबिंब कहाँ बनेगा?",
+        "en": "An object is placed 30 cm in front of a convex lens of focal length 15 cm. Where will the image be formed?",
+        "bn": "15 cm ফোকাস দৈর্ঘ্যের একটি উত্তল লেন্সের সামনে 30 cm দূরে একটি বস্তু রাখা হল। প্রতিবিম্ব কোথায় গঠিত হবে?"
+      },
+      "options": [
+        {
+          "hi": "लेंस की दूसरी ओर 15 cm दूर",
+          "en": "15 cm on the other side of the lens",
+          "bn": "লেন্সের অপর পাশে 15 cm দূরে"
+        },
+        {
+          "hi": "लेंस की दूसरी ओर 30 cm दूर",
+          "en": "30 cm on the other side of the lens",
+          "bn": "লেন্সের অপর পাশে 30 cm দূরে"
+        },
+        {
+          "hi": "लेंस की दूसरी ओर 45 cm दूर",
+          "en": "45 cm on the other side of the lens",
+          "bn": "লেন্সের অপর পাশে 45 cm দূরে"
+        },
+        {
+          "hi": "लेंस की उसी ओर 30 cm दूर",
+          "en": "30 cm on the same side of the lens",
+          "bn": "লেন্সের একই পাশে 30 cm দূরে"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "hi": "यहाँ u = -30 cm और f = +15 cm। 1/f = 1/v - 1/u में रखने पर 1/15 = 1/v + 1/30, अतः v = +30 cm।",
+        "en": "Here u = -30 cm and f = +15 cm. From 1/f = 1/v - 1/u, we get 1/15 = 1/v + 1/30, so v = +30 cm.",
+        "bn": "এখানে u = -30 cm এবং f = +15 cm। 1/f = 1/v - 1/u সূত্রে বসালে 1/15 = 1/v + 1/30, তাই v = +30 cm।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_05_q006",
+      "question": {
+        "hi": "किस लेंस की शक्ति ऋणात्मक होती है?",
+        "en": "Which lens has negative power?",
+        "bn": "কোন লেন্সের ক্ষমতা ঋণাত্মক?"
+      },
+      "options": [
+        {
+          "hi": "उत्तल लेंस",
+          "en": "Convex lens",
+          "bn": "উত্তল লেন্স"
+        },
+        {
+          "hi": "अवतल लेंस",
+          "en": "Concave lens",
+          "bn": "অবতল লেন্স"
+        },
+        {
+          "hi": "बेलनाकार उत्तल लेंस",
+          "en": "Cylindrical convex lens",
+          "bn": "নলাকার উত্তল লেন্স"
+        },
+        {
+          "hi": "समतल काँच की प्लेट",
+          "en": "Plane glass plate",
+          "bn": "সমতল কাচের পাত"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "hi": "अवतल लेंस एक अपसारी लेंस है और इसकी फोकस दूरी ऋणात्मक होती है; इसलिए P = 1/f के अनुसार इसकी शक्ति भी ऋणात्मक होती है।",
+        "en": "A concave lens is a diverging lens and has a negative focal length, so its power P = 1/f is negative.",
+        "bn": "অবতল লেন্স একটি অপসারী লেন্স এবং এর ফোকাস দৈর্ঘ্য ঋণাত্মক; তাই P = 1/f অনুযায়ী এর ক্ষমতাও ঋণাত্মক।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_05_q007",
+      "question": {
+        "hi": "एक अवतल दर्पण की फोकस दूरी 10 cm है। इसकी वक्रता त्रिज्या कितनी होगी?",
+        "en": "A concave mirror has a focal length of 10 cm. What is its radius of curvature?",
+        "bn": "একটি অবতল দর্পণের ফোকাস দৈর্ঘ্য 10 cm। এর বক্রতার ব্যাসার্ধ কত?"
+      },
+      "options": [
+        {
+          "hi": "5 cm",
+          "en": "5 cm",
+          "bn": "5 cm"
+        },
+        {
+          "hi": "10 cm",
+          "en": "10 cm",
+          "bn": "10 cm"
+        },
+        {
+          "hi": "20 cm",
+          "en": "20 cm",
+          "bn": "20 cm"
+        },
+        {
+          "hi": "40 cm",
+          "en": "40 cm",
+          "bn": "40 cm"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "hi": "गोलीय दर्पण के लिए फोकस दूरी वक्रता त्रिज्या की आधी होती है, अर्थात f = R/2। इसलिए R = 2f = 2 × 10 = 20 cm।",
+        "en": "For a spherical mirror, the focal length is half the radius of curvature: f = R/2. Therefore R = 2f = 2 × 10 = 20 cm.",
+        "bn": "গোলীয় দর্পণের ক্ষেত্রে ফোকাস দৈর্ঘ্য বক্রতার ব্যাসার্ধের অর্ধেক, অর্থাৎ f = R/2। তাই R = 2f = 2 × 10 = 20 cm।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_05_q008",
+      "question": {
+        "hi": "प्रकाश की एक किरण वायु से काँच में प्रवेश करती है। इसकी चाल और दिशा में क्या परिवर्तन होता है?",
+        "en": "A ray of light passes from air into glass. What happens to its speed and direction?",
+        "bn": "আলোর একটি রশ্মি বায়ু থেকে কাচে প্রবেশ করলে এর বেগ ও দিকের কী পরিবর্তন হয়?"
+      },
+      "options": [
+        {
+          "hi": "चाल बढ़ती है और यह अभिलंब से दूर मुड़ती है",
+          "en": "Speed increases and it bends away from the normal",
+          "bn": "বেগ বাড়ে এবং অভিলম্ব থেকে দূরে বেঁকে যায়"
+        },
+        {
+          "hi": "चाल घटती है और यह अभिलंब की ओर मुड़ती है",
+          "en": "Speed decreases and it bends towards the normal",
+          "bn": "বেগ কমে এবং অভিলম্বের দিকে বেঁকে যায়"
+        },
+        {
+          "hi": "चाल घटती है और यह अभिलंब से दूर मुड़ती है",
+          "en": "Speed decreases and it bends away from the normal",
+          "bn": "বেগ কমে এবং অভিলম্ব থেকে দূরে বেঁকে যায়"
+        },
+        {
+          "hi": "चाल अपरिवर्तित रहती है और दिशा बदलती है",
+          "en": "Speed remains unchanged and direction changes",
+          "bn": "বেগ অপরিবর্তিত থাকে এবং দিক পরিবর্তিত হয়"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "hi": "काँच वायु की तुलना में प्रकाशीय रूप से सघन माध्यम है, इसलिए काँच में प्रकाश की चाल कम हो जाती है। तिरछे प्रवेश करने पर किरण अभिलंब की ओर मुड़ती है।",
+        "en": "Glass is optically denser than air, so light travels more slowly in glass. On entering the denser medium obliquely, the ray bends towards the normal.",
+        "bn": "কাচ বায়ুর তুলনায় অপটিক্যালি ঘন মাধ্যম, তাই কাচে আলোর বেগ কমে যায়। তির্যকভাবে প্রবেশ করলে রশ্মি অভিলম্বের দিকে বেঁকে যায়।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_05_q009",
+      "question": {
+        "hi": "एक लेंस की शक्ति -2 D है। इसकी फोकस दूरी कितनी होगी?",
+        "en": "A lens has a power of -2 D. What is its focal length?",
+        "bn": "একটি লেন্সের ক্ষমতা -2 D। এর ফোকাস দৈর্ঘ্য কত?"
+      },
+      "options": [
+        {
+          "hi": "+0.5 m",
+          "en": "+0.5 m",
+          "bn": "+0.5 m"
+        },
+        {
+          "hi": "-0.5 m",
+          "en": "-0.5 m",
+          "bn": "-0.5 m"
+        },
+        {
+          "hi": "-2 m",
+          "en": "-2 m",
+          "bn": "-2 m"
+        },
+        {
+          "hi": "+2 m",
+          "en": "+2 m",
+          "bn": "+2 m"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "hi": "P = 1/f से f = 1/P = 1/(-2) = -0.5 m। ऋणात्मक फोकस दूरी अपसारी अवतल लेंस को दर्शाती है।",
+        "en": "Using P = 1/f, f = 1/P = 1/(-2) = -0.5 m. The negative focal length identifies a diverging concave lens.",
+        "bn": "P = 1/f সূত্র থেকে f = 1/P = 1/(-2) = -0.5 m। ঋণাত্মক ফোকাস দৈর্ঘ্য অপসারী অবতল লেন্স নির্দেশ করে।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "phys_ch_05_q010",
+      "question": {
+        "hi": "15 cm फोकस दूरी वाले एक अवतल दर्पण के सामने 10 cm दूर एक वस्तु रखी जाती है। किस प्रकार का प्रतिबिंब बनेगा?",
+        "en": "An object is placed 10 cm in front of a concave mirror of focal length 15 cm. What type of image is formed?",
+        "bn": "15 cm ফোকাস দৈর্ঘ্যের একটি অবতল দর্পণের সামনে 10 cm দূরে একটি বস্তু রাখা হল। কী ধরনের প্রতিবিম্ব গঠিত হবে?"
+      },
+      "options": [
+        {
+          "hi": "वास्तविक, उल्टा और बड़ा",
+          "en": "Real, inverted and enlarged",
+          "bn": "বাস্তব, অবশীর্ষ ও বিবর্ধিত"
+        },
+        {
+          "hi": "वास्तविक, उल्टा और छोटा",
+          "en": "Real, inverted and diminished",
+          "bn": "বাস্তব, অবশীর্ষ ও ক্ষুদ্র"
+        },
+        {
+          "hi": "आभासी, सीधा और बड़ा",
+          "en": "Virtual, erect and enlarged",
+          "bn": "অবাস্তব, সোজা ও বিবর্ধিত"
+        },
+        {
+          "hi": "आभासी, उल्टा और छोटा",
+          "en": "Virtual, inverted and diminished",
+          "bn": "অবাস্তব, অবশীর্ষ ও ক্ষুদ্র"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "hi": "10 cm < 15 cm होने के कारण वस्तु ध्रुव और फोकस के बीच है। इस स्थिति में अवतल दर्पण दर्पण के पीछे आभासी, सीधा और बड़ा प्रतिबिंब बनाता है।",
+        "en": "The object is between the pole and focus because 10 cm < 15 cm. A concave mirror then forms a virtual, erect and enlarged image behind the mirror.",
+        "bn": "10 cm < 15 cm হওয়ায় বস্তুটি মেরু ও ফোকাসের মধ্যে রয়েছে। এই অবস্থায় অবতল দর্পণ দর্পণের পিছনে অবাস্তব, সোজা ও বিবর্ধিত প্রতিবিম্ব গঠন করে।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    }
+  ]
 }
