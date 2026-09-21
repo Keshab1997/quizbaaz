@@ -2,7 +2,9 @@
 
 <div align="center">
 
-![QuizBaaz 3D Banner](assets/images/characters/quizbaaz_mascot_boy.png)
+<a href="./marketing/play_store_ai_premium/BONUS_AI_Feature_Graphic_1024x500.jpg">
+  <img src="./marketing/play_store_ai_premium/BONUS_AI_Feature_Graphic_1024x500.jpg" alt="QuizBaaz 3D — Learn. Play. Rise." width="100%" />
+</a>
 
 ### **A Next-Gen 3D Gamified Quiz Platform built with Flutter**
 *Chapter-Wise Question Bank • Daily 10-Question Live Quiz • Live Leaderboard • Yesterday's Champion & In-Game Rewards • 3D Streaks • Zero-Friction Guest Trial • Central Admin Panel*
@@ -13,6 +15,33 @@
 [![GitHub stars](https://img.shields.io/github/stars/Keshab1997/quizbaaz?style=social)](https://github.com/Keshab1997/quizbaaz)
 
 </div>
+
+---
+
+## ✨ A Premium Learning Experience
+
+<p align="center">
+  <strong>Learn. Play. Rise.</strong><br />
+  <sub>Daily challenges, chapter-wise practice, real-time battles and rewards — all in one immersive 3D learning world.</sub>
+</p>
+
+<p align="center">
+  <a href="./marketing/play_store_ai_premium/01_Learn_Play_Rise.jpg"><img src="./marketing/play_store_ai_premium/01_Learn_Play_Rise.jpg" width="23%" alt="QuizBaaz 3D home dashboard" /></a>
+  <a href="./marketing/play_store_ai_premium/02_Own_the_Arena.jpg"><img src="./marketing/play_store_ai_premium/02_Own_the_Arena.jpg" width="23%" alt="QuizBaaz Battle Arena" /></a>
+  <a href="./marketing/play_store_ai_premium/03_Know_More_Score_More.jpg"><img src="./marketing/play_store_ai_premium/03_Know_More_Score_More.jpg" width="23%" alt="QuizBaaz daily live quiz" /></a>
+  <a href="./marketing/play_store_ai_premium/04_Study_with_Momentum.jpg"><img src="./marketing/play_store_ai_premium/04_Study_with_Momentum.jpg" width="23%" alt="QuizBaaz chapter bank" /></a>
+</p>
+
+<p align="center">
+  <a href="./marketing/play_store_ai_premium/05_Progress_Visualized.jpg"><img src="./marketing/play_store_ai_premium/05_Progress_Visualized.jpg" width="23%" alt="QuizBaaz performance history" /></a>
+  <a href="./marketing/play_store_ai_premium/06_Every_Win_Pays_Off.jpg"><img src="./marketing/play_store_ai_premium/06_Every_Win_Pays_Off.jpg" width="23%" alt="QuizBaaz rewards" /></a>
+  <a href="./marketing/play_store_ai_premium/07_Make_It_Your_Game.jpg"><img src="./marketing/play_store_ai_premium/07_Make_It_Your_Game.jpg" width="23%" alt="QuizBaaz avatar and power-up shop" /></a>
+  <a href="./marketing/play_store_ai_premium/08_Welcome_to_QuizBaaz_3D.jpg"><img src="./marketing/play_store_ai_premium/08_Welcome_to_QuizBaaz_3D.jpg" width="23%" alt="Welcome to QuizBaaz 3D" /></a>
+</p>
+
+<p align="center">
+  <a href="./marketing/play_store_ai_premium/"><strong>Explore the full Play Store creative kit →</strong></a>
+</p>
 
 ---
 
