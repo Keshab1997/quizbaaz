@@ -552,18 +552,68 @@ test('leaderboard: own bounded entry allowed; huge scores & other-user docs deni
 });
 
 // ---------------------------------------------------------------------------
-// 8. User subcollections — gifts server-owned; history owner-owned
+// 8. User subcollections — gifts admin-written, owner-deletable; history owner-owned
 // ---------------------------------------------------------------------------
-test('gifts: client cannot mint or delete; admin can dispatch', async () => {
+test('gifts: clients cannot mint or modify; owner and admin can delete', async (t) => {
   const student = await makeEnv(STUDENT);
+  t.after(() => student.cleanup());
   const admin = await makeEnv(ADMIN, { admin: true });
+  t.after(() => admin.cleanup());
   const giftRef = (env) => env.firestore.collection('users').doc(STUDENT).collection('gifts').doc('g1');
+
   await assertFails(giftRef(student).set({ name: 'free-5000-coins' }));
   await assertSucceeds(giftRef(admin).set({ name: 'champion-gift', status: 'pending' }));
   await assertSucceeds(giftRef(student).get());
-  await assertFails(giftRef(student).delete());
-  await student.cleanup();
-  await admin.cleanup();
+  await assertFails(giftRef(student).update({ status: 'claimed' }));
+  await assertSucceeds(giftRef(admin).update({ status: 'dispatched' }));
+
+  // R15 deliberately allows owner deletion so account cleanup can finish.
+  // Keep minting/modification server-owned instead of tightening this rule.
+  await assertSucceeds(giftRef(student).delete());
+  await assertSucceeds(giftRef(admin).set({ name: 'champion-gift', status: 'pending' }));
+  await assertSucceeds(giftRef(admin).delete());
+});
+
+test('gifts: other users and guests cannot read or mutate an owner\'s gifts', async (t) => {
+  const other = await makeEnv(OTHER);
+  t.after(() => other.cleanup());
+  const guest = await makeEnv();
+  t.after(() => guest.cleanup());
+  const admin = await makeEnv(ADMIN, { admin: true });
+  t.after(() => admin.cleanup());
+  const giftRef = (env, id = 'g1') =>
+    env.firestore.collection('users').doc(STUDENT).collection('gifts').doc(id);
+
+  await assertSucceeds(giftRef(admin).set({ name: 'champion-gift', status: 'pending' }));
+  for (const actor of [other, guest]) {
+    await assertFails(giftRef(actor).get());
+    await assertFails(giftRef(actor).parent.get());
+    await assertFails(giftRef(actor, 'forged').set({ name: 'free-5000-coins' }));
+    await assertFails(giftRef(actor).update({ status: 'claimed' }));
+    await assertFails(giftRef(actor).delete());
+  }
+});
+
+test('gifts: account cleanup can list and batch-delete the owner\'s gifts', async (t) => {
+  const student = await makeEnv(STUDENT);
+  t.after(() => student.cleanup());
+  const admin = await makeEnv(ADMIN, { admin: true });
+  t.after(() => admin.cleanup());
+  const gifts = (env) => env.firestore.collection('users').doc(STUDENT).collection('gifts');
+
+  await assertSucceeds(gifts(admin).doc('g1').set({ name: 'daily-gift', status: 'pending' }));
+  await assertSucceeds(gifts(admin).doc('g2').set({ name: 'streak-gift', status: 'pending' }));
+
+  // Mirror AccountDeletionService._deleteCollection: query, then batch delete.
+  const snapshot = await assertSucceeds(gifts(student).get());
+  assert.equal(snapshot.size, 2);
+  const batch = student.firestore.batch();
+  for (const gift of snapshot.docs) {
+    batch.delete(gift.ref);
+  }
+  await assertSucceeds(batch.commit());
+  const remaining = await assertSucceeds(gifts(student).get());
+  assert.equal(remaining.empty, true);
 });
 
 test('history & meta: owner read/write; non-owner denied; daily_claims read-only for all clients', async () => {
