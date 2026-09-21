@@ -215,12 +215,30 @@ void main() {
         user,
         repository: _FixedRepository([_question('q0', correctIndex: 2)]),
       );
+      addTearDown(() {
+        quiz.quitQuiz();
+        quiz.dispose();
+      });
       await quiz.startChapterQuiz('chapter.json', chapterId: 'test_chapter');
+      expect(quiz.extraLifeAvailable, isTrue);
+      expect(quiz.extraLifeUsed, isFalse);
       await Future<void>.delayed(const Duration(milliseconds: 1100));
       final remainingBefore = quiz.secondsRemaining;
 
-      quiz.selectOption(0); // wrong → extra life
+      // startChapterQuiz shuffles options, so authored index 2 need not stay
+      // correct and index 0 is not guaranteed to be wrong after loading.
+      final question = quiz.currentQuestion!;
+      final wrong = question.optionTexts.asMap().keys.firstWhere(
+            (index) => index != question.correctIndex,
+          );
+      quiz.selectOption(wrong);
       expect(quiz.extraLifeUsed, isTrue);
+      expect(quiz.extraLifeStock, 0);
+      expect(quiz.isAnswerSubmitted, isFalse);
+      expect(quiz.correctCount, 0);
+      expect(quiz.wrongCount, 0);
+      expect(quiz.secondsRemaining, remainingBefore,
+          reason: 'a wrong-answer extra life must preserve the remaining time');
 
       // The run must be ticking again, or the player would have unlimited time.
       await Future<void>.delayed(const Duration(milliseconds: 1200));
