@@ -100,15 +100,30 @@ Before closed testing:
 If targeting children, complete Families requirements and configure AdMob for
 that audience. Do not describe virtual gifts as cash or real-world prizes.
 
+### 5. Or publish the listing + AAB via the API
+
+The store listing and every later AAB upload can skip the Console forms
+entirely: [docs/20](20_PLAY_STORE_API_PUBLISH.md) automates them through the
+Play Developer API once a linked service account exists. The listing source of
+truth is `store_listing/listing.yaml`, published by
+`tool/publish_play.py` and by the **Play Store — Publish Listing & AAB**
+workflow. The one-time Play-side setup is §2 there; the repeatable steps are
+the rest.
+
 ## Store listing draft
+
+The canonical, checked-in listing is `store_listing/listing.yaml` (app name,
+short and full description per language, images) — `tool/publish_play.py
+--listing` uploads exactly that, `--validate` enforces the limits below. The
+draft that populated it at launch:
 
 **App name (30 max)**
 
-`QuizBaaz: Play & Learn`
+`QuizBaaz: Class 10 Exam Prep`
 
 **Short description (80 max)**
 
-`Master Class 10 subjects with daily quizzes, streaks, rewards and battles.`
+`Daily Class 10 MCQ quizzes, streaks, rewards and battles for exam prep.`
 
 **Suggested category**
 
@@ -119,8 +134,10 @@ Education
 Education, Quiz, Learning, Exam preparation, Offline
 
 Screenshots must show the real submitted build. Capture at least four portrait
-screens at 1080 × 1920: dashboard, chapter quiz, daily quiz, leaderboard/rewards
-and profile/languages. Include Battle only when its production flow is complete.
+screens at 1080 × 1920 (dashboard, chapter quiz, daily quiz,
+leaderboard/rewards, profile/languages) and drop them into
+`store_listing/screenshots/`. Include Battle only when its production flow is
+complete.
 
 ## Every release
 

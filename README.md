@@ -92,6 +92,7 @@ All architectural and step-by-step blueprints are documented in the [`docs/`](./
 * 🏪 **[`17_PLAY_STORE_RELEASE.md`](./docs/17_PLAY_STORE_RELEASE.md)**: Signing, API 36, AdMob and Play Console release runbook.
 * ✅ **[`18_PLAY_STORE_PUBLISH_TODO.md`](./docs/18_PLAY_STORE_PUBLISH_TODO.md)**: Owner checklist from account setup through post-launch AdMob verification.
 * 📥 **[`19_FIRESTORE_TO_BUNDLE_PULL.md`](./docs/19_FIRESTORE_TO_BUNDLE_PULL.md)**: Pull admin-authored questions into the bundled banks (offline parity), with the CI gate.
+* 🚀 **[`20_PLAY_STORE_API_PUBLISH.md`](./docs/20_PLAY_STORE_API_PUBLISH.md)**: Publish the store listing + AAB via the Play Developer API (once-off setup, then automated).
 * 🔐 **[`SECURITY_P0_FIXES.md`](./docs/SECURITY_P0_FIXES.md)**: What the P0 hardening changed, and the owner's deploy steps.
 
 ---

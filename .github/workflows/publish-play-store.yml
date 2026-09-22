@@ -1,0 +1,129 @@
+name: Play Store — Publish Listing & AAB
+
+# Uploads the checked-in store listing and/or a signed AAB through the Play
+# Developer API instead of the Console forms. The listing content is the file
+# store_listing/listing.yaml and the publish step is tool/publish_play.py —
+# both live in the repo, so every run uploads exactly the reviewed content.
+#
+# The AAB is NOT built here. "Publish Android Release" (publish-release.yml)
+# builds and signs it with the real AdMob IDs, then attaches it to a GitHub
+# Release; this workflow downloads that artifact given its tag and lets the API
+# push it to a track. Requiring the tag keeps one source of truth for the
+# signed binary, and a second build would re-sign over the keystore streamed to
+# the shared builder.
+#
+# One-time setup (docs/20_PLAY_STORE_API_PUBLISH.md):
+#   - Play Console → API access: link the Cloud project, create a service
+#     account with release permission on the app, generate a JSON key.
+#   - Store the key JSON as the repository secret PLAY_SERVICE_ACCOUNT_JSON
+#     (Settings → Secrets and variables → Actions → New repository secret).
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: What should be published?
+        required: true
+        type: choice
+        options:
+          - listing only
+          - listing + aab
+          - aab only
+        default: listing only
+      release-tag:
+        description: GitHub Release tag (v1.2.3) whose signed AAB to publish — only used when an AAB is published
+        required: false
+        type: string
+      track:
+        description: Track for the AAB release
+        required: false
+        type: choice
+        options:
+          - internal
+          - alpha
+          - beta
+          - production
+        default: internal
+      release-note:
+        description: Optional en-US release note shown on the track
+        required: false
+        type: string
+      dry-run:
+        description: Validate and print the publish plan without touching Play
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: play-store-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    name: publish to Play Store
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install the Play runtime
+        run: pip install google-auth requests pyyaml
+
+      - name: Write the Play service account
+        env:
+          PLAY_SERVICE_ACCOUNT_JSON: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
+        run: |
+          if [ -z "$PLAY_SERVICE_ACCOUNT_JSON" ]; then
+            echo "::error::Add the secret PLAY_SERVICE_ACCOUNT_JSON (Settings → Secrets and variables → Actions → New repository secret) with the JSON of the Play service account — see docs/20_PLAY_STORE_API_PUBLISH.md."
+            exit 1
+          fi
+          printf '%s' "$PLAY_SERVICE_ACCOUNT_JSON" > "$RUNNER_TEMP/play-sa.json"
+          echo "GOOGLE_APPLICATION_CREDENTIALS=$RUNNER_TEMP/play-sa.json" >> "$GITHUB_ENV"
+
+      - name: Fetch the signed AAB from the release
+        if: inputs.mode != 'listing only'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ -z "${{ inputs.release-tag }}" ]; then
+            echo "::error::'aab' modes need release-tag — the tag of the GitHub Release produced by Publish Android Release."
+            exit 1
+          fi
+          gh release download "${{ inputs.release-tag }}" --pattern '*.aab'
+          if ! ls *.aab >/dev/null 2>&1; then
+            echo "::error::No .aab asset found on release ${{ inputs.release-tag }} — has Publish Android Release run for it?"
+            exit 1
+          fi
+          echo "AAB_NAME=$(ls *.aab | head -n 1)" >> "$GITHUB_ENV"
+
+      - name: Gate on listing.yml being fit to publish
+        run: python3 tool/publish_play.py --validate
+
+      - name: Publish
+        env:
+          MODE: ${{ inputs.mode }}
+          TRACK: ${{ inputs.track }}
+          DRY_RUN: ${{ inputs.dry-run }}
+        run: |
+          ARGS=""
+          case "$MODE" in
+            *listing*) ARGS="$ARGS --listing" ;;
+          esac
+          case "$MODE" in
+            *aab*)
+              ARGS="$ARGS --aab \"$AAB_NAME\" --track \"$TRACK\""
+              if [ -n "${{ inputs.release-note }}" ]; then
+                ARGS="$ARGS --release-note \"${{ inputs.release-note }}\""
+              fi
+              ;;
+          esac
+          if [ "$DRY_RUN" = "true" ]; then
+            ARGS="$ARGS --dry-run"
+          fi
+          eval "python3 tool/publish_play.py $ARGS"

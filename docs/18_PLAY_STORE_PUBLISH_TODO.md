@@ -29,7 +29,7 @@ JSON বা private key GitHub-এ commit করবেন না। বিস্
 ## Phase 2 — Play Console-এ app তৈরি
 
 - [ ] **Create app** থেকে default language নির্বাচন করুন।
-- [ ] App name দিন: `QuizBaaz: Play & Learn`।
+- [ ] App name দিন: `QuizBaaz: Class 10 Exam Prep`।
 - [ ] App/Game: বাস্তব Play Console classification অনুযায়ী নির্বাচন করুন।
 - [ ] Free নির্বাচন করুন; পরে free app-কে paid করা যায় না।
 - [ ] Package name final হিসেবে নিশ্চিত করুন: `com.keshabstudios.quizbaaz`।
@@ -82,7 +82,47 @@ ADMOB_INTERSTITIAL_ID=
 > Production-এ যে AAB যাবে, সেই build-এ real AdMob IDs থাকতে হবে। Play Store-এ
 > live হওয়ার পরে ID পাল্টালে নতুন app update প্রকাশ করতে হবে।
 
+## Phase 5B — Play Developer API (store listing + AAB automation)
+
+একবার করলে প্রতিটি release-এর listing/AAB upload পর থেকে command দিয়েই হবে
+— Console form ভরতে হবে না। বিস্তারিত: `docs/20_PLAY_STORE_API_PUBLISH.md`।
+
+> বর্তমান flow-এ Play Console-এর **API access** পেজ আর নেই; service account-
+> কে **Users and permissions → Invite new users** দিয়ে invite করতে হয়।
+
+- [x] Cloud project (`quizbaaz-740bd`)-এ **Play Developer API** enable করুন।
+- [x] একই project-এ service account (`play-publisher`,
+  `play-publisher@quizbaaz-740bd.iam.gserviceaccount.com`) তৈরি করুন।
+- [x] Play Console → **Users and permissions → Invite new users** → SA-কে
+  invite করে `QuizBaaz: Play and Learn`-এ access দিন (Admin/Release manager)।
+- [x] Service account-এর JSON key generate করে locally সংরক্ষণ করুন
+  (`~/.secrets/play-sa.json`)।
+- [x] API access যাচাই করুন — `create_edit` সফল (listing/AAB perms কাজ করছে)।
+- [ ] Service account-এর JSON key generate করে locally নিরাপদে রাখুন।
+- [ ] Locally যাচাই করুন:
+  ```bash
+  pip install google-auth requests pyyaml
+  GOOGLE_APPLICATION_CREDENTIALS=$HOME/.secrets/play-sa.json \
+    python3 tool/publish_play.py --validate
+  GOOGLE_APPLICATION_CREDENTIALS=$HOME/.secrets/play-sa.json \
+    python3 tool/publish_play.py --listing --dry-run
+  ```
+- [ ] `store_listing/listing.yaml`-এ listing content (title/short/full
+  description, en/hi/bn) সঠিক কিনা দেখুন। — এই-ই এখন listing-এর single source of truth।
+- [ ] Real build-এর কমপক্ষে ৪টি screenshot `store_listing/screenshots/`-এ দিন
+  (1080×1920 portrait PNG/JPEG, min 2/max 8)।
+- [ ] JSON key টি GitHub secret হিসেবে দিন:
+  `Settings → Secrets and variables → Actions → New repository secret` → নাম `PLAY_SERVICE_ACCOUNT_JSON`।
+- [ ] **Actions → Play Store — Publish Listing & AAB** Run workflow → `mode: listing only`
+  চালিয়ে listing publish করুন (first-run test)।
+- [ ] Release করার সময় workflow-এর `listing + aab` মোডে **Publish Android
+  Release**-এর tag (`v1.2.3`) ও track টি দিন — AAB নিজে upload হয়ে যাবে।
+
 ## Phase 6 — Store listing
+
+> Listing-এর source of truth এখন `store_listing/listing.yaml`; নিচের বাকি item
+> গুলো ওখানে আছে/থাকবে (`tool/publish_play.py --listing` API দিয়ে upload
+> করে)। manually form ভরে publish করলে একই মান ব্যবহার করুন।
 
 - [ ] App title সর্বোচ্চ 30 characters রাখুন।
 - [ ] Short description সর্বোচ্চ 80 characters রাখুন।

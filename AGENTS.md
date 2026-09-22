@@ -208,7 +208,8 @@ python3 tool/validate_questions.py
 - `docs/03` holds the JSON schemas, `docs/10` the question authoring guide,
   `docs/11` the admin generator plan, `docs/12` the battle arena, `docs/16`
   OneSignal/FCM live push, `docs/17` the Google Play release runbook, `docs/18`
-  the owner-facing publish checklist and `docs/19` the Firestore→bundle pull.
+  the owner-facing publish checklist, `docs/19` the Firestore→bundle pull and
+  `docs/20` the Play Developer API autopublish of the store listing + AAB.
   **Read the matching doc before touching that subsystem.** `ADMIN_TODO.md`
   tracks admin work; `PROJECT_REVIEW.md` holds the audit that the P1 sweep
   worked through.
@@ -230,6 +231,14 @@ python3 tool/apply_l10n.py      # migrate raw English literals to S.* (re-runnab
 python3 tool/validate_questions.py   # question banks: schema, ids, translations
 python3 tool/publish_daily_packet.py --dry-run   # today's daily packet, no write
 python3 tool/publish_daily_packet.py             # publish daily_quiz_packets/{today}
+python3 tool/publish_play.py --validate          # Play listing: local sanity check
+python3 tool/publish_play.py --listing           # publish listing via Play API (docs/20)
+python3 tool/publish_play.py --aab app.aab --track internal   # upload AAB to a track
+
+# Play listing/AAB publishing needs the service-account JSON in the secret
+# PLAY_SERVICE_ACCOUNT_JSON (GitHub) or GOOGLE_APPLICATION_CREDENTIALS (local).
+# The listing source of truth is store_listing/listing.yaml — never hand-edit
+# the Console forms.
 
 # After removing `const` from an expression that gained an S.* getter, the
 # analyzer will flag the children that are still const-able. Feed the report

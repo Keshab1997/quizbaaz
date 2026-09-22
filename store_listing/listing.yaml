@@ -1,0 +1,135 @@
+# Store listing — source of truth for the Play Console main listing.
+#
+# tool/publish_play.py --listing uploads everything below through the Play
+# Developer API (docs/20_PLAY_STORE_API_PUBLISH.md). Nothing here is a
+# placeholder: a fresh store listing must arrive fully written.
+#
+# Character limits enforced by validate: title <= 30, short_description <= 80,
+# full_description <= 4000. Language codes use the region form Play requires
+# (en-US, hi-IN, bn-BD …) — the API 404s on "bn", so check the exact codes the
+# Play Console shows under Store presence → Main store listing → Manage
+# translations.
+
+package: com.keshabstudios.quizbaaz
+default_language: en-US
+
+contact:
+  email: keshabsarkar2018@gmail.com
+  # website and phone are optional; leave empty to omit from the listing.
+  website: ""
+  phone: ""
+
+assets:
+  # Referenced assets must exist; they are validated up front.
+  icon: assets/branding/play_store_icon_512.png
+  feature_graphic: marketing/play_store_ai_premium/BONUS_AI_Feature_Graphic_1024x500.jpg
+  screenshots_dir: store_listing/screenshots
+  # Optional explicit list. When absent, every image in screenshots_dir
+  # (sorted) is uploaded as a phone screenshot — min 2, max 8, portrait
+  # 1080x1920 recommended.
+
+languages:
+  en-US:
+    # Title keywords we want in the searchable head: Play, Learn.
+    # Must match the app name in the Play Console ("QuizBaaz: Play and
+    # Learn") — publishing overwrites the default-language title.
+    title: "QuizBaaz: Play and Learn"
+    short_description: >-
+      Daily Class 10 MCQ quizzes, streaks, rewards and battles for exam prep.
+    full_description: |-
+      QuizBaaz is a gamified quiz app built for Indian Class 10 students who
+      are preparing for board exams and building a strong foundation for
+      competitive exams.
+
+      Play a 10-question daily quiz every day, chain streaks, earn coins and
+      gems and climb the leaderboard. Practice chapter-wise MCQ sets for
+      Physics, Chemistry, Biology, Maths, Social Science and English, all
+      aligned with the NCERT / CBSE Class 10 syllabus. Take on the 1v1 battle
+      arena and prove you are fastest.
+
+      Everything works offline. Every question ships inside the app in
+      English, Bengali (বাংলা) and Hindi (हिन्दी), so students in areas with
+      poor connectivity can study anywhere — no internet needed for a single
+      chapter quiz or daily run. Scores and progress sync automatically when
+      you are back online.
+
+      QuizBaaz helps you:
+      • Practice daily mock tests and MCQ quizzes for Class 10
+      • Revise NCERT chapters with timed, exam-style questions
+      • Build exam temperament with lifelines and instant feedback
+      • Measure your progress against friends and toppers on the leaderboard
+      • Earn coins, gems and rewards that keep you motivated
+      • Lay the groundwork for board exams and competitive exams
+
+      Free, lightweight and respectful of your data — your account can be
+      deleted any time. Perfect for CBSE, state board and school exam
+      preparation.
+
+      Download QuizBaaz today and make daily practice a habit.
+
+  bn-BD:
+    title: "QuizBaaz: Class 10 প্রস্তুতি"
+    short_description: >-
+      Class 10 MCQ কুইজ, streak ও rewards সহ পরীক্ষার প্রস্তুতির দৈনিক অনুশীলন।
+    full_description: |-
+      QuizBaaz হলো ভারতীয় Class 10 শিক্ষার্থীদের জন্য তৈরি একটি গেম-ভিত্তিক
+      কুইজ অ্যাপ — যারা বোর্ড পরীক্ষার প্রস্তুতি নিচ্ছে এবং competitive
+      examination-এর জন্য দৃঢ় ভিত্তি গড়তে চায়।
+
+      প্রতিদিন ১০টি প্রশ্নের daily quiz খেলুন, streak ধরে রাখুন, coins ও gems
+      উপার্জন করুন এবং leaderboard-এ নিজের শ্রেষ্ঠত্ব প্রমাণ করুন। Physics,
+      Chemistry, Biology, Maths, Social Science ও English — NCERT / CBSE
+      Class 10 সিলেবাস অনুযায়ী chapter-wise MCQ সেটের নিয়মিত অনুশীলন করুন।
+      1v1 battle arena-এ প্রতিদ্বন্দ্বিতা করে দেখান কে সবচেয়ে দ্রুত।
+
+      সম্পূর্ণ অফলাইন। সব প্রশ্ন English, বাংলা ও হिन्दी — তিন ভাষায় অ্যাপের
+      ভেতরেই থাকে, তাই ইন্টারনেটহীন এলাকার শিক্ষার্থীরাও যেকোনো জায়গায় পড়তে
+      পারে। ইন্টারনেটে এলে স্কোর ও প্রগতি অটোমেটিক sync হয়।
+
+      QuizBaaz যে কাজে সাহায্য করে:
+      • Class 10-এর দৈনিক মক টেস্ট ও MCQ কুইজ অনুশীলন
+      • NCERT অধ্যায়ভিত্তিক সময়ধর্মী প্রশ্নে রিভিশন
+      • lifeline ও তাৎক্ষণিক ফলাফলে পরীক্ষার মানসিকতা গঠন
+      • বন্ধুদের ও topperদের সঙ্গে leaderboard-এ অগ্রগতি মাপা
+      • coins, gems ও rewards অর্জন করে প্রেরণা ধরে রাখা
+      • বোর্ড পরীক্ষা ও competitive exam-এর ভিত্তি তৈরি
+
+      ফ্রি, হালকা এবং তথ্যগুপ্তি রক্ষায় সচেতন — চাইলে যেকোনো সময় account
+      মুছে ফেলা যায়। CBSE, state board ও স্কুল পরীক্ষার প্রস্তুতির জন্য
+      উপযুক্ত।
+
+      আজই QuizBaaz ডাউনলোড করুন এবং প্রতিদিনের অনুশীলনকে অভ্যাসে রূপ দিন।
+
+  hi-IN:
+    title: "QuizBaaz: Class 10 तैयारी"
+    short_description: >-
+      Class 10 MCQ क्विज़, streak, reward और exam की रोज़ाना तैयारी।
+    full_description: |-
+      QuizBaaz भारतीय Class 10 छात्रों के लिए बना एक गेमीफाइड क्विज़ ऐप है —
+      जो बोर्ड परीक्षा की तैयारी कर रहे हैं और competitive exam की मज़बूत
+      नींव बनाना चाहते हैं।
+
+      रोज़ाना 10 सवालों का daily quiz खेलें, streak बनाए रखें, coins और gems
+      कमाएँ और leaderboard पर अपनी जगह बनाएँ। Physics, Chemistry, Biology,
+      Maths, Social Science और English — NCERT / CBSE Class 10 सिलेबस पर
+      आधारित chapter-wise MCQ सेट का नियमित अभ्यास करें। 1v1 battle arena में
+      प्रतिस्पर्धा करके दिखाएँ कि कौन सबसे तेज़ है।
+
+      पूरी तरह ऑफ़लाइन। सभी सवाल English, বাংলা और हिन्दी — तीनों भाषाओं में
+      ऐप के अंदर ही मौजूद हैं, इसलिए कमज़ोर इंटरनेट वाले इलाकों के छात्र भी
+      कहीं भी पढ़ सकते हैं। इंटरनेट आने पर स्कोर और प्रगति अपने आप sync हो
+      जाती है।
+
+      QuizBaaz इन कामों में मदद करता है:
+      • Class 10 के रोज़ाना मॉक टेस्ट और MCQ क्विज़ का अभ्यास
+      • NCERT अध्यायों की समयबद्ध प्रश्नों से रिवीज़न
+      • lifeline और तुरंत फीडबैक से परीक्षा की आदत बनाना
+      • दोस्तों और toppers के साथ leaderboard पर प्रगति मापना
+      • coins, gems और rewards पाकर प्रेरणा बनाए रखना
+      • बोर्ड और competitive exam की नींव तैयार करना
+
+      फ्री, हल्का और आपके डेटा के प्रति ज़िम्मेदार — चाहें तो account कभी भी
+      डिलीट किया जा सकता है। CBSE, state board और स्कूल परीक्षा की तैयारी के
+      लिए एकदम सही।
+
+      आज ही QuizBaaz डाउनलोड करें और रोज़ अभ्यास को आदत बनाएँ।
