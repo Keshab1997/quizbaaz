@@ -55,6 +55,7 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_CONFIG = REPO_ROOT / 'store_listing' / 'listing.yaml'
 
 API_BASE = 'https://androidpublisher.googleapis.com/androidpublisher/v3'
+UPLOAD_BASE = 'https://androidpublisher.googleapis.com/upload/androidpublisher/v3'
 PUBLISHER_SCOPE = 'https://www.googleapis.com/auth/androidpublisher'
 
 LIMITS = {'title': 30, 'short_description': 80, 'full_description': 4000}
@@ -114,7 +115,7 @@ def image_size(path: Path) -> tuple[int, int] | None:
 
 
 def image_content_type(path: Path) -> str:
-    ext = path.suffix.lower()
+    ext = path.suffix.lower().lstrip('.')
     return {'png': 'image/png', 'jpg': 'image/jpeg', 'jpeg': 'image/jpeg',
             'webp': 'image/webp'}.get(ext, 'application/octet-stream')
 
@@ -278,10 +279,6 @@ class PlayClient:
     def create_edit(self) -> str:
         return self._request('POST', self._url())['id']
 
-    def set_default_language(self, edit_id: str, language: str) -> None:
-        self._request('PATCH', self._url(edit_id, '/apps'),
-                      json={'defaultLanguage': language})
-
     def put_listing(self, edit_id: str, language: str, data: dict) -> None:
         body = {
             'language': language,
@@ -299,18 +296,23 @@ class PlayClient:
         self._request('PUT', self._url(edit_id, f'/listings/{language}'), json=body)
 
     def list_images(self, edit_id: str, language: str, image_type: str) -> list[dict]:
-        resp = self._request('GET', self._url(edit_id, f'/listings/{language}/imageTypes/{image_type}'))
+        # Image routes take the image type as the LAST path segment, with no
+        # images/imageTypes prefix (an extra segment 404s as an unknown route).
+        resp = self._request('GET', self._url(edit_id, f'/listings/{language}/{image_type}'))
         return resp.get('images', [])
 
     def delete_image(self, edit_id: str, language: str, image_type: str, image_id: str) -> None:
-        self._request('DELETE', self._url(edit_id, f'/listings/{language}/images/{image_type}/{image_id}'))
+        self._request('DELETE',
+                      self._url(edit_id, f'/listings/{language}/{image_type}/{image_id}'))
 
     def upload_image(self, edit_id: str, language: str, image_type: str, path: Path) -> None:
-        # Uploads are NOT idempotent — one POST per image — so callers must clear
-        # the existing set first via list_images/delete_image.
+        # Uploads MUST go to the /upload/ host or the media bytes are parsed as
+        # JSON and rejected. Uploads are NOT idempotent — one POST per image —
+        # so callers must clear the existing set first via list/delete.
         self._request(
             'POST',
-            self._url(edit_id, f'/listings/{language}/images/{image_type}'),
+            f'{UPLOAD_BASE}/applications/{self.package}/edits/{edit_id}'
+            f'/listings/{language}/{image_type}',
             data=path.read_bytes(),
             headers={'Content-Type': image_content_type(path)},
         )
@@ -344,9 +346,9 @@ class PlayClient:
 # publish steps
 # --------------------------------------------------------------------------- #
 def publish_listing(client: PlayClient, cfg: dict, edit_id: str) -> None:
+    # defaultLanguage is not exposed by Play API v3 (there is no edits/*/apps
+    # resource) — it is set once in the Play Console when the app is created.
     default_lang = cfg['default_language']
-    client.set_default_language(edit_id, default_lang)
-
     for lang, data in cfg['languages'].items():
         client.put_listing(edit_id, lang, data)
         ok(f'listing {lang}: {data["title"]}')

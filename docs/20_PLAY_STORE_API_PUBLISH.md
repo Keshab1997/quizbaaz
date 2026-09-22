@@ -118,6 +118,14 @@ review queue as a Console upload.
 
 ## Troubleshooting
 
+- **`Play API 404 on .../apps` or `defaultLanguage`** — Play API v3 has no
+  `edits/*/apps` endpoint and no way to set the default language over the API.
+  It is chosen once in the Play Console when the app is created; the tool does
+  not touch it.
+- **`404` on image routes** — image routes take the image type as the *last*
+  path segment (`.../listings/{lang}/icon`), no `images/` or `imageTypes/`
+  in between, and binary uploads must go to the `/upload/` host. The tool
+  handles both; re-run it rather than hand-crafting curl calls.
 - **`Play API 404` on a language** — the code is not accepted for this app.
   Read the supported tags in *Manage translations* and fix `listing.yaml`.
 - **"version code already on the track"** — your build number did not change.
