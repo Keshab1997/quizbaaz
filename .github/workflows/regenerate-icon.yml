@@ -1,0 +1,35 @@
+name: Regenerate Launcher Icon
+
+# Manual one-off: rebuilds the adaptive launcher icon foreground from the
+# original square artwork and commits the result. Trigger from the Actions
+# tab ("Run workflow").
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Pillow
+        run: python3 -m pip install --user pillow
+
+      - name: Regenerate foreground
+        run: python3 tool/make_rounded_foreground.py
+
+      - name: Commit result
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add android/app/src/main/res/drawable-nodpi/ic_launcher_foreground.png
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "fix(icon): rounded-corner badge foreground for adaptive icon"
+            git push
+          fi
