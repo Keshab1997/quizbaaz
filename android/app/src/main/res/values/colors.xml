@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Native launch screen background: dark navy so the app never flashes white
+         on cold start, on any Android version. Matches ic_launcher_background
+         so the adaptive icon blends seamlessly into the splash. -->
+    <color name="launch_bg">#0A0E21</color>
+</resources>
