@@ -1,8 +1,8 @@
-name: Regenerate Launcher Icon
+name: Refresh Launcher Icons
 
-# Manual one-off: rebuilds the adaptive launcher icon foreground from the
-# original square artwork and commits the result. Trigger from the Actions
-# tab ("Run workflow").
+# Manual: rebuilds the launcher icons (wordmark removal + legacy mipmap
+# regeneration) and commits the result. Trigger from the Actions tab
+# ("Run workflow"). Idempotent.
 
 on:
   workflow_dispatch:
@@ -11,25 +11,30 @@ permissions:
   contents: write
 
 jobs:
-  regenerate:
+  refresh:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
       - name: Install Pillow
-        run: python3 -m pip install --user pillow
+        run: python3 -m pip install --user pillow numpy
 
-      - name: Regenerate foreground
-        run: python3 tool/make_rounded_foreground.py
+      - name: Refresh icons
+        run: python3 tool/refresh_icons.py
 
       - name: Commit result
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add android/app/src/main/res/drawable-nodpi/ic_launcher_foreground.png
+          git add android/app/src/main/res/drawable-nodpi/ic_launcher_foreground.png \
+                  android/app/src/main/res/mipmap-mdpi/ic_launcher.png \
+                  android/app/src/main/res/mipmap-hdpi/ic_launcher.png \
+                  android/app/src/main/res/mipmap-xhdpi/ic_launcher.png \
+                  android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png \
+                  android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
-            git commit -m "fix(icon): rounded-corner badge foreground for adaptive icon"
+            git commit -m "fix(icon): remove wordmark + regenerate legacy mipmaps from rounded badge"
             git push
           fi
