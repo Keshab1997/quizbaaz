@@ -121,9 +121,10 @@ class QuizRepository {
     return filterForStudents(merged, includeDisabled: includeDisabled);
   }
 
-  /// Removes disabled chapters and categories that contain no visible chapter.
-  /// The admin manager opts into [includeDisabled] so an admin can turn a
-  /// hidden chapter back on; all student-facing callers get the safe default.
+  /// Removes disabled **and empty** chapters, plus subjects that then have
+  /// nothing left. Empty means `totalQuestions == 0` (bundled + admin count).
+  /// The admin manager opts into [includeDisabled] so empty shells stay
+  /// visible there for authoring; students never see a 0-question card.
   static List<CategoryModel> filterForStudents(
     List<CategoryModel> categories, {
     bool includeDisabled = false,
@@ -133,7 +134,8 @@ class QuizRepository {
     return categories
         .map((category) => category.copyWith(
               chapters: category.chapters
-                  .where((chapter) => chapter.isEnabled)
+                  .where((chapter) =>
+                      chapter.isEnabled && chapter.totalQuestions > 0)
                   .toList(),
             ))
         .where((category) => category.chapters.isNotEmpty)

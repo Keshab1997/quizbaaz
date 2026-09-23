@@ -315,12 +315,14 @@ void main() {
   });
 
   group('chapter visibility', () {
-    ChapterModel chapter(String id, {bool isEnabled = true}) => ChapterModel(
+    ChapterModel chapter(String id,
+            {bool isEnabled = true, int totalQuestions = 10}) =>
+        ChapterModel(
           chapterId: id,
           chapterNumber: 1,
           titleText: LocalizedText({'en': id}),
           descriptionText: const LocalizedText.empty(),
-          totalQuestions: 10,
+          totalQuestions: totalQuestions,
           jsonFile: 'assets/data/questions/$id.json',
           isUnlocked: true,
           isEnabled: isEnabled,
@@ -373,6 +375,26 @@ void main() {
       expect(studentView.single.categoryId, 'math');
       expect(studentView.single.totalChapters, 1);
       expect(studentView.single.chapters.single.chapterId, 'shown');
+
+      final adminView =
+          QuizRepository.filterForStudents(all, includeDisabled: true);
+      expect(adminView, hasLength(2));
+      expect(adminView.first.chapters, hasLength(2));
+    });
+
+    test('students do not see empty chapters; admin still does', () {
+      final all = [
+        category('math', [
+          chapter('ready', totalQuestions: 12),
+          chapter('empty_shell', totalQuestions: 0),
+        ]),
+        category('draft', [chapter('also_empty', totalQuestions: 0)]),
+      ];
+
+      final studentView = QuizRepository.filterForStudents(all);
+      expect(studentView, hasLength(1));
+      expect(studentView.single.categoryId, 'math');
+      expect(studentView.single.chapters.map((c) => c.chapterId), ['ready']);
 
       final adminView =
           QuizRepository.filterForStudents(all, includeDisabled: true);
