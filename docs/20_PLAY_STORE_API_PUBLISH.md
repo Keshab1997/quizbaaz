@@ -6,6 +6,29 @@ document describes the automation that replaces that. **Anything in this doc is
 a repeatable step — you set it up once, and every release after that is one
 workflow run.**
 
+## In-app "What's new" + Closed testing
+
+`store_listing/whats_new.yaml` is the source of truth for **Play release notes**
+(en-US / bn-BD / hi-IN, ≤500 chars) and is mirrored in
+`lib/data/services/whats_new_catalog.dart` for the in-app dialog.
+
+On each version bump:
+
+1. Add a `releases.<version>` block and set `current`.
+2. Copy the same bullets into `WhatsNewCatalog`.
+3. Bump `pubspec.yaml` (`1.x.y+N`).
+4. Publish AAB to Closed testing:
+
+```bash
+python3 tool/publish_play.py --aab app-release.aab --track closedtesting
+```
+
+`--track closedtesting` (or `closed`) maps to Play's `alpha` track. Testers who
+installed from Play get an **in-app update** prompt; after the new build opens
+they see the What's new dialog once. Profile → version row re-opens it.
+
+Sideloaded APKs cannot use Play in-app updates.
+
 ## What becomes automatic
 
 | Step | Before | After |
