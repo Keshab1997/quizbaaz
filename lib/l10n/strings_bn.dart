@@ -223,6 +223,8 @@ const Map<String, String> kStringsBn = {
   'profileUpdated': '✅ প্রোফাইল সফলভাবে আপডেট হয়েছে!',
   'profileAvatarUpdated': '✅ অ্যাভাটার সফলভাবে আপডেট হয়েছে!',
   'profileSignedInGoogle': '🎉 গুগল দিয়ে সাইন ইন হয়েছে!',
+  'authNoIdToken':
+      'গুগল সাইন-ইনে কোনো ID টোকেন আসেনি। অ্যাপ আপডেট করে আবার চেষ্টা করুন।',
   'profileEffectNotOwned': 'আগে শপ থেকে এই ইফেক্টটি কিনুন!',
   'profilePlayerFallback': 'কুইজবাজ প্লেয়ার',
 

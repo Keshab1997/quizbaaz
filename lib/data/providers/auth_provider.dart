@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import '../services/onesignal_service.dart';
+import '../../l10n/app_strings.dart';
 
 /// A simple exception carrying a user-friendly message for the UI.
 class AuthException implements Exception {
@@ -67,12 +68,24 @@ class AuthProvider extends ChangeNotifier {
     notifyListeners();
 
     try {
+      debugPrint('AuthProvider: starting Google authenticate');
       final GoogleSignInAccount googleUser = await _googleSignIn.authenticate();
+      debugPrint('AuthProvider: authenticate returned ${googleUser.email}');
 
       final GoogleSignInAuthentication googleAuth = googleUser.authentication;
+      final String? idToken = googleAuth.idToken;
+      // A null token here means the Play build is not recognised by Google
+      // (wrong SHA-1 in Firebase or stale google-services.json) — Firebase
+      // would only fail later with a generic invalid-credential.
+      debugPrint(
+        'AuthProvider: idToken ${idToken == null ? 'NULL' : 'present (${idToken.length} chars)'}',
+      );
+      if (idToken == null) {
+        throw AuthException(S.authNoIdToken);
+      }
 
       final credential = GoogleAuthProvider.credential(
-        idToken: googleAuth.idToken,
+        idToken: idToken,
       );
 
       final auth = _auth;
@@ -81,19 +94,24 @@ class AuthProvider extends ChangeNotifier {
           'Firebase is not ready yet. Check your internet connection and try again.',
         );
       }
-      await auth.signInWithCredential(credential);
+      final userCredential = await auth.signInWithCredential(credential);
+      debugPrint(
+        'AuthProvider: Firebase sign-in ok uid=${userCredential.user?.uid}',
+      );
       unawaited(OneSignalService.instance.syncFromHive());
-      return auth.currentUser != null;
+      return userCredential.user != null;
     } on GoogleSignInException catch (e) {
       if (e.code == GoogleSignInExceptionCode.canceled ||
           e.code == GoogleSignInExceptionCode.interrupted) {
         // User cancelled the Google account picker.
+        debugPrint('AuthProvider: sign-in cancelled (${e.code})');
         return false;
       }
       debugPrint('Google Sign-In error: ${e.code} - ${e.description}');
       _lastError = _friendlyGoogleSignInError(e);
       throw AuthException(_lastError!);
     } on FirebaseAuthException catch (e) {
+      debugPrint('AuthProvider: FirebaseAuth error ${e.code} - ${e.message}');
       _lastError = _friendlyAuthError(e);
       throw AuthException(_lastError ?? 'Sign-in failed.');
     } on AuthException catch (e) {

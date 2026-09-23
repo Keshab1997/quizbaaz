@@ -231,6 +231,8 @@ const Map<String, String> kStringsEn = {
   'profileUpdated': '✅ Profile updated successfully!',
   'profileAvatarUpdated': '✅ Avatar updated successfully!',
   'profileSignedInGoogle': '🎉 Signed in with Google!',
+  'authNoIdToken':
+      'Google Sign-In returned no ID token. Please update the app and try again.',
   'profileEffectNotOwned': 'Buy this effect from the Shop first!',
   'profilePlayerFallback': 'QuizBaaz Player',
 

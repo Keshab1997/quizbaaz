@@ -223,6 +223,8 @@ const Map<String, String> kStringsHi = {
   'profileUpdated': '✅ प्रोफ़ाइल सफलतापूर्वक अपडेट हुई!',
   'profileAvatarUpdated': '✅ अवतार सफलतापूर्वक अपडेट हुआ!',
   'profileSignedInGoogle': '🎉 गूगल से साइन इन हो गया!',
+  'authNoIdToken':
+      'गूगल साइन-इन में कोई ID टोकन नहीं आया। ऐप अपडेट करके फिर कोशिश करें।',
   'profileEffectNotOwned': 'पहले शॉप से यह इफ़ेक्ट खरीदें!',
   'profilePlayerFallback': 'क्विज़बाज़ प्लेयर',
 
