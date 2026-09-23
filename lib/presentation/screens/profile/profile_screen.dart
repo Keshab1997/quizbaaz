@@ -611,14 +611,11 @@ class ProfileScreen extends StatelessWidget {
                   const Divider(color: Colors.white12),
                   ListenableBuilder(
                     listenable: AppVersion.instance,
-                    builder: (context, _) {
-                      unawaited(AppVersion.load());
-                      return _buildAppInfoRow(
-                        Icons.info_rounded,
-                        AppUpdateService.versionLine(),
-                        () => AppUpdateService.showChangelog(context),
-                      );
-                    },
+                    builder: (context, _) => _buildAppInfoRow(
+                      Icons.info_rounded,
+                      AppUpdateService.versionLine(),
+                      () => AppUpdateService.showChangelog(context),
+                    ),
                   ),
                   // Google UMP change-consent entry point — shown only where
                   // required (EU/EEA/UK). Hidden automatically for India.
