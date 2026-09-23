@@ -30,6 +30,14 @@
           }
         },
         {
+          "client_id": "274398480008-9qce2sndr6ealumq35v076qo5f3d58sp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.keshabstudios.quizbaaz",
+            "certificate_hash": "0dfb58b2c69c7cb6c1793b8284f30ac560e2191e"
+          }
+        },
+        {
           "client_id": "274398480008-bdfo6ls6tdgmleu2ipju2q7pkdgljj6p.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
