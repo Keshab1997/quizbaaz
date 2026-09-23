@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "274398480008-1hfauu785edo1vp481lnecpc5hvp0knj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.keshabstudios.quizbaaz",
+            "certificate_hash": "08431d599229f988f3f7990219cf3a285fe7ae0e"
+          }
+        },
+        {
           "client_id": "274398480008-27mr6tgehfg6poe2t157m1ifro8bdqqv.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
