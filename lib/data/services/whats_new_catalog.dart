@@ -7,6 +7,23 @@ class WhatsNewCatalog {
   WhatsNewCatalog._();
 
   static const Map<String, Map<String, List<String>>> _releases = {
+    '1.0.6': {
+      'en': [
+        'Google Sign-In fixed on Play Closed testing builds.',
+        'Firebase needs both Play App Signing and upload-key SHA-1.',
+        'Profile and splash show the real app version.',
+      ],
+      'bn': [
+        'Play Closed testing-এ Google Sign-In ঠিক করা হয়েছে।',
+        'Firebase-এ App Signing ও upload-key দুটো SHA-1 লাগবে।',
+        'প্রোফাইল ও স্প্ল্যাশে আসল অ্যাপ ভার্সন দেখাবে।',
+      ],
+      'hi': [
+        'Play Closed testing पर Google Sign-In ठीक किया गया।',
+        'Firebase में App Signing और upload-key दोनों SHA-1 जोड़ें।',
+        'प्रोफ़ाइल और स्प्लैश पर असली ऐप वर्शन दिखेगा।',
+      ],
+    },
     '1.0.5': {
       'en': [
         'The app now tells you immediately when a new version is installed.',

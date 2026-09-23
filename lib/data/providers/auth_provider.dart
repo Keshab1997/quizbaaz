@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../core/constants/google_oauth.dart';
-import '../services/onesignal_service.dart';
 import '../../l10n/app_strings.dart';
+import '../services/onesignal_service.dart';
 
 /// A simple exception carrying a user-friendly message for the UI.
 class AuthException implements Exception {
@@ -81,42 +81,21 @@ class AuthProvider extends ChangeNotifier {
     notifyListeners();
 
     try {
-<<<<<<< HEAD
       debugPrint('AuthProvider: starting Google authenticate');
-=======
       await initialize();
 
->>>>>>> 6c701d0 (fix(auth): pass Firebase Web client ID so Google Sign-In returns an ID token)
       final GoogleSignInAccount googleUser = await _googleSignIn.authenticate();
       debugPrint('AuthProvider: authenticate returned ${googleUser.email}');
 
-<<<<<<< HEAD
-      final GoogleSignInAuthentication googleAuth = googleUser.authentication;
-      final String? idToken = googleAuth.idToken;
-      // A null token here means the Play build is not recognised by Google
-      // (wrong SHA-1 in Firebase or stale google-services.json) — Firebase
-      // would only fail later with a generic invalid-credential.
+      final String? idToken = googleUser.authentication.idToken;
       debugPrint(
         'AuthProvider: idToken ${idToken == null ? 'NULL' : 'present (${idToken.length} chars)'}',
       );
-      if (idToken == null) {
+      if (idToken == null || idToken.isEmpty) {
         throw AuthException(S.authNoIdToken);
       }
 
-      final credential = GoogleAuthProvider.credential(
-        idToken: idToken,
-      );
-=======
-      final String? idToken = googleUser.authentication.idToken;
-      if (idToken == null || idToken.isEmpty) {
-        throw const AuthException(
-          'Google did not return an ID token. Confirm the Web client ID and '
-          'both Play App Signing + upload-key SHA-1 fingerprints are in Firebase.',
-        );
-      }
-
       final credential = GoogleAuthProvider.credential(idToken: idToken);
->>>>>>> 6c701d0 (fix(auth): pass Firebase Web client ID so Google Sign-In returns an ID token)
 
       final auth = _auth;
       if (auth == null) {
@@ -133,11 +112,7 @@ class AuthProvider extends ChangeNotifier {
     } on GoogleSignInException catch (e) {
       if (e.code == GoogleSignInExceptionCode.canceled ||
           e.code == GoogleSignInExceptionCode.interrupted) {
-<<<<<<< HEAD
-        // User cancelled the Google account picker.
         debugPrint('AuthProvider: sign-in cancelled (${e.code})');
-=======
->>>>>>> 6c701d0 (fix(auth): pass Firebase Web client ID so Google Sign-In returns an ID token)
         return false;
       }
       debugPrint('Google Sign-In error: ${e.code} - ${e.description}');
