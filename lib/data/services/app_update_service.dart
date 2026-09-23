@@ -24,39 +24,15 @@ class AppUpdateService {
     await AppVersion.load();
     if (!context.mounted) return;
 
-    final playTookOver = await _promptPlayUpdate();
+    final playTookOver = await promptPlayUpdate();
     if (playTookOver) return;
     if (!context.mounted) return;
 
     await _showWhatsNewIfNeeded(context);
   }
 
-  /// Returns true when Play is already showing its own update UI, so we
-  /// should not stack another dialog on top.
-  static Future<bool> _promptPlayUpdate() async {
-    if (kIsWeb || defaultTargetPlatform != TargetPlatform.android) return false;
-    try {
-      final info = await InAppUpdate.checkForUpdate();
-      if (info.updateAvailability != UpdateAvailability.updateAvailable) {
-        return false;
-      }
-      if (info.immediateUpdateAllowed) {
-        await InAppUpdate.performImmediateUpdate();
-        return true;
-      }
-      if (info.flexibleUpdateAllowed) {
-        await InAppUpdate.startFlexibleUpdate();
-        await InAppUpdate.completeFlexibleUpdate();
-        return true;
-      }
-    } catch (e) {
-      debugPrint('AppUpdateService: Play in-app update skipped – $e');
-    }
-    return false;
-  }
-
   static Future<void> _showWhatsNewIfNeeded(BuildContext context) async {
-    final current = AppVersion.version;
+    final current = AppVersion.instance.version;
     if (current.isEmpty) return;
 
     final last = HiveService.getMeta<String>(metaLastSeenVersion);
@@ -83,14 +59,16 @@ class AppUpdateService {
   }
 
   static String versionLine() {
-    final label = AppVersion.label;
-    return label.isEmpty ? S.profileVersion(v: '…') : S.profileVersion(v: label);
+    final label = AppVersion.instance.label;
+    return label.isEmpty
+        ? S.profileVersion(v: '…')
+        : S.profileVersion(v: label);
   }
 
   /// Profile → version row: re-show this build's notes on demand.
   static Future<void> showChangelog(BuildContext context) async {
     await AppVersion.load();
-    final current = AppVersion.version;
+    final current = AppVersion.instance.version;
     final bullets = WhatsNewCatalog.bulletsFor(current);
     if (!context.mounted) return;
     if (bullets.isEmpty) return;

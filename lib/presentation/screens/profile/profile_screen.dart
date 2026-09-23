@@ -609,12 +609,17 @@ class ProfileScreen extends StatelessWidget {
                   _buildAppInfoRow(Icons.description_rounded, S.profileTerms,
                       () => _openLink(context, AppLinks.terms)),
                   const Divider(color: Colors.white12),
-                  _buildAppInfoRow(
-                      Icons.info_rounded,
-                      AppVersion.label.isEmpty
-                          ? S.profileVersion(v: '…')
-                          : AppUpdateService.versionLine(),
-                      () => AppUpdateService.showChangelog(context)),
+                  ListenableBuilder(
+                    listenable: AppVersion.instance,
+                    builder: (context, _) {
+                      unawaited(AppVersion.load());
+                      return _buildAppInfoRow(
+                        Icons.info_rounded,
+                        AppUpdateService.versionLine(),
+                        () => AppUpdateService.showChangelog(context),
+                      );
+                    },
+                  ),
                   // Google UMP change-consent entry point — shown only where
                   // required (EU/EEA/UK). Hidden automatically for India.
                   if (ConsentService.instance.privacyOptionsRequired) ...[

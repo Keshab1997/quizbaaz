@@ -1,25 +1,30 @@
 import 'package:flutter/foundation.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
-/// Cached `package_info_plus` values. Hive is still the only startup await;
-/// this loads fire-and-forget so splash/profile never show a hardcoded
-/// `1.0.0` again.
-class AppVersion {
+/// Live `package_info_plus` values. Hive is still the only startup await;
+/// this loads fire-and-forget and notifies listeners so splash/profile show
+/// the real `pubspec` version instead of a hardcoded `1.0.0`.
+class AppVersion extends ChangeNotifier {
   AppVersion._();
+  static final AppVersion instance = AppVersion._();
 
-  static String version = '';
-  static String buildNumber = '';
+  String version = '';
+  String buildNumber = '';
 
-  static String get label {
+  /// e.g. `1.0.5+6` — the same string Play Console shows.
+  String get label {
     if (version.isEmpty) return '';
-    return buildNumber.isEmpty ? 'v$version' : 'v$version+$buildNumber';
+    return buildNumber.isEmpty ? version : '$version+$buildNumber';
   }
 
-  static Future<void> load() async {
+  static Future<void> load() => instance._load();
+
+  Future<void> _load() async {
     try {
       final info = await PackageInfo.fromPlatform();
       version = info.version;
       buildNumber = info.buildNumber;
+      notifyListeners();
     } catch (e) {
       debugPrint('AppVersion: package info unavailable – $e');
     }

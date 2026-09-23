@@ -4,6 +4,7 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 
 import '../../../core/constants/app_colors.dart';
+import '../../../data/services/app_version.dart';
 import '../../../data/services/hive_service.dart';
 import '../../../data/services/sound_service.dart';
 import '../../../l10n/app_strings.dart';
@@ -176,14 +177,20 @@ class _SplashScreenState extends State<SplashScreen>
                     borderRadius: BorderRadius.circular(16),
                     border: Border.all(color: Colors.white12),
                   ),
-                  child: Text(
-                    AppVersion.label.isEmpty ? 'QuizBaaz' : AppVersion.label,
-                    style: const TextStyle(
-                      color: AppColors.textMuted,
-                      fontSize: 11,
-                      fontWeight: FontWeight.w700,
-                      letterSpacing: 0.5,
-                    ),
+                  child: ListenableBuilder(
+                    listenable: AppVersion.instance,
+                    builder: (_, __) {
+                      final label = AppVersion.instance.label;
+                      return Text(
+                        label.isEmpty ? 'QuizBaaz' : 'v$label',
+                        style: const TextStyle(
+                          color: AppColors.textMuted,
+                          fontSize: 11,
+                          fontWeight: FontWeight.w700,
+                          letterSpacing: 0.5,
+                        ),
+                      );
+                    },
                   ),
                 ),
               ],
