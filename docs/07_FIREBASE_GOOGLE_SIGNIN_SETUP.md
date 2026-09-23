@@ -70,23 +70,25 @@ plugins {
 4. **Enable** toggle ON করো
 5. Project support email select করো → **Save**
 
-## 📌 Step 5 — SHA-1 Fingerprint যোগ করা (❗ খুব জরুরি)
+## 📌 Step 5 — SHA fingerprints (Play Closed testing ❗)
 
-SHA-1 ছাড়া Android-এ Google Sign-In **কাজ করবে না**। করতে হবে:
+Play-এর Closed testing থেকে ইনস্টল করা APK **Play App Signing key** দিয়ে সাইন হয়, upload keystore দিয়ে নয়। শুধু debug/upload SHA দিলে Google Sign-In **ApiException 10** দেয়।
 
-**5a. SHA-1 বের করো:**
-```bash
-cd ~/Vs\ Code\ Apps/quizbaaz-flutter/android
-./gradlew signingReport
-```
-Output-এ `SHA1: XX:XX:...` খুঁজে বের করো (debug variant-টারটাই যথেষ্ট)।
+Firebase → ⚙️ Project settings → Your apps → Android → **Add fingerprint** — চারটেই লাগবে:
 
-**5b. Firebase-এ add করো:**
-1. Firebase console → ⚙️ (gear icon) → **Project settings**
-2. **Your apps** → তোমার Android app-টা select করো
-3. **Add fingerprint** → SHA-1 paste → Save
+| সার্টিফিকেট | কোথা থেকে |
+|---|---|
+| Play **App signing** SHA-1 | Play Console → App integrity → App signing |
+| Play **App signing** SHA-256 | একই পেজ |
+| **Upload key** SHA-1 | একই পেজ (Upload key certificate) |
+| Debug SHA-1 | `./gradlew signingReport` (লোকাল রান) |
 
-> ⚠️ Release keystore বানালে release SHA-1-ও এখানে add করতে হবে।
+SHA যোগ করার পর:
+
+1. **google-services.json আবার ডাউনলোড** করে `android/app/google-services.json` রিপ্লেস করো — নতুন Android OAuth client এখানেই আসে।
+2. নতুন AAB বানিয়ে Play-এ আপলোড করো। পুরনো ইনস্টল আনইনস্টল করে Play থেকে আবার ইনস্টল করো (SHA চেঞ্জ hot-reload হয় না)।
+
+কোডে Web client ID (`serverClientId`) `lib/core/constants/google_oauth.dart`-এ সেট আছে — google_sign_in 7 ছাড়া ID token আসে না।
 
 ## 📌 Step 6 — Run
 

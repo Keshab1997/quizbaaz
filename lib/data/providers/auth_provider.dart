@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+import '../../core/constants/google_oauth.dart';
 import '../services/onesignal_service.dart';
 import '../../l10n/app_strings.dart';
 
@@ -20,6 +21,7 @@ class AuthException implements Exception {
 class AuthProvider extends ChangeNotifier {
   bool _isBusy = false;
   String? _lastError;
+  Future<void>? _initFuture;
 
   bool get isBusy => _isBusy;
   String? get lastError => _lastError;
@@ -50,11 +52,22 @@ class AuthProvider extends ChangeNotifier {
 
   /// Initializes the Google Sign-In manager. Never blocks the first frame
   /// (called fire-and-forget from `main.dart`) and never throws.
-  Future<void> initialize() async {
+  ///
+  /// [serverClientId] is the Firebase **Web** client ID. Without it,
+  /// `authenticate()` on Android does not return an ID token (Play-signed
+  /// builds fail even after SHA-1 is added to Firebase).
+  Future<void> initialize() {
+    return _initFuture ??= _doInitialize();
+  }
+
+  Future<void> _doInitialize() async {
     try {
-      await _googleSignIn.initialize().timeout(const Duration(seconds: 5));
+      await _googleSignIn
+          .initialize(serverClientId: kGoogleServerClientId)
+          .timeout(const Duration(seconds: 8));
     } catch (e) {
       debugPrint('AuthProvider: GoogleSignIn init failed – $e');
+      _initFuture = null;
     }
   }
 
@@ -68,10 +81,16 @@ class AuthProvider extends ChangeNotifier {
     notifyListeners();
 
     try {
+<<<<<<< HEAD
       debugPrint('AuthProvider: starting Google authenticate');
+=======
+      await initialize();
+
+>>>>>>> 6c701d0 (fix(auth): pass Firebase Web client ID so Google Sign-In returns an ID token)
       final GoogleSignInAccount googleUser = await _googleSignIn.authenticate();
       debugPrint('AuthProvider: authenticate returned ${googleUser.email}');
 
+<<<<<<< HEAD
       final GoogleSignInAuthentication googleAuth = googleUser.authentication;
       final String? idToken = googleAuth.idToken;
       // A null token here means the Play build is not recognised by Google
@@ -87,6 +106,17 @@ class AuthProvider extends ChangeNotifier {
       final credential = GoogleAuthProvider.credential(
         idToken: idToken,
       );
+=======
+      final String? idToken = googleUser.authentication.idToken;
+      if (idToken == null || idToken.isEmpty) {
+        throw const AuthException(
+          'Google did not return an ID token. Confirm the Web client ID and '
+          'both Play App Signing + upload-key SHA-1 fingerprints are in Firebase.',
+        );
+      }
+
+      final credential = GoogleAuthProvider.credential(idToken: idToken);
+>>>>>>> 6c701d0 (fix(auth): pass Firebase Web client ID so Google Sign-In returns an ID token)
 
       final auth = _auth;
       if (auth == null) {
@@ -103,8 +133,11 @@ class AuthProvider extends ChangeNotifier {
     } on GoogleSignInException catch (e) {
       if (e.code == GoogleSignInExceptionCode.canceled ||
           e.code == GoogleSignInExceptionCode.interrupted) {
+<<<<<<< HEAD
         // User cancelled the Google account picker.
         debugPrint('AuthProvider: sign-in cancelled (${e.code})');
+=======
+>>>>>>> 6c701d0 (fix(auth): pass Firebase Web client ID so Google Sign-In returns an ID token)
         return false;
       }
       debugPrint('Google Sign-In error: ${e.code} - ${e.description}');
@@ -169,16 +202,15 @@ class AuthProvider extends ChangeNotifier {
       return 'Google Sign-In was cancelled. Please try again.';
     }
 
-    // Android returns status_code inside description for DEVELOPER_ERROR /
-    // permission errors. Surface a useful hint when present.
     final description = (e.description ?? '').toLowerCase();
     if (description.contains('permission') ||
         description.contains('not authorized') ||
         description.contains('access_denied') ||
-        description.contains('10: developer error')) {
-      return 'Google permission was not granted. Make sure Google Sign-In is '
-          'enabled in Firebase and the app is registered with the correct '
-          'SHA-1 fingerprint, then try again.';
+        description.contains('10:') ||
+        description.contains('developer error')) {
+      return 'Google Sign-In is blocked (error 10). Add BOTH Play App Signing '
+          'SHA-1 and the upload-key SHA-1 in Firebase → Project settings, '
+          'then reinstall the Play build.';
     }
 
     if (description.contains('network') ||
