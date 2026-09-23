@@ -6,9 +6,19 @@
 #   python3 tool/publish_play.py --aab app.aab --track alpha
 # which reads this file automatically. `--release-note` overrides English only.
 
-current: "1.0.6"
+current: "1.0.7"
 
 releases:
+  "1.0.7":
+    en: |-
+      • Google Sign-In no longer fails silently on Play builds
+      • Clear error if Play App Signing SHA-1 is missing in Firebase
+    bn: |-
+      • Play বিল্ডে Google Sign-In আর চুপচাপ ফেল করবে না
+      • Firebase-এ Play SHA-1 না থাকলে স্পষ্ট এরর দেখাবে
+    hi: |-
+      • Play बिल्ड पर Google Sign-In अब चुपचाप फेल नहीं होगा
+      • Firebase में Play SHA-1 न हो तो साफ़ त्रुटि दिखेगी
   "1.0.6":
     en: |-
       • Google Sign-In fixed on Play Closed testing (Web client ID + ID token)
