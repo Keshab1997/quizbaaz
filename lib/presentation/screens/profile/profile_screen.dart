@@ -1502,7 +1502,10 @@ Future<void> _handleGoogleSignIn(BuildContext context) async {
 
     try {
       final signedIn = await auth.signInWithGoogle();
-      if (!signedIn) return;
+      if (!signedIn) {
+        messenger.showSnackBar(SnackBar(content: Text(S.authSignInCanceled)));
+        return;
+      }
 
       final user = auth.firebaseUser;
       if (user == null) return;

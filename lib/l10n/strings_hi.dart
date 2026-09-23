@@ -225,6 +225,9 @@ const Map<String, String> kStringsHi = {
   'profileSignedInGoogle': '🎉 गूगल से साइन इन हो गया!',
   'authNoIdToken':
       'गूगल साइन-इन में कोई ID टोकन नहीं आया। ऐप अपडेट करके फिर कोशिश करें।',
+  'authSignInCanceled': 'गूगल साइन-इन रद्द हो गया। फिर Sign In दबाएँ और अकाउंट चुनें।',
+  'authReauthFailed':
+      'गूगल इस Play बिल्ड को सत्यापित नहीं कर पाया (error 16)। Firebase → Project settings में Play App Signing SHA-1 जोड़ें, कुछ मिनट बाद Play से फिर इंस्टॉल करें।',
   'profileEffectNotOwned': 'पहले शॉप से यह इफ़ेक्ट खरीदें!',
   'profilePlayerFallback': 'क्विज़बाज़ प्लेयर',
 

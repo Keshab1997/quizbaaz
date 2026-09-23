@@ -341,7 +341,10 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
 
     try {
       final signedIn = await auth.signInWithGoogle();
-      if (!signedIn) return; // User cancelled the account picker.
+      if (!signedIn) {
+        messenger.showSnackBar(SnackBar(content: Text(S.authSignInCanceled)));
+        return;
+      }
 
       final user = auth.firebaseUser;
       if (user == null) return;

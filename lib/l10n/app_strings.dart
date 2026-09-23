@@ -296,6 +296,8 @@ class S {
   static String get profileAvatarUpdated => raw('profileAvatarUpdated');
   static String get profileSignedInGoogle => raw('profileSignedInGoogle');
   static String get authNoIdToken => raw('authNoIdToken');
+  static String get authSignInCanceled => raw('authSignInCanceled');
+  static String get authReauthFailed => raw('authReauthFailed');
   static String get profileEffectNotOwned => raw('profileEffectNotOwned');
   static String get profilePlayerFallback => raw('profilePlayerFallback');
 

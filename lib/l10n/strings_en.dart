@@ -233,6 +233,9 @@ const Map<String, String> kStringsEn = {
   'profileSignedInGoogle': '🎉 Signed in with Google!',
   'authNoIdToken':
       'Google Sign-In returned no ID token. Please update the app and try again.',
+  'authSignInCanceled': 'Google Sign-In was cancelled. Tap Sign In and pick an account.',
+  'authReauthFailed':
+      'Google could not verify this Play build (error 16). Add the Play App Signing SHA-1 in Firebase → Project settings, wait a few minutes, then reinstall from Play.',
   'profileEffectNotOwned': 'Buy this effect from the Shop first!',
   'profilePlayerFallback': 'QuizBaaz Player',
 

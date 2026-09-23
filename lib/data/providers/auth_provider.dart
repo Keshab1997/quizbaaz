@@ -110,14 +110,16 @@ class AuthProvider extends ChangeNotifier {
       unawaited(OneSignalService.instance.syncFromHive());
       return userCredential.user != null;
     } on GoogleSignInException catch (e) {
-      if (e.code == GoogleSignInExceptionCode.canceled ||
-          e.code == GoogleSignInExceptionCode.interrupted) {
-        debugPrint('AuthProvider: sign-in cancelled (${e.code})');
-        return false;
-      }
-      debugPrint('Google Sign-In error: ${e.code} - ${e.description}');
+      // google_sign_in 7 maps Play SHA mismatches to `canceled` with
+      // description "[16] Account reauth failed" — not a real user cancel.
+      debugPrint(
+        'AuthProvider: GoogleSignInException code=${e.code} desc=${e.description}',
+      );
       _lastError = _friendlyGoogleSignInError(e);
-      throw AuthException(_lastError!);
+      if (_lastError != null) {
+        throw AuthException(_lastError!);
+      }
+      return false;
     } on FirebaseAuthException catch (e) {
       debugPrint('AuthProvider: FirebaseAuth error ${e.code} - ${e.message}');
       _lastError = _friendlyAuthError(e);
@@ -170,22 +172,22 @@ class AuthProvider extends ChangeNotifier {
 
   String _friendlyGoogleSignInError(GoogleSignInException e) {
     final code = e.code;
+    final description = (e.description ?? '').toLowerCase();
+
+    if (description.contains('[16]') ||
+        description.contains('reauth') ||
+        description.contains('10:') ||
+        description.contains('developer error') ||
+        description.contains('not authorized') ||
+        description.contains('permission') ||
+        description.contains('access_denied')) {
+      return S.authReauthFailed;
+    }
 
     if (code == GoogleSignInExceptionCode.canceled ||
         code == GoogleSignInExceptionCode.interrupted ||
         code == GoogleSignInExceptionCode.uiUnavailable) {
-      return 'Google Sign-In was cancelled. Please try again.';
-    }
-
-    final description = (e.description ?? '').toLowerCase();
-    if (description.contains('permission') ||
-        description.contains('not authorized') ||
-        description.contains('access_denied') ||
-        description.contains('10:') ||
-        description.contains('developer error')) {
-      return 'Google Sign-In is blocked (error 10). Add BOTH Play App Signing '
-          'SHA-1 and the upload-key SHA-1 in Firebase → Project settings, '
-          'then reinstall the Play build.';
+      return S.authSignInCanceled;
     }
 
     if (description.contains('network') ||
