@@ -41,9 +41,10 @@ on:
         options:
           - internal
           - alpha
+          - closedtesting
           - beta
           - production
-        default: internal
+        default: alpha
       release-note:
         description: Optional en-US release note shown on the track
         required: false

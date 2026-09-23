@@ -233,7 +233,8 @@ python3 tool/publish_daily_packet.py --dry-run   # today's daily packet, no writ
 python3 tool/publish_daily_packet.py             # publish daily_quiz_packets/{today}
 python3 tool/publish_play.py --validate          # Play listing: local sanity check
 python3 tool/publish_play.py --listing           # publish listing via Play API (docs/20)
-python3 tool/publish_play.py --aab app.aab --track internal   # upload AAB to a track
+python3 tool/publish_play.py --aab app.aab --track alpha      # Closed testing (alias: closedtesting)
+# Release notes: store_listing/whats_new.yaml (en/bn/hi) → Play API + in-app What's new dialog.
 
 # Play listing/AAB publishing needs the service-account JSON in the secret
 # PLAY_SERVICE_ACCOUNT_JSON (GitHub) or GOOGLE_APPLICATION_CREDENTIALS (local).

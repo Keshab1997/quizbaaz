@@ -267,6 +267,10 @@ class S {
   static String get profileTerms => raw('profileTerms');
   static String profileVersion({required Object v}) =>
       fill(raw('profileVersion'), {'v': v});
+  static String get whatsNewEyebrow => raw('whatsNewEyebrow');
+  static String whatsNewTitle({required Object v}) =>
+      fill(raw('whatsNewTitle'), {'v': v});
+  static String get whatsNewGotIt => raw('whatsNewGotIt');
   static String get profileConsentOptions => raw('profileConsentOptions');
   static String get profileSignIn => raw('profileSignIn');
   static String get profileSignOut => raw('profileSignOut');

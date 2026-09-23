@@ -11,6 +11,8 @@ import '../../../data/models/user_stats.dart';
 import '../../../data/providers/locale_provider.dart';
 import '../../../data/providers/user_provider.dart';
 import '../../../data/services/account_deletion_service.dart';
+import '../../../data/services/app_update_service.dart';
+import '../../../data/services/app_version.dart';
 import '../../../data/services/consent_service.dart';
 import '../../../data/services/notification_service.dart';
 import '../../screens/settings/language_screen.dart';
@@ -607,7 +609,12 @@ class ProfileScreen extends StatelessWidget {
                   _buildAppInfoRow(Icons.description_rounded, S.profileTerms,
                       () => _openLink(context, AppLinks.terms)),
                   const Divider(color: Colors.white12),
-                  _buildAppInfoRow(Icons.info_rounded, S.profileVersion(v: '1.0.0'), null),
+                  _buildAppInfoRow(
+                      Icons.info_rounded,
+                      AppVersion.label.isEmpty
+                          ? S.profileVersion(v: '…')
+                          : AppUpdateService.versionLine(),
+                      () => AppUpdateService.showChangelog(context)),
                   // Google UMP change-consent entry point — shown only where
                   // required (EU/EEA/UK). Hidden automatically for India.
                   if (ConsentService.instance.privacyOptionsRequired) ...[

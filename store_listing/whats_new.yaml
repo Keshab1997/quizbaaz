@@ -1,0 +1,27 @@
+# Source of truth for Play Console release notes AND the in-app "What's new"
+# dialog. Keep each language ≤ 500 characters (Play limit).
+#
+# On every version bump: add a `releases.<version>` block (en / bn / hi),
+# set `current` to that version, then publish the AAB with
+#   python3 tool/publish_play.py --aab app.aab --track alpha
+# which reads this file automatically. `--release-note` overrides English only.
+
+current: "1.0.5"
+
+releases:
+  "1.0.5":
+    en: |-
+      • App now tells you immediately when a new version is installed
+      • What's new dialog on first open after an update (EN / বাংলা / हिन्दी)
+      • Real version number on splash and Profile
+      • Play in-app update prompt so Closed testing testers get the new build without hunting the Store
+    bn: |-
+      • নতুন ভার্সন ইনস্টল হলে অ্যাপ সাথে সাথে জানাবে
+      • আপডেটের পর প্রথমবার খুললে What's new ডায়লগ (EN / বাংলা / हिन्दी)
+      • স্প্ল্যাশ ও প্রোফাইলে আসল ভার্সন নম্বর
+      • Play ইন-অ্যাপ আপডেট — Closed testing টেস্টাররা Store খুঁজে না পেয়েও নতুন বিল্ড পাবেন
+    hi: |-
+      • नया वर्शन इंस्टॉल होते ही ऐप तुरंत बताएगा
+      • अपडेट के बाद पहली बार खोलने पर What's new डायलॉग (EN / বাংলা / हिन्दी)
+      • स्प्लैश और प्रोफ़ाइल पर असली वर्शन नंबर
+      • Play इन-ऐप अपडेट — Closed testing टेस्टर स्टोर खोजे बिना नया बिल्ड पाएँगे

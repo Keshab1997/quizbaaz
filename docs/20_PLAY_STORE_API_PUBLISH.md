@@ -84,7 +84,8 @@ it.
 python3 tool/publish_play.py                      # validate only (no API)
 python3 tool/publish_play.py --validate
 python3 tool/publish_play.py --listing            # update listing + images
-python3 tool/publish_play.py --aab app-release.aab --track internal
+python3 tool/publish_play.py --aab app-release.aab --track alpha
+# Closed testing == the `alpha` track. `closedtesting` is accepted as an alias.
 python3 tool/publish_play.py --aab app-release.aab --track production \
     --release-note "Class 10 mock sets refreshed"
 GOOGLE_APPLICATION_CREDENTIALS=~/.secrets/play-sa.json \

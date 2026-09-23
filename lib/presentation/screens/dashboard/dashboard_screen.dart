@@ -14,6 +14,7 @@ import '../../../data/providers/quiz_provider.dart';
 import '../../../data/providers/rewards_provider.dart';
 import '../../../data/providers/user_provider.dart';
 import '../../../data/services/ad_service.dart';
+import '../../../data/services/app_update_service.dart';
 import '../../../data/services/consent_service.dart';
 import '../../../data/services/haptic_service.dart';
 import '../../../data/services/notification_inbox.dart';
@@ -87,6 +88,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
         } else if (reward != null) {
           DailyWinnerCelebrationDialog.show(context, reward);
         }
+      }
+      if (mounted) {
+        await AppUpdateService.checkAfterDashboardReady(context);
       }
     });
   }

@@ -1,7 +1,7 @@
 name: quizbaaz
 description: "🚀 QuizBaaz 3D - A Gamified Flutter Quiz & Learning Platform"
 publish_to: 'none'
-version: 1.0.4+5
+version: 1.0.5+6
 
 environment:
   sdk: '>=3.0.0 <4.0.0'
@@ -51,6 +51,10 @@ dependencies:
   flutter_timezone: ^4.1.1
   # Live push via OneSignal (FCM under the hood). See docs/16.
   onesignal_flutter: ^5.3.4
+  # Real versionName/versionCode for splash + Profile (never hardcode 1.0.0).
+  package_info_plus: ^8.3.0
+  # Play in-app updates so Closed testing testers get the new AAB in-app.
+  in_app_update: ^4.2.3
   # Firestore-backed pool of LLM API keys with failover, cooldowns and an admin
   # screen. Powers the AI question generator; see docs/11.
   admin_api_key_manager:

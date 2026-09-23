@@ -60,7 +60,10 @@ PUBLISHER_SCOPE = 'https://www.googleapis.com/auth/androidpublisher'
 
 LIMITS = {'title': 30, 'short_description': 80, 'full_description': 4000}
 IMAGE_TYPES = ('featureGraphic', 'icon', 'phoneScreenshots')
-ALLOWED_TRACKS = ('production', 'internal', 'alpha', 'beta')
+ALLOWED_TRACKS = ('production', 'internal', 'alpha', 'beta', 'closedtesting', 'closed')
+# Play Console "Closed testing" is the `alpha` track in the API.
+TRACK_ALIASES = {'closedtesting': 'alpha', 'closed': 'alpha'}
+WHATS_NEW_PATH = REPO_ROOT / 'store_listing' / 'whats_new.yaml'
 
 LANG_RE = re.compile(r'^[a-z]{2}([-_][A-Z]{2})?$')
 PACKAGE_RE = re.compile(r'^[a-z][a-z0-9_]{0,100}(\.[a-z][a-z0-9_]{0,100}){1,}$')
@@ -331,10 +334,10 @@ class PlayClient:
         return resp.get('releases', [])
 
     def set_track(self, edit_id: str, track: str, name: str, version_code: int,
-                  release_notes: str = '') -> None:
-        release: dict = {'name': name, 'versionCodes': [version_code], 'status': 'completed'}
+                  release_notes: list[dict] | None = None) -> None:
+        release: dict = {'name': name, 'versionCodes': [str(version_code)], 'status': 'completed'}
         if release_notes:
-            release['releaseNotes'] = [{'language': 'en-US', 'text': release_notes}]
+            release['releaseNotes'] = release_notes
         self._request('PUT', self._url(edit_id, f'/tracks/{track}'),
                       json={'releases': [release]})
 
@@ -373,20 +376,66 @@ def publish_listing(client: PlayClient, cfg: dict, edit_id: str) -> None:
     ok(f'uploaded {len(screens)} phone screenshots')
 
 
+def resolve_track(track: str) -> str:
+    return TRACK_ALIASES.get(track, track)
+
+
+def load_whats_new() -> dict:
+    if not WHATS_NEW_PATH.is_file():
+        return {}
+    try:
+        import yaml
+        data = yaml.safe_load(WHATS_NEW_PATH.read_text(encoding='utf-8'))
+    except Exception as exc:  # noqa: BLE001
+        note(f'whats_new.yaml unreadable ({exc}) — Play notes will be empty')
+        return {}
+    return data if isinstance(data, dict) else {}
+
+
+def play_release_notes(override_en: str = '') -> list[dict]:
+    """en-US / bn-BD / hi-IN notes for the current version in whats_new.yaml."""
+    data = load_whats_new()
+    current = str(data.get('current') or '')
+    releases = data.get('releases') or {}
+    block = releases.get(current) if isinstance(releases, dict) else None
+    lang_map = {
+        'en-US': 'en',
+        'bn-BD': 'bn',
+        'hi-IN': 'hi',
+    }
+    notes: list[dict] = []
+    for play_lang, short in lang_map.items():
+        text = ''
+        if override_en and play_lang == 'en-US':
+            text = override_en.strip()
+        elif isinstance(block, dict):
+            text = str(block.get(short) or '').strip()
+        if not text:
+            continue
+        if len(text) > 500:
+            text = text[:497] + '…'
+        notes.append({'language': play_lang, 'text': text})
+    return notes
+
+
 def publish_bundle(client: PlayClient, cfg: dict, edit_id: str, aab: Path,
                    track: str, release_note: str) -> None:
+    track = resolve_track(track)
     version_code = client.upload_bundle(edit_id, aab)
     ok(f'uploaded AAB {aab.name} (version code {version_code})')
 
     for release in client.track_releases(edit_id, track):
-        if version_code in [int(vc) for vc in release.get('versionCodes', [])]:
+        codes = [int(vc) for vc in release.get('versionCodes', [])]
+        if version_code in codes:
             fail(f'version code {version_code} is already on the {track} track — '
-                 f'bump the build number in pubspec.yaml first (docs/17, "Every release")')
+                 'bump the build number in pubspec.yaml first (docs/17)')
             raise SystemExit(1) from None
 
+    notes = play_release_notes(release_note)
     client.set_track(edit_id, track, cfg.get('release_name', 'via API'), version_code,
-                     release_note)
-    ok(f'added release to the {track} track (version code {version_code})')
+                     notes)
+    langs = ', '.join(n['language'] for n in notes) or 'none'
+    ok(f'added release to the {track} track (version code {version_code}, notes: {langs})')
 
 
 # --------------------------------------------------------------------------- #
@@ -407,9 +456,11 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
                         help='upload a signed AAB and set its track (may be combined with --listing)')
     parser.add_argument('--validate', action='store_true',
                         help='validate the listing only, even if --listing/--aab is given')
-    parser.add_argument('--track', default='internal', choices=ALLOWED_TRACKS,
-                        help='track for the AAB release (default: internal)')
-    parser.add_argument('--release-note', default='', help='optional en-US release note for the AAB track')
+    parser.add_argument('--track', default='alpha', choices=ALLOWED_TRACKS,
+                        help='track for the AAB release (default: alpha = Closed testing; '
+                             'closedtesting is an alias for alpha)')
+    parser.add_argument('--release-note', default='',
+                        help='optional en-US override; default is store_listing/whats_new.yaml')
     parser.add_argument('--service-account', metavar='JSON', default=None,
                         help='Play service-account key (default: GOOGLE_APPLICATION_CREDENTIALS)')
     parser.add_argument('--dry-run', action='store_true',

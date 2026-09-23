@@ -176,9 +176,9 @@ class _SplashScreenState extends State<SplashScreen>
                     borderRadius: BorderRadius.circular(16),
                     border: Border.all(color: Colors.white12),
                   ),
-                  child: const Text(
-                    'v1.0.0+1',
-                    style: TextStyle(
+                  child: Text(
+                    AppVersion.label.isEmpty ? 'QuizBaaz' : AppVersion.label,
+                    style: const TextStyle(
                       color: AppColors.textMuted,
                       fontSize: 11,
                       fontWeight: FontWeight.w700,

@@ -15,6 +15,7 @@ import 'data/providers/quiz_provider.dart';
 import 'data/providers/rewards_provider.dart';
 import 'data/providers/user_provider.dart';
 import 'data/services/ad_service.dart';
+import 'data/services/app_version.dart';
 import 'data/services/consent_service.dart';
 import 'data/services/firebase_options.dart';
 import 'data/services/hive_service.dart';
@@ -46,6 +47,7 @@ Future<void> main() async {
   // splash and looks like the app "opened but never started". Hive is the
   // only thing the first frame needs.
   unawaited(SoundService.instance.init());
+  unawaited(AppVersion.load());
 
   // 2) Firebase is optional: the whole app works offline without it.
   try {
