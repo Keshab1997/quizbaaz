@@ -175,13 +175,41 @@ class DailyQuizPacketService {
 
     final resolved = await _resolveQuestions(packet);
     if (resolved.length != packet.questions.length) {
+      // The chapter-bank caches are served stale-first and refreshed in the
+      // background (see QuizRepository._revalidateIfStale). On the FIRST run
+      // of the day there is no resolved-packet cache yet, so the packet's
+      // ids are resolved against yesterday's bank — and any question the
+      // admin published with today's packet is still missing. Declaring the
+      // run unranked here silently threw away the player's first attempt
+      // (no leaderboard entry, no daily best) while the background refresh
+      // quietly fixed the cache, so the SECOND attempt was ranked.
+      //
+      // Retry once with a blocking, forced refresh before giving up: the
+      // player's first attempt must not lose its ranking to a cache race.
+      debugPrint(
+        'DailyQuizPacket: only ${resolved.length} of '
+        '${packet.questions.length} ids resolved from cache — retrying '
+        'with forced refresh',
+      );
+      final refreshed = await _resolveQuestions(packet, forceRefresh: true);
+      if (refreshed.length != packet.questions.length) {
+        return DailyQuizSet(
+          questions: refreshed,
+          ranked: false,
+          packet: packet,
+          unrankedReason:
+              'only ${refreshed.length} of ${packet.questions.length} packet '
+              'questions could be loaded',
+        );
+      }
+      await HiveService.cachePut(
+        packet.cacheKey,
+        [for (final q in refreshed) q.toJson()],
+      );
       return DailyQuizSet(
-        questions: resolved,
-        ranked: false,
+        questions: refreshed,
+        ranked: true,
         packet: packet,
-        unrankedReason:
-            'only ${resolved.length} of ${packet.questions.length} packet '
-            'questions could be loaded',
       );
     }
 
@@ -198,7 +226,14 @@ class DailyQuizPacketService {
 
   /// Loads the questions the packet names, **in packet order** (order is part
   /// of the competition: question 1 has to be question 1 on every device).
-  Future<List<QuestionModel>> _resolveQuestions(DailyQuizPacket packet) async {
+  ///
+  /// [forceRefresh] bypasses the chapter-bank caches and merges from Firestore
+  /// synchronously — used by the retry in [resolve] so a stale cache cannot
+  /// cost a player their ranked first attempt of the day.
+  Future<List<QuestionModel>> _resolveQuestions(
+    DailyQuizPacket packet, {
+    bool forceRefresh = false,
+  }) async {
     final byChapter = <String, Set<String>>{};
     for (final ref in packet.questions) {
       byChapter.putIfAbsent(ref.chapterId, () => <String>{}).add(ref.questionId);
@@ -209,7 +244,10 @@ class DailyQuizPacketService {
       final chapterId = entry.key;
       final wanted = entry.value;
       try {
-        final chapter = await _chapterById(chapterId);
+        final chapter = await _chapterById(
+          chapterId,
+          forceRefresh: forceRefresh,
+        );
         if (chapter == null) {
           debugPrint('DailyQuizPacket: unknown chapter $chapterId');
           continue;
@@ -217,6 +255,7 @@ class DailyQuizPacketService {
         final questions = await _repository.getChapterQuestions(
           chapter.jsonFile,
           chapterId: chapterId,
+          forceRefresh: forceRefresh,
         );
         for (final question in questions) {
           if (wanted.contains(question.id)) found[question.id] = question;
@@ -232,8 +271,13 @@ class DailyQuizPacketService {
     ];
   }
 
-  Future<ChapterModel?> _chapterById(String chapterId) async {
-    final categories = await _repository.getCategoriesAndChapters();
+  Future<ChapterModel?> _chapterById(
+    String chapterId, {
+    bool forceRefresh = false,
+  }) async {
+    final categories = await _repository.getCategoriesAndChapters(
+      forceRefresh: forceRefresh,
+    );
     for (final category in categories) {
       for (final chapter in category.chapters) {
         if (chapter.chapterId == chapterId) return chapter;
