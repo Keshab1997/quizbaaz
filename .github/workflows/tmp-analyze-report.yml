@@ -33,11 +33,22 @@ jobs:
           set +e
           flutter analyze > analyze.txt 2>&1
           echo "analyze exit: $?"
-          tail -c 40000 analyze.txt > analyze-tail.txt
-          wc -l analyze.txt
+
+      - name: Test
+        run: |
+          set +e
+          flutter test > test.txt 2>&1
+          echo "test exit: $?"
 
       - name: Post the output on the PR
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh pr comment 26 --repo Keshab1997/quizbaaz --body-file analyze-tail.txt
+          {
+            echo "### flutter analyze (tail)"
+            tail -c 20000 analyze.txt
+            echo
+            echo "### flutter test (tail)"
+            tail -c 20000 test.txt
+          } > report.md
+          gh pr comment 26 --repo Keshab1997/quizbaaz --body-file report.md
