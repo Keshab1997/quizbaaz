@@ -5,6 +5,8 @@ name: tmp analyze report
 # sandbox cannot download Actions logs (blob storage is unreachable).
 
 on:
+  push:
+    branches: ['**']
   workflow_dispatch:
 
 permissions:
