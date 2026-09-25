@@ -6,9 +6,25 @@
 #   python3 tool/publish_play.py --aab app.aab --track alpha
 # which reads this file automatically. `--release-note` overrides English only.
 
-current: "1.0.7"
+current: "1.0.11"
 
 releases:
+  "1.0.11":
+    en: |-
+      • Daily quiz: your FIRST run of the day is your leaderboard score — later runs can't change it
+      • A Score Shield now buys one retry that replaces today's score
+      • Quiz and result screens tell you up front whether a run will count
+      • Today's competition packet now publishes automatically every day
+    bn: |-
+      • ডেইলি কুইজ: দিনের প্রথম রানই আপনার লিডারবোর্ড স্কোর — পরের রান তা বদলাতে পারবে না
+      • স্কোর শিল্ড এখন একটা রিট্রি দেয়, যা আজকের স্কোর বদলে দেয়
+      • কুইজ ও রেজাল্ট স্ক্রিন আগেই জানিয়ে দেয় — এই রান কাউন্ট হবে কি না
+      • আজকের প্রতিযোগিতার প্যাকেট এখন প্রতিদিন নিজে থেকেই প্রকাশ হয়
+    hi: |-
+      • डेली क्विज़: दिन की पहली रन ही आपका लीडरबोर्ड स्कोर — बाद की रन उसे नहीं बदल सकतीं
+      • स्कोर शील्ड अब एक रिट्राय देती है जो आज का स्कोर बदल देती है
+      • क्विज़ और रिज़ल्ट स्क्रीन पहले ही बताती हैं कि यह रन गिनी जाएगी या नहीं
+      • आज का कॉम्पिटीशन पैकेट अब हर दिन अपने आप पब्लिश होता है
   "1.0.7":
     en: |-
       • Google Sign-In no longer fails silently on Play builds
