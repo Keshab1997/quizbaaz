@@ -13,6 +13,7 @@ import 'package:quizbaaz/data/providers/battle_provider.dart';
 import 'package:quizbaaz/data/providers/user_provider.dart';
 import 'package:quizbaaz/data/services/battle_question_generator.dart';
 import 'package:quizbaaz/data/services/battle_room_service.dart';
+import 'package:quizbaaz/data/services/daily_score_lock.dart';
 import 'package:quizbaaz/data/services/hive_service.dart';
 import 'package:quizbaaz/data/services/sound_service.dart';
 
@@ -192,7 +193,7 @@ class _FakeUserProvider extends UserProvider {
   }
 
   @override
-  Future<void> recordQuizResult({
+  Future<DailyScoreOutcome> recordQuizResult({
     required int answered,
     required int correct,
     required double timeSeconds,
@@ -206,7 +207,10 @@ class _FakeUserProvider extends UserProvider {
     String? chapterTitleBn,
     int? coinsEarned,
     int? gemsEarned,
-  }) async {}
+  }) async =>
+      // A battle is never a daily run, so nothing is ever counted for the
+      // leaderboard.
+      DailyScoreOutcome.notApplicable;
 }
 
 class _FakeQuestionGenerator extends BattleQuestionGenerator {

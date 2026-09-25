@@ -7,6 +7,7 @@ import '../../../data/providers/auth_provider.dart';
 import '../../../data/providers/quiz_provider.dart';
 import '../../../data/providers/user_provider.dart';
 import '../../../data/services/ad_service.dart';
+import '../../../data/services/daily_score_lock.dart';
 import '../../../data/services/hive_service.dart';
 import '../../widgets/streak_motivation_dialog.dart';
 import '../../widgets/glass_card.dart';
@@ -165,7 +166,7 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
                         ),
                         if (quiz.isDailyQuiz && !isGuest) ...[
                           const SizedBox(height: 12),
-                          _buildRankingNotice(quiz),
+                          _buildRankingNotice(quiz, userProvider),
                         ],
                         if (isPerfect) ...[
                           const SizedBox(height: 12),
@@ -198,6 +199,16 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
                     ),
                   ),
                   const SizedBox(height: 20),
+
+                  // Score Shield: the only way to reopen a locked day, offered
+                  // right where the player sees the score they are unhappy
+                  // with.
+                  if (quiz.isDailyQuiz &&
+                      !isGuest &&
+                      userProvider.canRetryDailyScoreWithShield) ...[
+                    _buildShieldRetryCard(userProvider),
+                    const SizedBox(height: 20),
+                  ],
 
                   // Guest Conversion Card (If Guest)
                   if (isGuest) ...[
@@ -293,13 +304,54 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
     );
   }
 
-  /// Tells the player whether this daily run is ranked once it finishes —
-  /// a ranked run reaches today's leaderboard, an unranked (practice) one
-  /// never does. Without this, a failed packet made the score silently
-  /// disappear and nobody knew why (R12).
-  Widget _buildRankingNotice(QuizProvider quiz) {
+  /// Tells the player exactly what happened to today's leaderboard score.
+  ///
+  /// Three things used to be invisible here and made the score look lost:
+  /// whether the run was ranked at all (an unranked practice set never
+  /// reaches the leaderboard — R12), whether this run was the one that
+  /// counted, and that any later run is ignored by design.
+  Widget _buildRankingNotice(QuizProvider quiz, UserProvider userProvider) {
     final ranked = quiz.isDailyRanked;
-    final colour = ranked ? AppColors.neonGreen : AppColors.neonGold;
+    // Defaults: the settle writes Hive and mirrors to Firestore behind the
+    // scenes, so for a beat after the run ends the outcome is still unknown.
+    var icon = Icons.emoji_events;
+    var colour = AppColors.neonGreen;
+    var message = S.resultDailyRankedNotice;
+
+    if (!ranked) {
+      icon = Icons.sports_score;
+      colour = AppColors.neonGold;
+      message = S.resultDailyUnrankedNotice;
+    } else {
+      switch (quiz.dailyScoreOutcome) {
+        case DailyScoreOutcome.counted:
+          icon = Icons.emoji_events;
+          colour = AppColors.neonGreen;
+          message = S.resultDailyCountedNotice(
+            score: userProvider.todayCountedScore,
+          );
+          break;
+        case DailyScoreOutcome.replaced:
+          icon = Icons.shield;
+          colour = AppColors.neonGreen;
+          message = S.resultDailyReplacedNotice(
+            score: userProvider.todayCountedScore,
+          );
+          break;
+        case DailyScoreOutcome.ignored:
+          icon = Icons.lock;
+          colour = AppColors.neonGold;
+          message = S.resultDailyLockedNotice(
+            score: userProvider.todayCountedScore,
+          );
+          break;
+        case DailyScoreOutcome.notApplicable:
+          // Nothing to report yet (or a guest, whose run never counts) — the
+          // defaults above already say the right thing.
+          break;
+      }
+    }
+
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
       decoration: BoxDecoration(
@@ -310,15 +362,11 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(
-            ranked ? Icons.emoji_events : Icons.sports_score,
-            size: 16,
-            color: colour,
-          ),
+          Icon(icon, size: 16, color: colour),
           const SizedBox(width: 6),
           Flexible(
             child: Text(
-              ranked ? S.resultDailyRankedNotice : S.resultDailyUnrankedNotice,
+              message,
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 11,
@@ -329,6 +377,105 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
           ),
         ],
       ),
+    );
+  }
+
+  /// Offers to spend a Score Shield so the player's next daily attempt
+  /// replaces today's locked score.
+  Widget _buildShieldRetryCard(UserProvider userProvider) {
+    final score = userProvider.todayCountedScore;
+    final stock = userProvider.inventoryCount(ShopItemIds.scoreShield);
+    return GlassCard(
+      borderColor: AppColors.neonPurple.withValues(alpha: 0.45),
+      backgroundColor: const Color(0x33281E48),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Row(
+            children: [
+              const Icon(Icons.shield, color: AppColors.neonPurple, size: 20),
+              const SizedBox(width: 8),
+              Expanded(
+                child: Text(
+                  S.resultShieldRetryTitle,
+                  style: const TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.neonPurple,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 6),
+          Text(
+            S.resultShieldRetryBody(score: score),
+            style: const TextStyle(fontSize: 11, color: AppColors.textSecondary),
+          ),
+          const SizedBox(height: 12),
+          NeonButton(
+            text: S.resultShieldRetryAction(count: stock),
+            height: 42,
+            gradient: AppColors.primaryGradient,
+            onPressed: () => _confirmShieldRetry(userProvider),
+          ),
+        ],
+      ),
+    );
+  }
+
+  /// Confirms before spending a paid item, then sends the player back to the
+  /// dashboard where the daily quiz card starts the replacement run.
+  Future<void> _confirmShieldRetry(UserProvider userProvider) async {
+    // Grabbed before the awaits: the same BuildContext must not be touched
+    // across an async gap.
+    final messenger = ScaffoldMessenger.of(context);
+    final navigator = Navigator.of(context);
+
+    final confirmed = await showDialog<bool>(
+          context: context,
+          builder: (dialogContext) => AlertDialog(
+            backgroundColor: const Color(0xFF1B1230),
+            title: Text(
+              S.resultShieldRetryDialogTitle,
+              style: const TextStyle(color: Colors.white, fontSize: 16),
+            ),
+            content: Text(
+              S.resultShieldRetryDialogBody,
+              style: const TextStyle(
+                color: AppColors.textSecondary,
+                fontSize: 13,
+              ),
+            ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(dialogContext, false),
+                child: Text(
+                  S.cancel,
+                  style: const TextStyle(color: AppColors.textSecondary),
+                ),
+              ),
+              TextButton(
+                onPressed: () => Navigator.pop(dialogContext, true),
+                child: Text(
+                  S.resultShieldRetryConfirm,
+                  style: const TextStyle(color: AppColors.neonPurple),
+                ),
+              ),
+            ],
+          ),
+        ) ??
+        false;
+    if (!confirmed) return;
+
+    final spent = await userProvider.unlockDailyScoreWithShield();
+    if (!spent || !mounted) return;
+
+    // Back to the dashboard, where the daily quiz card starts the run that
+    // replaces today's score.
+    navigator.popUntil((route) => route.isFirst);
+    messenger.showSnackBar(
+      SnackBar(content: Text(S.resultShieldRetryDone)),
     );
   }
 

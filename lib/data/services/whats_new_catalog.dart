@@ -7,6 +7,26 @@ class WhatsNewCatalog {
   WhatsNewCatalog._();
 
   static const Map<String, Map<String, List<String>>> _releases = {
+    '1.0.11': {
+      'en': [
+        'Daily quiz: your FIRST run of the day is your leaderboard score.',
+        'Later runs on the same day can never change that score.',
+        'A Score Shield now buys one retry that replaces today\'s score.',
+        'The quiz and result screens tell you up front whether a run counts.',
+      ],
+      'bn': [
+        'ডেইলি কুইজ: দিনের প্রথম রানই আপনার লিডারবোর্ড স্কোর।',
+        'একই দিনের পরের রান আর সেই স্কোর বদলাতে পারবে না।',
+        'স্কোর শিল্ড এখন একটা রিট্রি দেয় — যা আজকের স্কোর বদলে দেয়।',
+        'কুইজ ও রেজাল্ট স্ক্রিন আগেই জানিয়ে দেয় এই রান কাউন্ট হবে কি না।',
+      ],
+      'hi': [
+        'डेली क्विज़: दिन की पहली रन ही आपका लीडरबोर्ड स्कोर है।',
+        'उसी दिन की बाद की रन उस स्कोर को नहीं बदल सकतीं।',
+        'स्कोर शील्ड अब एक रिट्राय देती है जो आज का स्कोर बदल देती है।',
+        'क्विज़ और रिज़ल्ट स्क्रीन पहले ही बताती हैं कि रन गिनी जाएगी या नहीं।',
+      ],
+    },
     '1.0.6': {
       'en': [
         'Google Sign-In fixed on Play Closed testing builds.',

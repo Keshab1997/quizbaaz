@@ -10,6 +10,7 @@ import '../models/shop_item.dart';
 import '../repositories/quiz_repository.dart';
 import '../services/haptic_service.dart';
 import '../services/competition_clock.dart';
+import '../services/daily_score_lock.dart';
 import '../services/hive_service.dart';
 import '../services/sound_service.dart';
 import '../services/trusted_ops_service.dart';
@@ -118,6 +119,16 @@ class QuizProvider extends ChangeNotifier {
 
   /// Why today's daily run is not ranked, when it is not.
   String? _dailyUnrankedReason;
+
+  /// What the finished daily run did to today's leaderboard row — filled in
+  /// when [UserProvider.recordQuizResult] settles (a tick later, because the
+  /// run finishes inside a synchronous timer callback).
+  DailyScoreOutcome _dailyScoreOutcome = DailyScoreOutcome.notApplicable;
+
+  /// True once the provider is disposed, so a late settle callback from an
+  /// abandoned run cannot notify a dead listener.
+  bool _disposed = false;
+
   String? _chapterId;
   String? _categoryTitle;
   String? _categoryTitleBn;
@@ -154,6 +165,11 @@ class QuizProvider extends ChangeNotifier {
   bool get isDailyQuiz => _isDailyQuiz;
   bool get isDailyRanked => _isDailyQuiz && _isDailyRanked;
   String? get dailyUnrankedReason => _dailyUnrankedReason;
+
+  /// What this run did to today's leaderboard row: counted, replaced (Score
+  /// Shield), ignored (the day was already locked) or not applicable (a
+  /// chapter quiz, a practice run, an unranked daily set or a guest).
+  DailyScoreOutcome get dailyScoreOutcome => _dailyScoreOutcome;
   int get secondsRemaining => _secondsRemaining;
   List<int> get disabledOptionIndices => _disabledOptionIndices;
 
@@ -406,6 +422,7 @@ class QuizProvider extends ChangeNotifier {
     _isPractice = false;
     _isDailyRanked = false;
     _dailyUnrankedReason = null;
+    _dailyScoreOutcome = DailyScoreOutcome.notApplicable;
     _setIndex = 0;
     _chapterQuestionCount = 0;
     _currentIndex = 0;
@@ -731,21 +748,33 @@ class QuizProvider extends ChangeNotifier {
 
     // Persist accuracy / streak / per-chapter progress to Hive and mirror it
     // to Firestore (the leaderboard entry is pushed from there too).
-    _userProvider.recordQuizResult(
-      answered: _answerRecords.length,
-      correct: _correctCount,
-      timeSeconds: _totalTimeSeconds,
-      isDaily: _isDailyQuiz,
-      // Only a ranked daily run may touch the day's leaderboard entry (R12).
-      ranked: _isDailyRanked,
-      score: _score,
-      chapterId: _isDailyQuiz ? null : _chapterId,
-      categoryTitle: _isDailyQuiz ? null : _categoryTitle,
-      categoryTitleBn: _isDailyQuiz ? null : _categoryTitleBn,
-      chapterTitle: _isDailyQuiz ? null : _chapterTitle,
-      chapterTitleBn: _isDailyQuiz ? null : _chapterTitleBn,
-      coinsEarned: coins,
-      gemsEarned: gems,
+    //
+    // The settle is async (it writes Hive and mirrors to Firestore), so the
+    // outcome reaches the result screen a tick later — the screen watches this
+    // provider and re-reads [dailyScoreOutcome] when it lands.
+    unawaited(
+      _userProvider
+          .recordQuizResult(
+        answered: _answerRecords.length,
+        correct: _correctCount,
+        timeSeconds: _totalTimeSeconds,
+        isDaily: _isDailyQuiz,
+        // Only a ranked daily run may touch the day's leaderboard entry (R12).
+        ranked: _isDailyRanked,
+        score: _score,
+        chapterId: _isDailyQuiz ? null : _chapterId,
+        categoryTitle: _isDailyQuiz ? null : _categoryTitle,
+        categoryTitleBn: _isDailyQuiz ? null : _categoryTitleBn,
+        chapterTitle: _isDailyQuiz ? null : _chapterTitle,
+        chapterTitleBn: _isDailyQuiz ? null : _chapterTitleBn,
+        coinsEarned: coins,
+        gemsEarned: gems,
+      )
+          .then((outcome) {
+        if (_disposed) return;
+        _dailyScoreOutcome = outcome;
+        notifyListeners();
+      }),
     );
 
     final granted = _userProvider.grantQuizRewards(
@@ -779,6 +808,13 @@ class QuizProvider extends ChangeNotifier {
     // P0 (R02): the daily credit is also applied server-side (trusted
     // backend, idempotent per day). Fail-soft: no-op when offline or when
     // the functions are not deployed yet.
+    //
+    // `granted` is false from the second run of the day onwards, which is
+    // exactly the one-score-per-day rule the backend enforces as well: the
+    // first submission writes today's row, every later one returns
+    // "already-credited" and leaves the row alone. A Score Shield retry is
+    // therefore mirrored by the client push in [UserProvider], never by a
+    // second server credit.
     if (_isDailyQuiz && _isDailyRanked && granted && !_userProvider.user.isGuest) {
       final now = DateTime.now();
       TrustedOpsService.submitDailyResult(
@@ -960,6 +996,7 @@ class QuizProvider extends ChangeNotifier {
 
   @override
   void dispose() {
+    _disposed = true;
     _timer?.cancel();
     super.dispose();
   }

@@ -106,12 +106,22 @@ const Map<String, String> kStringsEn = {
   'dashBattle': 'Battle',
   'dashRewards': 'Rewards',
   'dashShop': 'Shop',
+  'dashDailyScoreLocked': 'Today\'s score: {score} · locked 🔒',
+  'dashDailyScoreOpen': 'Today\'s score: {score}',
 
   // ------------------------------------------------------------ daily quiz --
   'quizQuitTitle': 'Quit Live Quiz?',
   'quizQuitBody':
       'If you leave now, your score for today will not be recorded on the leaderboard.',
   'quizQuit': 'Quit',
+  'dailyCountedBanner':
+      'This is today\'s counted run — your score goes straight to the leaderboard.',
+  'dailyLockedBanner':
+      'Today\'s leaderboard score is locked at {score} — this run is practice only.',
+  'dailyRetryBanner':
+      'Score Shield active — this run replaces today\'s score ({score}).',
+  'dailyUnrankedBanner':
+      'Practice set — today\'s competition packet is not available, so this score will not reach the leaderboard.',
   'quizNoFiftyFifty': 'No 50-50 lifelines left! Buy more in the Shop. 🛒',
   'quizFiftyFiftyUsed': 'Already used 50-50 on this question.',
   'quizFiftyFiftyBlocked': 'Cannot use 50-50 now.',
@@ -352,9 +362,25 @@ const Map<String, String> kStringsEn = {
   'resultSigningIn': 'Signing in...',
   'resultSignedIn': '🎉 Signed in with Google! Score saved to Leaderboard!',
   'resultDailyRankedNotice':
-      'Competition run — your best score counts for today\'s leaderboard!',
+      'Competition run — your first run of the day sets today\'s leaderboard score!',
   'resultDailyUnrankedNotice':
       'Practice run — this score is not added to the leaderboard.',
+  'resultDailyCountedNotice':
+      '🏆 Today\'s score {score} is saved on the leaderboard — replays cannot change it.',
+  'resultDailyLockedNotice':
+      '🔒 Today\'s leaderboard score is locked at {score} — this run is not counted.',
+  'resultDailyReplacedNotice':
+      '🛡️ Score Shield used — today\'s leaderboard score is now {score}.',
+  'resultShieldRetryTitle': 'Bad run? Use a Score Shield',
+  'resultShieldRetryBody':
+      'Spend 1 Score Shield and your next daily attempt replaces today\'s locked score ({score}) — even if it is lower.',
+  'resultShieldRetryAction': 'Use Score Shield ({count})',
+  'resultShieldRetryDialogTitle': 'Use a Score Shield?',
+  'resultShieldRetryDialogBody':
+      '1 Score Shield will be spent. Your next daily attempt becomes your leaderboard score for today.',
+  'resultShieldRetryConfirm': 'Use shield',
+  'resultShieldRetryDone':
+      'Shield used — your next daily attempt replaces today\'s score.',
   'reviewTitle': 'Review Answers',
   'reviewNone': 'No answers to review yet.',
   'reviewYourAnswer': 'Your answer',

@@ -99,12 +99,22 @@ const Map<String, String> kStringsHi = {
   'dashBattle': 'बैटल',
   'dashRewards': 'इनाम',
   'dashShop': 'शॉप',
+  'dashDailyScoreLocked': 'आज का स्कोर: {score} · लॉक 🔒',
+  'dashDailyScoreOpen': 'आज का स्कोर: {score}',
 
   // ------------------------------------------------------------ daily quiz --
   'quizQuitTitle': 'लाइव क्विज़ छोड़ें?',
   'quizQuitBody':
       'अभी छोड़ने पर आज का स्कोर लीडरबोर्ड पर दर्ज नहीं होगा।',
   'quizQuit': 'छोड़ें',
+  'dailyCountedBanner':
+      'यही आज की गिनी जाने वाली रन है — आपका स्कोर सीधे लीडरबोर्ड पर जाएगा।',
+  'dailyRetryBanner':
+      'स्कोर शील्ड सक्रिय — यह रन आज के लीडरबोर्ड स्कोर ({score}) को बदल देगी।',
+  'dailyLockedBanner':
+      'आज का लीडरबोर्ड स्कोर {score} लॉक है — यह रन सिर्फ अभ्यास के लिए है।',
+  'dailyUnrankedBanner':
+      'प्रैक्टिस सेट — आज का कॉम्पिटीशन पैकेट उपलब्ध नहीं है, इसलिए यह स्कोर लीडरबोर्ड पर नहीं जाएगा।',
   'quizNoFiftyFifty': '50-50 लाइफ़लाइन खत्म! शॉप से और खरीदें। 🛒',
   'quizFiftyFiftyUsed': 'इस सवाल पर 50-50 पहले ही इस्तेमाल हो चुका है।',
   'quizFiftyFiftyBlocked': 'अभी 50-50 इस्तेमाल नहीं कर सकते।',
@@ -344,9 +354,25 @@ const Map<String, String> kStringsHi = {
   'resultSigningIn': 'साइन इन हो रहा है...',
   'resultSignedIn': '🎉 गूगल से साइन इन! स्कोर लीडरबोर्ड पर सेव हुआ!',
   'resultDailyRankedNotice':
-      'कॉम्पिटीशन रन — आपका सर्वश्रेष्ठ स्कोर आज के लीडरबोर्ड पर जुड़ेगा!',
+      'कॉम्पिटीशन रन — दिन की पहली रन ही आज का लीडरबोर्ड स्कोर तय करेगी!',
   'resultDailyUnrankedNotice':
       'प्रैक्टिस रन — यह स्कोर लीडरबोर्ड पर नहीं जुड़ेगा।',
+  'resultDailyCountedNotice':
+      '🏆 आज का स्कोर {score} लीडरबोर्ड पर सेव हो गया — दोबारा खेलने से यह नहीं बदलेगा।',
+  'resultDailyLockedNotice':
+      '🔒 आज का लीडरबोर्ड स्कोर {score} लॉक है — यह रन गिना नहीं जाएगा।',
+  'resultDailyReplacedNotice':
+      '🛡️ स्कोर शील्ड इस्तेमाल हुई — आज का लीडरबोर्ड स्कोर अब {score} है।',
+  'resultShieldRetryTitle': 'खराब रन? स्कोर शील्ड इस्तेमाल करें',
+  'resultShieldRetryBody':
+      '1 स्कोर शील्ड खर्च करें और आपकी अगली डेली रन आज के लॉक किए स्कोर ({score}) को बदल देगी — चाहे वह कम ही हो।',
+  'resultShieldRetryAction': 'स्कोर शील्ड इस्तेमाल करें ({count})',
+  'resultShieldRetryDialogTitle': 'स्कोर शील्ड इस्तेमाल करें?',
+  'resultShieldRetryDialogBody':
+      '1 स्कोर शील्ड खर्च होगी। आपकी अगली डेली रन ही आज का लीडरबोर्ड स्कोर बनेगी।',
+  'resultShieldRetryConfirm': 'शील्ड इस्तेमाल करें',
+  'resultShieldRetryDone':
+      'शील्ड इस्तेमाल हुई — आपकी अगली डेली रन आज का स्कोर बदल देगी।',
   'reviewTitle': 'उत्तर समीक्षा',
   'reviewNone': 'समीक्षा के लिए अभी कोई उत्तर नहीं।',
   'reviewYourAnswer': 'आपका उत्तर',

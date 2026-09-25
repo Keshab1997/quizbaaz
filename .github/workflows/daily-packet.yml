@@ -1,0 +1,66 @@
+name: Daily Quiz Packet
+
+# Publishes `daily_quiz_packets/{yyyy-MM-dd}` — the document that decides
+# whether a daily run is *ranked*.
+#
+# This is the boring job the whole daily competition hangs on: without an
+# approved packet for the day, every device falls back to an unranked practice
+# set and **no score reaches the leaderboard at all** (R12). Publishing is
+# server-side only (`firestore.rules`: `allow write: if false`), so it has to
+# happen from somewhere trusted — here, with a write-capable service account.
+#
+# It runs at 18:30 UTC (00:00 IST — the start of the new competition day) and
+# publishes three days at a time: one missed run then still leaves two days of
+# packets in place, so the competition never silently dies over a weekend.
+
+on:
+  schedule:
+    - cron: '30 18 * * *'
+  workflow_dispatch:
+    inputs:
+      days:
+        description: 'Consecutive competition days to publish'
+        required: false
+        default: '3'
+      force:
+        description: 'Re-issue days that already have a packet'
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: daily-quiz-packet
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    name: publish daily_quiz_packets
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install the Firestore client
+        run: pip install --quiet google-cloud-firestore
+
+      - name: Publish the next competition days
+        env:
+          FIREBASE_PACKET_WRITER_SA: ${{ secrets.FIREBASE_PACKET_WRITER_SA }}
+          DAYS: ${{ inputs.days || '3' }}
+          FORCE: ${{ inputs.force == true && '--force' || '' }}
+        run: |
+          set -euo pipefail
+          if [ -z "$FIREBASE_PACKET_WRITER_SA" ]; then
+            echo "::error::The secret FIREBASE_PACKET_WRITER_SA is not set — no packet was published. Add it under Settings → Secrets and variables → Actions → New repository secret: the JSON of a service account allowed to write the 'daily_quiz_packets' collection."
+            exit 1
+          fi
+          printf '%s' "$FIREBASE_PACKET_WRITER_SA" > "$RUNNER_TEMP/firebase-packet-sa.json"
+          export GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/firebase-packet-sa.json"
+          python3 tool/publish_daily_packet.py --days "$DAYS" $FORCE

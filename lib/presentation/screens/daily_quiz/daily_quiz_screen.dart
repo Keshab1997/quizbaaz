@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../data/models/question_model.dart';
 import '../../../data/providers/quiz_provider.dart';
+import '../../../data/providers/user_provider.dart';
 import '../../widgets/glass_card.dart';
 import '../../widgets/quiz_language_pills.dart';
 import '../quiz_result/quiz_result_screen.dart';
@@ -15,6 +16,7 @@ class DailyQuizScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final quiz = context.watch<QuizProvider>();
+    final userProvider = context.watch<UserProvider>();
 
     if (quiz.isQuizCompleted) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -196,6 +198,14 @@ class DailyQuizScreen extends StatelessWidget {
                         const SizedBox(height: 10),
                       ],
 
+                      // A daily run says up front whether it will reach the
+                      // leaderboard: "the score never arrived" is the single
+                      // most confusing thing a daily competition can do.
+                      if (!quiz.isPractice && quiz.isDailyQuiz) ...[
+                        _buildCountingBanner(quiz, userProvider),
+                        const SizedBox(height: 10),
+                      ],
+
                       // Top Progress & Timer
                       _buildProgressAndTimer(quiz),
                       const SizedBox(height: 14),
@@ -235,6 +245,61 @@ class DailyQuizScreen extends StatelessWidget {
                   ),
                 ),
               ),
+      ),
+    );
+  }
+
+  /// Says whether this daily run will reach the leaderboard, and why.
+  ///
+  /// Four states, and the player deserves to see all four before they start:
+  /// today's packet is missing (nothing can count), this is the run that
+  /// counts, the day is already locked, or a Score Shield is armed.
+  Widget _buildCountingBanner(QuizProvider quiz, UserProvider userProvider) {
+    IconData icon;
+    Color colour;
+    String message;
+
+    if (!quiz.isDailyRanked) {
+      icon = Icons.cloud_off_rounded;
+      colour = AppColors.neonGold;
+      message = S.dailyUnrankedBanner;
+    } else if (userProvider.isDailyRetryUnlockedToday) {
+      icon = Icons.shield;
+      colour = AppColors.neonPurple;
+      message = S.dailyRetryBanner(score: userProvider.todayCountedScore);
+    } else if (userProvider.isDailyScoreLockedToday) {
+      icon = Icons.lock_outline_rounded;
+      colour = AppColors.neonGold;
+      message = S.dailyLockedBanner(score: userProvider.todayCountedScore);
+    } else {
+      icon = Icons.emoji_events;
+      colour = AppColors.neonGreen;
+      message = S.dailyCountedBanner;
+    }
+
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        color: colour.withValues(alpha: 0.12),
+        border: Border.all(color: colour.withValues(alpha: 0.35)),
+      ),
+      child: Row(
+        children: [
+          Icon(icon, size: 15, color: colour),
+          const SizedBox(width: 8),
+          Expanded(
+            child: Text(
+              message,
+              style: TextStyle(
+                fontSize: 11.5,
+                fontWeight: FontWeight.w700,
+                color: colour,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
