@@ -208,8 +208,10 @@ python3 tool/validate_questions.py
 - `docs/03` holds the JSON schemas, `docs/10` the question authoring guide,
   `docs/11` the admin generator plan, `docs/12` the battle arena, `docs/16`
   OneSignal/FCM live push, `docs/17` the Google Play release runbook, `docs/18`
-  the owner-facing publish checklist, `docs/19` the Firestore→bundle pull and
-  `docs/20` the Play Developer API autopublish of the store listing + AAB.
+  the owner-facing publish checklist, `docs/19` the Firestore→bundle pull,
+  `docs/20` the Play Developer API autopublish of the store listing + AAB and
+  `docs/21` the daily competition (one counted score per day, packets, the
+  publishing cron).
   **Read the matching doc before touching that subsystem.** `ADMIN_TODO.md`
   tracks admin work; `PROJECT_REVIEW.md` holds the audit that the P1 sweep
   worked through.
@@ -231,6 +233,9 @@ python3 tool/apply_l10n.py      # migrate raw English literals to S.* (re-runnab
 python3 tool/validate_questions.py   # question banks: schema, ids, translations
 python3 tool/publish_daily_packet.py --dry-run   # today's daily packet, no write
 python3 tool/publish_daily_packet.py             # publish daily_quiz_packets/{today}
+python3 tool/publish_daily_packet.py --days 3    # today + the next two days
+# (the daily cron does the last one at 00:00 IST — see docs/21; no packet for a
+#  day means every run that day is unranked and no score reaches the board)
 python3 tool/publish_play.py --validate          # Play listing: local sanity check
 python3 tool/publish_play.py --listing           # publish listing via Play API (docs/20)
 python3 tool/publish_play.py --aab app.aab --track alpha      # Closed testing (alias: closedtesting)
@@ -288,6 +293,16 @@ already cleared. Progress lives in Hive under `chapter_set_progress`;
 `QuizProvider.startChapterQuiz(setIndex:, practice:)` plays one. A `practice`
 run credits nothing: no coins, no gems, no stats, no leaderboard, no history
 row. If you add a reward, gate it on `isPractice`.
+
+**Touching the daily competition**
+One counted score per player per competition day: the **first** ranked run is
+written to the leaderboard and locks the day, later runs are ignored (a Score
+Shield buys one replacement). A run is only *ranked* when the day has an
+approved packet in `daily_quiz_packets/{yyyy-MM-dd}` — without one the quiz
+still plays, but as an unranked practice set that never reaches the board.
+The rule lives in `services/daily_score_lock.dart`, is applied in
+`UserProvider._settleDailyScore`, and is mirrored by the idempotent
+`submitDailyResult` callable. Read `docs/21_DAILY_SCORING_RULES.md` first.
 
 **Touching the quiz flow**
 `QuizProvider` owns the timer, lifelines, scoring and anti-cheat. Read it fully

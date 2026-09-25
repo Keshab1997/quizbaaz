@@ -12,6 +12,7 @@ import '../models/user_model.dart';
 import '../models/user_stats.dart';
 import '../repositories/leaderboard_repository.dart';
 import '../services/competition_clock.dart';
+import '../services/daily_score_lock.dart';
 import '../services/hive_service.dart';
 import '../services/push_sync.dart';
 import '../services/sync_service.dart';
@@ -121,31 +122,58 @@ class UserProvider extends ChangeNotifier {
     return null;
   }
 
-  /// Today's personal-best daily score — the number actually pushed to
-  /// today's leaderboard. This is NOT [bestDailyScore], which is a lifetime
-  /// best that never decreases and can still carry a phantom value from the
-  /// old time-bonus scoring (e.g. 370) long after a 90-point quiz.
-  int get todayBestScore {
+  /// Today's **counted** daily score — the one number this player has on
+  /// today's leaderboard, written by their first ranked run of the day (or by
+  /// the Score Shield retry that replaced it). 0 when they have none yet.
+  ///
+  /// This is NOT [bestDailyScore], which is a lifetime best that never
+  /// decreases and can still carry a phantom value from the old time-bonus
+  /// scoring (e.g. 370) long after a 90-point quiz — and it is not
+  /// "the best run of the day" either: replays are never counted. See
+  /// [DailyScoreLock].
+  int get todayCountedScore {
     final dayKey = _todayKey();
-    final meta = HiveService.getMeta<int>('daily_best_score_$dayKey');
-    if (meta != null && meta > 0) return meta;
+    final counted = DailyScoreLock.countedRun(dayKey);
+    if (counted != null) return counted.score;
     return myLeaderboardEntry?.score ?? 0;
   }
 
-  /// Today's best time (seconds) for the tie-breaker, matching
-  /// [todayBestScore].
-  double get todayBestTimeSeconds {
+  /// Today's counted time (seconds) for the tie-breaker, matching
+  /// [todayCountedScore].
+  double get todayCountedTimeSeconds {
     final dayKey = _todayKey();
-    final meta = HiveService.getMeta<double>('daily_best_time_$dayKey');
-    if (meta != null && meta > 0) return meta;
+    final counted = DailyScoreLock.countedRun(dayKey);
+    if (counted != null) return counted.timeSeconds;
     return myLeaderboardEntry?.timeSeconds ?? 0;
   }
+
+  /// True when today's leaderboard score is locked in: any further daily run
+  /// is played for coins, XP and the streak, but cannot change the row.
+  bool get isDailyScoreLockedToday =>
+      DailyScoreLock.isLocked(_todayKey());
+
+  /// How many ranked daily runs the player finished today (counted or not).
+  int get dailyRunsToday => DailyScoreLock.attempts(_todayKey());
+
+  /// True when a Score Shield has reopened today's score: the player's next
+  /// ranked daily run replaces it instead of being ignored.
+  bool get isDailyRetryUnlockedToday =>
+      DailyScoreLock.isRetryUnlocked(_todayKey());
+
+  /// True when a Score Shield can still reopen today's score: the day is
+  /// locked, the player owns a shield, and the day's one retry has not been
+  /// used yet.
+  bool get canRetryDailyScoreWithShield =>
+      hasItem(ShopItemIds.scoreShield) &&
+      isDailyScoreLockedToday &&
+      !DailyScoreLock.isRetryUnlocked(_todayKey()) &&
+      DailyScoreLock.retriesUsed(_todayKey()) == 0;
 
   /// Position among the cached leaderboard rows, or null when not ranked yet.
   int? get playerRank {
     if (!hasPlayedDailyQuiz) return null;
-    final myScore = todayBestScore;
-    final myTime = todayBestTimeSeconds;
+    final myScore = todayCountedScore;
+    final myTime = todayCountedTimeSeconds;
     var rank = 1;
     for (final item in _leaderboard) {
       if (leaderboardRowBelongsToUser(item, userId: _user.userId)) continue;
@@ -244,8 +272,8 @@ class UserProvider extends ChangeNotifier {
         _stats = await SyncService.pullStats(_user.userId, _stats);
         await _normalizeLegacyBest();
         // Correct today's leaderboard entry if it holds a phantom legacy
-        // score (old builds pushed the lifetime best, e.g. 370).
-        await _healTodayLeaderboard();
+        // score, or if the write that should have created it was lost.
+        await _reconcileTodayLeaderboard();
       }
       notifyListeners();
     } catch (e) {
@@ -262,11 +290,11 @@ class UserProvider extends ChangeNotifier {
     // Today's per-day best (what gets pushed to the leaderboard) can also be
     // a phantom if the player used an old build earlier the same day.
     final dayKey = _todayKey();
-    final bestKey = 'daily_best_score_$dayKey';
-    final todayBest = HiveService.getMeta<int>(bestKey);
-    if (todayBest != null && todayBest > kMaxPossibleDailyScore) {
-      await HiveService.setMeta(bestKey, 0);
-      await HiveService.setMeta('daily_best_time_$dayKey', 0.0);
+    final counted = DailyScoreLock.countedRun(dayKey);
+    if (counted != null && counted.score > kMaxPossibleDailyScore) {
+      // Today's counted score is a phantom from an old build: drop it and
+      // unlock the day so the player still gets a real counted run today.
+      await DailyScoreLock.reset(dayKey);
     }
 
     if (_stats.bestDailyScore <= kMaxPossibleDailyScore) return;
@@ -283,36 +311,32 @@ class UserProvider extends ChangeNotifier {
     }
   }
 
-  /// Fixes today's leaderboard entry when it disagrees with the player's
-  /// real per-day best.
+  /// Puts today's remote leaderboard row back in line with the player's
+  /// counted run.
   ///
-  /// Old builds pushed the *lifetime* best daily score into today's
-  /// leaderboard, so a player could see "your score: 70" next to a list that
-  /// showed "370" — and because the new code only pushes when a run beats the
-  /// stored best, the phantom entry was never corrected. The Hive per-day
-  /// best (`daily_best_score_<today>`) is the source of truth: whenever it
-  /// exists and the remote entry differs, it is pushed back so the leaderboard
-  /// always shows the real score.
-  Future<void> _healTodayLeaderboard() async {
+  /// The counted score in Hive is the source of truth, so the row is corrected
+  /// whenever it disagrees — a phantom left by an old build (which pushed the
+  /// *lifetime* best, e.g. 370), a lost write, or an entry the player posted
+  /// before this device ever pushed it. Nothing happens when the player has no
+  /// counted run today: only a counted run may create the row.
+  Future<void> _reconcileTodayLeaderboard() async {
     if (_user.isGuest || _user.userId.isEmpty) return;
     final dayKey = _todayKey();
-    final bestScore = HiveService.getMeta<int>('daily_best_score_$dayKey');
-    if (bestScore == null || bestScore <= 0) return;
+    final counted = DailyScoreLock.countedRun(dayKey);
+    if (counted == null) return; // No counted run today — nothing to fix.
 
     final remote = await SyncService.pullLeaderboardEntry(_user.userId);
-    if (remote == null) return; // No entry today — nothing to fix.
+    final remoteScore = (remote?['score'] as num?)?.toInt();
+    if (remoteScore == counted.score) return;
 
-    final remoteScore = (remote['score'] as num?)?.toInt() ?? 0;
-    if (remoteScore == bestScore) return;
-
-    final bestTime = HiveService.getMeta<double>('daily_best_time_$dayKey') ?? 0;
     debugPrint(
-      'UserProvider: healing today leaderboard $remoteScore → $bestScore',
+      'UserProvider: reconciling today leaderboard '
+      '${remoteScore ?? '—'} → ${counted.score}',
     );
     await SyncService.pushLeaderboardEntry(
       user: _user,
-      score: bestScore,
-      timeSeconds: bestTime,
+      score: counted.score,
+      timeSeconds: counted.timeSeconds,
     );
     await refreshRankings(force: true);
   }
@@ -733,9 +757,13 @@ class UserProvider extends ChangeNotifier {
 
   // ---------------------------------------------------------------- Stats --
 
-  /// Records a finished quiz: updates [UserStats], the daily streak and the
-  /// leaderboard entry. Everything lands in Hive first.
-  Future<void> recordQuizResult({
+  /// Records a finished quiz: updates [UserStats], the daily streak and —
+  /// when it is the player's first ranked run of the day — the leaderboard
+  /// entry. Everything lands in Hive first.
+  ///
+  /// Returns what the run did to today's leaderboard row, so the result screen
+  /// can tell the player whether their score counted.
+  Future<DailyScoreOutcome> recordQuizResult({
     required int answered,
     required int correct,
     required double timeSeconds,
@@ -810,48 +838,80 @@ class UserProvider extends ChangeNotifier {
     );
     await _saveQuizHistory(history);
 
-    if (isDaily && ranked && !_user.isGuest) {
-      // Track today's personal best (score + the time it took), so the
-      // leaderboard entry always carries TODAY's time for tie-breaking —
-      // never yesterday's.
-      final dayKey = _todayKey();
-      final bestScoreKey = 'daily_best_score_$dayKey';
-      final bestTimeKey = 'daily_best_time_$dayKey';
-      final prevBest = HiveService.getMeta<int>(bestScoreKey) ?? 0;
-      final prevTime = HiveService.getMeta<double>(bestTimeKey) ?? 0;
-      final runScore = score ?? 0;
-      final isBetter = runScore > prevBest ||
-          (runScore == prevBest &&
-              runScore > 0 &&
-              (prevTime == 0 || timeSeconds < prevTime));
+    final outcome = isDaily && ranked && !_user.isGuest
+        // One counted score per competition day — see [DailyScoreLock].
+        ? await _settleDailyScore(
+            score: score ?? 0,
+            timeSeconds: timeSeconds,
+          )
+        : DailyScoreOutcome.notApplicable;
 
-      // Score Shield: prevents a bad score from being pushed to leaderboard.
-      final scoreShielded = hasItem(ShopItemIds.scoreShield) && runScore < prevBest;
-      if (scoreShielded) {
-        consumeItem(ShopItemIds.scoreShield);
-      }
-
-      if (isBetter && !scoreShielded) {
-        await HiveService.setMeta(bestScoreKey, runScore);
-        await HiveService.setMeta(bestTimeKey, timeSeconds);
-        await SyncService.pushLeaderboardEntry(
-          user: _user,
-          score: runScore,
-          timeSeconds: timeSeconds,
-        );
-        await refreshRankings(force: true);
-      } else {
-        // The run did not beat the stored best (or the shield blocked it).
-        // The Firestore entry may still hold an old phantom score (e.g. 370
-        // pushed by a previous build) — reconcile it with the true best.
-        await _healTodayLeaderboard();
-      }
-    }
     await SyncService.pushUser(_user);
     await SyncService.pushStats(_user.userId, _stats);
     if (isDaily) {
       unawaited(PushSync.syncFromHive());
     }
+    return outcome;
+  }
+
+  /// Applies the one-score-per-day rule to a finished ranked daily run.
+  ///
+  /// The first ranked run of the day is written to the leaderboard and locks
+  /// the day; every later run is ignored by the ranking (it still lands in the
+  /// player's own history, stats and streak). A Score Shield reopens the day
+  /// for exactly one more run, which then *replaces* the locked score.
+  Future<DailyScoreOutcome> _settleDailyScore({
+    required int score,
+    required double timeSeconds,
+  }) async {
+    final dayKey = _todayKey();
+    final retry = DailyScoreLock.isRetryUnlocked(dayKey);
+
+    if (DailyScoreLock.isLocked(dayKey) && !retry) {
+      final locked = DailyScoreLock.countedRun(dayKey);
+      await DailyScoreLock.registerAttempt(dayKey);
+      debugPrint(
+        'UserProvider: $dayKey is already locked at ${locked?.score ?? 0} — '
+        'this run ($score) is not counted',
+      );
+      notifyListeners();
+      return DailyScoreOutcome.ignored;
+    }
+
+    await DailyScoreLock.lock(
+      dayKey,
+      score: score,
+      timeSeconds: timeSeconds,
+    );
+    await DailyScoreLock.registerAttempt(dayKey);
+    notifyListeners();
+
+    await SyncService.pushLeaderboardEntry(
+      user: _user,
+      score: score,
+      timeSeconds: timeSeconds,
+    );
+    await refreshRankings(force: true);
+    return retry ? DailyScoreOutcome.replaced : DailyScoreOutcome.counted;
+  }
+
+  /// Spends a Score Shield to reopen today's locked leaderboard score.
+  ///
+  /// Only one retry is sold per day, however many shields the player owns:
+  /// buying unlimited attempts would put back the grind this rule removes.
+  ///
+  /// Returns false when there is nothing to replace (no counted run today, a
+  /// retry is already open, or the day's one retry is used up) or when the
+  /// player owns no shield — a shield is never spent for nothing. When it
+  /// succeeds, the player's next ranked daily run replaces today's score and
+  /// locks the day again.
+  Future<bool> unlockDailyScoreWithShield() async {
+    if (!canRetryDailyScoreWithShield) return false;
+    consumeItem(ShopItemIds.scoreShield);
+    await DailyScoreLock.unlockForRetry(_todayKey());
+    debugPrint('UserProvider: score shield opened a retry for ${_todayKey()}');
+    notifyListeners();
+    return true;
   }
 
   /// Saves quiz history to Hive and mirrors to Firestore.
@@ -1063,18 +1123,18 @@ class UserProvider extends ChangeNotifier {
   /// chosen avatar shows up immediately. Skipped for guests and for players
   /// who haven't played today's daily quiz (no entry to update).
   ///
-  /// The score re-pushed here is TODAY's best (from Hive meta), never the
-  /// lifetime [UserStats.bestDailyScore] — pushing the lifetime best could
-  /// resurrect a phantom legacy score (e.g. 370) into today's ranking.
+  /// The score re-pushed here is TODAY's counted score (from Hive meta),
+  /// never the lifetime [UserStats.bestDailyScore] — pushing the lifetime best
+  /// could resurrect a phantom legacy score (e.g. 370) into today's ranking,
+  /// and a later run must never overwrite the one that counted.
   Future<void> _refreshLeaderboardAvatar() async {
     if (_user.isGuest || !_user.playedTodayDailyQuiz) return;
-    final dayKey = _todayKey();
-    final todayBest = HiveService.getMeta<int>('daily_best_score_$dayKey') ?? 0;
-    if (todayBest <= 0) return;
+    final counted = DailyScoreLock.countedRun(_todayKey());
+    if (counted == null) return; // no counted run today — no entry to update
     await SyncService.pushLeaderboardEntry(
       user: _user,
-      score: todayBest,
-      timeSeconds: HiveService.getMeta<double>('daily_best_time_$dayKey') ?? 0,
+      score: counted.score,
+      timeSeconds: counted.timeSeconds,
     );
   }
 }

@@ -167,11 +167,21 @@ class S {
   static String get dashBattle => raw('dashBattle');
   static String get dashRewards => raw('dashRewards');
   static String get dashShop => raw('dashShop');
+  static String dashDailyScoreLocked({required Object score}) =>
+      fill(raw('dashDailyScoreLocked'), {'score': score});
+  static String dashDailyScoreOpen({required Object score}) =>
+      fill(raw('dashDailyScoreOpen'), {'score': score});
 
   // ---- daily quiz
   static String get quizQuitTitle => raw('quizQuitTitle');
   static String get quizQuitBody => raw('quizQuitBody');
   static String get quizQuit => raw('quizQuit');
+  static String get dailyCountedBanner => raw('dailyCountedBanner');
+  static String dailyLockedBanner({required Object score}) =>
+      fill(raw('dailyLockedBanner'), {'score': score});
+  static String dailyRetryBanner({required Object score}) =>
+      fill(raw('dailyRetryBanner'), {'score': score});
+  static String get dailyUnrankedBanner => raw('dailyUnrankedBanner');
   static String get quizNoFiftyFifty => raw('quizNoFiftyFifty');
   static String get quizFiftyFiftyUsed => raw('quizFiftyFiftyUsed');
   static String get quizFiftyFiftyBlocked => raw('quizFiftyFiftyBlocked');
@@ -424,6 +434,21 @@ class S {
   static String get resultSignedIn => raw('resultSignedIn');
   static String get resultDailyRankedNotice => raw('resultDailyRankedNotice');
   static String get resultDailyUnrankedNotice => raw('resultDailyUnrankedNotice');
+  static String resultDailyCountedNotice({required Object score}) =>
+      fill(raw('resultDailyCountedNotice'), {'score': score});
+  static String resultDailyLockedNotice({required Object score}) =>
+      fill(raw('resultDailyLockedNotice'), {'score': score});
+  static String resultDailyReplacedNotice({required Object score}) =>
+      fill(raw('resultDailyReplacedNotice'), {'score': score});
+  static String get resultShieldRetryTitle => raw('resultShieldRetryTitle');
+  static String resultShieldRetryBody({required Object score}) =>
+      fill(raw('resultShieldRetryBody'), {'score': score});
+  static String resultShieldRetryAction({required Object count}) =>
+      fill(raw('resultShieldRetryAction'), {'count': count});
+  static String get resultShieldRetryDialogTitle => raw('resultShieldRetryDialogTitle');
+  static String get resultShieldRetryDialogBody => raw('resultShieldRetryDialogBody');
+  static String get resultShieldRetryConfirm => raw('resultShieldRetryConfirm');
+  static String get resultShieldRetryDone => raw('resultShieldRetryDone');
   static String get reviewTitle => raw('reviewTitle');
   static String get reviewNone => raw('reviewNone');
   static String get reviewYourAnswer => raw('reviewYourAnswer');

@@ -582,6 +582,33 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             onPressed: _startDailyQuiz,
                           ),
                         ),
+                        // Today's leaderboard score, and the fact that the
+                        // day is locked after the first counted run —
+                        // otherwise "PLAY AGAIN" reads as "improve it".
+                        if (userProvider.isDailyScoreLockedToday) ...[
+                          const SizedBox(height: 9),
+                          Row(
+                            children: [
+                              const Icon(Icons.lock_outline_rounded,
+                                  size: 12, color: AppColors.textSecondary),
+                              const SizedBox(width: 5),
+                              Expanded(
+                                child: Text(
+                                  S.dashDailyScoreLocked(
+                                    score: userProvider.todayCountedScore,
+                                  ),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: const TextStyle(
+                                    color: AppColors.textSecondary,
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ],
                     ),
                   ),

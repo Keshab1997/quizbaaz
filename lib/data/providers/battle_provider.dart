@@ -1681,11 +1681,16 @@ class BattleProvider extends ChangeNotifier {
     );
 
     _userProvider.recordBattleResult(won: isPlayerWin);
-    _userProvider.recordQuizResult(
-      answered: _questions.length,
-      correct: _playerCorrect,
-      timeSeconds: (_questions.length * _questionDurationSec).toDouble(),
-      isDaily: false,
+    // A battle is never a daily run, so nothing is counted for the
+    // leaderboard — `recordQuizResult` returns that outcome and it is
+    // deliberately dropped here.
+    unawaited(
+      _userProvider.recordQuizResult(
+        answered: _questions.length,
+        correct: _playerCorrect,
+        timeSeconds: (_questions.length * _questionDurationSec).toDouble(),
+        isDaily: false,
+      ),
     );
 
     if (_liveCapable) _roomService.leaveQueue(_userId);

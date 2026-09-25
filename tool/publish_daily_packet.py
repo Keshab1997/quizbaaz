@@ -30,6 +30,13 @@ Usage
     python3 tool/publish_daily_packet.py --date 2026-09-22 --count 10
     python3 tool/publish_daily_packet.py --chapters phys_ch_01 bio_ch_01
 
+Publishing several days at once (what the daily cron does, so a missed run
+never leaves a competition day without a packet). Days that already have a
+packet are left alone unless --force is passed:
+
+    python3 tool/publish_daily_packet.py --days 3         # today + the next two
+    python3 tool/publish_daily_packet.py --days 3 --force # re-issue all three
+
 The service account writes one collection (`daily_quiz_packets`); the console's
 Owner/Editor or a custom role scoped to Firestore is enough.
 """
@@ -56,6 +63,13 @@ def competition_date_key(now: datetime | None = None) -> str:
     """The competition day `yyyy-MM-dd` that [now] falls in (UTC+5:30)."""
     moment = now or datetime.now(timezone.utc)
     return (moment + timedelta(hours=5, minutes=30)).strftime('%Y-%m-%d')
+
+
+def shift_day(date_key: str, days: int) -> str:
+    """The competition day `days` after/before `date_key` (yyyy-MM-dd)."""
+    year, month, day = (int(part) for part in date_key.split('-'))
+    moment = datetime(year, month, day, tzinfo=timezone.utc)
+    return (moment + timedelta(days=days)).strftime('%Y-%m-%d')
 
 
 def deadline_ms(date_key: str) -> int:
@@ -213,6 +227,15 @@ def existing_version(client, date_key: str) -> int:
     return 1
 
 
+def packet_exists(client, date_key: str) -> bool:
+    """True when a packet is already filed for that competition day."""
+    try:
+        return client.collection('daily_quiz_packets').document(
+            date_key).get().exists
+    except Exception:  # noqa: BLE001 - unreadable doc -> treat as missing
+        return False
+
+
 def publish(client, document: dict, date_key: str) -> None:
     client.collection('daily_quiz_packets').document(date_key).set(document)
 
@@ -242,6 +265,14 @@ def main() -> int:
                         help='override the date seed (testing only)')
     parser.add_argument('--version', type=int, default=None,
                         help='force the packet version (default: existing + 1)')
+    parser.add_argument('--days', type=int, default=1,
+                        help='publish this many consecutive competition days, '
+                             'starting at --date (default: 1). Days that '
+                             'already have a packet are skipped.')
+    parser.add_argument('--force', action='store_true',
+                        help='re-issue days that already have a packet '
+                             '(bumps the version so devices re-resolve the '
+                             'set)')
     parser.add_argument('--dry-run', action='store_true',
                         help='print the packet and write nothing')
     parser.add_argument('--json-report', default=None,
@@ -273,47 +304,74 @@ def main() -> int:
         sys.exit(f'only {len(refs)} bundled question(s) but --count {count}; '
                  f'publish fewer or author more questions.')
 
-    chosen = pick_questions(refs, count, date_key, args.seed)
-    version = args.version if args.version is not None else (
-        1 if args.dry_run else existing_version(client, date_key) + 1)
+    days = max(1, args.days)
+    date_keys = [shift_day(date_key, i) for i in range(days)]
 
-    document = {
-        'date_key': date_key,
-        'version': version,
-        'questions': [
-            {'chapter_id': cid, 'question_id': qid}
-            for cid, qid in chosen
-        ],
-        'count': len(chosen),
-        'deadline_ms': deadline_ms(date_key),
-        'scoring_contract': SCORING_CONTRACT,
-        'approved': True,
-        'published_at': int(datetime.now(timezone.utc).timestamp() * 1000),
-    }
+    documents: list[tuple[str, dict]] = []
+    for day in date_keys:
+        # A day that already has a packet keeps it: re-issuing bumps the
+        # version, which makes every device throw away its resolved set, and
+        # a re-pick with the same seed returns the same questions anyway.
+        if client is not None and not args.force and packet_exists(client, day):
+            print(f'skip {day}: a packet is already published '
+                  f'(use --force to re-issue it)')
+            continue
+
+        chosen = pick_questions(refs, count, day, args.seed)
+        version = args.version if args.version is not None else (
+            1 if args.dry_run else existing_version(client, day) + 1)
+
+        documents.append((day, {
+            'date_key': day,
+            'version': version,
+            'questions': [
+                {'chapter_id': cid, 'question_id': qid}
+                for cid, qid in chosen
+            ],
+            'count': len(chosen),
+            'deadline_ms': deadline_ms(day),
+            'scoring_contract': SCORING_CONTRACT,
+            'approved': True,
+            'published_at': int(datetime.now(timezone.utc).timestamp() * 1000),
+        }))
+
+    if not documents:
+        print('nothing to publish — every requested day already has a packet')
+        return 0
 
     if args.json_report:
+        payload = documents[0][1] if len(documents) == 1 else [
+            document for _, document in documents
+        ]
         Path(args.json_report).write_text(
-            json.dumps(document, ensure_ascii=False, indent=2) + '\n',
+            json.dumps(payload, ensure_ascii=False, indent=2) + '\n',
             encoding='utf-8',
         )
 
     if args.dry_run:
-        print(json.dumps(document, ensure_ascii=False, indent=2))
-        banned = [cid for cid, _ in chosen]
-        if args.quiet:
-            return 0
-        print(f'\n(date={date_key}, version={version}, count={len(chosen)}, '
-              f'deadline_ms={document["deadline_ms"]})')
-        if len(set(banned)) == 1:
-            print(f'note: the whole packet came from one chapter ({banned[0]})')
+        for day, document in documents:
+            if len(documents) == 1:
+                print(json.dumps(document, ensure_ascii=False, indent=2))
+            banned = sorted({q['chapter_id'] for q in document['questions']})
+            print(f'{day}: version={document["version"]}, '
+                  f'count={document["count"]}, '
+                  f'deadline_ms={document["deadline_ms"]}')
+            if len(banned) == 1:
+                print(f'  note: the whole packet came from one chapter '
+                      f'({banned[0]})')
+            elif not args.quiet:
+                print('  chapters: ' + ', '.join(banned))
         return 0
 
-    publish(client, document, date_key)
-    print(f'published daily_quiz_packets/{date_key} (version {version}, '
-          f'{len(chosen)} questions)')
-    chapters_used = sorted({cid for cid, _ in chosen})
-    if not args.quiet:
-        print('chapters: ' + ', '.join(chapters_used))
+    for day, document in documents:
+        publish(client, document, day)
+        print(f'published daily_quiz_packets/{day} '
+              f'(version {document["version"]}, '
+              f'{document["count"]} questions)')
+        if not args.quiet:
+            chapters_used = sorted({q['chapter_id']
+                                    for q in document['questions']})
+            print('chapters: ' + ', '.join(chapters_used))
     return 0
 
 

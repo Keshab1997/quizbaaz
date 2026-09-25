@@ -51,6 +51,7 @@
    - Futuristic Navy Blue + Purple Gradient aesthetic with realistic glossy glassmorphism cards and neon glowing borders.
 2. **🏆 Daily 10-Question Competitive Quiz:**
    - 10 fresh questions every single day with real-time countdown timer, speed-based bonus scoring, and anti-cheat mechanisms.
+   - One counted attempt per day: your **first** run sets your leaderboard score and locks it in (a Score Shield buys one replacement). See [`docs/21_DAILY_SCORING_RULES.md`](./docs/21_DAILY_SCORING_RULES.md).
 3. **🥇 Yesterday's Champion & In-Game Rewards Tracker:**
    - Everyone on the home screen sees who won yesterday (#1 Podium with 3D trophy), their score, and what in-game reward they earned (Coins, Gems, Power-Ups, Shop Items).
 4. **🔥 3D Daily Streak Fire Flame:**
@@ -89,6 +90,7 @@ All architectural and step-by-step blueprints are documented in the [`docs/`](./
 * 🔥 **[`11_ADMIN_AI_QUESTION_GENERATOR_PLAN.md`](./docs/11_ADMIN_AI_QUESTION_GENERATOR_PLAN.md)**: The AI question generator — schema, prompts, append guarantee.
 * ⚔️ **[`12_BATTLE_1V1_REAL_PLAYER_PLAN.md`](./docs/12_BATTLE_1V1_REAL_PLAYER_PLAN.md)**: The 1v1 battle arena (matching, VS intro, symmetric scoring).
 * 📡 **[`16_ONESIGNAL_FCM_SETUP.md`](./docs/16_ONESIGNAL_FCM_SETUP.md)**: OneSignal + FCM live push.
+* 🏅 **[`21_DAILY_SCORING_RULES.md`](./docs/21_DAILY_SCORING_RULES.md)**: The daily competition — one counted score per day, ranked vs practice packets, the publishing cron.
 * 🏪 **[`17_PLAY_STORE_RELEASE.md`](./docs/17_PLAY_STORE_RELEASE.md)**: Signing, API 36, AdMob and Play Console release runbook.
 * ✅ **[`18_PLAY_STORE_PUBLISH_TODO.md`](./docs/18_PLAY_STORE_PUBLISH_TODO.md)**: Owner checklist from account setup through post-launch AdMob verification.
 * 📥 **[`19_FIRESTORE_TO_BUNDLE_PULL.md`](./docs/19_FIRESTORE_TO_BUNDLE_PULL.md)**: Pull admin-authored questions into the bundled banks (offline parity), with the CI gate.

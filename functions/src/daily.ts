@@ -173,6 +173,12 @@ export const submitDailyResult = https.onCall(
         total,
         credited_at: admin.firestore.FieldValue.serverTimestamp(),
       });
+      // Today's row is written once, here, on the first submission of the day
+      // — which is the same "one counted score per day" rule the client
+      // enforces (`DailyScoreLock`). A later submission returns
+      // `already-credited` above and never touches the row, so a Score Shield
+      // retry (a client-side push that replaces the locked score) cannot be
+      // overwritten by the score the player was unhappy with.
       tx.set(
         db().collection('leaderboard').doc(date).collection('scores').doc(uid),
         {

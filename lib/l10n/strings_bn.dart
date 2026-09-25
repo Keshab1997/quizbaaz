@@ -99,12 +99,22 @@ const Map<String, String> kStringsBn = {
   'dashBattle': 'ব্যাটল',
   'dashRewards': 'পুরস্কার',
   'dashShop': 'শপ',
+  'dashDailyScoreLocked': 'আজকের স্কোর: {score} · লক 🔒',
+  'dashDailyScoreOpen': 'আজকের স্কোর: {score}',
 
   // ------------------------------------------------------------ daily quiz --
   'quizQuitTitle': 'লাইভ কুইজ ছেড়ে যাবেন?',
   'quizQuitBody':
       'এখন চলে গেলে আজকের স্কোর লিডারবোর্ডে যুক্ত হবে না।',
   'quizQuit': 'ছেড়ে দিন',
+  'dailyCountedBanner':
+      'এটিই আজকের গণনার রান — আপনার স্কোর সরাসরি লিডারবোর্ডে যাবে।',
+  'dailyLockedBanner':
+      'আজকের লিডারবোর্ড স্কোর {score} লক করা আছে — এই রান শুধু অনুশীলনের জন্য।',
+  'dailyRetryBanner':
+      'স্কোর শিল্ড সক্রিয় — এই রান আজকের লিডারবোর্ড স্কোর ({score}) বদলে দেবে।',
+  'dailyUnrankedBanner':
+      'অনুশীলন সেট — আজকের প্রতিযোগিতার প্যাকেট পাওয়া যায়নি, তাই এই স্কোর লিডারবোর্ডে যাবে না।',
   'quizNoFiftyFifty': '৫০-৫০ লাইফলাইন শেষ! শপ থেকে আরও কিনুন। 🛒',
   'quizFiftyFiftyUsed': 'এই প্রশ্নে ৫০-৫০ ইতিমধ্যে ব্যবহার করেছেন।',
   'quizFiftyFiftyBlocked': 'এখন ৫০-৫০ ব্যবহার করা যাবে না।',
@@ -344,9 +354,25 @@ const Map<String, String> kStringsBn = {
   'resultSigningIn': 'সাইন ইন হচ্ছে...',
   'resultSignedIn': '🎉 গুগল দিয়ে সাইন ইন! স্কোর লিডারবোর্ডে সেভ হয়েছে!',
   'resultDailyRankedNotice':
-      'প্রতিযোগিতা রান — আপনার সেরা স্কোর আজকের লিডারবোর্ডে যোগ হবে!',
+      'প্রতিযোগিতা রান — দিনের প্রথম রানই আজকের লিডারবোর্ড স্কোর ঠিক করবে!',
   'resultDailyUnrankedNotice':
       'অনুশীলন রান — এই স্কোর লিডারবোর্ডে যোগ হবে না।',
+  'resultDailyCountedNotice':
+      '🏆 আজকের স্কোর {score} লিডারবোর্ডে সেভ হয়েছে — পরের রানে এটি বদলাবে না।',
+  'resultDailyLockedNotice':
+      '🔒 আজকের লিডারবোর্ড স্কোর {score} লক করা আছে — এই রান গণনা হবে না।',
+  'resultDailyReplacedNotice':
+      '🛡️ স্কোর শিল্ড ব্যবহার করা হয়েছে — আজকের লিডারবোর্ড স্কোর এখন {score}।',
+  'resultShieldRetryTitle': 'খারাপ রান? স্কোর শিল্ড ব্যবহার করুন',
+  'resultShieldRetryBody':
+      '১টি স্কোর শিল্ড খরচ করলে আপনার পরের ডেইলি রান আজকের লক করা স্কোর ({score}) বদলে দেবে — যদি তা কমও হয়।',
+  'resultShieldRetryAction': 'স্কোর শিল্ড ব্যবহার করুন ({count})',
+  'resultShieldRetryDialogTitle': 'স্কোর শিল্ড ব্যবহার করবেন?',
+  'resultShieldRetryDialogBody':
+      '১টি স্কোর শিল্ড খরচ হবে। আপনার পরের ডেইলি রানই আজকের লিডারবোর্ড স্কোর হবে।',
+  'resultShieldRetryConfirm': 'শিল্ড ব্যবহার করুন',
+  'resultShieldRetryDone':
+      'শিল্ড ব্যবহার করা হয়েছে — আপনার পরের ডেইলি রান আজকের স্কোর বদলে দেবে।',
   'reviewTitle': 'উত্তর পর্যালোচনা',
   'reviewNone': 'পর্যালোচনা করার মতো কোনো উত্তর নেই।',
   'reviewYourAnswer': 'আপনার উত্তর',

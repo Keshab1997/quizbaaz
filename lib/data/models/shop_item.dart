@@ -170,7 +170,8 @@ class ShopCatalog {
     ShopItem(
       id: ShopItemIds.scoreShield,
       name: 'Score Shield',
-      description: 'Protects your best score from being beaten',
+      description:
+          'Re-opens today\'s daily score: your next attempt replaces it',
       cost: 12,           // ~1.5 perfect days
       currency: ShopCurrency.gems,
       quantity: 1,
