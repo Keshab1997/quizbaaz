@@ -222,11 +222,12 @@ class _AiGenerationReviewScreenState extends State<AiGenerationReviewScreen> {
 
   Widget _progressCard(GenerationProgress progress) {
     final failed = progress.stage == GenerationStage.failed;
-    final colour = failed
-        ? AppColors.neonRed
-        : progress.stage == GenerationStage.done
-        ? AppColors.neonGreen
-        : AppColors.neonPurple;
+    final colour =
+        failed
+            ? AppColors.neonRed
+            : progress.stage == GenerationStage.done
+            ? AppColors.neonGreen
+            : AppColors.neonPurple;
 
     return GlassCard(
       borderRadius: 18,
@@ -333,9 +334,10 @@ class _AiGenerationReviewScreenState extends State<AiGenerationReviewScreen> {
                               style: TextStyle(
                                 fontSize: 11,
                                 fontWeight: FontWeight.w700,
-                                color: _difficulty == mix
-                                    ? AppColors.bgDark
-                                    : AppColors.textSecondary,
+                                color:
+                                    _difficulty == mix
+                                        ? AppColors.bgDark
+                                        : AppColors.textSecondary,
                               ),
                             ),
                             selected: _difficulty == mix,
@@ -345,12 +347,13 @@ class _AiGenerationReviewScreenState extends State<AiGenerationReviewScreen> {
                             ),
                             selectedColor: AppColors.neonCyan,
                             side: BorderSide(
-                              color: _difficulty == mix
-                                  ? AppColors.neonCyan
-                                  : Colors.white12,
+                              color:
+                                  _difficulty == mix
+                                      ? AppColors.neonCyan
+                                      : Colors.white12,
                             ),
-                            onSelected: (_) =>
-                                setState(() => _difficulty = mix),
+                            onSelected:
+                                (_) => setState(() => _difficulty = mix),
                           ),
                         ),
                     ],
@@ -409,13 +412,14 @@ class _AiGenerationReviewScreenState extends State<AiGenerationReviewScreen> {
             leading: Checkbox(
               value: selected,
               activeColor: AppColors.neonGreen,
-              onChanged: (v) => setState(() {
-                if (v == true) {
-                  _selected.add(question.id);
-                } else {
-                  _selected.remove(question.id);
-                }
-              }),
+              onChanged:
+                  (v) => setState(() {
+                    if (v == true) {
+                      _selected.add(question.id);
+                    } else {
+                      _selected.remove(question.id);
+                    }
+                  }),
             ),
             title: Text(
               question.questionText.resolve('en'),
@@ -504,10 +508,13 @@ class _AiGenerationReviewScreenState extends State<AiGenerationReviewScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 12),
                   side: BorderSide(color: flag.colour.withValues(alpha: 0.6)),
                 ),
-                onPressed: verification.suggestedIndex == null
-                    ? null
-                    : () =>
-                          _applySuggestion(draft, verification.suggestedIndex!),
+                onPressed:
+                    verification.suggestedIndex == null
+                        ? null
+                        : () => _applySuggestion(
+                          draft,
+                          verification.suggestedIndex!,
+                        ),
                 child: Text(
                   'Mark option '
                   '${String.fromCharCode(65 + (verification.suggestedIndex ?? 0))} instead',
@@ -562,9 +569,10 @@ class _AiGenerationReviewScreenState extends State<AiGenerationReviewScreen> {
                         ? Icons.check_circle_rounded
                         : Icons.circle_outlined,
                     size: 12,
-                    color: i == question.correctIndex
-                        ? AppColors.neonGreen
-                        : AppColors.textMuted,
+                    color:
+                        i == question.correctIndex
+                            ? AppColors.neonGreen
+                            : AppColors.textMuted,
                   ),
                   const SizedBox(width: 6),
                   Expanded(
@@ -573,12 +581,14 @@ class _AiGenerationReviewScreenState extends State<AiGenerationReviewScreen> {
                       style: TextStyle(
                         fontSize: 11.5,
                         height: 1.3,
-                        fontWeight: i == question.correctIndex
-                            ? FontWeight.w700
-                            : FontWeight.w400,
-                        color: i == question.correctIndex
-                            ? AppColors.neonGreen
-                            : AppColors.textSecondary,
+                        fontWeight:
+                            i == question.correctIndex
+                                ? FontWeight.w700
+                                : FontWeight.w400,
+                        color:
+                            i == question.correctIndex
+                                ? AppColors.neonGreen
+                                : AppColors.textSecondary,
                       ),
                     ),
                   ),
@@ -605,9 +615,10 @@ class _AiGenerationReviewScreenState extends State<AiGenerationReviewScreen> {
 
   Widget _approveBar() {
     final count = _selected.length;
-    final flagged = _results
-        .where((r) => !r.isClean && _selected.contains(r.question.id))
-        .length;
+    final flagged =
+        _results
+            .where((r) => !r.isClean && _selected.contains(r.question.id))
+            .length;
 
     return SafeArea(
       child: Padding(
@@ -631,12 +642,10 @@ class _AiGenerationReviewScreenState extends State<AiGenerationReviewScreen> {
               height: 50,
               child: ElevatedButton.icon(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: count == 0
-                      ? Colors.white12
-                      : AppColors.neonGreen,
-                  foregroundColor: count == 0
-                      ? AppColors.textMuted
-                      : AppColors.bgDark,
+                  backgroundColor:
+                      count == 0 ? Colors.white12 : AppColors.neonGreen,
+                  foregroundColor:
+                      count == 0 ? AppColors.textMuted : AppColors.bgDark,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15),
                   ),
@@ -661,10 +670,11 @@ class _AiGenerationReviewScreenState extends State<AiGenerationReviewScreen> {
   }
 
   void _approve() {
-    final approved = _results
-        .where((r) => _selected.contains(r.question.id))
-        .map((r) => r.question)
-        .toList();
+    final approved =
+        _results
+            .where((r) => _selected.contains(r.question.id))
+            .map((r) => r.question)
+            .toList();
     Navigator.pop(context, approved);
   }
 

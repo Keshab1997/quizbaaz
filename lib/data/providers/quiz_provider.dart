@@ -226,8 +226,8 @@ class QuizProvider extends ChangeNotifier {
 
   QuestionModel? get currentQuestion =>
       _questions.isNotEmpty && _currentIndex < _questions.length
-      ? _questions[_currentIndex]
-      : null;
+          ? _questions[_currentIndex]
+          : null;
 
   // ------------------------------------------------------------- Lifecycle --
 
@@ -313,9 +313,13 @@ class QuizProvider extends ChangeNotifier {
     _chapterQuestionCount = all.length;
 
     final start = setStartIndex(setIndex);
-    final slice = start >= all.length
-        ? const <QuestionModel>[]
-        : all.sublist(start, (start + kQuestionsPerSet).clamp(0, all.length));
+    final slice =
+        start >= all.length
+            ? const <QuestionModel>[]
+            : all.sublist(
+              start,
+              (start + kQuestionsPerSet).clamp(0, all.length),
+            );
 
     _questions = _shuffleOptions(slice);
     _isLoading = false;
@@ -724,20 +728,22 @@ class QuizProvider extends ChangeNotifier {
     if (_isDailyQuiz) {
       coins = _correctCount * config.coinsPerCorrectDaily;
       if (isPerfect) coins += config.perfectBonusCoins;
-      gems = isPerfect
-          ? config.gemsPerfect
-          : (_correctCount >= config.highScoreThreshold
-                ? config.gemsHighScore
-                : 0);
+      gems =
+          isPerfect
+              ? config.gemsPerfect
+              : (_correctCount >= config.highScoreThreshold
+                  ? config.gemsHighScore
+                  : 0);
     } else {
       // Chapter quiz: coins & gems granted every time based on performance
       coins = _correctCount * config.coinsPerCorrectPractice;
       if (isPerfect) coins += config.perfectBonusCoins;
-      gems = isPerfect
-          ? config.gemsPerfect
-          : (_correctCount >= config.highScoreThreshold
-                ? config.gemsHighScore
-                : 0);
+      gems =
+          isPerfect
+              ? config.gemsPerfect
+              : (_correctCount >= config.highScoreThreshold
+                  ? config.gemsHighScore
+                  : 0);
     }
 
     // Apply coin booster if active
@@ -924,9 +930,8 @@ class QuizProvider extends ChangeNotifier {
     final correctIndex = currentQuestion!.correctIndex;
     // Follows the displayed language: a Bangla quiz must not reveal a hint
     // built from the English wording.
-    final correctAnswer = currentQuestion!.optionsIn(
-      displayLanguage,
-    )[correctIndex];
+    final correctAnswer =
+        currentQuestion!.optionsIn(displayLanguage)[correctIndex];
     _currentHint = _generateHint(correctAnswer);
 
     SoundService.instance.play('lifeline_hint');

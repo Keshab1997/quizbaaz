@@ -228,51 +228,51 @@ class UserStats {
   /// Used when Firestore data is pulled onto a fresh device.
   UserStats mergeWith(UserStats remote) {
     final merged = copy();
-    merged.totalAnswered = totalAnswered > remote.totalAnswered
-        ? totalAnswered
-        : remote.totalAnswered;
-    merged.totalCorrect = totalCorrect > remote.totalCorrect
-        ? totalCorrect
-        : remote.totalCorrect;
-    merged.totalQuizzes = totalQuizzes > remote.totalQuizzes
-        ? totalQuizzes
-        : remote.totalQuizzes;
-    merged.bestDailyScore = bestDailyScore > remote.bestDailyScore
-        ? bestDailyScore
-        : remote.bestDailyScore;
-    merged.totalTimeSeconds = totalTimeSeconds > remote.totalTimeSeconds
-        ? totalTimeSeconds
-        : remote.totalTimeSeconds;
-    merged.battlesPlayed = battlesPlayed > remote.battlesPlayed
-        ? battlesPlayed
-        : remote.battlesPlayed;
-    merged.battlesWon = battlesWon > remote.battlesWon
-        ? battlesWon
-        : remote.battlesWon;
-    merged.longestStreak = longestStreak > remote.longestStreak
-        ? longestStreak
-        : remote.longestStreak;
+    merged.totalAnswered =
+        totalAnswered > remote.totalAnswered
+            ? totalAnswered
+            : remote.totalAnswered;
+    merged.totalCorrect =
+        totalCorrect > remote.totalCorrect ? totalCorrect : remote.totalCorrect;
+    merged.totalQuizzes =
+        totalQuizzes > remote.totalQuizzes ? totalQuizzes : remote.totalQuizzes;
+    merged.bestDailyScore =
+        bestDailyScore > remote.bestDailyScore
+            ? bestDailyScore
+            : remote.bestDailyScore;
+    merged.totalTimeSeconds =
+        totalTimeSeconds > remote.totalTimeSeconds
+            ? totalTimeSeconds
+            : remote.totalTimeSeconds;
+    merged.battlesPlayed =
+        battlesPlayed > remote.battlesPlayed
+            ? battlesPlayed
+            : remote.battlesPlayed;
+    merged.battlesWon =
+        battlesWon > remote.battlesWon ? battlesWon : remote.battlesWon;
+    merged.longestStreak =
+        longestStreak > remote.longestStreak
+            ? longestStreak
+            : remote.longestStreak;
 
     // Best time: the smaller non-zero value wins.
-    final times = <double>[
-      bestDailyTimeSeconds,
-      remote.bestDailyTimeSeconds,
-    ].where((t) => t > 0).toList();
-    merged.bestDailyTimeSeconds = times.isEmpty
-        ? 0
-        : times.reduce((a, b) => a < b ? a : b);
+    final times =
+        <double>[
+          bestDailyTimeSeconds,
+          remote.bestDailyTimeSeconds,
+        ].where((t) => t > 0).toList();
+    merged.bestDailyTimeSeconds =
+        times.isEmpty ? 0 : times.reduce((a, b) => a < b ? a : b);
 
     for (final entry in remote.chapterAttempted.entries) {
       final local = chapterAttempted[entry.key] ?? 0;
-      merged.chapterAttempted[entry.key] = local > entry.value
-          ? local
-          : entry.value;
+      merged.chapterAttempted[entry.key] =
+          local > entry.value ? local : entry.value;
     }
     for (final entry in remote.chapterCorrect.entries) {
       final local = chapterCorrect[entry.key] ?? 0;
-      merged.chapterCorrect[entry.key] = local > entry.value
-          ? local
-          : entry.value;
+      merged.chapterCorrect[entry.key] =
+          local > entry.value ? local : entry.value;
     }
 
     merged.lastPlayedDate = _laterDate(lastPlayedDate, remote.lastPlayedDate);

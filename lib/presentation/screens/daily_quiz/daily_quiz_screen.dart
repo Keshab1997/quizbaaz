@@ -171,110 +171,115 @@ class DailyQuizScreen extends StatelessWidget {
             ],
           ],
         ),
-        body: currentQ == null
-            ? Center(
-                child: quiz.hasNoQuestions
-                    ? const Padding(
-                        padding: EdgeInsets.all(32),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Icon(
-                              Icons.inbox_rounded,
-                              size: 44,
-                              color: AppColors.textMuted,
-                            ),
-                            SizedBox(height: 14),
-                            Text(
-                              'No questions available',
-                              style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.w800,
-                                color: Colors.white,
-                              ),
-                            ),
-                            SizedBox(height: 6),
-                            Text(
-                              'This question bank is empty. Please try another '
-                              'chapter or check back later.',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 12,
-                                color: AppColors.textSecondary,
-                              ),
-                            ),
-                          ],
-                        ),
-                      )
-                    : const DailyQuizLoadingCard(),
-              )
-            : SafeArea(
-                child: LayoutBuilder(
-                  builder: (context, constraints) {
-                    // Auto-fit: everything must fit in constraints.maxHeight
-                    // No outer scroll — question + options share remaining space
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 18.0,
-                        vertical: 10,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          if (quiz.isPractice) ...[
-                            _practiceBanner(),
-                            const SizedBox(height: 8),
-                          ],
-                          if (!quiz.isPractice &&
-                              quiz.isDailyQuiz &&
-                              quiz.currentIndex == 0) ...[
-                            _buildCountingBanner(quiz, userProvider),
-                            const SizedBox(height: 8),
-                          ],
-                          _buildProgressAndTimer(quiz),
-                          const SizedBox(height: 10),
-                          _buildLifelines(context, quiz),
-                          const SizedBox(height: 10),
-
-                          if (quiz.currentHint != null) ...[
-                            _buildHintCard(quiz.currentHint!),
-                            const SizedBox(height: 8),
-                          ],
-                          if (quiz.audiencePollResults != null) ...[
-                            _buildAudiencePollCard(quiz),
-                            const SizedBox(height: 8),
-                          ],
-
-                          // --- AUTO-FIT AREA ---
-                          // Question + Options take remaining height, no scroll
-                          Expanded(
+        body:
+            currentQ == null
+                ? Center(
+                  child:
+                      quiz.hasNoQuestions
+                          ? const Padding(
+                            padding: EdgeInsets.all(32),
                             child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              mainAxisSize: MainAxisSize.min,
                               children: [
-                                // Question: flexible, auto-shrinks font if needed
-                                Flexible(
-                                  flex: 3,
-                                  child: _buildQuestionCard(context, currentQ),
+                                Icon(
+                                  Icons.inbox_rounded,
+                                  size: 44,
+                                  color: AppColors.textMuted,
                                 ),
-                                const SizedBox(height: 12),
-                                // Options: flexible, each option expands, no ListView
-                                Flexible(
-                                  flex: 5,
-                                  child: _buildOptionsAutoFit(
-                                    context,
-                                    quiz,
-                                    currentQ,
+                                SizedBox(height: 14),
+                                Text(
+                                  'No questions available',
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w800,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                SizedBox(height: 6),
+                                Text(
+                                  'This question bank is empty. Please try another '
+                                  'chapter or check back later.',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: AppColors.textSecondary,
                                   ),
                                 ),
                               ],
                             ),
-                          ),
-                        ],
-                      ),
-                    );
-                  },
+                          )
+                          : const DailyQuizLoadingCard(),
+                )
+                : SafeArea(
+                  child: LayoutBuilder(
+                    builder: (context, constraints) {
+                      // Auto-fit: everything must fit in constraints.maxHeight
+                      // No outer scroll — question + options share remaining space
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 18.0,
+                          vertical: 10,
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            if (quiz.isPractice) ...[
+                              _practiceBanner(),
+                              const SizedBox(height: 8),
+                            ],
+                            if (!quiz.isPractice &&
+                                quiz.isDailyQuiz &&
+                                quiz.currentIndex == 0) ...[
+                              _buildCountingBanner(quiz, userProvider),
+                              const SizedBox(height: 8),
+                            ],
+                            _buildProgressAndTimer(quiz),
+                            const SizedBox(height: 10),
+                            _buildLifelines(context, quiz),
+                            const SizedBox(height: 10),
+
+                            if (quiz.currentHint != null) ...[
+                              _buildHintCard(quiz.currentHint!),
+                              const SizedBox(height: 8),
+                            ],
+                            if (quiz.audiencePollResults != null) ...[
+                              _buildAudiencePollCard(quiz),
+                              const SizedBox(height: 8),
+                            ],
+
+                            // --- AUTO-FIT AREA ---
+                            // Question + Options take remaining height, no scroll
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                children: [
+                                  // Question: flexible, auto-shrinks font if needed
+                                  Flexible(
+                                    flex: 3,
+                                    child: _buildQuestionCard(
+                                      context,
+                                      currentQ,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 12),
+                                  // Options: flexible, each option expands, no ListView
+                                  Flexible(
+                                    flex: 5,
+                                    child: _buildOptionsAutoFit(
+                                      context,
+                                      quiz,
+                                      currentQ,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                  ),
                 ),
-              ),
       ),
     );
   }
@@ -363,9 +368,10 @@ class DailyQuizScreen extends StatelessWidget {
   }
 
   Widget _buildProgressAndTimer(QuizProvider quiz) {
-    final timerPercent = quiz.questionTimeSec == 0
-        ? 0.0
-        : quiz.secondsRemaining / quiz.questionTimeSec;
+    final timerPercent =
+        quiz.questionTimeSec == 0
+            ? 0.0
+            : quiz.secondsRemaining / quiz.questionTimeSec;
 
     return Column(
       children: [
@@ -385,9 +391,10 @@ class DailyQuizScreen extends StatelessWidget {
                 Icon(
                   Icons.timer,
                   size: 16,
-                  color: quiz.secondsRemaining <= 5
-                      ? AppColors.neonRed
-                      : AppColors.neonCyan,
+                  color:
+                      quiz.secondsRemaining <= 5
+                          ? AppColors.neonRed
+                          : AppColors.neonCyan,
                 ),
                 const SizedBox(width: 4),
                 Text(
@@ -395,9 +402,10 @@ class DailyQuizScreen extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w900,
-                    color: quiz.secondsRemaining <= 5
-                        ? AppColors.neonRed
-                        : AppColors.neonCyan,
+                    color:
+                        quiz.secondsRemaining <= 5
+                            ? AppColors.neonRed
+                            : AppColors.neonCyan,
                   ),
                 ),
               ],
@@ -494,14 +502,16 @@ class DailyQuizScreen extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         decoration: BoxDecoration(
-          color: disabled
-              ? Colors.white.withValues(alpha: 0.03)
-              : color.withValues(alpha: 0.1),
+          color:
+              disabled
+                  ? Colors.white.withValues(alpha: 0.03)
+                  : color.withValues(alpha: 0.1),
           borderRadius: BorderRadius.circular(14),
           border: Border.all(
-            color: disabled
-                ? Colors.white.withValues(alpha: 0.06)
-                : color.withValues(alpha: 0.4),
+            color:
+                disabled
+                    ? Colors.white.withValues(alpha: 0.06)
+                    : color.withValues(alpha: 0.4),
           ),
         ),
         child: Row(
@@ -518,9 +528,8 @@ class DailyQuizScreen extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 11,
                     fontWeight: FontWeight.bold,
-                    color: disabled
-                        ? AppColors.textMuted
-                        : AppColors.textPrimary,
+                    color:
+                        disabled ? AppColors.textMuted : AppColors.textPrimary,
                   ),
                 ),
                 Text(
@@ -671,57 +680,67 @@ class DailyQuizScreen extends StatelessWidget {
 
   void _useFiftyFifty(BuildContext context, QuizProvider quiz) {
     if (quiz.useFiftyFifty()) return;
-    final message = quiz.fiftyFiftyStock <= 0
-        ? S.quizNoFiftyFifty
-        : quiz.fiftyFiftyUsed
-        ? S.quizFiftyFiftyUsed
-        : S.quizFiftyFiftyBlocked;
-    ScaffoldMessenger.of(context)
-        .showSnackBar(SnackBar(content: Text(message)));
+    final message =
+        quiz.fiftyFiftyStock <= 0
+            ? S.quizNoFiftyFifty
+            : quiz.fiftyFiftyUsed
+            ? S.quizFiftyFiftyUsed
+            : S.quizFiftyFiftyBlocked;
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Text(message)));
   }
 
   void _useFreezeTime(BuildContext context, QuizProvider quiz) {
     if (quiz.useFreezeTime()) return;
-    final message = quiz.freezeTimeStock <= 0
-        ? S.quizNoFreeze
-        : quiz.freezeUsed
-        ? S.quizFreezeUsed
-        : S.quizFreezeBlocked;
-    ScaffoldMessenger.of(context)
-        .showSnackBar(SnackBar(content: Text(message)));
+    final message =
+        quiz.freezeTimeStock <= 0
+            ? S.quizNoFreeze
+            : quiz.freezeUsed
+            ? S.quizFreezeUsed
+            : S.quizFreezeBlocked;
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Text(message)));
   }
 
   void _useSkipQuestion(BuildContext context, QuizProvider quiz) {
     if (quiz.useSkipQuestion()) return;
-    final message = quiz.skipQuestionStock <= 0
-        ? S.quizNoSkip
-        : quiz.skipUsed
-        ? S.quizSkipUsed
-        : S.quizSkipBlocked;
-    ScaffoldMessenger.of(context)
-        .showSnackBar(SnackBar(content: Text(message)));
+    final message =
+        quiz.skipQuestionStock <= 0
+            ? S.quizNoSkip
+            : quiz.skipUsed
+            ? S.quizSkipUsed
+            : S.quizSkipBlocked;
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Text(message)));
   }
 
   void _useHintReveal(BuildContext context, QuizProvider quiz) {
     if (quiz.useHintReveal()) return;
-    final message = quiz.hintRevealStock <= 0
-        ? S.quizNoHint
-        : quiz.hintUsed
-        ? S.quizHintUsed
-        : S.quizHintBlocked;
-    ScaffoldMessenger.of(context)
-        .showSnackBar(SnackBar(content: Text(message)));
+    final message =
+        quiz.hintRevealStock <= 0
+            ? S.quizNoHint
+            : quiz.hintUsed
+            ? S.quizHintUsed
+            : S.quizHintBlocked;
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Text(message)));
   }
 
   void _useAudiencePoll(BuildContext context, QuizProvider quiz) {
     if (quiz.useAudiencePoll()) return;
-    final message = quiz.audiencePollStock <= 0
-        ? S.quizNoPoll
-        : quiz.audienceUsed
-        ? S.quizPollUsed
-        : S.quizPollBlocked;
-    ScaffoldMessenger.of(context)
-        .showSnackBar(SnackBar(content: Text(message)));
+    final message =
+        quiz.audiencePollStock <= 0
+            ? S.quizNoPoll
+            : quiz.audienceUsed
+            ? S.quizPollUsed
+            : S.quizPollBlocked;
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Text(message)));
   }
 
   Widget _buildQuestionCard(BuildContext context, QuestionModel question) {
@@ -762,10 +781,11 @@ class DailyQuizScreen extends StatelessWidget {
     QuizProvider quiz,
     QuestionModel question,
   ) {
-    final visibleIndices = List<int>.generate(
-      question.options.length,
-      (i) => i,
-    ).where((i) => !quiz.disabledOptionIndices.contains(i)).toList();
+    final visibleIndices =
+        List<int>.generate(
+          question.options.length,
+          (i) => i,
+        ).where((i) => !quiz.disabledOptionIndices.contains(i)).toList();
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -829,15 +849,18 @@ class DailyQuizScreen extends StatelessWidget {
           color: bgColor,
           borderRadius: BorderRadius.circular(16),
           border: Border.all(color: borderColor, width: 1.5),
-          boxShadow: isAnswerSubmitted && (isCorrect || isSelected)
-              ? [
-                  BoxShadow(
-                    color: (isCorrect ? AppColors.neonGreen : AppColors.neonRed)
-                        .withValues(alpha: 0.3),
-                    blurRadius: 10,
-                  ),
-                ]
-              : null,
+          boxShadow:
+              isAnswerSubmitted && (isCorrect || isSelected)
+                  ? [
+                    BoxShadow(
+                      color: (isCorrect
+                              ? AppColors.neonGreen
+                              : AppColors.neonRed)
+                          .withValues(alpha: 0.3),
+                      blurRadius: 10,
+                    ),
+                  ]
+                  : null,
         ),
         child: Row(
           children: [
@@ -888,32 +911,35 @@ class DailyQuizScreen extends StatelessWidget {
   void _showExitDialog(BuildContext context) {
     showDialog(
       context: context,
-      builder: (ctx) => AlertDialog(
-        backgroundColor: AppColors.bgCard,
-        title: Text(S.quizQuitTitle),
-        content: Text(S.quizQuitBody),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(ctx),
-            child: Text(
-              S.cancel,
-              style: const TextStyle(color: AppColors.textSecondary),
-            ),
+      builder:
+          (ctx) => AlertDialog(
+            backgroundColor: AppColors.bgCard,
+            title: Text(S.quizQuitTitle),
+            content: Text(S.quizQuitBody),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(ctx),
+                child: Text(
+                  S.cancel,
+                  style: const TextStyle(color: AppColors.textSecondary),
+                ),
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColors.neonRed,
+                ),
+                onPressed: () {
+                  Navigator.pop(ctx);
+                  context.read<QuizProvider>().quitQuiz();
+                  Navigator.pop(context);
+                },
+                child: Text(
+                  S.quizQuit,
+                  style: const TextStyle(color: Colors.white),
+                ),
+              ),
+            ],
           ),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(backgroundColor: AppColors.neonRed),
-            onPressed: () {
-              Navigator.pop(ctx);
-              context.read<QuizProvider>().quitQuiz();
-              Navigator.pop(context);
-            },
-            child: Text(
-              S.quizQuit,
-              style: const TextStyle(color: Colors.white),
-            ),
-          ),
-        ],
-      ),
     );
   }
 }

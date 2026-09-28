@@ -60,9 +60,10 @@ class BattleScoring {
     }
 
     final first = answeredBeforeOpponent ? firstBonus : 0;
-    final streakB = streak >= 1
-        ? (streak * streakBonusPerStreak).clamp(0, maxStreakBonus)
-        : 0;
+    final streakB =
+        streak >= 1
+            ? (streak * streakBonusPerStreak).clamp(0, maxStreakBonus)
+            : 0;
 
     return (
       base: basePoints,

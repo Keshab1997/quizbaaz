@@ -30,14 +30,15 @@ class _RewardsScreenState extends State<RewardsScreen> {
     final history = await userProvider.loadQuizHistory();
     if (mounted) {
       setState(() {
-        _dailyQuizHistory = history
-            .where(
-              (h) =>
-                  h.quizType == 'daily' ||
-                  h.coinsEarned > 0 ||
-                  h.gemsEarned > 0,
-            )
-            .toList();
+        _dailyQuizHistory =
+            history
+                .where(
+                  (h) =>
+                      h.quizType == 'daily' ||
+                      h.coinsEarned > 0 ||
+                      h.gemsEarned > 0,
+                )
+                .toList();
         _loadingHistory = false;
       });
     }
@@ -68,8 +69,9 @@ class _RewardsScreenState extends State<RewardsScreen> {
                   width: 84,
                   height: 84,
                   fit: BoxFit.contain,
-                  errorBuilder: (_, __, ___) =>
-                      Image.asset(AppAssets.giftBox, width: 70, height: 70),
+                  errorBuilder:
+                      (_, __, ___) =>
+                          Image.asset(AppAssets.giftBox, width: 70, height: 70),
                 ),
                 const SizedBox(width: 14),
                 Expanded(

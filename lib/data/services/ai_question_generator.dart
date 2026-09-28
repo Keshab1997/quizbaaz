@@ -327,10 +327,11 @@ class AiQuestionGenerator {
       requested: count,
       accepted: results.length,
       rejected: rejectedCount,
-      message: results.length < count
-          ? 'Produced ${results.length} of $count — '
-                '$rejectedCount draft(s) did not pass the checks.'
-          : 'Ready for review.',
+      message:
+          results.length < count
+              ? 'Produced ${results.length} of $count — '
+                  '$rejectedCount draft(s) did not pass the checks.'
+              : 'Ready for review.',
       results: results,
     );
   }
@@ -583,9 +584,10 @@ class AiQuestionGenerator {
     if (verdict == null) return null;
 
     return VerificationVerdict(
-      verdict: const {'ok', 'wrong', 'unsure'}.contains(verdict)
-          ? verdict
-          : 'unsure',
+      verdict:
+          const {'ok', 'wrong', 'unsure'}.contains(verdict)
+              ? verdict
+              : 'unsure',
       suggestedIndex: (decoded['correct_index'] as num?)?.toInt(),
       reason: (decoded['reason'] as String?)?.trim() ?? '',
     );

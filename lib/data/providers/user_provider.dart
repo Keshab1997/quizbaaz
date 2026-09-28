@@ -599,9 +599,8 @@ class UserProvider extends ChangeNotifier {
       // Pull yesterday's champions / leaderboard, then only look at the
       // rows that actually belong to yesterday's winners.
       final champions = await _rankings.refreshChampions(limit: 10, days: 1);
-      final yesterdayWinners = champions
-          .where((c) => c.dateKey == yesterdayKey)
-          .toList();
+      final yesterdayWinners =
+          champions.where((c) => c.dateKey == yesterdayKey).toList();
       var userRank = -1;
 
       for (var i = 0; i < yesterdayWinners.length; i++) {
@@ -845,10 +844,14 @@ class UserProvider extends ChangeNotifier {
     );
     await _saveQuizHistory(history);
 
-    final outcome = isDaily && ranked && !_user.isGuest
-        // One counted score per competition day — see [DailyScoreLock].
-        ? await _settleDailyScore(score: score ?? 0, timeSeconds: timeSeconds)
-        : DailyScoreOutcome.notApplicable;
+    final outcome =
+        isDaily && ranked && !_user.isGuest
+            // One counted score per competition day — see [DailyScoreLock].
+            ? await _settleDailyScore(
+              score: score ?? 0,
+              timeSeconds: timeSeconds,
+            )
+            : DailyScoreOutcome.notApplicable;
 
     await SyncService.pushUser(_user);
     await SyncService.pushStats(_user.userId, _stats);
@@ -1015,9 +1018,10 @@ class UserProvider extends ChangeNotifier {
       if (_user.avatarPath.startsWith('http://') ||
           _user.avatarPath.startsWith('https://') ||
           _user.avatarPath.isEmpty) {
-        _user.avatarPath = _user.gender == UserGender.male
-            ? 'assets/images/avatars/quizbaaz_avatar_boy.png'
-            : 'assets/images/avatars/quizbaaz_avatar_girl.png';
+        _user.avatarPath =
+            _user.gender == UserGender.male
+                ? 'assets/images/avatars/quizbaaz_avatar_boy.png'
+                : 'assets/images/avatars/quizbaaz_avatar_girl.png';
       }
     } else {
       _user.avatarPath = avatarPath;
@@ -1089,9 +1093,10 @@ class UserProvider extends ChangeNotifier {
       username: username,
       fullName: fullName,
       gender: gender,
-      avatarPath: gender == UserGender.male
-          ? 'assets/images/avatars/quizbaaz_avatar_boy.png'
-          : 'assets/images/avatars/quizbaaz_avatar_girl.png',
+      avatarPath:
+          gender == UserGender.male
+              ? 'assets/images/avatars/quizbaaz_avatar_boy.png'
+              : 'assets/images/avatars/quizbaaz_avatar_girl.png',
     );
     notifyListeners();
     _persistUser();

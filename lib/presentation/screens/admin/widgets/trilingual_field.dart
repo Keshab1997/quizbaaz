@@ -76,9 +76,10 @@ class _TrilingualFieldState extends State<TrilingualField> {
         code: TextEditingController(
           // resolve() would fall back to English and make an empty Hindi look
           // filled — exactly the mistake this widget exists to prevent.
-          text: widget.initialValue.has(code)
-              ? widget.initialValue.resolve(code)
-              : '',
+          text:
+              widget.initialValue.has(code)
+                  ? widget.initialValue.resolve(code)
+                  : '',
         )..addListener(_emit),
     };
   }
@@ -102,9 +103,10 @@ class _TrilingualFieldState extends State<TrilingualField> {
         entry.key: entry.value.text.trim(),
   });
 
-  List<String> get _missing => kSupportedLanguageCodes
-      .where((code) => _controllers[code]!.text.trim().isEmpty)
-      .toList();
+  List<String> get _missing =>
+      kSupportedLanguageCodes
+          .where((code) => _controllers[code]!.text.trim().isEmpty)
+          .toList();
 
   Future<void> _translate() async {
     final english = _controllers['en']!.text.trim();
@@ -175,9 +177,10 @@ class _TrilingualFieldState extends State<TrilingualField> {
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
               borderSide: BorderSide(
-                color: widget.required && missing.isNotEmpty
-                    ? AppColors.neonGold.withValues(alpha: 0.4)
-                    : Colors.white12,
+                color:
+                    widget.required && missing.isNotEmpty
+                        ? AppColors.neonGold.withValues(alpha: 0.4)
+                        : Colors.white12,
               ),
             ),
             focusedBorder: OutlineInputBorder(
@@ -212,13 +215,15 @@ class _TrilingualFieldState extends State<TrilingualField> {
           padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 5),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
-            color: selected
-                ? AppColors.neonCyan.withValues(alpha: 0.18)
-                : Colors.white.withValues(alpha: 0.05),
+            color:
+                selected
+                    ? AppColors.neonCyan.withValues(alpha: 0.18)
+                    : Colors.white.withValues(alpha: 0.05),
             border: Border.all(
-              color: selected
-                  ? AppColors.neonCyan.withValues(alpha: 0.6)
-                  : Colors.white12,
+              color:
+                  selected
+                      ? AppColors.neonCyan.withValues(alpha: 0.6)
+                      : Colors.white12,
             ),
           ),
           child: Row(
@@ -230,9 +235,8 @@ class _TrilingualFieldState extends State<TrilingualField> {
                   fontSize: 10.5,
                   fontWeight: FontWeight.w900,
                   letterSpacing: 0.4,
-                  color: selected
-                      ? AppColors.neonCyan
-                      : AppColors.textSecondary,
+                  color:
+                      selected ? AppColors.neonCyan : AppColors.textSecondary,
                 ),
               ),
               const SizedBox(width: 5),
@@ -272,9 +276,8 @@ class _TrilingualFieldState extends State<TrilingualField> {
     }
 
     final names = missing.map(_languageName).join(', ');
-    final colour = widget.required
-        ? AppColors.neonGold
-        : AppColors.textSecondary;
+    final colour =
+        widget.required ? AppColors.neonGold : AppColors.textSecondary;
 
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -301,20 +304,21 @@ class _TrilingualFieldState extends State<TrilingualField> {
         minimumSize: const Size(0, 30),
         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
       ),
-      icon: _translating
-          ? const SizedBox(
-              width: 12,
-              height: 12,
-              child: CircularProgressIndicator(
-                strokeWidth: 2,
+      icon:
+          _translating
+              ? const SizedBox(
+                width: 12,
+                height: 12,
+                child: CircularProgressIndicator(
+                  strokeWidth: 2,
+                  color: AppColors.neonCyan,
+                ),
+              )
+              : const Icon(
+                Icons.auto_awesome_rounded,
+                size: 14,
                 color: AppColors.neonCyan,
               ),
-            )
-          : const Icon(
-              Icons.auto_awesome_rounded,
-              size: 14,
-              color: AppColors.neonCyan,
-            ),
       label: Text(
         _translating ? 'Translating…' : 'Fill from English',
         style: const TextStyle(fontSize: 11.5, color: AppColors.neonCyan),

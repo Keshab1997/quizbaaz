@@ -41,10 +41,11 @@ class CategoryModel {
       categoryIcon: json['category_icon'] ?? '',
       colorHex: json['color_hex'] ?? '#3B82F6',
       totalChapters: (json['total_chapters'] as num?)?.toInt() ?? 0,
-      chapters: (json['chapters'] as List? ?? const [])
-          .whereType<Map>()
-          .map((c) => ChapterModel.fromJson(Map<String, dynamic>.from(c)))
-          .toList(),
+      chapters:
+          (json['chapters'] as List? ?? const [])
+              .whereType<Map>()
+              .map((c) => ChapterModel.fromJson(Map<String, dynamic>.from(c)))
+              .toList(),
     );
   }
 

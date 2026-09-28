@@ -217,11 +217,12 @@ class HiveService {
 
   /// Saves a quiz result to the history list (newest first, max 100 entries).
   static Future<void> saveQuizHistory(Map<String, dynamic> result) async {
-    final List<dynamic> existing = _statsBox.get(_quizHistoryKey) != null
-        ? List<dynamic>.from(
-            jsonDecode(_statsBox.get(_quizHistoryKey) as String) as List,
-          )
-        : [];
+    final List<dynamic> existing =
+        _statsBox.get(_quizHistoryKey) != null
+            ? List<dynamic>.from(
+              jsonDecode(_statsBox.get(_quizHistoryKey) as String) as List,
+            )
+            : [];
     existing.insert(0, result); // newest first
     if (existing.length > 100) existing.removeLast(); // keep max 100
     await _statsBox.put(_quizHistoryKey, jsonEncode(existing));
@@ -284,9 +285,10 @@ class HiveService {
   /// Marks a live room as paid out on this device (single-award guard).
   static Future<bool> markBattleRoomProcessed(String roomId) async {
     final raw = _statsBox.get(_battleProcessedRoomsKey);
-    final List<String> processed = raw is String
-        ? (jsonDecode(raw) as List).map((e) => e.toString()).toList()
-        : <String>[];
+    final List<String> processed =
+        raw is String
+            ? (jsonDecode(raw) as List).map((e) => e.toString()).toList()
+            : <String>[];
     if (processed.contains(roomId)) return false;
     processed.add(roomId);
     if (processed.length > battleProcessedRoomsCap) {
@@ -350,22 +352,23 @@ class HiveService {
     final now = DateTime.now();
 
     final existing = all[key];
-    final updated = existing == null
-        ? ChapterSetProgress(
-            chapterId: chapterId,
-            setIndex: setIndex,
-            bestScore: score,
-            bestCorrect: correct,
-            totalQuestions: total,
-            completedAt: now,
-            lastPlayedAt: now,
-          )
-        : existing.merge(
-            score: score,
-            correct: correct,
-            total: total,
-            playedAt: now,
-          );
+    final updated =
+        existing == null
+            ? ChapterSetProgress(
+              chapterId: chapterId,
+              setIndex: setIndex,
+              bestScore: score,
+              bestCorrect: correct,
+              totalQuestions: total,
+              completedAt: now,
+              lastPlayedAt: now,
+            )
+            : existing.merge(
+              score: score,
+              correct: correct,
+              total: total,
+              playedAt: now,
+            );
 
     all[key] = updated;
     await _statsBox.put(
@@ -404,11 +407,12 @@ class HiveService {
 
   /// Saves a purchase to the history list (newest first, max 100 entries).
   static Future<void> savePurchaseHistory(Map<String, dynamic> purchase) async {
-    final List<dynamic> existing = _statsBox.get(_purchaseHistoryKey) != null
-        ? List<dynamic>.from(
-            jsonDecode(_statsBox.get(_purchaseHistoryKey) as String) as List,
-          )
-        : [];
+    final List<dynamic> existing =
+        _statsBox.get(_purchaseHistoryKey) != null
+            ? List<dynamic>.from(
+              jsonDecode(_statsBox.get(_purchaseHistoryKey) as String) as List,
+            )
+            : [];
     existing.insert(0, purchase); // newest first
     if (existing.length > 100) existing.removeLast(); // keep max 100
     await _statsBox.put(_purchaseHistoryKey, jsonEncode(existing));

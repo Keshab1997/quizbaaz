@@ -16,9 +16,10 @@ class AppTheme {
   /// Poppins covers Devanagari, so two families cover all three languages.
   static ThemeData darkThemeFor(String languageCode) {
     final base = ThemeData.dark(useMaterial3: true);
-    final textTheme = languageCode == 'bn'
-        ? GoogleFonts.hindSiliguriTextTheme(base.textTheme)
-        : GoogleFonts.poppinsTextTheme(base.textTheme);
+    final textTheme =
+        languageCode == 'bn'
+            ? GoogleFonts.hindSiliguriTextTheme(base.textTheme)
+            : GoogleFonts.poppinsTextTheme(base.textTheme);
     return base.copyWith(
       brightness: Brightness.dark,
       scaffoldBackgroundColor: Colors.transparent,

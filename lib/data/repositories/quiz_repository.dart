@@ -131,11 +131,13 @@ class QuizRepository {
     return categories
         .map(
           (category) => category.copyWith(
-            chapters: category.chapters
-                .where(
-                  (chapter) => chapter.isEnabled && chapter.totalQuestions > 0,
-                )
-                .toList(),
+            chapters:
+                category.chapters
+                    .where(
+                      (chapter) =>
+                          chapter.isEnabled && chapter.totalQuestions > 0,
+                    )
+                    .toList(),
           ),
         )
         .where((category) => category.chapters.isNotEmpty)
@@ -170,9 +172,10 @@ class QuizRepository {
 
     final assetRows = await _readJsonList(jsonFilePath, 'questions');
 
-    final remoteRows = chapterId == null
-        ? const <Map<String, dynamic>>[]
-        : await _fetchRemoteQuestions(chapterId);
+    final remoteRows =
+        chapterId == null
+            ? const <Map<String, dynamic>>[]
+            : await _fetchRemoteQuestions(chapterId);
 
     final merged = _mergeById(assetRows, remoteRows);
     if (merged.isNotEmpty) {
@@ -199,19 +202,20 @@ class QuizRepository {
     return categories
         .map(
           (category) => category.copyWith(
-            chapters: category.chapters.map((chapter) {
-              final remote = remoteCounts[chapter.chapterId] ?? 0;
-              if (remote == 0) return chapter;
-              // Already bundled — most likely pulled in by
-              // tool/pull_firestore_questions.py, so the live count is a
-              // subset of what the card already shows. Adding it again
-              // would advertise double. Until the next pull refreshes
-              // total_questions, the bundle is the better number.
-              if (chapter.totalQuestions > 0) return chapter;
-              return chapter.copyWith(
-                totalQuestions: chapter.totalQuestions + remote,
-              );
-            }).toList(),
+            chapters:
+                category.chapters.map((chapter) {
+                  final remote = remoteCounts[chapter.chapterId] ?? 0;
+                  if (remote == 0) return chapter;
+                  // Already bundled — most likely pulled in by
+                  // tool/pull_firestore_questions.py, so the live count is a
+                  // subset of what the card already shows. Adding it again
+                  // would advertise double. Until the next pull refreshes
+                  // total_questions, the bundle is the better number.
+                  if (chapter.totalQuestions > 0) return chapter;
+                  return chapter.copyWith(
+                    totalQuestions: chapter.totalQuestions + remote,
+                  );
+                }).toList(),
           ),
         )
         .toList();

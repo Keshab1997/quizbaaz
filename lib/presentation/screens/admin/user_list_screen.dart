@@ -121,27 +121,30 @@ class _UserListScreenState extends State<UserListScreen> {
               _buildStatsRow(users, isLoading),
               const SizedBox(height: 16),
               Expanded(
-                child: isLoading
-                    ? const Center(
-                        child: CircularProgressIndicator(
-                          color: AppColors.neonCyan,
-                        ),
-                      )
-                    : snapshot.hasError
-                    ? _buildEmptyState(
-                        'Failed to load users',
-                        Icons.error_outline_rounded,
-                        detail: ShopService.lastError,
-                      )
-                    : filteredUsers.isEmpty
-                    ? _buildEmptyState(
-                        widget.isGuestView ? 'No Guest Users' : 'No Users Yet',
-                        widget.isGuestView
-                            ? Icons.person_outline_rounded
-                            : Icons.people_rounded,
-                        detail: ShopService.lastError,
-                      )
-                    : _buildUserList(filteredUsers),
+                child:
+                    isLoading
+                        ? const Center(
+                          child: CircularProgressIndicator(
+                            color: AppColors.neonCyan,
+                          ),
+                        )
+                        : snapshot.hasError
+                        ? _buildEmptyState(
+                          'Failed to load users',
+                          Icons.error_outline_rounded,
+                          detail: ShopService.lastError,
+                        )
+                        : filteredUsers.isEmpty
+                        ? _buildEmptyState(
+                          widget.isGuestView
+                              ? 'No Guest Users'
+                              : 'No Users Yet',
+                          widget.isGuestView
+                              ? Icons.person_outline_rounded
+                              : Icons.people_rounded,
+                          detail: ShopService.lastError,
+                        )
+                        : _buildUserList(filteredUsers),
               ),
             ],
           );
@@ -166,18 +169,19 @@ class _UserListScreenState extends State<UserListScreen> {
             Icons.search_rounded,
             color: AppColors.neonCyan,
           ),
-          suffixIcon: _searchQuery.isNotEmpty
-              ? IconButton(
-                  icon: const Icon(
-                    Icons.clear_rounded,
-                    color: AppColors.textMuted,
-                  ),
-                  onPressed: () {
-                    _searchController.clear();
-                    setState(() => _searchQuery = '');
-                  },
-                )
-              : null,
+          suffixIcon:
+              _searchQuery.isNotEmpty
+                  ? IconButton(
+                    icon: const Icon(
+                      Icons.clear_rounded,
+                      color: AppColors.textMuted,
+                    ),
+                    onPressed: () {
+                      _searchController.clear();
+                      setState(() => _searchQuery = '');
+                    },
+                  )
+                  : null,
           filled: true,
           fillColor: Colors.white.withValues(alpha: 0.05),
           border: OutlineInputBorder(
@@ -320,17 +324,21 @@ class _UserListScreenState extends State<UserListScreen> {
             if (value == 'admin') _toggleAdmin(user);
             if (value == 'delete') _showDeleteUserDialog(user);
           },
-          itemBuilder: (context) => [
-            const PopupMenuItem(value: 'edit', child: Text('Edit')),
-            PopupMenuItem(
-              value: 'admin',
-              child: Text(isAdmin ? 'Remove Admin' : 'Make Admin'),
-            ),
-            const PopupMenuItem(
-              value: 'delete',
-              child: Text('Delete', style: TextStyle(color: AppColors.neonRed)),
-            ),
-          ],
+          itemBuilder:
+              (context) => [
+                const PopupMenuItem(value: 'edit', child: Text('Edit')),
+                PopupMenuItem(
+                  value: 'admin',
+                  child: Text(isAdmin ? 'Remove Admin' : 'Make Admin'),
+                ),
+                const PopupMenuItem(
+                  value: 'delete',
+                  child: Text(
+                    'Delete',
+                    style: TextStyle(color: AppColors.neonRed),
+                  ),
+                ),
+              ],
         ),
       ),
     );
@@ -392,74 +400,79 @@ class _UserListScreenState extends State<UserListScreen> {
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
       ),
-      builder: (ctx) => Padding(
-        padding: EdgeInsets.fromLTRB(
-          20,
-          20,
-          20,
-          MediaQuery.of(ctx).viewInsets.bottom + 20,
-        ),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                'Edit User',
-                style: TextStyle(
-                  color: AppColors.textPrimary,
-                  fontSize: 20,
-                  fontWeight: FontWeight.w900,
-                ),
-              ),
-              const SizedBox(height: 16),
-              _sheetField(usernameController, S.profileUsername),
-              const SizedBox(height: 12),
-              _sheetField(fullNameController, 'Full Name'),
-              const SizedBox(height: 12),
-              Row(
+      builder:
+          (ctx) => Padding(
+            padding: EdgeInsets.fromLTRB(
+              20,
+              20,
+              20,
+              MediaQuery.of(ctx).viewInsets.bottom + 20,
+            ),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Expanded(
-                    child: _sheetField(
-                      coinsController,
-                      S.coins,
-                      TextInputType.number,
+                  const Text(
+                    'Edit User',
+                    style: TextStyle(
+                      color: AppColors.textPrimary,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w900,
                     ),
                   ),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    child: _sheetField(
-                      gemsController,
-                      S.gems,
-                      TextInputType.number,
+                  const SizedBox(height: 16),
+                  _sheetField(usernameController, S.profileUsername),
+                  const SizedBox(height: 12),
+                  _sheetField(fullNameController, 'Full Name'),
+                  const SizedBox(height: 12),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: _sheetField(
+                          coinsController,
+                          S.coins,
+                          TextInputType.number,
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: _sheetField(
+                          gemsController,
+                          S.gems,
+                          TextInputType.number,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 20),
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: () async {
+                        final navigator = Navigator.of(ctx);
+                        final ok = await ShopService.updateUser(_userId(user), {
+                          'username': usernameController.text.trim(),
+                          'full_name': fullNameController.text.trim(),
+                          'coins':
+                              int.tryParse(coinsController.text.trim()) ?? 0,
+                          'gems': int.tryParse(gemsController.text.trim()) ?? 0,
+                        });
+                        if (!mounted) return;
+                        navigator.pop();
+                        _showSnack(
+                          ok ? '✅ User updated' : '❌ Update failed',
+                          ok,
+                        );
+                        if (ok) setState(_refreshUsers);
+                      },
+                      child: Text(S.save),
                     ),
                   ),
                 ],
               ),
-              const SizedBox(height: 20),
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () async {
-                    final navigator = Navigator.of(ctx);
-                    final ok = await ShopService.updateUser(_userId(user), {
-                      'username': usernameController.text.trim(),
-                      'full_name': fullNameController.text.trim(),
-                      'coins': int.tryParse(coinsController.text.trim()) ?? 0,
-                      'gems': int.tryParse(gemsController.text.trim()) ?? 0,
-                    });
-                    if (!mounted) return;
-                    navigator.pop();
-                    _showSnack(ok ? '✅ User updated' : '❌ Update failed', ok);
-                    if (ok) setState(_refreshUsers);
-                  },
-                  child: Text(S.save),
-                ),
-              ),
-            ],
+            ),
           ),
-        ),
-      ),
     );
   }
 
@@ -511,35 +524,36 @@ class _UserListScreenState extends State<UserListScreen> {
   void _showDeleteUserDialog(Map<String, dynamic> user) {
     showDialog(
       context: context,
-      builder: (ctx) => AlertDialog(
-        backgroundColor: AppColors.bgCard,
-        title: const Text('Delete User?'),
-        content: Text('Delete "${_displayName(user)}" from Firestore?'),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(ctx),
-            child: Text(S.cancel),
+      builder:
+          (ctx) => AlertDialog(
+            backgroundColor: AppColors.bgCard,
+            title: const Text('Delete User?'),
+            content: Text('Delete "${_displayName(user)}" from Firestore?'),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(ctx),
+                child: Text(S.cancel),
+              ),
+              TextButton(
+                onPressed: () async {
+                  Navigator.pop(ctx);
+                  final ok = await ShopService.deleteUser(_userId(user));
+                  if (!mounted) return;
+                  _showSnack(
+                    ok
+                        ? '✅ User deleted'
+                        : '❌ ${ShopService.lastError ?? 'Delete failed'}',
+                    ok,
+                  );
+                  if (ok) setState(_refreshUsers);
+                },
+                child: const Text(
+                  'Delete',
+                  style: TextStyle(color: AppColors.neonRed),
+                ),
+              ),
+            ],
           ),
-          TextButton(
-            onPressed: () async {
-              Navigator.pop(ctx);
-              final ok = await ShopService.deleteUser(_userId(user));
-              if (!mounted) return;
-              _showSnack(
-                ok
-                    ? '✅ User deleted'
-                    : '❌ ${ShopService.lastError ?? 'Delete failed'}',
-                ok,
-              );
-              if (ok) setState(_refreshUsers);
-            },
-            child: const Text(
-              'Delete',
-              style: TextStyle(color: AppColors.neonRed),
-            ),
-          ),
-        ],
-      ),
     );
   }
 

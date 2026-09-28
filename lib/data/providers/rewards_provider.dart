@@ -56,9 +56,9 @@ class RewardsProvider extends ChangeNotifier {
 
   List<GiftClaim> _loadFromHive() {
     try {
-      return HiveService.cacheGetList(_cacheKey)
-          .map(GiftClaim.fromJson)
-          .toList();
+      return HiveService.cacheGetList(
+        _cacheKey,
+      ).map(GiftClaim.fromJson).toList();
     } catch (e) {
       debugPrint('RewardsProvider: bad cached gifts – $e');
       return const [];

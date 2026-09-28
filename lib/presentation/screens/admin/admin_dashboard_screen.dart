@@ -270,62 +270,68 @@ class AdminDashboardScreen extends StatelessWidget {
           label: 'User List',
           description: 'View all registered users',
           color: AppColors.neonCyan,
-          onTap: () => Navigator.push(
-            context,
-            MaterialPageRoute(builder: (_) => const UserListScreen()),
-          ),
+          onTap:
+              () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const UserListScreen()),
+              ),
         ),
         _buildManagementCard(
           icon: Icons.person_outline_rounded,
           label: 'Guest List',
           description: 'View all guest users',
           color: AppColors.neonPurple,
-          onTap: () => Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (_) => const UserListScreen(isGuestView: true),
-            ),
-          ),
+          onTap:
+              () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => const UserListScreen(isGuestView: true),
+                ),
+              ),
         ),
         _buildManagementCard(
           icon: Icons.menu_book_rounded,
           label: 'Chapter Manager',
           description: 'Subjects, chapters & question banks',
           color: AppColors.neonGreen,
-          onTap: () => Navigator.push(
-            context,
-            MaterialPageRoute(builder: (_) => const ChapterManagerScreen()),
-          ),
+          onTap:
+              () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const ChapterManagerScreen()),
+              ),
         ),
         _buildManagementCard(
           icon: Icons.vpn_key_rounded,
           label: 'API Keys',
           description: 'LLM keys for question generation',
           color: AppColors.neonRed,
-          onTap: () => Navigator.push(
-            context,
-            MaterialPageRoute(builder: (_) => const AdminApiKeysScreen()),
-          ),
+          onTap:
+              () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const AdminApiKeysScreen()),
+              ),
         ),
         _buildManagementCard(
           icon: Icons.store_rounded,
           label: 'Shop Manager',
           description: 'Manage shop items',
           color: AppColors.neonGold,
-          onTap: () => Navigator.push(
-            context,
-            MaterialPageRoute(builder: (_) => const ShopManagerScreen()),
-          ),
+          onTap:
+              () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const ShopManagerScreen()),
+              ),
         ),
         _buildManagementCard(
           icon: Icons.face_rounded,
           label: 'Avatar Manager',
           description: 'Manage avatars',
           color: AppColors.neonPink,
-          onTap: () => Navigator.push(
-            context,
-            MaterialPageRoute(builder: (_) => const AvatarManagerScreen()),
-          ),
+          onTap:
+              () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const AvatarManagerScreen()),
+              ),
         ),
       ],
     );
@@ -395,24 +401,27 @@ class AdminDashboardScreen extends StatelessWidget {
           icon: Icons.add_rounded,
           label: 'Add New Shop Item',
           color: AppColors.neonGreen,
-          onTap: () => Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (_) => const ShopManagerScreen(initialAction: 'add'),
-            ),
-          ),
+          onTap:
+              () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => const ShopManagerScreen(initialAction: 'add'),
+                ),
+              ),
         ),
         const SizedBox(height: 10),
         _buildQuickAction(
           icon: Icons.add_photo_alternate_rounded,
           label: 'Add New Avatar',
           color: AppColors.neonPink,
-          onTap: () => Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (_) => const AvatarManagerScreen(initialAction: 'add'),
-            ),
-          ),
+          onTap:
+              () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder:
+                      (_) => const AvatarManagerScreen(initialAction: 'add'),
+                ),
+              ),
         ),
         const SizedBox(height: 10),
         _buildQuickAction(

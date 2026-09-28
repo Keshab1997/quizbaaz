@@ -44,9 +44,8 @@ class _QuizHistoryScreenState extends State<QuizHistoryScreen> {
     if (_filter == 'all') {
       _filteredHistory = _allHistory;
     } else {
-      _filteredHistory = _allHistory
-          .where((h) => h.quizType == _filter)
-          .toList();
+      _filteredHistory =
+          _allHistory.where((h) => h.quizType == _filter).toList();
     }
   }
 
@@ -84,13 +83,16 @@ class _QuizHistoryScreenState extends State<QuizHistoryScreen> {
           _buildStatsSummary(),
           _buildFilterChips(),
           Expanded(
-            child: _isLoading
-                ? const Center(
-                    child: CircularProgressIndicator(color: AppColors.neonCyan),
-                  )
-                : _filteredHistory.isEmpty
-                ? _buildEmptyState()
-                : _buildHistoryList(),
+            child:
+                _isLoading
+                    ? const Center(
+                      child: CircularProgressIndicator(
+                        color: AppColors.neonCyan,
+                      ),
+                    )
+                    : _filteredHistory.isEmpty
+                    ? _buildEmptyState()
+                    : _buildHistoryList(),
           ),
         ],
       ),
@@ -100,10 +102,11 @@ class _QuizHistoryScreenState extends State<QuizHistoryScreen> {
   Widget _buildStatsSummary() {
     final totalQuizzes = _allHistory.length;
     final totalScore = _allHistory.fold<int>(0, (sum, h) => sum + h.score);
-    final avgAccuracy = _allHistory.isEmpty
-        ? 0.0
-        : _allHistory.fold<double>(0, (sum, h) => sum + h.accuracy) /
-              _allHistory.length;
+    final avgAccuracy =
+        _allHistory.isEmpty
+            ? 0.0
+            : _allHistory.fold<double>(0, (sum, h) => sum + h.accuracy) /
+                _allHistory.length;
     final totalCoins = _allHistory.fold<int>(
       0,
       (sum, h) => sum + h.coinsEarned,
@@ -207,14 +210,16 @@ class _QuizHistoryScreenState extends State<QuizHistoryScreen> {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         decoration: BoxDecoration(
-          color: isSelected
-              ? AppColors.neonCyan.withValues(alpha: 0.2)
-              : Colors.white.withValues(alpha: 0.05),
+          color:
+              isSelected
+                  ? AppColors.neonCyan.withValues(alpha: 0.2)
+                  : Colors.white.withValues(alpha: 0.05),
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
-            color: isSelected
-                ? AppColors.neonCyan.withValues(alpha: 0.5)
-                : Colors.white.withValues(alpha: 0.1),
+            color:
+                isSelected
+                    ? AppColors.neonCyan.withValues(alpha: 0.5)
+                    : Colors.white.withValues(alpha: 0.1),
           ),
         ),
         child: Text(
@@ -329,17 +334,21 @@ class _QuizHistoryScreenState extends State<QuizHistoryScreen> {
                             vertical: 2,
                           ),
                           decoration: BoxDecoration(
-                            color: isDaily
-                                ? AppColors.neonGold.withValues(alpha: 0.15)
-                                : AppColors.neonPurple.withValues(alpha: 0.15),
+                            color:
+                                isDaily
+                                    ? AppColors.neonGold.withValues(alpha: 0.15)
+                                    : AppColors.neonPurple.withValues(
+                                      alpha: 0.15,
+                                    ),
                             borderRadius: BorderRadius.circular(6),
                           ),
                           child: Text(
                             isDaily ? S.historyDailyCaps : S.historyChapterCaps,
                             style: TextStyle(
-                              color: isDaily
-                                  ? AppColors.neonGold
-                                  : AppColors.neonPurple,
+                              color:
+                                  isDaily
+                                      ? AppColors.neonGold
+                                      : AppColors.neonPurple,
                               fontSize: 9,
                               fontWeight: FontWeight.w900,
                             ),

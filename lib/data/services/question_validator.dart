@@ -214,9 +214,10 @@ class QuestionValidator {
       );
     }
 
-    final near = existingStems.isEmpty
-        ? null
-        : QuestionFingerprint.findNearDuplicate(stem, existingStems);
+    final near =
+        existingStems.isEmpty
+            ? null
+            : QuestionFingerprint.findNearDuplicate(stem, existingStems);
 
     return ValidationResult(issues, nearDuplicate: near);
   }

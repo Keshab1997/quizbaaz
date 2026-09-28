@@ -119,24 +119,27 @@ class _StreakResetDialogState extends State<StreakResetDialog>
                         AppAssets.streakBroken3d,
                         height: 85,
                         fit: BoxFit.contain,
-                        errorBuilder: (_, __, ___) => Stack(
-                          alignment: Alignment.center,
-                          children: [
-                            Container(
-                              width: 80,
-                              height: 80,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: AppColors.neonRed.withValues(alpha: 0.2),
-                              ),
+                        errorBuilder:
+                            (_, __, ___) => Stack(
+                              alignment: Alignment.center,
+                              children: [
+                                Container(
+                                  width: 80,
+                                  height: 80,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: AppColors.neonRed.withValues(
+                                      alpha: 0.2,
+                                    ),
+                                  ),
+                                ),
+                                const Icon(
+                                  Icons.local_fire_department_rounded,
+                                  size: 60,
+                                  color: AppColors.neonRed,
+                                ),
+                              ],
                             ),
-                            const Icon(
-                              Icons.local_fire_department_rounded,
-                              size: 60,
-                              color: AppColors.neonRed,
-                            ),
-                          ],
-                        ),
                       ),
                     ],
                   ),
@@ -255,11 +258,12 @@ class _StreakResetDialogState extends State<StreakResetDialog>
                                 AppAssets.streakShield3d,
                                 width: 28,
                                 height: 28,
-                                errorBuilder: (_, __, ___) => const Icon(
-                                  Icons.shield_moon_rounded,
-                                  color: AppColors.neonGreen,
-                                  size: 26,
-                                ),
+                                errorBuilder:
+                                    (_, __, ___) => const Icon(
+                                      Icons.shield_moon_rounded,
+                                      color: AppColors.neonGreen,
+                                      size: 26,
+                                    ),
                               ),
                               const SizedBox(width: 8),
                               const Text(
@@ -362,11 +366,12 @@ class _StreakResetDialogState extends State<StreakResetDialog>
                                 AppAssets.streakShield3d,
                                 width: 36,
                                 height: 36,
-                                errorBuilder: (_, __, ___) => const Icon(
-                                  Icons.shield_moon_outlined,
-                                  color: AppColors.neonGold,
-                                  size: 32,
-                                ),
+                                errorBuilder:
+                                    (_, __, ___) => const Icon(
+                                      Icons.shield_moon_outlined,
+                                      color: AppColors.neonGold,
+                                      size: 32,
+                                    ),
                               ),
                               const SizedBox(width: 12),
                               const Expanded(

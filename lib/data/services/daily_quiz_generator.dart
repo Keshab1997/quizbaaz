@@ -114,10 +114,11 @@ class DailyQuizGenerator {
   Future<List<QuestionModel>> generateDailyQuestions({
     DateTime? date,
     bool forceRefresh = false,
-  }) async => (await generateDailySet(
-    date: date,
-    forceRefresh: forceRefresh,
-  )).questions;
+  }) async =>
+      (await generateDailySet(
+        date: date,
+        forceRefresh: forceRefresh,
+      )).questions;
 
   /// Pools every bundled + Firestore question the device can see, de-duplicated
   /// by stem.

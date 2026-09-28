@@ -105,9 +105,10 @@ class NotificationInbox extends ChangeNotifier {
       final updated = old.copyWith(
         title: incoming.title.trim().isNotEmpty ? incoming.title : old.title,
         body: incoming.body.trim().isNotEmpty ? incoming.body : old.body,
-        open: (incoming.open != null && incoming.open!.isNotEmpty)
-            ? incoming.open
-            : old.open,
+        open:
+            (incoming.open != null && incoming.open!.isNotEmpty)
+                ? incoming.open
+                : old.open,
         // Once read, a second delivery of the same id stays read.
         read: old.read,
       );

@@ -168,8 +168,8 @@ class AdService extends ChangeNotifier {
         ad.dispose();
         _interstitialAd = null;
       },
-      onAdShowedFullScreenContent: (ad) =>
-          debugPrint('AdService: interstitial shown'),
+      onAdShowedFullScreenContent:
+          (ad) => debugPrint('AdService: interstitial shown'),
     );
 
     try {

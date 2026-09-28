@@ -167,23 +167,24 @@ class _AvatarManagerScreenState extends State<AvatarManagerScreen> {
                 ),
               ),
               Expanded(
-                child: isLoading
-                    ? const Center(
-                        child: CircularProgressIndicator(
-                          color: AppColors.neonPink,
-                        ),
-                      )
-                    : snapshot.hasError
-                    ? _buildEmptyState(
-                        'Failed to load avatars',
-                        detail: ShopService.lastError,
-                      )
-                    : filteredAvatars.isEmpty
-                    ? _buildEmptyState(
-                        'No Firestore avatars found',
-                        detail: ShopService.lastError,
-                      )
-                    : _buildAvatarGrid(filteredAvatars),
+                child:
+                    isLoading
+                        ? const Center(
+                          child: CircularProgressIndicator(
+                            color: AppColors.neonPink,
+                          ),
+                        )
+                        : snapshot.hasError
+                        ? _buildEmptyState(
+                          'Failed to load avatars',
+                          detail: ShopService.lastError,
+                        )
+                        : filteredAvatars.isEmpty
+                        ? _buildEmptyState(
+                          'No Firestore avatars found',
+                          detail: ShopService.lastError,
+                        )
+                        : _buildAvatarGrid(filteredAvatars),
               ),
             ],
           );
@@ -227,14 +228,16 @@ class _AvatarManagerScreenState extends State<AvatarManagerScreen> {
                   vertical: 6,
                 ),
                 decoration: BoxDecoration(
-                  color: isSelected
-                      ? AppColors.neonPurple.withValues(alpha: 0.2)
-                      : Colors.white.withValues(alpha: 0.05),
+                  color:
+                      isSelected
+                          ? AppColors.neonPurple.withValues(alpha: 0.2)
+                          : Colors.white.withValues(alpha: 0.05),
                   borderRadius: BorderRadius.circular(16),
                   border: Border.all(
-                    color: isSelected
-                        ? AppColors.neonPurple.withValues(alpha: 0.5)
-                        : Colors.white.withValues(alpha: 0.1),
+                    color:
+                        isSelected
+                            ? AppColors.neonPurple.withValues(alpha: 0.5)
+                            : Colors.white.withValues(alpha: 0.1),
                   ),
                 ),
                 child: Text(
@@ -242,9 +245,10 @@ class _AvatarManagerScreenState extends State<AvatarManagerScreen> {
                   style: TextStyle(
                     fontSize: 11,
                     fontWeight: isSelected ? FontWeight.w800 : FontWeight.w600,
-                    color: isSelected
-                        ? AppColors.neonPurple
-                        : AppColors.textSecondary,
+                    color:
+                        isSelected
+                            ? AppColors.neonPurple
+                            : AppColors.textSecondary,
                   ),
                 ),
               ),
@@ -272,23 +276,25 @@ class _AvatarManagerScreenState extends State<AvatarManagerScreen> {
   Widget _buildAvatarCard(_AdminAvatar avatar) {
     return GlassCard(
       borderRadius: 16,
-      borderColor: avatar.isPremium
-          ? AppColors.neonGold.withValues(alpha: 0.3)
-          : Colors.white.withValues(alpha: 0.1),
+      borderColor:
+          avatar.isPremium
+              ? AppColors.neonGold.withValues(alpha: 0.3)
+              : Colors.white.withValues(alpha: 0.1),
       child: Stack(
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(14),
-            child: avatar.imageUrl.isNotEmpty
-                ? CachedAvatar(
-                    url: avatar.imageUrl,
-                    fit: BoxFit.cover,
-                    width: double.infinity,
-                    height: double.infinity,
-                    progressColor: AppColors.neonPink,
-                    fallbackBuilder: (_) => _avatarPlaceholder(),
-                  )
-                : _avatarPlaceholder(),
+            child:
+                avatar.imageUrl.isNotEmpty
+                    ? CachedAvatar(
+                      url: avatar.imageUrl,
+                      fit: BoxFit.cover,
+                      width: double.infinity,
+                      height: double.infinity,
+                      progressColor: AppColors.neonPink,
+                      fallbackBuilder: (_) => _avatarPlaceholder(),
+                    )
+                    : _avatarPlaceholder(),
           ),
           if (avatar.isPremium)
             Positioned(
@@ -353,38 +359,39 @@ class _AvatarManagerScreenState extends State<AvatarManagerScreen> {
                       color: Colors.white,
                       size: 16,
                     ),
-                    itemBuilder: (context) => const [
-                      PopupMenuItem(
-                        value: 'edit',
-                        child: Row(
-                          children: [
-                            Icon(Icons.edit_rounded, size: 14),
-                            SizedBox(width: 6),
-                            Text('Edit', style: TextStyle(fontSize: 12)),
-                          ],
-                        ),
-                      ),
-                      PopupMenuItem(
-                        value: 'delete',
-                        child: Row(
-                          children: [
-                            Icon(
-                              Icons.delete_rounded,
-                              size: 14,
-                              color: AppColors.neonRed,
+                    itemBuilder:
+                        (context) => const [
+                          PopupMenuItem(
+                            value: 'edit',
+                            child: Row(
+                              children: [
+                                Icon(Icons.edit_rounded, size: 14),
+                                SizedBox(width: 6),
+                                Text('Edit', style: TextStyle(fontSize: 12)),
+                              ],
                             ),
-                            SizedBox(width: 6),
-                            Text(
-                              'Delete',
-                              style: TextStyle(
-                                fontSize: 12,
-                                color: AppColors.neonRed,
-                              ),
+                          ),
+                          PopupMenuItem(
+                            value: 'delete',
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.delete_rounded,
+                                  size: 14,
+                                  color: AppColors.neonRed,
+                                ),
+                                SizedBox(width: 6),
+                                Text(
+                                  'Delete',
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: AppColors.neonRed,
+                                  ),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
-                      ),
-                    ],
+                          ),
+                        ],
                     onSelected: (value) {
                       if (value == 'edit') _showEditAvatarSheet(avatar);
                       if (value == 'delete') _showDeleteDialog(avatar);
@@ -464,41 +471,41 @@ class _AvatarManagerScreenState extends State<AvatarManagerScreen> {
   void _showDeleteDialog(_AdminAvatar avatar) {
     showDialog(
       context: context,
-      builder: (ctx) => AlertDialog(
-        backgroundColor: AppColors.bgCard,
-        title: const Text('Delete Avatar?'),
-        content: Text('Delete "${avatar.name}" from Firestore?'),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(ctx),
-            child: Text(S.cancel),
-          ),
-          TextButton(
-            onPressed: () async {
-              Navigator.pop(ctx);
-              final success = await ShopService.deleteAvatar(avatar.id);
-              if (!mounted) return;
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(
-                    success
-                        ? '✅ Avatar deleted'
-                        : '❌ ${ShopService.lastError ?? 'Delete failed'}',
-                  ),
-                  backgroundColor: success
-                      ? AppColors.neonGreen
-                      : AppColors.neonRed,
+      builder:
+          (ctx) => AlertDialog(
+            backgroundColor: AppColors.bgCard,
+            title: const Text('Delete Avatar?'),
+            content: Text('Delete "${avatar.name}" from Firestore?'),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(ctx),
+                child: Text(S.cancel),
+              ),
+              TextButton(
+                onPressed: () async {
+                  Navigator.pop(ctx);
+                  final success = await ShopService.deleteAvatar(avatar.id);
+                  if (!mounted) return;
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(
+                        success
+                            ? '✅ Avatar deleted'
+                            : '❌ ${ShopService.lastError ?? 'Delete failed'}',
+                      ),
+                      backgroundColor:
+                          success ? AppColors.neonGreen : AppColors.neonRed,
+                    ),
+                  );
+                  if (success) setState(_refreshAvatars);
+                },
+                child: const Text(
+                  'Delete',
+                  style: TextStyle(color: AppColors.neonRed),
                 ),
-              );
-              if (success) setState(_refreshAvatars);
-            },
-            child: const Text(
-              'Delete',
-              style: TextStyle(color: AppColors.neonRed),
-            ),
+              ),
+            ],
           ),
-        ],
-      ),
     );
   }
 }
@@ -531,9 +538,10 @@ class _AddEditAvatarSheetState extends State<_AddEditAvatarSheet> {
     );
     _selectedCategory = widget.avatar?.category ?? 'male';
     _isPremium = widget.avatar?.isPremium ?? false;
-    _uploadedImageUrl = widget.avatar?.imageUrl.isNotEmpty == true
-        ? widget.avatar!.imageUrl
-        : null;
+    _uploadedImageUrl =
+        widget.avatar?.imageUrl.isNotEmpty == true
+            ? widget.avatar!.imageUrl
+            : null;
   }
 
   Future<void> _pickImage() async {
@@ -676,10 +684,11 @@ class _AddEditAvatarSheetState extends State<_AddEditAvatarSheet> {
                   child: Text(S.avatarPremium),
                 ),
               ],
-              onChanged: (value) => setState(() {
-                _selectedCategory = value!;
-                if (value == 'premium') _isPremium = true;
-              }),
+              onChanged:
+                  (value) => setState(() {
+                    _selectedCategory = value!;
+                    if (value == 'premium') _isPremium = true;
+                  }),
             ),
             const SizedBox(height: 16),
             // Own Material so the tile ink paints above the sheet's
@@ -766,9 +775,10 @@ class _AddEditAvatarSheetState extends State<_AddEditAvatarSheet> {
         color: Colors.white.withValues(alpha: 0.03),
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
-          color: hasRemoteImage
-              ? AppColors.neonGreen.withValues(alpha: 0.5)
-              : AppColors.neonPink.withValues(alpha: 0.2),
+          color:
+              hasRemoteImage
+                  ? AppColors.neonGreen.withValues(alpha: 0.5)
+                  : AppColors.neonPink.withValues(alpha: 0.2),
         ),
       ),
       child: Column(
@@ -918,8 +928,8 @@ class _AddEditAvatarSheetState extends State<_AddEditAvatarSheet> {
           content: Text(
             success
                 ? (widget.avatar == null
-                      ? '✅ Avatar added!'
-                      : '✅ Avatar updated!')
+                    ? '✅ Avatar added!'
+                    : '✅ Avatar updated!')
                 : '❌ ${ShopService.lastError ?? 'Failed to save. Try again.'}',
           ),
           backgroundColor: success ? AppColors.neonPink : AppColors.neonRed,

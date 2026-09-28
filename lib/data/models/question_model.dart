@@ -94,8 +94,8 @@ class QuestionModel {
   /// The correct option in the current UI language.
   String get correctAnswer =>
       correctIndex >= 0 && correctIndex < optionTexts.length
-      ? optionTexts[correctIndex].current
-      : '';
+          ? optionTexts[correctIndex].current
+          : '';
 
   /// True when every shipped language has its own copy of this question —
   /// what `tool/validate_questions.py` enforces before a bank is committed.
@@ -106,13 +106,14 @@ class QuestionModel {
   );
 
   /// Languages this question is still missing.
-  List<String> get missingLanguages => kSupportedLanguageCodes
-      .where(
-        (code) =>
-            !questionText.has(code) ||
-            optionTexts.any((option) => !option.has(code)),
-      )
-      .toList();
+  List<String> get missingLanguages =>
+      kSupportedLanguageCodes
+          .where(
+            (code) =>
+                !questionText.has(code) ||
+                optionTexts.any((option) => !option.has(code)),
+          )
+          .toList();
 
   /// A copy with the options in a random order and [correctIndex] moved to
   /// follow the answer.

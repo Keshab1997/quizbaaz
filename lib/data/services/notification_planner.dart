@@ -32,9 +32,10 @@ class NotificationPlanner {
   }) {
     if (days <= 0) return const [];
     final todayAt = DateTime(now.year, now.month, now.day, hour, minute);
-    final start = (!playedToday && now.isBefore(todayAt))
-        ? todayAt
-        : todayAt.add(const Duration(days: 1));
+    final start =
+        (!playedToday && now.isBefore(todayAt))
+            ? todayAt
+            : todayAt.add(const Duration(days: 1));
     return List<DateTime>.generate(days, (i) => start.add(Duration(days: i)));
   }
 

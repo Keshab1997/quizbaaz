@@ -82,10 +82,10 @@ class BattleQuestionGenerator {
       for (final category in categories) ...category.chapters,
     ];
 
-    final withContent = chapters.where((c) => c.totalQuestions > 0).toList()
-      ..shuffle(_rng);
-    final mayBeEmpty = chapters.where((c) => c.totalQuestions <= 0).toList()
-      ..shuffle(_rng);
+    final withContent =
+        chapters.where((c) => c.totalQuestions > 0).toList()..shuffle(_rng);
+    final mayBeEmpty =
+        chapters.where((c) => c.totalQuestions <= 0).toList()..shuffle(_rng);
     final ordered = [...withContent, ...mayBeEmpty];
 
     final results = <(String, QuestionModel)>[];
@@ -104,10 +104,8 @@ class BattleQuestionGenerator {
           for (final question in questions) {
             if (excludeIds.contains(question.id)) continue;
             if (!seenIds.add(question.id)) continue;
-            final stem = question.questionText
-                .resolve('en')
-                .trim()
-                .toLowerCase();
+            final stem =
+                question.questionText.resolve('en').trim().toLowerCase();
             if (stem.isEmpty || !seenStems.add(stem)) continue;
             results.add((chapter.chapterId, question));
           }

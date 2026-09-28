@@ -24,9 +24,9 @@ class LeaderboardRepository {
 
   /// Cached champions (may be empty).
   List<ChampionModel> cachedChampions() {
-    return HiveService.cacheGetList(HiveService.cacheChampions)
-        .map(ChampionModel.fromJson)
-        .toList();
+    return HiveService.cacheGetList(
+      HiveService.cacheChampions,
+    ).map(ChampionModel.fromJson).toList();
   }
 
   /// True when today's cached leaderboard is still fresh enough to skip a

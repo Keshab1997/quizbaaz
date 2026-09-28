@@ -152,13 +152,14 @@ class OnlinePresenceService {
     try {
       final cutoff = DateTime.now().subtract(staleAfter).millisecondsSinceEpoch;
 
-      final snapshot = await _db
-          .collection(collection)
-          .where('last_seen', isGreaterThan: cutoff)
-          .where('is_available', isEqualTo: true)
-          .orderBy('last_seen', descending: true)
-          .limit(50)
-          .get();
+      final snapshot =
+          await _db
+              .collection(collection)
+              .where('last_seen', isGreaterThan: cutoff)
+              .where('is_available', isEqualTo: true)
+              .orderBy('last_seen', descending: true)
+              .limit(50)
+              .get();
 
       return snapshot.docs
           .where((doc) => doc.id != excludeUid)
@@ -187,14 +188,16 @@ class OnlinePresenceService {
   /// Clean up stale entries (called periodically or on app start).
   Future<void> cleanupStaleEntries() async {
     try {
-      final cutoff = DateTime.now()
-          .subtract(staleAfter * 3) // 3x stale threshold
-          .millisecondsSinceEpoch;
+      final cutoff =
+          DateTime.now()
+              .subtract(staleAfter * 3) // 3x stale threshold
+              .millisecondsSinceEpoch;
 
-      final snapshot = await _db
-          .collection(collection)
-          .where('last_seen', isLessThan: cutoff)
-          .get();
+      final snapshot =
+          await _db
+              .collection(collection)
+              .where('last_seen', isLessThan: cutoff)
+              .get();
 
       final batch = _db.batch();
       for (final doc in snapshot.docs) {

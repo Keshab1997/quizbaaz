@@ -80,9 +80,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           child: Image.asset(
                             'assets/icons/app_icon_3d.png',
                             fit: BoxFit.cover,
-                            errorBuilder: (_, __, ___) => Image.asset(
-                              'assets/images/characters/quizbaaz_mascot_boy.png',
-                            ),
+                            errorBuilder:
+                                (_, __, ___) => Image.asset(
+                                  'assets/images/characters/quizbaaz_mascot_boy.png',
+                                ),
                           ),
                         ),
                       ),
@@ -184,20 +185,22 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         height: 8,
                         width: active ? 28 : 8,
                         decoration: BoxDecoration(
-                          color: active
-                              ? AppColors.neonGold
-                              : Colors.white.withValues(alpha: 0.20),
+                          color:
+                              active
+                                  ? AppColors.neonGold
+                                  : Colors.white.withValues(alpha: 0.20),
                           borderRadius: BorderRadius.circular(4),
-                          boxShadow: active
-                              ? [
-                                  BoxShadow(
-                                    color: AppColors.neonGold.withValues(
-                                      alpha: 0.5,
+                          boxShadow:
+                              active
+                                  ? [
+                                    BoxShadow(
+                                      color: AppColors.neonGold.withValues(
+                                        alpha: 0.5,
+                                      ),
+                                      blurRadius: 8,
                                     ),
-                                    blurRadius: 8,
-                                  ),
-                                ]
-                              : null,
+                                  ]
+                                  : null,
                         ),
                       );
                     }),
@@ -207,13 +210,15 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
                   // Action Button
                   NeonButton(
-                    text: _currentPage == 2
-                        ? S.onboardingStart
-                        : S.onboardingNext,
+                    text:
+                        _currentPage == 2
+                            ? S.onboardingStart
+                            : S.onboardingNext,
                     width: double.infinity,
-                    glowColor: _currentPage == 2
-                        ? AppColors.neonCyan
-                        : AppColors.neonGold,
+                    glowColor:
+                        _currentPage == 2
+                            ? AppColors.neonCyan
+                            : AppColors.neonGold,
                     onPressed: _nextPage,
                   ),
                 ],
@@ -266,11 +271,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     child: Image.asset(
                       imagePath,
                       fit: BoxFit.contain,
-                      errorBuilder: (_, __, ___) => const Icon(
-                        Icons.quiz_rounded,
-                        size: 100,
-                        color: AppColors.neonGold,
-                      ),
+                      errorBuilder:
+                          (_, __, ___) => const Icon(
+                            Icons.quiz_rounded,
+                            size: 100,
+                            color: AppColors.neonGold,
+                          ),
                     ),
                   ),
 
@@ -298,11 +304,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       child: Image.asset(
                         iconPath,
                         fit: BoxFit.contain,
-                        errorBuilder: (_, __, ___) => Icon(
-                          Icons.stars_rounded,
-                          color: glowColor,
-                          size: 32,
-                        ),
+                        errorBuilder:
+                            (_, __, ___) => Icon(
+                              Icons.stars_rounded,
+                              color: glowColor,
+                              size: 32,
+                            ),
                       ),
                     ),
                   ),

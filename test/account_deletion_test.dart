@@ -110,10 +110,11 @@ void main() {
     () async {
       final service = serviceWith(
         reAuth: (_) async {},
-        cleanup: (_) async => const AccountCleanupReport(
-          deleted: ['users/uid-a'],
-          pending: ['battle_rooms', 'leaderboard/scores'],
-        ),
+        cleanup:
+            (_) async => const AccountCleanupReport(
+              deleted: ['users/uid-a'],
+              pending: ['battle_rooms', 'leaderboard/scores'],
+            ),
       );
 
       final result = await service.deleteAccountWith(

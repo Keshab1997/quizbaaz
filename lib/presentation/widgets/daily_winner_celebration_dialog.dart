@@ -42,11 +42,12 @@ class DailyWinnerCelebrationDialog extends StatelessWidget {
               AppAssets.championBoy,
               height: 120,
               fit: BoxFit.contain,
-              errorBuilder: (_, __, ___) => const Icon(
-                Icons.emoji_events_rounded,
-                size: 80,
-                color: AppColors.neonGold,
-              ),
+              errorBuilder:
+                  (_, __, ___) => const Icon(
+                    Icons.emoji_events_rounded,
+                    size: 80,
+                    color: AppColors.neonGold,
+                  ),
             ),
             const SizedBox(height: 12),
 

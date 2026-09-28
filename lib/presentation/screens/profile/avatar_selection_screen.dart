@@ -76,15 +76,17 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
         ),
         actions: [
           TextButton(
-            onPressed: _selectedAvatar != null
-                ? () => _saveAvatar(context, userProvider)
-                : null,
+            onPressed:
+                _selectedAvatar != null
+                    ? () => _saveAvatar(context, userProvider)
+                    : null,
             child: Text(
               S.save,
               style: TextStyle(
-                color: _selectedAvatar != null
-                    ? AppColors.neonCyan
-                    : AppColors.textMuted,
+                color:
+                    _selectedAvatar != null
+                        ? AppColors.neonCyan
+                        : AppColors.textMuted,
                 fontWeight: FontWeight.w800,
                 fontSize: 16,
               ),
@@ -112,8 +114,8 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
 
   Map<String, dynamic>? _cloudAvatarForUrl(String url) {
     for (final avatar in _cloudAvatars) {
-      final imageUrl = (avatar['image_url'] ?? avatar['avatar_url'] ?? '')
-          .toString();
+      final imageUrl =
+          (avatar['image_url'] ?? avatar['avatar_url'] ?? '').toString();
       if (imageUrl == url) return avatar;
     }
     return null;
@@ -127,8 +129,8 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
     Map<String, dynamic> avatar,
   ) {
     final id = _cloudAvatarInventoryId(avatar);
-    final imageUrl = (avatar['image_url'] ?? avatar['avatar_url'] ?? '')
-        .toString();
+    final imageUrl =
+        (avatar['image_url'] ?? avatar['avatar_url'] ?? '').toString();
     return userProvider.hasItem(id) ||
         userProvider.hasItem('cloud_avatar_$id') ||
         (imageUrl.isNotEmpty && userProvider.hasItem(imageUrl));
@@ -142,9 +144,10 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
       name: name,
       description: S.avatarUnlockTitle(name: name),
       cost: (avatar['price'] as num?)?.toInt() ?? 50,
-      currency: (avatar['currency'] == 'coins')
-          ? ShopCurrency.coins
-          : ShopCurrency.gems,
+      currency:
+          (avatar['currency'] == 'coins')
+              ? ShopCurrency.coins
+              : ShopCurrency.gems,
       quantity: 1,
       isCosmetic: true,
       category: 'avatars',
@@ -175,8 +178,9 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
       fit: fit,
       width: double.infinity,
       height: double.infinity,
-      errorBuilder: (_, __, ___) =>
-          const Icon(Icons.person_rounded, color: Colors.white, size: 40),
+      errorBuilder:
+          (_, __, ___) =>
+              const Icon(Icons.person_rounded, color: Colors.white, size: 40),
     );
   }
 
@@ -304,61 +308,69 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: Row(
-        children: categories.map((cat) {
-          final isSelected = _selectedCategory == cat['id'];
-          return Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 4),
-              child: GestureDetector(
-                onTap: () =>
-                    setState(() => _selectedCategory = cat['id'] as String),
-                child: AnimatedContainer(
-                  duration: const Duration(milliseconds: 200),
-                  padding: const EdgeInsets.symmetric(vertical: 10),
-                  decoration: BoxDecoration(
-                    color: isSelected
-                        ? AppColors.neonPurple.withValues(alpha: 0.2)
-                        : Colors.white.withValues(alpha: 0.05),
-                    borderRadius: BorderRadius.circular(14),
-                    border: Border.all(
-                      color: isSelected
-                          ? AppColors.neonPurple.withValues(alpha: 0.5)
-                          : Colors.white.withValues(alpha: 0.1),
-                    ),
-                  ),
-                  child: FittedBox(
-                    fit: BoxFit.scaleDown,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          cat['icon'] as IconData,
-                          color: isSelected
-                              ? AppColors.neonPurple
-                              : AppColors.textSecondary,
-                          size: 18,
+        children:
+            categories.map((cat) {
+              final isSelected = _selectedCategory == cat['id'];
+              return Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 4),
+                  child: GestureDetector(
+                    onTap:
+                        () => setState(
+                          () => _selectedCategory = cat['id'] as String,
                         ),
-                        const SizedBox(width: 6),
-                        Text(
-                          cat['label'] as String,
-                          style: TextStyle(
-                            color: isSelected
-                                ? AppColors.neonPurple
-                                : AppColors.textSecondary,
-                            fontSize: 13,
-                            fontWeight: isSelected
-                                ? FontWeight.w800
-                                : FontWeight.w600,
-                          ),
+                    child: AnimatedContainer(
+                      duration: const Duration(milliseconds: 200),
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                      decoration: BoxDecoration(
+                        color:
+                            isSelected
+                                ? AppColors.neonPurple.withValues(alpha: 0.2)
+                                : Colors.white.withValues(alpha: 0.05),
+                        borderRadius: BorderRadius.circular(14),
+                        border: Border.all(
+                          color:
+                              isSelected
+                                  ? AppColors.neonPurple.withValues(alpha: 0.5)
+                                  : Colors.white.withValues(alpha: 0.1),
                         ),
-                      ],
+                      ),
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              cat['icon'] as IconData,
+                              color:
+                                  isSelected
+                                      ? AppColors.neonPurple
+                                      : AppColors.textSecondary,
+                              size: 18,
+                            ),
+                            const SizedBox(width: 6),
+                            Text(
+                              cat['label'] as String,
+                              style: TextStyle(
+                                color:
+                                    isSelected
+                                        ? AppColors.neonPurple
+                                        : AppColors.textSecondary,
+                                fontSize: 13,
+                                fontWeight:
+                                    isSelected
+                                        ? FontWeight.w800
+                                        : FontWeight.w600,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ),
-          );
-        }).toList(),
+              );
+            }).toList(),
       ),
     );
   }
@@ -383,24 +395,25 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
     }
 
     // Filter cloud avatars by category
-    final cloudAvatars = _cloudAvatars.where((avatar) {
-      final category = (avatar['category'] ?? '').toString().toLowerCase();
-      final isPremium =
-          avatar['is_premium'] == true ||
-          category == 'premium' ||
-          category == 'avatars' ||
-          ((avatar['price'] as num?) ?? 0) > 0;
-      if (_selectedCategory == 'premium') {
-        return isPremium || category == 'avatars';
-      }
-      if (_selectedCategory == 'male') {
-        return category == 'male' && !isPremium;
-      }
-      if (_selectedCategory == 'female') {
-        return category == 'female' && !isPremium;
-      }
-      return true;
-    }).toList();
+    final cloudAvatars =
+        _cloudAvatars.where((avatar) {
+          final category = (avatar['category'] ?? '').toString().toLowerCase();
+          final isPremium =
+              avatar['is_premium'] == true ||
+              category == 'premium' ||
+              category == 'avatars' ||
+              ((avatar['price'] as num?) ?? 0) > 0;
+          if (_selectedCategory == 'premium') {
+            return isPremium || category == 'avatars';
+          }
+          if (_selectedCategory == 'male') {
+            return category == 'male' && !isPremium;
+          }
+          if (_selectedCategory == 'female') {
+            return category == 'female' && !isPremium;
+          }
+          return true;
+        }).toList();
 
     return CustomScrollView(
       physics: const BouncingScrollPhysics(),
@@ -495,9 +508,8 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
                             '')
                         .toString();
                 final isSelected = _selectedAvatar == imageUrl;
-                final category = (cloudAvatar['category'] ?? '')
-                    .toString()
-                    .toLowerCase();
+                final category =
+                    (cloudAvatar['category'] ?? '').toString().toLowerCase();
                 final isPremium =
                     cloudAvatar['is_premium'] == true ||
                     category == 'premium' ||
@@ -559,22 +571,24 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
-            color: isSelected
-                ? AppColors.neonCyan.withValues(alpha: 0.8)
-                : isPremium && !isOwned
-                ? AppColors.neonGold.withValues(alpha: 0.3)
-                : Colors.white.withValues(alpha: 0.1),
+            color:
+                isSelected
+                    ? AppColors.neonCyan.withValues(alpha: 0.8)
+                    : isPremium && !isOwned
+                    ? AppColors.neonGold.withValues(alpha: 0.3)
+                    : Colors.white.withValues(alpha: 0.1),
             width: isSelected ? 3 : 1.5,
           ),
-          boxShadow: isSelected
-              ? [
-                  BoxShadow(
-                    color: AppColors.neonCyan.withValues(alpha: 0.3),
-                    blurRadius: 20,
-                    spreadRadius: 2,
-                  ),
-                ]
-              : null,
+          boxShadow:
+              isSelected
+                  ? [
+                    BoxShadow(
+                      color: AppColors.neonCyan.withValues(alpha: 0.3),
+                      blurRadius: 20,
+                      spreadRadius: 2,
+                    ),
+                  ]
+                  : null,
         ),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(18),
@@ -587,14 +601,15 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
                 child: Image.asset(
                   avatar,
                   fit: BoxFit.contain,
-                  errorBuilder: (_, __, ___) => Container(
-                    color: Colors.white.withValues(alpha: 0.05),
-                    child: const Icon(
-                      Icons.person_rounded,
-                      color: AppColors.textMuted,
-                      size: 50,
-                    ),
-                  ),
+                  errorBuilder:
+                      (_, __, ___) => Container(
+                        color: Colors.white.withValues(alpha: 0.05),
+                        child: const Icon(
+                          Icons.person_rounded,
+                          color: AppColors.textMuted,
+                          size: 50,
+                        ),
+                      ),
                 ),
               ),
 
@@ -732,22 +747,24 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
-            color: isSelected
-                ? AppColors.neonCyan.withValues(alpha: 0.8)
-                : isPremium
-                ? AppColors.neonGold.withValues(alpha: 0.3)
-                : Colors.white.withValues(alpha: 0.1),
+            color:
+                isSelected
+                    ? AppColors.neonCyan.withValues(alpha: 0.8)
+                    : isPremium
+                    ? AppColors.neonGold.withValues(alpha: 0.3)
+                    : Colors.white.withValues(alpha: 0.1),
             width: isSelected ? 3 : 1.5,
           ),
-          boxShadow: isSelected
-              ? [
-                  BoxShadow(
-                    color: AppColors.neonCyan.withValues(alpha: 0.3),
-                    blurRadius: 20,
-                    spreadRadius: 2,
-                  ),
-                ]
-              : null,
+          boxShadow:
+              isSelected
+                  ? [
+                    BoxShadow(
+                      color: AppColors.neonCyan.withValues(alpha: 0.3),
+                      blurRadius: 20,
+                      spreadRadius: 2,
+                    ),
+                  ]
+                  : null,
         ),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(18),
@@ -757,25 +774,26 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
               // Cloud Image
               imageUrl.isNotEmpty
                   ? CachedAvatar(
-                      url: imageUrl,
-                      fit: BoxFit.cover,
-                      fallbackBuilder: (_) => Container(
-                        color: Colors.white.withValues(alpha: 0.05),
-                        child: const Icon(
-                          Icons.cloud_off_rounded,
-                          color: AppColors.textMuted,
-                          size: 40,
+                    url: imageUrl,
+                    fit: BoxFit.cover,
+                    fallbackBuilder:
+                        (_) => Container(
+                          color: Colors.white.withValues(alpha: 0.05),
+                          child: const Icon(
+                            Icons.cloud_off_rounded,
+                            color: AppColors.textMuted,
+                            size: 40,
+                          ),
                         ),
-                      ),
-                    )
+                  )
                   : Container(
-                      color: Colors.white.withValues(alpha: 0.05),
-                      child: const Icon(
-                        Icons.cloud_rounded,
-                        color: AppColors.textMuted,
-                        size: 40,
-                      ),
+                    color: Colors.white.withValues(alpha: 0.05),
+                    child: const Icon(
+                      Icons.cloud_rounded,
+                      color: AppColors.textMuted,
+                      size: 40,
                     ),
+                  ),
 
               // Selected indicator
               if (isSelected)
@@ -1011,71 +1029,72 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
 
     showDialog(
       context: context,
-      builder: (ctx) => AlertDialog(
-        backgroundColor: AppColors.bgCard,
-        title: Row(
-          children: [
-            const Icon(Icons.lock_rounded, color: AppColors.neonGold),
-            const SizedBox(width: 8),
-            Expanded(
-              child: Text(
-                itemName,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
+      builder:
+          (ctx) => AlertDialog(
+            backgroundColor: AppColors.bgCard,
+            title: Row(
+              children: [
+                const Icon(Icons.lock_rounded, color: AppColors.neonGold),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    itemName,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+              ],
+            ),
+            content: Text(
+              purchaseItem == null
+                  ? S.avatarPremiumHint
+                  : S.avatarUnlockBody(cost: purchaseItem.cost),
+            ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(ctx),
+                child: Text(S.cancel),
               ),
-            ),
-          ],
-        ),
-        content: Text(
-          purchaseItem == null
-              ? S.avatarPremiumHint
-              : S.avatarUnlockBody(cost: purchaseItem.cost),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(ctx),
-            child: Text(S.cancel),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColors.neonGold,
+                ),
+                onPressed: () {
+                  if (purchaseItem == null) {
+                    Navigator.pop(ctx);
+                    Navigator.pop(context); // Go back to profile
+                    return;
+                  }
+                  final result = userProvider.purchaseItem(purchaseItem);
+                  Navigator.pop(ctx);
+                  if (result == PurchaseStatus.success) {
+                    setState(() => _selectedAvatar = avatar);
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(S.avatarUnlocked(name: itemName)),
+                        backgroundColor: AppColors.neonGreen,
+                      ),
+                    );
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(
+                          result == PurchaseStatus.alreadyOwned
+                              ? S.avatarAlreadyOwned
+                              : S.avatarNotEnoughGems,
+                        ),
+                        backgroundColor: AppColors.neonRed,
+                      ),
+                    );
+                  }
+                },
+                child: Text(
+                  purchaseItem == null ? S.goToShop : S.unlock,
+                  style: const TextStyle(color: Colors.black),
+                ),
+              ),
+            ],
           ),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.neonGold,
-            ),
-            onPressed: () {
-              if (purchaseItem == null) {
-                Navigator.pop(ctx);
-                Navigator.pop(context); // Go back to profile
-                return;
-              }
-              final result = userProvider.purchaseItem(purchaseItem);
-              Navigator.pop(ctx);
-              if (result == PurchaseStatus.success) {
-                setState(() => _selectedAvatar = avatar);
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(S.avatarUnlocked(name: itemName)),
-                    backgroundColor: AppColors.neonGreen,
-                  ),
-                );
-              } else {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(
-                      result == PurchaseStatus.alreadyOwned
-                          ? S.avatarAlreadyOwned
-                          : S.avatarNotEnoughGems,
-                    ),
-                    backgroundColor: AppColors.neonRed,
-                  ),
-                );
-              }
-            },
-            child: Text(
-              purchaseItem == null ? S.goToShop : S.unlock,
-              style: const TextStyle(color: Colors.black),
-            ),
-          ),
-        ],
-      ),
     );
   }
 }

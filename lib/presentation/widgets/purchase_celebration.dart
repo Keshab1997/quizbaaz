@@ -320,9 +320,8 @@ class _CelebrationOverlayState extends State<_CelebrationOverlay>
   }
 
   Widget _buildCharacter() {
-    final Color onAccent = widget.accent == AppColors.neonGold
-        ? Colors.black
-        : Colors.white;
+    final Color onAccent =
+        widget.accent == AppColors.neonGold ? Colors.black : Colors.white;
 
     return SizedBox(
       width: 250,
@@ -357,8 +356,12 @@ class _CelebrationOverlayState extends State<_CelebrationOverlay>
                 widget.characterAsset,
                 width: 234,
                 fit: BoxFit.contain,
-                errorBuilder: (c, e, s) =>
-                    Icon(Icons.celebration, size: 140, color: widget.accent),
+                errorBuilder:
+                    (c, e, s) => Icon(
+                      Icons.celebration,
+                      size: 140,
+                      color: widget.accent,
+                    ),
               ),
             ),
           ),

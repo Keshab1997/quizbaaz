@@ -279,9 +279,10 @@ class _OnlineBattleScreenState extends State<OnlineBattleScreen>
     final started = await battle.startBattleWithOpponent(
       opponentUid: opponentUid,
       opponentName: opponentName,
-      opponentAvatar: opponentAvatarUrl?.isNotEmpty == true
-          ? opponentAvatarUrl!
-          : opponentAvatar,
+      opponentAvatar:
+          opponentAvatarUrl?.isNotEmpty == true
+              ? opponentAvatarUrl!
+              : opponentAvatar,
       difficulty: _difficultyFrom(difficulty),
       challengeId: challengeId,
     );
@@ -295,8 +296,9 @@ class _OnlineBattleScreenState extends State<OnlineBattleScreen>
     }
 
     if (!mounted) return;
-    await Navigator.of(context)
-        .push(MaterialPageRoute<void>(builder: (_) => const BattleScreen()));
+    await Navigator.of(
+      context,
+    ).push(MaterialPageRoute<void>(builder: (_) => const BattleScreen()));
     // Returning from the arena frees the player for new challenges again.
     _presence.setAvailability(isAvailable: true, activity: 'idle');
     _watchOutgoingChallenge();
@@ -319,11 +321,12 @@ class _OnlineBattleScreenState extends State<OnlineBattleScreen>
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (_) => _IncomingChallengeDialog(
-        challenge: challenge,
-        onAccept: () => _acceptChallenge(challenge),
-        onReject: () => _rejectChallenge(challenge),
-      ),
+      builder:
+          (_) => _IncomingChallengeDialog(
+            challenge: challenge,
+            onAccept: () => _acceptChallenge(challenge),
+            onReject: () => _rejectChallenge(challenge),
+          ),
     );
   }
 
@@ -331,11 +334,12 @@ class _OnlineBattleScreenState extends State<OnlineBattleScreen>
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (_) => _ChallengeSentDialog(
-        userName: user.name,
-        userAvatar: user.effectiveAvatar,
-        onCancel: _cancelOutgoingChallenge,
-      ),
+      builder:
+          (_) => _ChallengeSentDialog(
+            userName: user.name,
+            userAvatar: user.effectiveAvatar,
+            onCancel: _cancelOutgoingChallenge,
+          ),
     );
   }
 
@@ -357,25 +361,28 @@ class _OnlineBattleScreenState extends State<OnlineBattleScreen>
   void _showGuestRestrictionDialog() {
     showDialog(
       context: context,
-      builder: (_) => AlertDialog(
-        backgroundColor: const Color(0xFF1A1A2E),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        title: const Text(
-          '🔒 Sign In Required',
-          style: TextStyle(color: Colors.white),
-        ),
-        content: const Text(
-          'You need to sign in to challenge other players. '
-          'Go to Profile → Sign In to create your account.',
-          style: TextStyle(color: Colors.white70),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('OK', style: TextStyle(color: Colors.cyan)),
+      builder:
+          (_) => AlertDialog(
+            backgroundColor: const Color(0xFF1A1A2E),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16),
+            ),
+            title: const Text(
+              '🔒 Sign In Required',
+              style: TextStyle(color: Colors.white),
+            ),
+            content: const Text(
+              'You need to sign in to challenge other players. '
+              'Go to Profile → Sign In to create your account.',
+              style: TextStyle(color: Colors.white70),
+            ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text('OK', style: TextStyle(color: Colors.cyan)),
+              ),
+            ],
           ),
-        ],
-      ),
     );
   }
 
@@ -383,67 +390,74 @@ class _OnlineBattleScreenState extends State<OnlineBattleScreen>
     showModalBottomSheet(
       context: context,
       backgroundColor: Colors.transparent,
-      builder: (_) => Container(
-        decoration: const BoxDecoration(
-          color: Color(0xFF1A1A2E),
-          borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
-        ),
-        padding: const EdgeInsets.all(24),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Text(
-              '⚔️ Select Difficulty',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
+      builder:
+          (_) => Container(
+            decoration: const BoxDecoration(
+              color: Color(0xFF1A1A2E),
+              borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
             ),
-            const SizedBox(height: 20),
-            for (final d in ['easy', 'normal', 'hard'])
-              Padding(
-                padding: const EdgeInsets.only(bottom: 12),
-                // Own Material so the tile ink paints above the sheet's
-                // DecoratedBox (Flutter asserts otherwise).
-                child: Material(
-                  type: MaterialType.transparency,
-                  child: ListTile(
-                    tileColor: _selectedDifficulty == d
-                        ? Colors.cyan.withValues(alpha: 0.2)
-                        : Colors.white.withValues(alpha: 0.05),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    leading: Icon(
-                      d == 'easy'
-                          ? Icons.bolt
-                          : d == 'normal'
-                          ? Icons.balance
-                          : Icons.local_fire_department,
-                      color: d == 'easy'
-                          ? Colors.green
-                          : d == 'normal'
-                          ? Colors.cyan
-                          : Colors.orange,
-                    ),
-                    title: Text(
-                      d.toUpperCase(),
-                      style: const TextStyle(color: Colors.white),
-                    ),
-                    trailing: _selectedDifficulty == d
-                        ? const Icon(Icons.check_circle, color: Colors.cyan)
-                        : null,
-                    onTap: () {
-                      setState(() => _selectedDifficulty = d);
-                      Navigator.pop(context);
-                    },
+            padding: const EdgeInsets.all(24),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Text(
+                  '⚔️ Select Difficulty',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-              ),
-          ],
-        ),
-      ),
+                const SizedBox(height: 20),
+                for (final d in ['easy', 'normal', 'hard'])
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 12),
+                    // Own Material so the tile ink paints above the sheet's
+                    // DecoratedBox (Flutter asserts otherwise).
+                    child: Material(
+                      type: MaterialType.transparency,
+                      child: ListTile(
+                        tileColor:
+                            _selectedDifficulty == d
+                                ? Colors.cyan.withValues(alpha: 0.2)
+                                : Colors.white.withValues(alpha: 0.05),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        leading: Icon(
+                          d == 'easy'
+                              ? Icons.bolt
+                              : d == 'normal'
+                              ? Icons.balance
+                              : Icons.local_fire_department,
+                          color:
+                              d == 'easy'
+                                  ? Colors.green
+                                  : d == 'normal'
+                                  ? Colors.cyan
+                                  : Colors.orange,
+                        ),
+                        title: Text(
+                          d.toUpperCase(),
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                        trailing:
+                            _selectedDifficulty == d
+                                ? const Icon(
+                                  Icons.check_circle,
+                                  color: Colors.cyan,
+                                )
+                                : null,
+                        onTap: () {
+                          setState(() => _selectedDifficulty = d);
+                          Navigator.pop(context);
+                        },
+                      ),
+                    ),
+                  ),
+              ],
+            ),
+          ),
     );
   }
 
@@ -513,22 +527,24 @@ class _OnlineBattleScreenState extends State<OnlineBattleScreen>
                       : _selectedDifficulty == 'normal'
                       ? Icons.balance
                       : Icons.local_fire_department,
-                  color: _selectedDifficulty == 'easy'
-                      ? Colors.green
-                      : _selectedDifficulty == 'normal'
-                      ? Colors.cyan
-                      : Colors.orange,
+                  color:
+                      _selectedDifficulty == 'easy'
+                          ? Colors.green
+                          : _selectedDifficulty == 'normal'
+                          ? Colors.cyan
+                          : Colors.orange,
                   size: 20,
                 ),
                 const SizedBox(width: 4),
                 Text(
                   _selectedDifficulty.toUpperCase(),
                   style: TextStyle(
-                    color: _selectedDifficulty == 'easy'
-                        ? Colors.green
-                        : _selectedDifficulty == 'normal'
-                        ? Colors.cyan
-                        : Colors.orange,
+                    color:
+                        _selectedDifficulty == 'easy'
+                            ? Colors.green
+                            : _selectedDifficulty == 'normal'
+                            ? Colors.cyan
+                            : Colors.orange,
                     fontSize: 12,
                     fontWeight: FontWeight.bold,
                   ),
@@ -655,8 +671,8 @@ class _OnlineBattleScreenState extends State<OnlineBattleScreen>
           child: ListView.builder(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             itemCount: _onlineUsers.length,
-            itemBuilder: (context, index) =>
-                _buildUserTile(_onlineUsers[index]),
+            itemBuilder:
+                (context, index) => _buildUserTile(_onlineUsers[index]),
           ),
         ),
       ],
@@ -973,11 +989,12 @@ class _IncomingChallengeDialogState extends State<_IncomingChallengeDialog>
             Text(
               'Difficulty: ${widget.challenge.difficulty.toUpperCase()}',
               style: TextStyle(
-                color: widget.challenge.difficulty == 'easy'
-                    ? Colors.green
-                    : widget.challenge.difficulty == 'hard'
-                    ? Colors.orange
-                    : Colors.cyan,
+                color:
+                    widget.challenge.difficulty == 'easy'
+                        ? Colors.green
+                        : widget.challenge.difficulty == 'hard'
+                        ? Colors.orange
+                        : Colors.cyan,
                 fontSize: 13,
                 fontWeight: FontWeight.bold,
               ),
@@ -986,9 +1003,10 @@ class _IncomingChallengeDialogState extends State<_IncomingChallengeDialog>
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               decoration: BoxDecoration(
-                color: _timeLeft <= 10
-                    ? Colors.red.withValues(alpha: 0.2)
-                    : Colors.white.withValues(alpha: 0.05),
+                color:
+                    _timeLeft <= 10
+                        ? Colors.red.withValues(alpha: 0.2)
+                        : Colors.white.withValues(alpha: 0.05),
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Text(

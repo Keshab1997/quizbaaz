@@ -360,8 +360,8 @@ class ChallengeData {
   /// Best avatar URL for the challenger.
   String get fromEffectiveAvatar =>
       (fromAvatarUrl != null && fromAvatarUrl!.isNotEmpty)
-      ? fromAvatarUrl!
-      : fromAvatar;
+          ? fromAvatarUrl!
+          : fromAvatar;
 
   factory ChallengeData.fromDoc(DocumentSnapshot doc) {
     final data = doc.data() as Map<String, dynamic>? ?? {};

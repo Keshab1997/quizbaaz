@@ -72,9 +72,10 @@ class UserModel {
   /// Set gender and update avatar accordingly.
   void setGender(UserGender newGender) {
     gender = newGender;
-    avatarPath = newGender == UserGender.male
-        ? 'assets/images/avatars/quizbaaz_avatar_boy.png'
-        : 'assets/images/avatars/quizbaaz_avatar_girl.png';
+    avatarPath =
+        newGender == UserGender.male
+            ? 'assets/images/avatars/quizbaaz_avatar_boy.png'
+            : 'assets/images/avatars/quizbaaz_avatar_girl.png';
     // Keep Google photo if user wants, but gender toggle clears it
     avatarUrl = null;
   }
@@ -154,9 +155,10 @@ class UserModel {
           'assets/images/avatars/quizbaaz_avatar_boy.png',
       avatarUrl: json['avatar_url'] as String?,
       nameEffect: json['name_effect'] as String?,
-      gender: (json['gender'] as String? ?? 'male') == 'male'
-          ? UserGender.male
-          : UserGender.female,
+      gender:
+          (json['gender'] as String? ?? 'male') == 'male'
+              ? UserGender.male
+              : UserGender.female,
       coins: (json['coins'] as num?)?.toInt() ?? 0,
       gems: (json['gems'] as num?)?.toInt() ?? 0,
       dailyStreak: (json['daily_streak'] as num?)?.toInt() ?? 0,

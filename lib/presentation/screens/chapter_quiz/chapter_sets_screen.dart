@@ -132,20 +132,18 @@ class _ChapterSetsScreenState extends State<ChapterSetsScreen>
             fontSize: 13,
             fontWeight: FontWeight.w800,
           ),
-          tabs: [
-            Tab(text: S.setsTitle),
-            Tab(text: S.setsHistoryTab),
-          ],
+          tabs: [Tab(text: S.setsTitle), Tab(text: S.setsHistoryTab)],
         ),
       ),
-      body: _loading
-          ? const Center(
-              child: CircularProgressIndicator(color: AppColors.neonCyan),
-            )
-          : TabBarView(
-              controller: _tabs,
-              children: [_setsTab(), _historyTab()],
-            ),
+      body:
+          _loading
+              ? const Center(
+                child: CircularProgressIndicator(color: AppColors.neonCyan),
+              )
+              : TabBarView(
+                controller: _tabs,
+                children: [_setsTab(), _historyTab()],
+              ),
     );
   }
 
@@ -264,11 +262,12 @@ class _ChapterSetsScreenState extends State<ChapterSetsScreen>
     final locked = done == null && !isNext;
     final length = setLengthFor(_questionCount, index);
 
-    final colour = done != null
-        ? AppColors.neonGreen
-        : isNext
-        ? widget.accent
-        : AppColors.textMuted;
+    final colour =
+        done != null
+            ? AppColors.neonGreen
+            : isNext
+            ? widget.accent
+            : AppColors.textMuted;
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
@@ -291,28 +290,29 @@ class _ChapterSetsScreenState extends State<ChapterSetsScreen>
                 border: Border.all(color: colour.withValues(alpha: 0.45)),
               ),
               child: Center(
-                child: locked
-                    ? const Icon(
-                        Icons.lock_rounded,
-                        size: 18,
-                        color: AppColors.textMuted,
-                      )
-                    : done != null
-                    ? Icon(
-                        done.isPerfect
-                            ? Icons.workspace_premium_rounded
-                            : Icons.check_rounded,
-                        size: 20,
-                        color: colour,
-                      )
-                    : Text(
-                        '${index + 1}',
-                        style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.w900,
+                child:
+                    locked
+                        ? const Icon(
+                          Icons.lock_rounded,
+                          size: 18,
+                          color: AppColors.textMuted,
+                        )
+                        : done != null
+                        ? Icon(
+                          done.isPerfect
+                              ? Icons.workspace_premium_rounded
+                              : Icons.check_rounded,
+                          size: 20,
                           color: colour,
+                        )
+                        : Text(
+                          '${index + 1}',
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w900,
+                            color: colour,
+                          ),
                         ),
-                      ),
               ),
             ),
             const SizedBox(width: 14),
@@ -334,13 +334,14 @@ class _ChapterSetsScreenState extends State<ChapterSetsScreen>
                         ? S.setsLocked(n: index)
                         : done != null
                         ? '${S.setsCleared} · '
-                              '${S.setsBest(correct: done.bestCorrect, total: done.totalQuestions)}'
+                            '${S.setsBest(correct: done.bestCorrect, total: done.totalQuestions)}'
                         : S.setsQuestions(n: length),
                     style: TextStyle(
                       fontSize: 11.5,
-                      color: done != null
-                          ? AppColors.neonGreen
-                          : AppColors.textSecondary,
+                      color:
+                          done != null
+                              ? AppColors.neonGreen
+                              : AppColors.textSecondary,
                     ),
                   ),
                 ],
@@ -423,8 +424,9 @@ class _ChapterSetsScreenState extends State<ChapterSetsScreen>
   // --------------------------------------------------------- history  tab --
 
   Widget _historyTab() {
-    final cleared = _progress.values.toList()
-      ..sort((a, b) => b.lastPlayedAt.compareTo(a.lastPlayedAt));
+    final cleared =
+        _progress.values.toList()
+          ..sort((a, b) => b.lastPlayedAt.compareTo(a.lastPlayedAt));
 
     if (cleared.isEmpty) {
       return Center(
@@ -511,9 +513,10 @@ class _ChapterSetsScreenState extends State<ChapterSetsScreen>
                     style: TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.w900,
-                      color: entry.isPerfect
-                          ? AppColors.neonGold
-                          : AppColors.neonGreen,
+                      color:
+                          entry.isPerfect
+                              ? AppColors.neonGold
+                              : AppColors.neonGreen,
                     ),
                   ),
                   const SizedBox(height: 2),

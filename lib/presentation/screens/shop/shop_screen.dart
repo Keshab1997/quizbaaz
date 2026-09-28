@@ -377,9 +377,10 @@ class _ShopScreenState extends State<ShopScreen> {
                       name: cloudItem['name'] ?? S.item,
                       description: cloudItem['description'] ?? '',
                       cost: cloudItem['price'] ?? 0,
-                      currency: cloudItem['currency'] == 'gems'
-                          ? ShopCurrency.gems
-                          : ShopCurrency.coins,
+                      currency:
+                          cloudItem['currency'] == 'gems'
+                              ? ShopCurrency.gems
+                              : ShopCurrency.coins,
                       quantity: cloudItem['quantity'] ?? 1,
                       isCosmetic: cloudItem['is_cosmetic'] ?? false,
                       category: cloudItem['category'] ?? 'power_ups',
@@ -392,8 +393,8 @@ class _ShopScreenState extends State<ShopScreen> {
                         accent: AppColors.neonCyan,
                         owned: 0,
                         affordable: userProvider.canAfford(shopItem),
-                        onBuy: () =>
-                            _handleBuy(context, userProvider, shopItem),
+                        onBuy:
+                            () => _handleBuy(context, userProvider, shopItem),
                         cloudImageUrl: cloudItem['icon_url'],
                       ),
                     );
@@ -430,9 +431,10 @@ class _ShopScreenState extends State<ShopScreen> {
         itemBuilder: (context, index) {
           final cat = categories[index];
           final isSelected = _selectedCategory == cat;
-          final label = cat == 'all'
-              ? S.shopCatAll
-              : ShopCatalog.categoryName(cat).split(' ').skip(1).join(' ');
+          final label =
+              cat == 'all'
+                  ? S.shopCatAll
+                  : ShopCatalog.categoryName(cat).split(' ').skip(1).join(' ');
 
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 4),
@@ -445,14 +447,16 @@ class _ShopScreenState extends State<ShopScreen> {
                   vertical: 8,
                 ),
                 decoration: BoxDecoration(
-                  color: isSelected
-                      ? AppColors.neonGold.withValues(alpha: 0.2)
-                      : Colors.white.withValues(alpha: 0.05),
+                  color:
+                      isSelected
+                          ? AppColors.neonGold.withValues(alpha: 0.2)
+                          : Colors.white.withValues(alpha: 0.05),
                   borderRadius: BorderRadius.circular(20),
                   border: Border.all(
-                    color: isSelected
-                        ? AppColors.neonGold.withValues(alpha: 0.5)
-                        : Colors.white.withValues(alpha: 0.1),
+                    color:
+                        isSelected
+                            ? AppColors.neonGold.withValues(alpha: 0.5)
+                            : Colors.white.withValues(alpha: 0.1),
                   ),
                 ),
                 child: Text(
@@ -460,9 +464,10 @@ class _ShopScreenState extends State<ShopScreen> {
                   style: TextStyle(
                     fontSize: 12,
                     fontWeight: isSelected ? FontWeight.w800 : FontWeight.w600,
-                    color: isSelected
-                        ? AppColors.neonGold
-                        : AppColors.textSecondary,
+                    color:
+                        isSelected
+                            ? AppColors.neonGold
+                            : AppColors.textSecondary,
                   ),
                 ),
               ),
@@ -487,9 +492,10 @@ class _ShopScreenState extends State<ShopScreen> {
         PurchaseCelebration.show(
           context,
           itemName: item.name,
-          subtitle: item.isCosmetic
-              ? S.shopUnlockedForever
-              : S.shopAdded(n: item.quantity),
+          subtitle:
+              item.isCosmetic
+                  ? S.shopUnlockedForever
+                  : S.shopAdded(n: item.quantity),
           characterAsset: AppAssets.quizChampion,
           itemIcon: _iconFor(item.id),
           accent: item.costsCoins ? AppColors.neonGold : AppColors.neonPurple,
@@ -558,29 +564,30 @@ class _ShopItemCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(14),
               border: Border.all(color: accent.withValues(alpha: 0.4)),
             ),
-            child: hasCloudImage
-                ? ClipRRect(
-                    borderRadius: BorderRadius.circular(12),
-                    child: CachedAvatar(
-                      url: cloudImageUrl!,
-                      fit: BoxFit.cover,
-                      progressColor: accent,
-                      fallbackIcon: icon,
-                      fallbackIconColor: accent,
-                      fallbackIconSize: 26,
-                    ),
-                  )
-                : avatarPath != null
-                ? ClipRRect(
-                    borderRadius: BorderRadius.circular(12),
-                    child: Image.asset(
-                      avatarPath,
-                      fit: BoxFit.cover,
-                      errorBuilder: (_, __, ___) =>
-                          Icon(icon, color: accent, size: 26),
-                    ),
-                  )
-                : Icon(icon, color: accent, size: 26),
+            child:
+                hasCloudImage
+                    ? ClipRRect(
+                      borderRadius: BorderRadius.circular(12),
+                      child: CachedAvatar(
+                        url: cloudImageUrl!,
+                        fit: BoxFit.cover,
+                        progressColor: accent,
+                        fallbackIcon: icon,
+                        fallbackIconColor: accent,
+                        fallbackIconSize: 26,
+                      ),
+                    )
+                    : avatarPath != null
+                    ? ClipRRect(
+                      borderRadius: BorderRadius.circular(12),
+                      child: Image.asset(
+                        avatarPath,
+                        fit: BoxFit.cover,
+                        errorBuilder:
+                            (_, __, ___) => Icon(icon, color: accent, size: 26),
+                      ),
+                    )
+                    : Icon(icon, color: accent, size: 26),
           ),
           const SizedBox(width: 14),
 
@@ -636,9 +643,10 @@ class _ShopItemCard extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 11,
                     fontWeight: FontWeight.bold,
-                    color: owned > 0
-                        ? AppColors.neonCyan
-                        : AppColors.textSecondary,
+                    color:
+                        owned > 0
+                            ? AppColors.neonCyan
+                            : AppColors.textSecondary,
                   ),
                 ),
               ],
@@ -681,9 +689,10 @@ class _ShopItemCard extends StatelessWidget {
     }
 
     final Color bg = affordable ? accent : Colors.white.withValues(alpha: 0.08);
-    final Color fg = affordable
-        ? (item.costsCoins ? Colors.black : Colors.white)
-        : AppColors.textSecondary;
+    final Color fg =
+        affordable
+            ? (item.costsCoins ? Colors.black : Colors.white)
+            : AppColors.textSecondary;
 
     return ElevatedButton(
       style: ElevatedButton.styleFrom(

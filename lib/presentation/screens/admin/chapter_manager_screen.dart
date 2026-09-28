@@ -77,15 +77,16 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
           final matchesSubject = category.nameText.toJson().values.any(
             (v) => v.toLowerCase().contains(needle),
           );
-          final chapters = category.chapters
-              .where(
-                (c) =>
-                    matchesSubject ||
-                    c.titleText.toJson().values.any(
-                      (v) => v.toLowerCase().contains(needle),
-                    ),
-              )
-              .toList();
+          final chapters =
+              category.chapters
+                  .where(
+                    (c) =>
+                        matchesSubject ||
+                        c.titleText.toJson().values.any(
+                          (v) => v.toLowerCase().contains(needle),
+                        ),
+                  )
+                  .toList();
           return CategoryModel(
             categoryId: category.categoryId,
             nameText: category.nameText,
@@ -126,35 +127,36 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
         icon: const Icon(Icons.create_new_folder_rounded, size: 20),
         label: const Text('Subject'),
       ),
-      body: _loading
-          ? const Center(
-              child: CircularProgressIndicator(color: AppColors.neonCyan),
-            )
-          : RefreshIndicator(
-              onRefresh: _load,
-              color: AppColors.neonCyan,
-              backgroundColor: AppColors.surfaceElevated,
-              child: ListView(
-                padding: const EdgeInsets.fromLTRB(16, 8, 16, 96),
-                children: [
-                  _summary(totalQuestions),
-                  const SizedBox(height: 14),
-                  _searchBox(),
-                  const SizedBox(height: 14),
-                  if (categories.isEmpty)
-                    const Padding(
-                      padding: EdgeInsets.only(top: 60),
-                      child: Center(
-                        child: Text(
-                          'No chapters match that search.',
-                          style: TextStyle(color: AppColors.textSecondary),
+      body:
+          _loading
+              ? const Center(
+                child: CircularProgressIndicator(color: AppColors.neonCyan),
+              )
+              : RefreshIndicator(
+                onRefresh: _load,
+                color: AppColors.neonCyan,
+                backgroundColor: AppColors.surfaceElevated,
+                child: ListView(
+                  padding: const EdgeInsets.fromLTRB(16, 8, 16, 96),
+                  children: [
+                    _summary(totalQuestions),
+                    const SizedBox(height: 14),
+                    _searchBox(),
+                    const SizedBox(height: 14),
+                    if (categories.isEmpty)
+                      const Padding(
+                        padding: EdgeInsets.only(top: 60),
+                        child: Center(
+                          child: Text(
+                            'No chapters match that search.',
+                            style: TextStyle(color: AppColors.textSecondary),
+                          ),
                         ),
                       ),
-                    ),
-                  for (final category in categories) _categoryCard(category),
-                ],
+                    for (final category in categories) _categoryCard(category),
+                  ],
+                ),
               ),
-            ),
     );
   }
 
@@ -393,20 +395,19 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
               ),
             ),
             IconButton(
-              tooltip: chapter.isEnabled
-                  ? 'Hide from students'
-                  : 'Show to students',
+              tooltip:
+                  chapter.isEnabled ? 'Hide from students' : 'Show to students',
               iconSize: 18,
-              color: chapter.isEnabled
-                  ? AppColors.neonGreen
-                  : AppColors.neonGold,
+              color:
+                  chapter.isEnabled ? AppColors.neonGreen : AppColors.neonGold,
               icon: Icon(
                 chapter.isEnabled
                     ? Icons.visibility_rounded
                     : Icons.visibility_off_rounded,
               ),
-              onPressed: () =>
-                  _setChapterEnabled(category, chapter, !chapter.isEnabled),
+              onPressed:
+                  () =>
+                      _setChapterEnabled(category, chapter, !chapter.isEnabled),
             ),
             IconButton(
               tooltip: 'Edit chapter',
@@ -423,11 +424,12 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
 
   /// e.g. "EN · BN · hi missing" — which languages the *title* carries.
   String _coverageLabel(ChapterModel chapter) {
-    final missing = [
-      'en',
-      'bn',
-      'hi',
-    ].where((code) => !chapter.titleText.has(code)).toList();
+    final missing =
+        [
+          'en',
+          'bn',
+          'hi',
+        ].where((code) => !chapter.titleText.has(code)).toList();
     if (missing.isEmpty) return 'EN · BN · HI';
     return 'missing ${missing.join(", ").toUpperCase()}';
   }
@@ -445,11 +447,12 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (_) => QuestionManagerScreen(
-          categoryId: category.categoryId,
-          subjectName: category.nameText.resolve('en'),
-          chapter: chapter,
-        ),
+        builder:
+            (_) => QuestionManagerScreen(
+              categoryId: category.categoryId,
+              subjectName: category.nameText.resolve('en'),
+              chapter: chapter,
+            ),
       ),
     ).then((_) => _load());
   }
@@ -463,17 +466,19 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
-      builder: (_) => _SubjectSheet(
-        existing: existing,
-        onSave: (id, name, icon, color, priority) => _catalog.saveCategory(
-          categoryId: id,
-          name: name,
-          icon: icon,
-          colorHex: color,
-          priority: priority,
-          actorUid: _actorUid,
-        ),
-      ),
+      builder:
+          (_) => _SubjectSheet(
+            existing: existing,
+            onSave:
+                (id, name, icon, color, priority) => _catalog.saveCategory(
+                  categoryId: id,
+                  name: name,
+                  icon: icon,
+                  colorHex: color,
+                  priority: priority,
+                  actorUid: _actorUid,
+                ),
+          ),
     );
     if (saved == true) _load();
   }
@@ -482,33 +487,36 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
     CategoryModel category,
     ChapterModel? existing,
   ) async {
-    final nextNumber = category.chapters.isEmpty
-        ? 1
-        : category.chapters
-                  .map((c) => c.chapterNumber)
-                  .reduce((a, b) => a > b ? a : b) +
-              1;
+    final nextNumber =
+        category.chapters.isEmpty
+            ? 1
+            : category.chapters
+                    .map((c) => c.chapterNumber)
+                    .reduce((a, b) => a > b ? a : b) +
+                1;
 
     final saved = await showModalBottomSheet<bool>(
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
-      builder: (_) => _ChapterSheet(
-        categoryName: category.categoryName,
-        existing: existing,
-        defaultNumber: nextNumber,
-        onSave: (id, title, description, number, unlocked, enabled) =>
-            _catalog.saveChapter(
-              categoryId: category.categoryId,
-              chapterId: id,
-              title: title,
-              description: description,
-              chapterNumber: number,
-              isUnlocked: unlocked,
-              isEnabled: enabled,
-              actorUid: _actorUid,
-            ),
-      ),
+      builder:
+          (_) => _ChapterSheet(
+            categoryName: category.categoryName,
+            existing: existing,
+            defaultNumber: nextNumber,
+            onSave:
+                (id, title, description, number, unlocked, enabled) =>
+                    _catalog.saveChapter(
+                      categoryId: category.categoryId,
+                      chapterId: id,
+                      title: title,
+                      description: description,
+                      chapterNumber: number,
+                      isUnlocked: unlocked,
+                      isEnabled: enabled,
+                      actorUid: _actorUid,
+                    ),
+          ),
     );
     if (saved == true) _load();
   }
@@ -638,9 +646,10 @@ class _SubjectSheetState extends State<_SubjectSheet> {
           label: 'Subject id',
           hint: 'cat_math',
           enabled: widget.existing == null,
-          helper: widget.existing == null
-              ? 'Lowercase, no spaces. Cannot be changed later.'
-              : 'Ids are permanent — questions are filed under them.',
+          helper:
+              widget.existing == null
+                  ? 'Lowercase, no spaces. Cannot be changed later.'
+                  : 'Ids are permanent — questions are filed under them.',
         ),
         const SizedBox(height: 16),
         TrilingualField(
@@ -772,9 +781,10 @@ class _ChapterSheetState extends State<_ChapterSheet> {
   @override
   Widget build(BuildContext context) {
     return _SheetShell(
-      title: widget.existing == null
-          ? 'New chapter · ${widget.categoryName}'
-          : 'Edit chapter',
+      title:
+          widget.existing == null
+              ? 'New chapter · ${widget.categoryName}'
+              : 'Edit chapter',
       saving: _saving,
       error: _error,
       onSave: _save,
@@ -971,22 +981,23 @@ class _SheetShell extends StatelessWidget {
                     ),
                   ),
                   onPressed: saving ? null : onSave,
-                  child: saving
-                      ? const SizedBox(
-                          width: 18,
-                          height: 18,
-                          child: CircularProgressIndicator(
-                            strokeWidth: 2,
-                            color: AppColors.bgDark,
+                  child:
+                      saving
+                          ? const SizedBox(
+                            width: 18,
+                            height: 18,
+                            child: CircularProgressIndicator(
+                              strokeWidth: 2,
+                              color: AppColors.bgDark,
+                            ),
+                          )
+                          : const Text(
+                            'Save',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w900,
+                              fontSize: 14,
+                            ),
                           ),
-                        )
-                      : const Text(
-                          'Save',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w900,
-                            fontSize: 14,
-                          ),
-                        ),
                 ),
               ),
             ),

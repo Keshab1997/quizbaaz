@@ -26,11 +26,12 @@ class StreakFlameWidget extends StatelessWidget {
                 AppAssets.streakFire,
                 width: 38,
                 height: 38,
-                errorBuilder: (context, error, stackTrace) => const Icon(
-                  Icons.local_fire_department,
-                  color: Colors.orangeAccent,
-                  size: 32,
-                ),
+                errorBuilder:
+                    (context, error, stackTrace) => const Icon(
+                      Icons.local_fire_department,
+                      color: Colors.orangeAccent,
+                      size: 32,
+                    ),
               ),
               const SizedBox(width: 10),
               Column(
@@ -75,48 +76,50 @@ class StreakFlameWidget extends StatelessWidget {
               final cycle = streakDays % 7;
               final completedCount = (cycle == 0 && streakDays > 0) ? 7 : cycle;
               final isCompleted = index < completedCount;
-              final isToday = streakDays == 0
-                  ? index == 0
-                  : (cycle != 0 && index == cycle);
+              final isToday =
+                  streakDays == 0 ? index == 0 : (cycle != 0 && index == cycle);
 
               return Container(
                 width: 34,
                 height: 34,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: isCompleted
-                      ? AppColors.neonGold.withValues(alpha: 0.2)
-                      : (isToday
-                            ? AppColors.neonPurple.withValues(alpha: 0.3)
-                            : Colors.white.withValues(alpha: 0.05)),
+                  color:
+                      isCompleted
+                          ? AppColors.neonGold.withValues(alpha: 0.2)
+                          : (isToday
+                              ? AppColors.neonPurple.withValues(alpha: 0.3)
+                              : Colors.white.withValues(alpha: 0.05)),
                   border: Border.all(
-                    color: isCompleted
-                        ? AppColors.neonGold
-                        : (isToday
-                              ? AppColors.neonCyan
-                              : Colors.white.withValues(alpha: 0.1)),
+                    color:
+                        isCompleted
+                            ? AppColors.neonGold
+                            : (isToday
+                                ? AppColors.neonCyan
+                                : Colors.white.withValues(alpha: 0.1)),
                     width: isToday ? 2 : 1,
                   ),
                 ),
                 child: Center(
-                  child: isCompleted
-                      ? const Icon(
-                          Icons.check,
-                          size: 16,
-                          color: AppColors.neonGold,
-                        )
-                      : Text(
-                          days[index],
-                          style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: isToday
-                                ? FontWeight.bold
-                                : FontWeight.normal,
-                            color: isToday
-                                ? AppColors.neonCyan
-                                : AppColors.textSecondary,
+                  child:
+                      isCompleted
+                          ? const Icon(
+                            Icons.check,
+                            size: 16,
+                            color: AppColors.neonGold,
+                          )
+                          : Text(
+                            days[index],
+                            style: TextStyle(
+                              fontSize: 12,
+                              fontWeight:
+                                  isToday ? FontWeight.bold : FontWeight.normal,
+                              color:
+                                  isToday
+                                      ? AppColors.neonCyan
+                                      : AppColors.textSecondary,
+                            ),
                           ),
-                        ),
                 ),
               );
             }),

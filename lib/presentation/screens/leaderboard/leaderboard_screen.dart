@@ -51,13 +51,14 @@ class _LeaderboardScreenState extends State<LeaderboardScreen>
         _ConfettiParticle(
           x: _random.nextDouble(),
           y: _random.nextDouble(),
-          color: [
-            AppColors.neonGold,
-            AppColors.neonOrange,
-            AppColors.neonCyan,
-            AppColors.neonPurple,
-            AppColors.neonPink,
-          ][_random.nextInt(5)],
+          color:
+              [
+                AppColors.neonGold,
+                AppColors.neonOrange,
+                AppColors.neonCyan,
+                AppColors.neonPurple,
+                AppColors.neonPink,
+              ][_random.nextInt(5)],
           size: _random.nextDouble() * 5 + 2.5,
           speed: 0,
         ),
@@ -76,51 +77,57 @@ class _LeaderboardScreenState extends State<LeaderboardScreen>
 
   Widget _leaderboardAvatar(String avatar, double size, {Color? borderColor}) {
     final safeAvatar = avatar.isNotEmpty ? avatar : AppAssets.maleAvatar;
-    final image = _isNetworkAvatar(safeAvatar)
-        ? CachedAvatar(
-            url: safeAvatar,
-            fit: BoxFit.cover,
-            alignment: const Alignment(0, -0.72),
-            fallbackIcon: Icons.person_rounded,
-            fallbackIconColor: Colors.white,
-          )
-        : Image.asset(
-            safeAvatar,
-            fit: BoxFit.cover,
-            alignment: const Alignment(0, -0.72),
-            errorBuilder: (_, __, ___) =>
-                const Icon(Icons.person_rounded, color: Colors.white),
-          );
+    final image =
+        _isNetworkAvatar(safeAvatar)
+            ? CachedAvatar(
+              url: safeAvatar,
+              fit: BoxFit.cover,
+              alignment: const Alignment(0, -0.72),
+              fallbackIcon: Icons.person_rounded,
+              fallbackIconColor: Colors.white,
+            )
+            : Image.asset(
+              safeAvatar,
+              fit: BoxFit.cover,
+              alignment: const Alignment(0, -0.72),
+              errorBuilder:
+                  (_, __, ___) =>
+                      const Icon(Icons.person_rounded, color: Colors.white),
+            );
 
     return Container(
       width: size,
       height: size,
-      padding: borderColor != null
-          ? EdgeInsets.all(borderColor == AppColors.neonGold ? 3 : 2)
-          : null,
+      padding:
+          borderColor != null
+              ? EdgeInsets.all(borderColor == AppColors.neonGold ? 3 : 2)
+              : null,
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        border: borderColor != null
-            ? Border.all(
-                color: borderColor,
-                width: borderColor == AppColors.neonGold ? 3 : 2,
-              )
-            : null,
-        gradient: borderColor == AppColors.neonGold
-            ? const LinearGradient(
-                colors: [AppColors.neonGold, AppColors.neonOrange],
-              )
-            : null,
-        boxShadow: borderColor != null
-            ? [
-                BoxShadow(
-                  color: borderColor.withValues(alpha: 0.5),
-                  blurRadius: 10,
-                  spreadRadius: 1,
-                ),
-              ]
-            : null,
+        border:
+            borderColor != null
+                ? Border.all(
+                  color: borderColor,
+                  width: borderColor == AppColors.neonGold ? 3 : 2,
+                )
+                : null,
+        gradient:
+            borderColor == AppColors.neonGold
+                ? const LinearGradient(
+                  colors: [AppColors.neonGold, AppColors.neonOrange],
+                )
+                : null,
+        boxShadow:
+            borderColor != null
+                ? [
+                  BoxShadow(
+                    color: borderColor.withValues(alpha: 0.5),
+                    blurRadius: 10,
+                    spreadRadius: 1,
+                  ),
+                ]
+                : null,
       ),
       child: Container(
         clipBehavior: Clip.antiAlias,
@@ -153,10 +160,7 @@ class _LeaderboardScreenState extends State<LeaderboardScreen>
             fontWeight: FontWeight.bold,
             fontSize: 12,
           ),
-          tabs: const [
-            Tab(text: 'LIVE TODAY'),
-            Tab(text: 'WINNERS 🏆'),
-          ],
+          tabs: const [Tab(text: 'LIVE TODAY'), Tab(text: 'WINNERS 🏆')],
         ),
       ),
       body: TabBarView(
@@ -187,9 +191,10 @@ class _LeaderboardScreenState extends State<LeaderboardScreen>
             const SizedBox(height: 70),
             _buildEmptyState(
               icon: Icons.leaderboard_rounded,
-              title: userProvider.isLoading
-                  ? 'Loading today\'s ranking…'
-                  : S.lbNoScoresToday,
+              title:
+                  userProvider.isLoading
+                      ? 'Loading today\'s ranking…'
+                      : S.lbNoScoresToday,
               message: userProvider.isLoading ? S.lbFetching : S.lbNoScoresBody,
             ),
           ],
@@ -515,9 +520,10 @@ class _LeaderboardScreenState extends State<LeaderboardScreen>
 
     return GlassCard(
       borderRadius: 14,
-      borderColor: isTop3
-          ? AppColors.neonGold.withValues(alpha: 0.55)
-          : AppColors.neonCyan.withValues(alpha: 0.35),
+      borderColor:
+          isTop3
+              ? AppColors.neonGold.withValues(alpha: 0.55)
+              : AppColors.neonCyan.withValues(alpha: 0.35),
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
       child: Row(
         children: [
@@ -530,9 +536,10 @@ class _LeaderboardScreenState extends State<LeaderboardScreen>
               shape: BoxShape.circle,
               gradient: isTop3 ? AppColors.goldGradient : null,
               color: isTop3 ? null : Colors.white10,
-              border: isTop3
-                  ? null
-                  : Border.all(color: AppColors.neonCyan, width: 1.5),
+              border:
+                  isTop3
+                      ? null
+                      : Border.all(color: AppColors.neonCyan, width: 1.5),
             ),
             child: Text(
               isTop3 ? (_medals[rank] ?? '#$rank') : '$rank',
@@ -817,14 +824,15 @@ class _LeaderboardScreenState extends State<LeaderboardScreen>
       final key = c.dateKey.isNotEmpty ? c.dateKey : '_recent_';
       byKey.putIfAbsent(key, () => []).add(c);
     }
-    final keys = byKey.keys.toList()
-      ..sort(
-        (a, b) => a == '_recent_'
-            ? 1
-            : b == '_recent_'
-            ? -1
-            : b.compareTo(a),
-      );
+    final keys =
+        byKey.keys.toList()..sort(
+          (a, b) =>
+              a == '_recent_'
+                  ? 1
+                  : b == '_recent_'
+                  ? -1
+                  : b.compareTo(a),
+        );
 
     return ListView.builder(
       padding: const EdgeInsets.fromLTRB(14, 12, 14, 16),
@@ -845,9 +853,10 @@ class _LeaderboardScreenState extends State<LeaderboardScreen>
       padding: const EdgeInsets.only(bottom: 12),
       child: GlassCard(
         borderRadius: 16,
-        borderColor: isYesterday || isToday
-            ? AppColors.neonGold.withValues(alpha: 0.4)
-            : Colors.white12,
+        borderColor:
+            isYesterday || isToday
+                ? AppColors.neonGold.withValues(alpha: 0.4)
+                : Colors.white12,
         padding: const EdgeInsets.all(12),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -936,16 +945,20 @@ class _LeaderboardScreenState extends State<LeaderboardScreen>
             width: 26,
             height: 26,
             child: Center(
-              child: medals.containsKey(rank)
-                  ? Text(medals[rank]!, style: const TextStyle(fontSize: 14))
-                  : Text(
-                      rank > 0 ? '$rank' : '·',
-                      style: const TextStyle(
-                        fontSize: 11,
-                        fontWeight: FontWeight.w900,
-                        color: AppColors.textSecondary,
+              child:
+                  medals.containsKey(rank)
+                      ? Text(
+                        medals[rank]!,
+                        style: const TextStyle(fontSize: 14),
+                      )
+                      : Text(
+                        rank > 0 ? '$rank' : '·',
+                        style: const TextStyle(
+                          fontSize: 11,
+                          fontWeight: FontWeight.w900,
+                          color: AppColors.textSecondary,
+                        ),
                       ),
-                    ),
             ),
           ),
           const SizedBox(width: 6),
@@ -1082,9 +1095,10 @@ class _ConfettiPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     for (final particle in particles) {
-      final paint = Paint()
-        ..color = particle.color.withValues(alpha: 0.14)
-        ..style = PaintingStyle.fill;
+      final paint =
+          Paint()
+            ..color = particle.color.withValues(alpha: 0.14)
+            ..style = PaintingStyle.fill;
 
       canvas.drawCircle(
         Offset(particle.x * size.width, particle.y * size.height),

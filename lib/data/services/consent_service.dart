@@ -106,11 +106,12 @@ class ConsentService extends ChangeNotifier {
   Future<void> _requestConsentInfoUpdate() {
     final completer = Completer<void>();
     final params = ConsentRequestParameters(
-      consentDebugSettings: debugForceEea
-          ? ConsentDebugSettings(
-              debugGeography: DebugGeography.debugGeographyEea,
-            )
-          : null,
+      consentDebugSettings:
+          debugForceEea
+              ? ConsentDebugSettings(
+                debugGeography: DebugGeography.debugGeographyEea,
+              )
+              : null,
     );
     ConsentInformation.instance.requestConsentInfoUpdate(
       params,
@@ -153,8 +154,9 @@ class ConsentService extends ChangeNotifier {
     try {
       _status = await ConsentInformation.instance.getConsentStatus();
       _canRequestAds = await ConsentInformation.instance.canRequestAds();
-      _privacyOptions = await ConsentInformation.instance
-          .getPrivacyOptionsRequirementStatus();
+      _privacyOptions =
+          await ConsentInformation.instance
+              .getPrivacyOptionsRequirementStatus();
       debugPrint(
         'ConsentService: status=$_status canRequestAds=$_canRequestAds '
         'privacyOptions=$_privacyOptions',

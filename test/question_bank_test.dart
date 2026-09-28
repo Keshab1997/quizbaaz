@@ -106,13 +106,11 @@ void main() {
     });
 
     test('findNearDuplicate reports the closest match above the threshold', () {
-      final match = QuestionFingerprint.findNearDuplicate(
-        'Find the HCF of 96 and 404.',
-        {
-          'math_ch1_q014': 'What is the HCF of 96 and 404?',
-          'math_ch1_q020': 'Define an irrational number.',
-        },
-      );
+      final match =
+          QuestionFingerprint.findNearDuplicate('Find the HCF of 96 and 404.', {
+            'math_ch1_q014': 'What is the HCF of 96 and 404?',
+            'math_ch1_q020': 'Define an irrational number.',
+          });
       expect(match, isNotNull);
       expect(match!.questionId, 'math_ch1_q014');
     });
@@ -174,8 +172,9 @@ void main() {
 
     test('negative correct_index', () {
       expect(
-        QuestionValidator.validate(buildQuestion(correctIndex: -1))
-            .isAcceptable,
+        QuestionValidator.validate(
+          buildQuestion(correctIndex: -1),
+        ).isAcceptable,
         isFalse,
       );
     });

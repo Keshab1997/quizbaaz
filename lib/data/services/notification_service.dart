@@ -115,18 +115,20 @@ class NotificationService {
     try {
       await _ensureReady();
       if (defaultTargetPlatform == TargetPlatform.android) {
-        final android = _plugin
-            .resolvePlatformSpecificImplementation<
-              AndroidFlutterLocalNotificationsPlugin
-            >();
+        final android =
+            _plugin
+                .resolvePlatformSpecificImplementation<
+                  AndroidFlutterLocalNotificationsPlugin
+                >();
         final granted = await android?.requestNotificationsPermission();
         return granted ?? true;
       }
       if (defaultTargetPlatform == TargetPlatform.iOS) {
-        final ios = _plugin
-            .resolvePlatformSpecificImplementation<
-              IOSFlutterLocalNotificationsPlugin
-            >();
+        final ios =
+            _plugin
+                .resolvePlatformSpecificImplementation<
+                  IOSFlutterLocalNotificationsPlugin
+                >();
         final granted = await ios?.requestPermissions(
           alert: true,
           badge: false,
@@ -190,9 +192,10 @@ class NotificationService {
     final user = HiveService.loadUser();
     user?.refreshDailyFlags(now);
     final streak = user?.dailyStreak ?? 0;
-    final id = response.id != null
-        ? 'local_${response.id}'
-        : 'local_${response.payload ?? now.millisecondsSinceEpoch}';
+    final id =
+        response.id != null
+            ? 'local_${response.id}'
+            : 'local_${response.payload ?? now.millisecondsSinceEpoch}';
     unawaited(
       NotificationInbox.instance.add(
         NotificationItem(

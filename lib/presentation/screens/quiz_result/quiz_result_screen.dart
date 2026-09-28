@@ -281,14 +281,16 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
                           ),
                           const SizedBox(height: 12),
                           NeonButton(
-                            text: auth.isBusy
-                                ? S.resultSigningIn
-                                : S.resultGoogleSignIn,
+                            text:
+                                auth.isBusy
+                                    ? S.resultSigningIn
+                                    : S.resultGoogleSignIn,
                             height: 40,
                             gradient: AppColors.primaryGradient,
-                            onPressed: auth.isBusy
-                                ? () {}
-                                : () => _handleGoogleSignIn(context),
+                            onPressed:
+                                auth.isBusy
+                                    ? () {}
+                                    : () => _handleGoogleSignIn(context),
                           ),
                         ],
                       ),
@@ -487,36 +489,37 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
     final confirmed =
         await showDialog<bool>(
           context: context,
-          builder: (dialogContext) => AlertDialog(
-            backgroundColor: const Color(0xFF1B1230),
-            title: Text(
-              S.resultShieldRetryDialogTitle,
-              style: const TextStyle(color: Colors.white, fontSize: 16),
-            ),
-            content: Text(
-              S.resultShieldRetryDialogBody,
-              style: const TextStyle(
-                color: AppColors.textSecondary,
-                fontSize: 13,
-              ),
-            ),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(dialogContext, false),
-                child: Text(
-                  S.cancel,
-                  style: const TextStyle(color: AppColors.textSecondary),
+          builder:
+              (dialogContext) => AlertDialog(
+                backgroundColor: const Color(0xFF1B1230),
+                title: Text(
+                  S.resultShieldRetryDialogTitle,
+                  style: const TextStyle(color: Colors.white, fontSize: 16),
                 ),
-              ),
-              TextButton(
-                onPressed: () => Navigator.pop(dialogContext, true),
-                child: Text(
-                  S.resultShieldRetryConfirm,
-                  style: const TextStyle(color: AppColors.neonPurple),
+                content: Text(
+                  S.resultShieldRetryDialogBody,
+                  style: const TextStyle(
+                    color: AppColors.textSecondary,
+                    fontSize: 13,
+                  ),
                 ),
+                actions: [
+                  TextButton(
+                    onPressed: () => Navigator.pop(dialogContext, false),
+                    child: Text(
+                      S.cancel,
+                      style: const TextStyle(color: AppColors.textSecondary),
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () => Navigator.pop(dialogContext, true),
+                    child: Text(
+                      S.resultShieldRetryConfirm,
+                      style: const TextStyle(color: AppColors.neonPurple),
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
         ) ??
         false;
     if (!confirmed) return;
@@ -620,8 +623,12 @@ class _ResultAvatar extends StatelessWidget {
       avatar.isNotEmpty ? avatar : fallbackAsset,
       height: 150,
       fit: BoxFit.contain,
-      errorBuilder: (context, error, stackTrace) =>
-          const Icon(Icons.military_tech, size: 90, color: AppColors.neonGold),
+      errorBuilder:
+          (context, error, stackTrace) => const Icon(
+            Icons.military_tech,
+            size: 90,
+            color: AppColors.neonGold,
+          ),
     );
   }
 }

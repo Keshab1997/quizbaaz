@@ -94,17 +94,17 @@ class BattleRoomService {
     required String difficulty,
   }) async {
     try {
-      final cutoff = DateTime.now()
-          .subtract(queueStaleAfter)
-          .millisecondsSinceEpoch;
+      final cutoff =
+          DateTime.now().subtract(queueStaleAfter).millisecondsSinceEpoch;
 
-      final snapshot = await _db
-          .collection(queueCollection)
-          .where('difficulty', isEqualTo: difficulty)
-          .where('created_at', isGreaterThan: cutoff)
-          .orderBy('created_at', descending: true)
-          .limit(15)
-          .get();
+      final snapshot =
+          await _db
+              .collection(queueCollection)
+              .where('difficulty', isEqualTo: difficulty)
+              .where('created_at', isGreaterThan: cutoff)
+              .orderBy('created_at', descending: true)
+              .limit(15)
+              .get();
 
       for (final doc in snapshot.docs) {
         if (doc.id == myUid) continue;
@@ -184,18 +184,20 @@ class BattleRoomService {
             'next_q': 0,
           },
           'players': {
-            'a': BattleRoomPlayer(
-              uid: me.uid,
-              name: me.name,
-              avatar: me.avatar,
-              lastSeenMs: nowMs,
-            ).toJson(),
-            'b': BattleRoomPlayer(
-              uid: opponent.uid,
-              name: opponent.name,
-              avatar: opponent.avatar,
-              lastSeenMs: nowMs,
-            ).toJson(),
+            'a':
+                BattleRoomPlayer(
+                  uid: me.uid,
+                  name: me.name,
+                  avatar: me.avatar,
+                  lastSeenMs: nowMs,
+                ).toJson(),
+            'b':
+                BattleRoomPlayer(
+                  uid: opponent.uid,
+                  name: opponent.name,
+                  avatar: opponent.avatar,
+                  lastSeenMs: nowMs,
+                ).toJson(),
           },
           'winner': null,
         });
@@ -248,18 +250,20 @@ class BattleRoomService {
           'next_q': 0,
         },
         'players': {
-          'a': BattleRoomPlayer(
-            uid: me.uid,
-            name: me.name,
-            avatar: me.avatar,
-            lastSeenMs: nowMs,
-          ).toJson(),
-          'b': BattleRoomPlayer(
-            uid: opponent.uid,
-            name: opponent.name,
-            avatar: opponent.avatar,
-            lastSeenMs: nowMs,
-          ).toJson(),
+          'a':
+              BattleRoomPlayer(
+                uid: me.uid,
+                name: me.name,
+                avatar: me.avatar,
+                lastSeenMs: nowMs,
+              ).toJson(),
+          'b':
+              BattleRoomPlayer(
+                uid: opponent.uid,
+                name: opponent.name,
+                avatar: opponent.avatar,
+                lastSeenMs: nowMs,
+              ).toJson(),
         },
         'winner': null,
       });

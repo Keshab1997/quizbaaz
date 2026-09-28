@@ -33,13 +33,15 @@ void main() {
     test('spent coins stay spent', () {
       // Local: bought a 500-coin item, so 100 left. Remote mirror is stale and
       // still shows 600 from before the purchase.
-      final local = UserModel.newPlayer(isGuest: false)
-        ..coins = 100
-        ..gems = 0
-        ..inventory = {'coin_booster': 1};
-      final remote = UserModel.newPlayer(isGuest: false)
-        ..coins = 600
-        ..gems = 5;
+      final local =
+          UserModel.newPlayer(isGuest: false)
+            ..coins = 100
+            ..gems = 0
+            ..inventory = {'coin_booster': 1};
+      final remote =
+          UserModel.newPlayer(isGuest: false)
+            ..coins = 600
+            ..gems = 5;
 
       final wallet = SyncService.mergeWallet(local, remote);
 
@@ -50,12 +52,14 @@ void main() {
 
     test('a used power-up is not restored', () {
       // The last booster was consumed: the key exists and is zero.
-      final local = UserModel.newPlayer(isGuest: false)
-        ..coins = 50
-        ..inventory = {'coin_booster': 0, 'fifty_fifty': 0};
-      final remote = UserModel.newPlayer(isGuest: false)
-        ..coins = 50
-        ..inventory = {'coin_booster': 4, 'fifty_fifty': 2};
+      final local =
+          UserModel.newPlayer(isGuest: false)
+            ..coins = 50
+            ..inventory = {'coin_booster': 0, 'fifty_fifty': 0};
+      final remote =
+          UserModel.newPlayer(isGuest: false)
+            ..coins = 50
+            ..inventory = {'coin_booster': 4, 'fifty_fifty': 2};
 
       final wallet = SyncService.mergeWallet(local, remote);
 
@@ -65,10 +69,11 @@ void main() {
 
     test('a fresh profile adopts the remote balance (reinstall)', () {
       final local = UserModel.newPlayer(isGuest: false); // 0 coins, no items
-      final remote = UserModel.newPlayer(isGuest: false)
-        ..coins = 2400
-        ..gems = 12
-        ..inventory = {'coin_booster': 3};
+      final remote =
+          UserModel.newPlayer(isGuest: false)
+            ..coins = 2400
+            ..gems = 12
+            ..inventory = {'coin_booster': 3};
 
       final wallet = SyncService.mergeWallet(local, remote);
 

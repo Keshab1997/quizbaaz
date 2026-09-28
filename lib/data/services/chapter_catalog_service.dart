@@ -62,22 +62,24 @@ class ChapterCatalogService {
       final knownChapterIds = <String, Set<String>>{};
 
       for (final doc in categorySnapshot.docs) {
-        final chapterSnapshot = await _chapters(doc.id)
-            .orderBy('chapter_number')
-            .get();
+        final chapterSnapshot =
+            await _chapters(doc.id).orderBy('chapter_number').get();
 
-        final chapters = chapterSnapshot.docs
-            .map(
-              (c) => ChapterModel.fromJson({...c.data(), 'chapter_id': c.id}),
-            )
-            .toList();
+        final chapters =
+            chapterSnapshot.docs
+                .map(
+                  (c) =>
+                      ChapterModel.fromJson({...c.data(), 'chapter_id': c.id}),
+                )
+                .toList();
         knownChapterIds[doc.id] = {for (final c in chapters) c.chapterId};
         byId[doc.id] = CategoryModel.fromJson({
           ...doc.data(),
           'category_id': doc.id,
-          'chapters': chapterSnapshot.docs
-              .map((c) => {...c.data(), 'chapter_id': c.id})
-              .toList(),
+          'chapters':
+              chapterSnapshot.docs
+                  .map((c) => {...c.data(), 'chapter_id': c.id})
+                  .toList(),
         });
         order.add(doc.id);
       }
@@ -86,9 +88,8 @@ class ChapterCatalogService {
       // (the normal case for a bundled subject). Without this, a visibility
       // toggle on such a chapter is silently lost on the next read.
       try {
-        final groupSnapshot = await _db
-            .collectionGroup(chaptersSubcollection)
-            .get();
+        final groupSnapshot =
+            await _db.collectionGroup(chaptersSubcollection).get();
         for (final doc in groupSnapshot.docs) {
           final categoryId = doc.reference.parent.parent?.id ?? '';
           if (categoryId.isEmpty) continue;
@@ -154,9 +155,8 @@ class ChapterCatalogService {
         order.add(category.categoryId);
       }
       final existing = byId[category.categoryId];
-      byId[category.categoryId] = existing == null
-          ? category
-          : _mergeCategory(existing, category);
+      byId[category.categoryId] =
+          existing == null ? category : _mergeCategory(existing, category);
     }
 
     assets.forEach(put);
@@ -187,9 +187,10 @@ class ChapterCatalogService {
     return CategoryModel(
       categoryId: base.categoryId,
       nameText: override.nameText.isEmpty ? base.nameText : override.nameText,
-      categoryIcon: override.categoryIcon.isEmpty
-          ? base.categoryIcon
-          : override.categoryIcon,
+      categoryIcon:
+          override.categoryIcon.isEmpty
+              ? base.categoryIcon
+              : override.categoryIcon,
       colorHex: override.colorHex.isEmpty ? base.colorHex : override.colorHex,
       totalChapters: merged.length,
       chapters: merged,

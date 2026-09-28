@@ -59,17 +59,14 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
     if (_filter == 'all') {
       _filteredHistory = _allHistory;
     } else if (_filter == 'coins') {
-      _filteredHistory = _allHistory
-          .where((h) => h.currency == 'coins')
-          .toList();
+      _filteredHistory =
+          _allHistory.where((h) => h.currency == 'coins').toList();
     } else if (_filter == 'gems') {
-      _filteredHistory = _allHistory
-          .where((h) => h.currency == 'gems')
-          .toList();
+      _filteredHistory =
+          _allHistory.where((h) => h.currency == 'gems').toList();
     } else {
-      _filteredHistory = _allHistory
-          .where((h) => h.category == _filter)
-          .toList();
+      _filteredHistory =
+          _allHistory.where((h) => h.category == _filter).toList();
     }
   }
 
@@ -107,13 +104,16 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
           _buildStatsSummary(),
           _buildCategoryFilter(),
           Expanded(
-            child: _isLoading
-                ? const Center(
-                    child: CircularProgressIndicator(color: AppColors.neonGold),
-                  )
-                : _filteredHistory.isEmpty
-                ? _buildEmptyState()
-                : _buildHistoryList(),
+            child:
+                _isLoading
+                    ? const Center(
+                      child: CircularProgressIndicator(
+                        color: AppColors.neonGold,
+                      ),
+                    )
+                    : _filteredHistory.isEmpty
+                    ? _buildEmptyState()
+                    : _buildHistoryList(),
           ),
         ],
       ),
@@ -183,30 +183,34 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
                 Wrap(
                   spacing: 8,
                   runSpacing: 4,
-                  children: categoryCounts.entries.map((entry) {
-                    return Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 8,
-                        vertical: 4,
-                      ),
-                      decoration: BoxDecoration(
-                        color: _categoryColor(entry.key).withValues(alpha: 0.1),
-                        borderRadius: BorderRadius.circular(8),
-                        border: Border.all(
-                          color: _categoryColor(entry.key)
-                              .withValues(alpha: 0.3),
-                        ),
-                      ),
-                      child: Text(
-                        '${_categoryEmoji(entry.key)} ${entry.value}',
-                        style: TextStyle(
-                          fontSize: 11,
-                          fontWeight: FontWeight.w700,
-                          color: _categoryColor(entry.key),
-                        ),
-                      ),
-                    );
-                  }).toList(),
+                  children:
+                      categoryCounts.entries.map((entry) {
+                        return Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 8,
+                            vertical: 4,
+                          ),
+                          decoration: BoxDecoration(
+                            color: _categoryColor(
+                              entry.key,
+                            ).withValues(alpha: 0.1),
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(
+                              color: _categoryColor(
+                                entry.key,
+                              ).withValues(alpha: 0.3),
+                            ),
+                          ),
+                          child: Text(
+                            '${_categoryEmoji(entry.key)} ${entry.value}',
+                            style: TextStyle(
+                              fontSize: 11,
+                              fontWeight: FontWeight.w700,
+                              color: _categoryColor(entry.key),
+                            ),
+                          ),
+                        );
+                      }).toList(),
                 ),
               ],
             ],
@@ -273,14 +277,16 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
                   vertical: 8,
                 ),
                 decoration: BoxDecoration(
-                  color: isSelected
-                      ? AppColors.neonGold.withValues(alpha: 0.2)
-                      : Colors.white.withValues(alpha: 0.05),
+                  color:
+                      isSelected
+                          ? AppColors.neonGold.withValues(alpha: 0.2)
+                          : Colors.white.withValues(alpha: 0.05),
                   borderRadius: BorderRadius.circular(20),
                   border: Border.all(
-                    color: isSelected
-                        ? AppColors.neonGold.withValues(alpha: 0.5)
-                        : Colors.white.withValues(alpha: 0.1),
+                    color:
+                        isSelected
+                            ? AppColors.neonGold.withValues(alpha: 0.5)
+                            : Colors.white.withValues(alpha: 0.1),
                   ),
                 ),
                 child: Text(
@@ -288,9 +294,10 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
                   style: TextStyle(
                     fontSize: 12,
                     fontWeight: isSelected ? FontWeight.w800 : FontWeight.w600,
-                    color: isSelected
-                        ? AppColors.neonGold
-                        : AppColors.textSecondary,
+                    color:
+                        isSelected
+                            ? AppColors.neonGold
+                            : AppColors.textSecondary,
                   ),
                 ),
               ),
@@ -550,155 +557,160 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
       context: context,
       backgroundColor: Colors.transparent,
       isScrollControlled: true,
-      builder: (context) => Container(
-        margin: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          color: const Color(0xFF1B2646),
-          borderRadius: BorderRadius.circular(24),
-          border: Border.all(color: catColor.withValues(alpha: 0.3)),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(24),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              // Handle bar
-              Container(
-                width: 40,
-                height: 4,
-                decoration: BoxDecoration(
-                  color: Colors.white.withValues(alpha: 0.3),
-                  borderRadius: BorderRadius.circular(2),
-                ),
-              ),
-              const SizedBox(height: 20),
-              // Item icon
-              Container(
-                width: 80,
-                height: 80,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: catColor.withValues(alpha: 0.15),
-                  border: Border.all(color: catColor.withValues(alpha: 0.4)),
-                  boxShadow: [
-                    BoxShadow(
-                      color: catColor.withValues(alpha: 0.3),
-                      blurRadius: 20,
-                    ),
-                  ],
-                ),
-                child: Icon(icon, color: catColor, size: 40),
-              ),
-              const SizedBox(height: 16),
-              Text(
-                history.itemName,
-                style: const TextStyle(
-                  color: AppColors.textPrimary,
-                  fontSize: 22,
-                  fontWeight: FontWeight.w900,
-                ),
-              ),
-              const SizedBox(height: 8),
-              // Category badge
-              Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 6,
-                ),
-                decoration: BoxDecoration(
-                  color: catColor.withValues(alpha: 0.15),
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: catColor.withValues(alpha: 0.4)),
-                ),
-                child: Text(
-                  history.categoryDisplayName,
-                  style: TextStyle(
-                    color: catColor,
-                    fontSize: 13,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-              ),
-              const SizedBox(height: 24),
-              // Stats
-              Row(
+      builder:
+          (context) => Container(
+            margin: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: const Color(0xFF1B2646),
+              borderRadius: BorderRadius.circular(24),
+              border: Border.all(color: catColor.withValues(alpha: 0.3)),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(24),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  Expanded(
-                    child: _buildDetailStat(
-                      S.quantity,
-                      'x${history.quantity}',
-                      AppColors.neonCyan,
-                      Icons.inventory_2_rounded,
+                  // Handle bar
+                  Container(
+                    width: 40,
+                    height: 4,
+                    decoration: BoxDecoration(
+                      color: Colors.white.withValues(alpha: 0.3),
+                      borderRadius: BorderRadius.circular(2),
                     ),
                   ),
-                  Expanded(
-                    child: _buildDetailStat(
-                      S.cost,
-                      '${history.cost}',
-                      accent,
-                      isCoins
-                          ? Icons.monetization_on_rounded
-                          : Icons.diamond_rounded,
+                  const SizedBox(height: 20),
+                  // Item icon
+                  Container(
+                    width: 80,
+                    height: 80,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: catColor.withValues(alpha: 0.15),
+                      border: Border.all(
+                        color: catColor.withValues(alpha: 0.4),
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: catColor.withValues(alpha: 0.3),
+                          blurRadius: 20,
+                        ),
+                      ],
+                    ),
+                    child: Icon(icon, color: catColor, size: 40),
+                  ),
+                  const SizedBox(height: 16),
+                  Text(
+                    history.itemName,
+                    style: const TextStyle(
+                      color: AppColors.textPrimary,
+                      fontSize: 22,
+                      fontWeight: FontWeight.w900,
                     ),
                   ),
-                ],
-              ),
-              const SizedBox(height: 12),
-              Row(
-                children: [
-                  Expanded(
-                    child: _buildDetailStat(
-                      S.currency,
-                      history.currency.toUpperCase(),
-                      accent,
-                      Icons.attach_money_rounded,
+                  const SizedBox(height: 8),
+                  // Category badge
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 12,
+                      vertical: 6,
                     ),
-                  ),
-                  Expanded(
-                    child: _buildDetailStat(
-                      S.purchaseTotalSpent,
-                      '${history.cost * history.quantity}',
-                      AppColors.neonPink,
-                      Icons.account_balance_wallet_rounded,
+                    decoration: BoxDecoration(
+                      color: catColor.withValues(alpha: 0.15),
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(
+                        color: catColor.withValues(alpha: 0.4),
+                      ),
                     ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 20),
-              Text(
-                S.purchasedOn(date: _formatFullDate(history.purchasedAt)),
-                style: const TextStyle(
-                  color: AppColors.textMuted,
-                  fontSize: 12,
-                ),
-              ),
-              const SizedBox(height: 20),
-              SizedBox(
-                width: double.infinity,
-                child: TextButton(
-                  onPressed: () => Navigator.pop(context),
-                  style: TextButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(vertical: 14),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(14),
-                      side: BorderSide(
-                        color: Colors.white.withValues(alpha: 0.2),
+                    child: Text(
+                      history.categoryDisplayName,
+                      style: TextStyle(
+                        color: catColor,
+                        fontSize: 13,
+                        fontWeight: FontWeight.w700,
                       ),
                     ),
                   ),
-                  child: Text(
-                    S.close,
+                  const SizedBox(height: 24),
+                  // Stats
+                  Row(
+                    children: [
+                      Expanded(
+                        child: _buildDetailStat(
+                          S.quantity,
+                          'x${history.quantity}',
+                          AppColors.neonCyan,
+                          Icons.inventory_2_rounded,
+                        ),
+                      ),
+                      Expanded(
+                        child: _buildDetailStat(
+                          S.cost,
+                          '${history.cost}',
+                          accent,
+                          isCoins
+                              ? Icons.monetization_on_rounded
+                              : Icons.diamond_rounded,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 12),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: _buildDetailStat(
+                          S.currency,
+                          history.currency.toUpperCase(),
+                          accent,
+                          Icons.attach_money_rounded,
+                        ),
+                      ),
+                      Expanded(
+                        child: _buildDetailStat(
+                          S.purchaseTotalSpent,
+                          '${history.cost * history.quantity}',
+                          AppColors.neonPink,
+                          Icons.account_balance_wallet_rounded,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 20),
+                  Text(
+                    S.purchasedOn(date: _formatFullDate(history.purchasedAt)),
                     style: const TextStyle(
-                      color: AppColors.textPrimary,
-                      fontWeight: FontWeight.w700,
+                      color: AppColors.textMuted,
+                      fontSize: 12,
                     ),
                   ),
-                ),
+                  const SizedBox(height: 20),
+                  SizedBox(
+                    width: double.infinity,
+                    child: TextButton(
+                      onPressed: () => Navigator.pop(context),
+                      style: TextButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(vertical: 14),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(14),
+                          side: BorderSide(
+                            color: Colors.white.withValues(alpha: 0.2),
+                          ),
+                        ),
+                      ),
+                      child: Text(
+                        S.close,
+                        style: const TextStyle(
+                          color: AppColors.textPrimary,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
-        ),
-      ),
     );
   }
 

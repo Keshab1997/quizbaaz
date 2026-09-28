@@ -257,18 +257,20 @@ Map<String, dynamic> _roomJson({
     'countdown_until': DateTime.now().millisecondsSinceEpoch + 8000,
   },
   'players': {
-    'a': const BattleRoomPlayer(
-      uid: _myUid,
-      name: 'Alpha',
-      avatar: 'a.png',
-      attached: true,
-    ).toJson(),
-    'b': const BattleRoomPlayer(
-      uid: _opponentUid,
-      name: 'Zeta',
-      avatar: 'z.png',
-      attached: true,
-    ).toJson(),
+    'a':
+        const BattleRoomPlayer(
+          uid: _myUid,
+          name: 'Alpha',
+          avatar: 'a.png',
+          attached: true,
+        ).toJson(),
+    'b':
+        const BattleRoomPlayer(
+          uid: _opponentUid,
+          name: 'Zeta',
+          avatar: 'z.png',
+          attached: true,
+        ).toJson(),
   },
   'winner': null,
 };
@@ -370,8 +372,8 @@ void main() {
     );
 
     test('a failed start rolls back and explains itself', () async {
-      rooms.claimResult = (roomId) =>
-          QueueClaimOutcome.opponentGone(roomId: roomId);
+      rooms.claimResult =
+          (roomId) => QueueClaimOutcome.opponentGone(roomId: roomId);
       final provider = newProvider();
 
       final started = await provider.startBattleWithOpponent(
@@ -393,10 +395,11 @@ void main() {
     test(
       'a rejected claim (rules/index) fails instead of falling back',
       () async {
-        rooms.claimResult = (roomId) => QueueClaimOutcome.failure(
-          roomId: roomId,
-          error: 'permission-denied',
-        );
+        rooms.claimResult =
+            (roomId) => QueueClaimOutcome.failure(
+              roomId: roomId,
+              error: 'permission-denied',
+            );
         final provider = newProvider();
 
         expect(
@@ -517,14 +520,15 @@ void main() {
         final room = _roomJson();
         final players = Map<String, dynamic>.from(room['players'] as Map);
         final playerA = Map<String, dynamic>.from(players['a'] as Map);
-        playerA['answers.0'] = const BattleAnswer(
-          selected: 1,
-          correct: true,
-          points: 23,
-          timeBonus: 10,
-          streakBonus: 0,
-          timedOut: false,
-        ).toJson();
+        playerA['answers.0'] =
+            const BattleAnswer(
+              selected: 1,
+              correct: true,
+              points: 23,
+              timeBonus: 10,
+              streakBonus: 0,
+              timedOut: false,
+            ).toJson();
         players['a'] = playerA;
         room['players'] = players;
 
@@ -563,11 +567,12 @@ void main() {
 
     test('bothAttached needs both sides', () {
       final one = _roomJson();
-      (one['players'] as Map)['b'] = const BattleRoomPlayer(
-        uid: _opponentUid,
-        name: 'Zeta',
-        avatar: 'z.png',
-      ).toJson();
+      (one['players'] as Map)['b'] =
+          const BattleRoomPlayer(
+            uid: _opponentUid,
+            name: 'Zeta',
+            avatar: 'z.png',
+          ).toJson();
       expect(BattleRoomData.fromJson('room_x', one).bothAttached, isFalse);
 
       expect(

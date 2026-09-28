@@ -223,9 +223,10 @@ class AccountDeletionService {
     }
 
     return AccountDeletionResult(
-      status: report.isComplete
-          ? AccountDeletionStatus.success
-          : AccountDeletionStatus.partial,
+      status:
+          report.isComplete
+              ? AccountDeletionStatus.success
+              : AccountDeletionStatus.partial,
       report: report,
     );
   }
@@ -308,28 +309,32 @@ class AccountDeletionService {
     // 1v1 challenges where the user is a participant (participant-only reads,
     // see firestore.rules).
     await step('battle_challenges', () async {
-      final sent = await _firestore
-          .collection('battle_challenges')
-          .where('from_uid', isEqualTo: uid)
-          .get();
-      final received = await _firestore
-          .collection('battle_challenges')
-          .where('to_uid', isEqualTo: uid)
-          .get();
+      final sent =
+          await _firestore
+              .collection('battle_challenges')
+              .where('from_uid', isEqualTo: uid)
+              .get();
+      final received =
+          await _firestore
+              .collection('battle_challenges')
+              .where('to_uid', isEqualTo: uid)
+              .get();
       await _deleteDocs([...sent.docs, ...received.docs]);
     });
 
     // Battle rooms the user played in (rules may deny the delete — the
     // backend finishing job takes those over).
     await step('battle_rooms', () async {
-      final asA = await _firestore
-          .collection('battle_rooms')
-          .where('players.a.uid', isEqualTo: uid)
-          .get();
-      final asB = await _firestore
-          .collection('battle_rooms')
-          .where('players.b.uid', isEqualTo: uid)
-          .get();
+      final asA =
+          await _firestore
+              .collection('battle_rooms')
+              .where('players.a.uid', isEqualTo: uid)
+              .get();
+      final asB =
+          await _firestore
+              .collection('battle_rooms')
+              .where('players.b.uid', isEqualTo: uid)
+              .get();
       await _deleteDocs([...asA.docs, ...asB.docs]);
     });
 

@@ -18,9 +18,8 @@ class ReviewAnswersScreen extends StatelessWidget {
     final quiz = context.watch<QuizProvider>();
     final records = quiz.answerRecords;
 
-    final skippedCount = records
-        .where((r) => r.status == AnswerStatus.skipped)
-        .length;
+    final skippedCount =
+        records.where((r) => r.status == AnswerStatus.skipped).length;
 
     return Scaffold(
       backgroundColor: Colors.transparent,
@@ -37,29 +36,30 @@ class ReviewAnswersScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: records.isEmpty
-          ? Center(
-              child: Text(
-                S.reviewNone,
-                style: const TextStyle(color: AppColors.textSecondary),
-              ),
-            )
-          : ListView(
-              padding: const EdgeInsets.all(18),
-              children: [
-                _buildSummary(quiz, skippedCount),
-                const SizedBox(height: 16),
-                ...records.asMap().entries.map(
-                  (entry) => Padding(
-                    padding: const EdgeInsets.only(bottom: 12),
-                    child: _QuestionReviewCard(
-                      index: entry.key,
-                      record: entry.value,
+      body:
+          records.isEmpty
+              ? Center(
+                child: Text(
+                  S.reviewNone,
+                  style: const TextStyle(color: AppColors.textSecondary),
+                ),
+              )
+              : ListView(
+                padding: const EdgeInsets.all(18),
+                children: [
+                  _buildSummary(quiz, skippedCount),
+                  const SizedBox(height: 16),
+                  ...records.asMap().entries.map(
+                    (entry) => Padding(
+                      padding: const EdgeInsets.only(bottom: 12),
+                      child: _QuestionReviewCard(
+                        index: entry.key,
+                        record: entry.value,
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
+                ],
+              ),
     );
   }
 
@@ -261,9 +261,10 @@ class _QuestionReviewCard extends StatelessWidget {
       icon = Icons.cancel;
     }
 
-    final String? tag = isCorrectOption
-        ? S.reviewCorrectAnswer
-        : (isUserPick && !wasCorrect ? S.reviewYourAnswer : null);
+    final String? tag =
+        isCorrectOption
+            ? S.reviewCorrectAnswer
+            : (isUserPick && !wasCorrect ? S.reviewYourAnswer : null);
 
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
@@ -281,12 +282,14 @@ class _QuestionReviewCard extends StatelessWidget {
               option,
               style: TextStyle(
                 fontSize: 13,
-                fontWeight: isCorrectOption || isUserPick
-                    ? FontWeight.bold
-                    : FontWeight.w500,
-                color: isCorrectOption || isUserPick
-                    ? textColor
-                    : AppColors.textPrimary,
+                fontWeight:
+                    isCorrectOption || isUserPick
+                        ? FontWeight.bold
+                        : FontWeight.w500,
+                color:
+                    isCorrectOption || isUserPick
+                        ? textColor
+                        : AppColors.textPrimary,
               ),
             ),
           ),

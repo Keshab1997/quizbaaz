@@ -135,9 +135,10 @@ class QuestionPromptBuilder {
     }
 
     if (existingStems.isNotEmpty) {
-      final recent = existingStems.length > maxExistingStems
-          ? existingStems.sublist(existingStems.length - maxExistingStems)
-          : existingStems;
+      final recent =
+          existingStems.length > maxExistingStems
+              ? existingStems.sublist(existingStems.length - maxExistingStems)
+              : existingStems;
       buffer.writeln();
       buffer.writeln(
         'ALREADY IN THIS CHAPTER — do NOT write any question that '
@@ -206,9 +207,12 @@ class QuestionPromptBuilder {
         ],
         'correct_index': 1,
         'explanation': {
-          'en': 'Plants take in CO2 and release O2 during photosynthesis, using it with water to make glucose.',
-          'bn': 'সালোকসংশ্লেষে গাছ CO2 গ্রহণ করে এবং জল-সহ গ্লুকোজ তৈরি করে O2 ত্যাগ করে।',
-          'hi': 'प्रकाश संश्लेषण में पौधे CO2 लेते हैं और जल के साथ ग्लूकोज बनाकर O2 छोड़ते हैं।',
+          'en':
+              'Plants take in CO2 and release O2 during photosynthesis, using it with water to make glucose.',
+          'bn':
+              'সালোকসংশ্লেষে গাছ CO2 গ্রহণ করে এবং জল-সহ গ্লুকোজ তৈরি করে O2 ত্যাগ করে।',
+          'hi':
+              'प्रकाश संश्लेषण में पौधे CO2 लेते हैं और जल के साथ ग्लूकोज बनाकर O2 छोड़ते हैं।',
         },
         'points': 10,
         'time_limit_sec': 30,

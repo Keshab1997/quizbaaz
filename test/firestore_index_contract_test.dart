@@ -48,9 +48,8 @@ void main() {
       if (next + i >= names.length) return false;
       if (names[next + i] != spec.orderBy[i]) return false;
       final direction = fields[next + i]['order'] as String? ?? 'ASCENDING';
-      final wantsDescending = i < spec.descending.length
-          ? spec.descending[i]
-          : false;
+      final wantsDescending =
+          i < spec.descending.length ? spec.descending[i] : false;
       if (wantsDescending && direction != 'DESCENDING') return false;
     }
     return true;
@@ -149,8 +148,8 @@ void main() {
   });
 
   test('challenge expiry is a TTL policy, not a client sweep', () {
-    final overrides = (indexesFile['fieldOverrides'] as List)
-        .cast<Map<String, dynamic>>();
+    final overrides =
+        (indexesFile['fieldOverrides'] as List).cast<Map<String, dynamic>>();
     final ttl = overrides.where(
       (o) =>
           o['collectionGroup'] == 'battle_challenges' &&

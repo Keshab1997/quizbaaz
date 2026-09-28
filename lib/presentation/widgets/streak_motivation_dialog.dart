@@ -30,11 +30,12 @@ class StreakMotivationDialog extends StatefulWidget {
     return showDialog(
       context: context,
       barrierDismissible: true,
-      builder: (_) => StreakMotivationDialog(
-        currentStreak: currentStreak,
-        streakGoal: streakGoal,
-        hasShield: hasShield,
-      ),
+      builder:
+          (_) => StreakMotivationDialog(
+            currentStreak: currentStreak,
+            streakGoal: streakGoal,
+            hasShield: hasShield,
+          ),
     );
   }
 
@@ -110,9 +111,8 @@ class _StreakMotivationDialogState extends State<StreakMotivationDialog>
       0,
       widget.streakGoal,
     );
-    final progress = widget.streakGoal > 0
-        ? widget.currentStreak / widget.streakGoal
-        : 0.0;
+    final progress =
+        widget.streakGoal > 0 ? widget.currentStreak / widget.streakGoal : 0.0;
 
     return Dialog(
       backgroundColor: Colors.transparent,
@@ -173,11 +173,12 @@ class _StreakMotivationDialogState extends State<StreakMotivationDialog>
                                 AppAssets.streakShield3d,
                                 width: 24,
                                 height: 24,
-                                errorBuilder: (_, __, ___) => const Icon(
-                                  Icons.shield_rounded,
-                                  color: Colors.white,
-                                  size: 18,
-                                ),
+                                errorBuilder:
+                                    (_, __, ___) => const Icon(
+                                      Icons.shield_rounded,
+                                      color: Colors.white,
+                                      size: 18,
+                                    ),
                               ),
                             ),
                           ),
@@ -186,11 +187,12 @@ class _StreakMotivationDialogState extends State<StreakMotivationDialog>
                           AppAssets.streakFire3d,
                           height: 90,
                           fit: BoxFit.contain,
-                          errorBuilder: (_, __, ___) => const Icon(
-                            Icons.local_fire_department_rounded,
-                            size: 72,
-                            color: AppColors.neonOrange,
-                          ),
+                          errorBuilder:
+                              (_, __, ___) => const Icon(
+                                Icons.local_fire_department_rounded,
+                                size: 72,
+                                color: AppColors.neonOrange,
+                              ),
                         ),
                       ],
                     ),
@@ -276,9 +278,10 @@ class _StreakMotivationDialogState extends State<StreakMotivationDialog>
                         ? '$daysRemaining days to unlock bonus reward!'
                         : '🎉 Goal reached! Bonus unlocked!',
                     style: TextStyle(
-                      color: daysRemaining > 0
-                          ? AppColors.textSecondary
-                          : AppColors.neonGreen,
+                      color:
+                          daysRemaining > 0
+                              ? AppColors.textSecondary
+                              : AppColors.neonGreen,
                       fontSize: 12,
                       fontWeight: FontWeight.w600,
                     ),

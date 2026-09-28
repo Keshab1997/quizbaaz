@@ -138,12 +138,13 @@ class FirestoreService {
   static Future<UserStats?> loadStats(String userId) async {
     if (!isReady || userId.isEmpty) return null;
     try {
-      final doc = await _db
-          .collection(_users)
-          .doc(userId)
-          .collection('meta')
-          .doc('stats')
-          .get();
+      final doc =
+          await _db
+              .collection(_users)
+              .doc(userId)
+              .collection('meta')
+              .doc('stats')
+              .get();
       final data = doc.data();
       if (!doc.exists || data == null) return null;
       return UserStats.fromJson(data);
@@ -203,12 +204,13 @@ class FirestoreService {
   ) async {
     if (!isReady || userId.isEmpty) return null;
     try {
-      final doc = await _db
-          .collection(_leaderboard)
-          .doc(dateKey(date))
-          .collection('scores')
-          .doc(userId)
-          .get();
+      final doc =
+          await _db
+              .collection(_leaderboard)
+              .doc(dateKey(date))
+              .collection('scores')
+              .doc(userId)
+              .get();
       if (!doc.exists) return null;
       return Map<String, dynamic>.from(doc.data()!)..remove('timestamp');
     } catch (e) {
@@ -224,14 +226,15 @@ class FirestoreService {
   }) async {
     if (!isReady) return const [];
     try {
-      final snapshot = await _db
-          .collection(_leaderboard)
-          .doc(dateKey(date))
-          .collection('scores')
-          .orderBy('score', descending: true)
-          .orderBy('time_seconds', descending: false)
-          .limit(limit)
-          .get();
+      final snapshot =
+          await _db
+              .collection(_leaderboard)
+              .doc(dateKey(date))
+              .collection('scores')
+              .orderBy('score', descending: true)
+              .orderBy('time_seconds', descending: false)
+              .limit(limit)
+              .get();
 
       final rows = <Map<String, dynamic>>[];
       for (var i = 0; i < snapshot.docs.length; i++) {
@@ -257,13 +260,14 @@ class FirestoreService {
   }) async {
     if (!isReady) return const [];
     try {
-      final snapshot = await _db
-          .collection(_champions)
-          .doc(dateKey(date))
-          .collection('winners')
-          .orderBy('rank')
-          .limit(limit)
-          .get();
+      final snapshot =
+          await _db
+              .collection(_champions)
+              .doc(dateKey(date))
+              .collection('winners')
+              .orderBy('rank')
+              .limit(limit)
+              .get();
 
       if (snapshot.docs.isNotEmpty) {
         return snapshot.docs
@@ -361,13 +365,14 @@ class FirestoreService {
   }) async {
     if (!isReady || userId.isEmpty) return const [];
     try {
-      final snapshot = await _db
-          .collection(_users)
-          .doc(userId)
-          .collection('quiz_history')
-          .orderBy('played_at', descending: true)
-          .limit(limit)
-          .get();
+      final snapshot =
+          await _db
+              .collection(_users)
+              .doc(userId)
+              .collection('quiz_history')
+              .orderBy('played_at', descending: true)
+              .limit(limit)
+              .get();
       return snapshot.docs
           .map((d) => Map<String, dynamic>.from(d.data())..remove('timestamp'))
           .toList();
@@ -412,13 +417,14 @@ class FirestoreService {
   }) async {
     if (!isReady || userId.isEmpty) return const [];
     try {
-      final snapshot = await _db
-          .collection(_users)
-          .doc(userId)
-          .collection('purchase_history')
-          .orderBy('purchased_at', descending: true)
-          .limit(limit)
-          .get();
+      final snapshot =
+          await _db
+              .collection(_users)
+              .doc(userId)
+              .collection('purchase_history')
+              .orderBy('purchased_at', descending: true)
+              .limit(limit)
+              .get();
       return snapshot.docs
           .map((d) => Map<String, dynamic>.from(d.data())..remove('timestamp'))
           .toList();
@@ -433,11 +439,8 @@ class FirestoreService {
   static Future<List<Map<String, dynamic>>> getGifts(String userId) async {
     if (!isReady || userId.isEmpty) return const [];
     try {
-      final snapshot = await _db
-          .collection(_users)
-          .doc(userId)
-          .collection('gifts')
-          .get();
+      final snapshot =
+          await _db.collection(_users).doc(userId).collection('gifts').get();
       return snapshot.docs
           .map((d) => Map<String, dynamic>.from(d.data())..remove('timestamp'))
           .toList();
@@ -505,19 +508,21 @@ class FirestoreService {
       final totalUsers = await _db.collection(_users).count().get();
       metrics['total_users'] = totalUsers.count ?? 0;
 
-      final guests = await _db
-          .collection(_users)
-          .where('is_guest', isEqualTo: true)
-          .count()
-          .get();
+      final guests =
+          await _db
+              .collection(_users)
+              .where('is_guest', isEqualTo: true)
+              .count()
+              .get();
       metrics['guest_users'] = guests.count ?? 0;
 
-      final todayPlayers = await _db
-          .collection(_leaderboard)
-          .doc(dateKey(DateTime.now()))
-          .collection('scores')
-          .count()
-          .get();
+      final todayPlayers =
+          await _db
+              .collection(_leaderboard)
+              .doc(dateKey(DateTime.now()))
+              .collection('scores')
+              .count()
+              .get();
       metrics['players_today'] = todayPlayers.count ?? 0;
     } catch (e) {
       debugPrint('Firestore: adminMetrics error – $e');

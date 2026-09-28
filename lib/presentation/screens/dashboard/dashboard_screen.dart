@@ -283,8 +283,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
       alignment: alignment,
       width: width,
       height: height,
-      errorBuilder: (_, __, ___) =>
-          Icon(fallbackIcon, color: Colors.white, size: fallbackSize),
+      errorBuilder:
+          (_, __, ___) =>
+              Icon(fallbackIcon, color: Colors.white, size: fallbackSize),
     );
   }
 
@@ -508,11 +509,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         heroAsset,
                         height: 181,
                         fit: BoxFit.contain,
-                        errorBuilder: (_, __, ___) => const Icon(
-                          Icons.emoji_events_rounded,
-                          color: AppColors.neonGold,
-                          size: 78,
-                        ),
+                        errorBuilder:
+                            (_, __, ___) => const Icon(
+                              Icons.emoji_events_rounded,
+                              color: AppColors.neonGold,
+                              size: 78,
+                            ),
                       ),
                     ),
                   ),
@@ -572,9 +574,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         SizedBox(
                           width: double.infinity,
                           child: NeonButton(
-                            text: userProvider.user.playedTodayDailyQuiz
-                                ? 'PLAY AGAIN'
-                                : 'START QUIZ',
+                            text:
+                                userProvider.user.playedTodayDailyQuiz
+                                    ? 'PLAY AGAIN'
+                                    : 'START QUIZ',
                             height: 43,
                             borderRadius: 14,
                             icon: const Icon(
@@ -671,9 +674,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
             value: '${user.dailyStreak}',
             label: S.dashDayStreak,
             color: AppColors.neonGold,
-            detail: user.dailyStreak > 0
-                ? 'Keep it alive'
-                : 'Play today to start',
+            detail:
+                user.dailyStreak > 0 ? 'Keep it alive' : 'Play today to start',
           ),
         ),
         const SizedBox(width: 10),
@@ -683,10 +685,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
             value: stats.accuracyLabel,
             label: S.dashAccuracyShort,
             color: AppColors.neonCyan,
-            detail: stats.hasData
-                ? (userProvider.percentileLabel ??
-                      '${stats.totalAnswered} questions answered')
-                : 'No quiz played yet',
+            detail:
+                stats.hasData
+                    ? (userProvider.percentileLabel ??
+                        '${stats.totalAnswered} questions answered')
+                    : 'No quiz played yet',
           ),
         ),
       ],
@@ -917,11 +920,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
               bool isAttended = false;
               if (!isFuture && lastPlayDate != null && user.dailyStreak > 0) {
-                final diff = DateTime(
-                  lastPlayDate.year,
-                  lastPlayDate.month,
-                  lastPlayDate.day,
-                ).difference(dayDate).inDays;
+                final diff =
+                    DateTime(
+                      lastPlayDate.year,
+                      lastPlayDate.month,
+                      lastPlayDate.day,
+                    ).difference(dayDate).inDays;
                 if (diff >= 0 && diff < user.dailyStreak) {
                   isAttended = true;
                 }
@@ -942,9 +946,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             ? '📅 $dayShort ($dateStr): Future Day'
                             : '📅 $dayShort ($dateStr)${isToday ? " Today" : ""}: ${isAttended ? "Attended ✓" : "Missed ❌"}',
                       ),
-                      backgroundColor: isAttended
-                          ? AppColors.neonGreen
-                          : (isFuture ? Colors.white24 : AppColors.neonRed),
+                      backgroundColor:
+                          isAttended
+                              ? AppColors.neonGreen
+                              : (isFuture ? Colors.white24 : AppColors.neonRed),
                     ),
                   );
                 },
@@ -955,15 +960,17 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       height: 27,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: isAttended
-                            ? AppColors.neonGold.withValues(alpha: 0.18)
-                            : Colors.white.withValues(alpha: 0.045),
+                        color:
+                            isAttended
+                                ? AppColors.neonGold.withValues(alpha: 0.18)
+                                : Colors.white.withValues(alpha: 0.045),
                         border: Border.all(
-                          color: isToday
-                              ? AppColors.neonCyan
-                              : isAttended
-                              ? AppColors.neonGold.withValues(alpha: 0.75)
-                              : Colors.white.withValues(alpha: 0.10),
+                          color:
+                              isToday
+                                  ? AppColors.neonCyan
+                                  : isAttended
+                                  ? AppColors.neonGold.withValues(alpha: 0.75)
+                                  : Colors.white.withValues(alpha: 0.10),
                           width: isToday ? 2 : 1,
                         ),
                       ),
@@ -972,24 +979,27 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             ? Icons.check_rounded
                             : Icons.circle_outlined,
                         size: 14,
-                        color: isAttended
-                            ? AppColors.neonGold
-                            : AppColors.textMuted,
+                        color:
+                            isAttended
+                                ? AppColors.neonGold
+                                : AppColors.textMuted,
                       ),
                     ),
                     const SizedBox(height: 4),
                     Text(
                       label,
                       style: TextStyle(
-                        color: isToday
-                            ? AppColors.neonCyan
-                            : (isAttended
-                                  ? AppColors.neonGold
-                                  : AppColors.textMuted),
+                        color:
+                            isToday
+                                ? AppColors.neonCyan
+                                : (isAttended
+                                    ? AppColors.neonGold
+                                    : AppColors.textMuted),
                         fontSize: 9,
-                        fontWeight: isToday || isAttended
-                            ? FontWeight.w900
-                            : FontWeight.w700,
+                        fontWeight:
+                            isToday || isAttended
+                                ? FontWeight.w900
+                                : FontWeight.w700,
                       ),
                     ),
                   ],
@@ -1234,9 +1244,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
       );
     }
 
-    final championAvatar = champ.avatarPath.isNotEmpty
-        ? champ.avatarPath
-        : AppAssets.maleAvatar;
+    final championAvatar =
+        champ.avatarPath.isNotEmpty ? champ.avatarPath : AppAssets.maleAvatar;
     final prizeLabel = _championPrizeLabel(champ);
 
     return Container(
@@ -1380,9 +1389,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   /// Live top-4 straight from the Hive-cached leaderboard.
   Widget _buildLeaderboardPreview(UserProvider userProvider) {
-    final List<LeaderboardItem> players = userProvider.leaderboard
-        .take(4)
-        .toList();
+    final List<LeaderboardItem> players =
+        userProvider.leaderboard.take(4).toList();
 
     if (players.isEmpty) {
       return GlassCard(
@@ -1419,63 +1427,68 @@ class _DashboardScreenState extends State<DashboardScreen> {
       padding: const EdgeInsets.fromLTRB(14, 13, 14, 11),
       borderColor: AppColors.neonCyan.withValues(alpha: 0.22),
       child: Column(
-        children: players.map((player) {
-          final color = _rankColor(player.rank);
-          final avatar = player.avatarPath.isNotEmpty
-              ? player.avatarPath
-              : AppAssets.maleAvatar;
-          return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 5),
-            child: Row(
-              children: [
-                SizedBox(
-                  width: 25,
-                  child: Text(
-                    '${player.rank}',
-                    style: TextStyle(
-                      color: color,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w900,
+        children:
+            players.map((player) {
+              final color = _rankColor(player.rank);
+              final avatar =
+                  player.avatarPath.isNotEmpty
+                      ? player.avatarPath
+                      : AppAssets.maleAvatar;
+              return Padding(
+                padding: const EdgeInsets.symmetric(vertical: 5),
+                child: Row(
+                  children: [
+                    SizedBox(
+                      width: 25,
+                      child: Text(
+                        '${player.rank}',
+                        style: TextStyle(
+                          color: color,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w900,
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-                Container(
-                  width: 42,
-                  height: 42,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: color.withValues(alpha: 0.18),
-                    border: Border.all(color: color.withValues(alpha: 0.5)),
-                  ),
-                  clipBehavior: Clip.antiAlias,
-                  child: _avatarImage(avatar, alignment: Alignment.topCenter),
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: NameEffectText(
-                    player.name.isNotEmpty ? player.name : player.username,
-                    effectId: player.nameEffect,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                      color: AppColors.textPrimary,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w700,
+                    Container(
+                      width: 42,
+                      height: 42,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: color.withValues(alpha: 0.18),
+                        border: Border.all(color: color.withValues(alpha: 0.5)),
+                      ),
+                      clipBehavior: Clip.antiAlias,
+                      child: _avatarImage(
+                        avatar,
+                        alignment: Alignment.topCenter,
+                      ),
                     ),
-                  ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: NameEffectText(
+                        player.name.isNotEmpty ? player.name : player.username,
+                        effectId: player.nameEffect,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                          color: AppColors.textPrimary,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+                    Text(
+                      '${player.score} pts',
+                      style: TextStyle(
+                        color: color,
+                        fontSize: 11,
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
+                  ],
                 ),
-                Text(
-                  '${player.score} pts',
-                  style: TextStyle(
-                    color: color,
-                    fontSize: 11,
-                    fontWeight: FontWeight.w900,
-                  ),
-                ),
-              ],
-            ),
-          );
-        }).toList(),
+              );
+            }).toList(),
       ),
     );
   }
@@ -1866,10 +1879,11 @@ class _BattleArenaCardState extends State<_BattleArenaCard>
           end: Offset.zero,
         ).animate(_enterAnim),
         child: GestureDetector(
-          onTap: () => Navigator.push(
-            context,
-            MaterialPageRoute(builder: (_) => const BattleScreen()),
-          ),
+          onTap:
+              () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const BattleScreen()),
+              ),
           child: Container(
             height: 200,
             decoration: BoxDecoration(
@@ -1910,10 +1924,13 @@ class _BattleArenaCardState extends State<_BattleArenaCard>
                     child: IgnorePointer(
                       child: AnimatedBuilder(
                         animation: _flashAnim,
-                        builder: (_, __) => CustomPaint(
-                          painter: _ArenaBgPainter(progress: _flashAnim.value),
-                          child: const SizedBox.expand(),
-                        ),
+                        builder:
+                            (_, __) => CustomPaint(
+                              painter: _ArenaBgPainter(
+                                progress: _flashAnim.value,
+                              ),
+                              child: const SizedBox.expand(),
+                            ),
                       ),
                     ),
                   ),
@@ -1929,15 +1946,16 @@ class _BattleArenaCardState extends State<_BattleArenaCard>
                     bottom: 28,
                     child: AnimatedBuilder(
                       animation: _floatAnim,
-                      builder: (_, __) => Transform.translate(
-                        offset: Offset(0, -_floatAnim.value),
-                        child: const _FighterImage(
-                          asset: AppAssets.battleFighterBlue,
-                          glowColor: AppColors.neonCyan,
-                          label: 'YOU',
-                          flip: false,
-                        ),
-                      ),
+                      builder:
+                          (_, __) => Transform.translate(
+                            offset: Offset(0, -_floatAnim.value),
+                            child: const _FighterImage(
+                              asset: AppAssets.battleFighterBlue,
+                              glowColor: AppColors.neonCyan,
+                              label: 'YOU',
+                              flip: false,
+                            ),
+                          ),
                     ),
                   ),
 
@@ -1947,15 +1965,16 @@ class _BattleArenaCardState extends State<_BattleArenaCard>
                     bottom: 28,
                     child: AnimatedBuilder(
                       animation: _floatAnim,
-                      builder: (_, __) => Transform.translate(
-                        offset: Offset(0, _floatAnim.value),
-                        child: const _FighterImage(
-                          asset: AppAssets.battleFighterPink,
-                          glowColor: AppColors.neonPink,
-                          label: 'BOT',
-                          flip: true,
-                        ),
-                      ),
+                      builder:
+                          (_, __) => Transform.translate(
+                            offset: Offset(0, _floatAnim.value),
+                            child: const _FighterImage(
+                              asset: AppAssets.battleFighterPink,
+                              glowColor: AppColors.neonPink,
+                              label: 'BOT',
+                              flip: true,
+                            ),
+                          ),
                     ),
                   ),
 
@@ -1971,12 +1990,13 @@ class _BattleArenaCardState extends State<_BattleArenaCard>
                             // Lightning bolt
                             AnimatedBuilder(
                               animation: _flashAnim,
-                              builder: (_, __) => CustomPaint(
-                                size: const Size(36, 44),
-                                painter: _LightningPainter(
-                                  progress: _flashAnim.value,
-                                ),
-                              ),
+                              builder:
+                                  (_, __) => CustomPaint(
+                                    size: const Size(36, 44),
+                                    painter: _LightningPainter(
+                                      progress: _flashAnim.value,
+                                    ),
+                                  ),
                             ),
                             const SizedBox(height: 4),
                             Container(
@@ -2071,13 +2091,14 @@ class _BattleArenaCardState extends State<_BattleArenaCard>
                               children: [
                                 // ── ONLINE button ──
                                 GestureDetector(
-                                  onTap: () => Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (_) =>
-                                          const OnlineBattleScreen(),
-                                    ),
-                                  ),
+                                  onTap:
+                                      () => Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder:
+                                              (_) => const OnlineBattleScreen(),
+                                        ),
+                                      ),
                                   child: Container(
                                     padding: const EdgeInsets.symmetric(
                                       horizontal: 8,
@@ -2093,8 +2114,9 @@ class _BattleArenaCardState extends State<_BattleArenaCard>
                                       ),
                                       boxShadow: [
                                         BoxShadow(
-                                          color: const Color(0xFF00B4D8)
-                                              .withValues(alpha: 0.4),
+                                          color: const Color(
+                                            0xFF00B4D8,
+                                          ).withValues(alpha: 0.4),
                                           blurRadius: 8,
                                         ),
                                       ],
@@ -2219,16 +2241,18 @@ class _FighterImage extends StatelessWidget {
           ),
           child: Transform(
             alignment: Alignment.center,
-            transform: flip
-                ? (Matrix4.identity()..scaleByDouble(-1.0, 1.0, 1.0, 1.0))
-                : Matrix4.identity(),
+            transform:
+                flip
+                    ? (Matrix4.identity()..scaleByDouble(-1.0, 1.0, 1.0, 1.0))
+                    : Matrix4.identity(),
             child: Image.asset(
               asset,
               width: 110,
               height: 118,
               fit: BoxFit.contain,
-              errorBuilder: (_, __, ___) =>
-                  Icon(Icons.person_rounded, color: glowColor, size: 60),
+              errorBuilder:
+                  (_, __, ___) =>
+                      Icon(Icons.person_rounded, color: glowColor, size: 60),
             ),
           ),
         ),
@@ -2271,26 +2295,29 @@ class _LightningPainter extends CustomPainter {
     final glow = (0.5 + 0.5 * math.sin(progress * 2 * math.pi));
     final boltColor = Color.lerp(AppColors.neonGold, Colors.white, glow * 0.5)!;
 
-    final glowPaint = Paint()
-      ..color = boltColor.withValues(alpha: 0.4 * glow)
-      ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 10);
+    final glowPaint =
+        Paint()
+          ..color = boltColor.withValues(alpha: 0.4 * glow)
+          ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 10);
 
-    final boltPaint = Paint()
-      ..color = boltColor
-      ..strokeWidth = 3.5
-      ..strokeCap = StrokeCap.round
-      ..strokeJoin = StrokeJoin.round
-      ..style = PaintingStyle.stroke;
+    final boltPaint =
+        Paint()
+          ..color = boltColor
+          ..strokeWidth = 3.5
+          ..strokeCap = StrokeCap.round
+          ..strokeJoin = StrokeJoin.round
+          ..style = PaintingStyle.stroke;
 
     // lightning zigzag path
-    final path = Path()
-      ..moveTo(w * 0.58, 0)
-      ..lineTo(w * 0.32, h * 0.44)
-      ..lineTo(w * 0.52, h * 0.44)
-      ..lineTo(w * 0.26, h)
-      ..lineTo(w * 0.55, h * 0.58)
-      ..lineTo(w * 0.38, h * 0.58)
-      ..close();
+    final path =
+        Path()
+          ..moveTo(w * 0.58, 0)
+          ..lineTo(w * 0.32, h * 0.44)
+          ..lineTo(w * 0.52, h * 0.44)
+          ..lineTo(w * 0.26, h)
+          ..lineTo(w * 0.55, h * 0.58)
+          ..lineTo(w * 0.38, h * 0.58)
+          ..close();
 
     canvas.drawPath(path, glowPaint);
     canvas.drawPath(path, boltPaint);

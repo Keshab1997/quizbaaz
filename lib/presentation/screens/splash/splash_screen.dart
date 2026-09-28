@@ -122,9 +122,10 @@ class _SplashScreenState extends State<SplashScreen>
     final hasCompletedOnboarding =
         HiveService.getMeta<bool>('has_completed_onboarding') ?? false;
 
-    final targetScreen = hasCompletedOnboarding
-        ? const DashboardScreen()
-        : const OnboardingScreen();
+    final targetScreen =
+        hasCompletedOnboarding
+            ? const DashboardScreen()
+            : const OnboardingScreen();
 
     Navigator.of(context).pushReplacement(
       PageRouteBuilder(
@@ -322,18 +323,17 @@ class _SplashScreenState extends State<SplashScreen>
               AnimatedBuilder(
                 animation: _entrance,
                 builder: (context, _) {
-                  final double scale = _logoScale.value
-                      .clamp(0.0, 1.15)
-                      .toDouble();
-                  final double flip = _logoFlip.value
-                      .clamp(0.0, 1.0)
-                      .toDouble();
+                  final double scale =
+                      _logoScale.value.clamp(0.0, 1.15).toDouble();
+                  final double flip =
+                      _logoFlip.value.clamp(0.0, 1.0).toDouble();
                   final double angleY = (1 - flip) * (math.pi / 2);
                   return Transform(
                     alignment: Alignment.center,
-                    transform: Matrix4.identity()
-                      ..setEntry(3, 2, 0.0012)
-                      ..rotateY(angleY),
+                    transform:
+                        Matrix4.identity()
+                          ..setEntry(3, 2, 0.0012)
+                          ..rotateY(angleY),
                     child: Transform.scale(
                       scale: scale,
                       child: Container(
@@ -361,10 +361,11 @@ class _SplashScreenState extends State<SplashScreen>
                           child: Image.asset(
                             'assets/icons/app_icon_3d.png',
                             fit: BoxFit.cover,
-                            errorBuilder: (_, __, ___) => Image.asset(
-                              'assets/images/characters/quizbaaz_mascot_boy.png',
-                              fit: BoxFit.contain,
-                            ),
+                            errorBuilder:
+                                (_, __, ___) => Image.asset(
+                                  'assets/images/characters/quizbaaz_mascot_boy.png',
+                                  fit: BoxFit.contain,
+                                ),
                           ),
                         ),
                       ),
@@ -529,18 +530,20 @@ class _OrbitPainter extends CustomPainter {
     final radius = size.width / 2 - 6;
 
     // Faint full ring (backdrop for the rotating arcs).
-    final faint = Paint()
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 1.1
-      ..color = AppColors.neonPurple.withValues(alpha: 0.22 * bloom);
+    final faint =
+        Paint()
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 1.1
+          ..color = AppColors.neonPurple.withValues(alpha: 0.22 * bloom);
     canvas.drawCircle(center, radius, faint);
 
     // Two glowing arc segments chasing each other around the ring.
     final phase = rotation * math.pi * 2;
-    final arcPaint = Paint()
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 3.4
-      ..strokeCap = StrokeCap.round;
+    final arcPaint =
+        Paint()
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 3.4
+          ..strokeCap = StrokeCap.round;
 
     arcPaint
       ..color = AppColors.neonCyan.withValues(alpha: 0.95 * bloom)
@@ -570,9 +573,10 @@ class _OrbitPainter extends CustomPainter {
         center.dx + radius * math.cos(angle),
         center.dy + radius * math.sin(angle),
       );
-      final dot = Paint()
-        ..color = dotColors[i].withValues(alpha: 0.9 * bloom)
-        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 3);
+      final dot =
+          Paint()
+            ..color = dotColors[i].withValues(alpha: 0.9 * bloom)
+            ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 3);
       canvas.drawCircle(pos, 3.2 + (i % 2), dot);
       canvas.drawCircle(pos, 1.4, Paint()..color = Colors.white);
     }

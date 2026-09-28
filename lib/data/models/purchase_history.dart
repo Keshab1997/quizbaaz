@@ -9,7 +9,8 @@ class PurchaseHistory {
   final String userId;
   final String itemId;
   final String itemName;
-  final String category; // 'power_ups', 'shields', 'boosters', 'avatars', 'badges', 'effects', 'packs'
+  final String
+  category; // 'power_ups', 'shields', 'boosters', 'avatars', 'badges', 'effects', 'packs'
   final int quantity;
   final int cost;
   final String currency; // 'coins' or 'gems'

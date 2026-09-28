@@ -156,22 +156,24 @@ class _OptionTile extends StatelessWidget {
             color: selected ? AppColors.neonCyan : AppColors.textPrimary,
           ),
         ),
-        subtitle: subtitle == null
-            ? null
-            : Text(
-                subtitle!,
-                style: const TextStyle(
-                  fontSize: 11.5,
-                  color: AppColors.textSecondary,
+        subtitle:
+            subtitle == null
+                ? null
+                : Text(
+                  subtitle!,
+                  style: const TextStyle(
+                    fontSize: 11.5,
+                    color: AppColors.textSecondary,
+                  ),
                 ),
-              ),
-        trailing: selected
-            ? const Icon(
-                Icons.check_circle_rounded,
-                color: AppColors.neonCyan,
-                size: 20,
-              )
-            : null,
+        trailing:
+            selected
+                ? const Icon(
+                  Icons.check_circle_rounded,
+                  color: AppColors.neonCyan,
+                  size: 20,
+                )
+                : null,
       ),
     );
   }

@@ -116,11 +116,13 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
   bool _matchesCurrentFilter(QuestionModel question) {
     final needle = _search.trim().toLowerCase();
     if (needle.isNotEmpty) {
-      final haystack = [
-        question.id,
-        ...question.questionText.toJson().values,
-        for (final option in question.optionTexts) ...option.toJson().values,
-      ].join(' ').toLowerCase();
+      final haystack =
+          [
+            question.id,
+            ...question.questionText.toJson().values,
+            for (final option in question.optionTexts)
+              ...option.toJson().values,
+          ].join(' ').toLowerCase();
       if (!haystack.contains(needle)) return false;
     }
 
@@ -139,9 +141,9 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
   }
 
   List<QuestionSet> get _visibleSets =>
-      QuestionSet.fromQuestions(_questions)
-          .where((set) => set.questions.any(_matchesCurrentFilter))
-          .toList();
+      QuestionSet.fromQuestions(
+        _questions,
+      ).where((set) => set.questions.any(_matchesCurrentFilter)).toList();
 
   @override
   Widget build(BuildContext context) {
@@ -215,39 +217,40 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
           ),
         ],
       ),
-      body: _loading
-          ? const Center(
-              child: CircularProgressIndicator(color: AppColors.neonCyan),
-            )
-          : RefreshIndicator(
-              onRefresh: _load,
-              color: AppColors.neonCyan,
-              backgroundColor: AppColors.surfaceElevated,
-              child: ListView(
-                padding: const EdgeInsets.fromLTRB(16, 8, 16, 150),
-                children: [
-                  _header(untranslated),
-                  const SizedBox(height: 12),
-                  _searchBox(),
-                  const SizedBox(height: 10),
-                  _filterChips(),
-                  const SizedBox(height: 12),
-                  if (_questions.isEmpty)
-                    _emptyState()
-                  else if (visibleSets.isEmpty)
-                    const Padding(
-                      padding: EdgeInsets.only(top: 50),
-                      child: Center(
-                        child: Text(
-                          'Nothing matches that filter.',
-                          style: TextStyle(color: AppColors.textSecondary),
+      body:
+          _loading
+              ? const Center(
+                child: CircularProgressIndicator(color: AppColors.neonCyan),
+              )
+              : RefreshIndicator(
+                onRefresh: _load,
+                color: AppColors.neonCyan,
+                backgroundColor: AppColors.surfaceElevated,
+                child: ListView(
+                  padding: const EdgeInsets.fromLTRB(16, 8, 16, 150),
+                  children: [
+                    _header(untranslated),
+                    const SizedBox(height: 12),
+                    _searchBox(),
+                    const SizedBox(height: 10),
+                    _filterChips(),
+                    const SizedBox(height: 12),
+                    if (_questions.isEmpty)
+                      _emptyState()
+                    else if (visibleSets.isEmpty)
+                      const Padding(
+                        padding: EdgeInsets.only(top: 50),
+                        child: Center(
+                          child: Text(
+                            'Nothing matches that filter.',
+                            style: TextStyle(color: AppColors.textSecondary),
+                          ),
                         ),
                       ),
-                    ),
-                  for (final set in visibleSets) _questionSetCard(set),
-                ],
+                    for (final set in visibleSets) _questionSetCard(set),
+                  ],
+                ),
               ),
-            ),
     );
   }
 
@@ -286,9 +289,10 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
                   style: TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.w900,
-                    color: untranslated == 0
-                        ? AppColors.neonGreen
-                        : AppColors.neonGold,
+                    color:
+                        untranslated == 0
+                            ? AppColors.neonGreen
+                            : AppColors.neonGold,
                   ),
                 ),
                 const Text(
@@ -403,9 +407,10 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
                   style: TextStyle(
                     fontSize: 11.5,
                     fontWeight: FontWeight.w700,
-                    color: _filter == entry.key
-                        ? AppColors.bgDark
-                        : AppColors.textSecondary,
+                    color:
+                        _filter == entry.key
+                            ? AppColors.bgDark
+                            : AppColors.textSecondary,
                   ),
                 ),
                 selected: _filter == entry.key,
@@ -413,9 +418,10 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
                 backgroundColor: Colors.white.withValues(alpha: 0.05),
                 selectedColor: AppColors.neonCyan,
                 side: BorderSide(
-                  color: _filter == entry.key
-                      ? AppColors.neonCyan
-                      : Colors.white12,
+                  color:
+                      _filter == entry.key
+                          ? AppColors.neonCyan
+                          : Colors.white12,
                 ),
                 onSelected: (_) => setState(() => _filter = entry.key),
               ),
@@ -515,9 +521,8 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
       child: GlassCard(
         borderRadius: 16,
         padding: EdgeInsets.zero,
-        borderColor: hasIssue
-            ? AppColors.neonGold.withValues(alpha: 0.35)
-            : null,
+        borderColor:
+            hasIssue ? AppColors.neonGold.withValues(alpha: 0.35) : null,
         child: Theme(
           data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
           child: ExpansionTile(
@@ -632,9 +637,9 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
                 fontWeight: FontWeight.w900,
                 color:
                     question.questionText.has(code) &&
-                        question.optionTexts.every((o) => o.has(code))
-                    ? AppColors.neonGreen
-                    : AppColors.textMuted.withValues(alpha: 0.5),
+                            question.optionTexts.every((o) => o.has(code))
+                        ? AppColors.neonGreen
+                        : AppColors.textMuted.withValues(alpha: 0.5),
               ),
             ),
           ),
@@ -643,9 +648,10 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
   }
 
   Widget _languageBlock(QuestionModel question, String code) {
-    final stem = question.questionText.has(code)
-        ? question.questionText.resolve(code)
-        : null;
+    final stem =
+        question.questionText.has(code)
+            ? question.questionText.resolve(code)
+            : null;
     if (stem == null) return const SizedBox.shrink();
 
     final options = question.optionsIn(code);
@@ -685,9 +691,10 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
                         ? Icons.check_circle_rounded
                         : Icons.circle_outlined,
                     size: 12,
-                    color: i == question.correctIndex
-                        ? AppColors.neonGreen
-                        : AppColors.textMuted,
+                    color:
+                        i == question.correctIndex
+                            ? AppColors.neonGreen
+                            : AppColors.textMuted,
                   ),
                   const SizedBox(width: 6),
                   Expanded(
@@ -696,12 +703,14 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
                       style: TextStyle(
                         fontSize: 11.5,
                         height: 1.3,
-                        fontWeight: i == question.correctIndex
-                            ? FontWeight.w700
-                            : FontWeight.w400,
-                        color: i == question.correctIndex
-                            ? AppColors.neonGreen
-                            : AppColors.textSecondary,
+                        fontWeight:
+                            i == question.correctIndex
+                                ? FontWeight.w700
+                                : FontWeight.w400,
+                        color:
+                            i == question.correctIndex
+                                ? AppColors.neonGreen
+                                : AppColors.textSecondary,
                       ),
                     ),
                   ),
@@ -734,24 +743,25 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
     final approved = await Navigator.push<List<QuestionModel>>(
       context,
       MaterialPageRoute(
-        builder: (_) => AiGenerationReviewScreen(
-          chapter: widget.chapter,
-          subjectName: widget.subjectName,
-          idPrefix: _slug,
-          // Read fresh rather than trusting the loaded list: the sequence must
-          // continue past the highest id that exists, not the highest shown.
-          startSequence: QuestionFingerprint.nextSequence(
-            _questions.map((q) => q.id),
-          ),
-          existingStems: [
-            for (final q in _questions) q.questionText.resolve('en'),
-          ],
-          existingFingerprints: {
-            for (final q in _questions)
-              QuestionFingerprint.fingerprint(q.questionText.resolve('en')),
-          }..remove(''),
-          actorUid: _actorUid,
-        ),
+        builder:
+            (_) => AiGenerationReviewScreen(
+              chapter: widget.chapter,
+              subjectName: widget.subjectName,
+              idPrefix: _slug,
+              // Read fresh rather than trusting the loaded list: the sequence must
+              // continue past the highest id that exists, not the highest shown.
+              startSequence: QuestionFingerprint.nextSequence(
+                _questions.map((q) => q.id),
+              ),
+              existingStems: [
+                for (final q in _questions) q.questionText.resolve('en'),
+              ],
+              existingFingerprints: {
+                for (final q in _questions)
+                  QuestionFingerprint.fingerprint(q.questionText.resolve('en')),
+              }..remove(''),
+              actorUid: _actorUid,
+            ),
       ),
     );
 
@@ -835,18 +845,19 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
-      builder: (_) => _QuestionSheet(
-        existing: existing,
-        suggestedId: QuestionFingerprint.buildId(
-          _slug,
-          QuestionFingerprint.nextSequence(_questions.map((q) => q.id)),
-        ),
-        existingStems: {
-          for (final q in _questions)
-            if (existing == null || q.id != existing.id)
-              q.id: q.questionText.resolve('en'),
-        },
-      ),
+      builder:
+          (_) => _QuestionSheet(
+            existing: existing,
+            suggestedId: QuestionFingerprint.buildId(
+              _slug,
+              QuestionFingerprint.nextSequence(_questions.map((q) => q.id)),
+            ),
+            existingStems: {
+              for (final q in _questions)
+                if (existing == null || q.id != existing.id)
+                  q.id: q.questionText.resolve('en'),
+            },
+          ),
     );
     if (draft == null) return;
 
@@ -891,39 +902,42 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
     final count = set.questions.length;
     final confirmed = await showDialog<bool>(
       context: context,
-      builder: (ctx) => AlertDialog(
-        backgroundColor: AppColors.bgNavy,
-        title: Text(
-          'Delete Set ${set.number}?',
-          style: const TextStyle(fontSize: 16, color: Colors.white),
-        ),
-        content: Text(
-          'This permanently deletes all $count question${count == 1 ? '' : 's'} '
-          'in Set ${set.number}. This cannot be undone.',
-          style: const TextStyle(
-            fontSize: 12.5,
-            color: AppColors.textSecondary,
-            height: 1.45,
-          ),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(ctx, false),
-            child: const Text(
-              'Cancel',
-              style: TextStyle(color: AppColors.textSecondary),
+      builder:
+          (ctx) => AlertDialog(
+            backgroundColor: AppColors.bgNavy,
+            title: Text(
+              'Delete Set ${set.number}?',
+              style: const TextStyle(fontSize: 16, color: Colors.white),
             ),
-          ),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(backgroundColor: AppColors.neonRed),
-            onPressed: () => Navigator.pop(ctx, true),
-            child: Text(
-              'Delete all $count',
-              style: const TextStyle(color: Colors.white),
+            content: Text(
+              'This permanently deletes all $count question${count == 1 ? '' : 's'} '
+              'in Set ${set.number}. This cannot be undone.',
+              style: const TextStyle(
+                fontSize: 12.5,
+                color: AppColors.textSecondary,
+                height: 1.45,
+              ),
             ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(ctx, false),
+                child: const Text(
+                  'Cancel',
+                  style: TextStyle(color: AppColors.textSecondary),
+                ),
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColors.neonRed,
+                ),
+                onPressed: () => Navigator.pop(ctx, true),
+                child: Text(
+                  'Delete all $count',
+                  style: const TextStyle(color: Colors.white),
+                ),
+              ),
+            ],
           ),
-        ],
-      ),
     );
 
     if (confirmed != true) return;
@@ -946,36 +960,42 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
   Future<void> _confirmDelete(QuestionModel question) async {
     final confirmed = await showDialog<bool>(
       context: context,
-      builder: (ctx) => AlertDialog(
-        backgroundColor: AppColors.bgNavy,
-        title: const Text(
-          'Delete this question?',
-          style: TextStyle(fontSize: 16, color: Colors.white),
-        ),
-        content: Text(
-          '${question.id}\n\n"${question.questionText.resolve('en')}"\n\n'
-          'Only this question is removed. The rest of the chapter is untouched.',
-          style: const TextStyle(
-            fontSize: 12.5,
-            color: AppColors.textSecondary,
-            height: 1.45,
-          ),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(ctx, false),
-            child: const Text(
-              'Cancel',
-              style: TextStyle(color: AppColors.textSecondary),
+      builder:
+          (ctx) => AlertDialog(
+            backgroundColor: AppColors.bgNavy,
+            title: const Text(
+              'Delete this question?',
+              style: TextStyle(fontSize: 16, color: Colors.white),
             ),
+            content: Text(
+              '${question.id}\n\n"${question.questionText.resolve('en')}"\n\n'
+              'Only this question is removed. The rest of the chapter is untouched.',
+              style: const TextStyle(
+                fontSize: 12.5,
+                color: AppColors.textSecondary,
+                height: 1.45,
+              ),
+            ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(ctx, false),
+                child: const Text(
+                  'Cancel',
+                  style: TextStyle(color: AppColors.textSecondary),
+                ),
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColors.neonRed,
+                ),
+                onPressed: () => Navigator.pop(ctx, true),
+                child: const Text(
+                  'Delete',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ],
           ),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(backgroundColor: AppColors.neonRed),
-            onPressed: () => Navigator.pop(ctx, true),
-            child: const Text('Delete', style: TextStyle(color: Colors.white)),
-          ),
-        ],
-      ),
     );
 
     if (confirmed != true) return;
@@ -1064,20 +1084,21 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
     final approved = await Navigator.push<List<QuestionModel>>(
       context,
       MaterialPageRoute(
-        builder: (_) => AiGenerationReviewScreen(
-          chapter: widget.chapter,
-          subjectName: widget.subjectName,
-          idPrefix: _slug,
-          startSequence: QuestionFingerprint.nextSequence(
-            _questions.map((q) => q.id),
-          ),
-          existingStems: [
-            for (final q in _questions) q.questionText.resolve('en'),
-          ],
-          existingFingerprints: fingerprints,
-          actorUid: _actorUid,
-          initialDrafts: drafts,
-        ),
+        builder:
+            (_) => AiGenerationReviewScreen(
+              chapter: widget.chapter,
+              subjectName: widget.subjectName,
+              idPrefix: _slug,
+              startSequence: QuestionFingerprint.nextSequence(
+                _questions.map((q) => q.id),
+              ),
+              existingStems: [
+                for (final q in _questions) q.questionText.resolve('en'),
+              ],
+              existingFingerprints: fingerprints,
+              actorUid: _actorUid,
+              initialDrafts: drafts,
+            ),
       ),
     );
 
@@ -1401,19 +1422,22 @@ class _QuestionSheetState extends State<_QuestionSheet> {
                 height: 46,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: result.isAcceptable
-                        ? AppColors.neonCyan
-                        : Colors.white12,
-                    foregroundColor: result.isAcceptable
-                        ? AppColors.bgDark
-                        : AppColors.textMuted,
+                    backgroundColor:
+                        result.isAcceptable
+                            ? AppColors.neonCyan
+                            : Colors.white12,
+                    foregroundColor:
+                        result.isAcceptable
+                            ? AppColors.bgDark
+                            : AppColors.textMuted,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(14),
                     ),
                   ),
-                  onPressed: result.isAcceptable
-                      ? () => Navigator.pop(context, _draft)
-                      : null,
+                  onPressed:
+                      result.isAcceptable
+                          ? () => Navigator.pop(context, _draft)
+                          : null,
                   child: const Text(
                     'Save question',
                     style: TextStyle(fontWeight: FontWeight.w900, fontSize: 14),
@@ -1436,9 +1460,8 @@ class _QuestionSheetState extends State<_QuestionSheet> {
             enabled: widget.existing == null,
             onChanged: (_) => setState(() {}),
             style: TextStyle(
-              color: widget.existing == null
-                  ? Colors.white
-                  : AppColors.textMuted,
+              color:
+                  widget.existing == null ? Colors.white : AppColors.textMuted,
               fontSize: 13,
             ),
             decoration: InputDecoration(
@@ -1500,12 +1523,13 @@ class _QuestionSheetState extends State<_QuestionSheet> {
                 iconSize: 16,
                 color: AppColors.textMuted,
                 icon: const Icon(Icons.remove_circle_outline_rounded),
-                onPressed: () => setState(() {
-                  _options.removeAt(index);
-                  if (_correctIndex >= _options.length) {
-                    _correctIndex = _options.length - 1;
-                  }
-                }),
+                onPressed:
+                    () => setState(() {
+                      _options.removeAt(index);
+                      if (_correctIndex >= _options.length) {
+                        _correctIndex = _options.length - 1;
+                      }
+                    }),
               ),
             ),
         ],
@@ -1516,8 +1540,8 @@ class _QuestionSheetState extends State<_QuestionSheet> {
   Widget _optionButtons() {
     if (_options.length >= 6) return const SizedBox.shrink();
     return TextButton.icon(
-      onPressed: () =>
-          setState(() => _options.add(const LocalizedText.empty())),
+      onPressed:
+          () => setState(() => _options.add(const LocalizedText.empty())),
       icon: const Icon(Icons.add_rounded, size: 16, color: AppColors.neonCyan),
       label: const Text(
         'Add option',
@@ -1590,7 +1614,7 @@ class _QuestionSheetState extends State<_QuestionSheet> {
             child: Text(
               result.nearDuplicate != null && blocking.isEmpty
                   ? 'Similar to ${result.nearDuplicate!.questionId} '
-                        '(${result.nearDuplicate!.scoreLabel}) · $messages'
+                      '(${result.nearDuplicate!.scoreLabel}) · $messages'
                   : messages,
               style: TextStyle(fontSize: 11.5, color: colour, height: 1.35),
             ),
@@ -1840,7 +1864,8 @@ class _JsonImportSheetState extends State<_JsonImportSheet> {
                         fontFamily: 'monospace',
                       ),
                       decoration: InputDecoration(
-                        hintText: '[\n  {\n    "question": { "en": "...", "bn": "...", "hi": "..." },\n    "options": [...],\n    "correct_index": 0\n  }\n]',
+                        hintText:
+                            '[\n  {\n    "question": { "en": "...", "bn": "...", "hi": "..." },\n    "options": [...],\n    "correct_index": 0\n  }\n]',
                         hintStyle: TextStyle(
                           color: AppColors.textMuted.withValues(alpha: 0.5),
                           fontSize: 11,

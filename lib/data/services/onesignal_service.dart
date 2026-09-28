@@ -93,9 +93,8 @@ class OneSignalService {
         'lang': S.code,
         'guest': (user?.isGuest ?? true) ? 'true' : 'false',
         'streak': '${user?.dailyStreak ?? 0}',
-        'played_today': (user?.playedTodayDailyQuiz ?? false)
-            ? 'true'
-            : 'false',
+        'played_today':
+            (user?.playedTodayDailyQuiz ?? false) ? 'true' : 'false',
       });
     } catch (e) {
       debugPrint('OneSignalService: sync failed – $e');

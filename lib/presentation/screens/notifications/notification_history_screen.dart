@@ -35,40 +35,44 @@ class _NotificationHistoryScreenState extends State<NotificationHistoryScreen> {
   Future<void> _clearAll() async {
     final confirmed = await showDialog<bool>(
       context: context,
-      builder: (ctx) => AlertDialog(
-        backgroundColor: AppColors.surfaceElevated,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        title: Text(
-          S.notifInboxClear,
-          style: const TextStyle(color: Colors.white),
-        ),
-        content: Text(
-          S.notifInboxClearConfirm,
-          style: const TextStyle(color: AppColors.textSecondary),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(ctx, false),
-            child: Text(
-              S.cancel,
+      builder:
+          (ctx) => AlertDialog(
+            backgroundColor: AppColors.surfaceElevated,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+            title: Text(
+              S.notifInboxClear,
+              style: const TextStyle(color: Colors.white),
+            ),
+            content: Text(
+              S.notifInboxClearConfirm,
               style: const TextStyle(color: AppColors.textSecondary),
             ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(ctx, false),
+                child: Text(
+                  S.cancel,
+                  style: const TextStyle(color: AppColors.textSecondary),
+                ),
+              ),
+              TextButton(
+                onPressed: () => Navigator.pop(ctx, true),
+                child: Text(
+                  S.notifInboxClear,
+                  style: const TextStyle(color: AppColors.neonRed),
+                ),
+              ),
+            ],
           ),
-          TextButton(
-            onPressed: () => Navigator.pop(ctx, true),
-            child: Text(
-              S.notifInboxClear,
-              style: const TextStyle(color: AppColors.neonRed),
-            ),
-          ),
-        ],
-      ),
     );
     if (confirmed != true) return;
     await NotificationInbox.instance.clear();
     if (!mounted) return;
-    ScaffoldMessenger.of(context)
-        .showSnackBar(SnackBar(content: Text(S.notifInboxCleared)));
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Text(S.notifInboxCleared)));
   }
 
   void _openItem(NotificationItem item) {
@@ -132,18 +136,20 @@ class _NotificationHistoryScreenState extends State<NotificationHistoryScreen> {
             child: GlassCard(
               borderRadius: 16,
               padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
-              borderColor:
-                  (notificationsOn ? AppColors.neonCyan : AppColors.neonOrange)
-                      .withValues(alpha: 0.28),
+              borderColor: (notificationsOn
+                      ? AppColors.neonCyan
+                      : AppColors.neonOrange)
+                  .withValues(alpha: 0.28),
               child: Row(
                 children: [
                   Icon(
                     notificationsOn
                         ? Icons.notifications_active_rounded
                         : Icons.notifications_off_outlined,
-                    color: notificationsOn
-                        ? AppColors.neonCyan
-                        : AppColors.neonOrange,
+                    color:
+                        notificationsOn
+                            ? AppColors.neonCyan
+                            : AppColors.neonOrange,
                     size: 18,
                   ),
                   const SizedBox(width: 10),

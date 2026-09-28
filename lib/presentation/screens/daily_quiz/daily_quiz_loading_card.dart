@@ -86,22 +86,22 @@ class _DailyQuizLoadingCardState extends State<DailyQuizLoadingCard>
     final character = isDaily ? AppAssets.dailyStar : AppAssets.heroGirl;
 
     final eyebrow = isDaily ? S.quizLoadEyebrow : S.quizLoadChapterEyebrow;
-    final title = isDaily
-        ? S.quizLoadTitle
-        : S.quizLoadChapterTitle(n: quiz.setNumber);
-    final body = isDaily
-        ? S.quizLoadBody(n: config.dailyQuestionCount)
-        : S.quizLoadChapterBody;
-    final questionCount = isDaily
-        ? config.dailyQuestionCount
-        : kQuestionsPerSet;
+    final title =
+        isDaily ? S.quizLoadTitle : S.quizLoadChapterTitle(n: quiz.setNumber);
+    final body =
+        isDaily
+            ? S.quizLoadBody(n: config.dailyQuestionCount)
+            : S.quizLoadChapterBody;
+    final questionCount =
+        isDaily ? config.dailyQuestionCount : kQuestionsPerSet;
     final totalSeconds = questionCount * config.secondsPerQuestion;
     final durationLabel =
         '${(totalSeconds ~/ 60).toString().padLeft(2, '0')}:${(totalSeconds % 60).toString().padLeft(2, '0')}';
-    final maxCoins = isDaily
-        ? config.dailyMaxCoins
-        : questionCount * config.coinsPerCorrectPractice +
-              config.perfectBonusCoins;
+    final maxCoins =
+        isDaily
+            ? config.dailyMaxCoins
+            : questionCount * config.coinsPerCorrectPractice +
+                config.perfectBonusCoins;
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(18, 8, 18, 24),
@@ -137,9 +137,12 @@ class _DailyQuizLoadingCardState extends State<DailyQuizLoadingCard>
               Positioned.fill(
                 child: AnimatedBuilder(
                   animation: _sparkCtrl,
-                  builder: (_, __) => CustomPaint(
-                    painter: _LoadingSparkPainter(progress: _sparkCtrl.value),
-                  ),
+                  builder:
+                      (_, __) => CustomPaint(
+                        painter: _LoadingSparkPainter(
+                          progress: _sparkCtrl.value,
+                        ),
+                      ),
                 ),
               ),
               Positioned(
@@ -147,16 +150,17 @@ class _DailyQuizLoadingCardState extends State<DailyQuizLoadingCard>
                 right: -50,
                 child: AnimatedBuilder(
                   animation: _glow,
-                  builder: (_, __) => Container(
-                    width: 210,
-                    height: 210,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: AppColors.neonCyan.withValues(
-                        alpha: 0.08 * _glow.value,
+                  builder:
+                      (_, __) => Container(
+                        width: 210,
+                        height: 210,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: AppColors.neonCyan.withValues(
+                            alpha: 0.08 * _glow.value,
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
                 ),
               ),
               Positioned(
@@ -203,40 +207,42 @@ class _DailyQuizLoadingCardState extends State<DailyQuizLoadingCard>
                       height: 210,
                       child: AnimatedBuilder(
                         animation: Listenable.merge([_float, _glow]),
-                        builder: (_, __) => Transform.translate(
-                          offset: Offset(0, _float.value),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              boxShadow: [
-                                BoxShadow(
-                                  color: AppColors.neonPurple.withValues(
-                                    alpha: 0.38 * _glow.value,
-                                  ),
-                                  blurRadius: 42,
-                                  spreadRadius: 10,
+                        builder:
+                            (_, __) => Transform.translate(
+                              offset: Offset(0, _float.value),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: AppColors.neonPurple.withValues(
+                                        alpha: 0.38 * _glow.value,
+                                      ),
+                                      blurRadius: 42,
+                                      spreadRadius: 10,
+                                    ),
+                                    BoxShadow(
+                                      color: AppColors.neonGold.withValues(
+                                        alpha: 0.18 * _glow.value,
+                                      ),
+                                      blurRadius: 24,
+                                      spreadRadius: 2,
+                                    ),
+                                  ],
                                 ),
-                                BoxShadow(
-                                  color: AppColors.neonGold.withValues(
-                                    alpha: 0.18 * _glow.value,
-                                  ),
-                                  blurRadius: 24,
-                                  spreadRadius: 2,
+                                child: Image.asset(
+                                  character,
+                                  height: 200,
+                                  fit: BoxFit.contain,
+                                  errorBuilder:
+                                      (_, __, ___) => const Icon(
+                                        Icons.auto_awesome_rounded,
+                                        color: AppColors.neonGold,
+                                        size: 88,
+                                      ),
                                 ),
-                              ],
-                            ),
-                            child: Image.asset(
-                              character,
-                              height: 200,
-                              fit: BoxFit.contain,
-                              errorBuilder: (_, __, ___) => const Icon(
-                                Icons.auto_awesome_rounded,
-                                color: AppColors.neonGold,
-                                size: 88,
                               ),
                             ),
-                          ),
-                        ),
                       ),
                     ),
                     const SizedBox(height: 6),

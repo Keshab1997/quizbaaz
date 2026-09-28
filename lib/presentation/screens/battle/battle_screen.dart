@@ -121,88 +121,94 @@ class BattleScreen extends StatelessWidget {
   Future<bool?> _showForfeitDialog(BuildContext context) {
     return showDialog<bool>(
       context: context,
-      builder: (ctx) => AlertDialog(
-        backgroundColor: const Color(0xFF1B2646),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        title: const Text(
-          '🏳️ Forfeit Match?',
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.w900,
-            fontSize: 18,
-          ),
-        ),
-        content: const Text(
-          'Your opponent will be declared the winner.\nAre you sure you want to leave?',
-          style: TextStyle(color: AppColors.textSecondary, fontSize: 13),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(ctx, false),
-            child: const Text(
-              'Stay',
+      builder:
+          (ctx) => AlertDialog(
+            backgroundColor: const Color(0xFF1B2646),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+            title: const Text(
+              '🏳️ Forfeit Match?',
               style: TextStyle(
-                color: AppColors.neonCyan,
-                fontWeight: FontWeight.w800,
+                color: Colors.white,
+                fontWeight: FontWeight.w900,
+                fontSize: 18,
               ),
             ),
-          ),
-          TextButton(
-            onPressed: () => Navigator.pop(ctx, true),
-            child: const Text(
-              'Forfeit',
-              style: TextStyle(
-                color: AppColors.neonRed,
-                fontWeight: FontWeight.w800,
-              ),
+            content: const Text(
+              'Your opponent will be declared the winner.\nAre you sure you want to leave?',
+              style: TextStyle(color: AppColors.textSecondary, fontSize: 13),
             ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(ctx, false),
+                child: const Text(
+                  'Stay',
+                  style: TextStyle(
+                    color: AppColors.neonCyan,
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+              ),
+              TextButton(
+                onPressed: () => Navigator.pop(ctx, true),
+                child: const Text(
+                  'Forfeit',
+                  style: TextStyle(
+                    color: AppColors.neonRed,
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+              ),
+            ],
           ),
-        ],
-      ),
     );
   }
 
   Future<bool?> _showQuitDialog(BuildContext context) {
     return showDialog<bool>(
       context: context,
-      builder: (ctx) => AlertDialog(
-        backgroundColor: const Color(0xFF1B2646),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        title: const Text(
-          '🚪 Quit Match?',
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.w900,
-            fontSize: 18,
-          ),
-        ),
-        content: const Text(
-          'Your progress will be lost.\nAre you sure?',
-          style: TextStyle(color: AppColors.textSecondary, fontSize: 13),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(ctx, false),
-            child: const Text(
-              'Continue',
+      builder:
+          (ctx) => AlertDialog(
+            backgroundColor: const Color(0xFF1B2646),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+            title: const Text(
+              '🚪 Quit Match?',
               style: TextStyle(
-                color: AppColors.neonCyan,
-                fontWeight: FontWeight.w800,
+                color: Colors.white,
+                fontWeight: FontWeight.w900,
+                fontSize: 18,
               ),
             ),
-          ),
-          TextButton(
-            onPressed: () => Navigator.pop(ctx, true),
-            child: const Text(
-              'Quit',
-              style: TextStyle(
-                color: AppColors.neonRed,
-                fontWeight: FontWeight.w800,
-              ),
+            content: const Text(
+              'Your progress will be lost.\nAre you sure?',
+              style: TextStyle(color: AppColors.textSecondary, fontSize: 13),
             ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(ctx, false),
+                child: const Text(
+                  'Continue',
+                  style: TextStyle(
+                    color: AppColors.neonCyan,
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+              ),
+              TextButton(
+                onPressed: () => Navigator.pop(ctx, true),
+                child: const Text(
+                  'Quit',
+                  style: TextStyle(
+                    color: AppColors.neonRed,
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+              ),
+            ],
           ),
-        ],
-      ),
     );
   }
 }
@@ -280,11 +286,12 @@ class _SetupViewState extends State<_SetupView>
               AppAssets.battleDuo,
               height: 130,
               fit: BoxFit.contain,
-              errorBuilder: (_, __, ___) => Image.asset(
-                AppAssets.battleSwords,
-                height: 84,
-                fit: BoxFit.contain,
-              ),
+              errorBuilder:
+                  (_, __, ___) => Image.asset(
+                    AppAssets.battleSwords,
+                    height: 84,
+                    fit: BoxFit.contain,
+                  ),
             ),
             const SizedBox(height: 12),
             const Text(
@@ -355,8 +362,8 @@ class _SetupViewState extends State<_SetupView>
             const SizedBox(height: 20),
             NeonButton(
               text: S.battleStartFinding,
-              onPressed: () =>
-                  context.read<BattleProvider>().startBattle(_selected),
+              onPressed:
+                  () => context.read<BattleProvider>().startBattle(_selected),
             ),
           ],
         ),
@@ -385,18 +392,20 @@ class _SetupViewState extends State<_SetupView>
               color: selected ? accent : Colors.white12,
               width: selected ? 1.8 : 1.0,
             ),
-            color: selected
-                ? accent.withValues(alpha: 0.12)
-                : AppColors.bgCardGlass,
-            boxShadow: selected
-                ? [
-                    BoxShadow(
-                      color: accent.withValues(alpha: 0.25),
-                      blurRadius: 16,
-                      spreadRadius: 1,
-                    ),
-                  ]
-                : [],
+            color:
+                selected
+                    ? accent.withValues(alpha: 0.12)
+                    : AppColors.bgCardGlass,
+            boxShadow:
+                selected
+                    ? [
+                      BoxShadow(
+                        color: accent.withValues(alpha: 0.25),
+                        blurRadius: 16,
+                        spreadRadius: 1,
+                      ),
+                    ]
+                    : [],
           ),
           child: Padding(
             padding: const EdgeInsets.all(16),
@@ -499,10 +508,11 @@ class _SearchingViewState extends State<_SearchingView>
               // Radar rings
               AnimatedBuilder(
                 animation: _radar,
-                builder: (_, __) => CustomPaint(
-                  size: const Size(230, 230),
-                  painter: _RadarPainter(progress: _radar.value),
-                ),
+                builder:
+                    (_, __) => CustomPaint(
+                      size: const Size(230, 230),
+                      painter: _RadarPainter(progress: _radar.value),
+                    ),
               ),
               // My avatar, breathing
               ScaleTransition(
@@ -546,11 +556,12 @@ class _SearchingViewState extends State<_SearchingView>
           child: ClipRRect(
             borderRadius: BorderRadius.circular(8),
             child: LinearProgressIndicator(
-              value: battle.searchSecondsTotal == 0
-                  ? 0
-                  : 1 -
-                        battle.searchSecondsRemaining /
-                            battle.searchSecondsTotal,
+              value:
+                  battle.searchSecondsTotal == 0
+                      ? 0
+                      : 1 -
+                          battle.searchSecondsRemaining /
+                              battle.searchSecondsTotal,
               minHeight: 6,
               backgroundColor: Colors.white10,
               color: AppColors.neonCyan,
@@ -589,26 +600,28 @@ class _RadarPainter extends CustomPainter {
 
     // Static faint rings
     for (var i = 1; i <= 3; i++) {
-      final paint = Paint()
-        ..style = PaintingStyle.stroke
-        ..strokeWidth = 1.2
-        ..color = AppColors.neonCyan.withValues(alpha: 0.18 - i * 0.04);
+      final paint =
+          Paint()
+            ..style = PaintingStyle.stroke
+            ..strokeWidth = 1.2
+            ..color = AppColors.neonCyan.withValues(alpha: 0.18 - i * 0.04);
       canvas.drawCircle(center, maxR * i / 3, paint);
     }
 
     // Sweeping beam
-    final beamPaint = Paint()
-      ..shader = SweepGradient(
-        startAngle: 0,
-        endAngle: 2 * pi,
-        colors: [
-          AppColors.neonCyan.withValues(alpha: 0.0),
-          AppColors.neonCyan.withValues(alpha: 0.45),
-          AppColors.neonCyan.withValues(alpha: 0.0),
-        ],
-        stops: const [0.82, 0.97, 1.0],
-        transform: GradientRotation(progress * 2 * pi),
-      ).createShader(Rect.fromCircle(center: center, radius: maxR));
+    final beamPaint =
+        Paint()
+          ..shader = SweepGradient(
+            startAngle: 0,
+            endAngle: 2 * pi,
+            colors: [
+              AppColors.neonCyan.withValues(alpha: 0.0),
+              AppColors.neonCyan.withValues(alpha: 0.45),
+              AppColors.neonCyan.withValues(alpha: 0.0),
+            ],
+            stops: const [0.82, 0.97, 1.0],
+            transform: GradientRotation(progress * 2 * pi),
+          ).createShader(Rect.fromCircle(center: center, radius: maxR));
     canvas.drawCircle(center, maxR, beamPaint);
 
     // Leading dot on the beam
@@ -669,20 +682,24 @@ class _VsIntroViewState extends State<_VsIntroView>
       });
     }
 
-    final leftSlide =
-        Tween<Offset>(begin: const Offset(-1.4, 0), end: Offset.zero).animate(
-          CurvedAnimation(
-            parent: _intro,
-            curve: const Interval(0.0, 0.45, curve: Curves.easeOutBack),
-          ),
-        );
-    final rightSlide =
-        Tween<Offset>(begin: const Offset(1.4, 0), end: Offset.zero).animate(
-          CurvedAnimation(
-            parent: _intro,
-            curve: const Interval(0.05, 0.5, curve: Curves.easeOutBack),
-          ),
-        );
+    final leftSlide = Tween<Offset>(
+      begin: const Offset(-1.4, 0),
+      end: Offset.zero,
+    ).animate(
+      CurvedAnimation(
+        parent: _intro,
+        curve: const Interval(0.0, 0.45, curve: Curves.easeOutBack),
+      ),
+    );
+    final rightSlide = Tween<Offset>(
+      begin: const Offset(1.4, 0),
+      end: Offset.zero,
+    ).animate(
+      CurvedAnimation(
+        parent: _intro,
+        curve: const Interval(0.05, 0.5, curve: Curves.easeOutBack),
+      ),
+    );
     final vsScale = Tween<double>(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(
         parent: _intro,
@@ -787,15 +804,15 @@ class _VsIntroViewState extends State<_VsIntroView>
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
                     border: Border.all(
-                      color: battle.isLive
-                          ? AppColors.neonGreen
-                          : AppColors.neonPink,
+                      color:
+                          battle.isLive
+                              ? AppColors.neonGreen
+                              : AppColors.neonPink,
                     ),
-                    color:
-                        (battle.isLive
-                                ? AppColors.neonGreen
-                                : AppColors.neonPink)
-                            .withValues(alpha: 0.12),
+                    color: (battle.isLive
+                            ? AppColors.neonGreen
+                            : AppColors.neonPink)
+                        .withValues(alpha: 0.12),
                   ),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
@@ -818,9 +835,10 @@ class _VsIntroViewState extends State<_VsIntroView>
                           fontSize: 13,
                           fontWeight: FontWeight.w900,
                           letterSpacing: 1.2,
-                          color: battle.isLive
-                              ? AppColors.neonGreen
-                              : AppColors.neonPink,
+                          color:
+                              battle.isLive
+                                  ? AppColors.neonGreen
+                                  : AppColors.neonPink,
                         ),
                       ),
                     ],
@@ -917,8 +935,9 @@ class _NetworkAwareAvatar extends StatelessWidget {
       avatar,
       fit: BoxFit.cover,
       alignment: Alignment.topCenter,
-      errorBuilder: (_, __, ___) =>
-          const Icon(Icons.person_rounded, color: Colors.white, size: 34),
+      errorBuilder:
+          (_, __, ___) =>
+              const Icon(Icons.person_rounded, color: Colors.white, size: 34),
     );
   }
 }
@@ -1047,39 +1066,40 @@ class _CountdownViewState extends State<_CountdownView>
           // Bounce + fade animation on each countdown tick
           AnimatedBuilder(
             animation: _bounceCtrl,
-            builder: (_, __) => FadeTransition(
-              opacity: _fadeAnim,
-              child: ScaleTransition(
-                scale: _scaleAnim,
-                child: Container(
-                  width: 120,
-                  height: 120,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    gradient: const RadialGradient(
-                      colors: [Color(0x44FFC857), Color(0x00FFC857)],
-                    ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: AppColors.neonGold.withValues(alpha: 0.4),
-                        blurRadius: 40,
-                        spreadRadius: 4,
+            builder:
+                (_, __) => FadeTransition(
+                  opacity: _fadeAnim,
+                  child: ScaleTransition(
+                    scale: _scaleAnim,
+                    child: Container(
+                      width: 120,
+                      height: 120,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        gradient: const RadialGradient(
+                          colors: [Color(0x44FFC857), Color(0x00FFC857)],
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: AppColors.neonGold.withValues(alpha: 0.4),
+                            blurRadius: 40,
+                            spreadRadius: 4,
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                  child: Center(
-                    child: Text(
-                      '${widget.countdownValue}',
-                      style: const TextStyle(
-                        fontSize: 72,
-                        fontWeight: FontWeight.w900,
-                        color: AppColors.neonGold,
+                      child: Center(
+                        child: Text(
+                          '${widget.countdownValue}',
+                          style: const TextStyle(
+                            fontSize: 72,
+                            fontWeight: FontWeight.w900,
+                            color: AppColors.neonGold,
+                          ),
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-            ),
           ),
           const SizedBox(height: 16),
           Text(
@@ -1181,11 +1201,12 @@ class _ArenaViewState extends State<_ArenaView>
                     height: 8,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(4),
-                      color: current
-                          ? AppColors.neonCyan
-                          : done
-                          ? AppColors.neonCyan.withValues(alpha: 0.4)
-                          : Colors.white12,
+                      color:
+                          current
+                              ? AppColors.neonCyan
+                              : done
+                              ? AppColors.neonCyan.withValues(alpha: 0.4)
+                              : Colors.white12,
                     ),
                   );
                 }),
@@ -1400,8 +1421,8 @@ class _CompactScoreboard extends StatelessWidget {
               ),
               AnimatedSwitcher(
                 duration: const Duration(milliseconds: 300),
-                transitionBuilder: (child, anim) =>
-                    ScaleTransition(scale: anim, child: child),
+                transitionBuilder:
+                    (child, anim) => ScaleTransition(scale: anim, child: child),
                 child: Text(
                   '${battle.playerScore}',
                   key: ValueKey(battle.playerScore),
@@ -1449,8 +1470,8 @@ class _CompactScoreboard extends StatelessWidget {
               ),
               AnimatedSwitcher(
                 duration: const Duration(milliseconds: 300),
-                transitionBuilder: (child, anim) =>
-                    ScaleTransition(scale: anim, child: child),
+                transitionBuilder:
+                    (child, anim) => ScaleTransition(scale: anim, child: child),
                 child: Text(
                   '${battle.opponentScore}',
                   key: ValueKey(battle.opponentScore),
@@ -1714,15 +1735,16 @@ class _TimerBadgeState extends State<_TimerBadge>
           color: color.withValues(alpha: 0.15),
           borderRadius: BorderRadius.circular(10),
           border: Border.all(color: color),
-          boxShadow: isUrgent
-              ? [
-                  BoxShadow(
-                    color: AppColors.neonRed.withValues(alpha: 0.35),
-                    blurRadius: 12,
-                    spreadRadius: 1,
-                  ),
-                ]
-              : [],
+          boxShadow:
+              isUrgent
+                  ? [
+                    BoxShadow(
+                      color: AppColors.neonRed.withValues(alpha: 0.35),
+                      blurRadius: 12,
+                      spreadRadius: 1,
+                    ),
+                  ]
+                  : [],
         ),
         child: Text(
           '⏱ ${widget.seconds}s',
@@ -1837,22 +1859,25 @@ class _OptionTileState extends State<_OptionTile>
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
       child: GestureDetector(
-        onTapDown: revealing
-            ? null
-            : (_) {
-                _pressCtrl.forward();
-              },
-        onTapUp: revealing
-            ? null
-            : (_) {
-                _pressCtrl.reverse();
-                battle.answerQuestion(index);
-              },
-        onTapCancel: revealing
-            ? null
-            : () {
-                _pressCtrl.reverse();
-              },
+        onTapDown:
+            revealing
+                ? null
+                : (_) {
+                  _pressCtrl.forward();
+                },
+        onTapUp:
+            revealing
+                ? null
+                : (_) {
+                  _pressCtrl.reverse();
+                  battle.answerQuestion(index);
+                },
+        onTapCancel:
+            revealing
+                ? null
+                : () {
+                  _pressCtrl.reverse();
+                },
         child: ScaleTransition(
           scale: _pressAnim,
           child: AnimatedContainer(
@@ -1882,11 +1907,11 @@ class _OptionTileState extends State<_OptionTile>
                       fontSize: 14,
                       fontWeight:
                           revealing &&
-                              (index == correctIndex ||
-                                  index == battle.playerSelected ||
-                                  index == battle.opponentSelected)
-                          ? FontWeight.bold
-                          : FontWeight.w500,
+                                  (index == correctIndex ||
+                                      index == battle.playerSelected ||
+                                      index == battle.opponentSelected)
+                              ? FontWeight.bold
+                              : FontWeight.w500,
                       color: text,
                     ),
                   ),
@@ -1966,20 +1991,24 @@ class _ResultViewState extends State<_ResultView>
       parent: _enterCtrl,
       curve: const Interval(0.3, 0.6, curve: Curves.easeOut),
     );
-    _card1Slide = Tween<Offset>(begin: const Offset(0, 0.3), end: Offset.zero)
-        .animate(
-          CurvedAnimation(
-            parent: _enterCtrl,
-            curve: const Interval(0.4, 0.75, curve: Curves.easeOutCubic),
-          ),
-        );
-    _card2Slide = Tween<Offset>(begin: const Offset(0, 0.3), end: Offset.zero)
-        .animate(
-          CurvedAnimation(
-            parent: _enterCtrl,
-            curve: const Interval(0.55, 0.88, curve: Curves.easeOutCubic),
-          ),
-        );
+    _card1Slide = Tween<Offset>(
+      begin: const Offset(0, 0.3),
+      end: Offset.zero,
+    ).animate(
+      CurvedAnimation(
+        parent: _enterCtrl,
+        curve: const Interval(0.4, 0.75, curve: Curves.easeOutCubic),
+      ),
+    );
+    _card2Slide = Tween<Offset>(
+      begin: const Offset(0, 0.3),
+      end: Offset.zero,
+    ).animate(
+      CurvedAnimation(
+        parent: _enterCtrl,
+        curve: const Interval(0.55, 0.88, curve: Curves.easeOutCubic),
+      ),
+    );
     _btnFade = CurvedAnimation(
       parent: _enterCtrl,
       curve: const Interval(0.75, 1.0, curve: Curves.easeOut),

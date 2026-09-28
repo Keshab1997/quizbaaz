@@ -70,11 +70,12 @@ class ShopService {
   }) async {
     final cleanName = name.trim().toLowerCase();
     if (cleanName.isEmpty) return false;
-    final snapshot = await _db
-        .collection(collection)
-        .where('name_key', isEqualTo: cleanName)
-        .limit(5)
-        .get();
+    final snapshot =
+        await _db
+            .collection(collection)
+            .where('name_key', isEqualTo: cleanName)
+            .limit(5)
+            .get();
     return snapshot.docs.any(
       (doc) => doc.id != currentId && doc.data()['is_active'] == true,
     );
@@ -98,16 +99,13 @@ class ShopService {
         query = query.where('is_guest', isEqualTo: true);
       }
       final snapshot = await query.limit(200).get();
-      final users = snapshot.docs
-          .map((doc) => {...doc.data(), 'id': doc.id})
-          .toList();
+      final users =
+          snapshot.docs.map((doc) => {...doc.data(), 'id': doc.id}).toList();
       users.sort((a, b) {
-        final aName = (a['username'] ?? a['full_name'] ?? '')
-            .toString()
-            .toLowerCase();
-        final bName = (b['username'] ?? b['full_name'] ?? '')
-            .toString()
-            .toLowerCase();
+        final aName =
+            (a['username'] ?? a['full_name'] ?? '').toString().toLowerCase();
+        final bName =
+            (b['username'] ?? b['full_name'] ?? '').toString().toLowerCase();
         return aName.compareTo(bName);
       });
       _clearError();
@@ -209,8 +207,8 @@ class ShopService {
 
       // If category is avatars, mirror to avatars collection as well
       if (category == 'avatars' || category == 'avatar') {
-        final imageUrl = (item['icon_url'] ?? item['image_url'] ?? '')
-            .toString();
+        final imageUrl =
+            (item['icon_url'] ?? item['image_url'] ?? '').toString();
         if (imageUrl.isNotEmpty) {
           await _db.collection(_avatars).doc(id).set({
             'id': id,
@@ -251,32 +249,33 @@ class ShopService {
       return [];
     }
     try {
-      final snapshot = await _db
-          .collection(_shopItems)
-          .where('is_active', isEqualTo: true)
-          .get();
-      final items = snapshot.docs
-          .map((doc) => {...doc.data(), 'id': doc.id})
-          .toList();
+      final snapshot =
+          await _db
+              .collection(_shopItems)
+              .where('is_active', isEqualTo: true)
+              .get();
+      final items =
+          snapshot.docs.map((doc) => {...doc.data(), 'id': doc.id}).toList();
 
       // Also merge active avatars from the avatars collection
       try {
-        final avatarsSnapshot = await _db
-            .collection(_avatars)
-            .where('is_active', isEqualTo: true)
-            .get();
-        final existingIds = items
-            .map((e) => (e['id'] ?? '').toString())
-            .toSet();
-        final existingUrls = items
-            .map((e) => (e['icon_url'] ?? e['image_url'] ?? '').toString())
-            .toSet();
+        final avatarsSnapshot =
+            await _db
+                .collection(_avatars)
+                .where('is_active', isEqualTo: true)
+                .get();
+        final existingIds =
+            items.map((e) => (e['id'] ?? '').toString()).toSet();
+        final existingUrls =
+            items
+                .map((e) => (e['icon_url'] ?? e['image_url'] ?? '').toString())
+                .toSet();
 
         for (final doc in avatarsSnapshot.docs) {
           final data = doc.data();
           final id = doc.id;
-          final imageUrl = (data['image_url'] ?? data['avatar_url'] ?? '')
-              .toString();
+          final imageUrl =
+              (data['image_url'] ?? data['avatar_url'] ?? '').toString();
           if (!existingIds.contains(id) &&
               !existingUrls.contains(imageUrl) &&
               imageUrl.isNotEmpty) {
@@ -482,35 +481,39 @@ class ShopService {
       );
     }
     try {
-      final snapshot = await _db
-          .collection(_avatars)
-          .where('is_active', isEqualTo: true)
-          .get();
-      final avatars = snapshot.docs
-          .map((doc) => {..._sanitizeForCache(doc.data()), 'id': doc.id})
-          .toList();
+      final snapshot =
+          await _db
+              .collection(_avatars)
+              .where('is_active', isEqualTo: true)
+              .get();
+      final avatars =
+          snapshot.docs
+              .map((doc) => {..._sanitizeForCache(doc.data()), 'id': doc.id})
+              .toList();
 
       // Also merge items from shop_items collection where category is avatars
       try {
-        final shopSnapshot = await _db
-            .collection(_shopItems)
-            .where('is_active', isEqualTo: true)
-            .get();
-        final existingIds = avatars
-            .map((e) => (e['id'] ?? '').toString())
-            .toSet();
-        final existingUrls = avatars
-            .map((e) => (e['image_url'] ?? e['avatar_url'] ?? '').toString())
-            .toSet();
+        final shopSnapshot =
+            await _db
+                .collection(_shopItems)
+                .where('is_active', isEqualTo: true)
+                .get();
+        final existingIds =
+            avatars.map((e) => (e['id'] ?? '').toString()).toSet();
+        final existingUrls =
+            avatars
+                .map(
+                  (e) => (e['image_url'] ?? e['avatar_url'] ?? '').toString(),
+                )
+                .toSet();
 
         for (final doc in shopSnapshot.docs) {
           final data = doc.data();
           final id = doc.id;
-          final itemCategory = (data['category'] ?? '')
-              .toString()
-              .toLowerCase();
-          final imageUrl = (data['icon_url'] ?? data['image_url'] ?? '')
-              .toString();
+          final itemCategory =
+              (data['category'] ?? '').toString().toLowerCase();
+          final imageUrl =
+              (data['icon_url'] ?? data['image_url'] ?? '').toString();
 
           if ((itemCategory == 'avatars' || itemCategory == 'avatar') &&
               !existingIds.contains(id) &&
@@ -581,9 +584,10 @@ class ShopService {
   ) {
     var list = [...avatars];
     if (category != null && category != 'all') {
-      list = list
-          .where((a) => (a['category'] ?? '').toString() == category)
-          .toList();
+      list =
+          list
+              .where((a) => (a['category'] ?? '').toString() == category)
+              .toList();
     }
     list.sort(
       (a, b) => (b['created_at'] ?? '').toString().compareTo(
@@ -636,39 +640,43 @@ class ShopService {
       stats['total_users'] = users.count ?? 0;
 
       // Guest users
-      final guests = await _db
-          .collection('users')
-          .where('is_guest', isEqualTo: true)
-          .count()
-          .get();
+      final guests =
+          await _db
+              .collection('users')
+              .where('is_guest', isEqualTo: true)
+              .count()
+              .get();
       stats['guest_users'] = guests.count ?? 0;
 
       // Today's players
       final today = DateTime.now();
       final dateKey =
           '${today.year}-${today.month.toString().padLeft(2, '0')}-${today.day.toString().padLeft(2, '0')}';
-      final players = await _db
-          .collection('leaderboard')
-          .doc(dateKey)
-          .collection('scores')
-          .count()
-          .get();
+      final players =
+          await _db
+              .collection('leaderboard')
+              .doc(dateKey)
+              .collection('scores')
+              .count()
+              .get();
       stats['players_today'] = players.count ?? 0;
 
       // Shop items
-      final items = await _db
-          .collection(_shopItems)
-          .where('is_active', isEqualTo: true)
-          .count()
-          .get();
+      final items =
+          await _db
+              .collection(_shopItems)
+              .where('is_active', isEqualTo: true)
+              .count()
+              .get();
       stats['shop_items'] = items.count ?? 0;
 
       // Avatars
-      final avatars = await _db
-          .collection(_avatars)
-          .where('is_active', isEqualTo: true)
-          .count()
-          .get();
+      final avatars =
+          await _db
+              .collection(_avatars)
+              .where('is_active', isEqualTo: true)
+              .count()
+              .get();
       stats['avatars'] = avatars.count ?? 0;
 
       _clearError();

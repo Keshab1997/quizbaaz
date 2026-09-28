@@ -50,12 +50,13 @@ class QuizLanguagePills extends StatelessWidget {
 
     return InkWell(
       borderRadius: BorderRadius.circular(18),
-      onTap: isSelected
-          ? null
-          : () {
-              SoundService.instance.playClick();
-              onSelected(code);
-            },
+      onTap:
+          isSelected
+              ? null
+              : () {
+                SoundService.instance.playClick();
+                onSelected(code);
+              },
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 160),
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),

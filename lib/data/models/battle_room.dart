@@ -243,17 +243,19 @@ class BattleRoomData {
   bool get hasStarted => roomStatus.hasStarted;
 
   /// Read-only mapping: 'a'/'b' -> player.
-  BattleRoomPlayer? playerOf(String side) => side == 'a'
-      ? playerA
-      : side == 'b'
-      ? playerB
-      : null;
+  BattleRoomPlayer? playerOf(String side) =>
+      side == 'a'
+          ? playerA
+          : side == 'b'
+          ? playerB
+          : null;
 
-  BattleRoomPlayer? opponentOf(String side) => side == 'a'
-      ? playerB
-      : side == 'b'
-      ? playerA
-      : null;
+  BattleRoomPlayer? opponentOf(String side) =>
+      side == 'a'
+          ? playerB
+          : side == 'b'
+          ? playerA
+          : null;
 
   bool hasBothAnswered(int index) =>
       (playerA?.answerFor(index) != null) &&
@@ -275,10 +277,11 @@ class BattleRoomData {
       matchId: json['match_id']?.toString() ?? '',
       difficulty: json['difficulty']?.toString() ?? 'normal',
       status: json['status']?.toString() ?? 'active',
-      questions: rawQuestions
-          .whereType<Map>()
-          .map((q) => QuestionModel.fromJson(Map<String, dynamic>.from(q)))
-          .toList(),
+      questions:
+          rawQuestions
+              .whereType<Map>()
+              .map((q) => QuestionModel.fromJson(Map<String, dynamic>.from(q)))
+              .toList(),
       phase: BattleRoomPhase.values.firstWhere(
         (p) => p.name == state['phase'],
         orElse: () => BattleRoomPhase.lobby,
@@ -289,16 +292,18 @@ class BattleRoomData {
       revealUntilMs: (state['reveal_until'] as num?)?.toInt() ?? 0,
       nextQuestion: (state['next_q'] as num?)?.toInt() ?? 0,
       createdAtMs: (json['created_at'] as num?)?.toInt() ?? 0,
-      playerA: players['a'] is Map
-          ? BattleRoomPlayer.fromJson(
-              Map<String, dynamic>.from(players['a'] as Map),
-            )
-          : null,
-      playerB: players['b'] is Map
-          ? BattleRoomPlayer.fromJson(
-              Map<String, dynamic>.from(players['b'] as Map),
-            )
-          : null,
+      playerA:
+          players['a'] is Map
+              ? BattleRoomPlayer.fromJson(
+                Map<String, dynamic>.from(players['a'] as Map),
+              )
+              : null,
+      playerB:
+          players['b'] is Map
+              ? BattleRoomPlayer.fromJson(
+                Map<String, dynamic>.from(players['b'] as Map),
+              )
+              : null,
       winner: json['winner']?.toString(),
       abandoned: json['abandoned'] as bool? ?? false,
       abandonedBy: json['abandoned_by']?.toString(),

@@ -302,13 +302,13 @@ class SyncService {
     if (localDate == remoteDate) {
       mergedDate = localDate;
       if (local.dailyStreak == 0 || remote.dailyStreak == 0) {
-        mergedStreak = local.dailyStreak == 0
-            ? local.dailyStreak
-            : remote.dailyStreak;
+        mergedStreak =
+            local.dailyStreak == 0 ? local.dailyStreak : remote.dailyStreak;
       } else {
-        mergedStreak = local.dailyStreak >= remote.dailyStreak
-            ? local.dailyStreak
-            : remote.dailyStreak;
+        mergedStreak =
+            local.dailyStreak >= remote.dailyStreak
+                ? local.dailyStreak
+                : remote.dailyStreak;
       }
     } else if (remoteDate != null &&
         (localDate == null || remoteDate.compareTo(localDate) > 0)) {
@@ -369,9 +369,10 @@ class SyncService {
     // Fresh rows when they arrived, otherwise fall back to *this day's* cache —
     // never to a stale one from another day, which is how yesterday's
     // standings used to reappear as today's (R12).
-    final source = rows.isNotEmpty
-        ? rows
-        : HiveService.cacheGetList(cacheKey, allowStale: true);
+    final source =
+        rows.isNotEmpty
+            ? rows
+            : HiveService.cacheGetList(cacheKey, allowStale: true);
     if (source.isEmpty) return const [];
 
     // Tie-breaker: highest score wins; on EQUAL scores the FASTEST time wins.

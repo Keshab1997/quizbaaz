@@ -78,14 +78,15 @@ class CachedAvatar extends StatelessWidget {
         useOldImageOnUrlChange: true,
         fadeOutDuration: const Duration(milliseconds: 200),
         fadeInDuration: const Duration(milliseconds: 200),
-        placeholder: showProgress
-            ? (_, __) => Center(
-                child: CircularProgressIndicator(
-                  strokeWidth: 2,
-                  color: progressColor,
-                ),
-              )
-            : null,
+        placeholder:
+            showProgress
+                ? (_, __) => Center(
+                  child: CircularProgressIndicator(
+                    strokeWidth: 2,
+                    color: progressColor,
+                  ),
+                )
+                : null,
         errorWidget: (_, __, ___) => _buildFallback(),
       );
     } else {

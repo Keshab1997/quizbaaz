@@ -75,9 +75,8 @@ void main() {
 
     test('every shipped catalogue covers all English keys', () {
       for (final entry in {'bn': kStringsBn, 'hi': kStringsHi}.entries) {
-        final missing = kStringsEn.keys
-            .where((k) => !entry.value.containsKey(k))
-            .toList();
+        final missing =
+            kStringsEn.keys.where((k) => !entry.value.containsKey(k)).toList();
         expect(
           missing,
           isEmpty,
@@ -88,9 +87,8 @@ void main() {
 
     test('no translation invents a key the base language lacks', () {
       for (final entry in {'bn': kStringsBn, 'hi': kStringsHi}.entries) {
-        final stray = entry.value.keys
-            .where((k) => !kStringsEn.containsKey(k))
-            .toList();
+        final stray =
+            entry.value.keys.where((k) => !kStringsEn.containsKey(k)).toList();
         expect(stray, isEmpty, reason: '${entry.key} has stray key(s): $stray');
       }
     });
@@ -163,14 +161,14 @@ void main() {
   });
 
   test('stats survive a Hive round-trip', () async {
-    final stats = UserStats.empty()
-      ..recordQuiz(
-        answered: 10,
-        correct: 8,
-        timeSeconds: 60,
-        isDaily: true,
-        dailyScore: 120,
-      );
+    final stats =
+        UserStats.empty()..recordQuiz(
+          answered: 10,
+          correct: 8,
+          timeSeconds: 60,
+          isDaily: true,
+          dailyScore: 120,
+        );
     await HiveService.saveStats(stats);
 
     final restored = HiveService.loadStats();

@@ -261,20 +261,23 @@ class BattleProvider extends ChangeNotifier {
 
   QuestionModel? get currentQuestion =>
       _questions.isNotEmpty && _currentIndex < _questions.length
-      ? _questions[_currentIndex]
-      : null;
+          ? _questions[_currentIndex]
+          : null;
 
   String get opponentName => _opponent?.name ?? 'Opponent';
   String get opponentAvatar => _opponent?.avatar ?? '';
-  int get opponentScore => isLive
-      ? (_room?.opponentOf(_side)?.score ?? _opponentScore)
-      : _opponentScore;
-  int get opponentCorrect => isLive
-      ? (_room?.opponentOf(_side)?.correct ?? _opponentCorrect)
-      : _opponentCorrect;
-  int get opponentStreak => isLive
-      ? (_room?.opponentOf(_side)?.streak ?? _opponentStreak)
-      : _opponentStreak;
+  int get opponentScore =>
+      isLive
+          ? (_room?.opponentOf(_side)?.score ?? _opponentScore)
+          : _opponentScore;
+  int get opponentCorrect =>
+      isLive
+          ? (_room?.opponentOf(_side)?.correct ?? _opponentCorrect)
+          : _opponentCorrect;
+  int get opponentStreak =>
+      isLive
+          ? (_room?.opponentOf(_side)?.streak ?? _opponentStreak)
+          : _opponentStreak;
 
   int get playerScore => _playerScore;
   int get playerCorrect => _playerCorrect;
@@ -996,9 +999,10 @@ class BattleProvider extends ChangeNotifier {
       matchId: _matchId!,
       me: BattleRoomPlayerInfo(
         uid: _userId,
-        name: _userProvider.user.username.isEmpty
-            ? _userProvider.user.fullName
-            : _userProvider.user.username,
+        name:
+            _userProvider.user.username.isEmpty
+                ? _userProvider.user.fullName
+                : _userProvider.user.username,
         avatar: _userProvider.user.effectiveAvatar,
       ),
       opponent: BattleRoomPlayerInfo(
@@ -1334,9 +1338,10 @@ class BattleProvider extends ChangeNotifier {
       return;
     }
 
-    _questionDurationSec = question.timeLimitSec > 0
-        ? question.timeLimitSec
-        : _userProvider.config.secondsPerQuestion;
+    _questionDurationSec =
+        question.timeLimitSec > 0
+            ? question.timeLimitSec
+            : _userProvider.config.secondsPerQuestion;
     _questionDeadlineMs = now + _questionDurationSec * 1000;
     _secondsRemaining = _questionDurationSec;
 
@@ -1427,9 +1432,10 @@ class BattleProvider extends ChangeNotifier {
     } else {
       final wrong = [for (var i = 0; i < question.options.length; i++) i]
         ..remove(question.correctIndex);
-      _opponentSelected = wrong.isEmpty
-          ? question.correctIndex
-          : wrong[_rng.nextInt(wrong.length)];
+      _opponentSelected =
+          wrong.isEmpty
+              ? question.correctIndex
+              : wrong[_rng.nextInt(wrong.length)];
     }
     _opponentAnswered = true;
 
@@ -1676,11 +1682,12 @@ class BattleProvider extends ChangeNotifier {
     if (isLive) {
       // A forfeit always means the remaining player wins, regardless of the
       // score at the moment the opponent left.
-      final winner = (isPlayerWin || _forfeitWin)
-          ? _side
-          : isDraw
-          ? 'draw'
-          : (_side == 'a' ? 'b' : 'a');
+      final winner =
+          (isPlayerWin || _forfeitWin)
+              ? _side
+              : isDraw
+              ? 'draw'
+              : (_side == 'a' ? 'b' : 'a');
       unawaited(_roomService.finishRoom(_roomId!, winner, matchId: _matchId));
 
       // Single-award guard: one award per *match*, not per room. The room id

@@ -62,11 +62,13 @@ class QuestionBankService {
         .orderBy(FieldPath.documentId)
         .snapshots()
         .map(
-          (snapshot) => snapshot.docs
-              .map(
-                (doc) => QuestionModel.fromJson({...doc.data(), 'id': doc.id}),
-              )
-              .toList(),
+          (snapshot) =>
+              snapshot.docs
+                  .map(
+                    (doc) =>
+                        QuestionModel.fromJson({...doc.data(), 'id': doc.id}),
+                  )
+                  .toList(),
         );
   }
 
@@ -295,11 +297,12 @@ class QuestionBankService {
       );
     }
 
-    final ids = questionIds
-        .map((id) => id.trim())
-        .where((id) => id.isNotEmpty)
-        .toSet()
-        .toList();
+    final ids =
+        questionIds
+            .map((id) => id.trim())
+            .where((id) => id.isNotEmpty)
+            .toSet()
+            .toList();
 
     if (ids.isEmpty) {
       return DeleteQuestionsResult(
@@ -363,11 +366,12 @@ class QuestionBankService {
     if (snapshot.docs.isEmpty) return 0;
 
     final cutoff = DateTime.now().toUtc().subtract(undoWindow);
-    final removable = snapshot.docs.where((doc) {
-      final created = doc.data()['created_at'];
-      if (created is! Timestamp) return false;
-      return created.toDate().isAfter(cutoff);
-    }).toList();
+    final removable =
+        snapshot.docs.where((doc) {
+          final created = doc.data()['created_at'];
+          if (created is! Timestamp) return false;
+          return created.toDate().isAfter(cutoff);
+        }).toList();
 
     if (removable.isEmpty) return 0;
 

@@ -38,9 +38,10 @@ class _ChapterListScreenState extends State<ChapterListScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final displayedCategories = _selectedCategoryIndex == 0
-        ? _categories
-        : [_categories[_selectedCategoryIndex - 1]];
+    final displayedCategories =
+        _selectedCategoryIndex == 0
+            ? _categories
+            : [_categories[_selectedCategoryIndex - 1]];
 
     return Scaffold(
       backgroundColor: Colors.transparent,
@@ -54,83 +55,84 @@ class _ChapterListScreenState extends State<ChapterListScreen> {
           onPressed: () => Navigator.pop(context),
         ),
       ),
-      body: _isLoading
-          ? const Center(
-              child: CircularProgressIndicator(color: AppColors.neonCyan),
-            )
-          : Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // 1. Subject Filter Pills
-                _buildSubjectFilterPills(),
-                const SizedBox(height: 10),
+      body:
+          _isLoading
+              ? const Center(
+                child: CircularProgressIndicator(color: AppColors.neonCyan),
+              )
+              : Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // 1. Subject Filter Pills
+                  _buildSubjectFilterPills(),
+                  const SizedBox(height: 10),
 
-                // 2. Chapters List
-                Expanded(
-                  child: ListView.builder(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 16,
-                      vertical: 6,
-                    ),
-                    physics: const BouncingScrollPhysics(),
-                    itemCount: displayedCategories.length,
-                    itemBuilder: (context, catIndex) {
-                      final category = displayedCategories[catIndex];
-                      return Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(
-                              top: 8.0,
-                              bottom: 8.0,
-                            ),
-                            child: Row(
-                              children: [
-                                Container(
-                                  width: 4,
-                                  height: 16,
-                                  decoration: BoxDecoration(
-                                    color: _parseColor(category.colorHex),
-                                    borderRadius: BorderRadius.circular(2),
-                                  ),
-                                ),
-                                const SizedBox(width: 8),
-                                Expanded(
-                                  child: Text(
-                                    category.categoryName,
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.w900,
+                  // 2. Chapters List
+                  Expanded(
+                    child: ListView.builder(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 6,
+                      ),
+                      physics: const BouncingScrollPhysics(),
+                      itemCount: displayedCategories.length,
+                      itemBuilder: (context, catIndex) {
+                        final category = displayedCategories[catIndex];
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                top: 8.0,
+                                bottom: 8.0,
+                              ),
+                              child: Row(
+                                children: [
+                                  Container(
+                                    width: 4,
+                                    height: 16,
+                                    decoration: BoxDecoration(
                                       color: _parseColor(category.colorHex),
+                                      borderRadius: BorderRadius.circular(2),
                                     ),
                                   ),
-                                ),
-                                Text(
-                                  S.chapterCount(n: category.chapters.length),
-                                  style: const TextStyle(
-                                    fontSize: 11,
-                                    color: AppColors.textSecondary,
+                                  const SizedBox(width: 8),
+                                  Expanded(
+                                    child: Text(
+                                      category.categoryName,
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w900,
+                                        color: _parseColor(category.colorHex),
+                                      ),
+                                    ),
                                   ),
-                                ),
-                              ],
+                                  Text(
+                                    S.chapterCount(n: category.chapters.length),
+                                    style: const TextStyle(
+                                      fontSize: 11,
+                                      color: AppColors.textSecondary,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                          ...category.chapters.map(
-                            (ch) => _buildChapterCard(
-                              context,
-                              ch,
-                              category.colorHex,
-                              category.categoryName,
+                            ...category.chapters.map(
+                              (ch) => _buildChapterCard(
+                                context,
+                                ch,
+                                category.colorHex,
+                                category.categoryName,
+                              ),
                             ),
-                          ),
-                          const SizedBox(height: 14),
-                        ],
-                      );
-                    },
+                            const SizedBox(height: 14),
+                          ],
+                        );
+                      },
+                    ),
                   ),
-                ),
-              ],
-            ),
+                ],
+              ),
     );
   }
 
@@ -145,59 +147,67 @@ class _ChapterListScreenState extends State<ChapterListScreen> {
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       physics: const BouncingScrollPhysics(),
       child: Row(
-        children: filterOptions.asMap().entries.map((entry) {
-          final idx = entry.key;
-          final label = entry.value;
-          final isSelected = _selectedCategoryIndex == idx;
+        children:
+            filterOptions.asMap().entries.map((entry) {
+              final idx = entry.key;
+              final label = entry.value;
+              final isSelected = _selectedCategoryIndex == idx;
 
-          return Padding(
-            padding: const EdgeInsets.only(right: 8.0),
-            child: GestureDetector(
-              onTap: () {
-                SoundService.instance.play('ui_click');
-                Haptics.tap();
-                setState(() {
-                  _selectedCategoryIndex = idx;
-                });
-              },
-              child: AnimatedContainer(
-                duration: const Duration(milliseconds: 200),
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 14,
-                  vertical: 7,
-                ),
-                decoration: BoxDecoration(
-                  color: isSelected
-                      ? AppColors.neonPurple
-                      : Colors.white.withValues(alpha: 0.06),
-                  borderRadius: BorderRadius.circular(16),
-                  border: Border.all(
-                    color: isSelected
-                        ? AppColors.neonPurple
-                        : Colors.white.withValues(alpha: 0.12),
+              return Padding(
+                padding: const EdgeInsets.only(right: 8.0),
+                child: GestureDetector(
+                  onTap: () {
+                    SoundService.instance.play('ui_click');
+                    Haptics.tap();
+                    setState(() {
+                      _selectedCategoryIndex = idx;
+                    });
+                  },
+                  child: AnimatedContainer(
+                    duration: const Duration(milliseconds: 200),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 14,
+                      vertical: 7,
+                    ),
+                    decoration: BoxDecoration(
+                      color:
+                          isSelected
+                              ? AppColors.neonPurple
+                              : Colors.white.withValues(alpha: 0.06),
+                      borderRadius: BorderRadius.circular(16),
+                      border: Border.all(
+                        color:
+                            isSelected
+                                ? AppColors.neonPurple
+                                : Colors.white.withValues(alpha: 0.12),
+                      ),
+                      boxShadow:
+                          isSelected
+                              ? [
+                                BoxShadow(
+                                  color: AppColors.neonPurple.withValues(
+                                    alpha: 0.4,
+                                  ),
+                                  blurRadius: 10,
+                                  offset: const Offset(0, 3),
+                                ),
+                              ]
+                              : null,
+                    ),
+                    child: Text(
+                      label,
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight:
+                            isSelected ? FontWeight.w900 : FontWeight.w600,
+                        color:
+                            isSelected ? Colors.white : AppColors.textSecondary,
+                      ),
+                    ),
                   ),
-                  boxShadow: isSelected
-                      ? [
-                          BoxShadow(
-                            color: AppColors.neonPurple.withValues(alpha: 0.4),
-                            blurRadius: 10,
-                            offset: const Offset(0, 3),
-                          ),
-                        ]
-                      : null,
                 ),
-                child: Text(
-                  label,
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: isSelected ? FontWeight.w900 : FontWeight.w600,
-                    color: isSelected ? Colors.white : AppColors.textSecondary,
-                  ),
-                ),
-              ),
-            ),
-          );
-        }).toList(),
+              );
+            }).toList(),
       ),
     );
   }
@@ -215,36 +225,37 @@ class _ChapterListScreenState extends State<ChapterListScreen> {
       padding: const EdgeInsets.only(bottom: 12.0),
       child: GlassCard(
         borderRadius: 20,
-        borderColor: isLocked
-            ? Colors.white10
-            : catColor.withValues(alpha: 0.35),
-        backgroundColor: isLocked
-            ? const Color(0x221E293B)
-            : const Color(0x331E1B4B),
-        onTap: isLocked
-            ? () {
-                SoundService.instance.play('ui_deny');
-                Haptics.error();
-                ScaffoldMessenger.of(context)
-                    .showSnackBar(SnackBar(content: Text(S.chapterLockedMsg)));
-              }
-            // Opens the set list rather than launching the whole bank at
-            // once: a chapter keeps growing, and where the student left off is
-            // the first thing they need to see.
-            : () {
-                SoundService.instance.play('ui_click');
-                Haptics.tap();
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => ChapterSetsScreen(
-                      chapter: chapter,
-                      categoryTitle: categoryName,
-                      accent: catColor,
+        borderColor:
+            isLocked ? Colors.white10 : catColor.withValues(alpha: 0.35),
+        backgroundColor:
+            isLocked ? const Color(0x221E293B) : const Color(0x331E1B4B),
+        onTap:
+            isLocked
+                ? () {
+                  SoundService.instance.play('ui_deny');
+                  Haptics.error();
+                  ScaffoldMessenger.of(
+                    context,
+                  ).showSnackBar(SnackBar(content: Text(S.chapterLockedMsg)));
+                }
+                // Opens the set list rather than launching the whole bank at
+                // once: a chapter keeps growing, and where the student left off is
+                // the first thing they need to see.
+                : () {
+                  SoundService.instance.play('ui_click');
+                  Haptics.tap();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder:
+                          (_) => ChapterSetsScreen(
+                            chapter: chapter,
+                            categoryTitle: categoryName,
+                            accent: catColor,
+                          ),
                     ),
-                  ),
-                );
-              },
+                  );
+                },
         child: Row(
           children: [
             // Chapter Number Badge or Lock
@@ -253,31 +264,34 @@ class _ChapterListScreenState extends State<ChapterListScreen> {
               height: 50,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
-                color: isLocked
-                    ? Colors.white.withValues(alpha: 0.05)
-                    : catColor.withValues(alpha: 0.2),
+                color:
+                    isLocked
+                        ? Colors.white.withValues(alpha: 0.05)
+                        : catColor.withValues(alpha: 0.2),
                 border: Border.all(
-                  color: isLocked
-                      ? Colors.white12
-                      : catColor.withValues(alpha: 0.5),
+                  color:
+                      isLocked
+                          ? Colors.white12
+                          : catColor.withValues(alpha: 0.5),
                 ),
               ),
               child: Center(
-                child: isLocked
-                    ? const Icon(
-                        Icons.lock,
-                        color: AppColors.textMuted,
-                        size: 22,
-                      )
-                    : Text(
-                        S.chapterShort(n: chapter.chapterNumber),
-                        style: TextStyle(
-                          fontSize: 13,
-                          fontWeight: FontWeight.w900,
-                          color: catColor,
+                child:
+                    isLocked
+                        ? const Icon(
+                          Icons.lock,
+                          color: AppColors.textMuted,
+                          size: 22,
+                        )
+                        : Text(
+                          S.chapterShort(n: chapter.chapterNumber),
+                          style: TextStyle(
+                            fontSize: 13,
+                            fontWeight: FontWeight.w900,
+                            color: catColor,
+                          ),
+                          textAlign: TextAlign.center,
                         ),
-                        textAlign: TextAlign.center,
-                      ),
               ),
             ),
             const SizedBox(width: 14),
@@ -292,9 +306,10 @@ class _ChapterListScreenState extends State<ChapterListScreen> {
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w800,
-                      color: isLocked
-                          ? AppColors.textMuted
-                          : AppColors.textPrimary,
+                      color:
+                          isLocked
+                              ? AppColors.textMuted
+                              : AppColors.textPrimary,
                     ),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
@@ -306,9 +321,10 @@ class _ChapterListScreenState extends State<ChapterListScreen> {
                       style: TextStyle(
                         fontSize: 11,
                         fontWeight: FontWeight.w600,
-                        color: isLocked
-                            ? AppColors.textMuted
-                            : AppColors.textSecondary,
+                        color:
+                            isLocked
+                                ? AppColors.textMuted
+                                : AppColors.textSecondary,
                       ),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
