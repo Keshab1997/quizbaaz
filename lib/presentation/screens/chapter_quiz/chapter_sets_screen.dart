@@ -267,8 +267,8 @@ class _ChapterSetsScreenState extends State<ChapterSetsScreen>
     final colour = done != null
         ? AppColors.neonGreen
         : isNext
-        ? widget.accent
-        : AppColors.textMuted;
+            ? widget.accent
+            : AppColors.textMuted;
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
@@ -298,21 +298,21 @@ class _ChapterSetsScreenState extends State<ChapterSetsScreen>
                         color: AppColors.textMuted,
                       )
                     : done != null
-                    ? Icon(
-                        done.isPerfect
-                            ? Icons.workspace_premium_rounded
-                            : Icons.check_rounded,
-                        size: 20,
-                        color: colour,
-                      )
-                    : Text(
-                        '${index + 1}',
-                        style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.w900,
-                          color: colour,
-                        ),
-                      ),
+                        ? Icon(
+                            done.isPerfect
+                                ? Icons.workspace_premium_rounded
+                                : Icons.check_rounded,
+                            size: 20,
+                            color: colour,
+                          )
+                        : Text(
+                            '${index + 1}',
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w900,
+                              color: colour,
+                            ),
+                          ),
               ),
             ),
             const SizedBox(width: 14),
@@ -333,9 +333,9 @@ class _ChapterSetsScreenState extends State<ChapterSetsScreen>
                     locked
                         ? S.setsLocked(n: index)
                         : done != null
-                        ? '${S.setsCleared} · '
-                              '${S.setsBest(correct: done.bestCorrect, total: done.totalQuestions)}'
-                        : S.setsQuestions(n: length),
+                            ? '${S.setsCleared} · '
+                                '${S.setsBest(correct: done.bestCorrect, total: done.totalQuestions)}'
+                            : S.setsQuestions(n: length),
                     style: TextStyle(
                       fontSize: 11.5,
                       color: done != null
@@ -605,15 +605,15 @@ class _ChapterSetsScreenState extends State<ChapterSetsScreen>
     SoundService.instance.play('ui_whoosh');
     Haptics.tap();
     await context.read<QuizProvider>().startChapterQuiz(
-      widget.chapter.jsonFile,
-      chapterId: _chapterId,
-      categoryTitle: widget.categoryTitle,
-      categoryTitleBn: widget.categoryTitleBn,
-      chapterTitle: widget.chapter.title,
-      chapterTitleBn: widget.chapter.titleText.resolve('bn'),
-      setIndex: setIndex,
-      practice: practice,
-    );
+          widget.chapter.jsonFile,
+          chapterId: _chapterId,
+          categoryTitle: widget.categoryTitle,
+          categoryTitleBn: widget.categoryTitleBn,
+          chapterTitle: widget.chapter.title,
+          chapterTitleBn: widget.chapter.titleText.resolve('bn'),
+          setIndex: setIndex,
+          practice: practice,
+        );
 
     if (!mounted) return;
     await Navigator.push(

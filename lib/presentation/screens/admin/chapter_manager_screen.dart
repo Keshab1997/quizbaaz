@@ -75,15 +75,15 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
     return _categories
         .map((category) {
           final matchesSubject = category.nameText.toJson().values.any(
-            (v) => v.toLowerCase().contains(needle),
-          );
+                (v) => v.toLowerCase().contains(needle),
+              );
           final chapters = category.chapters
               .where(
                 (c) =>
                     matchesSubject ||
                     c.titleText.toJson().values.any(
-                      (v) => v.toLowerCase().contains(needle),
-                    ),
+                          (v) => v.toLowerCase().contains(needle),
+                        ),
               )
               .toList();
           return CategoryModel(
@@ -393,13 +393,11 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
               ),
             ),
             IconButton(
-              tooltip: chapter.isEnabled
-                  ? 'Hide from students'
-                  : 'Show to students',
+              tooltip:
+                  chapter.isEnabled ? 'Hide from students' : 'Show to students',
               iconSize: 18,
-              color: chapter.isEnabled
-                  ? AppColors.neonGreen
-                  : AppColors.neonGold,
+              color:
+                  chapter.isEnabled ? AppColors.neonGreen : AppColors.neonGold,
               icon: Icon(
                 chapter.isEnabled
                     ? Icons.visibility_rounded
@@ -485,9 +483,9 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
     final nextNumber = category.chapters.isEmpty
         ? 1
         : category.chapters
-                  .map((c) => c.chapterNumber)
-                  .reduce((a, b) => a > b ? a : b) +
-              1;
+                .map((c) => c.chapterNumber)
+                .reduce((a, b) => a > b ? a : b) +
+            1;
 
     final saved = await showModalBottomSheet<bool>(
       context: context,
@@ -499,15 +497,15 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
         defaultNumber: nextNumber,
         onSave: (id, title, description, number, unlocked, enabled) =>
             _catalog.saveChapter(
-              categoryId: category.categoryId,
-              chapterId: id,
-              title: title,
-              description: description,
-              chapterNumber: number,
-              isUnlocked: unlocked,
-              isEnabled: enabled,
-              actorUid: _actorUid,
-            ),
+          categoryId: category.categoryId,
+          chapterId: id,
+          title: title,
+          description: description,
+          chapterNumber: number,
+          isUnlocked: unlocked,
+          isEnabled: enabled,
+          actorUid: _actorUid,
+        ),
       ),
     );
     if (saved == true) _load();
@@ -555,8 +553,7 @@ class _SubjectSheet extends StatefulWidget {
     String icon,
     String colorHex,
     int priority,
-  )
-  onSave;
+  ) onSave;
 
   const _SubjectSheet({required this.existing, required this.onSave});
 
@@ -693,8 +690,7 @@ class _ChapterSheet extends StatefulWidget {
     int number,
     bool unlocked,
     bool enabled,
-  )
-  onSave;
+  ) onSave;
 
   const _ChapterSheet({
     required this.categoryName,

@@ -518,9 +518,8 @@ class DailyQuizScreen extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 11,
                     fontWeight: FontWeight.bold,
-                    color: disabled
-                        ? AppColors.textMuted
-                        : AppColors.textPrimary,
+                    color:
+                        disabled ? AppColors.textMuted : AppColors.textPrimary,
                   ),
                 ),
                 Text(
@@ -674,8 +673,8 @@ class DailyQuizScreen extends StatelessWidget {
     final message = quiz.fiftyFiftyStock <= 0
         ? S.quizNoFiftyFifty
         : quiz.fiftyFiftyUsed
-        ? S.quizFiftyFiftyUsed
-        : S.quizFiftyFiftyBlocked;
+            ? S.quizFiftyFiftyUsed
+            : S.quizFiftyFiftyBlocked;
     ScaffoldMessenger.of(context)
         .showSnackBar(SnackBar(content: Text(message)));
   }
@@ -685,8 +684,8 @@ class DailyQuizScreen extends StatelessWidget {
     final message = quiz.freezeTimeStock <= 0
         ? S.quizNoFreeze
         : quiz.freezeUsed
-        ? S.quizFreezeUsed
-        : S.quizFreezeBlocked;
+            ? S.quizFreezeUsed
+            : S.quizFreezeBlocked;
     ScaffoldMessenger.of(context)
         .showSnackBar(SnackBar(content: Text(message)));
   }
@@ -696,8 +695,8 @@ class DailyQuizScreen extends StatelessWidget {
     final message = quiz.skipQuestionStock <= 0
         ? S.quizNoSkip
         : quiz.skipUsed
-        ? S.quizSkipUsed
-        : S.quizSkipBlocked;
+            ? S.quizSkipUsed
+            : S.quizSkipBlocked;
     ScaffoldMessenger.of(context)
         .showSnackBar(SnackBar(content: Text(message)));
   }
@@ -707,8 +706,8 @@ class DailyQuizScreen extends StatelessWidget {
     final message = quiz.hintRevealStock <= 0
         ? S.quizNoHint
         : quiz.hintUsed
-        ? S.quizHintUsed
-        : S.quizHintBlocked;
+            ? S.quizHintUsed
+            : S.quizHintBlocked;
     ScaffoldMessenger.of(context)
         .showSnackBar(SnackBar(content: Text(message)));
   }
@@ -718,8 +717,8 @@ class DailyQuizScreen extends StatelessWidget {
     final message = quiz.audiencePollStock <= 0
         ? S.quizNoPoll
         : quiz.audienceUsed
-        ? S.quizPollUsed
-        : S.quizPollBlocked;
+            ? S.quizPollUsed
+            : S.quizPollBlocked;
     ScaffoldMessenger.of(context)
         .showSnackBar(SnackBar(content: Text(message)));
   }

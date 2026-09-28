@@ -51,14 +51,14 @@ class ShopService {
   }
 
   static bool _isAllowedShopCategory(String category) => const {
-    'power_ups',
-    'shields',
-    'boosters',
-    'avatars',
-    'badges',
-    'effects',
-    'packs',
-  }.contains(category);
+        'power_ups',
+        'shields',
+        'boosters',
+        'avatars',
+        'badges',
+        'effects',
+        'packs',
+      }.contains(category);
 
   static bool _isAllowedAvatarCategory(String category) =>
       const {'male', 'female', 'premium'}.contains(category);
@@ -98,16 +98,13 @@ class ShopService {
         query = query.where('is_guest', isEqualTo: true);
       }
       final snapshot = await query.limit(200).get();
-      final users = snapshot.docs
-          .map((doc) => {...doc.data(), 'id': doc.id})
-          .toList();
+      final users =
+          snapshot.docs.map((doc) => {...doc.data(), 'id': doc.id}).toList();
       users.sort((a, b) {
-        final aName = (a['username'] ?? a['full_name'] ?? '')
-            .toString()
-            .toLowerCase();
-        final bName = (b['username'] ?? b['full_name'] ?? '')
-            .toString()
-            .toLowerCase();
+        final aName =
+            (a['username'] ?? a['full_name'] ?? '').toString().toLowerCase();
+        final bName =
+            (b['username'] ?? b['full_name'] ?? '').toString().toLowerCase();
         return aName.compareTo(bName);
       });
       _clearError();
@@ -174,8 +171,7 @@ class ShopService {
       return false;
     }
     try {
-      final id =
-          item['id'] as String? ??
+      final id = item['id'] as String? ??
           DateTime.now().millisecondsSinceEpoch.toString();
       final name = (item['name'] ?? '').toString().trim();
       final category = (item['category'] ?? '').toString();
@@ -209,8 +205,8 @@ class ShopService {
 
       // If category is avatars, mirror to avatars collection as well
       if (category == 'avatars' || category == 'avatar') {
-        final imageUrl = (item['icon_url'] ?? item['image_url'] ?? '')
-            .toString();
+        final imageUrl =
+            (item['icon_url'] ?? item['image_url'] ?? '').toString();
         if (imageUrl.isNotEmpty) {
           await _db.collection(_avatars).doc(id).set({
             'id': id,
@@ -255,9 +251,8 @@ class ShopService {
           .collection(_shopItems)
           .where('is_active', isEqualTo: true)
           .get();
-      final items = snapshot.docs
-          .map((doc) => {...doc.data(), 'id': doc.id})
-          .toList();
+      final items =
+          snapshot.docs.map((doc) => {...doc.data(), 'id': doc.id}).toList();
 
       // Also merge active avatars from the avatars collection
       try {
@@ -265,9 +260,8 @@ class ShopService {
             .collection(_avatars)
             .where('is_active', isEqualTo: true)
             .get();
-        final existingIds = items
-            .map((e) => (e['id'] ?? '').toString())
-            .toSet();
+        final existingIds =
+            items.map((e) => (e['id'] ?? '').toString()).toSet();
         final existingUrls = items
             .map((e) => (e['icon_url'] ?? e['image_url'] ?? '').toString())
             .toSet();
@@ -275,13 +269,12 @@ class ShopService {
         for (final doc in avatarsSnapshot.docs) {
           final data = doc.data();
           final id = doc.id;
-          final imageUrl = (data['image_url'] ?? data['avatar_url'] ?? '')
-              .toString();
+          final imageUrl =
+              (data['image_url'] ?? data['avatar_url'] ?? '').toString();
           if (!existingIds.contains(id) &&
               !existingUrls.contains(imageUrl) &&
               imageUrl.isNotEmpty) {
-            final isPremium =
-                data['is_premium'] == true ||
+            final isPremium = data['is_premium'] == true ||
                 data['category'] == 'premium' ||
                 ((data['price'] as num?) ?? 0) > 0;
             items.add({
@@ -306,8 +299,8 @@ class ShopService {
 
       items.sort(
         (a, b) => (b['created_at'] ?? '').toString().compareTo(
-          (a['created_at'] ?? '').toString(),
-        ),
+              (a['created_at'] ?? '').toString(),
+            ),
       );
       _clearError();
       return items;
@@ -352,8 +345,7 @@ class ShopService {
       return false;
     }
     try {
-      final id =
-          avatar['id'] as String? ??
+      final id = avatar['id'] as String? ??
           DateTime.now().millisecondsSinceEpoch.toString();
       final name = (avatar['name'] ?? '').toString().trim();
       final category = (avatar['category'] ?? '').toString();
@@ -496,9 +488,8 @@ class ShopService {
             .collection(_shopItems)
             .where('is_active', isEqualTo: true)
             .get();
-        final existingIds = avatars
-            .map((e) => (e['id'] ?? '').toString())
-            .toSet();
+        final existingIds =
+            avatars.map((e) => (e['id'] ?? '').toString()).toSet();
         final existingUrls = avatars
             .map((e) => (e['image_url'] ?? e['avatar_url'] ?? '').toString())
             .toSet();
@@ -506,18 +497,16 @@ class ShopService {
         for (final doc in shopSnapshot.docs) {
           final data = doc.data();
           final id = doc.id;
-          final itemCategory = (data['category'] ?? '')
-              .toString()
-              .toLowerCase();
-          final imageUrl = (data['icon_url'] ?? data['image_url'] ?? '')
-              .toString();
+          final itemCategory =
+              (data['category'] ?? '').toString().toLowerCase();
+          final imageUrl =
+              (data['icon_url'] ?? data['image_url'] ?? '').toString();
 
           if ((itemCategory == 'avatars' || itemCategory == 'avatar') &&
               !existingIds.contains(id) &&
               !existingUrls.contains(imageUrl) &&
               imageUrl.isNotEmpty) {
-            final isPremium =
-                data['is_cosmetic'] == true ||
+            final isPremium = data['is_cosmetic'] == true ||
                 ((data['price'] as num?) ?? 0) > 0;
             avatars.add({
               ..._sanitizeForCache(data),
@@ -587,8 +576,8 @@ class ShopService {
     }
     list.sort(
       (a, b) => (b['created_at'] ?? '').toString().compareTo(
-        (a['created_at'] ?? '').toString(),
-      ),
+            (a['created_at'] ?? '').toString(),
+          ),
     );
     return list;
   }

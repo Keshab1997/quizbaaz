@@ -803,8 +803,7 @@ class _LeaderboardScreenState extends State<LeaderboardScreen>
           _buildEmptyState(
             icon: Icons.emoji_events_rounded,
             title: S.lbNoChampions,
-            message:
-                'Daily quiz winners and their prizes will show up here '
+            message: 'Daily quiz winners and their prizes will show up here '
                 'day by day once the results are declared.',
           ),
         ],
@@ -822,8 +821,8 @@ class _LeaderboardScreenState extends State<LeaderboardScreen>
         (a, b) => a == '_recent_'
             ? 1
             : b == '_recent_'
-            ? -1
-            : b.compareTo(a),
+                ? -1
+                : b.compareTo(a),
       );
 
     return ListView.builder(

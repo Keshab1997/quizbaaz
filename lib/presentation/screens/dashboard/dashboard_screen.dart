@@ -65,8 +65,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
       NotificationInbox.instance.reload();
       AppNavigator.flushPending();
       context.read<RewardsProvider>().initialize(
-        userId: userProvider.user.userId,
-      );
+            userId: userProvider.user.userId,
+          );
 
       // UMP consent: shows Google's consent form only where required
       // (EU/EEA/UK). Ads are gated until this resolves; elsewhere this
@@ -100,8 +100,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
     await Future.wait([
       userProvider.refreshRankings(force: true),
       context.read<RewardsProvider>().initialize(
-        userId: userProvider.user.userId,
-      ),
+            userId: userProvider.user.userId,
+          ),
     ]);
   }
 
@@ -671,9 +671,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
             value: '${user.dailyStreak}',
             label: S.dashDayStreak,
             color: AppColors.neonGold,
-            detail: user.dailyStreak > 0
-                ? 'Keep it alive'
-                : 'Play today to start',
+            detail:
+                user.dailyStreak > 0 ? 'Keep it alive' : 'Play today to start',
           ),
         ),
         const SizedBox(width: 10),
@@ -685,7 +684,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             color: AppColors.neonCyan,
             detail: stats.hasData
                 ? (userProvider.percentileLabel ??
-                      '${stats.totalAnswered} questions answered')
+                    '${stats.totalAnswered} questions answered')
                 : 'No quiz played yet',
           ),
         ),
@@ -907,8 +906,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 now.day,
               ).subtract(Duration(days: now.weekday - 1));
               final dayDate = mondayOfThisWeek.add(Duration(days: index));
-              final isToday =
-                  dayDate.year == now.year &&
+              final isToday = dayDate.year == now.year &&
                   dayDate.month == now.month &&
                   dayDate.day == now.day;
               final isFuture = dayDate.isAfter(
@@ -962,8 +960,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           color: isToday
                               ? AppColors.neonCyan
                               : isAttended
-                              ? AppColors.neonGold.withValues(alpha: 0.75)
-                              : Colors.white.withValues(alpha: 0.10),
+                                  ? AppColors.neonGold.withValues(alpha: 0.75)
+                                  : Colors.white.withValues(alpha: 0.10),
                           width: isToday ? 2 : 1,
                         ),
                       ),
@@ -984,8 +982,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         color: isToday
                             ? AppColors.neonCyan
                             : (isAttended
-                                  ? AppColors.neonGold
-                                  : AppColors.textMuted),
+                                ? AppColors.neonGold
+                                : AppColors.textMuted),
                         fontSize: 9,
                         fontWeight: isToday || isAttended
                             ? FontWeight.w900
@@ -1234,9 +1232,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
       );
     }
 
-    final championAvatar = champ.avatarPath.isNotEmpty
-        ? champ.avatarPath
-        : AppAssets.maleAvatar;
+    final championAvatar =
+        champ.avatarPath.isNotEmpty ? champ.avatarPath : AppAssets.maleAvatar;
     final prizeLabel = _championPrizeLabel(champ);
 
     return Container(
@@ -1380,9 +1377,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   /// Live top-4 straight from the Hive-cached leaderboard.
   Widget _buildLeaderboardPreview(UserProvider userProvider) {
-    final List<LeaderboardItem> players = userProvider.leaderboard
-        .take(4)
-        .toList();
+    final List<LeaderboardItem> players =
+        userProvider.leaderboard.take(4).toList();
 
     if (players.isEmpty) {
       return GlassCard(
@@ -1690,8 +1686,7 @@ class _MarqueeTextState extends State<_MarqueeText>
 
         final textWidth = painter.width;
         final textHeight = painter.height;
-        final hasFiniteGeometry =
-            constraints.hasBoundedWidth &&
+        final hasFiniteGeometry = constraints.hasBoundedWidth &&
             constraints.maxWidth.isFinite &&
             textWidth.isFinite &&
             textHeight.isFinite;

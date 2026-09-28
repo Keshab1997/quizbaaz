@@ -60,8 +60,7 @@ class CachedAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isNetwork = url.startsWith('http://') || url.startsWith('https://');
-    final isAnimatedFormat =
-        url.toLowerCase().contains('.gif') ||
+    final isAnimatedFormat = url.toLowerCase().contains('.gif') ||
         url.toLowerCase().contains('.webp');
 
     Widget image;
@@ -80,11 +79,11 @@ class CachedAvatar extends StatelessWidget {
         fadeInDuration: const Duration(milliseconds: 200),
         placeholder: showProgress
             ? (_, __) => Center(
-                child: CircularProgressIndicator(
-                  strokeWidth: 2,
-                  color: progressColor,
-                ),
-              )
+                  child: CircularProgressIndicator(
+                    strokeWidth: 2,
+                    color: progressColor,
+                  ),
+                )
             : null,
         errorWidget: (_, __, ___) => _buildFallback(),
       );
@@ -122,6 +121,7 @@ class CachedAvatar extends StatelessWidget {
   }
 
   Widget _buildFallbackIcon() => Center(
-    child: Icon(fallbackIcon, color: fallbackIconColor, size: fallbackIconSize),
-  );
+        child: Icon(fallbackIcon,
+            color: fallbackIconColor, size: fallbackIconSize),
+      );
 }

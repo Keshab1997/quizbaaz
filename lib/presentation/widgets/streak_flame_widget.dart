@@ -75,9 +75,8 @@ class StreakFlameWidget extends StatelessWidget {
               final cycle = streakDays % 7;
               final completedCount = (cycle == 0 && streakDays > 0) ? 7 : cycle;
               final isCompleted = index < completedCount;
-              final isToday = streakDays == 0
-                  ? index == 0
-                  : (cycle != 0 && index == cycle);
+              final isToday =
+                  streakDays == 0 ? index == 0 : (cycle != 0 && index == cycle);
 
               return Container(
                 width: 34,
@@ -87,14 +86,14 @@ class StreakFlameWidget extends StatelessWidget {
                   color: isCompleted
                       ? AppColors.neonGold.withValues(alpha: 0.2)
                       : (isToday
-                            ? AppColors.neonPurple.withValues(alpha: 0.3)
-                            : Colors.white.withValues(alpha: 0.05)),
+                          ? AppColors.neonPurple.withValues(alpha: 0.3)
+                          : Colors.white.withValues(alpha: 0.05)),
                   border: Border.all(
                     color: isCompleted
                         ? AppColors.neonGold
                         : (isToday
-                              ? AppColors.neonCyan
-                              : Colors.white.withValues(alpha: 0.1)),
+                            ? AppColors.neonCyan
+                            : Colors.white.withValues(alpha: 0.1)),
                     width: isToday ? 2 : 1,
                   ),
                 ),
@@ -109,9 +108,8 @@ class StreakFlameWidget extends StatelessWidget {
                           days[index],
                           style: TextStyle(
                             fontSize: 12,
-                            fontWeight: isToday
-                                ? FontWeight.bold
-                                : FontWeight.normal,
+                            fontWeight:
+                                isToday ? FontWeight.bold : FontWeight.normal,
                             color: isToday
                                 ? AppColors.neonCyan
                                 : AppColors.textSecondary,

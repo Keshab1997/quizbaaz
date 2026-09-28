@@ -44,14 +44,14 @@ class NotificationItem {
   }
 
   Map<String, dynamic> toJson() => {
-    'id': id,
-    'kind': kind,
-    'title': title,
-    'body': body,
-    'open': open,
-    'received_at': receivedAt.toIso8601String(),
-    'read': read,
-  };
+        'id': id,
+        'kind': kind,
+        'title': title,
+        'body': body,
+        'open': open,
+        'received_at': receivedAt.toIso8601String(),
+        'read': read,
+      };
 
   factory NotificationItem.fromJson(Map<String, dynamic> json) {
     return NotificationItem(
@@ -60,8 +60,7 @@ class NotificationItem {
       title: json['title']?.toString() ?? '',
       body: json['body']?.toString() ?? '',
       open: json['open']?.toString(),
-      receivedAt:
-          DateTime.tryParse(json['received_at']?.toString() ?? '') ??
+      receivedAt: DateTime.tryParse(json['received_at']?.toString() ?? '') ??
           DateTime.fromMillisecondsSinceEpoch(0),
       read: json['read'] == true,
     );

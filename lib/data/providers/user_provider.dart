@@ -86,8 +86,7 @@ class UserProvider extends ChangeNotifier {
   /// has been published for yesterday yet.
   ChampionModel? get yesterdayTopChampion {
     final yesterday = DateTime.now().subtract(const Duration(days: 1));
-    final key =
-        '${yesterday.year}-'
+    final key = '${yesterday.year}-'
         '${yesterday.month.toString().padLeft(2, '0')}-'
         '${yesterday.day.toString().padLeft(2, '0')}';
     for (final c in _champions) {
@@ -174,8 +173,7 @@ class UserProvider extends ChangeNotifier {
     var rank = 1;
     for (final item in _leaderboard) {
       if (leaderboardRowBelongsToUser(item, userId: _user.userId)) continue;
-      final isAhead =
-          item.score > myScore ||
+      final isAhead = item.score > myScore ||
           (item.score == myScore &&
               myScore > 0 &&
               myTime > 0 &&
@@ -599,9 +597,8 @@ class UserProvider extends ChangeNotifier {
       // Pull yesterday's champions / leaderboard, then only look at the
       // rows that actually belong to yesterday's winners.
       final champions = await _rankings.refreshChampions(limit: 10, days: 1);
-      final yesterdayWinners = champions
-          .where((c) => c.dateKey == yesterdayKey)
-          .toList();
+      final yesterdayWinners =
+          champions.where((c) => c.dateKey == yesterdayKey).toList();
       var userRank = -1;
 
       for (var i = 0; i < yesterdayWinners.length; i++) {
@@ -957,8 +954,7 @@ class UserProvider extends ChangeNotifier {
 
   /// Kept for older call sites: updates the personal best only.
   bool updateDailyBest({required int score, required double timeSeconds}) {
-    final isBest =
-        score > _stats.bestDailyScore ||
+    final isBest = score > _stats.bestDailyScore ||
         (score == _stats.bestDailyScore &&
             score > 0 &&
             (_stats.bestDailyTimeSeconds == 0 ||

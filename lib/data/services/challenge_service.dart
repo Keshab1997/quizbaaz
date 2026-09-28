@@ -42,7 +42,7 @@ import 'firestore_query_specs.dart';
 /// ```
 class ChallengeService {
   ChallengeService({FirebaseFirestore? firestore})
-    : _firestoreOverride = firestore;
+      : _firestoreOverride = firestore;
 
   final FirebaseFirestore? _firestoreOverride;
 
@@ -178,18 +178,13 @@ class ChallengeService {
 
   /// Watches for status changes on a specific challenge.
   Stream<ChallengeData?> watchChallengeStatus(String challengeId) {
-    return _db
-        .collection(collection)
-        .doc(challengeId)
-        .snapshots()
-        .map((snap) {
-          if (!snap.exists) return null;
-          return ChallengeData.fromDoc(snap);
-        })
-        .handleError((e) {
-          debugPrint('ChallengeService: watchStatus – $e');
-          return null;
-        });
+    return _db.collection(collection).doc(challengeId).snapshots().map((snap) {
+      if (!snap.exists) return null;
+      return ChallengeData.fromDoc(snap);
+    }).handleError((e) {
+      debugPrint('ChallengeService: watchStatus – $e');
+      return null;
+    });
   }
 
   /// Watches for outgoing challenges sent by [myUid].
@@ -229,16 +224,12 @@ class ChallengeService {
   ) async {
     final col = _db.collection(collection);
     try {
-      final mine = FirestoreQuerySpecs.challengesPendingFromTo
-          .bind(
-            equals: {'from_uid': uidOne, 'to_uid': uidTwo, 'status': 'pending'},
-          )
-          .apply(col);
-      final theirs = FirestoreQuerySpecs.challengesPendingFromTo
-          .bind(
-            equals: {'from_uid': uidTwo, 'to_uid': uidOne, 'status': 'pending'},
-          )
-          .apply(col);
+      final mine = FirestoreQuerySpecs.challengesPendingFromTo.bind(
+        equals: {'from_uid': uidOne, 'to_uid': uidTwo, 'status': 'pending'},
+      ).apply(col);
+      final theirs = FirestoreQuerySpecs.challengesPendingFromTo.bind(
+        equals: {'from_uid': uidTwo, 'to_uid': uidOne, 'status': 'pending'},
+      ).apply(col);
 
       final results = await Future.wait([mine.get(), theirs.get()]);
       final count = results.fold<int>(
@@ -281,11 +272,9 @@ class ChallengeService {
     final col = _db.collection(collection);
     try {
       final sent = FirestoreQuerySpecs.challengesPendingSent
-          .bind(equals: {'from_uid': myUid, 'status': 'pending'})
-          .apply(col);
+          .bind(equals: {'from_uid': myUid, 'status': 'pending'}).apply(col);
       final received = FirestoreQuerySpecs.challengesPendingReceived
-          .bind(equals: {'to_uid': myUid, 'status': 'pending'})
-          .apply(col);
+          .bind(equals: {'to_uid': myUid, 'status': 'pending'}).apply(col);
 
       final results = await Future.wait([sent.get(), received.get()]);
       final docs = [...results[0].docs, ...results[1].docs];
@@ -360,8 +349,8 @@ class ChallengeData {
   /// Best avatar URL for the challenger.
   String get fromEffectiveAvatar =>
       (fromAvatarUrl != null && fromAvatarUrl!.isNotEmpty)
-      ? fromAvatarUrl!
-      : fromAvatar;
+          ? fromAvatarUrl!
+          : fromAvatar;
 
   factory ChallengeData.fromDoc(DocumentSnapshot doc) {
     final data = doc.data() as Map<String, dynamic>? ?? {};

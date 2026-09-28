@@ -7,7 +7,7 @@ import 'question_fingerprint.dart';
 /// Firestore storage for admin-authored questions.
 class QuestionBankService {
   QuestionBankService({FirebaseFirestore? firestore})
-    : _firestoreOverride = firestore;
+      : _firestoreOverride = firestore;
 
   final FirebaseFirestore? _firestoreOverride;
 
@@ -58,10 +58,7 @@ class QuestionBankService {
   Stream<List<QuestionModel>> watchQuestions(String chapterId) {
     final col = _questions(chapterId);
     if (col == null) return Stream.value(const []);
-    return col
-        .orderBy(FieldPath.documentId)
-        .snapshots()
-        .map(
+    return col.orderBy(FieldPath.documentId).snapshots().map(
           (snapshot) => snapshot.docs
               .map(
                 (doc) => QuestionModel.fromJson({...doc.data(), 'id': doc.id}),
@@ -177,11 +174,9 @@ class QuestionBankService {
     final now = DateTime.now().toUtc();
     final written = <String>[];
 
-    for (
-      var start = 0;
-      start < questions.length;
-      start += _maxBatchOperations
-    ) {
+    for (var start = 0;
+        start < questions.length;
+        start += _maxBatchOperations) {
       final end = (start + _maxBatchOperations).clamp(0, questions.length);
       final batch = db.batch();
 
@@ -457,9 +452,9 @@ class ChapterWriteContext {
   });
 
   const ChapterWriteContext.empty(this.chapterId)
-    : existingIds = const [],
-      existingStems = const {},
-      existingFingerprints = const {};
+      : existingIds = const [],
+        existingStems = const {},
+        existingFingerprints = const {};
 
   int get questionCount => existingIds.length;
 

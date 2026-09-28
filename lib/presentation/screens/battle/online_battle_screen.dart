@@ -93,12 +93,12 @@ class _OnlineBattleScreenState extends State<OnlineBattleScreen>
     _presenceSub = _presence
         .watchOnlineUsers(excludeUid: userProvider.user.userId)
         .listen((users) {
-          if (!mounted) return;
-          setState(() {
-            _onlineUsers = users;
-            _isLoading = false;
-          });
-        });
+      if (!mounted) return;
+      setState(() {
+        _onlineUsers = users;
+        _isLoading = false;
+      });
+    });
   }
 
   void _watchIncomingChallenges() {
@@ -107,56 +107,53 @@ class _OnlineBattleScreenState extends State<OnlineBattleScreen>
     _incomingChallengeSub = _challengeService
         .watchIncomingChallenges(userProvider.user.userId)
         .listen((challenge) {
-          if (challenge != null &&
-              challenge.isPending &&
-              !challenge.hasExpired) {
-            setState(() => _incomingChallenge = challenge);
-            if (mounted) {
-              _showIncomingChallengeDialog(challenge);
-            }
-          }
-        });
+      if (challenge != null && challenge.isPending && !challenge.hasExpired) {
+        setState(() => _incomingChallenge = challenge);
+        if (mounted) {
+          _showIncomingChallengeDialog(challenge);
+        }
+      }
+    });
   }
 
   void _watchOutgoingChallenge() {
     _outgoingChallengeSub?.cancel();
     if (!mounted) return;
     final myUid = context.read<UserProvider>().user.userId;
-    _outgoingChallengeSub = _challengeService
-        .watchOutgoingChallenge(myUid)
-        .listen((challenge) {
-          if (challenge == null) {
-            if (!mounted) return;
-            setState(() {
-              _pendingChallengeToUid = null;
-              _outgoingChallenge = null;
-            });
-            return;
-          }
-          if (!mounted) return;
-          setState(() => _outgoingChallenge = challenge);
-
-          if (challenge.isAccepted) {
-            _startBattleWithOpponent(
-              challengeId: challenge.challengeId,
-              opponentUid: challenge.toUid,
-              opponentName: challenge.toName,
-              opponentAvatar: challenge.toAvatar,
-              opponentAvatarUrl: challenge.toAvatarUrl,
-              difficulty: challenge.difficulty,
-            );
-          } else if (challenge.isRejected ||
-              challenge.isExpired ||
-              challenge.isCancelled) {
-            setState(() {
-              _pendingChallengeToUid = null;
-              _outgoingChallenge = null;
-            });
-            if (mounted) {
-              _showChallengeResultSnackbar(challenge.toName, challenge.status);
-            }
-          }
+    _outgoingChallengeSub =
+        _challengeService.watchOutgoingChallenge(myUid).listen((challenge) {
+      if (challenge == null) {
+        if (!mounted) return;
+        setState(() {
+          _pendingChallengeToUid = null;
+          _outgoingChallenge = null;
         });
+        return;
+      }
+      if (!mounted) return;
+      setState(() => _outgoingChallenge = challenge);
+
+      if (challenge.isAccepted) {
+        _startBattleWithOpponent(
+          challengeId: challenge.challengeId,
+          opponentUid: challenge.toUid,
+          opponentName: challenge.toName,
+          opponentAvatar: challenge.toAvatar,
+          opponentAvatarUrl: challenge.toAvatarUrl,
+          difficulty: challenge.difficulty,
+        );
+      } else if (challenge.isRejected ||
+          challenge.isExpired ||
+          challenge.isCancelled) {
+        setState(() {
+          _pendingChallengeToUid = null;
+          _outgoingChallenge = null;
+        });
+        if (mounted) {
+          _showChallengeResultSnackbar(challenge.toName, challenge.status);
+        }
+      }
+    });
   }
 
   Future<void> _sendChallenge(OnlineUser user) async {
@@ -419,13 +416,13 @@ class _OnlineBattleScreenState extends State<OnlineBattleScreen>
                       d == 'easy'
                           ? Icons.bolt
                           : d == 'normal'
-                          ? Icons.balance
-                          : Icons.local_fire_department,
+                              ? Icons.balance
+                              : Icons.local_fire_department,
                       color: d == 'easy'
                           ? Colors.green
                           : d == 'normal'
-                          ? Colors.cyan
-                          : Colors.orange,
+                              ? Colors.cyan
+                              : Colors.orange,
                     ),
                     title: Text(
                       d.toUpperCase(),
@@ -511,13 +508,13 @@ class _OnlineBattleScreenState extends State<OnlineBattleScreen>
                   _selectedDifficulty == 'easy'
                       ? Icons.bolt
                       : _selectedDifficulty == 'normal'
-                      ? Icons.balance
-                      : Icons.local_fire_department,
+                          ? Icons.balance
+                          : Icons.local_fire_department,
                   color: _selectedDifficulty == 'easy'
                       ? Colors.green
                       : _selectedDifficulty == 'normal'
-                      ? Colors.cyan
-                      : Colors.orange,
+                          ? Colors.cyan
+                          : Colors.orange,
                   size: 20,
                 ),
                 const SizedBox(width: 4),
@@ -527,8 +524,8 @@ class _OnlineBattleScreenState extends State<OnlineBattleScreen>
                     color: _selectedDifficulty == 'easy'
                         ? Colors.green
                         : _selectedDifficulty == 'normal'
-                        ? Colors.cyan
-                        : Colors.orange,
+                            ? Colors.cyan
+                            : Colors.orange,
                     fontSize: 12,
                     fontWeight: FontWeight.bold,
                   ),
@@ -976,8 +973,8 @@ class _IncomingChallengeDialogState extends State<_IncomingChallengeDialog>
                 color: widget.challenge.difficulty == 'easy'
                     ? Colors.green
                     : widget.challenge.difficulty == 'hard'
-                    ? Colors.orange
-                    : Colors.cyan,
+                        ? Colors.orange
+                        : Colors.cyan,
                 fontSize: 13,
                 fontWeight: FontWeight.bold,
               ),

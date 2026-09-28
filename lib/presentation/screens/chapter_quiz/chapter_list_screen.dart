@@ -215,12 +215,10 @@ class _ChapterListScreenState extends State<ChapterListScreen> {
       padding: const EdgeInsets.only(bottom: 12.0),
       child: GlassCard(
         borderRadius: 20,
-        borderColor: isLocked
-            ? Colors.white10
-            : catColor.withValues(alpha: 0.35),
-        backgroundColor: isLocked
-            ? const Color(0x221E293B)
-            : const Color(0x331E1B4B),
+        borderColor:
+            isLocked ? Colors.white10 : catColor.withValues(alpha: 0.35),
+        backgroundColor:
+            isLocked ? const Color(0x221E293B) : const Color(0x331E1B4B),
         onTap: isLocked
             ? () {
                 SoundService.instance.play('ui_deny');

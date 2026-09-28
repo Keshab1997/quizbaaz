@@ -78,8 +78,7 @@ class LanguageScreen extends StatelessWidget {
                       title: entry.value,
                       subtitle: _appLanguageSubtitles[entry.key],
                       icon: Icons.language_rounded,
-                      selected:
-                          !localeProvider.followSystem &&
+                      selected: !localeProvider.followSystem &&
                           localeProvider.appLanguage == entry.key,
                       onTap: () async {
                         await localeProvider.setAppLanguage(entry.key);

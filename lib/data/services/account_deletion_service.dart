@@ -42,10 +42,10 @@ class AccountCleanupReport {
   bool get isComplete => pending.isEmpty;
 
   AccountCleanupReport withFollowUp(bool recorded) => AccountCleanupReport(
-    deleted: deleted,
-    pending: pending,
-    followUpRecorded: recorded,
-  );
+        deleted: deleted,
+        pending: pending,
+        followUpRecorded: recorded,
+      );
 
   @override
   String toString() =>
@@ -95,9 +95,9 @@ class AccountDeletionService {
     FirebaseFirestore? firestore,
     Future<void> Function(String uid)? reAuthenticate,
     Future<AccountCleanupReport> Function(String uid)? remoteCleanup,
-  }) : _firestoreOverride = firestore,
-       _reAuthenticateOverride = reAuthenticate,
-       _remoteCleanupOverride = remoteCleanup;
+  })  : _firestoreOverride = firestore,
+        _reAuthenticateOverride = reAuthenticate,
+        _remoteCleanupOverride = remoteCleanup;
 
   /// The instance the UI uses.
   static final AccountDeletionService shared = AccountDeletionService();
@@ -105,7 +105,7 @@ class AccountDeletionService {
   final FirebaseFirestore? _firestoreOverride;
   final Future<void> Function(String uid)? _reAuthenticateOverride;
   final Future<AccountCleanupReport> Function(String uid)?
-  _remoteCleanupOverride;
+      _remoteCleanupOverride;
 
   static FirebaseFirestore get _db => FirebaseFirestore.instance;
 
@@ -127,19 +127,19 @@ class AccountDeletionService {
   /// Deletes the signed-in [user]'s account. Throws nothing — every failure
   /// maps to a status.
   Future<AccountDeletionResult> deleteAccount(User user) => deleteAccountWith(
-    uid: user.uid,
-    providerIds: [for (final p in user.providerData) p.providerId],
-    deleteAuthUser: () async {
-      // Apply the credential the re-auth prompt just produced (if any), so
-      // `delete()` does not bounce back with `requires-recent-login` after
-      // the remote data has already been removed.
-      final credential = freshGoogleCredential;
-      if (credential != null) {
-        await user.reauthenticateWithCredential(credential);
-      }
-      await user.delete();
-    },
-  );
+        uid: user.uid,
+        providerIds: [for (final p in user.providerData) p.providerId],
+        deleteAuthUser: () async {
+          // Apply the credential the re-auth prompt just produced (if any), so
+          // `delete()` does not bounce back with `requires-recent-login` after
+          // the remote data has already been removed.
+          final credential = freshGoogleCredential;
+          if (credential != null) {
+            await user.reauthenticateWithCredential(credential);
+          }
+          await user.delete();
+        },
+      );
 
   /// The deletion itself, described by what it actually needs: the uid, the
   /// account's sign-in providers (to decide whether a re-authentication prompt

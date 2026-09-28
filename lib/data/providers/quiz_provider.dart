@@ -24,7 +24,7 @@ class QuizProvider extends ChangeNotifier {
   final UserProvider _userProvider;
 
   QuizProvider(this._userProvider, {QuizRepository? repository})
-    : _repository = repository ?? QuizRepository();
+      : _repository = repository ?? QuizRepository();
 
   List<QuestionModel> _questions = [];
 
@@ -226,8 +226,8 @@ class QuizProvider extends ChangeNotifier {
 
   QuestionModel? get currentQuestion =>
       _questions.isNotEmpty && _currentIndex < _questions.length
-      ? _questions[_currentIndex]
-      : null;
+          ? _questions[_currentIndex]
+          : null;
 
   // ------------------------------------------------------------- Lifecycle --
 
@@ -389,8 +389,8 @@ class QuizProvider extends ChangeNotifier {
   /// re-roll on every rebuild — every tick of the countdown — and the options
   /// would move while the player is reading them.
   List<QuestionModel> _shuffleOptions(List<QuestionModel> questions) => [
-    for (final question in questions) question.withShuffledOptions(_rng),
-  ];
+        for (final question in questions) question.withShuffledOptions(_rng),
+      ];
 
   /// Quits the current run: stops the countdown and disarms pending delayed
   /// advances so a quit quiz can neither play sounds nor grant rewards in
@@ -727,8 +727,8 @@ class QuizProvider extends ChangeNotifier {
       gems = isPerfect
           ? config.gemsPerfect
           : (_correctCount >= config.highScoreThreshold
-                ? config.gemsHighScore
-                : 0);
+              ? config.gemsHighScore
+              : 0);
     } else {
       // Chapter quiz: coins & gems granted every time based on performance
       coins = _correctCount * config.coinsPerCorrectPractice;
@@ -736,8 +736,8 @@ class QuizProvider extends ChangeNotifier {
       gems = isPerfect
           ? config.gemsPerfect
           : (_correctCount >= config.highScoreThreshold
-                ? config.gemsHighScore
-                : 0);
+              ? config.gemsHighScore
+              : 0);
     }
 
     // Apply coin booster if active
@@ -755,26 +755,26 @@ class QuizProvider extends ChangeNotifier {
     unawaited(
       _userProvider
           .recordQuizResult(
-            answered: _answerRecords.length,
-            correct: _correctCount,
-            timeSeconds: _totalTimeSeconds,
-            isDaily: _isDailyQuiz,
-            // Only a ranked daily run may touch the day's leaderboard entry (R12).
-            ranked: _isDailyRanked,
-            score: _score,
-            chapterId: _isDailyQuiz ? null : _chapterId,
-            categoryTitle: _isDailyQuiz ? null : _categoryTitle,
-            categoryTitleBn: _isDailyQuiz ? null : _categoryTitleBn,
-            chapterTitle: _isDailyQuiz ? null : _chapterTitle,
-            chapterTitleBn: _isDailyQuiz ? null : _chapterTitleBn,
-            coinsEarned: coins,
-            gemsEarned: gems,
-          )
+        answered: _answerRecords.length,
+        correct: _correctCount,
+        timeSeconds: _totalTimeSeconds,
+        isDaily: _isDailyQuiz,
+        // Only a ranked daily run may touch the day's leaderboard entry (R12).
+        ranked: _isDailyRanked,
+        score: _score,
+        chapterId: _isDailyQuiz ? null : _chapterId,
+        categoryTitle: _isDailyQuiz ? null : _categoryTitle,
+        categoryTitleBn: _isDailyQuiz ? null : _categoryTitleBn,
+        chapterTitle: _isDailyQuiz ? null : _chapterTitle,
+        chapterTitleBn: _isDailyQuiz ? null : _chapterTitleBn,
+        coinsEarned: coins,
+        gemsEarned: gems,
+      )
           .then((outcome) {
-            if (_disposed) return;
-            _dailyScoreOutcome = outcome;
-            notifyListeners();
-          }),
+        if (_disposed) return;
+        _dailyScoreOutcome = outcome;
+        notifyListeners();
+      }),
     );
 
     final granted = _userProvider.grantQuizRewards(

@@ -157,14 +157,11 @@ class SoundService {
   void _firePlay(AudioPlayer player, String id, double volume) {
     try {
       player.setVolume(volume);
-      player
-          .seek(Duration.zero)
-          .then((_) {
-            player.resume();
-          })
-          .catchError((_) {
-            player.resume();
-          });
+      player.seek(Duration.zero).then((_) {
+        player.resume();
+      }).catchError((_) {
+        player.resume();
+      });
     } catch (e) {
       try {
         final file = soundFiles[id];

@@ -32,7 +32,9 @@ class ValidationResult {
 
   const ValidationResult(this.issues, {this.nearDuplicate});
 
-  const ValidationResult.ok() : issues = const [], nearDuplicate = null;
+  const ValidationResult.ok()
+      : issues = const [],
+        nearDuplicate = null;
 
   List<ValidationIssue> get rejections =>
       issues.where((i) => i.isRejection).toList();

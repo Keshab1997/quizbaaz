@@ -138,10 +138,9 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
     }
   }
 
-  List<QuestionSet> get _visibleSets =>
-      QuestionSet.fromQuestions(_questions)
-          .where((set) => set.questions.any(_matchesCurrentFilter))
-          .toList();
+  List<QuestionSet> get _visibleSets => QuestionSet.fromQuestions(_questions)
+      .where((set) => set.questions.any(_matchesCurrentFilter))
+      .toList();
 
   @override
   Widget build(BuildContext context) {
@@ -515,9 +514,8 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
       child: GlassCard(
         borderRadius: 16,
         padding: EdgeInsets.zero,
-        borderColor: hasIssue
-            ? AppColors.neonGold.withValues(alpha: 0.35)
-            : null,
+        borderColor:
+            hasIssue ? AppColors.neonGold.withValues(alpha: 0.35) : null,
         child: Theme(
           data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
           child: ExpansionTile(
@@ -630,8 +628,7 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
               style: TextStyle(
                 fontSize: 9,
                 fontWeight: FontWeight.w900,
-                color:
-                    question.questionText.has(code) &&
+                color: question.questionText.has(code) &&
                         question.optionTexts.every((o) => o.has(code))
                     ? AppColors.neonGreen
                     : AppColors.textMuted.withValues(alpha: 0.5),
@@ -884,8 +881,8 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
   /// the chapter list one screen back — would keep seeing the old count for up
   /// to a quarter of an hour after an admin adds questions.
   Future<void> _invalidateCaches() => _repository.invalidateQuestionCache(
-    jsonFilePath: widget.chapter.jsonFile,
-  );
+        jsonFilePath: widget.chapter.jsonFile,
+      );
 
   Future<void> _confirmDeleteSet(QuestionSet set) async {
     final count = set.questions.length;
@@ -1184,8 +1181,8 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
         final ansStr = map['correct_answer'].toString().toLowerCase().trim();
         final idx = optionTexts.indexWhere(
           (o) => o.toJson().values.any(
-            (val) => val.toLowerCase().trim() == ansStr,
-          ),
+                (val) => val.toLowerCase().trim() == ansStr,
+              ),
         );
         if (idx >= 0) correctIndex = idx;
       }
@@ -1262,8 +1259,7 @@ class _QuestionSheetState extends State<_QuestionSheet> {
     _points = TextEditingController(text: '${e?.points ?? 10}');
     _timeLimit = TextEditingController(text: '${e?.timeLimitSec ?? 15}');
     _question = e?.questionText ?? const LocalizedText.empty();
-    _options =
-        e?.optionTexts.toList() ??
+    _options = e?.optionTexts.toList() ??
         List.generate(4, (_) => const LocalizedText.empty());
     _explanation = e?.explanationText ?? const LocalizedText.empty();
     _correctIndex = e?.correctIndex ?? 0;
@@ -1278,14 +1274,14 @@ class _QuestionSheetState extends State<_QuestionSheet> {
   }
 
   QuestionModel get _draft => QuestionModel(
-    id: _id.text.trim(),
-    questionText: _question,
-    optionTexts: _options,
-    correctIndex: _correctIndex,
-    explanationText: _explanation,
-    points: int.tryParse(_points.text.trim()) ?? 10,
-    timeLimitSec: int.tryParse(_timeLimit.text.trim()) ?? 30,
-  );
+        id: _id.text.trim(),
+        questionText: _question,
+        optionTexts: _options,
+        correctIndex: _correctIndex,
+        explanationText: _explanation,
+        points: int.tryParse(_points.text.trim()) ?? 10,
+        timeLimitSec: int.tryParse(_timeLimit.text.trim()) ?? 30,
+      );
 
   ValidationResult get _result =>
       QuestionValidator.validate(_draft, existingStems: widget.existingStems);
@@ -1436,9 +1432,8 @@ class _QuestionSheetState extends State<_QuestionSheet> {
             enabled: widget.existing == null,
             onChanged: (_) => setState(() {}),
             style: TextStyle(
-              color: widget.existing == null
-                  ? Colors.white
-                  : AppColors.textMuted,
+              color:
+                  widget.existing == null ? Colors.white : AppColors.textMuted,
               fontSize: 13,
             ),
             decoration: InputDecoration(
@@ -1484,8 +1479,7 @@ class _QuestionSheetState extends State<_QuestionSheet> {
           const SizedBox(width: 10),
           Expanded(
             child: TrilingualField(
-              label:
-                  'Option ${String.fromCharCode(65 + index)}'
+              label: 'Option ${String.fromCharCode(65 + index)}'
                   '${isCorrect ? '  ✓ correct' : ''}',
               initialValue: _options[index],
               minLines: 1,
@@ -1590,7 +1584,7 @@ class _QuestionSheetState extends State<_QuestionSheet> {
             child: Text(
               result.nearDuplicate != null && blocking.isEmpty
                   ? 'Similar to ${result.nearDuplicate!.questionId} '
-                        '(${result.nearDuplicate!.scoreLabel}) · $messages'
+                      '(${result.nearDuplicate!.scoreLabel}) · $messages'
                   : messages,
               style: TextStyle(fontSize: 11.5, color: colour, height: 1.35),
             ),
@@ -1840,7 +1834,8 @@ class _JsonImportSheetState extends State<_JsonImportSheet> {
                         fontFamily: 'monospace',
                       ),
                       decoration: InputDecoration(
-                        hintText: '[\n  {\n    "question": { "en": "...", "bn": "...", "hi": "..." },\n    "options": [...],\n    "correct_index": 0\n  }\n]',
+                        hintText:
+                            '[\n  {\n    "question": { "en": "...", "bn": "...", "hi": "..." },\n    "options": [...],\n    "correct_index": 0\n  }\n]',
                         hintStyle: TextStyle(
                           color: AppColors.textMuted.withValues(alpha: 0.5),
                           fontSize: 11,

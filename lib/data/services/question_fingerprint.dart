@@ -88,8 +88,7 @@ class QuestionFingerprint {
     var lastWasSpace = true;
 
     for (final rune in lowered.runes) {
-      final isAlnum =
-          (rune >= 0x30 && rune <= 0x39) || // 0-9
+      final isAlnum = (rune >= 0x30 && rune <= 0x39) || // 0-9
           (rune >= 0x61 && rune <= 0x7A) || // a-z
           rune > 0x7F; // keep Bangla/Devanagari/other scripts intact
       if (isAlnum) {
@@ -115,11 +114,10 @@ class QuestionFingerprint {
   }
 
   /// Content words of a stem, for [similarity].
-  static Set<String> tokens(String text) =>
-      normalise(text)
-          .split(' ')
-          .where((w) => w.length > 1 && !_stopWords.contains(w))
-          .toSet();
+  static Set<String> tokens(String text) => normalise(text)
+      .split(' ')
+      .where((w) => w.length > 1 && !_stopWords.contains(w))
+      .toSet();
 
   /// Jaccard overlap of two stems, 0.0 (nothing shared) to 1.0 (identical).
   ///

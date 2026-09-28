@@ -9,7 +9,8 @@ class PurchaseHistory {
   final String userId;
   final String itemId;
   final String itemName;
-  final String category; // 'power_ups', 'shields', 'boosters', 'avatars', 'badges', 'effects', 'packs'
+  final String
+      category; // 'power_ups', 'shields', 'boosters', 'avatars', 'badges', 'effects', 'packs'
   final int quantity;
   final int cost;
   final String currency; // 'coins' or 'gems'
@@ -52,16 +53,16 @@ class PurchaseHistory {
   }
 
   Map<String, dynamic> toJson() => {
-    'id': id,
-    'user_id': userId,
-    'item_id': itemId,
-    'item_name': itemName,
-    'category': category,
-    'quantity': quantity,
-    'cost': cost,
-    'currency': currency,
-    'purchased_at': purchasedAt.toIso8601String(),
-  };
+        'id': id,
+        'user_id': userId,
+        'item_id': itemId,
+        'item_name': itemName,
+        'category': category,
+        'quantity': quantity,
+        'cost': cost,
+        'currency': currency,
+        'purchased_at': purchasedAt.toIso8601String(),
+      };
 
   factory PurchaseHistory.fromJson(Map<String, dynamic> json) {
     return PurchaseHistory(
@@ -73,8 +74,7 @@ class PurchaseHistory {
       quantity: (json['quantity'] as num?)?.toInt() ?? 1,
       cost: (json['cost'] as num?)?.toInt() ?? 0,
       currency: json['currency'] as String? ?? 'coins',
-      purchasedAt:
-          DateTime.tryParse(json['purchased_at'] as String? ?? '') ??
+      purchasedAt: DateTime.tryParse(json['purchased_at'] as String? ?? '') ??
           DateTime.now(),
     );
   }

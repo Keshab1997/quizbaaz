@@ -30,7 +30,7 @@ class BattleQuestionGenerator {
   final QuizRepository _quizRepository;
 
   BattleQuestionGenerator({QuizRepository? quizRepository})
-    : _quizRepository = quizRepository ?? QuizRepository();
+      : _quizRepository = quizRepository ?? QuizRepository();
 
   final Random _rng = Random();
 
@@ -104,10 +104,8 @@ class BattleQuestionGenerator {
           for (final question in questions) {
             if (excludeIds.contains(question.id)) continue;
             if (!seenIds.add(question.id)) continue;
-            final stem = question.questionText
-                .resolve('en')
-                .trim()
-                .toLowerCase();
+            final stem =
+                question.questionText.resolve('en').trim().toLowerCase();
             if (stem.isEmpty || !seenStems.add(stem)) continue;
             results.add((chapter.chapterId, question));
           }

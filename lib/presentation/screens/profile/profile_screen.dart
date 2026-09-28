@@ -158,11 +158,10 @@ class ProfileScreen extends StatelessWidget {
                           vertical: 2,
                         ),
                         decoration: BoxDecoration(
-                          color:
-                              (user.gender == UserGender.male
-                                      ? AppColors.neonCyan
-                                      : AppColors.neonPink)
-                                  .withValues(alpha: 0.15),
+                          color: (user.gender == UserGender.male
+                                  ? AppColors.neonCyan
+                                  : AppColors.neonPink)
+                              .withValues(alpha: 0.15),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Text(
@@ -463,7 +462,7 @@ class ProfileScreen extends StatelessWidget {
                         Text(
                           auth.isSignedIn
                               ? (auth.firebaseUser?.displayName ??
-                                    S.profileGoogleAccount)
+                                  S.profileGoogleAccount)
                               : S.profileGoogleAccount,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
@@ -843,9 +842,8 @@ class ProfileScreen extends StatelessWidget {
       '${S.shareMsg}\n${AppLinks.playStore}',
       subject: S.appTitle,
       // Anchors the share sheet on iPads, where it must be a popover.
-      sharePositionOrigin: box != null
-          ? box.localToGlobal(Offset.zero) & box.size
-          : null,
+      sharePositionOrigin:
+          box != null ? box.localToGlobal(Offset.zero) & box.size : null,
     );
   }
 
@@ -1389,17 +1387,17 @@ class ProfileScreen extends StatelessWidget {
         decoration: BoxDecoration(
           color: isSelected
               ? (gender == UserGender.male
-                        ? AppColors.neonCyan
-                        : AppColors.neonPink)
-                    .withValues(alpha: 0.2)
+                      ? AppColors.neonCyan
+                      : AppColors.neonPink)
+                  .withValues(alpha: 0.2)
               : Colors.white.withValues(alpha: 0.05),
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
             color: isSelected
                 ? (gender == UserGender.male
-                          ? AppColors.neonCyan
-                          : AppColors.neonPink)
-                      .withValues(alpha: 0.8)
+                        ? AppColors.neonCyan
+                        : AppColors.neonPink)
+                    .withValues(alpha: 0.8)
                 : Colors.white24,
             width: isSelected ? 2 : 1,
           ),
@@ -1413,8 +1411,8 @@ class ProfileScreen extends StatelessWidget {
                   : Icons.female_rounded,
               color: isSelected
                   ? (gender == UserGender.male
-                        ? AppColors.neonCyan
-                        : AppColors.neonPink)
+                      ? AppColors.neonCyan
+                      : AppColors.neonPink)
                   : AppColors.textMuted,
               size: 22,
             ),
@@ -1424,8 +1422,8 @@ class ProfileScreen extends StatelessWidget {
               style: TextStyle(
                 color: isSelected
                     ? (gender == UserGender.male
-                          ? AppColors.neonCyan
-                          : AppColors.neonPink)
+                        ? AppColors.neonCyan
+                        : AppColors.neonPink)
                     : AppColors.textMuted,
                 fontWeight: FontWeight.w700,
               ),
@@ -1521,8 +1519,8 @@ class ProfileScreen extends StatelessWidget {
           value: isOn,
           onChanged: (val) async {
             if (settingKey == UserProvider.settingNotifications && val) {
-              final allowed = await NotificationService.instance
-                  .requestPermission();
+              final allowed =
+                  await NotificationService.instance.requestPermission();
               if (!allowed) {
                 if (context.mounted) {
                   ScaffoldMessenger.of(context).showSnackBar(

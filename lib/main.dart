@@ -140,9 +140,8 @@ class QuizBaazApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           theme: AppTheme.darkThemeFor(locale.appLanguage),
           locale: locale.locale,
-          supportedLocales: kSupportedLanguageCodes
-              .map((code) => Locale(code))
-              .toList(),
+          supportedLocales:
+              kSupportedLanguageCodes.map((code) => Locale(code)).toList(),
           localizationsDelegates: const [
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,

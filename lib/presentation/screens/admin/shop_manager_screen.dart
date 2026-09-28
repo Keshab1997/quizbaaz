@@ -54,20 +54,17 @@ class _ShopManagerScreenState extends State<ShopManagerScreen> {
   }
 
   ShopItem _shopItemFromMap(Map<String, dynamic> data) {
-    final currencyValue = (data['currency'] ?? 'coins')
-        .toString()
-        .toLowerCase();
+    final currencyValue =
+        (data['currency'] ?? 'coins').toString().toLowerCase();
     return ShopItem(
       id: (data['id'] ?? '').toString(),
       name: (data['name'] ?? 'Untitled Item').toString(),
       description: (data['description'] ?? '').toString(),
-      cost:
-          (data['price'] as num?)?.toInt() ??
+      cost: (data['price'] as num?)?.toInt() ??
           (data['cost'] as num?)?.toInt() ??
           0,
-      currency: currencyValue == 'gems'
-          ? ShopCurrency.gems
-          : ShopCurrency.coins,
+      currency:
+          currencyValue == 'gems' ? ShopCurrency.gems : ShopCurrency.coins,
       quantity: (data['quantity'] as num?)?.toInt() ?? 1,
       isCosmetic: data['is_cosmetic'] == true || data['isCosmetic'] == true,
       category: (data['category'] ?? 'power_ups').toString(),
@@ -168,16 +165,16 @@ class _ShopManagerScreenState extends State<ShopManagerScreen> {
                         ),
                       )
                     : snapshot.hasError
-                    ? _buildEmptyState(
-                        'Failed to load shop items',
-                        detail: ShopService.lastError,
-                      )
-                    : filteredItems.isEmpty
-                    ? _buildEmptyState(
-                        'No Firestore shop items found',
-                        detail: ShopService.lastError,
-                      )
-                    : _buildItemsList(filteredItems),
+                        ? _buildEmptyState(
+                            'Failed to load shop items',
+                            detail: ShopService.lastError,
+                          )
+                        : filteredItems.isEmpty
+                            ? _buildEmptyState(
+                                'No Firestore shop items found',
+                                detail: ShopService.lastError,
+                              )
+                            : _buildItemsList(filteredItems),
               ),
             ],
           );
@@ -278,13 +275,13 @@ class _ShopManagerScreenState extends State<ShopManagerScreen> {
                           fit: BoxFit.cover,
                           loadingBuilder: (context, child, progress) =>
                               progress == null
-                              ? child
-                              : const Center(
-                                  child: CircularProgressIndicator(
-                                    strokeWidth: 2,
-                                    color: AppColors.neonCyan,
-                                  ),
-                                ),
+                                  ? child
+                                  : const Center(
+                                      child: CircularProgressIndicator(
+                                        strokeWidth: 2,
+                                        color: AppColors.neonCyan,
+                                      ),
+                                    ),
                           errorBuilder: (_, __, ___) => const Icon(
                             Icons.inventory_2_rounded,
                             color: AppColors.neonCyan,
@@ -341,18 +338,16 @@ class _ShopManagerScreenState extends State<ShopManagerScreen> {
                       isCoins
                           ? Icons.monetization_on_rounded
                           : Icons.diamond_rounded,
-                      color: isCoins
-                          ? AppColors.neonGold
-                          : AppColors.neonPurple,
+                      color:
+                          isCoins ? AppColors.neonGold : AppColors.neonPurple,
                       size: 14,
                     ),
                     const SizedBox(width: 4),
                     Text(
                       '${item.cost}',
                       style: TextStyle(
-                        color: isCoins
-                            ? AppColors.neonGold
-                            : AppColors.neonPurple,
+                        color:
+                            isCoins ? AppColors.neonGold : AppColors.neonPurple,
                         fontSize: 12,
                         fontWeight: FontWeight.w800,
                       ),
@@ -484,9 +479,8 @@ class _ShopManagerScreenState extends State<ShopManagerScreen> {
                         ? '✅ ${item.name} deleted'
                         : '❌ ${ShopService.lastError ?? 'Delete failed'}',
                   ),
-                  backgroundColor: success
-                      ? AppColors.neonGreen
-                      : AppColors.neonRed,
+                  backgroundColor:
+                      success ? AppColors.neonGreen : AppColors.neonRed,
                 ),
               );
               if (success) setState(_refreshItems);
@@ -545,9 +539,8 @@ class _AddEditItemSheetState extends State<AddEditItemSheet> {
     _selectedCategory = widget.item?.category ?? 'power_ups';
     _selectedCurrency = widget.item?.costsCoins ?? true ? 'coins' : 'gems';
     _isCosmetic = widget.item?.isCosmetic ?? false;
-    _uploadedImageUrl = widget.iconUrl?.isNotEmpty == true
-        ? widget.iconUrl
-        : null;
+    _uploadedImageUrl =
+        widget.iconUrl?.isNotEmpty == true ? widget.iconUrl : null;
   }
 
   @override

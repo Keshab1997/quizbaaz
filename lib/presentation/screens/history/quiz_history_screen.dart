@@ -44,9 +44,8 @@ class _QuizHistoryScreenState extends State<QuizHistoryScreen> {
     if (_filter == 'all') {
       _filteredHistory = _allHistory;
     } else {
-      _filteredHistory = _allHistory
-          .where((h) => h.quizType == _filter)
-          .toList();
+      _filteredHistory =
+          _allHistory.where((h) => h.quizType == _filter).toList();
     }
   }
 
@@ -89,8 +88,8 @@ class _QuizHistoryScreenState extends State<QuizHistoryScreen> {
                     child: CircularProgressIndicator(color: AppColors.neonCyan),
                   )
                 : _filteredHistory.isEmpty
-                ? _buildEmptyState()
-                : _buildHistoryList(),
+                    ? _buildEmptyState()
+                    : _buildHistoryList(),
           ),
         ],
       ),
@@ -103,7 +102,7 @@ class _QuizHistoryScreenState extends State<QuizHistoryScreen> {
     final avgAccuracy = _allHistory.isEmpty
         ? 0.0
         : _allHistory.fold<double>(0, (sum, h) => sum + h.accuracy) /
-              _allHistory.length;
+            _allHistory.length;
     final totalCoins = _allHistory.fold<int>(
       0,
       (sum, h) => sum + h.coinsEarned,

@@ -66,8 +66,7 @@ class _AiGenerationReviewScreenState extends State<AiGenerationReviewScreen> {
     // mis-marked Maths or Physical Science question is unambiguously wrong,
     // while a History nuance is often a judgement call the admin makes anyway.
     final subject = widget.subjectName.toLowerCase();
-    _verify =
-        subject.contains('math') ||
+    _verify = subject.contains('math') ||
         subject.contains('physical') ||
         subject.contains('science');
     _start();
@@ -116,36 +115,36 @@ class _AiGenerationReviewScreenState extends State<AiGenerationReviewScreen> {
     _subscription?.cancel();
     _subscription = _generator
         .generate(
-          chapter: widget.chapter,
-          subjectName: widget.subjectName,
-          idPrefix: widget.idPrefix,
-          startSequence: widget.startSequence,
-          count: widget.count,
-          existingStems: widget.existingStems,
-          existingFingerprints: widget.existingFingerprints,
-          difficulty: _difficulty,
-          verify: _verify,
-          actorUid: widget.actorUid,
-        )
+      chapter: widget.chapter,
+      subjectName: widget.subjectName,
+      idPrefix: widget.idPrefix,
+      startSequence: widget.startSequence,
+      count: widget.count,
+      existingStems: widget.existingStems,
+      existingFingerprints: widget.existingFingerprints,
+      difficulty: _difficulty,
+      verify: _verify,
+      actorUid: widget.actorUid,
+    )
         .listen((progress) {
-          if (!mounted) return;
-          setState(() {
-            _progress = progress;
-            if (progress.isTerminal) {
-              _running = false;
-              _results = progress.results;
-              // Pre-select only what needs no attention. Anything flagged is an
-              // explicit decision, never something that slips in by default.
-              _selected
-                ..clear()
-                ..addAll(
-                  progress.results
-                      .where((r) => r.isClean)
-                      .map((r) => r.question.id),
-                );
-            }
-          });
-        });
+      if (!mounted) return;
+      setState(() {
+        _progress = progress;
+        if (progress.isTerminal) {
+          _running = false;
+          _results = progress.results;
+          // Pre-select only what needs no attention. Anything flagged is an
+          // explicit decision, never something that slips in by default.
+          _selected
+            ..clear()
+            ..addAll(
+              progress.results
+                  .where((r) => r.isClean)
+                  .map((r) => r.question.id),
+            );
+        }
+      });
+    });
   }
 
   @override
@@ -225,8 +224,8 @@ class _AiGenerationReviewScreenState extends State<AiGenerationReviewScreen> {
     final colour = failed
         ? AppColors.neonRed
         : progress.stage == GenerationStage.done
-        ? AppColors.neonGreen
-        : AppColors.neonPurple;
+            ? AppColors.neonGreen
+            : AppColors.neonPurple;
 
     return GlassCard(
       borderRadius: 18,
@@ -396,8 +395,7 @@ class _AiGenerationReviewScreenState extends State<AiGenerationReviewScreen> {
       child: GlassCard(
         borderRadius: 16,
         padding: EdgeInsets.zero,
-        borderColor:
-            flag?.colour.withValues(alpha: 0.4) ??
+        borderColor: flag?.colour.withValues(alpha: 0.4) ??
             (selected ? AppColors.neonGreen.withValues(alpha: 0.3) : null),
         child: Theme(
           data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
@@ -507,7 +505,7 @@ class _AiGenerationReviewScreenState extends State<AiGenerationReviewScreen> {
                 onPressed: verification.suggestedIndex == null
                     ? null
                     : () =>
-                          _applySuggestion(draft, verification.suggestedIndex!),
+                        _applySuggestion(draft, verification.suggestedIndex!),
                 child: Text(
                   'Mark option '
                   '${String.fromCharCode(65 + (verification.suggestedIndex ?? 0))} instead',
@@ -631,12 +629,10 @@ class _AiGenerationReviewScreenState extends State<AiGenerationReviewScreen> {
               height: 50,
               child: ElevatedButton.icon(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: count == 0
-                      ? Colors.white12
-                      : AppColors.neonGreen,
-                  foregroundColor: count == 0
-                      ? AppColors.textMuted
-                      : AppColors.bgDark,
+                  backgroundColor:
+                      count == 0 ? Colors.white12 : AppColors.neonGreen,
+                  foregroundColor:
+                      count == 0 ? AppColors.textMuted : AppColors.bgDark,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15),
                   ),
@@ -701,8 +697,7 @@ class _AiGenerationReviewScreenState extends State<AiGenerationReviewScreen> {
         icon: Icons.report_problem_rounded,
         colour: AppColors.neonRed,
         label: 'Answer disputed',
-        detail:
-            'The second check says option '
+        detail: 'The second check says option '
             '${String.fromCharCode(65 + (verification.suggestedIndex ?? 0))} '
             'is correct, not '
             '${String.fromCharCode(65 + draft.question.correctIndex)}.'
@@ -716,8 +711,7 @@ class _AiGenerationReviewScreenState extends State<AiGenerationReviewScreen> {
         icon: Icons.copy_rounded,
         colour: AppColors.neonGold,
         label: 'Similar to ${near.questionId}',
-        detail:
-            'This closely resembles ${near.questionId} '
+        detail: 'This closely resembles ${near.questionId} '
             '(${near.scoreLabel}): "${near.stem}"',
       );
     }
@@ -727,8 +721,7 @@ class _AiGenerationReviewScreenState extends State<AiGenerationReviewScreen> {
         icon: Icons.help_outline_rounded,
         colour: AppColors.neonGold,
         label: 'Unverified',
-        detail:
-            'The second check could not confirm the answer.'
+        detail: 'The second check could not confirm the answer.'
             '${verification.reason.isEmpty ? '' : ' ${verification.reason}'}',
       );
     }

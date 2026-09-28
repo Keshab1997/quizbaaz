@@ -68,8 +68,7 @@ class NeonButton extends StatelessWidget {
                   if (icon != null) ...[icon!, const SizedBox(width: 8)],
                   Text(
                     text,
-                    style:
-                        textStyle ??
+                    style: textStyle ??
                         const TextStyle(
                           color: Color(0xFF0F172A),
                           fontSize: 16,

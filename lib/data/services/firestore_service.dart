@@ -125,9 +125,9 @@ class FirestoreService {
           .collection('meta')
           .doc('stats')
           .set({
-            ...stats.toJson(),
-            'updated_at': FieldValue.serverTimestamp(),
-          }, SetOptions(merge: true));
+        ...stats.toJson(),
+        'updated_at': FieldValue.serverTimestamp(),
+      }, SetOptions(merge: true));
       return true;
     } catch (e) {
       debugPrint('Firestore: saveStats error – $e');
@@ -175,16 +175,16 @@ class FirestoreService {
           .collection('scores')
           .doc(userId)
           .set({
-            'user_id': userId,
-            'username': username,
-            'name': fullName,
-            'avatar_path': avatarPath,
-            'name_effect': nameEffect ?? '',
-            'score': score,
-            'time_seconds': timeSeconds,
-            'streak': streak,
-            'timestamp': FieldValue.serverTimestamp(),
-          }, SetOptions(merge: true));
+        'user_id': userId,
+        'username': username,
+        'name': fullName,
+        'avatar_path': avatarPath,
+        'name_effect': nameEffect ?? '',
+        'score': score,
+        'time_seconds': timeSeconds,
+        'streak': streak,
+        'timestamp': FieldValue.serverTimestamp(),
+      }, SetOptions(merge: true));
       return true;
     } catch (e) {
       debugPrint('Firestore: saveLeaderboardEntry error – $e');
@@ -307,16 +307,17 @@ class FirestoreService {
     if (!isReady || winners.isEmpty) return false;
     try {
       final batch = _db.batch();
-      final col = _db
-          .collection(_champions)
-          .doc(dateKey(date))
-          .collection('winners');
+      final col =
+          _db.collection(_champions).doc(dateKey(date)).collection('winners');
       for (final winner in winners) {
         final id = '${winner['user_id'] ?? winner['rank']}';
-        batch.set(col.doc(id), {
-          ...winner,
-          'timestamp': FieldValue.serverTimestamp(),
-        }, SetOptions(merge: true));
+        batch.set(
+            col.doc(id),
+            {
+              ...winner,
+              'timestamp': FieldValue.serverTimestamp(),
+            },
+            SetOptions(merge: true));
       }
       await batch.commit();
       return true;
@@ -335,8 +336,7 @@ class FirestoreService {
   ) async {
     if (!isReady || userId.isEmpty) return false;
     try {
-      final id =
-          result['id'] as String? ??
+      final id = result['id'] as String? ??
           DateTime.now().millisecondsSinceEpoch.toString();
       await _db
           .collection(_users)
@@ -344,9 +344,9 @@ class FirestoreService {
           .collection('quiz_history')
           .doc(id)
           .set({
-            ...result,
-            'timestamp': FieldValue.serverTimestamp(),
-          }, SetOptions(merge: true));
+        ...result,
+        'timestamp': FieldValue.serverTimestamp(),
+      }, SetOptions(merge: true));
       return true;
     } catch (e) {
       debugPrint('Firestore: saveQuizHistory error – $e');
@@ -386,8 +386,7 @@ class FirestoreService {
   ) async {
     if (!isReady || userId.isEmpty) return false;
     try {
-      final id =
-          purchase['id'] as String? ??
+      final id = purchase['id'] as String? ??
           DateTime.now().millisecondsSinceEpoch.toString();
       await _db
           .collection(_users)
@@ -395,9 +394,9 @@ class FirestoreService {
           .collection('purchase_history')
           .doc(id)
           .set({
-            ...purchase,
-            'timestamp': FieldValue.serverTimestamp(),
-          }, SetOptions(merge: true));
+        ...purchase,
+        'timestamp': FieldValue.serverTimestamp(),
+      }, SetOptions(merge: true));
       return true;
     } catch (e) {
       debugPrint('Firestore: savePurchaseHistory error – $e');
@@ -433,11 +432,8 @@ class FirestoreService {
   static Future<List<Map<String, dynamic>>> getGifts(String userId) async {
     if (!isReady || userId.isEmpty) return const [];
     try {
-      final snapshot = await _db
-          .collection(_users)
-          .doc(userId)
-          .collection('gifts')
-          .get();
+      final snapshot =
+          await _db.collection(_users).doc(userId).collection('gifts').get();
       return snapshot.docs
           .map((d) => Map<String, dynamic>.from(d.data())..remove('timestamp'))
           .toList();
@@ -456,9 +452,9 @@ class FirestoreService {
           .collection('gifts')
           .doc('${gift['id']}')
           .set({
-            ...gift,
-            'timestamp': FieldValue.serverTimestamp(),
-          }, SetOptions(merge: true));
+        ...gift,
+        'timestamp': FieldValue.serverTimestamp(),
+      }, SetOptions(merge: true));
       return true;
     } catch (e) {
       debugPrint('Firestore: saveGift error – $e');
