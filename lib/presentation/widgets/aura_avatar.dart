@@ -124,10 +124,10 @@ class _AuraAvatarState extends State<AuraAvatar>
                 ),
               ),
 
-            // Inner Dark Glass Ring Padding
+            // Inner Dark Glass Ring Padding — slightly smaller to avoid head clipping
             Container(
-              width: widget.size * 0.88,
-              height: widget.size * 0.88,
+              width: widget.size * 0.84,
+              height: widget.size * 0.84,
               decoration: const BoxDecoration(
                 shape: BoxShape.circle,
                 color: Color(0xFF100B26),
@@ -136,6 +136,8 @@ class _AuraAvatarState extends State<AuraAvatar>
                 child: CachedAvatar(
                   url: widget.url,
                   fit: BoxFit.cover,
+                  // Top bias (-0.2) keeps head visible, prevents top cut
+                  alignment: const Alignment(0, -0.2),
                   fallbackAsset: widget.fallbackAsset,
                   fallbackIconSize: widget.size * 0.4,
                 ),
