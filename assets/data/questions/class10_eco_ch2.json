@@ -6,5 +6,386 @@
     "hi": "भारतीय अर्थव्यवस्था के क्षेत्रक"
   },
   "class_standard": "Class 10",
-  "questions": []
+  "questions": [
+    {
+      "id": "eco_ch_02_q001",
+      "question": {
+        "en": "Which sector includes activities such as cultivation, fishing and forestry?",
+        "bn": "কৃষিকাজ, মৎস্যচাষ ও বনজ সম্পদ সংগ্রহের মতো কাজ কোন খাতের অন্তর্ভুক্ত?",
+        "hi": "कृषि, मछली पालन और वानिकी जैसी गतिविधियाँ किस क्षेत्रक में शामिल हैं?"
+      },
+      "options": [
+        {
+          "en": "Primary sector",
+          "bn": "প্রাথমিক খাত",
+          "hi": "प्राथमिक क्षेत्रक"
+        },
+        {
+          "en": "Secondary sector",
+          "bn": "দ্বিতীয় খাত",
+          "hi": "द्वितीयक क्षेत्रक"
+        },
+        {
+          "en": "Tertiary sector",
+          "bn": "তৃতীয় খাত",
+          "hi": "तृतीयक क्षेत्रक"
+        },
+        {
+          "en": "Organised sector",
+          "bn": "সংগঠিত খাত",
+          "hi": "संगठित क्षेत्रक"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "These activities directly use natural resources, such as land, water and forests, so they belong to the primary sector.",
+        "bn": "এই কাজগুলিতে জমি, জল ও বনসহ প্রাকৃতিক সম্পদ সরাসরি ব্যবহার করা হয়, তাই এগুলি প্রাথমিক খাতের অন্তর্ভুক্ত।",
+        "hi": "इन गतिविधियों में भूमि, जल और वन जैसे प्राकृतिक संसाधनों का सीधे उपयोग होता है, इसलिए ये प्राथमिक क्षेत्रक में आती हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "eco_ch_02_q002",
+      "question": {
+        "en": "Which sector converts raw materials into finished goods?",
+        "bn": "কোন খাত কাঁচামালকে তৈরি পণ্যে রূপান্তরিত করে?",
+        "hi": "कौन-सा क्षेत्रक कच्चे माल को तैयार वस्तुओं में बदलता है?"
+      },
+      "options": [
+        {
+          "en": "Primary sector",
+          "bn": "প্রাথমিক খাত",
+          "hi": "प्राथमिक क्षेत्रक"
+        },
+        {
+          "en": "Secondary sector",
+          "bn": "দ্বিতীয় খাত",
+          "hi": "द्वितीयक क्षेत्रक"
+        },
+        {
+          "en": "Tertiary sector",
+          "bn": "তৃতীয় খাত",
+          "hi": "तृतीयक क्षेत्रक"
+        },
+        {
+          "en": "Unorganised sector",
+          "bn": "অসংগঠিত খাত",
+          "hi": "असंगठित क्षेत्रक"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "Manufacturing and processing transform raw materials into other goods, which is the main feature of the secondary sector.",
+        "bn": "উৎপাদন ও প্রক্রিয়াকরণের মাধ্যমে কাঁচামালকে অন্য পণ্যে রূপান্তর করা হয়, যা দ্বিতীয় খাতের প্রধান বৈশিষ্ট্য।",
+        "hi": "विनिर्माण और प्रसंस्करण में कच्चे माल को अन्य वस्तुओं में बदला जाता है, जो द्वितीयक क्षेत्रक की मुख्य विशेषता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "eco_ch_02_q003",
+      "question": {
+        "en": "Which of the following is an example of a tertiary sector activity?",
+        "bn": "নিচের কোনটি তৃতীয় খাতের কাজের উদাহরণ?",
+        "hi": "निम्नलिखित में से कौन-सी तृतीयक क्षेत्रक की गतिविधि का उदाहरण है?"
+      },
+      "options": [
+        {
+          "en": "Growing wheat",
+          "bn": "গম চাষ করা",
+          "hi": "गेहूँ उगाना"
+        },
+        {
+          "en": "Manufacturing steel",
+          "bn": "ইস্পাত উৎপাদন করা",
+          "hi": "इस्पात का निर्माण करना"
+        },
+        {
+          "en": "Providing banking services",
+          "bn": "ব্যাংকিং পরিষেবা প্রদান করা",
+          "hi": "बैंकिंग सेवाएँ प्रदान करना"
+        },
+        {
+          "en": "Mining coal",
+          "bn": "কয়লা খনন করা",
+          "hi": "कोयला खनन करना"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "en": "Banking provides a service rather than producing a physical good, so it belongs to the tertiary or service sector.",
+        "bn": "ব্যাংকিংয়ের মাধ্যমে কোনো বস্তুগত পণ্য উৎপাদন না করে পরিষেবা দেওয়া হয়, তাই এটি তৃতীয় বা পরিষেবা খাতের অন্তর্ভুক্ত।",
+        "hi": "बैंकिंग में भौतिक वस्तु का उत्पादन नहीं बल्कि सेवा प्रदान की जाती है, इसलिए यह तृतीयक या सेवा क्षेत्रक में आती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "eco_ch_02_q004",
+      "question": {
+        "en": "Which sector includes activities that provide support to production and consumption through services?",
+        "bn": "কোন খাতে পরিষেবার মাধ্যমে উৎপাদন ও ভোগকে সহায়তা করা হয়?",
+        "hi": "किस क्षेत्रक में सेवाओं के माध्यम से उत्पादन और उपभोग को सहायता दी जाती है?"
+      },
+      "options": [
+        {
+          "en": "Primary sector",
+          "bn": "প্রাথমিক খাত",
+          "hi": "प्राथमिक क्षेत्रक"
+        },
+        {
+          "en": "Secondary sector",
+          "bn": "দ্বিতীয় খাত",
+          "hi": "द्वितीयक क्षेत्रक"
+        },
+        {
+          "en": "Tertiary sector",
+          "bn": "তৃতীয় খাত",
+          "hi": "तृतीयक क्षेत्रक"
+        },
+        {
+          "en": "Agricultural sector",
+          "bn": "কৃষি খাত",
+          "hi": "कृषि क्षेत्रक"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "en": "Transport, banking, communication and trade provide services that support production and consumption, so they belong to the tertiary sector.",
+        "bn": "পরিবহণ, ব্যাংকিং, যোগাযোগ ও বাণিজ্য উৎপাদন ও ভোগকে পরিষেবার মাধ্যমে সহায়তা করে, তাই এগুলি তৃতীয় খাতের অন্তর্ভুক্ত।",
+        "hi": "परिवहन, बैंकिंग, संचार और व्यापार उत्पादन तथा उपभोग को सेवाएँ प्रदान करते हैं, इसलिए ये तृतीयक क्षेत्रक में आते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "eco_ch_02_q005",
+      "question": {
+        "en": "Which feature is characteristic of the organised sector?",
+        "bn": "সংগঠিত খাতের কোন বৈশিষ্ট্যটি সঠিক?",
+        "hi": "संगठित क्षेत्रक की कौन-सी विशेषता सही है?"
+      },
+      "options": [
+        {
+          "en": "Workers have no fixed working hours",
+          "bn": "শ্রমিকদের নির্দিষ্ট কর্মঘণ্টা থাকে না",
+          "hi": "श्रमिकों के काम के घंटे निश्चित नहीं होते"
+        },
+        {
+          "en": "Employment conditions are regulated by government rules",
+          "bn": "সরকারি নিয়ম অনুযায়ী কর্মসংস্থানের শর্ত নিয়ন্ত্রিত হয়",
+          "hi": "रोजगार की शर्तें सरकारी नियमों द्वारा नियंत्रित होती हैं"
+        },
+        {
+          "en": "Workers are always paid in cash without records",
+          "bn": "শ্রমিকদের সবসময় কোনো নথি ছাড়াই নগদে মজুরি দেওয়া হয়",
+          "hi": "श्रमिकों को हमेशा बिना रिकॉर्ड के नकद भुगतान किया जाता है"
+        },
+        {
+          "en": "There are no formal employment rules",
+          "bn": "কোনো আনুষ্ঠানিক কর্মসংস্থান নিয়ম থাকে না",
+          "hi": "रोजगार के कोई औपचारिक नियम नहीं होते"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "Organised sector establishments generally follow government rules concerning employment, working conditions and other legal requirements.",
+        "bn": "সংগঠিত খাতের প্রতিষ্ঠানগুলি সাধারণত কর্মসংস্থান, কাজের পরিবেশ ও অন্যান্য আইনি বিষয় সম্পর্কে সরকারি নিয়ম মেনে চলে।",
+        "hi": "संगठित क्षेत्रक के प्रतिष्ठान सामान्यतः रोजगार, काम की परिस्थितियों और अन्य कानूनी आवश्यकताओं से जुड़े सरकारी नियमों का पालन करते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "eco_ch_02_q006",
+      "question": {
+        "en": "Which worker is most likely to be employed in the unorganised sector?",
+        "bn": "নিচের কোন শ্রমিকের অসংগঠিত খাতে কাজ করার সম্ভাবনা বেশি?",
+        "hi": "निम्नलिखित में से किस श्रमिक के असंगठित क्षेत्रक में काम करने की संभावना अधिक है?"
+      },
+      "options": [
+        {
+          "en": "A government school teacher with a regular salary",
+          "bn": "নিয়মিত বেতন পাওয়া একজন সরকারি স্কুলশিক্ষক",
+          "hi": "नियमित वेतन पाने वाला सरकारी स्कूल का शिक्षक"
+        },
+        {
+          "en": "A worker in a registered factory with formal employment benefits",
+          "bn": "আনুষ্ঠানিক কর্মসংস্থান সুবিধা-সহ একটি নিবন্ধিত কারখানার শ্রমিক",
+          "hi": "औपचारिक रोजगार सुविधाओं वाले पंजीकृत कारखाने का श्रमिक"
+        },
+        {
+          "en": "A street vendor without formal employment benefits",
+          "bn": "আনুষ্ঠানিক কর্মসংস্থান সুবিধাবিহীন একজন পথবিক্রেতা",
+          "hi": "औपचारिक रोजगार सुविधाओं के बिना काम करने वाला सड़क विक्रेता"
+        },
+        {
+          "en": "A bank employee covered by service rules",
+          "bn": "পরিষেবা নিয়মের আওতাভুক্ত একজন ব্যাংক কর্মচারী",
+          "hi": "सेवा नियमों के अंतर्गत आने वाला बैंक कर्मचारी"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "en": "Street vendors often work without formal contracts or employment benefits, which are typical characteristics of the unorganised sector.",
+        "bn": "পথবিক্রেতারা প্রায়ই আনুষ্ঠানিক চুক্তি বা কর্মসংস্থান সুবিধা ছাড়াই কাজ করেন, যা অসংগঠিত খাতের সাধারণ বৈশিষ্ট্য।",
+        "hi": "सड़क विक्रेता अक्सर औपचारिक अनुबंध या रोजगार सुविधाओं के बिना काम करते हैं, जो असंगठित क्षेत्रक की सामान्य विशेषताएँ हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "eco_ch_02_q007",
+      "question": {
+        "en": "A farmer grows cotton and a textile factory converts it into cloth. Which sectors are represented respectively?",
+        "bn": "একজন কৃষক তুলা চাষ করেন এবং একটি বস্ত্র কারখানা তা কাপড়ে রূপান্তরিত করে। যথাক্রমে কোন খাত দুটি এখানে রয়েছে?",
+        "hi": "एक किसान कपास उगाता है और एक कपड़ा कारखाना उसे कपड़े में बदलता है। क्रमशः कौन-से दो क्षेत्रक यहाँ शामिल हैं?"
+      },
+      "options": [
+        {
+          "en": "Primary and secondary",
+          "bn": "প্রাথমিক ও দ্বিতীয়",
+          "hi": "प्राथमिक और द्वितीयक"
+        },
+        {
+          "en": "Secondary and tertiary",
+          "bn": "দ্বিতীয় ও তৃতীয়",
+          "hi": "द्वितीयक और तृतीयक"
+        },
+        {
+          "en": "Tertiary and primary",
+          "bn": "তৃতীয় ও প্রাথমিক",
+          "hi": "तृतीयक और प्राथमिक"
+        },
+        {
+          "en": "Tertiary and secondary",
+          "bn": "তৃতীয় ও দ্বিতীয়",
+          "hi": "तृतीयक और द्वितीयक"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Growing cotton directly uses land and natural resources, so it is primary-sector work; converting cotton into cloth is manufacturing, so it is secondary-sector work.",
+        "bn": "তুলা চাষে জমি ও প্রাকৃতিক সম্পদ সরাসরি ব্যবহার করা হয়, তাই এটি প্রাথমিক খাতের কাজ; তুলাকে কাপড়ে রূপান্তর করা উৎপাদনমূলক কাজ, তাই এটি দ্বিতীয় খাতের অন্তর্ভুক্ত।",
+        "hi": "कपास उगाने में भूमि और प्राकृतिक संसाधनों का सीधे उपयोग होता है, इसलिए यह प्राथमिक क्षेत्रक का कार्य है; कपास को कपड़े में बदलना विनिर्माण है, इसलिए यह द्वितीयक क्षेत्रक का कार्य है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "eco_ch_02_q008",
+      "question": {
+        "en": "Why is the tertiary sector also called the service sector?",
+        "bn": "তৃতীয় খাতকে পরিষেবা খাতও বলা হয় কেন?",
+        "hi": "तृतीयक क्षेत्रक को सेवा क्षेत्रक भी क्यों कहा जाता है?"
+      },
+      "options": [
+        {
+          "en": "It mainly provides services rather than producing goods",
+          "bn": "এই খাতে প্রধানত পণ্য উৎপাদনের পরিবর্তে পরিষেবা প্রদান করা হয়",
+          "hi": "इस क्षेत्रक में मुख्यतः वस्तुओं के उत्पादन के बजाय सेवाएँ प्रदान की जाती हैं"
+        },
+        {
+          "en": "It uses only agricultural land",
+          "bn": "এই খাতে শুধুমাত্র কৃষিজমি ব্যবহার করা হয়",
+          "hi": "इस क्षेत्रक में केवल कृषि भूमि का उपयोग होता है"
+        },
+        {
+          "en": "It produces only raw materials",
+          "bn": "এই খাতে শুধুমাত্র কাঁচামাল উৎপাদিত হয়",
+          "hi": "इस क्षेत्रक में केवल कच्चे माल का उत्पादन होता है"
+        },
+        {
+          "en": "It includes only government offices",
+          "bn": "এই খাতে শুধুমাত্র সরকারি দপ্তর অন্তর্ভুক্ত",
+          "hi": "इस क्षेत्रक में केवल सरकारी कार्यालय शामिल होते हैं"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Activities such as transport, banking, teaching and healthcare provide services instead of producing physical goods, so this sector is called the service sector.",
+        "bn": "পরিবহণ, ব্যাংকিং, শিক্ষাদান ও স্বাস্থ্যসেবার মতো কাজ বস্তুগত পণ্য উৎপাদনের পরিবর্তে পরিষেবা দেয়, তাই এই খাতকে পরিষেবা খাত বলা হয়।",
+        "hi": "परिवहन, बैंकिंग, शिक्षण और स्वास्थ्य सेवा जैसी गतिविधियाँ भौतिक वस्तुओं के बजाय सेवाएँ प्रदान करती हैं, इसलिए इसे सेवा क्षेत्रक कहा जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "eco_ch_02_q009",
+      "question": {
+        "en": "Which statement correctly distinguishes organised and unorganised sectors?",
+        "bn": "সংগঠিত ও অসংগঠিত খাতের মধ্যে পার্থক্য সম্পর্কে কোন বক্তব্যটি সঠিক?",
+        "hi": "संगठित और असंगठित क्षेत्रकों के बीच अंतर के बारे में कौन-सा कथन सही है?"
+      },
+      "options": [
+        {
+          "en": "Organised sector follows formal rules, while the unorganised sector often lacks such formal protection",
+          "bn": "সংগঠিত খাত আনুষ্ঠানিক নিয়ম মেনে চলে, আর অসংগঠিত খাতে প্রায়ই এই ধরনের আনুষ্ঠানিক সুরক্ষা থাকে না",
+          "hi": "संगठित क्षेत्रक औपचारिक नियमों का पालन करता है, जबकि असंगठित क्षेत्रक में अक्सर ऐसी औपचारिक सुरक्षा नहीं होती"
+        },
+        {
+          "en": "Organised sector includes only farmers",
+          "bn": "সংগঠিত খাতে শুধুমাত্র কৃষকরা অন্তর্ভুক্ত",
+          "hi": "संगठित क्षेत्रक में केवल किसान शामिल होते हैं"
+        },
+        {
+          "en": "Unorganised sector always pays higher wages",
+          "bn": "অসংগঠিত খাত সবসময় বেশি মজুরি দেয়",
+          "hi": "असंगठित क्षेत्रक हमेशा अधिक मजदूरी देता है"
+        },
+        {
+          "en": "There is no difference in employment conditions between the two",
+          "bn": "দুই খাতের কর্মসংস্থানের শর্তে কোনো পার্থক্য নেই",
+          "hi": "दोनों क्षेत्रकों की रोजगार स्थितियों में कोई अंतर नहीं होता"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Organised-sector employment is generally governed by formal rules and legal protections, whereas workers in the unorganised sector often have fewer formal protections.",
+        "bn": "সংগঠিত খাতে কর্মসংস্থান সাধারণত আনুষ্ঠানিক নিয়ম ও আইনি সুরক্ষার অধীন থাকে, অন্যদিকে অসংগঠিত খাতের শ্রমিকদের আনুষ্ঠানিক সুরক্ষা প্রায়ই কম থাকে।",
+        "hi": "संगठित क्षेत्रक में रोजगार सामान्यतः औपचारिक नियमों और कानूनी सुरक्षा के अधीन होता है, जबकि असंगठित क्षेत्रक के श्रमिकों को अक्सर कम औपचारिक सुरक्षा मिलती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "eco_ch_02_q010",
+      "question": {
+        "en": "Which situation best illustrates underemployment in the agricultural sector?",
+        "bn": "কৃষি খাতে বেকারত্বজনিত অসম্পূর্ণ কর্মসংস্থানের কোন উদাহরণটি সবচেয়ে উপযুক্ত?",
+        "hi": "कृषि क्षेत्रक में अल्परोजगार को कौन-सी स्थिति सबसे अच्छी तरह दर्शाती है?"
+      },
+      "options": [
+        {
+          "en": "Five family members work on a farm where the work could be done by three people without reducing output",
+          "bn": "একটি খামারে পাঁচজন পরিবারের সদস্য কাজ করেন, অথচ উৎপাদন কম না করেই তিনজন দিয়ে সেই কাজ করা সম্ভব",
+          "hi": "एक खेत पर परिवार के पाँच सदस्य काम करते हैं, जबकि उत्पादन घटाए बिना वही काम तीन लोग कर सकते हैं"
+        },
+        {
+          "en": "A factory hires additional workers when production increases",
+          "bn": "উৎপাদন বাড়লে একটি কারখানা অতিরিক্ত শ্রমিক নিয়োগ করে",
+          "hi": "उत्पादन बढ़ने पर एक कारखाना अतिरिक्त श्रमिकों को नियुक्त करता है"
+        },
+        {
+          "en": "A shopkeeper works full-time and earns a regular income",
+          "bn": "একজন দোকানদার পূর্ণসময়ে কাজ করেন এবং নিয়মিত আয় করেন",
+          "hi": "एक दुकानदार पूर्णकालिक काम करता है और नियमित आय अर्जित करता है"
+        },
+        {
+          "en": "A teacher works the required hours in a school",
+          "bn": "একজন শিক্ষক বিদ্যালয়ে নির্ধারিত সময় কাজ করেন",
+          "hi": "एक शिक्षक विद्यालय में निर्धारित समय तक काम करता है"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "When more people work on a farm than are actually needed and removing some workers does not reduce output, the extra workers are underemployed.",
+        "bn": "কোনো জমিতে প্রয়োজনের তুলনায় বেশি মানুষ কাজ করলেও কয়েকজনকে সরিয়ে দিলে উৎপাদন না কমলে, অতিরিক্ত শ্রমিকরা অসম্পূর্ণ কর্মসংস্থানে রয়েছেন।",
+        "hi": "जब किसी खेत पर आवश्यकता से अधिक लोग काम करते हैं और कुछ लोगों को हटाने पर उत्पादन कम नहीं होता, तो अतिरिक्त लोग अल्परोजगार में होते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    }
+  ]
 }

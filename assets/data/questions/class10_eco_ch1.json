@@ -6,5 +6,386 @@
     "hi": "विकास"
   },
   "class_standard": "Class 10",
-  "questions": []
+  "questions": [
+    {
+      "id": "eco_ch_01_q001",
+      "question": {
+        "en": "Which criterion is commonly used to compare the development of different countries?",
+        "bn": "বিভিন্ন দেশের উন্নয়নের তুলনা করার জন্য সাধারণত কোন মানদণ্ডটি ব্যবহার করা হয়?",
+        "hi": "विभिन्न देशों के विकास की तुलना करने के लिए सामान्यतः किस मापदंड का उपयोग किया जाता है?"
+      },
+      "options": [
+        {
+          "en": "Per capita income",
+          "bn": "মাথাপিছু আয়",
+          "hi": "प्रति व्यक्ति आय"
+        },
+        {
+          "en": "Total population",
+          "bn": "মোট জনসংখ্যা",
+          "hi": "कुल जनसंख्या"
+        },
+        {
+          "en": "Total geographical area",
+          "bn": "মোট ভৌগোলিক আয়তন",
+          "hi": "कुल भौगोलिक क्षेत्रफल"
+        },
+        {
+          "en": "Number of cities",
+          "bn": "শহরের সংখ্যা",
+          "hi": "शहरों की संख्या"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Per capita income shows the average income per person and helps compare countries with different population sizes.",
+        "bn": "মাথাপিছু আয় একজন ব্যক্তির গড় আয় নির্দেশ করে এবং ভিন্ন জনসংখ্যার দেশগুলির মধ্যে তুলনা করতে সাহায্য করে।",
+        "hi": "प्रति व्यक्ति आय प्रत्येक व्यक्ति की औसत आय बताती है और अलग-अलग जनसंख्या वाले देशों की तुलना करने में मदद करती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "eco_ch_01_q002",
+      "question": {
+        "en": "Why is average income also called per capita income?",
+        "bn": "গড় আয়কে মাথাপিছু আয় বলা হয় কেন?",
+        "hi": "औसत आय को प्रति व्यक्ति आय क्यों कहा जाता है?"
+      },
+      "options": [
+        {
+          "en": "It is calculated by dividing total income by total population",
+          "bn": "মোট আয়কে মোট জনসংখ্যা দিয়ে ভাগ করে এটি হিসাব করা হয়",
+          "hi": "इसे कुल आय को कुल जनसंख्या से विभाजित करके निकाला जाता है"
+        },
+        {
+          "en": "It is calculated by multiplying income by population",
+          "bn": "আয়কে জনসংখ্যা দিয়ে গুণ করে এটি হিসাব করা হয়",
+          "hi": "इसे आय को जनसंख्या से गुणा करके निकाला जाता है"
+        },
+        {
+          "en": "It is the income of only working people",
+          "bn": "এটি শুধুমাত্র কর্মরত মানুষের আয়",
+          "hi": "यह केवल काम करने वाले लोगों की आय है"
+        },
+        {
+          "en": "It is the income of the richest person",
+          "bn": "এটি সবচেয়ে ধনী ব্যক্তির আয়",
+          "hi": "यह सबसे अमीर व्यक्ति की आय है"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Average income is found by dividing the total income of a country by its total population, so it represents income per person.",
+        "bn": "একটি দেশের মোট আয়কে মোট জনসংখ্যা দিয়ে ভাগ করলে গড় আয় পাওয়া যায়, তাই একে মাথাপিছু আয় বলা হয়।",
+        "hi": "किसी देश की कुल आय को उसकी कुल जनसंख्या से विभाजित करने पर औसत आय मिलती है, इसलिए इसे प्रति व्यक्ति आय कहा जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "eco_ch_01_q003",
+      "question": {
+        "en": "Which of the following is a non-income criterion of development?",
+        "bn": "নিচের কোনটি উন্নয়নের একটি অ-আয়ভিত্তিক মানদণ্ড?",
+        "hi": "निम्नलिखित में से कौन-सा विकास का गैर-आय संबंधी मापदंड है?"
+      },
+      "options": [
+        {
+          "en": "Per capita income",
+          "bn": "মাথাপিছু আয়",
+          "hi": "प्रति व्यक्ति आय"
+        },
+        {
+          "en": "Literacy rate",
+          "bn": "সাক্ষরতার হার",
+          "hi": "साक्षरता दर"
+        },
+        {
+          "en": "National income",
+          "bn": "জাতীয় আয়",
+          "hi": "राष्ट्रीय आय"
+        },
+        {
+          "en": "Average income",
+          "bn": "গড় আয়",
+          "hi": "औसत आय"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "Literacy rate measures the educational condition of people rather than their income, so it is a non-income indicator of development.",
+        "bn": "সাক্ষরতার হার মানুষের শিক্ষাগত অবস্থার পরিমাপ করে, আয়ের নয়; তাই এটি উন্নয়নের একটি অ-আয়ভিত্তিক সূচক।",
+        "hi": "साक्षरता दर लोगों की शैक्षिक स्थिति को मापती है, आय को नहीं; इसलिए यह विकास का गैर-आय संबंधी सूचक है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "eco_ch_01_q004",
+      "question": {
+        "en": "Which organisation publishes the Human Development Report?",
+        "bn": "মানব উন্নয়ন প্রতিবেদন কোন সংস্থা প্রকাশ করে?",
+        "hi": "मानव विकास रिपोर्ट किस संस्था द्वारा प्रकाशित की जाती है?"
+      },
+      "options": [
+        {
+          "en": "World Bank",
+          "bn": "বিশ্বব্যাংক",
+          "hi": "विश्व बैंक"
+        },
+        {
+          "en": "United Nations Development Programme",
+          "bn": "জাতিসংঘ উন্নয়ন কর্মসূচি",
+          "hi": "संयुक्त राष्ट्र विकास कार्यक्रम"
+        },
+        {
+          "en": "World Trade Organization",
+          "bn": "বিশ্ব বাণিজ্য সংস্থা",
+          "hi": "विश्व व्यापार संगठन"
+        },
+        {
+          "en": "International Monetary Fund",
+          "bn": "আন্তর্জাতিক মুদ্রা তহবিল",
+          "hi": "अंतरराष्ट्रीय मुद्रा कोष"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "The United Nations Development Programme, or UNDP, publishes the Human Development Report using indicators such as health, education and income.",
+        "bn": "জাতিসংঘ উন্নয়ন কর্মসূচি বা UNDP স্বাস্থ্য, শিক্ষা ও আয়ের মতো সূচক ব্যবহার করে মানব উন্নয়ন প্রতিবেদন প্রকাশ করে।",
+        "hi": "संयुक्त राष्ट्र विकास कार्यक्रम या UNDP स्वास्थ्य, शिक्षा और आय जैसे सूचकों का उपयोग करके मानव विकास रिपोर्ट प्रकाशित करता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "eco_ch_01_q005",
+      "question": {
+        "en": "Which combination is used in the Human Development Index to assess human development?",
+        "bn": "মানব উন্নয়ন সূচক বা HDI-তে মানব উন্নয়ন পরিমাপের জন্য কোন সমন্বয়টি ব্যবহৃত হয়?",
+        "hi": "मानव विकास सूचकांक या HDI में मानव विकास का आकलन करने के लिए किस संयोजन का उपयोग किया जाता है?"
+      },
+      "options": [
+        {
+          "en": "Health, education and income",
+          "bn": "স্বাস্থ্য, শিক্ষা ও আয়",
+          "hi": "स्वास्थ्य, शिक्षा और आय"
+        },
+        {
+          "en": "Population, area and exports",
+          "bn": "জনসংখ্যা, আয়তন ও রপ্তানি",
+          "hi": "जनसंख्या, क्षेत्रफल और निर्यात"
+        },
+        {
+          "en": "Rainfall, forests and minerals",
+          "bn": "বৃষ্টিপাত, বন ও খনিজ",
+          "hi": "वर्षा, वन और खनिज"
+        },
+        {
+          "en": "Imports, exports and population",
+          "bn": "আমদানি, রপ্তানি ও জনসংখ্যা",
+          "hi": "आयात, निर्यात और जनसंख्या"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "HDI considers key dimensions of human well-being, represented by health, education and income.",
+        "bn": "HDI মানুষের কল্যাণের গুরুত্বপূর্ণ দিকগুলি বিবেচনা করে, যার মধ্যে স্বাস্থ্য, শিক্ষা ও আয় প্রধান।",
+        "hi": "HDI मानव कल्याण के प्रमुख आयामों को ध्यान में रखता है, जिनमें स्वास्थ्य, शिक्षा और आय शामिल हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "eco_ch_01_q006",
+      "question": {
+        "en": "Why can two countries with similar average income have different levels of development?",
+        "bn": "একই রকম গড় আয় থাকা সত্ত্বেও দুটি দেশের উন্নয়নের মাত্রা ভিন্ন হতে পারে কেন?",
+        "hi": "समान औसत आय वाले दो देशों में विकास का स्तर अलग-अलग क्यों हो सकता है?"
+      },
+      "options": [
+        {
+          "en": "Development also depends on health, education and other factors",
+          "bn": "উন্নয়ন স্বাস্থ্য, শিক্ষা এবং অন্যান্য বিষয়ের উপরও নির্ভর করে",
+          "hi": "विकास स्वास्थ्य, शिक्षा और अन्य कारकों पर भी निर्भर करता है"
+        },
+        {
+          "en": "Average income always measures every aspect of development",
+          "bn": "গড় আয় সবসময় উন্নয়নের প্রতিটি দিক পরিমাপ করে",
+          "hi": "औसत आय हमेशा विकास के हर पहलू को मापती है"
+        },
+        {
+          "en": "Population size has no relation to development",
+          "bn": "জনসংখ্যার আকারের সঙ্গে উন্নয়নের কোনো সম্পর্ক নেই",
+          "hi": "जनसंख्या के आकार का विकास से कोई संबंध नहीं है"
+        },
+        {
+          "en": "Only the geographical area determines development",
+          "bn": "শুধুমাত্র ভৌগোলিক আয়তন উন্নয়ন নির্ধারণ করে",
+          "hi": "केवल भौगोलिक क्षेत्रफल विकास निर्धारित करता है"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Income alone does not capture important aspects such as health facilities, education and equality, so countries with similar incomes can differ in development.",
+        "bn": "শুধু আয় স্বাস্থ্যসেবা, শিক্ষা ও সমতার মতো গুরুত্বপূর্ণ দিকগুলি প্রকাশ করে না; তাই একই রকম আয়ের দেশগুলির উন্নয়নের মাত্রা ভিন্ন হতে পারে।",
+        "hi": "केवल आय स्वास्थ्य सुविधाओं, शिक्षा और समानता जैसे महत्वपूर्ण पहलुओं को नहीं दर्शाती, इसलिए समान आय वाले देशों में विकास का स्तर अलग हो सकता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "eco_ch_01_q007",
+      "question": {
+        "en": "What does sustainability of development mean?",
+        "bn": "উন্নয়নের স্থায়িত্ব বলতে কী বোঝায়?",
+        "hi": "विकास की स्थिरता से क्या तात्पर्य है?"
+      },
+      "options": [
+        {
+          "en": "Meeting present needs without harming the ability of future generations to meet their needs",
+          "bn": "ভবিষ্যৎ প্রজন্মের চাহিদা পূরণের ক্ষমতা নষ্ট না করে বর্তমানের চাহিদা পূরণ করা",
+          "hi": "भविष्य की पीढ़ियों की आवश्यकताओं को पूरा करने की क्षमता को नुकसान पहुँचाए बिना वर्तमान आवश्यकताओं को पूरा करना"
+        },
+        {
+          "en": "Using all natural resources as quickly as possible",
+          "bn": "সমস্ত প্রাকৃতিক সম্পদ যত দ্রুত সম্ভব ব্যবহার করা",
+          "hi": "सभी प्राकृतिक संसाधनों का जितनी जल्दी हो सके उपयोग करना"
+        },
+        {
+          "en": "Increasing production regardless of environmental damage",
+          "bn": "পরিবেশের ক্ষতি হলেও উৎপাদন বাড়ানো",
+          "hi": "पर्यावरण को नुकसान होने पर भी उत्पादन बढ़ाना"
+        },
+        {
+          "en": "Stopping all use of natural resources",
+          "bn": "প্রাকৃতিক সম্পদের সমস্ত ব্যবহার বন্ধ করে দেওয়া",
+          "hi": "प्राकृतिक संसाधनों का सभी उपयोग बंद कर देना"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Sustainable development balances present needs with the conservation of resources and the environment so that future generations can also meet their needs.",
+        "bn": "স্থায়ী উন্নয়ন বর্তমানের চাহিদা পূরণের পাশাপাশি সম্পদ ও পরিবেশ সংরক্ষণ করে, যাতে ভবিষ্যৎ প্রজন্মও তাদের চাহিদা পূরণ করতে পারে।",
+        "hi": "सतत विकास वर्तमान आवश्यकताओं को पूरा करने के साथ संसाधनों और पर्यावरण का संरक्षण करता है, ताकि भविष्य की पीढ़ियाँ भी अपनी आवश्यकताएँ पूरी कर सकें।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "eco_ch_01_q008",
+      "question": {
+        "en": "Which example best shows that average income alone cannot determine development?",
+        "bn": "কোন উদাহরণটি সবচেয়ে ভালোভাবে দেখায় যে শুধু গড় আয় দিয়ে উন্নয়ন নির্ধারণ করা যায় না?",
+        "hi": "कौन-सा उदाहरण सबसे अच्छी तरह दिखाता है कि केवल औसत आय से विकास निर्धारित नहीं किया जा सकता?"
+      },
+      "options": [
+        {
+          "en": "A country has high income but poor health and education outcomes",
+          "bn": "একটি দেশের আয় বেশি, কিন্তু স্বাস্থ্য ও শিক্ষার ফলাফল খারাপ",
+          "hi": "किसी देश की आय अधिक है, लेकिन स्वास्थ्य और शिक्षा के परिणाम खराब हैं"
+        },
+        {
+          "en": "A country has a large geographical area",
+          "bn": "একটি দেশের ভৌগোলিক আয়তন বড়",
+          "hi": "किसी देश का भौगोलिक क्षेत्रफल बड़ा है"
+        },
+        {
+          "en": "A country has many rivers",
+          "bn": "একটি দেশে অনেক নদী আছে",
+          "hi": "किसी देश में बहुत-सी नदियाँ हैं"
+        },
+        {
+          "en": "A country has a small population",
+          "bn": "একটি দেশের জনসংখ্যা কম",
+          "hi": "किसी देश की जनसंख्या कम है"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "High income does not automatically ensure good health or education, showing why development must be judged using more than income alone.",
+        "bn": "উচ্চ আয় থাকলেই ভালো স্বাস্থ্য বা শিক্ষা নিশ্চিত হয় না; তাই শুধু আয়ের ভিত্তিতে উন্নয়ন বিচার করা যথেষ্ট নয়।",
+        "hi": "अधिक आय से अच्छे स्वास्थ्य या शिक्षा की स्वतः गारंटी नहीं होती; इसलिए विकास का आकलन केवल आय से नहीं किया जा सकता।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "eco_ch_01_q009",
+      "question": {
+        "en": "A country's per capita income rises, but its groundwater level falls sharply. What development concern does this situation highlight?",
+        "bn": "একটি দেশের মাথাপিছু আয় বাড়লেও ভূগর্ভস্থ জলের স্তর দ্রুত কমে যায়। এই পরিস্থিতি উন্নয়নের কোন সমস্যাটি তুলে ধরে?",
+        "hi": "किसी देश की प्रति व्यक्ति आय बढ़ती है, लेकिन भूजल स्तर तेजी से गिरता है। यह स्थिति विकास की किस समस्या को दर्शाती है?"
+      },
+      "options": [
+        {
+          "en": "Economic growth may be occurring without environmental sustainability",
+          "bn": "পরিবেশগত স্থায়িত্ব ছাড়াই অর্থনৈতিক বৃদ্ধি ঘটতে পারে",
+          "hi": "पर्यावरणीय स्थिरता के बिना आर्थिक वृद्धि हो सकती है"
+        },
+        {
+          "en": "Higher income always increases natural resources",
+          "bn": "উচ্চ আয় সবসময় প্রাকৃতিক সম্পদ বাড়ায়",
+          "hi": "अधिक आय हमेशा प्राकृतिक संसाधनों को बढ़ाती है"
+        },
+        {
+          "en": "Groundwater has no connection with development",
+          "bn": "ভূগর্ভস্থ জলের সঙ্গে উন্নয়নের কোনো সম্পর্ক নেই",
+          "hi": "भूजल का विकास से कोई संबंध नहीं है"
+        },
+        {
+          "en": "Per capita income directly measures groundwater reserves",
+          "bn": "মাথাপিছু আয় সরাসরি ভূগর্ভস্থ জলের মজুত পরিমাপ করে",
+          "hi": "प्रति व्यक्ति आय सीधे भूजल भंडार को मापती है"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Rising income can occur while natural resources are being depleted, so development must also consider whether resources remain available for the future.",
+        "bn": "প্রাকৃতিক সম্পদ ক্ষয় হতে থাকলেও আয় বাড়তে পারে; তাই ভবিষ্যতের জন্য সম্পদ সংরক্ষণ হচ্ছে কি না, সেটিও উন্নয়নের ক্ষেত্রে বিবেচ্য।",
+        "hi": "प्राकृतिक संसाधनों के क्षय के साथ भी आय बढ़ सकती है; इसलिए विकास में यह भी देखना जरूरी है कि भविष्य के लिए संसाधन सुरक्षित रहें।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "eco_ch_01_q010",
+      "question": {
+        "en": "Why is the Human Development Index considered broader than a measure based only on per capita income?",
+        "bn": "শুধু মাথাপিছু আয়ের ভিত্তিতে তৈরি মাপের তুলনায় মানব উন্নয়ন সূচককে আরও ব্যাপক বলা হয় কেন?",
+        "hi": "केवल प्रति व्यक्ति आय पर आधारित माप की तुलना में मानव विकास सूचकांक को व्यापक क्यों माना जाता है?"
+      },
+      "options": [
+        {
+          "en": "It considers income along with health and education",
+          "bn": "এটি আয়ের পাশাপাশি স্বাস্থ্য ও শিক্ষাকেও বিবেচনা করে",
+          "hi": "यह आय के साथ स्वास्थ्य और शिक्षा को भी ध्यान में रखता है"
+        },
+        {
+          "en": "It considers only the total income of a country",
+          "bn": "এটি শুধুমাত্র একটি দেশের মোট আয় বিবেচনা করে",
+          "hi": "यह केवल किसी देश की कुल आय को ध्यान में रखता है"
+        },
+        {
+          "en": "It measures only the size of the population",
+          "bn": "এটি শুধুমাত্র জনসংখ্যার আকার পরিমাপ করে",
+          "hi": "यह केवल जनसंख्या के आकार को मापता है"
+        },
+        {
+          "en": "It ignores health and education completely",
+          "bn": "এটি স্বাস্থ্য ও শিক্ষাকে সম্পূর্ণ উপেক্ষা করে",
+          "hi": "यह स्वास्थ्य और शिक्षा को पूरी तरह नजरअंदाज करता है"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "HDI gives a broader picture of human well-being by combining dimensions related to income, health and education rather than relying on income alone.",
+        "bn": "HDI শুধু আয়ের ওপর নির্ভর না করে আয়, স্বাস্থ্য ও শিক্ষার সঙ্গে সম্পর্কিত বিভিন্ন দিক একত্রে বিবেচনা করে মানুষের কল্যাণের একটি ব্যাপক চিত্র দেয়।",
+        "hi": "HDI केवल आय पर निर्भर न रहकर आय, स्वास्थ्य और शिक्षा से जुड़े आयामों को मिलाकर मानव कल्याण की व्यापक तस्वीर प्रस्तुत करता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    }
+  ]
 }

@@ -6,5 +6,766 @@
     "hi": "राजनीतिक दल"
   },
   "class_standard": "Class 10",
-  "questions": []
+  "questions": [
+    {
+      "id": "polsci_ch_04_q001",
+      "question": {
+        "en": "What is the group of people who come together to contest elections and hold power in the government called?",
+        "bn": "নির্বাচনে প্রতিদ্বন্দ্বিতা করতে এবং সরকারে ক্ষমতা দখলের জন্য একত্রিত হওয়া মানুষের গোষ্ঠীকে কী বলা হয়?",
+        "hi": "चुनाव लड़ने और सरकार में सत्ता संभालने के लिए एक साथ आने वाले लोगों के समूह को क्या कहा जाता है?"
+      },
+      "options": [
+        {
+          "en": "Pressure group",
+          "bn": "চাপ সৃষ্টি করার গোষ্ঠী (Pressure group)",
+          "hi": "दबाव समूह (Pressure group)"
+        },
+        {
+          "en": "Political party",
+          "bn": "রাজনৈতিক দল (Political party)",
+          "hi": "राजनीतिक दल (Political party)"
+        },
+        {
+          "en": "Movement group",
+          "bn": "আন্দোলনকারী গোষ্ঠী (Movement group)",
+          "hi": "आंदोलन समूह (Movement group)"
+        },
+        {
+          "en": "Public sector union",
+          "bn": "সরকারি ক্ষেত্রীয় ইউনিয়ন",
+          "hi": "सार्वजनिक क्षेत्र का संघ"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "A political party is an organized group of citizens who contest elections and hold power in government based on agreed policies.",
+        "bn": "রাজনৈতিক দল হলো এমন একটি রাজনৈতিক সংগঠন যা নির্বাচনে অংশ নেয় এবং নীতিমালার ভিত্তিতে সরকারে ক্ষমতা ধারণ করে।",
+        "hi": "राजनीतिक दल नागरिकों का एक संगठित समूह है जो चुनाव लड़ता है और सरकार में सत्ता संभालता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "polsci_ch_04_q002",
+      "question": {
+        "en": "Which of the following is NOT one of the three main components of a political party?",
+        "bn": "নিচের কোনটি একটি রাজনৈতিক দলের তিনটি প্রধান উপাদানের অন্তর্ভুক্ত নয়?",
+        "hi": "निम्नलिखित में से कौन सा राजनीतिक दल के तीन प्रमुख घटकों में शामिल नहीं है?"
+      },
+      "options": [
+        {
+          "en": "The leaders",
+          "bn": "নেতৃবৃন্দ (The leaders)",
+          "hi": "नेता (The leaders)"
+        },
+        {
+          "en": "The active members",
+          "bn": "সক্রিয় সদস্য (The active members)",
+          "hi": "सक्रिय सदस्य (The active members)"
+        },
+        {
+          "en": "The followers",
+          "bn": "সমর্থক বা অনুগামী (The followers)",
+          "hi": "अनुयायी (The followers)"
+        },
+        {
+          "en": "The Election Commissioners",
+          "bn": "নির্বাচন কমিশনার (The Election Commissioners)",
+          "hi": "चुनाव आयुक्त (The Election Commissioners)"
+        }
+      ],
+      "correct_index": 3,
+      "explanation": {
+        "en": "A political party consists of leaders, active members, and followers; election commissioners belong to an independent constitutional body.",
+        "bn": "একটি রাজনৈতিক দল নেতা, সক্রিয় সদস্য এবং সমর্থকদের নিয়ে গঠিত; নির্বাচন কমিশনার নিরপেক্ষ সাংবিধানিক পদের অধিকারী।",
+        "hi": "राजनीतिक दल के तीन घटक नेता, सक्रिय सदस्य और अनुयायी होते हैं; चुनाव आयुक्त एक स्वतंत्र संवैधानिक निकाय का हिस्सा हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "polsci_ch_04_q003",
+      "question": {
+        "en": "What type of party system exists in China where only one party is allowed to control and run the government?",
+        "bn": "চীনে কোন ধরনের দলীয় ব্যবস্থা বিদ্যমান যেখানে কেবল একটি দলকেই সরকার পরিচালনা করার অনুমতি দেওয়া হয়?",
+        "hi": "चीन में किस प्रकार की दलीय व्यवस्था है जहाँ केवल एक ही दल को सरकार चलाने की अनुमति है?"
+      },
+      "options": [
+        {
+          "en": "One-party system",
+          "bn": "এক-দলীয় ব্যবস্থা (One-party system)",
+          "hi": "एक-दलीय व्यवस्था (One-party system)"
+        },
+        {
+          "en": "Two-party system",
+          "bn": "দ্বি-দলীয় ব্যবস্থা (Two-party system)",
+          "hi": "द्वि-दलीय व्यवस्था (Two-party system)"
+        },
+        {
+          "en": "Multi-party system",
+          "bn": "বহু-দলীয় ব্যবস্থা (Multi-party system)",
+          "hi": "बहु-दलीय व्यवस्था (Multi-party system)"
+        },
+        {
+          "en": "Non-party democracy",
+          "bn": "দলহীন গণতন্ত্র",
+          "hi": "दल-विहीन लोकतंत्र"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "China operates under a one-party system dominated solely by the Communist Party of China.",
+        "bn": "চীন এক-দলীয় শাসনব্যবস্থার অধীন যেখানে কেবল চীনা কমিউনিস্ট পার্টি শাসন পরিচালনা করে।",
+        "hi": "चीन में एक-दलीय व्यवस्था है जहाँ केवल कम्युनिस्ट पार्टी को शासन करने की अनुमति है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "polsci_ch_04_q004",
+      "question": {
+        "en": "According to the Election Commission of India, what criteria must a party meet to be recognized as a National Party?",
+        "bn": "ভারতের নির্বাচন কমিশনের নিয়ম অনুযায়ী, একটি দলকে জাতীয় দল হিসেবে স্বীকৃতি পেতে হলে কোন শর্তটি পূরণ করতে হয়?",
+        "hi": "भारत निर्वाचन आयोग के अनुसार, किसी दल को राष्ट्रीय दल के रूप में मान्यता प्राप्त करने के लिए किस शर्त को पूरा करना होता है?"
+      },
+      "options": [
+        {
+          "en": "Secure at least 6% of total votes in Lok Sabha or Assembly elections in 4 states and win at least 4 Lok Sabha seats",
+          "bn": "লোকসভা বা ৪টি রাজ্যের বিধানসভা নির্বাচনে মোট ভোটের অন্তত ৬% পাওয়া এবং লোকসভায় অন্তত ৪টি আসনে জয়ী হওয়া",
+          "hi": "लोकसभा या 4 राज्यों के विधानसभा चुनाव में कम से कम 6% वोट पाना और लोकसभा में कम से कम 4 सीटें जीतना"
+        },
+        {
+          "en": "Win at least 10% of total seats in the Rajya Sabha",
+          "bn": "রাজ্যসভার মোট আসনের অন্তত ১০% আসনে জয়ী হওয়া",
+          "hi": "राज्यसभा की कुल सीटों में से कम से कम 10% सीटें जीतना"
+        },
+        {
+          "en": "Secure 10% of total votes in all states across India",
+          "bn": "ভারতের সমস্ত রাজ্যে মোট ভোটের ১০% অর্জন করা",
+          "hi": "भारत के सभी राज्यों में कुल वोटों का 10% प्राप्त करना"
+        },
+        {
+          "en": "Win a majority of seats in at least two state assemblies",
+          "bn": "কমপক্ষে দুটি রাজ্যের বিধানসভায় সংখ্যাগরিষ্ঠতা পাওয়া",
+          "hi": "कम से कम दो राज्य विधानसभाओं में बहुमत हासिल करना"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "To be recognized as a national party, a party must poll at least 6% of total valid votes in Lok Sabha or Assembly elections in four states and win four Lok Sabha seats.",
+        "bn": "জাতীয় দলের স্বীকৃতি পেতে অন্তত ৪টি রাজ্যে লোকসভা বা বিধানসভা নির্বাচনে ৬% ভোট এবং লোকসভায় ৪টি আসনে জয়লাভ করতে হয়।",
+        "hi": "राष्ट्रीय दल के रूप में मान्यता पाने के लिए 4 राज्यों के लोकसभा/विधानसभा चुनाव में 6% वोट और लोकसभा की 4 सीटें जीतना आवश्यक है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "polsci_ch_04_q005",
+      "question": {
+        "en": "Which of the following is a major challenge faced by political parties globally where decision-making power is concentrated in top leaders?",
+        "bn": "বিশ্বব্যাপী রাজনৈতিক দলগুলির মুখোমুখি হওয়া একটি বড় চ্যালেঞ্জ কী, যেখানে সিদ্ধান্তের ক্ষমতা কেবল শীর্ষ নেতাদের হাতে কেন্দ্রীভূত থাকে?",
+        "hi": "दुनिया भर के राजनीतिक दलों के सामने कौन सी एक प्रमुख चुनौती है, जहाँ निर्णय लेने की शक्ति शीर्ष नेताओं में केंद्रित रहती है?"
+      },
+      "options": [
+        {
+          "en": "Lack of internal democracy",
+          "bn": "আভ্যন্তরীণ অভ্যন্তরীণ গণতন্ত্রের অভাব (Lack of internal democracy)",
+          "hi": "आंतरिक लोकतंत्र का अभाव (Lack of internal democracy)"
+        },
+        {
+          "en": "Excessive transparency in party funding",
+          "bn": "দলীয় তহবিলে অতিরিক্ত স্বচ্ছতা",
+          "hi": "दल के वित्तपोषण में अत्यधिक पारदर्शिता"
+        },
+        {
+          "en": "Frequent organizational elections at all levels",
+          "bn": "সমস্ত স্তরে ঘন ঘন সাংগঠনিক নির্বাচন",
+          "hi": "सभी स्तरों पर बार-बार संगठनात्मक चुनाव"
+        },
+        {
+          "en": "Over-reliance on ideological debates among grassroots members",
+          "bn": "তৃণমূল কর্মীদের মধ্যে আদর্শগত বিতর্কের ওপর অতিরিক্ত নির্ভরতা",
+          "hi": "जमीनी कार्यकर्ताओं के बीच वैचारिक बहस पर अत्यधिक निर्भरता"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Lack of internal democracy is a key challenge as power tends to concentrate in one or a few leaders at the top who do not conduct internal elections or consult ordinary members.",
+        "bn": "আভ্যন্তরীণ অভ্যন্তরীণ গণতন্ত্রের অভাব একটি বড় সমস্যা, কারণ ক্ষমতার অলিন্দে থাকা শীর্ষ কয়েকজন নেতার হাতেই সমস্ত সিদ্ধান্ত নেওয়ার ক্ষমতা থেকে যায়।",
+        "hi": "आंतरिक लोकतंत्र का अभाव एक बड़ी चुनौती है क्योंकि शक्ति शीर्ष पर बैठे कुछ नेताओं के हाथों में केंद्रित हो जाती है और आंतरिक चुनाव नहीं होते।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "polsci_ch_04_q006",
+      "question": {
+        "en": "What constitutional measure was introduced in India to prevent elected MLAs and MPs from changing parties after getting elected?",
+        "bn": "ভারতে নির্বাচিত বিধায়ক ও সাংসদদের জয়ের পর দল পরিবর্তন রোধ করতে কোন সাংবিধানিক ব্যবস্থা চালু করা হয়েছিল?",
+        "hi": "भारत में निर्वाचित विधायकों और सांसदों को जीतने के बाद पार्टी बदलने से रोकने के लिए कौन सा संवैधानिक उपाय पेश किया गया था?"
+      },
+      "options": [
+        {
+          "en": "Anti-defection law",
+          "bn": "দলত্যাগ বিরোধী আইন (Anti-defection law)",
+          "hi": "दल-बदल विरोधी कानून (Anti-defection law)"
+        },
+        {
+          "en": "Right to Information Act",
+          "bn": "তথ্য জানার অধিকার আইন (Right to Information Act)",
+          "hi": "सूचना का अधिकार अधिनियम (Right to Information Act)"
+        },
+        {
+          "en": "Representation of the People Act Amendment",
+          "bn": "জনপ্রতিনিধিত্ব আইন সংশোধন",
+          "hi": "लोक प्रतिनिधित्व अधिनियम संशोधन"
+        },
+        {
+          "en": "Panchayati Raj Act",
+          "bn": "পঞ্চায়েতি রাজ আইন",
+          "hi": "पंचायती राज अधिनियम"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The Anti-defection law was enacted via the 52nd Constitutional Amendment to prevent elected representatives from switching parties for personal gain or cabinet posts.",
+        "bn": "দলত্যাগ বিরোধী আইন পাসের মাধ্যমে নির্বাচিত সংসদ বা বিধানসভা সদস্যদের সুবিধাবাদী দলবদল রোধ করা হয়েছে।",
+        "hi": "दल-बदल विरोधी कानून निर्वाचित जनप्रतिनिधियों को व्यक्तिगत लाभ के लिए पार्टी बदलने से रोकने के लिए बनाया गया था।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "polsci_ch_04_q007",
+      "question": {
+        "en": "What order did the Supreme Court of India pass to reduce the influence of money and crime in elections?",
+        "bn": "নির্বাচনে অর্থ ও অপরাধের প্রভাব কমাতে ভারতের সুপ্রিম কোর্ট কোন নির্দেশ জারি করেছে?",
+        "hi": "चुनावों में धन और अपराध के प्रभाव को कम करने के लिए भारत के सर्वोच्च न्यायालय ने क्या आदेश पारित किया?"
+      },
+      "options": [
+        {
+          "en": "Candidates must file an affidavit giving details of property and criminal cases",
+          "bn": "প্রার্থীদের সম্পত্তি ও অপরাধমূলক মামলার বিবরণ দিয়ে একটি হলফনামা (Affidavit) জমা দিতে হবে",
+          "hi": "उम्मीदवारों को संपत्ति और आपराधिक मामलों का ब्योरा देते हुए एक शपथ पत्र (Affidavit) दाखिल करना होगा"
+        },
+        {
+          "en": "Candidates with criminal records are permanently banned from contesting",
+          "bn": "অপরাধমূলক রেকর্ড থাকা প্রার্থীরা আজীবনের জন্য নির্বাচন থেকে নিষিদ্ধ হবেন",
+          "hi": "आपराधिक रिकॉर्ड वाले उम्मीदवारों पर चुनाव लड़ने के लिए स्थायी प्रतिबंध लगा दिया गया है"
+        },
+        {
+          "en": "The government will directly fund all election campaigns for candidates",
+          "bn": "সরকার সরাসরি প্রার্থীদের সমস্ত নির্বাচনী প্রচারের তহবিল প্রদান করবে",
+          "hi": "सरकार सीधे उम्मीदवारों के सभी चुनाव अभियानों को वित्तपोषित करेगी"
+        },
+        {
+          "en": "Political parties cannot collect private donations",
+          "bn": "রাজনৈতিক দলগুলি ব্যক্তিগত অনুদান সংগ্রহ করতে পারবে না",
+          "hi": "राजनीतिक दल निजी दान एकत्र नहीं कर सकते"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The Supreme Court mandated that every candidate contesting elections must file an affidavit giving details of their assets and pending criminal charges.",
+        "bn": "সুপ্রিম কোর্টের নির্দেশ অনুযায়ী প্রতিটি প্রার্থীকে একটি হলফনামা পেশ করে তাঁর সম্পত্তি ও বিচারাধীন অপরাধমূলক মামলার হিসাব দিতে হয়।",
+        "hi": "सर्वोच्च न्यायालय के आदेशानुसार प्रत्येक उम्मीदवार को अपनी संपत्ति और लंबित आपराधिक मामलों का विवरण देते हुए एक शपथ पत्र (हलफनामा) देना अनिवार्य है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "polsci_ch_04_q008",
+      "question": {
+        "en": "What is a coalition government?",
+        "bn": "জোট সরকার (Coalition government) বলতে কী বোঝায়?",
+        "hi": "गठबंधन सरकार (Coalition government) किसे कहते हैं?"
+      },
+      "options": [
+        {
+          "en": "A government formed by an alliance of two or more political parties when no single party gets a majority",
+          "bn": "একক সংখ্যাগরিষ্ঠতা না পেলে একাধিক দলের জোটে গঠিত সরকার",
+          "hi": "किसी एक दल को बहुमत न मिलने पर दो या अधिक दलों के गठबंधन से बनी सरकार"
+        },
+        {
+          "en": "A government formed by independent candidates without party support",
+          "bn": "কোনো দলীয় সমর্থন ছাড়া নির্দল প্রার্থীদের গঠিত সরকার",
+          "hi": "बिना किसी दल के समर्थन के निर्दलीय उम्मीदवारों द्वारा बनाई गई सरकार"
+        },
+        {
+          "en": "A government run temporarily by state governors during an emergency",
+          "bn": "জরুরি অবস্থায় রাজ্যপাল দ্বারা পরিচালিত অস্থায়ী সরকার",
+          "hi": "आपातकाल के दौरान राज्य के राज्यपाल द्वारा चलाई जाने वाली अस्थायी सरकार"
+        },
+        {
+          "en": "A government formed by the opposition party after losing elections",
+          "bn": "নির্বাচনে পরাজয়ের পর বিরোধী দল কর্তৃক গঠিত সরকার",
+          "hi": "चुनाव हारने के बाद विपक्षी दल द्वारा बनाई गई सरकार"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "When no single political party secures a clear majority in the legislature, multiple parties join together to form a coalition government.",
+        "bn": "নির্বাচনে কোনো একক দল স্পষ্ট সংখ্যাগরিষ্ঠতা না পেলে একাধিক রাজনৈতিক দল একত্রে এসে জোট সরকার গঠন করে।",
+        "hi": "जब किसी एक राजनीतिक दल को स्पष्ट बहुमत नहीं मिलता, तो कई दल मिलकर गठबंधन सरकार का निर्माण करते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "polsci_ch_04_q009",
+      "question": {
+        "en": "Which challenge refers to political parties failing to offer meaningful choices to voters due to declining ideological differences?",
+        "bn": "আদর্শগত ফারাক কমে যাওয়ার কারণে রাজনৈতিক দলগুলি ভোটারদের অর্থপূর্ণ বিকল্প দিতে না পারার সমস্যাটিকে কোন চ্যালেঞ্জ বলা হয়?",
+        "hi": "वैचारिक मतभेद कम होने के कारण राजनीतिक दलों द्वारा मतदाताओं को सार्थक विकल्प न दे पाने की चुनौती को क्या कहा जाता है?"
+      },
+      "options": [
+        {
+          "en": "Lack of a meaningful choice",
+          "bn": "অর্থপূর্ণ বিকল্পের অভাব (Lack of a meaningful choice)",
+          "hi": "सार्थक विकल्प की कमी (Lack of a meaningful choice)"
+        },
+        {
+          "en": "Dynastic succession",
+          "bn": "বংশানুক্রমিক আধিপত্য (Dynastic succession)",
+          "hi": "वंशवाद (Dynastic succession)"
+        },
+        {
+          "en": "Role of money and muscle power",
+          "bn": "অর্থ ও পেশিশক্তির ভূমিকা (Role of money and muscle power)",
+          "hi": "धन और बाहुबल की भूमिका (Role of money and muscle power)"
+        },
+        {
+          "en": "Partisanship",
+          "bn": "পক্ষপাতিত্ব (Partisanship)",
+          "hi": "पक्षपात (Partisanship)"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "When political parties adopt very similar policies and economic agendas, voters face a lack of meaningful choice at the polls.",
+        "bn": "রাজনৈতিক দলগুলির মধ্যে আদর্শগত পার্থক্য কমে নীতি একই রকম হয়ে উঠলে ভোটারদের সামনে অর্থপূর্ণ বিকল্প বাছাই করার সুযোগ থাকে না।",
+        "hi": "जब राजनीतिक दलों की नीतियों और आर्थिक एजेंडे में बहुत कम अंतर रह जाता है, तो मतदाताओं के पास सार्थक विकल्प की कमी हो जाती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "polsci_ch_04_q010",
+      "question": {
+        "en": "Why is a multi-party system considered advantageous for a socially and geographically diverse country like India?",
+        "bn": "ভারতের মতো সামাজিক ও ভৌগোলিক বৈচিত্র্যময় দেশের জন্য বহু-দলীয় ব্যবস্থা কেন সুবিধাজনক বলে মনে করা হয়?",
+        "hi": "भारत जैसे सामाजिक और भौगोलिक रूप से विविध देश के लिए बहु-दलीय व्यवस्था को क्यों फायदेमंद माना जाता है?"
+      },
+      "options": [
+        {
+          "en": "It allows diverse interests and opinions to enjoy political representation",
+          "bn": "এটি বিভিন্ন মতামত ও সামাজিক শ্রেণিকে রাজনৈতিক প্রতিনিধিত্বের সুযোগ দেয়",
+          "hi": "यह विभिन्न हितों और विचारों को राजनीतिक प्रतिनिधित्व का अवसर देता है"
+        },
+        {
+          "en": "It ensures that government decisions are taken without any opposition",
+          "bn": "এটি নিশ্চিত করে যে সরকারি সিদ্ধান্ত বিনা বিরোধিতায় গৃহীত হয়",
+          "hi": "यह सुनिश्चित करता है कि सरकारी फैसले बिना किसी विरोध के लिए जाएं"
+        },
+        {
+          "en": "It makes election expenditure lower than in a one-party system",
+          "bn": "এটি নির্বাচনী খরচ এক-দলীয় ব্যবস্থার চেয়ে অনেক কমিয়ে দেয়",
+          "hi": "यह एक-दलीय व्यवस्था की तुलना में चुनावी खर्च को कम करता है"
+        },
+        {
+          "en": "It guarantees that no laws can be amended once passed",
+          "bn": "এটি গ্যারান্টি দেয় যে কোনো আইন পাস হলে তা আর সংশোধন করা যাবে না",
+          "hi": "यह गारंटी देता है कि पारित होने के बाद कोई भी कानून संशोधित नहीं किया जा सकता"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "A multi-party system allows various regional, linguistic, and socio-economic groups to participate in government and ensures diverse representation.",
+        "bn": "বহু-দলীয় ব্যবস্থা ভারতের আঞ্চলিক, ভাষাগত এবং সামাজিক বৈচিত্র্যকে রাজনীতিতে সঠিকভাবে প্রতিফলিত হতে সাহায্য করে।",
+        "hi": "बहु-दलीय व्यवस्था भारत के क्षेत्रीय, भाषाई और सामाजिक विविधताओं को सरकार में उचित प्रतिनिधित्व प्रदान करने में सक्षम बनाती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "polsci_ch_04_q011",
+      "question": {
+        "en": "According to the Election Commission of India, what criteria must a party meet to be recognized as a State Party?",
+        "bn": "ভারতের নির্বাচন কমিশনের নিয়মানুসারে, একটি দলকে রাজ্য দল (State Party) হিসেবে স্বীকৃতি পেতে হলে বিধানসভা নির্বাচনে কোন শর্ত পূরণ করতে হয়?",
+        "hi": "भारत निर्वाचन आयोग के अनुसार, किसी दल को राज्य स्तरीय दल (State Party) के रूप में मान्यता प्राप्त करने के लिए विधानसभा चुनाव में क्या मानदंड पूरा करना होता है?"
+      },
+      "options": [
+        {
+          "en": "Secure at least 6% of total valid votes in a state assembly election and win at least 2 seats",
+          "bn": "রাজ্যের বিধানসভা নির্বাচনে মোট বৈধ ভোটের অন্তত ৬% পাওয়া এবং অন্তত ২টি আসনে জয়ী হওয়া",
+          "hi": "राज्य विधानसभा चुनाव में कुल वैध मतों का कम से कम 6% प्राप्त करना और कम से कम 2 सीटें जीतना"
+        },
+        {
+          "en": "Secure 10% of total votes in assembly elections and win at least 1 seat",
+          "bn": "বিধানসভা নির্বাচনে ১০% ভোট পাওয়া এবং অন্তত ১টি আসনে জয়ী হওয়া",
+          "hi": "विधानसभा चुनाव में 10% वोट प्राप्त करना और कम से कम 1 सीट जीतना"
+        },
+        {
+          "en": "Win at least 5% of total Lok Sabha seats from that state",
+          "bn": "উক্ত রাজ্য থেকে লোকসভার মোট আসনের অন্তত ৫% আসনে জয়লাভ করা",
+          "hi": "उस राज्य से लोकसभा की कुल सीटों में से कम से कम 5% सीटें जीतना"
+        },
+        {
+          "en": "Secure a simple majority of votes in at least 3 parliamentary constituencies",
+          "bn": "কমপক্ষে ৩টি সংসদীয় ক্ষেত্রে মোট ভোটের সংখ্যাগরিষ্ঠতা অর্জন করা",
+          "hi": "कम से कम 3 संसदीय क्षेत्रों में मतों का साधारण बहुमत प्राप्त करना"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "To be recognized as a State Party, a political party must secure at least 6% of the total valid votes polled in an election to the Legislative Assembly of the state and win at least 2 seats.",
+        "bn": "রাজ্য দলের স্বীকৃতি পেতে কোনো দলকে রাজ্যের বিধানসভা নির্বাচনে মোট বৈধ ভোটের অন্তত ৬% পেতে হয় এবং ন্যূনতম ২টি আসনে জয়ী হতে হয়।",
+        "hi": "राज्य स्तरीय दल के रूप में मान्यता प्राप्त करने के लिए किसी दल को राज्य विधानसभा चुनाव में कुल वैध मतों का कम से कम 6% प्राप्त करना और 2 सीटें जीतना अनिवार्य है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "polsci_ch_04_q012",
+      "question": {
+        "en": "What is the primary role of opposition parties in a democratic political system?",
+        "bn": "গণতান্ত্রিক রাজনৈতিক ব্যবস্থায় বিরোধী দলগুলির প্রধান ভূমিকা কী?",
+        "hi": "लोकतांत्रिक राजनीतिक व्यवस्था में विपक्षी दलों की मुख्य भूमिका क्या होती है?"
+      },
+      "options": [
+        {
+          "en": "To question government policies, highlight failures, and put forward different views",
+          "bn": "সরকারের নীতির সমালোচনা করা, ব্যর্থতা তুলে ধরা এবং বিকল্প দৃষ্টিভঙ্গি প্রকাশ করা",
+          "hi": "सरकार की नीतियों की आलोचना करना, विफलताओं को उजागर करना और वैकल्पिक विचार रखना"
+        },
+        {
+          "en": "To block all legislative bills passed by the parliament automatically",
+          "bn": "সংসদে উত্থাপিত সমস্ত বিলকে স্বয়ংসক্রিয়ভাবে আটকে দেওয়া",
+          "hi": "संसद में पारित सभी विधेयकों को स्वचालित रूप से रोकना"
+        },
+        {
+          "en": "To conduct elections and manage voting booths across the country",
+          "bn": "দেশজুড়ে নির্বাচন পরিচালনা করা এবং ভোটিং বুথ নিয়ন্ত্রণ করা",
+          "hi": "देश भर में चुनाव कराना और मतदान केंद्रों का प्रबंधन करना"
+        },
+        {
+          "en": "To appoint judges to the Supreme Court and High Courts",
+          "bn": "সুপ্রিম কোর্ট ও হাইকোর্টের বিচারপতিদের নিয়োগ করা",
+          "hi": "सर्वोच्च न्यायालय और उच्च न्यायालयों के न्यायाधीशों की नियुक्ति करना"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Opposition parties act as a check on the ruling government by mobilizing opposition to wrong policies and voicing diverse public opinions.",
+        "bn": "বিরোধী দলগুলি সরকারের ভুল নীতি ও সিদ্ধান্তের সমালোচনা করে এবং জনগণের বিকল্প মতামত প্রকাশ করে শাসক দলকে জবাবদিহিতায় রাখে।",
+        "hi": "विपक्षी दल सरकार की गलत नीतियों का विरोध करके और जनता की आवाज उठाकर सत्तारूढ़ दल को जवाबदेह बनाए रखते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "polsci_ch_04_q013",
+      "question": {
+        "en": "Which challenge of political parties is highlighted when top party positions are controlled by members of a single family?",
+        "bn": "যখন কোনো রাজনৈতিক দলের শীর্ষ পদগুলি কেবল একটি নির্দিষ্ট পরিবারের সদস্যদের দ্বারা নিয়ন্ত্রিত হয়, তখন তা কোন চ্যালেঞ্জ নির্দেশ করে?",
+        "hi": "जब किसी राजनीतिक दल के शीर्ष पद केवल एक ही परिवार के सदस्यों द्वारा नियंत्रित होते हैं, तो यह किस चुनौती को दर्शाता है?"
+      },
+      "options": [
+        {
+          "en": "Dynastic succession",
+          "bn": "বংশানুক্রমিক বা পরিবারতান্ত্রিক উত্তরসূরি (Dynastic succession)",
+          "hi": "वंशवाद या वंशानुगत उत्तराधिकार (Dynastic succession)"
+        },
+        {
+          "en": "Ideological polarization",
+          "bn": "আদর্শগত মেরুকরণ (Ideological polarization)",
+          "hi": "वैचारिक ध्रुवीकरण (Ideological polarization)"
+        },
+        {
+          "en": "Partisanship",
+          "bn": "পক্ষপাতিত্ব (Partisanship)",
+          "hi": "पक्षपात (Partisanship)"
+        },
+        {
+          "en": "Defection",
+          "bn": "দলত্যাগ (Defection)",
+          "hi": "दल-बदल (Defection)"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Dynastic succession occurs when leaders systematically favor their family members for top organizational posts, denying fair opportunities to ordinary workers.",
+        "bn": "পরিবারতন্ত্র বা বংশানুক্রমিক আধিপত্যের ফলে দলের যোগ্য কর্মী অপেক্ষা কেবল পরিবারের সদস্যদেরই শীর্ষ পদে বসানো হয়।",
+        "hi": "वंशवाद की चुनौती तब उत्पन्न होती है जब साधारण कार्यकर्ताओं को अनदेखा करके शीर्ष पद केवल परिवार के सदस्यों के लिए आरक्षित रखे जाते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "polsci_ch_04_q014",
+      "question": {
+        "en": "What term describes a person who is strongly committed to a party, group, or faction and is unable to take a balanced view on issues?",
+        "bn": "যিনি কোনো দল, গোষ্ঠী বা ফ্রন্টের প্রতি অত্যন্ত অনুগত এবং কোনো বিষয়ে নিরপেক্ষ সিদ্ধান্ত নিতে পারেন না, তাঁকে কী বলা হয়?",
+        "hi": "ऐसे व्यक्ति को क्या कहा जाता है जो किसी दल या समूह के प्रति अत्यधिक प्रतिबद्ध होता है और निष्पक्ष रुख अपनाने में असमर्थ होता है?"
+      },
+      "options": [
+        {
+          "en": "Partisan",
+          "bn": "পক্ষপাতী বা অন্ধ সমর্থক (Partisan)",
+          "hi": "पक्षपाती या अंध समर्थक (Partisan)"
+        },
+        {
+          "en": "Dissident",
+          "bn": "ভিন্নমতাবলম্বী (Dissident)",
+          "hi": "असंतुष्ट या विद्रोही (Dissident)"
+        },
+        {
+          "en": "Bureaucrat",
+          "bn": "আমলা (Bureaucrat)",
+          "hi": "नौकरशाह (Bureaucrat)"
+        },
+        {
+          "en": "Defector",
+          "bn": "দলত্যাগী (Defector)",
+          "hi": "दल-बदलू (Defector)"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "A partisan is a staunch member or supporter who shows strong loyalty to their political party and views issues strictly through the party line.",
+        "bn": "পার্টিসান বা চরম পক্ষপাতী হলেন এমন একজন ব্যক্তি যিনি সর্বদা অন্ধভাবে তাঁর দলীয় নীতি সমর্থন করেন এবং নিরপেক্ষ দৃষ্টিকোণ গ্রহণে অক্ষম।",
+        "hi": "एक पक्षपाती (Partisan) वह व्यक्ति होता है जो अपनी पार्टी के प्रति पूरी तरह प्रतिबद्ध होता है और निष्पक्ष होकर विचार नहीं कर पाता।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "polsci_ch_04_q015",
+      "question": {
+        "en": "Which country has a two-party system where power usually alternates between two major political parties?",
+        "bn": "নিচের কোন দেশে দ্বি-দলীয় ব্যবস্থা (Two-party system) বিদ্যমান যেখানে ক্ষমতা মূলত দুটি প্রধান দলের মধ্যেই আবর্তিত হয়?",
+        "hi": "निम्नलिखित में से किस देश में द्वि-दलीय व्यवस्था (Two-party system) है जहाँ सत्ता मुख्य रूप से दो प्रमुख दलों के बीच बदलती है?"
+      },
+      "options": [
+        {
+          "en": "United States of America",
+          "bn": "যুক্তরাষ্ট্র (United States of America)",
+          "hi": "संयुक्त राज्य अमेरिका (United States of America)"
+        },
+        {
+          "en": "India",
+          "bn": "ভারত (India)",
+          "hi": "भारत (India)"
+        },
+        {
+          "en": "France",
+          "bn": "ফ্রান্স (France)",
+          "hi": "फ्रांस (France)"
+        },
+        {
+          "en": "China",
+          "bn": "চীন (China)",
+          "hi": "चीन (China)"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The United States of America is a classic example of a two-party system, dominated primarily by the Democratic Party and the Republican Party.",
+        "bn": "যুক্তরাষ্ট্রে মূলত ডেমোক্রেটিক ও রিপাবলিকান—এই দুটি প্রধান দলের মধ্যে দ্বি-দলীয় রাজনৈতিক ব্যবস্থা প্রচলিত।",
+        "hi": "संयुक्त राज्य अमेरिका द्वि-दलीय व्यवस्था का एक प्रमुख उदाहरण है, जहाँ मुख्य रूप से डेमोक्रेटिक और रिपब्लिकन पार्टियाँ हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "polsci_ch_04_q016",
+      "question": {
+        "en": "What step has the Election Commission of India taken to make political parties internally more accountable?",
+        "bn": "রাজনৈতিক দলগুলির অভ্যন্তরীণ জবাবদিহিতা বাড়াতে ভারতের নির্বাচন কমিশন কোন পদক্ষেপ গ্রহণ করেছে?",
+        "hi": "राजनीतिक दलों को आंतरिक रूप से अधिक जवाबदेह बनाने के लिए भारत निर्वाचन आयोग ने क्या कदम उठाया है?"
+      },
+      "options": [
+        {
+          "en": "Made it mandatory for parties to hold organizational elections and file income tax returns",
+          "bn": "দলগুলির জন্য সাংগঠনিক নির্বাচন করা এবং ইনকাম ট্যাক্স রিটার্ন জমা দেওয়া বাধ্যতামূলক করা হয়েছে",
+          "hi": "दलों के लिए सांगठनिक चुनाव कराना और आयकर रिटर्न दाखिल करना अनिवार्य कर दिया है"
+        },
+        {
+          "en": "Appointed government officers as permanent presidents of all recognized political parties",
+          "bn": "সমস্ত স্বীকৃত রাজনৈতিক দলের স্থায়ী সভাপতি হিসেবে সরকারি অফিসারদের নিয়োগ করেছে",
+          "hi": "सभी मान्यता प्राप्त राजनीतिक दलों के स्थायी अध्यक्ष के रूप में सरकारी अधिकारियों को नियुक्त किया है"
+        },
+        {
+          "en": "Banned political parties from taking donations from private citizens",
+          "bn": "ব্যক্তিগত নাগরিকদের থেকে রাজনৈতিক দলগুলির চাঁদা নেওয়া সম্পূর্ণ নিষিদ্ধ করেছে",
+          "hi": "राजनीतिक दलों द्वारा निजी नागरिकों से चंदा लेने पर पूरी तरह से रोक लगा दी है"
+        },
+        {
+          "en": "Mandated that every party must win at least one state election every five years",
+          "bn": "প্রতি পাঁচ বছরে অন্তত একটি রাজ্য নির্বাচনে জয়লাভ করা প্রতিটি দলের জন্য বাধ্যতামূলক করেছে",
+          "hi": "यह अनिवार्य कर दिया है कि प्रत्येक दल को हर पांच साल में कम से कम एक राज्य चुनाव जीतना होगा"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The Election Commission passed an order making it necessary for political parties to hold regular organizational elections and file their income tax returns.",
+        "bn": "নির্বাচন কমিশন নির্দেশ জারি করেছে যে নিবন্ধিত দলগুলিকে নিয়ম মেনে অভ্যন্তরীণ সাংগঠনিক নির্বাচন করতে হবে এবং আয়কর বিবরণী পেশ করতে হবে।",
+        "hi": "चुनाव आयोग ने आदेश दिया है कि राजनीतिक दलों के लिए नियमित संगठनात्मक चुनाव कराना और अपना आयकर रिटर्न दाखिल करना आवश्यक है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "polsci_ch_04_q017",
+      "question": {
+        "en": "Which reform proposal suggests that the government should give funds to political parties to support their election expenses?",
+        "bn": "নির্বাচনী খরচ বহনের জন্য সরকার কর্তৃক রাজনৈতিক দলগুলিকে আর্থিক অনুদান দেওয়ার প্রস্তাবটিকে কী বলা হয়?",
+        "hi": "चुनावी खर्चों को पूरा करने के लिए सरकार द्वारा राजनीतिक दलों को धन दिए जाने के सुधार प्रस्ताव को क्या कहा जाता है?"
+      },
+      "options": [
+        {
+          "en": "State funding of elections",
+          "bn": "নির্বাচনের জন্য রাষ্ট্রীয় অর্থায়ন (State funding of elections)",
+          "hi": "चुनावों का सरकारी वित्तपोषण (State funding of elections)"
+        },
+        {
+          "en": "Corporate electoral sponsorship",
+          "bn": "কর্পোরেট নির্বাচনী পৃষ্ঠপোষকতা",
+          "hi": "कॉर्पोरेट चुनावी प्रायोजन"
+        },
+        {
+          "en": "Fiscal decentralization",
+          "bn": "রাজস্ব বিকেন্দ্রীকরণ",
+          "hi": "वित्तीय विकेंद्रीकरण"
+        },
+        {
+          "en": "Electoral bond subsidy",
+          "bn": "ইলেক্টোরাল বন্ড ভর্তুকি",
+          "hi": "चुनावी बांड सब्सिडी"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "State funding of elections proposes that the government provide resources (in cash or kind like petrol, paper) to parties to curb the influence of big money in campaigns.",
+        "bn": "নির্বাচনে অর্থের কুপ্রভাব রুখতে রাষ্ট্রীয় অর্থায়নের প্রস্তাব দেওয়া হয়েছে, যেখানে সরকার প্রচারের জন্য প্রয়োজনীয় জিনিস বা অর্থ সরবরাহ করবে।",
+        "hi": "चुनावों के सरकारी वित्तपोषण (State funding) का सुझाव दिया जाता है ताकि चुनावों में धनबल के प्रभाव को कम किया जा सके।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "polsci_ch_04_q018",
+      "question": {
+        "en": "Why are regional or state parties important in Indian democracy?",
+        "bn": "ভারতীয় গণতন্ত্রে আঞ্চলিক বা রাজ্যভিত্তিক রাজনৈতিক দলগুলির গুরুত্ব কোথায়?",
+        "hi": "भारतीय लोकतंत्र में क्षेत्रीय या राज्य स्तरीय दलों का क्या महत्व है?"
+      },
+      "options": [
+        {
+          "en": "They expand parliamentary diversity and make the federal structure more balanced and coalition-friendly",
+          "bn": "তারা সংসদীয় বৈচিত্র্য বৃদ্ধি করে এবং যুক্তরাষ্ট্রীয় কাঠামোকে আরও ভারসাম্যপূর্ণ ও শক্তিশালী করে তোলে",
+          "hi": "वे संसदीय विविधता का विस्तार करते हैं और संघीय ढांचे को अधिक संतुलित और मजबूत बनाते हैं"
+        },
+        {
+          "en": "They reduce the total number of representatives in the Lok Sabha",
+          "bn": "তারা লোকসভার মোট প্রতিনিধিসংখ্যা কমিয়ে আনে",
+          "hi": "वे लोकसभा में प्रतिनिधियों की कुल संख्या को कम करते हैं"
+        },
+        {
+          "en": "They replace the authority of the Election Commission in state elections",
+          "bn": "তারা রাজ্য নির্বাচনে নির্বাচন কমিশনের কর্তৃত্ব বাতিল করে দেয়",
+          "hi": "वे राज्य चुनावों में चुनाव आयोग के अधिकारों की जगह ले लेते हैं"
+        },
+        {
+          "en": "They prevent national parties from contesting assembly elections",
+          "bn": "তারা জাতীয় দলগুলিকে রাজ্য বিধানসভা নির্বাচনে প্রতিদ্বন্দ্বিতা করতে বাধা দেয়",
+          "hi": "वे राष्ट्रीय दलों को विधानसभा चुनाव लड़ने से रोकते हैं"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Regional parties represent localized aspirations and have made the Parliament of India far more diverse, strengthening federalism through coalition alliances.",
+        "bn": "আঞ্চলিক দলগুলি স্থানীয় আশা-আকাঙ্ক্ষার প্রতিফলন ঘটায় এবং কেন্দ্রীয় জোটে স্থান পেয়ে ভারতের যুক্তরাষ্ট্রীয় ব্যবস্থাকে শক্তিশালী করে।",
+        "hi": "क्षेत्रीय दल स्थानीय आकांक्षाओं का प्रतिनिधित्व करते हैं और भारतीय संसद को अधिक विविध बनाकर संघवाद को मजबूत करते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "polsci_ch_04_q019",
+      "question": {
+        "en": "What is an 'affidavit' submitted by an election candidate?",
+        "bn": "নির্বাচনী প্রার্থী কর্তৃক জমাকৃত 'হলফনামা' (Affidavit) আসলে কী?",
+        "hi": "चुनाव उम्मीदवार द्वारा प्रस्तुत 'शपथ पत्र' (Affidavit) क्या होता है?"
+      },
+      "options": [
+        {
+          "en": "A signed sworn document submitted to an officer stating personal details, assets, and legal records",
+          "bn": "একজন কর্মকর্তার কাছে জমা দেওয়া শপথবদ্ধ নথি যেখানে নিজের সম্পদ, আইনি রেকর্ড এবং ব্যক্তিগত বিবরণ থাকে",
+          "hi": "किसी अधिकारी के समक्ष प्रस्तुत शपथ-पत्र जिसमें अपनी संपत्ति, आपराधिक मामलों और व्यक्तिगत विवरण की घोषणा होती है"
+        },
+        {
+          "en": "A receipt showing tax exemptions granted to political candidates by the government",
+          "bn": "সরকার কর্তৃক প্রার্থীদের দেওয়া কর মওকুফের রসিদ",
+          "hi": "सरकार द्वारा राजनीतिक उम्मीदवारों को दी गई कर छूट की रसीद"
+        },
+        {
+          "en": "A formal invitation letter sent to citizens requesting them to vote",
+          "bn": "ভোটারদের ভোট দেওয়ার অনুরোধ জানিয়ে পাঠানো আনুষ্ঠানিক আমন্ত্রণপত্র",
+          "hi": "नागरिकों को वोट देने का अनुरोध करने के लिए भेजा गया औपचारिक निमंत्रण पत्र"
+        },
+        {
+          "en": "A document giving absolute immunity from criminal prosecution to elected leaders",
+          "bn": "নির্বাচিত নেতাদের ফৌজদারি মামলা থেকে পূর্ণ আইনি সুরক্ষা প্রদানকারী নথি",
+          "hi": "निर्वाचित नेताओं को आपराधिक मुकदमों से पूर्ण छूट देने वाला दस्तावेज़"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "An affidavit is a formal written statement sworn under oath before an authorized official, providing legal disclosure of assets, educational qualifications, and criminal cases.",
+        "bn": "হলফনামা হলো শপথ নিয়ে পেশ করা একটি আইনি নথি, যার মাধ্যমে প্রার্থী তাঁর সম্পত্তি, শিক্ষা এবং ফৌজদারি মামলার বিবরণ প্রকাশ করেন।",
+        "hi": "शपथ पत्र (Affidavit) एक कानूनी दस्तावेज है जिसमें उम्मीदवार अपनी संपत्ति, शिक्षा और आपराधिक मुकदमों का ब्योरा शपथ लेकर देता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "polsci_ch_04_q020",
+      "question": {
+        "en": "How can ordinary citizens actively participate in reforming political parties from outside?",
+        "bn": "সাধারণ নাগরিকরা বাইরের থেকে রাজনৈতিক দল সংস্কারের জন্য কীভাবে সক্রিয়ভাবে অংশগ্রহণ করতে পারেন?",
+        "hi": "आम नागरिक बाहर से राजनीतिक दलों में सुधार के लिए किस प्रकार सक्रिय रूप से भाग ले सकते हैं?"
+      },
+      "options": [
+        {
+          "en": "By forming pressure groups, organizing petitions, and utilizing public debates and media",
+          "bn": "চাপ সৃষ্টিকারী গোষ্ঠী গঠন, গণস্বাক্ষর অভিযান এবং গণমাধ্যম ও জনবিতর্ক ব্যবহারের মাধ্যমে",
+          "hi": "दबाव समूह बनाकर, याचिकाएं चलाकर तथा जन-बहस और मीडिया का उपयोग करके"
+        },
+        {
+          "en": "By boycotting all democratic elections and refusing to cast votes permanently",
+          "bn": "স্থায়ীভাবে সমস্ত গণতান্ত্রিক নির্বাচন বর্জন করে ও ভোট দেওয়া বন্ধ করে",
+          "hi": "सभी लोकतांत्रिक चुनावों का बहिष्कार करके और स्थायी रूप से वोट देने से इनकार करके"
+        },
+        {
+          "en": "By forcibly shutting down local party headquarters during elections",
+          "bn": "নির্বাচনের সময় বলপ্রয়োগ করে স্থানীয় রাজনৈতিক কার্যালয়গুলি বন্ধ করে দিয়ে",
+          "hi": "चुनाव के दौरान जबरन स्थानीय राजनीतिक कार्यालयों को बंद करके"
+        },
+        {
+          "en": "By abolishing constitutional rights regarding freedom of speech",
+          "bn": "বাকস্বাধীনতার সাংবিধানিক অধিকার বাতিল করে দিয়ে",
+          "hi": "वाक स्वतंत्रता के संवैधानिक अधिकारों को समाप्त करके"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Citizens can improve democracy by exerting pressure through petitions, publicity, and active involvement in civil society movements and pressure groups.",
+        "bn": "নাগরিকরা জনমত গঠন, চাপ সৃষ্টিকারী গোষ্ঠী তৈরি ও আন্দোলনের মাধ্যমে রাজনৈতিক দলগুলিকে সংস্কারে বাধ্য করতে পারেন।",
+        "hi": "नागरिक दबाव समूहों, मीडिया और याचिकाओं के माध्यम से जनमत बनाकर राजनीतिक दलों को सुधार के लिए बाध्य कर सकते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    }
+  ]
 }

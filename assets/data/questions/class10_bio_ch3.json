@@ -386,6 +386,1146 @@
       },
       "points": 10,
       "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_03_q011",
+      "question": {
+        "en": "Which organism commonly reproduces by fragmentation?",
+        "bn": "কোন জীব সাধারণত খণ্ডীভবনের মাধ্যমে প্রজনন করে?",
+        "hi": "कौन-सा जीव सामान्यतः खंडन द्वारा प्रजनन करता है?"
+      },
+      "options": [
+        {
+          "en": "Spirogyra",
+          "bn": "স্পাইরোজাইরা",
+          "hi": "स्पाइरोगाइरा"
+        },
+        {
+          "en": "Hydra",
+          "bn": "হাইড্রা",
+          "hi": "हाइड्रा"
+        },
+        {
+          "en": "Yeast",
+          "bn": "ইস্ট",
+          "hi": "यीस्ट"
+        },
+        {
+          "en": "Plasmodium",
+          "bn": "প্লাসমোডিয়াম",
+          "hi": "प्लाज्मोडियम"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Spirogyra can break into fragments, and each fragment can grow into a new organism. This asexual method is called fragmentation.",
+        "bn": "স্পাইরোজাইরা খণ্ডে ভেঙে যেতে পারে এবং প্রতিটি খণ্ড থেকে নতুন জীব তৈরি হতে পারে। এই অযৌন প্রজনন পদ্ধতিকে খণ্ডীভবন বলে।",
+        "hi": "स्पाइरोगाइरा खंडों में टूट सकता है और प्रत्येक खंड से नया जीव बन सकता है। इस अलैंगिक प्रजनन विधि को खंडन कहते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_03_q012",
+      "question": {
+        "en": "Which asexual reproduction method occurs through the formation of spores?",
+        "bn": "কোন অযৌন প্রজনন পদ্ধতিতে রেণু গঠনের মাধ্যমে নতুন জীব সৃষ্টি হয়?",
+        "hi": "किस अलैंगिक प्रजनन विधि में बीजाणुओं के बनने से नए जीव उत्पन्न होते हैं?"
+      },
+      "options": [
+        {
+          "en": "Spore formation",
+          "bn": "রেণু গঠন",
+          "hi": "बीजाणु निर्माण"
+        },
+        {
+          "en": "Budding",
+          "bn": "মুকুলোদ্গম",
+          "hi": "मुकुलन"
+        },
+        {
+          "en": "Fragmentation",
+          "bn": "খণ্ডীভবন",
+          "hi": "खंडन"
+        },
+        {
+          "en": "Binary fission",
+          "bn": "দ্বিখণ্ডন",
+          "hi": "द्विखंडन"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "In spore formation, specialised structures produce spores that can develop into new organisms under suitable conditions.",
+        "bn": "রেণু গঠনে বিশেষ গঠন থেকে রেণু সৃষ্টি হয়, যা অনুকূল পরিবেশে নতুন জীবের জন্ম দিতে পারে।",
+        "hi": "बीजाणु निर्माण में विशेष संरचनाओं से बीजाणु बनते हैं, जो अनुकूल परिस्थितियों में नए जीव में विकसित हो सकते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_03_q013",
+      "question": {
+        "en": "Which structure develops into the fruit after fertilisation in a flowering plant?",
+        "bn": "সপুষ্পক উদ্ভিদে নিষেকের পর ফুলের কোন অংশ ফলে পরিণত হয়?",
+        "hi": "पुष्पीय पौधे में निषेचन के बाद फूल का कौन-सा भाग फल में विकसित होता है?"
+      },
+      "options": [
+        {
+          "en": "Ovary",
+          "bn": "গর্ভাশয়",
+          "hi": "अंडाशय"
+        },
+        {
+          "en": "Ovule",
+          "bn": "ডিম্বক",
+          "hi": "बीजांड"
+        },
+        {
+          "en": "Anther",
+          "bn": "পরাগধানী",
+          "hi": "परागकोष"
+        },
+        {
+          "en": "Stigma",
+          "bn": "গর্ভমুণ্ড",
+          "hi": "वर्तिकाग्र"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "After fertilisation, the ovary develops into the fruit, while the ovules generally develop into seeds.",
+        "bn": "নিষেকের পর গর্ভাশয় ফলে পরিণত হয়, আর সাধারণত ডিম্বক বীজে পরিণত হয়।",
+        "hi": "निषेचन के बाद अंडाशय फल में विकसित होता है, जबकि बीजांड सामान्यतः बीज में विकसित होते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_03_q014",
+      "question": {
+        "en": "What is the role of the placenta during pregnancy?",
+        "bn": "গর্ভাবস্থায় অমরার প্রধান কাজ কী?",
+        "hi": "गर्भावस्था के दौरान अपरा का मुख्य कार्य क्या है?"
+      },
+      "options": [
+        {
+          "en": "It allows exchange of nutrients and oxygen between mother and embryo.",
+          "bn": "এটি মা ও ভ্রূণের মধ্যে পুষ্টি ও অক্সিজেনের আদান-প্রদান ঘটায়।",
+          "hi": "यह माँ और भ्रूण के बीच पोषक पदार्थों और ऑक्सीजन के आदान-प्रदान में सहायता करता है।"
+        },
+        {
+          "en": "It produces sperm for the embryo.",
+          "bn": "এটি ভ্রূণের জন্য শুক্রাণু তৈরি করে।",
+          "hi": "यह भ्रूण के लिए शुक्राणु बनाता है।"
+        },
+        {
+          "en": "It stores urine produced by the mother.",
+          "bn": "এটি মায়ের উৎপন্ন মূত্র সঞ্চয় করে।",
+          "hi": "यह माँ द्वारा बनाए गए मूत्र को संग्रहित करता है।"
+        },
+        {
+          "en": "It releases the ovum from the ovary.",
+          "bn": "এটি ডিম্বাশয় থেকে ডিম্বাণু নির্গত করে।",
+          "hi": "यह अंडाशय से अंडाणु को बाहर निकालता है।"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The placenta forms a connection between the mother and developing embryo and enables the exchange of oxygen, nutrients and wastes.",
+        "bn": "অমরা মা ও বিকাশশীল ভ্রূণের মধ্যে সংযোগ তৈরি করে এবং অক্সিজেন, পুষ্টি ও বর্জ্য পদার্থের আদান-প্রদানে সাহায্য করে।",
+        "hi": "अपरा माँ और विकसित हो रहे भ्रूण के बीच संपर्क बनाता है तथा ऑक्सीजन, पोषक पदार्थों और अपशिष्ट पदार्थों के आदान-प्रदान में सहायता करता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_03_q015",
+      "question": {
+        "en": "Which organ produces sperm in the human male reproductive system?",
+        "bn": "মানুষের পুরুষ প্রজননতন্ত্রে কোন অঙ্গ শুক্রাণু উৎপন্ন করে?",
+        "hi": "मानव पुरुष प्रजनन तंत्र में कौन-सा अंग शुक्राणु उत्पन्न करता है?"
+      },
+      "options": [
+        {
+          "en": "Testes",
+          "bn": "শুক্রাশয়",
+          "hi": "वृषण"
+        },
+        {
+          "en": "Prostate gland",
+          "bn": "প্রোস্টেট গ্রন্থি",
+          "hi": "प्रोस्टेट ग्रंथि"
+        },
+        {
+          "en": "Urinary bladder",
+          "bn": "মূত্রথলি",
+          "hi": "मूत्राशय"
+        },
+        {
+          "en": "Ureter",
+          "bn": "মূত্রনালি",
+          "hi": "मूत्रवाहिनी"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The testes contain seminiferous tubules where sperm are produced. The other listed organs do not produce sperm.",
+        "bn": "শুক্রাশয়ের সেমিনিফেরাস নালিকায় শুক্রাণু উৎপন্ন হয়। তালিকাভুক্ত অন্যান্য অঙ্গ শুক্রাণু উৎপন্ন করে না।",
+        "hi": "वृषण की शुक्रजनक नलिकाओं में शुक्राणु बनते हैं। दिए गए अन्य अंग शुक्राणु का उत्पादन नहीं करते।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_03_q016",
+      "question": {
+        "en": "Which part of the female reproductive system receives the embryo after it is formed?",
+        "bn": "ভ্রূণ গঠনের পর স্ত্রী প্রজননতন্ত্রের কোন অংশে এটি অবস্থান করে?",
+        "hi": "भ्रूण बनने के बाद महिला प्रजनन तंत्र के किस भाग में वह स्थित होता है?"
+      },
+      "options": [
+        {
+          "en": "Uterus",
+          "bn": "জরায়ু",
+          "hi": "गर्भाशय"
+        },
+        {
+          "en": "Ovary",
+          "bn": "ডিম্বাশয়",
+          "hi": "अंडाशय"
+        },
+        {
+          "en": "Fallopian tube",
+          "bn": "ফ্যালোপিয়ান নালি",
+          "hi": "फैलोपियन नली"
+        },
+        {
+          "en": "Vagina",
+          "bn": "যোনি",
+          "hi": "योनि"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The embryo becomes implanted in the lining of the uterus, where it continues to develop during pregnancy.",
+        "bn": "ভ্রূণ জরায়ুর অভ্যন্তরীণ আস্তরণে প্রতিস্থাপিত হয় এবং গর্ভাবস্থায় সেখানেই বিকাশ লাভ করে।",
+        "hi": "भ्रूण गर्भाशय की आंतरिक परत में आरोपित होता है और गर्भावस्था के दौरान वहीं विकसित होता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_03_q017",
+      "question": {
+        "en": "Which structure in a sperm cell helps it move toward the egg?",
+        "bn": "শুক্রাণুর কোন গঠনটি তাকে ডিম্বাণুর দিকে চলতে সাহায্য করে?",
+        "hi": "शुक्राणु की कौन-सी संरचना उसे अंडाणु की ओर जाने में सहायता करती है?"
+      },
+      "options": [
+        {
+          "en": "Tail",
+          "bn": "লেজ",
+          "hi": "पूँछ"
+        },
+        {
+          "en": "Nucleus",
+          "bn": "কেন্দ্রক",
+          "hi": "केंद्रक"
+        },
+        {
+          "en": "Acrosome",
+          "bn": "অ্যাক্রোসোম",
+          "hi": "एक्रोसोम"
+        },
+        {
+          "en": "Head membrane",
+          "bn": "মস্তকের আবরণ",
+          "hi": "शीर्ष झिल्ली"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The tail provides movement to the sperm, allowing it to swim toward the egg. The nucleus mainly carries the male genetic material.",
+        "bn": "শুক্রাণুর লেজ তাকে চলাচলে সাহায্য করে এবং ডিম্বাণুর দিকে সাঁতার কাটতে সক্ষম করে। কেন্দ্রকে মূলত পুরুষের জিনগত উপাদান থাকে।",
+        "hi": "शुक्राणु की पूँछ उसे गति प्रदान करती है और अंडाणु की ओर तैरने में सहायता करती है। केंद्रक में मुख्यतः पुरुष आनुवंशिक पदार्थ होता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_03_q018",
+      "question": {
+        "en": "Which method can prevent pregnancy by preventing the release of an ovum from the ovary?",
+        "bn": "কোন পদ্ধতি ডিম্বাশয় থেকে ডিম্বাণু নির্গমন বন্ধ করে গর্ভধারণ প্রতিরোধ করতে পারে?",
+        "hi": "कौन-सी विधि अंडाशय से अंडाणु के निकलने को रोककर गर्भधारण को रोक सकती है?"
+      },
+      "options": [
+        {
+          "en": "Hormonal contraceptive pills",
+          "bn": "হরমোনাল গর্ভনিরোধক বড়ি",
+          "hi": "हार्मोनल गर्भनिरोधक गोलियाँ"
+        },
+        {
+          "en": "Copper-T",
+          "bn": "কপার-টি",
+          "hi": "कॉपर-टी"
+        },
+        {
+          "en": "Condom",
+          "bn": "কনডোম",
+          "hi": "कंडोम"
+        },
+        {
+          "en": "Surgical sterilisation of the male",
+          "bn": "পুরুষের অস্ত্রোপচারের মাধ্যমে বন্ধ্যাকরণ",
+          "hi": "पुरुष की शल्यक्रिया द्वारा नसबंदी"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Hormonal contraceptive pills alter hormone levels and can prevent ovulation. The other methods mainly work through different mechanisms.",
+        "bn": "হরমোনাল গর্ভনিরোধক বড়ি হরমোনের মাত্রা পরিবর্তন করে ডিম্বস্ফোটন বন্ধ করতে পারে। অন্য পদ্ধতিগুলি প্রধানত ভিন্ন প্রক্রিয়ায় কাজ করে।",
+        "hi": "हार्मोनल गर्भनिरोधक गोलियाँ हार्मोन के स्तर में बदलाव करके अंडोत्सर्जन को रोक सकती हैं। अन्य विधियाँ मुख्यतः अलग-अलग तरीकों से काम करती हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_03_q019",
+      "question": {
+        "en": "Which statement correctly distinguishes sexual reproduction from asexual reproduction?",
+        "bn": "কোন বক্তব্যটি যৌন প্রজনন ও অযৌন প্রজননের মধ্যে সঠিক পার্থক্য নির্দেশ করে?",
+        "hi": "कौन-सा कथन लैंगिक और अलैंगिक प्रजनन के बीच सही अंतर बताता है?"
+      },
+      "options": [
+        {
+          "en": "Sexual reproduction generally involves two parents, while asexual reproduction generally involves one parent.",
+          "bn": "যৌন প্রজননে সাধারণত দুটি জনিতৃ জড়িত থাকে, আর অযৌন প্রজননে সাধারণত একটি জনিতৃ জড়িত থাকে।",
+          "hi": "लैंगिक प्रजनन में सामान्यतः दो जनक शामिल होते हैं, जबकि अलैंगिक प्रजनन में सामान्यतः एक जनक शामिल होता है।"
+        },
+        {
+          "en": "Sexual reproduction always produces identical offspring, while asexual reproduction produces variation.",
+          "bn": "যৌন প্রজননে সবসময় অভিন্ন অপত্য সৃষ্টি হয়, আর অযৌন প্রজননে বৈচিত্র্য সৃষ্টি হয়।",
+          "hi": "लैंगिक प्रजनन में हमेशा समान संतति बनती है, जबकि अलैंगिक प्रजनन में विविधता उत्पन्न होती है।"
+        },
+        {
+          "en": "Asexual reproduction always requires fertilisation, while sexual reproduction does not.",
+          "bn": "অযৌন প্রজননে সবসময় নিষেকের প্রয়োজন হয়, কিন্তু যৌন প্রজননে হয় না।",
+          "hi": "अलैंगिक प्रजनन में हमेशा निषेचन आवश्यक होता है, जबकि लैंगिक प्रजनन में नहीं।"
+        },
+        {
+          "en": "Both types of reproduction always require two parents.",
+          "bn": "উভয় ধরনের প্রজননের জন্য সবসময় দুটি জনিতৃ প্রয়োজন হয়।",
+          "hi": "दोनों प्रकार के प्रजनन में हमेशा दो जनकों की आवश्यकता होती है।"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Asexual reproduction usually involves a single parent without fusion of gametes, whereas sexual reproduction generally involves the participation of gametes from two parents.",
+        "bn": "অযৌন প্রজননে সাধারণত একটি জনিতৃ থাকে এবং গ্যামেটের মিলন হয় না, যেখানে যৌন প্রজননে সাধারণত দুটি জনিতৃয়ের গ্যামেট অংশগ্রহণ করে।",
+        "hi": "अलैंगिक प्रजनन में सामान्यतः एक जनक होता है और युग्मकों का संलयन नहीं होता, जबकि लैंगिक प्रजनन में सामान्यतः दो जनकों के युग्मक भाग लेते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_03_q020",
+      "question": {
+        "en": "Which sexually transmitted infection is caused by a bacterium?",
+        "bn": "নিচের কোন যৌনবাহিত সংক্রমণটি ব্যাকটেরিয়া দ্বারা সৃষ্ট?",
+        "hi": "निम्नलिखित में से कौन-सा यौन संचारित संक्रमण जीवाणु के कारण होता है?"
+      },
+      "options": [
+        {
+          "en": "Gonorrhoea",
+          "bn": "গনোরিয়া",
+          "hi": "गोनोरिया"
+        },
+        {
+          "en": "HIV infection",
+          "bn": "HIV সংক্রমণ",
+          "hi": "HIV संक्रमण"
+        },
+        {
+          "en": "Genital herpes",
+          "bn": "জেনিটাল হার্পিস",
+          "hi": "जननांग हर्पीस"
+        },
+        {
+          "en": "Hepatitis B",
+          "bn": "হেপাটাইটিস B",
+          "hi": "हेपेटाइटिस B"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Gonorrhoea is caused by the bacterium Neisseria gonorrhoeae. HIV infection, genital herpes and hepatitis B are caused by viruses.",
+        "bn": "গনোরিয়া Neisseria gonorrhoeae নামের ব্যাকটেরিয়া দ্বারা সৃষ্ট। HIV সংক্রমণ, জেনিটাল হার্পিস এবং হেপাটাইটিস B ভাইরাস দ্বারা সৃষ্ট।",
+        "hi": "गोनोरिया Neisseria gonorrhoeae नामक जीवाणु के कारण होता है। HIV संक्रमण, जननांग हर्पीस और हेपेटाइटिस B वायरस के कारण होते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_03_q021",
+      "question": {
+        "en": "Which process allows a single-celled organism to produce two nearly identical daughter cells?",
+        "bn": "কোন প্রক্রিয়ায় এককোষী জীব দুটি প্রায় অভিন্ন অপত্যকোষ সৃষ্টি করে?",
+        "hi": "किस प्रक्रिया द्वारा एककोशिकीय जीव दो लगभग समान संतति कोशिकाएँ बनाता है?"
+      },
+      "options": [
+        {
+          "en": "Binary fission",
+          "bn": "দ্বিখণ্ডন",
+          "hi": "द्विखंडन"
+        },
+        {
+          "en": "Budding",
+          "bn": "মুকুলোদ্গম",
+          "hi": "मुकुलन"
+        },
+        {
+          "en": "Fragmentation",
+          "bn": "খণ্ডীভবন",
+          "hi": "खंडन"
+        },
+        {
+          "en": "Regeneration",
+          "bn": "পুনর্জন্ম",
+          "hi": "पुनर्जनन"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "In binary fission, the parent cell divides into two daughter cells after its genetic material is copied.",
+        "bn": "দ্বিখণ্ডনে প্রথমে জিনগত বস্তু অনুলিপি হয় এবং পরে মাতৃকোষ বিভাজিত হয়ে দুটি অপত্যকোষ তৈরি করে।",
+        "hi": "द्विखंडन में पहले आनुवंशिक पदार्थ की प्रतिलिपि बनती है और फिर मातृ कोशिका विभाजित होकर दो संतति कोशिकाएँ बनाती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_03_q022",
+      "question": {
+        "en": "In asexual reproduction, why are offspring usually very similar to the parent?",
+        "bn": "অযৌন প্রজননে অপত্যরা সাধারণত মাতৃজীবের সঙ্গে খুব সাদৃশ্যপূর্ণ হয় কেন?",
+        "hi": "अलैंगिक जनन में संतति सामान्यतः जनक के बहुत समान क्यों होती है?"
+      },
+      "options": [
+        {
+          "en": "Only one parent contributes genetic material",
+          "bn": "শুধু একটি জনক জিনগত বস্তু প্রদান করে",
+          "hi": "केवल एक जनक आनुवंशिक पदार्थ देता है"
+        },
+        {
+          "en": "Two parents always produce identical genes",
+          "bn": "দুটি জনক সবসময় অভিন্ন জিন সৃষ্টি করে",
+          "hi": "दो जनक हमेशा समान जीन बनाते हैं"
+        },
+        {
+          "en": "Fertilisation occurs twice",
+          "bn": "দুবার নিষেক ঘটে",
+          "hi": "निषेचन दो बार होता है"
+        },
+        {
+          "en": "Gametes fuse before cell division",
+          "bn": "কোষ বিভাজনের আগে গ্যামেটের মিলন ঘটে",
+          "hi": "कोशिका विभाजन से पहले युग्मक मिलते हैं"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Asexual reproduction generally involves one parent and does not involve fusion of gametes, so the offspring receives its genetic material from that single parent.",
+        "bn": "অযৌন প্রজননে সাধারণত একটি জনক অংশ নেয় এবং গ্যামেটের মিলন হয় না, তাই অপত্যের জিনগত বৈশিষ্ট্য জনকের সঙ্গে খুব মিল থাকে।",
+        "hi": "अलैंगिक जनन में सामान्यतः एक ही जनक भाग लेता है और युग्मकों का संलयन नहीं होता, इसलिए संतति के आनुवंशिक लक्षण जनक से बहुत मिलते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_03_q023",
+      "question": {
+        "en": "What is the main role of the pollen tube in a flowering plant?",
+        "bn": "সপুষ্পক উদ্ভিদে পরাগনালির প্রধান কাজ কী?",
+        "hi": "पुष्पीय पौधे में पराग नलिका का मुख्य कार्य क्या है?"
+      },
+      "options": [
+        {
+          "en": "To carry male gametes toward the ovule",
+          "bn": "পুরুষ গ্যামেটকে ডিম্বকের দিকে বহন করা",
+          "hi": "नर युग्मकों को बीजांड की ओर ले जाना"
+        },
+        {
+          "en": "To produce pollen grains",
+          "bn": "পরাগরেণু উৎপন্ন করা",
+          "hi": "परागकण उत्पन्न करना"
+        },
+        {
+          "en": "To develop into the fruit",
+          "bn": "ফলে পরিণত হওয়া",
+          "hi": "फल में विकसित होना"
+        },
+        {
+          "en": "To absorb water from the soil",
+          "bn": "মাটি থেকে জল শোষণ করা",
+          "hi": "मिट्टी से जल अवशोषित करना"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "After pollen germinates on the stigma, the pollen tube grows toward the ovule and provides a pathway for the male gametes.",
+        "bn": "গর্ভমুণ্ডে পরাগরেণু অঙ্কুরিত হওয়ার পর পরাগনালি ডিম্বকের দিকে বৃদ্ধি পায় এবং পুরুষ গ্যামেটকে সেখানে পৌঁছাতে সাহায্য করে।",
+        "hi": "वर्तिकाग्र पर परागकण के अंकुरित होने के बाद पराग नलिका बीजांड की ओर बढ़ती है और नर युग्मकों को वहाँ पहुँचने में सहायता करती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_03_q024",
+      "question": {
+        "en": "Which event occurs immediately after the fusion of male and female gametes?",
+        "bn": "পুরুষ ও স্ত্রী গ্যামেটের মিলনের ঠিক পরে কোন ঘটনা ঘটে?",
+        "hi": "नर और मादा युग्मकों के संलयन के तुरंत बाद कौन-सी घटना होती है?"
+      },
+      "options": [
+        {
+          "en": "A zygote is formed",
+          "bn": "জাইগোট গঠিত হয়",
+          "hi": "युग्मनज बनता है"
+        },
+        {
+          "en": "A pollen grain is produced",
+          "bn": "পরাগরেণু উৎপন্ন হয়",
+          "hi": "परागकण बनता है"
+        },
+        {
+          "en": "The embryo becomes a fetus",
+          "bn": "ভ্রূণ ভ্রূণপিণ্ডে পরিণত হয়",
+          "hi": "भ्रूण भ्रूणपिंड में बदलता है"
+        },
+        {
+          "en": "Menstruation begins",
+          "bn": "ঋতুস্রাব শুরু হয়",
+          "hi": "मासिक धर्म शुरू होता है"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Fusion of the male and female gametes forms a single diploid cell called the zygote, which later divides to develop into an embryo.",
+        "bn": "পুরুষ ও স্ত্রী গ্যামেটের মিলনে একটি ডিপ্লয়েড কোষ জাইগোট তৈরি হয়, যা পরে বিভাজিত হয়ে ভ্রূণে পরিণত হয়।",
+        "hi": "नर और मादा युग्मकों के संलयन से एक द्विगुणित कोशिका युग्मनज बनती है, जो आगे विभाजित होकर भ्रूण बनाती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_03_q025",
+      "question": {
+        "en": "Which change in a flower occurs after fertilisation and contributes directly to seed formation?",
+        "bn": "নিষেকের পরে ফুলে কোন পরিবর্তনটি সরাসরি বীজ গঠনে সাহায্য করে?",
+        "hi": "निषेचन के बाद फूल में कौन-सा परिवर्तन सीधे बीज बनने में सहायता करता है?"
+      },
+      "options": [
+        {
+          "en": "The ovule develops into a seed",
+          "bn": "ডিম্বক বীজে পরিণত হয়",
+          "hi": "बीजांड बीज में विकसित होता है"
+        },
+        {
+          "en": "The anther develops into a seed",
+          "bn": "পরাগধানী বীজে পরিণত হয়",
+          "hi": "परागकोष बीज में विकसित होता है"
+        },
+        {
+          "en": "The stigma develops into a root",
+          "bn": "গর্ভমুণ্ড মূলে পরিণত হয়",
+          "hi": "वर्तिकाग्र जड़ में विकसित होता है"
+        },
+        {
+          "en": "The sepal develops into a pollen grain",
+          "bn": "বৃতি পরাগরেণুতে পরিণত হয়",
+          "hi": "बाह्यदल परागकण में विकसित होता है"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "After fertilisation, the ovule develops into a seed containing the developing embryo and stored food.",
+        "bn": "নিষেকের পরে ডিম্বক বীজে পরিণত হয়, যার মধ্যে বিকাশমান ভ্রূণ ও সঞ্চিত খাদ্য থাকে।",
+        "hi": "निषेचन के बाद बीजांड बीज में विकसित होता है, जिसमें विकसित होता हुआ भ्रूण और संचित भोजन होता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_03_q026",
+      "question": {
+        "en": "Which structure in the human male reproductive system stores sperm temporarily and allows them to mature?",
+        "bn": "মানুষের পুরুষ প্রজননতন্ত্রের কোন গঠনটি সাময়িকভাবে শুক্রাণু সঞ্চয় করে এবং তাদের পরিণত হতে সাহায্য করে?",
+        "hi": "मानव नर जनन तंत्र की कौन-सी संरचना शुक्राणुओं को अस्थायी रूप से संग्रहित करती है और उन्हें परिपक्व होने देती है?"
+      },
+      "options": [
+        {
+          "en": "Epididymis",
+          "bn": "এপিডিডাইমিস",
+          "hi": "अधिवृषण"
+        },
+        {
+          "en": "Prostate gland",
+          "bn": "প্রোস্টেট গ্রন্থি",
+          "hi": "प्रोस्टेट ग्रंथि"
+        },
+        {
+          "en": "Urethra",
+          "bn": "মূত্রনালি",
+          "hi": "मूत्रमार्ग"
+        },
+        {
+          "en": "Seminal vesicle",
+          "bn": "সেমিনাল ভেসিকল",
+          "hi": "शुक्राशय"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The epididymis is a coiled tube where sperm are stored temporarily and undergo maturation before moving into the sperm duct.",
+        "bn": "এপিডিডাইমিস একটি কুণ্ডলিত নালি, যেখানে শুক্রাণু সাময়িকভাবে সঞ্চিত থাকে এবং পরিণত হয়, তারপর শুক্রবাহী নালিতে যায়।",
+        "hi": "अधिवृषण एक कुंडलित नलिका है जहाँ शुक्राणु कुछ समय के लिए संग्रहित होते हैं और परिपक्व होते हैं, फिर शुक्रवाहिनी में जाते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_03_q027",
+      "question": {
+        "en": "Which statement correctly describes menstruation?",
+        "bn": "ঋতুস্রাব সম্পর্কে কোন বক্তব্যটি সঠিক?",
+        "hi": "मासिक धर्म के बारे में कौन-सा कथन सही है?"
+      },
+      "options": [
+        {
+          "en": "The uterine lining is shed when fertilisation does not occur",
+          "bn": "নিষেক না ঘটলে জরায়ুর আবরণ ঝরে যায়",
+          "hi": "निषेचन न होने पर गर्भाशय की आंतरिक परत झड़ जाती है"
+        },
+        {
+          "en": "The ovary releases an embryo every month",
+          "bn": "ডিম্বাশয় প্রতি মাসে একটি ভ্রূণ নির্গত করে",
+          "hi": "अंडाशय हर महीने एक भ्रूण छोड़ता है"
+        },
+        {
+          "en": "The placenta is removed from the uterus every month",
+          "bn": "প্রতি মাসে জরায়ু থেকে অমরা বের হয়ে যায়",
+          "hi": "हर महीने गर्भाशय से अपरा बाहर निकलता है"
+        },
+        {
+          "en": "Sperm are produced in the uterus every month",
+          "bn": "প্রতি মাসে জরায়ুতে শুক্রাণু উৎপন্ন হয়",
+          "hi": "हर महीने गर्भाशय में शुक्राणु बनते हैं"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "If fertilisation does not occur, the thickened uterine lining is no longer needed and is shed as menstrual flow.",
+        "bn": "নিষেক না ঘটলে ঘন হয়ে ওঠা জরায়ুর আবরণের আর প্রয়োজন থাকে না, তাই সেটি রক্তসহ ঋতুস্রাবের মাধ্যমে ঝরে যায়।",
+        "hi": "यदि निषेचन नहीं होता, तो गर्भाशय की मोटी हुई आंतरिक परत की आवश्यकता नहीं रहती और वह मासिक स्राव के रूप में झड़ जाती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_03_q028",
+      "question": {
+        "en": "Which method is most directly used to prevent pregnancy by creating a physical barrier between sperm and the female reproductive tract?",
+        "bn": "শুক্রাণু ও স্ত্রী প্রজননতন্ত্রের মধ্যে শারীরিক বাধা সৃষ্টি করে গর্ভধারণ প্রতিরোধ করতে কোন পদ্ধতি সরাসরি ব্যবহৃত হয়?",
+        "hi": "शुक्राणु और मादा जनन तंत्र के बीच भौतिक अवरोध बनाकर गर्भधारण रोकने के लिए किस विधि का सीधे उपयोग किया जाता है?"
+      },
+      "options": [
+        {
+          "en": "Condom",
+          "bn": "কনডোম",
+          "hi": "कंडोम"
+        },
+        {
+          "en": "Oral contraceptive pill",
+          "bn": "মৌখিক গর্ভনিরোধক বড়ি",
+          "hi": "मौखिक गर्भनिरोधक गोली"
+        },
+        {
+          "en": "Copper-T",
+          "bn": "কপার-টি",
+          "hi": "कॉपर-टी"
+        },
+        {
+          "en": "Hormonal injection",
+          "bn": "হরমোনাল ইনজেকশন",
+          "hi": "हार्मोनल इंजेक्शन"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "A condom acts as a physical barrier that prevents sperm from entering the female reproductive tract and thereby reduces the chance of fertilisation.",
+        "bn": "কনডোম একটি শারীরিক বাধা হিসেবে কাজ করে, ফলে শুক্রাণু স্ত্রী প্রজননতন্ত্রে প্রবেশ করতে পারে না এবং নিষেকের সম্ভাবনা কমে।",
+        "hi": "कंडोम एक भौतिक अवरोध के रूप में काम करता है, जिससे शुक्राणु मादा जनन तंत्र में प्रवेश नहीं कर पाते और निषेचन की संभावना घटती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_03_q029",
+      "question": {
+        "en": "Why is sexual reproduction generally slower than asexual reproduction?",
+        "bn": "অযৌন প্রজননের তুলনায় যৌন প্রজনন সাধারণত ধীর কেন?",
+        "hi": "अलैंगिक जनन की तुलना में लैंगिक जनन सामान्यतः धीमा क्यों होता है?"
+      },
+      "options": [
+        {
+          "en": "It involves formation and fusion of specialised gametes",
+          "bn": "এতে বিশেষায়িত গ্যামেটের গঠন ও মিলন ঘটে",
+          "hi": "इसमें विशेषीकृत युग्मकों का निर्माण और संलयन होता है"
+        },
+        {
+          "en": "It never involves cell division",
+          "bn": "এতে কখনও কোষ বিভাজন ঘটে না",
+          "hi": "इसमें कभी कोशिका विभाजन नहीं होता"
+        },
+        {
+          "en": "It always produces only one offspring",
+          "bn": "এতে সবসময় মাত্র একটি অপত্য সৃষ্টি হয়",
+          "hi": "इसमें हमेशा केवल एक संतति बनती है"
+        },
+        {
+          "en": "It does not require any genetic material",
+          "bn": "এতে কোনো জিনগত বস্তুর প্রয়োজন হয় না",
+          "hi": "इसमें किसी आनुवंशिक पदार्थ की आवश्यकता नहीं होती"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Sexual reproduction requires the production of specialised male and female gametes and their fusion, adding steps that are generally absent in asexual reproduction.",
+        "bn": "যৌন প্রজননে বিশেষায়িত পুরুষ ও স্ত্রী গ্যামেট তৈরি এবং তাদের মিলন প্রয়োজন, তাই অযৌন প্রজননের তুলনায় এতে অতিরিক্ত ধাপ থাকে।",
+        "hi": "लैंगिक जनन में विशेषीकृत नर और मादा युग्मकों का निर्माण तथा उनका संलयन आवश्यक होता है, इसलिए इसमें अलैंगिक जनन की तुलना में अतिरिक्त चरण होते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_03_q030",
+      "question": {
+        "en": "Which practice is most appropriate for maintaining reproductive health during adolescence?",
+        "bn": "কৈশোরে প্রজনন স্বাস্থ্য বজায় রাখার জন্য কোন অভ্যাসটি সবচেয়ে উপযুক্ত?",
+        "hi": "किशोरावस्था में प्रजनन स्वास्थ्य बनाए रखने के लिए कौन-सी आदत सबसे उपयुक्त है?"
+      },
+      "options": [
+        {
+          "en": "Maintaining personal hygiene and seeking reliable health information",
+          "bn": "ব্যক্তিগত পরিচ্ছন্নতা বজায় রাখা এবং নির্ভরযোগ্য স্বাস্থ্য-তথ্য গ্রহণ করা",
+          "hi": "व्यक्तिगत स्वच्छता बनाए रखना और विश्वसनीय स्वास्थ्य जानकारी प्राप्त करना"
+        },
+        {
+          "en": "Avoiding all physical activity",
+          "bn": "সব ধরনের শারীরিক কার্যকলাপ এড়িয়ে চলা",
+          "hi": "सभी प्रकार की शारीरिक गतिविधियों से बचना"
+        },
+        {
+          "en": "Using medicines without medical advice",
+          "bn": "চিকিৎসকের পরামর্শ ছাড়া ওষুধ ব্যবহার করা",
+          "hi": "चिकित्सकीय सलाह के बिना दवाओं का उपयोग करना"
+        },
+        {
+          "en": "Ignoring unusual reproductive health symptoms",
+          "bn": "প্রজনন স্বাস্থ্যসংক্রান্ত অস্বাভাবিক উপসর্গ উপেক্ষা করা",
+          "hi": "प्रजनन स्वास्थ्य से जुड़े असामान्य लक्षणों को अनदेखा करना"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Good hygiene and accurate health information help adolescents make informed choices and recognise when professional medical advice is needed.",
+        "bn": "ভালো পরিচ্ছন্নতা ও সঠিক স্বাস্থ্য-তথ্য কৈশোরে সচেতন সিদ্ধান্ত নিতে এবং প্রয়োজনে চিকিৎসকের পরামর্শ নিতে সাহায্য করে।",
+        "hi": "अच्छी स्वच्छता और सही स्वास्थ्य जानकारी किशोरों को समझदारी से निर्णय लेने तथा आवश्यकता होने पर चिकित्सकीय सलाह लेने में सहायता करती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_03_q031",
+      "question": {
+        "en": "Which plant reproduces vegetative propagation using its leaves?",
+        "bn": "কোন উদ্ভিদ পাতার মাধ্যমে অঙ্গজ প্রজনন সম্পন্ন করে?",
+        "hi": "कौन सा पौधा अपनी पत्तियों के माध्यम से कायिक प्रवर्धन करता है?"
+      },
+      "options": [
+        {
+          "en": "Rose",
+          "bn": "গোলাপ",
+          "hi": "गुलाब"
+        },
+        {
+          "en": "Bryophyllum",
+          "bn": "পাথরকুচি",
+          "hi": "ब्रायोफिलम"
+        },
+        {
+          "en": "Money plant",
+          "bn": "মানি প্ল্যান্ট",
+          "hi": "मनी प्लांट"
+        },
+        {
+          "en": "Potato",
+          "bn": "আলু",
+          "hi": "आलू"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "Bryophyllum produces adventitious buds along its leaf margins that drop to the soil and develop into new plants.",
+        "bn": "পাথরকুচি পাতার খাঁজে অস্থানিক মুকুল সৃষ্টি হয় যা মাটিতে পড়ে নতুন উদ্ভিদ উৎপন্ন করে।",
+        "hi": "ब्रायोफिलम की पत्तियों के किनारों पर अपस्थानिक कलिकाएं बनती हैं जो मिट्टी में गिरकर नए पौधे बनाती हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_03_q032",
+      "question": {
+        "en": "Which structure in Rhizopus contains spores for asexual reproduction?",
+        "bn": "রাইজোপাসের কোন অঙ্গটিতে অসং his প্রজননের জন্য রেণু গঠিত হয়?",
+        "hi": "राइजोपस की किस संरचना में अलैंगिक जनन के लिए बीजाणु होते हैं?"
+      },
+      "options": [
+        {
+          "en": "Sporangium",
+          "bn": "স্পোরাঞ্জিয়াম (রেণুস্থলী)",
+          "hi": "बीजाणुधानी (Sporangium)"
+        },
+        {
+          "en": "Hypha",
+          "bn": "হাইফা (ছত্রাকসূত্র)",
+          "hi": "कवकतंतु (Hypha)"
+        },
+        {
+          "en": "Mycelium",
+          "bn": "মাইসেলিয়াম",
+          "hi": "मायसेलियम"
+        },
+        {
+          "en": "Rhizoid",
+          "bn": "রাইজয়েড",
+          "hi": "राइजॉयड"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Spores develop inside the blob-like structures called sporangia, which burst open upon maturity to release them.",
+        "bn": "স্পোরাঞ্জিয়াম বা রেণুস্থলীর ভেতরে রেণু গঠিত হয় এবং পরিপক্ক হলে থলিটি ফেটে রেণু নির্গত হয়।",
+        "hi": "बीजाणुधानी (Sporangium) नामक संरचना के भीतर बीजाणु बनते हैं, जो परिपक्व होने पर फटकर बाहर निकल जाते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_03_q033",
+      "question": {
+        "en": "What is the term for the female reproductive unit of a flower consisting of stigma, style, and ovary?",
+        "bn": "গর্ভমুণ্ড, গর্ভদণ্ড ও গর্ভাশয় নিয়ে গঠিত ফুলের স্ত্রী জনন অঙ্গটিকে কী বলে?",
+        "hi": "वर्तिकाग्र, वर्तिका और अंडाशय से मिलकर बने फूल के मादा जनन अंग को क्या कहते हैं?"
+      },
+      "options": [
+        {
+          "en": "Stamen",
+          "bn": "পুংকেশর",
+          "hi": "पुंकेसर"
+        },
+        {
+          "en": "Carpel",
+          "bn": "গর্ভকেশর",
+          "hi": "स्त्रीकेसर (Carpel)"
+        },
+        {
+          "en": "Calyx",
+          "bn": "বৃতি",
+          "hi": "बाह्यदलपुंज"
+        },
+        {
+          "en": "Corolla",
+          "bn": "দলমণ্ডল",
+          "hi": "दलपुंज"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "The carpel (or pistil) is the female reproductive organ comprising the sticky stigma, elongated style, and swollen basal ovary.",
+        "bn": "গর্ভকেশর হলো স্ত্রী জনন অঙ্গ যা গর্ভমুণ্ড, লম্বা গর্ভদণ্ড এবং স্ফীত গর্ভাশয় দ্বারা গঠিত।",
+        "hi": "स्त्रीकेसर (Carpel) मादा जननांग है जो चिपचिपे वर्तिकाग्र, लंबी वर्तिका और निचले फूले हुए अंडाशय से बना होता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_03_q034",
+      "question": {
+        "en": "Where are the testes located in the human male body?",
+        "bn": "মানব পুরুষের শরীরে শুক্রাশয় কোথায় অবস্থিত?",
+        "hi": "मानव पुरुष शरीर में वृषण कहाँ स्थित होते हैं?"
+      },
+      "options": [
+        {
+          "en": "Inside the abdominal cavity",
+          "bn": "উদর গহ্বরের ভেতরে",
+          "hi": "उदर गुहा के अंदर"
+        },
+        {
+          "en": "In the scrotum outside the abdominal cavity",
+          "bn": "উদর গহ্বারের বাইরে স্ক্রোটাম বা শুক্রাশয় থলিতে",
+          "hi": "उदर गुहा के बाहर वृषण कोष (Scrotum) में"
+        },
+        {
+          "en": "Inside the prostate gland",
+          "bn": "প্রোস্টেট গ্রন্থির ভেতরে",
+          "hi": "प्रोस्टेट ग्रंथि के अंदर"
+        },
+        {
+          "en": "Attached to the urinary bladder",
+          "bn": "মূত্রাশয়ের সাথে যুক্ত অবস্থায়",
+          "hi": "मूत्राशय से जुड़े हुए"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "Testes lie outside the abdominal cavity in the scrotum because sperm formation requires a temperature 2-2.5 °C lower than body temperature.",
+        "bn": "শুক্রাণু উৎপাদনের জন্য দেহের স্বাভাবিক উষ্ণতার চেয়ে কম তাপমাত্রার প্রয়োজন হওয়ায় শুক্রাশয় উদর গহ্বারের বাইরে স্ক্রোটামে থাকে।",
+        "hi": "शुक्राणु निर्माण के लिए शरीर के तापमान से कम तापमान की आवश्यकता होती है, इसलिए वृषण उदर गुहा के बाहर वृषण कोष में स्थित होते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_03_q035",
+      "question": {
+        "en": "Which surgical method of contraception involves blocking or cutting the vas deferens?",
+        "bn": "কোন অস্ত্রোপচার নির্ভর গর্ভনিরোধক পদ্ধতিতে ভাস ডিফারেন্স কেটে বা বেঁধে দেওয়া হয়?",
+        "hi": "गर्भनिरोध की किस शल्य चिकित्सा (सर्जिकल) विधि में शुक्रवाहिनियों (Vas deferens) को काटा या बांधा जाता है?"
+      },
+      "options": [
+        {
+          "en": "Tubectomy",
+          "bn": "টিউবেকটমি",
+          "hi": "ट्यूबेक्टॉमी"
+        },
+        {
+          "en": "Vasectomy",
+          "bn": "ভ্যাসেকটমি",
+          "hi": "वैसेक्टॉमी"
+        },
+        {
+          "en": "Hysterectomy",
+          "bn": "হিস্টেরেকটমি",
+          "hi": "हिस्टरेक्टॉमी"
+        },
+        {
+          "en": "Laparoscopy",
+          "bn": "ল্যাপারোস্কোপি",
+          "hi": "लैप्रोस्कोपी"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "Vasectomy involves cutting or tying the vas deferens in males to prevent sperm transfer during ejaculation.",
+        "bn": "ভ্যাসেকটমি হলো পুরুষদের ক্ষেত্রে ভাস ডিফারেন্স কেটে বা বেঁধে দিয়ে শুক্রাণু প্রবাহ বন্ধ করার পদ্ধতি।",
+        "hi": "वैसेक्टॉमी में पुरुषों की शुक्रवाहिनियों (Vas deferens) को काट या बांध दिया जाता है ताकि शुक्राणुओं का स्थानांतरण रुक सके।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_03_q036",
+      "question": {
+        "en": "What is the ploidy level of an endosperm nucleus formed after double fertilisation in angiosperms?",
+        "bn": "গুপ্তবীজী উদ্ভিদে দ্বিনিষেকের পর গঠিত শস্য নিউক্লিয়াসের প্লায়েডি মাত্রা কত?",
+        "hi": "आवृतबीजी (Angiosperms) पौधों में दोहरा निषेचन के बाद बने भ्रूणपोष (Endosperm) केंद्रक की गुणसूत्र संख्या (Ploidy) क्या होती है?"
+      },
+      "options": [
+        {
+          "en": "Haploid (n)",
+          "bn": "হ্যাপ্লয়েড (n)",
+          "hi": "अगुणित (n)"
+        },
+        {
+          "en": "Diploid (2n)",
+          "bn": "ডিপ্লয়েড (2n)",
+          "hi": "द्विगुणित (2n)"
+        },
+        {
+          "en": "Triploid (3n)",
+          "bn": "ট্রিপ্লয়েড (3n)",
+          "hi": "त्रिगुणित (3n)"
+        },
+        {
+          "en": "Tetraploid (4n)",
+          "bn": "ট্রেট্রাপ্লয়েড (4n)",
+          "hi": "चतुर्गुणित (4n)"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "en": "Triple fusion involves the fusion of one haploid male gamete (n) with two polar nuclei (2n) to form a triploid (3n) endosperm nucleus.",
+        "bn": "একটি হ্যাপ্লয়েড পুংরেণু (n) এবং দুটি মেরু নিউক্লিয়াসের (2n) মিলনে ট্রিপ্লয়েড (3n) শস্য নিউক্লিয়াস গঠিত হয়।",
+        "hi": "त्रिसंलयन में एक अगुणित नर युग्मक (n) दो ध्रुवीय केंद्रकों (2n) के साथ संलयित होकर त्रिगुणित (3n) भ्रूणपोष केंद्रक बनाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_03_q037",
+      "question": {
+        "en": "Which sequence correctly shows the pathway of sperm transport in the human male reproductive system?",
+        "bn": "মানব পুং জননতন্ত্রে শুক্রাণু পরিবহনের সঠিক পথ কোনটি?",
+        "hi": "मानव पुरुष जनन तंत्र में शुक्राणु परिवहन का सही मार्ग कौन सा है?"
+      },
+      "options": [
+        {
+          "en": "Testis -> Vas deferens -> Urethra",
+          "bn": "শুক্রাশয় -> ভাস ডিফারেন্স -> মূত্রমার্গ",
+          "hi": "वृषण -> शुक्रवाहिनी -> मूत्रमार्ग"
+        },
+        {
+          "en": "Testis -> Ureter -> Urethra",
+          "bn": "শুক্রাশয় -> ইউরেটার -> মূত্রমার্গ",
+          "hi": "वृषण -> मूत्रवाहिनी -> मूत्रमार्ग"
+        },
+        {
+          "en": "Vas deferens -> Testis -> Urethra",
+          "bn": "ভাস ডিফারেন্স -> শুক্রাশয় -> মূত্রমার্গ",
+          "hi": "शुक्रवाहिनी -> वृषण -> मूत्रमार्ग"
+        },
+        {
+          "en": "Testis -> Urethra -> Vas deferens",
+          "bn": "শুক্রাশয় -> মূত্রমার্গ -> ভাস ডিফারেন্স",
+          "hi": "वृषण -> मूत्रमार्ग -> शुक्रवाहिनी"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Sperm formed in the testis travels through the vas deferens, joins the duct from the bladder, and exits via the urethra.",
+        "bn": "শুক্রাশয়ে তৈরি শুক্রাণু ভাস ডিফারেন্সের মাধ্যমে বাহিত হয়ে মূত্রমার্গে পৌঁছায় এবং বাইরে নির্গত হয়।",
+        "hi": "वृषण में बने शुक्राणु शुक्रवाहिनी के माध्यम से यात्रा करते हैं और फिर मूत्रमार्ग (Urethra) से होकर बाहर निकलते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_03_q038",
+      "question": {
+        "en": "Which secretions provide fluid medium and nutrition to sperm during ejaculation?",
+        "bn": "স্খলনের সময় শুক্রাণুকে পুষ্টি এবং তরল মাধ্যম প্রদান করে কোন গ্রন্থিগুলির ক্ষরণ?",
+        "hi": "स्खलन के दौरान शुक्राणुओं को पोषण और तरल माध्यम कौन से स्राव प्रदान करते हैं?"
+      },
+      "options": [
+        {
+          "en": "Adrenal and Thyroid glands",
+          "bn": "এডিনাল এবং থাইরয়েড গ্রন্থি",
+          "hi": "एड्रिनल और थायराइड ग्रंथियां"
+        },
+        {
+          "en": "Prostate gland and Seminal vesicles",
+          "bn": "প্রোস্টেট গ্রন্থি এবং সেমিনাল ভেসিকল",
+          "hi": "प्रोस्टेट ग्रंथि और शुक्राशय (Seminal vesicles)"
+        },
+        {
+          "en": "Pituitary gland and Ovary",
+          "bn": "পিটুইটারি গ্রন্থি এবং ডিম্বাশয়",
+          "hi": "पिट्यूटरी ग्रंथि और अंडाशय"
+        },
+        {
+          "en": "Liver and Pancreas",
+          "bn": "যকৃৎ এবং অগ্ন্যাশয়",
+          "hi": "यकृत और अग्न्याशय"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "Glands like the prostate and seminal vesicles add fluid secretions to sperm, making transport easier and nourishing them.",
+        "bn": "প্রোস্টেট গ্রন্থি এবং সেমিনাল ভেসিকলের তরল ক্ষরণ শুক্রাণুর চলাচল সহজ করে এবং পুষ্টি জোগায়।",
+        "hi": "प्रोस्टेट ग्रंथि और शुक्राशय के स्राव शुक्राणुओं को तैरने के लिए तरल माध्यम और पोषण प्रदान करते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_03_q039",
+      "question": {
+        "en": "Which viral infection is transmitted through sexual contact and attacks the immune system?",
+        "bn": "কোন ভাইরাসঘটিত সংক্রমণটি যৌন সংসর্গের মাধ্যমে বাহিত হয় এবং অনাক্রম্যতা তন্ত্রকে আক্রমণ করে?",
+        "hi": "कौन सा वायरल संक्रमण लैंगिक संपर्क से फैलता है और प्रतिरक्षा प्रणाली पर हमला करता है?"
+      },
+      "options": [
+        {
+          "en": "Gonorrhoea",
+          "bn": "গোনোরিয়া",
+          "hi": "गोनोरिया"
+        },
+        {
+          "en": "Syphilis",
+          "bn": "সিফিলিস",
+          "hi": "सिफलिस"
+        },
+        {
+          "en": "HIV-AIDS",
+          "bn": "এইচআইভি-এইডস",
+          "hi": "एचआईवी-एड्स (HIV-AIDS)"
+        },
+        {
+          "en": "Tuberculosis",
+          "bn": "যক্ষ্মা",
+          "hi": "तपेदिक (TB)"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "en": "HIV is a viral sexually transmitted infection that causes AIDS by targeting the human immune system, whereas Gonorrhoea and Syphilis are bacterial.",
+        "bn": "এইচআইভি একটি ভাইরাসজনিত যৌনরোগ যা অনাক্রম্যতা ধ্বংস করে এইডস ঘটায়, অপরদিকে গোনোরিয়া ও সিফিলিস হলো ব্যাকটেরিয়াঘটিত।",
+        "hi": "एचआईवी एक विषाणुजनित (वायरल) लैंगिक संचरित रोग है जो प्रतिरक्षा प्रणाली को नष्ट करता है, जबकि गोनोरिया और सिफलिस जीवाणुजनित (बैक्टिरियल) हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "bio_ch_03_q040",
+      "question": {
+        "en": "What is the function of copper-T when inserted into the uterus?",
+        "bn": "জরায়ুতে কপার-টি (Copper-T) স্থাপন করলে এটি কীভাবে গর্ভনিরোধ করে?",
+        "hi": "गर्भाशय में कॉपर-टी (Copper-T) लगाने पर यह गर्भनिरोधन का कार्य कैसे करती है?"
+      },
+      "options": [
+        {
+          "en": "It stops the production of eggs in the ovary.",
+          "bn": "এটি ডিম্বাশয়ে ডিম্বাণু উৎপাদন বন্ধ করে।",
+          "hi": "यह अंडाशय में अंडे के निर्माण को रोकती है।"
+        },
+        {
+          "en": "It prevents fertilisation and implantation in the uterus.",
+          "bn": "এটি নিষেক ও জরায়ুতে ভ্রূণের রোপণ প্রতিরোধ করে।",
+          "hi": "यह निषेचन और गर्भाशय में भ्रूण के रोपण को रोकती है।"
+        },
+        {
+          "en": "It blocks the ovulation process permanently.",
+          "bn": "এটি স্থায়ীভাবে ডিম্বপাত বন্ধ করে দেয়।",
+          "hi": "यह अंडोत्सर्ग (Ovulation) को स्थायी रूप से रोक देती है।"
+        },
+        {
+          "en": "It prevents secondary sexual characteristics from developing.",
+          "bn": "এটি গৌণ যৌন বৈশিষ্ট্য প্রকাশে বাধা দেয়।",
+          "hi": "यह द्वितीयक लैंगिक लक्षणों के विकास को रोकती है।"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "Copper-T acts as an intra-uterine device (IUD) that suppresses sperm motility and prevents fertilisation or placement of the embryo.",
+        "bn": "কপার-টি একটি আইইউডি (IUD) যা জরায়ুর অভ্যন্তরীণ পরিবেশ পরিবর্তিত করে শুক্রাণুর গতিশীলতা কমায় ও নিষেক বা রোপণে বাধা সৃষ্টি করে।",
+        "hi": "कॉपर-टी एक इंट्रा-यूटेराइन डिवाइस (IUD) है जो शुक्राणुओं की गतिशीलता को कम करती है और निषेचन या भ्रूण के रोपण को रोकती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
     }
   ]
 }

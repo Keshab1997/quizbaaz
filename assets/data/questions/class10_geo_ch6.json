@@ -6,5 +6,386 @@
     "hi": "विनिर्माण उद्योग"
   },
   "class_standard": "Class 10",
-  "questions": []
+  "questions": [
+    {
+      "id": "geo_ch_06_q001",
+      "question": {
+        "en": "Which of the following is a basic industry that supplies raw material to other industries?",
+        "bn": "নিচের কোনটি এমন একটি মৌলিক শিল্প যা অন্যান্য শিল্পকে কাঁচামাল সরবরাহ করে?",
+        "hi": "निम्नलिखित में से कौन-सा ऐसा आधारभूत उद्योग है जो अन्य उद्योगों को कच्चा माल प्रदान करता है?"
+      },
+      "options": [
+        {
+          "en": "Iron and steel industry",
+          "bn": "লোহা ও ইস্পাত শিল্প",
+          "hi": "लोहा और इस्पात उद्योग"
+        },
+        {
+          "en": "Toy industry",
+          "bn": "খেলনা শিল্প",
+          "hi": "खिलौना उद्योग"
+        },
+        {
+          "en": "Biscuit industry",
+          "bn": "বিস্কুট শিল্প",
+          "hi": "बिस्कुट उद्योग"
+        },
+        {
+          "en": "Garment industry",
+          "bn": "পোশাক শিল্প",
+          "hi": "वस्त्र उद्योग"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The iron and steel industry provides essential materials such as steel to many other industries, so it is a basic industry.",
+        "bn": "লোহা ও ইস্পাত শিল্প অন্যান্য বহু শিল্পকে ইস্পাতের মতো প্রয়োজনীয় উপাদান সরবরাহ করে, তাই এটি একটি মৌলিক শিল্প।",
+        "hi": "लोहा और इस्पात उद्योग अनेक अन्य उद्योगों को इस्पात जैसी आवश्यक सामग्री प्रदान करता है, इसलिए यह एक आधारभूत उद्योग है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "geo_ch_06_q002",
+      "question": {
+        "en": "Which factor is most important for locating a sugar industry near sugarcane-growing areas?",
+        "bn": "আখ উৎপাদনকারী অঞ্চলের কাছে চিনি শিল্প স্থাপনের ক্ষেত্রে কোন কারণটি সবচেয়ে গুরুত্বপূর্ণ?",
+        "hi": "गन्ना उत्पादक क्षेत्रों के पास चीनी उद्योग स्थापित करने में कौन-सा कारक सबसे महत्वपूर्ण है?"
+      },
+      "options": [
+        {
+          "en": "Perishability of sugarcane",
+          "bn": "আখের পচনশীলতা",
+          "hi": "गन्ने की शीघ्र खराब होने की प्रवृत्ति"
+        },
+        {
+          "en": "Availability of skilled engineers",
+          "bn": "দক্ষ প্রকৌশলীর প্রাপ্যতা",
+          "hi": "कुशल अभियंताओं की उपलब्धता"
+        },
+        {
+          "en": "Availability of petroleum",
+          "bn": "পেট্রোলিয়ামের প্রাপ্যতা",
+          "hi": "पेट्रोलियम की उपलब्धता"
+        },
+        {
+          "en": "Proximity to seaports",
+          "bn": "সমুদ্রবন্দরের নৈকট্য",
+          "hi": "समुद्री बंदरगाहों की निकटता"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Sugarcane is perishable and its sucrose content falls after harvesting, so sugar mills are generally located close to sugarcane-producing areas.",
+        "bn": "আখ পচনশীল এবং কাটার পর এতে সুক্রোজের পরিমাণ কমে যায়, তাই সাধারণত আখ উৎপাদনকারী অঞ্চলের কাছে চিনি কল স্থাপন করা হয়।",
+        "hi": "गन्ना शीघ्र खराब होता है और कटाई के बाद उसमें सुक्रोज की मात्रा घटती है, इसलिए चीनी मिलें सामान्यतः गन्ना उत्पादक क्षेत्रों के पास लगाई जाती हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "geo_ch_06_q003",
+      "question": {
+        "en": "Which industry is known as a major consumer of water and producer of wastewater?",
+        "bn": "কোন শিল্পকে জলের একটি প্রধান ব্যবহারকারী এবং বর্জ্যজল উৎপাদক হিসেবে ধরা হয়?",
+        "hi": "कौन-सा उद्योग जल का प्रमुख उपभोक्ता और अपशिष्ट जल का उत्पादक माना जाता है?"
+      },
+      "options": [
+        {
+          "en": "Textile industry",
+          "bn": "বস্ত্র শিল্প",
+          "hi": "वस्त्र उद्योग"
+        },
+        {
+          "en": "Information technology industry",
+          "bn": "তথ্যপ্রযুক্তি শিল্প",
+          "hi": "सूचना प्रौद्योगिकी उद्योग"
+        },
+        {
+          "en": "Handicraft industry",
+          "bn": "হস্তশিল্প শিল্প",
+          "hi": "हस्तशिल्प उद्योग"
+        },
+        {
+          "en": "Software industry",
+          "bn": "সফটওয়্যার শিল্প",
+          "hi": "सॉफ्टवेयर उद्योग"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The textile industry uses large quantities of water in processes such as dyeing and finishing, producing wastewater that can pollute water bodies.",
+        "bn": "বস্ত্র শিল্পে রং করা ও প্রক্রিয়াকরণের মতো কাজে প্রচুর জল লাগে এবং উৎপন্ন বর্জ্যজল জলাশয়কে দূষিত করতে পারে।",
+        "hi": "वस्त्र उद्योग में रंगाई और परिष्करण जैसी प्रक्रियाओं में बहुत अधिक जल लगता है तथा उत्पन्न अपशिष्ट जल जल स्रोतों को प्रदूषित कर सकता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "geo_ch_06_q004",
+      "question": {
+        "en": "Why are many industries located near transport routes?",
+        "bn": "অনেক শিল্প পরিবহণ পথের কাছে স্থাপিত হয় কেন?",
+        "hi": "अनेक उद्योग परिवहन मार्गों के पास क्यों स्थापित किए जाते हैं?"
+      },
+      "options": [
+        {
+          "en": "To reduce the cost of moving raw materials and finished goods",
+          "bn": "কাঁচামাল ও উৎপাদিত পণ্য পরিবহণের খরচ কমানোর জন্য",
+          "hi": "कच्चे माल और तैयार माल के परिवहन की लागत कम करने के लिए"
+        },
+        {
+          "en": "To avoid access to markets",
+          "bn": "বাজারে প্রবেশ এড়ানোর জন্য",
+          "hi": "बाजार तक पहुँच से बचने के लिए"
+        },
+        {
+          "en": "To increase the distance from raw materials",
+          "bn": "কাঁচামাল থেকে দূরত্ব বাড়ানোর জন্য",
+          "hi": "कच्चे माल से दूरी बढ़ाने के लिए"
+        },
+        {
+          "en": "To prevent movement of workers",
+          "bn": "শ্রমিকদের যাতায়াত বন্ধ করার জন্য",
+          "hi": "श्रमिकों की आवाजाही रोकने के लिए"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Good transport connectivity lowers the time and cost of carrying raw materials to factories and finished goods to markets.",
+        "bn": "উন্নত পরিবহণ ব্যবস্থা কারখানায় কাঁচামাল এবং বাজারে উৎপাদিত পণ্য নিয়ে যাওয়ার সময় ও খরচ কমায়।",
+        "hi": "अच्छी परिवहन सुविधा कारखानों तक कच्चा माल और बाजारों तक तैयार माल पहुँचाने में समय तथा लागत कम करती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "geo_ch_06_q005",
+      "question": {
+        "en": "Which industry is closely associated with the availability of petroleum as its main raw material?",
+        "bn": "কোন শিল্প প্রধান কাঁচামাল হিসেবে পেট্রোলিয়ামের প্রাপ্যতার সঙ্গে ঘনিষ্ঠভাবে যুক্ত?",
+        "hi": "कौन-सा उद्योग मुख्य कच्चे माल के रूप में पेट्रोलियम की उपलब्धता से निकटता से जुड़ा है?"
+      },
+      "options": [
+        {
+          "en": "Petrochemical industry",
+          "bn": "পেট্রোরসায়ন শিল্প",
+          "hi": "पेट्रो-रसायन उद्योग"
+        },
+        {
+          "en": "Jute industry",
+          "bn": "পাট শিল্প",
+          "hi": "जूट उद्योग"
+        },
+        {
+          "en": "Cement industry",
+          "bn": "সিমেন্ট শিল্প",
+          "hi": "सीमेंट उद्योग"
+        },
+        {
+          "en": "Sugar industry",
+          "bn": "চিনি শিল্প",
+          "hi": "चीनी उद्योग"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The petrochemical industry uses petroleum and petroleum products as important raw materials for manufacturing many chemical products.",
+        "bn": "পেট্রোরসায়ন শিল্প বহু রাসায়নিক পণ্য তৈরিতে পেট্রোলিয়াম ও পেট্রোলিয়ামজাত পদার্থকে গুরুত্বপূর্ণ কাঁচামাল হিসেবে ব্যবহার করে।",
+        "hi": "पेट्रो-रसायन उद्योग अनेक रासायनिक उत्पाद बनाने में पेट्रोलियम और पेट्रोलियम उत्पादों को महत्वपूर्ण कच्चे माल के रूप में उपयोग करता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "geo_ch_06_q006",
+      "question": {
+        "en": "Which type of pollution is mainly caused by untreated industrial effluents discharged into rivers?",
+        "bn": "শোধন না করা শিল্পবর্জ্য নদীতে ফেলার ফলে প্রধানত কোন ধরনের দূষণ ঘটে?",
+        "hi": "बिना उपचारित औद्योगिक अपशिष्ट को नदियों में छोड़ने से मुख्य रूप से किस प्रकार का प्रदूषण होता है?"
+      },
+      "options": [
+        {
+          "en": "Water pollution",
+          "bn": "জল দূষণ",
+          "hi": "जल प्रदूषण"
+        },
+        {
+          "en": "Noise pollution",
+          "bn": "শব্দ দূষণ",
+          "hi": "ध्वनि प्रदूषण"
+        },
+        {
+          "en": "Soil erosion",
+          "bn": "মৃত্তিকা ক্ষয়",
+          "hi": "मृदा अपरदन"
+        },
+        {
+          "en": "Light pollution",
+          "bn": "আলোক দূষণ",
+          "hi": "प्रकाश प्रदूषण"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Industrial effluents containing chemicals and other wastes contaminate rivers when discharged without treatment, causing water pollution.",
+        "bn": "রাসায়নিক ও অন্যান্য বর্জ্যযুক্ত শিল্পবর্জ্য শোধন না করে নদীতে ফেললে নদীর জল দূষিত হয়, ফলে জল দূষণ ঘটে।",
+        "hi": "रसायनों और अन्य अपशिष्टों वाले औद्योगिक बहिःस्राव को बिना उपचार नदियों में छोड़ने से जल दूषित होता है और जल प्रदूषण होता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "geo_ch_06_q007",
+      "question": {
+        "en": "Which of the following is a major source of air pollution from industries?",
+        "bn": "নিচের কোনটি শিল্প থেকে বায়ু দূষণের একটি প্রধান উৎস?",
+        "hi": "निम्नलिखित में से कौन-सा उद्योगों से वायु प्रदूषण का एक प्रमुख स्रोत है?"
+      },
+      "options": [
+        {
+          "en": "Smoke and harmful gases from factories",
+          "bn": "কারখানা থেকে নির্গত ধোঁয়া ও ক্ষতিকর গ্যাস",
+          "hi": "कारखानों से निकलने वाला धुआँ और हानिकारक गैसें"
+        },
+        {
+          "en": "Rainwater harvesting",
+          "bn": "বৃষ্টির জল সংরক্ষণ",
+          "hi": "वर्षा जल संचयन"
+        },
+        {
+          "en": "Recycling of industrial waste",
+          "bn": "শিল্পবর্জ্যের পুনর্ব্যবহার",
+          "hi": "औद्योगिक अपशिष्ट का पुनर्चक्रण"
+        },
+        {
+          "en": "Treatment of wastewater",
+          "bn": "বর্জ্যজলের শোধন",
+          "hi": "अपशिष्ट जल का उपचार"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Factories may release smoke, dust and harmful gases into the atmosphere, which deteriorate air quality and cause air pollution.",
+        "bn": "কারখানা থেকে ধোঁয়া, ধূলিকণা ও ক্ষতিকর গ্যাস বায়ুমণ্ডলে ছড়িয়ে পড়তে পারে, যা বায়ুর গুণমান নষ্ট করে এবং বায়ু দূষণ ঘটায়।",
+        "hi": "कारखानों से धुआँ, धूल और हानिकारक गैसें वायुमंडल में फैल सकती हैं, जिससे वायु की गुणवत्ता खराब होती है और वायु प्रदूषण होता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "geo_ch_06_q008",
+      "question": {
+        "en": "Which factor encourages industries to locate near large urban markets?",
+        "bn": "কোন কারণ শিল্পকে বৃহৎ শহুরে বাজারের কাছে স্থাপনে উৎসাহিত করে?",
+        "hi": "कौन-सा कारक उद्योगों को बड़े शहरी बाजारों के पास स्थापित होने के लिए प्रोत्साहित करता है?"
+      },
+      "options": [
+        {
+          "en": "Easy access to consumers",
+          "bn": "ভোক্তাদের কাছে সহজে পৌঁছানোর সুবিধা",
+          "hi": "उपभोक्ताओं तक आसान पहुँच"
+        },
+        {
+          "en": "Complete absence of transport",
+          "bn": "পরিবহণের সম্পূর্ণ অনুপস্থিতি",
+          "hi": "परिवहन का पूर्ण अभाव"
+        },
+        {
+          "en": "Lack of labour",
+          "bn": "শ্রমিকের অভাব",
+          "hi": "श्रम की कमी"
+        },
+        {
+          "en": "Distance from markets",
+          "bn": "বাজার থেকে দূরত্ব",
+          "hi": "बाजारों से दूरी"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Large urban markets provide many consumers, making it easier for industries to sell their products and reduce distribution difficulties.",
+        "bn": "বৃহৎ শহুরে বাজারে অনেক ভোক্তা থাকে, ফলে শিল্পের পণ্য বিক্রি করা এবং বণ্টনের সমস্যা কমানো সহজ হয়।",
+        "hi": "बड़े शहरी बाजारों में बहुत से उपभोक्ता होते हैं, जिससे उद्योगों के लिए उत्पाद बेचना और वितरण की कठिनाइयाँ कम करना आसान होता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "geo_ch_06_q009",
+      "question": {
+        "en": "Which measure can directly reduce thermal pollution caused by hot industrial wastewater?",
+        "bn": "উষ্ণ শিল্পবর্জ্যজলের কারণে সৃষ্ট তাপ দূষণ সরাসরি কমাতে কোন ব্যবস্থা নেওয়া যায়?",
+        "hi": "गर्म औद्योगिक अपशिष्ट जल से होने वाले तापीय प्रदूषण को सीधे कम करने के लिए कौन-सा उपाय किया जा सकता है?"
+      },
+      "options": [
+        {
+          "en": "Cooling the wastewater before discharge",
+          "bn": "বর্জ্যজল নির্গমনের আগে ঠান্ডা করা",
+          "hi": "अपशिष्ट जल को छोड़ने से पहले ठंडा करना"
+        },
+        {
+          "en": "Increasing the temperature of the effluent",
+          "bn": "বর্জ্যজলের তাপমাত্রা আরও বাড়ানো",
+          "hi": "अपशिष्ट जल का तापमान और बढ़ाना"
+        },
+        {
+          "en": "Discharging it directly into rivers",
+          "bn": "বর্জ্যজল সরাসরি নদীতে ফেলা",
+          "hi": "अपशिष्ट जल को सीधे नदियों में छोड़ना"
+        },
+        {
+          "en": "Reducing treatment of industrial water",
+          "bn": "শিল্পবর্জ্যজলের শোধন কমিয়ে দেওয়া",
+          "hi": "औद्योगिक जल के उपचार को कम करना"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Cooling hot industrial wastewater before discharge lowers the temperature shock to water bodies and helps reduce thermal pollution.",
+        "bn": "উষ্ণ শিল্পবর্জ্যজল নির্গমনের আগে ঠান্ডা করলে জলাশয়ের তাপমাত্রায় আকস্মিক পরিবর্তন কমে এবং তাপ দূষণ হ্রাস পায়।",
+        "hi": "गर्म औद्योगिक अपशिष्ट जल को छोड़ने से पहले ठंडा करने पर जल स्रोतों में अचानक तापमान परिवर्तन कम होता है और तापीय प्रदूषण घटता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    },
+    {
+      "id": "geo_ch_06_q010",
+      "question": {
+        "en": "Why did the cotton textile industry initially develop mainly in Maharashtra and Gujarat?",
+        "bn": "তুলা বস্ত্রশিল্প প্রথমদিকে প্রধানত মহারাষ্ট্র ও গুজরাটে গড়ে উঠেছিল কেন?",
+        "hi": "सूती वस्त्र उद्योग प्रारंभ में मुख्य रूप से महाराष्ट्र और गुजरात में क्यों विकसित हुआ?"
+      },
+      "options": [
+        {
+          "en": "Availability of raw cotton, humid climate and good transport",
+          "bn": "কাঁচা তুলার প্রাপ্যতা, আর্দ্র জলবায়ু ও উন্নত পরিবহণ ব্যবস্থা",
+          "hi": "कच्चे कपास की उपलब्धता, आर्द्र जलवायु और अच्छी परिवहन सुविधा"
+        },
+        {
+          "en": "Availability of coal only",
+          "bn": "শুধুমাত্র কয়লার প্রাপ্যতা",
+          "hi": "केवल कोयले की उपलब्धता"
+        },
+        {
+          "en": "Absence of ports and markets",
+          "bn": "বন্দর ও বাজারের অনুপস্থিতি",
+          "hi": "बंदरगाहों और बाजारों का अभाव"
+        },
+        {
+          "en": "Very low demand for textiles",
+          "bn": "বস্ত্রের অত্যন্ত কম চাহিদা",
+          "hi": "वस्त्रों की बहुत कम मांग"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The region had access to cotton-growing areas, humid conditions useful for spinning, and strong transport and market connections, supporting early textile development.",
+        "bn": "এই অঞ্চলে তুলা উৎপাদনকারী এলাকার নৈকট্য, সুতা কাটার উপযোগী আর্দ্র পরিবেশ এবং উন্নত পরিবহণ ও বাজারের সুবিধা ছিল, যা বস্ত্রশিল্পের প্রাথমিক বিকাশে সাহায্য করে।",
+        "hi": "इस क्षेत्र में कपास उत्पादक क्षेत्रों की निकटता, कताई के लिए उपयोगी आर्द्र परिस्थितियाँ तथा अच्छी परिवहन और बाजार सुविधाएँ थीं, जिससे वस्त्र उद्योग के प्रारंभिक विकास में सहायता मिली।"
+      },
+      "points": 10,
+      "time_limit_sec": 15
+    }
+  ]
 }
