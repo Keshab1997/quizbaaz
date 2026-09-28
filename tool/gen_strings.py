@@ -8,6 +8,8 @@ required named arguments; everything else becomes a plain getter.
 Usage:  python3 tool/gen_strings.py
 """
 import re
+import shutil
+import subprocess
 import sys
 from pathlib import Path
 
@@ -132,7 +134,21 @@ def main():
         else:
             lines.append("  static String get %s => raw('%s');" % (val, val))
     lines.append('}')
-    (L10N / 'app_strings.dart').write_text('\n'.join(lines) + '\n', encoding='utf-8')
+    generated = L10N / 'app_strings.dart'
+    generated.write_text('\n'.join(lines) + '\n', encoding='utf-8')
+
+    # The emitted lines are hand-wrapped, so a bare run would leave the file in
+    # whatever style this generator happens to like. CI runs
+    # `dart format --set-exit-if-changed`, which would then fail on a file
+    # nobody is allowed to edit by hand — so format it here instead. Skipped
+    # with a warning when there is no Dart SDK on PATH (a machine that only
+    # edits the catalogues).
+    dart = shutil.which('dart')
+    if dart is None:
+        print('  dart not on PATH — run `dart format lib/l10n/app_strings.dart` yourself.')
+    else:
+        subprocess.run([dart, 'format', str(generated)], check=False,
+                       capture_output=True)
 
     print(f'Generated lib/l10n/app_strings.dart with {len(en_keys)} keys.')
     if problems:

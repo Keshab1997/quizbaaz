@@ -347,6 +347,17 @@ StatelessWidget helper is the single most common compile error in this repo.
 - Explain *why* in comments, not *what* — the code already says what.
 - Keep models free of Firebase imports; isolate Firestore mapping in
   `firestore_service.dart` and the repositories.
+- **`dart format` output depends on the root package's language version**, which
+  is the lower bound of `environment.sdk` in `pubspec.yaml` — not on the SDK you
+  happen to run. Below 3.7 the formatter rewrites the whole codebase into the
+  legacy short style. Always format *after* `flutter pub get` (the language
+  version is read from `.dart_tool/package_config.json`; without it the
+  formatter guesses and silently picks the other style), and keep the declared
+  floor in step with the style the code is written in. CI runs
+  `dart format --output=none --set-exit-if-changed .` and fails on any drift.
+  A trailing comment that pushes a field past the page width is why the
+  formatter splits `final String` from its name — move the comment above the
+  field instead of accepting that.
 
 ---
 
