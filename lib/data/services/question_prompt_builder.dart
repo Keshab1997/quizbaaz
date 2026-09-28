@@ -62,11 +62,11 @@ class QuestionPromptBuilder {
   static const String defaultSyllabus =
       'West Bengal Board (WBBSE) and CBSE Class 10';
 
-  /// System instruction — the role, kept short so it is not diluted.
+  /// System instruction — improved for WBBSE terminology and trilingual accuracy.
   static String systemPrompt() {
-    return 'You write multiple-choice exam questions for Class 10 students in '
-        'India. You are precise about facts, you never mark a wrong option as '
-        'correct, and you output raw JSON only — no prose, no markdown fence.';
+    return 'You are an expert Class 10 question setter for WBBSE & CBSE in India. '
+        'You write accurate, concise, exam-relevant MCQs in 3 languages (en/bn/hi) with perfect translations using textbook terminology. '
+        'You never mark a wrong option as correct, you keep questions short for 30-second answering, and you output raw JSON only — no prose, no markdown fence, no explanation outside JSON.';
   }
 
   /// The generation request.
@@ -82,7 +82,7 @@ class QuestionPromptBuilder {
   }) {
     final buffer = StringBuffer();
 
-    buffer.writeln('Write $count multiple-choice questions.');
+    buffer.writeln('Write $count multiple-choice questions for Class 10 exam prep.');
     buffer.writeln();
     buffer.writeln('Syllabus : $syllabus');
     buffer.writeln('Subject  : $subjectName');
@@ -97,21 +97,30 @@ class QuestionPromptBuilder {
       buffer.writeln('  Hindi  : $hi');
     }
 
-    final description = chapter.descriptionText.resolve('en');
-    if (description.isNotEmpty) {
-      buffer.writeln('Scope    : $description');
+    final descEn = chapter.descriptionText.resolve('en');
+    final descBn = chapter.descriptionText.resolve('bn');
+    final descHi = chapter.descriptionText.resolve('hi');
+    if (descEn.isNotEmpty) {
+      buffer.writeln('Scope EN : $descEn');
     }
-
+    if (descBn.isNotEmpty && descBn != descEn) {
+      buffer.writeln('Scope BN : $descBn');
+    }
+    if (descHi.isNotEmpty && descHi != descEn) {
+      buffer.writeln('Scope HI : $descHi');
+    }
     buffer.writeln();
     buffer.writeln('OUTPUT');
     buffer.writeln('Return a JSON array of exactly $count objects. Nothing '
-        'else — no explanation, no markdown fence, no trailing commentary.');
+        'else — no explanation, no markdown fence, no trailing commentary. '
+        'Each object must have: id, question {en,bn,hi}, options[4] of {en,bn,hi}, correct_index (0-3), explanation {en,bn,hi}, points=10, time_limit_sec=30');
     buffer.writeln();
+    buffer.writeln('SCHEMA EXAMPLE (copy structure exactly):');
     buffer.writeln(_schemaExample(idPrefix, startSequence));
     buffer.writeln();
 
-    buffer.writeln('RULES');
-    for (final rule in _rules(count, idPrefix, startSequence, difficulty)) {
+    buffer.writeln('RULES — follow strictly:');
+    for (final rule in _rules(count, idPrefix, startSequence, difficulty, chapter.titleText.resolve('en'))) {
       buffer.writeln('- $rule');
     }
 
@@ -120,8 +129,8 @@ class QuestionPromptBuilder {
           ? existingStems.sublist(existingStems.length - maxExistingStems)
           : existingStems;
       buffer.writeln();
-      buffer.writeln('ALREADY IN THIS CHAPTER — do not write any question that '
-          'asks the same thing, even reworded:');
+      buffer.writeln('ALREADY IN THIS CHAPTER — do NOT write any question that '
+          'asks the same thing, even reworded or translated:');
       for (final stem in recent) {
         buffer.writeln('- $stem');
       }
@@ -135,30 +144,27 @@ class QuestionPromptBuilder {
     String idPrefix,
     int startSequence,
     DifficultyMix difficulty,
+    String chapterTitleEn,
   ) {
     final lastSequence = startSequence + count - 1;
     return [
-      'Exactly 4 options per question. Exactly one is correct.',
-      '"correct_index" is 0-based and must point at the correct option.',
-      'Ids run "${_id(idPrefix, startSequence)}" to "${_id(idPrefix, lastSequence)}", '
-          'in order, with no gaps.',
-      'Every field must be present in all three languages: en, bn, hi.',
-      'Translate the meaning, do not transliterate. Use the terminology the '
-          'Class 10 textbook uses in that language; when a technical term is '
-          'normally kept in English in the classroom, keep it in English.',
-      'Numbers, formulas, chemical symbols, units and years stay identical '
-          'across the three languages.',
-      'Distractors must be mistakes a student would plausibly make — a wrong '
-          'formula, an off-by-one, a confused definition. Never filler or joke '
-          'options.',
+      'Exactly 4 options per question. Exactly one is correct. Never use "All of the above" or "None of the above".',
+      '"correct_index" is 0-based (0,1,2,3) and must point at the correct option. Randomize its position across the $count questions — don\'t put all correct answers at B or C. Distribution should be roughly even.',
+      'Ids run "${_id(idPrefix, startSequence)}" to "${_id(idPrefix, lastSequence)}", in order, with no gaps, no duplicates.',
+      'Every field must be present in all three languages: en, bn, hi. No empty strings. Translation must be complete.',
+      'TRANSLATION QUALITY: Translate meaning, not transliteration. Use WBBSE/CBSE Class 10 textbook terminology. For Bangla, use proper Bengali scientific terms (e.g., সালোকসংশ্লেষ, not ফটোসিনথেসিস; পৌষ্টিকনালী, not ডাইজেস্টিভ সিস্টেম). For Hindi, use NCERT terms. Keep technical terms like DNA, RNA, pH, H2O in English only if that is what classroom uses.',
+      'Numbers, formulas, chemical symbols, units, years stay IDENTICAL across en/bn/hi (e.g., H2SO4, 96, 10m/s²).',
+      'CONCISE: Question stem max 1-2 sentences, max 180 characters. Students have 30 seconds to read + answer. Avoid long paragraphs.',
+      'OPTIONS: Each option max 50 characters, concise, balanced in length. Correct answer must NOT be noticeably longer than distractors.',
+      'DISTRACTORS: Must be plausible mistakes a Class 10 student would make — wrong formula, off-by-one, confused definition, common misconception. Never filler, jokes, or obviously wrong options like "Banana" for a physics question.',
       'No two options may mean the same thing in any language.',
-      'The explanation must show the reasoning that leads to the marked '
-          'answer, in one or two sentences. Do not merely restate the answer.',
-      'Before you output a question, re-check that "correct_index" points at '
-          'the option your explanation justifies.',
-      difficulty.instruction,
-      'Do not use "All of the above" or "None of the above".',
-      'Keep each question answerable in about 15 seconds.',
+      'EXPLANATION: 1-2 sentences max, shows reasoning that leads to marked answer, in all three languages. Do not merely restate answer. Example: "Small intestine completes digestion with liver & pancreas secretions."',
+      'SELF-CHECK: Before output, re-check that "correct_index" points at the option your explanation justifies. If mismatch, fix it.',
+      'DIFFICULTY: ${difficulty.instruction}',
+      'TIMING: Keep each question answerable in about 30 seconds. Set points=10, time_limit_sec=30 for every question.',
+      'SCOPE: Questions must be strictly from chapter "$chapterTitleEn" only. No out-of-syllabus, no advanced college topics. Must be exam-relevant for WBBSE/CBSE Class 10.',
+      'VARIETY: Each of the $count questions should test different sub-topic, fact, or concept within the chapter. Avoid repeating same concept with different wording.',
+      'AVOID: Very similar questions, duplicate stems, or questions that are too trivial (e.g., "What is the full form of DNA?") unless chapter is about that.',
     ];
   }
 
@@ -188,12 +194,9 @@ class QuestionPromptBuilder {
         ],
         'correct_index': 1,
         'explanation': {
-          'en': 'Plants take in carbon dioxide and release oxygen during '
-              'photosynthesis, using it with water to make glucose.',
-          'bn': 'সালোকসংশ্লেষে গাছ কার্বন ডাইঅক্সাইড গ্রহণ করে এবং জল-সহ '
-              'গ্লুকোজ তৈরি করে অক্সিজেন ত্যাগ করে।',
-          'hi': 'प्रकाश संश्लेषण में पौधे कार्बन डाइऑक्साइड लेते हैं और जल के '
-              'साथ ग्लूकोज बनाकर ऑक्सीजन छोड़ते हैं।',
+          'en': 'Plants take in CO2 and release O2 during photosynthesis, using it with water to make glucose.',
+          'bn': 'সালোকসংশ্লেষে গাছ CO2 গ্রহণ করে এবং জল-সহ গ্লুকোজ তৈরি করে O2 ত্যাগ করে।',
+          'hi': 'प्रकाश संश्लेषण में पौधे CO2 लेते हैं और जल के साथ ग्लूकोज बनाकर O2 छोड़ते हैं।',
         },
         'points': 10,
         'time_limit_sec': 30,
@@ -216,7 +219,7 @@ class QuestionPromptBuilder {
     String syllabus = defaultSyllabus,
   }) {
     final buffer = StringBuffer();
-    buffer.writeln('You are checking one exam question for $syllabus.');
+    buffer.writeln('You are checking one exam question for $syllabus. Be strict.');
     buffer.writeln();
     buffer.writeln('Question: $questionEn');
     for (var i = 0; i < optionsEn.length; i++) {
@@ -245,7 +248,8 @@ class QuestionPromptBuilder {
   /// saved — not the runtime translation that was removed from the app.
   static String buildFieldTranslationPrompt(String english) {
     return 'Translate this Class 10 exam text into Bangla and Hindi.\n'
-        'Use the terminology the Class 10 textbook uses in each language. '
+        'Use WBBSE/CBSE textbook terminology in each language. '
+        'For Bangla, use proper Bengali scientific terms (not English transliteration). '
         'Keep numbers, formulas, symbols and units exactly as they are. '
         'Keep a technical term in English if that is what the classroom uses.\n'
         'Reply with raw JSON only: {"bn":"...","hi":"..."}\n\n'
