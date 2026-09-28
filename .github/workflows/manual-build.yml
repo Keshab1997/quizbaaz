@@ -40,6 +40,9 @@ jobs:
     uses: Keshab1997/flutter-builder/.github/workflows/flutter-build.yml@v1.8.1
     with:
       flutter-channel: stable
+      # CI writes android/app/google-services.json from this secret before the
+      # build; the file itself is untracked (the doctor rejects it in git).
+      google-services-json-base64: ${{ secrets.GOOGLE_SERVICES_JSON_BASE64 }}
       # Validation already runs on every push in content-and-quality.yml;
       # a manual build should not be blocked by a formatting nit.
       run-format-check: false

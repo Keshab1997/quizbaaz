@@ -22,7 +22,7 @@ val admobAppId = providers.gradleProperty("ADMOB_APP_ID")
     .getOrElse("ca-app-pub-3940256099942544~3347511713")
 if (releaseTaskRequested && !keystorePropertiesFile.exists()) {
     throw GradleException(
-        "Release signing is not configured. Copy android/key.properties.example " +
+        "Release signing is not configured. Copy android/keystore.properties.example " +
             "to android/key.properties and provide the upload-keystore values.",
     )
 }

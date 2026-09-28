@@ -10,9 +10,23 @@ This is the single source of truth for QuizBaaz Android releases.
 - Adaptive and legacy QuizBaaz launcher icons
 - Play Console icon: `assets/branding/play_store_icon_512.png`
 - Feature graphic: `assets/branding/play_store_feature_graphic.png`
-- Test AdMob IDs remain the safe default; real IDs are injected at build time
+- No ad ID lives in the source; real ones are injected at build time (test builds get Google's test units via `manual-build.yml`)
 
 ## Owner setup (one time)
+
+### 0. Firebase config as a secret
+
+`android/app/google-services.json` is **not** tracked by git (the shared
+builder's doctor rejects a tracked secret/config file). CI writes it before
+every Android build from the repository secret `GOOGLE_SERVICES_JSON_BASE64`:
+
+```bash
+openssl base64 -A -in android/app/google-services.json | gh secret set GOOGLE_SERVICES_JSON_BASE64
+```
+
+Keep your local copy (gitignored); re-set the secret only when Firebase gives
+you a refreshed file.
+
 
 ### 1. Create and protect the upload key
 
@@ -21,7 +35,7 @@ keytool -genkeypair -v \
   -keystore "$HOME/quizbaaz-upload.jks" \
   -keyalg RSA -keysize 2048 -validity 10000 \
   -alias upload
-cp android/key.properties.example android/key.properties
+cp android/keystore.properties.example android/key.properties
 ```
 
 Put the real values and absolute keystore path in `android/key.properties`.
@@ -58,7 +72,6 @@ Local builds deliberately use Google's test IDs. Configure `app-ads.txt` and
 verify the UMP consent/privacy-options flow before enabling real traffic.
 
 #### Or let GitHub Actions build it
-
 The same injection is wired into `.github/workflows/manual-build.yml` and
 `.github/workflows/publish-release.yml` (both call the shared
 [`Keshab1997/flutter-builder`](https://github.com/Keshab1997/flutter-builder)

@@ -38,7 +38,7 @@ JSON বা private key GitHub-এ commit করবেন না। বিস্
 ## Phase 3 — Upload keystore ও release signing
 
 - [ ] `keytool` দিয়ে `quizbaaz-upload.jks` তৈরি করুন।
-- [ ] `android/key.properties.example` কপি করে `android/key.properties` বানান।
+- [ ] `android/keystore.properties.example` কপি করে `android/key.properties` বানান।
 - [ ] আসল keystore path, alias ও passwords local file-এ দিন।
 - [ ] Keystore ও passwords-এর অন্তত দুইটি encrypted backup রাখুন।
 - [ ] নিশ্চিত করুন `.jks` এবং `android/key.properties` Git-এ নেই।

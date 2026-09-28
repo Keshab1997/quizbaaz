@@ -1,6 +1,7 @@
 # Secrets
 github_auth.json
 android/key.properties
+android/app/google-services.json
 *.jks
 *.keystore
 
@@ -13,7 +14,7 @@ android/key.properties
 .atom/
 .build/
 .buildlog/
-.history
+.history/
 .svn/
 .swiftpm/
 migrate_working_dir/
@@ -39,7 +40,7 @@ migrate_working_dir/
 /build/
 
 # Exceptions to above rules.
-!/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
+!/packages/flutter_tools/test/data/flutter_dependencies_test/**/.packages
 
 # Python tooling
 __pycache__/
