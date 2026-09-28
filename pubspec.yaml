@@ -1,7 +1,7 @@
 name: quizbaaz
 description: "🚀 QuizBaaz 3D - A Gamified Flutter Quiz & Learning Platform"
 publish_to: 'none'
-version: 1.0.12+13
+version: 1.0.13+14
 
 environment:
   sdk: '>=3.7.0 <4.0.0'
@@ -25,8 +25,8 @@ dependencies:
   cached_network_image: ^3.4.1
   cloud_firestore: ^6.8.0
   # Admin content images (avatars, shop art) are uploaded here under the
-  # caller's own Firebase Auth + storage rules. No upload secret is held by
-  # the client — the old ImgBB API key was removed (docs/SECURITY_P0_FIXES.md).
+  # caller's own Firebase Auth + storage rules. No upload secret is held by the
+  # client — the old ImgBB API key was removed (docs/SECURITY_P0_FIXES.md).
   firebase_storage: ^13.0.0
   # Trusted backend callables (setAdmin, submitDailyResult, purchaseItem,
   # resolveBattle) — see /functions. Fail-soft when not deployed.
@@ -39,9 +39,9 @@ dependencies:
   # Profile screen, and the system share sheet for "Share with Friends".
   url_launcher: ^6.3.1
   share_plus: ^10.1.0
-  # AdMob — banner + interstitial. Runs on official Google test ad unit IDs
-  # until the real IDs from the AdMob console are pasted into
-  # lib/core/constants/ad_config.dart (see the "HOW TO GO LIVE" note there).
+  # AdMob — banner + interstitial. Ad unit IDs are injected at build time
+  # with --dart-define (see the note in lib/core/constants/ad_config.dart);
+  # none are hardcoded under lib/.
   google_mobile_ads: ^9.1.0
   # SHA-1 for question fingerprints (duplicate detection).
   crypto: ^3.0.3

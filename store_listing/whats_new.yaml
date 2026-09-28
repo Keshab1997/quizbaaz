@@ -6,9 +6,28 @@
 #   python3 tool/publish_play.py --aab app.aab --track alpha
 # which reads this file automatically. `--release-note` overrides English only.
 
-current: "1.0.12"
+current: "1.0.13"
 
 releases:
+  "1.0.13":
+    en: |-
+      • 30 seconds per question now, up from 15 — daily quiz, chapter sets and battles
+      • Question and all four options fit on one screen — no scrolling mid-question
+      • The daily quiz banner shows on question 1, then gets out of the way
+      • Profile avatar no longer clips the top of your head
+      • In Bangla and Hindi the question no longer repeats an English line underneath
+    bn: |-
+      • এখন প্রতি প্রশ্নে ৩০ সেকেন্ড, আগে ছিল ১৫ — ডেইলি কুইজ, চ্যাপ্টার সেট ও ব্যাটল সবখানে
+      • প্রশ্ন আর চারটা অপশন এক স্ক্রিনেই ঠিক হয় — প্রশ্নের মাঝে স্ক্রল লাগবে না
+      • ডেইলি কুইজের ব্যানার প্রথম প্রশ্নে দেখাবে, তারপর আর দেখাবে না
+      • প্রোফাইল অ্যাভাটারে আর মাথার উপরের অংশ কাটা যাবে না
+      • বাংলা ও হিন্দিতে প্রশ্নের নিচে আর ইংরেজি লাইন আলাদা করে দেখাবে না
+    hi: |-
+      • अब हर सवाल में 30 सेकंड, पहले थे 15 — डेली क्विज़, चैप्टर सेट और बैटल, तीनों में
+      • सवाल और चारों विकल्प अब एक ही स्क्रीन में आ जाते हैं — बीच में स्क्रॉल नहीं करना पड़ेगा
+      • डेली क्विज़ का बैनर पहले सवाल पर दिखेगा, उसके बाद नहीं
+      • प्रोफ़ाइल अवतार में सिर का ऊपरी हिस्सा अब कटता नहीं
+      • बंगाली और हिन्दी में सवाल के नीचे अब अलग से अंग्रेज़ी लाइन नहीं दिखेगी
   "1.0.12":
     en: |-
       • 30 seconds per question now, up from 15 — daily quiz, chapter sets and battles
@@ -17,7 +36,7 @@ releases:
       • Profile avatar no longer clips the top of your head
       • In Bangla and Hindi the question no longer repeats an English line underneath
     bn: |-
-      • এখন প্রতি প্রশ্নে ৩০ সেকেন্ড, আগে ছিল ১৫ — ডেইলি কুইজ, চ্যাপ্টার সেট ও ব্যাটেল সবখানে
+      • এখন প্রতি প্রশ্নে ৩০ সেকেন্ড, আগে ছিল ১৫ — ডেইলি কুইজ, চ্যাপ্টার সেট ও ব্যাটল সবখানে
       • প্রশ্ন আর চারটা অপশন এক স্ক্রিনেই ঠিক হয় — প্রশ্নের মাঝে স্ক্রল লাগবে না
       • ডেইলি কুইজের ব্যানার প্রথম প্রশ্নে দেখাবে, তারপর আর দেখাবে না
       • প্রোফাইল অ্যাভাটারে আর মাথার উপরের অংশ কাটা যাবে না
@@ -43,7 +62,7 @@ releases:
       • डेली क्विज़: दिन की पहली रन ही आपका लीडरबोर्ड स्कोर — बाद की रन उसे नहीं बदल सकतीं
       • स्कोर शील्ड अब एक रिट्राय देती है जो आज का स्कोर बदल देती है
       • क्विज़ और रिज़ल्ट स्क्रीन पहले ही बताती हैं कि यह रन गिनी जाएगी या नहीं
-      • आज का कॉम्पिटीशन पैकेट अब हर दिन अपने आप पब्लिश होता है
+      • आज का कॉम्पिटिशन पैकेट अब हर दिन अपने आप पब्लिश होता है
   "1.0.7":
     en: |-
       • Google Sign-In no longer fails silently on Play builds
@@ -80,6 +99,6 @@ releases:
       • Play ইন-অ্যাপ আপডেট — Closed testing টেস্টাররা Store খুঁজে না পেয়েও নতুন বিল্ড পাবেন
     hi: |-
       • नया वर्शन इंस्टॉल होते ही ऐप तुरंत बताएगा
-      • अपडेट के बाद पहली बार खोलने पर What's new डायलॉग (EN / বাংলা / हिन्दी)
+      • अपडेट के बाद पहली बार खोलने पर What's new डायलॉग (EN / বাংলा / हिन्दी)
       • स्प्लैश और प्रोफ़ाइल पर असली वर्शन नंबर
       • Play इन-ऐप अपडेट — Closed testing टेस्टर स्टोर खोजे बिना नया बिल्ड पाएँगे
