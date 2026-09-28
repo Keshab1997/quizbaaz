@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../core/constants/app_colors.dart';
@@ -29,9 +30,6 @@ class DailyQuizScreen extends StatelessWidget {
 
     final currentQ = quiz.currentQuestion;
 
-    // Native back shows the same quit dialog as the AppBar back button.
-    // A finished or already-quit run pops freely; anything else must confirm
-    // first, otherwise the countdown keeps running behind the popped route.
     return PopScope(
       canPop: quiz.isQuizCompleted || quiz.isAbandoned,
       onPopInvokedWithResult: (didPop, _) {
@@ -47,8 +45,6 @@ class DailyQuizScreen extends StatelessWidget {
                 'Daily Live Quiz',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
               ),
-              // Which set this is, so a chapter run never feels like it came
-              // from nowhere.
               if (quiz.setCount > 1)
                 Text(
                   S.setsSetOf(n: quiz.setNumber, total: quiz.setCount),
@@ -65,7 +61,6 @@ class DailyQuizScreen extends StatelessWidget {
           ),
           actions: [
             if (currentQ != null) ...[
-              // Active Boosters Indicator
               if (quiz.doublePointsActive)
                 Container(
                   margin: const EdgeInsets.only(right: 8),
@@ -116,14 +111,11 @@ class DailyQuizScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-              // Read the question in another language without leaving the quiz.
               QuizLanguagePills(
                 available: quiz.availableLanguages,
                 selected: quiz.displayLanguage,
                 onSelected: quiz.setDisplayLanguage,
               ),
-
-              // Score
               Container(
                 margin: const EdgeInsets.only(right: 16),
                 padding:
@@ -185,65 +177,65 @@ class DailyQuizScreen extends StatelessWidget {
                     : const DailyQuizLoadingCard(),
               )
             : SafeArea(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 18.0, vertical: 12),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      // Practice runs credit nothing, and the player must know
-                      // that before they spend ten minutes on one.
-                      if (quiz.isPractice) ...[
-                        _practiceBanner(),
-                        const SizedBox(height: 10),
-                      ],
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    // Auto-fit: everything must fit in constraints.maxHeight
+                    // No outer scroll — question + options share remaining space
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 18.0, vertical: 10),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          if (quiz.isPractice) ...[
+                            _practiceBanner(),
+                            const SizedBox(height: 8),
+                          ],
+                          if (!quiz.isPractice &&
+                              quiz.isDailyQuiz &&
+                              quiz.currentIndex == 0) ...[
+                            _buildCountingBanner(quiz, userProvider),
+                            const SizedBox(height: 8),
+                          ],
+                          _buildProgressAndTimer(quiz),
+                          const SizedBox(height: 10),
+                          _buildLifelines(context, quiz),
+                          const SizedBox(height: 10),
 
-                      // A daily run says up front whether it will reach the
-                      // leaderboard. Per user request: show only on Q1, then auto-hide.
-                      if (!quiz.isPractice &&
-                          quiz.isDailyQuiz &&
-                          quiz.currentIndex == 0) ...[
-                        _buildCountingBanner(quiz, userProvider),
-                        const SizedBox(height: 10),
-                      ],
+                          if (quiz.currentHint != null) ...[
+                            _buildHintCard(quiz.currentHint!),
+                            const SizedBox(height: 8),
+                          ],
+                          if (quiz.audiencePollResults != null) ...[
+                            _buildAudiencePollCard(quiz),
+                            const SizedBox(height: 8),
+                          ],
 
-                      // Top Progress & Timer
-                      _buildProgressAndTimer(quiz),
-                      const SizedBox(height: 14),
-
-                      // Lifelines Bar (scrollable)
-                      _buildLifelines(context, quiz),
-                      const SizedBox(height: 14),
-
-                      // Hint Display (if used)
-                      if (quiz.currentHint != null) ...[
-                        _buildHintCard(quiz.currentHint!),
-                        const SizedBox(height: 10),
-                      ],
-
-                      // Audience Poll Display (if used)
-                      if (quiz.audiencePollResults != null) ...[
-                        _buildAudiencePollCard(quiz),
-                        const SizedBox(height: 10),
-                      ],
-
-                      // Question Card
-                      _buildQuestionCard(context, currentQ),
-                      const SizedBox(height: 18),
-
-                      // 4 Options
-                      Expanded(
-                        child: ListView.builder(
-                          physics: const BouncingScrollPhysics(),
-                          itemCount: currentQ.options.length,
-                          itemBuilder: (context, index) {
-                            return _buildOptionButton(
-                                context, quiz, currentQ, index);
-                          },
-                        ),
+                          // --- AUTO-FIT AREA ---
+                          // Question + Options take remaining height, no scroll
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                // Question: flexible, auto-shrinks font if needed
+                                Flexible(
+                                  flex: 3,
+                                  child: _buildQuestionCard(context, currentQ),
+                                ),
+                                const SizedBox(height: 12),
+                                // Options: flexible, each option expands, no ListView
+                                Flexible(
+                                  flex: 5,
+                                  child: _buildOptionsAutoFit(
+                                      context, quiz, currentQ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    );
+                  },
                 ),
               ),
       ),
@@ -251,10 +243,6 @@ class DailyQuizScreen extends StatelessWidget {
   }
 
   /// Says whether this daily run will reach the leaderboard, and why.
-  ///
-  /// Four states, and the player deserves to see all four before they start:
-  /// today's packet is missing (nothing can count), this is the run that
-  /// counts, the day is already locked, or a Score Shield is armed.
   Widget _buildCountingBanner(QuizProvider quiz, UserProvider userProvider) {
     IconData icon;
     Color colour;
@@ -400,7 +388,6 @@ class DailyQuizScreen extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         physics: const BouncingScrollPhysics(),
         children: [
-          // 50-50
           _buildLifelineBtn(
             label: '50:50',
             icon: Icons.filter_2,
@@ -410,8 +397,6 @@ class DailyQuizScreen extends StatelessWidget {
             onTap: () => _useFiftyFifty(context, quiz),
           ),
           const SizedBox(width: 8),
-
-          // Freeze Time
           _buildLifelineBtn(
             label: '+10s',
             icon: Icons.ac_unit,
@@ -421,8 +406,6 @@ class DailyQuizScreen extends StatelessWidget {
             onTap: () => _useFreezeTime(context, quiz),
           ),
           const SizedBox(width: 8),
-
-          // Skip Question
           _buildLifelineBtn(
             label: 'Skip',
             icon: Icons.skip_next_rounded,
@@ -432,8 +415,6 @@ class DailyQuizScreen extends StatelessWidget {
             onTap: () => _useSkipQuestion(context, quiz),
           ),
           const SizedBox(width: 8),
-
-          // Hint Reveal
           _buildLifelineBtn(
             label: 'Hint',
             icon: Icons.lightbulb_rounded,
@@ -443,8 +424,6 @@ class DailyQuizScreen extends StatelessWidget {
             onTap: () => _useHintReveal(context, quiz),
           ),
           const SizedBox(width: 8),
-
-          // Audience Poll
           _buildLifelineBtn(
             label: 'Poll',
             icon: Icons.people_rounded,
@@ -548,12 +527,15 @@ class DailyQuizScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 2),
-                Text(
+                AutoSizeText(
                   hint,
                   style: const TextStyle(
                     fontSize: 13,
                     color: AppColors.textPrimary,
                   ),
+                  maxLines: 2,
+                  minFontSize: 10,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ],
             ),
@@ -646,10 +628,8 @@ class DailyQuizScreen extends StatelessWidget {
     );
   }
 
-  // Lifeline Actions
   void _useFiftyFifty(BuildContext context, QuizProvider quiz) {
     if (quiz.useFiftyFifty()) return;
-
     final message = quiz.fiftyFiftyStock <= 0
         ? S.quizNoFiftyFifty
         : quiz.fiftyFiftyUsed
@@ -661,7 +641,6 @@ class DailyQuizScreen extends StatelessWidget {
 
   void _useFreezeTime(BuildContext context, QuizProvider quiz) {
     if (quiz.useFreezeTime()) return;
-
     final message = quiz.freezeTimeStock <= 0
         ? S.quizNoFreeze
         : quiz.freezeUsed
@@ -673,7 +652,6 @@ class DailyQuizScreen extends StatelessWidget {
 
   void _useSkipQuestion(BuildContext context, QuizProvider quiz) {
     if (quiz.useSkipQuestion()) return;
-
     final message = quiz.skipQuestionStock <= 0
         ? S.quizNoSkip
         : quiz.skipUsed
@@ -685,7 +663,6 @@ class DailyQuizScreen extends StatelessWidget {
 
   void _useHintReveal(BuildContext context, QuizProvider quiz) {
     if (quiz.useHintReveal()) return;
-
     final message = quiz.hintRevealStock <= 0
         ? S.quizNoHint
         : quiz.hintUsed
@@ -697,7 +674,6 @@ class DailyQuizScreen extends StatelessWidget {
 
   void _useAudiencePoll(BuildContext context, QuizProvider quiz) {
     if (quiz.useAudiencePoll()) return;
-
     final message = quiz.audiencePollStock <= 0
         ? S.quizNoPoll
         : quiz.audienceUsed
@@ -709,56 +685,70 @@ class DailyQuizScreen extends StatelessWidget {
 
   Widget _buildQuestionCard(BuildContext context, QuestionModel question) {
     final language = context.watch<QuizProvider>().displayLanguage;
-
-    // Per user request: when Bangla (or any non-English) is selected, don't
-    // show English secondary text to keep card compact and avoid scrolling.
     final primary = question.questionIn(language);
-    final String? secondary = null;
 
+    // Auto-fit: GlassCard with AutoSizeText that shrinks font to fit available height
+    // Small screen -> font 14, large screen -> 18, always fits without scroll
     return GlassCard(
       borderRadius: 22,
       borderColor: AppColors.neonPurple.withValues(alpha: 0.3),
       backgroundColor: const Color(0x331E1B4B),
-      padding: const EdgeInsets.all(20),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            primary,
-            style: const TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: AppColors.textPrimary,
-              height: 1.35,
-            ),
+      padding: const EdgeInsets.all(16),
+      child: Center(
+        child: AutoSizeText(
+          primary,
+          style: const TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+            color: AppColors.textPrimary,
+            height: 1.35,
           ),
-          if (secondary != null && secondary != primary) ...[
-            const SizedBox(height: 8),
-            Text(
-              secondary,
-              style: const TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
-                color: AppColors.textSecondary,
-              ),
-            ),
-          ],
-        ],
+          maxLines: 6,
+          minFontSize: 12,
+          maxFontSize: 19,
+          overflow: TextOverflow.ellipsis,
+          textAlign: TextAlign.left,
+          wrapWords: true,
+        ),
       ),
     );
   }
 
-  Widget _buildOptionButton(
+  /// New auto-fit options: Column with Expanded, no ListView, no scroll
+  /// Each option auto-shrinks font to fit, so all 4 are visible in one screen
+  Widget _buildOptionsAutoFit(
+    BuildContext context,
+    QuizProvider quiz,
+    QuestionModel question,
+  ) {
+    final visibleIndices = List<int>.generate(question.options.length, (i) => i)
+        .where((i) => !quiz.disabledOptionIndices.contains(i))
+        .toList();
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        for (int idx = 0; idx < visibleIndices.length; idx++) ...[
+          Expanded(
+            child: _buildOptionButtonAutoFit(
+              context,
+              quiz,
+              question,
+              visibleIndices[idx],
+            ),
+          ),
+          if (idx != visibleIndices.length - 1) const SizedBox(height: 10),
+        ],
+      ],
+    );
+  }
+
+  Widget _buildOptionButtonAutoFit(
     BuildContext context,
     QuizProvider quiz,
     QuestionModel question,
     int index,
   ) {
-    final isDisabled = quiz.disabledOptionIndices.contains(index);
-    if (isDisabled) {
-      return const SizedBox.shrink();
-    }
-
     final isSelected = quiz.selectedOptionIndex == index;
     final isAnswerSubmitted = quiz.isAnswerSubmitted;
     final isCorrect = question.correctIndex == index;
@@ -773,70 +763,76 @@ class DailyQuizScreen extends StatelessWidget {
         borderColor = AppColors.neonGreen;
         bgColor = AppColors.neonGreen.withValues(alpha: 0.2);
         trailingIcon =
-            const Icon(Icons.check_circle, color: AppColors.neonGreen);
+            const Icon(Icons.check_circle, color: AppColors.neonGreen, size: 20);
       } else if (isSelected) {
         borderColor = AppColors.neonRed;
         bgColor = AppColors.neonRed.withValues(alpha: 0.2);
-        trailingIcon = const Icon(Icons.cancel, color: AppColors.neonRed);
+        trailingIcon =
+            const Icon(Icons.cancel, color: AppColors.neonRed, size: 20);
       }
     }
 
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 12.0),
-      child: GestureDetector(
-        onTap: () => quiz.selectOption(index),
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 250),
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-          decoration: BoxDecoration(
-            color: bgColor,
-            borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: borderColor, width: 1.5),
-            boxShadow: isAnswerSubmitted && (isCorrect || isSelected)
-                ? [
-                    BoxShadow(
-                      color:
-                          (isCorrect ? AppColors.neonGreen : AppColors.neonRed)
-                              .withValues(alpha: 0.3),
-                      blurRadius: 10,
-                    )
-                  ]
-                : null,
-          ),
-          child: Row(
-            children: [
-              Container(
-                width: 32,
-                height: 32,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.white.withValues(alpha: 0.08),
-                ),
-                child: Center(
-                  child: Text(
-                    String.fromCharCode(65 + index), // A, B, C, D
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 14,
-                      color: AppColors.neonCyan,
-                    ),
-                  ),
-                ),
+    return GestureDetector(
+      onTap: () => quiz.selectOption(index),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 250),
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+        decoration: BoxDecoration(
+          color: bgColor,
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(color: borderColor, width: 1.5),
+          boxShadow: isAnswerSubmitted && (isCorrect || isSelected)
+              ? [
+                  BoxShadow(
+                    color:
+                        (isCorrect ? AppColors.neonGreen : AppColors.neonRed)
+                            .withValues(alpha: 0.3),
+                    blurRadius: 10,
+                  )
+                ]
+              : null,
+        ),
+        child: Row(
+          children: [
+            Container(
+              width: 30,
+              height: 30,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.white.withValues(alpha: 0.08),
               ),
-              const SizedBox(width: 14),
-              Expanded(
+              child: Center(
                 child: Text(
-                  question.optionsIn(quiz.displayLanguage)[index],
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w600,
-                    color: textColor,
+                  String.fromCharCode(65 + index),
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 13,
+                    color: AppColors.neonCyan,
                   ),
                 ),
               ),
-              if (trailingIcon != null) trailingIcon,
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: AutoSizeText(
+                question.optionsIn(quiz.displayLanguage)[index],
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w600,
+                  color: textColor,
+                ),
+                maxLines: 2,
+                minFontSize: 11,
+                maxFontSize: 15,
+                overflow: TextOverflow.ellipsis,
+                wrapWords: true,
+              ),
+            ),
+            if (trailingIcon != null) ...[
+              const SizedBox(width: 8),
+              trailingIcon,
             ],
-          ),
+          ],
         ),
       ),
     );
@@ -859,8 +855,6 @@ class DailyQuizScreen extends StatelessWidget {
             style: ElevatedButton.styleFrom(backgroundColor: AppColors.neonRed),
             onPressed: () {
               Navigator.pop(ctx);
-              // Stop the countdown first: it both unblocks the PopScope
-              // (via isAbandoned) and silences the run for good.
               context.read<QuizProvider>().quitQuiz();
               Navigator.pop(context);
             },

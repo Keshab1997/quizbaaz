@@ -55,6 +55,8 @@ dependencies:
   package_info_plus: ^8.3.0
   # Play in-app updates so Closed testing testers get the new AAB in-app.
   in_app_update: ^4.2.3
+  # Auto-fit question + options in one screen without scroll
+  auto_size_text: ^3.0.0
   # Firestore-backed pool of LLM API keys with failover, cooldowns and an admin
   # screen. Powers the AI question generator; see docs/11.
   admin_api_key_manager:
