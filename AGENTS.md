@@ -110,6 +110,16 @@ ones there so everything can be invalidated in one place. Use
 **Firestore collections:** `users` · `scores` · `leaderboard` · `winners` ·
 `gifts` · `quiz_history` · `purchase_history` · `meta` · `admin_audit_logs`.
 
+**Remote config beats code.** `config/app` is an `AppConfig` document, and
+`AppConfig.fromJson` prefers its keys over the built-in defaults, so editing
+`app_config.dart` changes *nothing* on a device while the document still holds
+the old value — and the value is mirrored into `qb_cache/app_config`, so it
+survives going offline. The quiz countdown is the usual casualty:
+`QuizProvider.questionTimeSec` is `config.secondsPerQuestion`, not a constant.
+Battles read `question.timeLimitSec` instead, so a per-question
+`time_limit_sec` overrides the global one there. Both are pulled once at
+startup, so a config change needs an app restart to reach a device.
+
 **SyncService** — `pushUser`, `pushStats`, `pushLeaderboardEntry`,
 `pushQuizHistory`, `pushPurchaseHistory`, `pushGift`, `drainPending`,
 `pullUser`, `pullStats`, `pullConfig`, `cachedConfig`, `syncAll`.
@@ -231,6 +241,8 @@ python3 tool/gen_strings.py     # regenerate S, report translation gaps
 python3 tool/verify_l10n.py     # unknown keys · const misuse · bracket damage
 python3 tool/apply_l10n.py      # migrate raw English literals to S.* (re-runnable)
 python3 tool/validate_questions.py   # question banks: schema, ids, translations
+python3 tool/set_question_seconds.py --show   # remote config/app seconds_per_question
+python3 tool/set_question_seconds.py         # set it to 30 (restart devices after)
 python3 tool/publish_daily_packet.py --dry-run   # today's daily packet, no write
 python3 tool/publish_daily_packet.py             # publish daily_quiz_packets/{today}
 python3 tool/publish_daily_packet.py --days 3    # today + the next two days
