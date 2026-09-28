@@ -58,7 +58,7 @@ QUESTION_FIELDS = (
     'time_limit_sec',
 )
 
-DEFAULTS = {'points': 10, 'time_limit_sec': 15}
+DEFAULTS = {'points': 10, 'time_limit_sec': 30}
 
 
 # --------------------------------------------------------------------------- #

@@ -216,7 +216,7 @@ lines += [
     '  "correct_index": 2,',
     '  "explanation": "কেন এটাই সঠিক উত্তর",',
     '  "points": 10,',
-    '  "time_limit_sec": 15',
+    '  "time_limit_sec": 30',
     '}',
     '```',
     '',

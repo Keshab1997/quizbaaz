@@ -1100,7 +1100,7 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
         correctIndex: correctIndex.clamp(0, optionTexts.length - 1),
         explanationText: explanationText,
         points: (map['points'] as num?)?.toInt() ?? 10,
-        timeLimitSec: (map['time_limit_sec'] as num?)?.toInt() ?? 15,
+        timeLimitSec: (map['time_limit_sec'] as num?)?.toInt() ?? 30,
       ));
     }
 
@@ -1169,7 +1169,7 @@ class _QuestionSheetState extends State<_QuestionSheet> {
         correctIndex: _correctIndex,
         explanationText: _explanation,
         points: int.tryParse(_points.text.trim()) ?? 10,
-        timeLimitSec: int.tryParse(_timeLimit.text.trim()) ?? 15,
+        timeLimitSec: int.tryParse(_timeLimit.text.trim()) ?? 30,
       );
 
   ValidationResult get _result => QuestionValidator.validate(

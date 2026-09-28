@@ -196,7 +196,7 @@ class QuestionPromptBuilder {
               'साथ ग्लूकोज बनाकर ऑक्सीजन छोड़ते हैं।',
         },
         'points': 10,
-        'time_limit_sec': 15,
+        'time_limit_sec': 30,
       }
     ];
     return const JsonEncoder.withIndent('  ').convert(example);

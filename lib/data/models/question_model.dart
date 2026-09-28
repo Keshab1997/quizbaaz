@@ -22,7 +22,7 @@ import 'localized_text.dart';
 ///   "correct_index": 1,
 ///   "explanation": { "en": "…", "bn": "…", "hi": "…" },
 ///   "points": 10,
-///   "time_limit_sec": 15
+///   "time_limit_sec": 30
 /// }
 /// ```
 ///
