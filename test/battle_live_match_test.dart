@@ -333,7 +333,8 @@ void main() {
   }
 
   group('R10 — a challenge accept starts the intended battle', () {
-    test('the room is created for the accepted opponent, never a bot', () async {
+    test('the room is created for the accepted opponent, never a bot',
+        () async {
       final provider = newProvider();
 
       final started = await provider.startBattleWithOpponent(

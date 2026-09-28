@@ -74,8 +74,7 @@ void main() {
 
     test('an apology instead of JSON', () {
       expect(
-        parseGeneratedQuestions(
-            "I'm sorry, I can't help with that request."),
+        parseGeneratedQuestions("I'm sorry, I can't help with that request."),
         isEmpty,
       );
     });

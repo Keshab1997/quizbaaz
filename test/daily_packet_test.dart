@@ -23,7 +23,8 @@ class _FakePacketService extends DailyQuizPacketService {
   int calls = 0;
 
   @override
-  Future<DailyQuizSet> resolve({DateTime? now, bool forceRefresh = false}) async {
+  Future<DailyQuizSet> resolve(
+      {DateTime? now, bool forceRefresh = false}) async {
     calls++;
     return result;
   }
@@ -214,14 +215,18 @@ void main() {
         quizRepository: _EmptyRepository(),
         packetService: _FakePacketService(
           DailyQuizSet(
-            questions: [_question('bio_ch_01_q001'), _question('bio_ch_02_q003')],
+            questions: [
+              _question('bio_ch_01_q001'),
+              _question('bio_ch_02_q003')
+            ],
             ranked: true,
             packet: packet,
           ),
         ),
       );
 
-      final set = await generator.generateDailySet(date: DateTime.utc(2026, 9, 20, 6));
+      final set =
+          await generator.generateDailySet(date: DateTime.utc(2026, 9, 20, 6));
 
       expect(set.ranked, isTrue);
       expect(set.unrankedReason, isNull);
@@ -244,7 +249,8 @@ void main() {
         ),
       );
 
-      final set = await generator.generateDailySet(date: DateTime.utc(2026, 9, 20, 6));
+      final set =
+          await generator.generateDailySet(date: DateTime.utc(2026, 9, 20, 6));
 
       expect(set.ranked, isFalse);
       expect(set.questions, isEmpty);

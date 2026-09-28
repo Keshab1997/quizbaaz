@@ -19,7 +19,8 @@ import 'package:quizbaaz/data/services/question_bank_service.dart';
 class _OfflineBankService extends QuestionBankService {
   /// Every network path here is dead — exactly like an offline device.
   @override
-  Future<List<QuestionModel>> fetchQuestions(String chapterId) async => const [];
+  Future<List<QuestionModel>> fetchQuestions(String chapterId) async =>
+      const [];
 
   @override
   Future<Map<String, int>> fetchQuestionCounts() async => const {};
@@ -67,22 +68,28 @@ void main() {
       const window = Duration(milliseconds: 10);
 
       // The old behaviour: gone the moment it aged out.
-      expect(HiveService.cacheGetList('offline_stale', maxAge: window), isEmpty);
+      expect(
+          HiveService.cacheGetList('offline_stale', maxAge: window), isEmpty);
       expect(HiveService.isCacheFresh('offline_stale', window), isFalse);
 
       // The new behaviour: still there for the student.
       expect(
-        HiveService.cacheGetList('offline_stale', maxAge: window, allowStale: true),
+        HiveService.cacheGetList('offline_stale',
+            maxAge: window, allowStale: true),
         hasLength(1),
       );
       expect(HiveService.cacheAge('offline_stale'), isNotNull);
     });
 
     test('a missing key is empty, not an error', () {
-      expect(HiveService.cacheGetList('offline_never_written',
-          maxAge: const Duration(seconds: 1), allowStale: true), isEmpty);
+      expect(
+          HiveService.cacheGetList('offline_never_written',
+              maxAge: const Duration(seconds: 1), allowStale: true),
+          isEmpty);
       expect(HiveService.cacheAge('offline_never_written'), isNull);
-      expect(HiveService.isCacheFresh('offline_never_written', const Duration(days: 1)),
+      expect(
+          HiveService.isCacheFresh(
+              'offline_never_written', const Duration(days: 1)),
           isFalse);
     });
 
@@ -100,13 +107,25 @@ void main() {
 
       final question = QuestionModel.fromJson({
         'id': 'offline_q1',
-        'question': {'en': 'Which gas do plants absorb?', 'bn': 'গাছ কোন গ্যাস নেয়?', 'hi': 'पौधे कौन-सी गैस लेते हैं?'},
+        'question': {
+          'en': 'Which gas do plants absorb?',
+          'bn': 'গাছ কোন গ্যাস নেয়?',
+          'hi': 'पौधे कौन-सी गैस लेते हैं?'
+        },
         'options': [
-          {'en': 'Carbon dioxide', 'bn': 'কার্বন ডাই-অক্সাইড', 'hi': 'कार्बन डाइऑक्साइड'},
+          {
+            'en': 'Carbon dioxide',
+            'bn': 'কার্বন ডাই-অক্সাইড',
+            'hi': 'कार्बन डाइऑक्साइड'
+          },
           {'en': 'Oxygen', 'bn': 'অক্সিজেন', 'hi': 'ऑक्सीजन'},
         ],
         'correct_index': 0,
-        'explanation': {'en': 'Photosynthesis.', 'bn': 'সালোকসংশ্লেষ।', 'hi': 'प्रकाश संश्लेषण।'},
+        'explanation': {
+          'en': 'Photosynthesis.',
+          'bn': 'সালোকসংশ্লেষ।',
+          'hi': 'प्रकाश संश्लेषण।'
+        },
       });
 
       await HiveService.cachePut(cacheKey, [question.toJson()]);

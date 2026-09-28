@@ -88,8 +88,7 @@ void main() {
       for (final entry in {'bn': kStringsBn, 'hi': kStringsHi}.entries) {
         final stray =
             entry.value.keys.where((k) => !kStringsEn.containsKey(k)).toList();
-        expect(stray, isEmpty,
-            reason: '${entry.key} has stray key(s): $stray');
+        expect(stray, isEmpty, reason: '${entry.key} has stray key(s): $stray');
       }
     });
 
@@ -145,7 +144,6 @@ void main() {
       await restarted.useSystemLanguage();
       expect(restarted.followSystem, isTrue);
     });
-
   });
 
   test('a fresh install starts with zeroed stats (no fake data)', () {
@@ -198,7 +196,11 @@ void main() {
           },
           'options': [
             {'en': 'Oxygen', 'bn': 'অক্সিজেন', 'hi': 'ऑक्सीजन'},
-            {'en': 'Carbon dioxide', 'bn': 'কার্বন ডাইঅক্সাইড', 'hi': 'कार्बन डाइऑक्साइड'},
+            {
+              'en': 'Carbon dioxide',
+              'bn': 'কার্বন ডাইঅক্সাইড',
+              'hi': 'कार्बन डाइऑक्साइड'
+            },
           ],
           'correct_index': 1,
           'explanation': {'en': 'Photosynthesis uses CO2.'},

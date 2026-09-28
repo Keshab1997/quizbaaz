@@ -58,7 +58,8 @@ void main() {
       repository: _ControlledQuizRepository(chapterQuestions: result.future),
     );
 
-    final starting = quiz.startChapterQuiz('ignored.json', chapterId: 'chapter');
+    final starting =
+        quiz.startChapterQuiz('ignored.json', chapterId: 'chapter');
     expect(quiz.isLoading, isTrue);
 
     quiz.quitQuiz();

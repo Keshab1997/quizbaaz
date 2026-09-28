@@ -116,8 +116,8 @@ void main() {
             'allow participant-scoped reads on ${spec.collection}',
       );
       expect(
-        spec.equalityFields
-            .any((field) => FirestoreQuerySpec.participantFields.contains(field)),
+        spec.equalityFields.any(
+            (field) => FirestoreQuerySpec.participantFields.contains(field)),
         isTrue,
         reason: '${spec.name} must filter by a participant field',
       );

@@ -26,7 +26,8 @@ void main() {
     if (tempDir.existsSync()) tempDir.deleteSync(recursive: true);
   });
 
-  Widget host(UserProvider provider) => ChangeNotifierProvider<UserProvider>.value(
+  Widget host(UserProvider provider) =>
+      ChangeNotifierProvider<UserProvider>.value(
         value: provider,
         child: const MaterialApp(home: AvatarSelectionScreen()),
       );

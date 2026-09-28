@@ -179,7 +179,8 @@ void main() {
         ShopItemIds.hintReveal,
         ShopItemIds.extraLife,
       ]) {
-        expect(user.inventoryCount(item), 1, reason: '$item was spent in practice');
+        expect(user.inventoryCount(item), 1,
+            reason: '$item was spent in practice');
       }
     });
 
@@ -246,7 +247,8 @@ void main() {
           reason: 'the timer stayed cancelled after the extra life');
     });
 
-    test('extra life on a timeout hands back five seconds, not a fresh question',
+    test(
+        'extra life on a timeout hands back five seconds, not a fresh question',
         () async {
       await useFastClock();
       user.user.inventory[ShopItemIds.extraLife] = 1;
@@ -261,7 +263,8 @@ void main() {
       // *after* it reaches zero, so a two-second question needs ~3 s.
       await Future<void>.delayed(const Duration(milliseconds: 3500));
       expect(quiz.extraLifeUsed, isTrue, reason: 'the timeout never fired');
-      expect(quiz.secondsRemaining, lessThanOrEqualTo(QuizProvider.kExtraLifeSeconds),
+      expect(quiz.secondsRemaining,
+          lessThanOrEqualTo(QuizProvider.kExtraLifeSeconds),
           reason: 'the countdown was reset to the full question time instead');
 
       quiz.quitQuiz();

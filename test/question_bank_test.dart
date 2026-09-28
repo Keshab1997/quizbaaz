@@ -56,8 +56,8 @@ void main() {
     test('ignores case, punctuation and spacing', () {
       const a = 'What is the HCF of 96 and 404?';
       const b = '  what   is the hcf of 96 and 404  ';
-      expect(QuestionFingerprint.normalise(a),
-          QuestionFingerprint.normalise(b));
+      expect(
+          QuestionFingerprint.normalise(a), QuestionFingerprint.normalise(b));
     });
 
     test('keeps digits — different numbers are different questions', () {
@@ -155,8 +155,7 @@ void main() {
 
   group('QuestionValidator — rejects what a model actually gets wrong', () {
     test('correct_index past the end of the options', () {
-      final result =
-          QuestionValidator.validate(buildQuestion(correctIndex: 4));
+      final result = QuestionValidator.validate(buildQuestion(correctIndex: 4));
       expect(result.isAcceptable, isFalse);
       expect(result.summary, contains('correct_index'));
     });
@@ -275,8 +274,8 @@ void main() {
   group('QuestionValidator — duplicates', () {
     test('an exact duplicate is rejected', () {
       final question = buildQuestion();
-      final fingerprint = QuestionFingerprint.fingerprint(
-          question.questionText.resolve('en'));
+      final fingerprint =
+          QuestionFingerprint.fingerprint(question.questionText.resolve('en'));
 
       final result = QuestionValidator.validate(
         question,
@@ -436,14 +435,14 @@ void main() {
       expect(merged.single.categoryName, 'cat_math');
       expect(merged.single.chapters, hasLength(2));
 
-      final hidden = merged.single.chapters
-          .firstWhere((c) => c.chapterId == 'math_ch_01');
+      final hidden =
+          merged.single.chapters.firstWhere((c) => c.chapterId == 'math_ch_01');
       expect(hidden.isEnabled, isFalse);
       expect(remote.single.nameText.isEmpty, isTrue);
 
       final studentView = QuizRepository.filterForStudents(merged);
-      expect(studentView.single.chapters.map((c) => c.chapterId),
-          ['math_ch_02']);
+      expect(
+          studentView.single.chapters.map((c) => c.chapterId), ['math_ch_02']);
 
       final adminView =
           QuizRepository.filterForStudents(merged, includeDisabled: true);
@@ -494,8 +493,7 @@ void main() {
       final original = buildQuestion();
       final shuffled = original.withShuffledOptions(Random(7));
 
-      final before =
-          original.optionTexts.map((o) => o.resolve('en')).toSet();
+      final before = original.optionTexts.map((o) => o.resolve('en')).toSet();
       final after = shuffled.optionTexts.map((o) => o.resolve('en')).toSet();
 
       expect(after, before);
@@ -663,8 +661,7 @@ void _setsTests() {
     test('set lengths add up to the chapter', () {
       const total = 47;
       final lengths = [
-        for (var i = 0; i < setCountFor(total); i++)
-          setLengthFor(total, i),
+        for (var i = 0; i < setCountFor(total); i++) setLengthFor(total, i),
       ];
       expect(lengths, [10, 10, 10, 10, 7]);
       expect(lengths.fold<int>(0, (a, b) => a + b), total);
@@ -719,7 +716,8 @@ void _setsTests() {
         total: 10,
         playedAt: DateTime(2026, 4, 1),
       );
-      expect(worse.bestScore, 90, reason: 'a bad replay must not erase a good run');
+      expect(worse.bestScore, 90,
+          reason: 'a bad replay must not erase a good run');
       expect(worse.bestCorrect, 9);
       expect(worse.attempts, 3);
     });

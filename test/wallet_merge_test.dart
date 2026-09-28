@@ -64,7 +64,7 @@ void main() {
     });
 
     test('a fresh profile adopts the remote balance (reinstall)', () {
-      final local = UserModel.newPlayer(isGuest: false);      // 0 coins, no items
+      final local = UserModel.newPlayer(isGuest: false); // 0 coins, no items
       final remote = UserModel.newPlayer(isGuest: false)
         ..coins = 2400
         ..gems = 12
