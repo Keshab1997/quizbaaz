@@ -63,7 +63,7 @@ jobs:
 
   publish:
     needs: check-admob-config
-    uses: Keshab1997/flutter-builder/.github/workflows/publish-release.yml@v1.3.0
+    uses: Keshab1997/flutter-builder/.github/workflows/publish-release.yml@v1.8.1
     with:
       app-name: QuizBaaz
       release-draft: ${{ inputs.draft }}

@@ -1,0 +1,30 @@
+name: Flutter CI
+
+# Basic CI via reusable builder — format, analyze, test
+# quizbaaz also has content-and-quality.yml which does extra validation
+# (question banks, firestore rules, refresh PR). This is the lightweight
+# fast check that flutter-builder installer provides.
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    uses: Keshab1997/flutter-builder/.github/workflows/flutter-build.yml@v1.8.1
+    with:
+      flutter-channel: stable
+      run-format-check: true
+      run-analyze: true
+      run-tests: true
+      build-apk: false
+      build-aab: false
