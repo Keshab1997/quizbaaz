@@ -9,25 +9,25 @@ class WhatsNewCatalog {
   static const Map<String, Map<String, List<String>>> _releases = {
     '1.0.13': {
       'en': [
-        '30 seconds per question now, up from 15 — daily quiz, chapter sets and battles.',
-        'The question and all four options now fit on one screen, with no scrolling.',
-        'The daily quiz banner shows on question 1, then gets out of the way.',
+        'Every question now gets 30 seconds, up from 15 — daily quizzes, chapter sets and battles.',
+        'The question and all four options fit on one screen, with no scrolling mid-question.',
+        'The daily quiz banner now appears once on the first question, then gets out of your way.',
         'Profile avatars no longer clip the top of your head.',
         'In Bangla and Hindi the question no longer repeats an English line underneath.',
       ],
       'bn': [
-        'এখন প্রতি প্রশ্নে ৩০ সেকেন্ড, আগে ছিল ১৫ — ডেইলি কুইজ, চ্যাপ্টার সেট ও ব্যাটল সবখানে।',
-        'প্রশ্ন আর চারটা অপশন এখন এক স্ক্রিনেই ঠিক হয়, স্ক্রল করতে হয় না।',
-        'ডেইলি কুইজের ব্যানার প্রথম প্রশ্নে দেখায়, তারপর আর দেখায় না।',
-        'প্রোফাইল অ্যাভাটারে আর মাথার উপরের অংশ কাটা যায় না।',
+        'এখন প্রতি প্রশ্নে ৩০ সেকেন্ড, আগে ছিল ১৫ — ডেইলি কুইজ, চ্যাপ্টার সেট ও ব্যাটল সবখানেই।',
+        'প্রশ্ন আর চারটি অপশন এবার এক স্ক্রিনেই ঠিক হয়, মাঝপ্রশ্নে স্ক্রল করতে হয় না।',
+        'ডেইলি কুইজের ব্যানার এখন শুধু প্রথম প্রশ্নে দেখায়, তারপর পথ ছেড়ে দেয়।',
+        'প্রোফাইল অ্যাভাটারে আর মাথার উপরের অংশ কাটা পড়ে না।',
         'বাংলা ও হিন্দিতে প্রশ্নের নিচে আর ইংরেজি লাইন আলাদা করে দেখায় না।',
       ],
       'hi': [
-        'अब हर सवाल में 30 सेकंड, पहले थे 15 — डेली क्विज़, चैप्टर सेट और बैटल, तीनों में।',
-        'सवाल और चारों विकल्प अब एक ही स्क्रीन में आ जाते हैं, स्क्रॉल नहीं करना पड़ता।',
-        'डेली क्विज़ का बैनर पहले सवाल पर दिखता है, उसके बाद नहीं।',
-        'प्रोफ़ाइल अवतार में सिर का ऊपरी हिस्सा अब कटता नहीं।',
-        'बंगाली और हिन्दी में सवाल के नीचे अब अलग से अंग्रेज़ी लाइन नहीं दिखती।',
+        'अब हर सवाल के 30 सेकंड मिलते हैं, पहले 15 थे — डेली क्विज़, चैप्टर सेट और बैटल तीनों में।',
+        'सवाल और चारों विकल्प अब एक ही स्क्रीन पर आ जाते हैं, बीच में स्क्रॉल नहीं करना पड़ता।',
+        'डेली क्विज़ का बैनर अब सिर्फ़ पहले सवाल पर दिखता है, फिर रास्ता छोड़ देता है।',
+        'प्रोफ़ाइल अवतार में अब सिर का ऊपरी हिस्सा नहीं कटता।',
+        'बंगाली और हिन्दी में सवाल के नीचे अब अंग्रेज़ी लाइन नहीं दिखती।',
       ],
     },
     '1.0.12': {
