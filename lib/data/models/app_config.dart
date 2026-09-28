@@ -119,27 +119,27 @@ class AppConfig {
       userId.isNotEmpty && adminUserIds.contains(userId);
 
   Map<String, dynamic> toJson() => {
-        'daily_question_count': dailyQuestionCount,
-        'seconds_per_question': secondsPerQuestion,
-        'coins_per_correct_daily': coinsPerCorrectDaily,
-        'perfect_bonus_coins': perfectBonusCoins,
-        'coins_per_correct_practice': coinsPerCorrectPractice,
-        'gems_perfect': gemsPerfect,
-        'gems_high_score': gemsHighScore,
-        'high_score_threshold': highScoreThreshold,
-        'signup_bonus_coins': signupBonusCoins,
-        'signup_bonus_gems': signupBonusGems,
-        'streak_goal_days': streakGoalDays,
-        'battle_question_count': battleQuestionCount,
-        'battle_base_points': battleBasePoints,
-        'battle_speed_bonus': battleSpeedBonus,
-        'battle_first_bonus': battleFirstBonus,
-        'battle_streak_bonus': battleStreakBonus,
-        'battle_max_streak_bonus': battleMaxStreakBonus,
-        'battle_search_seconds': battleSearchSeconds,
-        'admin_user_ids': adminUserIds,
-        'leaderboard_cache_minutes': leaderboardCacheMinutes,
-      };
+    'daily_question_count': dailyQuestionCount,
+    'seconds_per_question': secondsPerQuestion,
+    'coins_per_correct_daily': coinsPerCorrectDaily,
+    'perfect_bonus_coins': perfectBonusCoins,
+    'coins_per_correct_practice': coinsPerCorrectPractice,
+    'gems_perfect': gemsPerfect,
+    'gems_high_score': gemsHighScore,
+    'high_score_threshold': highScoreThreshold,
+    'signup_bonus_coins': signupBonusCoins,
+    'signup_bonus_gems': signupBonusGems,
+    'streak_goal_days': streakGoalDays,
+    'battle_question_count': battleQuestionCount,
+    'battle_base_points': battleBasePoints,
+    'battle_speed_bonus': battleSpeedBonus,
+    'battle_first_bonus': battleFirstBonus,
+    'battle_streak_bonus': battleStreakBonus,
+    'battle_max_streak_bonus': battleMaxStreakBonus,
+    'battle_search_seconds': battleSearchSeconds,
+    'admin_user_ids': adminUserIds,
+    'leaderboard_cache_minutes': leaderboardCacheMinutes,
+  };
 
   factory AppConfig.fromJson(Map<String, dynamic> json) {
     const fallback = AppConfig();
@@ -193,7 +193,8 @@ class AppConfig {
         'battle_search_seconds',
         fallback.battleSearchSeconds,
       ),
-      adminUserIds: (json['admin_user_ids'] as List<dynamic>?)
+      adminUserIds:
+          (json['admin_user_ids'] as List<dynamic>?)
               ?.map((e) => '$e')
               .toList() ??
           const <String>[],

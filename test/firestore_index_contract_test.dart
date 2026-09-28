@@ -48,8 +48,9 @@ void main() {
       if (next + i >= names.length) return false;
       if (names[next + i] != spec.orderBy[i]) return false;
       final direction = fields[next + i]['order'] as String? ?? 'ASCENDING';
-      final wantsDescending =
-          i < spec.descending.length ? spec.descending[i] : false;
+      final wantsDescending = i < spec.descending.length
+          ? spec.descending[i]
+          : false;
       if (wantsDescending && direction != 'DESCENDING') return false;
     }
     return true;
@@ -117,7 +118,8 @@ void main() {
       );
       expect(
         spec.equalityFields.any(
-            (field) => FirestoreQuerySpec.participantFields.contains(field)),
+          (field) => FirestoreQuerySpec.participantFields.contains(field),
+        ),
         isTrue,
         reason: '${spec.name} must filter by a participant field',
       );
@@ -138,16 +140,17 @@ void main() {
       throwsArgumentError,
     );
     // The correct binding is accepted.
-    final bound = FirestoreQuerySpecs.challengesIncoming
-        .bind(equals: {'to_uid': 'uid-a', 'status': 'pending'});
+    final bound = FirestoreQuerySpecs.challengesIncoming.bind(
+      equals: {'to_uid': 'uid-a', 'status': 'pending'},
+    );
     expect(bound.equalityFields, containsAll(['to_uid', 'status']));
     expect(bound.orderBy, ['created_at']);
     expect(bound.descending, [true]);
   });
 
   test('challenge expiry is a TTL policy, not a client sweep', () {
-    final overrides =
-        (indexesFile['fieldOverrides'] as List).cast<Map<String, dynamic>>();
+    final overrides = (indexesFile['fieldOverrides'] as List)
+        .cast<Map<String, dynamic>>();
     final ttl = overrides.where(
       (o) =>
           o['collectionGroup'] == 'battle_challenges' &&

@@ -48,14 +48,16 @@ void main() {
       expect(list.first.receivedAt, original.receivedAt);
     });
 
-    test('empty title+body is still inserted by insert(); inbox.add filters it',
-        () {
-      final list = NotificationInbox.insert(
-        const [],
-        item(id: 'blank', title: '', body: ''),
-      );
-      expect(list, hasLength(1));
-    });
+    test(
+      'empty title+body is still inserted by insert(); inbox.add filters it',
+      () {
+        final list = NotificationInbox.insert(
+          const [],
+          item(id: 'blank', title: '', body: ''),
+        );
+        expect(list, hasLength(1));
+      },
+    );
 
     test('caps at maxEntries, dropping the oldest', () {
       var list = <NotificationItem>[];
@@ -135,12 +137,9 @@ void main() {
     });
 
     test('add persists and reload restores', () async {
-      await NotificationInbox.instance.add(item(
-        id: 'os_1',
-        title: 'Live',
-        body: 'Play now',
-        open: 'daily_quiz',
-      ));
+      await NotificationInbox.instance.add(
+        item(id: 'os_1', title: 'Live', body: 'Play now', open: 'daily_quiz'),
+      );
       expect(NotificationInbox.instance.unreadCount, 1);
 
       NotificationInbox.instance.debugReset();
@@ -150,8 +149,9 @@ void main() {
     });
 
     test('add skips blank title and body', () async {
-      await NotificationInbox.instance
-          .add(item(id: 'blank', title: '  ', body: ''));
+      await NotificationInbox.instance.add(
+        item(id: 'blank', title: '  ', body: ''),
+      );
       expect(NotificationInbox.instance.items, isEmpty);
     });
 

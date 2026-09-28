@@ -24,28 +24,33 @@ QuestionModel buildQuestion({
 }) {
   return QuestionModel(
     id: id,
-    questionText: LocalizedText(question ??
-        const {
-          'en': 'What is the HCF of 96 and 404?',
-          'bn': '৯৬ এবং ৪০৪-এর গ.সা.গু. কত?',
-          'hi': '96 और 404 का म.स.प. क्या है?',
-        }),
-    optionTexts: (options ??
-            const [
-              {'en': 'Two', 'bn': 'দুই', 'hi': 'दो'},
-              {'en': 'Four', 'bn': 'চার', 'hi': 'चार'},
-              {'en': 'Eight', 'bn': 'আট', 'hi': 'आठ'},
-              {'en': 'Sixteen', 'bn': 'ষোলো', 'hi': 'सोलह'},
-            ])
-        .map(LocalizedText.new)
-        .toList(),
+    questionText: LocalizedText(
+      question ??
+          const {
+            'en': 'What is the HCF of 96 and 404?',
+            'bn': '৯৬ এবং ৪০৪-এর গ.সা.গু. কত?',
+            'hi': '96 और 404 का म.स.प. क्या है?',
+          },
+    ),
+    optionTexts:
+        (options ??
+                const [
+                  {'en': 'Two', 'bn': 'দুই', 'hi': 'दो'},
+                  {'en': 'Four', 'bn': 'চার', 'hi': 'चार'},
+                  {'en': 'Eight', 'bn': 'আট', 'hi': 'आठ'},
+                  {'en': 'Sixteen', 'bn': 'ষোলো', 'hi': 'सोलह'},
+                ])
+            .map(LocalizedText.new)
+            .toList(),
     correctIndex: correctIndex,
-    explanationText: LocalizedText(explanation ??
-        const {
-          'en': 'Euclid division gives 4 as the highest common factor.',
-          'bn': 'ইউক্লিডের বিভাজন অনুসারে গ.সা.গু. ৪।',
-          'hi': 'यूक्लिड विभाजन से म.स.प. 4 प्राप्त होता है।',
-        }),
+    explanationText: LocalizedText(
+      explanation ??
+          const {
+            'en': 'Euclid division gives 4 as the highest common factor.',
+            'bn': 'ইউক্লিডের বিভাজন অনুসারে গ.সা.গু. ৪।',
+            'hi': 'यूक्लिड विभाजन से म.स.प. 4 प्राप्त होता है।',
+          },
+    ),
     points: points,
     timeLimitSec: timeLimitSec,
   );
@@ -57,7 +62,9 @@ void main() {
       const a = 'What is the HCF of 96 and 404?';
       const b = '  what   is the hcf of 96 and 404  ';
       expect(
-          QuestionFingerprint.normalise(a), QuestionFingerprint.normalise(b));
+        QuestionFingerprint.normalise(a),
+        QuestionFingerprint.normalise(b),
+      );
     });
 
     test('keeps digits — different numbers are different questions', () {
@@ -68,8 +75,9 @@ void main() {
     });
 
     test('preserves non-Latin scripts', () {
-      final normalised =
-          QuestionFingerprint.normalise('গ.সা.গু. কত? — ৯৬ ও ৪০৪');
+      final normalised = QuestionFingerprint.normalise(
+        'গ.সা.গু. কত? — ৯৬ ও ৪০৪',
+      );
       expect(normalised, contains('গ'));
       expect(normalised, contains('৯৬'));
       expect(normalised, isNot(contains('.')));
@@ -111,8 +119,9 @@ void main() {
 
     test('returns null when nothing is close', () {
       expect(
-        QuestionFingerprint.findNearDuplicate(
-            'Define an irrational number.', {'q1': 'What is 2 plus 2?'}),
+        QuestionFingerprint.findNearDuplicate('Define an irrational number.', {
+          'q1': 'What is 2 plus 2?',
+        }),
         isNull,
       );
     });
@@ -122,8 +131,11 @@ void main() {
     test('continues from the highest id, not the count', () {
       // The gap matters: q002 was deleted. Reusing 3 would overwrite q003.
       expect(
-        QuestionFingerprint.nextSequence(
-            ['math_ch1_q001', 'math_ch1_q003', 'math_ch1_q004']),
+        QuestionFingerprint.nextSequence([
+          'math_ch1_q001',
+          'math_ch1_q003',
+          'math_ch1_q004',
+        ]),
         5,
       );
     });
@@ -169,94 +181,125 @@ void main() {
     });
 
     test('an option that lost a language', () {
-      final result = QuestionValidator.validate(buildQuestion(options: const [
-        {'en': 'Two', 'bn': 'দুই', 'hi': 'दो'},
-        {'en': 'Four', 'bn': 'চার'}, // no Hindi
-        {'en': 'Eight', 'bn': 'আট', 'hi': 'आठ'},
-        {'en': 'Sixteen', 'bn': 'ষোলো', 'hi': 'सोलह'},
-      ]));
+      final result = QuestionValidator.validate(
+        buildQuestion(
+          options: const [
+            {'en': 'Two', 'bn': 'দুই', 'hi': 'दो'},
+            {'en': 'Four', 'bn': 'চার'}, // no Hindi
+            {'en': 'Eight', 'bn': 'আট', 'hi': 'आठ'},
+            {'en': 'Sixteen', 'bn': 'ষোলো', 'hi': 'सोलह'},
+          ],
+        ),
+      );
       expect(result.isAcceptable, isFalse);
-      expect(result.rejections.map((i) => i.message).join(),
-          contains('missing "hi"'));
+      expect(
+        result.rejections.map((i) => i.message).join(),
+        contains('missing "hi"'),
+      );
     });
 
     test('two options identical in one language', () {
-      final result = QuestionValidator.validate(buildQuestion(options: const [
-        {'en': 'Two', 'bn': 'দুই', 'hi': 'दो'},
-        // Distinct in English, collapsed in Bangla — unanswerable in bn.
-        {'en': 'Twice', 'bn': 'দুই', 'hi': 'दुगुना'},
-        {'en': 'Eight', 'bn': 'আট', 'hi': 'आठ'},
-        {'en': 'Sixteen', 'bn': 'ষোলো', 'hi': 'सोलह'},
-      ]));
+      final result = QuestionValidator.validate(
+        buildQuestion(
+          options: const [
+            {'en': 'Two', 'bn': 'দুই', 'hi': 'दो'},
+            // Distinct in English, collapsed in Bangla — unanswerable in bn.
+            {'en': 'Twice', 'bn': 'দুই', 'hi': 'दुगुना'},
+            {'en': 'Eight', 'bn': 'আট', 'hi': 'आठ'},
+            {'en': 'Sixteen', 'bn': 'ষোলো', 'hi': 'सोलह'},
+          ],
+        ),
+      );
       expect(result.isAcceptable, isFalse);
-      expect(result.rejections.map((i) => i.message).join(),
-          contains('identical in "bn"'));
+      expect(
+        result.rejections.map((i) => i.message).join(),
+        contains('identical in "bn"'),
+      );
     });
 
     test('a translation that is just the English pasted back', () {
-      final result = QuestionValidator.validate(buildQuestion(question: const {
-        'en': 'What is the HCF of 96 and 404?',
-        'bn': 'What is the HCF of 96 and 404?',
-        'hi': '96 और 404 का म.स.प. क्या है?',
-      }));
+      final result = QuestionValidator.validate(
+        buildQuestion(
+          question: const {
+            'en': 'What is the HCF of 96 and 404?',
+            'bn': 'What is the HCF of 96 and 404?',
+            'hi': '96 और 404 का म.स.प. क्या है?',
+          },
+        ),
+      );
       expect(result.isAcceptable, isFalse);
       expect(result.summary, contains('identical to English'));
     });
 
     test('but identical numeric or symbolic text is allowed', () {
       // "H2O" is the same in every language; that is not a skipped translation.
-      final result = QuestionValidator.validate(buildQuestion(options: const [
-        {'en': 'H2O', 'bn': 'H2O', 'hi': 'H2O'},
-        {'en': 'CO2', 'bn': 'CO2', 'hi': 'CO2'},
-        {'en': 'NaCl', 'bn': 'NaCl', 'hi': 'NaCl'},
-        {'en': 'O2', 'bn': 'O2', 'hi': 'O2'},
-      ]));
+      final result = QuestionValidator.validate(
+        buildQuestion(
+          options: const [
+            {'en': 'H2O', 'bn': 'H2O', 'hi': 'H2O'},
+            {'en': 'CO2', 'bn': 'CO2', 'hi': 'CO2'},
+            {'en': 'NaCl', 'bn': 'NaCl', 'hi': 'NaCl'},
+            {'en': 'O2', 'bn': 'O2', 'hi': 'O2'},
+          ],
+        ),
+      );
       expect(result.isAcceptable, isTrue, reason: result.summary);
     });
 
     test('a single technical term kept in English is allowed', () {
       // The authoring guide says a term may stay in English when that is what
       // the classroom uses. Only multi-word prose counts as untranslated.
-      final result = QuestionValidator.validate(buildQuestion(options: const [
-        {'en': 'Router', 'bn': 'Router', 'hi': 'Router'},
-        {'en': 'Switch', 'bn': 'Switch', 'hi': 'Switch'},
-        {'en': 'Modem', 'bn': 'মডেম', 'hi': 'मॉडेम'},
-        {'en': 'Hub', 'bn': 'হাব', 'hi': 'हब'},
-      ]));
+      final result = QuestionValidator.validate(
+        buildQuestion(
+          options: const [
+            {'en': 'Router', 'bn': 'Router', 'hi': 'Router'},
+            {'en': 'Switch', 'bn': 'Switch', 'hi': 'Switch'},
+            {'en': 'Modem', 'bn': 'মডেম', 'hi': 'मॉडेम'},
+            {'en': 'Hub', 'bn': 'হাব', 'hi': 'हब'},
+          ],
+        ),
+      );
       expect(result.isAcceptable, isTrue, reason: result.summary);
     });
 
     test('too few options', () {
-      final result = QuestionValidator.validate(buildQuestion(
-        options: const [
-          {'en': 'Yes', 'bn': 'হ্যাঁ', 'hi': 'हाँ'},
-        ],
-        correctIndex: 0,
-      ));
+      final result = QuestionValidator.validate(
+        buildQuestion(
+          options: const [
+            {'en': 'Yes', 'bn': 'হ্যাঁ', 'hi': 'हाँ'},
+          ],
+          correctIndex: 0,
+        ),
+      );
       expect(result.isAcceptable, isFalse);
     });
 
     test('three options are allowed but warned about', () {
-      final result = QuestionValidator.validate(buildQuestion(
-        options: const [
-          {'en': 'Two', 'bn': 'দুই', 'hi': 'दो'},
-          {'en': 'Four', 'bn': 'চার', 'hi': 'चार'},
-          {'en': 'Eight', 'bn': 'আট', 'hi': 'आठ'},
-        ],
-      ));
+      final result = QuestionValidator.validate(
+        buildQuestion(
+          options: const [
+            {'en': 'Two', 'bn': 'দুই', 'hi': 'दो'},
+            {'en': 'Four', 'bn': 'চার', 'hi': 'चार'},
+            {'en': 'Eight', 'bn': 'আট', 'hi': 'आठ'},
+          ],
+        ),
+      );
       expect(result.isAcceptable, isTrue);
       expect(result.warnings, isNotEmpty);
     });
 
     test('an empty stem', () {
-      final result =
-          QuestionValidator.validate(buildQuestion(question: const {}));
+      final result = QuestionValidator.validate(
+        buildQuestion(question: const {}),
+      );
       expect(result.isAcceptable, isFalse);
     });
 
     test('out-of-range points and time limit', () {
-      expect(QuestionValidator.validate(buildQuestion(points: 0)).isAcceptable,
-          isFalse);
+      expect(
+        QuestionValidator.validate(buildQuestion(points: 0)).isAcceptable,
+        isFalse,
+      );
       expect(
         QuestionValidator.validate(buildQuestion(timeLimitSec: 2)).isAcceptable,
         isFalse,
@@ -264,8 +307,9 @@ void main() {
     });
 
     test('a missing explanation is a warning, not a rejection', () {
-      final result =
-          QuestionValidator.validate(buildQuestion(explanation: const {}));
+      final result = QuestionValidator.validate(
+        buildQuestion(explanation: const {}),
+      );
       expect(result.isAcceptable, isTrue);
       expect(result.warnings, isNotEmpty);
     });
@@ -274,8 +318,9 @@ void main() {
   group('QuestionValidator — duplicates', () {
     test('an exact duplicate is rejected', () {
       final question = buildQuestion();
-      final fingerprint =
-          QuestionFingerprint.fingerprint(question.questionText.resolve('en'));
+      final fingerprint = QuestionFingerprint.fingerprint(
+        question.questionText.resolve('en'),
+      );
 
       final result = QuestionValidator.validate(
         question,
@@ -287,17 +332,22 @@ void main() {
 
     test('a near-duplicate is flagged for review, not rejected', () {
       final result = QuestionValidator.validate(
-        buildQuestion(question: const {
-          'en': 'Find the HCF of 96 and 404.',
-          'bn': '৯৬ ও ৪০৪-এর গ.সা.গু. নির্ণয় করো।',
-          'hi': '96 और 404 का म.स.प. ज्ञात कीजिए।',
-        }),
+        buildQuestion(
+          question: const {
+            'en': 'Find the HCF of 96 and 404.',
+            'bn': '৯৬ ও ৪০৪-এর গ.সা.গু. নির্ণয় করো।',
+            'hi': '96 और 404 का म.स.प. ज्ञात कीजिए।',
+          },
+        ),
         existingStems: const {
           'math_ch1_q014': 'What is the HCF of 96 and 404?',
         },
       );
-      expect(result.isAcceptable, isTrue,
-          reason: 'a near-duplicate is a judgement call for the admin');
+      expect(
+        result.isAcceptable,
+        isTrue,
+        reason: 'a near-duplicate is a judgement call for the admin',
+      );
       expect(result.nearDuplicate, isNotNull);
       expect(result.nearDuplicate!.questionId, 'math_ch1_q014');
     });
@@ -308,26 +358,31 @@ void main() {
         buildQuestion(id: 'math_ch1_q002'), // same stem as the first
       ]);
       expect(results[0].isAcceptable, isTrue);
-      expect(results[1].isAcceptable, isFalse,
-          reason: 'the second copy must be caught within the same batch');
+      expect(
+        results[1].isAcceptable,
+        isFalse,
+        reason: 'the second copy must be caught within the same batch',
+      );
     });
   });
 
   group('chapter visibility', () {
-    ChapterModel chapter(String id,
-            {bool isEnabled = true, int totalQuestions = 10}) =>
-        ChapterModel(
-          chapterId: id,
-          chapterNumber: 1,
-          titleText: LocalizedText({'en': id}),
-          descriptionText: const LocalizedText.empty(),
-          totalQuestions: totalQuestions,
-          jsonFile: 'assets/data/questions/$id.json',
-          isUnlocked: true,
-          isEnabled: isEnabled,
-          stars: 0,
-          bestScore: 0,
-        );
+    ChapterModel chapter(
+      String id, {
+      bool isEnabled = true,
+      int totalQuestions = 10,
+    }) => ChapterModel(
+      chapterId: id,
+      chapterNumber: 1,
+      titleText: LocalizedText({'en': id}),
+      descriptionText: const LocalizedText.empty(),
+      totalQuestions: totalQuestions,
+      jsonFile: 'assets/data/questions/$id.json',
+      isUnlocked: true,
+      isEnabled: isEnabled,
+      stars: 0,
+      bestScore: 0,
+    );
 
     CategoryModel category(String id, List<ChapterModel> chapters) =>
         CategoryModel(
@@ -375,8 +430,10 @@ void main() {
       expect(studentView.single.totalChapters, 1);
       expect(studentView.single.chapters.single.chapterId, 'shown');
 
-      final adminView =
-          QuizRepository.filterForStudents(all, includeDisabled: true);
+      final adminView = QuizRepository.filterForStudents(
+        all,
+        includeDisabled: true,
+      );
       expect(adminView, hasLength(2));
       expect(adminView.first.chapters, hasLength(2));
     });
@@ -395,8 +452,10 @@ void main() {
       expect(studentView.single.categoryId, 'math');
       expect(studentView.single.chapters.map((c) => c.chapterId), ['ready']);
 
-      final adminView =
-          QuizRepository.filterForStudents(all, includeDisabled: true);
+      final adminView = QuizRepository.filterForStudents(
+        all,
+        includeDisabled: true,
+      );
       expect(adminView, hasLength(2));
       expect(adminView.first.chapters, hasLength(2));
     });
@@ -435,17 +494,21 @@ void main() {
       expect(merged.single.categoryName, 'cat_math');
       expect(merged.single.chapters, hasLength(2));
 
-      final hidden =
-          merged.single.chapters.firstWhere((c) => c.chapterId == 'math_ch_01');
+      final hidden = merged.single.chapters.firstWhere(
+        (c) => c.chapterId == 'math_ch_01',
+      );
       expect(hidden.isEnabled, isFalse);
       expect(remote.single.nameText.isEmpty, isTrue);
 
       final studentView = QuizRepository.filterForStudents(merged);
-      expect(
-          studentView.single.chapters.map((c) => c.chapterId), ['math_ch_02']);
+      expect(studentView.single.chapters.map((c) => c.chapterId), [
+        'math_ch_02',
+      ]);
 
-      final adminView =
-          QuizRepository.filterForStudents(merged, includeDisabled: true);
+      final adminView = QuizRepository.filterForStudents(
+        merged,
+        includeDisabled: true,
+      );
       expect(adminView.single.chapters, hasLength(2));
     });
   });
@@ -509,10 +572,14 @@ void main() {
       for (var i = 0; i < shuffled.optionTexts.length; i++) {
         final english = shuffled.optionsIn('en')[i];
         final originalPosition = original.optionsIn('en').indexOf(english);
-        expect(shuffled.optionsIn('bn')[i],
-            original.optionsIn('bn')[originalPosition]);
-        expect(shuffled.optionsIn('hi')[i],
-            original.optionsIn('hi')[originalPosition]);
+        expect(
+          shuffled.optionsIn('bn')[i],
+          original.optionsIn('bn')[originalPosition],
+        );
+        expect(
+          shuffled.optionsIn('hi')[i],
+          original.optionsIn('hi')[originalPosition],
+        );
       }
     });
 
@@ -552,10 +619,14 @@ void main() {
       final shuffled = original.withShuffledOptions(Random(11));
 
       expect(shuffled.id, original.id);
-      expect(shuffled.questionText.resolve('bn'),
-          original.questionText.resolve('bn'));
-      expect(shuffled.explanationText.resolve('hi'),
-          original.explanationText.resolve('hi'));
+      expect(
+        shuffled.questionText.resolve('bn'),
+        original.questionText.resolve('bn'),
+      );
+      expect(
+        shuffled.explanationText.resolve('hi'),
+        original.explanationText.resolve('hi'),
+      );
       expect(shuffled.points, original.points);
       expect(shuffled.timeLimitSec, original.timeLimitSec);
     });
@@ -577,8 +648,9 @@ void main() {
         ),
       );
 
-      final nextStart =
-          QuestionFingerprint.nextSequence(existing.map((q) => q.id));
+      final nextStart = QuestionFingerprint.nextSequence(
+        existing.map((q) => q.id),
+      );
       expect(nextStart, 41);
 
       final generated = List.generate(
@@ -603,8 +675,11 @@ void main() {
             QuestionFingerprint.fingerprint(q.questionText.resolve('en')),
         },
       );
-      expect(results.every((r) => r.isAcceptable), isTrue,
-          reason: results.map((r) => r.summary).join(' | '));
+      expect(
+        results.every((r) => r.isAcceptable),
+        isTrue,
+        reason: results.map((r) => r.summary).join(' | '),
+      );
 
       // Appending, the way the service will: existing first, new after.
       final merged = <String, QuestionModel>{
@@ -615,8 +690,11 @@ void main() {
       expect(merged.length, 50);
       expect(merged.keys.toSet().length, 50, reason: 'ids must stay unique');
       for (final q in existing) {
-        expect(merged.containsKey(q.id), isTrue,
-            reason: '${q.id} was lost — this is the bug we must never ship');
+        expect(
+          merged.containsKey(q.id),
+          isTrue,
+          reason: '${q.id} was lost — this is the bug we must never ship',
+        );
       }
       expect(merged.containsKey('math_ch1_q041'), isTrue);
       expect(merged.containsKey('math_ch1_q050'), isTrue);
@@ -677,13 +755,18 @@ void _setsTests() {
         final start = setStartIndex(setIndex);
         if (start >= all.length) return const [];
         return all.sublist(
-            start, (start + kQuestionsPerSet).clamp(0, all.length));
+          start,
+          (start + kQuestionsPerSet).clamp(0, all.length),
+        );
       }
 
       expect(slice(after, 0), slice(before, 0));
       expect(slice(after, 1), slice(before, 1));
-      expect(setCountFor(after.length), 6,
-          reason: 'the new questions become new sets at the end');
+      expect(
+        setCountFor(after.length),
+        6,
+        reason: 'the new questions become new sets at the end',
+      );
     });
 
     test('progress keeps the better attempt and the original clear date', () {
@@ -706,8 +789,11 @@ void _setsTests() {
       expect(better.bestScore, 90);
       expect(better.bestCorrect, 9);
       expect(better.attempts, 2);
-      expect(better.completedAt, DateTime(2026, 1, 1),
-          reason: 'a replay must not make an old set look newly cleared');
+      expect(
+        better.completedAt,
+        DateTime(2026, 1, 1),
+        reason: 'a replay must not make an old set look newly cleared',
+      );
       expect(better.lastPlayedAt, DateTime(2026, 3, 1));
 
       final worse = better.merge(
@@ -716,22 +802,25 @@ void _setsTests() {
         total: 10,
         playedAt: DateTime(2026, 4, 1),
       );
-      expect(worse.bestScore, 90,
-          reason: 'a bad replay must not erase a good run');
+      expect(
+        worse.bestScore,
+        90,
+        reason: 'a bad replay must not erase a good run',
+      );
       expect(worse.bestCorrect, 9);
       expect(worse.attempts, 3);
     });
 
     test('accuracy and perfect flag', () {
       ChapterSetProgress at(int correct, int total) => ChapterSetProgress(
-            chapterId: 'c',
-            setIndex: 0,
-            bestScore: 0,
-            bestCorrect: correct,
-            totalQuestions: total,
-            completedAt: DateTime(2026),
-            lastPlayedAt: DateTime(2026),
-          );
+        chapterId: 'c',
+        setIndex: 0,
+        bestScore: 0,
+        bestCorrect: correct,
+        totalQuestions: total,
+        completedAt: DateTime(2026),
+        lastPlayedAt: DateTime(2026),
+      );
 
       expect(at(10, 10).isPerfect, isTrue);
       expect(at(9, 10).isPerfect, isFalse);

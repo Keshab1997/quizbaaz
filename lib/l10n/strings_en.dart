@@ -86,16 +86,12 @@ const Map<String, String> kStringsEn = {
   'streakMotivationBtn': 'KEEP GOING!',
   'streakMotivationBtnStart': 'START TODAY',
   'streakResetTitle': 'STREAK LOST!',
-  'streakResetEncourage30':
-      'You had an amazing {n}-day streak! That\'s truly impressive. Let\'s start fresh and beat it! 💪',
-  'streakResetEncourage14':
-      'You were on fire for {n} days! Every streak can be rebuilt. Ready for round 2? 🔥',
-  'streakResetEncourage7':
-      'A solid {n}-day streak! The best time to start a new one is now. Let\'s go! 🚀',
+  'streakResetEncourage30': 'You had an amazing {n}-day streak! That\'s truly impressive. Let\'s start fresh and beat it! 💪',
+  'streakResetEncourage14': 'You were on fire for {n} days! Every streak can be rebuilt. Ready for round 2? 🔥',
+  'streakResetEncourage7': 'A solid {n}-day streak! The best time to start a new one is now. Let\'s go! 🚀',
   'streakResetEncourage3':
       'Good run! {n} days is just the beginning. Start a new streak today! ✨',
-  'streakResetEncourage0':
-      'No worries! Every master was once a beginner. Let\'s build something great! 🌟',
+  'streakResetEncourage0': 'No worries! Every master was once a beginner. Let\'s build something great! 🌟',
   'streakShieldAvailable': '🛡️ STREAK SHIELD AVAILABLE!',
   'streakShieldUse':
       'Use 1 Streak Shield to restore your {n}-Day Streak instantly!',
@@ -119,17 +115,13 @@ const Map<String, String> kStringsEn = {
 
   // ------------------------------------------------------------ daily quiz --
   'quizQuitTitle': 'Quit Live Quiz?',
-  'quizQuitBody':
-      'If you leave now, your score for today will not be recorded on the leaderboard.',
+  'quizQuitBody': 'If you leave now, your score for today will not be recorded on the leaderboard.',
   'quizQuit': 'Quit',
-  'dailyCountedBanner':
-      'This is today\'s counted run — your score goes straight to the leaderboard.',
-  'dailyLockedBanner':
-      'Today\'s leaderboard score is locked at {score} — this run is practice only.',
+  'dailyCountedBanner': 'This is today\'s counted run — your score goes straight to the leaderboard.',
+  'dailyLockedBanner': 'Today\'s leaderboard score is locked at {score} — this run is practice only.',
   'dailyRetryBanner':
       'Score Shield active — this run replaces today\'s score ({score}).',
-  'dailyUnrankedBanner':
-      'Practice set — today\'s competition packet is not available, so this score will not reach the leaderboard.',
+  'dailyUnrankedBanner': 'Practice set — today\'s competition packet is not available, so this score will not reach the leaderboard.',
   'quizNoFiftyFifty': 'No 50-50 lifelines left! Buy more in the Shop. 🛒',
   'quizFiftyFiftyUsed': 'Already used 50-50 on this question.',
   'quizFiftyFiftyBlocked': 'Cannot use 50-50 now.',
@@ -226,8 +218,7 @@ const Map<String, String> kStringsEn = {
   'profileSignOutConfirm':
       'Are you sure you want to sign out? Your local data will be kept.',
   'accountDelete': 'Delete Account',
-  'accountDeleteWarning':
-      'This will permanently delete your account, profile, quiz history, coins, gems, rewards and shop items. This cannot be undone.',
+  'accountDeleteWarning': 'This will permanently delete your account, profile, quiz history, coins, gems, rewards and shop items. This cannot be undone.',
   'accountDeleteConfirmLabel': 'Type DELETE below to confirm.',
   'accountDeleting': 'Deleting your account…',
   'accountDeleted':
@@ -250,12 +241,10 @@ const Map<String, String> kStringsEn = {
   'profileUpdated': '✅ Profile updated successfully!',
   'profileAvatarUpdated': '✅ Avatar updated successfully!',
   'profileSignedInGoogle': '🎉 Signed in with Google!',
-  'authNoIdToken':
-      'Google Sign-In returned no ID token. Please update the app and try again.',
+  'authNoIdToken': 'Google Sign-In returned no ID token. Please update the app and try again.',
   'authSignInCanceled':
       'Google Sign-In was cancelled. Tap Sign In and pick an account.',
-  'authReauthFailed':
-      'Google could not verify this Play build (error 16). Add the Play App Signing SHA-1 in Firebase → Project settings, wait a few minutes, then reinstall from Play.',
+  'authReauthFailed': 'Google could not verify this Play build (error 16). Add the Play App Signing SHA-1 in Firebase → Project settings, wait a few minutes, then reinstall from Play.',
   'profileEffectNotOwned': 'Buy this effect from the Shop first!',
   'profilePlayerFallback': 'QuizBaaz Player',
 
@@ -315,8 +304,7 @@ const Map<String, String> kStringsEn = {
   'rewardsTapPrize': 'Tap a prize to claim or track it.',
   'rewardsNone': 'No prizes yet — win the Daily Quiz! 🏆',
   'rewardsWinDaily': 'Win Daily Quiz Rewards & Prizes!',
-  'rewardsWinDailyBody':
-      'Play the Daily Live Quiz to win Coins, Gems, Shop Lifelines, Boosters & Badges every day!',
+  'rewardsWinDailyBody': 'Play the Daily Live Quiz to win Coins, Gems, Shop Lifelines, Boosters & Badges every day!',
   'rewardsClaimNow': 'CLAIM NOW',
   'rewardsClaimed': 'CLAIMED ✓',
   'rewardsProcessing': 'Processing',
@@ -366,28 +354,22 @@ const Map<String, String> kStringsEn = {
   'resultBackHome': 'Back to Home Dashboard',
   'resultPerfect': '🔥 PERFECT SCORE! +100 coin bonus',
   'resultSaveScore': 'Save Your Score & Join the Leaderboard!',
-  'resultGuestBody':
-      'You played as Guest. Sign in with 1-tap Google account to register your score on the daily leaderboard.',
+  'resultGuestBody': 'You played as Guest. Sign in with 1-tap Google account to register your score on the daily leaderboard.',
   'resultGoogleSignIn': '1-Tap Google Sign-In',
   'resultSigningIn': 'Signing in...',
   'resultSignedIn': '🎉 Signed in with Google! Score saved to Leaderboard!',
-  'resultDailyRankedNotice':
-      'Competition run — your first run of the day sets today\'s leaderboard score!',
+  'resultDailyRankedNotice': 'Competition run — your first run of the day sets today\'s leaderboard score!',
   'resultDailyUnrankedNotice':
       'Practice run — this score is not added to the leaderboard.',
-  'resultDailyCountedNotice':
-      '🏆 Today\'s score {score} is saved on the leaderboard — replays cannot change it.',
-  'resultDailyLockedNotice':
-      '🔒 Today\'s leaderboard score is locked at {score} — this run is not counted.',
+  'resultDailyCountedNotice': '🏆 Today\'s score {score} is saved on the leaderboard — replays cannot change it.',
+  'resultDailyLockedNotice': '🔒 Today\'s leaderboard score is locked at {score} — this run is not counted.',
   'resultDailyReplacedNotice':
       '🛡️ Score Shield used — today\'s leaderboard score is now {score}.',
   'resultShieldRetryTitle': 'Bad run? Use a Score Shield',
-  'resultShieldRetryBody':
-      'Spend 1 Score Shield and your next daily attempt replaces today\'s locked score ({score}) — even if it is lower.',
+  'resultShieldRetryBody': 'Spend 1 Score Shield and your next daily attempt replaces today\'s locked score ({score}) — even if it is lower.',
   'resultShieldRetryAction': 'Use Score Shield ({count})',
   'resultShieldRetryDialogTitle': 'Use a Score Shield?',
-  'resultShieldRetryDialogBody':
-      '1 Score Shield will be spent. Your next daily attempt becomes your leaderboard score for today.',
+  'resultShieldRetryDialogBody': '1 Score Shield will be spent. Your next daily attempt becomes your leaderboard score for today.',
   'resultShieldRetryConfirm': 'Use shield',
   'resultShieldRetryDone':
       'Shield used — your next daily attempt replaces today\'s score.',
@@ -424,8 +406,7 @@ const Map<String, String> kStringsEn = {
   'battleWinTitle': 'YOU WIN!',
   'battleDrawTitle': 'DRAW!',
   'battleLoseTitle': 'YOU LOSE!',
-  'battleGuestRestricted':
-      'Guests can\'t play live 1v1 matches. Sign in to challenge other players.',
+  'battleGuestRestricted': 'Guests can\'t play live 1v1 matches. Sign in to challenge other players.',
   'battleNoQuestions':
       'No questions available right now — please try again in a moment.',
   'battleOpponentLeft': 'That player is no longer available.',
@@ -488,8 +469,7 @@ const Map<String, String> kStringsEn = {
   'notifDailyBody': '10 questions. One run. Climb the board.',
   'notifStreakTitle': 'Your streak is on the line',
   'notifStreakBody': '{n}-day streak — play today\'s Daily Quiz to keep it.',
-  'notifPermissionDenied':
-      'Notification permission is off. Enable it in system settings to get Daily Quiz reminders.',
+  'notifPermissionDenied': 'Notification permission is off. Enable it in system settings to get Daily Quiz reminders.',
   'notifBellOn': 'Daily Quiz reminder is on · 7:00 PM',
   'notifBellOff':
       'Reminders are off. Turn on Notifications in Profile → Settings.',
@@ -511,13 +491,10 @@ const Map<String, String> kStringsEn = {
   'onboardingNext': 'Next',
   'onboardingStart': 'Get Started',
   'onboard1Title': 'Daily Live Quiz & 3D Streaks',
-  'onboard1Desc':
-      'Solve 10 new questions daily, maintain your fire streak, and earn coins, gems & exclusive power-ups!',
+  'onboard1Desc': 'Solve 10 new questions daily, maintain your fire streak, and earn coins, gems & exclusive power-ups!',
   'onboard2Title': '1v1 Live Quiz Battle Arena',
-  'onboard2Desc':
-      'Challenge friends or online players in real-time quiz duels, speed through questions and top the leaderboard!',
+  'onboard2Desc': 'Challenge friends or online players in real-time quiz duels, speed through questions and top the leaderboard!',
   'onboard3Title': 'Chapter Bank & Daily Champion Rewards',
-  'onboard3Desc':
-      "Practice chapter-wise questions, view detailed notes, and shine as Yesterday's Champion on the 3D podium!",
+  'onboard3Desc': "Practice chapter-wise questions, view detailed notes, and shine as Yesterday's Champion on the 3D podium!",
   'splashTagline': 'A Next-Gen 3D Gamified Learning Platform',
 };

@@ -128,22 +128,20 @@ class _UserListScreenState extends State<UserListScreen> {
                         ),
                       )
                     : snapshot.hasError
-                        ? _buildEmptyState(
-                            'Failed to load users',
-                            Icons.error_outline_rounded,
-                            detail: ShopService.lastError,
-                          )
-                        : filteredUsers.isEmpty
-                            ? _buildEmptyState(
-                                widget.isGuestView
-                                    ? 'No Guest Users'
-                                    : 'No Users Yet',
-                                widget.isGuestView
-                                    ? Icons.person_outline_rounded
-                                    : Icons.people_rounded,
-                                detail: ShopService.lastError,
-                              )
-                            : _buildUserList(filteredUsers),
+                    ? _buildEmptyState(
+                        'Failed to load users',
+                        Icons.error_outline_rounded,
+                        detail: ShopService.lastError,
+                      )
+                    : filteredUsers.isEmpty
+                    ? _buildEmptyState(
+                        widget.isGuestView ? 'No Guest Users' : 'No Users Yet',
+                        widget.isGuestView
+                            ? Icons.person_outline_rounded
+                            : Icons.people_rounded,
+                        detail: ShopService.lastError,
+                      )
+                    : _buildUserList(filteredUsers),
               ),
             ],
           );

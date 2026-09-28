@@ -377,11 +377,9 @@ class HiveService {
 
   /// Completed sets for one chapter, lowest set first.
   static List<ChapterSetProgress> chapterSetsFor(String chapterId) {
-    final all = loadChapterSets()
-        .values
-        .where((p) => p.chapterId == chapterId)
-        .toList()
-      ..sort((a, b) => a.setIndex.compareTo(b.setIndex));
+    final all =
+        loadChapterSets().values.where((p) => p.chapterId == chapterId).toList()
+          ..sort((a, b) => a.setIndex.compareTo(b.setIndex));
     return all;
   }
 
@@ -640,11 +638,11 @@ class HiveService {
 
   /// Debug helper: a snapshot of what is currently stored.
   static Map<String, dynamic> debugSummary() => {
-        'schemaVersion': getMeta<int>(metaSchemaVersion),
-        'hasUser': hasUser,
-        'stats': loadStats().toJson(),
-        'cacheKeys': _cacheBox.keys.toList(),
-        'pending': pendingCount,
-        'lastSyncAt': lastSyncAt?.toIso8601String(),
-      };
+    'schemaVersion': getMeta<int>(metaSchemaVersion),
+    'hasUser': hasUser,
+    'stats': loadStats().toJson(),
+    'cacheKeys': _cacheBox.keys.toList(),
+    'pending': pendingCount,
+    'lastSyncAt': lastSyncAt?.toIso8601String(),
+  };
 }

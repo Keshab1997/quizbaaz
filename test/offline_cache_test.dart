@@ -49,8 +49,10 @@ void main() {
       ]);
 
       expect(
-        HiveService.cacheGetList('offline_fresh',
-            maxAge: const Duration(minutes: 15)),
+        HiveService.cacheGetList(
+          'offline_fresh',
+          maxAge: const Duration(minutes: 15),
+        ),
         hasLength(2),
       );
       expect(
@@ -59,44 +61,60 @@ void main() {
       );
     });
 
-    test('an aged entry is hidden by maxAge but revealed by allowStale',
-        () async {
-      await HiveService.cachePut('offline_stale', [
-        {'id': 'q1'},
-      ]);
-      await Future<void>.delayed(const Duration(milliseconds: 30));
-      const window = Duration(milliseconds: 10);
+    test(
+      'an aged entry is hidden by maxAge but revealed by allowStale',
+      () async {
+        await HiveService.cachePut('offline_stale', [
+          {'id': 'q1'},
+        ]);
+        await Future<void>.delayed(const Duration(milliseconds: 30));
+        const window = Duration(milliseconds: 10);
 
-      // The old behaviour: gone the moment it aged out.
-      expect(
-          HiveService.cacheGetList('offline_stale', maxAge: window), isEmpty);
-      expect(HiveService.isCacheFresh('offline_stale', window), isFalse);
+        // The old behaviour: gone the moment it aged out.
+        expect(
+          HiveService.cacheGetList('offline_stale', maxAge: window),
+          isEmpty,
+        );
+        expect(HiveService.isCacheFresh('offline_stale', window), isFalse);
 
-      // The new behaviour: still there for the student.
-      expect(
-        HiveService.cacheGetList('offline_stale',
-            maxAge: window, allowStale: true),
-        hasLength(1),
-      );
-      expect(HiveService.cacheAge('offline_stale'), isNotNull);
-    });
+        // The new behaviour: still there for the student.
+        expect(
+          HiveService.cacheGetList(
+            'offline_stale',
+            maxAge: window,
+            allowStale: true,
+          ),
+          hasLength(1),
+        );
+        expect(HiveService.cacheAge('offline_stale'), isNotNull);
+      },
+    );
 
     test('a missing key is empty, not an error', () {
       expect(
-          HiveService.cacheGetList('offline_never_written',
-              maxAge: const Duration(seconds: 1), allowStale: true),
-          isEmpty);
+        HiveService.cacheGetList(
+          'offline_never_written',
+          maxAge: const Duration(seconds: 1),
+          allowStale: true,
+        ),
+        isEmpty,
+      );
       expect(HiveService.cacheAge('offline_never_written'), isNull);
       expect(
-          HiveService.isCacheFresh(
-              'offline_never_written', const Duration(days: 1)),
-          isFalse);
+        HiveService.isCacheFresh(
+          'offline_never_written',
+          const Duration(days: 1),
+        ),
+        isFalse,
+      );
     });
 
     test('a value that is not a list decodes to an empty list', () async {
       await HiveService.cachePut('offline_not_a_list', {'id': 'q1'});
-      expect(HiveService.cacheGetList('offline_not_a_list', allowStale: true),
-          isEmpty);
+      expect(
+        HiveService.cacheGetList('offline_not_a_list', allowStale: true),
+        isEmpty,
+      );
     });
   });
 
@@ -110,13 +128,13 @@ void main() {
         'question': {
           'en': 'Which gas do plants absorb?',
           'bn': 'গাছ কোন গ্যাস নেয়?',
-          'hi': 'पौधे कौन-सी गैस लेते हैं?'
+          'hi': 'पौधे कौन-सी गैस लेते हैं?',
         },
         'options': [
           {
             'en': 'Carbon dioxide',
             'bn': 'কার্বন ডাই-অক্সাইড',
-            'hi': 'कार्बन डाइऑक्साइड'
+            'hi': 'कार्बन डाइऑक्साइड',
           },
           {'en': 'Oxygen', 'bn': 'অক্সিজেন', 'hi': 'ऑक्सीजन'},
         ],
@@ -124,7 +142,7 @@ void main() {
         'explanation': {
           'en': 'Photosynthesis.',
           'bn': 'সালোকসংশ্লেষ।',
-          'hi': 'प्रकाश संश्लेषण।'
+          'hi': 'प्रकाश संश्लेषण।',
         },
       });
 
@@ -175,8 +193,9 @@ void main() {
       final visible = await repository.getCategoriesAndChapters();
       expect(visible, isEmpty, reason: 'a disabled chapter must stay hidden');
 
-      final adminView =
-          await repository.getCategoriesAndChapters(includeDisabled: true);
+      final adminView = await repository.getCategoriesAndChapters(
+        includeDisabled: true,
+      );
       expect(adminView, hasLength(1));
       expect(adminView.single.chapters, hasLength(1));
 

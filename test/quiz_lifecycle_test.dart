@@ -20,19 +20,18 @@ class _ControlledQuizRepository extends QuizRepository {
     String jsonFilePath, {
     String? chapterId,
     bool forceRefresh = false,
-  }) =>
-      chapterQuestions ?? Future<List<QuestionModel>>.value(const []);
+  }) => chapterQuestions ?? Future<List<QuestionModel>>.value(const []);
 }
 
 QuestionModel _question(String id) => QuestionModel(
-      id: id,
-      questionText: const LocalizedText({'en': 'Which option is correct?'}),
-      optionTexts: const [
-        LocalizedText({'en': 'First'}),
-        LocalizedText({'en': 'Second'}),
-      ],
-      correctIndex: 0,
-    );
+  id: id,
+  questionText: const LocalizedText({'en': 'Which option is correct?'}),
+  optionTexts: const [
+    LocalizedText({'en': 'First'}),
+    LocalizedText({'en': 'Second'}),
+  ],
+  correctIndex: 0,
+);
 
 void main() {
   late Directory tempDir;
@@ -58,8 +57,10 @@ void main() {
       repository: _ControlledQuizRepository(chapterQuestions: result.future),
     );
 
-    final starting =
-        quiz.startChapterQuiz('ignored.json', chapterId: 'chapter');
+    final starting = quiz.startChapterQuiz(
+      'ignored.json',
+      chapterId: 'chapter',
+    );
     expect(quiz.isLoading, isTrue);
 
     quiz.quitQuiz();

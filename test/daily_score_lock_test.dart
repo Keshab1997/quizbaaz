@@ -20,8 +20,9 @@ void main() {
 
   setUpAll(() async {
     TestWidgetsFlutterBinding.ensureInitialized();
-    tempDir =
-        await Directory.systemTemp.createTemp('quizbaaz_daily_lock_test_');
+    tempDir = await Directory.systemTemp.createTemp(
+      'quizbaaz_daily_lock_test_',
+    );
     Hive.init(tempDir.path);
     await HiveService.initialize();
     dayKey = CompetitionClock.dateKey(DateTime.now());
@@ -51,15 +52,14 @@ void main() {
     int score, {
     bool ranked = true,
     double timeSeconds = 45,
-  }) =>
-      provider.recordQuizResult(
-        answered: 10,
-        correct: score ~/ 10,
-        timeSeconds: timeSeconds,
-        isDaily: true,
-        ranked: ranked,
-        score: score,
-      );
+  }) => provider.recordQuizResult(
+    answered: 10,
+    correct: score ~/ 10,
+    timeSeconds: timeSeconds,
+    isDaily: true,
+    ranked: ranked,
+    score: score,
+  );
 
   group('one counted score per competition day', () {
     test('the first ranked run is counted and locks the day', () async {
@@ -76,22 +76,24 @@ void main() {
       expect(HiveService.getMeta<int>(DailyScoreLock.scoreKey(dayKey)), 70);
     });
 
-    test('a better replay is played but never replaces the counted score',
-        () async {
-      final user = await newPlayer();
-      await play(user, 40);
-      final historyBefore = HiveService.loadQuizHistory().length;
+    test(
+      'a better replay is played but never replaces the counted score',
+      () async {
+        final user = await newPlayer();
+        await play(user, 40);
+        final historyBefore = HiveService.loadQuizHistory().length;
 
-      final outcome = await play(user, 100);
+        final outcome = await play(user, 100);
 
-      expect(outcome, DailyScoreOutcome.ignored);
-      expect(user.todayCountedScore, 40, reason: 'the day is locked at 40');
-      expect(HiveService.getMeta<int>(DailyScoreLock.scoreKey(dayKey)), 40);
-      // The replay is still a real run: it is counted as an attempt and it
-      // lands in the player's own history.
-      expect(user.dailyRunsToday, 2);
-      expect(HiveService.loadQuizHistory().length, historyBefore + 1);
-    });
+        expect(outcome, DailyScoreOutcome.ignored);
+        expect(user.todayCountedScore, 40, reason: 'the day is locked at 40');
+        expect(HiveService.getMeta<int>(DailyScoreLock.scoreKey(dayKey)), 40);
+        // The replay is still a real run: it is counted as an attempt and it
+        // lands in the player's own history.
+        expect(user.dailyRunsToday, 2);
+        expect(HiveService.loadQuizHistory().length, historyBefore + 1);
+      },
+    );
 
     test('an unranked practice run never counts', () async {
       final user = await newPlayer();
@@ -132,8 +134,11 @@ void main() {
 
       expect(await play(user, 80), DailyScoreOutcome.replaced);
       expect(user.todayCountedScore, 80);
-      expect(user.canRetryDailyScoreWithShield, isFalse,
-          reason: 'the retry is spent; only one shield may be used per day');
+      expect(
+        user.canRetryDailyScoreWithShield,
+        isFalse,
+        reason: 'the retry is spent; only one shield may be used per day',
+      );
 
       // …and the day is locked again.
       await play(user, 100);

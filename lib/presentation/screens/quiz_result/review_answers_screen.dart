@@ -18,8 +18,9 @@ class ReviewAnswersScreen extends StatelessWidget {
     final quiz = context.watch<QuizProvider>();
     final records = quiz.answerRecords;
 
-    final skippedCount =
-        records.where((r) => r.status == AnswerStatus.skipped).length;
+    final skippedCount = records
+        .where((r) => r.status == AnswerStatus.skipped)
+        .length;
 
     return Scaffold(
       backgroundColor: Colors.transparent,
@@ -49,14 +50,14 @@ class ReviewAnswersScreen extends StatelessWidget {
                 _buildSummary(quiz, skippedCount),
                 const SizedBox(height: 16),
                 ...records.asMap().entries.map(
-                      (entry) => Padding(
-                        padding: const EdgeInsets.only(bottom: 12),
-                        child: _QuestionReviewCard(
-                          index: entry.key,
-                          record: entry.value,
-                        ),
-                      ),
+                  (entry) => Padding(
+                    padding: const EdgeInsets.only(bottom: 12),
+                    child: _QuestionReviewCard(
+                      index: entry.key,
+                      record: entry.value,
                     ),
+                  ),
+                ),
               ],
             ),
     );
@@ -202,15 +203,16 @@ class _QuestionReviewCard extends StatelessWidget {
 
   Widget _statusBadge() {
     final (String text, Color color, IconData icon) = switch (record.status) {
-      AnswerStatus.answered => record.wasCorrect
-          ? (S.correct, AppColors.neonGreen, Icons.check_circle)
-          : (S.wrong, AppColors.neonRed, Icons.cancel),
+      AnswerStatus.answered =>
+        record.wasCorrect
+            ? (S.correct, AppColors.neonGreen, Icons.check_circle)
+            : (S.wrong, AppColors.neonRed, Icons.cancel),
       AnswerStatus.timedOut => ('Time\'s up', AppColors.neonGold, Icons.timer),
       AnswerStatus.skipped => (
-          S.skipped,
-          AppColors.textMuted,
-          Icons.fast_forward,
-        ),
+        S.skipped,
+        AppColors.textMuted,
+        Icons.fast_forward,
+      ),
     };
 
     return Container(

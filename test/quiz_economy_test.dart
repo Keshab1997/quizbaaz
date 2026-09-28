@@ -23,21 +23,20 @@ class _FixedRepository extends QuizRepository {
     String jsonFilePath, {
     String? chapterId,
     bool forceRefresh = false,
-  }) async =>
-      questions;
+  }) async => questions;
 }
 
 QuestionModel _question(String id, {int correctIndex = 0}) => QuestionModel(
-      id: id,
-      questionText: LocalizedText({'en': 'Question $id'}),
-      optionTexts: const [
-        LocalizedText({'en': 'First'}),
-        LocalizedText({'en': 'Second'}),
-        LocalizedText({'en': 'Third'}),
-        LocalizedText({'en': 'Fourth'}),
-      ],
-      correctIndex: correctIndex,
-    );
+  id: id,
+  questionText: LocalizedText({'en': 'Question $id'}),
+  optionTexts: const [
+    LocalizedText({'en': 'First'}),
+    LocalizedText({'en': 'Second'}),
+    LocalizedText({'en': 'Third'}),
+    LocalizedText({'en': 'Fourth'}),
+  ],
+  correctIndex: correctIndex,
+);
 
 void main() {
   late Directory tempDir;
@@ -84,12 +83,15 @@ void main() {
   }) async {
     final quiz = QuizProvider(
       user,
-      repository: _FixedRepository(
-        [for (var i = 0; i < questionCount; i++) _question('q$i')],
-      ),
+      repository: _FixedRepository([
+        for (var i = 0; i < questionCount; i++) _question('q$i'),
+      ]),
     );
-    await quiz.startChapterQuiz('chapter.json',
-        chapterId: 'test_chapter', practice: practice);
+    await quiz.startChapterQuiz(
+      'chapter.json',
+      chapterId: 'test_chapter',
+      practice: practice,
+    );
     for (var i = 0; i < questionCount; i++) {
       quiz.selectOption(quiz.currentQuestion!.correctIndex);
       await Future<void>.delayed(const Duration(milliseconds: 1850));
@@ -143,8 +145,11 @@ void main() {
           _question('q2'),
         ]),
       );
-      await quiz.startChapterQuiz('chapter.json',
-          chapterId: 'test_chapter', practice: true);
+      await quiz.startChapterQuiz(
+        'chapter.json',
+        chapterId: 'test_chapter',
+        practice: true,
+      );
 
       expect(quiz.useFiftyFifty(), isTrue);
       expect(quiz.useHintReveal(), isTrue);
@@ -179,8 +184,11 @@ void main() {
         ShopItemIds.hintReveal,
         ShopItemIds.extraLife,
       ]) {
-        expect(user.inventoryCount(item), 1,
-            reason: '$item was spent in practice');
+        expect(
+          user.inventoryCount(item),
+          1,
+          reason: '$item was spent in practice',
+        );
       }
     });
 
@@ -230,45 +238,58 @@ void main() {
       // correct and index 0 is not guaranteed to be wrong after loading.
       final question = quiz.currentQuestion!;
       final wrong = question.optionTexts.asMap().keys.firstWhere(
-            (index) => index != question.correctIndex,
-          );
+        (index) => index != question.correctIndex,
+      );
       quiz.selectOption(wrong);
       expect(quiz.extraLifeUsed, isTrue);
       expect(quiz.extraLifeStock, 0);
       expect(quiz.isAnswerSubmitted, isFalse);
       expect(quiz.correctCount, 0);
       expect(quiz.wrongCount, 0);
-      expect(quiz.secondsRemaining, remainingBefore,
-          reason: 'a wrong-answer extra life must preserve the remaining time');
+      expect(
+        quiz.secondsRemaining,
+        remainingBefore,
+        reason: 'a wrong-answer extra life must preserve the remaining time',
+      );
 
       // The run must be ticking again, or the player would have unlimited time.
       await Future<void>.delayed(const Duration(milliseconds: 1200));
-      expect(quiz.secondsRemaining, lessThan(remainingBefore),
-          reason: 'the timer stayed cancelled after the extra life');
+      expect(
+        quiz.secondsRemaining,
+        lessThan(remainingBefore),
+        reason: 'the timer stayed cancelled after the extra life',
+      );
     });
 
     test(
-        'extra life on a timeout hands back five seconds, not a fresh question',
-        () async {
-      await useFastClock();
-      user.user.inventory[ShopItemIds.extraLife] = 1;
-      final quiz = QuizProvider(
-        user,
-        repository: _FixedRepository([_question('q0', correctIndex: 0)]),
-      );
-      await quiz.startChapterQuiz('chapter.json', chapterId: 'test_chapter');
+      'extra life on a timeout hands back five seconds, not a fresh question',
+      () async {
+        await useFastClock();
+        user.user.inventory[ShopItemIds.extraLife] = 1;
+        final quiz = QuizProvider(
+          user,
+          repository: _FixedRepository([_question('q0', correctIndex: 0)]),
+        );
+        await quiz.startChapterQuiz('chapter.json', chapterId: 'test_chapter');
 
-      expect(quiz.questionTimeSec, 2, reason: 'the fast clock was not applied');
-      // The countdown ticks once per second and only times out on the tick
-      // *after* it reaches zero, so a two-second question needs ~3 s.
-      await Future<void>.delayed(const Duration(milliseconds: 3500));
-      expect(quiz.extraLifeUsed, isTrue, reason: 'the timeout never fired');
-      expect(quiz.secondsRemaining,
+        expect(
+          quiz.questionTimeSec,
+          2,
+          reason: 'the fast clock was not applied',
+        );
+        // The countdown ticks once per second and only times out on the tick
+        // *after* it reaches zero, so a two-second question needs ~3 s.
+        await Future<void>.delayed(const Duration(milliseconds: 3500));
+        expect(quiz.extraLifeUsed, isTrue, reason: 'the timeout never fired');
+        expect(
+          quiz.secondsRemaining,
           lessThanOrEqualTo(QuizProvider.kExtraLifeSeconds),
-          reason: 'the countdown was reset to the full question time instead');
+          reason: 'the countdown was reset to the full question time instead',
+        );
 
-      quiz.quitQuiz();
-    });
+        quiz.quitQuiz();
+      },
+    );
 
     test('skip and answer inside the skip window advance only once', () async {
       user.user.inventory[ShopItemIds.skipQuestion] = 1;

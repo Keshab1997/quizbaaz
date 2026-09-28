@@ -126,8 +126,8 @@ class GenerationException implements Exception {
 /// only after the admin approves.
 class AiQuestionGenerator {
   AiQuestionGenerator({ApiKeyManager? keyManager, http.Client? client})
-      : _keys = keyManager ?? ApiKeyManager.instance,
-        _client = client ?? http.Client();
+    : _keys = keyManager ?? ApiKeyManager.instance,
+      _client = client ?? http.Client();
 
   final ApiKeyManager _keys;
   final http.Client _client;
@@ -215,7 +215,8 @@ class AiQuestionGenerator {
           accepted: accepted.length,
           rejected: rejectedCount,
           round: round,
-          message: 'Writing ${accepted.length + 1}–'
+          message:
+              'Writing ${accepted.length + 1}–'
               '${(accepted.length + want).clamp(1, count)} of $count…',
         );
 
@@ -328,7 +329,7 @@ class AiQuestionGenerator {
       rejected: rejectedCount,
       message: results.length < count
           ? 'Produced ${results.length} of $count — '
-              '$rejectedCount draft(s) did not pass the checks.'
+                '$rejectedCount draft(s) did not pass the checks.'
           : 'Ready for review.',
       results: results,
     );

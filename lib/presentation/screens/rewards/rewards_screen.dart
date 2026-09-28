@@ -280,7 +280,9 @@ class _RewardsScreenState extends State<RewardsScreen> {
             const SizedBox(height: 16),
 
             // History List
-            ..._dailyQuizHistory.take(10).map(
+            ..._dailyQuizHistory
+                .take(10)
+                .map(
                   (history) => Padding(
                     padding: const EdgeInsets.only(bottom: 10),
                     child: GlassCard(

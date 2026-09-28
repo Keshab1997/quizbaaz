@@ -59,14 +59,17 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
     if (_filter == 'all') {
       _filteredHistory = _allHistory;
     } else if (_filter == 'coins') {
-      _filteredHistory =
-          _allHistory.where((h) => h.currency == 'coins').toList();
+      _filteredHistory = _allHistory
+          .where((h) => h.currency == 'coins')
+          .toList();
     } else if (_filter == 'gems') {
-      _filteredHistory =
-          _allHistory.where((h) => h.currency == 'gems').toList();
+      _filteredHistory = _allHistory
+          .where((h) => h.currency == 'gems')
+          .toList();
     } else {
-      _filteredHistory =
-          _allHistory.where((h) => h.category == _filter).toList();
+      _filteredHistory = _allHistory
+          .where((h) => h.category == _filter)
+          .toList();
     }
   }
 
@@ -109,8 +112,8 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
                     child: CircularProgressIndicator(color: AppColors.neonGold),
                   )
                 : _filteredHistory.isEmpty
-                    ? _buildEmptyState()
-                    : _buildHistoryList(),
+                ? _buildEmptyState()
+                : _buildHistoryList(),
           ),
         ],
       ),
@@ -190,8 +193,8 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
                         color: _categoryColor(entry.key).withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(8),
                         border: Border.all(
-                          color:
-                              _categoryColor(entry.key).withValues(alpha: 0.3),
+                          color: _categoryColor(entry.key)
+                              .withValues(alpha: 0.3),
                         ),
                       ),
                       child: Text(

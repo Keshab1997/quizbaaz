@@ -108,20 +108,20 @@ class ChapterSetProgress {
   }
 
   Map<String, dynamic> toJson() => {
-        'chapter_id': chapterId,
-        'set_index': setIndex,
-        'best_score': bestScore,
-        'best_correct': bestCorrect,
-        'total_questions': totalQuestions,
-        'completed_at': completedAt.toIso8601String(),
-        'last_played_at': lastPlayedAt.toIso8601String(),
-        'attempts': attempts,
-      };
+    'chapter_id': chapterId,
+    'set_index': setIndex,
+    'best_score': bestScore,
+    'best_correct': bestCorrect,
+    'total_questions': totalQuestions,
+    'completed_at': completedAt.toIso8601String(),
+    'last_played_at': lastPlayedAt.toIso8601String(),
+    'attempts': attempts,
+  };
 
   factory ChapterSetProgress.fromJson(Map<String, dynamic> json) {
     final completed =
         DateTime.tryParse(json['completed_at'] as String? ?? '') ??
-            DateTime.now();
+        DateTime.now();
     return ChapterSetProgress(
       chapterId: json['chapter_id'] as String? ?? '',
       setIndex: (json['set_index'] as num?)?.toInt() ?? 0,
@@ -131,7 +131,7 @@ class ChapterSetProgress {
       completedAt: completed,
       lastPlayedAt:
           DateTime.tryParse(json['last_played_at'] as String? ?? '') ??
-              completed,
+          completed,
       attempts: (json['attempts'] as num?)?.toInt() ?? 1,
     );
   }

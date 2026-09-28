@@ -97,10 +97,10 @@ class _TrilingualFieldState extends State<TrilingualField> {
   }
 
   LocalizedText get _current => LocalizedText({
-        for (final entry in _controllers.entries)
-          if (entry.value.text.trim().isNotEmpty)
-            entry.key: entry.value.text.trim(),
-      });
+    for (final entry in _controllers.entries)
+      if (entry.value.text.trim().isNotEmpty)
+        entry.key: entry.value.text.trim(),
+  });
 
   List<String> get _missing => kSupportedLanguageCodes
       .where((code) => _controllers[code]!.text.trim().isEmpty)
@@ -230,8 +230,9 @@ class _TrilingualFieldState extends State<TrilingualField> {
                   fontSize: 10.5,
                   fontWeight: FontWeight.w900,
                   letterSpacing: 0.4,
-                  color:
-                      selected ? AppColors.neonCyan : AppColors.textSecondary,
+                  color: selected
+                      ? AppColors.neonCyan
+                      : AppColors.textSecondary,
                 ),
               ),
               const SizedBox(width: 5),
@@ -271,8 +272,9 @@ class _TrilingualFieldState extends State<TrilingualField> {
     }
 
     final names = missing.map(_languageName).join(', ');
-    final colour =
-        widget.required ? AppColors.neonGold : AppColors.textSecondary;
+    final colour = widget.required
+        ? AppColors.neonGold
+        : AppColors.textSecondary;
 
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,

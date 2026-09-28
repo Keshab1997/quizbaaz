@@ -38,8 +38,8 @@ class QuizRepository {
   QuizRepository({
     QuestionBankService? bankService,
     ChapterCatalogService? catalogService,
-  })  : _bankService = bankService ?? QuestionBankService(),
-        _catalogService = catalogService ?? ChapterCatalogService();
+  }) : _bankService = bankService ?? QuestionBankService(),
+       _catalogService = catalogService ?? ChapterCatalogService();
 
   final QuestionBankService _bankService;
   final ChapterCatalogService _catalogService;

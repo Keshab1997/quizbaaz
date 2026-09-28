@@ -54,24 +54,23 @@ class BattleScreen extends StatelessWidget {
         ),
         body: switch (battle.phase) {
           BattlePhase.setup => Column(
-              children: [
-                // A live match that could not be established says so here
-                // instead of silently dropping the player back on the setup
-                // screen (R10/R17).
-                if (battle.startError != null ||
-                    battle.matchmakingError != null)
-                  _BattleNoticeBanner(
-                    message: battle.startError ?? battle.matchmakingError!,
-                    onDismiss: battle.clearStartError,
-                  ),
-                const Expanded(child: _SetupView()),
-              ],
-            ),
+            children: [
+              // A live match that could not be established says so here
+              // instead of silently dropping the player back on the setup
+              // screen (R10/R17).
+              if (battle.startError != null || battle.matchmakingError != null)
+                _BattleNoticeBanner(
+                  message: battle.startError ?? battle.matchmakingError!,
+                  onDismiss: battle.clearStartError,
+                ),
+              const Expanded(child: _SetupView()),
+            ],
+          ),
           BattlePhase.searching => const _SearchingView(),
           BattlePhase.found => const _VsIntroView(),
           BattlePhase.countdown => _CountdownView(
-              countdownValue: battle.countdownValue,
-            ),
+            countdownValue: battle.countdownValue,
+          ),
           BattlePhase.question || BattlePhase.reveal => const _ArenaView(),
           BattlePhase.finished => const _ResultView(),
         },
@@ -550,7 +549,8 @@ class _SearchingViewState extends State<_SearchingView>
               value: battle.searchSecondsTotal == 0
                   ? 0
                   : 1 -
-                      battle.searchSecondsRemaining / battle.searchSecondsTotal,
+                        battle.searchSecondsRemaining /
+                            battle.searchSecondsTotal,
               minHeight: 6,
               backgroundColor: Colors.white10,
               color: AppColors.neonCyan,
@@ -671,18 +671,18 @@ class _VsIntroViewState extends State<_VsIntroView>
 
     final leftSlide =
         Tween<Offset>(begin: const Offset(-1.4, 0), end: Offset.zero).animate(
-      CurvedAnimation(
-        parent: _intro,
-        curve: const Interval(0.0, 0.45, curve: Curves.easeOutBack),
-      ),
-    );
+          CurvedAnimation(
+            parent: _intro,
+            curve: const Interval(0.0, 0.45, curve: Curves.easeOutBack),
+          ),
+        );
     final rightSlide =
         Tween<Offset>(begin: const Offset(1.4, 0), end: Offset.zero).animate(
-      CurvedAnimation(
-        parent: _intro,
-        curve: const Interval(0.05, 0.5, curve: Curves.easeOutBack),
-      ),
-    );
+          CurvedAnimation(
+            parent: _intro,
+            curve: const Interval(0.05, 0.5, curve: Curves.easeOutBack),
+          ),
+        );
     final vsScale = Tween<double>(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(
         parent: _intro,
@@ -791,10 +791,11 @@ class _VsIntroViewState extends State<_VsIntroView>
                           ? AppColors.neonGreen
                           : AppColors.neonPink,
                     ),
-                    color: (battle.isLive
-                            ? AppColors.neonGreen
-                            : AppColors.neonPink)
-                        .withValues(alpha: 0.12),
+                    color:
+                        (battle.isLive
+                                ? AppColors.neonGreen
+                                : AppColors.neonPink)
+                            .withValues(alpha: 0.12),
                   ),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
@@ -1183,8 +1184,8 @@ class _ArenaViewState extends State<_ArenaView>
                       color: current
                           ? AppColors.neonCyan
                           : done
-                              ? AppColors.neonCyan.withValues(alpha: 0.4)
-                              : Colors.white12,
+                          ? AppColors.neonCyan.withValues(alpha: 0.4)
+                          : Colors.white12,
                     ),
                   );
                 }),
@@ -1879,7 +1880,8 @@ class _OptionTileState extends State<_OptionTile>
                     option,
                     style: TextStyle(
                       fontSize: 14,
-                      fontWeight: revealing &&
+                      fontWeight:
+                          revealing &&
                               (index == correctIndex ||
                                   index == battle.playerSelected ||
                                   index == battle.opponentSelected)
@@ -1964,20 +1966,20 @@ class _ResultViewState extends State<_ResultView>
       parent: _enterCtrl,
       curve: const Interval(0.3, 0.6, curve: Curves.easeOut),
     );
-    _card1Slide =
-        Tween<Offset>(begin: const Offset(0, 0.3), end: Offset.zero).animate(
-      CurvedAnimation(
-        parent: _enterCtrl,
-        curve: const Interval(0.4, 0.75, curve: Curves.easeOutCubic),
-      ),
-    );
-    _card2Slide =
-        Tween<Offset>(begin: const Offset(0, 0.3), end: Offset.zero).animate(
-      CurvedAnimation(
-        parent: _enterCtrl,
-        curve: const Interval(0.55, 0.88, curve: Curves.easeOutCubic),
-      ),
-    );
+    _card1Slide = Tween<Offset>(begin: const Offset(0, 0.3), end: Offset.zero)
+        .animate(
+          CurvedAnimation(
+            parent: _enterCtrl,
+            curve: const Interval(0.4, 0.75, curve: Curves.easeOutCubic),
+          ),
+        );
+    _card2Slide = Tween<Offset>(begin: const Offset(0, 0.3), end: Offset.zero)
+        .animate(
+          CurvedAnimation(
+            parent: _enterCtrl,
+            curve: const Interval(0.55, 0.88, curve: Curves.easeOutCubic),
+          ),
+        );
     _btnFade = CurvedAnimation(
       parent: _enterCtrl,
       curve: const Interval(0.75, 1.0, curve: Curves.easeOut),

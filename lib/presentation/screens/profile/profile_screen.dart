@@ -52,11 +52,11 @@ class ProfileScreen extends StatelessWidget {
         padding: const EdgeInsets.all(18),
         child: Column(
           children: [
-            // Avatar & Info — extra top padding to avoid head clipping on small screens
+            // Avatar & Info — extra top padding to avoid head clipping
             Center(
               child: Column(
                 children: [
-                  const SizedBox(height: 12),
+                  const SizedBox(height: 24),
                   GestureDetector(
                     onTap: () {
                       Navigator.push(
@@ -68,7 +68,7 @@ class ProfileScreen extends StatelessWidget {
                     },
                     child: AuraAvatar(
                       url: user.effectiveAvatar,
-                      size: 128,
+                      size: 120,
                       fallbackAsset: user.avatarPath,
                     ),
                   ),

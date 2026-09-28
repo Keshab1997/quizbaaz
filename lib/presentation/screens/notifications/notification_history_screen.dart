@@ -83,8 +83,8 @@ class _NotificationHistoryScreenState extends State<NotificationHistoryScreen> {
   @override
   Widget build(BuildContext context) {
     final notificationsOn = context.watch<UserProvider>().setting(
-          UserProvider.settingNotifications,
-        );
+      UserProvider.settingNotifications,
+    );
 
     return Scaffold(
       backgroundColor: Colors.transparent,

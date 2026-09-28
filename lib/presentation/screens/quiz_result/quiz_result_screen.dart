@@ -484,7 +484,8 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
     final messenger = ScaffoldMessenger.of(context);
     final navigator = Navigator.of(context);
 
-    final confirmed = await showDialog<bool>(
+    final confirmed =
+        await showDialog<bool>(
           context: context,
           builder: (dialogContext) => AlertDialog(
             backgroundColor: const Color(0xFF1B1230),

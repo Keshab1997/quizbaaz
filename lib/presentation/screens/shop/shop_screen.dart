@@ -571,16 +571,16 @@ class _ShopItemCard extends StatelessWidget {
                     ),
                   )
                 : avatarPath != null
-                    ? ClipRRect(
-                        borderRadius: BorderRadius.circular(12),
-                        child: Image.asset(
-                          avatarPath,
-                          fit: BoxFit.cover,
-                          errorBuilder: (_, __, ___) =>
-                              Icon(icon, color: accent, size: 26),
-                        ),
-                      )
-                    : Icon(icon, color: accent, size: 26),
+                ? ClipRRect(
+                    borderRadius: BorderRadius.circular(12),
+                    child: Image.asset(
+                      avatarPath,
+                      fit: BoxFit.cover,
+                      errorBuilder: (_, __, ___) =>
+                          Icon(icon, color: accent, size: 26),
+                    ),
+                  )
+                : Icon(icon, color: accent, size: 26),
           ),
           const SizedBox(width: 14),
 

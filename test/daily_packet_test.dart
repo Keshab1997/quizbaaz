@@ -23,8 +23,10 @@ class _FakePacketService extends DailyQuizPacketService {
   int calls = 0;
 
   @override
-  Future<DailyQuizSet> resolve(
-      {DateTime? now, bool forceRefresh = false}) async {
+  Future<DailyQuizSet> resolve({
+    DateTime? now,
+    bool forceRefresh = false,
+  }) async {
     calls++;
     return result;
   }
@@ -35,19 +37,18 @@ class _EmptyRepository extends QuizRepository {
   Future<List<CategoryModel>> getCategoriesAndChapters({
     bool forceRefresh = false,
     bool includeDisabled = false,
-  }) async =>
-      const [];
+  }) async => const [];
 }
 
 QuestionModel _question(String id) => QuestionModel(
-      id: id,
-      questionText: LocalizedText({'en': 'Question $id'}),
-      optionTexts: const [
-        LocalizedText({'en': 'A'}),
-        LocalizedText({'en': 'B'}),
-      ],
-      correctIndex: 0,
-    );
+  id: id,
+  questionText: LocalizedText({'en': 'Question $id'}),
+  optionTexts: const [
+    LocalizedText({'en': 'A'}),
+    LocalizedText({'en': 'B'}),
+  ],
+  correctIndex: 0,
+);
 
 DailyQuizPacket _packet({
   String dateKey = '2026-09-20',
@@ -56,25 +57,25 @@ DailyQuizPacket _packet({
   bool approved = true,
   List<Map<String, String>>? questions,
   int deadlineMs = 0,
-}) =>
-    DailyQuizPacket(
-      dateKey: dateKey,
-      version: version,
-      approved: approved,
-      count: count,
-      deadlineMs: deadlineMs,
-      questions: [
-        for (final q in questions ??
+}) => DailyQuizPacket(
+  dateKey: dateKey,
+  version: version,
+  approved: approved,
+  count: count,
+  deadlineMs: deadlineMs,
+  questions: [
+    for (final q
+        in questions ??
             [
               {'chapter_id': 'bio_ch_01', 'question_id': 'bio_ch_01_q001'},
               {'chapter_id': 'bio_ch_02', 'question_id': 'bio_ch_02_q003'},
             ])
-          DailyQuizQuestionRef(
-            chapterId: q['chapter_id']!,
-            questionId: q['question_id']!,
-          ),
-      ],
-    );
+      DailyQuizQuestionRef(
+        chapterId: q['chapter_id']!,
+        questionId: q['question_id']!,
+      ),
+  ],
+);
 
 void main() {
   late Directory tempDir;
@@ -154,10 +155,12 @@ void main() {
       expect(_packet(count: 3).isComplete, isFalse);
       expect(_packet(count: 3).rejectionReason, contains('2 of 3'));
 
-      final duplicate = _packet(questions: [
-        {'chapter_id': 'bio_ch_01', 'question_id': 'bio_ch_01_q001'},
-        {'chapter_id': 'bio_ch_01', 'question_id': 'bio_ch_01_q001'},
-      ]);
+      final duplicate = _packet(
+        questions: [
+          {'chapter_id': 'bio_ch_01', 'question_id': 'bio_ch_01_q001'},
+          {'chapter_id': 'bio_ch_01', 'question_id': 'bio_ch_01_q001'},
+        ],
+      );
       expect(duplicate.isComplete, isFalse);
       expect(duplicate.rejectionReason, contains('repeats'));
 
@@ -169,10 +172,7 @@ void main() {
         deadlineMs: DateTime.utc(2026, 9, 20, 18, 30).millisecondsSinceEpoch,
       );
       expect(closed.isOpen(DateTime.utc(2026, 9, 20, 10, 0)), isTrue);
-      expect(
-        closed.isOpen(DateTime.utc(2026, 9, 20, 18, 30, 1)),
-        isFalse,
-      );
+      expect(closed.isOpen(DateTime.utc(2026, 9, 20, 18, 30, 1)), isFalse);
     });
 
     test('the cache key is per day and per version', () {
@@ -204,8 +204,10 @@ void main() {
       expect(parsed!.version, 4);
       expect(parsed.scoringContract, 'v2');
       expect(parsed.deadlineMs, 1234);
-      expect(parsed.questions.map((q) => q.toString()).toList(),
-          ['bio_ch_01/bio_ch_01_q001', 'bio_ch_02/bio_ch_02_q003']);
+      expect(parsed.questions.map((q) => q.toString()).toList(), [
+        'bio_ch_01/bio_ch_01_q001',
+        'bio_ch_02/bio_ch_02_q003',
+      ]);
       expect(parsed.isComplete, isTrue);
     });
 
@@ -217,7 +219,7 @@ void main() {
           DailyQuizSet(
             questions: [
               _question('bio_ch_01_q001'),
-              _question('bio_ch_02_q003')
+              _question('bio_ch_02_q003'),
             ],
             ranked: true,
             packet: packet,
@@ -225,64 +227,72 @@ void main() {
         ),
       );
 
-      final set =
-          await generator.generateDailySet(date: DateTime.utc(2026, 9, 20, 6));
+      final set = await generator.generateDailySet(
+        date: DateTime.utc(2026, 9, 20, 6),
+      );
 
       expect(set.ranked, isTrue);
       expect(set.unrankedReason, isNull);
-      expect(set.questions.map((q) => q.id).toList(),
-          ['bio_ch_01_q001', 'bio_ch_02_q003']);
+      expect(set.questions.map((q) => q.id).toList(), [
+        'bio_ch_01_q001',
+        'bio_ch_02_q003',
+      ]);
       expect(set.packet?.version, 1);
     });
 
-    test('an incomplete packet falls back to an unranked practice set',
-        () async {
-      final generator = DailyQuizGenerator(
-        quizRepository: _EmptyRepository(),
-        packetService: _FakePacketService(
-          DailyQuizSet(
-            questions: const [],
-            ranked: false,
-            packet: _packet(approved: false),
-            unrankedReason: 'packet not approved yet',
+    test(
+      'an incomplete packet falls back to an unranked practice set',
+      () async {
+        final generator = DailyQuizGenerator(
+          quizRepository: _EmptyRepository(),
+          packetService: _FakePacketService(
+            DailyQuizSet(
+              questions: const [],
+              ranked: false,
+              packet: _packet(approved: false),
+              unrankedReason: 'packet not approved yet',
+            ),
           ),
-        ),
-      );
+        );
 
-      final set =
-          await generator.generateDailySet(date: DateTime.utc(2026, 9, 20, 6));
+        final set = await generator.generateDailySet(
+          date: DateTime.utc(2026, 9, 20, 6),
+        );
 
-      expect(set.ranked, isFalse);
-      expect(set.questions, isEmpty);
-      // The reason survives, the practice fallback changed nothing about it.
-      expect(set.unrankedReason, contains('not approved'));
-    });
+        expect(set.ranked, isFalse);
+        expect(set.questions, isEmpty);
+        // The reason survives, the practice fallback changed nothing about it.
+        expect(set.unrankedReason, contains('not approved'));
+      },
+    );
 
-    test('the practice pool is cached under its own key, never the packet key',
-        () async {
-      final generator = DailyQuizGenerator(
-        quizRepository: _EmptyRepository(),
-        packetService: _FakePacketService(
-          const DailyQuizSet(
-            questions: [],
-            ranked: false,
-            unrankedReason: 'no packet published for 2026-09-20',
+    test(
+      'the practice pool is cached under its own key, never the packet key',
+      () async {
+        final generator = DailyQuizGenerator(
+          quizRepository: _EmptyRepository(),
+          packetService: _FakePacketService(
+            const DailyQuizSet(
+              questions: [],
+              ranked: false,
+              unrankedReason: 'no packet published for 2026-09-20',
+            ),
           ),
-        ),
-      );
+        );
 
-      await generator.generateDailySet(date: DateTime.utc(2026, 9, 20, 6));
+        await generator.generateDailySet(date: DateTime.utc(2026, 9, 20, 6));
 
-      expect(
-        HiveService.cacheGetList('daily_quiz_practice_2026-09-20'),
-        isEmpty,
-        reason: 'an empty pool must not be cached as a playable set',
-      );
-      expect(
-        HiveService.cacheGetList('daily_quiz_set_2026-09-20_v1'),
-        isEmpty,
-      );
-    });
+        expect(
+          HiveService.cacheGetList('daily_quiz_practice_2026-09-20'),
+          isEmpty,
+          reason: 'an empty pool must not be cached as a playable set',
+        );
+        expect(
+          HiveService.cacheGetList('daily_quiz_set_2026-09-20_v1'),
+          isEmpty,
+        );
+      },
+    );
   });
 
   group('R12 — reward identity is the uid', () {

@@ -30,7 +30,7 @@ import 'trusted_ops_service.dart';
 /// `false` / empty results and the provider falls back to a bot match.
 class BattleRoomService {
   BattleRoomService({FirebaseFirestore? firestore})
-      : _firestoreOverride = firestore;
+    : _firestoreOverride = firestore;
 
   final FirebaseFirestore? _firestoreOverride;
 
@@ -94,8 +94,9 @@ class BattleRoomService {
     required String difficulty,
   }) async {
     try {
-      final cutoff =
-          DateTime.now().subtract(queueStaleAfter).millisecondsSinceEpoch;
+      final cutoff = DateTime.now()
+          .subtract(queueStaleAfter)
+          .millisecondsSinceEpoch;
 
       final snapshot = await _db
           .collection(queueCollection)
@@ -145,7 +146,8 @@ class BattleRoomService {
         if (existing.exists) {
           final data = existing.data() ?? const <String, dynamic>{};
           final createdAt = (data['created_at'] as num?)?.toInt() ?? 0;
-          final isStale = createdAt > 0 &&
+          final isStale =
+              createdAt > 0 &&
               DateTime.now().millisecondsSinceEpoch - createdAt >
                   const Duration(minutes: 10).inMilliseconds;
           if (!isStale) {
@@ -271,10 +273,15 @@ class BattleRoomService {
   /// Streams one room document. Never throws — errors surface as an empty
   /// snapshot via a null-mapped emit.
   Stream<BattleRoomData?> watchRoom(String roomId) {
-    return _db.collection(roomsCollection).doc(roomId).snapshots().map((snap) {
-      if (!snap.exists) return null;
-      return BattleRoomData.fromJson(snap.id, snap.data() ?? {});
-    }).handleError((e) => debugPrint('BattleRoomService: watchRoom – $e'));
+    return _db
+        .collection(roomsCollection)
+        .doc(roomId)
+        .snapshots()
+        .map((snap) {
+          if (!snap.exists) return null;
+          return BattleRoomData.fromJson(snap.id, snap.data() ?? {});
+        })
+        .handleError((e) => debugPrint('BattleRoomService: watchRoom – $e'));
   }
 
   /// One-shot read of a room (used right after creating it).
@@ -464,7 +471,8 @@ class QueueSearchResult {
 
   factory QueueSearchResult.failure(Object cause) {
     final text = cause.toString().toLowerCase();
-    final isConfiguration = text.contains('permission-denied') ||
+    final isConfiguration =
+        text.contains('permission-denied') ||
         text.contains('permission_denied') ||
         text.contains('failed-precondition') ||
         text.contains('failed_precondition') ||
@@ -517,24 +525,22 @@ class QueueClaimOutcome {
   factory QueueClaimOutcome.created({
     required String roomId,
     required String matchId,
-  }) =>
-      QueueClaimOutcome._(
-        status: QueueClaimStatus.created,
-        roomId: roomId,
-        matchId: matchId,
-      );
+  }) => QueueClaimOutcome._(
+    status: QueueClaimStatus.created,
+    roomId: roomId,
+    matchId: matchId,
+  );
 
   factory QueueClaimOutcome.alreadyExists({
     required String roomId,
     required String matchId,
     required BattleRoomStatus status,
-  }) =>
-      QueueClaimOutcome._(
-        status: QueueClaimStatus.alreadyExists,
-        roomId: roomId,
-        matchId: matchId,
-        roomStatus: status,
-      );
+  }) => QueueClaimOutcome._(
+    status: QueueClaimStatus.alreadyExists,
+    roomId: roomId,
+    matchId: matchId,
+    roomStatus: status,
+  );
 
   factory QueueClaimOutcome.opponentGone({required String roomId}) =>
       QueueClaimOutcome._(
@@ -545,12 +551,11 @@ class QueueClaimOutcome {
   factory QueueClaimOutcome.failure({
     required String roomId,
     required Object error,
-  }) =>
-      QueueClaimOutcome._(
-        status: QueueClaimStatus.failed,
-        roomId: roomId,
-        error: error,
-      );
+  }) => QueueClaimOutcome._(
+    status: QueueClaimStatus.failed,
+    roomId: roomId,
+    error: error,
+  );
 
   bool get isCreated => status == QueueClaimStatus.created;
 }

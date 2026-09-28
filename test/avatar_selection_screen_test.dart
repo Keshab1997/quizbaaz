@@ -32,8 +32,9 @@ void main() {
         child: const MaterialApp(home: AvatarSelectionScreen()),
       );
 
-  testWidgets('category tabs fit without overflowing on a narrow screen',
-      (tester) async {
+  testWidgets('category tabs fit without overflowing on a narrow screen', (
+    tester,
+  ) async {
     S.load('en');
     await tester.binding.setSurfaceSize(const Size(340, 700));
     addTearDown(() => tester.binding.setSurfaceSize(null));

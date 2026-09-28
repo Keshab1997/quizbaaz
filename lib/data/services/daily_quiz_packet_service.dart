@@ -62,8 +62,8 @@ class DailyQuizPacketService {
   DailyQuizPacketService({
     FirebaseFirestore? firestore,
     QuizRepository? repository,
-  })  : _firestoreOverride = firestore,
-        _repository = repository ?? QuizRepository();
+  }) : _firestoreOverride = firestore,
+       _repository = repository ?? QuizRepository();
 
   final FirebaseFirestore? _firestoreOverride;
   final QuizRepository _repository;

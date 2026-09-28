@@ -23,7 +23,7 @@ import 'hive_service.dart';
 /// ```
 class ChapterCatalogService {
   ChapterCatalogService({FirebaseFirestore? firestore})
-      : _firestoreOverride = firestore;
+    : _firestoreOverride = firestore;
 
   final FirebaseFirestore? _firestoreOverride;
 
@@ -62,8 +62,9 @@ class ChapterCatalogService {
       final knownChapterIds = <String, Set<String>>{};
 
       for (final doc in categorySnapshot.docs) {
-        final chapterSnapshot =
-            await _chapters(doc.id).orderBy('chapter_number').get();
+        final chapterSnapshot = await _chapters(doc.id)
+            .orderBy('chapter_number')
+            .get();
 
         final chapters = chapterSnapshot.docs
             .map(
@@ -85,8 +86,9 @@ class ChapterCatalogService {
       // (the normal case for a bundled subject). Without this, a visibility
       // toggle on such a chapter is silently lost on the next read.
       try {
-        final groupSnapshot =
-            await _db.collectionGroup(chaptersSubcollection).get();
+        final groupSnapshot = await _db
+            .collectionGroup(chaptersSubcollection)
+            .get();
         for (final doc in groupSnapshot.docs) {
           final categoryId = doc.reference.parent.parent?.id ?? '';
           if (categoryId.isEmpty) continue;
@@ -152,8 +154,9 @@ class ChapterCatalogService {
         order.add(category.categoryId);
       }
       final existing = byId[category.categoryId];
-      byId[category.categoryId] =
-          existing == null ? category : _mergeCategory(existing, category);
+      byId[category.categoryId] = existing == null
+          ? category
+          : _mergeCategory(existing, category);
     }
 
     assets.forEach(put);
@@ -325,12 +328,9 @@ class ChapterCatalogService {
   }) async {
     final batch = _db.batch();
     for (var i = 0; i < orderedChapterIds.length; i++) {
-      batch.set(
-          _chapters(categoryId).doc(orderedChapterIds[i]),
-          {
-            'chapter_number': i + 1,
-          },
-          SetOptions(merge: true));
+      batch.set(_chapters(categoryId).doc(orderedChapterIds[i]), {
+        'chapter_number': i + 1,
+      }, SetOptions(merge: true));
     }
     await batch.commit();
 

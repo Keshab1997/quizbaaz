@@ -47,9 +47,7 @@ void main() {
             create: (ctx) => QuizProvider(ctx.read<UserProvider>()),
           ),
         ],
-        child: const MaterialApp(
-          home: Scaffold(body: DailyQuizLoadingCard()),
-        ),
+        child: const MaterialApp(home: Scaffold(body: DailyQuizLoadingCard())),
       ),
     );
     await tester.pump();
@@ -77,17 +75,22 @@ void main() {
 
     test('every shipped catalogue covers all English keys', () {
       for (final entry in {'bn': kStringsBn, 'hi': kStringsHi}.entries) {
-        final missing =
-            kStringsEn.keys.where((k) => !entry.value.containsKey(k)).toList();
-        expect(missing, isEmpty,
-            reason: '${entry.key} is missing ${missing.length} key(s)');
+        final missing = kStringsEn.keys
+            .where((k) => !entry.value.containsKey(k))
+            .toList();
+        expect(
+          missing,
+          isEmpty,
+          reason: '${entry.key} is missing ${missing.length} key(s)',
+        );
       }
     });
 
     test('no translation invents a key the base language lacks', () {
       for (final entry in {'bn': kStringsBn, 'hi': kStringsHi}.entries) {
-        final stray =
-            entry.value.keys.where((k) => !kStringsEn.containsKey(k)).toList();
+        final stray = entry.value.keys
+            .where((k) => !kStringsEn.containsKey(k))
+            .toList();
         expect(stray, isEmpty, reason: '${entry.key} has stray key(s): $stray');
       }
     });
@@ -101,8 +104,11 @@ void main() {
         for (final key in kStringsEn.keys) {
           final translated = entry.value[key];
           if (translated == null) continue;
-          expect(holders(translated), holders(kStringsEn[key]!),
-              reason: '${entry.key} placeholder mismatch on "$key"');
+          expect(
+            holders(translated),
+            holders(kStringsEn[key]!),
+            reason: '${entry.key} placeholder mismatch on "$key"',
+          );
         }
       }
     });
@@ -125,8 +131,10 @@ void main() {
     });
 
     test('fill substitutes every placeholder occurrence', () {
-      expect(S.fill('{n} of {n} in {where}', {'n': 3, 'where': 'Howrah'}),
-          '3 of 3 in Howrah');
+      expect(
+        S.fill('{n} of {n} in {where}', {'n': 3, 'where': 'Howrah'}),
+        '3 of 3 in Howrah',
+      );
       expect(S.chapterCount(n: 12), contains('12'));
     });
 
@@ -188,25 +196,25 @@ void main() {
     tearDown(() => S.load('en'));
 
     Map<String, dynamic> sampleQuestion() => {
-          'id': 'q1',
-          'question': {
-            'en': 'Which gas do plants absorb?',
-            'bn': 'গাছ কোন গ্যাস গ্রহণ করে?',
-            'hi': 'पौधे कौन सी गैस लेते हैं?',
-          },
-          'options': [
-            {'en': 'Oxygen', 'bn': 'অক্সিজেন', 'hi': 'ऑक्सीजन'},
-            {
-              'en': 'Carbon dioxide',
-              'bn': 'কার্বন ডাইঅক্সাইড',
-              'hi': 'कार्बन डाइऑक्साइड'
-            },
-          ],
-          'correct_index': 1,
-          'explanation': {'en': 'Photosynthesis uses CO2.'},
-          'points': 10,
-          'time_limit_sec': 15,
-        };
+      'id': 'q1',
+      'question': {
+        'en': 'Which gas do plants absorb?',
+        'bn': 'গাছ কোন গ্যাস গ্রহণ করে?',
+        'hi': 'पौधे कौन सी गैस लेते हैं?',
+      },
+      'options': [
+        {'en': 'Oxygen', 'bn': 'অক্সিজেন', 'hi': 'ऑक्सीजन'},
+        {
+          'en': 'Carbon dioxide',
+          'bn': 'কার্বন ডাইঅক্সাইড',
+          'hi': 'कार्बन डाइऑक्साइड',
+        },
+      ],
+      'correct_index': 1,
+      'explanation': {'en': 'Photosynthesis uses CO2.'},
+      'points': 10,
+      'time_limit_sec': 15,
+    };
 
     test('question text follows the app language', () {
       final q = QuestionModel.fromJson(sampleQuestion());

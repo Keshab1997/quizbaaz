@@ -7,8 +7,7 @@
 bool leaderboardRowBelongsToUser(
   LeaderboardItem item, {
   required String userId,
-}) =>
-    userId.isNotEmpty && item.userId == userId;
+}) => userId.isNotEmpty && item.userId == userId;
 
 class LeaderboardItem {
   final int rank;

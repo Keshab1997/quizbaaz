@@ -86,26 +86,26 @@ class BattleAnswer {
   });
 
   Map<String, dynamic> toJson() => {
-        'selected': selected,
-        'correct': correct,
-        'points': points,
-        'time_bonus': timeBonus,
-        'first_bonus': firstBonus,
-        'streak_bonus': streakBonus,
-        'ms_taken': msTaken,
-        'timed_out': timedOut,
-      };
+    'selected': selected,
+    'correct': correct,
+    'points': points,
+    'time_bonus': timeBonus,
+    'first_bonus': firstBonus,
+    'streak_bonus': streakBonus,
+    'ms_taken': msTaken,
+    'timed_out': timedOut,
+  };
 
   factory BattleAnswer.fromJson(Map<String, dynamic> json) => BattleAnswer(
-        selected: (json['selected'] as num?)?.toInt() ?? -1,
-        correct: json['correct'] as bool? ?? false,
-        points: (json['points'] as num?)?.toInt() ?? 0,
-        timeBonus: (json['time_bonus'] as num?)?.toInt() ?? 0,
-        firstBonus: (json['first_bonus'] as num?)?.toInt() ?? 0,
-        streakBonus: (json['streak_bonus'] as num?)?.toInt() ?? 0,
-        msTaken: (json['ms_taken'] as num?)?.toInt() ?? 0,
-        timedOut: json['timed_out'] as bool? ?? false,
-      );
+    selected: (json['selected'] as num?)?.toInt() ?? -1,
+    correct: json['correct'] as bool? ?? false,
+    points: (json['points'] as num?)?.toInt() ?? 0,
+    timeBonus: (json['time_bonus'] as num?)?.toInt() ?? 0,
+    firstBonus: (json['first_bonus'] as num?)?.toInt() ?? 0,
+    streakBonus: (json['streak_bonus'] as num?)?.toInt() ?? 0,
+    msTaken: (json['ms_taken'] as num?)?.toInt() ?? 0,
+    timedOut: json['timed_out'] as bool? ?? false,
+  );
 }
 
 /// One side of a live room — corresponds to `players.a` / `players.b`.
@@ -143,22 +143,22 @@ class BattleRoomPlayer {
       answers.isEmpty ? false : answers.values.last.timedOut;
 
   Map<String, dynamic> toJson() => {
-        'uid': uid,
-        'name': name,
-        'avatar': avatar,
-        'score': score,
-        'correct': correct,
-        'streak': streak,
-        'ready_for_next': readyForNext,
-        'last_seen': lastSeenMs,
-        'attached': attached,
-        // A real nested map — never a dotted field path. `answers.0` as a key
-        // in a merge write creates a literal "answers.0" field, which the
-        // reader below can never find (R11).
-        'answers': answers.map(
-          (index, entry) => MapEntry('$index', entry.toJson()),
-        ),
-      };
+    'uid': uid,
+    'name': name,
+    'avatar': avatar,
+    'score': score,
+    'correct': correct,
+    'streak': streak,
+    'ready_for_next': readyForNext,
+    'last_seen': lastSeenMs,
+    'attached': attached,
+    // A real nested map — never a dotted field path. `answers.0` as a key
+    // in a merge write creates a literal "answers.0" field, which the
+    // reader below can never find (R11).
+    'answers': answers.map(
+      (index, entry) => MapEntry('$index', entry.toJson()),
+    ),
+  };
 
   factory BattleRoomPlayer.fromJson(Map<String, dynamic> json) {
     final rawAnswers = json['answers'] as Map<String, dynamic>? ?? const {};
@@ -193,7 +193,7 @@ class BattleRoomData {
   final String matchId;
   final String difficulty;
   final String
-      status; // waiting | created | ready | active | finished | abandoned
+  status; // waiting | created | ready | active | finished | abandoned
   final List<QuestionModel> questions;
   final BattleRoomPhase phase;
   final int questionIndex;
@@ -246,14 +246,14 @@ class BattleRoomData {
   BattleRoomPlayer? playerOf(String side) => side == 'a'
       ? playerA
       : side == 'b'
-          ? playerB
-          : null;
+      ? playerB
+      : null;
 
   BattleRoomPlayer? opponentOf(String side) => side == 'a'
       ? playerB
       : side == 'b'
-          ? playerA
-          : null;
+      ? playerA
+      : null;
 
   bool hasBothAnswered(int index) =>
       (playerA?.answerFor(index) != null) &&
@@ -343,14 +343,13 @@ Map<String, dynamic> roomAnswersPatch({
   required String side,
   required int questionIndex,
   required BattleAnswer answer,
-}) =>
-    {
-      'players': {
-        side: {
-          'answers': {'$questionIndex': answer.toJson()},
-        },
-      },
-    };
+}) => {
+  'players': {
+    side: {
+      'answers': {'$questionIndex': answer.toJson()},
+    },
+  },
+};
 
 /// Deep merge used by `SetOptions(merge: true)` — mirrored here so the exact
 /// client/server merge semantics can be exercised in a unit test without a

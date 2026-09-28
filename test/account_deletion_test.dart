@@ -31,8 +31,7 @@ void main() {
   AccountDeletionService serviceWith({
     required Future<void> Function(String uid) reAuth,
     required Future<AccountCleanupReport> Function(String uid) cleanup,
-  }) =>
-      AccountDeletionService(reAuthenticate: reAuth, remoteCleanup: cleanup);
+  }) => AccountDeletionService(reAuthenticate: reAuth, remoteCleanup: cleanup);
 
   test('cancelling re-auth leaves everything untouched', () async {
     var cleanupRuns = 0;
@@ -106,51 +105,55 @@ void main() {
     expect(AccountDeletionService.isDeletionPending('uid-a'), isTrue);
   });
 
-  test('a partially cleaned account is reported as partial, never as clean',
-      () async {
-    final service = serviceWith(
-      reAuth: (_) async {},
-      cleanup: (_) async => const AccountCleanupReport(
-        deleted: ['users/uid-a'],
-        pending: ['battle_rooms', 'leaderboard/scores'],
-      ),
-    );
+  test(
+    'a partially cleaned account is reported as partial, never as clean',
+    () async {
+      final service = serviceWith(
+        reAuth: (_) async {},
+        cleanup: (_) async => const AccountCleanupReport(
+          deleted: ['users/uid-a'],
+          pending: ['battle_rooms', 'leaderboard/scores'],
+        ),
+      );
 
-    final result = await service.deleteAccountWith(
-      uid: 'uid-a',
-      providerIds: const ['google.com'],
-      deleteAuthUser: () async {},
-    );
+      final result = await service.deleteAccountWith(
+        uid: 'uid-a',
+        providerIds: const ['google.com'],
+        deleteAuthUser: () async {},
+      );
 
-    expect(result.status, AccountDeletionStatus.partial);
-    expect(result.accountGone, isTrue);
-    expect(result.report.isComplete, isFalse);
-    expect(result.report.pending, contains('battle_rooms'));
-  });
+      expect(result.status, AccountDeletionStatus.partial);
+      expect(result.accountGone, isTrue);
+      expect(result.report.isComplete, isFalse);
+      expect(result.report.pending, contains('battle_rooms'));
+    },
+  );
 
-  test('when the account delete fails the account and local data survive',
-      () async {
-    var cleanupRuns = 0;
-    final service = serviceWith(
-      reAuth: (_) async {},
-      cleanup: (_) async {
-        cleanupRuns++;
-        return const AccountCleanupReport(deleted: ['users/uid-a']);
-      },
-    );
+  test(
+    'when the account delete fails the account and local data survive',
+    () async {
+      var cleanupRuns = 0;
+      final service = serviceWith(
+        reAuth: (_) async {},
+        cleanup: (_) async {
+          cleanupRuns++;
+          return const AccountCleanupReport(deleted: ['users/uid-a']);
+        },
+      );
 
-    final result = await service.deleteAccountWith(
-      uid: 'uid-a',
-      providerIds: const ['google.com'],
-      deleteAuthUser: () async => throw Exception('auth unavailable'),
-    );
+      final result = await service.deleteAccountWith(
+        uid: 'uid-a',
+        providerIds: const ['google.com'],
+        deleteAuthUser: () async => throw Exception('auth unavailable'),
+      );
 
-    expect(result.status, AccountDeletionStatus.failed);
-    expect(result.accountGone, isFalse);
-    expect(cleanupRuns, 1);
-    // No tombstone means sync keeps working for a profile that still exists.
-    expect(AccountDeletionService.isDeletionPending('uid-a'), isFalse);
-  });
+      expect(result.status, AccountDeletionStatus.failed);
+      expect(result.accountGone, isFalse);
+      expect(cleanupRuns, 1);
+      // No tombstone means sync keeps working for a profile that still exists.
+      expect(AccountDeletionService.isDeletionPending('uid-a'), isFalse);
+    },
+  );
 
   test('a profile being deleted is not pushed back to the server', () async {
     final user = UserModel(

@@ -3,8 +3,7 @@
 bool championRowBelongsToUser(
   ChampionModel champion, {
   required String userId,
-}) =>
-    userId.isNotEmpty && champion.userId == userId;
+}) => userId.isNotEmpty && champion.userId == userId;
 
 class ChampionModel {
   final int rank;

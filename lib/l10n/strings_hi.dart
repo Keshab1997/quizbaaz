@@ -79,10 +79,8 @@ const Map<String, String> kStringsHi = {
   'streakMotivationBtn': 'जारी रखो!',
   'streakMotivationBtnStart': 'आज से शुरू',
   'streakResetTitle': 'स्ट्रीक गई!',
-  'streakResetEncourage30':
-      'तुम्हारी {n}-दिन की शानदार स्ट्रीक थी! वाकई प्रभावशाली। अब नई शुरुआत करो! 💪',
-  'streakResetEncourage14':
-      '{n} दिन आग पर थे! हर स्ट्रीक फिर बनाई जा सकती है। राउंड 2 के लिए तैयार? 🔥',
+  'streakResetEncourage30': 'तुम्हारी {n}-दिन की शानदार स्ट्रीक थी! वाकई प्रभावशाली। अब नई शुरुआत करो! 💪',
+  'streakResetEncourage14': '{n} दिन आग पर थे! हर स्ट्रीक फिर बनाई जा सकती है। राउंड 2 के लिए तैयार? 🔥',
   'streakResetEncourage7':
       '{n} दिन की मजबूत स्ट्रीक! नई शुरुआत का सबसे अच्छा समय अभी है। चलो! 🚀',
   'streakResetEncourage3':
@@ -90,8 +88,7 @@ const Map<String, String> kStringsHi = {
   'streakResetEncourage0':
       'कोई बात नहीं! हर मास्टर एक बार शुरुआती था। कुछ शानदार बनाते हैं! 🌟',
   'streakShieldAvailable': '🛡️ स्ट्रीक शील्ड उपलब्ध!',
-  'streakShieldUse':
-      'अपनी {n}-दिन की स्ट्रीक तुरंत वापस लाने के लिए 1 स्ट्रीक शील्ड इस्तेमाल करो!',
+  'streakShieldUse': 'अपनी {n}-दिन की स्ट्रीक तुरंत वापस लाने के लिए 1 स्ट्रीक शील्ड इस्तेमाल करो!',
   'streakShieldBtn': 'स्ट्रीक वापस लाओ',
   'streakShieldProtect': 'भविष्य की स्ट्रीक सुरक्षित करो!',
   'streakShieldProtectDesc': 'स्ट्रीक शील्ड लो ताकि फिर कभी स्ट्रीक ना जाए।',
@@ -119,8 +116,7 @@ const Map<String, String> kStringsHi = {
       'स्कोर शील्ड सक्रिय — यह रन आज के लीडरबोर्ड स्कोर ({score}) को बदल देगी।',
   'dailyLockedBanner':
       'आज का लीडरबोर्ड स्कोर {score} लॉक है — यह रन सिर्फ अभ्यास के लिए है।',
-  'dailyUnrankedBanner':
-      'प्रैक्टिस सेट — आज का कॉम्पिटीशन पैकेट उपलब्ध नहीं है, इसलिए यह स्कोर लीडरबोर्ड पर नहीं जाएगा।',
+  'dailyUnrankedBanner': 'प्रैक्टिस सेट — आज का कॉम्पिटीशन पैकेट उपलब्ध नहीं है, इसलिए यह स्कोर लीडरबोर्ड पर नहीं जाएगा।',
   'quizNoFiftyFifty': '50-50 लाइफ़लाइन खत्म! शॉप से और खरीदें। 🛒',
   'quizFiftyFiftyUsed': 'इस सवाल पर 50-50 पहले ही इस्तेमाल हो चुका है।',
   'quizFiftyFiftyBlocked': 'अभी 50-50 इस्तेमाल नहीं कर सकते।',
@@ -216,8 +212,7 @@ const Map<String, String> kStringsHi = {
   'profileSignOutConfirm':
       'क्या आप साइन आउट करना चाहते हैं? आपका लोकल डेटा सुरक्षित रहेगा।',
   'accountDelete': 'खाता हटाएं',
-  'accountDeleteWarning':
-      'इससे आपका खाता, प्रोफ़ाइल, क्विज़ इतिहास, सिक्के, रत्न, रिवार्ड्स और शॉप आइटम स्थायी रूप से हट जाएंगे। इसे वापस नहीं लाया जा सकता।',
+  'accountDeleteWarning': 'इससे आपका खाता, प्रोफ़ाइल, क्विज़ इतिहास, सिक्के, रत्न, रिवार्ड्स और शॉप आइटम स्थायी रूप से हट जाएंगे। इसे वापस नहीं लाया जा सकता।',
   'accountDeleteConfirmLabel': 'पुष्टि करने के लिए नीचे DELETE लिखें।',
   'accountDeleting': 'आपका खाता हटाया जा रहा है…',
   'accountDeleted':
@@ -243,8 +238,7 @@ const Map<String, String> kStringsHi = {
       'गूगल साइन-इन में कोई ID टोकन नहीं आया। ऐप अपडेट करके फिर कोशिश करें।',
   'authSignInCanceled':
       'गूगल साइन-इन रद्द हो गया। फिर Sign In दबाएँ और अकाउंट चुनें।',
-  'authReauthFailed':
-      'गूगल इस Play बिल्ड को सत्यापित नहीं कर पाया (error 16)। Firebase → Project settings में Play App Signing SHA-1 जोड़ें, कुछ मिनट बाद Play से फिर इंस्टॉल करें।',
+  'authReauthFailed': 'गूगल इस Play बिल्ड को सत्यापित नहीं कर पाया (error 16)। Firebase → Project settings में Play App Signing SHA-1 जोड़ें, कुछ मिनट बाद Play से फिर इंस्टॉल करें।',
   'profileEffectNotOwned': 'पहले शॉप से यह इफ़ेक्ट खरीदें!',
   'profilePlayerFallback': 'क्विज़बाज़ प्लेयर',
 
@@ -303,8 +297,7 @@ const Map<String, String> kStringsHi = {
   'rewardsTapPrize': 'क्लेम या ट्रैक करने के लिए इनाम पर टैप करें।',
   'rewardsNone': 'अभी कोई इनाम नहीं — डेली क्विज़ जीतें! 🏆',
   'rewardsWinDaily': 'रोजाना क्विज़ खेलकर इनाम जीतें!',
-  'rewardsWinDailyBody':
-      'डेली लाइव क्विज़ में हिस्सा लेकर हर दिन Coins, Gems, लाइफलाइन और बैज जीतें।',
+  'rewardsWinDailyBody': 'डेली लाइव क्विज़ में हिस्सा लेकर हर दिन Coins, Gems, लाइफलाइन और बैज जीतें।',
   'rewardsClaimNow': 'अभी क्लेम करें',
   'rewardsClaimed': 'क्लेम हो गया ✓',
   'rewardsProcessing': 'प्रक्रिया में',
@@ -354,8 +347,7 @@ const Map<String, String> kStringsHi = {
   'resultBackHome': 'होम पर वापस जाएँ',
   'resultPerfect': '🔥 परफ़ेक्ट स्कोर! +100 कॉइन बोनस',
   'resultSaveScore': 'स्कोर सेव करें और लीडरबोर्ड में शामिल हों!',
-  'resultGuestBody':
-      'आपने गेस्ट के रूप में खेला। डेली लीडरबोर्ड पर स्कोर दर्ज करने के लिए गूगल अकाउंट से साइन इन करें।',
+  'resultGuestBody': 'आपने गेस्ट के रूप में खेला। डेली लीडरबोर्ड पर स्कोर दर्ज करने के लिए गूगल अकाउंट से साइन इन करें।',
   'resultGoogleSignIn': 'एक टैप गूगल साइन-इन',
   'resultSigningIn': 'साइन इन हो रहा है...',
   'resultSignedIn': '🎉 गूगल से साइन इन! स्कोर लीडरबोर्ड पर सेव हुआ!',
@@ -363,19 +355,16 @@ const Map<String, String> kStringsHi = {
       'कॉम्पिटीशन रन — दिन की पहली रन ही आज का लीडरबोर्ड स्कोर तय करेगी!',
   'resultDailyUnrankedNotice':
       'प्रैक्टिस रन — यह स्कोर लीडरबोर्ड पर नहीं जुड़ेगा।',
-  'resultDailyCountedNotice':
-      '🏆 आज का स्कोर {score} लीडरबोर्ड पर सेव हो गया — दोबारा खेलने से यह नहीं बदलेगा।',
+  'resultDailyCountedNotice': '🏆 आज का स्कोर {score} लीडरबोर्ड पर सेव हो गया — दोबारा खेलने से यह नहीं बदलेगा।',
   'resultDailyLockedNotice':
       '🔒 आज का लीडरबोर्ड स्कोर {score} लॉक है — यह रन गिना नहीं जाएगा।',
   'resultDailyReplacedNotice':
       '🛡️ स्कोर शील्ड इस्तेमाल हुई — आज का लीडरबोर्ड स्कोर अब {score} है।',
   'resultShieldRetryTitle': 'खराब रन? स्कोर शील्ड इस्तेमाल करें',
-  'resultShieldRetryBody':
-      '1 स्कोर शील्ड खर्च करें और आपकी अगली डेली रन आज के लॉक किए स्कोर ({score}) को बदल देगी — चाहे वह कम ही हो।',
+  'resultShieldRetryBody': '1 स्कोर शील्ड खर्च करें और आपकी अगली डेली रन आज के लॉक किए स्कोर ({score}) को बदल देगी — चाहे वह कम ही हो।',
   'resultShieldRetryAction': 'स्कोर शील्ड इस्तेमाल करें ({count})',
   'resultShieldRetryDialogTitle': 'स्कोर शील्ड इस्तेमाल करें?',
-  'resultShieldRetryDialogBody':
-      '1 स्कोर शील्ड खर्च होगी। आपकी अगली डेली रन ही आज का लीडरबोर्ड स्कोर बनेगी।',
+  'resultShieldRetryDialogBody': '1 स्कोर शील्ड खर्च होगी। आपकी अगली डेली रन ही आज का लीडरबोर्ड स्कोर बनेगी।',
   'resultShieldRetryConfirm': 'शील्ड इस्तेमाल करें',
   'resultShieldRetryDone':
       'शील्ड इस्तेमाल हुई — आपकी अगली डेली रन आज का स्कोर बदल देगी।',
@@ -475,8 +464,7 @@ const Map<String, String> kStringsHi = {
   'notifDailyBody': '10 प्रश्न। एक रन। लीडरबोर्ड चढ़ो।',
   'notifStreakTitle': 'आपकी स्ट्रीक खतरे में है',
   'notifStreakBody': '{n}-दिन की स्ट्रीक — आज की डेली क्विज़ खेलकर बचाएँ।',
-  'notifPermissionDenied':
-      'नोटिफिकेशन अनुमति बंद है। डेली क्विज़ रिमाइंडर के लिए सिस्टम सेटिंग में चालू करें।',
+  'notifPermissionDenied': 'नोटिफिकेशन अनुमति बंद है। डेली क्विज़ रिमाइंडर के लिए सिस्टम सेटिंग में चालू करें।',
   'notifBellOn': 'डेली क्विज़ रिमाइंडर चालू · शाम 7:00',
   'notifBellOff':
       'रिमाइंडर बंद हैं। प्रोफ़ाइल → सेटिंग में नोटिफिकेशन चालू करें।',
@@ -497,13 +485,10 @@ const Map<String, String> kStringsHi = {
   'onboardingNext': 'आगे',
   'onboardingStart': 'शुरू करें',
   'onboard1Title': 'दैनिक लाइव क्विज़ और 3D स्ट्रिक्स',
-  'onboard1Desc':
-      'रोज़ाना 10 नए प्रश्न हल करें, अपनी फायर स्ट्रिक बनाए रखें और सिक्के, रत्न और रिवॉर्ड जीतें!',
+  'onboard1Desc': 'रोज़ाना 10 नए प्रश्न हल करें, अपनी फायर स्ट्रिक बनाए रखें और सिक्के, रत्न और रिवॉर्ड जीतें!',
   'onboard2Title': '1v1 लाइव क्विज़ बैटल एरिना',
-  'onboard2Desc':
-      'दोस्तों या ऑनलाइन खिलाड़ियों को रियल-টাইम क्विज़ मुक़ाबले में चुनौती दें और लीडरबोर्ड पर शीर्ष पर पहुँचें!',
+  'onboard2Desc': 'दोस्तों या ऑनलाइन खिलाड़ियों को रियल-টাইम क्विज़ मुक़ाबले में चुनौती दें और लीडरबोर्ड पर शीर्ष पर पहुँचें!',
   'onboard3Title': 'विषयवार बैंक और दैनिक चैंपियन पुरस्कार',
-  'onboard3Desc':
-      'अध्यायवार प्रश्नों का अभ्यास करें, विस्तृत नोट्स देखें और 3D पोडियम पर चैंपियन के रूप में चमकें!',
+  'onboard3Desc': 'अध्यायवार प्रश्नों का अभ्यास करें, विस्तृत नोट्स देखें और 3D पोडियम पर चैंपियन के रूप में चमकें!',
   'splashTagline': 'नेक्स्ट-जेन 3D गेमिंग लर्निंग प्लेटफॉर्म',
 };

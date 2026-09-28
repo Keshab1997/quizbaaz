@@ -322,10 +322,12 @@ class _SplashScreenState extends State<SplashScreen>
               AnimatedBuilder(
                 animation: _entrance,
                 builder: (context, _) {
-                  final double scale =
-                      _logoScale.value.clamp(0.0, 1.15).toDouble();
-                  final double flip =
-                      _logoFlip.value.clamp(0.0, 1.0).toDouble();
+                  final double scale = _logoScale.value
+                      .clamp(0.0, 1.15)
+                      .toDouble();
+                  final double flip = _logoFlip.value
+                      .clamp(0.0, 1.0)
+                      .toDouble();
                   final double angleY = (1 - flip) * (math.pi / 2);
                   return Transform(
                     alignment: Alignment.center,

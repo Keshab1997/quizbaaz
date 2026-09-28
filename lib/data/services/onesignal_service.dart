@@ -72,7 +72,7 @@ class OneSignalService {
       await _ensureReady();
       final enabled =
           HiveService.getMeta<bool>(NotificationService.settingNotifications) ??
-              true;
+          true;
       if (enabled) {
         await OneSignal.Notifications.requestPermission(false);
         await OneSignal.User.pushSubscription.optIn();
@@ -93,8 +93,9 @@ class OneSignalService {
         'lang': S.code,
         'guest': (user?.isGuest ?? true) ? 'true' : 'false',
         'streak': '${user?.dailyStreak ?? 0}',
-        'played_today':
-            (user?.playedTodayDailyQuiz ?? false) ? 'true' : 'false',
+        'played_today': (user?.playedTodayDailyQuiz ?? false)
+            ? 'true'
+            : 'false',
       });
     } catch (e) {
       debugPrint('OneSignalService: sync failed – $e');

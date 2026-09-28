@@ -53,9 +53,9 @@ class BattleScoring {
         speed = maxSpeedBonus;
       } else {
         speed = (maxSpeedBonus * remainingMs / effectiveWindow).round().clamp(
-              0,
-              maxSpeedBonus,
-            );
+          0,
+          maxSpeedBonus,
+        );
       }
     }
 
@@ -75,8 +75,7 @@ class BattleScoring {
   /// Total for a component tuple.
   static int total(
     ({int base, int speedBonus, int firstBonus, int streakBonus}) parts,
-  ) =>
-      parts.base + parts.speedBonus + parts.firstBonus + parts.streakBonus;
+  ) => parts.base + parts.speedBonus + parts.firstBonus + parts.streakBonus;
 
   /// Human-readable breakdown, e.g. `10 + 8 + 2 + 4`
   static String breakdown(

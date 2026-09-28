@@ -154,10 +154,7 @@ class _FakeRoomService extends BattleRoomService {
   }
 
   @override
-  Future<void> advanceState(
-    String roomId,
-    Map<String, dynamic> state,
-  ) async {
+  Future<void> advanceState(String roomId, Map<String, dynamic> state) async {
     calls.add('advanceState');
   }
 }
@@ -227,14 +224,14 @@ class _FakeQuestionGenerator extends BattleQuestionGenerator {
 }
 
 QuestionModel _question(String id) => QuestionModel(
-      id: id,
-      questionText: LocalizedText({'en': 'Question $id'}),
-      optionTexts: const [
-        LocalizedText({'en': 'A'}),
-        LocalizedText({'en': 'B'}),
-      ],
-      correctIndex: 0,
-    );
+  id: id,
+  questionText: LocalizedText({'en': 'Question $id'}),
+  optionTexts: const [
+    LocalizedText({'en': 'A'}),
+    LocalizedText({'en': 'B'}),
+  ],
+  correctIndex: 0,
+);
 
 const _myUid = 'uid_aaa'; // lexicographically smaller → room creator
 const _opponentUid = 'uid_zzz';
@@ -244,38 +241,37 @@ Map<String, dynamic> _roomJson({
   String matchId = 'm_room_1',
   bool withQuestions = true,
   bool abandoned = false,
-}) =>
-    {
-      'match_id': matchId,
-      'difficulty': 'normal',
-      'status': status,
-      'created_at': DateTime.now().millisecondsSinceEpoch,
-      'abandoned': abandoned,
-      'questions': [
-        if (withQuestions) _question('q1').toJson(),
-        if (withQuestions) _question('q2').toJson(),
-      ],
-      'state': {
-        'phase': 'countdown',
-        'q_index': 0,
-        'countdown_until': DateTime.now().millisecondsSinceEpoch + 8000,
-      },
-      'players': {
-        'a': const BattleRoomPlayer(
-          uid: _myUid,
-          name: 'Alpha',
-          avatar: 'a.png',
-          attached: true,
-        ).toJson(),
-        'b': const BattleRoomPlayer(
-          uid: _opponentUid,
-          name: 'Zeta',
-          avatar: 'z.png',
-          attached: true,
-        ).toJson(),
-      },
-      'winner': null,
-    };
+}) => {
+  'match_id': matchId,
+  'difficulty': 'normal',
+  'status': status,
+  'created_at': DateTime.now().millisecondsSinceEpoch,
+  'abandoned': abandoned,
+  'questions': [
+    if (withQuestions) _question('q1').toJson(),
+    if (withQuestions) _question('q2').toJson(),
+  ],
+  'state': {
+    'phase': 'countdown',
+    'q_index': 0,
+    'countdown_until': DateTime.now().millisecondsSinceEpoch + 8000,
+  },
+  'players': {
+    'a': const BattleRoomPlayer(
+      uid: _myUid,
+      name: 'Alpha',
+      avatar: 'a.png',
+      attached: true,
+    ).toJson(),
+    'b': const BattleRoomPlayer(
+      uid: _opponentUid,
+      name: 'Zeta',
+      avatar: 'z.png',
+      attached: true,
+    ).toJson(),
+  },
+  'winner': null,
+};
 
 void main() {
   // SoundService pulls in audioplayers, whose global audio scope wants a
@@ -333,48 +329,49 @@ void main() {
   }
 
   group('R10 — a challenge accept starts the intended battle', () {
-    test('the room is created for the accepted opponent, never a bot',
-        () async {
-      final provider = newProvider();
+    test(
+      'the room is created for the accepted opponent, never a bot',
+      () async {
+        final provider = newProvider();
 
-      final started = await provider.startBattleWithOpponent(
-        opponentUid: _opponentUid,
-        opponentName: 'Zeta',
-        opponentAvatar: 'z.png',
-        difficulty: BattleDifficulty.hard,
-      );
+        final started = await provider.startBattleWithOpponent(
+          opponentUid: _opponentUid,
+          opponentName: 'Zeta',
+          opponentAvatar: 'z.png',
+          difficulty: BattleDifficulty.hard,
+        );
 
-      expect(started, isTrue);
-      expect(rooms.claims, hasLength(1));
-      expect(rooms.claims.single['opponentUid'], _opponentUid);
-      expect(rooms.claims.single['me'], _myUid);
-      expect(
-        rooms.claims.single['roomId'],
-        BattleRoomService.roomIdFor(_myUid, _opponentUid),
-      );
-      expect(rooms.claims.single['difficulty'], 'hard');
-      expect(rooms.claims.single['questions'], 2);
-      expect(rooms.claims.single['matchId'], isNotEmpty);
+        expect(started, isTrue);
+        expect(rooms.claims, hasLength(1));
+        expect(rooms.claims.single['opponentUid'], _opponentUid);
+        expect(rooms.claims.single['me'], _myUid);
+        expect(
+          rooms.claims.single['roomId'],
+          BattleRoomService.roomIdFor(_myUid, _opponentUid),
+        );
+        expect(rooms.claims.single['difficulty'], 'hard');
+        expect(rooms.claims.single['questions'], 2);
+        expect(rooms.claims.single['matchId'], isNotEmpty);
 
-      expect(provider.isBotMatch, isFalse);
-      expect(provider.opponent?.uid, _opponentUid);
-      expect(provider.opponent?.isBot, isFalse);
-      expect(provider.phase, BattlePhase.found);
-      expect(provider.hasMatchSession, isTrue);
-      expect(provider.questions, hasLength(2));
-      expect(provider.startError, isNull);
+        expect(provider.isBotMatch, isFalse);
+        expect(provider.opponent?.uid, _opponentUid);
+        expect(provider.opponent?.isBot, isFalse);
+        expect(provider.phase, BattlePhase.found);
+        expect(provider.hasMatchSession, isTrue);
+        expect(provider.questions, hasLength(2));
+        expect(provider.startError, isNull);
 
-      // The random-matchmaking path (queue) is never touched: no random or
-      // bot opponent can be substituted for the challenged player.
-      expect(rooms.queued, isEmpty);
-      expect(rooms.calls, isNot(contains('findOpponent')));
-      expect(rooms.calls, contains('watchRoom'));
-    });
+        // The random-matchmaking path (queue) is never touched: no random or
+        // bot opponent can be substituted for the challenged player.
+        expect(rooms.queued, isEmpty);
+        expect(rooms.calls, isNot(contains('findOpponent')));
+        expect(rooms.calls, contains('watchRoom'));
+      },
+    );
 
     test('a failed start rolls back and explains itself', () async {
-      rooms.claimResult = (roomId) => QueueClaimOutcome.opponentGone(
-            roomId: roomId,
-          );
+      rooms.claimResult = (roomId) =>
+          QueueClaimOutcome.opponentGone(roomId: roomId);
       final provider = newProvider();
 
       final started = await provider.startBattleWithOpponent(
@@ -393,25 +390,27 @@ void main() {
       expect(rooms.leftQueue, contains(_myUid));
     });
 
-    test('a rejected claim (rules/index) fails instead of falling back',
-        () async {
-      rooms.claimResult = (roomId) => QueueClaimOutcome.failure(
-            roomId: roomId,
-            error: 'permission-denied',
-          );
-      final provider = newProvider();
+    test(
+      'a rejected claim (rules/index) fails instead of falling back',
+      () async {
+        rooms.claimResult = (roomId) => QueueClaimOutcome.failure(
+          roomId: roomId,
+          error: 'permission-denied',
+        );
+        final provider = newProvider();
 
-      expect(
-        await provider.startBattleWithOpponent(
-          opponentUid: _opponentUid,
-          opponentName: 'Zeta',
-          opponentAvatar: 'z.png',
-        ),
-        isFalse,
-      );
-      expect(provider.startError, isNotNull);
-      expect(provider.questions, isEmpty);
-    });
+        expect(
+          await provider.startBattleWithOpponent(
+            opponentUid: _opponentUid,
+            opponentName: 'Zeta',
+            opponentAvatar: 'z.png',
+          ),
+          isFalse,
+        );
+        expect(provider.startError, isNotNull);
+        expect(provider.questions, isEmpty);
+      },
+    );
 
     test('two consecutive matches get different session ids', () async {
       final provider = newProvider();
@@ -510,28 +509,30 @@ void main() {
       expect(data.playerB?.answerFor(0)?.correct, isFalse);
     });
 
-    test('the legacy dotted field is invisible to the reader (why it broke)',
-        () {
-      // Exactly what the old writer produced: a field literally named
-      // "answers.0" instead of a nested answers map.
-      final room = _roomJson();
-      final players = Map<String, dynamic>.from(room['players'] as Map);
-      final playerA = Map<String, dynamic>.from(players['a'] as Map);
-      playerA['answers.0'] = const BattleAnswer(
-        selected: 1,
-        correct: true,
-        points: 23,
-        timeBonus: 10,
-        streakBonus: 0,
-        timedOut: false,
-      ).toJson();
-      players['a'] = playerA;
-      room['players'] = players;
+    test(
+      'the legacy dotted field is invisible to the reader (why it broke)',
+      () {
+        // Exactly what the old writer produced: a field literally named
+        // "answers.0" instead of a nested answers map.
+        final room = _roomJson();
+        final players = Map<String, dynamic>.from(room['players'] as Map);
+        final playerA = Map<String, dynamic>.from(players['a'] as Map);
+        playerA['answers.0'] = const BattleAnswer(
+          selected: 1,
+          correct: true,
+          points: 23,
+          timeBonus: 10,
+          streakBonus: 0,
+          timedOut: false,
+        ).toJson();
+        players['a'] = playerA;
+        room['players'] = players;
 
-      final data = BattleRoomData.fromJson('room_x', room);
-      expect(data.playerA?.answerFor(0), isNull);
-      expect(data.hasBothAnswered(0), isFalse);
-    });
+        final data = BattleRoomData.fromJson('room_x', room);
+        expect(data.playerA?.answerFor(0), isNull);
+        expect(data.hasBothAnswered(0), isFalse);
+      },
+    );
 
     test('room status drives "has started" (race vs departure)', () {
       expect(BattleRoomStatus.parse('created').hasStarted, isFalse);
@@ -545,13 +546,17 @@ void main() {
       expect(BattleRoomStatus.parse('legacy-value').hasStarted, isTrue);
 
       expect(
-        BattleRoomData.fromJson('room_x', _roomJson(status: 'created'))
-            .hasStarted,
+        BattleRoomData.fromJson(
+          'room_x',
+          _roomJson(status: 'created'),
+        ).hasStarted,
         isFalse,
       );
       expect(
-        BattleRoomData.fromJson('room_x', _roomJson(status: 'active'))
-            .hasStarted,
+        BattleRoomData.fromJson(
+          'room_x',
+          _roomJson(status: 'active'),
+        ).hasStarted,
         isTrue,
       );
     });

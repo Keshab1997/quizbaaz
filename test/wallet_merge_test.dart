@@ -75,8 +75,11 @@ void main() {
       expect(wallet.coins, 2400);
       expect(wallet.gems, 12);
       expect(wallet.inventory['coin_booster'], 3);
-      expect(wallet.inventory, isNot(same(remote.inventory)),
-          reason: 'the returned map must be mutable and independent');
+      expect(
+        wallet.inventory,
+        isNot(same(remote.inventory)),
+        reason: 'the returned map must be mutable and independent',
+      );
     });
   });
 }

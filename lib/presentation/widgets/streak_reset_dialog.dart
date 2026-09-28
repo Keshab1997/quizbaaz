@@ -300,10 +300,10 @@ class _StreakResetDialogState extends State<StreakResetDialog>
                                 ),
                               ),
                               onPressed: () {
-                                final restored =
-                                    userProvider.restoreStreakWithShield(
-                                  widget.details.lostStreak,
-                                );
+                                final restored = userProvider
+                                    .restoreStreakWithShield(
+                                      widget.details.lostStreak,
+                                    );
                                 Navigator.pop(context);
                                 if (restored) {
                                   ScaffoldMessenger.of(context).showSnackBar(

@@ -62,8 +62,10 @@ void main() {
     test('notification ids are unique per calendar day and stable', () {
       final a = DateTime(2026, 9, 6, hour, minute);
       final b = DateTime(2026, 9, 7, hour, minute);
-      expect(NotificationPlanner.notificationIdFor(a),
-          isNot(NotificationPlanner.notificationIdFor(b)));
+      expect(
+        NotificationPlanner.notificationIdFor(a),
+        isNot(NotificationPlanner.notificationIdFor(b)),
+      );
       expect(
         NotificationPlanner.notificationIdFor(a),
         NotificationPlanner.notificationIdFor(DateTime(2026, 9, 6, 23, 59)),

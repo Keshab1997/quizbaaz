@@ -43,8 +43,9 @@ class ChampionPodiumWidget extends StatelessWidget {
       );
     }
 
-    final avatar =
-        champ.avatarPath.isNotEmpty ? champ.avatarPath : AppAssets.championBoy;
+    final avatar = champ.avatarPath.isNotEmpty
+        ? champ.avatarPath
+        : AppAssets.championBoy;
 
     return GlassCard(
       borderColor: AppColors.neonGold.withValues(alpha: 0.4),

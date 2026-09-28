@@ -88,25 +88,25 @@ class QuizResultHistory {
   }
 
   Map<String, dynamic> toJson() => {
-        'id': id,
-        'user_id': userId,
-        'quiz_type': quizType,
-        'category_title': categoryTitle,
-        'category_title_bn': categoryTitleBn,
-        'chapter_title': chapterTitle,
-        'chapter_title_bn': chapterTitleBn,
-        'chapter_id': chapterId,
-        'total_questions': totalQuestions,
-        'correct_answers': correctAnswers,
-        'wrong_answers': wrongAnswers,
-        'skipped_answers': skippedAnswers,
-        'score': score,
-        'coins_earned': coinsEarned,
-        'gems_earned': gemsEarned,
-        'time_seconds': timeSeconds,
-        'accuracy': accuracy,
-        'played_at': playedAt.toIso8601String(),
-      };
+    'id': id,
+    'user_id': userId,
+    'quiz_type': quizType,
+    'category_title': categoryTitle,
+    'category_title_bn': categoryTitleBn,
+    'chapter_title': chapterTitle,
+    'chapter_title_bn': chapterTitleBn,
+    'chapter_id': chapterId,
+    'total_questions': totalQuestions,
+    'correct_answers': correctAnswers,
+    'wrong_answers': wrongAnswers,
+    'skipped_answers': skippedAnswers,
+    'score': score,
+    'coins_earned': coinsEarned,
+    'gems_earned': gemsEarned,
+    'time_seconds': timeSeconds,
+    'accuracy': accuracy,
+    'played_at': playedAt.toIso8601String(),
+  };
 
   factory QuizResultHistory.fromJson(Map<String, dynamic> json) {
     return QuizResultHistory(
@@ -127,7 +127,8 @@ class QuizResultHistory {
       gemsEarned: (json['gems_earned'] as num?)?.toInt() ?? 0,
       timeSeconds: (json['time_seconds'] as num?)?.toDouble() ?? 0.0,
       accuracy: (json['accuracy'] as num?)?.toDouble() ?? 0.0,
-      playedAt: DateTime.tryParse(json['played_at'] as String? ?? '') ??
+      playedAt:
+          DateTime.tryParse(json['played_at'] as String? ?? '') ??
           DateTime.now(),
     );
   }

@@ -86,20 +86,22 @@ class _DailyQuizLoadingCardState extends State<DailyQuizLoadingCard>
     final character = isDaily ? AppAssets.dailyStar : AppAssets.heroGirl;
 
     final eyebrow = isDaily ? S.quizLoadEyebrow : S.quizLoadChapterEyebrow;
-    final title =
-        isDaily ? S.quizLoadTitle : S.quizLoadChapterTitle(n: quiz.setNumber);
+    final title = isDaily
+        ? S.quizLoadTitle
+        : S.quizLoadChapterTitle(n: quiz.setNumber);
     final body = isDaily
         ? S.quizLoadBody(n: config.dailyQuestionCount)
         : S.quizLoadChapterBody;
-    final questionCount =
-        isDaily ? config.dailyQuestionCount : kQuestionsPerSet;
+    final questionCount = isDaily
+        ? config.dailyQuestionCount
+        : kQuestionsPerSet;
     final totalSeconds = questionCount * config.secondsPerQuestion;
     final durationLabel =
         '${(totalSeconds ~/ 60).toString().padLeft(2, '0')}:${(totalSeconds % 60).toString().padLeft(2, '0')}';
     final maxCoins = isDaily
         ? config.dailyMaxCoins
         : questionCount * config.coinsPerCorrectPractice +
-            config.perfectBonusCoins;
+              config.perfectBonusCoins;
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(18, 8, 18, 24),

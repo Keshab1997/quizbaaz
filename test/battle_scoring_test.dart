@@ -14,19 +14,18 @@ void main() {
     required int remainingMs,
     bool answeredBeforeOpponent = false,
     int streak = 0,
-  }) =>
-      BattleScoring.compute(
-        correct: correct,
-        remainingMs: remainingMs,
-        questionDurationMs: questionMs,
-        answeredBeforeOpponent: answeredBeforeOpponent,
-        streak: streak,
-        basePoints: base,
-        maxSpeedBonus: maxSpeed,
-        firstBonus: firstBonus,
-        streakBonusPerStreak: streakPer,
-        maxStreakBonus: maxStreak,
-      );
+  }) => BattleScoring.compute(
+    correct: correct,
+    remainingMs: remainingMs,
+    questionDurationMs: questionMs,
+    answeredBeforeOpponent: answeredBeforeOpponent,
+    streak: streak,
+    basePoints: base,
+    maxSpeedBonus: maxSpeed,
+    firstBonus: firstBonus,
+    streakBonusPerStreak: streakPer,
+    maxStreakBonus: maxStreak,
+  );
 
   group('BattleScoring — formula (10 + speed + first + streak)', () {
     test('wrong answer pays nothing, even with time left', () {

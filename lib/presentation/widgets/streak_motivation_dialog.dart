@@ -110,8 +110,9 @@ class _StreakMotivationDialogState extends State<StreakMotivationDialog>
       0,
       widget.streakGoal,
     );
-    final progress =
-        widget.streakGoal > 0 ? widget.currentStreak / widget.streakGoal : 0.0;
+    final progress = widget.streakGoal > 0
+        ? widget.currentStreak / widget.streakGoal
+        : 0.0;
 
     return Dialog(
       backgroundColor: Colors.transparent,

@@ -29,7 +29,7 @@ import 'package:flutter/foundation.dart';
 /// 5. Firestore real-time listener provides live updates of who's online.
 class OnlinePresenceService {
   OnlinePresenceService({FirebaseFirestore? firestore})
-      : _firestoreOverride = firestore;
+    : _firestoreOverride = firestore;
 
   final FirebaseFirestore? _firestoreOverride;
 
@@ -136,14 +136,15 @@ class OnlinePresenceService {
         .limit(50)
         .snapshots()
         .map((snapshot) {
-      return snapshot.docs
-          .where((doc) => doc.id != excludeUid)
-          .map((doc) => OnlineUser.fromDoc(doc))
-          .toList();
-    }).handleError((e) {
-      debugPrint('OnlinePresenceService: watchOnlineUsers – $e');
-      return <OnlineUser>[];
-    });
+          return snapshot.docs
+              .where((doc) => doc.id != excludeUid)
+              .map((doc) => OnlineUser.fromDoc(doc))
+              .toList();
+        })
+        .handleError((e) {
+          debugPrint('OnlinePresenceService: watchOnlineUsers – $e');
+          return <OnlineUser>[];
+        });
   }
 
   /// One-shot fetch of currently online users.

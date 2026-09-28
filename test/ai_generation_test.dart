@@ -100,28 +100,34 @@ void main() {
 ]
 ''';
       final parsed = parseGeneratedQuestions(mixed);
-      expect(parsed, hasLength(2),
-          reason: 'both parse; the validator is what rejects the bad one');
+      expect(
+        parsed,
+        hasLength(2),
+        reason: 'both parse; the validator is what rejects the bad one',
+      );
 
       final results = QuestionValidator.validateBatch(parsed);
-      expect(results[0].isAcceptable, isFalse,
-          reason: 'no options and no translations');
+      expect(
+        results[0].isAcceptable,
+        isFalse,
+        reason: 'no options and no translations',
+      );
       expect(results[1].isAcceptable, isTrue);
     });
   });
 
   group('the validator catches what the parser lets through', () {
     ChapterModel chapter() => const ChapterModel(
-          chapterId: 'math_ch_01',
-          chapterNumber: 1,
-          titleText: LocalizedText({'en': 'Real Numbers'}),
-          descriptionText: LocalizedText.empty(),
-          totalQuestions: 0,
-          jsonFile: 'assets/data/questions/class10_math_ch1.json',
-          isUnlocked: true,
-          stars: 0,
-          bestScore: 0,
-        );
+      chapterId: 'math_ch_01',
+      chapterNumber: 1,
+      titleText: LocalizedText({'en': 'Real Numbers'}),
+      descriptionText: LocalizedText.empty(),
+      totalQuestions: 0,
+      jsonFile: 'assets/data/questions/class10_math_ch1.json',
+      isUnlocked: true,
+      stars: 0,
+      bestScore: 0,
+    );
 
     test('a model that drops Hindi on the last option', () {
       // The exact drift that motivated generating in chunks of five.
@@ -160,8 +166,9 @@ void main() {
   }
 ]
 ''';
-      final result =
-          QuestionValidator.validate(parseGeneratedQuestions(response).first);
+      final result = QuestionValidator.validate(
+        parseGeneratedQuestions(response).first,
+      );
       expect(result.isAcceptable, isFalse);
       expect(result.summary, contains('correct_index'));
     });
@@ -178,8 +185,11 @@ void main() {
       expect(prompt, contains('Real Numbers'));
       expect(prompt, contains('Mathematics'));
       expect(prompt, contains('West Bengal'));
-      expect(prompt, contains('math_ch_01_q041'),
-          reason: 'ids must continue from the existing bank');
+      expect(
+        prompt,
+        contains('math_ch_01_q041'),
+        reason: 'ids must continue from the existing bank',
+      );
       expect(prompt, contains('math_ch_01_q045'));
       expect(prompt, contains('"correct_index"'));
     });
@@ -247,11 +257,16 @@ void main() {
       expect(next, 41);
 
       final ids = List.generate(
-          10, (i) => QuestionFingerprint.buildId('math_ch_01', next + i));
+        10,
+        (i) => QuestionFingerprint.buildId('math_ch_01', next + i),
+      );
       expect(ids.first, 'math_ch_01_q041');
       expect(ids.last, 'math_ch_01_q050');
-      expect(ids.toSet().intersection(existing.toSet()), isEmpty,
-          reason: 'a generated id must never collide with an existing one');
+      expect(
+        ids.toSet().intersection(existing.toSet()),
+        isEmpty,
+        reason: 'a generated id must never collide with an existing one',
+      );
     });
   });
 }

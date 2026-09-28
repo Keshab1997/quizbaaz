@@ -302,8 +302,9 @@ class SyncService {
     if (localDate == remoteDate) {
       mergedDate = localDate;
       if (local.dailyStreak == 0 || remote.dailyStreak == 0) {
-        mergedStreak =
-            local.dailyStreak == 0 ? local.dailyStreak : remote.dailyStreak;
+        mergedStreak = local.dailyStreak == 0
+            ? local.dailyStreak
+            : remote.dailyStreak;
       } else {
         mergedStreak = local.dailyStreak >= remote.dailyStreak
             ? local.dailyStreak
