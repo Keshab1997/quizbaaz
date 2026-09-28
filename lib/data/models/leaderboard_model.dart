@@ -4,8 +4,10 @@
 /// Usernames are player-editable and not unique — two accounts can both be
 /// "riyad" — so matching on the username could credit a prize to the wrong
 /// player, or double-credit one (R12).
-bool leaderboardRowBelongsToUser(LeaderboardItem item, {required String userId}) =>
-    userId.isNotEmpty && item.userId == userId;
+bool leaderboardRowBelongsToUser(
+  LeaderboardItem item, {
+  required String userId,
+}) => userId.isNotEmpty && item.userId == userId;
 
 class LeaderboardItem {
   final int rank;

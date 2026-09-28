@@ -148,14 +148,22 @@ class _CelebrationOverlayState extends State<_CelebrationOverlay>
       vsync: this,
       duration: const Duration(milliseconds: 1500),
     )..repeat(reverse: true);
-    _bob = Tween<Offset>(begin: Offset.zero, end: const Offset(0, -0.035))
-        .animate(CurvedAnimation(parent: _float, curve: Curves.easeInOut));
-    _glowPulse = Tween<double>(begin: 1.0, end: 1.08)
-        .animate(CurvedAnimation(parent: _float, curve: Curves.easeInOut));
-    _badgePulse = Tween<double>(begin: 1.0, end: 1.12)
-        .animate(CurvedAnimation(parent: _float, curve: Curves.easeInOut));
+    _bob = Tween<Offset>(
+      begin: Offset.zero,
+      end: const Offset(0, -0.035),
+    ).animate(CurvedAnimation(parent: _float, curve: Curves.easeInOut));
+    _glowPulse = Tween<double>(
+      begin: 1.0,
+      end: 1.08,
+    ).animate(CurvedAnimation(parent: _float, curve: Curves.easeInOut));
+    _badgePulse = Tween<double>(
+      begin: 1.0,
+      end: 1.12,
+    ).animate(CurvedAnimation(parent: _float, curve: Curves.easeInOut));
 
-    _confetti = ConfettiController(duration: const Duration(milliseconds: 2400));
+    _confetti = ConfettiController(
+      duration: const Duration(milliseconds: 2400),
+    );
     WidgetsBinding.instance.addPostFrameCallback((_) => _confetti.play());
 
     // Give the player a moment to enjoy it, then dismiss automatically.
@@ -227,7 +235,10 @@ class _CelebrationOverlayState extends State<_CelebrationOverlay>
             Center(
               child: SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24,
+                  vertical: 24,
+                ),
                 child: _buildContent(),
               ),
             ),
@@ -309,8 +320,9 @@ class _CelebrationOverlayState extends State<_CelebrationOverlay>
   }
 
   Widget _buildCharacter() {
-    final Color onAccent =
-        widget.accent == AppColors.neonGold ? Colors.black : Colors.white;
+    final Color onAccent = widget.accent == AppColors.neonGold
+        ? Colors.black
+        : Colors.white;
 
     return SizedBox(
       width: 250,
@@ -345,11 +357,8 @@ class _CelebrationOverlayState extends State<_CelebrationOverlay>
                 widget.characterAsset,
                 width: 234,
                 fit: BoxFit.contain,
-                errorBuilder: (c, e, s) => Icon(
-                  Icons.celebration,
-                  size: 140,
-                  color: widget.accent,
-                ),
+                errorBuilder: (c, e, s) =>
+                    Icon(Icons.celebration, size: 140, color: widget.accent),
               ),
             ),
           ),

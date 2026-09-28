@@ -107,7 +107,7 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
     setState(() {
       _questions = questions;
       _validation = {
-        for (var i = 0; i < questions.length; i++) questions[i].id: results[i]
+        for (var i = 0; i < questions.length; i++) questions[i].id: results[i],
       };
       _loading = false;
     });
@@ -138,15 +138,15 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
     }
   }
 
-  List<QuestionSet> get _visibleSets => QuestionSet.fromQuestions(_questions)
-      .where((set) => set.questions.any(_matchesCurrentFilter))
-      .toList();
+  List<QuestionSet> get _visibleSets =>
+      QuestionSet.fromQuestions(_questions)
+          .where((set) => set.questions.any(_matchesCurrentFilter))
+          .toList();
 
   @override
   Widget build(BuildContext context) {
     final visibleSets = _visibleSets;
-    final untranslated =
-        _questions.where((q) => !q.isFullyTranslated).length;
+    final untranslated = _questions.where((q) => !q.isFullyTranslated).length;
 
     return Scaffold(
       backgroundColor: Colors.transparent,
@@ -155,16 +155,19 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('Question Bank',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+            const Text(
+              'Question Bank',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            ),
             Text(
               widget.chapter.titleText.resolve('en'),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: const TextStyle(
-                  fontSize: 11.5,
-                  fontWeight: FontWeight.w500,
-                  color: AppColors.textSecondary),
+                fontSize: 11.5,
+                fontWeight: FontWeight.w500,
+                color: AppColors.textSecondary,
+              ),
             ),
           ],
         ),
@@ -214,7 +217,8 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
       ),
       body: _loading
           ? const Center(
-              child: CircularProgressIndicator(color: AppColors.neonCyan))
+              child: CircularProgressIndicator(color: AppColors.neonCyan),
+            )
           : RefreshIndicator(
               onRefresh: _load,
               color: AppColors.neonCyan,
@@ -234,8 +238,10 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
                     const Padding(
                       padding: EdgeInsets.only(top: 50),
                       child: Center(
-                        child: Text('Nothing matches that filter.',
-                            style: TextStyle(color: AppColors.textSecondary)),
+                        child: Text(
+                          'Nothing matches that filter.',
+                          style: TextStyle(color: AppColors.textSecondary),
+                        ),
                       ),
                     ),
                   for (final set in visibleSets) _questionSetCard(set),
@@ -254,30 +260,44 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
           Expanded(
             child: Column(
               children: [
-                Text('${_questions.length}',
-                    style: const TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.w900,
-                        color: AppColors.neonCyan)),
-                const Text('Questions',
-                    style: TextStyle(
-                        fontSize: 10.5, color: AppColors.textSecondary)),
+                Text(
+                  '${_questions.length}',
+                  style: const TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w900,
+                    color: AppColors.neonCyan,
+                  ),
+                ),
+                const Text(
+                  'Questions',
+                  style: TextStyle(
+                    fontSize: 10.5,
+                    color: AppColors.textSecondary,
+                  ),
+                ),
               ],
             ),
           ),
           Expanded(
             child: Column(
               children: [
-                Text('$untranslated',
-                    style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.w900,
-                        color: untranslated == 0
-                            ? AppColors.neonGreen
-                            : AppColors.neonGold)),
-                const Text('Need translation',
-                    style: TextStyle(
-                        fontSize: 10.5, color: AppColors.textSecondary)),
+                Text(
+                  '$untranslated',
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w900,
+                    color: untranslated == 0
+                        ? AppColors.neonGreen
+                        : AppColors.neonGold,
+                  ),
+                ),
+                const Text(
+                  'Need translation',
+                  style: TextStyle(
+                    fontSize: 10.5,
+                    color: AppColors.textSecondary,
+                  ),
+                ),
               ],
             ),
           ),
@@ -287,13 +307,18 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
                 Text(
                   'q${QuestionFingerprint.nextSequence(_questions.map((q) => q.id)).toString().padLeft(3, '0')}',
                   style: const TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.w900,
-                      color: AppColors.neonPurple),
+                    fontSize: 17,
+                    fontWeight: FontWeight.w900,
+                    color: AppColors.neonPurple,
+                  ),
                 ),
-                const Text('Next id',
-                    style: TextStyle(
-                        fontSize: 10.5, color: AppColors.textSecondary)),
+                const Text(
+                  'Next id',
+                  style: TextStyle(
+                    fontSize: 10.5,
+                    color: AppColors.textSecondary,
+                  ),
+                ),
               ],
             ),
           ),
@@ -309,11 +334,14 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
         children: [
           Icon(Icons.quiz_outlined, size: 46, color: AppColors.textMuted),
           SizedBox(height: 14),
-          Text('No questions in this chapter yet',
-              style: TextStyle(
-                  fontSize: 14.5,
-                  fontWeight: FontWeight.w700,
-                  color: Colors.white)),
+          Text(
+            'No questions in this chapter yet',
+            style: TextStyle(
+              fontSize: 14.5,
+              fontWeight: FontWeight.w700,
+              color: Colors.white,
+            ),
+          ),
           SizedBox(height: 6),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 40),
@@ -321,7 +349,10 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
               'Add one by hand, or generate a batch and review it before saving.',
               textAlign: TextAlign.center,
               style: TextStyle(
-                  fontSize: 12, color: AppColors.textSecondary, height: 1.4),
+                fontSize: 12,
+                color: AppColors.textSecondary,
+                height: 1.4,
+              ),
             ),
           ),
         ],
@@ -336,8 +367,10 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
       decoration: InputDecoration(
         hintText: 'Search question text or id…',
         hintStyle: const TextStyle(color: AppColors.textMuted, fontSize: 13),
-        prefixIcon:
-            const Icon(Icons.search_rounded, color: AppColors.textSecondary),
+        prefixIcon: const Icon(
+          Icons.search_rounded,
+          color: AppColors.textSecondary,
+        ),
         filled: true,
         fillColor: Colors.white.withValues(alpha: 0.05),
         isDense: true,
@@ -365,21 +398,25 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
             Padding(
               padding: const EdgeInsets.only(right: 8),
               child: ChoiceChip(
-                label: Text(entry.value,
-                    style: TextStyle(
-                        fontSize: 11.5,
-                        fontWeight: FontWeight.w700,
-                        color: _filter == entry.key
-                            ? AppColors.bgDark
-                            : AppColors.textSecondary)),
+                label: Text(
+                  entry.value,
+                  style: TextStyle(
+                    fontSize: 11.5,
+                    fontWeight: FontWeight.w700,
+                    color: _filter == entry.key
+                        ? AppColors.bgDark
+                        : AppColors.textSecondary,
+                  ),
+                ),
                 selected: _filter == entry.key,
                 showCheckmark: false,
                 backgroundColor: Colors.white.withValues(alpha: 0.05),
                 selectedColor: AppColors.neonCyan,
                 side: BorderSide(
-                    color: _filter == entry.key
-                        ? AppColors.neonCyan
-                        : Colors.white12),
+                  color: _filter == entry.key
+                      ? AppColors.neonCyan
+                      : Colors.white12,
+                ),
                 onSelected: (_) => setState(() => _filter = entry.key),
               ),
             ),
@@ -493,24 +530,32 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
               style: const TextStyle(
-                  fontSize: 13.5,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.white,
-                  height: 1.35),
+                fontSize: 13.5,
+                fontWeight: FontWeight.w600,
+                color: Colors.white,
+                height: 1.35,
+              ),
             ),
             subtitle: Padding(
               padding: const EdgeInsets.only(top: 5),
               child: Row(
                 children: [
-                  Text('$position · ${question.id}',
-                      style: const TextStyle(
-                          fontSize: 10.5, color: AppColors.textMuted)),
+                  Text(
+                    '$position · ${question.id}',
+                    style: const TextStyle(
+                      fontSize: 10.5,
+                      color: AppColors.textMuted,
+                    ),
+                  ),
                   const SizedBox(width: 8),
                   _languageDots(question),
                   if (hasIssue) ...[
                     const SizedBox(width: 8),
-                    const Icon(Icons.error_outline_rounded,
-                        size: 12, color: AppColors.neonGold),
+                    const Icon(
+                      Icons.error_outline_rounded,
+                      size: 12,
+                      color: AppColors.neonGold,
+                    ),
                   ],
                 ],
               ),
@@ -527,11 +572,14 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
                     borderRadius: BorderRadius.circular(10),
                     color: AppColors.neonGold.withValues(alpha: 0.1),
                   ),
-                  child: Text(result.summary,
-                      style: const TextStyle(
-                          fontSize: 11.5,
-                          color: AppColors.neonGold,
-                          height: 1.35)),
+                  child: Text(
+                    result.summary,
+                    style: const TextStyle(
+                      fontSize: 11.5,
+                      color: AppColors.neonGold,
+                      height: 1.35,
+                    ),
+                  ),
                 ),
               ],
               const SizedBox(height: 10),
@@ -539,20 +587,28 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
                 children: [
                   TextButton.icon(
                     onPressed: () => _editQuestion(question),
-                    icon: const Icon(Icons.edit_rounded,
-                        size: 15, color: AppColors.neonCyan),
-                    label: const Text('Edit',
-                        style:
-                            TextStyle(fontSize: 12, color: AppColors.neonCyan)),
+                    icon: const Icon(
+                      Icons.edit_rounded,
+                      size: 15,
+                      color: AppColors.neonCyan,
+                    ),
+                    label: const Text(
+                      'Edit',
+                      style: TextStyle(fontSize: 12, color: AppColors.neonCyan),
+                    ),
                   ),
                   const Spacer(),
                   TextButton.icon(
                     onPressed: () => _confirmDelete(question),
-                    icon: const Icon(Icons.delete_outline_rounded,
-                        size: 15, color: AppColors.neonRed),
-                    label: const Text('Delete',
-                        style:
-                            TextStyle(fontSize: 12, color: AppColors.neonRed)),
+                    icon: const Icon(
+                      Icons.delete_outline_rounded,
+                      size: 15,
+                      color: AppColors.neonRed,
+                    ),
+                    label: const Text(
+                      'Delete',
+                      style: TextStyle(fontSize: 12, color: AppColors.neonRed),
+                    ),
                   ),
                 ],
               ),
@@ -574,7 +630,8 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
               style: TextStyle(
                 fontSize: 9,
                 fontWeight: FontWeight.w900,
-                color: question.questionText.has(code) &&
+                color:
+                    question.questionText.has(code) &&
                         question.optionTexts.every((o) => o.has(code))
                     ? AppColors.neonGreen
                     : AppColors.textMuted.withValues(alpha: 0.5),
@@ -598,16 +655,24 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(code.toUpperCase(),
-              style: const TextStyle(
-                  fontSize: 9.5,
-                  fontWeight: FontWeight.w900,
-                  letterSpacing: 0.6,
-                  color: AppColors.neonCyan)),
+          Text(
+            code.toUpperCase(),
+            style: const TextStyle(
+              fontSize: 9.5,
+              fontWeight: FontWeight.w900,
+              letterSpacing: 0.6,
+              color: AppColors.neonCyan,
+            ),
+          ),
           const SizedBox(height: 3),
-          Text(stem,
-              style: const TextStyle(
-                  fontSize: 12.5, color: Colors.white, height: 1.35)),
+          Text(
+            stem,
+            style: const TextStyle(
+              fontSize: 12.5,
+              color: Colors.white,
+              height: 1.35,
+            ),
+          ),
           const SizedBox(height: 5),
           for (var i = 0; i < options.length; i++)
             Padding(
@@ -645,9 +710,14 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
             ),
           if (question.explanationText.has(code)) ...[
             const SizedBox(height: 5),
-            Text('💡 ${question.explanationText.resolve(code)}',
-                style: const TextStyle(
-                    fontSize: 11, color: AppColors.textMuted, height: 1.35)),
+            Text(
+              '💡 ${question.explanationText.resolve(code)}',
+              style: const TextStyle(
+                fontSize: 11,
+                color: AppColors.textMuted,
+                height: 1.35,
+              ),
+            ),
           ],
         ],
       ),
@@ -670,8 +740,9 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
           idPrefix: _slug,
           // Read fresh rather than trusting the loaded list: the sequence must
           // continue past the highest id that exists, not the highest shown.
-          startSequence:
-              QuestionFingerprint.nextSequence(_questions.map((q) => q.id)),
+          startSequence: QuestionFingerprint.nextSequence(
+            _questions.map((q) => q.id),
+          ),
           existingStems: [
             for (final q in _questions) q.questionText.resolve('en'),
           ],
@@ -708,31 +779,36 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
   void _showAppendResult(AppendResult result) {
     ScaffoldMessenger.of(context)
       ..hideCurrentSnackBar()
-      ..showSnackBar(SnackBar(
-        // ScaffoldMessenger sits above the Navigator, so a long-lived snackbar
-        // rides along to whatever screen the admin opens next. Short, and
-        // cleared in dispose.
-        duration: const Duration(seconds: 5),
-        backgroundColor: AppColors.surfaceElevated,
-        content: Row(
-          children: [
-            const Icon(Icons.check_circle_rounded,
-                size: 18, color: AppColors.neonGreen),
-            const SizedBox(width: 10),
-            Expanded(
-              child: Text(
-                'Added ${result.added} · ${result.countLabel}',
-                style: const TextStyle(fontSize: 13, color: Colors.white),
+      ..showSnackBar(
+        SnackBar(
+          // ScaffoldMessenger sits above the Navigator, so a long-lived snackbar
+          // rides along to whatever screen the admin opens next. Short, and
+          // cleared in dispose.
+          duration: const Duration(seconds: 5),
+          backgroundColor: AppColors.surfaceElevated,
+          content: Row(
+            children: [
+              const Icon(
+                Icons.check_circle_rounded,
+                size: 18,
+                color: AppColors.neonGreen,
               ),
-            ),
-          ],
+              const SizedBox(width: 10),
+              Expanded(
+                child: Text(
+                  'Added ${result.added} · ${result.countLabel}',
+                  style: const TextStyle(fontSize: 13, color: Colors.white),
+                ),
+              ),
+            ],
+          ),
+          action: SnackBarAction(
+            label: 'Undo',
+            textColor: AppColors.neonGold,
+            onPressed: () => _undoBatch(result.batchId),
+          ),
         ),
-        action: SnackBarAction(
-          label: 'Undo',
-          textColor: AppColors.neonGold,
-          onPressed: () => _undoBatch(result.batchId),
-        ),
-      ));
+      );
   }
 
   Future<void> _undoBatch(String batchId) async {
@@ -744,9 +820,11 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
       );
       await _invalidateCaches();
       await _load();
-      _toast(removed == 0
-          ? 'Nothing to undo — that batch is outside the 24h window.'
-          : 'Removed $removed question(s) from that batch.');
+      _toast(
+        removed == 0
+            ? 'Nothing to undo — that batch is outside the 24h window.'
+            : 'Removed $removed question(s) from that batch.',
+      );
     } catch (e) {
       _toast('Undo failed: $e', error: true);
     }
@@ -806,8 +884,8 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
   /// the chapter list one screen back — would keep seeing the old count for up
   /// to a quarter of an hour after an admin adds questions.
   Future<void> _invalidateCaches() => _repository.invalidateQuestionCache(
-        jsonFilePath: widget.chapter.jsonFile,
-      );
+    jsonFilePath: widget.chapter.jsonFile,
+  );
 
   Future<void> _confirmDeleteSet(QuestionSet set) async {
     final count = set.questions.length;
@@ -815,26 +893,34 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
       context: context,
       builder: (ctx) => AlertDialog(
         backgroundColor: AppColors.bgNavy,
-        title: Text('Delete Set ${set.number}?',
-            style: const TextStyle(fontSize: 16, color: Colors.white)),
+        title: Text(
+          'Delete Set ${set.number}?',
+          style: const TextStyle(fontSize: 16, color: Colors.white),
+        ),
         content: Text(
           'This permanently deletes all $count question${count == 1 ? '' : 's'} '
           'in Set ${set.number}. This cannot be undone.',
           style: const TextStyle(
-              fontSize: 12.5, color: AppColors.textSecondary, height: 1.45),
+            fontSize: 12.5,
+            color: AppColors.textSecondary,
+            height: 1.45,
+          ),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx, false),
-            child: const Text('Cancel',
-                style: TextStyle(color: AppColors.textSecondary)),
+            child: const Text(
+              'Cancel',
+              style: TextStyle(color: AppColors.textSecondary),
+            ),
           ),
           ElevatedButton(
-            style:
-                ElevatedButton.styleFrom(backgroundColor: AppColors.neonRed),
+            style: ElevatedButton.styleFrom(backgroundColor: AppColors.neonRed),
             onPressed: () => Navigator.pop(ctx, true),
-            child: Text('Delete all $count',
-                style: const TextStyle(color: Colors.white)),
+            child: Text(
+              'Delete all $count',
+              style: const TextStyle(color: Colors.white),
+            ),
           ),
         ],
       ),
@@ -862,26 +948,31 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
       context: context,
       builder: (ctx) => AlertDialog(
         backgroundColor: AppColors.bgNavy,
-        title: const Text('Delete this question?',
-            style: TextStyle(fontSize: 16, color: Colors.white)),
+        title: const Text(
+          'Delete this question?',
+          style: TextStyle(fontSize: 16, color: Colors.white),
+        ),
         content: Text(
           '${question.id}\n\n"${question.questionText.resolve('en')}"\n\n'
           'Only this question is removed. The rest of the chapter is untouched.',
           style: const TextStyle(
-              fontSize: 12.5, color: AppColors.textSecondary, height: 1.45),
+            fontSize: 12.5,
+            color: AppColors.textSecondary,
+            height: 1.45,
+          ),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx, false),
-            child: const Text('Cancel',
-                style: TextStyle(color: AppColors.textSecondary)),
+            child: const Text(
+              'Cancel',
+              style: TextStyle(color: AppColors.textSecondary),
+            ),
           ),
           ElevatedButton(
-            style:
-                ElevatedButton.styleFrom(backgroundColor: AppColors.neonRed),
+            style: ElevatedButton.styleFrom(backgroundColor: AppColors.neonRed),
             onPressed: () => Navigator.pop(ctx, true),
-            child:
-                const Text('Delete', style: TextStyle(color: Colors.white)),
+            child: const Text('Delete', style: TextStyle(color: Colors.white)),
           ),
         ],
       ),
@@ -906,10 +997,12 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
     if (!mounted) return;
     ScaffoldMessenger.of(context)
       ..hideCurrentSnackBar()
-      ..showSnackBar(SnackBar(
-        content: Text(message),
-        backgroundColor: error ? AppColors.neonRed : null,
-      ));
+      ..showSnackBar(
+        SnackBar(
+          content: Text(message),
+          backgroundColor: error ? AppColors.neonRed : null,
+        ),
+      );
   }
 
   Future<void> _showJsonImportSheet() async {
@@ -918,7 +1011,9 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
       subjectName: widget.subjectName,
       count: 10,
       idPrefix: _slug,
-      startSequence: QuestionFingerprint.nextSequence(_questions.map((q) => q.id)),
+      startSequence: QuestionFingerprint.nextSequence(
+        _questions.map((q) => q.id),
+      ),
       existingStems: [for (final q in _questions) q.questionText.resolve('en')],
     );
 
@@ -935,16 +1030,26 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
     final parsedQuestions = _parseCustomJsonQuestions(
       jsonText,
       idPrefix: _slug,
-      startSequence: QuestionFingerprint.nextSequence(_questions.map((q) => q.id)),
+      startSequence: QuestionFingerprint.nextSequence(
+        _questions.map((q) => q.id),
+      ),
     );
 
     if (parsedQuestions.isEmpty) {
-      _toast('❌ Valid questions could not be parsed from JSON. Please check format.', error: true);
+      _toast(
+        '❌ Valid questions could not be parsed from JSON. Please check format.',
+        error: true,
+      );
       return;
     }
 
-    final stems = {for (final q in _questions) q.id: q.questionText.resolve('en')};
-    final fingerprints = {for (final q in _questions) QuestionFingerprint.fingerprint(q.questionText.resolve('en'))}..remove('');
+    final stems = {
+      for (final q in _questions) q.id: q.questionText.resolve('en'),
+    };
+    final fingerprints = {
+      for (final q in _questions)
+        QuestionFingerprint.fingerprint(q.questionText.resolve('en')),
+    }..remove('');
 
     final drafts = <GeneratedQuestion>[];
     for (final q in parsedQuestions) {
@@ -963,8 +1068,12 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
           chapter: widget.chapter,
           subjectName: widget.subjectName,
           idPrefix: _slug,
-          startSequence: QuestionFingerprint.nextSequence(_questions.map((q) => q.id)),
-          existingStems: [for (final q in _questions) q.questionText.resolve('en')],
+          startSequence: QuestionFingerprint.nextSequence(
+            _questions.map((q) => q.id),
+          ),
+          existingStems: [
+            for (final q in _questions) q.questionText.resolve('en'),
+          ],
           existingFingerprints: fingerprints,
           actorUid: _actorUid,
           initialDrafts: drafts,
@@ -1074,7 +1183,10 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
       } else if (map['correct_answer'] != null) {
         final ansStr = map['correct_answer'].toString().toLowerCase().trim();
         final idx = optionTexts.indexWhere(
-            (o) => o.toJson().values.any((val) => val.toLowerCase().trim() == ansStr));
+          (o) => o.toJson().values.any(
+            (val) => val.toLowerCase().trim() == ansStr,
+          ),
+        );
         if (idx >= 0) correctIndex = idx;
       }
 
@@ -1093,15 +1205,17 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
       }
       seq++;
 
-      questions.add(QuestionModel(
-        id: id,
-        questionText: questionText,
-        optionTexts: optionTexts,
-        correctIndex: correctIndex.clamp(0, optionTexts.length - 1),
-        explanationText: explanationText,
-        points: (map['points'] as num?)?.toInt() ?? 10,
-        timeLimitSec: (map['time_limit_sec'] as num?)?.toInt() ?? 30,
-      ));
+      questions.add(
+        QuestionModel(
+          id: id,
+          questionText: questionText,
+          optionTexts: optionTexts,
+          correctIndex: correctIndex.clamp(0, optionTexts.length - 1),
+          explanationText: explanationText,
+          points: (map['points'] as num?)?.toInt() ?? 10,
+          timeLimitSec: (map['time_limit_sec'] as num?)?.toInt() ?? 30,
+        ),
+      );
     }
 
     return questions;
@@ -1148,7 +1262,8 @@ class _QuestionSheetState extends State<_QuestionSheet> {
     _points = TextEditingController(text: '${e?.points ?? 10}');
     _timeLimit = TextEditingController(text: '${e?.timeLimitSec ?? 15}');
     _question = e?.questionText ?? const LocalizedText.empty();
-    _options = e?.optionTexts.toList() ??
+    _options =
+        e?.optionTexts.toList() ??
         List.generate(4, (_) => const LocalizedText.empty());
     _explanation = e?.explanationText ?? const LocalizedText.empty();
     _correctIndex = e?.correctIndex ?? 0;
@@ -1163,30 +1278,30 @@ class _QuestionSheetState extends State<_QuestionSheet> {
   }
 
   QuestionModel get _draft => QuestionModel(
-        id: _id.text.trim(),
-        questionText: _question,
-        optionTexts: _options,
-        correctIndex: _correctIndex,
-        explanationText: _explanation,
-        points: int.tryParse(_points.text.trim()) ?? 10,
-        timeLimitSec: int.tryParse(_timeLimit.text.trim()) ?? 30,
-      );
+    id: _id.text.trim(),
+    questionText: _question,
+    optionTexts: _options,
+    correctIndex: _correctIndex,
+    explanationText: _explanation,
+    points: int.tryParse(_points.text.trim()) ?? 10,
+    timeLimitSec: int.tryParse(_timeLimit.text.trim()) ?? 30,
+  );
 
-  ValidationResult get _result => QuestionValidator.validate(
-        _draft,
-        existingStems: widget.existingStems,
-      );
+  ValidationResult get _result =>
+      QuestionValidator.validate(_draft, existingStems: widget.existingStems);
 
   @override
   Widget build(BuildContext context) {
     final result = _result;
 
     return Padding(
-      padding:
-          EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+      padding: EdgeInsets.only(
+        bottom: MediaQuery.of(context).viewInsets.bottom,
+      ),
       child: Container(
         constraints: BoxConstraints(
-            maxHeight: MediaQuery.of(context).size.height * 0.92),
+          maxHeight: MediaQuery.of(context).size.height * 0.92,
+        ),
         decoration: const BoxDecoration(
           color: AppColors.bgCard,
           borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
@@ -1199,8 +1314,9 @@ class _QuestionSheetState extends State<_QuestionSheet> {
               width: 42,
               height: 4,
               decoration: BoxDecoration(
-                  color: Colors.white24,
-                  borderRadius: BorderRadius.circular(2)),
+                color: Colors.white24,
+                borderRadius: BorderRadius.circular(2),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(20, 14, 12, 4),
@@ -1212,9 +1328,10 @@ class _QuestionSheetState extends State<_QuestionSheet> {
                           ? 'New question'
                           : 'Edit ${widget.existing!.id}',
                       style: const TextStyle(
-                          fontSize: 15.5,
-                          fontWeight: FontWeight.w800,
-                          color: Colors.white),
+                        fontSize: 15.5,
+                        fontWeight: FontWeight.w800,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                   IconButton(
@@ -1241,12 +1358,15 @@ class _QuestionSheetState extends State<_QuestionSheet> {
                       onChanged: (v) => setState(() => _question = v),
                     ),
                     const SizedBox(height: 18),
-                    const Text('OPTIONS — tap the circle to mark the answer',
-                        style: TextStyle(
-                            fontSize: 11,
-                            fontWeight: FontWeight.w800,
-                            letterSpacing: 0.5,
-                            color: AppColors.textSecondary)),
+                    const Text(
+                      'OPTIONS — tap the circle to mark the answer',
+                      style: TextStyle(
+                        fontSize: 11,
+                        fontWeight: FontWeight.w800,
+                        letterSpacing: 0.5,
+                        color: AppColors.textSecondary,
+                      ),
+                    ),
                     const SizedBox(height: 10),
                     for (var i = 0; i < _options.length; i++) _optionRow(i),
                     const SizedBox(height: 6),
@@ -1266,8 +1386,7 @@ class _QuestionSheetState extends State<_QuestionSheet> {
                       children: [
                         Expanded(child: _numberField(_points, 'Points')),
                         const SizedBox(width: 12),
-                        Expanded(
-                            child: _numberField(_timeLimit, 'Seconds')),
+                        Expanded(child: _numberField(_timeLimit, 'Seconds')),
                       ],
                     ),
                   ],
@@ -1289,14 +1408,16 @@ class _QuestionSheetState extends State<_QuestionSheet> {
                         ? AppColors.bgDark
                         : AppColors.textMuted,
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(14)),
+                      borderRadius: BorderRadius.circular(14),
+                    ),
                   ),
                   onPressed: result.isAcceptable
                       ? () => Navigator.pop(context, _draft)
                       : null,
-                  child: const Text('Save question',
-                      style: TextStyle(
-                          fontWeight: FontWeight.w900, fontSize: 14)),
+                  child: const Text(
+                    'Save question',
+                    style: TextStyle(fontWeight: FontWeight.w900, fontSize: 14),
+                  ),
                 ),
               ),
             ),
@@ -1315,14 +1436,17 @@ class _QuestionSheetState extends State<_QuestionSheet> {
             enabled: widget.existing == null,
             onChanged: (_) => setState(() {}),
             style: TextStyle(
-                color: widget.existing == null
-                    ? Colors.white
-                    : AppColors.textMuted,
-                fontSize: 13),
+              color: widget.existing == null
+                  ? Colors.white
+                  : AppColors.textMuted,
+              fontSize: 13,
+            ),
             decoration: InputDecoration(
               labelText: 'Question id',
               labelStyle: const TextStyle(
-                  fontSize: 12, color: AppColors.textSecondary),
+                fontSize: 12,
+                color: AppColors.textSecondary,
+              ),
               filled: true,
               fillColor: Colors.white.withValues(alpha: 0.05),
               isDense: true,
@@ -1351,19 +1475,17 @@ class _QuestionSheetState extends State<_QuestionSheet> {
               borderRadius: BorderRadius.circular(20),
               onTap: () => setState(() => _correctIndex = index),
               child: Icon(
-                isCorrect
-                    ? Icons.check_circle_rounded
-                    : Icons.circle_outlined,
+                isCorrect ? Icons.check_circle_rounded : Icons.circle_outlined,
                 size: 22,
-                color:
-                    isCorrect ? AppColors.neonGreen : AppColors.textMuted,
+                color: isCorrect ? AppColors.neonGreen : AppColors.textMuted,
               ),
             ),
           ),
           const SizedBox(width: 10),
           Expanded(
             child: TrilingualField(
-              label: 'Option ${String.fromCharCode(65 + index)}'
+              label:
+                  'Option ${String.fromCharCode(65 + index)}'
                   '${isCorrect ? '  ✓ correct' : ''}',
               initialValue: _options[index],
               minLines: 1,
@@ -1397,8 +1519,10 @@ class _QuestionSheetState extends State<_QuestionSheet> {
       onPressed: () =>
           setState(() => _options.add(const LocalizedText.empty())),
       icon: const Icon(Icons.add_rounded, size: 16, color: AppColors.neonCyan),
-      label: const Text('Add option',
-          style: TextStyle(fontSize: 12, color: AppColors.neonCyan)),
+      label: const Text(
+        'Add option',
+        style: TextStyle(fontSize: 12, color: AppColors.neonCyan),
+      ),
     );
   }
 
@@ -1410,8 +1534,10 @@ class _QuestionSheetState extends State<_QuestionSheet> {
       style: const TextStyle(color: Colors.white, fontSize: 13),
       decoration: InputDecoration(
         labelText: label,
-        labelStyle:
-            const TextStyle(fontSize: 12, color: AppColors.textSecondary),
+        labelStyle: const TextStyle(
+          fontSize: 12,
+          color: AppColors.textSecondary,
+        ),
         filled: true,
         fillColor: Colors.white.withValues(alpha: 0.05),
         isDense: true,
@@ -1431,19 +1557,23 @@ class _QuestionSheetState extends State<_QuestionSheet> {
         padding: EdgeInsets.fromLTRB(20, 6, 20, 0),
         child: Row(
           children: [
-            Icon(Icons.check_circle_rounded,
-                size: 14, color: AppColors.neonGreen),
+            Icon(
+              Icons.check_circle_rounded,
+              size: 14,
+              color: AppColors.neonGreen,
+            ),
             SizedBox(width: 7),
-            Text('Ready to save',
-                style: TextStyle(fontSize: 12, color: AppColors.neonGreen)),
+            Text(
+              'Ready to save',
+              style: TextStyle(fontSize: 12, color: AppColors.neonGreen),
+            ),
           ],
         ),
       );
     }
 
     final blocking = result.rejections;
-    final colour =
-        blocking.isEmpty ? AppColors.neonGold : AppColors.neonRed;
+    final colour = blocking.isEmpty ? AppColors.neonGold : AppColors.neonRed;
     final messages = (blocking.isEmpty ? result.warnings : blocking)
         .map((i) => i.toString())
         .take(3)
@@ -1460,7 +1590,7 @@ class _QuestionSheetState extends State<_QuestionSheet> {
             child: Text(
               result.nearDuplicate != null && blocking.isEmpty
                   ? 'Similar to ${result.nearDuplicate!.questionId} '
-                      '(${result.nearDuplicate!.scoreLabel}) · $messages'
+                        '(${result.nearDuplicate!.scoreLabel}) · $messages'
                   : messages,
               style: TextStyle(fontSize: 11.5, color: colour, height: 1.35),
             ),
@@ -1522,9 +1652,13 @@ class _JsonImportSheetState extends State<_JsonImportSheet> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+      padding: EdgeInsets.only(
+        bottom: MediaQuery.of(context).viewInsets.bottom,
+      ),
       child: Container(
-        constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.88),
+        constraints: BoxConstraints(
+          maxHeight: MediaQuery.of(context).size.height * 0.88,
+        ),
         decoration: const BoxDecoration(
           color: AppColors.bgCard,
           borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
@@ -1536,18 +1670,29 @@ class _JsonImportSheetState extends State<_JsonImportSheet> {
             Container(
               width: 42,
               height: 4,
-              decoration: BoxDecoration(color: Colors.white24, borderRadius: BorderRadius.circular(2)),
+              decoration: BoxDecoration(
+                color: Colors.white24,
+                borderRadius: BorderRadius.circular(2),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(20, 14, 12, 4),
               child: Row(
                 children: [
-                  const Icon(Icons.code_rounded, color: AppColors.neonGold, size: 22),
+                  const Icon(
+                    Icons.code_rounded,
+                    color: AppColors.neonGold,
+                    size: 22,
+                  ),
                   const SizedBox(width: 8),
                   const Expanded(
                     child: Text(
                       'Import JSON / ChatGPT / Gemini',
-                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.w800, color: Colors.white),
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w800,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                   IconButton(
@@ -1570,25 +1715,38 @@ class _JsonImportSheetState extends State<_JsonImportSheet> {
                       decoration: BoxDecoration(
                         color: AppColors.neonPurple.withValues(alpha: 0.12),
                         borderRadius: BorderRadius.circular(16),
-                        border: Border.all(color: AppColors.neonPurple.withValues(alpha: 0.3)),
+                        border: Border.all(
+                          color: AppColors.neonPurple.withValues(alpha: 0.3),
+                        ),
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const Row(
                             children: [
-                              Icon(Icons.copy_rounded, color: AppColors.neonPurple, size: 18),
+                              Icon(
+                                Icons.copy_rounded,
+                                color: AppColors.neonPurple,
+                                size: 18,
+                              ),
                               SizedBox(width: 6),
                               Text(
                                 'Step 1: Copy AI Prompt',
-                                style: TextStyle(color: Colors.white, fontSize: 13, fontWeight: FontWeight.bold),
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ],
                           ),
                           const SizedBox(height: 6),
                           const Text(
                             'Copy this chapter-specific prompt and paste it into ChatGPT, Gemini, or Claude when API rate limit occurs.',
-                            style: TextStyle(color: AppColors.textSecondary, fontSize: 11),
+                            style: TextStyle(
+                              color: AppColors.textSecondary,
+                              fontSize: 11,
+                            ),
                           ),
                           const SizedBox(height: 10),
                           SizedBox(
@@ -1597,12 +1755,25 @@ class _JsonImportSheetState extends State<_JsonImportSheet> {
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: AppColors.neonPurple,
                                 foregroundColor: Colors.white,
-                                padding: const EdgeInsets.symmetric(vertical: 10),
-                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 10,
+                                ),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
                               ),
                               onPressed: _copyPrompt,
-                              icon: const Icon(Icons.content_copy_rounded, size: 16),
-                              label: const Text('Copy Prompt for ChatGPT / Gemini', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12)),
+                              icon: const Icon(
+                                Icons.content_copy_rounded,
+                                size: 16,
+                              ),
+                              label: const Text(
+                                'Copy Prompt for ChatGPT / Gemini',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 12,
+                                ),
+                              ),
                             ),
                           ),
                         ],
@@ -1613,11 +1784,19 @@ class _JsonImportSheetState extends State<_JsonImportSheet> {
                     // Step 2: Paste JSON
                     const Row(
                       children: [
-                        Icon(Icons.content_paste_rounded, color: AppColors.neonGold, size: 18),
+                        Icon(
+                          Icons.content_paste_rounded,
+                          color: AppColors.neonGold,
+                          size: 18,
+                        ),
                         SizedBox(width: 6),
                         Text(
                           'Step 2: Paste ChatGPT / Gemini JSON',
-                          style: TextStyle(color: Colors.white, fontSize: 13, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 13,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ],
                     ),
@@ -1627,13 +1806,26 @@ class _JsonImportSheetState extends State<_JsonImportSheet> {
                         const Expanded(
                           child: Text(
                             'Paste the JSON code block or array generated by AI:',
-                            style: TextStyle(color: AppColors.textSecondary, fontSize: 11),
+                            style: TextStyle(
+                              color: AppColors.textSecondary,
+                              fontSize: 11,
+                            ),
                           ),
                         ),
                         TextButton.icon(
                           onPressed: _pasteFromClipboard,
-                          icon: const Icon(Icons.paste_rounded, size: 14, color: AppColors.neonGold),
-                          label: const Text('Paste Clipboard', style: TextStyle(fontSize: 11, color: AppColors.neonGold)),
+                          icon: const Icon(
+                            Icons.paste_rounded,
+                            size: 14,
+                            color: AppColors.neonGold,
+                          ),
+                          label: const Text(
+                            'Paste Clipboard',
+                            style: TextStyle(
+                              fontSize: 11,
+                              color: AppColors.neonGold,
+                            ),
+                          ),
                         ),
                       ],
                     ),
@@ -1642,19 +1834,30 @@ class _JsonImportSheetState extends State<_JsonImportSheet> {
                       controller: _textController,
                       maxLines: 8,
                       minLines: 5,
-                      style: const TextStyle(color: Colors.white, fontSize: 12, fontFamily: 'monospace'),
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 12,
+                        fontFamily: 'monospace',
+                      ),
                       decoration: InputDecoration(
                         hintText: '[\n  {\n    "question": { "en": "...", "bn": "...", "hi": "..." },\n    "options": [...],\n    "correct_index": 0\n  }\n]',
-                        hintStyle: TextStyle(color: AppColors.textMuted.withValues(alpha: 0.5), fontSize: 11),
+                        hintStyle: TextStyle(
+                          color: AppColors.textMuted.withValues(alpha: 0.5),
+                          fontSize: 11,
+                        ),
                         filled: true,
                         fillColor: Colors.white.withValues(alpha: 0.05),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(14),
-                          borderSide: BorderSide(color: Colors.white.withValues(alpha: 0.1)),
+                          borderSide: BorderSide(
+                            color: Colors.white.withValues(alpha: 0.1),
+                          ),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(14),
-                          borderSide: const BorderSide(color: AppColors.neonGold),
+                          borderSide: const BorderSide(
+                            color: AppColors.neonGold,
+                          ),
                         ),
                       ),
                     ),
@@ -1668,13 +1871,21 @@ class _JsonImportSheetState extends State<_JsonImportSheet> {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: AppColors.neonGold,
                           foregroundColor: Colors.black,
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(14),
+                          ),
                         ),
                         onPressed: () {
                           Navigator.pop(context, _textController.text);
                         },
                         icon: const Icon(Icons.check_circle_rounded, size: 20),
-                        label: const Text('Parse & Review Questions', style: TextStyle(fontWeight: FontWeight.w900, fontSize: 14)),
+                        label: const Text(
+                          'Parse & Review Questions',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w900,
+                            fontSize: 14,
+                          ),
+                        ),
                       ),
                     ),
                   ],

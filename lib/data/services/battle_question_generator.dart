@@ -30,7 +30,7 @@ class BattleQuestionGenerator {
   final QuizRepository _quizRepository;
 
   BattleQuestionGenerator({QuizRepository? quizRepository})
-      : _quizRepository = quizRepository ?? QuizRepository();
+    : _quizRepository = quizRepository ?? QuizRepository();
 
   final Random _rng = Random();
 
@@ -59,9 +59,9 @@ class BattleQuestionGenerator {
     final selected = _pickMixed(pool, need);
     if (selected.isEmpty) return const [];
 
-    await HiveService.recordBattleUsedQuestionIds(
-      [for (final q in selected) q.id],
-    );
+    await HiveService.recordBattleUsedQuestionIds([
+      for (final q in selected) q.id,
+    ]);
 
     final battleRng = Random(DateTime.now().millisecondsSinceEpoch);
     return [for (final q in selected) q.withShuffledOptions(battleRng)];
@@ -104,7 +104,10 @@ class BattleQuestionGenerator {
           for (final question in questions) {
             if (excludeIds.contains(question.id)) continue;
             if (!seenIds.add(question.id)) continue;
-            final stem = question.questionText.resolve('en').trim().toLowerCase();
+            final stem = question.questionText
+                .resolve('en')
+                .trim()
+                .toLowerCase();
             if (stem.isEmpty || !seenStems.add(stem)) continue;
             results.add((chapter.chapterId, question));
           }
@@ -117,9 +120,7 @@ class BattleQuestionGenerator {
       }
     }
 
-    await Future.wait([
-      for (var i = 0; i < _fetchConcurrency; i++) worker(),
-    ]);
+    await Future.wait([for (var i = 0; i < _fetchConcurrency; i++) worker()]);
     return results;
   }
 
@@ -127,10 +128,7 @@ class BattleQuestionGenerator {
 
   /// Round-robin pick: one question per chapter until [need] is reached, so
   /// a 5-question battle spans several subjects instead of one.
-  List<QuestionModel> _pickMixed(
-    List<(String, QuestionModel)> pool,
-    int need,
-  ) {
+  List<QuestionModel> _pickMixed(List<(String, QuestionModel)> pool, int need) {
     if (pool.isEmpty) return const [];
 
     final byChapter = <String, List<QuestionModel>>{};

@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -75,16 +76,15 @@ class _OnlineBattleScreenState extends State<OnlineBattleScreen>
 
   void _startHeartbeat() {
     _heartbeatTimer?.cancel();
-    _heartbeatTimer = Timer.periodic(
-      OnlinePresenceService.heartbeatInterval,
-      (_) {
-        _presence.heartbeat(
-          isAvailable: _pendingChallengeToUid == null &&
-              _incomingChallenge == null,
-          activity: 'idle',
-        );
-      },
-    );
+    _heartbeatTimer = Timer.periodic(OnlinePresenceService.heartbeatInterval, (
+      _,
+    ) {
+      _presence.heartbeat(
+        isAvailable:
+            _pendingChallengeToUid == null && _incomingChallenge == null,
+        activity: 'idle',
+      );
+    });
   }
 
   void _watchOnlineUsers() {
@@ -93,12 +93,12 @@ class _OnlineBattleScreenState extends State<OnlineBattleScreen>
     _presenceSub = _presence
         .watchOnlineUsers(excludeUid: userProvider.user.userId)
         .listen((users) {
-      if (!mounted) return;
-      setState(() {
-        _onlineUsers = users;
-        _isLoading = false;
-      });
-    });
+          if (!mounted) return;
+          setState(() {
+            _onlineUsers = users;
+            _isLoading = false;
+          });
+        });
   }
 
   void _watchIncomingChallenges() {
@@ -107,13 +107,15 @@ class _OnlineBattleScreenState extends State<OnlineBattleScreen>
     _incomingChallengeSub = _challengeService
         .watchIncomingChallenges(userProvider.user.userId)
         .listen((challenge) {
-      if (challenge != null && challenge.isPending && !challenge.hasExpired) {
-        setState(() => _incomingChallenge = challenge);
-        if (mounted) {
-          _showIncomingChallengeDialog(challenge);
-        }
-      }
-    });
+          if (challenge != null &&
+              challenge.isPending &&
+              !challenge.hasExpired) {
+            setState(() => _incomingChallenge = challenge);
+            if (mounted) {
+              _showIncomingChallengeDialog(challenge);
+            }
+          }
+        });
   }
 
   void _watchOutgoingChallenge() {
@@ -123,41 +125,38 @@ class _OnlineBattleScreenState extends State<OnlineBattleScreen>
     _outgoingChallengeSub = _challengeService
         .watchOutgoingChallenge(myUid)
         .listen((challenge) {
-      if (challenge == null) {
-        if (!mounted) return;
-        setState(() {
-          _pendingChallengeToUid = null;
-          _outgoingChallenge = null;
-        });
-        return;
-      }
-      if (!mounted) return;
-      setState(() => _outgoingChallenge = challenge);
+          if (challenge == null) {
+            if (!mounted) return;
+            setState(() {
+              _pendingChallengeToUid = null;
+              _outgoingChallenge = null;
+            });
+            return;
+          }
+          if (!mounted) return;
+          setState(() => _outgoingChallenge = challenge);
 
-      if (challenge.isAccepted) {
-        _startBattleWithOpponent(
-          challengeId: challenge.challengeId,
-          opponentUid: challenge.toUid,
-          opponentName: challenge.toName,
-          opponentAvatar: challenge.toAvatar,
-          opponentAvatarUrl: challenge.toAvatarUrl,
-          difficulty: challenge.difficulty,
-        );
-      } else if (challenge.isRejected ||
-          challenge.isExpired ||
-          challenge.isCancelled) {
-        setState(() {
-          _pendingChallengeToUid = null;
-          _outgoingChallenge = null;
+          if (challenge.isAccepted) {
+            _startBattleWithOpponent(
+              challengeId: challenge.challengeId,
+              opponentUid: challenge.toUid,
+              opponentName: challenge.toName,
+              opponentAvatar: challenge.toAvatar,
+              opponentAvatarUrl: challenge.toAvatarUrl,
+              difficulty: challenge.difficulty,
+            );
+          } else if (challenge.isRejected ||
+              challenge.isExpired ||
+              challenge.isCancelled) {
+            setState(() {
+              _pendingChallengeToUid = null;
+              _outgoingChallenge = null;
+            });
+            if (mounted) {
+              _showChallengeResultSnackbar(challenge.toName, challenge.status);
+            }
+          }
         });
-        if (mounted) {
-          _showChallengeResultSnackbar(
-            challenge.toName,
-            challenge.status,
-          );
-        }
-      }
-    });
   }
 
   Future<void> _sendChallenge(OnlineUser user) async {
@@ -207,8 +206,9 @@ class _OnlineBattleScreenState extends State<OnlineBattleScreen>
   }
 
   Future<void> _acceptChallenge(ChallengeData challenge) async {
-    final success =
-        await _challengeService.acceptChallenge(challenge.challengeId);
+    final success = await _challengeService.acceptChallenge(
+      challenge.challengeId,
+    );
     if (!success) {
       if (mounted) _showSnackBar('Could not accept the challenge. Try again!');
       return;
@@ -295,9 +295,8 @@ class _OnlineBattleScreenState extends State<OnlineBattleScreen>
     }
 
     if (!mounted) return;
-    await Navigator.of(context).push(
-      MaterialPageRoute<void>(builder: (_) => const BattleScreen()),
-    );
+    await Navigator.of(context)
+        .push(MaterialPageRoute<void>(builder: (_) => const BattleScreen()));
     // Returning from the arena frees the player for new challenges again.
     _presence.setAvailability(isAvailable: true, activity: 'idle');
     _watchOutgoingChallenge();
@@ -361,8 +360,10 @@ class _OnlineBattleScreenState extends State<OnlineBattleScreen>
       builder: (_) => AlertDialog(
         backgroundColor: const Color(0xFF1A1A2E),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        title: const Text('🔒 Sign In Required',
-            style: TextStyle(color: Colors.white)),
+        title: const Text(
+          '🔒 Sign In Required',
+          style: TextStyle(color: Colors.white),
+        ),
         content: const Text(
           'You need to sign in to challenge other players. '
           'Go to Profile → Sign In to create your account.',
@@ -391,11 +392,14 @@ class _OnlineBattleScreenState extends State<OnlineBattleScreen>
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Text('⚔️ Select Difficulty',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold)),
+            const Text(
+              '⚔️ Select Difficulty',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
             const SizedBox(height: 20),
             for (final d in ['easy', 'normal', 'hard'])
               Padding(
@@ -409,21 +413,24 @@ class _OnlineBattleScreenState extends State<OnlineBattleScreen>
                         ? Colors.cyan.withValues(alpha: 0.2)
                         : Colors.white.withValues(alpha: 0.05),
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12)),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
                     leading: Icon(
                       d == 'easy'
                           ? Icons.bolt
                           : d == 'normal'
-                              ? Icons.balance
-                              : Icons.local_fire_department,
+                          ? Icons.balance
+                          : Icons.local_fire_department,
                       color: d == 'easy'
                           ? Colors.green
                           : d == 'normal'
-                              ? Colors.cyan
-                              : Colors.orange,
+                          ? Colors.cyan
+                          : Colors.orange,
                     ),
-                    title: Text(d.toUpperCase(),
-                        style: const TextStyle(color: Colors.white)),
+                    title: Text(
+                      d.toUpperCase(),
+                      style: const TextStyle(color: Colors.white),
+                    ),
                     trailing: _selectedDifficulty == d
                         ? const Icon(Icons.check_circle, color: Colors.cyan)
                         : null,
@@ -488,9 +495,10 @@ class _OnlineBattleScreenState extends State<OnlineBattleScreen>
     return Scaffold(
       backgroundColor: const Color(0xFF0A0E21),
       appBar: AppBar(
-        title: const Text('⚔️ Online Arena',
-            style:
-                TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+        title: const Text(
+          '⚔️ Online Arena',
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
@@ -503,13 +511,13 @@ class _OnlineBattleScreenState extends State<OnlineBattleScreen>
                   _selectedDifficulty == 'easy'
                       ? Icons.bolt
                       : _selectedDifficulty == 'normal'
-                          ? Icons.balance
-                          : Icons.local_fire_department,
+                      ? Icons.balance
+                      : Icons.local_fire_department,
                   color: _selectedDifficulty == 'easy'
                       ? Colors.green
                       : _selectedDifficulty == 'normal'
-                          ? Colors.cyan
-                          : Colors.orange,
+                      ? Colors.cyan
+                      : Colors.orange,
                   size: 20,
                 ),
                 const SizedBox(width: 4),
@@ -519,8 +527,8 @@ class _OnlineBattleScreenState extends State<OnlineBattleScreen>
                     color: _selectedDifficulty == 'easy'
                         ? Colors.green
                         : _selectedDifficulty == 'normal'
-                            ? Colors.cyan
-                            : Colors.orange,
+                        ? Colors.cyan
+                        : Colors.orange,
                     fontSize: 12,
                     fontWeight: FontWeight.bold,
                   ),
@@ -560,8 +568,10 @@ class _OnlineBattleScreenState extends State<OnlineBattleScreen>
           children: [
             CircularProgressIndicator(color: Colors.cyan),
             SizedBox(height: 16),
-            Text('Scanning for players...',
-                style: TextStyle(color: Colors.white54)),
+            Text(
+              'Scanning for players...',
+              style: TextStyle(color: Colors.white54),
+            ),
           ],
         ),
       );
@@ -574,12 +584,15 @@ class _OnlineBattleScreenState extends State<OnlineBattleScreen>
           children: [
             const Icon(Icons.people_outline, size: 80, color: Colors.white24),
             const SizedBox(height: 16),
-            const Text('No players online right now',
-                style:
-                    TextStyle(color: Colors.white54, fontSize: 16)),
+            const Text(
+              'No players online right now',
+              style: TextStyle(color: Colors.white54, fontSize: 16),
+            ),
             const SizedBox(height: 8),
-            const Text('Try again in a few minutes!',
-                style: TextStyle(color: Colors.white30, fontSize: 13)),
+            const Text(
+              'Try again in a few minutes!',
+              style: TextStyle(color: Colors.white30, fontSize: 13),
+            ),
             const SizedBox(height: 24),
             ElevatedButton.icon(
               onPressed: () {
@@ -592,7 +605,8 @@ class _OnlineBattleScreenState extends State<OnlineBattleScreen>
                 backgroundColor: Colors.cyan.withValues(alpha: 0.2),
                 foregroundColor: Colors.cyan,
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)),
+                  borderRadius: BorderRadius.circular(12),
+                ),
               ),
             ),
           ],
@@ -603,8 +617,7 @@ class _OnlineBattleScreenState extends State<OnlineBattleScreen>
     return Column(
       children: [
         Container(
-          padding:
-              const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
           child: Row(
             children: [
               Container(
@@ -629,11 +642,11 @@ class _OnlineBattleScreenState extends State<OnlineBattleScreen>
                     ),
                   );
                 },
-                icon:
-                    const Icon(Icons.casino, color: Colors.amber, size: 18),
-                label: const Text('Quick Match',
-                    style:
-                        TextStyle(color: Colors.amber, fontSize: 13)),
+                icon: const Icon(Icons.casino, color: Colors.amber, size: 18),
+                label: const Text(
+                  'Quick Match',
+                  style: TextStyle(color: Colors.amber, fontSize: 13),
+                ),
               ),
             ],
           ),
@@ -681,7 +694,9 @@ class _OnlineBattleScreenState extends State<OnlineBattleScreen>
                       color: Colors.green,
                       shape: BoxShape.circle,
                       border: Border.all(
-                          color: const Color(0xFF1A1A2E), width: 2),
+                        color: const Color(0xFF1A1A2E),
+                        width: 2,
+                      ),
                     ),
                   ),
                 ),
@@ -705,19 +720,29 @@ class _OnlineBattleScreenState extends State<OnlineBattleScreen>
                   const SizedBox(height: 4),
                   Row(
                     children: [
-                      const Icon(Icons.stars,
-                          size: 13, color: Colors.amber),
+                      const Icon(Icons.stars, size: 13, color: Colors.amber),
                       const SizedBox(width: 4),
-                      Text('Lv.${user.level}',
-                          style: const TextStyle(
-                              color: Colors.amber, fontSize: 12)),
+                      Text(
+                        'Lv.${user.level}',
+                        style: const TextStyle(
+                          color: Colors.amber,
+                          fontSize: 12,
+                        ),
+                      ),
                       const SizedBox(width: 10),
-                      Icon(_activityIcon(user.currentActivity),
-                          size: 13, color: Colors.white38),
+                      Icon(
+                        _activityIcon(user.currentActivity),
+                        size: 13,
+                        color: Colors.white38,
+                      ),
                       const SizedBox(width: 4),
-                      Text(user.activityLabel,
-                          style: const TextStyle(
-                              color: Colors.white38, fontSize: 12)),
+                      Text(
+                        user.activityLabel,
+                        style: const TextStyle(
+                          color: Colors.white38,
+                          fontSize: 12,
+                        ),
+                      ),
                     ],
                   ),
                 ],
@@ -737,8 +762,7 @@ class _OnlineBattleScreenState extends State<OnlineBattleScreen>
     return GestureDetector(
       onTap: () => _sendChallenge(user),
       child: Container(
-        padding:
-            const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
         decoration: BoxDecoration(
           gradient: const LinearGradient(
             colors: [Color(0xFFE94560), Color(0xFFC62828)],
@@ -757,11 +781,14 @@ class _OnlineBattleScreenState extends State<OnlineBattleScreen>
           children: [
             Icon(Icons.flash_on, size: 16, color: Colors.white),
             SizedBox(width: 6),
-            Text('CHALLENGE',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 12)),
+            Text(
+              'CHALLENGE',
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 12,
+              ),
+            ),
           ],
         ),
       ),
@@ -770,8 +797,7 @@ class _OnlineBattleScreenState extends State<OnlineBattleScreen>
 
   Widget _buildPendingIndicator() {
     return Container(
-      padding:
-          const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
       decoration: BoxDecoration(
         color: Colors.white.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(12),
@@ -783,14 +809,19 @@ class _OnlineBattleScreenState extends State<OnlineBattleScreen>
             width: 14,
             height: 14,
             child: CircularProgressIndicator(
-                strokeWidth: 2, color: Colors.cyan),
+              strokeWidth: 2,
+              color: Colors.cyan,
+            ),
           ),
           SizedBox(width: 8),
-          Text('SENT',
-              style: TextStyle(
-                  color: Colors.cyan,
-                  fontSize: 12,
-                  fontWeight: FontWeight.bold)),
+          Text(
+            'SENT',
+            style: TextStyle(
+              color: Colors.cyan,
+              fontSize: 12,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ],
       ),
     );
@@ -873,8 +904,10 @@ class _IncomingChallengeDialogState extends State<_IncomingChallengeDialog>
         decoration: BoxDecoration(
           color: const Color(0xFF1A1A2E),
           borderRadius: BorderRadius.circular(24),
-          border:
-              Border.all(color: Colors.cyan.withValues(alpha: 0.3), width: 2),
+          border: Border.all(
+            color: Colors.cyan.withValues(alpha: 0.3),
+            width: 2,
+          ),
           boxShadow: [
             BoxShadow(
               color: Colors.cyan.withValues(alpha: 0.2),
@@ -886,12 +919,14 @@ class _IncomingChallengeDialogState extends State<_IncomingChallengeDialog>
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Text('⚔️ BATTLE CHALLENGE!',
-                style: TextStyle(
-                  color: Colors.cyan,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                )),
+            const Text(
+              '⚔️ BATTLE CHALLENGE!',
+              style: TextStyle(
+                color: Colors.cyan,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
             const SizedBox(height: 24),
             AnimatedBuilder(
               animation: _pulseController,
@@ -906,30 +941,34 @@ class _IncomingChallengeDialogState extends State<_IncomingChallengeDialog>
                       boxShadow: [
                         BoxShadow(
                           color: Colors.cyan.withValues(alpha: 0.4),
-                          blurRadius:
-                              15 + (_pulseController.value * 10),
+                          blurRadius: 15 + (_pulseController.value * 10),
                         ),
                       ],
                     ),
                     child: CircleAvatar(
                       radius: 40,
-                      backgroundImage:
-                          NetworkImage(widget.challenge.fromEffectiveAvatar),
+                      backgroundImage: NetworkImage(
+                        widget.challenge.fromEffectiveAvatar,
+                      ),
                     ),
                   ),
                 );
               },
             ),
             const SizedBox(height: 16),
-            Text(widget.challenge.fromName,
-                style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold)),
+            Text(
+              widget.challenge.fromName,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
             const SizedBox(height: 4),
-            Text('Lv.${widget.challenge.fromLevel}',
-                style:
-                    const TextStyle(color: Colors.amber, fontSize: 14)),
+            Text(
+              'Lv.${widget.challenge.fromLevel}',
+              style: const TextStyle(color: Colors.amber, fontSize: 14),
+            ),
             const SizedBox(height: 4),
             Text(
               'Difficulty: ${widget.challenge.difficulty.toUpperCase()}',
@@ -937,16 +976,15 @@ class _IncomingChallengeDialogState extends State<_IncomingChallengeDialog>
                 color: widget.challenge.difficulty == 'easy'
                     ? Colors.green
                     : widget.challenge.difficulty == 'hard'
-                        ? Colors.orange
-                        : Colors.cyan,
+                    ? Colors.orange
+                    : Colors.cyan,
                 fontSize: 13,
                 fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(height: 20),
             Container(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: 16, vertical: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               decoration: BoxDecoration(
                 color: _timeLeft <= 10
                     ? Colors.red.withValues(alpha: 0.2)
@@ -956,8 +994,7 @@ class _IncomingChallengeDialogState extends State<_IncomingChallengeDialog>
               child: Text(
                 '⏱ $_timeLeft seconds to respond',
                 style: TextStyle(
-                  color:
-                      _timeLeft <= 10 ? Colors.red : Colors.white70,
+                  color: _timeLeft <= 10 ? Colors.red : Colors.white70,
                   fontSize: 13,
                 ),
               ),
@@ -969,19 +1006,21 @@ class _IncomingChallengeDialogState extends State<_IncomingChallengeDialog>
                   child: GestureDetector(
                     onTap: widget.onReject,
                     child: Container(
-                      padding:
-                          const EdgeInsets.symmetric(vertical: 14),
+                      padding: const EdgeInsets.symmetric(vertical: 14),
                       decoration: BoxDecoration(
                         color: Colors.red.withValues(alpha: 0.15),
                         borderRadius: BorderRadius.circular(14),
                         border: Border.all(color: Colors.red, width: 1.5),
                       ),
                       child: const Center(
-                        child: Text('✕ DECLINE',
-                            style: TextStyle(
-                                color: Colors.red,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15)),
+                        child: Text(
+                          '✕ DECLINE',
+                          style: TextStyle(
+                            color: Colors.red,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                          ),
+                        ),
                       ),
                     ),
                   ),
@@ -991,31 +1030,29 @@ class _IncomingChallengeDialogState extends State<_IncomingChallengeDialog>
                   child: GestureDetector(
                     onTap: widget.onAccept,
                     child: Container(
-                      padding:
-                          const EdgeInsets.symmetric(vertical: 14),
+                      padding: const EdgeInsets.symmetric(vertical: 14),
                       decoration: BoxDecoration(
                         gradient: const LinearGradient(
-                          colors: [
-                            Color(0xFF00B4D8),
-                            Color(0xFF0077B6)
-                          ],
+                          colors: [Color(0xFF00B4D8), Color(0xFF0077B6)],
                         ),
                         borderRadius: BorderRadius.circular(14),
                         boxShadow: [
                           BoxShadow(
-                            color:
-                                Colors.cyan.withValues(alpha: 0.3),
+                            color: Colors.cyan.withValues(alpha: 0.3),
                             blurRadius: 8,
                             offset: const Offset(0, 3),
                           ),
                         ],
                       ),
                       child: const Center(
-                        child: Text('⚔️ ACCEPT',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15)),
+                        child: Text(
+                          '⚔️ ACCEPT',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                          ),
+                        ),
                       ),
                     ),
                   ),
@@ -1084,7 +1121,9 @@ class _ChallengeSentDialogState extends State<_ChallengeSentDialog>
           color: const Color(0xFF1A1A2E),
           borderRadius: BorderRadius.circular(24),
           border: Border.all(
-              color: Colors.orange.withValues(alpha: 0.3), width: 2),
+            color: Colors.orange.withValues(alpha: 0.3),
+            width: 2,
+          ),
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -1112,16 +1151,15 @@ class _ChallengeSentDialogState extends State<_ChallengeSentDialog>
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: List.generate(3, (i) {
                     final delay = i * 0.2;
-                    final value =
-                        ((_dotsController.value + delay) % 1.0);
+                    final value = ((_dotsController.value + delay) % 1.0);
                     return Container(
-                      margin:
-                          const EdgeInsets.symmetric(horizontal: 4),
+                      margin: const EdgeInsets.symmetric(horizontal: 4),
                       width: 10,
                       height: 10,
                       decoration: BoxDecoration(
-                        color: Colors.orange
-                            .withValues(alpha: 0.3 + value * 0.7),
+                        color: Colors.orange.withValues(
+                          alpha: 0.3 + value * 0.7,
+                        ),
                         shape: BoxShape.circle,
                       ),
                     );
@@ -1132,23 +1170,24 @@ class _ChallengeSentDialogState extends State<_ChallengeSentDialog>
             const SizedBox(height: 16),
             Text(
               'Waiting for response... ($_elapsed s)',
-              style: const TextStyle(
-                  color: Colors.white54, fontSize: 13),
+              style: const TextStyle(color: Colors.white54, fontSize: 13),
             ),
             const SizedBox(height: 24),
             GestureDetector(
               onTap: widget.onCancel,
               child: Container(
                 padding: const EdgeInsets.symmetric(
-                    horizontal: 32, vertical: 12),
+                  horizontal: 32,
+                  vertical: 12,
+                ),
                 decoration: BoxDecoration(
-                  border:
-                      Border.all(color: Colors.white24, width: 1.5),
+                  border: Border.all(color: Colors.white24, width: 1.5),
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: const Text('CANCEL',
-                    style: TextStyle(
-                        color: Colors.white54, fontSize: 14)),
+                child: const Text(
+                  'CANCEL',
+                  style: TextStyle(color: Colors.white54, fontSize: 14),
+                ),
               ),
             ),
           ],

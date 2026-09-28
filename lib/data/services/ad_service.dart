@@ -41,9 +41,7 @@ class AdService extends ChangeNotifier {
   Future<void> init() async {
     if (_initialized) return;
     try {
-      await MobileAds.instance
-          .initialize()
-          .timeout(const Duration(seconds: 8));
+      await MobileAds.instance.initialize().timeout(const Duration(seconds: 8));
       _initialized = true;
       debugPrint('AdService: initialised');
     } catch (e) {

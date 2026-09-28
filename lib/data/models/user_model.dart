@@ -114,47 +114,49 @@ class UserModel {
   /// `played_today_daily_quiz`, `inventory`, `is_admin`) is server-written
   /// only — the trusted backend in `/functions` owns those values.
   Map<String, dynamic> profileToJson() => {
-        'user_id': userId,
-        'username': username,
-        'full_name': fullName,
-        'avatar_path': avatarPath,
-        'avatar_url': avatarUrl,
-        'name_effect': nameEffect,
-        'gender': gender.name,
-        'is_guest': isGuest,
-      };
+    'user_id': userId,
+    'username': username,
+    'full_name': fullName,
+    'avatar_path': avatarPath,
+    'avatar_url': avatarUrl,
+    'name_effect': nameEffect,
+    'gender': gender.name,
+    'is_guest': isGuest,
+  };
 
   Map<String, dynamic> toJson() => {
-        'user_id': userId,
-        'username': username,
-        'full_name': fullName,
-        'avatar_path': avatarPath,
-        'avatar_url': avatarUrl,
-        'name_effect': nameEffect,
-        'gender': gender.name,
-        'coins': coins,
-        'gems': gems,
-        'daily_streak': dailyStreak,
-        'xp': xp,
-        'level': level,
-        'is_guest': isGuest,
-        'played_today_daily_quiz': playedTodayDailyQuiz,
-        'is_admin': isAdmin,
-        'last_streak_date': lastStreakDate,
-        'inventory': inventory,
-      };
+    'user_id': userId,
+    'username': username,
+    'full_name': fullName,
+    'avatar_path': avatarPath,
+    'avatar_url': avatarUrl,
+    'name_effect': nameEffect,
+    'gender': gender.name,
+    'coins': coins,
+    'gems': gems,
+    'daily_streak': dailyStreak,
+    'xp': xp,
+    'level': level,
+    'is_guest': isGuest,
+    'played_today_daily_quiz': playedTodayDailyQuiz,
+    'is_admin': isAdmin,
+    'last_streak_date': lastStreakDate,
+    'inventory': inventory,
+  };
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
       userId: json['user_id'] as String? ?? '',
       username: json['username'] as String? ?? '',
       fullName: json['full_name'] as String? ?? '',
-      avatarPath: json['avatar_path'] as String? ??
+      avatarPath:
+          json['avatar_path'] as String? ??
           'assets/images/avatars/quizbaaz_avatar_boy.png',
       avatarUrl: json['avatar_url'] as String?,
       nameEffect: json['name_effect'] as String?,
-      gender:
-          (json['gender'] as String? ?? 'male') == 'male' ? UserGender.male : UserGender.female,
+      gender: (json['gender'] as String? ?? 'male') == 'male'
+          ? UserGender.male
+          : UserGender.female,
       coins: (json['coins'] as num?)?.toInt() ?? 0,
       gems: (json['gems'] as num?)?.toInt() ?? 0,
       dailyStreak: (json['daily_streak'] as num?)?.toInt() ?? 0,
@@ -164,8 +166,10 @@ class UserModel {
       playedTodayDailyQuiz: json['played_today_daily_quiz'] as bool? ?? false,
       isAdmin: json['is_admin'] as bool? ?? false,
       lastStreakDate: json['last_streak_date'] as String?,
-      inventory: (json['inventory'] as Map<String, dynamic>?)
-              ?.map((k, v) => MapEntry(k, (v as num).toInt())) ??
+      inventory:
+          (json['inventory'] as Map<String, dynamic>?)?.map(
+            (k, v) => MapEntry(k, (v as num).toInt()),
+          ) ??
           {},
     );
   }

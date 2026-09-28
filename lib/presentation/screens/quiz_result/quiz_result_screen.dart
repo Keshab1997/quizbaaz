@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_assets.dart';
 import '../../../data/models/shop_item.dart';
@@ -95,7 +96,10 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
 
           SafeArea(
             child: SingleChildScrollView(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 16),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 20.0,
+                vertical: 16,
+              ),
               child: Column(
                 children: [
                   const SizedBox(height: 10),
@@ -158,10 +162,30 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            _buildStatColumn(S.correct, '$correct', AppColors.neonGreen, Icons.check_circle),
-                            _buildStatColumn(S.wrong, '$wrong', AppColors.neonRed, Icons.cancel),
-                            _buildStatColumn(S.coins, '+$coinsEarned', AppColors.neonGold, Icons.monetization_on),
-                            _buildStatColumn(S.gems, '+$gemsEarned', AppColors.neonPurple, Icons.diamond),
+                            _buildStatColumn(
+                              S.correct,
+                              '$correct',
+                              AppColors.neonGreen,
+                              Icons.check_circle,
+                            ),
+                            _buildStatColumn(
+                              S.wrong,
+                              '$wrong',
+                              AppColors.neonRed,
+                              Icons.cancel,
+                            ),
+                            _buildStatColumn(
+                              S.coins,
+                              '+$coinsEarned',
+                              AppColors.neonGold,
+                              Icons.monetization_on,
+                            ),
+                            _buildStatColumn(
+                              S.gems,
+                              '+$gemsEarned',
+                              AppColors.neonPurple,
+                              Icons.diamond,
+                            ),
                           ],
                         ),
                         if (quiz.isDailyQuiz && !isGuest) ...[
@@ -171,11 +195,18 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
                         if (isPerfect) ...[
                           const SizedBox(height: 12),
                           Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 14,
+                              vertical: 6,
+                            ),
                             decoration: BoxDecoration(
                               color: AppColors.neonGold.withValues(alpha: 0.15),
                               borderRadius: BorderRadius.circular(12),
-                              border: Border.all(color: AppColors.neonGold.withValues(alpha: 0.5)),
+                              border: Border.all(
+                                color: AppColors.neonGold.withValues(
+                                  alpha: 0.5,
+                                ),
+                              ),
                             ),
                             child: Text(
                               S.resultPerfect,
@@ -192,7 +223,10 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
                           const Text(
                             'ℹ️ Today\'s daily reward already claimed — play again tomorrow!',
                             textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 11, color: AppColors.textSecondary),
+                            style: TextStyle(
+                              fontSize: 11,
+                              color: AppColors.textSecondary,
+                            ),
                           ),
                         ],
                       ],
@@ -219,7 +253,11 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
                         children: [
                           Row(
                             children: [
-                              const Icon(Icons.workspace_premium, color: AppColors.neonCyan, size: 20),
+                              const Icon(
+                                Icons.workspace_premium,
+                                color: AppColors.neonCyan,
+                                size: 20,
+                              ),
                               const SizedBox(width: 8),
                               Expanded(
                                 child: Text(
@@ -236,11 +274,16 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
                           const SizedBox(height: 6),
                           Text(
                             S.resultGuestBody,
-                            style: const TextStyle(fontSize: 11, color: AppColors.textSecondary),
+                            style: const TextStyle(
+                              fontSize: 11,
+                              color: AppColors.textSecondary,
+                            ),
                           ),
                           const SizedBox(height: 12),
                           NeonButton(
-                            text: auth.isBusy ? S.resultSigningIn : S.resultGoogleSignIn,
+                            text: auth.isBusy
+                                ? S.resultSigningIn
+                                : S.resultGoogleSignIn,
                             height: 40,
                             gradient: AppColors.primaryGradient,
                             onPressed: auth.isBusy
@@ -259,7 +302,9 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
                     onPressed: () {
                       Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(builder: (_) => const LeaderboardScreen()),
+                        MaterialPageRoute(
+                          builder: (_) => const LeaderboardScreen(),
+                        ),
                       );
                     },
                   ),
@@ -272,7 +317,9 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (_) => const ReviewAnswersScreen()),
+                        MaterialPageRoute(
+                          builder: (_) => const ReviewAnswersScreen(),
+                        ),
                       );
                     },
                   ),
@@ -280,7 +327,9 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
                   OutlinedButton(
                     style: OutlinedButton.styleFrom(
                       side: const BorderSide(color: Colors.white24),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
                       minimumSize: const Size.fromHeight(50),
                     ),
                     onPressed: () {
@@ -410,7 +459,10 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
           const SizedBox(height: 6),
           Text(
             S.resultShieldRetryBody(score: score),
-            style: const TextStyle(fontSize: 11, color: AppColors.textSecondary),
+            style: const TextStyle(
+              fontSize: 11,
+              color: AppColors.textSecondary,
+            ),
           ),
           const SizedBox(height: 12),
           NeonButton(
@@ -432,7 +484,8 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
     final messenger = ScaffoldMessenger.of(context);
     final navigator = Navigator.of(context);
 
-    final confirmed = await showDialog<bool>(
+    final confirmed =
+        await showDialog<bool>(
           context: context,
           builder: (dialogContext) => AlertDialog(
             backgroundColor: const Color(0xFF1B1230),
@@ -474,9 +527,7 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
     // Back to the dashboard, where the daily quiz card starts the run that
     // replaces today's score.
     navigator.popUntil((route) => route.isFirst);
-    messenger.showSnackBar(
-      SnackBar(content: Text(S.resultShieldRetryDone)),
-    );
+    messenger.showSnackBar(SnackBar(content: Text(S.resultShieldRetryDone)));
   }
 
   Future<void> _handleGoogleSignIn(BuildContext context) async {
@@ -503,17 +554,23 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
         uid: user.uid,
       );
 
-      messenger.showSnackBar(
-        SnackBar(content: Text(S.resultSignedIn)),
-      );
+      messenger.showSnackBar(SnackBar(content: Text(S.resultSignedIn)));
     } on AuthException catch (e) {
       messenger.showSnackBar(
-        SnackBar(content: Text(e.message), backgroundColor: Colors.red.shade800),
+        SnackBar(
+          content: Text(e.message),
+          backgroundColor: Colors.red.shade800,
+        ),
       );
     }
   }
 
-  Widget _buildStatColumn(String title, String val, Color color, IconData icon) {
+  Widget _buildStatColumn(
+    String title,
+    String val,
+    Color color,
+    IconData icon,
+  ) {
     return Column(
       children: [
         Icon(icon, size: 20, color: color),
@@ -528,10 +585,7 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
         ),
         Text(
           title,
-          style: const TextStyle(
-            fontSize: 11,
-            color: AppColors.textSecondary,
-          ),
+          style: const TextStyle(fontSize: 11, color: AppColors.textSecondary),
         ),
       ],
     );
@@ -566,11 +620,8 @@ class _ResultAvatar extends StatelessWidget {
       avatar.isNotEmpty ? avatar : fallbackAsset,
       height: 150,
       fit: BoxFit.contain,
-      errorBuilder: (context, error, stackTrace) => const Icon(
-        Icons.military_tech,
-        size: 90,
-        color: AppColors.neonGold,
-      ),
+      errorBuilder: (context, error, stackTrace) =>
+          const Icon(Icons.military_tech, size: 90, color: AppColors.neonGold),
     );
   }
 }

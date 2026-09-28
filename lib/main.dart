@@ -60,14 +60,16 @@ Future<void> main() async {
 
   // 3) LLM key pool for the admin question generator. Admin-only — a
   //    failure here must not stop the app for a student.
-  unawaited(Future(() async {
-    try {
-      await KeyCache.init().timeout(const Duration(seconds: 5));
-      ApiKeyManager.instance.initialize();
-    } catch (e) {
-      debugPrint('API key manager unavailable: $e');
-    }
-  }));
+  unawaited(
+    Future(() async {
+      try {
+        await KeyCache.init().timeout(const Duration(seconds: 5));
+        ApiKeyManager.instance.initialize();
+      } catch (e) {
+        debugPrint('API key manager unavailable: $e');
+      }
+    }),
+  );
 
   // 4) Replay anything queued while the app was offline, then refresh config.
   unawaitedSync();
@@ -76,14 +78,16 @@ Future<void> main() async {
   //    consent form is shown after the first frame (dashboard); until it is
   //    resolved every ad request stays gated off. For India and the rest of
   //    the world no form is shown and ads work immediately.
-  unawaited(Future(() async {
-    try {
-      await ConsentService.instance.initialize();
-      await AdService.instance.init();
-    } catch (e) {
-      debugPrint('AdMob not initialised: $e');
-    }
-  }));
+  unawaited(
+    Future(() async {
+      try {
+        await ConsentService.instance.initialize();
+        await AdService.instance.init();
+      } catch (e) {
+        debugPrint('AdMob not initialised: $e');
+      }
+    }),
+  );
 
   runApp(QuizBaazApp(localeProvider: localeProvider));
 
@@ -96,11 +100,13 @@ Future<void> main() async {
 
 /// Fire-and-forget startup sync (never blocks the first frame).
 void unawaitedSync() {
-  unawaited(Future(() async {
-    if (!SyncService.isOnline) return;
-    await SyncService.drainPending();
-    await SyncService.pullConfig();
-  }));
+  unawaited(
+    Future(() async {
+      if (!SyncService.isOnline) return;
+      await SyncService.drainPending();
+      await SyncService.pullConfig();
+    }),
+  );
 }
 
 class QuizBaazApp extends StatelessWidget {
@@ -134,17 +140,17 @@ class QuizBaazApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           theme: AppTheme.darkThemeFor(locale.appLanguage),
           locale: locale.locale,
-          supportedLocales:
-              kSupportedLanguageCodes.map((code) => Locale(code)).toList(),
+          supportedLocales: kSupportedLanguageCodes
+              .map((code) => Locale(code))
+              .toList(),
           localizationsDelegates: const [
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
           ],
           navigatorKey: AppNavigator.key,
-          builder: (context, child) => AppBackground(
-            child: child ?? const SizedBox.shrink(),
-          ),
+          builder: (context, child) =>
+              AppBackground(child: child ?? const SizedBox.shrink()),
           // Named routes are registered as a safety net: the arena used to be
           // opened with `pushNamed('/battle')` while MaterialApp had no
           // `routes` table and no `onGenerateRoute`, so a challenge accept

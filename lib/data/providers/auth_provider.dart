@@ -147,10 +147,12 @@ class AuthProvider extends ChangeNotifier {
     try {
       await _auth?.signOut();
     } catch (_) {}
-    unawaited(Future(() async {
-      await OneSignalService.instance.logout();
-      await OneSignalService.instance.syncFromHive();
-    }));
+    unawaited(
+      Future(() async {
+        await OneSignalService.instance.logout();
+        await OneSignalService.instance.syncFromHive();
+      }),
+    );
     notifyListeners();
   }
 

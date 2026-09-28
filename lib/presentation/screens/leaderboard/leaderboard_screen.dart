@@ -1,6 +1,8 @@
 import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_assets.dart';
 import '../../../data/providers/user_provider.dart';
@@ -30,11 +32,7 @@ class _LeaderboardScreenState extends State<LeaderboardScreen>
   final math.Random _random = math.Random();
 
   // Medal emojis for the classic leaderboard look.
-  static const Map<int, String> _medals = {
-    1: '🥇',
-    2: '🥈',
-    3: '🥉',
-  };
+  static const Map<int, String> _medals = {1: '🥇', 2: '🥈', 3: '🥉'};
 
   @override
   void initState() {
@@ -49,19 +47,21 @@ class _LeaderboardScreenState extends State<LeaderboardScreen>
 
   void _generateConfetti() {
     for (int i = 0; i < 18; i++) {
-      _confetti.add(_ConfettiParticle(
-        x: _random.nextDouble(),
-        y: _random.nextDouble(),
-        color: [
-          AppColors.neonGold,
-          AppColors.neonOrange,
-          AppColors.neonCyan,
-          AppColors.neonPurple,
-          AppColors.neonPink,
-        ][_random.nextInt(5)],
-        size: _random.nextDouble() * 5 + 2.5,
-        speed: 0,
-      ));
+      _confetti.add(
+        _ConfettiParticle(
+          x: _random.nextDouble(),
+          y: _random.nextDouble(),
+          color: [
+            AppColors.neonGold,
+            AppColors.neonOrange,
+            AppColors.neonCyan,
+            AppColors.neonPurple,
+            AppColors.neonPink,
+          ][_random.nextInt(5)],
+          size: _random.nextDouble() * 5 + 2.5,
+          speed: 0,
+        ),
+      );
     }
   }
 
@@ -95,16 +95,22 @@ class _LeaderboardScreenState extends State<LeaderboardScreen>
     return Container(
       width: size,
       height: size,
-      padding:
-          borderColor != null ? EdgeInsets.all(borderColor == AppColors.neonGold ? 3 : 2) : null,
+      padding: borderColor != null
+          ? EdgeInsets.all(borderColor == AppColors.neonGold ? 3 : 2)
+          : null,
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         border: borderColor != null
-            ? Border.all(color: borderColor, width: borderColor == AppColors.neonGold ? 3 : 2)
+            ? Border.all(
+                color: borderColor,
+                width: borderColor == AppColors.neonGold ? 3 : 2,
+              )
             : null,
         gradient: borderColor == AppColors.neonGold
-            ? const LinearGradient(colors: [AppColors.neonGold, AppColors.neonOrange])
+            ? const LinearGradient(
+                colors: [AppColors.neonGold, AppColors.neonOrange],
+              )
             : null,
         boxShadow: borderColor != null
             ? [
@@ -143,7 +149,10 @@ class _LeaderboardScreenState extends State<LeaderboardScreen>
           indicatorWeight: 2,
           labelColor: AppColors.neonGold,
           unselectedLabelColor: AppColors.textSecondary,
-          labelStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+          labelStyle: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 12,
+          ),
           tabs: const [
             Tab(text: 'LIVE TODAY'),
             Tab(text: 'WINNERS 🏆'),
@@ -165,7 +174,9 @@ class _LeaderboardScreenState extends State<LeaderboardScreen>
   // ---------------------------------------------------------------------------
 
   Widget _buildTodayLeaderboardTab(
-      List<LeaderboardItem> list, UserProvider userProvider) {
+    List<LeaderboardItem> list,
+    UserProvider userProvider,
+  ) {
     if (list.isEmpty) {
       return RefreshIndicator(
         color: AppColors.neonCyan,
@@ -254,7 +265,11 @@ class _LeaderboardScreenState extends State<LeaderboardScreen>
               gradient: AppColors.goldGradient,
               shape: BoxShape.circle,
             ),
-            child: const Icon(Icons.emoji_events_rounded, color: Colors.white, size: 16),
+            child: const Icon(
+              Icons.emoji_events_rounded,
+              color: Colors.white,
+              size: 16,
+            ),
           ),
           const SizedBox(width: 10),
           const Expanded(
@@ -273,7 +288,10 @@ class _LeaderboardScreenState extends State<LeaderboardScreen>
                 SizedBox(height: 1),
                 Text(
                   'Top players competing right now',
-                  style: TextStyle(fontSize: 10, color: AppColors.textSecondary),
+                  style: TextStyle(
+                    fontSize: 10,
+                    color: AppColors.textSecondary,
+                  ),
                 ),
               ],
             ),
@@ -287,7 +305,11 @@ class _LeaderboardScreenState extends State<LeaderboardScreen>
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Icon(Icons.people_alt_rounded, size: 12, color: AppColors.textSecondary),
+                const Icon(
+                  Icons.people_alt_rounded,
+                  size: 12,
+                  color: AppColors.textSecondary,
+                ),
                 const SizedBox(width: 4),
                 Text(
                   '$totalPlayers',
@@ -330,7 +352,11 @@ class _LeaderboardScreenState extends State<LeaderboardScreen>
   }
 
   Widget _buildPodiumColumn(
-      LeaderboardItem item, int rank, double standHeight, Color color) {
+    LeaderboardItem item,
+    int rank,
+    double standHeight,
+    Color color,
+  ) {
     final isFirst = rank == 1;
 
     return Column(
@@ -408,7 +434,10 @@ class _LeaderboardScreenState extends State<LeaderboardScreen>
               ],
             ),
             borderRadius: const BorderRadius.vertical(top: Radius.circular(10)),
-            border: Border.all(color: color.withValues(alpha: 0.55), width: 1.4),
+            border: Border.all(
+              color: color.withValues(alpha: 0.55),
+              width: 1.4,
+            ),
           ),
           child: Center(
             child: Text(
@@ -443,7 +472,11 @@ class _LeaderboardScreenState extends State<LeaderboardScreen>
                 gradient: AppColors.goldGradient,
                 shape: BoxShape.circle,
               ),
-              child: const Icon(Icons.bolt_rounded, color: Colors.white, size: 18),
+              child: const Icon(
+                Icons.bolt_rounded,
+                color: Colors.white,
+                size: 18,
+              ),
             ),
             const SizedBox(width: 12),
             const Expanded(
@@ -463,7 +496,10 @@ class _LeaderboardScreenState extends State<LeaderboardScreen>
                     'Play today\'s Daily Quiz to appear here! 🎯',
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(fontSize: 10, color: AppColors.textSecondary),
+                    style: TextStyle(
+                      fontSize: 10,
+                      color: AppColors.textSecondary,
+                    ),
                   ),
                 ],
               ),
@@ -494,7 +530,9 @@ class _LeaderboardScreenState extends State<LeaderboardScreen>
               shape: BoxShape.circle,
               gradient: isTop3 ? AppColors.goldGradient : null,
               color: isTop3 ? null : Colors.white10,
-              border: isTop3 ? null : Border.all(color: AppColors.neonCyan, width: 1.5),
+              border: isTop3
+                  ? null
+                  : Border.all(color: AppColors.neonCyan, width: 1.5),
             ),
             child: Text(
               isTop3 ? (_medals[rank] ?? '#$rank') : '$rank',
@@ -529,8 +567,10 @@ class _LeaderboardScreenState extends State<LeaderboardScreen>
                     ),
                     const SizedBox(width: 6),
                     Container(
-                      padding:
-                          const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 6,
+                        vertical: 2,
+                      ),
                       decoration: BoxDecoration(
                         gradient: AppColors.cyanGradient,
                         borderRadius: BorderRadius.circular(6),
@@ -548,7 +588,9 @@ class _LeaderboardScreenState extends State<LeaderboardScreen>
                 ),
                 const SizedBox(height: 3),
                 Text(
-                  isTop3 ? 'Amazing! You\'re on the podium! 🏆' : 'Keep going — you\'re doing great!',
+                  isTop3
+                      ? 'Amazing! You\'re on the podium! 🏆'
+                      : 'Keep going — you\'re doing great!',
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
@@ -617,7 +659,9 @@ class _LeaderboardScreenState extends State<LeaderboardScreen>
             const SizedBox(width: 10),
 
             _leaderboardAvatar(
-              item.avatarPath.isNotEmpty ? item.avatarPath : AppAssets.maleAvatar,
+              item.avatarPath.isNotEmpty
+                  ? item.avatarPath
+                  : AppAssets.maleAvatar,
               32,
             ),
             const SizedBox(width: 10),
@@ -640,11 +684,18 @@ class _LeaderboardScreenState extends State<LeaderboardScreen>
                   const SizedBox(height: 2),
                   Row(
                     children: [
-                      const Icon(Icons.speed_rounded, size: 11, color: AppColors.textMuted),
+                      const Icon(
+                        Icons.speed_rounded,
+                        size: 11,
+                        color: AppColors.textMuted,
+                      ),
                       const SizedBox(width: 3),
                       Text(
                         '${item.timeSeconds}s',
-                        style: const TextStyle(fontSize: 10, color: AppColors.textMuted),
+                        style: const TextStyle(
+                          fontSize: 10,
+                          color: AppColors.textMuted,
+                        ),
                       ),
                     ],
                   ),
@@ -658,12 +709,18 @@ class _LeaderboardScreenState extends State<LeaderboardScreen>
               decoration: BoxDecoration(
                 color: AppColors.neonGold.withValues(alpha: 0.12),
                 borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: AppColors.neonGold.withValues(alpha: 0.25)),
+                border: Border.all(
+                  color: AppColors.neonGold.withValues(alpha: 0.25),
+                ),
               ),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Icon(Icons.stars_rounded, size: 12, color: AppColors.neonGold),
+                  const Icon(
+                    Icons.stars_rounded,
+                    size: 12,
+                    color: AppColors.neonGold,
+                  ),
                   const SizedBox(width: 3),
                   Text(
                     '${item.score}',
@@ -720,7 +777,10 @@ class _LeaderboardScreenState extends State<LeaderboardScreen>
         Text(
           message,
           textAlign: TextAlign.center,
-          style: const TextStyle(fontSize: 11.5, color: AppColors.textSecondary),
+          style: const TextStyle(
+            fontSize: 11.5,
+            color: AppColors.textSecondary,
+          ),
         ),
       ],
     );
@@ -743,7 +803,8 @@ class _LeaderboardScreenState extends State<LeaderboardScreen>
           _buildEmptyState(
             icon: Icons.emoji_events_rounded,
             title: S.lbNoChampions,
-            message: 'Daily quiz winners and their prizes will show up here '
+            message:
+                'Daily quiz winners and their prizes will show up here '
                 'day by day once the results are declared.',
           ),
         ],
@@ -757,11 +818,13 @@ class _LeaderboardScreenState extends State<LeaderboardScreen>
       byKey.putIfAbsent(key, () => []).add(c);
     }
     final keys = byKey.keys.toList()
-      ..sort((a, b) => a == '_recent_'
-          ? 1
-          : b == '_recent_'
-              ? -1
-              : b.compareTo(a));
+      ..sort(
+        (a, b) => a == '_recent_'
+            ? 1
+            : b == '_recent_'
+            ? -1
+            : b.compareTo(a),
+      );
 
     return ListView.builder(
       padding: const EdgeInsets.fromLTRB(14, 12, 14, 16),
@@ -774,7 +837,8 @@ class _LeaderboardScreenState extends State<LeaderboardScreen>
   }
 
   Widget _buildHistoryDayCard(String key, List<ChampionModel> winners) {
-    final isYesterday = key == _dateKey(DateTime.now().subtract(const Duration(days: 1)));
+    final isYesterday =
+        key == _dateKey(DateTime.now().subtract(const Duration(days: 1)));
     final isToday = key == _dateKey(DateTime.now());
 
     return Padding(
@@ -797,8 +861,11 @@ class _LeaderboardScreenState extends State<LeaderboardScreen>
                     shape: BoxShape.circle,
                     color: AppColors.neonGold.withValues(alpha: 0.16),
                   ),
-                  child: const Icon(Icons.calendar_month_rounded,
-                      size: 14, color: AppColors.neonGold),
+                  child: const Icon(
+                    Icons.calendar_month_rounded,
+                    size: 14,
+                    color: AppColors.neonGold,
+                  ),
                 ),
                 const SizedBox(width: 8),
                 Expanded(
@@ -815,8 +882,10 @@ class _LeaderboardScreenState extends State<LeaderboardScreen>
                   ),
                 ),
                 Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 3,
+                  ),
                   decoration: BoxDecoration(
                     color: Colors.white10,
                     borderRadius: BorderRadius.circular(12),
@@ -824,9 +893,10 @@ class _LeaderboardScreenState extends State<LeaderboardScreen>
                   child: Text(
                     '${winners.length} winner${winners.length == 1 ? '' : 's'}',
                     style: const TextStyle(
-                        fontSize: 9.5,
-                        fontWeight: FontWeight.w700,
-                        color: AppColors.textSecondary),
+                      fontSize: 9.5,
+                      fontWeight: FontWeight.w700,
+                      color: AppColors.textSecondary,
+                    ),
                   ),
                 ),
               ],
@@ -841,7 +911,9 @@ class _LeaderboardScreenState extends State<LeaderboardScreen>
                 child: Text(
                   '+ ${winners.length - 5} more…',
                   style: const TextStyle(
-                      fontSize: 10, color: AppColors.textMuted),
+                    fontSize: 10,
+                    color: AppColors.textMuted,
+                  ),
                 ),
               ),
           ],
@@ -879,7 +951,9 @@ class _LeaderboardScreenState extends State<LeaderboardScreen>
           const SizedBox(width: 6),
 
           _leaderboardAvatar(
-            champ.avatarPath.isNotEmpty ? champ.avatarPath : AppAssets.maleAvatar,
+            champ.avatarPath.isNotEmpty
+                ? champ.avatarPath
+                : AppAssets.maleAvatar,
             30,
           ),
           const SizedBox(width: 9),
@@ -904,8 +978,11 @@ class _LeaderboardScreenState extends State<LeaderboardScreen>
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        const Icon(Icons.card_giftcard,
-                            size: 10, color: AppColors.neonPink),
+                        const Icon(
+                          Icons.card_giftcard,
+                          size: 10,
+                          color: AppColors.neonPink,
+                        ),
                         const SizedBox(width: 3),
                         Flexible(
                           child: Text(
@@ -953,8 +1030,18 @@ class _LeaderboardScreenState extends State<LeaderboardScreen>
     if (year == null || month == null || day == null) return key;
 
     const months = [
-      'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec',
     ];
     final label = '${months[month - 1]} $day';
     final now = DateTime.now();

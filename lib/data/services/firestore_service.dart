@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'competition_clock.dart';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 
@@ -60,10 +61,10 @@ class FirestoreService {
   static Future<bool> saveUser(UserModel user) async {
     if (!isReady || user.userId.isEmpty) return false;
     try {
-      await _db.collection(_users).doc(user.userId).set(
-            {...user.profileToJson(), 'updated_at': FieldValue.serverTimestamp()},
-            SetOptions(merge: true),
-          );
+      await _db.collection(_users).doc(user.userId).set({
+        ...user.profileToJson(),
+        'updated_at': FieldValue.serverTimestamp(),
+      }, SetOptions(merge: true));
       return true;
     } catch (e) {
       debugPrint('Firestore: saveUser error – $e');
@@ -91,10 +92,10 @@ class FirestoreService {
   ) async {
     if (!isReady || userId.isEmpty) return false;
     try {
-      await _db.collection(_users).doc(userId).set(
-            fields,
-            SetOptions(merge: true),
-          );
+      await _db
+          .collection(_users)
+          .doc(userId)
+          .set(fields, SetOptions(merge: true));
       return true;
     } catch (e) {
       debugPrint('Firestore: updateUserFields error – $e');
@@ -123,10 +124,10 @@ class FirestoreService {
           .doc(userId)
           .collection('meta')
           .doc('stats')
-          .set(
-            {...stats.toJson(), 'updated_at': FieldValue.serverTimestamp()},
-            SetOptions(merge: true),
-          );
+          .set({
+            ...stats.toJson(),
+            'updated_at': FieldValue.serverTimestamp(),
+          }, SetOptions(merge: true));
       return true;
     } catch (e) {
       debugPrint('Firestore: saveStats error – $e');
@@ -174,16 +175,16 @@ class FirestoreService {
           .collection('scores')
           .doc(userId)
           .set({
-        'user_id': userId,
-        'username': username,
-        'name': fullName,
-        'avatar_path': avatarPath,
-        'name_effect': nameEffect ?? '',
-        'score': score,
-        'time_seconds': timeSeconds,
-        'streak': streak,
-        'timestamp': FieldValue.serverTimestamp(),
-      }, SetOptions(merge: true));
+            'user_id': userId,
+            'username': username,
+            'name': fullName,
+            'avatar_path': avatarPath,
+            'name_effect': nameEffect ?? '',
+            'score': score,
+            'time_seconds': timeSeconds,
+            'streak': streak,
+            'timestamp': FieldValue.serverTimestamp(),
+          }, SetOptions(merge: true));
       return true;
     } catch (e) {
       debugPrint('Firestore: saveLeaderboardEntry error – $e');
@@ -209,8 +210,7 @@ class FirestoreService {
           .doc(userId)
           .get();
       if (!doc.exists) return null;
-      return Map<String, dynamic>.from(doc.data()!)
-        ..remove('timestamp');
+      return Map<String, dynamic>.from(doc.data()!)..remove('timestamp');
     } catch (e) {
       debugPrint('Firestore: getLeaderboardEntry error – $e');
       return null;
@@ -267,27 +267,31 @@ class FirestoreService {
 
       if (snapshot.docs.isNotEmpty) {
         return snapshot.docs
-            .map((d) => Map<String, dynamic>.from(d.data())..remove('timestamp'))
+            .map(
+              (d) => Map<String, dynamic>.from(d.data())..remove('timestamp'),
+            )
             .toList();
       }
 
       // Derive from the leaderboard so the screen still shows real winners.
       final scores = await getLeaderboard(date, limit: limit);
       return scores
-          .map((row) => {
-                'rank': row['rank'],
-                'user_id': row['user_id'],
-                'name': row['name'] ?? row['username'],
-                'username': row['username'],
-                'avatar_path': row['avatar_path'],
-                'name_effect': row['name_effect'] ?? '',
-                'score': row['score'],
-                'time_seconds': row['time_seconds'],
-                'gift_name': '',
-                'gift_icon': '',
-                'bonus_coins': 0,
-                'badge_title': '',
-              })
+          .map(
+            (row) => {
+              'rank': row['rank'],
+              'user_id': row['user_id'],
+              'name': row['name'] ?? row['username'],
+              'username': row['username'],
+              'avatar_path': row['avatar_path'],
+              'name_effect': row['name_effect'] ?? '',
+              'score': row['score'],
+              'time_seconds': row['time_seconds'],
+              'gift_name': '',
+              'gift_icon': '',
+              'bonus_coins': 0,
+              'badge_title': '',
+            },
+          )
           .toList();
     } catch (e) {
       debugPrint('Firestore: getChampions error – $e');
@@ -303,8 +307,10 @@ class FirestoreService {
     if (!isReady || winners.isEmpty) return false;
     try {
       final batch = _db.batch();
-      final col =
-          _db.collection(_champions).doc(dateKey(date)).collection('winners');
+      final col = _db
+          .collection(_champions)
+          .doc(dateKey(date))
+          .collection('winners');
       for (final winner in winners) {
         final id = '${winner['user_id'] ?? winner['rank']}';
         batch.set(col.doc(id), {
@@ -329,14 +335,18 @@ class FirestoreService {
   ) async {
     if (!isReady || userId.isEmpty) return false;
     try {
-      final id = result['id'] as String? ?? DateTime.now().millisecondsSinceEpoch.toString();
+      final id =
+          result['id'] as String? ??
+          DateTime.now().millisecondsSinceEpoch.toString();
       await _db
           .collection(_users)
           .doc(userId)
           .collection('quiz_history')
           .doc(id)
-          .set({...result, 'timestamp': FieldValue.serverTimestamp()},
-              SetOptions(merge: true));
+          .set({
+            ...result,
+            'timestamp': FieldValue.serverTimestamp(),
+          }, SetOptions(merge: true));
       return true;
     } catch (e) {
       debugPrint('Firestore: saveQuizHistory error – $e');
@@ -376,14 +386,18 @@ class FirestoreService {
   ) async {
     if (!isReady || userId.isEmpty) return false;
     try {
-      final id = purchase['id'] as String? ?? DateTime.now().millisecondsSinceEpoch.toString();
+      final id =
+          purchase['id'] as String? ??
+          DateTime.now().millisecondsSinceEpoch.toString();
       await _db
           .collection(_users)
           .doc(userId)
           .collection('purchase_history')
           .doc(id)
-          .set({...purchase, 'timestamp': FieldValue.serverTimestamp()},
-              SetOptions(merge: true));
+          .set({
+            ...purchase,
+            'timestamp': FieldValue.serverTimestamp(),
+          }, SetOptions(merge: true));
       return true;
     } catch (e) {
       debugPrint('Firestore: savePurchaseHistory error – $e');
@@ -433,10 +447,7 @@ class FirestoreService {
     }
   }
 
-  static Future<bool> saveGift(
-    String userId,
-    Map<String, dynamic> gift,
-  ) async {
+  static Future<bool> saveGift(String userId, Map<String, dynamic> gift) async {
     if (!isReady || userId.isEmpty) return false;
     try {
       await _db
@@ -444,8 +455,10 @@ class FirestoreService {
           .doc(userId)
           .collection('gifts')
           .doc('${gift['id']}')
-          .set({...gift, 'timestamp': FieldValue.serverTimestamp()},
-              SetOptions(merge: true));
+          .set({
+            ...gift,
+            'timestamp': FieldValue.serverTimestamp(),
+          }, SetOptions(merge: true));
       return true;
     } catch (e) {
       debugPrint('Firestore: saveGift error – $e');
@@ -471,10 +484,10 @@ class FirestoreService {
   static Future<bool> saveConfig(AppConfig config) async {
     if (!isReady) return false;
     try {
-      await _db.collection(_config).doc('app').set(
-            config.toJson(),
-            SetOptions(merge: true),
-          );
+      await _db
+          .collection(_config)
+          .doc('app')
+          .set(config.toJson(), SetOptions(merge: true));
       return true;
     } catch (e) {
       debugPrint('Firestore: saveConfig error – $e');

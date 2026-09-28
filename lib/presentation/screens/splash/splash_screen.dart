@@ -476,10 +476,7 @@ class _SplashScreenState extends State<SplashScreen>
                     child: Container(
                       decoration: const BoxDecoration(
                         gradient: LinearGradient(
-                          colors: [
-                            AppColors.neonCyan,
-                            AppColors.neonPurple,
-                          ],
+                          colors: [AppColors.neonCyan, AppColors.neonPurple],
                         ),
                       ),
                     ),
@@ -566,11 +563,7 @@ class _OrbitPainter extends CustomPainter {
     );
 
     // Orbiting sparkle dots.
-    final dotColors = [
-      AppColors.neonGold,
-      AppColors.neonPink,
-      Colors.white,
-    ];
+    final dotColors = [AppColors.neonGold, AppColors.neonPink, Colors.white];
     for (int i = 0; i < dotColors.length; i++) {
       final angle = phase + (i * math.pi * 2 / dotColors.length);
       final pos = Offset(

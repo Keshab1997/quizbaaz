@@ -30,7 +30,14 @@ class _RewardsScreenState extends State<RewardsScreen> {
     final history = await userProvider.loadQuizHistory();
     if (mounted) {
       setState(() {
-        _dailyQuizHistory = history.where((h) => h.quizType == 'daily' || h.coinsEarned > 0 || h.gemsEarned > 0).toList();
+        _dailyQuizHistory = history
+            .where(
+              (h) =>
+                  h.quizType == 'daily' ||
+                  h.coinsEarned > 0 ||
+                  h.gemsEarned > 0,
+            )
+            .toList();
         _loadingHistory = false;
       });
     }
@@ -41,7 +48,10 @@ class _RewardsScreenState extends State<RewardsScreen> {
     return Scaffold(
       backgroundColor: Colors.transparent,
       appBar: AppBar(
-        title: Text(S.rewardsTitle, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+        title: Text(
+          S.rewardsTitle,
+          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+        ),
       ),
       body: ListView(
         padding: const EdgeInsets.all(18),
@@ -58,11 +68,8 @@ class _RewardsScreenState extends State<RewardsScreen> {
                   width: 84,
                   height: 84,
                   fit: BoxFit.contain,
-                  errorBuilder: (_, __, ___) => Image.asset(
-                    AppAssets.giftBox,
-                    width: 70,
-                    height: 70,
-                  ),
+                  errorBuilder: (_, __, ___) =>
+                      Image.asset(AppAssets.giftBox, width: 70, height: 70),
                 ),
                 const SizedBox(width: 14),
                 Expanded(
@@ -71,12 +78,19 @@ class _RewardsScreenState extends State<RewardsScreen> {
                     children: [
                       Text(
                         S.rewardsWinDaily,
-                        style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: AppColors.neonGold),
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.neonGold,
+                        ),
                       ),
                       const SizedBox(height: 4),
                       Text(
                         S.rewardsWinDailyBody,
-                        style: const TextStyle(fontSize: 11, color: AppColors.textSecondary),
+                        style: const TextStyle(
+                          fontSize: 11,
+                          color: AppColors.textSecondary,
+                        ),
                       ),
                     ],
                   ),
@@ -89,7 +103,11 @@ class _RewardsScreenState extends State<RewardsScreen> {
           // 🏆 Daily Quiz Winnings Section
           Row(
             children: [
-              const Icon(Icons.emoji_events_rounded, color: AppColors.neonGold, size: 22),
+              const Icon(
+                Icons.emoji_events_rounded,
+                color: AppColors.neonGold,
+                size: 22,
+              ),
               const SizedBox(width: 8),
               const Expanded(
                 child: Text(
@@ -104,7 +122,10 @@ class _RewardsScreenState extends State<RewardsScreen> {
               ),
               if (!_loadingHistory)
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 10,
+                    vertical: 4,
+                  ),
                   decoration: BoxDecoration(
                     color: AppColors.neonGold.withValues(alpha: 0.15),
                     borderRadius: BorderRadius.circular(12),
@@ -137,7 +158,10 @@ class _RewardsScreenState extends State<RewardsScreen> {
                     SizedBox(height: 16),
                     Text(
                       'Loading your winnings...',
-                      style: TextStyle(color: AppColors.textSecondary, fontSize: 13),
+                      style: TextStyle(
+                        color: AppColors.textSecondary,
+                        fontSize: 13,
+                      ),
                     ),
                   ],
                 ),
@@ -183,7 +207,10 @@ class _RewardsScreenState extends State<RewardsScreen> {
                   ),
                   const SizedBox(height: 16),
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 10,
+                    ),
                     decoration: BoxDecoration(
                       gradient: AppColors.fireGradient,
                       borderRadius: BorderRadius.circular(12),
@@ -191,7 +218,11 @@ class _RewardsScreenState extends State<RewardsScreen> {
                     child: const Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Icon(Icons.play_arrow_rounded, color: Colors.white, size: 20),
+                        Icon(
+                          Icons.play_arrow_rounded,
+                          color: Colors.white,
+                          size: 20,
+                        ),
                         SizedBox(width: 6),
                         Text(
                           'START QUIZ',
@@ -223,28 +254,22 @@ class _RewardsScreenState extends State<RewardsScreen> {
                       color: AppColors.neonGold,
                     ),
                   ),
-                  Container(
-                    width: 1,
-                    height: 40,
-                    color: Colors.white12,
-                  ),
+                  Container(width: 1, height: 40, color: Colors.white12),
                   Expanded(
                     child: _StatItem(
                       icon: Icons.monetization_on_rounded,
-                      value: '${_dailyQuizHistory.fold(0, (sum, h) => sum + h.coinsEarned)}',
+                      value:
+                          '${_dailyQuizHistory.fold(0, (sum, h) => sum + h.coinsEarned)}',
                       label: 'Coins',
                       color: AppColors.neonOrange,
                     ),
                   ),
-                  Container(
-                    width: 1,
-                    height: 40,
-                    color: Colors.white12,
-                  ),
+                  Container(width: 1, height: 40, color: Colors.white12),
                   Expanded(
                     child: _StatItem(
                       icon: Icons.diamond_rounded,
-                      value: '${_dailyQuizHistory.fold(0, (sum, h) => sum + h.gemsEarned)}',
+                      value:
+                          '${_dailyQuizHistory.fold(0, (sum, h) => sum + h.gemsEarned)}',
                       label: 'Gems',
                       color: AppColors.neonPurple,
                     ),
@@ -255,107 +280,125 @@ class _RewardsScreenState extends State<RewardsScreen> {
             const SizedBox(height: 16),
 
             // History List
-            ..._dailyQuizHistory.take(10).map((history) => Padding(
-                  padding: const EdgeInsets.only(bottom: 10),
-                  child: GlassCard(
-                    borderRadius: 16,
-                    padding: const EdgeInsets.all(14),
-                    borderColor: AppColors.neonGold.withValues(alpha: 0.25),
-                    child: Row(
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.all(10),
-                          decoration: const BoxDecoration(
-                            gradient: AppColors.goldGradient,
-                            shape: BoxShape.circle,
+            ..._dailyQuizHistory
+                .take(10)
+                .map(
+                  (history) => Padding(
+                    padding: const EdgeInsets.only(bottom: 10),
+                    child: GlassCard(
+                      borderRadius: 16,
+                      padding: const EdgeInsets.all(14),
+                      borderColor: AppColors.neonGold.withValues(alpha: 0.25),
+                      child: Row(
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.all(10),
+                            decoration: const BoxDecoration(
+                              gradient: AppColors.goldGradient,
+                              shape: BoxShape.circle,
+                            ),
+                            child: const Icon(
+                              Icons.emoji_events_rounded,
+                              color: Color(0xFF7C4DFF),
+                              size: 22,
+                            ),
                           ),
-                          child: const Icon(
-                            Icons.emoji_events_rounded,
-                            color: Color(0xFF7C4DFF),
-                            size: 22,
+                          const SizedBox(width: 12),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  history.displayTitle.isNotEmpty
+                                      ? history.displayTitle
+                                      : 'Daily Live Quiz',
+                                  style: const TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w800,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                const SizedBox(height: 4),
+                                Row(
+                                  children: [
+                                    _MiniStat(
+                                      icon: Icons.stars_rounded,
+                                      value: '${history.score}',
+                                      color: AppColors.neonGold,
+                                    ),
+                                    const SizedBox(width: 12),
+                                    _MiniStat(
+                                      icon: Icons.speed_rounded,
+                                      value:
+                                          '${history.accuracy.toStringAsFixed(0)}%',
+                                      color: AppColors.neonCyan,
+                                    ),
+                                    const SizedBox(width: 12),
+                                    _MiniStat(
+                                      icon: Icons.bolt_rounded,
+                                      value:
+                                          '${history.timeSeconds.toStringAsFixed(0)}s',
+                                      color: AppColors.neonPurple,
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                        const SizedBox(width: 12),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
-                              Text(
-                                history.displayTitle.isNotEmpty ? history.displayTitle : 'Daily Live Quiz',
-                                style: const TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w800,
-                                  color: Colors.white,
+                              if (history.coinsEarned > 0)
+                                Container(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 8,
+                                    vertical: 4,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: AppColors.neonOrange.withValues(
+                                      alpha: 0.2,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  child: Text(
+                                    '+${history.coinsEarned}',
+                                    style: const TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w900,
+                                      color: AppColors.neonOrange,
+                                    ),
+                                  ),
                                 ),
-                              ),
-                              const SizedBox(height: 4),
-                              Row(
-                                children: [
-                                  _MiniStat(
-                                    icon: Icons.stars_rounded,
-                                    value: '${history.score}',
-                                    color: AppColors.neonGold,
+                              if (history.gemsEarned > 0) ...[
+                                const SizedBox(height: 4),
+                                Container(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 8,
+                                    vertical: 4,
                                   ),
-                                  const SizedBox(width: 12),
-                                  _MiniStat(
-                                    icon: Icons.speed_rounded,
-                                    value: '${history.accuracy.toStringAsFixed(0)}%',
-                                    color: AppColors.neonCyan,
+                                  decoration: BoxDecoration(
+                                    color: AppColors.neonPurple.withValues(
+                                      alpha: 0.2,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8),
                                   ),
-                                  const SizedBox(width: 12),
-                                  _MiniStat(
-                                    icon: Icons.bolt_rounded,
-                                    value: '${history.timeSeconds.toStringAsFixed(0)}s',
-                                    color: AppColors.neonPurple,
+                                  child: Text(
+                                    '+${history.gemsEarned}',
+                                    style: const TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w900,
+                                      color: AppColors.neonPurple,
+                                    ),
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ],
                           ),
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            if (history.coinsEarned > 0)
-                              Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                                decoration: BoxDecoration(
-                                  color: AppColors.neonOrange.withValues(alpha: 0.2),
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                child: Text(
-                                  '+${history.coinsEarned}',
-                                  style: const TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w900,
-                                    color: AppColors.neonOrange,
-                                  ),
-                                ),
-                              ),
-                            if (history.gemsEarned > 0) ...[
-                              const SizedBox(height: 4),
-                              Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                                decoration: BoxDecoration(
-                                  color: AppColors.neonPurple.withValues(alpha: 0.2),
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                child: Text(
-                                  '+${history.gemsEarned}',
-                                  style: const TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w900,
-                                    color: AppColors.neonPurple,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ],
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                )),
+                ),
           ],
         ],
       ),
@@ -392,10 +435,7 @@ class _StatItem extends StatelessWidget {
         ),
         Text(
           label,
-          style: const TextStyle(
-            fontSize: 11,
-            color: AppColors.textMuted,
-          ),
+          style: const TextStyle(fontSize: 11, color: AppColors.textMuted),
         ),
       ],
     );

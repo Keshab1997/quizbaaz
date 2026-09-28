@@ -76,8 +76,10 @@ class ConsentService extends ChangeNotifier {
   Future<void> showConsentFormIfRequired() async {
     if (!_initialized) await initialize();
     try {
-      await _runWithListener(ConsentForm.loadAndShowConsentFormIfRequired,
-          'consent form');
+      await _runWithListener(
+        ConsentForm.loadAndShowConsentFormIfRequired,
+        'consent form',
+      );
       await _refreshStatuses();
     } catch (e) {
       debugPrint('ConsentService: consent form failed – $e');
@@ -89,7 +91,9 @@ class ConsentService extends ChangeNotifier {
   Future<void> showPrivacyOptions() async {
     try {
       await _runWithListener(
-          ConsentForm.showPrivacyOptionsForm, 'privacy options');
+        ConsentForm.showPrivacyOptionsForm,
+        'privacy options',
+      );
       await _refreshStatuses();
     } catch (e) {
       debugPrint('ConsentService: privacy options failed – $e');
@@ -102,8 +106,11 @@ class ConsentService extends ChangeNotifier {
   Future<void> _requestConsentInfoUpdate() {
     final completer = Completer<void>();
     final params = ConsentRequestParameters(
-      consentDebugSettings:
-          debugForceEea ? ConsentDebugSettings(debugGeography: DebugGeography.debugGeographyEea) : null,
+      consentDebugSettings: debugForceEea
+          ? ConsentDebugSettings(
+              debugGeography: DebugGeography.debugGeographyEea,
+            )
+          : null,
     );
     ConsentInformation.instance.requestConsentInfoUpdate(
       params,
@@ -115,9 +122,12 @@ class ConsentService extends ChangeNotifier {
         if (!completer.isCompleted) completer.complete();
       },
     );
-    return completer.future.timeout(_umpTimeout, onTimeout: () {
-      debugPrint('ConsentService: info update timed out');
-    });
+    return completer.future.timeout(
+      _umpTimeout,
+      onTimeout: () {
+        debugPrint('ConsentService: info update timed out');
+      },
+    );
   }
 
   Future<void> _runWithListener(
@@ -131,9 +141,12 @@ class ConsentService extends ChangeNotifier {
       }
       if (!completer.isCompleted) completer.complete();
     });
-    return completer.future.timeout(_umpTimeout, onTimeout: () {
-      debugPrint('ConsentService: $what timed out');
-    });
+    return completer.future.timeout(
+      _umpTimeout,
+      onTimeout: () {
+        debugPrint('ConsentService: $what timed out');
+      },
+    );
   }
 
   Future<void> _refreshStatuses() async {
@@ -143,8 +156,9 @@ class ConsentService extends ChangeNotifier {
       _privacyOptions = await ConsentInformation.instance
           .getPrivacyOptionsRequirementStatus();
       debugPrint(
-          'ConsentService: status=$_status canRequestAds=$_canRequestAds '
-          'privacyOptions=$_privacyOptions');
+        'ConsentService: status=$_status canRequestAds=$_canRequestAds '
+        'privacyOptions=$_privacyOptions',
+      );
     } catch (e) {
       debugPrint('ConsentService: status refresh failed – $e');
     }

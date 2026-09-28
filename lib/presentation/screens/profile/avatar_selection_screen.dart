@@ -60,7 +60,10 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back_rounded, color: AppColors.textPrimary),
+          icon: const Icon(
+            Icons.arrow_back_rounded,
+            color: AppColors.textPrimary,
+          ),
           onPressed: () => Navigator.pop(context),
         ),
         title: Text(
@@ -98,9 +101,7 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
           _buildCategoryTabs(),
 
           // Avatar Grid
-          Expanded(
-            child: _buildAvatarGrid(userProvider),
-          ),
+          Expanded(child: _buildAvatarGrid(userProvider)),
         ],
       ),
     );
@@ -111,7 +112,8 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
 
   Map<String, dynamic>? _cloudAvatarForUrl(String url) {
     for (final avatar in _cloudAvatars) {
-      final imageUrl = (avatar['image_url'] ?? avatar['avatar_url'] ?? '').toString();
+      final imageUrl = (avatar['image_url'] ?? avatar['avatar_url'] ?? '')
+          .toString();
       if (imageUrl == url) return avatar;
     }
     return null;
@@ -120,9 +122,13 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
   String _cloudAvatarInventoryId(Map<String, dynamic> avatar) =>
       (avatar['id'] ?? avatar['image_url'] ?? '').toString();
 
-  bool _isCloudAvatarOwned(UserProvider userProvider, Map<String, dynamic> avatar) {
+  bool _isCloudAvatarOwned(
+    UserProvider userProvider,
+    Map<String, dynamic> avatar,
+  ) {
     final id = _cloudAvatarInventoryId(avatar);
-    final imageUrl = (avatar['image_url'] ?? avatar['avatar_url'] ?? '').toString();
+    final imageUrl = (avatar['image_url'] ?? avatar['avatar_url'] ?? '')
+        .toString();
     return userProvider.hasItem(id) ||
         userProvider.hasItem('cloud_avatar_$id') ||
         (imageUrl.isNotEmpty && userProvider.hasItem(imageUrl));
@@ -136,7 +142,9 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
       name: name,
       description: S.avatarUnlockTitle(name: name),
       cost: (avatar['price'] as num?)?.toInt() ?? 50,
-      currency: (avatar['currency'] == 'coins') ? ShopCurrency.coins : ShopCurrency.gems,
+      currency: (avatar['currency'] == 'coins')
+          ? ShopCurrency.coins
+          : ShopCurrency.gems,
       quantity: 1,
       isCosmetic: true,
       category: 'avatars',
@@ -167,11 +175,8 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
       fit: fit,
       width: double.infinity,
       height: double.infinity,
-      errorBuilder: (_, __, ___) => const Icon(
-        Icons.person_rounded,
-        color: Colors.white,
-        size: 40,
-      ),
+      errorBuilder: (_, __, ___) =>
+          const Icon(Icons.person_rounded, color: Colors.white, size: 40),
     );
   }
 
@@ -247,19 +252,25 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
               // Preview selected
               if (_selectedAvatar != null && _selectedAvatar != currentAvatar)
                 Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 10,
+                    vertical: 6,
+                  ),
                   decoration: BoxDecoration(
                     color: AppColors.neonGold.withValues(alpha: 0.15),
                     borderRadius: BorderRadius.circular(10),
                     border: Border.all(
-                        color: AppColors.neonGold.withValues(alpha: 0.4)),
+                      color: AppColors.neonGold.withValues(alpha: 0.4),
+                    ),
                   ),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      const Icon(Icons.check_circle,
-                          color: AppColors.neonGold, size: 16),
+                      const Icon(
+                        Icons.check_circle,
+                        color: AppColors.neonGold,
+                        size: 16,
+                      ),
                       const SizedBox(width: 4),
                       Text(
                         S.newLabel,
@@ -283,7 +294,11 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
     final categories = [
       {'id': 'male', 'label': '👦 Male', 'icon': Icons.male_rounded},
       {'id': 'female', 'label': '👧 Female', 'icon': Icons.female_rounded},
-      {'id': 'premium', 'label': '👑 Premium', 'icon': Icons.workspace_premium_rounded},
+      {
+        'id': 'premium',
+        'label': '👑 Premium',
+        'icon': Icons.workspace_premium_rounded,
+      },
     ];
 
     return Padding(
@@ -295,7 +310,8 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 4),
               child: GestureDetector(
-                onTap: () => setState(() => _selectedCategory = cat['id'] as String),
+                onTap: () =>
+                    setState(() => _selectedCategory = cat['id'] as String),
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 200),
                   padding: const EdgeInsets.symmetric(vertical: 10),
@@ -317,16 +333,22 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
                       children: [
                         Icon(
                           cat['icon'] as IconData,
-                          color: isSelected ? AppColors.neonPurple : AppColors.textSecondary,
+                          color: isSelected
+                              ? AppColors.neonPurple
+                              : AppColors.textSecondary,
                           size: 18,
                         ),
                         const SizedBox(width: 6),
                         Text(
                           cat['label'] as String,
                           style: TextStyle(
-                            color: isSelected ? AppColors.neonPurple : AppColors.textSecondary,
+                            color: isSelected
+                                ? AppColors.neonPurple
+                                : AppColors.textSecondary,
                             fontSize: 13,
-                            fontWeight: isSelected ? FontWeight.w800 : FontWeight.w600,
+                            fontWeight: isSelected
+                                ? FontWeight.w800
+                                : FontWeight.w600,
                           ),
                         ),
                       ],
@@ -363,13 +385,16 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
     // Filter cloud avatars by category
     final cloudAvatars = _cloudAvatars.where((avatar) {
       final category = (avatar['category'] ?? '').toString().toLowerCase();
-      final isPremium = avatar['is_premium'] == true ||
+      final isPremium =
+          avatar['is_premium'] == true ||
           category == 'premium' ||
           category == 'avatars' ||
           ((avatar['price'] as num?) ?? 0) > 0;
-      if (_selectedCategory == 'premium') return isPremium || category == 'avatars';
+      if (_selectedCategory == 'premium')
+        return isPremium || category == 'avatars';
       if (_selectedCategory == 'male') return category == 'male' && !isPremium;
-      if (_selectedCategory == 'female') return category == 'female' && !isPremium;
+      if (_selectedCategory == 'female')
+        return category == 'female' && !isPremium;
       return true;
     }).toList();
 
@@ -386,29 +411,26 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
               crossAxisSpacing: 16,
               childAspectRatio: 0.85,
             ),
-            delegate: SliverChildBuilderDelegate(
-              (context, index) {
-                final avatar = avatars[index];
-                final isSelected = _selectedAvatar == avatar;
-                final isPremium = _selectedCategory == 'premium';
-                final isOwned = !isPremium || ownedItems.contains(avatar);
+            delegate: SliverChildBuilderDelegate((context, index) {
+              final avatar = avatars[index];
+              final isSelected = _selectedAvatar == avatar;
+              final isPremium = _selectedCategory == 'premium';
+              final isOwned = !isPremium || ownedItems.contains(avatar);
 
-                return _buildAvatarCard(
-                  avatar: avatar,
-                  isSelected: isSelected,
-                  isPremium: isPremium,
-                  isOwned: isOwned,
-                  onTap: () {
-                    if (isPremium && !isOwned) {
-                      _showPurchaseDialog(context, userProvider, avatar);
-                    } else {
-                      setState(() => _selectedAvatar = avatar);
-                    }
-                  },
-                );
-              },
-              childCount: avatars.length,
-            ),
+              return _buildAvatarCard(
+                avatar: avatar,
+                isSelected: isSelected,
+                isPremium: isPremium,
+                isOwned: isOwned,
+                onTap: () {
+                  if (isPremium && !isOwned) {
+                    _showPurchaseDialog(context, userProvider, avatar);
+                  } else {
+                    setState(() => _selectedAvatar = avatar);
+                  }
+                },
+              );
+            }, childCount: avatars.length),
           ),
         ),
 
@@ -420,7 +442,10 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
               child: Row(
                 children: [
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 8,
+                      vertical: 4,
+                    ),
                     decoration: BoxDecoration(
                       color: AppColors.neonCyan.withValues(alpha: 0.15),
                       borderRadius: BorderRadius.circular(8),
@@ -428,7 +453,11 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        const Icon(Icons.cloud_rounded, color: AppColors.neonCyan, size: 14),
+                        const Icon(
+                          Icons.cloud_rounded,
+                          color: AppColors.neonCyan,
+                          size: 14,
+                        ),
                         const SizedBox(width: 4),
                         Text(
                           S.avatarCloudSection,
@@ -454,40 +483,46 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
                 crossAxisSpacing: 16,
                 childAspectRatio: 0.85,
               ),
-              delegate: SliverChildBuilderDelegate(
-                (context, index) {
-                  final cloudAvatar = cloudAvatars[index];
-                  final imageUrl = (cloudAvatar['image_url'] ?? cloudAvatar['avatar_url'] ?? '').toString();
-                  final isSelected = _selectedAvatar == imageUrl;
-                  final category = (cloudAvatar['category'] ?? '').toString().toLowerCase();
-                  final isPremium = cloudAvatar['is_premium'] == true ||
-                      category == 'premium' ||
-                      category == 'avatars' ||
-                      ((cloudAvatar['price'] as num?) ?? 0) > 0;
-                  final isOwned = !isPremium || _isCloudAvatarOwned(userProvider, cloudAvatar);
+              delegate: SliverChildBuilderDelegate((context, index) {
+                final cloudAvatar = cloudAvatars[index];
+                final imageUrl =
+                    (cloudAvatar['image_url'] ??
+                            cloudAvatar['avatar_url'] ??
+                            '')
+                        .toString();
+                final isSelected = _selectedAvatar == imageUrl;
+                final category = (cloudAvatar['category'] ?? '')
+                    .toString()
+                    .toLowerCase();
+                final isPremium =
+                    cloudAvatar['is_premium'] == true ||
+                    category == 'premium' ||
+                    category == 'avatars' ||
+                    ((cloudAvatar['price'] as num?) ?? 0) > 0;
+                final isOwned =
+                    !isPremium ||
+                    _isCloudAvatarOwned(userProvider, cloudAvatar);
 
-                  return _buildCloudAvatarCard(
-                    cloudAvatar: cloudAvatar,
-                    imageUrl: imageUrl,
-                    isSelected: isSelected,
-                    isPremium: isPremium,
-                    isOwned: isOwned,
-                    onTap: () {
-                      if (isPremium && !isOwned) {
-                        _showPurchaseDialog(
-                          context,
-                          userProvider,
-                          imageUrl,
-                          purchaseItem: _cloudAvatarShopItem(cloudAvatar),
-                        );
-                      } else {
-                        setState(() => _selectedAvatar = imageUrl);
-                      }
-                    },
-                  );
-                },
-                childCount: cloudAvatars.length,
-              ),
+                return _buildCloudAvatarCard(
+                  cloudAvatar: cloudAvatar,
+                  imageUrl: imageUrl,
+                  isSelected: isSelected,
+                  isPremium: isPremium,
+                  isOwned: isOwned,
+                  onTap: () {
+                    if (isPremium && !isOwned) {
+                      _showPurchaseDialog(
+                        context,
+                        userProvider,
+                        imageUrl,
+                        purchaseItem: _cloudAvatarShopItem(cloudAvatar),
+                      );
+                    } else {
+                      setState(() => _selectedAvatar = imageUrl);
+                    }
+                  },
+                );
+              }, childCount: cloudAvatars.length),
             ),
           ),
         ],
@@ -523,8 +558,8 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
             color: isSelected
                 ? AppColors.neonCyan.withValues(alpha: 0.8)
                 : isPremium && !isOwned
-                    ? AppColors.neonGold.withValues(alpha: 0.3)
-                    : Colors.white.withValues(alpha: 0.1),
+                ? AppColors.neonGold.withValues(alpha: 0.3)
+                : Colors.white.withValues(alpha: 0.1),
             width: isSelected ? 3 : 1.5,
           ),
           boxShadow: isSelected
@@ -533,7 +568,7 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
                     color: AppColors.neonCyan.withValues(alpha: 0.3),
                     blurRadius: 20,
                     spreadRadius: 2,
-                  )
+                  ),
                 ]
               : null,
         ),
@@ -610,7 +645,9 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
                         const SizedBox(height: 8),
                         Container(
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 12, vertical: 4),
+                            horizontal: 12,
+                            vertical: 4,
+                          ),
                           decoration: BoxDecoration(
                             color: AppColors.neonGold.withValues(alpha: 0.2),
                             borderRadius: BorderRadius.circular(8),
@@ -635,19 +672,25 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
                   bottom: 10,
                   left: 10,
                   child: Container(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 8,
+                      vertical: 4,
+                    ),
                     decoration: BoxDecoration(
                       color: AppColors.neonGold.withValues(alpha: 0.2),
                       borderRadius: BorderRadius.circular(8),
                       border: Border.all(
-                          color: AppColors.neonGold.withValues(alpha: 0.5)),
+                        color: AppColors.neonGold.withValues(alpha: 0.5),
+                      ),
                     ),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        const Icon(Icons.verified,
-                            color: AppColors.neonGold, size: 12),
+                        const Icon(
+                          Icons.verified,
+                          color: AppColors.neonGold,
+                          size: 12,
+                        ),
                         const SizedBox(width: 4),
                         Text(
                           S.owned,
@@ -688,12 +731,18 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
             color: isSelected
                 ? AppColors.neonCyan.withValues(alpha: 0.8)
                 : isPremium
-                    ? AppColors.neonGold.withValues(alpha: 0.3)
-                    : Colors.white.withValues(alpha: 0.1),
+                ? AppColors.neonGold.withValues(alpha: 0.3)
+                : Colors.white.withValues(alpha: 0.1),
             width: isSelected ? 3 : 1.5,
           ),
           boxShadow: isSelected
-              ? [BoxShadow(color: AppColors.neonCyan.withValues(alpha: 0.3), blurRadius: 20, spreadRadius: 2)]
+              ? [
+                  BoxShadow(
+                    color: AppColors.neonCyan.withValues(alpha: 0.3),
+                    blurRadius: 20,
+                    spreadRadius: 2,
+                  ),
+                ]
               : null,
         ),
         child: ClipRRect(
@@ -708,12 +757,20 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
                       fit: BoxFit.cover,
                       fallbackBuilder: (_) => Container(
                         color: Colors.white.withValues(alpha: 0.05),
-                        child: const Icon(Icons.cloud_off_rounded, color: AppColors.textMuted, size: 40),
+                        child: const Icon(
+                          Icons.cloud_off_rounded,
+                          color: AppColors.textMuted,
+                          size: 40,
+                        ),
                       ),
                     )
                   : Container(
                       color: Colors.white.withValues(alpha: 0.05),
-                      child: const Icon(Icons.cloud_rounded, color: AppColors.textMuted, size: 40),
+                      child: const Icon(
+                        Icons.cloud_rounded,
+                        color: AppColors.textMuted,
+                        size: 40,
+                      ),
                     ),
 
               // Selected indicator
@@ -726,9 +783,18 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
                     decoration: BoxDecoration(
                       color: AppColors.neonCyan,
                       shape: BoxShape.circle,
-                      boxShadow: [BoxShadow(color: AppColors.neonCyan.withValues(alpha: 0.5), blurRadius: 10)],
+                      boxShadow: [
+                        BoxShadow(
+                          color: AppColors.neonCyan.withValues(alpha: 0.5),
+                          blurRadius: 10,
+                        ),
+                      ],
                     ),
-                    child: const Icon(Icons.check_rounded, color: Colors.white, size: 18),
+                    child: const Icon(
+                      Icons.check_rounded,
+                      color: Colors.white,
+                      size: 18,
+                    ),
                   ),
                 ),
 
@@ -737,7 +803,10 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
                 top: 10,
                 left: 10,
                 child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 6,
+                    vertical: 2,
+                  ),
                   decoration: BoxDecoration(
                     color: AppColors.neonCyan.withValues(alpha: 0.2),
                     borderRadius: BorderRadius.circular(6),
@@ -745,11 +814,19 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
                   child: const Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Icon(Icons.cloud_rounded, color: AppColors.neonCyan, size: 10),
+                      Icon(
+                        Icons.cloud_rounded,
+                        color: AppColors.neonCyan,
+                        size: 10,
+                      ),
                       SizedBox(width: 3),
                       Text(
                         'CLOUD',
-                        style: TextStyle(color: AppColors.neonCyan, fontSize: 8, fontWeight: FontWeight.w900),
+                        style: TextStyle(
+                          color: AppColors.neonCyan,
+                          fontSize: 8,
+                          fontWeight: FontWeight.w900,
+                        ),
                       ),
                     ],
                   ),
@@ -760,7 +837,11 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
                 Container(
                   color: Colors.black.withValues(alpha: 0.55),
                   child: const Center(
-                    child: Icon(Icons.lock_rounded, color: AppColors.neonGold, size: 36),
+                    child: Icon(
+                      Icons.lock_rounded,
+                      color: AppColors.neonGold,
+                      size: 36,
+                    ),
                   ),
                 ),
 
@@ -769,15 +850,26 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
                   bottom: 38,
                   left: 10,
                   child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 8,
+                      vertical: 4,
+                    ),
                     decoration: BoxDecoration(
                       color: AppColors.neonGold.withValues(alpha: 0.2),
                       borderRadius: BorderRadius.circular(8),
-                      border: Border.all(color: AppColors.neonGold.withValues(alpha: 0.5)),
+                      border: Border.all(
+                        color: AppColors.neonGold.withValues(alpha: 0.5),
+                      ),
                     ),
                     child: Text(
-                      isOwned ? S.owned : '${(cloudAvatar['price'] as num?)?.toInt() ?? 50} 💎',
-                      style: const TextStyle(color: AppColors.neonGold, fontSize: 10, fontWeight: FontWeight.w900),
+                      isOwned
+                          ? S.owned
+                          : '${(cloudAvatar['price'] as num?)?.toInt() ?? 50} 💎',
+                      style: const TextStyle(
+                        color: AppColors.neonGold,
+                        fontSize: 10,
+                        fontWeight: FontWeight.w900,
+                      ),
                     ),
                   ),
                 ),
@@ -790,16 +882,26 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
                 child: Container(
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(20), bottomRight: Radius.circular(20)),
+                    borderRadius: const BorderRadius.only(
+                      bottomLeft: Radius.circular(20),
+                      bottomRight: Radius.circular(20),
+                    ),
                     gradient: LinearGradient(
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
-                      colors: [Colors.transparent, Colors.black.withValues(alpha: 0.8)],
+                      colors: [
+                        Colors.transparent,
+                        Colors.black.withValues(alpha: 0.8),
+                      ],
                     ),
                   ),
                   child: Text(
                     name,
-                    style: const TextStyle(color: Colors.white, fontSize: 11, fontWeight: FontWeight.w700),
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 11,
+                      fontWeight: FontWeight.w700,
+                    ),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -815,9 +917,12 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
   List<String> _getOwnedPremiumAvatars(UserProvider userProvider) {
     final owned = <String>[];
     if (userProvider.hasItem('vip_avatar')) owned.add(AppAssets.vipAvatar);
-    if (userProvider.hasItem('golden_avatar')) owned.add(AppAssets.goldenKnightAvatar);
-    if (userProvider.hasItem('neon_avatar')) owned.add(AppAssets.neonCyberAvatar);
-    if (userProvider.hasItem('royal_avatar')) owned.add(AppAssets.royalCrownAvatar);
+    if (userProvider.hasItem('golden_avatar'))
+      owned.add(AppAssets.goldenKnightAvatar);
+    if (userProvider.hasItem('neon_avatar'))
+      owned.add(AppAssets.neonCyberAvatar);
+    if (userProvider.hasItem('royal_avatar'))
+      owned.add(AppAssets.royalCrownAvatar);
     return owned;
   }
 
@@ -846,10 +951,12 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
     final selected = _selectedAvatar!;
     final cloudAvatar = _cloudAvatarForUrl(selected);
     final cloudCategory = (cloudAvatar?['category'] ?? '').toString();
-    final isFemale = cloudCategory == 'female' ||
+    final isFemale =
+        cloudCategory == 'female' ||
         selected.contains('female') ||
         selected.contains('girl');
-    final isMale = cloudCategory == 'male' ||
+    final isMale =
+        cloudCategory == 'male' ||
         selected.contains('male') ||
         selected.contains('boy');
 
@@ -935,20 +1042,28 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
               if (result == PurchaseStatus.success) {
                 setState(() => _selectedAvatar = avatar);
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text(S.avatarUnlocked(name: itemName)), backgroundColor: AppColors.neonGreen),
+                  SnackBar(
+                    content: Text(S.avatarUnlocked(name: itemName)),
+                    backgroundColor: AppColors.neonGreen,
+                  ),
                 );
               } else {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
-                    content: Text(result == PurchaseStatus.alreadyOwned
-                        ? S.avatarAlreadyOwned
-                        : S.avatarNotEnoughGems),
+                    content: Text(
+                      result == PurchaseStatus.alreadyOwned
+                          ? S.avatarAlreadyOwned
+                          : S.avatarNotEnoughGems,
+                    ),
                     backgroundColor: AppColors.neonRed,
                   ),
                 );
               }
             },
-            child: Text(purchaseItem == null ? S.goToShop : S.unlock, style: const TextStyle(color: Colors.black)),
+            child: Text(
+              purchaseItem == null ? S.goToShop : S.unlock,
+              style: const TextStyle(color: Colors.black),
+            ),
           ),
         ],
       ),

@@ -12,7 +12,14 @@ import 'question_prompt_builder.dart';
 import 'question_validator.dart';
 
 /// Where a generation run currently is, for the progress bar.
-enum GenerationStage { starting, requesting, validating, retrying, done, failed }
+enum GenerationStage {
+  starting,
+  requesting,
+  validating,
+  retrying,
+  done,
+  failed,
+}
 
 /// A snapshot of progress, emitted as the run proceeds.
 class GenerationProgress {
@@ -58,8 +65,7 @@ class GeneratedQuestion {
   });
 
   /// True when nothing at all needs the admin's attention.
-  bool get isClean =>
-      validation.isClean && (verification?.agrees ?? true);
+  bool get isClean => validation.isClean && (verification?.agrees ?? true);
 
   GeneratedQuestion copyWith({
     QuestionModel? question,
@@ -119,11 +125,9 @@ class GenerationException implements Exception {
 /// `QuestionBankService.appendQuestions` is the only thing that writes, and
 /// only after the admin approves.
 class AiQuestionGenerator {
-  AiQuestionGenerator({
-    ApiKeyManager? keyManager,
-    http.Client? client,
-  })  : _keys = keyManager ?? ApiKeyManager.instance,
-        _client = client ?? http.Client();
+  AiQuestionGenerator({ApiKeyManager? keyManager, http.Client? client})
+    : _keys = keyManager ?? ApiKeyManager.instance,
+      _client = client ?? http.Client();
 
   final ApiKeyManager _keys;
   final http.Client _client;
@@ -211,7 +215,8 @@ class AiQuestionGenerator {
           accepted: accepted.length,
           rejected: rejectedCount,
           round: round,
-          message: 'Writing ${accepted.length + 1}–'
+          message:
+              'Writing ${accepted.length + 1}–'
               '${(accepted.length + want).clamp(1, count)} of $count…',
         );
 
@@ -289,10 +294,9 @@ class AiQuestionGenerator {
           final fingerprint = QuestionFingerprint.fingerprint(stem);
           if (fingerprint.isNotEmpty) fingerprints.add(fingerprint);
 
-          accepted.add(GeneratedQuestion(
-            question: renumbered,
-            validation: result,
-          ));
+          accepted.add(
+            GeneratedQuestion(question: renumbered, validation: result),
+          );
         }
       }
     }
@@ -309,9 +313,11 @@ class AiQuestionGenerator {
           rejected: rejectedCount,
           message: 'Double-checking answer ${i + 1} of ${accepted.length}…',
         );
-        verified.add(accepted[i].copyWith(
-          verification: await _verify(accepted[i].question, actorUid),
-        ));
+        verified.add(
+          accepted[i].copyWith(
+            verification: await _verify(accepted[i].question, actorUid),
+          ),
+        );
       }
       results = verified;
     }
@@ -323,7 +329,7 @@ class AiQuestionGenerator {
       rejected: rejectedCount,
       message: results.length < count
           ? 'Produced ${results.length} of $count — '
-              '$rejectedCount draft(s) did not pass the checks.'
+                '$rejectedCount draft(s) did not pass the checks.'
           : 'Ready for review.',
       results: results,
     );
@@ -342,7 +348,8 @@ class AiQuestionGenerator {
 
     return {
       for (final code in ['bn', 'hi'])
-        if (decoded[code] is String && (decoded[code] as String).trim().isNotEmpty)
+        if (decoded[code] is String &&
+            (decoded[code] as String).trim().isNotEmpty)
           code: (decoded[code] as String).trim(),
     };
   }
@@ -386,7 +393,8 @@ class AiQuestionGenerator {
       // Gemini: the key goes in the query string and there is no system role,
       // so the instruction is prepended to the user turn.
       final uri = Uri.parse(
-          '${key.baseUrl}/models/${key.model}:generateContent?key=${key.key}');
+        '${key.baseUrl}/models/${key.model}:generateContent?key=${key.key}',
+      );
       return _client
           .post(
             uri,
@@ -396,9 +404,12 @@ class AiQuestionGenerator {
                 {
                   'role': 'user',
                   'parts': [
-                    {'text': '${QuestionPromptBuilder.systemPrompt()}\n\n$prompt'}
+                    {
+                      'text':
+                          '${QuestionPromptBuilder.systemPrompt()}\n\n$prompt',
+                    },
                   ],
-                }
+                },
               ],
               'generationConfig': {
                 'temperature': 0.7,
@@ -422,7 +433,10 @@ class AiQuestionGenerator {
           body: jsonEncode({
             'model': resolveOpenRouterModel(key.baseUrl, key.model),
             'messages': [
-              {'role': 'system', 'content': QuestionPromptBuilder.systemPrompt()},
+              {
+                'role': 'system',
+                'content': QuestionPromptBuilder.systemPrompt(),
+              },
               {'role': 'user', 'content': prompt},
             ],
             'temperature': 0.7,
@@ -488,8 +502,7 @@ class AiQuestionGenerator {
     for (final entry in list) {
       if (entry is! Map) continue;
       try {
-        questions.add(
-            QuestionModel.fromJson(Map<String, dynamic>.from(entry)));
+        questions.add(QuestionModel.fromJson(Map<String, dynamic>.from(entry)));
       } catch (e) {
         debugPrint('AiQuestionGenerator: skipped malformed question — $e');
       }
@@ -549,7 +562,9 @@ class AiQuestionGenerator {
   // ---------------------------------------------------------- verification --
 
   Future<VerificationVerdict?> _verify(
-      QuestionModel question, String actorUid) async {
+    QuestionModel question,
+    String actorUid,
+  ) async {
     final raw = await _callModel(
       QuestionPromptBuilder.buildVerificationPrompt(
         questionEn: question.questionText.resolve('en'),
@@ -582,4 +597,3 @@ class AiQuestionGenerator {
 @visibleForTesting
 List<QuestionModel> parseGeneratedQuestions(String raw) =>
     AiQuestionGenerator._parseQuestions(raw);
-

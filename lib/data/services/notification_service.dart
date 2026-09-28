@@ -68,8 +68,7 @@ class NotificationService {
   /// (that would cycle).
   Future<void> syncFromHive() async {
     if (!isSupported) return;
-    final enabled =
-        HiveService.getMeta<bool>(settingNotifications) ?? true;
+    final enabled = HiveService.getMeta<bool>(settingNotifications) ?? true;
     final vibrate = HiveService.getMeta<bool>(settingVibration) ?? false;
     final user = HiveService.loadUser();
     user?.refreshDailyFlags(DateTime.now());
@@ -116,14 +115,18 @@ class NotificationService {
     try {
       await _ensureReady();
       if (defaultTargetPlatform == TargetPlatform.android) {
-        final android = _plugin.resolvePlatformSpecificImplementation<
-            AndroidFlutterLocalNotificationsPlugin>();
+        final android = _plugin
+            .resolvePlatformSpecificImplementation<
+              AndroidFlutterLocalNotificationsPlugin
+            >();
         final granted = await android?.requestNotificationsPermission();
         return granted ?? true;
       }
       if (defaultTargetPlatform == TargetPlatform.iOS) {
-        final ios = _plugin.resolvePlatformSpecificImplementation<
-            IOSFlutterLocalNotificationsPlugin>();
+        final ios = _plugin
+            .resolvePlatformSpecificImplementation<
+              IOSFlutterLocalNotificationsPlugin
+            >();
         final granted = await ios?.requestPermissions(
           alert: true,
           badge: false,
@@ -190,14 +193,18 @@ class NotificationService {
     final id = response.id != null
         ? 'local_${response.id}'
         : 'local_${response.payload ?? now.millisecondsSinceEpoch}';
-    unawaited(NotificationInbox.instance.add(NotificationItem(
-      id: id,
-      kind: NotificationItem.kindReminder,
-      title: streak > 0 ? S.notifStreakTitle : S.notifDailyTitle,
-      body: streak > 0 ? S.notifStreakBody(n: streak) : S.notifDailyBody,
-      open: response.payload,
-      receivedAt: now,
-    )));
+    unawaited(
+      NotificationInbox.instance.add(
+        NotificationItem(
+          id: id,
+          kind: NotificationItem.kindReminder,
+          title: streak > 0 ? S.notifStreakTitle : S.notifDailyTitle,
+          body: streak > 0 ? S.notifStreakBody(n: streak) : S.notifDailyBody,
+          open: response.payload,
+          receivedAt: now,
+        ),
+      ),
+    );
     onNotificationOpen?.call(response.payload);
   }
 
@@ -222,11 +229,8 @@ class NotificationService {
       now: DateTime.now(),
       playedToday: playedToday,
     );
-    final title =
-        streak > 0 ? S.notifStreakTitle : S.notifDailyTitle;
-    final body = streak > 0
-        ? S.notifStreakBody(n: streak)
-        : S.notifDailyBody;
+    final title = streak > 0 ? S.notifStreakTitle : S.notifDailyTitle;
+    final body = streak > 0 ? S.notifStreakBody(n: streak) : S.notifDailyBody;
 
     final android = AndroidNotificationDetails(
       _channelId,

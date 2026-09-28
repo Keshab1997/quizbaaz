@@ -92,7 +92,10 @@ class AppConfig {
   /// Maximum points a single battle question can pay out
   /// (base 10 + speed 10 + first 2 + capped streak 6 = 28).
   int get battleMaxPointsPerQuestion =>
-      battleBasePoints + battleSpeedBonus + battleFirstBonus + battleMaxStreakBonus;
+      battleBasePoints +
+      battleSpeedBonus +
+      battleFirstBonus +
+      battleMaxStreakBonus;
 
   /// Total seconds a full daily quiz can take.
   int get dailyTotalSeconds => dailyQuestionCount * secondsPerQuestion;
@@ -116,71 +119,89 @@ class AppConfig {
       userId.isNotEmpty && adminUserIds.contains(userId);
 
   Map<String, dynamic> toJson() => {
-        'daily_question_count': dailyQuestionCount,
-        'seconds_per_question': secondsPerQuestion,
-        'coins_per_correct_daily': coinsPerCorrectDaily,
-        'perfect_bonus_coins': perfectBonusCoins,
-        'coins_per_correct_practice': coinsPerCorrectPractice,
-        'gems_perfect': gemsPerfect,
-        'gems_high_score': gemsHighScore,
-        'high_score_threshold': highScoreThreshold,
-        'signup_bonus_coins': signupBonusCoins,
-        'signup_bonus_gems': signupBonusGems,
-        'streak_goal_days': streakGoalDays,
-        'battle_question_count': battleQuestionCount,
-        'battle_base_points': battleBasePoints,
-        'battle_speed_bonus': battleSpeedBonus,
-        'battle_first_bonus': battleFirstBonus,
-        'battle_streak_bonus': battleStreakBonus,
-        'battle_max_streak_bonus': battleMaxStreakBonus,
-        'battle_search_seconds': battleSearchSeconds,
-        'admin_user_ids': adminUserIds,
-        'leaderboard_cache_minutes': leaderboardCacheMinutes,
-      };
+    'daily_question_count': dailyQuestionCount,
+    'seconds_per_question': secondsPerQuestion,
+    'coins_per_correct_daily': coinsPerCorrectDaily,
+    'perfect_bonus_coins': perfectBonusCoins,
+    'coins_per_correct_practice': coinsPerCorrectPractice,
+    'gems_perfect': gemsPerfect,
+    'gems_high_score': gemsHighScore,
+    'high_score_threshold': highScoreThreshold,
+    'signup_bonus_coins': signupBonusCoins,
+    'signup_bonus_gems': signupBonusGems,
+    'streak_goal_days': streakGoalDays,
+    'battle_question_count': battleQuestionCount,
+    'battle_base_points': battleBasePoints,
+    'battle_speed_bonus': battleSpeedBonus,
+    'battle_first_bonus': battleFirstBonus,
+    'battle_streak_bonus': battleStreakBonus,
+    'battle_max_streak_bonus': battleMaxStreakBonus,
+    'battle_search_seconds': battleSearchSeconds,
+    'admin_user_ids': adminUserIds,
+    'leaderboard_cache_minutes': leaderboardCacheMinutes,
+  };
 
   factory AppConfig.fromJson(Map<String, dynamic> json) {
     const fallback = AppConfig();
     int intOr(String key, int def) => (json[key] as num?)?.toInt() ?? def;
     return AppConfig(
-      dailyQuestionCount:
-          intOr('daily_question_count', fallback.dailyQuestionCount),
-      secondsPerQuestion:
-          intOr('seconds_per_question', fallback.secondsPerQuestion),
-      coinsPerCorrectDaily:
-          intOr('coins_per_correct_daily', fallback.coinsPerCorrectDaily),
-      perfectBonusCoins:
-          intOr('perfect_bonus_coins', fallback.perfectBonusCoins),
+      dailyQuestionCount: intOr(
+        'daily_question_count',
+        fallback.dailyQuestionCount,
+      ),
+      secondsPerQuestion: intOr(
+        'seconds_per_question',
+        fallback.secondsPerQuestion,
+      ),
+      coinsPerCorrectDaily: intOr(
+        'coins_per_correct_daily',
+        fallback.coinsPerCorrectDaily,
+      ),
+      perfectBonusCoins: intOr(
+        'perfect_bonus_coins',
+        fallback.perfectBonusCoins,
+      ),
       coinsPerCorrectPractice: intOr(
-          'coins_per_correct_practice', fallback.coinsPerCorrectPractice),
+        'coins_per_correct_practice',
+        fallback.coinsPerCorrectPractice,
+      ),
       gemsPerfect: intOr('gems_perfect', fallback.gemsPerfect),
       gemsHighScore: intOr('gems_high_score', fallback.gemsHighScore),
-      highScoreThreshold:
-          intOr('high_score_threshold', fallback.highScoreThreshold),
-      signupBonusCoins:
-          intOr('signup_bonus_coins', fallback.signupBonusCoins),
+      highScoreThreshold: intOr(
+        'high_score_threshold',
+        fallback.highScoreThreshold,
+      ),
+      signupBonusCoins: intOr('signup_bonus_coins', fallback.signupBonusCoins),
       signupBonusGems: intOr('signup_bonus_gems', fallback.signupBonusGems),
       streakGoalDays: intOr('streak_goal_days', fallback.streakGoalDays),
-      battleQuestionCount:
-          intOr('battle_question_count', fallback.battleQuestionCount),
-      battleBasePoints:
-          intOr('battle_base_points', fallback.battleBasePoints),
-      battleSpeedBonus:
-          intOr('battle_speed_bonus', fallback.battleSpeedBonus),
-      battleFirstBonus:
-          intOr('battle_first_bonus', fallback.battleFirstBonus),
-      battleStreakBonus:
-          intOr('battle_streak_bonus', fallback.battleStreakBonus),
-      battleMaxStreakBonus:
-          intOr('battle_max_streak_bonus', fallback.battleMaxStreakBonus),
-      battleSearchSeconds:
-          intOr('battle_search_seconds', fallback.battleSearchSeconds),
-      adminUserIds: (json['admin_user_ids'] as List<dynamic>?)
+      battleQuestionCount: intOr(
+        'battle_question_count',
+        fallback.battleQuestionCount,
+      ),
+      battleBasePoints: intOr('battle_base_points', fallback.battleBasePoints),
+      battleSpeedBonus: intOr('battle_speed_bonus', fallback.battleSpeedBonus),
+      battleFirstBonus: intOr('battle_first_bonus', fallback.battleFirstBonus),
+      battleStreakBonus: intOr(
+        'battle_streak_bonus',
+        fallback.battleStreakBonus,
+      ),
+      battleMaxStreakBonus: intOr(
+        'battle_max_streak_bonus',
+        fallback.battleMaxStreakBonus,
+      ),
+      battleSearchSeconds: intOr(
+        'battle_search_seconds',
+        fallback.battleSearchSeconds,
+      ),
+      adminUserIds:
+          (json['admin_user_ids'] as List<dynamic>?)
               ?.map((e) => '$e')
               .toList() ??
           const <String>[],
       leaderboardCacheMinutes: intOr(
-          'leaderboard_cache_minutes', fallback.leaderboardCacheMinutes),
+        'leaderboard_cache_minutes',
+        fallback.leaderboardCacheMinutes,
+      ),
     );
   }
 }
-

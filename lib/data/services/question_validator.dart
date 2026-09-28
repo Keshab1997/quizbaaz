@@ -32,9 +32,7 @@ class ValidationResult {
 
   const ValidationResult(this.issues, {this.nearDuplicate});
 
-  const ValidationResult.ok()
-      : issues = const [],
-        nearDuplicate = null;
+  const ValidationResult.ok() : issues = const [], nearDuplicate = null;
 
   List<ValidationIssue> get rejections =>
       issues.where((i) => i.isRejection).toList();
@@ -92,8 +90,7 @@ class QuestionValidator {
 
     // ------------------------------------------------------------ identity --
     if (question.id.trim().isEmpty) {
-      issues.add(const ValidationIssue(
-          IssueLevel.rejection, 'id', 'missing'));
+      issues.add(const ValidationIssue(IssueLevel.rejection, 'id', 'missing'));
     }
 
     // ------------------------------------------------------------ the stem --
@@ -102,11 +99,21 @@ class QuestionValidator {
     // ------------------------------------------------------------- options --
     final options = question.optionTexts;
     if (options.length < minOptions || options.length > maxOptions) {
-      issues.add(ValidationIssue(IssueLevel.rejection, 'options',
-          '${options.length} options — expected $minOptions-$maxOptions'));
+      issues.add(
+        ValidationIssue(
+          IssueLevel.rejection,
+          'options',
+          '${options.length} options — expected $minOptions-$maxOptions',
+        ),
+      );
     } else if (options.length != expectedOptions) {
-      issues.add(ValidationIssue(IssueLevel.warning, 'options',
-          '${options.length} options — the app is designed around $expectedOptions'));
+      issues.add(
+        ValidationIssue(
+          IssueLevel.warning,
+          'options',
+          '${options.length} options — the app is designed around $expectedOptions',
+        ),
+      );
     }
 
     for (var i = 0; i < options.length; i++) {
@@ -122,10 +129,13 @@ class QuestionValidator {
         if (text.isEmpty) continue;
         final previous = seen[text];
         if (previous != null) {
-          issues.add(ValidationIssue(
+          issues.add(
+            ValidationIssue(
               IssueLevel.rejection,
               'options',
-              'options $previous and $i are identical in "$language"'));
+              'options $previous and $i are identical in "$language"',
+            ),
+          );
         } else {
           seen[text] = i;
         }
@@ -133,45 +143,75 @@ class QuestionValidator {
     }
 
     // -------------------------------------------------------- correct index --
-    if (question.correctIndex < 0 ||
-        question.correctIndex >= options.length) {
-      issues.add(ValidationIssue(
+    if (question.correctIndex < 0 || question.correctIndex >= options.length) {
+      issues.add(
+        ValidationIssue(
           IssueLevel.rejection,
           'correct_index',
-          '${question.correctIndex} is outside 0..${options.length - 1}'));
+          '${question.correctIndex} is outside 0..${options.length - 1}',
+        ),
+      );
     }
 
     // --------------------------------------------------------- explanation --
     if (question.explanationText.isEmpty) {
-      issues.add(const ValidationIssue(IssueLevel.warning, 'explanation',
-          'empty — students see nothing on the review screen'));
+      issues.add(
+        const ValidationIssue(
+          IssueLevel.warning,
+          'explanation',
+          'empty — students see nothing on the review screen',
+        ),
+      );
     } else {
-      _checkLocalized(issues, 'explanation', question.explanationText,
-          required: false);
+      _checkLocalized(
+        issues,
+        'explanation',
+        question.explanationText,
+        required: false,
+      );
       final english = question.explanationText.resolve('en');
       if (english.length < minExplanationLength) {
-        issues.add(ValidationIssue(IssueLevel.warning, 'explanation',
-            'only ${english.length} characters — does it show the reasoning?'));
+        issues.add(
+          ValidationIssue(
+            IssueLevel.warning,
+            'explanation',
+            'only ${english.length} characters — does it show the reasoning?',
+          ),
+        );
       }
     }
 
     // ------------------------------------------------------------- numbers --
     if (question.points < 1 || question.points > 1000) {
-      issues.add(ValidationIssue(IssueLevel.rejection, 'points',
-          '${question.points} is outside 1..1000'));
+      issues.add(
+        ValidationIssue(
+          IssueLevel.rejection,
+          'points',
+          '${question.points} is outside 1..1000',
+        ),
+      );
     }
     if (question.timeLimitSec < 5 || question.timeLimitSec > 300) {
-      issues.add(ValidationIssue(IssueLevel.rejection, 'time_limit_sec',
-          '${question.timeLimitSec} is outside 5..300'));
+      issues.add(
+        ValidationIssue(
+          IssueLevel.rejection,
+          'time_limit_sec',
+          '${question.timeLimitSec} is outside 5..300',
+        ),
+      );
     }
 
     // ------------------------------------------------------------ duplicate --
     final stem = question.questionText.resolve('en');
     final fingerprint = QuestionFingerprint.fingerprint(stem);
-    if (fingerprint.isNotEmpty &&
-        existingFingerprints.contains(fingerprint)) {
-      issues.add(const ValidationIssue(IssueLevel.rejection, 'question',
-          'this exact question is already in the chapter'));
+    if (fingerprint.isNotEmpty && existingFingerprints.contains(fingerprint)) {
+      issues.add(
+        const ValidationIssue(
+          IssueLevel.rejection,
+          'question',
+          'this exact question is already in the chapter',
+        ),
+      );
     }
 
     final near = existingStems.isEmpty
@@ -229,21 +269,32 @@ class QuestionValidator {
 
     final english = text.resolve('en');
     if (!text.has('en')) {
-      issues.add(ValidationIssue(IssueLevel.rejection, field,
-          'no English text — it is the fallback for every other language'));
+      issues.add(
+        ValidationIssue(
+          IssueLevel.rejection,
+          field,
+          'no English text — it is the fallback for every other language',
+        ),
+      );
     }
 
     for (final language in kSupportedLanguageCodes) {
       if (language == 'en') continue;
       if (!text.has(language)) {
-        issues.add(ValidationIssue(
-            IssueLevel.rejection, field, 'missing "$language"'));
+        issues.add(
+          ValidationIssue(IssueLevel.rejection, field, 'missing "$language"'),
+        );
         continue;
       }
       // A model that skipped translating echoes the English straight back.
       if (text.resolve(language) == english && _looksUntranslated(english)) {
-        issues.add(ValidationIssue(IssueLevel.rejection, field,
-            '"$language" is identical to English — translation was skipped'));
+        issues.add(
+          ValidationIssue(
+            IssueLevel.rejection,
+            field,
+            '"$language" is identical to English — translation was skipped',
+          ),
+        );
       }
     }
   }

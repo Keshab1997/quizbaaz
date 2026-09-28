@@ -82,7 +82,9 @@ class QuestionPromptBuilder {
   }) {
     final buffer = StringBuffer();
 
-    buffer.writeln('Write $count multiple-choice questions for Class 10 exam prep.');
+    buffer.writeln(
+      'Write $count multiple-choice questions for Class 10 exam prep.',
+    );
     buffer.writeln();
     buffer.writeln('Syllabus : $syllabus');
     buffer.writeln('Subject  : $subjectName');
@@ -111,16 +113,24 @@ class QuestionPromptBuilder {
     }
     buffer.writeln();
     buffer.writeln('OUTPUT');
-    buffer.writeln('Return a JSON array of exactly $count objects. Nothing '
-        'else — no explanation, no markdown fence, no trailing commentary. '
-        'Each object must have: id, question {en,bn,hi}, options[4] of {en,bn,hi}, correct_index (0-3), explanation {en,bn,hi}, points=10, time_limit_sec=30');
+    buffer.writeln(
+      'Return a JSON array of exactly $count objects. Nothing '
+      'else — no explanation, no markdown fence, no trailing commentary. '
+      'Each object must have: id, question {en,bn,hi}, options[4] of {en,bn,hi}, correct_index (0-3), explanation {en,bn,hi}, points=10, time_limit_sec=30',
+    );
     buffer.writeln();
     buffer.writeln('SCHEMA EXAMPLE (copy structure exactly):');
     buffer.writeln(_schemaExample(idPrefix, startSequence));
     buffer.writeln();
 
     buffer.writeln('RULES — follow strictly:');
-    for (final rule in _rules(count, idPrefix, startSequence, difficulty, chapter.titleText.resolve('en'))) {
+    for (final rule in _rules(
+      count,
+      idPrefix,
+      startSequence,
+      difficulty,
+      chapter.titleText.resolve('en'),
+    )) {
       buffer.writeln('- $rule');
     }
 
@@ -129,8 +139,10 @@ class QuestionPromptBuilder {
           ? existingStems.sublist(existingStems.length - maxExistingStems)
           : existingStems;
       buffer.writeln();
-      buffer.writeln('ALREADY IN THIS CHAPTER — do NOT write any question that '
-          'asks the same thing, even reworded or translated:');
+      buffer.writeln(
+        'ALREADY IN THIS CHAPTER — do NOT write any question that '
+        'asks the same thing, even reworded or translated:',
+      );
       for (final stem in recent) {
         buffer.writeln('- $stem');
       }
@@ -200,7 +212,7 @@ class QuestionPromptBuilder {
         },
         'points': 10,
         'time_limit_sec': 30,
-      }
+      },
     ];
     return const JsonEncoder.withIndent('  ').convert(example);
   }
@@ -219,7 +231,9 @@ class QuestionPromptBuilder {
     String syllabus = defaultSyllabus,
   }) {
     final buffer = StringBuffer();
-    buffer.writeln('You are checking one exam question for $syllabus. Be strict.');
+    buffer.writeln(
+      'You are checking one exam question for $syllabus. Be strict.',
+    );
     buffer.writeln();
     buffer.writeln('Question: $questionEn');
     for (var i = 0; i < optionsEn.length; i++) {
@@ -233,12 +247,16 @@ class QuestionPromptBuilder {
     buffer.writeln();
     buffer.writeln('Is the marked option correct for this syllabus?');
     buffer.writeln('Reply with raw JSON only:');
-    buffer.writeln('{"verdict":"ok|wrong|unsure","correct_index":0,'
-        '"reason":"one short sentence"}');
+    buffer.writeln(
+      '{"verdict":"ok|wrong|unsure","correct_index":0,'
+      '"reason":"one short sentence"}',
+    );
     buffer.writeln();
-    buffer.writeln('Use "wrong" only when you are confident another option is '
-        'right, and put its index in correct_index. Use "unsure" when the '
-        'question is ambiguous or you cannot tell. Otherwise "ok".');
+    buffer.writeln(
+      'Use "wrong" only when you are confident another option is '
+      'right, and put its index in correct_index. Use "unsure" when the '
+      'question is ambiguous or you cannot tell. Otherwise "ok".',
+    );
     return buffer.toString();
   }
 

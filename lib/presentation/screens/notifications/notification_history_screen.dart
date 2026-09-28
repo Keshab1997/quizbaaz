@@ -67,9 +67,8 @@ class _NotificationHistoryScreenState extends State<NotificationHistoryScreen> {
     if (confirmed != true) return;
     await NotificationInbox.instance.clear();
     if (!mounted) return;
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(S.notifInboxCleared)),
-    );
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text(S.notifInboxCleared)));
   }
 
   void _openItem(NotificationItem item) {
@@ -83,8 +82,9 @@ class _NotificationHistoryScreenState extends State<NotificationHistoryScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final notificationsOn =
-        context.watch<UserProvider>().setting(UserProvider.settingNotifications);
+    final notificationsOn = context.watch<UserProvider>().setting(
+      UserProvider.settingNotifications,
+    );
 
     return Scaffold(
       backgroundColor: Colors.transparent,
@@ -92,8 +92,10 @@ class _NotificationHistoryScreenState extends State<NotificationHistoryScreen> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back_rounded,
-              color: AppColors.textPrimary),
+          icon: const Icon(
+            Icons.arrow_back_rounded,
+            color: AppColors.textPrimary,
+          ),
           onPressed: () => Navigator.pop(context),
         ),
         title: Text(
@@ -113,8 +115,10 @@ class _NotificationHistoryScreenState extends State<NotificationHistoryScreen> {
               }
               return IconButton(
                 tooltip: S.notifInboxClear,
-                icon: const Icon(Icons.delete_outline_rounded,
-                    color: AppColors.neonCyan),
+                icon: const Icon(
+                  Icons.delete_outline_rounded,
+                  color: AppColors.neonCyan,
+                ),
                 onPressed: _clearAll,
               );
             },
@@ -128,10 +132,9 @@ class _NotificationHistoryScreenState extends State<NotificationHistoryScreen> {
             child: GlassCard(
               borderRadius: 16,
               padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
-              borderColor: (notificationsOn
-                      ? AppColors.neonCyan
-                      : AppColors.neonOrange)
-                  .withValues(alpha: 0.28),
+              borderColor:
+                  (notificationsOn ? AppColors.neonCyan : AppColors.neonOrange)
+                      .withValues(alpha: 0.28),
               child: Row(
                 children: [
                   Icon(
@@ -167,8 +170,7 @@ class _NotificationHistoryScreenState extends State<NotificationHistoryScreen> {
                 return ListView.builder(
                   padding: const EdgeInsets.fromLTRB(16, 4, 16, 100),
                   itemCount: items.length,
-                  itemBuilder: (context, index) =>
-                      _buildCard(items[index]),
+                  itemBuilder: (context, index) => _buildCard(items[index]),
                 );
               },
             ),
@@ -216,10 +218,8 @@ class _NotificationHistoryScreenState extends State<NotificationHistoryScreen> {
   }
 
   Widget _buildCard(NotificationItem item) {
-    final color =
-        item.isReminder ? AppColors.neonGold : AppColors.neonPurple;
-    final kindLabel =
-        item.isReminder ? S.notifKindReminder : S.notifKindPush;
+    final color = item.isReminder ? AppColors.neonGold : AppColors.neonPurple;
+    final kindLabel = item.isReminder ? S.notifKindReminder : S.notifKindPush;
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 12),
@@ -239,9 +239,7 @@ class _NotificationHistoryScreenState extends State<NotificationHistoryScreen> {
                 border: Border.all(color: color.withValues(alpha: 0.4)),
               ),
               child: Icon(
-                item.isReminder
-                    ? Icons.alarm_rounded
-                    : Icons.campaign_rounded,
+                item.isReminder ? Icons.alarm_rounded : Icons.campaign_rounded,
                 color: color,
                 size: 20,
               ),
@@ -255,7 +253,9 @@ class _NotificationHistoryScreenState extends State<NotificationHistoryScreen> {
                     children: [
                       Container(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 6, vertical: 2),
+                          horizontal: 6,
+                          vertical: 2,
+                        ),
                         decoration: BoxDecoration(
                           color: color.withValues(alpha: 0.15),
                           borderRadius: BorderRadius.circular(6),

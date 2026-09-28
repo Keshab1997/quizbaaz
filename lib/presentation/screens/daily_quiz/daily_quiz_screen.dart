@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import '../../../core/constants/app_colors.dart';
 import '../../../data/models/question_model.dart';
 import '../../../data/providers/quiz_provider.dart';
@@ -49,9 +50,10 @@ class DailyQuizScreen extends StatelessWidget {
                 Text(
                   S.setsSetOf(n: quiz.setNumber, total: quiz.setCount),
                   style: const TextStyle(
-                      fontSize: 11,
-                      fontWeight: FontWeight.w500,
-                      color: AppColors.textSecondary),
+                    fontSize: 11,
+                    fontWeight: FontWeight.w500,
+                    color: AppColors.textSecondary,
+                  ),
                 ),
             ],
           ),
@@ -64,50 +66,68 @@ class DailyQuizScreen extends StatelessWidget {
               if (quiz.doublePointsActive)
                 Container(
                   margin: const EdgeInsets.only(right: 8),
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 4,
+                  ),
                   decoration: BoxDecoration(
                     color: AppColors.neonPink.withValues(alpha: 0.2),
                     borderRadius: BorderRadius.circular(8),
                     border: Border.all(
-                        color: AppColors.neonPink.withValues(alpha: 0.5)),
+                      color: AppColors.neonPink.withValues(alpha: 0.5),
+                    ),
                   ),
                   child: const Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Icon(Icons.double_arrow_rounded,
-                          color: AppColors.neonPink, size: 14),
+                      Icon(
+                        Icons.double_arrow_rounded,
+                        color: AppColors.neonPink,
+                        size: 14,
+                      ),
                       SizedBox(width: 4),
-                      Text('2x',
-                          style: TextStyle(
-                              fontSize: 11,
-                              fontWeight: FontWeight.w900,
-                              color: AppColors.neonPink)),
+                      Text(
+                        '2x',
+                        style: TextStyle(
+                          fontSize: 11,
+                          fontWeight: FontWeight.w900,
+                          color: AppColors.neonPink,
+                        ),
+                      ),
                     ],
                   ),
                 ),
               if (quiz.extraLifeAvailable && !quiz.extraLifeUsed)
                 Container(
                   margin: const EdgeInsets.only(right: 8),
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 4,
+                  ),
                   decoration: BoxDecoration(
                     color: AppColors.neonRed.withValues(alpha: 0.2),
                     borderRadius: BorderRadius.circular(8),
                     border: Border.all(
-                        color: AppColors.neonRed.withValues(alpha: 0.5)),
+                      color: AppColors.neonRed.withValues(alpha: 0.5),
+                    ),
                   ),
                   child: const Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Icon(Icons.favorite_rounded,
-                          color: AppColors.neonRed, size: 14),
+                      Icon(
+                        Icons.favorite_rounded,
+                        color: AppColors.neonRed,
+                        size: 14,
+                      ),
                       SizedBox(width: 4),
-                      Text('+1',
-                          style: TextStyle(
-                              fontSize: 11,
-                              fontWeight: FontWeight.w900,
-                              color: AppColors.neonRed)),
+                      Text(
+                        '+1',
+                        style: TextStyle(
+                          fontSize: 11,
+                          fontWeight: FontWeight.w900,
+                          color: AppColors.neonRed,
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -118,18 +138,24 @@ class DailyQuizScreen extends StatelessWidget {
               ),
               Container(
                 margin: const EdgeInsets.only(right: 16),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 6,
+                ),
                 decoration: BoxDecoration(
                   color: AppColors.neonGold.withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(
-                      color: AppColors.neonGold.withValues(alpha: 0.4)),
+                    color: AppColors.neonGold.withValues(alpha: 0.4),
+                  ),
                 ),
                 child: Row(
                   children: [
-                    const Icon(Icons.stars,
-                        color: AppColors.neonGold, size: 16),
+                    const Icon(
+                      Icons.stars,
+                      color: AppColors.neonGold,
+                      size: 16,
+                    ),
                     const SizedBox(width: 4),
                     Text(
                       '${quiz.score} pts',
@@ -153,15 +179,19 @@ class DailyQuizScreen extends StatelessWidget {
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            Icon(Icons.inbox_rounded,
-                                size: 44, color: AppColors.textMuted),
+                            Icon(
+                              Icons.inbox_rounded,
+                              size: 44,
+                              color: AppColors.textMuted,
+                            ),
                             SizedBox(height: 14),
                             Text(
                               'No questions available',
                               style: TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w800,
-                                  color: Colors.white),
+                                fontSize: 15,
+                                fontWeight: FontWeight.w800,
+                                color: Colors.white,
+                              ),
                             ),
                             SizedBox(height: 6),
                             Text(
@@ -169,7 +199,9 @@ class DailyQuizScreen extends StatelessWidget {
                               'chapter or check back later.',
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                  fontSize: 12, color: AppColors.textSecondary),
+                                fontSize: 12,
+                                color: AppColors.textSecondary,
+                              ),
                             ),
                           ],
                         ),
@@ -183,7 +215,9 @@ class DailyQuizScreen extends StatelessWidget {
                     // No outer scroll — question + options share remaining space
                     return Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 18.0, vertical: 10),
+                        horizontal: 18.0,
+                        vertical: 10,
+                      ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
@@ -227,7 +261,10 @@ class DailyQuizScreen extends StatelessWidget {
                                 Flexible(
                                   flex: 5,
                                   child: _buildOptionsAutoFit(
-                                      context, quiz, currentQ),
+                                    context,
+                                    quiz,
+                                    currentQ,
+                                  ),
                                 ),
                               ],
                             ),
@@ -304,16 +341,20 @@ class DailyQuizScreen extends StatelessWidget {
       ),
       child: Row(
         children: [
-          const Icon(Icons.refresh_rounded,
-              size: 15, color: AppColors.neonGold),
+          const Icon(
+            Icons.refresh_rounded,
+            size: 15,
+            color: AppColors.neonGold,
+          ),
           const SizedBox(width: 8),
           Expanded(
             child: Text(
               S.setsPracticeBanner,
               style: const TextStyle(
-                  fontSize: 11.5,
-                  fontWeight: FontWeight.w700,
-                  color: AppColors.neonGold),
+                fontSize: 11.5,
+                fontWeight: FontWeight.w700,
+                color: AppColors.neonGold,
+              ),
             ),
           ),
         ],
@@ -466,11 +507,7 @@ class DailyQuizScreen extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(
-              icon,
-              size: 16,
-              color: disabled ? AppColors.textMuted : color,
-            ),
+            Icon(icon, size: 16, color: disabled ? AppColors.textMuted : color),
             const SizedBox(width: 6),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -481,8 +518,9 @@ class DailyQuizScreen extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 11,
                     fontWeight: FontWeight.bold,
-                    color:
-                        disabled ? AppColors.textMuted : AppColors.textPrimary,
+                    color: disabled
+                        ? AppColors.textMuted
+                        : AppColors.textPrimary,
                   ),
                 ),
                 Text(
@@ -510,8 +548,11 @@ class DailyQuizScreen extends StatelessWidget {
       ),
       child: Row(
         children: [
-          const Icon(Icons.lightbulb_rounded,
-              color: AppColors.neonGold, size: 20),
+          const Icon(
+            Icons.lightbulb_rounded,
+            color: AppColors.neonGold,
+            size: 20,
+          ),
           const SizedBox(width: 10),
           Expanded(
             child: Column(
@@ -633,8 +674,8 @@ class DailyQuizScreen extends StatelessWidget {
     final message = quiz.fiftyFiftyStock <= 0
         ? S.quizNoFiftyFifty
         : quiz.fiftyFiftyUsed
-            ? S.quizFiftyFiftyUsed
-            : S.quizFiftyFiftyBlocked;
+        ? S.quizFiftyFiftyUsed
+        : S.quizFiftyFiftyBlocked;
     ScaffoldMessenger.of(context)
         .showSnackBar(SnackBar(content: Text(message)));
   }
@@ -644,8 +685,8 @@ class DailyQuizScreen extends StatelessWidget {
     final message = quiz.freezeTimeStock <= 0
         ? S.quizNoFreeze
         : quiz.freezeUsed
-            ? S.quizFreezeUsed
-            : S.quizFreezeBlocked;
+        ? S.quizFreezeUsed
+        : S.quizFreezeBlocked;
     ScaffoldMessenger.of(context)
         .showSnackBar(SnackBar(content: Text(message)));
   }
@@ -655,8 +696,8 @@ class DailyQuizScreen extends StatelessWidget {
     final message = quiz.skipQuestionStock <= 0
         ? S.quizNoSkip
         : quiz.skipUsed
-            ? S.quizSkipUsed
-            : S.quizSkipBlocked;
+        ? S.quizSkipUsed
+        : S.quizSkipBlocked;
     ScaffoldMessenger.of(context)
         .showSnackBar(SnackBar(content: Text(message)));
   }
@@ -666,8 +707,8 @@ class DailyQuizScreen extends StatelessWidget {
     final message = quiz.hintRevealStock <= 0
         ? S.quizNoHint
         : quiz.hintUsed
-            ? S.quizHintUsed
-            : S.quizHintBlocked;
+        ? S.quizHintUsed
+        : S.quizHintBlocked;
     ScaffoldMessenger.of(context)
         .showSnackBar(SnackBar(content: Text(message)));
   }
@@ -677,8 +718,8 @@ class DailyQuizScreen extends StatelessWidget {
     final message = quiz.audiencePollStock <= 0
         ? S.quizNoPoll
         : quiz.audienceUsed
-            ? S.quizPollUsed
-            : S.quizPollBlocked;
+        ? S.quizPollUsed
+        : S.quizPollBlocked;
     ScaffoldMessenger.of(context)
         .showSnackBar(SnackBar(content: Text(message)));
   }
@@ -721,9 +762,10 @@ class DailyQuizScreen extends StatelessWidget {
     QuizProvider quiz,
     QuestionModel question,
   ) {
-    final visibleIndices = List<int>.generate(question.options.length, (i) => i)
-        .where((i) => !quiz.disabledOptionIndices.contains(i))
-        .toList();
+    final visibleIndices = List<int>.generate(
+      question.options.length,
+      (i) => i,
+    ).where((i) => !quiz.disabledOptionIndices.contains(i)).toList();
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -762,13 +804,19 @@ class DailyQuizScreen extends StatelessWidget {
       if (isCorrect) {
         borderColor = AppColors.neonGreen;
         bgColor = AppColors.neonGreen.withValues(alpha: 0.2);
-        trailingIcon =
-            const Icon(Icons.check_circle, color: AppColors.neonGreen, size: 20);
+        trailingIcon = const Icon(
+          Icons.check_circle,
+          color: AppColors.neonGreen,
+          size: 20,
+        );
       } else if (isSelected) {
         borderColor = AppColors.neonRed;
         bgColor = AppColors.neonRed.withValues(alpha: 0.2);
-        trailingIcon =
-            const Icon(Icons.cancel, color: AppColors.neonRed, size: 20);
+        trailingIcon = const Icon(
+          Icons.cancel,
+          color: AppColors.neonRed,
+          size: 20,
+        );
       }
     }
 
@@ -784,11 +832,10 @@ class DailyQuizScreen extends StatelessWidget {
           boxShadow: isAnswerSubmitted && (isCorrect || isSelected)
               ? [
                   BoxShadow(
-                    color:
-                        (isCorrect ? AppColors.neonGreen : AppColors.neonRed)
-                            .withValues(alpha: 0.3),
+                    color: (isCorrect ? AppColors.neonGreen : AppColors.neonRed)
+                        .withValues(alpha: 0.3),
                     blurRadius: 10,
-                  )
+                  ),
                 ]
               : null,
         ),
@@ -848,8 +895,10 @@ class DailyQuizScreen extends StatelessWidget {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: Text(S.cancel,
-                style: const TextStyle(color: AppColors.textSecondary)),
+            child: Text(
+              S.cancel,
+              style: const TextStyle(color: AppColors.textSecondary),
+            ),
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(backgroundColor: AppColors.neonRed),
@@ -858,8 +907,10 @@ class DailyQuizScreen extends StatelessWidget {
               context.read<QuizProvider>().quitQuiz();
               Navigator.pop(context);
             },
-            child:
-                Text(S.quizQuit, style: const TextStyle(color: Colors.white)),
+            child: Text(
+              S.quizQuit,
+              style: const TextStyle(color: Colors.white),
+            ),
           ),
         ],
       ),

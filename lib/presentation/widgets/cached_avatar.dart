@@ -59,9 +59,9 @@ class CachedAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isNetwork =
-        url.startsWith('http://') || url.startsWith('https://');
-    final isAnimatedFormat = url.toLowerCase().contains('.gif') ||
+    final isNetwork = url.startsWith('http://') || url.startsWith('https://');
+    final isAnimatedFormat =
+        url.toLowerCase().contains('.gif') ||
         url.toLowerCase().contains('.webp');
 
     Widget image;
@@ -122,10 +122,6 @@ class CachedAvatar extends StatelessWidget {
   }
 
   Widget _buildFallbackIcon() => Center(
-        child: Icon(
-          fallbackIcon,
-          color: fallbackIconColor,
-          size: fallbackIconSize,
-        ),
-      );
+    child: Icon(fallbackIcon, color: fallbackIconColor, size: fallbackIconSize),
+  );
 }

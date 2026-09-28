@@ -59,14 +59,17 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
     if (_filter == 'all') {
       _filteredHistory = _allHistory;
     } else if (_filter == 'coins') {
-      _filteredHistory =
-          _allHistory.where((h) => h.currency == 'coins').toList();
+      _filteredHistory = _allHistory
+          .where((h) => h.currency == 'coins')
+          .toList();
     } else if (_filter == 'gems') {
-      _filteredHistory =
-          _allHistory.where((h) => h.currency == 'gems').toList();
+      _filteredHistory = _allHistory
+          .where((h) => h.currency == 'gems')
+          .toList();
     } else {
-      _filteredHistory =
-          _allHistory.where((h) => h.category == _filter).toList();
+      _filteredHistory = _allHistory
+          .where((h) => h.category == _filter)
+          .toList();
     }
   }
 
@@ -78,8 +81,10 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
-          icon:
-              const Icon(Icons.arrow_back_rounded, color: AppColors.textPrimary),
+          icon: const Icon(
+            Icons.arrow_back_rounded,
+            color: AppColors.textPrimary,
+          ),
           onPressed: () => Navigator.pop(context),
         ),
         title: Text(
@@ -104,11 +109,11 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
           Expanded(
             child: _isLoading
                 ? const Center(
-                    child:
-                        CircularProgressIndicator(color: AppColors.neonGold))
+                    child: CircularProgressIndicator(color: AppColors.neonGold),
+                  )
                 : _filteredHistory.isEmpty
-                    ? _buildEmptyState()
-                    : _buildHistoryList(),
+                ? _buildEmptyState()
+                : _buildHistoryList(),
           ),
         ],
       ),
@@ -123,8 +128,7 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
     final totalGemsSpent = _allHistory
         .where((h) => h.currency == 'gems')
         .fold<int>(0, (sum, h) => sum + h.cost);
-    final totalItems =
-        _allHistory.fold<int>(0, (sum, h) => sum + h.quantity);
+    final totalItems = _allHistory.fold<int>(0, (sum, h) => sum + h.quantity);
 
     // Category counts
     final categoryCounts = <String, int>{};
@@ -182,12 +186,15 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
                   children: categoryCounts.entries.map((entry) {
                     return Container(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 8, vertical: 4),
+                        horizontal: 8,
+                        vertical: 4,
+                      ),
                       decoration: BoxDecoration(
                         color: _categoryColor(entry.key).withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(8),
                         border: Border.all(
-                          color: _categoryColor(entry.key).withValues(alpha: 0.3),
+                          color: _categoryColor(entry.key)
+                              .withValues(alpha: 0.3),
                         ),
                       ),
                       child: Text(
@@ -261,8 +268,10 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
               },
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 200),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 14,
+                  vertical: 8,
+                ),
                 decoration: BoxDecoration(
                   color: isSelected
                       ? AppColors.neonGold.withValues(alpha: 0.2)
@@ -278,8 +287,7 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
                   cat['label']!,
                   style: TextStyle(
                     fontSize: 12,
-                    fontWeight:
-                        isSelected ? FontWeight.w800 : FontWeight.w600,
+                    fontWeight: isSelected ? FontWeight.w800 : FontWeight.w600,
                     color: isSelected
                         ? AppColors.neonGold
                         : AppColors.textSecondary,
@@ -316,9 +324,7 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
           ),
           const SizedBox(height: 8),
           Text(
-            _filter == 'all'
-                ? S.purchaseEmptyBody
-                : S.shopEmptyCategory,
+            _filter == 'all' ? S.purchaseEmptyBody : S.shopEmptyCategory,
             style: const TextStyle(
               color: AppColors.textSecondary,
               fontSize: 14,
@@ -377,7 +383,9 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(14),
                       color: catColor.withValues(alpha: 0.15),
-                      border: Border.all(color: catColor.withValues(alpha: 0.4)),
+                      border: Border.all(
+                        color: catColor.withValues(alpha: 0.4),
+                      ),
                     ),
                     child: Icon(icon, color: catColor, size: 26),
                   ),
@@ -390,7 +398,9 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
                       decoration: BoxDecoration(
                         color: const Color(0xFF1B2646),
                         shape: BoxShape.circle,
-                        border: Border.all(color: catColor.withValues(alpha: 0.5)),
+                        border: Border.all(
+                          color: catColor.withValues(alpha: 0.5),
+                        ),
                       ),
                       child: Text(
                         _categoryEmoji(history.category),
@@ -427,7 +437,9 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
                               Flexible(
                                 child: Container(
                                   padding: const EdgeInsets.symmetric(
-                                      horizontal: 6, vertical: 2),
+                                    horizontal: 6,
+                                    vertical: 2,
+                                  ),
                                   decoration: BoxDecoration(
                                     color: catColor.withValues(alpha: 0.12),
                                     borderRadius: BorderRadius.circular(6),
@@ -448,7 +460,9 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
                               // Quantity
                               Container(
                                 padding: const EdgeInsets.symmetric(
-                                    horizontal: 6, vertical: 2),
+                                  horizontal: 6,
+                                  vertical: 2,
+                                ),
                                 decoration: BoxDecoration(
                                   color: Colors.white.withValues(alpha: 0.06),
                                   borderRadius: BorderRadius.circular(6),
@@ -587,7 +601,10 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
               const SizedBox(height: 8),
               // Category badge
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 6,
+                ),
                 decoration: BoxDecoration(
                   color: catColor.withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(12),
@@ -665,7 +682,8 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(14),
                       side: BorderSide(
-                          color: Colors.white.withValues(alpha: 0.2)),
+                        color: Colors.white.withValues(alpha: 0.2),
+                      ),
                     ),
                   ),
                   child: Text(
@@ -685,7 +703,11 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
   }
 
   Widget _buildDetailStat(
-      String label, String value, Color color, IconData icon) {
+    String label,
+    String value,
+    Color color,
+    IconData icon,
+  ) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 4),
       padding: const EdgeInsets.all(12),
@@ -708,10 +730,7 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
           ),
           Text(
             label,
-            style: const TextStyle(
-              color: AppColors.textMuted,
-              fontSize: 11,
-            ),
+            style: const TextStyle(color: AppColors.textMuted, fontSize: 11),
           ),
         ],
       ),

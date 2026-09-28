@@ -66,7 +66,8 @@ class _AiGenerationReviewScreenState extends State<AiGenerationReviewScreen> {
     // mis-marked Maths or Physical Science question is unambiguously wrong,
     // while a History nuance is often a judgement call the admin makes anyway.
     final subject = widget.subjectName.toLowerCase();
-    _verify = subject.contains('math') ||
+    _verify =
+        subject.contains('math') ||
         subject.contains('physical') ||
         subject.contains('science');
     _start();
@@ -115,36 +116,36 @@ class _AiGenerationReviewScreenState extends State<AiGenerationReviewScreen> {
     _subscription?.cancel();
     _subscription = _generator
         .generate(
-      chapter: widget.chapter,
-      subjectName: widget.subjectName,
-      idPrefix: widget.idPrefix,
-      startSequence: widget.startSequence,
-      count: widget.count,
-      existingStems: widget.existingStems,
-      existingFingerprints: widget.existingFingerprints,
-      difficulty: _difficulty,
-      verify: _verify,
-      actorUid: widget.actorUid,
-    )
+          chapter: widget.chapter,
+          subjectName: widget.subjectName,
+          idPrefix: widget.idPrefix,
+          startSequence: widget.startSequence,
+          count: widget.count,
+          existingStems: widget.existingStems,
+          existingFingerprints: widget.existingFingerprints,
+          difficulty: _difficulty,
+          verify: _verify,
+          actorUid: widget.actorUid,
+        )
         .listen((progress) {
-      if (!mounted) return;
-      setState(() {
-        _progress = progress;
-        if (progress.isTerminal) {
-          _running = false;
-          _results = progress.results;
-          // Pre-select only what needs no attention. Anything flagged is an
-          // explicit decision, never something that slips in by default.
-          _selected
-            ..clear()
-            ..addAll(
-              progress.results
-                  .where((r) => r.isClean)
-                  .map((r) => r.question.id),
-            );
-        }
-      });
-    });
+          if (!mounted) return;
+          setState(() {
+            _progress = progress;
+            if (progress.isTerminal) {
+              _running = false;
+              _results = progress.results;
+              // Pre-select only what needs no attention. Anything flagged is an
+              // explicit decision, never something that slips in by default.
+              _selected
+                ..clear()
+                ..addAll(
+                  progress.results
+                      .where((r) => r.isClean)
+                      .map((r) => r.question.id),
+                );
+            }
+          });
+        });
   }
 
   @override
@@ -158,16 +159,19 @@ class _AiGenerationReviewScreenState extends State<AiGenerationReviewScreen> {
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('Review drafts',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+            const Text(
+              'Review drafts',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            ),
             Text(
               widget.chapter.titleText.resolve('en'),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: const TextStyle(
-                  fontSize: 11.5,
-                  fontWeight: FontWeight.w500,
-                  color: AppColors.textSecondary),
+                fontSize: 11.5,
+                fontWeight: FontWeight.w500,
+                color: AppColors.textSecondary,
+              ),
             ),
           ],
         ),
@@ -175,11 +179,15 @@ class _AiGenerationReviewScreenState extends State<AiGenerationReviewScreen> {
           if (!_running)
             TextButton.icon(
               onPressed: _start,
-              icon: const Icon(Icons.refresh_rounded,
-                  size: 16, color: AppColors.neonPurple),
-              label: const Text('Regenerate',
-                  style:
-                      TextStyle(fontSize: 12, color: AppColors.neonPurple)),
+              icon: const Icon(
+                Icons.refresh_rounded,
+                size: 16,
+                color: AppColors.neonPurple,
+              ),
+              label: const Text(
+                'Regenerate',
+                style: TextStyle(fontSize: 12, color: AppColors.neonPurple),
+              ),
             ),
         ],
       ),
@@ -198,8 +206,10 @@ class _AiGenerationReviewScreenState extends State<AiGenerationReviewScreen> {
               const Padding(
                 padding: EdgeInsets.only(top: 50),
                 child: Center(
-                  child: Text('Nothing was produced. Try again.',
-                      style: TextStyle(color: AppColors.textSecondary)),
+                  child: Text(
+                    'Nothing was produced. Try again.',
+                    style: TextStyle(color: AppColors.textSecondary),
+                  ),
                 ),
               ),
           ],
@@ -215,8 +225,8 @@ class _AiGenerationReviewScreenState extends State<AiGenerationReviewScreen> {
     final colour = failed
         ? AppColors.neonRed
         : progress.stage == GenerationStage.done
-            ? AppColors.neonGreen
-            : AppColors.neonPurple;
+        ? AppColors.neonGreen
+        : AppColors.neonPurple;
 
     return GlassCard(
       borderRadius: 18,
@@ -232,7 +242,9 @@ class _AiGenerationReviewScreenState extends State<AiGenerationReviewScreen> {
                   width: 15,
                   height: 15,
                   child: CircularProgressIndicator(
-                      strokeWidth: 2, color: AppColors.neonPurple),
+                    strokeWidth: 2,
+                    color: AppColors.neonPurple,
+                  ),
                 )
               else
                 Icon(
@@ -247,17 +259,19 @@ class _AiGenerationReviewScreenState extends State<AiGenerationReviewScreen> {
                 child: Text(
                   progress.message,
                   style: TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w600,
-                      color: colour),
+                    fontSize: 13,
+                    fontWeight: FontWeight.w600,
+                    color: colour,
+                  ),
                 ),
               ),
               Text(
                 '${progress.accepted}/${progress.requested}',
                 style: const TextStyle(
-                    fontSize: 12.5,
-                    fontWeight: FontWeight.w900,
-                    color: Colors.white),
+                  fontSize: 12.5,
+                  fontWeight: FontWeight.w900,
+                  color: Colors.white,
+                ),
               ),
             ],
           ),
@@ -276,7 +290,9 @@ class _AiGenerationReviewScreenState extends State<AiGenerationReviewScreen> {
             Text(
               '${progress.rejected} draft(s) rejected by the checks and replaced',
               style: const TextStyle(
-                  fontSize: 11, color: AppColors.textSecondary),
+                fontSize: 11,
+                color: AppColors.textSecondary,
+              ),
             ),
           ],
         ],
@@ -292,11 +308,14 @@ class _AiGenerationReviewScreenState extends State<AiGenerationReviewScreen> {
         children: [
           Row(
             children: [
-              const Text('Difficulty',
-                  style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w700,
-                      color: AppColors.textSecondary)),
+              const Text(
+                'Difficulty',
+                style: TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w700,
+                  color: AppColors.textSecondary,
+                ),
+              ),
               const SizedBox(width: 8),
               Expanded(
                 child: SingleChildScrollView(
@@ -309,22 +328,29 @@ class _AiGenerationReviewScreenState extends State<AiGenerationReviewScreen> {
                         Padding(
                           padding: const EdgeInsets.only(left: 6),
                           child: ChoiceChip(
-                            label: Text(mix.label,
-                                style: TextStyle(
-                                    fontSize: 11,
-                                    fontWeight: FontWeight.w700,
-                                    color: _difficulty == mix
-                                        ? AppColors.bgDark
-                                        : AppColors.textSecondary)),
+                            label: Text(
+                              mix.label,
+                              style: TextStyle(
+                                fontSize: 11,
+                                fontWeight: FontWeight.w700,
+                                color: _difficulty == mix
+                                    ? AppColors.bgDark
+                                    : AppColors.textSecondary,
+                              ),
+                            ),
                             selected: _difficulty == mix,
                             showCheckmark: false,
-                            backgroundColor: Colors.white.withValues(alpha: 0.05),
+                            backgroundColor: Colors.white.withValues(
+                              alpha: 0.05,
+                            ),
                             selectedColor: AppColors.neonCyan,
                             side: BorderSide(
-                                color: _difficulty == mix
-                                    ? AppColors.neonCyan
-                                    : Colors.white12),
-                            onSelected: (_) => setState(() => _difficulty = mix),
+                              color: _difficulty == mix
+                                  ? AppColors.neonCyan
+                                  : Colors.white12,
+                            ),
+                            onSelected: (_) =>
+                                setState(() => _difficulty = mix),
                           ),
                         ),
                     ],
@@ -343,11 +369,14 @@ class _AiGenerationReviewScreenState extends State<AiGenerationReviewScreen> {
               value: _verify,
               activeThumbColor: AppColors.neonCyan,
               onChanged: (v) => setState(() => _verify = v),
-              title: const Text('Double-check answers',
-                  style: TextStyle(fontSize: 12.5, color: Colors.white)),
+              title: const Text(
+                'Double-check answers',
+                style: TextStyle(fontSize: 12.5, color: Colors.white),
+              ),
               subtitle: const Text(
-                  'A second key re-reads each answer. Slower, catches mis-marked options.',
-                  style: TextStyle(fontSize: 10.5, color: AppColors.textMuted)),
+                'A second key re-reads each answer. Slower, catches mis-marked options.',
+                style: TextStyle(fontSize: 10.5, color: AppColors.textMuted),
+              ),
             ),
           ),
         ],
@@ -367,7 +396,8 @@ class _AiGenerationReviewScreenState extends State<AiGenerationReviewScreen> {
       child: GlassCard(
         borderRadius: 16,
         padding: EdgeInsets.zero,
-        borderColor: flag?.colour.withValues(alpha: 0.4) ??
+        borderColor:
+            flag?.colour.withValues(alpha: 0.4) ??
             (selected ? AppColors.neonGreen.withValues(alpha: 0.3) : null),
         child: Theme(
           data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
@@ -392,18 +422,23 @@ class _AiGenerationReviewScreenState extends State<AiGenerationReviewScreen> {
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
               style: const TextStyle(
-                  fontSize: 13,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.white,
-                  height: 1.35),
+                fontSize: 13,
+                fontWeight: FontWeight.w600,
+                color: Colors.white,
+                height: 1.35,
+              ),
             ),
             subtitle: Padding(
               padding: const EdgeInsets.only(top: 4),
               child: Row(
                 children: [
-                  Text('$position · ${question.id}',
-                      style: const TextStyle(
-                          fontSize: 10.5, color: AppColors.textMuted)),
+                  Text(
+                    '$position · ${question.id}',
+                    style: const TextStyle(
+                      fontSize: 10.5,
+                      color: AppColors.textMuted,
+                    ),
+                  ),
                   if (flag != null) ...[
                     const SizedBox(width: 8),
                     Expanded(
@@ -412,11 +447,15 @@ class _AiGenerationReviewScreenState extends State<AiGenerationReviewScreen> {
                           Icon(flag.icon, size: 11, color: flag.colour),
                           const SizedBox(width: 4),
                           Expanded(
-                            child: Text(flag.label,
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                    fontSize: 10.5, color: flag.colour)),
+                            child: Text(
+                              flag.label,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                fontSize: 10.5,
+                                color: flag.colour,
+                              ),
+                            ),
                           ),
                         ],
                       ),
@@ -451,9 +490,10 @@ class _AiGenerationReviewScreenState extends State<AiGenerationReviewScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(flag.detail,
-              style: TextStyle(
-                  fontSize: 11.5, color: flag.colour, height: 1.4)),
+          Text(
+            flag.detail,
+            style: TextStyle(fontSize: 11.5, color: flag.colour, height: 1.4),
+          ),
           if (verification != null && verification.disagrees) ...[
             const SizedBox(height: 8),
             Align(
@@ -466,7 +506,8 @@ class _AiGenerationReviewScreenState extends State<AiGenerationReviewScreen> {
                 ),
                 onPressed: verification.suggestedIndex == null
                     ? null
-                    : () => _applySuggestion(draft, verification.suggestedIndex!),
+                    : () =>
+                          _applySuggestion(draft, verification.suggestedIndex!),
                 child: Text(
                   'Mark option '
                   '${String.fromCharCode(65 + (verification.suggestedIndex ?? 0))} instead',
@@ -491,16 +532,24 @@ class _AiGenerationReviewScreenState extends State<AiGenerationReviewScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(code.toUpperCase(),
-              style: const TextStyle(
-                  fontSize: 9.5,
-                  fontWeight: FontWeight.w900,
-                  letterSpacing: 0.6,
-                  color: AppColors.neonCyan)),
+          Text(
+            code.toUpperCase(),
+            style: const TextStyle(
+              fontSize: 9.5,
+              fontWeight: FontWeight.w900,
+              letterSpacing: 0.6,
+              color: AppColors.neonCyan,
+            ),
+          ),
           const SizedBox(height: 3),
-          Text(question.questionText.resolve(code),
-              style: const TextStyle(
-                  fontSize: 12.5, color: Colors.white, height: 1.35)),
+          Text(
+            question.questionText.resolve(code),
+            style: const TextStyle(
+              fontSize: 12.5,
+              color: Colors.white,
+              height: 1.35,
+            ),
+          ),
           const SizedBox(height: 5),
           for (var i = 0; i < options.length; i++)
             Padding(
@@ -519,26 +568,33 @@ class _AiGenerationReviewScreenState extends State<AiGenerationReviewScreen> {
                   ),
                   const SizedBox(width: 6),
                   Expanded(
-                    child: Text(options[i],
-                        style: TextStyle(
-                          fontSize: 11.5,
-                          height: 1.3,
-                          fontWeight: i == question.correctIndex
-                              ? FontWeight.w700
-                              : FontWeight.w400,
-                          color: i == question.correctIndex
-                              ? AppColors.neonGreen
-                              : AppColors.textSecondary,
-                        )),
+                    child: Text(
+                      options[i],
+                      style: TextStyle(
+                        fontSize: 11.5,
+                        height: 1.3,
+                        fontWeight: i == question.correctIndex
+                            ? FontWeight.w700
+                            : FontWeight.w400,
+                        color: i == question.correctIndex
+                            ? AppColors.neonGreen
+                            : AppColors.textSecondary,
+                      ),
+                    ),
                   ),
                 ],
               ),
             ),
           if (question.explanationText.has(code)) ...[
             const SizedBox(height: 5),
-            Text('💡 ${question.explanationText.resolve(code)}',
-                style: const TextStyle(
-                    fontSize: 11, color: AppColors.textMuted, height: 1.35)),
+            Text(
+              '💡 ${question.explanationText.resolve(code)}',
+              style: const TextStyle(
+                fontSize: 11,
+                color: AppColors.textMuted,
+                height: 1.35,
+              ),
+            ),
           ],
         ],
       ),
@@ -549,8 +605,9 @@ class _AiGenerationReviewScreenState extends State<AiGenerationReviewScreen> {
 
   Widget _approveBar() {
     final count = _selected.length;
-    final flagged =
-        _results.where((r) => !r.isClean && _selected.contains(r.question.id)).length;
+    final flagged = _results
+        .where((r) => !r.isClean && _selected.contains(r.question.id))
+        .length;
 
     return SafeArea(
       child: Padding(
@@ -564,7 +621,9 @@ class _AiGenerationReviewScreenState extends State<AiGenerationReviewScreen> {
                 child: Text(
                   '$flagged flagged question(s) are selected — check them first',
                   style: const TextStyle(
-                      fontSize: 11, color: AppColors.neonGold),
+                    fontSize: 11,
+                    color: AppColors.neonGold,
+                  ),
                 ),
               ),
             SizedBox(
@@ -572,12 +631,15 @@ class _AiGenerationReviewScreenState extends State<AiGenerationReviewScreen> {
               height: 50,
               child: ElevatedButton.icon(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor:
-                      count == 0 ? Colors.white12 : AppColors.neonGreen,
-                  foregroundColor:
-                      count == 0 ? AppColors.textMuted : AppColors.bgDark,
+                  backgroundColor: count == 0
+                      ? Colors.white12
+                      : AppColors.neonGreen,
+                  foregroundColor: count == 0
+                      ? AppColors.textMuted
+                      : AppColors.bgDark,
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15)),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
                 ),
                 onPressed: count == 0 ? null : _approve,
                 icon: const Icon(Icons.playlist_add_check_rounded, size: 20),
@@ -586,7 +648,9 @@ class _AiGenerationReviewScreenState extends State<AiGenerationReviewScreen> {
                       ? 'Select questions to add'
                       : 'Add $count question${count == 1 ? '' : 's'} to chapter',
                   style: const TextStyle(
-                      fontWeight: FontWeight.w900, fontSize: 14),
+                    fontWeight: FontWeight.w900,
+                    fontSize: 14,
+                  ),
                 ),
               ),
             ),
@@ -606,8 +670,9 @@ class _AiGenerationReviewScreenState extends State<AiGenerationReviewScreen> {
 
   void _applySuggestion(GeneratedQuestion draft, int index) {
     setState(() {
-      final position =
-          _results.indexWhere((r) => r.question.id == draft.question.id);
+      final position = _results.indexWhere(
+        (r) => r.question.id == draft.question.id,
+      );
       if (position < 0) return;
 
       final question = draft.question;
@@ -636,7 +701,8 @@ class _AiGenerationReviewScreenState extends State<AiGenerationReviewScreen> {
         icon: Icons.report_problem_rounded,
         colour: AppColors.neonRed,
         label: 'Answer disputed',
-        detail: 'The second check says option '
+        detail:
+            'The second check says option '
             '${String.fromCharCode(65 + (verification.suggestedIndex ?? 0))} '
             'is correct, not '
             '${String.fromCharCode(65 + draft.question.correctIndex)}.'
@@ -650,7 +716,8 @@ class _AiGenerationReviewScreenState extends State<AiGenerationReviewScreen> {
         icon: Icons.copy_rounded,
         colour: AppColors.neonGold,
         label: 'Similar to ${near.questionId}',
-        detail: 'This closely resembles ${near.questionId} '
+        detail:
+            'This closely resembles ${near.questionId} '
             '(${near.scoreLabel}): "${near.stem}"',
       );
     }
@@ -660,7 +727,8 @@ class _AiGenerationReviewScreenState extends State<AiGenerationReviewScreen> {
         icon: Icons.help_outline_rounded,
         colour: AppColors.neonGold,
         label: 'Unverified',
-        detail: 'The second check could not confirm the answer.'
+        detail:
+            'The second check could not confirm the answer.'
             '${verification.reason.isEmpty ? '' : ' ${verification.reason}'}',
       );
     }

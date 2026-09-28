@@ -116,9 +116,10 @@ class _ChapterSetsScreenState extends State<ChapterSetsScreen>
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: const TextStyle(
-                  fontSize: 11.5,
-                  fontWeight: FontWeight.w500,
-                  color: AppColors.textSecondary),
+                fontSize: 11.5,
+                fontWeight: FontWeight.w500,
+                color: AppColors.textSecondary,
+              ),
             ),
           ],
         ),
@@ -127,8 +128,10 @@ class _ChapterSetsScreenState extends State<ChapterSetsScreen>
           indicatorColor: widget.accent,
           labelColor: widget.accent,
           unselectedLabelColor: AppColors.textSecondary,
-          labelStyle:
-              const TextStyle(fontSize: 13, fontWeight: FontWeight.w800),
+          labelStyle: const TextStyle(
+            fontSize: 13,
+            fontWeight: FontWeight.w800,
+          ),
           tabs: [
             Tab(text: S.setsTitle),
             Tab(text: S.setsHistoryTab),
@@ -137,7 +140,8 @@ class _ChapterSetsScreenState extends State<ChapterSetsScreen>
       ),
       body: _loading
           ? const Center(
-              child: CircularProgressIndicator(color: AppColors.neonCyan))
+              child: CircularProgressIndicator(color: AppColors.neonCyan),
+            )
           : TabBarView(
               controller: _tabs,
               children: [_setsTab(), _historyTab()],
@@ -186,17 +190,19 @@ class _ChapterSetsScreenState extends State<ChapterSetsScreen>
                       ? S.setsAllDone
                       : S.setsSetOf(n: (next) + 1, total: _setCount),
                   style: const TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w900,
-                      color: Colors.white),
+                    fontSize: 15,
+                    fontWeight: FontWeight.w900,
+                    color: Colors.white,
+                  ),
                 ),
               ),
               Text(
                 '$cleared / $_setCount',
                 style: TextStyle(
-                    fontSize: 13,
-                    fontWeight: FontWeight.w900,
-                    color: widget.accent),
+                  fontSize: 13,
+                  fontWeight: FontWeight.w900,
+                  color: widget.accent,
+                ),
               ),
             ],
           ),
@@ -215,7 +221,10 @@ class _ChapterSetsScreenState extends State<ChapterSetsScreen>
             Text(
               S.setsAllDoneBody,
               style: const TextStyle(
-                  fontSize: 12, color: AppColors.textSecondary, height: 1.4),
+                fontSize: 12,
+                color: AppColors.textSecondary,
+                height: 1.4,
+              ),
             )
           else
             SizedBox(
@@ -226,7 +235,8 @@ class _ChapterSetsScreenState extends State<ChapterSetsScreen>
                   backgroundColor: widget.accent,
                   foregroundColor: AppColors.bgDark,
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(14)),
+                    borderRadius: BorderRadius.circular(14),
+                  ),
                 ),
                 onPressed: () => _play(next, practice: false),
                 icon: const Icon(Icons.play_arrow_rounded, size: 22),
@@ -235,7 +245,9 @@ class _ChapterSetsScreenState extends State<ChapterSetsScreen>
                       ? S.setsStart(n: next + 1)
                       : S.setsContinue(n: next + 1),
                   style: const TextStyle(
-                      fontWeight: FontWeight.w900, fontSize: 14),
+                    fontWeight: FontWeight.w900,
+                    fontSize: 14,
+                  ),
                 ),
               ),
             ),
@@ -255,8 +267,8 @@ class _ChapterSetsScreenState extends State<ChapterSetsScreen>
     final colour = done != null
         ? AppColors.neonGreen
         : isNext
-            ? widget.accent
-            : AppColors.textMuted;
+        ? widget.accent
+        : AppColors.textMuted;
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
@@ -280,20 +292,27 @@ class _ChapterSetsScreenState extends State<ChapterSetsScreen>
               ),
               child: Center(
                 child: locked
-                    ? const Icon(Icons.lock_rounded,
-                        size: 18, color: AppColors.textMuted)
+                    ? const Icon(
+                        Icons.lock_rounded,
+                        size: 18,
+                        color: AppColors.textMuted,
+                      )
                     : done != null
-                        ? Icon(
-                            done.isPerfect
-                                ? Icons.workspace_premium_rounded
-                                : Icons.check_rounded,
-                            size: 20,
-                            color: colour)
-                        : Text('${index + 1}',
-                            style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.w900,
-                                color: colour)),
+                    ? Icon(
+                        done.isPerfect
+                            ? Icons.workspace_premium_rounded
+                            : Icons.check_rounded,
+                        size: 20,
+                        color: colour,
+                      )
+                    : Text(
+                        '${index + 1}',
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w900,
+                          color: colour,
+                        ),
+                      ),
               ),
             ),
             const SizedBox(width: 14),
@@ -314,9 +333,9 @@ class _ChapterSetsScreenState extends State<ChapterSetsScreen>
                     locked
                         ? S.setsLocked(n: index)
                         : done != null
-                            ? '${S.setsCleared} · '
-                                '${S.setsBest(correct: done.bestCorrect, total: done.totalQuestions)}'
-                            : S.setsQuestions(n: length),
+                        ? '${S.setsCleared} · '
+                              '${S.setsBest(correct: done.bestCorrect, total: done.totalQuestions)}'
+                        : S.setsQuestions(n: length),
                     style: TextStyle(
                       fontSize: 11.5,
                       color: done != null
@@ -330,8 +349,11 @@ class _ChapterSetsScreenState extends State<ChapterSetsScreen>
             if (done != null)
               _retryChip(index)
             else if (isNext)
-              Icon(Icons.play_circle_fill_rounded,
-                  size: 26, color: widget.accent),
+              Icon(
+                Icons.play_circle_fill_rounded,
+                size: 26,
+                color: widget.accent,
+              ),
           ],
         ),
       ),
@@ -348,11 +370,15 @@ class _ChapterSetsScreenState extends State<ChapterSetsScreen>
         minimumSize: const Size(0, 32),
         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
       ),
-      icon: const Icon(Icons.refresh_rounded,
-          size: 15, color: AppColors.textSecondary),
-      label: Text(S.setsRetry,
-          style:
-              const TextStyle(fontSize: 11.5, color: AppColors.textSecondary)),
+      icon: const Icon(
+        Icons.refresh_rounded,
+        size: 15,
+        color: AppColors.textSecondary,
+      ),
+      label: Text(
+        S.setsRetry,
+        style: const TextStyle(fontSize: 11.5, color: AppColors.textSecondary),
+      ),
     );
   }
 
@@ -363,21 +389,31 @@ class _ChapterSetsScreenState extends State<ChapterSetsScreen>
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Icon(Icons.inbox_rounded, size: 46, color: AppColors.textMuted),
+            const Icon(
+              Icons.inbox_rounded,
+              size: 46,
+              color: AppColors.textMuted,
+            ),
             const SizedBox(height: 14),
-            Text(S.setsEmpty,
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                    fontSize: 14.5,
-                    fontWeight: FontWeight.w700,
-                    color: Colors.white)),
+            Text(
+              S.setsEmpty,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                fontSize: 14.5,
+                fontWeight: FontWeight.w700,
+                color: Colors.white,
+              ),
+            ),
             const SizedBox(height: 6),
-            Text(S.setsEmptyBody,
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                    fontSize: 12,
-                    color: AppColors.textSecondary,
-                    height: 1.4)),
+            Text(
+              S.setsEmptyBody,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                fontSize: 12,
+                color: AppColors.textSecondary,
+                height: 1.4,
+              ),
+            ),
           ],
         ),
       ),
@@ -397,22 +433,31 @@ class _ChapterSetsScreenState extends State<ChapterSetsScreen>
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Icon(Icons.history_rounded,
-                  size: 46, color: AppColors.textMuted),
+              const Icon(
+                Icons.history_rounded,
+                size: 46,
+                color: AppColors.textMuted,
+              ),
               const SizedBox(height: 14),
-              Text(S.setsNoHistory,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                      fontSize: 14.5,
-                      fontWeight: FontWeight.w700,
-                      color: Colors.white)),
+              Text(
+                S.setsNoHistory,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontSize: 14.5,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white,
+                ),
+              ),
               const SizedBox(height: 6),
-              Text(S.setsNoHistoryBody,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                      fontSize: 12,
-                      color: AppColors.textSecondary,
-                      height: 1.4)),
+              Text(
+                S.setsNoHistoryBody,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontSize: 12,
+                  color: AppColors.textSecondary,
+                  height: 1.4,
+                ),
+              ),
             ],
           ),
         ),
@@ -426,13 +471,20 @@ class _ChapterSetsScreenState extends State<ChapterSetsScreen>
           padding: const EdgeInsets.only(bottom: 12, left: 2),
           child: Row(
             children: [
-              const Icon(Icons.info_outline_rounded,
-                  size: 13, color: AppColors.textMuted),
+              const Icon(
+                Icons.info_outline_rounded,
+                size: 13,
+                color: AppColors.textMuted,
+              ),
               const SizedBox(width: 7),
               Expanded(
-                child: Text(S.setsPracticeNote,
-                    style: const TextStyle(
-                        fontSize: 11, color: AppColors.textMuted)),
+                child: Text(
+                  S.setsPracticeNote,
+                  style: const TextStyle(
+                    fontSize: 11,
+                    color: AppColors.textMuted,
+                  ),
+                ),
               ),
             ],
           ),
@@ -454,18 +506,24 @@ class _ChapterSetsScreenState extends State<ChapterSetsScreen>
               width: 46,
               child: Column(
                 children: [
-                  Text('${entry.accuracyPercent}%',
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w900,
-                        color: entry.isPerfect
-                            ? AppColors.neonGold
-                            : AppColors.neonGreen,
-                      )),
+                  Text(
+                    '${entry.accuracyPercent}%',
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w900,
+                      color: entry.isPerfect
+                          ? AppColors.neonGold
+                          : AppColors.neonGreen,
+                    ),
+                  ),
                   const SizedBox(height: 2),
-                  Text(S.accuracy,
-                      style: const TextStyle(
-                          fontSize: 9, color: AppColors.textMuted)),
+                  Text(
+                    S.accuracy,
+                    style: const TextStyle(
+                      fontSize: 9,
+                      color: AppColors.textMuted,
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -476,15 +534,21 @@ class _ChapterSetsScreenState extends State<ChapterSetsScreen>
                 children: [
                   Row(
                     children: [
-                      Text(S.setsSet(n: entry.setNumber),
-                          style: const TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w800,
-                              color: Colors.white)),
+                      Text(
+                        S.setsSet(n: entry.setNumber),
+                        style: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w800,
+                          color: Colors.white,
+                        ),
+                      ),
                       if (entry.isPerfect) ...[
                         const SizedBox(width: 6),
-                        const Icon(Icons.workspace_premium_rounded,
-                            size: 14, color: AppColors.neonGold),
+                        const Icon(
+                          Icons.workspace_premium_rounded,
+                          size: 14,
+                          color: AppColors.neonGold,
+                        ),
                       ],
                     ],
                   ),
@@ -493,13 +557,17 @@ class _ChapterSetsScreenState extends State<ChapterSetsScreen>
                     '${S.setsBest(correct: entry.bestCorrect, total: entry.totalQuestions)}'
                     ' · ${S.setsAttempts(n: entry.attempts)}',
                     style: const TextStyle(
-                        fontSize: 11.5, color: AppColors.textSecondary),
+                      fontSize: 11.5,
+                      color: AppColors.textSecondary,
+                    ),
                   ),
                   const SizedBox(height: 2),
                   Text(
                     S.setsPlayedOn(date: _formatDate(entry.lastPlayedAt)),
                     style: const TextStyle(
-                        fontSize: 10.5, color: AppColors.textMuted),
+                      fontSize: 10.5,
+                      color: AppColors.textMuted,
+                    ),
                   ),
                 ],
               ),
@@ -512,8 +580,10 @@ class _ChapterSetsScreenState extends State<ChapterSetsScreen>
               ),
               onPressed: () => _play(entry.setIndex, practice: true),
               icon: Icon(Icons.refresh_rounded, size: 15, color: widget.accent),
-              label: Text(S.setsRetry,
-                  style: TextStyle(fontSize: 11.5, color: widget.accent)),
+              label: Text(
+                S.setsRetry,
+                style: TextStyle(fontSize: 11.5, color: widget.accent),
+              ),
             ),
           ],
         ),
@@ -535,15 +605,15 @@ class _ChapterSetsScreenState extends State<ChapterSetsScreen>
     SoundService.instance.play('ui_whoosh');
     Haptics.tap();
     await context.read<QuizProvider>().startChapterQuiz(
-          widget.chapter.jsonFile,
-          chapterId: _chapterId,
-          categoryTitle: widget.categoryTitle,
-          categoryTitleBn: widget.categoryTitleBn,
-          chapterTitle: widget.chapter.title,
-          chapterTitleBn: widget.chapter.titleText.resolve('bn'),
-          setIndex: setIndex,
-          practice: practice,
-        );
+      widget.chapter.jsonFile,
+      chapterId: _chapterId,
+      categoryTitle: widget.categoryTitle,
+      categoryTitleBn: widget.categoryTitleBn,
+      chapterTitle: widget.chapter.title,
+      chapterTitleBn: widget.chapter.titleText.resolve('bn'),
+      setIndex: setIndex,
+      practice: practice,
+    );
 
     if (!mounted) return;
     await Navigator.push(

@@ -64,9 +64,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
       unawaited(OneSignalService.instance.syncFromHive());
       NotificationInbox.instance.reload();
       AppNavigator.flushPending();
-      context
-          .read<RewardsProvider>()
-          .initialize(userId: userProvider.user.userId);
+      context.read<RewardsProvider>().initialize(
+        userId: userProvider.user.userId,
+      );
 
       // UMP consent: shows Google's consent form only where required
       // (EU/EEA/UK). Ads are gated until this resolves; elsewhere this
@@ -99,9 +99,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
     final userProvider = context.read<UserProvider>();
     await Future.wait([
       userProvider.refreshRankings(force: true),
-      context
-          .read<RewardsProvider>()
-          .initialize(userId: userProvider.user.userId),
+      context.read<RewardsProvider>().initialize(
+        userId: userProvider.user.userId,
+      ),
     ]);
   }
 
@@ -240,9 +240,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
           // right after answering the consent form, and when the banner
           // itself finishes loading.
           ListenableBuilder(
-            listenable: Listenable.merge(
-              [ConsentService.instance, AdService.instance],
-            ),
+            listenable: Listenable.merge([
+              ConsentService.instance,
+              AdService.instance,
+            ]),
             builder: (context, _) => AdService.instance.banner(),
           ),
           _buildBottomNavigation(),
@@ -282,11 +283,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
       alignment: alignment,
       width: width,
       height: height,
-      errorBuilder: (_, __, ___) => Icon(
-        fallbackIcon,
-        color: Colors.white,
-        size: fallbackSize,
-      ),
+      errorBuilder: (_, __, ___) =>
+          Icon(fallbackIcon, color: Colors.white, size: fallbackSize),
     );
   }
 
@@ -343,8 +341,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           listenable: NotificationInbox.instance,
           builder: (context, _) {
             final unread = NotificationInbox.instance.unreadCount;
-            final on =
-                userProvider.setting(UserProvider.settingNotifications);
+            final on = userProvider.setting(UserProvider.settingNotifications);
             return GestureDetector(
               onTap: () {
                 SoundService.instance.play('ui_click');
@@ -369,7 +366,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         shape: BoxShape.circle,
                         color: Colors.white.withValues(alpha: 0.055),
                         border: Border.all(
-                            color: Colors.white.withValues(alpha: 0.10)),
+                          color: Colors.white.withValues(alpha: 0.10),
+                        ),
                       ),
                       child: Icon(
                         on
@@ -524,7 +522,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 5),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 9,
+                            vertical: 5,
+                          ),
                           decoration: BoxDecoration(
                             color: AppColors.neonCyan.withValues(alpha: 0.13),
                             borderRadius: BorderRadius.circular(10),
@@ -557,10 +558,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         Row(
                           children: [
                             _buildHeroMeta(
-                                Icons.timer_outlined, config.dailyDurationLabel),
+                              Icons.timer_outlined,
+                              config.dailyDurationLabel,
+                            ),
                             const SizedBox(width: 6),
-                            _buildHeroMeta(Icons.card_giftcard_rounded,
-                                'up to ${config.dailyMaxCoins} coins'),
+                            _buildHeroMeta(
+                              Icons.card_giftcard_rounded,
+                              'up to ${config.dailyMaxCoins} coins',
+                            ),
                           ],
                         ),
                         const SizedBox(height: 14),
@@ -589,8 +594,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           const SizedBox(height: 9),
                           Row(
                             children: [
-                              const Icon(Icons.lock_outline_rounded,
-                                  size: 12, color: AppColors.textSecondary),
+                              const Icon(
+                                Icons.lock_outline_rounded,
+                                size: 12,
+                                color: AppColors.textSecondary,
+                              ),
                               const SizedBox(width: 5),
                               Expanded(
                                 child: Text(
@@ -677,7 +685,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             color: AppColors.neonCyan,
             detail: stats.hasData
                 ? (userProvider.percentileLabel ??
-                    '${stats.totalAnswered} questions answered')
+                      '${stats.totalAnswered} questions answered')
                 : 'No quiz played yet',
           ),
         ),
@@ -884,26 +892,36 @@ class _DashboardScreenState extends State<DashboardScreen> {
               value: goal == 0 ? 0.0 : completed / goal,
               minHeight: 8,
               backgroundColor: Colors.white.withValues(alpha: 0.08),
-              valueColor: const AlwaysStoppedAnimation<Color>(AppColors.neonGold),
+              valueColor: const AlwaysStoppedAnimation<Color>(
+                AppColors.neonGold,
+              ),
             ),
           ),
           const SizedBox(height: 11),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: List.generate(goal, (index) {
-              final mondayOfThisWeek = DateTime(now.year, now.month, now.day)
-                  .subtract(Duration(days: now.weekday - 1));
+              final mondayOfThisWeek = DateTime(
+                now.year,
+                now.month,
+                now.day,
+              ).subtract(Duration(days: now.weekday - 1));
               final dayDate = mondayOfThisWeek.add(Duration(days: index));
-              final isToday = dayDate.year == now.year &&
+              final isToday =
+                  dayDate.year == now.year &&
                   dayDate.month == now.month &&
                   dayDate.day == now.day;
-              final isFuture = dayDate.isAfter(DateTime(now.year, now.month, now.day));
+              final isFuture = dayDate.isAfter(
+                DateTime(now.year, now.month, now.day),
+              );
 
               bool isAttended = false;
               if (!isFuture && lastPlayDate != null && user.dailyStreak > 0) {
-                final diff = DateTime(lastPlayDate.year, lastPlayDate.month, lastPlayDate.day)
-                    .difference(dayDate)
-                    .inDays;
+                final diff = DateTime(
+                  lastPlayDate.year,
+                  lastPlayDate.month,
+                  lastPlayDate.day,
+                ).difference(dayDate).inDays;
                 if (diff >= 0 && diff < user.dailyStreak) {
                   isAttended = true;
                 }
@@ -944,15 +962,19 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           color: isToday
                               ? AppColors.neonCyan
                               : isAttended
-                                  ? AppColors.neonGold.withValues(alpha: 0.75)
-                                  : Colors.white.withValues(alpha: 0.10),
+                              ? AppColors.neonGold.withValues(alpha: 0.75)
+                              : Colors.white.withValues(alpha: 0.10),
                           width: isToday ? 2 : 1,
                         ),
                       ),
                       child: Icon(
-                        isAttended ? Icons.check_rounded : Icons.circle_outlined,
+                        isAttended
+                            ? Icons.check_rounded
+                            : Icons.circle_outlined,
                         size: 14,
-                        color: isAttended ? AppColors.neonGold : AppColors.textMuted,
+                        color: isAttended
+                            ? AppColors.neonGold
+                            : AppColors.textMuted,
                       ),
                     ),
                     const SizedBox(height: 4),
@@ -961,9 +983,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       style: TextStyle(
                         color: isToday
                             ? AppColors.neonCyan
-                            : (isAttended ? AppColors.neonGold : AppColors.textMuted),
+                            : (isAttended
+                                  ? AppColors.neonGold
+                                  : AppColors.textMuted),
                         fontSize: 9,
-                        fontWeight: isToday || isAttended ? FontWeight.w900 : FontWeight.w700,
+                        fontWeight: isToday || isAttended
+                            ? FontWeight.w900
+                            : FontWeight.w700,
                       ),
                     ),
                   ],
@@ -1025,7 +1051,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
               children: [
                 Text(
                   actionLabel,
-                  style: const TextStyle(fontSize: 10, fontWeight: FontWeight.w800),
+                  style: const TextStyle(
+                    fontSize: 10,
+                    fontWeight: FontWeight.w800,
+                  ),
                 ),
                 const SizedBox(width: 3),
                 const Icon(Icons.arrow_forward_rounded, size: 13),
@@ -1038,18 +1067,57 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   Widget _buildQuickActions() {
     final actions = [
-      _QuickAction(S.dashChapters, Icons.menu_book_rounded, AppColors.neonCyan,
-          () => _onNavTap(1)),
-      _QuickAction(S.dashHistory, Icons.history_rounded, AppColors.neonPurple,
-          () => Navigator.push(context, MaterialPageRoute(builder: (_) => const QuizHistoryScreen()))),
-      _QuickAction(S.dashBattle, Icons.bolt_rounded, AppColors.neonPink,
-          () => Navigator.push(context, MaterialPageRoute(builder: (_) => const BattleScreen()))),
-      _QuickAction('Online', Icons.people_alt_rounded, const Color(0xFF00B4D8),
-          () => Navigator.push(context, MaterialPageRoute(builder: (_) => const OnlineBattleScreen()))),
-      _QuickAction(S.dashRewards, Icons.card_giftcard_rounded, AppColors.neonGold,
-          () => Navigator.push(context, MaterialPageRoute(builder: (_) => const RewardsScreen()))),
-      _QuickAction(S.dashShop, Icons.storefront_rounded, AppColors.neonPurple,
-          () => Navigator.push(context, MaterialPageRoute(builder: (_) => const ShopScreen()))),
+      _QuickAction(
+        S.dashChapters,
+        Icons.menu_book_rounded,
+        AppColors.neonCyan,
+        () => _onNavTap(1),
+      ),
+      _QuickAction(
+        S.dashHistory,
+        Icons.history_rounded,
+        AppColors.neonPurple,
+        () => Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => const QuizHistoryScreen()),
+        ),
+      ),
+      _QuickAction(
+        S.dashBattle,
+        Icons.bolt_rounded,
+        AppColors.neonPink,
+        () => Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => const BattleScreen()),
+        ),
+      ),
+      _QuickAction(
+        'Online',
+        Icons.people_alt_rounded,
+        const Color(0xFF00B4D8),
+        () => Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => const OnlineBattleScreen()),
+        ),
+      ),
+      _QuickAction(
+        S.dashRewards,
+        Icons.card_giftcard_rounded,
+        AppColors.neonGold,
+        () => Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => const RewardsScreen()),
+        ),
+      ),
+      _QuickAction(
+        S.dashShop,
+        Icons.storefront_rounded,
+        AppColors.neonPurple,
+        () => Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => const ShopScreen()),
+        ),
+      ),
     ];
 
     return SizedBox(
@@ -1085,7 +1153,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         action.color.withValues(alpha: 0.08),
                       ],
                     ),
-                    border: Border.all(color: action.color.withValues(alpha: 0.38)),
+                    border: Border.all(
+                      color: action.color.withValues(alpha: 0.38),
+                    ),
                   ),
                   child: Icon(action.icon, color: action.color, size: 23),
                 ),
@@ -1128,8 +1198,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 shape: BoxShape.circle,
                 color: AppColors.neonGold.withValues(alpha: 0.12),
               ),
-              child: const Icon(Icons.workspace_premium_rounded,
-                  color: AppColors.neonGold, size: 24),
+              child: const Icon(
+                Icons.workspace_premium_rounded,
+                color: AppColors.neonGold,
+                size: 24,
+              ),
             ),
             const SizedBox(width: 13),
             const Expanded(
@@ -1161,8 +1234,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
       );
     }
 
-    final championAvatar =
-        champ.avatarPath.isNotEmpty ? champ.avatarPath : AppAssets.maleAvatar;
+    final championAvatar = champ.avatarPath.isNotEmpty
+        ? champ.avatarPath
+        : AppAssets.maleAvatar;
     final prizeLabel = _championPrizeLabel(champ);
 
     return Container(
@@ -1219,8 +1293,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     children: [
                       const Row(
                         children: [
-                          Icon(Icons.workspace_premium_rounded,
-                              color: AppColors.neonGold, size: 17),
+                          Icon(
+                            Icons.workspace_premium_rounded,
+                            color: AppColors.neonGold,
+                            size: 17,
+                          ),
                           SizedBox(width: 6),
                           Expanded(
                             child: Text(
@@ -1262,8 +1339,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       if (prizeLabel != null)
                         Row(
                           children: [
-                            const Icon(Icons.card_giftcard_rounded,
-                                color: AppColors.neonPink, size: 15),
+                            const Icon(
+                              Icons.card_giftcard_rounded,
+                              color: AppColors.neonPink,
+                              size: 15,
+                            ),
                             const SizedBox(width: 5),
                             Expanded(
                               child: Text(
@@ -1300,8 +1380,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   /// Live top-4 straight from the Hive-cached leaderboard.
   Widget _buildLeaderboardPreview(UserProvider userProvider) {
-    final List<LeaderboardItem> players =
-        userProvider.leaderboard.take(4).toList();
+    final List<LeaderboardItem> players = userProvider.leaderboard
+        .take(4)
+        .toList();
 
     if (players.isEmpty) {
       return GlassCard(
@@ -1310,8 +1391,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
         borderColor: AppColors.neonCyan.withValues(alpha: 0.18),
         child: Row(
           children: [
-            const Icon(Icons.leaderboard_rounded,
-                color: AppColors.textMuted, size: 22),
+            const Icon(
+              Icons.leaderboard_rounded,
+              color: AppColors.textMuted,
+              size: 22,
+            ),
             const SizedBox(width: 11),
             Expanded(
               child: Text(
@@ -1418,7 +1502,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
             MaterialPageRoute(builder: (_) => const AdminDashboardScreen()),
           );
         },
-        icon: const Icon(Icons.shield_rounded, size: 15, color: AppColors.textMuted),
+        icon: const Icon(
+          Icons.shield_rounded,
+          size: 15,
+          color: AppColors.textMuted,
+        ),
         label: const Text(
           'Admin control panel',
           style: TextStyle(
@@ -1466,7 +1554,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       gradient: AppColors.goldGradient,
-                      border: Border.all(color: Colors.white.withValues(alpha: 0.42)),
+                      border: Border.all(
+                        color: Colors.white.withValues(alpha: 0.42),
+                      ),
                       boxShadow: [
                         BoxShadow(
                           color: AppColors.neonGold.withValues(alpha: 0.38),
@@ -1550,11 +1640,7 @@ class _MarqueeText extends StatefulWidget {
   final TextStyle style;
   final String? effectId;
 
-  const _MarqueeText(
-    this.text, {
-    required this.style,
-    this.effectId,
-  });
+  const _MarqueeText(this.text, {required this.style, this.effectId});
 
   @override
   State<_MarqueeText> createState() => _MarqueeTextState();
@@ -1574,10 +1660,7 @@ class _MarqueeTextState extends State<_MarqueeText>
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(
-      vsync: this,
-      duration: _scrollDuration,
-    );
+    _controller = AnimationController(vsync: this, duration: _scrollDuration);
   }
 
   @override
@@ -1607,7 +1690,8 @@ class _MarqueeTextState extends State<_MarqueeText>
 
         final textWidth = painter.width;
         final textHeight = painter.height;
-        final hasFiniteGeometry = constraints.hasBoundedWidth &&
+        final hasFiniteGeometry =
+            constraints.hasBoundedWidth &&
             constraints.maxWidth.isFinite &&
             textWidth.isFinite &&
             textHeight.isFinite;
@@ -1697,7 +1781,6 @@ class _MarqueeTextState extends State<_MarqueeText>
   }
 }
 
-
 // ═══════════════════════════════════════════════════════════════════════════
 // 🥊 BATTLE ARENA CARD — animated 3D illustration, pure Flutter CustomPaint
 // ═══════════════════════════════════════════════════════════════════════════
@@ -1749,14 +1832,19 @@ class _BattleArenaCardState extends State<_BattleArenaCard>
       duration: const Duration(milliseconds: 700),
     )..forward();
 
-    _floatAnim = Tween<double>(begin: -6, end: 6).animate(
-      CurvedAnimation(parent: _floatCtrl, curve: Curves.easeInOut),
-    );
+    _floatAnim = Tween<double>(
+      begin: -6,
+      end: 6,
+    ).animate(CurvedAnimation(parent: _floatCtrl, curve: Curves.easeInOut));
     _flashAnim = CurvedAnimation(parent: _flashCtrl, curve: Curves.easeInOut);
-    _vsAnim = Tween<double>(begin: 0.92, end: 1.08).animate(
-      CurvedAnimation(parent: _vsCtrl, curve: Curves.easeInOut),
+    _vsAnim = Tween<double>(
+      begin: 0.92,
+      end: 1.08,
+    ).animate(CurvedAnimation(parent: _vsCtrl, curve: Curves.easeInOut));
+    _enterAnim = CurvedAnimation(
+      parent: _enterCtrl,
+      curve: Curves.easeOutCubic,
     );
-    _enterAnim = CurvedAnimation(parent: _enterCtrl, curve: Curves.easeOutCubic);
   }
 
   @override
@@ -1787,7 +1875,11 @@ class _BattleArenaCardState extends State<_BattleArenaCard>
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(28),
               gradient: const LinearGradient(
-                colors: [Color(0xFF1A0A3D), Color(0xFF0D1F4D), Color(0xFF1A0A2E)],
+                colors: [
+                  Color(0xFF1A0A3D),
+                  Color(0xFF0D1F4D),
+                  Color(0xFF1A0A2E),
+                ],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
               ),
@@ -1889,7 +1981,8 @@ class _BattleArenaCardState extends State<_BattleArenaCard>
                             const SizedBox(height: 4),
                             Container(
                               padding: const EdgeInsets.symmetric(
-                                horizontal: 14, vertical: 6,
+                                horizontal: 14,
+                                vertical: 6,
                               ),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(14),
@@ -1901,7 +1994,9 @@ class _BattleArenaCardState extends State<_BattleArenaCard>
                                 ),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: AppColors.neonGold.withValues(alpha: 0.7),
+                                    color: AppColors.neonGold.withValues(
+                                      alpha: 0.7,
+                                    ),
                                     blurRadius: 20,
                                     spreadRadius: 2,
                                   ),
@@ -1931,7 +2026,8 @@ class _BattleArenaCardState extends State<_BattleArenaCard>
                     bottom: 0,
                     child: Container(
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 18, vertical: 10,
+                        horizontal: 18,
+                        vertical: 10,
                       ),
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
@@ -1977,20 +2073,28 @@ class _BattleArenaCardState extends State<_BattleArenaCard>
                                 GestureDetector(
                                   onTap: () => Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (_) => const OnlineBattleScreen()),
+                                    MaterialPageRoute(
+                                      builder: (_) =>
+                                          const OnlineBattleScreen(),
+                                    ),
                                   ),
                                   child: Container(
                                     padding: const EdgeInsets.symmetric(
-                                      horizontal: 8, vertical: 6,
+                                      horizontal: 8,
+                                      vertical: 6,
                                     ),
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(18),
                                       gradient: const LinearGradient(
-                                        colors: [Color(0xFF00B4D8), Color(0xFF0077B6)],
+                                        colors: [
+                                          Color(0xFF00B4D8),
+                                          Color(0xFF0077B6),
+                                        ],
                                       ),
                                       boxShadow: [
                                         BoxShadow(
-                                          color: const Color(0xFF00B4D8).withValues(alpha: 0.4),
+                                          color: const Color(0xFF00B4D8)
+                                              .withValues(alpha: 0.4),
                                           blurRadius: 8,
                                         ),
                                       ],
@@ -1998,8 +2102,11 @@ class _BattleArenaCardState extends State<_BattleArenaCard>
                                     child: const Row(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
-                                        Icon(Icons.wifi_rounded,
-                                            color: Colors.white, size: 11),
+                                        Icon(
+                                          Icons.wifi_rounded,
+                                          color: Colors.white,
+                                          size: 11,
+                                        ),
                                         SizedBox(width: 3),
                                         Text(
                                           'ONLINE',
@@ -2018,16 +2125,22 @@ class _BattleArenaCardState extends State<_BattleArenaCard>
                                 // ── FIGHT button (existing) ──
                                 Container(
                                   padding: const EdgeInsets.symmetric(
-                                    horizontal: 10, vertical: 6,
+                                    horizontal: 10,
+                                    vertical: 6,
                                   ),
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(18),
                                     gradient: const LinearGradient(
-                                      colors: [AppColors.neonPink, AppColors.neonPurple],
+                                      colors: [
+                                        AppColors.neonPink,
+                                        AppColors.neonPurple,
+                                      ],
                                     ),
                                     boxShadow: [
                                       BoxShadow(
-                                        color: AppColors.neonPink.withValues(alpha: 0.4),
+                                        color: AppColors.neonPink.withValues(
+                                          alpha: 0.4,
+                                        ),
                                         blurRadius: 8,
                                       ),
                                     ],
@@ -2045,8 +2158,11 @@ class _BattleArenaCardState extends State<_BattleArenaCard>
                                         ),
                                       ),
                                       SizedBox(width: 3),
-                                      Icon(Icons.bolt_rounded,
-                                          color: Colors.white, size: 12),
+                                      Icon(
+                                        Icons.bolt_rounded,
+                                        color: Colors.white,
+                                        size: 12,
+                                      ),
                                     ],
                                   ),
                                 ),
@@ -2111,11 +2227,8 @@ class _FighterImage extends StatelessWidget {
               width: 110,
               height: 118,
               fit: BoxFit.contain,
-              errorBuilder: (_, __, ___) => Icon(
-                Icons.person_rounded,
-                color: glowColor,
-                size: 60,
-              ),
+              errorBuilder: (_, __, ___) =>
+                  Icon(Icons.person_rounded, color: glowColor, size: 60),
             ),
           ),
         ),
@@ -2156,11 +2269,7 @@ class _LightningPainter extends CustomPainter {
 
     // animated glow intensity
     final glow = (0.5 + 0.5 * math.sin(progress * 2 * math.pi));
-    final boltColor = Color.lerp(
-      AppColors.neonGold,
-      Colors.white,
-      glow * 0.5,
-    )!;
+    final boltColor = Color.lerp(AppColors.neonGold, Colors.white, glow * 0.5)!;
 
     final glowPaint = Paint()
       ..color = boltColor.withValues(alpha: 0.4 * glow)

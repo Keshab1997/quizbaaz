@@ -158,8 +158,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
                   // Slide 3: Chapter Bank & Champion Rewards
                   _buildSlide(
-                    imagePath:
-                        'assets/images/characters/quizbaaz_champion.png',
+                    imagePath: 'assets/images/characters/quizbaaz_champion.png',
                     iconPath: 'assets/icons/gift_box_3d.png',
                     title: S.onboard3Title,
                     description: S.onboard3Desc,
@@ -192,8 +191,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           boxShadow: active
                               ? [
                                   BoxShadow(
-                                    color: AppColors.neonGold
-                                        .withValues(alpha: 0.5),
+                                    color: AppColors.neonGold.withValues(
+                                      alpha: 0.5,
+                                    ),
                                     blurRadius: 8,
                                   ),
                                 ]

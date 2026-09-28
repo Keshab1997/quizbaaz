@@ -52,7 +52,8 @@ class OneSignalService {
   /// Initialise the SDK and the click listener. Call right after `runApp`
   /// so a notification that launched a killed app still has a listener.
   Future<void> bootstrap() async {
-    if (disabledForTests || !isSupported || !OneSignalConfig.isConfigured) return;
+    if (disabledForTests || !isSupported || !OneSignalConfig.isConfigured)
+      return;
     try {
       await _ensureReady().timeout(const Duration(seconds: 8));
     } catch (e) {
@@ -63,12 +64,13 @@ class OneSignalService {
   /// Login, tags, and opt-in/out from Hive + Firebase. Called whenever
   /// the local reminder window is rebuilt.
   Future<void> syncFromHive() async {
-    if (disabledForTests || !isSupported || !OneSignalConfig.isConfigured) return;
+    if (disabledForTests || !isSupported || !OneSignalConfig.isConfigured)
+      return;
     try {
       await _ensureReady();
       final enabled =
           HiveService.getMeta<bool>(NotificationService.settingNotifications) ??
-              true;
+          true;
       if (enabled) {
         await OneSignal.Notifications.requestPermission(false);
         await OneSignal.User.pushSubscription.optIn();
@@ -89,7 +91,9 @@ class OneSignalService {
         'lang': S.code,
         'guest': (user?.isGuest ?? true) ? 'true' : 'false',
         'streak': '${user?.dailyStreak ?? 0}',
-        'played_today': (user?.playedTodayDailyQuiz ?? false) ? 'true' : 'false',
+        'played_today': (user?.playedTodayDailyQuiz ?? false)
+            ? 'true'
+            : 'false',
       });
     } catch (e) {
       debugPrint('OneSignalService: sync failed – $e');
@@ -151,14 +155,18 @@ class OneSignalService {
     if (title.isEmpty && body.isEmpty) return;
     final data = n.additionalData;
     final open = data == null ? null : data['open']?.toString();
-    unawaited(NotificationInbox.instance.add(NotificationItem(
-      id: 'os_${n.notificationId}',
-      kind: NotificationItem.kindPush,
-      title: title.isEmpty ? S.appTitle : title,
-      body: body,
-      open: (open == null || open.isEmpty) ? null : open,
-      receivedAt: DateTime.now(),
-    )));
+    unawaited(
+      NotificationInbox.instance.add(
+        NotificationItem(
+          id: 'os_${n.notificationId}',
+          kind: NotificationItem.kindPush,
+          title: title.isEmpty ? S.appTitle : title,
+          body: body,
+          open: (open == null || open.isEmpty) ? null : open,
+          receivedAt: DateTime.now(),
+        ),
+      ),
+    );
   }
 
   /// Prefer the Firebase uid so a reinstall still maps to the same player.

@@ -49,7 +49,10 @@ class LeaderboardRepository {
 
   /// Pulls the daily winner history (last [days] completed days) from
   /// Firestore into the Hive cache, newest day first.
-  Future<List<ChampionModel>> refreshChampions({int limit = 10, int days = 7}) async {
+  Future<List<ChampionModel>> refreshChampions({
+    int limit = 10,
+    int days = 7,
+  }) async {
     final rows = await SyncService.pullChampions(limit: limit, days: days);
     if (rows.isEmpty) return cachedChampions();
     return rows.map(ChampionModel.fromJson).toList();

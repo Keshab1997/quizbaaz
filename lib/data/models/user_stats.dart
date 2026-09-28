@@ -53,8 +53,8 @@ class UserStats {
     Map<String, int>? chapterAttempted,
     this.lastPlayedDate,
     this.lastSyncedAtMs,
-  })  : chapterCorrect = chapterCorrect ?? <String, int>{},
-        chapterAttempted = chapterAttempted ?? <String, int>{};
+  }) : chapterCorrect = chapterCorrect ?? <String, int>{},
+       chapterAttempted = chapterAttempted ?? <String, int>{};
 
   /// Empty stats for a brand-new player. Deliberately all zeros so the UI
   /// shows a real "no data yet" state instead of fake numbers.
@@ -138,16 +138,19 @@ class UserStats {
     lastPlayedDate = _todayKey();
 
     if (chapterId != null && chapterId.isNotEmpty) {
-      chapterAttempted[chapterId] = (chapterAttempted[chapterId] ?? 0) + answered;
+      chapterAttempted[chapterId] =
+          (chapterAttempted[chapterId] ?? 0) + answered;
       chapterCorrect[chapterId] = (chapterCorrect[chapterId] ?? 0) + correct;
     }
 
     if (isDaily) {
       final score = dailyScore ?? correct;
-      final isBetter = score > bestDailyScore ||
+      final isBetter =
+          score > bestDailyScore ||
           (score == bestDailyScore &&
               score > 0 &&
-              (bestDailyTimeSeconds == 0 || timeSeconds < bestDailyTimeSeconds));
+              (bestDailyTimeSeconds == 0 ||
+                  timeSeconds < bestDailyTimeSeconds));
       if (isBetter) {
         bestDailyScore = score;
         bestDailyTimeSeconds = timeSeconds;
@@ -176,20 +179,20 @@ class UserStats {
   // ---------------------------------------------------------------- JSON --
 
   Map<String, dynamic> toJson() => {
-        'total_answered': totalAnswered,
-        'total_correct': totalCorrect,
-        'total_quizzes': totalQuizzes,
-        'best_daily_score': bestDailyScore,
-        'best_daily_time_seconds': bestDailyTimeSeconds,
-        'total_time_seconds': totalTimeSeconds,
-        'battles_played': battlesPlayed,
-        'battles_won': battlesWon,
-        'longest_streak': longestStreak,
-        'chapter_correct': chapterCorrect,
-        'chapter_attempted': chapterAttempted,
-        'last_played_date': lastPlayedDate,
-        'last_synced_at_ms': lastSyncedAtMs,
-      };
+    'total_answered': totalAnswered,
+    'total_correct': totalCorrect,
+    'total_quizzes': totalQuizzes,
+    'best_daily_score': bestDailyScore,
+    'best_daily_time_seconds': bestDailyTimeSeconds,
+    'total_time_seconds': totalTimeSeconds,
+    'battles_played': battlesPlayed,
+    'battles_won': battlesWon,
+    'longest_streak': longestStreak,
+    'chapter_correct': chapterCorrect,
+    'chapter_attempted': chapterAttempted,
+    'last_played_date': lastPlayedDate,
+    'last_synced_at_ms': lastSyncedAtMs,
+  };
 
   factory UserStats.fromJson(Map<String, dynamic> json) {
     Map<String, int> intMap(dynamic raw) {
@@ -228,10 +231,12 @@ class UserStats {
     merged.totalAnswered = totalAnswered > remote.totalAnswered
         ? totalAnswered
         : remote.totalAnswered;
-    merged.totalCorrect =
-        totalCorrect > remote.totalCorrect ? totalCorrect : remote.totalCorrect;
-    merged.totalQuizzes =
-        totalQuizzes > remote.totalQuizzes ? totalQuizzes : remote.totalQuizzes;
+    merged.totalCorrect = totalCorrect > remote.totalCorrect
+        ? totalCorrect
+        : remote.totalCorrect;
+    merged.totalQuizzes = totalQuizzes > remote.totalQuizzes
+        ? totalQuizzes
+        : remote.totalQuizzes;
     merged.bestDailyScore = bestDailyScore > remote.bestDailyScore
         ? bestDailyScore
         : remote.bestDailyScore;
@@ -241,28 +246,33 @@ class UserStats {
     merged.battlesPlayed = battlesPlayed > remote.battlesPlayed
         ? battlesPlayed
         : remote.battlesPlayed;
-    merged.battlesWon =
-        battlesWon > remote.battlesWon ? battlesWon : remote.battlesWon;
+    merged.battlesWon = battlesWon > remote.battlesWon
+        ? battlesWon
+        : remote.battlesWon;
     merged.longestStreak = longestStreak > remote.longestStreak
         ? longestStreak
         : remote.longestStreak;
 
     // Best time: the smaller non-zero value wins.
-    final times = <double>[bestDailyTimeSeconds, remote.bestDailyTimeSeconds]
-        .where((t) => t > 0)
-        .toList();
-    merged.bestDailyTimeSeconds =
-        times.isEmpty ? 0 : times.reduce((a, b) => a < b ? a : b);
+    final times = <double>[
+      bestDailyTimeSeconds,
+      remote.bestDailyTimeSeconds,
+    ].where((t) => t > 0).toList();
+    merged.bestDailyTimeSeconds = times.isEmpty
+        ? 0
+        : times.reduce((a, b) => a < b ? a : b);
 
     for (final entry in remote.chapterAttempted.entries) {
       final local = chapterAttempted[entry.key] ?? 0;
-      merged.chapterAttempted[entry.key] =
-          local > entry.value ? local : entry.value;
+      merged.chapterAttempted[entry.key] = local > entry.value
+          ? local
+          : entry.value;
     }
     for (final entry in remote.chapterCorrect.entries) {
       final local = chapterCorrect[entry.key] ?? 0;
-      merged.chapterCorrect[entry.key] =
-          local > entry.value ? local : entry.value;
+      merged.chapterCorrect[entry.key] = local > entry.value
+          ? local
+          : entry.value;
     }
 
     merged.lastPlayedDate = _laterDate(lastPlayedDate, remote.lastPlayedDate);

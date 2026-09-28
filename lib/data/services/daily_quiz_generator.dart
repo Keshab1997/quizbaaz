@@ -33,9 +33,9 @@ class DailyQuizGenerator {
     QuestionBankService? bankService,
     QuizRepository? quizRepository,
     DailyQuizPacketService? packetService,
-  })  : _bankService = bankService ?? QuestionBankService(),
-        _quizRepository = quizRepository ?? QuizRepository(),
-        _packetService = packetService ?? DailyQuizPacketService();
+  }) : _bankService = bankService ?? QuestionBankService(),
+       _quizRepository = quizRepository ?? QuizRepository(),
+       _packetService = packetService ?? DailyQuizPacketService();
 
   /// Integer seed derived from date key `yyyyMMdd` (e.g. 20260825).
   static int _dateSeed(DateTime date) {
@@ -43,8 +43,7 @@ class DailyQuizGenerator {
   }
 
   /// Date key string `yyyy-MM-dd` in the **competition** timezone.
-  static String dateKey([DateTime? date]) =>
-      CompetitionClock.dateKey(date);
+  static String dateKey([DateTime? date]) => CompetitionClock.dateKey(date);
 
   /// Today's set together with whether the run may be ranked.
   ///
@@ -115,9 +114,10 @@ class DailyQuizGenerator {
   Future<List<QuestionModel>> generateDailyQuestions({
     DateTime? date,
     bool forceRefresh = false,
-  }) async =>
-      (await generateDailySet(date: date, forceRefresh: forceRefresh))
-          .questions;
+  }) async => (await generateDailySet(
+    date: date,
+    forceRefresh: forceRefresh,
+  )).questions;
 
   /// Pools every bundled + Firestore question the device can see, de-duplicated
   /// by stem.
@@ -141,8 +141,9 @@ class DailyQuizGenerator {
         }
 
         try {
-          final remoteQuestions =
-              await _bankService.fetchQuestions(chapter.chapterId);
+          final remoteQuestions = await _bankService.fetchQuestions(
+            chapter.chapterId,
+          );
           for (final q in remoteQuestions) {
             final stem = q.questionText.resolve('en').trim().toLowerCase();
             if (stem.isNotEmpty && !seenStems.contains(stem)) {
@@ -160,12 +161,18 @@ class DailyQuizGenerator {
     return pooledQuestions;
   }
 
-  static Future<List<Map<String, dynamic>>> _readJsonList(String assetPath, String key) async {
+  static Future<List<Map<String, dynamic>>> _readJsonList(
+    String assetPath,
+    String key,
+  ) async {
     try {
       final jsonStr = await rootBundle.loadString(assetPath);
       final data = json.decode(jsonStr) as Map<String, dynamic>;
       final list = data[key] as List<dynamic>? ?? const [];
-      return list.whereType<Map>().map((e) => Map<String, dynamic>.from(e)).toList();
+      return list
+          .whereType<Map>()
+          .map((e) => Map<String, dynamic>.from(e))
+          .toList();
     } catch (_) {
       return const [];
     }

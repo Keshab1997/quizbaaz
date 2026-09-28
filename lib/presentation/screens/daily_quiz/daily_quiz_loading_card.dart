@@ -51,12 +51,14 @@ class _DailyQuizLoadingCardState extends State<DailyQuizLoadingCard>
       duration: const Duration(milliseconds: 2800),
     )..repeat();
 
-    _float = Tween<double>(begin: -8, end: 8).animate(
-      CurvedAnimation(parent: _floatCtrl, curve: Curves.easeInOut),
-    );
-    _glow = Tween<double>(begin: 0.35, end: 0.75).animate(
-      CurvedAnimation(parent: _glowCtrl, curve: Curves.easeInOut),
-    );
+    _float = Tween<double>(
+      begin: -8,
+      end: 8,
+    ).animate(CurvedAnimation(parent: _floatCtrl, curve: Curves.easeInOut));
+    _glow = Tween<double>(
+      begin: 0.35,
+      end: 0.75,
+    ).animate(CurvedAnimation(parent: _glowCtrl, curve: Curves.easeInOut));
     _progress = CurvedAnimation(parent: _progressCtrl, curve: Curves.easeInOut);
   }
 
@@ -81,8 +83,7 @@ class _DailyQuizLoadingCardState extends State<DailyQuizLoadingCard>
     final quiz = context.watch<QuizProvider>();
     final config = context.watch<UserProvider>().config;
     final isDaily = quiz.isDailyQuiz;
-    final character =
-        isDaily ? AppAssets.dailyStar : AppAssets.heroGirl;
+    final character = isDaily ? AppAssets.dailyStar : AppAssets.heroGirl;
 
     final eyebrow = isDaily ? S.quizLoadEyebrow : S.quizLoadChapterEyebrow;
     final title = isDaily
@@ -91,15 +92,16 @@ class _DailyQuizLoadingCardState extends State<DailyQuizLoadingCard>
     final body = isDaily
         ? S.quizLoadBody(n: config.dailyQuestionCount)
         : S.quizLoadChapterBody;
-    final questionCount =
-        isDaily ? config.dailyQuestionCount : kQuestionsPerSet;
+    final questionCount = isDaily
+        ? config.dailyQuestionCount
+        : kQuestionsPerSet;
     final totalSeconds = questionCount * config.secondsPerQuestion;
     final durationLabel =
         '${(totalSeconds ~/ 60).toString().padLeft(2, '0')}:${(totalSeconds % 60).toString().padLeft(2, '0')}';
     final maxCoins = isDaily
         ? config.dailyMaxCoins
         : questionCount * config.coinsPerCorrectPractice +
-            config.perfectBonusCoins;
+              config.perfectBonusCoins;
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(18, 8, 18, 24),
@@ -150,7 +152,9 @@ class _DailyQuizLoadingCardState extends State<DailyQuizLoadingCard>
                     height: 210,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: AppColors.neonCyan.withValues(alpha: 0.08 * _glow.value),
+                      color: AppColors.neonCyan.withValues(
+                        alpha: 0.08 * _glow.value,
+                      ),
                     ),
                   ),
                 ),
@@ -206,14 +210,16 @@ class _DailyQuizLoadingCardState extends State<DailyQuizLoadingCard>
                               shape: BoxShape.circle,
                               boxShadow: [
                                 BoxShadow(
-                                  color: AppColors.neonPurple
-                                      .withValues(alpha: 0.38 * _glow.value),
+                                  color: AppColors.neonPurple.withValues(
+                                    alpha: 0.38 * _glow.value,
+                                  ),
                                   blurRadius: 42,
                                   spreadRadius: 10,
                                 ),
                                 BoxShadow(
-                                  color: AppColors.neonGold
-                                      .withValues(alpha: 0.18 * _glow.value),
+                                  color: AppColors.neonGold.withValues(
+                                    alpha: 0.18 * _glow.value,
+                                  ),
                                   blurRadius: 24,
                                   spreadRadius: 2,
                                 ),
@@ -270,14 +276,17 @@ class _DailyQuizLoadingCardState extends State<DailyQuizLoadingCard>
                                   fit: StackFit.expand,
                                   children: [
                                     ColoredBox(
-                                      color: AppColors.textPrimary
-                                          .withValues(alpha: 0.08),
+                                      color: AppColors.textPrimary.withValues(
+                                        alpha: 0.08,
+                                      ),
                                     ),
                                     Align(
                                       alignment: Alignment.centerLeft,
                                       child: FractionallySizedBox(
-                                        widthFactor:
-                                            _progress.value.clamp(0.08, 1),
+                                        widthFactor: _progress.value.clamp(
+                                          0.08,
+                                          1,
+                                        ),
                                         heightFactor: 1,
                                         child: const DecoratedBox(
                                           decoration: BoxDecoration(
@@ -413,7 +422,10 @@ class _LoadingSparkPainter extends CustomPainter {
       Paint()..color = AppColors.neonCyan.withValues(alpha: 0.55),
     );
     canvas.drawCircle(
-      Offset(cx + 70 * math.cos(-angle * 1.4), cy + 58 * math.sin(-angle * 1.4)),
+      Offset(
+        cx + 70 * math.cos(-angle * 1.4),
+        cy + 58 * math.sin(-angle * 1.4),
+      ),
       2.4,
       Paint()..color = AppColors.neonGold.withValues(alpha: 0.5),
     );

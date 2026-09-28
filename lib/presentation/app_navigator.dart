@@ -46,29 +46,25 @@ class AppNavigator {
         try {
           ctx.read<QuizProvider>().startDailyQuiz();
         } catch (_) {}
-        nav.push(MaterialPageRoute<void>(
-          builder: (_) => const DailyQuizScreen(),
-        ));
+        nav.push(
+          MaterialPageRoute<void>(builder: (_) => const DailyQuizScreen()),
+        );
         break;
       case 'battle':
-        nav.push(MaterialPageRoute<void>(
-          builder: (_) => const BattleScreen(),
-        ));
+        nav.push(MaterialPageRoute<void>(builder: (_) => const BattleScreen()));
         break;
       case 'online_battle':
-        nav.push(MaterialPageRoute<void>(
-          builder: (_) => const OnlineBattleScreen(),
-        ));
+        nav.push(
+          MaterialPageRoute<void>(builder: (_) => const OnlineBattleScreen()),
+        );
         break;
       case 'leaderboard':
-        nav.push(MaterialPageRoute<void>(
-          builder: (_) => const LeaderboardScreen(),
-        ));
+        nav.push(
+          MaterialPageRoute<void>(builder: (_) => const LeaderboardScreen()),
+        );
         break;
       case 'shop':
-        nav.push(MaterialPageRoute<void>(
-          builder: (_) => const ShopScreen(),
-        ));
+        nav.push(MaterialPageRoute<void>(builder: (_) => const ShopScreen()));
         break;
       default:
         break;

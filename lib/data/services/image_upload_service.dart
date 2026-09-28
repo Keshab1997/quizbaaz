@@ -33,9 +33,9 @@ class ImageUploadService {
     try {
       final name = file.path.split(Platform.pathSeparator).last;
       final safeName = _safeName(name);
-      final ref = _storage
-          .ref()
-          .child('$folder/${DateTime.now().millisecondsSinceEpoch}_$safeName');
+      final ref = _storage.ref().child(
+        '$folder/${DateTime.now().millisecondsSinceEpoch}_$safeName',
+      );
 
       final task = ref.putFile(
         file,
@@ -63,7 +63,10 @@ class ImageUploadService {
   }
 
   static String _safeName(String name) {
-    final base = name.split('.').first.replaceAll(RegExp(r'[^a-zA-Z0-9_-]'), '_');
+    final base = name
+        .split('.')
+        .first
+        .replaceAll(RegExp(r'[^a-zA-Z0-9_-]'), '_');
     return base.isEmpty ? 'image' : base;
   }
 

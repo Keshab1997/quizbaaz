@@ -24,9 +24,9 @@ class DailyQuizQuestionRef {
   });
 
   Map<String, dynamic> toJson() => {
-        'chapter_id': chapterId,
-        'question_id': questionId,
-      };
+    'chapter_id': chapterId,
+    'question_id': questionId,
+  };
 
   static DailyQuizQuestionRef? fromJson(Object? raw) {
     if (raw is! Map) return null;
@@ -110,15 +110,15 @@ class DailyQuizPacket {
   }
 
   Map<String, dynamic> toJson() => {
-        'date_key': dateKey,
-        'version': version,
-        'questions': [for (final q in questions) q.toJson()],
-        'count': count,
-        'deadline_ms': deadlineMs,
-        'scoring_contract': scoringContract,
-        'approved': approved,
-        'published_at': publishedAtMs,
-      };
+    'date_key': dateKey,
+    'version': version,
+    'questions': [for (final q in questions) q.toJson()],
+    'count': count,
+    'deadline_ms': deadlineMs,
+    'scoring_contract': scoringContract,
+    'approved': approved,
+    'published_at': publishedAtMs,
+  };
 
   /// Returns null when the document does not describe a usable packet.
   static DailyQuizPacket? fromJson(String dateKey, Object? raw) {

@@ -14,10 +14,7 @@ import 'glass_card.dart';
 class StreakResetDialog extends StatefulWidget {
   final StreakResetDetails details;
 
-  const StreakResetDialog({
-    super.key,
-    required this.details,
-  });
+  const StreakResetDialog({super.key, required this.details});
 
   static Future<void> show(BuildContext context, StreakResetDetails details) {
     SoundService.instance.play('battle_lose');
@@ -87,7 +84,10 @@ class _StreakResetDialogState extends State<StreakResetDialog>
         animation: _shakeAnimation,
         builder: (context, child) {
           return Transform.translate(
-            offset: Offset(_shakeAnimation.value * (0.5 - (_shakeController.value)), 0),
+            offset: Offset(
+              _shakeAnimation.value * (0.5 - (_shakeController.value)),
+              0,
+            ),
             child: GlassCard(
               borderRadius: 28,
               borderColor: AppColors.neonRed.withValues(alpha: 0.6),
@@ -146,10 +146,7 @@ class _StreakResetDialogState extends State<StreakResetDialog>
                   const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                        '😢',
-                        style: TextStyle(fontSize: 24),
-                      ),
+                      Text('😢', style: TextStyle(fontSize: 24)),
                       SizedBox(width: 8),
                       Text(
                         'STREAK LOST!',
@@ -161,17 +158,17 @@ class _StreakResetDialogState extends State<StreakResetDialog>
                         ),
                       ),
                       SizedBox(width: 8),
-                      Text(
-                        '💔',
-                        style: TextStyle(fontSize: 24),
-                      ),
+                      Text('💔', style: TextStyle(fontSize: 24)),
                     ],
                   ),
                   const SizedBox(height: 8),
 
                   // Streak lost info
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 10,
+                    ),
                     decoration: BoxDecoration(
                       color: AppColors.neonRed.withValues(alpha: 0.15),
                       borderRadius: BorderRadius.circular(12),
@@ -298,23 +295,31 @@ class _StreakResetDialogState extends State<StreakResetDialog>
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                                 elevation: 6,
-                                shadowColor: AppColors.neonGreen.withValues(alpha: 0.5),
+                                shadowColor: AppColors.neonGreen.withValues(
+                                  alpha: 0.5,
+                                ),
                               ),
                               onPressed: () {
-                                final restored = userProvider.restoreStreakWithShield(
-                                  widget.details.lostStreak,
-                                );
+                                final restored = userProvider
+                                    .restoreStreakWithShield(
+                                      widget.details.lostStreak,
+                                    );
                                 Navigator.pop(context);
                                 if (restored) {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
                                       content: Row(
                                         children: [
-                                          const Icon(Icons.shield_rounded, color: Colors.white),
+                                          const Icon(
+                                            Icons.shield_rounded,
+                                            color: Colors.white,
+                                          ),
                                           const SizedBox(width: 8),
                                           Text(
                                             '🛡️ ${widget.details.lostStreak}-Day Streak restored!',
-                                            style: const TextStyle(fontWeight: FontWeight.bold),
+                                            style: const TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                            ),
                                           ),
                                         ],
                                       ),
@@ -405,10 +410,15 @@ class _StreakResetDialogState extends State<StreakResetDialog>
                                 Navigator.pop(context);
                                 Navigator.push(
                                   context,
-                                  MaterialPageRoute(builder: (_) => const ShopScreen()),
+                                  MaterialPageRoute(
+                                    builder: (_) => const ShopScreen(),
+                                  ),
                                 );
                               },
-                              icon: const Icon(Icons.shopping_bag_rounded, size: 18),
+                              icon: const Icon(
+                                Icons.shopping_bag_rounded,
+                                size: 18,
+                              ),
                               label: const Text(
                                 'Get Shield',
                                 style: TextStyle(

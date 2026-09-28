@@ -50,8 +50,15 @@ class ShopService {
     }
   }
 
-  static bool _isAllowedShopCategory(String category) =>
-      const {'power_ups', 'shields', 'boosters', 'avatars', 'badges', 'effects', 'packs'}.contains(category);
+  static bool _isAllowedShopCategory(String category) => const {
+    'power_ups',
+    'shields',
+    'boosters',
+    'avatars',
+    'badges',
+    'effects',
+    'packs',
+  }.contains(category);
 
   static bool _isAllowedAvatarCategory(String category) =>
       const {'male', 'female', 'premium'}.contains(category);
@@ -63,18 +70,28 @@ class ShopService {
   }) async {
     final cleanName = name.trim().toLowerCase();
     if (cleanName.isEmpty) return false;
-    final snapshot = await _db.collection(collection).where('name_key', isEqualTo: cleanName).limit(5).get();
-    return snapshot.docs.any((doc) => doc.id != currentId && doc.data()['is_active'] == true);
+    final snapshot = await _db
+        .collection(collection)
+        .where('name_key', isEqualTo: cleanName)
+        .limit(5)
+        .get();
+    return snapshot.docs.any(
+      (doc) => doc.id != currentId && doc.data()['is_active'] == true,
+    );
   }
-
 
   // ═══════════════════════════════════════════════════════════════════════
   // 👥 USERS
   // ═══════════════════════════════════════════════════════════════════════
 
   /// Get users from Firestore for the admin panel.
-  static Future<List<Map<String, dynamic>>> getUsers({bool guestsOnly = false}) async {
-    if (!isReady) { lastError = 'Firebase is not ready or offline'; return []; }
+  static Future<List<Map<String, dynamic>>> getUsers({
+    bool guestsOnly = false,
+  }) async {
+    if (!isReady) {
+      lastError = 'Firebase is not ready or offline';
+      return [];
+    }
     try {
       Query<Map<String, dynamic>> query = _db.collection('users');
       if (guestsOnly) {
@@ -82,14 +99,15 @@ class ShopService {
       }
       final snapshot = await query.limit(200).get();
       final users = snapshot.docs
-          .map((doc) => {
-                ...doc.data(),
-                'id': doc.id,
-              })
+          .map((doc) => {...doc.data(), 'id': doc.id})
           .toList();
       users.sort((a, b) {
-        final aName = (a['username'] ?? a['full_name'] ?? '').toString().toLowerCase();
-        final bName = (b['username'] ?? b['full_name'] ?? '').toString().toLowerCase();
+        final aName = (a['username'] ?? a['full_name'] ?? '')
+            .toString()
+            .toLowerCase();
+        final bName = (b['username'] ?? b['full_name'] ?? '')
+            .toString()
+            .toLowerCase();
         return aName.compareTo(bName);
       });
       _clearError();
@@ -101,14 +119,25 @@ class ShopService {
   }
 
   /// Update admin-editable user fields.
-  static Future<bool> updateUser(String userId, Map<String, dynamic> fields) async {
-    if (!isReady || userId.isEmpty) { lastError = 'Firebase is not ready or user id is empty'; return false; }
+  static Future<bool> updateUser(
+    String userId,
+    Map<String, dynamic> fields,
+  ) async {
+    if (!isReady || userId.isEmpty) {
+      lastError = 'Firebase is not ready or user id is empty';
+      return false;
+    }
     try {
       await _db.collection('users').doc(userId).set({
         ...fields,
         'updated_at': FieldValue.serverTimestamp(),
       }, SetOptions(merge: true));
-      await _logAdminAction(action: 'update', entity: 'user', entityId: userId, details: fields);
+      await _logAdminAction(
+        action: 'update',
+        entity: 'user',
+        entityId: userId,
+        details: fields,
+      );
       _clearError();
       return true;
     } catch (e) {
@@ -119,7 +148,10 @@ class ShopService {
 
   /// Delete a user document from Firestore.
   static Future<bool> deleteUser(String userId) async {
-    if (!isReady || userId.isEmpty) { lastError = 'Firebase is not ready or user id is empty'; return false; }
+    if (!isReady || userId.isEmpty) {
+      lastError = 'Firebase is not ready or user id is empty';
+      return false;
+    }
     try {
       await _db.collection('users').doc(userId).delete();
       await _logAdminAction(action: 'delete', entity: 'user', entityId: userId);
@@ -137,16 +169,34 @@ class ShopService {
 
   /// Save a shop item to Firestore
   static Future<bool> saveShopItem(Map<String, dynamic> item) async {
-    if (!isReady) { lastError = 'Firebase is not ready or offline'; return false; }
+    if (!isReady) {
+      lastError = 'Firebase is not ready or offline';
+      return false;
+    }
     try {
-      final id = item['id'] as String? ?? DateTime.now().millisecondsSinceEpoch.toString();
+      final id =
+          item['id'] as String? ??
+          DateTime.now().millisecondsSinceEpoch.toString();
       final name = (item['name'] ?? '').toString().trim();
       final category = (item['category'] ?? '').toString();
       final price = (item['price'] as num?)?.toInt() ?? 0;
-      if (name.isEmpty) { lastError = 'Item name is required'; return false; }
-      if (!_isAllowedShopCategory(category)) { lastError = 'Invalid shop category'; return false; }
-      if (price < 0) { lastError = 'Price cannot be negative'; return false; }
-      if (await _hasDuplicateName(collection: _shopItems, name: name, currentId: id)) {
+      if (name.isEmpty) {
+        lastError = 'Item name is required';
+        return false;
+      }
+      if (!_isAllowedShopCategory(category)) {
+        lastError = 'Invalid shop category';
+        return false;
+      }
+      if (price < 0) {
+        lastError = 'Price cannot be negative';
+        return false;
+      }
+      if (await _hasDuplicateName(
+        collection: _shopItems,
+        name: name,
+        currentId: id,
+      )) {
         lastError = 'Duplicate item name: $name';
         return false;
       }
@@ -159,7 +209,8 @@ class ShopService {
 
       // If category is avatars, mirror to avatars collection as well
       if (category == 'avatars' || category == 'avatar') {
-        final imageUrl = (item['icon_url'] ?? item['image_url'] ?? '').toString();
+        final imageUrl = (item['icon_url'] ?? item['image_url'] ?? '')
+            .toString();
         if (imageUrl.isNotEmpty) {
           await _db.collection(_avatars).doc(id).set({
             'id': id,
@@ -172,13 +223,19 @@ class ShopService {
             'is_active': item['is_active'] ?? true,
             'name_key': name.toLowerCase(),
             'updated_at': FieldValue.serverTimestamp(),
-            'created_at': item['created_at'] ?? DateTime.now().toIso8601String(),
+            'created_at':
+                item['created_at'] ?? DateTime.now().toIso8601String(),
           }, SetOptions(merge: true));
         }
         unawaited(refreshAvatarCache());
       }
 
-      await _logAdminAction(action: 'save', entity: 'shop_item', entityId: id, details: {'name': name, 'category': category});
+      await _logAdminAction(
+        action: 'save',
+        entity: 'shop_item',
+        entityId: id,
+        details: {'name': name, 'category': category},
+      );
       _clearError();
       return true;
     } catch (e) {
@@ -189,30 +246,44 @@ class ShopService {
 
   /// Get all shop items from Firestore
   static Future<List<Map<String, dynamic>>> getShopItems() async {
-    if (!isReady) { lastError = 'Firebase is not ready or offline'; return []; }
+    if (!isReady) {
+      lastError = 'Firebase is not ready or offline';
+      return [];
+    }
     try {
-      final snapshot = await _db.collection(_shopItems)
+      final snapshot = await _db
+          .collection(_shopItems)
           .where('is_active', isEqualTo: true)
           .get();
-      final items = snapshot.docs.map((doc) => {
-        ...doc.data(),
-        'id': doc.id,
-      }).toList();
+      final items = snapshot.docs
+          .map((doc) => {...doc.data(), 'id': doc.id})
+          .toList();
 
       // Also merge active avatars from the avatars collection
       try {
-        final avatarsSnapshot = await _db.collection(_avatars)
+        final avatarsSnapshot = await _db
+            .collection(_avatars)
             .where('is_active', isEqualTo: true)
             .get();
-        final existingIds = items.map((e) => (e['id'] ?? '').toString()).toSet();
-        final existingUrls = items.map((e) => (e['icon_url'] ?? e['image_url'] ?? '').toString()).toSet();
+        final existingIds = items
+            .map((e) => (e['id'] ?? '').toString())
+            .toSet();
+        final existingUrls = items
+            .map((e) => (e['icon_url'] ?? e['image_url'] ?? '').toString())
+            .toSet();
 
         for (final doc in avatarsSnapshot.docs) {
           final data = doc.data();
           final id = doc.id;
-          final imageUrl = (data['image_url'] ?? data['avatar_url'] ?? '').toString();
-          if (!existingIds.contains(id) && !existingUrls.contains(imageUrl) && imageUrl.isNotEmpty) {
-            final isPremium = data['is_premium'] == true || data['category'] == 'premium' || ((data['price'] as num?) ?? 0) > 0;
+          final imageUrl = (data['image_url'] ?? data['avatar_url'] ?? '')
+              .toString();
+          if (!existingIds.contains(id) &&
+              !existingUrls.contains(imageUrl) &&
+              imageUrl.isNotEmpty) {
+            final isPremium =
+                data['is_premium'] == true ||
+                data['category'] == 'premium' ||
+                ((data['price'] as num?) ?? 0) > 0;
             items.add({
               'id': id,
               'name': (data['name'] ?? 'Avatar').toString(),
@@ -224,7 +295,8 @@ class ShopService {
               'is_cosmetic': isPremium,
               'icon_url': imageUrl,
               'is_active': true,
-              'created_at': data['created_at'] ?? DateTime.now().toIso8601String(),
+              'created_at':
+                  data['created_at'] ?? DateTime.now().toIso8601String(),
             });
           }
         }
@@ -232,7 +304,11 @@ class ShopService {
         debugPrint('ShopService: merge avatars into shop items skipped - $e');
       }
 
-      items.sort((a, b) => (b['created_at'] ?? '').toString().compareTo((a['created_at'] ?? '').toString()));
+      items.sort(
+        (a, b) => (b['created_at'] ?? '').toString().compareTo(
+          (a['created_at'] ?? '').toString(),
+        ),
+      );
       _clearError();
       return items;
     } catch (e) {
@@ -243,13 +319,20 @@ class ShopService {
 
   /// Delete a shop item (soft delete - set is_active to false)
   static Future<bool> deleteShopItem(String itemId) async {
-    if (!isReady) { lastError = 'Firebase is not ready or offline'; return false; }
+    if (!isReady) {
+      lastError = 'Firebase is not ready or offline';
+      return false;
+    }
     try {
       await _db.collection(_shopItems).doc(itemId).update({
         'is_active': false,
         'updated_at': FieldValue.serverTimestamp(),
       });
-      await _logAdminAction(action: 'delete', entity: 'shop_item', entityId: itemId);
+      await _logAdminAction(
+        action: 'delete',
+        entity: 'shop_item',
+        entityId: itemId,
+      );
       _clearError();
       return true;
     } catch (e) {
@@ -264,18 +347,39 @@ class ShopService {
 
   /// Save an avatar to Firestore
   static Future<bool> saveAvatar(Map<String, dynamic> avatar) async {
-    if (!isReady) { lastError = 'Firebase is not ready or offline'; return false; }
+    if (!isReady) {
+      lastError = 'Firebase is not ready or offline';
+      return false;
+    }
     try {
-      final id = avatar['id'] as String? ?? DateTime.now().millisecondsSinceEpoch.toString();
+      final id =
+          avatar['id'] as String? ??
+          DateTime.now().millisecondsSinceEpoch.toString();
       final name = (avatar['name'] ?? '').toString().trim();
       final category = (avatar['category'] ?? '').toString();
       final imageUrl = (avatar['image_url'] ?? '').toString().trim();
       final price = (avatar['price'] as num?)?.toInt() ?? 0;
-      if (name.isEmpty) { lastError = 'Avatar name is required'; return false; }
-      if (imageUrl.isEmpty) { lastError = 'Avatar image is required'; return false; }
-      if (!_isAllowedAvatarCategory(category)) { lastError = 'Invalid avatar category'; return false; }
-      if (price < 0) { lastError = 'Price cannot be negative'; return false; }
-      if (await _hasDuplicateName(collection: _avatars, name: name, currentId: id)) {
+      if (name.isEmpty) {
+        lastError = 'Avatar name is required';
+        return false;
+      }
+      if (imageUrl.isEmpty) {
+        lastError = 'Avatar image is required';
+        return false;
+      }
+      if (!_isAllowedAvatarCategory(category)) {
+        lastError = 'Invalid avatar category';
+        return false;
+      }
+      if (price < 0) {
+        lastError = 'Price cannot be negative';
+        return false;
+      }
+      if (await _hasDuplicateName(
+        collection: _avatars,
+        name: name,
+        currentId: id,
+      )) {
         lastError = 'Duplicate avatar name: $name';
         return false;
       }
@@ -302,11 +406,17 @@ class ShopService {
           'is_active': avatar['is_active'] ?? true,
           'name_key': name.toLowerCase(),
           'updated_at': FieldValue.serverTimestamp(),
-          'created_at': avatar['created_at'] ?? DateTime.now().toIso8601String(),
+          'created_at':
+              avatar['created_at'] ?? DateTime.now().toIso8601String(),
         }, SetOptions(merge: true));
       }
 
-      await _logAdminAction(action: 'save', entity: 'avatar', entityId: id, details: {'name': name, 'category': category});
+      await _logAdminAction(
+        action: 'save',
+        entity: 'avatar',
+        entityId: id,
+        details: {'name': name, 'category': category},
+      );
       _clearError();
       // Keep the local avatar cache in sync so users see the change quickly.
       unawaited(refreshAvatarCache());
@@ -386,20 +496,29 @@ class ShopService {
             .collection(_shopItems)
             .where('is_active', isEqualTo: true)
             .get();
-        final existingIds = avatars.map((e) => (e['id'] ?? '').toString()).toSet();
-        final existingUrls = avatars.map((e) => (e['image_url'] ?? e['avatar_url'] ?? '').toString()).toSet();
+        final existingIds = avatars
+            .map((e) => (e['id'] ?? '').toString())
+            .toSet();
+        final existingUrls = avatars
+            .map((e) => (e['image_url'] ?? e['avatar_url'] ?? '').toString())
+            .toSet();
 
         for (final doc in shopSnapshot.docs) {
           final data = doc.data();
           final id = doc.id;
-          final itemCategory = (data['category'] ?? '').toString().toLowerCase();
-          final imageUrl = (data['icon_url'] ?? data['image_url'] ?? '').toString();
+          final itemCategory = (data['category'] ?? '')
+              .toString()
+              .toLowerCase();
+          final imageUrl = (data['icon_url'] ?? data['image_url'] ?? '')
+              .toString();
 
           if ((itemCategory == 'avatars' || itemCategory == 'avatar') &&
               !existingIds.contains(id) &&
               !existingUrls.contains(imageUrl) &&
               imageUrl.isNotEmpty) {
-            final isPremium = data['is_cosmetic'] == true || ((data['price'] as num?) ?? 0) > 0;
+            final isPremium =
+                data['is_cosmetic'] == true ||
+                ((data['price'] as num?) ?? 0) > 0;
             avatars.add({
               ..._sanitizeForCache(data),
               'id': id,
@@ -410,7 +529,8 @@ class ShopService {
               'price': (data['price'] as num?)?.toInt() ?? 0,
               'currency': data['currency'] ?? 'gems',
               'is_active': true,
-              'created_at': data['created_at'] ?? DateTime.now().toIso8601String(),
+              'created_at':
+                  data['created_at'] ?? DateTime.now().toIso8601String(),
             });
           }
         }
@@ -466,22 +586,29 @@ class ShopService {
           .toList();
     }
     list.sort(
-      (a, b) => (b['created_at'] ?? '')
-          .toString()
-          .compareTo((a['created_at'] ?? '').toString()),
+      (a, b) => (b['created_at'] ?? '').toString().compareTo(
+        (a['created_at'] ?? '').toString(),
+      ),
     );
     return list;
   }
 
   /// Delete an avatar (soft delete)
   static Future<bool> deleteAvatar(String avatarId) async {
-    if (!isReady) { lastError = 'Firebase is not ready or offline'; return false; }
+    if (!isReady) {
+      lastError = 'Firebase is not ready or offline';
+      return false;
+    }
     try {
       await _db.collection(_avatars).doc(avatarId).update({
         'is_active': false,
         'updated_at': FieldValue.serverTimestamp(),
       });
-      await _logAdminAction(action: 'delete', entity: 'avatar', entityId: avatarId);
+      await _logAdminAction(
+        action: 'delete',
+        entity: 'avatar',
+        entityId: avatarId,
+      );
       _clearError();
       // Keep the local avatar cache in sync after a delete.
       unawaited(refreshAvatarCache());
@@ -498,7 +625,10 @@ class ShopService {
 
   /// Get admin dashboard stats
   static Future<Map<String, int>> getAdminStats() async {
-    if (!isReady) { lastError = 'Firebase is not ready or offline'; return {}; }
+    if (!isReady) {
+      lastError = 'Firebase is not ready or offline';
+      return {};
+    }
     final stats = <String, int>{};
     try {
       // Total users
@@ -506,21 +636,39 @@ class ShopService {
       stats['total_users'] = users.count ?? 0;
 
       // Guest users
-      final guests = await _db.collection('users').where('is_guest', isEqualTo: true).count().get();
+      final guests = await _db
+          .collection('users')
+          .where('is_guest', isEqualTo: true)
+          .count()
+          .get();
       stats['guest_users'] = guests.count ?? 0;
 
       // Today's players
       final today = DateTime.now();
-      final dateKey = '${today.year}-${today.month.toString().padLeft(2, '0')}-${today.day.toString().padLeft(2, '0')}';
-      final players = await _db.collection('leaderboard').doc(dateKey).collection('scores').count().get();
+      final dateKey =
+          '${today.year}-${today.month.toString().padLeft(2, '0')}-${today.day.toString().padLeft(2, '0')}';
+      final players = await _db
+          .collection('leaderboard')
+          .doc(dateKey)
+          .collection('scores')
+          .count()
+          .get();
       stats['players_today'] = players.count ?? 0;
 
       // Shop items
-      final items = await _db.collection(_shopItems).where('is_active', isEqualTo: true).count().get();
+      final items = await _db
+          .collection(_shopItems)
+          .where('is_active', isEqualTo: true)
+          .count()
+          .get();
       stats['shop_items'] = items.count ?? 0;
 
       // Avatars
-      final avatars = await _db.collection(_avatars).where('is_active', isEqualTo: true).count().get();
+      final avatars = await _db
+          .collection(_avatars)
+          .where('is_active', isEqualTo: true)
+          .count()
+          .get();
       stats['avatars'] = avatars.count ?? 0;
 
       _clearError();

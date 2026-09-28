@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 
@@ -41,14 +42,13 @@ import 'firestore_query_specs.dart';
 /// ```
 class ChallengeService {
   ChallengeService({FirebaseFirestore? firestore})
-      : _firestoreOverride = firestore;
+    : _firestoreOverride = firestore;
 
   final FirebaseFirestore? _firestoreOverride;
 
   /// Resolved lazily so constructing the service never touches Firebase.
   /// Every method fails soft (returns null/false) when Firestore is down.
-  FirebaseFirestore get _db =>
-      _firestoreOverride ?? FirebaseFirestore.instance;
+  FirebaseFirestore get _db => _firestoreOverride ?? FirebaseFirestore.instance;
 
   static const String collection = 'battle_challenges';
   static const Duration challengeExpiry = Duration(seconds: 30);
@@ -167,12 +167,13 @@ class ChallengeService {
         .apply(_db.collection(collection))
         .snapshots()
         .map((snapshot) {
-      if (snapshot.docs.isEmpty) return null;
-      return ChallengeData.fromDoc(snapshot.docs.first);
-    }).handleError((e) {
-      debugPrint('ChallengeService: watchIncoming – $e');
-      return null;
-    });
+          if (snapshot.docs.isEmpty) return null;
+          return ChallengeData.fromDoc(snapshot.docs.first);
+        })
+        .handleError((e) {
+          debugPrint('ChallengeService: watchIncoming – $e');
+          return null;
+        });
   }
 
   /// Watches for status changes on a specific challenge.
@@ -182,12 +183,13 @@ class ChallengeService {
         .doc(challengeId)
         .snapshots()
         .map((snap) {
-      if (!snap.exists) return null;
-      return ChallengeData.fromDoc(snap);
-    }).handleError((e) {
-      debugPrint('ChallengeService: watchStatus – $e');
-      return null;
-    });
+          if (!snap.exists) return null;
+          return ChallengeData.fromDoc(snap);
+        })
+        .handleError((e) {
+          debugPrint('ChallengeService: watchStatus – $e');
+          return null;
+        });
   }
 
   /// Watches for outgoing challenges sent by [myUid].
@@ -202,12 +204,13 @@ class ChallengeService {
         .apply(_db.collection(collection))
         .snapshots()
         .map((snapshot) {
-      if (snapshot.docs.isEmpty) return null;
-      return ChallengeData.fromDoc(snapshot.docs.first);
-    }).handleError((e) {
-      debugPrint('ChallengeService: watchOutgoing – $e');
-      return null;
-    });
+          if (snapshot.docs.isEmpty) return null;
+          return ChallengeData.fromDoc(snapshot.docs.first);
+        })
+        .handleError((e) {
+          debugPrint('ChallengeService: watchOutgoing – $e');
+          return null;
+        });
   }
 
   // ----------------------------------------- Helpers --------------------
@@ -227,18 +230,14 @@ class ChallengeService {
     final col = _db.collection(collection);
     try {
       final mine = FirestoreQuerySpecs.challengesPendingFromTo
-          .bind(equals: {
-        'from_uid': uidOne,
-        'to_uid': uidTwo,
-        'status': 'pending',
-      })
+          .bind(
+            equals: {'from_uid': uidOne, 'to_uid': uidTwo, 'status': 'pending'},
+          )
           .apply(col);
       final theirs = FirestoreQuerySpecs.challengesPendingFromTo
-          .bind(equals: {
-        'from_uid': uidTwo,
-        'to_uid': uidOne,
-        'status': 'pending',
-      })
+          .bind(
+            equals: {'from_uid': uidTwo, 'to_uid': uidOne, 'status': 'pending'},
+          )
           .apply(col);
 
       final results = await Future.wait([mine.get(), theirs.get()]);
@@ -361,8 +360,8 @@ class ChallengeData {
   /// Best avatar URL for the challenger.
   String get fromEffectiveAvatar =>
       (fromAvatarUrl != null && fromAvatarUrl!.isNotEmpty)
-          ? fromAvatarUrl!
-          : fromAvatar;
+      ? fromAvatarUrl!
+      : fromAvatar;
 
   factory ChallengeData.fromDoc(DocumentSnapshot doc) {
     final data = doc.data() as Map<String, dynamic>? ?? {};

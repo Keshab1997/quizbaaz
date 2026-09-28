@@ -11,10 +11,7 @@ import 'glass_card.dart';
 class DailyWinnerCelebrationDialog extends StatelessWidget {
   final DailyRewardResult reward;
 
-  const DailyWinnerCelebrationDialog({
-    super.key,
-    required this.reward,
-  });
+  const DailyWinnerCelebrationDialog({super.key, required this.reward});
 
   static Future<void> show(BuildContext context, DailyRewardResult reward) {
     SoundService.instance.play('champion');
@@ -59,19 +56,25 @@ class DailyWinnerCelebrationDialog extends StatelessWidget {
               decoration: BoxDecoration(
                 color: AppColors.neonGold.withValues(alpha: 0.2),
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: AppColors.neonGold.withValues(alpha: 0.6)),
+                border: Border.all(
+                  color: AppColors.neonGold.withValues(alpha: 0.6),
+                ),
               ),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Icon(
-                    isChampion ? Icons.workspace_premium_rounded : Icons.military_tech_rounded,
+                    isChampion
+                        ? Icons.workspace_premium_rounded
+                        : Icons.military_tech_rounded,
                     color: AppColors.neonGold,
                     size: 20,
                   ),
                   const SizedBox(width: 6),
                   Text(
-                    isChampion ? '🏆 DAILY CHAMPION (#1)' : '🥈 TOP WINNER (#${reward.rank})',
+                    isChampion
+                        ? '🏆 DAILY CHAMPION (#1)'
+                        : '🥈 TOP WINNER (#${reward.rank})',
                     style: const TextStyle(
                       color: AppColors.neonGold,
                       fontSize: 14,
@@ -96,7 +99,11 @@ class DailyWinnerCelebrationDialog extends StatelessWidget {
             const Text(
               'Congratulations! Your top performance on the Daily Leaderboard earned you shop gifts & coins!',
               textAlign: TextAlign.center,
-              style: TextStyle(color: AppColors.textSecondary, fontSize: 12, height: 1.35),
+              style: TextStyle(
+                color: AppColors.textSecondary,
+                fontSize: 12,
+                height: 1.35,
+              ),
             ),
             const SizedBox(height: 16),
 
@@ -113,8 +120,16 @@ class DailyWinnerCelebrationDialog extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      _rewardPill(Icons.monetization_on_rounded, '+${reward.coins} Coins', AppColors.neonGold),
-                      _rewardPill(Icons.diamond_rounded, '+${reward.gems} Gems', AppColors.neonPurple),
+                      _rewardPill(
+                        Icons.monetization_on_rounded,
+                        '+${reward.coins} Coins',
+                        AppColors.neonGold,
+                      ),
+                      _rewardPill(
+                        Icons.diamond_rounded,
+                        '+${reward.gems} Gems',
+                        AppColors.neonPurple,
+                      ),
                     ],
                   ),
                   if (reward.itemNames.isNotEmpty) ...[
@@ -124,7 +139,11 @@ class DailyWinnerCelebrationDialog extends StatelessWidget {
                       children: [
                         const Text(
                           '🎁 UNLOCKED SHOP ITEMS:',
-                          style: TextStyle(fontSize: 10, fontWeight: FontWeight.w900, color: AppColors.neonCyan),
+                          style: TextStyle(
+                            fontSize: 10,
+                            fontWeight: FontWeight.w900,
+                            color: AppColors.neonCyan,
+                          ),
                         ),
                         const SizedBox(height: 6),
                         for (final item in reward.itemNames)
@@ -132,12 +151,20 @@ class DailyWinnerCelebrationDialog extends StatelessWidget {
                             padding: const EdgeInsets.only(bottom: 4),
                             child: Row(
                               children: [
-                                const Icon(Icons.check_circle_rounded, color: AppColors.neonGreen, size: 14),
+                                const Icon(
+                                  Icons.check_circle_rounded,
+                                  color: AppColors.neonGreen,
+                                  size: 14,
+                                ),
                                 const SizedBox(width: 6),
                                 Expanded(
                                   child: Text(
                                     item,
-                                    style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.bold),
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
                                 ),
                               ],
@@ -154,24 +181,44 @@ class DailyWinnerCelebrationDialog extends StatelessWidget {
             if (reward.winningStreak > 1) ...[
               const SizedBox(height: 12),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 8,
+                ),
                 decoration: BoxDecoration(
                   color: AppColors.neonRed.withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: AppColors.neonRed.withValues(alpha: 0.4)),
+                  border: Border.all(
+                    color: AppColors.neonRed.withValues(alpha: 0.4),
+                  ),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Icon(Icons.local_fire_department_rounded, color: AppColors.neonRed, size: 18),
+                    const Icon(
+                      Icons.local_fire_department_rounded,
+                      color: AppColors.neonRed,
+                      size: 18,
+                    ),
                     const SizedBox(width: 6),
                     Text(
                       '🔥 ${reward.winningStreak}-Day Winning Streak!',
-                      style: const TextStyle(color: AppColors.neonRed, fontSize: 12, fontWeight: FontWeight.w900),
+                      style: const TextStyle(
+                        color: AppColors.neonRed,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w900,
+                      ),
                     ),
                     if (reward.milestonePrizeTitle != null) ...[
                       const SizedBox(width: 6),
-                      Text('• ${reward.milestonePrizeTitle}', style: const TextStyle(color: AppColors.neonGold, fontSize: 11, fontWeight: FontWeight.bold)),
+                      Text(
+                        '• ${reward.milestonePrizeTitle}',
+                        style: const TextStyle(
+                          color: AppColors.neonGold,
+                          fontSize: 11,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ],
                   ],
                 ),
@@ -188,7 +235,9 @@ class DailyWinnerCelebrationDialog extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.neonGold,
                   foregroundColor: Colors.black,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(14),
+                  ),
                 ),
                 onPressed: () => Navigator.pop(context),
                 icon: const Icon(Icons.shopping_bag_rounded, size: 20),
@@ -216,7 +265,14 @@ class DailyWinnerCelebrationDialog extends StatelessWidget {
         children: [
           Icon(icon, color: color, size: 16),
           const SizedBox(width: 6),
-          Text(text, style: TextStyle(color: color, fontSize: 13, fontWeight: FontWeight.w800)),
+          Text(
+            text,
+            style: TextStyle(
+              color: color,
+              fontSize: 13,
+              fontWeight: FontWeight.w800,
+            ),
+          ),
         ],
       ),
     );

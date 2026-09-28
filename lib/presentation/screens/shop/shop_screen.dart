@@ -197,7 +197,9 @@ class _ShopScreenState extends State<ShopScreen> {
     if (_selectedCategory == 'all') {
       return _cloudItems;
     }
-    return _cloudItems.where((item) => item['category'] == _selectedCategory).toList();
+    return _cloudItems
+        .where((item) => item['category'] == _selectedCategory)
+        .toList();
   }
 
   @override
@@ -208,18 +210,20 @@ class _ShopScreenState extends State<ShopScreen> {
     return Scaffold(
       backgroundColor: Colors.transparent,
       appBar: AppBar(
-        title: Text(S.shopTitle,
-            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+        title: Text(
+          S.shopTitle,
+          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+        ),
         actions: [
           IconButton(
-            icon:
-                const Icon(Icons.history_rounded, color: AppColors.neonGold),
+            icon: const Icon(Icons.history_rounded, color: AppColors.neonGold),
             tooltip: S.purchaseTitle,
             onPressed: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (_) => const PurchaseHistoryScreen()),
+                  builder: (_) => const PurchaseHistoryScreen(),
+                ),
               );
             },
           ),
@@ -238,27 +242,39 @@ class _ShopScreenState extends State<ShopScreen> {
                 children: [
                   Row(
                     children: [
-                      const Icon(Icons.monetization_on,
-                          color: AppColors.neonGold, size: 24),
+                      const Icon(
+                        Icons.monetization_on,
+                        color: AppColors.neonGold,
+                        size: 24,
+                      ),
                       const SizedBox(width: 8),
-                      Text(S.shopCoinsLabel(n: user.coins),
-                          style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: AppColors.neonGold)),
+                      Text(
+                        S.shopCoinsLabel(n: user.coins),
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.neonGold,
+                        ),
+                      ),
                     ],
                   ),
                   Container(height: 30, width: 1, color: Colors.white24),
                   Row(
                     children: [
-                      const Icon(Icons.diamond,
-                          color: AppColors.neonPurple, size: 24),
+                      const Icon(
+                        Icons.diamond,
+                        color: AppColors.neonPurple,
+                        size: 24,
+                      ),
                       const SizedBox(width: 8),
-                      Text(S.shopGemsLabel(n: user.gems),
-                          style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: AppColors.neonPurple)),
+                      Text(
+                        S.shopGemsLabel(n: user.gems),
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.neonPurple,
+                        ),
+                      ),
                     ],
                   ),
                 ],
@@ -324,7 +340,10 @@ class _ShopScreenState extends State<ShopScreen> {
                     child: Row(
                       children: [
                         Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 8,
+                            vertical: 4,
+                          ),
                           decoration: BoxDecoration(
                             color: AppColors.neonCyan.withValues(alpha: 0.15),
                             borderRadius: BorderRadius.circular(8),
@@ -332,7 +351,11 @@ class _ShopScreenState extends State<ShopScreen> {
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              const Icon(Icons.cloud_rounded, color: AppColors.neonCyan, size: 14),
+                              const Icon(
+                                Icons.cloud_rounded,
+                                color: AppColors.neonCyan,
+                                size: 14,
+                              ),
                               const SizedBox(width: 4),
                               Text(
                                 S.shopCloudItems,
@@ -354,7 +377,9 @@ class _ShopScreenState extends State<ShopScreen> {
                       name: cloudItem['name'] ?? S.item,
                       description: cloudItem['description'] ?? '',
                       cost: cloudItem['price'] ?? 0,
-                      currency: cloudItem['currency'] == 'gems' ? ShopCurrency.gems : ShopCurrency.coins,
+                      currency: cloudItem['currency'] == 'gems'
+                          ? ShopCurrency.gems
+                          : ShopCurrency.coins,
                       quantity: cloudItem['quantity'] ?? 1,
                       isCosmetic: cloudItem['is_cosmetic'] ?? false,
                       category: cloudItem['category'] ?? 'power_ups',
@@ -367,7 +392,8 @@ class _ShopScreenState extends State<ShopScreen> {
                         accent: AppColors.neonCyan,
                         owned: 0,
                         affordable: userProvider.canAfford(shopItem),
-                        onBuy: () => _handleBuy(context, userProvider, shopItem),
+                        onBuy: () =>
+                            _handleBuy(context, userProvider, shopItem),
                         cloudImageUrl: cloudItem['icon_url'],
                       ),
                     );
@@ -379,7 +405,9 @@ class _ShopScreenState extends State<ShopScreen> {
                   const Padding(
                     padding: EdgeInsets.all(20),
                     child: Center(
-                      child: CircularProgressIndicator(color: AppColors.neonCyan),
+                      child: CircularProgressIndicator(
+                        color: AppColors.neonCyan,
+                      ),
                     ),
                   ),
               ],
@@ -412,8 +440,10 @@ class _ShopScreenState extends State<ShopScreen> {
               onTap: () => setState(() => _selectedCategory = cat),
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 200),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 14,
+                  vertical: 8,
+                ),
                 decoration: BoxDecoration(
                   color: isSelected
                       ? AppColors.neonGold.withValues(alpha: 0.2)
@@ -429,8 +459,7 @@ class _ShopScreenState extends State<ShopScreen> {
                   label,
                   style: TextStyle(
                     fontSize: 12,
-                    fontWeight:
-                        isSelected ? FontWeight.w800 : FontWeight.w600,
+                    fontWeight: isSelected ? FontWeight.w800 : FontWeight.w600,
                     color: isSelected
                         ? AppColors.neonGold
                         : AppColors.textSecondary,
@@ -445,7 +474,10 @@ class _ShopScreenState extends State<ShopScreen> {
   }
 
   void _handleBuy(
-      BuildContext context, UserProvider userProvider, ShopItem item) {
+    BuildContext context,
+    UserProvider userProvider,
+    ShopItem item,
+  ) {
     final result = userProvider.purchaseItem(item);
 
     switch (result) {
@@ -479,8 +511,7 @@ class _ShopScreenState extends State<ShopScreen> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             duration: const Duration(milliseconds: 1200),
-            content: Text(
-                S.shopNotEnough(currency: item.currencyLabel)),
+            content: Text(S.shopNotEnough(currency: item.currencyLabel)),
             backgroundColor: Colors.red.shade800,
           ),
         );
@@ -540,15 +571,16 @@ class _ShopItemCard extends StatelessWidget {
                     ),
                   )
                 : avatarPath != null
-                    ? ClipRRect(
-                        borderRadius: BorderRadius.circular(12),
-                        child: Image.asset(
-                          avatarPath,
-                          fit: BoxFit.cover,
-                          errorBuilder: (_, __, ___) => Icon(icon, color: accent, size: 26),
-                        ),
-                      )
-                    : Icon(icon, color: accent, size: 26),
+                ? ClipRRect(
+                    borderRadius: BorderRadius.circular(12),
+                    child: Image.asset(
+                      avatarPath,
+                      fit: BoxFit.cover,
+                      errorBuilder: (_, __, ___) =>
+                          Icon(icon, color: accent, size: 26),
+                    ),
+                  )
+                : Icon(icon, color: accent, size: 26),
           ),
           const SizedBox(width: 14),
 
@@ -560,16 +592,21 @@ class _ShopItemCard extends StatelessWidget {
                 Row(
                   children: [
                     Expanded(
-                      child: Text(item.name,
-                          style: const TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white)),
+                      child: Text(
+                        item.name,
+                        style: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
                     ),
                     if (item.category == 'packs')
                       Container(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 6, vertical: 2),
+                          horizontal: 6,
+                          vertical: 2,
+                        ),
                         decoration: BoxDecoration(
                           color: AppColors.neonGold.withValues(alpha: 0.2),
                           borderRadius: BorderRadius.circular(6),
@@ -586,9 +623,13 @@ class _ShopItemCard extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 2),
-                Text(item.description,
-                    style: const TextStyle(
-                        fontSize: 11, color: AppColors.textSecondary)),
+                Text(
+                  item.description,
+                  style: const TextStyle(
+                    fontSize: 11,
+                    color: AppColors.textSecondary,
+                  ),
+                ),
                 const SizedBox(height: 4),
                 Text(
                   _ownedLabel(),
@@ -631,9 +672,10 @@ class _ShopItemCard extends StatelessWidget {
         child: Text(
           S.shopOwnedCheck,
           style: const TextStyle(
-              fontSize: 11,
-              fontWeight: FontWeight.bold,
-              color: AppColors.neonCyan),
+            fontSize: 11,
+            fontWeight: FontWeight.bold,
+            color: AppColors.neonCyan,
+          ),
         ),
       );
     }

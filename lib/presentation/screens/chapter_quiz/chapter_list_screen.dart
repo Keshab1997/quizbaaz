@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../core/constants/app_colors.dart';
 import '../../../data/models/chapter_model.dart';
 import '../../../data/repositories/quiz_repository.dart';
@@ -54,7 +55,9 @@ class _ChapterListScreenState extends State<ChapterListScreen> {
         ),
       ),
       body: _isLoading
-          ? const Center(child: CircularProgressIndicator(color: AppColors.neonCyan))
+          ? const Center(
+              child: CircularProgressIndicator(color: AppColors.neonCyan),
+            )
           : Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -65,7 +68,10 @@ class _ChapterListScreenState extends State<ChapterListScreen> {
                 // 2. Chapters List
                 Expanded(
                   child: ListView.builder(
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 6,
+                    ),
                     physics: const BouncingScrollPhysics(),
                     itemCount: displayedCategories.length,
                     itemBuilder: (context, catIndex) {
@@ -74,7 +80,10 @@ class _ChapterListScreenState extends State<ChapterListScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
+                            padding: const EdgeInsets.only(
+                              top: 8.0,
+                              bottom: 8.0,
+                            ),
                             child: Row(
                               children: [
                                 Container(
@@ -98,12 +107,22 @@ class _ChapterListScreenState extends State<ChapterListScreen> {
                                 ),
                                 Text(
                                   S.chapterCount(n: category.chapters.length),
-                                  style: const TextStyle(fontSize: 11, color: AppColors.textSecondary),
+                                  style: const TextStyle(
+                                    fontSize: 11,
+                                    color: AppColors.textSecondary,
+                                  ),
                                 ),
                               ],
                             ),
                           ),
-                          ...category.chapters.map((ch) => _buildChapterCard(context, ch, category.colorHex, category.categoryName)),
+                          ...category.chapters.map(
+                            (ch) => _buildChapterCard(
+                              context,
+                              ch,
+                              category.colorHex,
+                              category.categoryName,
+                            ),
+                          ),
                           const SizedBox(height: 14),
                         ],
                       );
@@ -116,7 +135,10 @@ class _ChapterListScreenState extends State<ChapterListScreen> {
   }
 
   Widget _buildSubjectFilterPills() {
-    final filterOptions = ['All Subjects', ..._categories.map((c) => c.categoryName.split('(').first.trim())];
+    final filterOptions = [
+      'All Subjects',
+      ..._categories.map((c) => c.categoryName.split('(').first.trim()),
+    ];
 
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
@@ -140,12 +162,19 @@ class _ChapterListScreenState extends State<ChapterListScreen> {
               },
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 200),
-                padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 14,
+                  vertical: 7,
+                ),
                 decoration: BoxDecoration(
-                  color: isSelected ? AppColors.neonPurple : Colors.white.withValues(alpha: 0.06),
+                  color: isSelected
+                      ? AppColors.neonPurple
+                      : Colors.white.withValues(alpha: 0.06),
                   borderRadius: BorderRadius.circular(16),
                   border: Border.all(
-                    color: isSelected ? AppColors.neonPurple : Colors.white.withValues(alpha: 0.12),
+                    color: isSelected
+                        ? AppColors.neonPurple
+                        : Colors.white.withValues(alpha: 0.12),
                   ),
                   boxShadow: isSelected
                       ? [
@@ -153,7 +182,7 @@ class _ChapterListScreenState extends State<ChapterListScreen> {
                             color: AppColors.neonPurple.withValues(alpha: 0.4),
                             blurRadius: 10,
                             offset: const Offset(0, 3),
-                          )
+                          ),
                         ]
                       : null,
                 ),
@@ -173,7 +202,12 @@ class _ChapterListScreenState extends State<ChapterListScreen> {
     );
   }
 
-  Widget _buildChapterCard(BuildContext context, ChapterModel chapter, String colorHex, String categoryName) {
+  Widget _buildChapterCard(
+    BuildContext context,
+    ChapterModel chapter,
+    String colorHex,
+    String categoryName,
+  ) {
     final isLocked = !chapter.isUnlocked;
     final catColor = _parseColor(colorHex);
 
@@ -181,15 +215,18 @@ class _ChapterListScreenState extends State<ChapterListScreen> {
       padding: const EdgeInsets.only(bottom: 12.0),
       child: GlassCard(
         borderRadius: 20,
-        borderColor: isLocked ? Colors.white10 : catColor.withValues(alpha: 0.35),
-        backgroundColor: isLocked ? const Color(0x221E293B) : const Color(0x331E1B4B),
+        borderColor: isLocked
+            ? Colors.white10
+            : catColor.withValues(alpha: 0.35),
+        backgroundColor: isLocked
+            ? const Color(0x221E293B)
+            : const Color(0x331E1B4B),
         onTap: isLocked
             ? () {
                 SoundService.instance.play('ui_deny');
                 Haptics.error();
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text(S.chapterLockedMsg)),
-                );
+                ScaffoldMessenger.of(context)
+                    .showSnackBar(SnackBar(content: Text(S.chapterLockedMsg)));
               }
             // Opens the set list rather than launching the whole bank at
             // once: a chapter keeps growing, and where the student left off is
@@ -216,12 +253,22 @@ class _ChapterListScreenState extends State<ChapterListScreen> {
               height: 50,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
-                color: isLocked ? Colors.white.withValues(alpha: 0.05) : catColor.withValues(alpha: 0.2),
-                border: Border.all(color: isLocked ? Colors.white12 : catColor.withValues(alpha: 0.5)),
+                color: isLocked
+                    ? Colors.white.withValues(alpha: 0.05)
+                    : catColor.withValues(alpha: 0.2),
+                border: Border.all(
+                  color: isLocked
+                      ? Colors.white12
+                      : catColor.withValues(alpha: 0.5),
+                ),
               ),
               child: Center(
                 child: isLocked
-                    ? const Icon(Icons.lock, color: AppColors.textMuted, size: 22)
+                    ? const Icon(
+                        Icons.lock,
+                        color: AppColors.textMuted,
+                        size: 22,
+                      )
                     : Text(
                         S.chapterShort(n: chapter.chapterNumber),
                         style: TextStyle(
@@ -245,7 +292,9 @@ class _ChapterListScreenState extends State<ChapterListScreen> {
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w800,
-                      color: isLocked ? AppColors.textMuted : AppColors.textPrimary,
+                      color: isLocked
+                          ? AppColors.textMuted
+                          : AppColors.textPrimary,
                     ),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
@@ -257,7 +306,9 @@ class _ChapterListScreenState extends State<ChapterListScreen> {
                       style: TextStyle(
                         fontSize: 11,
                         fontWeight: FontWeight.w600,
-                        color: isLocked ? AppColors.textMuted : AppColors.textSecondary,
+                        color: isLocked
+                            ? AppColors.textMuted
+                            : AppColors.textSecondary,
                       ),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
@@ -268,14 +319,21 @@ class _ChapterListScreenState extends State<ChapterListScreen> {
                     children: [
                       // Question Count
                       Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 6,
+                          vertical: 2,
+                        ),
                         decoration: BoxDecoration(
                           color: Colors.white.withValues(alpha: 0.06),
                           borderRadius: BorderRadius.circular(6),
                         ),
                         child: Text(
                           S.chapterQuestionCount(n: chapter.totalQuestions),
-                          style: const TextStyle(fontSize: 10, color: AppColors.textSecondary, fontWeight: FontWeight.bold),
+                          style: const TextStyle(
+                            fontSize: 10,
+                            color: AppColors.textSecondary,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                       const SizedBox(width: 8),
@@ -300,7 +358,11 @@ class _ChapterListScreenState extends State<ChapterListScreen> {
                   shape: BoxShape.circle,
                   color: catColor.withValues(alpha: 0.15),
                 ),
-                child: Icon(Icons.play_arrow_rounded, color: catColor, size: 20),
+                child: Icon(
+                  Icons.play_arrow_rounded,
+                  color: catColor,
+                  size: 20,
+                ),
               ),
           ],
         ),

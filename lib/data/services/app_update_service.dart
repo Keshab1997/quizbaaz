@@ -50,11 +50,7 @@ class AppUpdateService {
     }
     if (!context.mounted) return;
 
-    await WhatsNewDialog.show(
-      context,
-      version: current,
-      bullets: bullets,
-    );
+    await WhatsNewDialog.show(context, version: current, bullets: bullets);
     await HiveService.setMeta(metaLastSeenVersion, current);
   }
 
@@ -72,10 +68,6 @@ class AppUpdateService {
     final bullets = WhatsNewCatalog.bulletsFor(current);
     if (!context.mounted) return;
     if (bullets.isEmpty) return;
-    await WhatsNewDialog.show(
-      context,
-      version: current,
-      bullets: bullets,
-    );
+    await WhatsNewDialog.show(context, version: current, bullets: bullets);
   }
 }

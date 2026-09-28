@@ -1,4 +1,5 @@
 import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 
 import '../../core/constants/app_colors.dart';
@@ -88,7 +89,8 @@ class _AuraAvatarState extends State<AuraAvatar>
                 animation: _controller,
                 builder: (context, child) {
                   final angle = _controller.value * 2 * math.pi;
-                  final pulse = (math.sin(_controller.value * 2 * math.pi) + 1) / 2;
+                  final pulse =
+                      (math.sin(_controller.value * 2 * math.pi) + 1) / 2;
 
                   return Container(
                     width: widget.size * 0.96,
@@ -101,7 +103,9 @@ class _AuraAvatarState extends State<AuraAvatar>
                       ),
                       boxShadow: [
                         BoxShadow(
-                          color: widget.auraColors.first.withValues(alpha: 0.3 + (pulse * 0.3)),
+                          color: widget.auraColors.first.withValues(
+                            alpha: 0.3 + (pulse * 0.3),
+                          ),
                           blurRadius: 18 + (pulse * 8),
                           spreadRadius: 2 + (pulse * 3),
                         ),

@@ -74,17 +74,17 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
 
     return _categories
         .map((category) {
-          final matchesSubject =
-              category.nameText.toJson().values.any(
-                    (v) => v.toLowerCase().contains(needle),
-                  );
+          final matchesSubject = category.nameText.toJson().values.any(
+            (v) => v.toLowerCase().contains(needle),
+          );
           final chapters = category.chapters
-              .where((c) =>
-                  matchesSubject ||
-                  c.titleText
-                      .toJson()
-                      .values
-                      .any((v) => v.toLowerCase().contains(needle)))
+              .where(
+                (c) =>
+                    matchesSubject ||
+                    c.titleText.toJson().values.any(
+                      (v) => v.toLowerCase().contains(needle),
+                    ),
+              )
               .toList();
           return CategoryModel(
             categoryId: category.categoryId,
@@ -102,15 +102,16 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
   @override
   Widget build(BuildContext context) {
     final categories = _visible;
-    final totalQuestions =
-        _counts.values.fold<int>(0, (sum, n) => sum + n);
+    final totalQuestions = _counts.values.fold<int>(0, (sum, n) => sum + n);
 
     return Scaffold(
       backgroundColor: Colors.transparent,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        title: const Text('Chapter Manager',
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+        title: const Text(
+          'Chapter Manager',
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+        ),
         actions: [
           IconButton(
             tooltip: 'Reload',
@@ -127,7 +128,8 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
       ),
       body: _loading
           ? const Center(
-              child: CircularProgressIndicator(color: AppColors.neonCyan))
+              child: CircularProgressIndicator(color: AppColors.neonCyan),
+            )
           : RefreshIndicator(
               onRefresh: _load,
               color: AppColors.neonCyan,
@@ -143,8 +145,10 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
                     const Padding(
                       padding: EdgeInsets.only(top: 60),
                       child: Center(
-                        child: Text('No chapters match that search.',
-                            style: TextStyle(color: AppColors.textSecondary)),
+                        child: Text(
+                          'No chapters match that search.',
+                          style: TextStyle(color: AppColors.textSecondary),
+                        ),
                       ),
                     ),
                   for (final category in categories) _categoryCard(category),
@@ -156,7 +160,9 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
 
   Widget _summary(int totalQuestions) {
     final chapterCount = _categories.fold<int>(
-        0, (sum, c) => sum + c.chapters.length);
+      0,
+      (sum, c) => sum + c.chapters.length,
+    );
     final empty = _counts.values.where((n) => n == 0).length;
 
     return GlassCard(
@@ -167,8 +173,11 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
           _stat('Subjects', '${_categories.length}', AppColors.neonPurple),
           _stat('Chapters', '$chapterCount', AppColors.neonCyan),
           _stat('Questions', '$totalQuestions', AppColors.neonGreen),
-          _stat('Empty', '$empty',
-              empty == 0 ? AppColors.neonGreen : AppColors.neonGold),
+          _stat(
+            'Empty',
+            '$empty',
+            empty == 0 ? AppColors.neonGreen : AppColors.neonGold,
+          ),
         ],
       ),
     );
@@ -178,13 +187,22 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
     return Expanded(
       child: Column(
         children: [
-          Text(value,
-              style: TextStyle(
-                  fontSize: 19, fontWeight: FontWeight.w900, color: color)),
+          Text(
+            value,
+            style: TextStyle(
+              fontSize: 19,
+              fontWeight: FontWeight.w900,
+              color: color,
+            ),
+          ),
           const SizedBox(height: 2),
-          Text(label,
-              style: const TextStyle(
-                  fontSize: 10.5, color: AppColors.textSecondary)),
+          Text(
+            label,
+            style: const TextStyle(
+              fontSize: 10.5,
+              color: AppColors.textSecondary,
+            ),
+          ),
         ],
       ),
     );
@@ -197,8 +215,10 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
       decoration: InputDecoration(
         hintText: 'Search subject or chapter…',
         hintStyle: const TextStyle(color: AppColors.textMuted, fontSize: 13),
-        prefixIcon:
-            const Icon(Icons.search_rounded, color: AppColors.textSecondary),
+        prefixIcon: const Icon(
+          Icons.search_rounded,
+          color: AppColors.textSecondary,
+        ),
         filled: true,
         fillColor: Colors.white.withValues(alpha: 0.05),
         isDense: true,
@@ -212,8 +232,10 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
 
   Widget _categoryCard(CategoryModel category) {
     final color = _parseColor(category.colorHex);
-    final questionTotal = category.chapters
-        .fold<int>(0, (sum, c) => sum + (_counts[c.chapterId] ?? 0));
+    final questionTotal = category.chapters.fold<int>(
+      0,
+      (sum, c) => sum + (_counts[c.chapterId] ?? 0),
+    );
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 12),
@@ -231,16 +253,19 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
             title: Text(
               category.categoryName,
               style: const TextStyle(
-                  fontSize: 14.5,
-                  fontWeight: FontWeight.w800,
-                  color: Colors.white),
+                fontSize: 14.5,
+                fontWeight: FontWeight.w800,
+                color: Colors.white,
+              ),
             ),
             subtitle: Padding(
               padding: const EdgeInsets.only(top: 3),
               child: Text(
                 '${category.chapters.length} chapters · $questionTotal questions',
                 style: const TextStyle(
-                    fontSize: 11.5, color: AppColors.textSecondary),
+                  fontSize: 11.5,
+                  color: AppColors.textSecondary,
+                ),
               ),
             ),
             leading: Container(
@@ -262,20 +287,34 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
                   children: [
                     TextButton.icon(
                       onPressed: () => _editChapter(category, null),
-                      icon: const Icon(Icons.add_rounded,
-                          size: 16, color: AppColors.neonCyan),
-                      label: const Text('Add chapter',
-                          style: TextStyle(
-                              fontSize: 12, color: AppColors.neonCyan)),
+                      icon: const Icon(
+                        Icons.add_rounded,
+                        size: 16,
+                        color: AppColors.neonCyan,
+                      ),
+                      label: const Text(
+                        'Add chapter',
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: AppColors.neonCyan,
+                        ),
+                      ),
                     ),
                     const Spacer(),
                     TextButton.icon(
                       onPressed: () => _editSubject(category),
-                      icon: const Icon(Icons.edit_rounded,
-                          size: 15, color: AppColors.textSecondary),
-                      label: const Text('Edit subject',
-                          style: TextStyle(
-                              fontSize: 12, color: AppColors.textSecondary)),
+                      icon: const Icon(
+                        Icons.edit_rounded,
+                        size: 15,
+                        color: AppColors.textSecondary,
+                      ),
+                      label: const Text(
+                        'Edit subject',
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: AppColors.textSecondary,
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -288,7 +327,10 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
   }
 
   Widget _chapterRow(
-      CategoryModel category, ChapterModel chapter, Color color) {
+    CategoryModel category,
+    ChapterModel chapter,
+    Color color,
+  ) {
     final count = _counts[chapter.chapterId] ?? 0;
     final coverage = _coverageLabel(chapter);
 
@@ -300,33 +342,42 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
           children: [
             SizedBox(
               width: 30,
-              child: Text('${chapter.chapterNumber}',
-                  style: TextStyle(
-                      fontSize: 12.5,
-                      fontWeight: FontWeight.w900,
-                      color: color.withValues(alpha: 0.8))),
+              child: Text(
+                '${chapter.chapterNumber}',
+                style: TextStyle(
+                  fontSize: 12.5,
+                  fontWeight: FontWeight.w900,
+                  color: color.withValues(alpha: 0.8),
+                ),
+              ),
             ),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(chapter.titleText.resolve('en'),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
-                          fontSize: 13.5,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.white)),
+                  Text(
+                    chapter.titleText.resolve('en'),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      fontSize: 13.5,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white,
+                    ),
+                  ),
                   const SizedBox(height: 2),
-                  Text(coverage,
-                      style: const TextStyle(
-                          fontSize: 10.5, color: AppColors.textMuted)),
+                  Text(
+                    coverage,
+                    style: const TextStyle(
+                      fontSize: 10.5,
+                      color: AppColors.textMuted,
+                    ),
+                  ),
                 ],
               ),
             ),
             Container(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 9, vertical: 3),
+              padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 3),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
                 color: (count == 0 ? AppColors.neonGold : AppColors.neonGreen)
@@ -349,14 +400,13 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
               color: chapter.isEnabled
                   ? AppColors.neonGreen
                   : AppColors.neonGold,
-              icon: Icon(chapter.isEnabled
-                  ? Icons.visibility_rounded
-                  : Icons.visibility_off_rounded),
-              onPressed: () => _setChapterEnabled(
-                category,
-                chapter,
-                !chapter.isEnabled,
+              icon: Icon(
+                chapter.isEnabled
+                    ? Icons.visibility_rounded
+                    : Icons.visibility_off_rounded,
               ),
+              onPressed: () =>
+                  _setChapterEnabled(category, chapter, !chapter.isEnabled),
             ),
             IconButton(
               tooltip: 'Edit chapter',
@@ -373,9 +423,11 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
 
   /// e.g. "EN · BN · hi missing" — which languages the *title* carries.
   String _coverageLabel(ChapterModel chapter) {
-    final missing = ['en', 'bn', 'hi']
-        .where((code) => !chapter.titleText.has(code))
-        .toList();
+    final missing = [
+      'en',
+      'bn',
+      'hi',
+    ].where((code) => !chapter.titleText.has(code)).toList();
     if (missing.isEmpty) return 'EN · BN · HI';
     return 'missing ${missing.join(", ").toUpperCase()}';
   }
@@ -427,13 +479,15 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
   }
 
   Future<void> _editChapter(
-      CategoryModel category, ChapterModel? existing) async {
+    CategoryModel category,
+    ChapterModel? existing,
+  ) async {
     final nextNumber = category.chapters.isEmpty
         ? 1
         : category.chapters
-                .map((c) => c.chapterNumber)
-                .reduce((a, b) => a > b ? a : b) +
-            1;
+                  .map((c) => c.chapterNumber)
+                  .reduce((a, b) => a > b ? a : b) +
+              1;
 
     final saved = await showModalBottomSheet<bool>(
       context: context,
@@ -445,15 +499,15 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
         defaultNumber: nextNumber,
         onSave: (id, title, description, number, unlocked, enabled) =>
             _catalog.saveChapter(
-          categoryId: category.categoryId,
-          chapterId: id,
-          title: title,
-          description: description,
-          chapterNumber: number,
-          isUnlocked: unlocked,
-          isEnabled: enabled,
-          actorUid: _actorUid,
-        ),
+              categoryId: category.categoryId,
+              chapterId: id,
+              title: title,
+              description: description,
+              chapterNumber: number,
+              isUnlocked: unlocked,
+              isEnabled: enabled,
+              actorUid: _actorUid,
+            ),
       ),
     );
     if (saved == true) _load();
@@ -474,9 +528,11 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(isEnabled
-              ? '${chapter.titleText.resolve('en')} is now visible to students.'
-              : '${chapter.titleText.resolve('en')} is now hidden from students.'),
+          content: Text(
+            isEnabled
+                ? '${chapter.titleText.resolve('en')} is now visible to students.'
+                : '${chapter.titleText.resolve('en')} is now hidden from students.',
+          ),
         ),
       );
       await _load();
@@ -499,7 +555,8 @@ class _SubjectSheet extends StatefulWidget {
     String icon,
     String colorHex,
     int priority,
-  ) onSave;
+  )
+  onSave;
 
   const _SubjectSheet({required this.existing, required this.onSave});
 
@@ -522,7 +579,8 @@ class _SubjectSheetState extends State<_SubjectSheet> {
     final e = widget.existing;
     _id = TextEditingController(text: e?.categoryId ?? '');
     _icon = TextEditingController(
-        text: e?.categoryIcon ?? 'assets/icons/coin_and_gem_3d.png');
+      text: e?.categoryIcon ?? 'assets/icons/coin_and_gem_3d.png',
+    );
     _color = TextEditingController(text: e?.colorHex ?? '#53E6FF');
     _priority = TextEditingController(text: '1');
     _name = e?.nameText ?? const LocalizedText.empty();
@@ -592,21 +650,28 @@ class _SubjectSheetState extends State<_SubjectSheet> {
         ),
         const SizedBox(height: 16),
         _PlainField(
-            controller: _icon, label: 'Icon asset path', hint: 'assets/icons/…'),
+          controller: _icon,
+          label: 'Icon asset path',
+          hint: 'assets/icons/…',
+        ),
         const SizedBox(height: 16),
         Row(
           children: [
             Expanded(
               child: _PlainField(
-                  controller: _color, label: 'Colour', hint: '#53E6FF'),
+                controller: _color,
+                label: 'Colour',
+                hint: '#53E6FF',
+              ),
             ),
             const SizedBox(width: 12),
             Expanded(
               child: _PlainField(
-                  controller: _priority,
-                  label: 'Order',
-                  hint: '1',
-                  keyboardType: TextInputType.number),
+                controller: _priority,
+                label: 'Order',
+                hint: '1',
+                keyboardType: TextInputType.number,
+              ),
             ),
           ],
         ),
@@ -628,7 +693,8 @@ class _ChapterSheet extends StatefulWidget {
     int number,
     bool unlocked,
     bool enabled,
-  ) onSave;
+  )
+  onSave;
 
   const _ChapterSheet({
     required this.categoryName,
@@ -656,8 +722,9 @@ class _ChapterSheetState extends State<_ChapterSheet> {
     super.initState();
     final e = widget.existing;
     _id = TextEditingController(text: e?.chapterId ?? '');
-    _number =
-        TextEditingController(text: '${e?.chapterNumber ?? widget.defaultNumber}');
+    _number = TextEditingController(
+      text: '${e?.chapterNumber ?? widget.defaultNumber}',
+    );
     _title = e?.titleText ?? const LocalizedText.empty();
     _description = e?.descriptionText ?? const LocalizedText.empty();
     _unlocked = e?.isUnlocked ?? true;
@@ -727,10 +794,11 @@ class _ChapterSheetState extends State<_ChapterSheet> {
             const SizedBox(width: 12),
             Expanded(
               child: _PlainField(
-                  controller: _number,
-                  label: 'No.',
-                  hint: '1',
-                  keyboardType: TextInputType.number),
+                controller: _number,
+                label: 'No.',
+                hint: '1',
+                keyboardType: TextInputType.number,
+              ),
             ),
           ],
         ),
@@ -758,11 +826,14 @@ class _ChapterSheetState extends State<_ChapterSheet> {
             value: _enabled,
             activeThumbColor: AppColors.neonGreen,
             onChanged: (v) => setState(() => _enabled = v),
-            title: const Text('Visible to students',
-                style: TextStyle(fontSize: 13.5, color: Colors.white)),
+            title: const Text(
+              'Visible to students',
+              style: TextStyle(fontSize: 13.5, color: Colors.white),
+            ),
             subtitle: const Text(
-                'Off hides this chapter from all student chapter lists.',
-                style: TextStyle(fontSize: 11, color: AppColors.textSecondary)),
+              'Off hides this chapter from all student chapter lists.',
+              style: TextStyle(fontSize: 11, color: AppColors.textSecondary),
+            ),
           ),
         ),
         Material(
@@ -772,10 +843,14 @@ class _ChapterSheetState extends State<_ChapterSheet> {
             value: _unlocked,
             activeThumbColor: AppColors.neonCyan,
             onChanged: (v) => setState(() => _unlocked = v),
-            title: const Text('Unlocked',
-                style: TextStyle(fontSize: 13.5, color: Colors.white)),
-            subtitle: const Text('Off means students must finish the previous chapter',
-                style: TextStyle(fontSize: 11, color: AppColors.textSecondary)),
+            title: const Text(
+              'Unlocked',
+              style: TextStyle(fontSize: 13.5, color: Colors.white),
+            ),
+            subtitle: const Text(
+              'Off means students must finish the previous chapter',
+              style: TextStyle(fontSize: 11, color: AppColors.textSecondary),
+            ),
           ),
         ),
       ],
@@ -805,10 +880,13 @@ class _SheetShell extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+      padding: EdgeInsets.only(
+        bottom: MediaQuery.of(context).viewInsets.bottom,
+      ),
       child: Container(
         constraints: BoxConstraints(
-            maxHeight: MediaQuery.of(context).size.height * 0.9),
+          maxHeight: MediaQuery.of(context).size.height * 0.9,
+        ),
         decoration: const BoxDecoration(
           color: AppColors.bgCard,
           borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
@@ -821,19 +899,23 @@ class _SheetShell extends StatelessWidget {
               width: 42,
               height: 4,
               decoration: BoxDecoration(
-                  color: Colors.white24,
-                  borderRadius: BorderRadius.circular(2)),
+                color: Colors.white24,
+                borderRadius: BorderRadius.circular(2),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(20, 14, 20, 6),
               child: Row(
                 children: [
                   Expanded(
-                    child: Text(title,
-                        style: const TextStyle(
-                            fontSize: 15.5,
-                            fontWeight: FontWeight.w800,
-                            color: Colors.white)),
+                    child: Text(
+                      title,
+                      style: const TextStyle(
+                        fontSize: 15.5,
+                        fontWeight: FontWeight.w800,
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
                   IconButton(
                     icon: const Icon(Icons.close_rounded, size: 20),
@@ -847,8 +929,9 @@ class _SheetShell extends StatelessWidget {
               child: SingleChildScrollView(
                 padding: const EdgeInsets.fromLTRB(20, 6, 20, 6),
                 child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: children),
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: children,
+                ),
               ),
             ),
             if (error != null)
@@ -856,13 +939,20 @@ class _SheetShell extends StatelessWidget {
                 padding: const EdgeInsets.fromLTRB(20, 4, 20, 0),
                 child: Row(
                   children: [
-                    const Icon(Icons.error_outline_rounded,
-                        size: 15, color: AppColors.neonRed),
+                    const Icon(
+                      Icons.error_outline_rounded,
+                      size: 15,
+                      color: AppColors.neonRed,
+                    ),
                     const SizedBox(width: 7),
                     Expanded(
-                      child: Text(error!,
-                          style: const TextStyle(
-                              fontSize: 12, color: AppColors.neonRed)),
+                      child: Text(
+                        error!,
+                        style: const TextStyle(
+                          fontSize: 12,
+                          color: AppColors.neonRed,
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -877,7 +967,8 @@ class _SheetShell extends StatelessWidget {
                     backgroundColor: AppColors.neonCyan,
                     foregroundColor: AppColors.bgDark,
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(14)),
+                      borderRadius: BorderRadius.circular(14),
+                    ),
                   ),
                   onPressed: saving ? null : onSave,
                   child: saving
@@ -885,11 +976,17 @@ class _SheetShell extends StatelessWidget {
                           width: 18,
                           height: 18,
                           child: CircularProgressIndicator(
-                              strokeWidth: 2, color: AppColors.bgDark),
+                            strokeWidth: 2,
+                            color: AppColors.bgDark,
+                          ),
                         )
-                      : const Text('Save',
+                      : const Text(
+                          'Save',
                           style: TextStyle(
-                              fontWeight: FontWeight.w900, fontSize: 14)),
+                            fontWeight: FontWeight.w900,
+                            fontSize: 14,
+                          ),
+                        ),
                 ),
               ),
             ),
@@ -923,29 +1020,37 @@ class _PlainField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(label,
-            style: const TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.w700,
-                color: AppColors.textSecondary,
-                letterSpacing: 0.3)),
+        Text(
+          label,
+          style: const TextStyle(
+            fontSize: 12,
+            fontWeight: FontWeight.w700,
+            color: AppColors.textSecondary,
+            letterSpacing: 0.3,
+          ),
+        ),
         const SizedBox(height: 8),
         TextField(
           controller: controller,
           enabled: enabled,
           keyboardType: keyboardType,
           style: TextStyle(
-              color: enabled ? Colors.white : AppColors.textMuted,
-              fontSize: 14),
+            color: enabled ? Colors.white : AppColors.textMuted,
+            fontSize: 14,
+          ),
           decoration: InputDecoration(
             hintText: hint,
-            hintStyle:
-                const TextStyle(color: AppColors.textMuted, fontSize: 13),
+            hintStyle: const TextStyle(
+              color: AppColors.textMuted,
+              fontSize: 13,
+            ),
             filled: true,
             fillColor: Colors.white.withValues(alpha: 0.05),
             isDense: true,
-            contentPadding:
-                const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: 14,
+              vertical: 12,
+            ),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
               borderSide: BorderSide.none,
@@ -958,9 +1063,14 @@ class _PlainField extends StatelessWidget {
         ),
         if (helper != null) ...[
           const SizedBox(height: 5),
-          Text(helper!,
-              style: const TextStyle(
-                  fontSize: 10.5, color: AppColors.textMuted, height: 1.3)),
+          Text(
+            helper!,
+            style: const TextStyle(
+              fontSize: 10.5,
+              color: AppColors.textMuted,
+              height: 1.3,
+            ),
+          ),
         ],
       ],
     );

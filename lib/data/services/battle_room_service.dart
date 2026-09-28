@@ -30,14 +30,13 @@ import 'trusted_ops_service.dart';
 /// `false` / empty results and the provider falls back to a bot match.
 class BattleRoomService {
   BattleRoomService({FirebaseFirestore? firestore})
-      : _firestoreOverride = firestore;
+    : _firestoreOverride = firestore;
 
   final FirebaseFirestore? _firestoreOverride;
 
   /// Resolved lazily so constructing the service never touches Firebase.
   /// Every method fails soft and the provider falls back to a bot match.
-  FirebaseFirestore get _db =>
-      _firestoreOverride ?? FirebaseFirestore.instance;
+  FirebaseFirestore get _db => _firestoreOverride ?? FirebaseFirestore.instance;
 
   static const String queueCollection = 'battle_queue';
   static const String roomsCollection = 'battle_rooms';
@@ -96,8 +95,8 @@ class BattleRoomService {
   }) async {
     try {
       final cutoff = DateTime.now()
-              .subtract(queueStaleAfter)
-              .millisecondsSinceEpoch;
+          .subtract(queueStaleAfter)
+          .millisecondsSinceEpoch;
 
       final snapshot = await _db
           .collection(queueCollection)
@@ -146,9 +145,9 @@ class BattleRoomService {
         final existing = await tx.get(roomRef);
         if (existing.exists) {
           final data = existing.data() ?? const <String, dynamic>{};
-          final createdAt =
-              (data['created_at'] as num?)?.toInt() ?? 0;
-          final isStale = createdAt > 0 &&
+          final createdAt = (data['created_at'] as num?)?.toInt() ?? 0;
+          final isStale =
+              createdAt > 0 &&
               DateTime.now().millisecondsSinceEpoch - createdAt >
                   const Duration(minutes: 10).inMilliseconds;
           if (!isStale) {
@@ -162,8 +161,9 @@ class BattleRoomService {
           tx.delete(roomRef);
         }
 
-        final opponentDoc =
-            await tx.get(_db.collection(queueCollection).doc(opponentUid));
+        final opponentDoc = await tx.get(
+          _db.collection(queueCollection).doc(opponentUid),
+        );
         if (!opponentDoc.exists) {
           return QueueClaimOutcome.opponentGone(roomId: roomId);
         }
@@ -297,12 +297,15 @@ class BattleRoomService {
   }
 
   /// Writes only the caller's `players.<side>` fields (merge).
-  Future<bool> updateMyPlayer(String roomId, String side, Map<String, dynamic> fields) async {
+  Future<bool> updateMyPlayer(
+    String roomId,
+    String side,
+    Map<String, dynamic> fields,
+  ) async {
     try {
-      await _db
-          .collection(roomsCollection)
-          .doc(roomId)
-          .set({'players': {side: fields}}, SetOptions(merge: true));
+      await _db.collection(roomsCollection).doc(roomId).set({
+        'players': {side: fields},
+      }, SetOptions(merge: true));
       return true;
     } catch (e) {
       debugPrint('BattleRoomService: updateMyPlayer failed – $e');
@@ -322,22 +325,17 @@ class BattleRoomService {
     Map<String, dynamic> extraFields = const {},
   }) async {
     try {
-      await _db.collection(roomsCollection).doc(roomId).set(
-        <String, dynamic>{
-          'players': <String, dynamic>{
-            side: <String, dynamic>{
-              ...extraFields,
-              // Nested map, never a dotted path: `'answers.$index'` in a merge
-              // write lands as a field literally named `answers.0`, which the
-              // nested-map reader can never see (R11).
-              'answers': <String, dynamic>{
-                '$questionIndex': answer.toJson(),
-              },
-            },
+      await _db.collection(roomsCollection).doc(roomId).set(<String, dynamic>{
+        'players': <String, dynamic>{
+          side: <String, dynamic>{
+            ...extraFields,
+            // Nested map, never a dotted path: `'answers.$index'` in a merge
+            // write lands as a field literally named `answers.0`, which the
+            // nested-map reader can never see (R11).
+            'answers': <String, dynamic>{'$questionIndex': answer.toJson()},
           },
         },
-        SetOptions(merge: true),
-      );
+      }, SetOptions(merge: true));
       return true;
     } catch (e) {
       debugPrint('BattleRoomService: writeMyAnswer failed – $e');
@@ -353,10 +351,9 @@ class BattleRoomService {
   /// The room is really being played now (the first question started).
   Future<void> markActive(String roomId) async {
     try {
-      await _db.collection(roomsCollection).doc(roomId).set(
-        {'status': BattleRoomStatus.active.name},
-        SetOptions(merge: true),
-      );
+      await _db.collection(roomsCollection).doc(roomId).set({
+        'status': BattleRoomStatus.active.name,
+      }, SetOptions(merge: true));
     } catch (e) {
       debugPrint('BattleRoomService: markActive failed – $e');
     }
@@ -365,13 +362,10 @@ class BattleRoomService {
   /// Marks both players attached (creator only) so the room reads `ready`.
   Future<void> markReady(String roomId) async {
     try {
-      await _db.collection(roomsCollection).doc(roomId).set(
-        {
-          'status': BattleRoomStatus.ready.name,
-          'state': {'phase': 'countdown'},
-        },
-        SetOptions(merge: true),
-      );
+      await _db.collection(roomsCollection).doc(roomId).set({
+        'status': BattleRoomStatus.ready.name,
+        'state': {'phase': 'countdown'},
+      }, SetOptions(merge: true));
     } catch (e) {
       debugPrint('BattleRoomService: markReady failed – $e');
     }
@@ -402,10 +396,9 @@ class BattleRoomService {
   /// writer computed), so a lost update from a duplicate writer is harmless.
   Future<void> advanceState(String roomId, Map<String, dynamic> state) async {
     try {
-      await _db
-          .collection(roomsCollection)
-          .doc(roomId)
-          .set({'state': state}, SetOptions(merge: true));
+      await _db.collection(roomsCollection).doc(roomId).set({
+        'state': state,
+      }, SetOptions(merge: true));
     } catch (e) {
       debugPrint('BattleRoomService: advanceState failed – $e');
     }
@@ -425,10 +418,7 @@ class BattleRoomService {
     String? matchId,
   }) async {
     try {
-      await _db
-          .collection(roomsCollection)
-          .doc(roomId)
-          .set({
+      await _db.collection(roomsCollection).doc(roomId).set({
         'status': BattleRoomStatus.finished.name,
         'state': {'phase': 'finished'},
       }, SetOptions(merge: true));
@@ -481,7 +471,8 @@ class QueueSearchResult {
 
   factory QueueSearchResult.failure(Object cause) {
     final text = cause.toString().toLowerCase();
-    final isConfiguration = text.contains('permission-denied') ||
+    final isConfiguration =
+        text.contains('permission-denied') ||
         text.contains('permission_denied') ||
         text.contains('failed-precondition') ||
         text.contains('failed_precondition') ||
@@ -534,24 +525,22 @@ class QueueClaimOutcome {
   factory QueueClaimOutcome.created({
     required String roomId,
     required String matchId,
-  }) =>
-      QueueClaimOutcome._(
-        status: QueueClaimStatus.created,
-        roomId: roomId,
-        matchId: matchId,
-      );
+  }) => QueueClaimOutcome._(
+    status: QueueClaimStatus.created,
+    roomId: roomId,
+    matchId: matchId,
+  );
 
   factory QueueClaimOutcome.alreadyExists({
     required String roomId,
     required String matchId,
     required BattleRoomStatus status,
-  }) =>
-      QueueClaimOutcome._(
-        status: QueueClaimStatus.alreadyExists,
-        roomId: roomId,
-        matchId: matchId,
-        roomStatus: status,
-      );
+  }) => QueueClaimOutcome._(
+    status: QueueClaimStatus.alreadyExists,
+    roomId: roomId,
+    matchId: matchId,
+    roomStatus: status,
+  );
 
   factory QueueClaimOutcome.opponentGone({required String roomId}) =>
       QueueClaimOutcome._(
@@ -562,12 +551,11 @@ class QueueClaimOutcome {
   factory QueueClaimOutcome.failure({
     required String roomId,
     required Object error,
-  }) =>
-      QueueClaimOutcome._(
-        status: QueueClaimStatus.failed,
-        roomId: roomId,
-        error: error,
-      );
+  }) => QueueClaimOutcome._(
+    status: QueueClaimStatus.failed,
+    roomId: roomId,
+    error: error,
+  );
 
   bool get isCreated => status == QueueClaimStatus.created;
 }

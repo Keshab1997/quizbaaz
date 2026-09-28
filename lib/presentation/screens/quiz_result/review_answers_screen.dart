@@ -13,19 +13,22 @@ import '../../../l10n/app_strings.dart';
 class ReviewAnswersScreen extends StatelessWidget {
   const ReviewAnswersScreen({super.key});
 
-
   @override
   Widget build(BuildContext context) {
     final quiz = context.watch<QuizProvider>();
     final records = quiz.answerRecords;
 
-    final skippedCount =
-        records.where((r) => r.status == AnswerStatus.skipped).length;
+    final skippedCount = records
+        .where((r) => r.status == AnswerStatus.skipped)
+        .length;
 
     return Scaffold(
       backgroundColor: Colors.transparent,
       appBar: AppBar(
-        title: Text(S.reviewTitle, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+        title: Text(
+          S.reviewTitle,
+          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+        ),
         actions: [
           QuizLanguagePills(
             available: quiz.availableLanguages,
@@ -47,14 +50,14 @@ class ReviewAnswersScreen extends StatelessWidget {
                 _buildSummary(quiz, skippedCount),
                 const SizedBox(height: 16),
                 ...records.asMap().entries.map(
-                      (entry) => Padding(
-                        padding: const EdgeInsets.only(bottom: 12),
-                        child: _QuestionReviewCard(
-                          index: entry.key,
-                          record: entry.value,
-                        ),
-                      ),
+                  (entry) => Padding(
+                    padding: const EdgeInsets.only(bottom: 12),
+                    child: _QuestionReviewCard(
+                      index: entry.key,
+                      record: entry.value,
                     ),
+                  ),
+                ),
               ],
             ),
     );
@@ -144,7 +147,10 @@ class _QuestionReviewCard extends StatelessWidget {
             const SizedBox(height: 6),
             Text(
               q.questionIn('en'),
-              style: const TextStyle(fontSize: 13, color: AppColors.textSecondary),
+              style: const TextStyle(
+                fontSize: 13,
+                color: AppColors.textSecondary,
+              ),
             ),
           ],
           const SizedBox(height: 12),
@@ -162,7 +168,9 @@ class _QuestionReviewCard extends StatelessWidget {
               decoration: BoxDecoration(
                 color: AppColors.neonCyan.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: AppColors.neonCyan.withValues(alpha: 0.3)),
+                border: Border.all(
+                  color: AppColors.neonCyan.withValues(alpha: 0.3),
+                ),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -195,11 +203,16 @@ class _QuestionReviewCard extends StatelessWidget {
 
   Widget _statusBadge() {
     final (String text, Color color, IconData icon) = switch (record.status) {
-      AnswerStatus.answered => record.wasCorrect
-          ? (S.correct, AppColors.neonGreen, Icons.check_circle)
-          : (S.wrong, AppColors.neonRed, Icons.cancel),
+      AnswerStatus.answered =>
+        record.wasCorrect
+            ? (S.correct, AppColors.neonGreen, Icons.check_circle)
+            : (S.wrong, AppColors.neonRed, Icons.cancel),
       AnswerStatus.timedOut => ('Time\'s up', AppColors.neonGold, Icons.timer),
-      AnswerStatus.skipped => (S.skipped, AppColors.textMuted, Icons.fast_forward),
+      AnswerStatus.skipped => (
+        S.skipped,
+        AppColors.textMuted,
+        Icons.fast_forward,
+      ),
     };
 
     return Container(
@@ -216,7 +229,11 @@ class _QuestionReviewCard extends StatelessWidget {
           const SizedBox(width: 5),
           Text(
             text,
-            style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold, color: color),
+            style: TextStyle(
+              fontSize: 11,
+              fontWeight: FontWeight.bold,
+              color: color,
+            ),
           ),
         ],
       ),
@@ -226,8 +243,8 @@ class _QuestionReviewCard extends StatelessWidget {
   Widget _buildOption(int index, String option) {
     final q = record.question;
     final isCorrectOption = index == q.correctIndex;
-    final isUserPick = record.status == AnswerStatus.answered &&
-        record.selectedIndex == index;
+    final isUserPick =
+        record.status == AnswerStatus.answered && record.selectedIndex == index;
     final wasCorrect = record.wasCorrect;
 
     Color borderColor = Colors.white.withValues(alpha: 0.1);
@@ -276,7 +293,11 @@ class _QuestionReviewCard extends StatelessWidget {
           if (tag != null)
             Text(
               tag,
-              style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: textColor),
+              style: TextStyle(
+                fontSize: 10,
+                fontWeight: FontWeight.bold,
+                color: textColor,
+              ),
             ),
         ],
       ),

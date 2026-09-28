@@ -29,13 +29,12 @@ import 'package:flutter/foundation.dart';
 /// 5. Firestore real-time listener provides live updates of who's online.
 class OnlinePresenceService {
   OnlinePresenceService({FirebaseFirestore? firestore})
-      : _firestoreOverride = firestore;
+    : _firestoreOverride = firestore;
 
   final FirebaseFirestore? _firestoreOverride;
 
   /// Resolved lazily so constructing the service never touches Firebase.
-  FirebaseFirestore get _db =>
-      _firestoreOverride ?? FirebaseFirestore.instance;
+  FirebaseFirestore get _db => _firestoreOverride ?? FirebaseFirestore.instance;
 
   static const String collection = 'online_users';
   static const Duration staleAfter = Duration(seconds: 60);
@@ -87,7 +86,10 @@ class OnlinePresenceService {
   }
 
   /// Updates the heartbeat timestamp. Call every 20s.
-  Future<void> heartbeat({bool isAvailable = true, String activity = 'idle'}) async {
+  Future<void> heartbeat({
+    bool isAvailable = true,
+    String activity = 'idle',
+  }) async {
     if (_myUid == null || !_isOnline) return;
     try {
       await _db.collection(collection).doc(_myUid!).update({
@@ -124,9 +126,7 @@ class OnlinePresenceService {
   /// Returns a real-time stream of online users (excluding stale entries).
   /// Only shows users who are available (not in a battle/quiz).
   Stream<List<OnlineUser>> watchOnlineUsers({String? excludeUid}) {
-    final cutoff = DateTime.now()
-        .subtract(staleAfter)
-        .millisecondsSinceEpoch;
+    final cutoff = DateTime.now().subtract(staleAfter).millisecondsSinceEpoch;
 
     return _db
         .collection(collection)
@@ -136,22 +136,21 @@ class OnlinePresenceService {
         .limit(50)
         .snapshots()
         .map((snapshot) {
-      return snapshot.docs
-          .where((doc) => doc.id != excludeUid)
-          .map((doc) => OnlineUser.fromDoc(doc))
-          .toList();
-    }).handleError((e) {
-      debugPrint('OnlinePresenceService: watchOnlineUsers – $e');
-      return <OnlineUser>[];
-    });
+          return snapshot.docs
+              .where((doc) => doc.id != excludeUid)
+              .map((doc) => OnlineUser.fromDoc(doc))
+              .toList();
+        })
+        .handleError((e) {
+          debugPrint('OnlinePresenceService: watchOnlineUsers – $e');
+          return <OnlineUser>[];
+        });
   }
 
   /// One-shot fetch of currently online users.
   Future<List<OnlineUser>> getOnlineUsers({String? excludeUid}) async {
     try {
-      final cutoff = DateTime.now()
-          .subtract(staleAfter)
-          .millisecondsSinceEpoch;
+      final cutoff = DateTime.now().subtract(staleAfter).millisecondsSinceEpoch;
 
       final snapshot = await _db
           .collection(collection)
@@ -178,9 +177,7 @@ class OnlinePresenceService {
       if (!doc.exists) return false;
       final data = doc.data()!;
       final lastSeen = (data['last_seen'] as num?)?.toInt() ?? 0;
-      final cutoff = DateTime.now()
-          .subtract(staleAfter)
-          .millisecondsSinceEpoch;
+      final cutoff = DateTime.now().subtract(staleAfter).millisecondsSinceEpoch;
       return lastSeen > cutoff;
     } catch (e) {
       return false;
@@ -258,9 +255,8 @@ class OnlineUser {
   }
 
   /// Best avatar URL: remote > local.
-  String get effectiveAvatar => (avatarUrl != null && avatarUrl!.isNotEmpty)
-      ? avatarUrl!
-      : avatar;
+  String get effectiveAvatar =>
+      (avatarUrl != null && avatarUrl!.isNotEmpty) ? avatarUrl! : avatar;
 
   factory OnlineUser.fromDoc(DocumentSnapshot doc) {
     final data = doc.data() as Map<String, dynamic>? ?? {};

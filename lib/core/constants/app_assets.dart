@@ -1,18 +1,29 @@
 class AppAssets {
   // Premium 3D characters (generated for the QuizBaaz visual system).
-  static const String heroBoy = 'assets/images/characters/quizbaaz_mascot_boy.png';
-  static const String heroGirl = 'assets/images/characters/quizbaaz_mascot_girl.png';
-  static const String championBoy = 'assets/images/characters/quizbaaz_champion.png';
-  static const String quizChampion = 'assets/images/characters/quizbaaz_quiz_guide.png';
-  static const String dailyStar = 'assets/images/characters/quizbaaz_daily_star.png';
-  static const String battleDuo = 'assets/images/characters/quizbaaz_battle_duo.png';
-  static const String battleFighterBlue = 'assets/images/characters/battle_fighter_blue.png';
-  static const String battleFighterPink = 'assets/images/characters/battle_fighter_pink.png';
-  static const String rewardGirl = 'assets/images/characters/quizbaaz_reward_girl.png';
+  static const String heroBoy =
+      'assets/images/characters/quizbaaz_mascot_boy.png';
+  static const String heroGirl =
+      'assets/images/characters/quizbaaz_mascot_girl.png';
+  static const String championBoy =
+      'assets/images/characters/quizbaaz_champion.png';
+  static const String quizChampion =
+      'assets/images/characters/quizbaaz_quiz_guide.png';
+  static const String dailyStar =
+      'assets/images/characters/quizbaaz_daily_star.png';
+  static const String battleDuo =
+      'assets/images/characters/quizbaaz_battle_duo.png';
+  static const String battleFighterBlue =
+      'assets/images/characters/battle_fighter_blue.png';
+  static const String battleFighterPink =
+      'assets/images/characters/battle_fighter_pink.png';
+  static const String rewardGirl =
+      'assets/images/characters/quizbaaz_reward_girl.png';
 
   // Default profile avatars.
-  static const String maleAvatar = 'assets/images/avatars/quizbaaz_avatar_boy.png';
-  static const String femaleAvatar = 'assets/images/avatars/quizbaaz_avatar_girl.png';
+  static const String maleAvatar =
+      'assets/images/avatars/quizbaaz_avatar_boy.png';
+  static const String femaleAvatar =
+      'assets/images/avatars/quizbaaz_avatar_girl.png';
   static const String userAvatarBoy = maleAvatar; // Backwards compatibility.
 
   // ═══════════════════════════════════════════════════════════════════════
@@ -26,19 +37,27 @@ class AppAssets {
   // ═══════════════════════════════════════════════════════════════════════
   // 🎨 3D AVATARS - Female
   // ═══════════════════════════════════════════════════════════════════════
-  static const String femaleAvatar1 = 'assets/images/avatars/female_avatar_1.png';
-  static const String femaleAvatar2 = 'assets/images/avatars/female_avatar_2.png';
-  static const String femaleAvatar3 = 'assets/images/avatars/female_avatar_3.png';
-  static const String femaleAvatar4 = 'assets/images/avatars/female_avatar_4.png';
-  static const String dailyStarAvatar = 'assets/images/avatars/daily_star_avatar.png';
+  static const String femaleAvatar1 =
+      'assets/images/avatars/female_avatar_1.png';
+  static const String femaleAvatar2 =
+      'assets/images/avatars/female_avatar_2.png';
+  static const String femaleAvatar3 =
+      'assets/images/avatars/female_avatar_3.png';
+  static const String femaleAvatar4 =
+      'assets/images/avatars/female_avatar_4.png';
+  static const String dailyStarAvatar =
+      'assets/images/avatars/daily_star_avatar.png';
 
   // ═══════════════════════════════════════════════════════════════════════
   // 👑 PREMIUM SHOP AVATARS
   // ═══════════════════════════════════════════════════════════════════════
   static const String vipAvatar = 'assets/images/avatars/vip_avatar.png';
-  static const String goldenKnightAvatar = 'assets/images/avatars/golden_knight_avatar.png';
-  static const String neonCyberAvatar = 'assets/images/avatars/neon_cyber_avatar.png';
-  static const String royalCrownAvatar = 'assets/images/avatars/royal_crown_avatar.png';
+  static const String goldenKnightAvatar =
+      'assets/images/avatars/golden_knight_avatar.png';
+  static const String neonCyberAvatar =
+      'assets/images/avatars/neon_cyber_avatar.png';
+  static const String royalCrownAvatar =
+      'assets/images/avatars/royal_crown_avatar.png';
 
   // ═══════════════════════════════════════════════════════════════════════
   // 📋 AVATAR LISTS (for selection screens)

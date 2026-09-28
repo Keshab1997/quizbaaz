@@ -110,7 +110,8 @@ class _AmbientPainter extends CustomPainter {
       Offset(size.width * .88, size.height * .72),
       Offset(size.width * .27, size.height * .88),
     ];
-    final dotPaint = Paint()..color = AppColors.neonCyan.withValues(alpha: 0.20);
+    final dotPaint = Paint()
+      ..color = AppColors.neonCyan.withValues(alpha: 0.20);
     for (final point in points) {
       canvas.drawCircle(point, 1.6, dotPaint);
       canvas.drawCircle(

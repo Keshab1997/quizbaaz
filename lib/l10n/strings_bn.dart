@@ -64,12 +64,13 @@ const Map<String, String> kStringsBn = {
   'dashMoreOptions': 'আরও অপশন',
   'dashDayStreak': 'দিনের ধারা',
   'dashStreakTitle': "🔥 দৈনিক কুইজ খেলো, স্ট্রিক বাঁচাও",
-  
+
   // ---- streak dialogs
   'streakMotivationTitle': 'তোমার স্ট্রিক বাঁচাও!',
   'streakMotivationDaysToGoal': 'বোনাস পুরস্কার আনলক করতে {n} দিন বাকি!',
   'streakMotivationGoalReached': '🎉 গোলে পৌঁছেছ! বোনাস আনলক!',
-  'streakMotivationStart': 'আজ থেকেই শুরু করো! প্রতিটি স্ট্রিক ১ দিনে শুরু হয় 💪',
+  'streakMotivationStart':
+      'আজ থেকেই শুরু করো! প্রতিটি স্ট্রিক ১ দিনে শুরু হয় 💪',
   'streakMotivationBeginner': 'চমৎকার শুরু! আগুন জ্বালিয়ে রাখো 🔥',
   'streakMotivationBuilding': 'তুমি আগুনে! গোলে পৌঁছাতে আর {n} দিন! 🔥',
   'streakMotivationConsistent': 'অসাধারণ নিয়মিত! {n} দিন ধারে! 🏆',
@@ -80,8 +81,10 @@ const Map<String, String> kStringsBn = {
   'streakResetTitle': 'স্ট্রিক হারিয়েছো!',
   'streakResetEncourage30': 'তোমার {n}-দিনের অসাধারণ স্ট্রিক ছিল! সত্যিই দারুণ। এখন নতুন করে শুরু করো! 💪',
   'streakResetEncourage14': '{n} দিন আগুনে ছিলে! প্রতিটি স্ট্রিক আবার গড়া যায়। রাউন্ড ২ এর জন্য প্রস্তুত? 🔥',
-  'streakResetEncourage7': '{n} দিনের দৃঢ় স্ট্রিক! নতুন শুরু করার সেরা সময় এখন। চলো! 🚀',
-  'streakResetEncourage3': 'ভালো চেষ্টা! {n} দিন শুধু শুরু। আজ থেকে নতুন স্ট্রিক শুরু করো! ✨',
+  'streakResetEncourage7':
+      '{n} দিনের দৃঢ় স্ট্রিক! নতুন শুরু করার সেরা সময় এখন। চলো! 🚀',
+  'streakResetEncourage3':
+      'ভালো চেষ্টা! {n} দিন শুধু শুরু। আজ থেকে নতুন স্ট্রিক শুরু করো! ✨',
   'streakResetEncourage0': 'কোনো সমস্যা নেই! প্রতিটি মাস্টার একসময় শিক্ষানবিশ ছিল। কিছু দারুণ গড়ি! 🌟',
   'streakShieldAvailable': '🛡️ স্ট্রিক শিল্ড আছে!',
   'streakShieldUse': 'তোমার {n}-দিনের স্ট্রিক তাৎক্ষণিক ফিরিয়ে আনতে ১টি স্ট্রিক শিল্ড ব্যবহার করো!',
@@ -104,17 +107,14 @@ const Map<String, String> kStringsBn = {
 
   // ------------------------------------------------------------ daily quiz --
   'quizQuitTitle': 'লাইভ কুইজ ছেড়ে যাবেন?',
-  'quizQuitBody':
-      'এখন চলে গেলে আজকের স্কোর লিডারবোর্ডে যুক্ত হবে না।',
+  'quizQuitBody': 'এখন চলে গেলে আজকের স্কোর লিডারবোর্ডে যুক্ত হবে না।',
   'quizQuit': 'ছেড়ে দিন',
   'dailyCountedBanner':
       'এটিই আজকের গণনার রান — আপনার স্কোর সরাসরি লিডারবোর্ডে যাবে।',
   'dailyLockedBanner':
       'আজকের লিডারবোর্ড স্কোর {score} লক করা আছে — এই রান শুধু অনুশীলনের জন্য।',
-  'dailyRetryBanner':
-      'স্কোর শিল্ড সক্রিয় — এই রান আজকের লিডারবোর্ড স্কোর ({score}) বদলে দেবে।',
-  'dailyUnrankedBanner':
-      'অনুশীলন সেট — আজকের প্রতিযোগিতার প্যাকেট পাওয়া যায়নি, তাই এই স্কোর লিডারবোর্ডে যাবে না।',
+  'dailyRetryBanner': 'স্কোর শিল্ড সক্রিয় — এই রান আজকের লিডারবোর্ড স্কোর ({score}) বদলে দেবে।',
+  'dailyUnrankedBanner': 'অনুশীলন সেট — আজকের প্রতিযোগিতার প্যাকেট পাওয়া যায়নি, তাই এই স্কোর লিডারবোর্ডে যাবে না।',
   'quizNoFiftyFifty': '৫০-৫০ লাইফলাইন শেষ! শপ থেকে আরও কিনুন। 🛒',
   'quizFiftyFiftyUsed': 'এই প্রশ্নে ৫০-৫০ ইতিমধ্যে ব্যবহার করেছেন।',
   'quizFiftyFiftyBlocked': 'এখন ৫০-৫০ ব্যবহার করা যাবে না।',
@@ -188,8 +188,7 @@ const Map<String, String> kStringsBn = {
   'profileAvgTime': 'গড় সময় / প্রশ্ন',
   'profileLongestStreak': 'দীর্ঘতম ধারা',
   'profileNameEffect': 'নামের ইফেক্ট',
-  'profileNameEffectHint':
-      'লিডারবোর্ডে আপনার নামকে বিশেষ চেহারা দিন',
+  'profileNameEffectHint': 'লিডারবোর্ডে আপনার নামকে বিশেষ চেহারা দিন',
   'profileMyPurchases': 'আমার কেনাকাটা',
   'profileMyPurchasesHint': 'শপ থেকে কেনা সবকিছু দেখুন',
   'profileSettings': 'সেটিংস',
@@ -212,15 +211,16 @@ const Map<String, String> kStringsBn = {
   'profileSignOutConfirm':
       'আপনি কি সাইন আউট করতে চান? আপনার লোকাল ডেটা থেকে যাবে।',
   'accountDelete': 'অ্যাকাউন্ট মুছুন',
-  'accountDeleteWarning':
-      'এতে আপনার অ্যাকাউন্ট, প্রোফাইল, কুইজ ইতিহাস, কয়েন, জেমস, রিওয়ার্ড ও শপ আইটেম স্থায়ীভাবে মুছে যাবে। এটি আর ফেরানো যাবে না।',
+  'accountDeleteWarning': 'এতে আপনার অ্যাকাউন্ট, প্রোফাইল, কুইজ ইতিহাস, কয়েন, জেমস, রিওয়ার্ড ও শপ আইটেম স্থায়ীভাবে মুছে যাবে। এটি আর ফেরানো যাবে না।',
   'accountDeleteConfirmLabel': 'নিশ্চিত করতে নিচে DELETE লিখুন।',
   'accountDeleting': 'আপনার অ্যাকাউন্ট মুছে ফেলা হচ্ছে…',
-  'accountDeleted': 'আপনার অ্যাকাউন্ট মুছে ফেলা হয়েছে। আপনার সব ডেটা সরিয়ে ফেলা হয়েছে।',
+  'accountDeleted':
+      'আপনার অ্যাকাউন্ট মুছে ফেলা হয়েছে। আপনার সব ডেটা সরিয়ে ফেলা হয়েছে।',
   'accountDeleteFailed': 'অ্যাকাউন্ট মুছে ফেলা যায়নি। আবার চেষ্টা করুন।',
   'accountDeleteReauth':
       'নিরাপত্তার জন্য Google দিয়ে আবার সাইন ইন করে চেষ্টা করুন।',
-  'accountDeletedPartial': 'আপনার অ্যাকাউন্ট মুছে ফেলা হয়েছে। বাকি ক্লিনআপ সার্ভারে শেষ হচ্ছে।',
+  'accountDeletedPartial':
+      'আপনার অ্যাকাউন্ট মুছে ফেলা হয়েছে। বাকি ক্লিনআপ সার্ভারে শেষ হচ্ছে।',
   'accountDeleteLocalOnly': 'এই ডিভাইস থেকে আপনার গেস্ট প্রগ্রেস মুছে যাবে।',
   'linkOpenFailed': 'লিংক খোলা যায়নি। আবার চেষ্টা করুন।',
   'shareMsg': 'QuizBaaz খেলুন — দৈনিক কুইজ, ১v১ ব্যাটল ও রিওয়ার্ড! 🎯',
@@ -235,9 +235,9 @@ const Map<String, String> kStringsBn = {
   'profileSignedInGoogle': '🎉 গুগল দিয়ে সাইন ইন হয়েছে!',
   'authNoIdToken':
       'গুগল সাইন-ইনে কোনো ID টোকেন আসেনি। অ্যাপ আপডেট করে আবার চেষ্টা করুন।',
-  'authSignInCanceled': 'গুগল সাইন-ইন বাতিল হয়েছে। আবার Sign In চাপুন এবং অ্যাকাউন্ট বেছে নিন।',
-  'authReauthFailed':
-      'গুগল এই Play বিল্ড যাচাই করতে পারেনি (error 16)। Firebase → Project settings-এ Play App Signing SHA-1 যোগ করুন, কিছুক্ষণ অপেক্ষা করে Play থেকে আবার ইনস্টল করুন।',
+  'authSignInCanceled':
+      'গুগল সাইন-ইন বাতিল হয়েছে। আবার Sign In চাপুন এবং অ্যাকাউন্ট বেছে নিন।',
+  'authReauthFailed': 'গুগল এই Play বিল্ড যাচাই করতে পারেনি (error 16)। Firebase → Project settings-এ Play App Signing SHA-1 যোগ করুন, কিছুক্ষণ অপেক্ষা করে Play থেকে আবার ইনস্টল করুন।',
   'profileEffectNotOwned': 'আগে শপ থেকে এই ইফেক্টটি কিনুন!',
   'profilePlayerFallback': 'কুইজবাজ প্লেয়ার',
 
@@ -249,8 +249,7 @@ const Map<String, String> kStringsBn = {
   'avatarPremium': '👑 প্রিমিয়াম',
   'avatarAlreadyOwned': 'এই অ্যাভাটারটি ইতিমধ্যে আপনার আছে।',
   'avatarNotEnoughGems': 'এই অ্যাভাটার আনলক করতে যথেষ্ট জেম নেই।',
-  'avatarPremiumHint':
-      'এটি একটি প্রিমিয়াম অ্যাভাটার। আগে শপ থেকে কিনুন!',
+  'avatarPremiumHint': 'এটি একটি প্রিমিয়াম অ্যাভাটার। আগে শপ থেকে কিনুন!',
   'avatarUnlockTitle': 'ক্লাউড অ্যাভাটার আনলক: {name}',
   'avatarUnlockBody': '{cost} জেম দিয়ে এই ক্লাউড অ্যাভাটার আনলক করবেন?',
   'avatarUnlocked': '✅ {name} আনলক হয়েছে!',
@@ -297,8 +296,7 @@ const Map<String, String> kStringsBn = {
   'rewardsTapPrize': 'ক্লেইম বা ট্র্যাক করতে পুরস্কারে ট্যাপ করুন।',
   'rewardsNone': 'এখনও কোনো পুরস্কার নেই — দৈনিক কুইজ জিতুন! 🏆',
   'rewardsWinDaily': 'প্রতিদিন কুইজ খেলে পুরষ্কার জিতুন!',
-  'rewardsWinDailyBody':
-      'ডেইলি কুইজে অংশগ্রহণ করে প্রতিদিন Coins, Gems, শপ আইটেম এবং ব্যাজ জিতে নিন।',
+  'rewardsWinDailyBody': 'ডেইলি কুইজে অংশগ্রহণ করে প্রতিদিন Coins, Gems, শপ আইটেম এবং ব্যাজ জিতে নিন।',
   'rewardsClaimNow': 'এখনই ক্লেইম করুন',
   'rewardsClaimed': 'ক্লেইম হয়েছে ✓',
   'rewardsProcessing': 'প্রক্রিয়াধীন',
@@ -348,28 +346,22 @@ const Map<String, String> kStringsBn = {
   'resultBackHome': 'হোমে ফিরে যান',
   'resultPerfect': '🔥 পারফেক্ট স্কোর! +১০০ কয়েন বোনাস',
   'resultSaveScore': 'স্কোর সেভ করে লিডারবোর্ডে যোগ দিন!',
-  'resultGuestBody':
-      'আপনি গেস্ট হিসেবে খেলেছেন। দৈনিক লিডারবোর্ডে স্কোর যুক্ত করতে গুগল অ্যাকাউন্ট দিয়ে সাইন ইন করুন।',
+  'resultGuestBody': 'আপনি গেস্ট হিসেবে খেলেছেন। দৈনিক লিডারবোর্ডে স্কোর যুক্ত করতে গুগল অ্যাকাউন্ট দিয়ে সাইন ইন করুন।',
   'resultGoogleSignIn': 'এক ট্যাপে গুগল সাইন-ইন',
   'resultSigningIn': 'সাইন ইন হচ্ছে...',
   'resultSignedIn': '🎉 গুগল দিয়ে সাইন ইন! স্কোর লিডারবোর্ডে সেভ হয়েছে!',
   'resultDailyRankedNotice':
       'প্রতিযোগিতা রান — দিনের প্রথম রানই আজকের লিডারবোর্ড স্কোর ঠিক করবে!',
-  'resultDailyUnrankedNotice':
-      'অনুশীলন রান — এই স্কোর লিডারবোর্ডে যোগ হবে না।',
-  'resultDailyCountedNotice':
-      '🏆 আজকের স্কোর {score} লিডারবোর্ডে সেভ হয়েছে — পরের রানে এটি বদলাবে না।',
+  'resultDailyUnrankedNotice': 'অনুশীলন রান — এই স্কোর লিডারবোর্ডে যোগ হবে না।',
+  'resultDailyCountedNotice': '🏆 আজকের স্কোর {score} লিডারবোর্ডে সেভ হয়েছে — পরের রানে এটি বদলাবে না।',
   'resultDailyLockedNotice':
       '🔒 আজকের লিডারবোর্ড স্কোর {score} লক করা আছে — এই রান গণনা হবে না।',
-  'resultDailyReplacedNotice':
-      '🛡️ স্কোর শিল্ড ব্যবহার করা হয়েছে — আজকের লিডারবোর্ড স্কোর এখন {score}।',
+  'resultDailyReplacedNotice': '🛡️ স্কোর শিল্ড ব্যবহার করা হয়েছে — আজকের লিডারবোর্ড স্কোর এখন {score}।',
   'resultShieldRetryTitle': 'খারাপ রান? স্কোর শিল্ড ব্যবহার করুন',
-  'resultShieldRetryBody':
-      '১টি স্কোর শিল্ড খরচ করলে আপনার পরের ডেইলি রান আজকের লক করা স্কোর ({score}) বদলে দেবে — যদি তা কমও হয়।',
+  'resultShieldRetryBody': '১টি স্কোর শিল্ড খরচ করলে আপনার পরের ডেইলি রান আজকের লক করা স্কোর ({score}) বদলে দেবে — যদি তা কমও হয়।',
   'resultShieldRetryAction': 'স্কোর শিল্ড ব্যবহার করুন ({count})',
   'resultShieldRetryDialogTitle': 'স্কোর শিল্ড ব্যবহার করবেন?',
-  'resultShieldRetryDialogBody':
-      '১টি স্কোর শিল্ড খরচ হবে। আপনার পরের ডেইলি রানই আজকের লিডারবোর্ড স্কোর হবে।',
+  'resultShieldRetryDialogBody': '১টি স্কোর শিল্ড খরচ হবে। আপনার পরের ডেইলি রানই আজকের লিডারবোর্ড স্কোর হবে।',
   'resultShieldRetryConfirm': 'শিল্ড ব্যবহার করুন',
   'resultShieldRetryDone':
       'শিল্ড ব্যবহার করা হয়েছে — আপনার পরের ডেইলি রান আজকের স্কোর বদলে দেবে।',
@@ -384,7 +376,8 @@ const Map<String, String> kStringsBn = {
   'battlePlayer': 'প্লেয়ার',
   'battleBotCorrect': '{n}টি সঠিক',
   'battleArena': '⚔️ ব্যাটল অ্যারেনা',
-  'battleRulesLine': 'সব অধ্যায় থেকে মিশে আসা {n}টি প্রশ্ন — প্রতি ম্যাচে নতুন প্রশ্ন',
+  'battleRulesLine':
+      'সব অধ্যায় থেকে মিশে আসা {n}টি প্রশ্ন — প্রতি ম্যাচে নতুন প্রশ্ন',
   'battleChooseDifficulty': 'কঠিনতা বেছে নিন',
   'battleEasy': '😌 সহজ',
   'battleEasyDesc': 'নিশ্চিন্ত গতি — বট প্রায়ই ভুল করে',
@@ -406,10 +399,12 @@ const Map<String, String> kStringsBn = {
   'battleDrawTitle': 'ড্র!',
   'battleLoseTitle': 'আপনি হেরেছেন!',
   'battleGuestRestricted': 'গেস্ট হিসেবে লাইভ ১v১ খেলা যায় না। অন্য player-কে চ্যালেঞ্জ করতে সাইন ইন করুন।',
-  'battleNoQuestions': 'এই মুহূর্তে কোনো প্রশ্ন নেই — একটু পরে আবার চেষ্টা করুন।',
+  'battleNoQuestions':
+      'এই মুহূর্তে কোনো প্রশ্ন নেই — একটু পরে আবার চেষ্টা করুন।',
   'battleOpponentLeft': 'ওই player আর উপলব্ধ নেই।',
   'battleStartFailed': 'ম্যাচটি শুরু করা গেল না। আবার চেষ্টা করুন।',
-  'battleMatchmakingBroken': 'ম্যাচমেকিং এই মুহূর্তে বন্ধ। কিছুক্ষণ পরে আবার চেষ্টা করুন।',
+  'battleMatchmakingBroken':
+      'ম্যাচমেকিং এই মুহূর্তে বন্ধ। কিছুক্ষণ পরে আবার চেষ্টা করুন।',
 
   // -------------------------------------------------------------- language --
   'languageTitle': 'ভাষা',
@@ -420,7 +415,6 @@ const Map<String, String> kStringsBn = {
   'languageEnglish': 'English (ইংরেজি)',
   'languageBengali': 'বাংলা',
   'languageHindi': 'हिन्दी (হিন্দি)',
-
 
   // ---------------------------------------------------------------- dates --
   'month1': 'জানু',
@@ -445,7 +439,8 @@ const Map<String, String> kStringsBn = {
   'setsContinue': 'চালিয়ে যান — সেট {n}',
   'setsStart': 'সেট {n} শুরু করুন',
   'setsAllDone': 'সব সেট শেষ 🎉',
-  'setsAllDoneBody': 'নিচে যেকোনো সেট আবার খেলুন, বা নতুন প্রশ্ন যোগ হলে ফিরে আসুন।',
+  'setsAllDoneBody':
+      'নিচে যেকোনো সেট আবার খেলুন, বা নতুন প্রশ্ন যোগ হলে ফিরে আসুন।',
   'setsLocked': 'আনলক করতে সেট {n} শেষ করুন',
   'setsCleared': 'সম্পন্ন',
   'setsBest': 'সেরা {correct}/{total}',
@@ -454,7 +449,8 @@ const Map<String, String> kStringsBn = {
   'setsPracticeNote': 'অনুশীলন — কয়েন বা স্কোর যোগ হবে না',
   'setsPracticeBanner': 'অনুশীলন · কিছুই গণনা হচ্ছে না',
   'setsNoHistory': 'এখনও কোনো সেট শেষ হয়নি',
-  'setsNoHistoryBody': 'একটি সেট শেষ করলে সেটি এখানে আসবে, যখন খুশি আবার খেলতে পারবেন।',
+  'setsNoHistoryBody':
+      'একটি সেট শেষ করলে সেটি এখানে আসবে, যখন খুশি আবার খেলতে পারবেন।',
   'setsAttempts': '{n} বার খেলা',
   'setsEmpty': 'এই অধ্যায়ে এখনও কোনো প্রশ্ন নেই',
   'setsEmptyBody': 'প্রশ্ন যোগ করা হচ্ছে। শীঘ্রই দেখুন!',
@@ -464,18 +460,16 @@ const Map<String, String> kStringsBn = {
   'notifDailyTitle': 'ডেইলি কুইজ লাইভ',
   'notifDailyBody': '১০টা প্রশ্ন। এক রান। লিডারবোর্ডে উঠুন।',
   'notifStreakTitle': 'আপনার স্ট্রিক হুমকির মুখে',
-  'notifStreakBody': '{n} দিনের স্ট্রিক — আজকের ডেইলি কুইজ খেলুন, স্ট্রিক বাঁচান।',
-  'notifPermissionDenied':
-      'নোটিফিকেশন অনুমতি বন্ধ। ডেইলি কুইজ রিমাইন্ডার পেতে সিস্টেম সেটিংসে চালু করুন।',
+  'notifStreakBody':
+      '{n} দিনের স্ট্রিক — আজকের ডেইলি কুইজ খেলুন, স্ট্রিক বাঁচান।',
+  'notifPermissionDenied': 'নোটিফিকেশন অনুমতি বন্ধ। ডেইলি কুইজ রিমাইন্ডার পেতে সিস্টেম সেটিংসে চালু করুন।',
   'notifBellOn': 'ডেইলি কুইজ রিমাইন্ডার চালু · সন্ধ্যা ৭টা',
-  'notifBellOff':
-      'রিমাইন্ডার বন্ধ। প্রোফাইল → সেটিংসে নোটিফিকেশন চালু করুন।',
+  'notifBellOff': 'রিমাইন্ডার বন্ধ। প্রোফাইল → সেটিংসে নোটিফিকেশন চালু করুন।',
   'notifChannelName': 'দৈনিক রিমাইন্ডার',
   'notifChannelDesc': 'ডেইলি কুইজ ও স্ট্রিক রিমাইন্ডার',
   'notifInboxTitle': 'নোটিফিকেশন',
   'notifInboxNone': 'এখনও কোনো নোটিফিকেশন নেই',
-  'notifInboxEmptyBody':
-      'ডেইলি কুইজ রিমাইন্ডার ও লাইভ পুশ এখানে দেখা যাবে।',
+  'notifInboxEmptyBody': 'ডেইলি কুইজ রিমাইন্ডার ও লাইভ পুশ এখানে দেখা যাবে।',
   'notifInboxClear': 'সব মুছুন',
   'notifInboxClearConfirm':
       'এই ডিভাইস থেকে সব নোটিফিকেশন মুছে ফেলবেন? ফেরানো যাবে না।',

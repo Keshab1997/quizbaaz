@@ -94,22 +94,24 @@ class QuestionModel {
   /// The correct option in the current UI language.
   String get correctAnswer =>
       correctIndex >= 0 && correctIndex < optionTexts.length
-          ? optionTexts[correctIndex].current
-          : '';
+      ? optionTexts[correctIndex].current
+      : '';
 
   /// True when every shipped language has its own copy of this question —
   /// what `tool/validate_questions.py` enforces before a bank is committed.
   bool get isFullyTranslated => kSupportedLanguageCodes.every(
-        (code) =>
-            questionText.has(code) &&
-            optionTexts.every((option) => option.has(code)),
-      );
+    (code) =>
+        questionText.has(code) &&
+        optionTexts.every((option) => option.has(code)),
+  );
 
   /// Languages this question is still missing.
   List<String> get missingLanguages => kSupportedLanguageCodes
-      .where((code) =>
-          !questionText.has(code) ||
-          optionTexts.any((option) => !option.has(code)))
+      .where(
+        (code) =>
+            !questionText.has(code) ||
+            optionTexts.any((option) => !option.has(code)),
+      )
       .toList();
 
   /// A copy with the options in a random order and [correctIndex] moved to
@@ -126,7 +128,8 @@ class QuestionModel {
     if (optionTexts.length < 2) return this;
 
     final rng = random ?? Random();
-    final order = List<int>.generate(optionTexts.length, (i) => i)..shuffle(rng);
+    final order = List<int>.generate(optionTexts.length, (i) => i)
+      ..shuffle(rng);
 
     return QuestionModel(
       id: id,
@@ -159,12 +162,12 @@ class QuestionModel {
   /// Round-trips every language, not just the visible one — these maps are
   /// what gets written to the Hive cache and to Firestore.
   Map<String, dynamic> toJson() => {
-        'id': id,
-        'question': questionText.toJson(),
-        'options': optionTexts.map((o) => o.toJson()).toList(),
-        'correct_index': correctIndex,
-        'explanation': explanationText.toJson(),
-        'points': points,
-        'time_limit_sec': timeLimitSec,
-      };
+    'id': id,
+    'question': questionText.toJson(),
+    'options': optionTexts.map((o) => o.toJson()).toList(),
+    'correct_index': correctIndex,
+    'explanation': explanationText.toJson(),
+    'points': points,
+    'time_limit_sec': timeLimitSec,
+  };
 }

@@ -40,9 +40,7 @@ class QuizLanguagePills extends StatelessWidget {
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
-        children: [
-          for (final code in available) _pill(code),
-        ],
+        children: [for (final code in available) _pill(code)],
       ),
     );
   }

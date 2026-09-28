@@ -28,7 +28,6 @@ class LocaleProvider extends ChangeNotifier {
   /// Active UI language code — always one of [kSupportedLanguageCodes].
   String get appLanguage => _appLanguage;
 
-
   /// Whether the UI language tracks the device setting instead of an explicit
   /// choice.
   bool get followSystem => _followSystem;
@@ -82,6 +81,4 @@ class LocaleProvider extends ChangeNotifier {
     notifyListeners();
     unawaited(PushSync.syncFromHive());
   }
-
-
 }

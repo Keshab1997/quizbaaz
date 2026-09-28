@@ -25,11 +25,55 @@ class QuestionFingerprint {
 
   /// Words too common to carry meaning when comparing two stems.
   static const Set<String> _stopWords = {
-    'a', 'an', 'the', 'is', 'are', 'was', 'were', 'be', 'been', 'of', 'in',
-    'on', 'at', 'to', 'for', 'from', 'by', 'with', 'and', 'or', 'but', 'if',
-    'which', 'what', 'who', 'whom', 'whose', 'when', 'where', 'why', 'how',
-    'this', 'that', 'these', 'those', 'it', 'its', 'as', 'do', 'does', 'did',
-    'following', 'find', 'given', 'below', 'above', 'correct', 'true', 'false',
+    'a',
+    'an',
+    'the',
+    'is',
+    'are',
+    'was',
+    'were',
+    'be',
+    'been',
+    'of',
+    'in',
+    'on',
+    'at',
+    'to',
+    'for',
+    'from',
+    'by',
+    'with',
+    'and',
+    'or',
+    'but',
+    'if',
+    'which',
+    'what',
+    'who',
+    'whom',
+    'whose',
+    'when',
+    'where',
+    'why',
+    'how',
+    'this',
+    'that',
+    'these',
+    'those',
+    'it',
+    'its',
+    'as',
+    'do',
+    'does',
+    'did',
+    'following',
+    'find',
+    'given',
+    'below',
+    'above',
+    'correct',
+    'true',
+    'false',
   };
 
   /// Strips everything that can differ without changing the question.
@@ -44,7 +88,8 @@ class QuestionFingerprint {
     var lastWasSpace = true;
 
     for (final rune in lowered.runes) {
-      final isAlnum = (rune >= 0x30 && rune <= 0x39) || // 0-9
+      final isAlnum =
+          (rune >= 0x30 && rune <= 0x39) || // 0-9
           (rune >= 0x61 && rune <= 0x7A) || // a-z
           rune > 0x7F; // keep Bangla/Devanagari/other scripts intact
       if (isAlnum) {
@@ -70,10 +115,11 @@ class QuestionFingerprint {
   }
 
   /// Content words of a stem, for [similarity].
-  static Set<String> tokens(String text) => normalise(text)
-      .split(' ')
-      .where((w) => w.length > 1 && !_stopWords.contains(w))
-      .toSet();
+  static Set<String> tokens(String text) =>
+      normalise(text)
+          .split(' ')
+          .where((w) => w.length > 1 && !_stopWords.contains(w))
+          .toSet();
 
   /// Jaccard overlap of two stems, 0.0 (nothing shared) to 1.0 (identical).
   ///

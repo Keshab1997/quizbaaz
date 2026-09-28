@@ -38,8 +38,8 @@ class QuizRepository {
   QuizRepository({
     QuestionBankService? bankService,
     ChapterCatalogService? catalogService,
-  })  : _bankService = bankService ?? QuestionBankService(),
-        _catalogService = catalogService ?? ChapterCatalogService();
+  }) : _bankService = bankService ?? QuestionBankService(),
+       _catalogService = catalogService ?? ChapterCatalogService();
 
   final QuestionBankService _bankService;
   final ChapterCatalogService _catalogService;
@@ -105,10 +105,7 @@ class QuizRepository {
     final remoteCategories = await _catalogService.fetchCategories();
 
     final merged = _withLiveCounts(
-      ChapterCatalogService.mergeWithAssets(
-        assetCategories,
-        remoteCategories,
-      ),
+      ChapterCatalogService.mergeWithAssets(assetCategories, remoteCategories),
       await _bankService.fetchQuestionCounts(),
     );
 
@@ -132,12 +129,15 @@ class QuizRepository {
     if (includeDisabled) return categories;
 
     return categories
-        .map((category) => category.copyWith(
-              chapters: category.chapters
-                  .where((chapter) =>
-                      chapter.isEnabled && chapter.totalQuestions > 0)
-                  .toList(),
-            ))
+        .map(
+          (category) => category.copyWith(
+            chapters: category.chapters
+                .where(
+                  (chapter) => chapter.isEnabled && chapter.totalQuestions > 0,
+                )
+                .toList(),
+          ),
+        )
         .where((category) => category.chapters.isNotEmpty)
         .toList();
   }
@@ -197,21 +197,23 @@ class QuizRepository {
     if (remoteCounts.isEmpty) return categories;
 
     return categories
-        .map((category) => category.copyWith(
-              chapters: category.chapters.map((chapter) {
-                final remote = remoteCounts[chapter.chapterId] ?? 0;
-                if (remote == 0) return chapter;
-                // Already bundled — most likely pulled in by
-                // tool/pull_firestore_questions.py, so the live count is a
-                // subset of what the card already shows. Adding it again
-                // would advertise double. Until the next pull refreshes
-                // total_questions, the bundle is the better number.
-                if (chapter.totalQuestions > 0) return chapter;
-                return chapter.copyWith(
-                  totalQuestions: chapter.totalQuestions + remote,
-                );
-              }).toList(),
-            ))
+        .map(
+          (category) => category.copyWith(
+            chapters: category.chapters.map((chapter) {
+              final remote = remoteCounts[chapter.chapterId] ?? 0;
+              if (remote == 0) return chapter;
+              // Already bundled — most likely pulled in by
+              // tool/pull_firestore_questions.py, so the live count is a
+              // subset of what the card already shows. Adding it again
+              // would advertise double. Until the next pull refreshes
+              // total_questions, the bundle is the better number.
+              if (chapter.totalQuestions > 0) return chapter;
+              return chapter.copyWith(
+                totalQuestions: chapter.totalQuestions + remote,
+              );
+            }).toList(),
+          ),
+        )
         .toList();
   }
 
@@ -278,17 +280,20 @@ class QuizRepository {
     if (!_revalidating.add(cacheKey)) return;
     unawaited(
       refresh()
-          .catchError((Object error) => debugPrint(
-                'QuizRepository: background refresh of "$cacheKey" failed — '
-                '$error',
-              ))
+          .catchError(
+            (Object error) => debugPrint(
+              'QuizRepository: background refresh of "$cacheKey" failed — '
+              '$error',
+            ),
+          )
           .whenComplete(() => _revalidating.remove(cacheKey)),
     );
   }
 
   /// True when a background refresh is running for [cacheKey] (tests).
   @visibleForTesting
-  static bool isRevalidating(String cacheKey) => _revalidating.contains(cacheKey);
+  static bool isRevalidating(String cacheKey) =>
+      _revalidating.contains(cacheKey);
 
   // -------------------------------------------------------------- Helpers --
 

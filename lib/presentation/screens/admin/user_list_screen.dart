@@ -43,7 +43,9 @@ class _UserListScreenState extends State<UserListScreen> {
       final name = _displayName(user).toLowerCase();
       final username = (user['username'] ?? '').toString().toLowerCase();
       final id = _userId(user).toLowerCase();
-      return name.contains(query) || username.contains(query) || id.contains(query);
+      return name.contains(query) ||
+          username.contains(query) ||
+          id.contains(query);
     }).toList();
   }
 
@@ -68,7 +70,8 @@ class _UserListScreenState extends State<UserListScreen> {
 
   int _todayCount(List<Map<String, dynamic>> users) {
     final now = DateTime.now();
-    final today = '${now.year}-${now.month.toString().padLeft(2, '0')}-${now.day.toString().padLeft(2, '0')}';
+    final today =
+        '${now.year}-${now.month.toString().padLeft(2, '0')}-${now.day.toString().padLeft(2, '0')}';
     return users.where((user) {
       final lastStreakDate = (user['last_streak_date'] ?? '').toString();
       final playedToday = user['played_today_daily_quiz'] == true;
@@ -84,7 +87,10 @@ class _UserListScreenState extends State<UserListScreen> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back_rounded, color: AppColors.textPrimary),
+          icon: const Icon(
+            Icons.arrow_back_rounded,
+            color: AppColors.textPrimary,
+          ),
           onPressed: () => Navigator.pop(context),
         ),
         title: Text(
@@ -116,16 +122,26 @@ class _UserListScreenState extends State<UserListScreen> {
               const SizedBox(height: 16),
               Expanded(
                 child: isLoading
-                    ? const Center(child: CircularProgressIndicator(color: AppColors.neonCyan))
+                    ? const Center(
+                        child: CircularProgressIndicator(
+                          color: AppColors.neonCyan,
+                        ),
+                      )
                     : snapshot.hasError
-                        ? _buildEmptyState('Failed to load users', Icons.error_outline_rounded, detail: ShopService.lastError)
-                        : filteredUsers.isEmpty
-                            ? _buildEmptyState(
-                                widget.isGuestView ? 'No Guest Users' : 'No Users Yet',
-                                widget.isGuestView ? Icons.person_outline_rounded : Icons.people_rounded,
-                                detail: ShopService.lastError,
-                              )
-                            : _buildUserList(filteredUsers),
+                    ? _buildEmptyState(
+                        'Failed to load users',
+                        Icons.error_outline_rounded,
+                        detail: ShopService.lastError,
+                      )
+                    : filteredUsers.isEmpty
+                    ? _buildEmptyState(
+                        widget.isGuestView ? 'No Guest Users' : 'No Users Yet',
+                        widget.isGuestView
+                            ? Icons.person_outline_rounded
+                            : Icons.people_rounded,
+                        detail: ShopService.lastError,
+                      )
+                    : _buildUserList(filteredUsers),
               ),
             ],
           );
@@ -143,11 +159,19 @@ class _UserListScreenState extends State<UserListScreen> {
         style: const TextStyle(color: AppColors.textPrimary),
         decoration: InputDecoration(
           hintText: 'Search users...',
-          hintStyle: TextStyle(color: AppColors.textMuted.withValues(alpha: 0.5)),
-          prefixIcon: const Icon(Icons.search_rounded, color: AppColors.neonCyan),
+          hintStyle: TextStyle(
+            color: AppColors.textMuted.withValues(alpha: 0.5),
+          ),
+          prefixIcon: const Icon(
+            Icons.search_rounded,
+            color: AppColors.neonCyan,
+          ),
           suffixIcon: _searchQuery.isNotEmpty
               ? IconButton(
-                  icon: const Icon(Icons.clear_rounded, color: AppColors.textMuted),
+                  icon: const Icon(
+                    Icons.clear_rounded,
+                    color: AppColors.textMuted,
+                  ),
                   onPressed: () {
                     _searchController.clear();
                     setState(() => _searchQuery = '');
@@ -179,17 +203,37 @@ class _UserListScreenState extends State<UserListScreen> {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Row(
         children: [
-          _buildMiniStat(Icons.people_rounded, 'Total', isLoading ? '...' : '${users.length}', AppColors.neonCyan),
+          _buildMiniStat(
+            Icons.people_rounded,
+            'Total',
+            isLoading ? '...' : '${users.length}',
+            AppColors.neonCyan,
+          ),
           const SizedBox(width: 12),
-          _buildMiniStat(Icons.check_circle_rounded, 'Active', isLoading ? '...' : '$activeUsers', AppColors.neonGreen),
+          _buildMiniStat(
+            Icons.check_circle_rounded,
+            'Active',
+            isLoading ? '...' : '$activeUsers',
+            AppColors.neonGreen,
+          ),
           const SizedBox(width: 12),
-          _buildMiniStat(Icons.schedule_rounded, S.today, isLoading ? '...' : '${_todayCount(users)}', AppColors.neonGold),
+          _buildMiniStat(
+            Icons.schedule_rounded,
+            S.today,
+            isLoading ? '...' : '${_todayCount(users)}',
+            AppColors.neonGold,
+          ),
         ],
       ),
     );
   }
 
-  Widget _buildMiniStat(IconData icon, String label, String value, Color color) {
+  Widget _buildMiniStat(
+    IconData icon,
+    String label,
+    String value,
+    Color color,
+  ) {
     return Expanded(
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 12),
@@ -207,8 +251,21 @@ class _UserListScreenState extends State<UserListScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text(value, style: TextStyle(color: color, fontSize: 14, fontWeight: FontWeight.w900)),
-                Text(label, style: const TextStyle(color: AppColors.textMuted, fontSize: 9)),
+                Text(
+                  value,
+                  style: TextStyle(
+                    color: color,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w900,
+                  ),
+                ),
+                Text(
+                  label,
+                  style: const TextStyle(
+                    color: AppColors.textMuted,
+                    fontSize: 9,
+                  ),
+                ),
               ],
             ),
           ],
@@ -237,9 +294,18 @@ class _UserListScreenState extends State<UserListScreen> {
       child: ListTile(
         leading: CircleAvatar(
           backgroundColor: AppColors.neonCyan.withValues(alpha: 0.15),
-          child: Icon(isGuest ? Icons.person_outline_rounded : Icons.person_rounded, color: AppColors.neonCyan),
+          child: Icon(
+            isGuest ? Icons.person_outline_rounded : Icons.person_rounded,
+            color: AppColors.neonCyan,
+          ),
         ),
-        title: Text(_displayName(user), style: const TextStyle(color: AppColors.textPrimary, fontWeight: FontWeight.w800)),
+        title: Text(
+          _displayName(user),
+          style: const TextStyle(
+            color: AppColors.textPrimary,
+            fontWeight: FontWeight.w800,
+          ),
+        ),
         subtitle: Text(
           '${_subtitle(user)}\nCoins: $coins • Gems: $gems${isAdmin ? ' • Admin' : ''}',
           maxLines: 2,
@@ -256,8 +322,14 @@ class _UserListScreenState extends State<UserListScreen> {
           },
           itemBuilder: (context) => [
             const PopupMenuItem(value: 'edit', child: Text('Edit')),
-            PopupMenuItem(value: 'admin', child: Text(isAdmin ? 'Remove Admin' : 'Make Admin')),
-            const PopupMenuItem(value: 'delete', child: Text('Delete', style: TextStyle(color: AppColors.neonRed))),
+            PopupMenuItem(
+              value: 'admin',
+              child: Text(isAdmin ? 'Remove Admin' : 'Make Admin'),
+            ),
+            const PopupMenuItem(
+              value: 'delete',
+              child: Text('Delete', style: TextStyle(color: AppColors.neonRed)),
+            ),
           ],
         ),
       ),
@@ -269,14 +341,30 @@ class _UserListScreenState extends State<UserListScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(icon, size: 60, color: AppColors.textMuted.withValues(alpha: 0.3)),
+          Icon(
+            icon,
+            size: 60,
+            color: AppColors.textMuted.withValues(alpha: 0.3),
+          ),
           const SizedBox(height: 16),
-          Text(title, style: const TextStyle(color: AppColors.textPrimary, fontSize: 18, fontWeight: FontWeight.w800)),
+          Text(
+            title,
+            style: const TextStyle(
+              color: AppColors.textPrimary,
+              fontSize: 18,
+              fontWeight: FontWeight.w800,
+            ),
+          ),
           const SizedBox(height: 8),
           Text(
-            detail?.isNotEmpty == true ? detail! : 'Firestore data will appear here',
+            detail?.isNotEmpty == true
+                ? detail!
+                : 'Firestore data will appear here',
             textAlign: TextAlign.center,
-            style: const TextStyle(color: AppColors.textSecondary, fontSize: 13),
+            style: const TextStyle(
+              color: AppColors.textSecondary,
+              fontSize: 13,
+            ),
           ),
         ],
       ),
@@ -284,34 +372,70 @@ class _UserListScreenState extends State<UserListScreen> {
   }
 
   void _showEditUserSheet(Map<String, dynamic> user) {
-    final usernameController = TextEditingController(text: (user['username'] ?? '').toString());
-    final fullNameController = TextEditingController(text: (user['full_name'] ?? '').toString());
-    final coinsController = TextEditingController(text: '${(user['coins'] as num?)?.toInt() ?? 0}');
-    final gemsController = TextEditingController(text: '${(user['gems'] as num?)?.toInt() ?? 0}');
+    final usernameController = TextEditingController(
+      text: (user['username'] ?? '').toString(),
+    );
+    final fullNameController = TextEditingController(
+      text: (user['full_name'] ?? '').toString(),
+    );
+    final coinsController = TextEditingController(
+      text: '${(user['coins'] as num?)?.toInt() ?? 0}',
+    );
+    final gemsController = TextEditingController(
+      text: '${(user['gems'] as num?)?.toInt() ?? 0}',
+    );
 
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
       backgroundColor: AppColors.surfaceElevated,
-      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(24))),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+      ),
       builder: (ctx) => Padding(
-        padding: EdgeInsets.fromLTRB(20, 20, 20, MediaQuery.of(ctx).viewInsets.bottom + 20),
+        padding: EdgeInsets.fromLTRB(
+          20,
+          20,
+          20,
+          MediaQuery.of(ctx).viewInsets.bottom + 20,
+        ),
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text('Edit User', style: TextStyle(color: AppColors.textPrimary, fontSize: 20, fontWeight: FontWeight.w900)),
+              const Text(
+                'Edit User',
+                style: TextStyle(
+                  color: AppColors.textPrimary,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w900,
+                ),
+              ),
               const SizedBox(height: 16),
               _sheetField(usernameController, S.profileUsername),
               const SizedBox(height: 12),
               _sheetField(fullNameController, 'Full Name'),
               const SizedBox(height: 12),
-              Row(children: [
-                Expanded(child: _sheetField(coinsController, S.coins, TextInputType.number)),
-                const SizedBox(width: 12),
-                Expanded(child: _sheetField(gemsController, S.gems, TextInputType.number)),
-              ]),
+              Row(
+                children: [
+                  Expanded(
+                    child: _sheetField(
+                      coinsController,
+                      S.coins,
+                      TextInputType.number,
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: _sheetField(
+                      gemsController,
+                      S.gems,
+                      TextInputType.number,
+                    ),
+                  ),
+                ],
+              ),
               const SizedBox(height: 20),
               SizedBox(
                 width: double.infinity,
@@ -339,12 +463,20 @@ class _UserListScreenState extends State<UserListScreen> {
     );
   }
 
-  Widget _sheetField(TextEditingController controller, String label, [TextInputType? keyboardType]) {
+  Widget _sheetField(
+    TextEditingController controller,
+    String label, [
+    TextInputType? keyboardType,
+  ]) {
     return TextField(
       controller: controller,
       keyboardType: keyboardType,
       style: const TextStyle(color: AppColors.textPrimary),
-      decoration: InputDecoration(labelText: label, filled: true, fillColor: Colors.white.withValues(alpha: 0.05)),
+      decoration: InputDecoration(
+        labelText: label,
+        filled: true,
+        fillColor: Colors.white.withValues(alpha: 0.05),
+      ),
     );
   }
 
@@ -360,13 +492,19 @@ class _UserListScreenState extends State<UserListScreen> {
     if (!mounted) return;
     if (!claimOk) {
       _showSnack(
-          '❌ ${ShopService.lastError ?? 'Admin claim failed — need admin claim or bootstrap account'}',
-          false);
+        '❌ ${ShopService.lastError ?? 'Admin claim failed — need admin claim or bootstrap account'}',
+        false,
+      );
       return;
     }
     final ok = await ShopService.updateUser(uid, {'is_admin': grant});
     if (!mounted) return;
-    _showSnack(ok ? '✅ User role updated' : '❌ ${ShopService.lastError ?? 'Failed to update role'}', ok);
+    _showSnack(
+      ok
+          ? '✅ User role updated'
+          : '❌ ${ShopService.lastError ?? 'Failed to update role'}',
+      ok,
+    );
     if (ok) setState(_refreshUsers);
   }
 
@@ -378,16 +516,27 @@ class _UserListScreenState extends State<UserListScreen> {
         title: const Text('Delete User?'),
         content: Text('Delete "${_displayName(user)}" from Firestore?'),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(ctx), child: Text(S.cancel)),
+          TextButton(
+            onPressed: () => Navigator.pop(ctx),
+            child: Text(S.cancel),
+          ),
           TextButton(
             onPressed: () async {
               Navigator.pop(ctx);
               final ok = await ShopService.deleteUser(_userId(user));
               if (!mounted) return;
-              _showSnack(ok ? '✅ User deleted' : '❌ ${ShopService.lastError ?? 'Delete failed'}', ok);
+              _showSnack(
+                ok
+                    ? '✅ User deleted'
+                    : '❌ ${ShopService.lastError ?? 'Delete failed'}',
+                ok,
+              );
               if (ok) setState(_refreshUsers);
             },
-            child: const Text('Delete', style: TextStyle(color: AppColors.neonRed)),
+            child: const Text(
+              'Delete',
+              style: TextStyle(color: AppColors.neonRed),
+            ),
           ),
         ],
       ),
@@ -396,7 +545,10 @@ class _UserListScreenState extends State<UserListScreen> {
 
   void _showSnack(String message, bool success) {
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(message), backgroundColor: success ? AppColors.neonGreen : AppColors.neonRed),
+      SnackBar(
+        content: Text(message),
+        backgroundColor: success ? AppColors.neonGreen : AppColors.neonRed,
+      ),
     );
   }
 }

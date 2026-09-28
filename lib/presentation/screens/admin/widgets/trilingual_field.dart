@@ -97,10 +97,10 @@ class _TrilingualFieldState extends State<TrilingualField> {
   }
 
   LocalizedText get _current => LocalizedText({
-        for (final entry in _controllers.entries)
-          if (entry.value.text.trim().isNotEmpty)
-            entry.key: entry.value.text.trim(),
-      });
+    for (final entry in _controllers.entries)
+      if (entry.value.text.trim().isNotEmpty)
+        entry.key: entry.value.text.trim(),
+  });
 
   List<String> get _missing => kSupportedLanguageCodes
       .where((code) => _controllers[code]!.text.trim().isEmpty)
@@ -158,11 +158,16 @@ class _TrilingualFieldState extends State<TrilingualField> {
           style: const TextStyle(color: Colors.white, fontSize: 14),
           decoration: InputDecoration(
             hintText: widget.hintText ?? _hintFor(_active),
-            hintStyle: const TextStyle(color: AppColors.textMuted, fontSize: 13),
+            hintStyle: const TextStyle(
+              color: AppColors.textMuted,
+              fontSize: 13,
+            ),
             filled: true,
             fillColor: Colors.white.withValues(alpha: 0.05),
-            contentPadding:
-                const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: 14,
+              vertical: 12,
+            ),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
               borderSide: BorderSide.none,
@@ -225,8 +230,9 @@ class _TrilingualFieldState extends State<TrilingualField> {
                   fontSize: 10.5,
                   fontWeight: FontWeight.w900,
                   letterSpacing: 0.4,
-                  color:
-                      selected ? AppColors.neonCyan : AppColors.textSecondary,
+                  color: selected
+                      ? AppColors.neonCyan
+                      : AppColors.textSecondary,
                 ),
               ),
               const SizedBox(width: 5),
@@ -248,8 +254,11 @@ class _TrilingualFieldState extends State<TrilingualField> {
     if (missing.isEmpty) {
       return Row(
         children: [
-          const Icon(Icons.check_circle_rounded,
-              size: 12, color: AppColors.neonGreen),
+          const Icon(
+            Icons.check_circle_rounded,
+            size: 12,
+            color: AppColors.neonGreen,
+          ),
           const SizedBox(width: 5),
           Text(
             'All languages filled',
@@ -263,8 +272,9 @@ class _TrilingualFieldState extends State<TrilingualField> {
     }
 
     final names = missing.map(_languageName).join(', ');
-    final colour =
-        widget.required ? AppColors.neonGold : AppColors.textSecondary;
+    final colour = widget.required
+        ? AppColors.neonGold
+        : AppColors.textSecondary;
 
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -296,10 +306,15 @@ class _TrilingualFieldState extends State<TrilingualField> {
               width: 12,
               height: 12,
               child: CircularProgressIndicator(
-                  strokeWidth: 2, color: AppColors.neonCyan),
+                strokeWidth: 2,
+                color: AppColors.neonCyan,
+              ),
             )
-          : const Icon(Icons.auto_awesome_rounded,
-              size: 14, color: AppColors.neonCyan),
+          : const Icon(
+              Icons.auto_awesome_rounded,
+              size: 14,
+              color: AppColors.neonCyan,
+            ),
       label: Text(
         _translating ? 'Translating…' : 'Fill from English',
         style: const TextStyle(fontSize: 11.5, color: AppColors.neonCyan),

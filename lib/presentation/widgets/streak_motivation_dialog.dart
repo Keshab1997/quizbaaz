@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../core/constants/app_assets.dart';
 import '../../core/constants/app_colors.dart';
 import '../../data/services/haptic_service.dart';
@@ -55,13 +56,15 @@ class _StreakMotivationDialogState extends State<StreakMotivationDialog>
       vsync: this,
     );
 
-    _scaleAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.elasticOut),
-    );
+    _scaleAnimation = Tween<double>(
+      begin: 0.0,
+      end: 1.0,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.elasticOut));
 
-    _fireAnimation = Tween<double>(begin: 0.8, end: 1.2).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
-    );
+    _fireAnimation = Tween<double>(
+      begin: 0.8,
+      end: 1.2,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
 
     _controller.forward();
 
@@ -87,7 +90,10 @@ class _StreakMotivationDialogState extends State<StreakMotivationDialog>
       return 'Great start! Keep the fire burning 🔥';
     } else if (streak < 7) {
       // Days LEFT to the goal — not the current streak.
-      final remaining = (widget.streakGoal - streak).clamp(1, widget.streakGoal);
+      final remaining = (widget.streakGoal - streak).clamp(
+        1,
+        widget.streakGoal,
+      );
       return 'You\'re on fire! Just $remaining more day${remaining == 1 ? '' : 's'} to the goal! 🔥';
     } else if (streak < 14) {
       return 'Amazing consistency! $streak days strong! 🏆';
@@ -100,8 +106,13 @@ class _StreakMotivationDialogState extends State<StreakMotivationDialog>
 
   @override
   Widget build(BuildContext context) {
-    final daysRemaining = (widget.streakGoal - widget.currentStreak).clamp(0, widget.streakGoal);
-    final progress = widget.streakGoal > 0 ? widget.currentStreak / widget.streakGoal : 0.0;
+    final daysRemaining = (widget.streakGoal - widget.currentStreak).clamp(
+      0,
+      widget.streakGoal,
+    );
+    final progress = widget.streakGoal > 0
+        ? widget.currentStreak / widget.streakGoal
+        : 0.0;
 
     return Dialog(
       backgroundColor: Colors.transparent,
@@ -151,7 +162,9 @@ class _StreakMotivationDialogState extends State<StreakMotivationDialog>
                                 shape: BoxShape.circle,
                                 boxShadow: [
                                   BoxShadow(
-                                    color: AppColors.neonGreen.withValues(alpha: 0.5),
+                                    color: AppColors.neonGreen.withValues(
+                                      alpha: 0.5,
+                                    ),
                                     blurRadius: 8,
                                   ),
                                 ],
@@ -242,7 +255,9 @@ class _StreakMotivationDialogState extends State<StreakMotivationDialog>
                                 gradient: AppColors.fireGradient,
                                 boxShadow: [
                                   BoxShadow(
-                                    color: AppColors.neonOrange.withValues(alpha: 0.5),
+                                    color: AppColors.neonOrange.withValues(
+                                      alpha: 0.5,
+                                    ),
                                     blurRadius: 8,
                                   ),
                                 ],
@@ -287,10 +302,7 @@ class _StreakMotivationDialogState extends State<StreakMotivationDialog>
                     ),
                     child: Row(
                       children: [
-                        const Text(
-                          '💡',
-                          style: TextStyle(fontSize: 20),
-                        ),
+                        const Text('💡', style: TextStyle(fontSize: 20)),
                         const SizedBox(width: 10),
                         Expanded(
                           child: Text(
@@ -320,7 +332,9 @@ class _StreakMotivationDialogState extends State<StreakMotivationDialog>
                           borderRadius: BorderRadius.circular(14),
                         ),
                         elevation: 8,
-                        shadowColor: AppColors.neonOrange.withValues(alpha: 0.5),
+                        shadowColor: AppColors.neonOrange.withValues(
+                          alpha: 0.5,
+                        ),
                       ),
                       onPressed: () => Navigator.pop(context),
                       child: Row(
@@ -329,7 +343,9 @@ class _StreakMotivationDialogState extends State<StreakMotivationDialog>
                           const Icon(Icons.play_arrow_rounded, size: 24),
                           const SizedBox(width: 6),
                           Text(
-                            widget.currentStreak == 0 ? 'START TODAY' : 'KEEP GOING!',
+                            widget.currentStreak == 0
+                                ? 'START TODAY'
+                                : 'KEEP GOING!',
                             style: const TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.w900,

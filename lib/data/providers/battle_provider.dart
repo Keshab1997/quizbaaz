@@ -17,7 +17,15 @@ import 'user_provider.dart';
 
 enum BattleDifficulty { easy, normal, hard }
 
-enum BattlePhase { setup, searching, found, countdown, question, reveal, finished }
+enum BattlePhase {
+  setup,
+  searching,
+  found,
+  countdown,
+  question,
+  reveal,
+  finished,
+}
 
 /// Who the player is fighting this match.
 class BattleOpponent {
@@ -36,11 +44,11 @@ class BattleOpponent {
 
 /// Points a single question just paid out, for the reveal summary.
 class BattleRoundPoints {
-  final int base;         // +10 for correct answer
-  final int speedBonus;   // up to +10 — time-scaled (instant answer = full)
-  final int firstBonus;   // +3 if locked in before the opponent
-  final int streakBonus;  // +2 × streak count (capped)
-  final int msTaken;      // how long this side took to answer (0 = unknown)
+  final int base; // +10 for correct answer
+  final int speedBonus; // up to +10 — time-scaled (instant answer = full)
+  final int firstBonus; // +3 if locked in before the opponent
+  final int streakBonus; // +2 × streak count (capped)
+  final int msTaken; // how long this side took to answer (0 = unknown)
 
   const BattleRoundPoints({
     required this.base,
@@ -59,12 +67,12 @@ class BattleRoundPoints {
 
   /// Same points but stamped with the time taken — used for the reveal view.
   BattleRoundPoints withMs(int ms) => BattleRoundPoints(
-        base: base,
-        speedBonus: speedBonus,
-        firstBonus: firstBonus,
-        streakBonus: streakBonus,
-        msTaken: ms,
-      );
+    base: base,
+    speedBonus: speedBonus,
+    firstBonus: firstBonus,
+    streakBonus: streakBonus,
+    msTaken: ms,
+  );
 }
 
 /// Drives a 1-vs-1 battle — live room or bot.
@@ -101,9 +109,9 @@ class BattleProvider extends ChangeNotifier {
     BattleRoomService? roomService,
     ChallengeService? challengeService,
     BattleQuestionGenerator? questionGenerator,
-  })  : _roomService = roomService ?? BattleRoomService(),
-        _challengeService = challengeService ?? ChallengeService(),
-        _questionGenerator = questionGenerator ?? BattleQuestionGenerator();
+  }) : _roomService = roomService ?? BattleRoomService(),
+       _challengeService = challengeService ?? ChallengeService(),
+       _questionGenerator = questionGenerator ?? BattleQuestionGenerator();
 
   final UserProvider _userProvider;
   final BattleRoomService _roomService;
@@ -238,6 +246,7 @@ class BattleProvider extends ChangeNotifier {
     _matchmakingError = null;
     notifyListeners();
   }
+
   bool get isBotMatch => _isBotMatch;
   bool get isForfeit => _forfeitWin;
   bool get hasNoQuestions => _emptyBank;
@@ -252,14 +261,20 @@ class BattleProvider extends ChangeNotifier {
 
   QuestionModel? get currentQuestion =>
       _questions.isNotEmpty && _currentIndex < _questions.length
-          ? _questions[_currentIndex]
-          : null;
+      ? _questions[_currentIndex]
+      : null;
 
   String get opponentName => _opponent?.name ?? 'Opponent';
   String get opponentAvatar => _opponent?.avatar ?? '';
-  int get opponentScore => isLive ? (_room?.opponentOf(_side)?.score ?? _opponentScore) : _opponentScore;
-  int get opponentCorrect => isLive ? (_room?.opponentOf(_side)?.correct ?? _opponentCorrect) : _opponentCorrect;
-  int get opponentStreak => isLive ? (_room?.opponentOf(_side)?.streak ?? _opponentStreak) : _opponentStreak;
+  int get opponentScore => isLive
+      ? (_room?.opponentOf(_side)?.score ?? _opponentScore)
+      : _opponentScore;
+  int get opponentCorrect => isLive
+      ? (_room?.opponentOf(_side)?.correct ?? _opponentCorrect)
+      : _opponentCorrect;
+  int get opponentStreak => isLive
+      ? (_room?.opponentOf(_side)?.streak ?? _opponentStreak)
+      : _opponentStreak;
 
   int get playerScore => _playerScore;
   int get playerCorrect => _playerCorrect;
@@ -287,7 +302,8 @@ class BattleProvider extends ChangeNotifier {
     // Bot matches never time out: the bot always answers inside its delay,
     // which is shorter than any question window.
     if (isLive) {
-      return _room?.opponentOf(_side)?.answerFor(_currentIndex)?.timedOut ?? false;
+      return _room?.opponentOf(_side)?.answerFor(_currentIndex)?.timedOut ??
+          false;
     }
     return false;
   }
@@ -335,7 +351,8 @@ class BattleProvider extends ChangeNotifier {
 
   /// Seconds left in the matchmaking window (for the searching view).
   int get searchSecondsRemaining {
-    final remaining = _searchDurationMs -
+    final remaining =
+        _searchDurationMs -
         (DateTime.now().millisecondsSinceEpoch - _searchStartMs);
     return remaining <= 0 ? 0 : (remaining / 1000).ceil();
   }
@@ -361,10 +378,12 @@ class BattleProvider extends ChangeNotifier {
   }
 
   bool get isPlayerCorrect =>
-      _playerSelected != null && _playerSelected == currentQuestion?.correctIndex;
+      _playerSelected != null &&
+      _playerSelected == currentQuestion?.correctIndex;
 
   bool get isOpponentCorrect =>
-      opponentSelected != null && opponentSelected == currentQuestion?.correctIndex;
+      opponentSelected != null &&
+      opponentSelected == currentQuestion?.correctIndex;
 
   /// Language of the questions, independent of the app language.
   String? _displayLanguage;
@@ -520,46 +539,49 @@ class BattleProvider extends ChangeNotifier {
       _revengeChallengeId = challengeId;
       _phase = BattlePhase.searching; // show waiting state
       notifyListeners();
-      
+
       // Watch for challenge acceptance
       _watchRevengeChallenge(challengeId, savedOpponent);
       return true;
     }
     return false;
   }
-  
+
   /// Watch a revenge challenge and start the battle when accepted.
   void _watchRevengeChallenge(String challengeId, BattleOpponent opponent) {
     _stopRevengeChallengeWatcher();
-    _revengeChallengeSub =
-        _challengeService.watchChallengeStatus(challengeId).listen((challenge) {
-      // A listener can deliver one final event while it is being cancelled.
-      // Ignore anything that no longer belongs to the active challenge.
-      if (_revengeChallengeId != challengeId || challenge == null) return;
+    _revengeChallengeSub = _challengeService
+        .watchChallengeStatus(challengeId)
+        .listen((challenge) {
+          // A listener can deliver one final event while it is being cancelled.
+          // Ignore anything that no longer belongs to the active challenge.
+          if (_revengeChallengeId != challengeId || challenge == null) return;
 
-      if (challenge.isAccepted) {
-        // Challenge accepted! Start the battle with this opponent.
-        _revengeChallengeId = null;
-        _stopRevengeChallengeWatcher();
-        unawaited(startBattleWithOpponent(
-          opponentUid: opponent.uid!,
-          opponentName: opponent.name,
-          opponentAvatar: opponent.avatar,
-          difficulty: _difficulty,
-          challengeId: challengeId,
-        ));
-      } else if (challenge.isRejected ||
-          challenge.isExpired ||
-          challenge.isCancelled) {
-        // Challenge was rejected/expired/cancelled — go back to setup.
-        _revengeChallengeId = null;
-        _stopRevengeChallengeWatcher();
-        _phase = BattlePhase.setup;
-        notifyListeners();
-      }
-    });
+          if (challenge.isAccepted) {
+            // Challenge accepted! Start the battle with this opponent.
+            _revengeChallengeId = null;
+            _stopRevengeChallengeWatcher();
+            unawaited(
+              startBattleWithOpponent(
+                opponentUid: opponent.uid!,
+                opponentName: opponent.name,
+                opponentAvatar: opponent.avatar,
+                difficulty: _difficulty,
+                challengeId: challengeId,
+              ),
+            );
+          } else if (challenge.isRejected ||
+              challenge.isExpired ||
+              challenge.isCancelled) {
+            // Challenge was rejected/expired/cancelled — go back to setup.
+            _revengeChallengeId = null;
+            _stopRevengeChallengeWatcher();
+            _phase = BattlePhase.setup;
+            notifyListeners();
+          }
+        });
   }
-  
+
   /// Starts a live match against a *known* opponent — the shared entry point
   /// for "challenge accepted" and "revenge match" (R10).
   ///
@@ -645,8 +667,9 @@ class BattleProvider extends ChangeNotifier {
 
     // Creator: generate the shared question set, then publish the room in one
     // atomic claim.
-    final questions = await _questionGenerator
-        .generateBattleQuestions(count: battleQuestionCount);
+    final questions = await _questionGenerator.generateBattleQuestions(
+      count: battleQuestionCount,
+    );
     if (questions.isEmpty) {
       await _abortLiveStart(S.battleNoQuestions);
       return false;
@@ -823,8 +846,11 @@ class BattleProvider extends ChangeNotifier {
     _disposeTimers();
     if (isLive && _roomId != null) {
       final roomId = _roomId!;
-      _roomService.finishRoom(roomId, _side == 'a' ? 'b' : 'a',
-          matchId: _matchId);
+      _roomService.finishRoom(
+        roomId,
+        _side == 'a' ? 'b' : 'a',
+        matchId: _matchId,
+      );
       // Top-level abandoned flag: the opponent's client reads the document
       // fields, not the nested state map.
       _roomService.abandonRoom(roomId, _side);
@@ -895,8 +921,7 @@ class BattleProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  int get _searchSeconds =>
-      min(_userProvider.config.battleSearchSeconds, 10);
+  int get _searchSeconds => min(_userProvider.config.battleSearchSeconds, 10);
 
   // -------------------------------------------------------- matchmaking --
 
@@ -919,7 +944,8 @@ class BattleProvider extends ChangeNotifier {
       notifyListeners();
       return;
     }
-    if (!result.hasOpponent) return; // empty or a transient failure — keep polling
+    if (!result.hasOpponent)
+      return; // empty or a transient failure — keep polling
 
     final found = result.entry!;
     _roomId = BattleRoomService.roomIdFor(_userId, found.uid);
@@ -952,8 +978,9 @@ class BattleProvider extends ChangeNotifier {
 
     // Creator: generate the shared question set, then claim the opponent and
     // publish the room atomically.
-    final questions = await _questionGenerator
-        .generateBattleQuestions(count: battleQuestionCount);
+    final questions = await _questionGenerator.generateBattleQuestions(
+      count: battleQuestionCount,
+    );
     if (questions.isEmpty || _phase != BattlePhase.found) {
       await _abandonLiveMatch();
       return;
@@ -1058,7 +1085,8 @@ class BattleProvider extends ChangeNotifier {
       //   * we had the room and it is gone → a real disappearance, and only
       //     then is a forfeit the right answer.
       if (!_sawRoom || !(isLive)) return;
-      final started = (_room?.hasStarted ?? false) ||
+      final started =
+          (_room?.hasStarted ?? false) ||
           _phase == BattlePhase.question ||
           _phase == BattlePhase.reveal;
       if (started) {
@@ -1084,8 +1112,7 @@ class BattleProvider extends ChangeNotifier {
     // clients already agree on it; re-keying the running match from a stale
     // document would move the reward guard's key mid-match and let the same
     // match pay out twice (R11).
-    if (room.matchId.isNotEmpty &&
-        (_matchId == null || _matchId!.isEmpty)) {
+    if (room.matchId.isNotEmpty && (_matchId == null || _matchId!.isEmpty)) {
       _matchId = room.matchId;
     }
     _room = room;
@@ -1095,7 +1122,9 @@ class BattleProvider extends ChangeNotifier {
     }
 
     // Opponent abandoned mid-match → instant forfeit win for us.
-    if (room.isAbandoned && room.abandonedBy != null && room.abandonedBy != _side) {
+    if (room.isAbandoned &&
+        room.abandonedBy != null &&
+        room.abandonedBy != _side) {
       if (_phase != BattlePhase.finished) {
         _forfeitWin = true;
         _finishBattle();
@@ -1237,15 +1266,12 @@ class BattleProvider extends ChangeNotifier {
     if (isLive) {
       _roomService.leaveQueue(_userId);
     }
-    _opponent = BattleOpponent(
-      name: _botName,
-      avatar: _botAvatar,
-      isBot: true,
-    );
+    _opponent = BattleOpponent(name: _botName, avatar: _botAvatar, isBot: true);
     _isBotMatch = true;
 
-    _questions = await BattleQuestionGenerator()
-        .generateBattleQuestions(count: battleQuestionCount);
+    _questions = await BattleQuestionGenerator().generateBattleQuestions(
+      count: battleQuestionCount,
+    );
     if (_questions.isEmpty) {
       _emptyBank = true;
       _phase = BattlePhase.setup;
@@ -1277,10 +1303,22 @@ class BattleProvider extends ChangeNotifier {
   ];
 
   static const List<String> _botNames = [
-    'QuizMaster', 'BrainStorm', 'QuickWit', 'SharpMind',
-    'SwiftThinker', 'CleverFox', 'MindBlitz', 'RapidFire',
-    'KnowledgeKing', 'WisdomWarrior', 'PuzzlePro', 'TriviaAce',
-    'BrainWave', 'ThinkFast', 'QuizNinja', 'SmartCookie',
+    'QuizMaster',
+    'BrainStorm',
+    'QuickWit',
+    'SharpMind',
+    'SwiftThinker',
+    'CleverFox',
+    'MindBlitz',
+    'RapidFire',
+    'KnowledgeKing',
+    'WisdomWarrior',
+    'PuzzlePro',
+    'TriviaAce',
+    'BrainWave',
+    'ThinkFast',
+    'QuizNinja',
+    'SmartCookie',
   ];
 
   String get _botAvatar => _botAvatars[_rng.nextInt(_botAvatars.length)];
@@ -1386,9 +1424,8 @@ class BattleProvider extends ChangeNotifier {
     if (_rng.nextDouble() < _botAccuracy) {
       _opponentSelected = question.correctIndex;
     } else {
-      final wrong = [
-        for (var i = 0; i < question.options.length; i++) i
-      ]..remove(question.correctIndex);
+      final wrong = [for (var i = 0; i < question.options.length; i++) i]
+        ..remove(question.correctIndex);
       _opponentSelected = wrong.isEmpty
           ? question.correctIndex
           : wrong[_rng.nextInt(wrong.length)];
@@ -1525,7 +1562,8 @@ class BattleProvider extends ChangeNotifier {
       final answer = _room?.opponentOf(_side)?.answerFor(_currentIndex);
       if (answer != null) {
         _lastRoundOpponent = BattleRoundPoints(
-          base: answer.points -
+          base:
+              answer.points -
               answer.timeBonus -
               answer.firstBonus -
               answer.streakBonus,
@@ -1640,8 +1678,8 @@ class BattleProvider extends ChangeNotifier {
       final winner = (isPlayerWin || _forfeitWin)
           ? _side
           : isDraw
-              ? 'draw'
-              : (_side == 'a' ? 'b' : 'a');
+          ? 'draw'
+          : (_side == 'a' ? 'b' : 'a');
       unawaited(_roomService.finishRoom(_roomId!, winner, matchId: _matchId));
 
       // Single-award guard: one award per *match*, not per room. The room id
@@ -1720,18 +1758,20 @@ class BattleProvider extends ChangeNotifier {
     // literal, unreadable field name (R11).
     final roomId = _roomId;
     if (roomId == null) return;
-    unawaited(_roomService.writeMyAnswer(
-      roomId: roomId,
-      side: _side,
-      questionIndex: _currentIndex,
-      answer: answer,
-      extraFields: {
-        'last_seen': now,
-        'score': _playerScore,
-        'correct': _playerCorrect,
-        'streak': _playerStreak,
-      },
-    ));
+    unawaited(
+      _roomService.writeMyAnswer(
+        roomId: roomId,
+        side: _side,
+        questionIndex: _currentIndex,
+        answer: answer,
+        extraFields: {
+          'last_seen': now,
+          'score': _playerScore,
+          'correct': _playerCorrect,
+          'streak': _playerStreak,
+        },
+      ),
+    );
   }
 
   Future<void> _writeMyPlayer(Map<String, dynamic> fields) async {
@@ -1766,11 +1806,11 @@ class BattleProvider extends ChangeNotifier {
   (double, double) get _botDelayRange {
     switch (_difficulty) {
       case BattleDifficulty.easy:
-        return (5.0, 10.0);  // Was 4-8
+        return (5.0, 10.0); // Was 4-8
       case BattleDifficulty.normal:
-        return (4.0, 8.5);   // Was 2.5-6
+        return (4.0, 8.5); // Was 2.5-6
       case BattleDifficulty.hard:
-        return (3.0, 6.5);   // Was 1.5-4
+        return (3.0, 6.5); // Was 1.5-4
     }
   }
 
@@ -1798,7 +1838,6 @@ class BattleProvider extends ChangeNotifier {
     }
     super.dispose();
   }
-
 
   /// Reset battle state — call when navigating away or starting fresh.
   /// Clears all scores, phase, questions, and timers.

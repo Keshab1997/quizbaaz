@@ -49,13 +49,13 @@ class CategoryModel {
   }
 
   Map<String, dynamic> toJson() => {
-        'category_id': categoryId,
-        'category_name': nameText.toJson(),
-        'category_icon': categoryIcon,
-        'color_hex': colorHex,
-        'total_chapters': totalChapters,
-        'chapters': chapters.map((c) => c.toJson()).toList(),
-      };
+    'category_id': categoryId,
+    'category_name': nameText.toJson(),
+    'category_icon': categoryIcon,
+    'color_hex': colorHex,
+    'total_chapters': totalChapters,
+    'chapters': chapters.map((c) => c.toJson()).toList(),
+  };
 }
 
 /// One chapter inside a subject, pointing at its question bank file.
@@ -139,15 +139,15 @@ class ChapterModel {
   }
 
   Map<String, dynamic> toJson() => {
-        'chapter_id': chapterId,
-        'chapter_number': chapterNumber,
-        'title': titleText.toJson(),
-        'description': descriptionText.toJson(),
-        'total_questions': totalQuestions,
-        'json_file': jsonFile,
-        'is_unlocked': isUnlocked,
-        'is_enabled': isEnabled,
-        'stars': stars,
-        'best_score': bestScore,
-      };
+    'chapter_id': chapterId,
+    'chapter_number': chapterNumber,
+    'title': titleText.toJson(),
+    'description': descriptionText.toJson(),
+    'total_questions': totalQuestions,
+    'json_file': jsonFile,
+    'is_unlocked': isUnlocked,
+    'is_enabled': isEnabled,
+    'stars': stars,
+    'best_score': bestScore,
+  };
 }

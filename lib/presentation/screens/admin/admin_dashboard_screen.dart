@@ -1,5 +1,6 @@
 import 'package:admin_api_key_manager/admin_api_key_manager.dart';
 import 'package:flutter/material.dart';
+
 import '../../../core/constants/app_colors.dart';
 import '../../../data/services/shop_service.dart';
 import '../../widgets/glass_card.dart';
@@ -21,7 +22,10 @@ class AdminDashboardScreen extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back_rounded, color: AppColors.textPrimary),
+          icon: const Icon(
+            Icons.arrow_back_rounded,
+            color: AppColors.textPrimary,
+          ),
           onPressed: () => Navigator.pop(context),
         ),
         title: Row(
@@ -32,7 +36,11 @@ class AdminDashboardScreen extends StatelessWidget {
                 color: AppColors.neonGold.withValues(alpha: 0.2),
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: const Icon(Icons.shield_rounded, color: AppColors.neonGold, size: 20),
+              child: const Icon(
+                Icons.shield_rounded,
+                color: AppColors.neonGold,
+                size: 20,
+              ),
             ),
             const SizedBox(width: 10),
             Text(
@@ -274,7 +282,9 @@ class AdminDashboardScreen extends StatelessWidget {
           color: AppColors.neonPurple,
           onTap: () => Navigator.push(
             context,
-            MaterialPageRoute(builder: (_) => const UserListScreen(isGuestView: true)),
+            MaterialPageRoute(
+              builder: (_) => const UserListScreen(isGuestView: true),
+            ),
           ),
         ),
         _buildManagementCard(
@@ -410,9 +420,9 @@ class AdminDashboardScreen extends StatelessWidget {
           label: 'Refresh Data',
           color: AppColors.neonCyan,
           onTap: () {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('🔄 Data refreshed!')),
-            );
+            ScaffoldMessenger.of(
+              context,
+            ).showSnackBar(const SnackBar(content: Text('🔄 Data refreshed!')));
           },
         ),
       ],

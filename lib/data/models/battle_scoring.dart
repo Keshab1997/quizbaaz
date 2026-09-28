@@ -25,12 +25,7 @@ class BattleScoring {
 
   /// The four components of one answer.
   /// `total = base + speedBonus + firstBonus + streakBonus`
-  static ({
-    int base,
-    int speedBonus,
-    int firstBonus,
-    int streakBonus,
-  }) compute({
+  static ({int base, int speedBonus, int firstBonus, int streakBonus}) compute({
     required bool correct,
     required int remainingMs, // ms left on the question clock when answered
     required int questionDurationMs, // full question window in ms
@@ -57,10 +52,10 @@ class BattleScoring {
         // Within grace zone or grace covers entire window → full bonus.
         speed = maxSpeedBonus;
       } else {
-        speed =
-            (maxSpeedBonus * remainingMs / effectiveWindow)
-                .round()
-                .clamp(0, maxSpeedBonus);
+        speed = (maxSpeedBonus * remainingMs / effectiveWindow).round().clamp(
+          0,
+          maxSpeedBonus,
+        );
       }
     }
 
@@ -80,8 +75,7 @@ class BattleScoring {
   /// Total for a component tuple.
   static int total(
     ({int base, int speedBonus, int firstBonus, int streakBonus}) parts,
-  ) =>
-      parts.base + parts.speedBonus + parts.firstBonus + parts.streakBonus;
+  ) => parts.base + parts.speedBonus + parts.firstBonus + parts.streakBonus;
 
   /// Human-readable breakdown, e.g. `10 + 8 + 2 + 4`
   static String breakdown(

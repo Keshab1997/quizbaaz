@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../core/constants/app_colors.dart';
 import '../../core/constants/app_assets.dart';
 import '../../data/models/champion_model.dart';
@@ -10,11 +11,7 @@ class ChampionPodiumWidget extends StatelessWidget {
   final ChampionModel? champion;
   final VoidCallback? onViewProfile;
 
-  const ChampionPodiumWidget({
-    super.key,
-    this.champion,
-    this.onViewProfile,
-  });
+  const ChampionPodiumWidget({super.key, this.champion, this.onViewProfile});
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +23,11 @@ class ChampionPodiumWidget extends StatelessWidget {
         borderColor: AppColors.neonGold.withValues(alpha: 0.22),
         child: Row(
           children: [
-            const Icon(Icons.emoji_events_outlined,
-                color: AppColors.textMuted, size: 30),
+            const Icon(
+              Icons.emoji_events_outlined,
+              color: AppColors.textMuted,
+              size: 30,
+            ),
             const SizedBox(width: 12),
             Expanded(
               child: Text(
@@ -43,7 +43,9 @@ class ChampionPodiumWidget extends StatelessWidget {
       );
     }
 
-    final avatar = champ.avatarPath.isNotEmpty ? champ.avatarPath : AppAssets.championBoy;
+    final avatar = champ.avatarPath.isNotEmpty
+        ? champ.avatarPath
+        : AppAssets.championBoy;
 
     return GlassCard(
       borderColor: AppColors.neonGold.withValues(alpha: 0.4),
@@ -57,7 +59,10 @@ class ChampionPodiumWidget extends StatelessWidget {
               Row(
                 children: [
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 10,
+                      vertical: 4,
+                    ),
                     decoration: BoxDecoration(
                       gradient: AppColors.goldGradient,
                       borderRadius: BorderRadius.circular(12),
@@ -131,32 +136,41 @@ class ChampionPodiumWidget extends StatelessWidget {
                     const SizedBox(height: 6),
                     if (champ.giftName.isNotEmpty)
                       Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                      decoration: BoxDecoration(
-                        color: Colors.white.withValues(alpha: 0.08),
-                        borderRadius: BorderRadius.circular(8),
-                        border: Border.all(color: AppColors.neonGold.withValues(alpha: 0.3)),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const Icon(Icons.card_giftcard, size: 14, color: AppColors.neonPink),
-                          const SizedBox(width: 6),
-                          Flexible(
-                            child: Text(
-                              'Won: ${champ.giftName}',
-                              style: const TextStyle(
-                                fontSize: 11,
-                                fontWeight: FontWeight.w600,
-                                color: AppColors.neonGold,
-                              ),
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                            ),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 4,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.white.withValues(alpha: 0.08),
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(
+                            color: AppColors.neonGold.withValues(alpha: 0.3),
                           ),
-                        ],
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Icon(
+                              Icons.card_giftcard,
+                              size: 14,
+                              color: AppColors.neonPink,
+                            ),
+                            const SizedBox(width: 6),
+                            Flexible(
+                              child: Text(
+                                'Won: ${champ.giftName}',
+                                style: const TextStyle(
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.w600,
+                                  color: AppColors.neonGold,
+                                ),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
                   ],
                 ),
               ),

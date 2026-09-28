@@ -77,8 +77,7 @@ class LocalizedText {
   Iterable<String> get languages => _values.keys;
 
   /// True when [languageCode] has its own translation rather than a fallback.
-  bool has(String languageCode) =>
-      (_values[languageCode] ?? '').isNotEmpty;
+  bool has(String languageCode) => (_values[languageCode] ?? '').isNotEmpty;
 
   Map<String, String> toJson() => Map<String, String>.from(_values);
 

@@ -61,7 +61,6 @@ class S {
   /// Abbreviated name for a 1-based [month] number, as `DateTime.month` gives.
   static String monthName(int month) => raw('month$month');
 
-
   // ---- common
   static String get appTitle => raw('appTitle');
   static String get cancel => raw('cancel');
@@ -75,8 +74,7 @@ class S {
   static String get items => raw('items');
   static String get today => raw('today');
   static String get yesterday => raw('yesterday');
-  static String daysAgo({required Object n}) =>
-      fill(raw('daysAgo'), {'n': n});
+  static String daysAgo({required Object n}) => fill(raw('daysAgo'), {'n': n});
   static String get points => raw('points');
   static String get seconds => raw('seconds');
   static String get coins => raw('coins');
@@ -128,7 +126,8 @@ class S {
   static String get streakMotivationTitle => raw('streakMotivationTitle');
   static String streakMotivationDaysToGoal({required Object n}) =>
       fill(raw('streakMotivationDaysToGoal'), {'n': n});
-  static String get streakMotivationGoalReached => raw('streakMotivationGoalReached');
+  static String get streakMotivationGoalReached =>
+      raw('streakMotivationGoalReached');
   static String get streakMotivationStart => raw('streakMotivationStart');
   static String get streakMotivationBeginner => raw('streakMotivationBeginner');
   static String streakMotivationBuilding({required Object n}) =>
@@ -287,7 +286,8 @@ class S {
   static String get profileSignOutConfirm => raw('profileSignOutConfirm');
   static String get accountDelete => raw('accountDelete');
   static String get accountDeleteWarning => raw('accountDeleteWarning');
-  static String get accountDeleteConfirmLabel => raw('accountDeleteConfirmLabel');
+  static String get accountDeleteConfirmLabel =>
+      raw('accountDeleteConfirmLabel');
   static String get accountDeleting => raw('accountDeleting');
   static String get accountDeleted => raw('accountDeleted');
   static String get accountDeleteFailed => raw('accountDeleteFailed');
@@ -433,7 +433,8 @@ class S {
   static String get resultSigningIn => raw('resultSigningIn');
   static String get resultSignedIn => raw('resultSignedIn');
   static String get resultDailyRankedNotice => raw('resultDailyRankedNotice');
-  static String get resultDailyUnrankedNotice => raw('resultDailyUnrankedNotice');
+  static String get resultDailyUnrankedNotice =>
+      raw('resultDailyUnrankedNotice');
   static String resultDailyCountedNotice({required Object score}) =>
       fill(raw('resultDailyCountedNotice'), {'score': score});
   static String resultDailyLockedNotice({required Object score}) =>
@@ -445,8 +446,10 @@ class S {
       fill(raw('resultShieldRetryBody'), {'score': score});
   static String resultShieldRetryAction({required Object count}) =>
       fill(raw('resultShieldRetryAction'), {'count': count});
-  static String get resultShieldRetryDialogTitle => raw('resultShieldRetryDialogTitle');
-  static String get resultShieldRetryDialogBody => raw('resultShieldRetryDialogBody');
+  static String get resultShieldRetryDialogTitle =>
+      raw('resultShieldRetryDialogTitle');
+  static String get resultShieldRetryDialogBody =>
+      raw('resultShieldRetryDialogBody');
   static String get resultShieldRetryConfirm => raw('resultShieldRetryConfirm');
   static String get resultShieldRetryDone => raw('resultShieldRetryDone');
   static String get reviewTitle => raw('reviewTitle');
@@ -517,8 +520,7 @@ class S {
   // ---- chapter  sets
   static String get setsTitle => raw('setsTitle');
   static String get setsHistoryTab => raw('setsHistoryTab');
-  static String setsSet({required Object n}) =>
-      fill(raw('setsSet'), {'n': n});
+  static String setsSet({required Object n}) => fill(raw('setsSet'), {'n': n});
   static String setsSetOf({required Object n, required Object total}) =>
       fill(raw('setsSetOf'), {'n': n, 'total': total});
   static String setsQuestions({required Object n}) =>

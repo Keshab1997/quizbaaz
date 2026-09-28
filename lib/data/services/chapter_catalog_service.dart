@@ -23,14 +23,13 @@ import 'hive_service.dart';
 /// ```
 class ChapterCatalogService {
   ChapterCatalogService({FirebaseFirestore? firestore})
-      : _firestoreOverride = firestore;
+    : _firestoreOverride = firestore;
 
   final FirebaseFirestore? _firestoreOverride;
 
   /// Resolved lazily so constructing the service never touches Firebase.
   /// Callers fail soft to the bundled assets when Firestore is unreachable.
-  FirebaseFirestore get _db =>
-      _firestoreOverride ?? FirebaseFirestore.instance;
+  FirebaseFirestore get _db => _firestoreOverride ?? FirebaseFirestore.instance;
 
   static const String categoriesCollection = 'question_categories';
   static const String chaptersSubcollection = 'chapters';
@@ -56,19 +55,21 @@ class ChapterCatalogService {
   /// parent-driven loop above, so an admin reload would "restore" the chapter.
   Future<List<CategoryModel>> fetchCategories() async {
     try {
-      final categorySnapshot =
-          await _categories.orderBy('priority').get();
+      final categorySnapshot = await _categories.orderBy('priority').get();
 
       final byId = <String, CategoryModel>{};
       final order = <String>[];
       final knownChapterIds = <String, Set<String>>{};
 
       for (final doc in categorySnapshot.docs) {
-        final chapterSnapshot =
-            await _chapters(doc.id).orderBy('chapter_number').get();
+        final chapterSnapshot = await _chapters(doc.id)
+            .orderBy('chapter_number')
+            .get();
 
         final chapters = chapterSnapshot.docs
-            .map((c) => ChapterModel.fromJson({...c.data(), 'chapter_id': c.id}))
+            .map(
+              (c) => ChapterModel.fromJson({...c.data(), 'chapter_id': c.id}),
+            )
             .toList();
         knownChapterIds[doc.id] = {for (final c in chapters) c.chapterId};
         byId[doc.id] = CategoryModel.fromJson({
@@ -85,14 +86,18 @@ class ChapterCatalogService {
       // (the normal case for a bundled subject). Without this, a visibility
       // toggle on such a chapter is silently lost on the next read.
       try {
-        final groupSnapshot = await _db.collectionGroup(chaptersSubcollection).get();
+        final groupSnapshot = await _db
+            .collectionGroup(chaptersSubcollection)
+            .get();
         for (final doc in groupSnapshot.docs) {
           final categoryId = doc.reference.parent.parent?.id ?? '';
           if (categoryId.isEmpty) continue;
           if (knownChapterIds[categoryId]?.contains(doc.id) ?? false) continue;
 
-          final chapter =
-              ChapterModel.fromJson({...doc.data(), 'chapter_id': doc.id});
+          final chapter = ChapterModel.fromJson({
+            ...doc.data(),
+            'chapter_id': doc.id,
+          });
           final existing = byId[categoryId];
           if (existing == null) {
             // Shell only: name/icon/colour come from the bundled catalogue at
@@ -182,8 +187,9 @@ class ChapterCatalogService {
     return CategoryModel(
       categoryId: base.categoryId,
       nameText: override.nameText.isEmpty ? base.nameText : override.nameText,
-      categoryIcon:
-          override.categoryIcon.isEmpty ? base.categoryIcon : override.categoryIcon,
+      categoryIcon: override.categoryIcon.isEmpty
+          ? base.categoryIcon
+          : override.categoryIcon,
       colorHex: override.colorHex.isEmpty ? base.colorHex : override.colorHex,
       totalChapters: merged.length,
       chapters: merged,
@@ -220,10 +226,7 @@ class ChapterCatalogService {
   /// Bundled subjects live only in `assets/data/chapters_list.json`, so the
   /// first admin edit of one of their chapters would otherwise create an
   /// orphan document that older readers (parent-driven only) can never see.
-  Future<void> _ensureParentCategory(
-    String categoryId,
-    String actorUid,
-  ) async {
+  Future<void> _ensureParentCategory(String categoryId, String actorUid) async {
     try {
       final parent = await _categories.doc(categoryId).get();
       if (!parent.exists) {
@@ -325,11 +328,9 @@ class ChapterCatalogService {
   }) async {
     final batch = _db.batch();
     for (var i = 0; i < orderedChapterIds.length; i++) {
-      batch.set(
-        _chapters(categoryId).doc(orderedChapterIds[i]),
-        {'chapter_number': i + 1},
-        SetOptions(merge: true),
-      );
+      batch.set(_chapters(categoryId).doc(orderedChapterIds[i]), {
+        'chapter_number': i + 1,
+      }, SetOptions(merge: true));
     }
     await batch.commit();
 

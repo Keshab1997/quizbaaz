@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../core/constants/app_colors.dart';
 import '../../data/services/sound_service.dart';
 
@@ -64,13 +65,11 @@ class NeonButton extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  if (icon != null) ...[
-                    icon!,
-                    const SizedBox(width: 8),
-                  ],
+                  if (icon != null) ...[icon!, const SizedBox(width: 8)],
                   Text(
                     text,
-                    style: textStyle ??
+                    style:
+                        textStyle ??
                         const TextStyle(
                           color: Color(0xFF0F172A),
                           fontSize: 16,

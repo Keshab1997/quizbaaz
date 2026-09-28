@@ -13,7 +13,7 @@ import '../../../l10n/app_strings.dart';
 /// Admin screen to manage shop items
 class ShopManagerScreen extends StatefulWidget {
   final String? initialAction;
-  
+
   const ShopManagerScreen({super.key, this.initialAction});
 
   @override
@@ -42,18 +42,32 @@ class _ShopManagerScreenState extends State<ShopManagerScreen> {
     final rows = await ShopService.getShopItems();
     _itemIconUrls
       ..clear()
-      ..addEntries(rows.map((row) => MapEntry((row['id'] ?? '').toString(), (row['icon_url'] ?? '').toString())));
+      ..addEntries(
+        rows.map(
+          (row) => MapEntry(
+            (row['id'] ?? '').toString(),
+            (row['icon_url'] ?? '').toString(),
+          ),
+        ),
+      );
     return rows.map(_shopItemFromMap).toList();
   }
 
   ShopItem _shopItemFromMap(Map<String, dynamic> data) {
-    final currencyValue = (data['currency'] ?? 'coins').toString().toLowerCase();
+    final currencyValue = (data['currency'] ?? 'coins')
+        .toString()
+        .toLowerCase();
     return ShopItem(
       id: (data['id'] ?? '').toString(),
       name: (data['name'] ?? 'Untitled Item').toString(),
       description: (data['description'] ?? '').toString(),
-      cost: (data['price'] as num?)?.toInt() ?? (data['cost'] as num?)?.toInt() ?? 0,
-      currency: currencyValue == 'gems' ? ShopCurrency.gems : ShopCurrency.coins,
+      cost:
+          (data['price'] as num?)?.toInt() ??
+          (data['cost'] as num?)?.toInt() ??
+          0,
+      currency: currencyValue == 'gems'
+          ? ShopCurrency.gems
+          : ShopCurrency.coins,
       quantity: (data['quantity'] as num?)?.toInt() ?? 1,
       isCosmetic: data['is_cosmetic'] == true || data['isCosmetic'] == true,
       category: (data['category'] ?? 'power_ups').toString(),
@@ -73,12 +87,19 @@ class _ShopManagerScreenState extends State<ShopManagerScreen> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back_rounded, color: AppColors.textPrimary),
+          icon: const Icon(
+            Icons.arrow_back_rounded,
+            color: AppColors.textPrimary,
+          ),
           onPressed: () => Navigator.pop(context),
         ),
         title: const Text(
           'Shop Manager',
-          style: TextStyle(color: AppColors.textPrimary, fontSize: 20, fontWeight: FontWeight.w900),
+          style: TextStyle(
+            color: AppColors.textPrimary,
+            fontSize: 20,
+            fontWeight: FontWeight.w900,
+          ),
         ),
         actions: [
           IconButton(
@@ -92,7 +113,11 @@ class _ShopManagerScreenState extends State<ShopManagerScreen> {
                 color: AppColors.neonGreen.withValues(alpha: 0.2),
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: const Icon(Icons.add_rounded, color: AppColors.neonGreen, size: 20),
+              child: const Icon(
+                Icons.add_rounded,
+                color: AppColors.neonGreen,
+                size: 20,
+              ),
             ),
             onPressed: _showAddItemSheet,
           ),
@@ -115,27 +140,44 @@ class _ShopManagerScreenState extends State<ShopManagerScreen> {
                 child: Row(
                   children: [
                     Text(
-                      isLoading ? 'Loading items...' : '${filteredItems.length} items',
-                      style: const TextStyle(color: AppColors.textMuted, fontSize: 12),
+                      isLoading
+                          ? 'Loading items...'
+                          : '${filteredItems.length} items',
+                      style: const TextStyle(
+                        color: AppColors.textMuted,
+                        fontSize: 12,
+                      ),
                     ),
                     const Spacer(),
                     TextButton.icon(
                       onPressed: _showAddItemSheet,
                       icon: const Icon(Icons.add_rounded, size: 16),
                       label: const Text('Add Item'),
-                      style: TextButton.styleFrom(foregroundColor: AppColors.neonGreen),
+                      style: TextButton.styleFrom(
+                        foregroundColor: AppColors.neonGreen,
+                      ),
                     ),
                   ],
                 ),
               ),
               Expanded(
                 child: isLoading
-                    ? const Center(child: CircularProgressIndicator(color: AppColors.neonGreen))
+                    ? const Center(
+                        child: CircularProgressIndicator(
+                          color: AppColors.neonGreen,
+                        ),
+                      )
                     : snapshot.hasError
-                        ? _buildEmptyState('Failed to load shop items', detail: ShopService.lastError)
-                        : filteredItems.isEmpty
-                            ? _buildEmptyState('No Firestore shop items found', detail: ShopService.lastError)
-                            : _buildItemsList(filteredItems),
+                    ? _buildEmptyState(
+                        'Failed to load shop items',
+                        detail: ShopService.lastError,
+                      )
+                    : filteredItems.isEmpty
+                    ? _buildEmptyState(
+                        'No Firestore shop items found',
+                        detail: ShopService.lastError,
+                      )
+                    : _buildItemsList(filteredItems),
               ),
             ],
           );
@@ -145,7 +187,10 @@ class _ShopManagerScreenState extends State<ShopManagerScreen> {
         onPressed: _showAddItemSheet,
         backgroundColor: AppColors.neonGreen,
         icon: const Icon(Icons.add_rounded, color: Colors.white),
-        label: const Text('Add Item', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700)),
+        label: const Text(
+          'Add Item',
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
+        ),
       ),
     );
   }
@@ -161,21 +206,38 @@ class _ShopManagerScreenState extends State<ShopManagerScreen> {
         itemBuilder: (context, index) {
           final cat = categories[index];
           final isSelected = _selectedCategory == cat;
-          final label = cat == 'all' ? S.shopCatAll : ShopCatalog.categoryName(cat).split(' ').skip(1).join(' ');
+          final label = cat == 'all'
+              ? S.shopCatAll
+              : ShopCatalog.categoryName(cat).split(' ').skip(1).join(' ');
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 4),
             child: GestureDetector(
               onTap: () => setState(() => _selectedCategory = cat),
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 6,
+                ),
                 decoration: BoxDecoration(
-                  color: isSelected ? AppColors.neonGold.withValues(alpha: 0.2) : Colors.white.withValues(alpha: 0.05),
+                  color: isSelected
+                      ? AppColors.neonGold.withValues(alpha: 0.2)
+                      : Colors.white.withValues(alpha: 0.05),
                   borderRadius: BorderRadius.circular(16),
-                  border: Border.all(color: isSelected ? AppColors.neonGold.withValues(alpha: 0.5) : Colors.white.withValues(alpha: 0.1)),
+                  border: Border.all(
+                    color: isSelected
+                        ? AppColors.neonGold.withValues(alpha: 0.5)
+                        : Colors.white.withValues(alpha: 0.1),
+                  ),
                 ),
                 child: Text(
                   label,
-                  style: TextStyle(fontSize: 11, fontWeight: isSelected ? FontWeight.w800 : FontWeight.w600, color: isSelected ? AppColors.neonGold : AppColors.textSecondary),
+                  style: TextStyle(
+                    fontSize: 11,
+                    fontWeight: isSelected ? FontWeight.w800 : FontWeight.w600,
+                    color: isSelected
+                        ? AppColors.neonGold
+                        : AppColors.textSecondary,
+                  ),
                 ),
               ),
             ),
@@ -214,12 +276,26 @@ class _ShopManagerScreenState extends State<ShopManagerScreen> {
                       ? Image.network(
                           iconUrl,
                           fit: BoxFit.cover,
-                          loadingBuilder: (context, child, progress) => progress == null
+                          loadingBuilder: (context, child, progress) =>
+                              progress == null
                               ? child
-                              : const Center(child: CircularProgressIndicator(strokeWidth: 2, color: AppColors.neonCyan)),
-                          errorBuilder: (_, __, ___) => const Icon(Icons.inventory_2_rounded, color: AppColors.neonCyan, size: 20),
+                              : const Center(
+                                  child: CircularProgressIndicator(
+                                    strokeWidth: 2,
+                                    color: AppColors.neonCyan,
+                                  ),
+                                ),
+                          errorBuilder: (_, __, ___) => const Icon(
+                            Icons.inventory_2_rounded,
+                            color: AppColors.neonCyan,
+                            size: 20,
+                          ),
                         )
-                      : const Icon(Icons.inventory_2_rounded, color: AppColors.neonCyan, size: 20),
+                      : const Icon(
+                          Icons.inventory_2_rounded,
+                          color: AppColors.neonCyan,
+                          size: 20,
+                        ),
                 ),
               ),
               const SizedBox(width: 12),
@@ -227,32 +303,96 @@ class _ShopManagerScreenState extends State<ShopManagerScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(item.name, maxLines: 1, overflow: TextOverflow.ellipsis, style: const TextStyle(color: AppColors.textPrimary, fontSize: 13, fontWeight: FontWeight.w700)),
+                    Text(
+                      item.name,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                        color: AppColors.textPrimary,
+                        fontSize: 13,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
                     const SizedBox(height: 2),
-                    Text(item.description, maxLines: 1, overflow: TextOverflow.ellipsis, style: const TextStyle(color: AppColors.textMuted, fontSize: 10)),
+                    Text(
+                      item.description,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                        color: AppColors.textMuted,
+                        fontSize: 10,
+                      ),
+                    ),
                   ],
                 ),
               ),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                 decoration: BoxDecoration(
-                  color: isCoins ? AppColors.neonGold.withValues(alpha: 0.15) : AppColors.neonPurple.withValues(alpha: 0.15),
+                  color: isCoins
+                      ? AppColors.neonGold.withValues(alpha: 0.15)
+                      : AppColors.neonPurple.withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Icon(isCoins ? Icons.monetization_on_rounded : Icons.diamond_rounded, color: isCoins ? AppColors.neonGold : AppColors.neonPurple, size: 14),
+                    Icon(
+                      isCoins
+                          ? Icons.monetization_on_rounded
+                          : Icons.diamond_rounded,
+                      color: isCoins
+                          ? AppColors.neonGold
+                          : AppColors.neonPurple,
+                      size: 14,
+                    ),
                     const SizedBox(width: 4),
-                    Text('${item.cost}', style: TextStyle(color: isCoins ? AppColors.neonGold : AppColors.neonPurple, fontSize: 12, fontWeight: FontWeight.w800)),
+                    Text(
+                      '${item.cost}',
+                      style: TextStyle(
+                        color: isCoins
+                            ? AppColors.neonGold
+                            : AppColors.neonPurple,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
                   ],
                 ),
               ),
               PopupMenuButton<String>(
-                icon: const Icon(Icons.more_vert_rounded, color: AppColors.textMuted),
+                icon: const Icon(
+                  Icons.more_vert_rounded,
+                  color: AppColors.textMuted,
+                ),
                 itemBuilder: (context) => const [
-                  PopupMenuItem(value: 'edit', child: Row(children: [Icon(Icons.edit_rounded, size: 16), SizedBox(width: 8), Text('Edit')])),
-                  PopupMenuItem(value: 'delete', child: Row(children: [Icon(Icons.delete_rounded, size: 16, color: AppColors.neonRed), SizedBox(width: 8), Text('Delete', style: TextStyle(color: AppColors.neonRed))])),
+                  PopupMenuItem(
+                    value: 'edit',
+                    child: Row(
+                      children: [
+                        Icon(Icons.edit_rounded, size: 16),
+                        SizedBox(width: 8),
+                        Text('Edit'),
+                      ],
+                    ),
+                  ),
+                  PopupMenuItem(
+                    value: 'delete',
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.delete_rounded,
+                          size: 16,
+                          color: AppColors.neonRed,
+                        ),
+                        SizedBox(width: 8),
+                        Text(
+                          'Delete',
+                          style: TextStyle(color: AppColors.neonRed),
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
                 onSelected: (value) {
                   if (value == 'edit') _showEditItemSheet(item);
@@ -271,12 +411,26 @@ class _ShopManagerScreenState extends State<ShopManagerScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.inventory_2_outlined, size: 56, color: AppColors.textMuted.withValues(alpha: 0.35)),
+          Icon(
+            Icons.inventory_2_outlined,
+            size: 56,
+            color: AppColors.textMuted.withValues(alpha: 0.35),
+          ),
           const SizedBox(height: 14),
-          Text(message, textAlign: TextAlign.center, style: const TextStyle(color: AppColors.textPrimary, fontSize: 16, fontWeight: FontWeight.w800)),
+          Text(
+            message,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              color: AppColors.textPrimary,
+              fontSize: 16,
+              fontWeight: FontWeight.w800,
+            ),
+          ),
           const SizedBox(height: 6),
           Text(
-            detail?.isNotEmpty == true ? detail! : 'Use Add Item to create Firestore data',
+            detail?.isNotEmpty == true
+                ? detail!
+                : 'Use Add Item to create Firestore data',
             textAlign: TextAlign.center,
             style: const TextStyle(color: AppColors.textMuted, fontSize: 12),
           ),
@@ -300,7 +454,8 @@ class _ShopManagerScreenState extends State<ShopManagerScreen> {
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
-      builder: (context) => AddEditItemSheet(item: item, iconUrl: _itemIconUrls[item.id]),
+      builder: (context) =>
+          AddEditItemSheet(item: item, iconUrl: _itemIconUrls[item.id]),
     );
     if (changed == true && mounted) setState(_refreshItems);
   }
@@ -313,19 +468,33 @@ class _ShopManagerScreenState extends State<ShopManagerScreen> {
         title: const Text('Delete Item?'),
         content: Text('Are you sure you want to delete "${item.name}"?'),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(ctx), child: Text(S.cancel)),
+          TextButton(
+            onPressed: () => Navigator.pop(ctx),
+            child: Text(S.cancel),
+          ),
           TextButton(
             onPressed: () async {
               Navigator.pop(ctx);
               final success = await ShopService.deleteShopItem(item.id);
               if (!mounted) return;
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                content: Text(success ? '✅ ${item.name} deleted' : '❌ ${ShopService.lastError ?? 'Delete failed'}'),
-                backgroundColor: success ? AppColors.neonGreen : AppColors.neonRed,
-              ));
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(
+                    success
+                        ? '✅ ${item.name} deleted'
+                        : '❌ ${ShopService.lastError ?? 'Delete failed'}',
+                  ),
+                  backgroundColor: success
+                      ? AppColors.neonGreen
+                      : AppColors.neonRed,
+                ),
+              );
               if (success) setState(_refreshItems);
             },
-            child: const Text('Delete', style: TextStyle(color: AppColors.neonRed)),
+            child: const Text(
+              'Delete',
+              style: TextStyle(color: AppColors.neonRed),
+            ),
           ),
         ],
       ),
@@ -337,7 +506,7 @@ class _ShopManagerScreenState extends State<ShopManagerScreen> {
 class AddEditItemSheet extends StatefulWidget {
   final ShopItem? item;
   final String? iconUrl;
-  
+
   const AddEditItemSheet({super.key, this.item, this.iconUrl});
 
   @override
@@ -353,7 +522,7 @@ class _AddEditItemSheetState extends State<AddEditItemSheet> {
   String _selectedCategory = 'power_ups';
   String _selectedCurrency = 'coins';
   bool _isCosmetic = false;
-  
+
   // Image upload
   File? _selectedImage;
   String? _uploadedImageUrl;
@@ -364,13 +533,21 @@ class _AddEditItemSheetState extends State<AddEditItemSheet> {
   void initState() {
     super.initState();
     _nameController = TextEditingController(text: widget.item?.name ?? '');
-    _descController = TextEditingController(text: widget.item?.description ?? '');
-    _priceController = TextEditingController(text: widget.item?.cost.toString() ?? '');
-    _quantityController = TextEditingController(text: widget.item?.quantity.toString() ?? '1');
+    _descController = TextEditingController(
+      text: widget.item?.description ?? '',
+    );
+    _priceController = TextEditingController(
+      text: widget.item?.cost.toString() ?? '',
+    );
+    _quantityController = TextEditingController(
+      text: widget.item?.quantity.toString() ?? '1',
+    );
     _selectedCategory = widget.item?.category ?? 'power_ups';
     _selectedCurrency = widget.item?.costsCoins ?? true ? 'coins' : 'gems';
     _isCosmetic = widget.item?.isCosmetic ?? false;
-    _uploadedImageUrl = widget.iconUrl?.isNotEmpty == true ? widget.iconUrl : null;
+    _uploadedImageUrl = widget.iconUrl?.isNotEmpty == true
+        ? widget.iconUrl
+        : null;
   }
 
   @override
@@ -504,7 +681,8 @@ class _AddEditItemSheetState extends State<AddEditItemSheet> {
                   {'value': 'effects', 'label': '✨ Effects'},
                   {'value': 'packs', 'label': '🎁 Packs'},
                 ],
-                onChanged: (value) => setState(() => _selectedCategory = value!),
+                onChanged: (value) =>
+                    setState(() => _selectedCategory = value!),
               ),
               const SizedBox(height: 16),
 
@@ -530,7 +708,8 @@ class _AddEditItemSheetState extends State<AddEditItemSheet> {
                         {'value': 'coins', 'label': '💰 Coins'},
                         {'value': 'gems', 'label': '💎 Gems'},
                       ],
-                      onChanged: (value) => setState(() => _selectedCurrency = value!),
+                      onChanged: (value) =>
+                          setState(() => _selectedCurrency = value!),
                     ),
                   ),
                 ],
@@ -554,7 +733,10 @@ class _AddEditItemSheetState extends State<AddEditItemSheet> {
                 child: SwitchListTile(
                   title: const Text(
                     'Cosmetic Item',
-                    style: TextStyle(color: AppColors.textPrimary, fontWeight: FontWeight.w600),
+                    style: TextStyle(
+                      color: AppColors.textPrimary,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                   subtitle: const Text(
                     'One-time unlock (cannot buy again)',
@@ -631,7 +813,10 @@ class _AddEditItemSheetState extends State<AddEditItemSheet> {
                   SizedBox(height: 8),
                   Text(
                     'Uploading to ImageBB...',
-                    style: TextStyle(color: AppColors.textSecondary, fontSize: 12),
+                    style: TextStyle(
+                      color: AppColors.textSecondary,
+                      fontSize: 12,
+                    ),
                   ),
                 ],
               )
@@ -639,7 +824,11 @@ class _AddEditItemSheetState extends State<AddEditItemSheet> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Icon(Icons.check_circle, color: AppColors.neonGreen, size: 18),
+                  const Icon(
+                    Icons.check_circle,
+                    color: AppColors.neonGreen,
+                    size: 18,
+                  ),
                   const SizedBox(width: 6),
                   const Text(
                     'Uploaded!',
@@ -693,7 +882,10 @@ class _AddEditItemSheetState extends State<AddEditItemSheet> {
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.neonCyan,
                 foregroundColor: Colors.black,
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24,
+                  vertical: 12,
+                ),
               ),
             ),
           ],
@@ -708,7 +900,11 @@ class _AddEditItemSheetState extends State<AddEditItemSheet> {
               ),
               child: Row(
                 children: [
-                  const Icon(Icons.link_rounded, color: AppColors.neonCyan, size: 14),
+                  const Icon(
+                    Icons.link_rounded,
+                    color: AppColors.neonCyan,
+                    size: 14,
+                  ),
                   const SizedBox(width: 6),
                   Expanded(
                     child: Text(
@@ -742,7 +938,10 @@ class _AddEditItemSheetState extends State<AddEditItemSheet> {
       style: const TextStyle(color: AppColors.textPrimary),
       decoration: InputDecoration(
         labelText: label,
-        labelStyle: const TextStyle(color: AppColors.textSecondary, fontSize: 12),
+        labelStyle: const TextStyle(
+          color: AppColors.textSecondary,
+          fontSize: 12,
+        ),
         hintText: hint,
         hintStyle: TextStyle(color: AppColors.textMuted.withValues(alpha: 0.5)),
         prefixIcon: Icon(icon, color: AppColors.neonCyan, size: 18),
@@ -780,7 +979,10 @@ class _AddEditItemSheetState extends State<AddEditItemSheet> {
       style: const TextStyle(color: AppColors.textPrimary),
       decoration: InputDecoration(
         labelText: label,
-        labelStyle: const TextStyle(color: AppColors.textSecondary, fontSize: 12),
+        labelStyle: const TextStyle(
+          color: AppColors.textSecondary,
+          fontSize: 12,
+        ),
         filled: true,
         fillColor: Colors.white.withValues(alpha: 0.05),
         border: OutlineInputBorder(
@@ -821,7 +1023,8 @@ class _AddEditItemSheetState extends State<AddEditItemSheet> {
       }
 
       final itemData = {
-        'id': widget.item?.id ?? DateTime.now().millisecondsSinceEpoch.toString(),
+        'id':
+            widget.item?.id ?? DateTime.now().millisecondsSinceEpoch.toString(),
         'name': _nameController.text.trim(),
         'description': _descController.text.trim(),
         'category': _selectedCategory,
@@ -840,9 +1043,11 @@ class _AddEditItemSheetState extends State<AddEditItemSheet> {
         Navigator.pop(context, success);
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text(success
-                ? (widget.item != null ? '✅ Item updated!' : '✅ Item added!')
-                : '❌ ${ShopService.lastError ?? 'Failed to save. Try again.'}'),
+            content: Text(
+              success
+                  ? (widget.item != null ? '✅ Item updated!' : '✅ Item added!')
+                  : '❌ ${ShopService.lastError ?? 'Failed to save. Try again.'}',
+            ),
             backgroundColor: success ? AppColors.neonGreen : AppColors.neonRed,
           ),
         );

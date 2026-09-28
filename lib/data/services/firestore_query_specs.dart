@@ -61,8 +61,7 @@ class FirestoreQuerySpec {
   });
 
   /// Equality + `whereIn` fields (both consume the index prefix).
-  List<String> get equalityFields =>
-      [...equals.keys, ...whereIn.keys];
+  List<String> get equalityFields => [...equals.keys, ...whereIn.keys];
 
   /// Applies the spec to a collection reference.
   Query<Map<String, dynamic>> apply(
@@ -96,8 +95,7 @@ class FirestoreQuerySpec {
   /// True when every filter field belongs to the two participants of the
   /// document (so a rules-enforced participant filter can be satisfied).
   bool get isParticipantScoped =>
-      (!participantScoped) ||
-      equalityFields.any(participantFields.contains);
+      (!participantScoped) || equalityFields.any(participantFields.contains);
 }
 
 /// Every competitive query the client runs.

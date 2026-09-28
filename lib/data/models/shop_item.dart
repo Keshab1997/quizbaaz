@@ -94,7 +94,7 @@ class ShopCatalog {
       id: ShopItemIds.fiftyFifty,
       name: '50-50 Lifeline',
       description: 'Removes 2 wrong options during a quiz',
-      cost: 800,          // ~1.5 days grind
+      cost: 800, // ~1.5 days grind
       currency: ShopCurrency.coins,
       quantity: 3,
       category: 'power_ups',
@@ -103,7 +103,7 @@ class ShopCatalog {
       id: ShopItemIds.freezeTime,
       name: '+10s Freeze Time',
       description: 'Adds 10 extra seconds to the quiz timer',
-      cost: 1000,         // ~2 days
+      cost: 1000, // ~2 days
       currency: ShopCurrency.coins,
       quantity: 2,
       category: 'power_ups',
@@ -112,7 +112,7 @@ class ShopCatalog {
       id: ShopItemIds.skipQuestion,
       name: 'Skip Question',
       description: 'Skip a difficult question without penalty',
-      cost: 1200,         // ~2 days
+      cost: 1200, // ~2 days
       currency: ShopCurrency.coins,
       quantity: 2,
       category: 'power_ups',
@@ -121,7 +121,7 @@ class ShopCatalog {
       id: ShopItemIds.doublePoints,
       name: '2x Points Booster',
       description: 'Double your score for the next quiz',
-      cost: 2000,         // ~3-4 days
+      cost: 2000, // ~3-4 days
       currency: ShopCurrency.coins,
       quantity: 1,
       category: 'power_ups',
@@ -130,7 +130,7 @@ class ShopCatalog {
       id: ShopItemIds.extraLife,
       name: 'Extra Life',
       description: 'Continue after one wrong answer',
-      cost: 1800,         // ~3 days
+      cost: 1800, // ~3 days
       currency: ShopCurrency.coins,
       quantity: 1,
       category: 'power_ups',
@@ -139,7 +139,7 @@ class ShopCatalog {
       id: ShopItemIds.hintReveal,
       name: 'Hint Reveal',
       description: 'Shows a hint for the correct answer',
-      cost: 900,          // ~1.5 days
+      cost: 900, // ~1.5 days
       currency: ShopCurrency.coins,
       quantity: 3,
       category: 'power_ups',
@@ -148,7 +148,7 @@ class ShopCatalog {
       id: ShopItemIds.audiencePoll,
       name: 'Audience Poll',
       description: 'See what others answered (percentage)',
-      cost: 1500,         // ~2.5 days
+      cost: 1500, // ~2.5 days
       currency: ShopCurrency.coins,
       quantity: 1,
       category: 'power_ups',
@@ -162,7 +162,7 @@ class ShopCatalog {
       id: ShopItemIds.streakShield,
       name: 'Streak Freeze Shield',
       description: 'Protects your streak if you miss a day',
-      cost: 8,            // ~1 perfect day
+      cost: 8, // ~1 perfect day
       currency: ShopCurrency.gems,
       quantity: 1,
       category: 'shields',
@@ -172,7 +172,7 @@ class ShopCatalog {
       name: 'Score Shield',
       description:
           'Re-opens today\'s daily score: your next attempt replaces it',
-      cost: 12,           // ~1.5 perfect days
+      cost: 12, // ~1.5 perfect days
       currency: ShopCurrency.gems,
       quantity: 1,
       category: 'shields',
@@ -185,7 +185,7 @@ class ShopCatalog {
       id: ShopItemIds.coinBooster,
       name: '2x Coin Booster',
       description: 'Earn double coins for one quiz session',
-      cost: 10,           // ~1 perfect day
+      cost: 10, // ~1 perfect day
       currency: ShopCurrency.gems,
       quantity: 1,
       category: 'boosters',
@@ -194,7 +194,7 @@ class ShopCatalog {
       id: ShopItemIds.xpBooster,
       name: '2x XP Booster',
       description: 'Earn double XP for one quiz session',
-      cost: 8,            // slightly cheaper
+      cost: 8, // slightly cheaper
       currency: ShopCurrency.gems,
       quantity: 1,
       category: 'boosters',
@@ -208,7 +208,7 @@ class ShopCatalog {
       id: ShopItemIds.vipAvatar,
       name: 'VIP Golden Avatar',
       description: 'Unlocks a glowing 3D VIP avatar',
-      cost: 30,           // ~3 perfect days
+      cost: 30, // ~3 perfect days
       currency: ShopCurrency.gems,
       quantity: 1,
       isCosmetic: true,
@@ -218,7 +218,7 @@ class ShopCatalog {
       id: ShopItemIds.goldenAvatar,
       name: 'Golden Knight Avatar',
       description: 'Shining golden knight 3D avatar',
-      cost: 50,           // ~5 perfect days
+      cost: 50, // ~5 perfect days
       currency: ShopCurrency.gems,
       quantity: 1,
       isCosmetic: true,
@@ -228,7 +228,7 @@ class ShopCatalog {
       id: ShopItemIds.neonAvatar,
       name: 'Neon Cyber Avatar',
       description: 'Futuristic neon glowing avatar',
-      cost: 75,           // ~1 week
+      cost: 75, // ~1 week
       currency: ShopCurrency.gems,
       quantity: 1,
       isCosmetic: true,
@@ -238,7 +238,7 @@ class ShopCatalog {
       id: ShopItemIds.royalAvatar,
       name: 'Royal Crown Avatar',
       description: 'Exclusive royal crown avatar',
-      cost: 120,          // ~2 weeks — prestige
+      cost: 120, // ~2 weeks — prestige
       currency: ShopCurrency.gems,
       quantity: 1,
       isCosmetic: true,
@@ -252,7 +252,7 @@ class ShopCatalog {
       id: ShopItemIds.championBadge,
       name: 'Champion Badge',
       description: 'Show everyone you are a champion!',
-      cost: 3000,         // ~5 days coins
+      cost: 3000, // ~5 days coins
       currency: ShopCurrency.coins,
       quantity: 1,
       isCosmetic: true,
@@ -262,7 +262,7 @@ class ShopCatalog {
       id: ShopItemIds.scholarBadge,
       name: 'Scholar Badge',
       description: 'Display your knowledge and wisdom',
-      cost: 5000,         // ~8 days coins
+      cost: 5000, // ~8 days coins
       currency: ShopCurrency.coins,
       quantity: 1,
       isCosmetic: true,
@@ -272,7 +272,7 @@ class ShopCatalog {
       id: ShopItemIds.legendBadge,
       name: 'Legend Badge',
       description: 'The ultimate badge for legends only',
-      cost: 100,          // ~10 perfect days — most prestigious
+      cost: 100, // ~10 perfect days — most prestigious
       currency: ShopCurrency.gems,
       quantity: 1,
       isCosmetic: true,
@@ -286,7 +286,7 @@ class ShopCatalog {
       id: ShopItemIds.fireName,
       name: '🔥 Fire Name Effect',
       description: 'Your name burns with fire effect',
-      cost: 40,           // ~4 perfect days
+      cost: 40, // ~4 perfect days
       currency: ShopCurrency.gems,
       quantity: 1,
       isCosmetic: true,
@@ -296,7 +296,7 @@ class ShopCatalog {
       id: ShopItemIds.rainbowName,
       name: '🌈 Rainbow Name Effect',
       description: 'Your name glows with rainbow colors',
-      cost: 60,           // ~6 perfect days
+      cost: 60, // ~6 perfect days
       currency: ShopCurrency.gems,
       quantity: 1,
       isCosmetic: true,
@@ -306,7 +306,7 @@ class ShopCatalog {
       id: ShopItemIds.goldName,
       name: '👑 Gold Name Effect',
       description: 'Your name shines in pure gold',
-      cost: 90,           // ~9 perfect days
+      cost: 90, // ~9 perfect days
       currency: ShopCurrency.gems,
       quantity: 1,
       isCosmetic: true,
@@ -320,7 +320,7 @@ class ShopCatalog {
       id: ShopItemIds.starterPack,
       name: '🎁 Starter Pack',
       description: '5x 50-50 + 3x Freeze + Streak Shield',
-      cost: 20,           // ~2 perfect days — entry level
+      cost: 20, // ~2 perfect days — entry level
       currency: ShopCurrency.gems,
       quantity: 1,
       category: 'packs',
@@ -329,7 +329,7 @@ class ShopCatalog {
       id: ShopItemIds.megaPack,
       name: '💎 Mega Pack',
       description: '10x 50-50 + 5x Freeze + 5x Skip + Coin Booster',
-      cost: 55,           // ~6 perfect days
+      cost: 55, // ~6 perfect days
       currency: ShopCurrency.gems,
       quantity: 1,
       category: 'packs',
@@ -338,7 +338,7 @@ class ShopCatalog {
       id: ShopItemIds.legendPack,
       name: '👑 Legend Pack',
       description: 'All lifelines x10 + VIP Avatar + Legend Badge',
-      cost: 130,          // ~2 weeks — ultimate pack
+      cost: 130, // ~2 weeks — ultimate pack
       currency: ShopCurrency.gems,
       quantity: 1,
       category: 'packs',

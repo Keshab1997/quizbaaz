@@ -22,7 +22,9 @@ int setStartIndex(int setIndex) => setIndex * kQuestionsPerSet;
 /// How many questions [setIndex] actually holds.
 int setLengthFor(int questionCount, int setIndex) {
   final remaining = questionCount - setStartIndex(setIndex);
-  return remaining <= 0 ? 0 : (remaining < kQuestionsPerSet ? remaining : kQuestionsPerSet);
+  return remaining <= 0
+      ? 0
+      : (remaining < kQuestionsPerSet ? remaining : kQuestionsPerSet);
 }
 
 /// A student's record for one set of one chapter.
@@ -76,14 +78,12 @@ class ChapterSetProgress {
   int get setNumber => setIndex + 1;
 
   /// 0.0–1.0, for the progress ring on the set card.
-  double get accuracy =>
-      totalQuestions == 0 ? 0 : bestCorrect / totalQuestions;
+  double get accuracy => totalQuestions == 0 ? 0 : bestCorrect / totalQuestions;
 
   int get accuracyPercent => (accuracy * 100).round();
 
   /// Every question right on the best attempt.
-  bool get isPerfect =>
-      totalQuestions > 0 && bestCorrect == totalQuestions;
+  bool get isPerfect => totalQuestions > 0 && bestCorrect == totalQuestions;
 
   /// Folds a new attempt in, keeping the better result.
   ///
@@ -108,20 +108,20 @@ class ChapterSetProgress {
   }
 
   Map<String, dynamic> toJson() => {
-        'chapter_id': chapterId,
-        'set_index': setIndex,
-        'best_score': bestScore,
-        'best_correct': bestCorrect,
-        'total_questions': totalQuestions,
-        'completed_at': completedAt.toIso8601String(),
-        'last_played_at': lastPlayedAt.toIso8601String(),
-        'attempts': attempts,
-      };
+    'chapter_id': chapterId,
+    'set_index': setIndex,
+    'best_score': bestScore,
+    'best_correct': bestCorrect,
+    'total_questions': totalQuestions,
+    'completed_at': completedAt.toIso8601String(),
+    'last_played_at': lastPlayedAt.toIso8601String(),
+    'attempts': attempts,
+  };
 
   factory ChapterSetProgress.fromJson(Map<String, dynamic> json) {
     final completed =
         DateTime.tryParse(json['completed_at'] as String? ?? '') ??
-            DateTime.now();
+        DateTime.now();
     return ChapterSetProgress(
       chapterId: json['chapter_id'] as String? ?? '',
       setIndex: (json['set_index'] as num?)?.toInt() ?? 0,
@@ -131,7 +131,7 @@ class ChapterSetProgress {
       completedAt: completed,
       lastPlayedAt:
           DateTime.tryParse(json['last_played_at'] as String? ?? '') ??
-              completed,
+          completed,
       attempts: (json['attempts'] as num?)?.toInt() ?? 1,
     );
   }

@@ -45,10 +45,7 @@ class StreakResetDetails {
   final int lostStreak;
   final bool hasShield;
 
-  const StreakResetDetails({
-    required this.lostStreak,
-    required this.hasShield,
-  });
+  const StreakResetDetails({required this.lostStreak, required this.hasShield});
 }
 
 /// Owns the player's profile, stats and ranking data.
@@ -89,7 +86,8 @@ class UserProvider extends ChangeNotifier {
   /// has been published for yesterday yet.
   ChampionModel? get yesterdayTopChampion {
     final yesterday = DateTime.now().subtract(const Duration(days: 1));
-    final key = '${yesterday.year}-'
+    final key =
+        '${yesterday.year}-'
         '${yesterday.month.toString().padLeft(2, '0')}-'
         '${yesterday.day.toString().padLeft(2, '0')}';
     for (final c in _champions) {
@@ -149,8 +147,7 @@ class UserProvider extends ChangeNotifier {
 
   /// True when today's leaderboard score is locked in: any further daily run
   /// is played for coins, XP and the streak, but cannot change the row.
-  bool get isDailyScoreLockedToday =>
-      DailyScoreLock.isLocked(_todayKey());
+  bool get isDailyScoreLockedToday => DailyScoreLock.isLocked(_todayKey());
 
   /// How many ranked daily runs the player finished today (counted or not).
   int get dailyRunsToday => DailyScoreLock.attempts(_todayKey());
@@ -177,7 +174,8 @@ class UserProvider extends ChangeNotifier {
     var rank = 1;
     for (final item in _leaderboard) {
       if (leaderboardRowBelongsToUser(item, userId: _user.userId)) continue;
-      final isAhead = item.score > myScore ||
+      final isAhead =
+          item.score > myScore ||
           (item.score == myScore &&
               myScore > 0 &&
               myTime > 0 &&
@@ -224,7 +222,9 @@ class UserProvider extends ChangeNotifier {
     }
     _stats = HiveService.loadStats();
     _config = SyncService.cachedConfig();
-    _lastDailyRewardDate = HiveService.getMeta<String>('last_daily_reward_date');
+    _lastDailyRewardDate = HiveService.getMeta<String>(
+      'last_daily_reward_date',
+    );
     _champions = _rankings.cachedChampions();
     _leaderboard = _rankings.cachedLeaderboard();
   }
@@ -370,7 +370,8 @@ class UserProvider extends ChangeNotifier {
       item.costsCoins ? _user.coins >= item.cost : _user.gems >= item.cost;
 
   PurchaseStatus purchaseItem(ShopItem item) {
-    if (item.isCosmetic && (hasItem(item.id) || hasItem('cloud_avatar_${item.id}'))) {
+    if (item.isCosmetic &&
+        (hasItem(item.id) || hasItem('cloud_avatar_${item.id}'))) {
       return PurchaseStatus.alreadyOwned;
     }
     if (!canAfford(item)) {
@@ -405,12 +406,8 @@ class UserProvider extends ChangeNotifier {
     // P0 (R02): mirror the purchase server-side (atomic wallet ledger,
     // idempotent per purchaseId). Fail-soft for guests/offline/not-deployed.
     if (!_user.isGuest) {
-      final purchaseId =
-          'p${DateTime.now().millisecondsSinceEpoch}x${item.id}';
-      TrustedOpsService.purchaseItem(
-        itemId: item.id,
-        purchaseId: purchaseId,
-      );
+      final purchaseId = 'p${DateTime.now().millisecondsSinceEpoch}x${item.id}';
+      TrustedOpsService.purchaseItem(itemId: item.id, purchaseId: purchaseId);
     }
     return PurchaseStatus.success;
   }
@@ -489,8 +486,10 @@ class UserProvider extends ChangeNotifier {
     // Refresh from Firestore if online
     if (!_user.isGuest && SyncService.isOnline) {
       try {
-        final remoteData =
-            await SyncService.pullPurchaseHistory(_user.userId, limit: limit);
+        final remoteData = await SyncService.pullPurchaseHistory(
+          _user.userId,
+          limit: limit,
+        );
         if (remoteData.isNotEmpty) {
           history = remoteData.map(PurchaseHistory.fromJson).toList();
         }
@@ -600,8 +599,9 @@ class UserProvider extends ChangeNotifier {
       // Pull yesterday's champions / leaderboard, then only look at the
       // rows that actually belong to yesterday's winners.
       final champions = await _rankings.refreshChampions(limit: 10, days: 1);
-      final yesterdayWinners =
-          champions.where((c) => c.dateKey == yesterdayKey).toList();
+      final yesterdayWinners = champions
+          .where((c) => c.dateKey == yesterdayKey)
+          .toList();
       var userRank = -1;
 
       for (var i = 0; i < yesterdayWinners.length; i++) {
@@ -693,7 +693,9 @@ class UserProvider extends ChangeNotifier {
         milestonePrizeTitle: milestoneTitle,
       );
     } catch (e) {
-      debugPrint('UserProvider: checkAndClaimDailyLeaderboardRewards failed – $e');
+      debugPrint(
+        'UserProvider: checkAndClaimDailyLeaderboardRewards failed – $e',
+      );
       return null;
     }
   }
@@ -718,7 +720,11 @@ class UserProvider extends ChangeNotifier {
   }
 
   /// Grants XP based on quiz performance. Returns true if the player leveled up.
-  bool grantXp({required int score, required int correctCount, required bool isDailyQuiz}) {
+  bool grantXp({
+    required int score,
+    required int correctCount,
+    required bool isDailyQuiz,
+  }) {
     int baseXp = correctCount * 10;
     if (isDailyQuiz) baseXp += score * 2;
 
@@ -768,6 +774,7 @@ class UserProvider extends ChangeNotifier {
     required int correct,
     required double timeSeconds,
     required bool isDaily,
+
     /// Whether this daily run may be ranked. Unranked runs (the practice
     /// fallback when no packet is available) are recorded as quiz history and
     /// feed stats/streak, but never touch the day's leaderboard row (R12).
@@ -840,10 +847,7 @@ class UserProvider extends ChangeNotifier {
 
     final outcome = isDaily && ranked && !_user.isGuest
         // One counted score per competition day — see [DailyScoreLock].
-        ? await _settleDailyScore(
-            score: score ?? 0,
-            timeSeconds: timeSeconds,
-          )
+        ? await _settleDailyScore(score: score ?? 0, timeSeconds: timeSeconds)
         : DailyScoreOutcome.notApplicable;
 
     await SyncService.pushUser(_user);
@@ -878,11 +882,7 @@ class UserProvider extends ChangeNotifier {
       return DailyScoreOutcome.ignored;
     }
 
-    await DailyScoreLock.lock(
-      dayKey,
-      score: score,
-      timeSeconds: timeSeconds,
-    );
+    await DailyScoreLock.lock(dayKey, score: score, timeSeconds: timeSeconds);
     await DailyScoreLock.registerAttempt(dayKey);
     notifyListeners();
 
@@ -927,14 +927,15 @@ class UserProvider extends ChangeNotifier {
   Future<List<QuizResultHistory>> loadQuizHistory({int limit = 50}) async {
     // Load from Hive first (instant)
     final localData = HiveService.loadQuizHistory();
-    var history =
-        localData.map(QuizResultHistory.fromJson).toList();
+    var history = localData.map(QuizResultHistory.fromJson).toList();
 
     // Refresh from Firestore if online
     if (!_user.isGuest && SyncService.isOnline) {
       try {
-        final remoteData =
-            await SyncService.pullQuizHistory(_user.userId, limit: limit);
+        final remoteData = await SyncService.pullQuizHistory(
+          _user.userId,
+          limit: limit,
+        );
         if (remoteData.isNotEmpty) {
           history = remoteData.map(QuizResultHistory.fromJson).toList();
         }
@@ -956,7 +957,8 @@ class UserProvider extends ChangeNotifier {
 
   /// Kept for older call sites: updates the personal best only.
   bool updateDailyBest({required int score, required double timeSeconds}) {
-    final isBest = score > _stats.bestDailyScore ||
+    final isBest =
+        score > _stats.bestDailyScore ||
         (score == _stats.bestDailyScore &&
             score > 0 &&
             (_stats.bestDailyTimeSeconds == 0 ||
@@ -1006,7 +1008,8 @@ class UserProvider extends ChangeNotifier {
   /// in [avatarUrl] while keeping [avatarPath] as a safe local fallback for
   /// older widgets that still use AssetImage.
   void updateAvatar(String avatarPath) {
-    final isRemoteAvatar = avatarPath.startsWith('http://') || avatarPath.startsWith('https://');
+    final isRemoteAvatar =
+        avatarPath.startsWith('http://') || avatarPath.startsWith('https://');
     if (isRemoteAvatar) {
       _user.avatarUrl = avatarPath;
       if (_user.avatarPath.startsWith('http://') ||

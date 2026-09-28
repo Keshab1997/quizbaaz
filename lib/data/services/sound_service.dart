@@ -31,7 +31,6 @@ class SoundService {
     'ui_open': 'ui_open.wav', // dialog or screen open
     'ui_deny': 'ui_deny.wav', // locked / insufficient funds / already owned
     'ui_whoosh': 'ui_whoosh.wav', // screen transition, next question slide
-
     // ---------------- Quiz (daily + chapter) ----------------
     'quiz_start': 'quiz_start.wav', // quiz begins
     'quiz_correct': 'quiz_correct.wav', // correct answer (pleasant ding)
@@ -48,7 +47,6 @@ class SoundService {
     'revive': 'revive.wav', // extra life revival
     'boost': 'boost.wav', // double points booster active
     'coin': 'coin.wav', // coins/gems credited
-
     // ---------------- Battle arena ----------------
     'battle_search': 'battle_search.wav', // radar ping (loops)
     'battle_found': 'battle_found.wav', // opponent found
@@ -57,7 +55,6 @@ class SoundService {
     'battle_go': 'battle_go.wav', // GO!
     'battle_win': 'battle_win.wav', // victory fanfare
     'battle_lose': 'battle_lose.wav', // defeat sting
-
     // ---------------- Rewards / shop / streak ----------------
     'purchase': 'purchase.wav', // shop cha-ching
     'unlock': 'unlock.wav', // chapter unlocked / set cleared
@@ -124,9 +121,7 @@ class SoundService {
         loopIds.contains(id) ? ReleaseMode.loop : ReleaseMode.stop,
       );
       // AssetSource paths are relative to the assets/ folder.
-      await player
-          .setSource(AssetSource('sounds/$file'))
-          .timeout(_loadTimeout);
+      await player.setSource(AssetSource('sounds/$file')).timeout(_loadTimeout);
       _players[id] = player;
       return player;
     } catch (e) {
@@ -162,11 +157,14 @@ class SoundService {
   void _firePlay(AudioPlayer player, String id, double volume) {
     try {
       player.setVolume(volume);
-      player.seek(Duration.zero).then((_) {
-        player.resume();
-      }).catchError((_) {
-        player.resume();
-      });
+      player
+          .seek(Duration.zero)
+          .then((_) {
+            player.resume();
+          })
+          .catchError((_) {
+            player.resume();
+          });
     } catch (e) {
       try {
         final file = soundFiles[id];

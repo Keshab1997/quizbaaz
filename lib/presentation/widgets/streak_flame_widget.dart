@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../core/constants/app_colors.dart';
 import '../../core/constants/app_assets.dart';
 import 'glass_card.dart';
@@ -7,11 +8,7 @@ class StreakFlameWidget extends StatelessWidget {
   final int streakDays;
   final VoidCallback? onTap;
 
-  const StreakFlameWidget({
-    super.key,
-    required this.streakDays,
-    this.onTap,
-  });
+  const StreakFlameWidget({super.key, required this.streakDays, this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -62,10 +59,7 @@ class StreakFlameWidget extends StatelessWidget {
                   ),
                   const Text(
                     'Play today to keep streak alive!',
-                    style: TextStyle(
-                      fontSize: 11,
-                      color: AppColors.textMuted,
-                    ),
+                    style: TextStyle(fontSize: 11, color: AppColors.textMuted),
                   ),
                 ],
               ),
@@ -79,11 +73,11 @@ class StreakFlameWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: List.generate(7, (index) {
               final cycle = streakDays % 7;
-              final completedCount =
-                  (cycle == 0 && streakDays > 0) ? 7 : cycle;
+              final completedCount = (cycle == 0 && streakDays > 0) ? 7 : cycle;
               final isCompleted = index < completedCount;
-              final isToday =
-                  streakDays == 0 ? index == 0 : (cycle != 0 && index == cycle);
+              final isToday = streakDays == 0
+                  ? index == 0
+                  : (cycle != 0 && index == cycle);
 
               return Container(
                 width: 34,
@@ -92,23 +86,35 @@ class StreakFlameWidget extends StatelessWidget {
                   shape: BoxShape.circle,
                   color: isCompleted
                       ? AppColors.neonGold.withValues(alpha: 0.2)
-                      : (isToday ? AppColors.neonPurple.withValues(alpha: 0.3) : Colors.white.withValues(alpha: 0.05)),
+                      : (isToday
+                            ? AppColors.neonPurple.withValues(alpha: 0.3)
+                            : Colors.white.withValues(alpha: 0.05)),
                   border: Border.all(
                     color: isCompleted
                         ? AppColors.neonGold
-                        : (isToday ? AppColors.neonCyan : Colors.white.withValues(alpha: 0.1)),
+                        : (isToday
+                              ? AppColors.neonCyan
+                              : Colors.white.withValues(alpha: 0.1)),
                     width: isToday ? 2 : 1,
                   ),
                 ),
                 child: Center(
                   child: isCompleted
-                      ? const Icon(Icons.check, size: 16, color: AppColors.neonGold)
+                      ? const Icon(
+                          Icons.check,
+                          size: 16,
+                          color: AppColors.neonGold,
+                        )
                       : Text(
                           days[index],
                           style: TextStyle(
                             fontSize: 12,
-                            fontWeight: isToday ? FontWeight.bold : FontWeight.normal,
-                            color: isToday ? AppColors.neonCyan : AppColors.textSecondary,
+                            fontWeight: isToday
+                                ? FontWeight.bold
+                                : FontWeight.normal,
+                            color: isToday
+                                ? AppColors.neonCyan
+                                : AppColors.textSecondary,
                           ),
                         ),
                 ),

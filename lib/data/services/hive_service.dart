@@ -78,8 +78,7 @@ class HiveService {
   static const cacheLeaderboard = 'leaderboard_today';
 
   /// Cache key for one competition day's leaderboard rows.
-  static String cacheLeaderboardFor(String dateKey) =>
-      'leaderboard_$dateKey';
+  static String cacheLeaderboardFor(String dateKey) => 'leaderboard_$dateKey';
   static const cacheChampions = 'champions_yesterday';
   static const cacheChapters = 'chapters_list_v2';
   static const cacheDailyQuiz = 'daily_quiz_questions';
@@ -220,7 +219,8 @@ class HiveService {
   static Future<void> saveQuizHistory(Map<String, dynamic> result) async {
     final List<dynamic> existing = _statsBox.get(_quizHistoryKey) != null
         ? List<dynamic>.from(
-            jsonDecode(_statsBox.get(_quizHistoryKey) as String) as List)
+            jsonDecode(_statsBox.get(_quizHistoryKey) as String) as List,
+          )
         : [];
     existing.insert(0, result); // newest first
     if (existing.length > 100) existing.removeLast(); // keep max 100
@@ -301,7 +301,9 @@ class HiveService {
     final raw = _statsBox.get(_battleProcessedRoomsKey);
     if (raw is! String) return false;
     try {
-      return (jsonDecode(raw) as List).map((e) => e.toString()).contains(roomId);
+      return (jsonDecode(raw) as List)
+          .map((e) => e.toString())
+          .contains(roomId);
     } catch (_) {
       return false;
     }
@@ -319,10 +321,12 @@ class HiveService {
     if (raw is! String) return {};
     try {
       final decoded = jsonDecode(raw) as Map<String, dynamic>;
-      return decoded.map((key, value) => MapEntry(
-            key,
-            ChapterSetProgress.fromJson(Map<String, dynamic>.from(value as Map)),
-          ));
+      return decoded.map(
+        (key, value) => MapEntry(
+          key,
+          ChapterSetProgress.fromJson(Map<String, dynamic>.from(value as Map)),
+        ),
+      );
     } catch (e) {
       debugPrint('Hive: failed to decode chapter set progress – $e');
       return {};
@@ -357,7 +361,11 @@ class HiveService {
             lastPlayedAt: now,
           )
         : existing.merge(
-            score: score, correct: correct, total: total, playedAt: now);
+            score: score,
+            correct: correct,
+            total: total,
+            playedAt: now,
+          );
 
     all[key] = updated;
     await _statsBox.put(
@@ -369,10 +377,9 @@ class HiveService {
 
   /// Completed sets for one chapter, lowest set first.
   static List<ChapterSetProgress> chapterSetsFor(String chapterId) {
-    final all = loadChapterSets().values
-        .where((p) => p.chapterId == chapterId)
-        .toList()
-      ..sort((a, b) => a.setIndex.compareTo(b.setIndex));
+    final all =
+        loadChapterSets().values.where((p) => p.chapterId == chapterId).toList()
+          ..sort((a, b) => a.setIndex.compareTo(b.setIndex));
     return all;
   }
 
@@ -399,7 +406,8 @@ class HiveService {
   static Future<void> savePurchaseHistory(Map<String, dynamic> purchase) async {
     final List<dynamic> existing = _statsBox.get(_purchaseHistoryKey) != null
         ? List<dynamic>.from(
-            jsonDecode(_statsBox.get(_purchaseHistoryKey) as String) as List)
+            jsonDecode(_statsBox.get(_purchaseHistoryKey) as String) as List,
+          )
         : [];
     existing.insert(0, purchase); // newest first
     if (existing.length > 100) existing.removeLast(); // keep max 100
@@ -447,7 +455,8 @@ class HiveService {
   }
 
   static Future<void> saveNotificationHistory(
-      List<NotificationItem> items) async {
+    List<NotificationItem> items,
+  ) async {
     await _statsBox.put(
       _notificationHistoryKey,
       jsonEncode(items.map((e) => e.toJson()).toList()),
@@ -517,9 +526,7 @@ class HiveService {
     if (entry is! Map) return null;
     final ts = (entry['ts'] as num?)?.toInt();
     if (ts == null) return null;
-    return Duration(
-      milliseconds: DateTime.now().millisecondsSinceEpoch - ts,
-    );
+    return Duration(milliseconds: DateTime.now().millisecondsSinceEpoch - ts);
   }
 
   /// True when [key] exists and is newer than [maxAge].
@@ -546,11 +553,13 @@ class HiveService {
     String type,
     Map<String, dynamic> payload,
   ) async {
-    await _pendingBox.add(jsonEncode({
-      'type': type,
-      'payload': payload,
-      'queued_at': DateTime.now().millisecondsSinceEpoch,
-    }));
+    await _pendingBox.add(
+      jsonEncode({
+        'type': type,
+        'payload': payload,
+        'queued_at': DateTime.now().millisecondsSinceEpoch,
+      }),
+    );
   }
 
   /// All queued operations as `(key, decoded map)` pairs, oldest first.
@@ -629,11 +638,11 @@ class HiveService {
 
   /// Debug helper: a snapshot of what is currently stored.
   static Map<String, dynamic> debugSummary() => {
-        'schemaVersion': getMeta<int>(metaSchemaVersion),
-        'hasUser': hasUser,
-        'stats': loadStats().toJson(),
-        'cacheKeys': _cacheBox.keys.toList(),
-        'pending': pendingCount,
-        'lastSyncAt': lastSyncAt?.toIso8601String(),
-      };
+    'schemaVersion': getMeta<int>(metaSchemaVersion),
+    'hasUser': hasUser,
+    'stats': loadStats().toJson(),
+    'cacheKeys': _cacheBox.keys.toList(),
+    'pending': pendingCount,
+    'lastSyncAt': lastSyncAt?.toIso8601String(),
+  };
 }

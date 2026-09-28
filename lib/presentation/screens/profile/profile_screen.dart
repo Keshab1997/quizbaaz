@@ -37,8 +37,10 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.transparent,
       appBar: AppBar(
-        title: Text(S.profileTitle,
-            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+        title: Text(
+          S.profileTitle,
+          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+        ),
         actions: [
           IconButton(
             icon: const Icon(Icons.edit_rounded, color: AppColors.neonCyan),
@@ -58,7 +60,9 @@ class ProfileScreen extends StatelessWidget {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (_) => const AvatarSelectionScreen()),
+                        MaterialPageRoute(
+                          builder: (_) => const AvatarSelectionScreen(),
+                        ),
                       );
                     },
                     child: AuraAvatar(
@@ -73,20 +77,31 @@ class ProfileScreen extends StatelessWidget {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (_) => const AvatarSelectionScreen()),
+                        MaterialPageRoute(
+                          builder: (_) => const AvatarSelectionScreen(),
+                        ),
                       );
                     },
                     child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 14,
+                        vertical: 6,
+                      ),
                       decoration: BoxDecoration(
                         color: AppColors.neonPurple.withValues(alpha: 0.15),
                         borderRadius: BorderRadius.circular(12),
-                        border: Border.all(color: AppColors.neonPurple.withValues(alpha: 0.4)),
+                        border: Border.all(
+                          color: AppColors.neonPurple.withValues(alpha: 0.4),
+                        ),
                       ),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          const Icon(Icons.face_rounded, color: AppColors.neonPurple, size: 16),
+                          const Icon(
+                            Icons.face_rounded,
+                            color: AppColors.neonPurple,
+                            size: 16,
+                          ),
                           const SizedBox(width: 6),
                           Text(
                             S.profileChangeAvatar,
@@ -102,7 +117,8 @@ class ProfileScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 8),
                   GestureDetector(
-                    onTap: () => _showEditProfileSheet(context, userProvider, user),
+                    onTap: () =>
+                        _showEditProfileSheet(context, userProvider, user),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
@@ -110,13 +126,17 @@ class ProfileScreen extends StatelessWidget {
                           user.fullName,
                           effectId: user.nameEffect,
                           style: const TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white),
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
                         ),
                         const SizedBox(width: 6),
-                        const Icon(Icons.edit_rounded,
-                            size: 16, color: AppColors.neonCyan),
+                        const Icon(
+                          Icons.edit_rounded,
+                          size: 16,
+                          color: AppColors.neonCyan,
+                        ),
                       ],
                     ),
                   ),
@@ -127,21 +147,28 @@ class ProfileScreen extends StatelessWidget {
                       Text(
                         '@${user.username}',
                         style: const TextStyle(
-                            fontSize: 13, color: AppColors.neonCyan),
+                          fontSize: 13,
+                          color: AppColors.neonCyan,
+                        ),
                       ),
                       const SizedBox(width: 8),
                       Container(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 8, vertical: 2),
+                          horizontal: 8,
+                          vertical: 2,
+                        ),
                         decoration: BoxDecoration(
-                          color: (user.gender == UserGender.male
-                                  ? AppColors.neonCyan
-                                  : AppColors.neonPink)
-                              .withValues(alpha: 0.15),
+                          color:
+                              (user.gender == UserGender.male
+                                      ? AppColors.neonCyan
+                                      : AppColors.neonPink)
+                                  .withValues(alpha: 0.15),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Text(
-                          user.gender == UserGender.male ? S.profileMale : S.profileFemale,
+                          user.gender == UserGender.male
+                              ? S.profileMale
+                              : S.profileFemale,
                           style: TextStyle(
                             fontSize: 11,
                             color: user.gender == UserGender.male
@@ -208,30 +235,48 @@ class ProfileScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(S.profilePerformance,
-                      style: const TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.textSecondary)),
+                  Text(
+                    S.profilePerformance,
+                    style: const TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.textSecondary,
+                    ),
+                  ),
                   const SizedBox(height: 12),
-                  _buildDetailRow(Icons.check_circle_rounded, S.profileCorrectAnswers,
-                      '${stats.totalCorrect} / ${stats.totalAnswered}'),
+                  _buildDetailRow(
+                    Icons.check_circle_rounded,
+                    S.profileCorrectAnswers,
+                    '${stats.totalCorrect} / ${stats.totalAnswered}',
+                  ),
                   const Divider(color: Colors.white12),
-                  _buildDetailRow(Icons.emoji_events_rounded, S.profileBestDailyScore,
-                      stats.bestDailyScore > 0
-                          ? '${stats.bestDailyScore} pts'
-                          : '--'),
+                  _buildDetailRow(
+                    Icons.emoji_events_rounded,
+                    S.profileBestDailyScore,
+                    stats.bestDailyScore > 0
+                        ? '${stats.bestDailyScore} pts'
+                        : '--',
+                  ),
                   const Divider(color: Colors.white12),
-                  _buildDetailRow(Icons.bolt_rounded, S.profileBattlesWon,
-                      '${stats.battlesWon} / ${stats.battlesPlayed}'),
+                  _buildDetailRow(
+                    Icons.bolt_rounded,
+                    S.profileBattlesWon,
+                    '${stats.battlesWon} / ${stats.battlesPlayed}',
+                  ),
                   const Divider(color: Colors.white12),
-                  _buildDetailRow(Icons.timer_rounded, S.profileAvgTime,
-                      stats.hasData
-                          ? '${stats.averageSecondsPerQuestion.toStringAsFixed(1)}s'
-                          : '--'),
+                  _buildDetailRow(
+                    Icons.timer_rounded,
+                    S.profileAvgTime,
+                    stats.hasData
+                        ? '${stats.averageSecondsPerQuestion.toStringAsFixed(1)}s'
+                        : '--',
+                  ),
                   const Divider(color: Colors.white12),
-                  _buildDetailRow(Icons.whatshot_rounded, S.profileLongestStreak,
-                      '${stats.longestStreak} days'),
+                  _buildDetailRow(
+                    Icons.whatshot_rounded,
+                    S.profileLongestStreak,
+                    '${stats.longestStreak} days',
+                  ),
                 ],
               ),
             ),
@@ -243,43 +288,63 @@ class ProfileScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(S.profileDetails,
-                      style: const TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.textSecondary)),
+                  Text(
+                    S.profileDetails,
+                    style: const TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.textSecondary,
+                    ),
+                  ),
                   const SizedBox(height: 16),
-                  _buildDetailRow(Icons.person_rounded, S.profileUsername,
-                      '@${user.username}'),
+                  _buildDetailRow(
+                    Icons.person_rounded,
+                    S.profileUsername,
+                    '@${user.username}',
+                  ),
                   const Divider(color: Colors.white12),
                   _buildDetailRow(
-                      Icons.badge_rounded, S.profileFullName, user.fullName),
+                    Icons.badge_rounded,
+                    S.profileFullName,
+                    user.fullName,
+                  ),
                   const Divider(color: Colors.white12),
                   _buildDetailRow(
                     Icons.wc_rounded,
                     S.profileGender,
-                    user.gender == UserGender.male ? S.profileMale : S.profileFemale,
+                    user.gender == UserGender.male
+                        ? S.profileMale
+                        : S.profileFemale,
                     trailing: GestureDetector(
                       onTap: () => _showGenderPicker(context, userProvider),
                       child: Container(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 10, vertical: 4),
+                          horizontal: 10,
+                          vertical: 4,
+                        ),
                         decoration: BoxDecoration(
                           border: Border.all(
-                              color: AppColors.neonCyan.withValues(alpha: 0.4)),
+                            color: AppColors.neonCyan.withValues(alpha: 0.4),
+                          ),
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        child: Text(S.profileChange,
-                            style: const TextStyle(
-                                fontSize: 11,
-                                color: AppColors.neonCyan,
-                                fontWeight: FontWeight.w700)),
+                        child: Text(
+                          S.profileChange,
+                          style: const TextStyle(
+                            fontSize: 11,
+                            color: AppColors.neonCyan,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
                       ),
                     ),
                   ),
                   const Divider(color: Colors.white12),
-                  _buildDetailRow(Icons.email_rounded, S.profileEmail,
-                      auth.firebaseUser?.email ?? S.profileNotConnected),
+                  _buildDetailRow(
+                    Icons.email_rounded,
+                    S.profileEmail,
+                    auth.firebaseUser?.email ?? S.profileNotConnected,
+                  ),
                 ],
               ),
             ),
@@ -291,55 +356,69 @@ class ProfileScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(S.profileBadges,
-                      style: const TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.textSecondary)),
+                  Text(
+                    S.profileBadges,
+                    style: const TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.textSecondary,
+                    ),
+                  ),
                   const SizedBox(height: 14),
-                  Builder(builder: (context) {
-                    final earned = _earnedBadges(stats, user.dailyStreak);
-                    if (earned.isEmpty) {
-                      return Text(
-                        S.profileNoBadges,
-                        style: const TextStyle(
-                            fontSize: 12, color: AppColors.textSecondary),
+                  Builder(
+                    builder: (context) {
+                      final earned = _earnedBadges(stats, user.dailyStreak);
+                      if (earned.isEmpty) {
+                        return Text(
+                          S.profileNoBadges,
+                          style: const TextStyle(
+                            fontSize: 12,
+                            color: AppColors.textSecondary,
+                          ),
+                        );
+                      }
+                      return Wrap(
+                        spacing: 18,
+                        runSpacing: 14,
+                        children: earned
+                            .map((b) => _buildBadge(b.title, b.icon, b.color))
+                            .toList(),
                       );
-                    }
-                    return Wrap(
-                      spacing: 18,
-                      runSpacing: 14,
-                      children: earned
-                          .map((b) => _buildBadge(b.title, b.icon, b.color))
-                          .toList(),
-                    );
-                  }),
+                    },
+                  ),
                   // Purchased badges from shop
-                  Builder(builder: (context) {
-                    final purchased = _purchasedBadges(userProvider);
-                    if (purchased.isEmpty) return const SizedBox.shrink();
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const SizedBox(height: 16),
-                        const Divider(color: Colors.white12),
-                        const SizedBox(height: 14),
-                        const Text('🏆 Shop Badges',
+                  Builder(
+                    builder: (context) {
+                      final purchased = _purchasedBadges(userProvider);
+                      if (purchased.isEmpty) return const SizedBox.shrink();
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const SizedBox(height: 16),
+                          const Divider(color: Colors.white12),
+                          const SizedBox(height: 14),
+                          const Text(
+                            '🏆 Shop Badges',
                             style: TextStyle(
-                                fontSize: 11,
-                                fontWeight: FontWeight.bold,
-                                color: AppColors.neonGold)),
-                        const SizedBox(height: 10),
-                        Wrap(
-                          spacing: 18,
-                          runSpacing: 14,
-                          children: purchased
-                              .map((b) => _buildBadge(b.title, b.icon, b.color))
-                              .toList(),
-                        ),
-                      ],
-                    );
-                  }),
+                              fontSize: 11,
+                              fontWeight: FontWeight.bold,
+                              color: AppColors.neonGold,
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          Wrap(
+                            spacing: 18,
+                            runSpacing: 14,
+                            children: purchased
+                                .map(
+                                  (b) => _buildBadge(b.title, b.icon, b.color),
+                                )
+                                .toList(),
+                          ),
+                        ],
+                      );
+                    },
+                  ),
                 ],
               ),
             ),
@@ -348,16 +427,18 @@ class ProfileScreen extends StatelessWidget {
             // Mode switcher
             ListTile(
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16)),
+                borderRadius: BorderRadius.circular(16),
+              ),
               tileColor: Colors.white.withValues(alpha: 0.05),
-              leading:
-                  const Icon(Icons.swap_horiz, color: AppColors.neonCyan),
-              title: Text(user.isGuest
-                  ? S.profileGuestMode
-                  : S.profileRegistered),
-              subtitle: Text(user.isGuest
-                  ? 'Tap to switch to Full User'
-                  : 'Tap to test Guest Mode'),
+              leading: const Icon(Icons.swap_horiz, color: AppColors.neonCyan),
+              title: Text(
+                user.isGuest ? S.profileGuestMode : S.profileRegistered,
+              ),
+              subtitle: Text(
+                user.isGuest
+                    ? 'Tap to switch to Full User'
+                    : 'Tap to test Guest Mode',
+              ),
               trailing: Switch(
                 value: !user.isGuest,
                 activeThumbColor: AppColors.neonCyan,
@@ -373,8 +454,7 @@ class ProfileScreen extends StatelessWidget {
               borderRadius: 16,
               child: Row(
                 children: [
-                  const Icon(Icons.g_mobiledata,
-                      size: 34, color: Colors.white),
+                  const Icon(Icons.g_mobiledata, size: 34, color: Colors.white),
                   const SizedBox(width: 12),
                   Expanded(
                     child: Column(
@@ -383,14 +463,15 @@ class ProfileScreen extends StatelessWidget {
                         Text(
                           auth.isSignedIn
                               ? (auth.firebaseUser?.displayName ??
-                                  S.profileGoogleAccount)
+                                    S.profileGoogleAccount)
                               : S.profileGoogleAccount,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: const TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white),
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
                         ),
                         const SizedBox(height: 2),
                         Text(
@@ -412,10 +493,13 @@ class ProfileScreen extends StatelessWidget {
                   if (auth.isSignedIn)
                     TextButton(
                       onPressed: () => auth.signOut(),
-                      child: Text(S.profileSignOut,
-                          style: const TextStyle(
-                              color: AppColors.neonRed,
-                              fontWeight: FontWeight.bold)),
+                      child: Text(
+                        S.profileSignOut,
+                        style: const TextStyle(
+                          color: AppColors.neonRed,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     )
                   else
                     ElevatedButton(
@@ -423,10 +507,12 @@ class ProfileScreen extends StatelessWidget {
                         backgroundColor: Colors.white,
                         foregroundColor: Colors.black,
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12)),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
                       ),
-                      onPressed:
-                           auth.isBusy ? null : () => _handleGoogleSignIn(context),
+                      onPressed: auth.isBusy
+                          ? null
+                          : () => _handleGoogleSignIn(context),
                       child: Text(
                         auth.isBusy ? S.pleaseWait : S.profileSignIn,
                         style: const TextStyle(fontWeight: FontWeight.bold),
@@ -435,10 +521,13 @@ class ProfileScreen extends StatelessWidget {
                 ],
               ),
             ),
-          const SizedBox(height: 24),
+            const SizedBox(height: 24),
 
             // My Purchases
-            _buildSectionTitle(Icons.shopping_bag_rounded, S.profileMyPurchases),
+            _buildSectionTitle(
+              Icons.shopping_bag_rounded,
+              S.profileMyPurchases,
+            ),
             const SizedBox(height: 12),
             GlassCard(
               borderRadius: 20,
@@ -464,10 +553,14 @@ class ProfileScreen extends StatelessWidget {
                         ],
                       ),
                       border: Border.all(
-                          color: AppColors.neonGold.withValues(alpha: 0.4)),
+                        color: AppColors.neonGold.withValues(alpha: 0.4),
+                      ),
                     ),
-                    child: const Icon(Icons.receipt_long_rounded,
-                        color: AppColors.neonGold, size: 24),
+                    child: const Icon(
+                      Icons.receipt_long_rounded,
+                      color: AppColors.neonGold,
+                      size: 24,
+                    ),
                   ),
                   const SizedBox(width: 14),
                   Expanded(
@@ -493,8 +586,11 @@ class ProfileScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const Icon(Icons.chevron_right_rounded,
-                      color: AppColors.textMuted, size: 22),
+                  const Icon(
+                    Icons.chevron_right_rounded,
+                    color: AppColors.textMuted,
+                    size: 22,
+                  ),
                 ],
               ),
             ),
@@ -569,21 +665,43 @@ class ProfileScreen extends StatelessWidget {
                     ),
                     trailingText: context.watch<LocaleProvider>().followSystem
                         ? S.languageSystemDefault
-                        : _languageLabel(context.watch<LocaleProvider>().appLanguage),
+                        : _languageLabel(
+                            context.watch<LocaleProvider>().appLanguage,
+                          ),
                   ),
                   const Divider(color: Colors.white12),
-                  _buildSettingRow(context, userProvider, Icons.notifications_rounded,
-                      S.profileNotifications, UserProvider.settingNotifications),
+                  _buildSettingRow(
+                    context,
+                    userProvider,
+                    Icons.notifications_rounded,
+                    S.profileNotifications,
+                    UserProvider.settingNotifications,
+                  ),
                   const Divider(color: Colors.white12),
-                  _buildSettingRow(context, userProvider, Icons.music_note_rounded,
-                      S.profileSound, UserProvider.settingSound),
+                  _buildSettingRow(
+                    context,
+                    userProvider,
+                    Icons.music_note_rounded,
+                    S.profileSound,
+                    UserProvider.settingSound,
+                  ),
                   const Divider(color: Colors.white12),
-                  _buildSettingRow(context, userProvider, Icons.volume_up_rounded,
-                      S.profileVibration, UserProvider.settingVibration,
-                      defaultValue: false),
+                  _buildSettingRow(
+                    context,
+                    userProvider,
+                    Icons.volume_up_rounded,
+                    S.profileVibration,
+                    UserProvider.settingVibration,
+                    defaultValue: false,
+                  ),
                   const Divider(color: Colors.white12),
-                  _buildSettingRow(context, userProvider, Icons.dark_mode_rounded,
-                      S.profileDarkMode, UserProvider.settingDarkMode),
+                  _buildSettingRow(
+                    context,
+                    userProvider,
+                    Icons.dark_mode_rounded,
+                    S.profileDarkMode,
+                    UserProvider.settingDarkMode,
+                  ),
                 ],
               ),
             ),
@@ -597,17 +715,29 @@ class ProfileScreen extends StatelessWidget {
               padding: const EdgeInsets.all(18),
               child: Column(
                 children: [
-                  _buildAppInfoRow(Icons.star_rounded, S.profileRateApp,
-                      () => _openLink(context, AppLinks.playStore)),
+                  _buildAppInfoRow(
+                    Icons.star_rounded,
+                    S.profileRateApp,
+                    () => _openLink(context, AppLinks.playStore),
+                  ),
                   const Divider(color: Colors.white12),
-                  _buildAppInfoRow(Icons.share_rounded, S.profileShare,
-                      () => _shareApp(context)),
+                  _buildAppInfoRow(
+                    Icons.share_rounded,
+                    S.profileShare,
+                    () => _shareApp(context),
+                  ),
                   const Divider(color: Colors.white12),
-                  _buildAppInfoRow(Icons.policy_rounded, S.profilePrivacy,
-                      () => _openLink(context, AppLinks.privacyPolicy)),
+                  _buildAppInfoRow(
+                    Icons.policy_rounded,
+                    S.profilePrivacy,
+                    () => _openLink(context, AppLinks.privacyPolicy),
+                  ),
                   const Divider(color: Colors.white12),
-                  _buildAppInfoRow(Icons.description_rounded, S.profileTerms,
-                      () => _openLink(context, AppLinks.terms)),
+                  _buildAppInfoRow(
+                    Icons.description_rounded,
+                    S.profileTerms,
+                    () => _openLink(context, AppLinks.terms),
+                  ),
                   const Divider(color: Colors.white12),
                   ListenableBuilder(
                     listenable: AppVersion.instance,
@@ -622,19 +752,26 @@ class ProfileScreen extends StatelessWidget {
                   if (ConsentService.instance.privacyOptionsRequired) ...[
                     const Divider(color: Colors.white12),
                     _buildAppInfoRow(
-                        Icons.privacy_tip_rounded, S.profileConsentOptions,
-                        () => ConsentService.instance.showPrivacyOptions()),
+                      Icons.privacy_tip_rounded,
+                      S.profileConsentOptions,
+                      () => ConsentService.instance.showPrivacyOptions(),
+                    ),
                   ],
                   if (auth.isSignedIn) ...[
                     const Divider(color: Colors.white12),
-                    _buildAppInfoRow(Icons.logout_rounded, S.profileSignOut,
-                        () => _confirmSignOut(context, auth),
-                        color: AppColors.neonRed),
+                    _buildAppInfoRow(
+                      Icons.logout_rounded,
+                      S.profileSignOut,
+                      () => _confirmSignOut(context, auth),
+                      color: AppColors.neonRed,
+                    ),
                     const Divider(color: Colors.white12),
-                    _buildAppInfoRow(Icons.delete_forever_rounded,
-                        S.accountDelete,
-                        () => _confirmDeleteAccount(context, auth, userProvider),
-                        color: AppColors.neonRed),
+                    _buildAppInfoRow(
+                      Icons.delete_forever_rounded,
+                      S.accountDelete,
+                      () => _confirmDeleteAccount(context, auth, userProvider),
+                      color: AppColors.neonRed,
+                    ),
                   ],
                 ],
               ),
@@ -652,7 +789,10 @@ class ProfileScreen extends StatelessWidget {
       builder: (ctx) => AlertDialog(
         backgroundColor: AppColors.surfaceElevated,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        title: Text(S.profileSignOut, style: const TextStyle(color: Colors.white)),
+        title: Text(
+          S.profileSignOut,
+          style: const TextStyle(color: Colors.white),
+        ),
         content: Text(
           S.profileSignOutConfirm,
           style: const TextStyle(color: AppColors.textSecondary),
@@ -660,11 +800,17 @@ class ProfileScreen extends StatelessWidget {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx, false),
-            child: Text(S.cancel, style: const TextStyle(color: AppColors.textSecondary)),
+            child: Text(
+              S.cancel,
+              style: const TextStyle(color: AppColors.textSecondary),
+            ),
           ),
           TextButton(
             onPressed: () => Navigator.pop(ctx, true),
-            child: Text(S.profileSignOut, style: const TextStyle(color: AppColors.neonRed)),
+            child: Text(
+              S.profileSignOut,
+              style: const TextStyle(color: AppColors.neonRed),
+            ),
           ),
         ],
       ),
@@ -705,8 +851,11 @@ class ProfileScreen extends StatelessWidget {
 
   /// Two-step account deletion: confirmation dialog (type DELETE), then a
   /// progress dialog while the remote data + Firebase Auth account are wiped.
-  Future<void> _confirmDeleteAccount(BuildContext context, AuthProvider auth,
-      UserProvider userProvider) async {
+  Future<void> _confirmDeleteAccount(
+    BuildContext context,
+    AuthProvider auth,
+    UserProvider userProvider,
+  ) async {
     final controller = TextEditingController();
     final confirmed = await showDialog<bool>(
       context: context,
@@ -716,9 +865,12 @@ class ProfileScreen extends StatelessWidget {
           builder: (ctx, setState) => AlertDialog(
             backgroundColor: AppColors.surfaceElevated,
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20)),
-            title: Text(S.accountDelete,
-                style: const TextStyle(color: AppColors.neonRed)),
+              borderRadius: BorderRadius.circular(20),
+            ),
+            title: Text(
+              S.accountDelete,
+              style: const TextStyle(color: AppColors.neonRed),
+            ),
             content: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -726,21 +878,27 @@ class ProfileScreen extends StatelessWidget {
                 Text(
                   S.accountDeleteWarning,
                   style: const TextStyle(
-                      color: AppColors.textSecondary, fontSize: 13),
+                    color: AppColors.textSecondary,
+                    fontSize: 13,
+                  ),
                 ),
                 if (!auth.isSignedIn) ...[
                   const SizedBox(height: 10),
                   Text(
                     S.accountDeleteLocalOnly,
                     style: const TextStyle(
-                        color: AppColors.neonCyan, fontSize: 12),
+                      color: AppColors.neonCyan,
+                      fontSize: 12,
+                    ),
                   ),
                 ],
                 const SizedBox(height: 16),
                 Text(
                   S.accountDeleteConfirmLabel,
                   style: const TextStyle(
-                      color: AppColors.textSecondary, fontSize: 12),
+                    color: AppColors.textSecondary,
+                    fontSize: 12,
+                  ),
                 ),
                 const SizedBox(height: 8),
                 TextField(
@@ -752,7 +910,9 @@ class ProfileScreen extends StatelessWidget {
                   decoration: InputDecoration(
                     hintText: 'DELETE',
                     hintStyle: const TextStyle(
-                        color: Colors.white24, letterSpacing: 2),
+                      color: Colors.white24,
+                      letterSpacing: 2,
+                    ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
                       borderSide: const BorderSide(color: Colors.white24),
@@ -768,14 +928,17 @@ class ProfileScreen extends StatelessWidget {
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(ctx, false),
-                child: Text(S.cancel,
-                    style:
-                        const TextStyle(color: AppColors.textSecondary)),
+                child: Text(
+                  S.cancel,
+                  style: const TextStyle(color: AppColors.textSecondary),
+                ),
               ),
               TextButton(
                 onPressed: match ? () => Navigator.pop(ctx, true) : null,
-                child: Text(S.accountDelete,
-                    style: const TextStyle(color: AppColors.neonRed)),
+                child: Text(
+                  S.accountDelete,
+                  style: const TextStyle(color: AppColors.neonRed),
+                ),
               ),
             ],
           ),
@@ -802,7 +965,8 @@ class ProfileScreen extends StatelessWidget {
         child: AlertDialog(
           backgroundColor: AppColors.surfaceElevated,
           shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(20))),
+            borderRadius: BorderRadius.all(Radius.circular(20)),
+          ),
           content: Row(
             children: [
               const SizedBox(
@@ -858,9 +1022,7 @@ class ProfileScreen extends StatelessWidget {
     final messenger = ScaffoldMessenger.of(context);
     switch (status) {
       case AccountDeletionStatus.success:
-        messenger.showSnackBar(
-          SnackBar(content: Text(S.accountDeleted)),
-        );
+        messenger.showSnackBar(SnackBar(content: Text(S.accountDeleted)));
         break;
       case AccountDeletionStatus.partial:
         // The account is gone, but some collections could not be removed from
@@ -896,8 +1058,12 @@ class ProfileScreen extends StatelessWidget {
     controller.dispose();
   }
 
-  Widget _buildDetailRow(IconData icon, String label, String value,
-      {Widget? trailing}) {
+  Widget _buildDetailRow(
+    IconData icon,
+    String label,
+    String value, {
+    Widget? trailing,
+  }) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 6),
       child: Row(
@@ -908,15 +1074,22 @@ class ProfileScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(label,
-                    style: const TextStyle(
-                        fontSize: 11, color: AppColors.textSecondary)),
+                Text(
+                  label,
+                  style: const TextStyle(
+                    fontSize: 11,
+                    color: AppColors.textSecondary,
+                  ),
+                ),
                 const SizedBox(height: 2),
-                Text(value,
-                    style: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white)),
+                Text(
+                  value,
+                  style: const TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white,
+                  ),
+                ),
               ],
             ),
           ),
@@ -930,28 +1103,38 @@ class ProfileScreen extends StatelessWidget {
   List<_Badge> _earnedBadges(UserStats stats, int streak) {
     final badges = <_Badge>[];
     if (stats.bestDailyScore > 0) {
-      badges.add(const _Badge(
-          'First Score', Icons.flag_rounded, AppColors.neonCyan));
+      badges.add(
+        const _Badge('First Score', Icons.flag_rounded, AppColors.neonCyan),
+      );
     }
     if (streak >= 7 || stats.longestStreak >= 7) {
-      badges.add(const _Badge(
-          '7 Day Streak', Icons.whatshot, Colors.orangeAccent));
+      badges.add(
+        const _Badge('7 Day Streak', Icons.whatshot, Colors.orangeAccent),
+      );
     }
     if (stats.totalQuizzes >= 10) {
-      badges.add(const _Badge(
-          '10 Quizzes', Icons.school_rounded, AppColors.neonPurple));
+      badges.add(
+        const _Badge('10 Quizzes', Icons.school_rounded, AppColors.neonPurple),
+      );
     }
     if (stats.accuracyPercent >= 80 && stats.totalAnswered >= 20) {
-      badges.add(const _Badge(
-          'Sharp Shooter', Icons.military_tech, AppColors.neonGold));
+      badges.add(
+        const _Badge('Sharp Shooter', Icons.military_tech, AppColors.neonGold),
+      );
     }
-    if (stats.hasData && stats.averageSecondsPerQuestion > 0 &&
+    if (stats.hasData &&
+        stats.averageSecondsPerQuestion > 0 &&
         stats.averageSecondsPerQuestion <= 6) {
       badges.add(const _Badge('Speed Demon', Icons.bolt, AppColors.neonCyan));
     }
     if (stats.battlesWon >= 5) {
-      badges.add(const _Badge(
-          'Battle Master', Icons.sports_mma_rounded, AppColors.neonPink));
+      badges.add(
+        const _Badge(
+          'Battle Master',
+          Icons.sports_mma_rounded,
+          AppColors.neonPink,
+        ),
+      );
     }
     return badges;
   }
@@ -960,13 +1143,23 @@ class ProfileScreen extends StatelessWidget {
   List<_Badge> _purchasedBadges(UserProvider userProvider) {
     final badges = <_Badge>[];
     if (userProvider.hasItem(ShopItemIds.championBadge)) {
-      badges.add(const _Badge('Champion', Icons.emoji_events_rounded, AppColors.neonGold));
+      badges.add(
+        const _Badge(
+          'Champion',
+          Icons.emoji_events_rounded,
+          AppColors.neonGold,
+        ),
+      );
     }
     if (userProvider.hasItem(ShopItemIds.scholarBadge)) {
-      badges.add(const _Badge('Scholar', Icons.school_rounded, AppColors.neonPurple));
+      badges.add(
+        const _Badge('Scholar', Icons.school_rounded, AppColors.neonPurple),
+      );
     }
     if (userProvider.hasItem(ShopItemIds.legendBadge)) {
-      badges.add(const _Badge('Legend', Icons.star_rounded, AppColors.neonPink));
+      badges.add(
+        const _Badge('Legend', Icons.star_rounded, AppColors.neonPink),
+      );
     }
     return badges;
   }
@@ -983,15 +1176,22 @@ class ProfileScreen extends StatelessWidget {
         children: [
           Icon(icon, color: color, size: 28),
           const SizedBox(height: 6),
-          Text(value,
-              style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white)),
-          Text(label,
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                  fontSize: 11, color: AppColors.textSecondary)),
+          Text(
+            value,
+            style: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
+          ),
+          Text(
+            label,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              fontSize: 11,
+              color: AppColors.textSecondary,
+            ),
+          ),
         ],
       ),
     );
@@ -1011,21 +1211,25 @@ class ProfileScreen extends StatelessWidget {
           child: Icon(icon, color: color, size: 26),
         ),
         const SizedBox(height: 6),
-        Text(title,
-            style: const TextStyle(
-                fontSize: 11,
-                fontWeight: FontWeight.w600,
-                color: Colors.white)),
+        Text(
+          title,
+          style: const TextStyle(
+            fontSize: 11,
+            fontWeight: FontWeight.w600,
+            color: Colors.white,
+          ),
+        ),
       ],
     );
   }
 
   void _showEditProfileSheet(
-      BuildContext context, UserProvider userProvider, UserModel user) {
-    final nameController =
-        TextEditingController(text: user.fullName);
-    final usernameController =
-        TextEditingController(text: user.username);
+    BuildContext context,
+    UserProvider userProvider,
+    UserModel user,
+  ) {
+    final nameController = TextEditingController(text: user.fullName);
+    final usernameController = TextEditingController(text: user.username);
     UserGender selectedGender = user.gender;
 
     showModalBottomSheet(
@@ -1037,8 +1241,7 @@ class ProfileScreen extends StatelessWidget {
               padding: const EdgeInsets.all(24),
               decoration: const BoxDecoration(
                 color: AppColors.surfaceElevated,
-                borderRadius:
-                    BorderRadius.vertical(top: Radius.circular(24)),
+                borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
               ),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -1047,36 +1250,28 @@ class ProfileScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(S.profileEdit,
-                          style: const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white)),
+                      Text(
+                        S.profileEdit,
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
                       IconButton(
                         icon: const Icon(Icons.close, color: Colors.white),
                         onPressed: () => Navigator.pop(context),
                       ),
-                    ],                  ),
+                    ],
+                  ),
                   const SizedBox(height: 20),
                   TextField(
                     controller: nameController,
                     decoration: InputDecoration(
                       labelText: S.profileFullName,
-                      labelStyle: const TextStyle(color: AppColors.textSecondary),
-                      enabledBorder: const UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white24),
+                      labelStyle: const TextStyle(
+                        color: AppColors.textSecondary,
                       ),
-                      focusedBorder: const UnderlineInputBorder(
-                        borderSide: BorderSide(color: AppColors.neonCyan),
-                      ),),
-                    style: const TextStyle(color: Colors.white),
-                  ),
-                  const SizedBox(height: 16),
-                  TextField(
-                    controller: usernameController,
-                    decoration: InputDecoration(
-                      labelText: S.profileUsername,
-                      labelStyle: const TextStyle(color: AppColors.textSecondary),
                       enabledBorder: const UnderlineInputBorder(
                         borderSide: BorderSide(color: Colors.white24),
                       ),
@@ -1087,9 +1282,30 @@ class ProfileScreen extends StatelessWidget {
                     style: const TextStyle(color: Colors.white),
                   ),
                   const SizedBox(height: 16),
-                  Text(S.profileGender,
-                      style: const TextStyle(
-                          color: AppColors.textSecondary, fontSize: 12)),
+                  TextField(
+                    controller: usernameController,
+                    decoration: InputDecoration(
+                      labelText: S.profileUsername,
+                      labelStyle: const TextStyle(
+                        color: AppColors.textSecondary,
+                      ),
+                      enabledBorder: const UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white24),
+                      ),
+                      focusedBorder: const UnderlineInputBorder(
+                        borderSide: BorderSide(color: AppColors.neonCyan),
+                      ),
+                    ),
+                    style: const TextStyle(color: Colors.white),
+                  ),
+                  const SizedBox(height: 16),
+                  Text(
+                    S.profileGender,
+                    style: const TextStyle(
+                      color: AppColors.textSecondary,
+                      fontSize: 12,
+                    ),
+                  ),
                   const SizedBox(height: 8),
                   Row(
                     children: [
@@ -1098,7 +1314,8 @@ class ProfileScreen extends StatelessWidget {
                           S.profileMale,
                           UserGender.male,
                           selectedGender == UserGender.male,
-                          () => setState(() => selectedGender = UserGender.male),
+                          () =>
+                              setState(() => selectedGender = UserGender.male),
                         ),
                       ),
                       const SizedBox(width: 12),
@@ -1107,7 +1324,9 @@ class ProfileScreen extends StatelessWidget {
                           S.profileFemale,
                           UserGender.female,
                           selectedGender == UserGender.female,
-                          () => setState(() => selectedGender = UserGender.female),
+                          () => setState(
+                            () => selectedGender = UserGender.female,
+                          ),
                         ),
                       ),
                     ],
@@ -1119,10 +1338,10 @@ class ProfileScreen extends StatelessWidget {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.neonCyan,
                         foregroundColor: Colors.black,
-                        padding:
-                            const EdgeInsets.symmetric(vertical: 14),
+                        padding: const EdgeInsets.symmetric(vertical: 14),
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(14)),
+                          borderRadius: BorderRadius.circular(14),
+                        ),
                       ),
                       onPressed: () {
                         userProvider.saveProfile(
@@ -1136,15 +1355,16 @@ class ProfileScreen extends StatelessWidget {
                         );
                         Navigator.pop(context);
                         ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                              content:
-                                  Text(S.profileUpdated)),
+                          SnackBar(content: Text(S.profileUpdated)),
                         );
                       },
-                      child: Text(S.profileSave,
-                          style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold)),
+                      child: Text(
+                        S.profileSave,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
                   ),
                 ],
@@ -1169,17 +1389,17 @@ class ProfileScreen extends StatelessWidget {
         decoration: BoxDecoration(
           color: isSelected
               ? (gender == UserGender.male
-                      ? AppColors.neonCyan
-                      : AppColors.neonPink)
-                  .withValues(alpha: 0.2)
+                        ? AppColors.neonCyan
+                        : AppColors.neonPink)
+                    .withValues(alpha: 0.2)
               : Colors.white.withValues(alpha: 0.05),
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
             color: isSelected
                 ? (gender == UserGender.male
-                        ? AppColors.neonCyan
-                        : AppColors.neonPink)
-                    .withValues(alpha: 0.8)
+                          ? AppColors.neonCyan
+                          : AppColors.neonPink)
+                      .withValues(alpha: 0.8)
                 : Colors.white24,
             width: isSelected ? 2 : 1,
           ),
@@ -1193,9 +1413,9 @@ class ProfileScreen extends StatelessWidget {
                   : Icons.female_rounded,
               color: isSelected
                   ? (gender == UserGender.male
-                          ? AppColors.neonCyan
-                          : AppColors.neonPink)
-                      : AppColors.textMuted,
+                        ? AppColors.neonCyan
+                        : AppColors.neonPink)
+                  : AppColors.textMuted,
               size: 22,
             ),
             const SizedBox(width: 6),
@@ -1204,9 +1424,9 @@ class ProfileScreen extends StatelessWidget {
               style: TextStyle(
                 color: isSelected
                     ? (gender == UserGender.male
-                            ? AppColors.neonCyan
-                            : AppColors.neonPink)
-                        : AppColors.textMuted,
+                          ? AppColors.neonCyan
+                          : AppColors.neonPink)
+                    : AppColors.textMuted,
                 fontWeight: FontWeight.w700,
               ),
             ),
@@ -1229,11 +1449,14 @@ class ProfileScreen extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(S.profileSelectGender,
-                  style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white)),
+              Text(
+                S.profileSelectGender,
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
               const SizedBox(height: 20),
               Row(
                 children: [
@@ -1285,18 +1508,21 @@ class ProfileScreen extends StatelessWidget {
         Icon(icon, size: 20, color: AppColors.neonCyan),
         const SizedBox(width: 12),
         Expanded(
-          child: Text(label,
-              style: const TextStyle(
-                  fontSize: 13,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.white)),
+          child: Text(
+            label,
+            style: const TextStyle(
+              fontSize: 13,
+              fontWeight: FontWeight.w600,
+              color: Colors.white,
+            ),
+          ),
         ),
         Switch(
           value: isOn,
           onChanged: (val) async {
             if (settingKey == UserProvider.settingNotifications && val) {
-              final allowed =
-                  await NotificationService.instance.requestPermission();
+              final allowed = await NotificationService.instance
+                  .requestPermission();
               if (!allowed) {
                 if (context.mounted) {
                   ScaffoldMessenger.of(context).showSnackBar(
@@ -1377,9 +1603,7 @@ class ProfileScreen extends StatelessWidget {
               ),
               const SizedBox(height: 4),
               Text(
-                selected
-                    ? S.active
-                    : (owned ? 'TAP TO USE' : 'LOCKED'),
+                selected ? S.active : (owned ? 'TAP TO USE' : 'LOCKED'),
                 style: TextStyle(
                   fontSize: 8,
                   fontWeight: FontWeight.w900,
@@ -1403,18 +1627,26 @@ class ProfileScreen extends StatelessWidget {
         children: [
           Icon(icon, size: 18, color: AppColors.neonCyan),
           const SizedBox(width: 8),
-          Text(title,
-              style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w800,
-                  color: Colors.white)),
+          Text(
+            title,
+            style: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w800,
+              color: Colors.white,
+            ),
+          ),
         ],
       ),
     );
   }
 
   // ignore: unused_element
-  Widget _buildGameStatCard(IconData icon, String label, String value, Color color) {
+  Widget _buildGameStatCard(
+    IconData icon,
+    String label,
+    String value,
+    Color color,
+  ) {
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
@@ -1430,13 +1662,21 @@ class ProfileScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(label,
-                    style: const TextStyle(fontSize: 11, color: AppColors.textSecondary)),
-                Text(value,
-                    style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w900,
-                        color: Colors.white)),
+                Text(
+                  label,
+                  style: const TextStyle(
+                    fontSize: 11,
+                    color: AppColors.textSecondary,
+                  ),
+                ),
+                Text(
+                  value,
+                  style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w900,
+                    color: Colors.white,
+                  ),
+                ),
               ],
             ),
           ),
@@ -1457,8 +1697,13 @@ class ProfileScreen extends StatelessWidget {
     }
   }
 
-  Widget _buildAppInfoRow(IconData icon, String label, VoidCallback? onTap,
-      {Color? color, String? trailingText}) {
+  Widget _buildAppInfoRow(
+    IconData icon,
+    String label,
+    VoidCallback? onTap, {
+    Color? color,
+    String? trailingText,
+  }) {
     return InkWell(
       onTap: onTap,
       child: Padding(
@@ -1468,11 +1713,14 @@ class ProfileScreen extends StatelessWidget {
             Icon(icon, size: 20, color: color ?? AppColors.neonCyan),
             const SizedBox(width: 12),
             Expanded(
-              child: Text(label,
-                  style: TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w600,
-                      color: color ?? Colors.white)),
+              child: Text(
+                label,
+                style: TextStyle(
+                  fontSize: 13,
+                  fontWeight: FontWeight.w600,
+                  color: color ?? Colors.white,
+                ),
+              ),
             ),
             if (trailingText != null)
               Padding(
@@ -1487,15 +1735,18 @@ class ProfileScreen extends StatelessWidget {
                 ),
               ),
             if (onTap != null)
-              const Icon(Icons.chevron_right_rounded,
-                  size: 18, color: AppColors.textMuted),
+              const Icon(
+                Icons.chevron_right_rounded,
+                size: 18,
+                color: AppColors.textMuted,
+              ),
           ],
         ),
       ),
     );
   }
 
-Future<void> _handleGoogleSignIn(BuildContext context) async {
+  Future<void> _handleGoogleSignIn(BuildContext context) async {
     final auth = context.read<AuthProvider>();
     final userProvider = context.read<UserProvider>();
     final messenger = ScaffoldMessenger.of(context);
@@ -1520,14 +1771,13 @@ Future<void> _handleGoogleSignIn(BuildContext context) async {
         uid: user.uid,
       );
 
-      messenger.showSnackBar(
-        SnackBar(content: Text(S.profileSignedInGoogle)),
-      );
+      messenger.showSnackBar(SnackBar(content: Text(S.profileSignedInGoogle)));
     } on AuthException catch (e) {
       messenger.showSnackBar(
         SnackBar(
-            content: Text(e.message),
-            backgroundColor: Colors.red.shade800),
+          content: Text(e.message),
+          backgroundColor: Colors.red.shade800,
+        ),
       );
     }
   }

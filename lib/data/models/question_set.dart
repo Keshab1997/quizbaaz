@@ -29,11 +29,13 @@ class QuestionSet {
     final sets = <QuestionSet>[];
     for (var start = 0; start < questions.length; start += questionsPerSet) {
       final end = (start + questionsPerSet).clamp(0, questions.length);
-      sets.add(QuestionSet(
-        number: sets.length + 1,
-        startIndex: start,
-        questions: List.unmodifiable(questions.sublist(start, end)),
-      ));
+      sets.add(
+        QuestionSet(
+          number: sets.length + 1,
+          startIndex: start,
+          questions: List.unmodifiable(questions.sublist(start, end)),
+        ),
+      );
     }
     return sets;
   }

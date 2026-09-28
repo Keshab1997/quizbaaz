@@ -54,24 +54,23 @@ class BattleScreen extends StatelessWidget {
         ),
         body: switch (battle.phase) {
           BattlePhase.setup => Column(
-              children: [
-                // A live match that could not be established says so here
-                // instead of silently dropping the player back on the setup
-                // screen (R10/R17).
-                if (battle.startError != null ||
-                    battle.matchmakingError != null)
-                  _BattleNoticeBanner(
-                    message: battle.startError ?? battle.matchmakingError!,
-                    onDismiss: battle.clearStartError,
-                  ),
-                const Expanded(child: _SetupView()),
-              ],
-            ),
+            children: [
+              // A live match that could not be established says so here
+              // instead of silently dropping the player back on the setup
+              // screen (R10/R17).
+              if (battle.startError != null || battle.matchmakingError != null)
+                _BattleNoticeBanner(
+                  message: battle.startError ?? battle.matchmakingError!,
+                  onDismiss: battle.clearStartError,
+                ),
+              const Expanded(child: _SetupView()),
+            ],
+          ),
           BattlePhase.searching => const _SearchingView(),
           BattlePhase.found => const _VsIntroView(),
           BattlePhase.countdown => _CountdownView(
-              countdownValue: battle.countdownValue,
-            ),
+            countdownValue: battle.countdownValue,
+          ),
           BattlePhase.question || BattlePhase.reveal => const _ArenaView(),
           BattlePhase.finished => const _ResultView(),
         },
@@ -79,7 +78,10 @@ class BattleScreen extends StatelessWidget {
     );
   }
 
-  Future<void> _onBackPressed(BuildContext context, BattleProvider battle) async {
+  Future<void> _onBackPressed(
+    BuildContext context,
+    BattleProvider battle,
+  ) async {
     // Setup বা finished phase-এ সরাসরি বের হয়ে যাও
     if (battle.phase == BattlePhase.setup ||
         battle.phase == BattlePhase.finished) {
@@ -224,7 +226,7 @@ class _SetupViewState extends State<_SetupView>
   @override
   void initState() {
     super.initState();
-    
+
     // Reset battle state if previous game was finished
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final battle = context.read<BattleProvider>();
@@ -232,7 +234,7 @@ class _SetupViewState extends State<_SetupView>
         battle.resetBattle();
       }
     });
-    
+
     _enterCtrl = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 700),
@@ -299,7 +301,10 @@ class _SetupViewState extends State<_SetupView>
             Text(
               S.battleRulesLine(n: battle.battleQuestionCount),
               textAlign: TextAlign.center,
-              style: const TextStyle(fontSize: 12, color: AppColors.textSecondary),
+              style: const TextStyle(
+                fontSize: 12,
+                color: AppColors.textSecondary,
+              ),
             ),
             const SizedBox(height: 8),
             Text(
@@ -350,7 +355,8 @@ class _SetupViewState extends State<_SetupView>
             const SizedBox(height: 20),
             NeonButton(
               text: S.battleStartFinding,
-              onPressed: () => context.read<BattleProvider>().startBattle(_selected),
+              onPressed: () =>
+                  context.read<BattleProvider>().startBattle(_selected),
             ),
           ],
         ),
@@ -388,7 +394,7 @@ class _SetupViewState extends State<_SetupView>
                       color: accent.withValues(alpha: 0.25),
                       blurRadius: 16,
                       spreadRadius: 1,
-                    )
+                    ),
                   ]
                 : [],
           ),
@@ -543,8 +549,8 @@ class _SearchingViewState extends State<_SearchingView>
               value: battle.searchSecondsTotal == 0
                   ? 0
                   : 1 -
-                      battle.searchSecondsRemaining /
-                          battle.searchSecondsTotal,
+                        battle.searchSecondsRemaining /
+                            battle.searchSecondsTotal,
               minHeight: 6,
               backgroundColor: Colors.white10,
               color: AppColors.neonCyan,
@@ -607,13 +613,9 @@ class _RadarPainter extends CustomPainter {
 
     // Leading dot on the beam
     final dotAngle = progress * 2 * pi;
-    final dotPos = center +
-        Offset(cos(dotAngle), sin(dotAngle)) * (maxR * 0.82);
-    canvas.drawCircle(
-      dotPos,
-      3.5,
-      Paint()..color = AppColors.neonCyan,
-    );
+    final dotPos =
+        center + Offset(cos(dotAngle), sin(dotAngle)) * (maxR * 0.82);
+    canvas.drawCircle(dotPos, 3.5, Paint()..color = AppColors.neonCyan);
   }
 
   @override
@@ -667,24 +669,20 @@ class _VsIntroViewState extends State<_VsIntroView>
       });
     }
 
-    final leftSlide = Tween<Offset>(
-      begin: const Offset(-1.4, 0),
-      end: Offset.zero,
-    ).animate(
-      CurvedAnimation(
-        parent: _intro,
-        curve: const Interval(0.0, 0.45, curve: Curves.easeOutBack),
-      ),
-    );
-    final rightSlide = Tween<Offset>(
-      begin: const Offset(1.4, 0),
-      end: Offset.zero,
-    ).animate(
-      CurvedAnimation(
-        parent: _intro,
-        curve: const Interval(0.05, 0.5, curve: Curves.easeOutBack),
-      ),
-    );
+    final leftSlide =
+        Tween<Offset>(begin: const Offset(-1.4, 0), end: Offset.zero).animate(
+          CurvedAnimation(
+            parent: _intro,
+            curve: const Interval(0.0, 0.45, curve: Curves.easeOutBack),
+          ),
+        );
+    final rightSlide =
+        Tween<Offset>(begin: const Offset(1.4, 0), end: Offset.zero).animate(
+          CurvedAnimation(
+            parent: _intro,
+            curve: const Interval(0.05, 0.5, curve: Curves.easeOutBack),
+          ),
+        );
     final vsScale = Tween<double>(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(
         parent: _intro,
@@ -793,10 +791,11 @@ class _VsIntroViewState extends State<_VsIntroView>
                           ? AppColors.neonGreen
                           : AppColors.neonPink,
                     ),
-                    color: (battle.isLive
-                            ? AppColors.neonGreen
-                            : AppColors.neonPink)
-                        .withValues(alpha: 0.12),
+                    color:
+                        (battle.isLive
+                                ? AppColors.neonGreen
+                                : AppColors.neonPink)
+                            .withValues(alpha: 0.12),
                   ),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
@@ -814,9 +813,7 @@ class _VsIntroViewState extends State<_VsIntroView>
                         ),
                       if (battle.isLive) const SizedBox(width: 8),
                       Text(
-                        battle.isLive
-                            ? S.battleLiveMatch
-                            : S.battleBotMatch,
+                        battle.isLive ? S.battleLiveMatch : S.battleBotMatch,
                         style: TextStyle(
                           fontSize: 13,
                           fontWeight: FontWeight.w900,
@@ -877,15 +874,10 @@ class _VsPlayerCard extends StatelessWidget {
               end: Alignment.bottomRight,
             ),
             boxShadow: [
-              BoxShadow(
-                color: accent.withValues(alpha: 0.4),
-                blurRadius: 22,
-              ),
+              BoxShadow(color: accent.withValues(alpha: 0.4), blurRadius: 22),
             ],
           ),
-          child: ClipOval(
-            child: _NetworkAwareAvatar(avatar: avatar),
-          ),
+          child: ClipOval(child: _NetworkAwareAvatar(avatar: avatar)),
         ),
         const SizedBox(height: 10),
         Text(
@@ -925,11 +917,8 @@ class _NetworkAwareAvatar extends StatelessWidget {
       avatar,
       fit: BoxFit.cover,
       alignment: Alignment.topCenter,
-      errorBuilder: (_, __, ___) => const Icon(
-        Icons.person_rounded,
-        color: Colors.white,
-        size: 34,
-      ),
+      errorBuilder: (_, __, ___) =>
+          const Icon(Icons.person_rounded, color: Colors.white, size: 34),
     );
   }
 }
@@ -980,9 +969,10 @@ class _CountdownViewState extends State<_CountdownView>
       vsync: this,
       duration: const Duration(milliseconds: 420),
     );
-    _scaleAnim = Tween<double>(begin: 1.6, end: 1.0).animate(
-      CurvedAnimation(parent: _bounceCtrl, curve: Curves.elasticOut),
-    );
+    _scaleAnim = Tween<double>(
+      begin: 1.6,
+      end: 1.0,
+    ).animate(CurvedAnimation(parent: _bounceCtrl, curve: Curves.elasticOut));
     _fadeAnim = Tween<double>(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(
         parent: _bounceCtrl,
@@ -1067,10 +1057,7 @@ class _CountdownViewState extends State<_CountdownView>
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     gradient: const RadialGradient(
-                      colors: [
-                        Color(0x44FFC857),
-                        Color(0x00FFC857),
-                      ],
+                      colors: [Color(0x44FFC857), Color(0x00FFC857)],
                     ),
                     boxShadow: [
                       BoxShadow(
@@ -1197,8 +1184,8 @@ class _ArenaViewState extends State<_ArenaView>
                       color: current
                           ? AppColors.neonCyan
                           : done
-                              ? AppColors.neonCyan.withValues(alpha: 0.4)
-                              : Colors.white12,
+                          ? AppColors.neonCyan.withValues(alpha: 0.4)
+                          : Colors.white12,
                     ),
                   );
                 }),
@@ -1223,11 +1210,13 @@ class _ArenaViewState extends State<_ArenaView>
                       .optionsIn(battle.displayLanguage)
                       .asMap()
                       .entries
-                      .map((e) => _OptionTile(
-                            battle: battle,
-                            index: e.key,
-                            option: e.value,
-                          )),
+                      .map(
+                        (e) => _OptionTile(
+                          battle: battle,
+                          index: e.key,
+                          option: e.value,
+                        ),
+                      ),
                   const SizedBox(height: 8),
                   _statusRow(battle),
                 ],
@@ -1294,7 +1283,11 @@ class _ArenaViewState extends State<_ArenaView>
         children: [
           if (battle.playerAnswered && !battle.opponentAnswered) ...[
             if (battle.isLive)
-              const Icon(Icons.check_circle, size: 16, color: AppColors.neonCyan)
+              const Icon(
+                Icons.check_circle,
+                size: 16,
+                color: AppColors.neonCyan,
+              )
             else
               const SizedBox(
                 width: 14,
@@ -1599,10 +1592,7 @@ class _PointsBreakdown extends StatelessWidget {
   Widget build(BuildContext context) {
     final isLeft = align == CrossAxisAlignment.start;
     return Padding(
-      padding: EdgeInsets.only(
-        left: isLeft ? 8 : 16,
-        right: isLeft ? 16 : 8,
-      ),
+      padding: EdgeInsets.only(left: isLeft ? 8 : 16, right: isLeft ? 16 : 8),
       child: Column(
         crossAxisAlignment: align,
         children: [
@@ -1645,10 +1635,7 @@ class _PointsBreakdown extends StatelessWidget {
           ] else
             const Text(
               'No points',
-              style: TextStyle(
-                fontSize: 10,
-                color: AppColors.textMuted,
-              ),
+              style: TextStyle(fontSize: 10, color: AppColors.textMuted),
             ),
         ],
       ),
@@ -1688,9 +1675,10 @@ class _TimerBadgeState extends State<_TimerBadge>
       vsync: this,
       duration: const Duration(milliseconds: 500),
     );
-    _pulseAnim = Tween<double>(begin: 1.0, end: 1.12).animate(
-      CurvedAnimation(parent: _pulseCtrl, curve: Curves.easeInOut),
-    );
+    _pulseAnim = Tween<double>(
+      begin: 1.0,
+      end: 1.12,
+    ).animate(CurvedAnimation(parent: _pulseCtrl, curve: Curves.easeInOut));
     if (widget.seconds <= 5) {
       _pulseCtrl.repeat(reverse: true);
     }
@@ -1732,16 +1720,13 @@ class _TimerBadgeState extends State<_TimerBadge>
                     color: AppColors.neonRed.withValues(alpha: 0.35),
                     blurRadius: 12,
                     spreadRadius: 1,
-                  )
+                  ),
                 ]
               : [],
         ),
         child: Text(
           '⏱ ${widget.seconds}s',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: color,
-          ),
+          style: TextStyle(fontWeight: FontWeight.bold, color: color),
         ),
       ),
     );
@@ -1777,9 +1762,10 @@ class _OptionTileState extends State<_OptionTile>
       vsync: this,
       duration: const Duration(milliseconds: 100),
     );
-    _pressAnim = Tween<double>(begin: 1.0, end: 0.95).animate(
-      CurvedAnimation(parent: _pressCtrl, curve: Curves.easeOut),
-    );
+    _pressAnim = Tween<double>(
+      begin: 1.0,
+      end: 0.95,
+    ).animate(CurvedAnimation(parent: _pressCtrl, curve: Curves.easeOut));
   }
 
   @override
@@ -1816,7 +1802,7 @@ class _OptionTileState extends State<_OptionTile>
             color: AppColors.neonGreen.withValues(alpha: 0.35),
             blurRadius: 16,
             spreadRadius: 1,
-          )
+          ),
         ];
       } else if (index == battle.playerSelected) {
         border = AppColors.neonRed;
@@ -1843,7 +1829,7 @@ class _OptionTileState extends State<_OptionTile>
           BoxShadow(
             color: AppColors.neonCyan.withValues(alpha: 0.25),
             blurRadius: 12,
-          )
+          ),
         ];
       }
     }
@@ -1851,16 +1837,22 @@ class _OptionTileState extends State<_OptionTile>
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
       child: GestureDetector(
-        onTapDown: revealing ? null : (_) {
-          _pressCtrl.forward();
-        },
-        onTapUp: revealing ? null : (_) {
-          _pressCtrl.reverse();
-          battle.answerQuestion(index);
-        },
-        onTapCancel: revealing ? null : () {
-          _pressCtrl.reverse();
-        },
+        onTapDown: revealing
+            ? null
+            : (_) {
+                _pressCtrl.forward();
+              },
+        onTapUp: revealing
+            ? null
+            : (_) {
+                _pressCtrl.reverse();
+                battle.answerQuestion(index);
+              },
+        onTapCancel: revealing
+            ? null
+            : () {
+                _pressCtrl.reverse();
+              },
         child: ScaleTransition(
           scale: _pressAnim,
           child: AnimatedContainer(
@@ -1870,19 +1862,17 @@ class _OptionTileState extends State<_OptionTile>
             decoration: BoxDecoration(
               color: bg,
               borderRadius: BorderRadius.circular(14),
-              border: Border.all(color: border, width: revealing && index == correctIndex ? 1.8 : 1.2),
+              border: Border.all(
+                color: border,
+                width: revealing && index == correctIndex ? 1.8 : 1.2,
+              ),
               boxShadow: glow,
             ),
             child: Row(
               children: [
                 AnimatedSwitcher(
                   duration: const Duration(milliseconds: 180),
-                  child: Icon(
-                    icon,
-                    key: ValueKey(icon),
-                    size: 18,
-                    color: text,
-                  ),
+                  child: Icon(icon, key: ValueKey(icon), size: 18, color: text),
                 ),
                 const SizedBox(width: 10),
                 Expanded(
@@ -1891,11 +1881,12 @@ class _OptionTileState extends State<_OptionTile>
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight:
-                          revealing && (index == correctIndex ||
+                          revealing &&
+                              (index == correctIndex ||
                                   index == battle.playerSelected ||
                                   index == battle.opponentSelected)
-                              ? FontWeight.bold
-                              : FontWeight.w500,
+                          ? FontWeight.bold
+                          : FontWeight.w500,
                       color: text,
                     ),
                   ),
@@ -1975,24 +1966,20 @@ class _ResultViewState extends State<_ResultView>
       parent: _enterCtrl,
       curve: const Interval(0.3, 0.6, curve: Curves.easeOut),
     );
-    _card1Slide = Tween<Offset>(
-      begin: const Offset(0, 0.3),
-      end: Offset.zero,
-    ).animate(
-      CurvedAnimation(
-        parent: _enterCtrl,
-        curve: const Interval(0.4, 0.75, curve: Curves.easeOutCubic),
-      ),
-    );
-    _card2Slide = Tween<Offset>(
-      begin: const Offset(0, 0.3),
-      end: Offset.zero,
-    ).animate(
-      CurvedAnimation(
-        parent: _enterCtrl,
-        curve: const Interval(0.55, 0.88, curve: Curves.easeOutCubic),
-      ),
-    );
+    _card1Slide = Tween<Offset>(begin: const Offset(0, 0.3), end: Offset.zero)
+        .animate(
+          CurvedAnimation(
+            parent: _enterCtrl,
+            curve: const Interval(0.4, 0.75, curve: Curves.easeOutCubic),
+          ),
+        );
+    _card2Slide = Tween<Offset>(begin: const Offset(0, 0.3), end: Offset.zero)
+        .animate(
+          CurvedAnimation(
+            parent: _enterCtrl,
+            curve: const Interval(0.55, 0.88, curve: Curves.easeOutCubic),
+          ),
+        );
     _btnFade = CurvedAnimation(
       parent: _enterCtrl,
       curve: const Interval(0.75, 1.0, curve: Curves.easeOut),
@@ -2047,7 +2034,8 @@ class _ResultViewState extends State<_ResultView>
       color = AppColors.neonPink;
     }
 
-    if (!confettiFired && (battle.isPlayerWin || battle.isDraw || battle.isForfeit)) {
+    if (!confettiFired &&
+        (battle.isPlayerWin || battle.isDraw || battle.isForfeit)) {
       confettiFired = true;
       _maybeFireConfetti(battle.isPlayerWin || battle.isForfeit, battle.isDraw);
     }
@@ -2109,7 +2097,10 @@ class _ResultViewState extends State<_ResultView>
                 '(${battle.difficulty.name} • '
                 '${battle.isLive ? S.battleLiveMatch : S.battleBotMatch})',
                 textAlign: TextAlign.center,
-                style: const TextStyle(fontSize: 13, color: AppColors.textSecondary),
+                style: const TextStyle(
+                  fontSize: 13,
+                  color: AppColors.textSecondary,
+                ),
               ),
             ),
             const SizedBox(height: 24),
@@ -2134,7 +2125,11 @@ class _ResultViewState extends State<_ResultView>
                                 '${battle.totalQuestions} ${S.correct}',
                             AppColors.neonCyan,
                           ),
-                          Container(width: 1, height: 60, color: Colors.white12),
+                          Container(
+                            width: 1,
+                            height: 60,
+                            color: Colors.white12,
+                          ),
                           _resultStat(
                             battle.opponentName,
                             '${battle.opponentScore}',
@@ -2144,7 +2139,8 @@ class _ResultViewState extends State<_ResultView>
                         ],
                       ),
                       // Total answer time — the equal-score tie-breaker.
-                      if (battle.playerTotalMs > 0 && battle.opponentTotalMs > 0)
+                      if (battle.playerTotalMs > 0 &&
+                          battle.opponentTotalMs > 0)
                         Padding(
                           padding: const EdgeInsets.only(top: 10),
                           child: Text(
@@ -2175,7 +2171,11 @@ class _ResultViewState extends State<_ResultView>
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Icon(Icons.monetization_on, color: AppColors.neonGold, size: 22),
+                      const Icon(
+                        Icons.monetization_on,
+                        color: AppColors.neonGold,
+                        size: 22,
+                      ),
                       const SizedBox(width: 8),
                       Text(
                         '+${battle.earnedCoins} ${S.coins}',
@@ -2187,7 +2187,11 @@ class _ResultViewState extends State<_ResultView>
                       ),
                       if (battle.earnedGems > 0) ...[
                         const SizedBox(width: 16),
-                        const Icon(Icons.diamond, color: AppColors.neonPurple, size: 20),
+                        const Icon(
+                          Icons.diamond,
+                          color: AppColors.neonPurple,
+                          size: 20,
+                        ),
                         const SizedBox(width: 8),
                         Text(
                           '+${battle.earnedGems} ${S.gems}',
@@ -2214,7 +2218,7 @@ class _ResultViewState extends State<_ResultView>
               ),
             ),
             const SizedBox(height: 12),
-            
+
             // Revenge Match button (only if we have a previous opponent)
             if (context.read<BattleProvider>().hasRematchTarget)
               FadeTransition(
@@ -2254,10 +2258,18 @@ class _ResultViewState extends State<_ResultView>
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Icon(Icons.gavel_rounded, color: Colors.white, size: 20),
+                          const Icon(
+                            Icons.gavel_rounded,
+                            color: Colors.white,
+                            size: 20,
+                          ),
                           const SizedBox(width: 8),
                           Text(
-                            context.read<BattleProvider>().lastOpponent?.isBot == true
+                            context
+                                        .read<BattleProvider>()
+                                        .lastOpponent
+                                        ?.isBot ==
+                                    true
                                 ? '⚔️ Revenge (Same Bot)'
                                 : '⚔️ Revenge (${context.read<BattleProvider>().lastOpponent?.name ?? "Opponent"})',
                             style: const TextStyle(
@@ -2313,7 +2325,11 @@ class _ResultViewState extends State<_ResultView>
             label,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: TextStyle(fontSize: 12, fontWeight: FontWeight.w900, color: color),
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w900,
+              color: color,
+            ),
           ),
         ),
         const SizedBox(height: 4),
@@ -2326,7 +2342,10 @@ class _ResultViewState extends State<_ResultView>
           ),
         ),
         const SizedBox(height: 2),
-        Text(sub, style: const TextStyle(fontSize: 10, color: AppColors.textSecondary)),
+        Text(
+          sub,
+          style: const TextStyle(fontSize: 10, color: AppColors.textSecondary),
+        ),
       ],
     );
   }
@@ -2352,8 +2371,11 @@ class _BattleNoticeBanner extends StatelessWidget {
       ),
       child: Row(
         children: [
-          const Icon(Icons.error_outline_rounded,
-              color: Colors.redAccent, size: 20),
+          const Icon(
+            Icons.error_outline_rounded,
+            color: Colors.redAccent,
+            size: 20,
+          ),
           const SizedBox(width: 10),
           Expanded(
             child: Text(
@@ -2363,8 +2385,11 @@ class _BattleNoticeBanner extends StatelessWidget {
           ),
           IconButton(
             onPressed: onDismiss,
-            icon: const Icon(Icons.close_rounded,
-                color: Colors.white54, size: 18),
+            icon: const Icon(
+              Icons.close_rounded,
+              color: Colors.white54,
+              size: 18,
+            ),
             visualDensity: VisualDensity.compact,
           ),
         ],

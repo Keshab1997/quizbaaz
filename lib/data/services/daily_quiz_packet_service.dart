@@ -62,8 +62,8 @@ class DailyQuizPacketService {
   DailyQuizPacketService({
     FirebaseFirestore? firestore,
     QuizRepository? repository,
-  })  : _firestoreOverride = firestore,
-        _repository = repository ?? QuizRepository();
+  }) : _firestoreOverride = firestore,
+       _repository = repository ?? QuizRepository();
 
   final FirebaseFirestore? _firestoreOverride;
   final QuizRepository _repository;
@@ -75,8 +75,7 @@ class DailyQuizPacketService {
   /// bumps `version`, which changes the cache key anyway).
   static const Duration packetTtl = Duration(minutes: 30);
 
-  FirebaseFirestore get _db =>
-      _firestoreOverride ?? FirebaseFirestore.instance;
+  FirebaseFirestore get _db => _firestoreOverride ?? FirebaseFirestore.instance;
 
   /// Cache key for the packet document of a day.
   static String packetCacheKey(String dateKey) => 'daily_quiz_packet_$dateKey';
@@ -88,7 +87,10 @@ class DailyQuizPacketService {
     bool forceRefresh = false,
   }) async {
     if (!forceRefresh) {
-      final cached = HiveService.cacheGet(packetCacheKey(dateKey), maxAge: packetTtl);
+      final cached = HiveService.cacheGet(
+        packetCacheKey(dateKey),
+        maxAge: packetTtl,
+      );
       if (cached is Map) {
         final packet = DailyQuizPacket.fromJson(dateKey, cached);
         if (packet != null) return packet;
@@ -202,26 +204,16 @@ class DailyQuizPacketService {
               'questions could be loaded',
         );
       }
-      await HiveService.cachePut(
-        packet.cacheKey,
-        [for (final q in refreshed) q.toJson()],
-      );
-      return DailyQuizSet(
-        questions: refreshed,
-        ranked: true,
-        packet: packet,
-      );
+      await HiveService.cachePut(packet.cacheKey, [
+        for (final q in refreshed) q.toJson(),
+      ]);
+      return DailyQuizSet(questions: refreshed, ranked: true, packet: packet);
     }
 
-    await HiveService.cachePut(
-      packet.cacheKey,
-      [for (final q in resolved) q.toJson()],
-    );
-    return DailyQuizSet(
-      questions: resolved,
-      ranked: true,
-      packet: packet,
-    );
+    await HiveService.cachePut(packet.cacheKey, [
+      for (final q in resolved) q.toJson(),
+    ]);
+    return DailyQuizSet(questions: resolved, ranked: true, packet: packet);
   }
 
   /// Loads the questions the packet names, **in packet order** (order is part
@@ -236,7 +228,9 @@ class DailyQuizPacketService {
   }) async {
     final byChapter = <String, Set<String>>{};
     for (final ref in packet.questions) {
-      byChapter.putIfAbsent(ref.chapterId, () => <String>{}).add(ref.questionId);
+      byChapter
+          .putIfAbsent(ref.chapterId, () => <String>{})
+          .add(ref.questionId);
     }
 
     final found = <String, QuestionModel>{};
