@@ -56,6 +56,9 @@ class AdService extends ChangeNotifier {
       return const SizedBox.shrink();
     }
 
+    // No banner unit was injected at build time — ads stay off entirely.
+    if (AdConfig.bannerAdUnitId.isEmpty) return const SizedBox.shrink();
+
     if (_bannerAd == null) {
       final ad = BannerAd(
         adUnitId: AdConfig.bannerAdUnitId,
@@ -112,6 +115,9 @@ class AdService extends ChangeNotifier {
   /// Safe to call repeatedly. No-op until consent allows ads.
   void preloadInterstitial() {
     if (!_initialized || !ConsentService.instance.canRequestAds) return;
+
+    // No interstitial unit was injected at build time — nothing to preload.
+    if (AdConfig.interstitialAdUnitId.isEmpty) return;
     if (_loadingInterstitial) return;
     if (_interstitialAd != null) return;
     _loadingInterstitial = true;
