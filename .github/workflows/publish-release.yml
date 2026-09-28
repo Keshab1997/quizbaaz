@@ -65,11 +65,11 @@ jobs:
   publish:
     needs: check-admob-config
     uses: Keshab1997/flutter-builder/.github/workflows/publish-release.yml@v1.8.1
+    # The GOOGLE_SERVICES_JSON_BASE64 secret reaches the builder via
+    # `secrets: inherit` below — the builder writes android/app/google-services.json
+    # from it before the build (the file itself is untracked).
     with:
       app-name: QuizBaaz
-      # CI writes android/app/google-services.json from this secret before the
-      # build; the file itself is untracked (the doctor rejects it in git).
-      google-services-json-base64: ${{ secrets.GOOGLE_SERVICES_JSON_BASE64 }}
       release-draft: ${{ inputs.draft }}
       release-prerelease: ${{ inputs.prerelease }}
       dart-defines: |

@@ -8,7 +8,8 @@ name: Android Release
 #
 # Values come from Settings → Secrets and variables → Actions:
 #   Variables: ADMOB_APP_ID, ADMOB_BANNER_ID, ADMOB_INTERSTITIAL_ID
-#   Secrets:   ANDROID_KEYSTORE_BASE64, KEYSTORE_PASSWORD, KEY_ALIAS, KEY_PASSWORD
+#   Secrets:   ANDROID_KEYSTORE_BASE64, KEYSTORE_PASSWORD, KEY_ALIAS, KEY_PASSWORD,
+#              GOOGLE_SERVICES_JSON_BASE64
 
 on:
   push:
@@ -48,11 +49,10 @@ jobs:
   release-aab:
     needs: check-admob-config
     uses: Keshab1997/flutter-builder/.github/workflows/flutter-build.yml@v1.8.1
+    # The GOOGLE_SERVICES_JSON_BASE64 secret below makes the builder write
+    # android/app/google-services.json before the build (untracked file).
     with:
       flutter-channel: stable
-      # CI writes android/app/google-services.json from this secret before the
-      # build; the file itself is untracked (the doctor rejects it in git).
-      google-services-json-base64: ${{ secrets.GOOGLE_SERVICES_JSON_BASE64 }}
       build-apk: false
       build-aab: true
       artifact-retention-days: 30
@@ -64,6 +64,7 @@ jobs:
         ADMOB_APP_ID=${{ vars.ADMOB_APP_ID }}
     secrets:
       ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+      GOOGLE_SERVICES_JSON_BASE64: ${{ secrets.GOOGLE_SERVICES_JSON_BASE64 }}
       KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
       KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
       KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}

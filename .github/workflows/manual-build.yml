@@ -38,11 +38,10 @@ permissions:
 jobs:
   build:
     uses: Keshab1997/flutter-builder/.github/workflows/flutter-build.yml@v1.8.1
+    # The GOOGLE_SERVICES_JSON_BASE64 secret below makes the builder write
+    # android/app/google-services.json before the build (untracked file).
     with:
       flutter-channel: stable
-      # CI writes android/app/google-services.json from this secret before the
-      # build; the file itself is untracked (the doctor rejects it in git).
-      google-services-json-base64: ${{ secrets.GOOGLE_SERVICES_JSON_BASE64 }}
       # Validation already runs on every push in content-and-quality.yml;
       # a manual build should not be blocked by a formatting nit.
       run-format-check: false
@@ -64,6 +63,7 @@ jobs:
         ADMOB_APP_ID=${{ inputs.ads == 'real' && vars.ADMOB_APP_ID || 'ca-app-pub-3940256099942544~3347511713' }}
     secrets:
       ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+      GOOGLE_SERVICES_JSON_BASE64: ${{ secrets.GOOGLE_SERVICES_JSON_BASE64 }}
       KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
       KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
       KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
