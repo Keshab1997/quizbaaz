@@ -174,16 +174,16 @@ class _AvatarManagerScreenState extends State<AvatarManagerScreen> {
                         ),
                       )
                     : snapshot.hasError
-                    ? _buildEmptyState(
-                        'Failed to load avatars',
-                        detail: ShopService.lastError,
-                      )
-                    : filteredAvatars.isEmpty
-                    ? _buildEmptyState(
-                        'No Firestore avatars found',
-                        detail: ShopService.lastError,
-                      )
-                    : _buildAvatarGrid(filteredAvatars),
+                        ? _buildEmptyState(
+                            'Failed to load avatars',
+                            detail: ShopService.lastError,
+                          )
+                        : filteredAvatars.isEmpty
+                            ? _buildEmptyState(
+                                'No Firestore avatars found',
+                                detail: ShopService.lastError,
+                              )
+                            : _buildAvatarGrid(filteredAvatars),
               ),
             ],
           );
@@ -485,9 +485,8 @@ class _AvatarManagerScreenState extends State<AvatarManagerScreen> {
                         ? '✅ Avatar deleted'
                         : '❌ ${ShopService.lastError ?? 'Delete failed'}',
                   ),
-                  backgroundColor: success
-                      ? AppColors.neonGreen
-                      : AppColors.neonRed,
+                  backgroundColor:
+                      success ? AppColors.neonGreen : AppColors.neonRed,
                 ),
               );
               if (success) setState(_refreshAvatars);
@@ -555,22 +554,24 @@ class _AddEditAvatarSheetState extends State<_AddEditAvatarSheet> {
             _uploadedImageUrl = url;
             _isUploading = false;
           });
-          if (mounted)
+          if (mounted) {
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(
                 content: Text('✅ Avatar image uploaded!'),
                 backgroundColor: AppColors.neonGreen,
               ),
             );
+          }
         } else {
           setState(() => _isUploading = false);
-          if (mounted)
+          if (mounted) {
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(
                 content: Text('❌ Upload failed. Try again.'),
                 backgroundColor: AppColors.neonRed,
               ),
             );
+          }
         }
       }
     } catch (e) {
@@ -916,8 +917,8 @@ class _AddEditAvatarSheetState extends State<_AddEditAvatarSheet> {
           content: Text(
             success
                 ? (widget.avatar == null
-                      ? '✅ Avatar added!'
-                      : '✅ Avatar updated!')
+                    ? '✅ Avatar added!'
+                    : '✅ Avatar updated!')
                 : '❌ ${ShopService.lastError ?? 'Failed to save. Try again.'}',
           ),
           backgroundColor: success ? AppColors.neonPink : AppColors.neonRed,

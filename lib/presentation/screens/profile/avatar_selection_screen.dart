@@ -112,8 +112,8 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
 
   Map<String, dynamic>? _cloudAvatarForUrl(String url) {
     for (final avatar in _cloudAvatars) {
-      final imageUrl = (avatar['image_url'] ?? avatar['avatar_url'] ?? '')
-          .toString();
+      final imageUrl =
+          (avatar['image_url'] ?? avatar['avatar_url'] ?? '').toString();
       if (imageUrl == url) return avatar;
     }
     return null;
@@ -127,8 +127,8 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
     Map<String, dynamic> avatar,
   ) {
     final id = _cloudAvatarInventoryId(avatar);
-    final imageUrl = (avatar['image_url'] ?? avatar['avatar_url'] ?? '')
-        .toString();
+    final imageUrl =
+        (avatar['image_url'] ?? avatar['avatar_url'] ?? '').toString();
     return userProvider.hasItem(id) ||
         userProvider.hasItem('cloud_avatar_$id') ||
         (imageUrl.isNotEmpty && userProvider.hasItem(imageUrl));
@@ -346,9 +346,8 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
                                 ? AppColors.neonPurple
                                 : AppColors.textSecondary,
                             fontSize: 13,
-                            fontWeight: isSelected
-                                ? FontWeight.w800
-                                : FontWeight.w600,
+                            fontWeight:
+                                isSelected ? FontWeight.w800 : FontWeight.w600,
                           ),
                         ),
                       ],
@@ -385,16 +384,19 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
     // Filter cloud avatars by category
     final cloudAvatars = _cloudAvatars.where((avatar) {
       final category = (avatar['category'] ?? '').toString().toLowerCase();
-      final isPremium =
-          avatar['is_premium'] == true ||
+      final isPremium = avatar['is_premium'] == true ||
           category == 'premium' ||
           category == 'avatars' ||
           ((avatar['price'] as num?) ?? 0) > 0;
-      if (_selectedCategory == 'premium')
+      if (_selectedCategory == 'premium') {
         return isPremium || category == 'avatars';
-      if (_selectedCategory == 'male') return category == 'male' && !isPremium;
-      if (_selectedCategory == 'female')
+      }
+      if (_selectedCategory == 'male') {
+        return category == 'male' && !isPremium;
+      }
+      if (_selectedCategory == 'female') {
         return category == 'female' && !isPremium;
+      }
       return true;
     }).toList();
 
@@ -485,22 +487,18 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
               ),
               delegate: SliverChildBuilderDelegate((context, index) {
                 final cloudAvatar = cloudAvatars[index];
-                final imageUrl =
-                    (cloudAvatar['image_url'] ??
-                            cloudAvatar['avatar_url'] ??
-                            '')
-                        .toString();
+                final imageUrl = (cloudAvatar['image_url'] ??
+                        cloudAvatar['avatar_url'] ??
+                        '')
+                    .toString();
                 final isSelected = _selectedAvatar == imageUrl;
-                final category = (cloudAvatar['category'] ?? '')
-                    .toString()
-                    .toLowerCase();
-                final isPremium =
-                    cloudAvatar['is_premium'] == true ||
+                final category =
+                    (cloudAvatar['category'] ?? '').toString().toLowerCase();
+                final isPremium = cloudAvatar['is_premium'] == true ||
                     category == 'premium' ||
                     category == 'avatars' ||
                     ((cloudAvatar['price'] as num?) ?? 0) > 0;
-                final isOwned =
-                    !isPremium ||
+                final isOwned = !isPremium ||
                     _isCloudAvatarOwned(userProvider, cloudAvatar);
 
                 return _buildCloudAvatarCard(
@@ -558,8 +556,8 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
             color: isSelected
                 ? AppColors.neonCyan.withValues(alpha: 0.8)
                 : isPremium && !isOwned
-                ? AppColors.neonGold.withValues(alpha: 0.3)
-                : Colors.white.withValues(alpha: 0.1),
+                    ? AppColors.neonGold.withValues(alpha: 0.3)
+                    : Colors.white.withValues(alpha: 0.1),
             width: isSelected ? 3 : 1.5,
           ),
           boxShadow: isSelected
@@ -731,8 +729,8 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
             color: isSelected
                 ? AppColors.neonCyan.withValues(alpha: 0.8)
                 : isPremium
-                ? AppColors.neonGold.withValues(alpha: 0.3)
-                : Colors.white.withValues(alpha: 0.1),
+                    ? AppColors.neonGold.withValues(alpha: 0.3)
+                    : Colors.white.withValues(alpha: 0.1),
             width: isSelected ? 3 : 1.5,
           ),
           boxShadow: isSelected
@@ -916,13 +914,18 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
 
   List<String> _getOwnedPremiumAvatars(UserProvider userProvider) {
     final owned = <String>[];
-    if (userProvider.hasItem('vip_avatar')) owned.add(AppAssets.vipAvatar);
-    if (userProvider.hasItem('golden_avatar'))
+    if (userProvider.hasItem('vip_avatar')) {
+      owned.add(AppAssets.vipAvatar);
+    }
+    if (userProvider.hasItem('golden_avatar')) {
       owned.add(AppAssets.goldenKnightAvatar);
-    if (userProvider.hasItem('neon_avatar'))
+    }
+    if (userProvider.hasItem('neon_avatar')) {
       owned.add(AppAssets.neonCyberAvatar);
-    if (userProvider.hasItem('royal_avatar'))
+    }
+    if (userProvider.hasItem('royal_avatar')) {
       owned.add(AppAssets.royalCrownAvatar);
+    }
     return owned;
   }
 
@@ -951,12 +954,10 @@ class _AvatarSelectionScreenState extends State<AvatarSelectionScreen> {
     final selected = _selectedAvatar!;
     final cloudAvatar = _cloudAvatarForUrl(selected);
     final cloudCategory = (cloudAvatar?['category'] ?? '').toString();
-    final isFemale =
-        cloudCategory == 'female' ||
+    final isFemale = cloudCategory == 'female' ||
         selected.contains('female') ||
         selected.contains('girl');
-    final isMale =
-        cloudCategory == 'male' ||
+    final isMale = cloudCategory == 'male' ||
         selected.contains('male') ||
         selected.contains('boy');
 
