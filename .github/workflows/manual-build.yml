@@ -48,16 +48,17 @@ jobs:
       build-apk: ${{ inputs.format == 'apk' }}
       build-aab: ${{ inputs.format == 'aab' }}
       artifact-retention-days: 14
-      # Empty values are skipped by the builder, so with ads=test every key
-      # falls back to the Google test IDs compiled into AdConfig.
+      # With ads=test Google's test unit IDs are passed explicitly so the
+      # build shows test ads without any ad ID living under lib/ (the shared
+      # builder rejects a release while test unit IDs appear in the source).
       dart-defines: |
-        ADMOB_APP_ID=${{ inputs.ads == 'real' && vars.ADMOB_APP_ID || '' }}
-        ADMOB_BANNER_ID=${{ inputs.ads == 'real' && vars.ADMOB_BANNER_ID || '' }}
-        ADMOB_INTERSTITIAL_ID=${{ inputs.ads == 'real' && vars.ADMOB_INTERSTITIAL_ID || '' }}
+        ADMOB_APP_ID=${{ inputs.ads == 'real' && vars.ADMOB_APP_ID || 'ca-app-pub-3940256099942544~3347511713' }}
+        ADMOB_BANNER_ID=${{ inputs.ads == 'real' && vars.ADMOB_BANNER_ID || 'ca-app-pub-3940256099942544/6300978111' }}
+        ADMOB_INTERSTITIAL_ID=${{ inputs.ads == 'real' && vars.ADMOB_INTERSTITIAL_ID || 'ca-app-pub-3940256099942544/1033173712' }}
       # android/app/build.gradle.kts reads ADMOB_APP_ID from the environment
       # for the AndroidManifest APPLICATION_ID placeholder.
       build-env: |
-        ADMOB_APP_ID=${{ inputs.ads == 'real' && vars.ADMOB_APP_ID || '' }}
+        ADMOB_APP_ID=${{ inputs.ads == 'real' && vars.ADMOB_APP_ID || 'ca-app-pub-3940256099942544~3347511713' }}
     secrets:
       ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
       KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
