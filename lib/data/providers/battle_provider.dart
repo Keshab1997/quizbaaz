@@ -157,7 +157,7 @@ class BattleProvider extends ChangeNotifier {
 
   int _countdownUntilMs = 0;
   int _questionDeadlineMs = 0;
-  int _questionDurationSec = 15;
+  int _questionDurationSec = 30;
   int _revealUntilMs = 0;
   int _botAnswerAtMs = 0;
 

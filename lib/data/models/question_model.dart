@@ -59,7 +59,7 @@ class QuestionModel {
     required this.correctIndex,
     this.explanationText = const LocalizedText.empty(),
     this.points = 10,
-    this.timeLimitSec = 15,
+    this.timeLimitSec = 30,
   });
 
   // ---------------------------------------------------- active-language API --
@@ -152,7 +152,7 @@ class QuestionModel {
       correctIndex: (json['correct_index'] as num?)?.toInt() ?? 0,
       explanationText: LocalizedText.fromJson(json['explanation']),
       points: (json['points'] as num?)?.toInt() ?? 10,
-      timeLimitSec: (json['time_limit_sec'] as num?)?.toInt() ?? 15,
+      timeLimitSec: (json['time_limit_sec'] as num?)?.toInt() ?? 30,
     );
   }
 

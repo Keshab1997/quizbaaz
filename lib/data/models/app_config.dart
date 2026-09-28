@@ -68,7 +68,7 @@ class AppConfig {
 
   const AppConfig({
     this.dailyQuestionCount = 10,
-    this.secondsPerQuestion = 15,
+    this.secondsPerQuestion = 30,
     this.coinsPerCorrectDaily = 50,
     this.perfectBonusCoins = 100,
     this.coinsPerCorrectPractice = 25,

@@ -199,9 +199,10 @@ class DailyQuizScreen extends StatelessWidget {
                       ],
 
                       // A daily run says up front whether it will reach the
-                      // leaderboard: "the score never arrived" is the single
-                      // most confusing thing a daily competition can do.
-                      if (!quiz.isPractice && quiz.isDailyQuiz) ...[
+                      // leaderboard. Per user request: show only on Q1, then auto-hide.
+                      if (!quiz.isPractice &&
+                          quiz.isDailyQuiz &&
+                          quiz.currentIndex == 0) ...[
                         _buildCountingBanner(quiz, userProvider),
                         const SizedBox(height: 10),
                       ],
@@ -709,11 +710,10 @@ class DailyQuizScreen extends StatelessWidget {
   Widget _buildQuestionCard(BuildContext context, QuestionModel question) {
     final language = context.watch<QuizProvider>().displayLanguage;
 
-    // Board students revise in English terminology even when reading Bangla or
-    // Hindi, so the English stem stays visible as a secondary line. Reading in
-    // English already, it would just repeat itself.
+    // Per user request: when Bangla (or any non-English) is selected, don't
+    // show English secondary text to keep card compact and avoid scrolling.
     final primary = question.questionIn(language);
-    final secondary = language == 'en' ? null : question.questionIn('en');
+    final String? secondary = null;
 
     return GlassCard(
       borderRadius: 22,
