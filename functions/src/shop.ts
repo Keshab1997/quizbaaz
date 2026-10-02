@@ -1,8 +1,13 @@
 // Trusted shop purchase (R02 — server-side wallet ledger).
 import * as admin from 'firebase-admin';
-import { https } from 'firebase-functions/v1';
+import { https, logger } from 'firebase-functions/v1';
+import { callable } from './options';
 
 const db = () => admin.firestore();
+
+/** Upper bound on a single purchase, so a mis-authored item cannot grant a
+ *  huge stack of an item (or blow past the Firestore 1 MiB document limit). */
+const MAX_QUANTITY = 100;
 
 /**
  * Atomic purchase:
@@ -12,7 +17,7 @@ const db = () => admin.firestore();
  *   * deduct + inventory grant + purchase history happen atomically,
  *   * idempotent per client-generated purchase id (safe to retry).
  */
-export const purchaseItem = https.onCall(
+export const purchaseItem = callable().https.onCall(
   async (data, context) => {
     if (!context.auth) {
       throw new https.HttpsError('unauthenticated', 'Sign in first.');
@@ -60,9 +65,22 @@ export const purchaseItem = https.onCall(
           'Shop item has an invalid price.',
         );
       }
-      const currency = item['currency'] === 'gems' ? 'gems' : 'coins';
-      const quantity =
-        Number(item['quantity']) > 0 ? Math.floor(Number(item['quantity'])) : 1;
+      const currency =
+        item['currency'] === 'gems'
+          ? 'gems'
+          : item['currency'] === 'coins'
+            ? 'coins'
+            : null;
+      if (currency === null) {
+        throw new https.HttpsError(
+          'internal',
+          'Shop item has an invalid currency.',
+        );
+      }
+      const rawQuantity = Number(item['quantity']);
+      const quantity = Number.isFinite(rawQuantity) && rawQuantity > 0
+        ? Math.min(Math.floor(rawQuantity), MAX_QUANTITY)
+        : 1;
 
       const userSnap = await tx.get(userRef);
       if (!userSnap.exists) {
@@ -73,7 +91,7 @@ export const purchaseItem = https.onCall(
       }
       const u = userSnap.data()!;
       const balance = Number(u[currency] ?? 0);
-      if (balance < price) {
+      if (!Number.isFinite(balance) || balance < price) {
         throw new https.HttpsError(
           'failed-precondition',
           `Insufficient ${currency} (have ${balance}, need ${price}).`,
@@ -97,8 +115,13 @@ export const purchaseItem = https.onCall(
         currency,
         quantity,
         balance_after: balance - price,
+        // Server clock (this runs server-side), kept as an ISO string because
+        // the client's PurchaseHistory model parses it that way.
         purchased_at: new Date().toISOString(),
+        purchased_at_ts: admin.firestore.FieldValue.serverTimestamp(),
       });
+
+      logger.info('purchaseItem', { uid, itemId, currency, price, quantity });
 
       return {
         ok: true,

@@ -1,13 +1,29 @@
 // Trusted battle settlement (R02 — clients can never declare a remote winner).
 import * as admin from 'firebase-admin';
-import { https } from 'firebase-functions/v1';
+import { https, logger } from 'firebase-functions/v1';
+import { callable } from './options';
 
 const db = () => admin.firestore();
+
+/** A single battle question pays at most 28 (base 10 + speed 10 + first 2 +
+ *  capped streak 6). Even a long match stays well under this ceiling; anything
+ *  above it is a malformed or tampered room, not a real score. */
+const MAX_SANE_SCORE = 28 * 100;
 
 interface RoomPlayer {
   uid: string;
   score: number;
   correct: number;
+}
+
+/** Coerces a room field to a sane non-negative integer, or null when it is not
+ *  one (so a tampered room can never decide a winner). */
+function saneCount(value: unknown): number | null {
+  const n = Number(value);
+  if (!Number.isFinite(n) || !Number.isInteger(n) || n < 0 || n > MAX_SANE_SCORE) {
+    return null;
+  }
+  return n;
 }
 
 /**
@@ -26,7 +42,7 @@ interface RoomPlayer {
  * `{ ok, winner, matchId, reason }` — `reason` is `resolved` or
  * `already-resolved`.
  */
-export const resolveBattle = https.onCall(
+export const resolveBattle = callable().https.onCall(
   async (data, context) => {
     if (!context.auth) {
       throw new https.HttpsError('unauthenticated', 'Sign in first.');
@@ -77,10 +93,16 @@ export const resolveBattle = https.onCall(
         };
       }
 
-      const aScore = Number(players.a.score ?? 0);
-      const bScore = Number(players.b.score ?? 0);
-      const aCorrect = Number(players.a.correct ?? 0);
-      const bCorrect = Number(players.b.correct ?? 0);
+      const aScore = saneCount(players.a.score);
+      const bScore = saneCount(players.b.score);
+      const aCorrect = saneCount(players.a.correct) ?? 0;
+      const bCorrect = saneCount(players.b.correct) ?? 0;
+      if (aScore === null || bScore === null) {
+        throw new https.HttpsError(
+          'failed-precondition',
+          'Room scores are not settleable.',
+        );
+      }
 
       let winner: string | null;
       if (aScore !== bScore) {
@@ -98,6 +120,8 @@ export const resolveBattle = https.onCall(
         ...(matchId ? { match_id: matchId } : {}),
         resolved_at: admin.firestore.FieldValue.serverTimestamp(),
       });
+
+      logger.info('resolveBattle', { roomId, matchId, winner, by: callerUid });
 
       return { ok: true, winner, matchId, reason: 'resolved' };
     });

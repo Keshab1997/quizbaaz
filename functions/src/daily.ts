@@ -1,12 +1,24 @@
 // Trusted daily-quiz credit (R02 — server-computed rewards, once per day).
 import * as admin from 'firebase-admin';
-import { https } from 'firebase-functions/v1';
+import { https, logger } from 'firebase-functions/v1';
+import { callable } from './options';
 
 const db = () => admin.firestore();
 
-/** Today's date key (yyyy-MM-dd) in Asia/Kolkata — the app's home timezone. */
-function kolkataToday(): string {
-  return new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Kolkata' });
+/** Fixed UTC+05:30 — the app's home timezone. */
+const KOLKATA_OFFSET_MINUTES = 330;
+
+/**
+ * Today's date key (yyyy-MM-dd) in Asia/Kolkata.
+ *
+ * Computed arithmetically rather than via `toLocaleDateString(..., {timeZone})`,
+ * which depends on the Node ICU/locale database being present in the runtime —
+ * a dependency that has bitten production runtimes before. This can never
+ * silently fall back to UTC.
+ */
+function kolkataToday(now: Date = new Date()): string {
+  const shifted = new Date(now.getTime() + KOLKATA_OFFSET_MINUTES * 60_000);
+  return shifted.toISOString().slice(0, 10);
 }
 
 function shiftDay(dateKey: string, days: number): string {
@@ -42,11 +54,133 @@ async function loadConfig(): Promise<{
   };
 }
 
+/** Points a correct daily answer is worth (client: fixed 10, ×2 with booster). */
+const POINTS_PER_CORRECT = 10;
+/** The double-points booster is the only multiplier the client can apply. */
+const MAX_SCORE_MULTIPLIER = 2;
+
+function normText(v: unknown): string {
+  return typeof v === 'string' ? v.trim() : '';
+}
+
+/**
+ * Whether a submitted option is the correct one. The client shuffles the option
+ * order per device, so it cannot send a stable index — it sends the selected
+ * option's localized text instead, and we match it against the answer key.
+ */
+function optionMatches(selected: unknown, correctOption: unknown): boolean {
+  if (
+    !selected ||
+    typeof selected !== 'object' ||
+    !correctOption ||
+    typeof correctOption !== 'object'
+  ) {
+    return false;
+  }
+  const s = selected as Record<string, unknown>;
+  const c = correctOption as Record<string, unknown>;
+  for (const lang of ['en', 'bn', 'hi']) {
+    const a = normText(s[lang]);
+    const b = normText(c[lang]);
+    if (a && b && a === b) return true;
+  }
+  return false;
+}
+
+interface VerifyResult {
+  ok: boolean;
+  correct: number;
+  total: number;
+  reason: string;
+}
+
+/**
+ * Re-derives the player's correct count from the published packet and the
+ * question bank, so a tampered client cannot claim a perfect run. The client
+ * sends `answers: [{ question_id, selected }]` where `selected` is the chosen
+ * option's localized text (or null on a timeout/skip).
+ *
+ * Best-effort by design: when the packet or a question doc cannot be read
+ * (packet not published, offline replay, a question since deleted) the caller
+ * falls back to the client-reported numbers rather than failing a real player.
+ */
+async function verifyAnswers(
+  dateKey: string,
+  raw: unknown,
+): Promise<VerifyResult> {
+  const fail = (reason: string): VerifyResult => ({
+    ok: false,
+    correct: 0,
+    total: 0,
+    reason,
+  });
+
+  if (!Array.isArray(raw) || raw.length === 0) return fail('no answers');
+
+  const packetSnap = await db()
+    .collection('daily_quiz_packets')
+    .doc(dateKey)
+    .get();
+  if (!packetSnap.exists) return fail('no packet');
+  const packet = packetSnap.data() ?? {};
+  if (packet['approved'] !== true) return fail('packet not approved');
+
+  const refs = Array.isArray(packet['questions']) ? packet['questions'] : [];
+  const chapterByQid = new Map<string, string>();
+  for (const entry of refs) {
+    const cid = (entry as Record<string, unknown>)?.['chapter_id'];
+    const qid = (entry as Record<string, unknown>)?.['question_id'];
+    if (typeof cid === 'string' && typeof qid === 'string') {
+      chapterByQid.set(qid, cid);
+    }
+  }
+  if (chapterByQid.size === 0) return fail('empty packet');
+
+  const submitted = raw as Array<Record<string, unknown>>;
+  if (submitted.length !== chapterByQid.size) {
+    return fail('answer count mismatch');
+  }
+
+  let correct = 0;
+  for (const answer of submitted) {
+    const qid = typeof answer?.['question_id'] === 'string'
+      ? (answer['question_id'] as string)
+      : '';
+    const chapterId = chapterByQid.get(qid);
+    if (!chapterId) return fail(`unknown question ${qid}`);
+
+    const qSnap = await db()
+      .collection('question_banks')
+      .doc(chapterId)
+      .collection('questions')
+      .doc(qid)
+      .get();
+    if (!qSnap.exists) return fail(`missing question doc ${qid}`);
+
+    const q = qSnap.data() ?? {};
+    const options = Array.isArray(q['options']) ? q['options'] : [];
+    const correctIndex = Number(q['correct_index']);
+    if (
+      !Number.isInteger(correctIndex) ||
+      correctIndex < 0 ||
+      correctIndex >= options.length
+    ) {
+      return fail(`bad answer key ${qid}`);
+    }
+    if (optionMatches(answer['selected'], options[correctIndex])) correct += 1;
+  }
+
+  return { ok: true, correct, total: chapterByQid.size, reason: 'verified' };
+}
+
 /**
  * The client submits its result for today's daily quiz; this function is the
  * one that credits the wallet. It:
  *   * accepts only today's (Asia/Kolkata) date,
  *   * bounds every input,
+ *   * re-derives correctness from the published packet + question bank when the
+ *     client sends its per-question answers (a tampered client cannot claim a
+ *     perfect run),
  *   * re-derives coins/gems from the published `config/app`,
  *   * is idempotent per day via users/{uid}/daily_claims/{date},
  *   * advances the streak, xp and the leaderboard entry atomically.
@@ -56,7 +190,7 @@ async function loadConfig(): Promise<{
  * delta is the plain config formula (no booster). This is stricter than the
  * old client path, never more generous.
  */
-export const submitDailyResult = https.onCall(
+export const submitDailyResult = callable().https.onCall(
   async (data, context) => {
     if (!context.auth) {
       throw new https.HttpsError('unauthenticated', 'Sign in first.');
@@ -64,9 +198,9 @@ export const submitDailyResult = https.onCall(
     const uid = context.auth.uid;
 
     const date = typeof data?.date === 'string' ? data.date : '';
-    const correct = Number(data?.correct);
-    const total = Number(data?.total);
-    const score = Number(data?.score);
+    let correct = Number(data?.correct);
+    let total = Number(data?.total);
+    let score = Number(data?.score);
     const timeSeconds = Number(data?.timeSeconds);
     const today = kolkataToday();
 
@@ -95,17 +229,42 @@ export const submitDailyResult = https.onCall(
         'total exceeds the configured daily question count.',
       );
     }
-    if (!Number.isFinite(score) || score < 0 || score > 1000) {
-      throw new https.HttpsError(
-        'invalid-argument',
-        'score out of bounds (0..1000).',
-      );
-    }
     if (!Number.isFinite(timeSeconds) || timeSeconds <= 0 || timeSeconds > 24 * 3600) {
       throw new https.HttpsError(
         'invalid-argument',
         'timeSeconds out of bounds.',
       );
+    }
+
+    // --- Server-side verification of the claimed result ---------------------
+    const verified = await verifyAnswers(date, data?.answers);
+    if (verified.ok) {
+      correct = verified.correct;
+      total = verified.total;
+      logger.info('submitDailyResult: verified', { uid, date, correct, total });
+    } else {
+      // No answers, or the packet/question bank was unreadable. Fall back to
+      // the client's numbers (previous behaviour) and record why.
+      logger.warn('submitDailyResult: unverified submission', {
+        uid,
+        date,
+        reason: verified.reason,
+      });
+    }
+
+    // Score must be consistent with the (now authoritative) correct count:
+    // POINTS_PER_CORRECT per correct answer, ×2 at most for the booster.
+    const minScore = correct * POINTS_PER_CORRECT;
+    const maxScore = minScore * MAX_SCORE_MULTIPLIER;
+    if (!Number.isFinite(score) || score < minScore || score > maxScore) {
+      logger.warn('submitDailyResult: score clamped to match answers', {
+        uid,
+        date,
+        submitted: score,
+        minScore,
+        maxScore,
+      });
+      score = minScore;
     }
 
     const userRef = db().collection('users').doc(uid);
@@ -171,6 +330,7 @@ export const submitDailyResult = https.onCall(
         score,
         correct,
         total,
+        verified: verified.ok,
         credited_at: admin.firestore.FieldValue.serverTimestamp(),
       });
       // Today's row is written once, here, on the first submission of the day
@@ -180,13 +340,13 @@ export const submitDailyResult = https.onCall(
       // retry (a client-side push that replaces the locked score) cannot be
       // overwritten by the score the player was unhappy with.
       tx.set(
-        db().collection('leaderboard').doc(date).collection('scores').doc(uid),
+        db().collection'leaderboard').doc(date).collection('scores').doc(uid),
         {
           user_id: uid,
           username: u['username'] ?? '',
           name: u['full_name'] ?? '',
           avatar_path: u['avatar_path'] ?? '',
-          name_effect: u['name_effect'] ?? '',
+          name_effect: u['tname_effect'] ?? '',
           score,
           time_seconds: timeSeconds,
           streak: dailyStreak,
