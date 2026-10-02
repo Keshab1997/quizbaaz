@@ -45,14 +45,21 @@ removes what is already there.
 
 ### Phase C — manual admin CRUD ✅
 - [x] T5.8 `TrilingualField` widget — EN/BN/HI tabs, filled-dot indicators
-- [ ] T5.9 Per-field "Translate" action — widget hook + generator method exist, not wired into the forms yet
+- [x] T5.9 Per-field "Translate" action — wired into the question sheet (stem,
+      options, explanation) and the chapter sheet (title, description) via
+      `AiQuestionGenerator.translateField` + the API key pool
 - [x] T5.1 Chapter Manager — subject → chapter tree with counts and coverage
 - [x] T5.2 Add/edit chapter sheet (trilingual)
 - [x] T5.3 Add/edit subject sheet (trilingual)
-- [ ] T5.4 Reorder chapters (service method exists; no drag UI yet)
+- [x] T5.4 Reorder chapters — up/down reorder sheet per subject, saved with
+      `ChapterCatalogService.reorderChapters` (batched `chapter_number` write)
 - [x] T5.5 Question Manager — list, search, filters
 - [x] T5.6 Manual add/edit question form with live validation
 - [x] T5.7 Delete single question, with confirm + audit log
+- [x] T5.15 Bulk "Paste list" chapter add — `BulkChapterImporter` parses
+      `Title EN | Title BN | Title HI` lines (optional explicit id first),
+      previews valid/skipped rows, batch-writes under
+      `question_categories/{id}/chapters` with an audit log
 
 ### Phase D — generation ✅
 - [x] T3.1 `QuestionPromptBuilder` — chapter context + existing stems + strict schema
@@ -80,6 +87,18 @@ removes what is already there.
 - [x] T7.2 `tool/pull_firestore_questions.py` — Firestore → bundled banks, CI `--check` gate, `--fixture` rehearsal mode (see `docs/19_FIRESTORE_TO_BUNDLE_PULL.md`)
 - [x] T7.3 Round-trip export → `validate_questions.py` passes — verified 20 Sep 2026: 233 questions pulled, validator green (en/bn/hi 100%)
 - [ ] T8.1–T8.7 Test pass + `flutter analyze` clean
+
+### Phase G — external-AI prompt flow + permission diagnostics ✅
+- [x] T9.1 `AdminAiPromptBuilder` — copy-paste prompts for ChatGPT/Gemini that
+      return the exact JSON the Question Manager's "Paste JSON" import accepts
+      (write-10-questions + plain-text→JSON formatter modes)
+- [x] T9.2 `AdminPromptCopyCard` on the Question Manager — one-tap "Copy
+      prompt" with the chapter/subject baked in; nothing is auto-saved
+- [x] T9.3 `AdminAccessService` — reads the Firebase `admin` custom claim
+      (the only authority `firestore.rules` trusts) with force-refresh
+- [x] T9.4 `AdminAccessBanner` on write failures — shows claim YES/NO, uid,
+      "Refresh claim" (stale ID token after setAdmin) and "Copy my uid"
+- [x] T9.5 `AdminClaimChip` in the Admin Dashboard app bar — live claim status
 
 ---
 

@@ -6,8 +6,11 @@ import '../../../data/models/chapter_model.dart';
 import '../../../data/models/localized_text.dart';
 import '../../../data/providers/auth_provider.dart';
 import '../../../data/repositories/quiz_repository.dart';
+import '../../../data/services/ai_question_generator.dart';
+import '../../../data/services/bulk_chapter_importer.dart';
 import '../../../data/services/chapter_catalog_service.dart';
 import '../../widgets/glass_card.dart';
+import 'widgets/bulk_chapter_add_sheet.dart';
 import 'question_manager_screen.dart';
 import 'widgets/trilingual_field.dart';
 
@@ -302,6 +305,21 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
                         ),
                       ),
                     ),
+                    TextButton.icon(
+                      onPressed: () => _bulkAddChapters(category),
+                      icon: const Icon(
+                        Icons.playlist_add_rounded,
+                        size: 16,
+                        color: AppColors.neonPurple,
+                      ),
+                      label: const Text(
+                        'Paste list',
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: AppColors.neonPurple,
+                        ),
+                      ),
+                    ),
                     const Spacer(),
                     TextButton.icon(
                       onPressed: () => _editSubject(category),
@@ -317,6 +335,15 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
                           color: AppColors.textSecondary,
                         ),
                       ),
+                    ),
+                    IconButton(
+                      tooltip: 'Reorder chapters',
+                      icon: const Icon(
+                        Icons.swap_vert_rounded,
+                        size: 17,
+                        color: AppColors.textSecondary,
+                      ),
+                      onPressed: () => _reorderChapters(category),
                     ),
                   ],
                 ),
@@ -521,6 +548,56 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
     if (saved == true) _load();
   }
 
+  Future<void> _bulkAddChapters(CategoryModel category) async {
+    final result = await showModalBottomSheet<BulkChapterResult>(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder:
+          (_) => BulkChapterAddSheet(
+            categoryId: category.categoryId,
+            actorUid: _actorUid,
+          ),
+    );
+    if (result != null && mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            result.created > 0
+                ? 'Added ${result.created} chapters'
+                    '${result.skipped > 0 ? ' (${result.skipped} skipped)' : ''}.'
+                : 'No new chapters to add.',
+          ),
+        ),
+      );
+      if (result.created > 0) await _load();
+    }
+  }
+
+  Future<void> _reorderChapters(CategoryModel category) async {
+    final order = [for (final c in category.chapters) c.chapterId];
+    final updated = await showModalBottomSheet<List<String>>(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (_) => _ReorderSheet(chapterIds: order),
+    );
+    if (updated == null) return;
+    try {
+      await _catalog.reorderChapters(
+        categoryId: category.categoryId,
+        orderedChapterIds: updated,
+        actorUid: _actorUid,
+      );
+      await _load();
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Could not reorder: $e')));
+    }
+  }
+
   Future<void> _setChapterEnabled(
     CategoryModel category,
     ChapterModel chapter,
@@ -550,6 +627,100 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
         SnackBar(content: Text('Could not update chapter visibility: $e')),
       );
     }
+  }
+}
+
+// ============================================================ reorder sheet ==
+
+/// Up/down reorder list for chapters. Returns the new id order on save.
+class _ReorderSheet extends StatefulWidget {
+  final List<String> chapterIds;
+  const _ReorderSheet({required this.chapterIds});
+  @override
+  State<_ReorderSheet> createState() => _ReorderSheetState();
+}
+
+class _ReorderSheetState extends State<_ReorderSheet> {
+  late List<String> _order;
+
+  @override
+  void initState() {
+    super.initState();
+    _order = List<String>.from(widget.chapterIds);
+  }
+
+  void _move(int index, int delta) {
+    final next = index + delta;
+    if (next < 0 || next >= _order.length) return;
+    setState(() {
+      final id = _order.removeAt(index);
+      _order.insert(next, id);
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(
+        bottom: MediaQuery.of(context).viewInsets.bottom,
+      ),
+      child: DraggableScrollableSheet(
+        expand: false,
+        initialChildSize: 0.7,
+        minChildSize: 0.4,
+        maxChildSize: 0.9,
+        builder:
+            (context, controller) => Container(
+              padding: const EdgeInsets.all(18),
+              child: Column(
+                children: [
+                  const Text(
+                    'Reorder chapters',
+                    style: TextStyle(
+                      fontSize: 17,
+                      fontWeight: FontWeight.w900,
+                      color: Colors.white,
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  Expanded(
+                    child: ListView.builder(
+                      controller: controller,
+                      itemCount: _order.length,
+                      itemBuilder:
+                          (context, index) => ListTile(
+                            key: ValueKey(_order[index]),
+                            title: Text(
+                              _order[index],
+                              style: const TextStyle(color: Colors.white),
+                            ),
+                            trailing: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                IconButton(
+                                  icon: const Icon(Icons.arrow_upward_rounded),
+                                  onPressed: () => _move(index, -1),
+                                ),
+                                IconButton(
+                                  icon: const Icon(
+                                    Icons.arrow_downward_rounded,
+                                  ),
+                                  onPressed: () => _move(index, 1),
+                                ),
+                              ],
+                            ),
+                          ),
+                    ),
+                  ),
+                  FilledButton(
+                    onPressed: () => Navigator.pop(context, _order),
+                    child: const Text('Save order'),
+                  ),
+                ],
+              ),
+            ),
+      ),
+    );
   }
 }
 
@@ -725,6 +896,7 @@ class _ChapterSheetState extends State<_ChapterSheet> {
   late bool _enabled;
   bool _saving = false;
   String? _error;
+  AiQuestionGenerator? _translator;
 
   @override
   void initState() {
@@ -738,6 +910,13 @@ class _ChapterSheetState extends State<_ChapterSheet> {
     _description = e?.descriptionText ?? const LocalizedText.empty();
     _unlocked = e?.isUnlocked ?? true;
     _enabled = e?.isEnabled ?? true;
+    _translator = AiQuestionGenerator();
+  }
+
+  Future<Map<String, String>?> _translateOne(String english) {
+    final translator = _translator;
+    if (translator == null || english.trim().isEmpty) return Future.value(null);
+    return translator.translateField(english.trim());
   }
 
   @override
@@ -817,6 +996,7 @@ class _ChapterSheetState extends State<_ChapterSheet> {
           label: 'Chapter title',
           initialValue: _title,
           onChanged: (v) => _title = v,
+          onTranslate: _translateOne,
         ),
         const SizedBox(height: 16),
         TrilingualField(
@@ -825,6 +1005,7 @@ class _ChapterSheetState extends State<_ChapterSheet> {
           required: false,
           maxLines: 3,
           onChanged: (v) => _description = v,
+          onTranslate: _translateOne,
         ),
         const SizedBox(height: 8),
         // Own Material so the tile ink paints above the sheet's
