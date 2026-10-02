@@ -1,0 +1,391 @@
+{
+  "chapter_id": "polsci_ch_03",
+  "chapter_title": {
+    "en": "Gender, Religion and Caste",
+    "bn": "লিঙ্গ, ধর্ম ও জাতি",
+    "hi": "जाति, धर्म और लैंगिक मसले"
+  },
+  "class_standard": "Class 10",
+  "questions": [
+    {
+      "id": "polsci_ch_03_q001",
+      "question": {
+        "en": "What are radical movements aimed at achieving equality for women in personal and public life called?",
+        "bn": "ব্যক্তিগত ও সামাজিক জীবনে নারীদের সমঅধিকার প্রতিষ্ঠার লক্ষ্যে পরিচালিত আন্দোলনকে কী বলা হয়?",
+        "hi": "व्यक्तिगत और सार्वजनिक जीवन में महिलाओं की समानता का लक्ष्य रखने वाले आंदोलनों को क्या कहा जाता है?"
+      },
+      "options": [
+        {
+          "en": "Feminist movements",
+          "bn": "নারীবাদী আন্দোলন (Feminist movements)",
+          "hi": "नारीवादी आंदोलन (Feminist movements)"
+        },
+        {
+          "en": "Secular movements",
+          "bn": "ধর্মনিরপেক্ষ আন্দোলন (Secular movements)",
+          "hi": "धर्मनिरपेक्ष आंदोलन (Secular movements)"
+        },
+        {
+          "en": "Communal movements",
+          "bn": "সাম্প্রদায়িক আন্দোলন (Communal movements)",
+          "hi": "सांप्रदायिक आंदोलन (Communal movements)"
+        },
+        {
+          "en": "Casteist movements",
+          "bn": "জাতিভিত্তিক আন্দোলন (Casteist movements)",
+          "hi": "जातिवादी आंदोलन (Casteist movements)"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Feminist movements organize political and social action specifically to demand equal rights, opportunities, and representation for women.",
+        "bn": "নারীবাদী আন্দোলন মূলত নারীদের জন্য সমান অধিকার, সুযোগ এবং প্রতিনিধিত্বের দাবি জানিয়ে গড়ে ওঠা রাজনৈতিক ও সামাজিক আন্দোলন।",
+        "hi": "नारीवादी आंदोलन विशेष रूप से महिलाओं के लिए समान अधिकारों, अवसरों और प्रतिनिधित्व की मांग के लिए संगठित किए जाते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "polsci_ch_03_q002",
+      "question": {
+        "en": "In India, seats are legally reserved for women in which governing bodies?",
+        "bn": "ভারতে আইন অনুসারে নারীদের জন্য কোন শাসনব্যবস্থায় আসন সংরক্ষিত রাখা হয়েছে?",
+        "hi": "भारत में कानूनी रूप से महिलाओं के लिए किस शासन निकाय में सीटें आरक्षित की गई हैं?"
+      },
+      "options": [
+        {
+          "en": "Panchayats and Municipalities",
+          "bn": "পঞ্চায়েত এবং পৌরসভা (Panchayats and Municipalities)",
+          "hi": "पंचायत और नगरपालिका (Panchayats and Municipalities)"
+        },
+        {
+          "en": "Lok Sabha",
+          "bn": "লোকসভা (Lok Sabha)",
+          "hi": "लोकसभा (Lok Sabha)"
+        },
+        {
+          "en": "Rajya Sabha",
+          "bn": "রাজ্যসভা (Rajya Sabha)",
+          "hi": "राज्यसभा (Rajya Sabha)"
+        },
+        {
+          "en": "State Legislative Assemblies",
+          "bn": "বিধানসভা (State Legislative Assemblies)",
+          "hi": "राज्य विधानसभाएँ (State Legislative Assemblies)"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Under Constitutional amendments for local self-government, one-third of seats in Panchayats and Municipalities are reserved for women.",
+        "bn": "স্থানীয় স্বায়ত্তশাসন সংশোধন আইনের মাধ্যমে পঞ্চায়েত ও পুরসভায় এক-তৃতীয়াংশ আসন নারীদের জন্য সংরক্ষিত করা হয়েছে।",
+        "hi": "स्थानीय स्वशासन के संवैधानिक संशोधनों के तहत पंचायतों और नगरपालिकाओं में एक-तिहाई सीटें महिलाओं के लिए आरक्षित हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "polsci_ch_03_q003",
+      "question": {
+        "en": "What is the basis of communal politics?",
+        "bn": "সাম্প্রদায়িক রাজনীতির মূল ভিত্তি কী?",
+        "hi": "सांप्रदायिक राजनीति का मूल आधार क्या है?"
+      },
+      "options": [
+        {
+          "en": "The belief that religion is the principal basis of a social community",
+          "bn": "ধর্মই সামাজিক সম্প্রদায়ের মূল ভিত্তি—এই বিশ্বাস",
+          "hi": "यह विश्वास कि धर्म ही सामाजिक समुदाय का मुख्य आधार है"
+        },
+        {
+          "en": "The belief that language unites citizens above all else",
+          "bn": "ভাষাই সমস্ত নাগরিককে ঐক্যবদ্ধ করে—এই বিশ্বাস",
+          "hi": "यह विश्वास कि भाषा ही नागरिकों को सबसे बढ़कर जोड़ती है"
+        },
+        {
+          "en": "The belief that economic status determines political ideology",
+          "bn": "অর্থনৈতিক অবস্থানই রাজনৈতিক ভাবাদর্শ নির্ধারণ করে—এই বিশ্বাস",
+          "hi": "यह विश्वास कि आर्थिक स्थिति ही राजनीतिक विचारधारा तय करती है"
+        },
+        {
+          "en": "The belief that region is more important than national unity",
+          "bn": "জাতীয় ঐক্যের চেয়ে আঞ্চলিক পরিচয় বেশি গুরুত্বপূর্ণ—এই বিশ্বাস",
+          "hi": "यह विश्वास कि राष्ट्रीय एकता से अधिक क्षेत्रीय पहचान महत्वपूर्ण है"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Communalism relies on the idea that people of the same religion belong to one community with shared fundamental interests, treating other religions as distinct or antagonistic.",
+        "bn": "সাম্প্রদায়িকতা এই ধারণার ওপর নির্ভর করে যে একই ধর্মের মানুষের স্বার্থ এক এবং অন্য ধর্মের মানুষের সঙ্গে তাদের রাজনৈতিক বা সামাজিক বৈপরীত্য বিদ্যমান।",
+        "hi": "सांप्रदायिकता इस सोच पर आधारित है कि एक ही धर्म के लोग एक समुदाय बनाते हैं और उनके हित अन्य धर्मों के लोगों से भिन्न या विरोधी होते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "polsci_ch_03_q004",
+      "question": {
+        "en": "Which feature of the Indian Constitution makes India a secular state?",
+        "bn": "ভারতীয় সংবিধানের কোন বৈশিষ্ট্যটি ভারতকে একটি ধর্মনিরপেক্ষ রাষ্ট্র হিসেবে গড়ে তোলে?",
+        "hi": "भारतीय संविधान की कौन सी विशेषता भारत को एक धर्मनिरपेक्ष राज्य बनाती है?"
+      },
+      "options": [
+        {
+          "en": "There is no official religion for the Indian state",
+          "bn": "ভারতের কোনো সরকারি বা রাষ্ট্রীয় ধর্ম নেই",
+          "hi": "भारतीय राज्य का अपना कोई आधिकारिक धर्म नहीं है"
+        },
+        {
+          "en": "Religious instruction is compulsory in all schools",
+          "bn": "সমস্ত বিদ্যালয়ে ধর্মীয় শিক্ষা বাধ্যতামূলক",
+          "hi": "सभी विद्यालयों में धार्मिक शिक्षा अनिवार्य है"
+        },
+        {
+          "en": "Special taxes are collected for majority religious institutions",
+          "bn": "সংখ্যাগুরু ধর্মীয় প্রতিষ্ঠানের জন্য বিশেষ কর আদায় করা হয়",
+          "hi": "बहुसंख्यक धार्मिक संस्थानों के लिए विशेष कर एकत्र किया जाता है"
+        },
+        {
+          "en": "Political parties must be formed along religious lines",
+          "bn": "রাজনৈতিক দল গঠন কেবল ধর্মের ভিত্তিতেই করতে হয়",
+          "hi": "राजनीतिक दलों का गठन धर्म के आधार पर ही होना चाहिए"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "India is a secular state because the Constitution does not give official status to any single religion and ensures state neutrality.",
+        "bn": "ভারত একটি ধর্মনিরপেক্ষ রাষ্ট্র কারণ ভারতীয় সংবিধানে কোনো নির্দিষ্ট ধর্মকে রাষ্ট্রধর্মের স্বীকৃতি দেওয়া হয়নি।",
+        "hi": "भारत एक धर्मनिरपेक्ष राज्य है क्योंकि संविधान किसी भी धर्म को विशेष या आधिकारिक दर्जा नहीं प्रदान करता।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "polsci_ch_03_q005",
+      "question": {
+        "en": "What is meant by the sexual division of labor?",
+        "bn": "শ্রমের লিঙ্গভিত্তিক বিভাজন (Sexual division of labor) বলতে কী বোঝায়?",
+        "hi": "श्रम के लैंगिक विभाजन का क्या अर्थ है?"
+      },
+      "options": [
+        {
+          "en": "A system where all housework is done by women or organized by them inside the home",
+          "bn": "এমন একটি ব্যবস্থা যেখানে ঘরের সমস্ত কাজ নারীরা করে বা পরিবারের নারী সদস্য দ্বারা সম্পাদিত হয়",
+          "hi": "ऐसी व्यवस्था जिसमें घर के अंदर के सारे काम महिलाएँ करती हैं या उन्हें आयोजित करती हैं"
+        },
+        {
+          "en": "A law that guarantees equal wages for male and female workers",
+          "bn": "এমন একটি আইন যা নারী ও পুরুষ শ্রমিকদের সমান মজুরি নিশ্চিত করে",
+          "hi": "एक ऐसा कानून जो पुरुष और महिला श्रमिकों के लिए समान मजदूरी की गारंटी देता है"
+        },
+        {
+          "en": "Equal sharing of paid employment outside the home between men and women",
+          "bn": "ঘরের বাইরে পুরুষ ও নারীর মধ্যে সমানভাবে অর্থোপার্জনকারী কাজের বণ্টন",
+          "hi": "घर के बाहर पुरुषों और महिलाओं के बीच सवेतन रोजगार का समान बंटवारा"
+        },
+        {
+          "en": "Reservation of jobs for women in the corporate sector",
+          "bn": "কর্পোরেট ক্ষেত্রে নারীদের জন্য চাকরির সংরক্ষণ ব্যবস্থা",
+          "hi": "कॉर्पोरेट क्षेत्र में महिलाओं के लिए नौकरियों का आरक्षण"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The sexual division of labor is a traditional hierarchy where household duties are assigned to women, while men work outside the household.",
+        "bn": "শ্রমের লিঙ্গভিত্তিক বিভাজন হলো একটি সামাজিক প্রথা যেখানে গৃহস্থালির সমস্ত কাজ নারীর জন্য নির্ধারিত এবং বাইরের কাজ পুরুষের ধরে নেওয়া হয়।",
+        "hi": "श्रम का लैंगिक विभाजन वह व्यवस्था है जिसमें घर के सारे काम महिलाओं के ज़िम्मे माने जाते हैं और पुरुष बाहर का काम करते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "polsci_ch_03_q006",
+      "question": {
+        "en": "Which statement accurately describes the relationship between caste and voting in Indian elections?",
+        "bn": "ভারতের নির্বাচনে জাতি ব্যবস্থা ও ভোটদানের সম্পর্ক সম্পর্কিত কোন বক্তব্যটি সঠিক?",
+        "hi": "भारतीय चुनावों में जाति और मतदान के संबंध के बारे में कौन सा कथन सटीक है?"
+      },
+      "options": [
+        {
+          "en": "No parliamentary constituency in India has a clear majority of a single caste",
+          "bn": "ভারতের কোনো সংসদীয় কেন্দ্রেই একটিমাত্র জাতির একক স্পষ্ট সংখ্যাগরিষ্ঠতা নেই",
+          "hi": "भारत के किसी भी संसदीय क्षेत्र में केवल एक ही जाति का स्पष्ट बहुमत नहीं है"
+        },
+        {
+          "en": "Voters always vote exclusively for candidates belonging to their own caste",
+          "bn": "ভোটাররা সর্বদা কেবল নিজেদের জাতির প্রার্থীকেই ভোট প্রদান করে",
+          "hi": "मतदाता हमेशा केवल अपनी जाति के उम्मीदवार को ही वोट देते हैं"
+        },
+        {
+          "en": "Political parties never field candidates from different castes in the same constituency",
+          "bn": "রাজনৈতিক দলগুলি একই কেন্দ্রে ভিন্ন জাতির প্রার্থী কখনও দাঁড় করায় না",
+          "hi": "राजनीतिक दल कभी भी एक ही निर्वाचन क्षेत्र में विभिन्न जातियों के उम्मीदवार नहीं उतारते"
+        },
+        {
+          "en": "Ruling parties in India never lose elections if supported by the largest caste",
+          "bn": "বৃহত্তম জাতির সমর্থন পেলে ভারতের শাসক দল কখনও নির্বাচনে হারে না",
+          "hi": "सबसे बड़ी जाति का समर्थन मिलने पर भारत में सत्तारूढ़ दल कभी चुनाव नहीं हारते"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Candidates need to win the trust of more than one caste or community because no single constituency consists of only one caste.",
+        "bn": "কোনো একটি সংসদীয় এলাকায় একক কোনো জাতির একক সংখ্যাগরিষ্ঠতা না থাকায় নির্বাচনে জিততে একাধিক জাতি ও সম্প্রদায়ের সমর্থনের প্রয়োজন হয়।",
+        "hi": "किसी भी एक संसदीय क्षेत्र में किसी एक जाति के मतदाताओं का स्पष्ट बहुमत नहीं होता, इसलिए उम्मीदवारों को कई जातियों का समर्थन जुटाना पड़ता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "polsci_ch_03_q007",
+      "question": {
+        "en": "Which social reformers worked actively to establish a society without caste inequalities in India?",
+        "bn": "ভারতে জাতিভেদহীন সমাজ গঠনে কোন সমাজসংস্কারকগণ সক্রিয় ভূমিকা পালন করেছিলেন?",
+        "hi": "भारत में जातिगत असमानता रहित समाज की स्थापना के लिए किन समाज सुधारकों ने सक्रिय रूप से काम किया?"
+      },
+      "options": [
+        {
+          "en": "Jotirao Phule, Dr. B.R. Ambedkar, Mahatma Gandhi, and Periyar EV Ramasamy",
+          "bn": "জ্যোতিরাও ফুলে, ড. বি আর আম্বেদকর, মহাত্মা গান্ধী এবং পেরিয়ার ই ভি রামাস্বামী",
+          "hi": "ज्योतिराव फुले, डॉ. बी.आर. आंबेडकर, महात्मा गांधी और पेरियार ई.वी. रामासामी"
+        },
+        {
+          "en": "Raja Ram Mohan Roy, Swami Vivekananda, and Lord William Bentinck",
+          "bn": "রাজা রামমোহন রায়, স্বামী বিবেকানন্দ এবং লর্ড উইলিয়াম বেন্টিঙ্ক",
+          "hi": "राजा राममोहन राय, स्वामी विवेकानंद और लॉर्ड विलियम बेंटिक"
+        },
+        {
+          "en": "Dadabhai Naoroji, Gopal Krishna Gokhale, and Bal Gangadhar Tilak",
+          "bn": "দাদাভাই নওরোজী, গোপাল কৃষ্ণ গোখলে এবং বাল গঙ্গাধর তিলক",
+          "hi": "दादाभाई नौरोजी, गोपाल कृष्ण गोखले और बाल गंगाधर तिलक"
+        },
+        {
+          "en": "Sardar Vallabhbhai Patel, Jawaharlal Nehru, and Subhas Chandra Bose",
+          "bn": "সরদার বল্লভভাই প্যাটেল, জওহরলাল নেহেরু এবং সুভাষচন্দ্র বসু",
+          "hi": "सरदार वल्लभभाई पटेल, जवाहरलाल नेहरू और सुभाष चंद्र बोस"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "These leaders led anti-caste movements and advocated social reform to abolish untouchability and caste discrimination.",
+        "bn": "এই নেতারা অস্পৃশ্যতা এবং জাতিগত বৈষম্য দূর করে একটি সাম্যবাদী সমাজ গঠনের জন্য সামাজিক ও রাজনৈতিক আন্দোলনের নেতৃত্ব দিয়েছিলেন।",
+        "hi": "इन नेताओं ने छुआछूत और जातिगत भेदभाव को समाप्त करके एक समान समाज के निर्माण के लिए आंदोलन चलाए।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "polsci_ch_03_q008",
+      "question": {
+        "en": "What is an extreme form of communalism where one religious group demands a separate nation for itself called?",
+        "bn": "সাম্প্রদায়িকতার চরম রূপ যেখানে কোনো ধর্মীয় গোষ্ঠী নিজেদের জন্য পৃথক রাষ্ট্র বা দেশের দাবি জানায় তাকে কী বলা হয়?",
+        "hi": "सांप्रदायिकता का वह चरम रूप क्या कहलाता है जिसमें कोई धार्मिक समूह अपने लिए एक अलग राष्ट्र की मांग करता है?"
+      },
+      "options": [
+        {
+          "en": "Communal violence",
+          "bn": "সাম্প্রদায়িক হিংসা (Communal violence)",
+          "hi": "सांप्रदायिक हिंसा (Communal violence)"
+        },
+        {
+          "en": "Political mobilization on religious lines",
+          "bn": "ধর্মীয় লাইনে রাজনৈতিক সংঘটন",
+          "hi": "धार्मिक आधार पर राजनीतिक लामबंदी"
+        },
+        {
+          "en": "Political dominance and separatism",
+          "bn": "রাজনৈতিক আধিপত্যবাদ ও বিচ্ছিন্নতাবাদ (Separatism)",
+          "hi": "राजनीतिक प्रभुत्व और अलगाववाद (Separatism)"
+        },
+        {
+          "en": "Majoritarian dominance",
+          "bn": "সংখ্যাগুরুর আধিপত্য (Majoritarian dominance)",
+          "hi": "बहुसंख्यकवाद (Majoritarian dominance)"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "en": "When communal belief leads to the idea that a religious minority cannot live inside the nation with dignity, it takes the form of political separatism.",
+        "bn": "সাম্প্রদায়িক মানসিকতা যখন এই ধারণায় রূপ নেয় যে সংখ্যালঘু গোষ্ঠী অন্য সম্প্রদায়ের সাথে থাকতে পারে না, তখন তা পৃথক রাষ্ট্র বা বিচ্ছিন্নতাবাদের রূপ নেয়।",
+        "hi": "जब सांप्रदायिक सोच इस स्तर पर पहुँच जाती है कि अल्पसंख्यक समुदाय देश के भीतर साथ नहीं रह सकता, तो यह राजनीतिक अलगाववाद का रूप ले लेती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "polsci_ch_03_q009",
+      "question": {
+        "en": "How does politics influence caste in India?",
+        "bn": "ভারতে রাজনীতি কীভাবে জাতিব্যবস্থাকে প্রভাবিত করে?",
+        "hi": "भारत में राजनीति किस प्रकार जाति व्यवस्था को प्रभावित करती है?"
+      },
+      "options": [
+        {
+          "en": "Each caste group tries to become bigger by incorporating neighboring castes or sub-castes",
+          "bn": "প্রতিটি জাতিগোষ্ঠী নিকটবর্তী জাতি বা উপজাতিগুলিকে অন্তর্ভুক্ত করে নিজেদের পরিধি বড় করার চেষ্টা করে",
+          "hi": "प्रत्येक जाति समूह अपने उप-जातियों या पड़ोसी जातियों को जोड़कर बड़ा बनने का प्रयास करता है"
+        },
+        {
+          "en": "Caste hierarchy gets completely erased immediately after every general election",
+          "bn": "প্রতিটি সাধারণ নির্বাচনের পরেই জাতিগত উচ্চনীত ভেদাভেদ সম্পূর্ণ মুছে যায়",
+          "hi": "हर आम चुनाव के तुरंत बाद जातिगत पदानुक्रम पूरी तरह से समाप्त हो जाता है"
+        },
+        {
+          "en": "Political parties stop addressing backward caste issues during election campaigns",
+          "bn": "নির্বাচনী প্রচারে রাজনৈতিক দলগুলি অনগ্রসর শ্রেণির বিষয়টি তোলা পুরোপুরি বন্ধ করে দেয়",
+          "hi": "चुनाव अभियानों में राजनीतिक दल पिछड़ी जातियों के मुद्दों को उठाना बंद कर देते हैं"
+        },
+        {
+          "en": "Caste identities completely cease to exist in economic affairs",
+          "bn": "অর্থনৈতিক কর্মকাণ্ডে জাতিগত পরিচয়ের কোনো অস্তিত্ব থাকে না",
+          "hi": "आर्थिक मामलों में जातिगत पहचान पूरी तरह से समाप्त हो जाती है"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Politics brings caste into the public arena, forcing caste groups to form coalitions and expand by merging with related sub-castes to gain political leverage.",
+        "bn": "রাজনীতির তাগিদে দর কষাকষির ক্ষমতা বাড়াতে জাতিগোষ্ঠীগুলি উপজাতি বা পার্শ্ববর্তী বর্ণগুলির সাথে জোট বেঁধে নিজেদের বড় করার চেষ্টা করে।",
+        "hi": "राजनीति में प्रभाव बढ़ाने के लिए जाति समूह अपनी उप-जातियों और पड़ोसी जातियों को मिलाकर अपना आधार बड़ा करने का प्रयास करते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "polsci_ch_03_q010",
+      "question": {
+        "en": "What is the primary reason why economic inequality remains linked to caste hierarchy in India?",
+        "bn": "ভারতে অর্থনৈতিক বৈষম্য এখনও কেন জাতিভেদের সাথে গভীরভাবে যুক্ত?",
+        "hi": "भारत में आर्थिक असमानता आज भी जातिगत पदानुक्रम से गहराई से क्यों जुड़ी हुई है?"
+      },
+      "options": [
+        {
+          "en": "Historically privileged castes had early access to resources, education, and land",
+          "bn": "ঐতিহাসিকভাবে সুবিধাভোগী উচ্চবর্ণের মানুষেরা আগে থেকেই শিক্ষা, জমি ও সম্পদের সুবিধা পেয়ে আসছিল",
+          "hi": "ऐतिहासिक रूप से विशेषाधिकार प्राप्त जातियों की शिक्षा, भूमि और संसाधनों तक शुरुआती पहुँच थी"
+        },
+        {
+          "en": "The Constitution prohibits lower castes from owning immovable property in urban areas",
+          "bn": "সংবিধান নিম্নবর্ণের মানুষদের শহরাঞ্চলে স্থাবর সম্পত্তির মালিক হতে বাধা দেয়",
+          "hi": "संविधान निचली जातियों को शहरी क्षेत्रों में अचल संपत्ति रखने से रोकता है"
+        },
+        {
+          "en": "Modern industries only employ people from upper-caste backgrounds",
+          "bn": "আধুনিক শিল্পক্ষেত্রগুলি কেবল উচ্চবর্ণের ব্যাকগ্রাউন্ডের মানুষদেরই চাকরি দেয়",
+          "hi": "आधुनिक उद्योग केवल उच्च जाति की पृष्ठभूमि वाले लोगों को ही रोजगार देते हैं"
+        },
+        {
+          "en": "Government welfare schemes are available exclusively to higher income groups",
+          "bn": "সরকারি কল্যাণমূলক প্রকল্পগুলি কেবল উচ্চ আয়ের গোষ্ঠীর জন্যই নির্দিষ্ট",
+          "hi": "सरकारी कल्याणकारी योजनाएं केवल उच्च आय वर्ग के लिए उपलब्ध हैं"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Caste status historically determined access to education and economic capital, leading to accumulated generational advantages for upper castes and disadvantages for lower castes.",
+        "bn": "ঐতিহাসিকভাবে উচ্চবর্ণগুলি শিক্ষা ও সম্পদের সুবিধা ভোগ করেছে, যা বংশপরম্পরায় পুঞ্জীভূত সুবিধা ও অসুবিধার সৃষ্টি করেছে।",
+        "hi": "ऐतिहासिक रूप से उच्च जातियों को शिक्षा और संपत्ति का लाभ मिला, जिससे पीढ़ी दर पीढ़ी असमानता बनी रही।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    }
+  ]
+}
