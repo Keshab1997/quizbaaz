@@ -303,15 +303,18 @@ class QuestionValidator {
   /// True when English text repeated verbatim in another language really does
   /// mean the translation step was skipped.
   ///
-  /// Two things legitimately read the same in all three languages and must not
-  /// be flagged:
+  /// Three things legitimately read the same in all three languages and must
+  /// not be flagged:
   ///
   /// * symbols, formulas and numbers — `H2O`, `NaCl`, `1947`, `45°`;
   /// * single technical terms the classroom itself keeps in English —
-  ///   `Router`, `Spreadsheet`. The authoring guide explicitly allows this.
+  ///   `Router`, `Spreadsheet`. The authoring guide explicitly allows this;
+  /// * ratios, measurements and formulas that contain spaces — `1 : 2`,
+  ///   `50 Hz`, `H = I² · R · t` (see [_isLanguageNeutral]).
   ///
-  /// Both are single tokens. Natural-language copy that was supposed to be
-  /// translated is not, so requiring a space is a cheap and accurate split.
+  /// The first two are single tokens. Natural-language copy that was supposed
+  /// to be translated is not, so requiring a space is a cheap and accurate
+  /// split; the third is the exception to that split.
   static bool _looksUntranslated(String text) {
     final trimmed = text.trim();
     if (!trimmed.contains(' ')) return false;
@@ -323,6 +326,36 @@ class QuestionValidator {
         hasLatinLetter = true;
       }
     }
-    return hasLatinLetter;
+    return hasLatinLetter && !_isLanguageNeutral(trimmed);
   }
+
+  /// True for text whose only Latin letters are symbols or units: every run of
+  /// letters is at most two characters (`cm`, `Hz`, `pH`, `D`) or a known
+  /// longer unit symbol. It must also contain a digit or an operator, so two
+  /// short words (`It is`) still count as prose. Mirrors `is_language_neutral`
+  /// in tool/validate_questions.py — keep the two in step.
+  static bool _isLanguageNeutral(String text) {
+    if (!_formulaChars.hasMatch(text)) return false;
+    for (final run in _latinRun.allMatches(text)) {
+      final word = run.group(0)!;
+      if (word.length > 2 && !_unitSymbols.contains(word)) return false;
+    }
+    return true;
+  }
+
+  static final RegExp _formulaChars = RegExp(r'[0-9=+−×÷·/:^²³°%<>-]');
+  static final RegExp _latinRun = RegExp(r'[A-Za-z]+');
+  static const Set<String> _unitSymbols = {
+    'kPa',
+    'MPa',
+    'GPa',
+    'kHz',
+    'MHz',
+    'GHz',
+    'kWh',
+    'mol',
+    'atm',
+    'rpm',
+    'ppm',
+  };
 }
