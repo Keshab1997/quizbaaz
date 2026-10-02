@@ -91,7 +91,10 @@ with the previous `firestore.rules` (tag `e74fb6e`) restores the old policy.
 - R06 — Firebase-free constructors (the 2 failing widget tests).
 - R13 — `max()` merge of consumables; R14 — outbox hygiene.
 - Trusted **gift settlement** (claim state server-confirmed).
-- Profile visibility: `users` list is readable by any signed-in user (pre-
-  existing); tighten per-field (P2) once a display-view collection exists.
+- Profile visibility: since rules v2.1.0 the `users` collection can only be
+  **listed** (queried / counted) by an admin; a single profile can still be read
+  by uid by any signed-in user (leaderboard / VS display). Per-field tightening
+  (P2) still needs a display-view collection. Deploy with
+  `firebase deploy --only firestore:rules`.
 - Booster multipliers in server-side daily credit (v1 deliberately credits
   the plain formula).
