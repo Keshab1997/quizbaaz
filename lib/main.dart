@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:admin_api_key_manager/admin_api_key_manager.dart';
+import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -54,6 +55,30 @@ Future<void> main() async {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     ).timeout(const Duration(seconds: 8));
+
+    // 2b) App Check — every trusted callable (functions/, region asia-south1)
+    //     enforces App Check, so the client must attest before those calls are
+    //     accepted. Debug builds use the debug provider (register the printed
+    //     token under Firebase console → App Check → Manage debug tokens);
+    //     release builds use Play Integrity / Device Check. Web needs a
+    //     reCAPTCHA v3 site key (`webProvider: ReCaptchaV3Provider('<key>')`)
+    //     and is skipped here so the marketing web preview keeps working.
+    try {
+      if (!kIsWeb) {
+        await FirebaseAppCheck.instance.activate(
+          // ignore: deprecated_member_use — still supported and version-stable.
+          androidProvider:
+              kDebugMode
+                  ? AndroidProvider.debug
+                  : AndroidProvider.playIntegrity,
+          // ignore: deprecated_member_use
+          appleProvider:
+              kDebugMode ? AppleProvider.debug : AppleProvider.deviceCheck,
+        );
+      }
+    } catch (e) {
+      debugPrint('App Check not activated: $e');
+    }
   } catch (e) {
     debugPrint('Firebase not configured yet: $e');
   }

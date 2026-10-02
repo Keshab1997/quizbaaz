@@ -19,10 +19,14 @@ import 'package:flutter/foundation.dart';
 /// is down, or the callable errors, we log and move on — the local flow is
 /// never blocked by the trusted backend.
 class TrustedOpsService {
+  /// The region every trusted callable is deployed to (functions/src/options.ts).
+  /// The client must call the same region or the call 404s.
+  static const String region = 'asia-south1';
+
   static FirebaseFunctions? get _functions {
     if (Firebase.apps.isEmpty) return null;
     try {
-      return FirebaseFunctions.instance;
+      return FirebaseFunctions.instanceFor(region: region);
     } catch (e) {
       debugPrint('TrustedOps: functions unavailable – $e');
       return null;
@@ -51,13 +55,22 @@ class TrustedOpsService {
 
   /// Credits today's daily quiz result server-side (idempotent per day via
   /// `users/{uid}/daily_claims/{date}`).
-  /// Receipt of a settlement call: `{ok, winner, reason}` or null offline.
+  ///
+  /// [answers] is the per-question breakdown the server re-scores against the
+  /// published packet + question bank, so a tampered client cannot claim a
+  /// perfect run. Each entry is `{question_id, selected}`, where `selected` is
+  /// the chosen option's localized text (`{en, bn, hi}`) or null on a timeout.
+  /// The option order is shuffled per device, so the selected *text* — not an
+  /// index — is what the server can compare against the answer key.
+  ///
+  /// Receipt: `{ok, credited, coins, gems, xp, daily_streak}` or null offline.
   static Future<Map<String, dynamic>?> submitDailyResult({
     required String date,
     required int score,
     required int correct,
     required int total,
     required double timeSeconds,
+    List<Map<String, dynamic>>? answers,
   }) {
     return _call('submitDailyResult', {
       'date': date,
@@ -65,6 +78,7 @@ class TrustedOpsService {
       'correct': correct,
       'total': total,
       'timeSeconds': timeSeconds,
+      if (answers != null && answers.isNotEmpty) 'answers': answers,
     });
   }
 

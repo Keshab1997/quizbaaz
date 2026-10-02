@@ -31,6 +31,10 @@ dependencies:
   # Trusted backend callables (setAdmin, submitDailyResult, purchaseItem,
   # resolveBattle) — see /functions. Fail-soft when not deployed.
   cloud_functions: ^6.0.0
+  # App Check: attaches an attestation token to every Firebase request so the
+  # trusted callables (/functions, region asia-south1) can reject repackaged
+  # clients. Activated in lib/main.dart.
+  firebase_app_check: ^0.4.0
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   http: ^1.2.0
