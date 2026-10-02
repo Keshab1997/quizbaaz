@@ -14,6 +14,7 @@ Exit code is non-zero when there are errors, so it can gate a commit.
 """
 import argparse
 import json
+import re
 import sys
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -28,6 +29,29 @@ REQUIRED_LANGUAGES = ['en', 'bn', 'hi']
 
 MIN_OPTIONS = 2
 MAX_OPTIONS = 6
+
+# Latin letter runs this short are symbols or units ("cm", "Hz", "pH", "D"); the
+# few longer unit symbols that appear in the banks are listed explicitly.
+NEUTRAL_UNIT_SYMBOLS = frozenset({
+    'kPa', 'MPa', 'GPa', 'kHz', 'MHz', 'GHz', 'kWh', 'mol', 'atm', 'rpm', 'ppm',
+})
+LATIN_RUN = re.compile(r'[A-Za-z]+')
+FORMULA_CHARS = re.compile(r'[0-9=+−×÷·/:^²³°%<>-]')
+
+
+def is_language_neutral(text):
+    """True for ratios, measurements and formulas: `1 : 2`, `50 Hz`,
+    `H = I² · R · t`. Their only Latin letters are symbols or units.
+
+    Those read the same in every language, so an identical bn/hi copy is
+    expected rather than a skipped translation. The text must also contain a
+    digit or an operator, so two short words ("It is") still count as prose.
+    Keep in step with `_isLanguageNeutral` in question_validator.dart.
+    """
+    if not FORMULA_CHARS.search(text):
+        return False
+    return all(len(run) <= 2 or run in NEUTRAL_UNIT_SYMBOLS
+               for run in LATIN_RUN.findall(text))
 
 
 class Report:
@@ -85,6 +109,9 @@ def check_localized(report, where, field, raw, *, required=True):
     # classroom keeps in English ('Router') legitimately read the same in all
     # three languages. Requiring a space isolates real prose.
     #
+    # Ratios, measurements and formulas that do contain a space ('1 : 2',
+    # '50 Hz', 'H = I² · R · t') are exempt too: see is_language_neutral().
+    #
     # Deliberate difference from the Dart validator: this is a *warning* here
     # and a *rejection* there. Assets are hand-authored and reviewed, so the
     # author gets the final say; a generated draft can simply be regenerated.
@@ -95,6 +122,8 @@ def check_localized(report, where, field, raw, *, required=True):
                 continue
             if any(ord(c) > 0x24F for c in english):
                 continue  # already non-Latin, so not a skipped translation
+            if is_language_neutral(english):
+                continue  # reads the same in every language
             report.warn(where, f'{field}.{lang} is identical to English')
 
     return values

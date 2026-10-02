@@ -171,7 +171,7 @@ flutter clean
 flutter pub get
 python3 tool/gen_strings.py
 python3 tool/verify_l10n.py
-python3 tool/validate_questions.py
+python3 tool/validate_questions.py --strict
 flutter analyze
 flutter test
 # Run the AdMob-injected build command above.

@@ -73,7 +73,7 @@ python3 tool/pull_firestore_questions.py --dry-run
 python3 tool/pull_firestore_questions.py --update-catalog-counts
 
 # ৪) repo-র নিজের gate
-python3 tool/validate_questions.py
+python3 tool/validate_questions.py --strict
 ```
 
 | ফ্ল্যাগ | কাজ |
@@ -122,7 +122,7 @@ Firebase Console → ⚙️ Project settings → **Service accounts** → **Gene
 
 | Job | কখন | কী করে |
 |---|---|---|
-| `quality` | প্রতিটি push/PR | `flutter pub get` → `flutter analyze` → `flutter test` → `validate_questions.py` |
+| `quality` | প্রতিটি push/PR | `flutter pub get` → `flutter analyze` → `flutter test` → `validate_questions.py --strict` |
 | `quality` (drift check) | সাপ্তাহিক/ম্যানুয়াল | `pull_firestore_questions.py --check` — bundle পুরনো হলে job fail |
 | `refresh-question-bank` | সাপ্তাহিক/ম্যানুয়াল | Firestore → bundle, তারপর `chore/refresh-question-bank` ব্রাঞ্চে **PR খোলে** |
 
@@ -138,7 +138,7 @@ logs-এ GitHub value-টা mask করে দেয়। তবু key-টা
 
 1. অ্যাপের admin panel থেকে প্রশ্ন যোগ/সম্পাদনা করো (আগের মতোই)।
 2. **release-এর আগে** `python3 tool/pull_firestore_questions.py --update-catalog-counts`।
-3. `python3 tool/validate_questions.py` — সবুজ হলে commit + push।
+3. `python3 tool/validate_questions.py --strict` — সবুজ হলে commit + push।
 4. সাপ্তাহিক CI job নিজে থেকেই প্রশ্ন টেনে PR খুলবে, তাই ভুলে গেলেও কিছু হারাবে না।
 
 ---
@@ -168,5 +168,6 @@ validate_questions.py → Question banks are valid ✅
   en 233/233   bn 233/233   hi 233/233   (সব ১০০%)
 ```
 
-বাকি ৩৮টা চ্যাপ্টার এখনো খালি — ওগুলোতে admin panel থেকে প্রশ্ন যোগ হলে পরের
-pull-এই bundle-এ ঢুকে যাবে।
+সেই pull-এর সময় বাকি ৩৮টি চ্যাপ্টার খালি ছিল। বর্তমান coverage দেখতে
+`python3 tool/validate_questions.py --stats` চালাও; খালি চ্যাপ্টারগুলো
+পরের pull-এ Firestore-এ প্রশ্ন যোগ হলে bundle-এ ঢুকবে।

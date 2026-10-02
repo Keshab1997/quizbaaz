@@ -309,7 +309,7 @@ board students revise in English terminology.
 AI prompt for generating a batch. Always finish with:
 
 ```bash
-python3 tool/validate_questions.py
+python3 tool/validate_questions.py --strict
 ```
 
 ## 6. Data & assets
@@ -352,7 +352,7 @@ flutter build web               # used for admin + GUI testing
 python3 tool/gen_strings.py     # regenerate S, report translation gaps
 python3 tool/verify_l10n.py     # unknown keys · const misuse · bracket damage
 python3 tool/apply_l10n.py      # migrate raw English literals to S.* (re-runnable)
-python3 tool/validate_questions.py   # question banks: schema, ids, translations
+python3 tool/validate_questions.py --strict  # schema, ids, translations; warnings fail
 python3 tool/set_question_seconds.py --show   # remote config/app seconds_per_question
 python3 tool/set_question_seconds.py         # set it to 30 (restart devices after)
 python3 tool/publish_daily_packet.py --dry-run   # today's daily packet, no write
