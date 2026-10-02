@@ -50,3 +50,6 @@ __pycache__/
 
 # flutter-builder keeps dated copies of the workflows it replaces; they do not belong in git
 .github/flutter-builder-backups/
+
+# flutter-builder: replaced tool files are kept here
+.agent-pack-backups/
