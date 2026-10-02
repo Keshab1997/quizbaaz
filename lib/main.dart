@@ -3,6 +3,10 @@ import 'dart:async';
 import 'package:admin_api_key_manager/admin_api_key_manager.dart';
 import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_core/firebase_core.dart';
+// kIsWeb/kDebugMode for the App Check provider choice below. material.dart
+// does not re-export them, so the import has to be explicit like everywhere
+// else in the repo.
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hive_flutter/hive_flutter.dart';
