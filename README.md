@@ -26,17 +26,17 @@
 </p>
 
 <p align="center">
-  <a href="./marketing/play_store_ai_premium/01_Learn_Play_Rise.jpg"><img src="./marketing/play_store_ai_premium/01_Learn_Play_Rise.jpg" width="23%" alt="QuizBaaz 3D home dashboard" /></a>
-  <a href="./marketing/play_store_ai_premium/02_Own_the_Arena.jpg"><img src="./marketing/play_store_ai_premium/02_Own_the_Arena.jpg" width="23%" alt="QuizBaaz Battle Arena" /></a>
-  <a href="./marketing/play_store_ai_premium/03_Know_More_Score_More.jpg"><img src="./marketing/play_store_ai_premium/03_Know_More_Score_More.jpg" width="23%" alt="QuizBaaz daily live quiz" /></a>
-  <a href="./marketing/play_store_ai_premium/04_Study_with_Momentum.jpg"><img src="./marketing/play_store_ai_premium/04_Study_with_Momentum.jpg" width="23%" alt="QuizBaaz chapter bank" /></a>
+  <a href="./store_listing/screenshots/01_Learn_Play_Rise.jpg"><img src="./store_listing/screenshots/01_Learn_Play_Rise.jpg" width="23%" alt="QuizBaaz 3D home dashboard" /></a>
+  <a href="./store_listing/screenshots/02_Own_the_Arena.jpg"><img src="./store_listing/screenshots/02_Own_the_Arena.jpg" width="23%" alt="QuizBaaz Battle Arena" /></a>
+  <a href="./store_listing/screenshots/03_Know_More_Score_More.jpg"><img src="./store_listing/screenshots/03_Know_More_Score_More.jpg" width="23%" alt="QuizBaaz daily live quiz" /></a>
+  <a href="./store_listing/screenshots/04_Study_with_Momentum.jpg"><img src="./store_listing/screenshots/04_Study_with_Momentum.jpg" width="23%" alt="QuizBaaz chapter bank" /></a>
 </p>
 
 <p align="center">
-  <a href="./marketing/play_store_ai_premium/05_Progress_Visualized.jpg"><img src="./marketing/play_store_ai_premium/05_Progress_Visualized.jpg" width="23%" alt="QuizBaaz performance history" /></a>
-  <a href="./marketing/play_store_ai_premium/06_Every_Win_Pays_Off.jpg"><img src="./marketing/play_store_ai_premium/06_Every_Win_Pays_Off.jpg" width="23%" alt="QuizBaaz rewards" /></a>
-  <a href="./marketing/play_store_ai_premium/07_Make_It_Your_Game.jpg"><img src="./marketing/play_store_ai_premium/07_Make_It_Your_Game.jpg" width="23%" alt="QuizBaaz avatar and power-up shop" /></a>
-  <a href="./marketing/play_store_ai_premium/08_Welcome_to_QuizBaaz_3D.jpg"><img src="./marketing/play_store_ai_premium/08_Welcome_to_QuizBaaz_3D.jpg" width="23%" alt="Welcome to QuizBaaz 3D" /></a>
+  <a href="./store_listing/screenshots/05_Progress_Visualized.jpg"><img src="./store_listing/screenshots/05_Progress_Visualized.jpg" width="23%" alt="QuizBaaz performance history" /></a>
+  <a href="./store_listing/screenshots/06_Every_Win_Pays_Off.jpg"><img src="./store_listing/screenshots/06_Every_Win_Pays_Off.jpg" width="23%" alt="QuizBaaz rewards" /></a>
+  <a href="./store_listing/screenshots/07_Make_It_Your_Game.jpg"><img src="./store_listing/screenshots/07_Make_It_Your_Game.jpg" width="23%" alt="QuizBaaz avatar and power-up shop" /></a>
+  <a href="./store_listing/screenshots/08_Welcome_to_QuizBaaz_3D.jpg"><img src="./store_listing/screenshots/08_Welcome_to_QuizBaaz_3D.jpg" width="23%" alt="Welcome to QuizBaaz 3D" /></a>
 </p>
 
 <p align="center">
@@ -67,7 +67,7 @@
 9. **🌍 Fully Trilingual (English · বাংলা · हिन्दी):**
    - Interface *and* quiz content in three languages from one switch. Picked automatically from the device locale, changeable any time from **Profile → Settings → Language**, stored locally and kept across restarts. The font swaps to Hind Siliguri for Bangla so no glyph is ever missing.
 10. **📚 Trilingual Question Bank:**
-   - Every question, option and explanation is authored in all three languages and shipped inside the app — so it works with no network, opens instantly, and uses correct board terminology instead of a machine's guess. Questions are authored in the admin panel (Firestore) and copied into the bundle before a release with `tool/pull_firestore_questions.py`, so the offline copy grows without an app update; `tool/validate_questions.py` refuses to let an incomplete or inconsistent bank reach a build. Current bundle: **233 questions across 18 chapters, 100% in en/bn/hi**.
+   - Every question, option and explanation is authored in all three languages and shipped inside the app — so it works with no network, opens instantly, and uses correct board terminology instead of a machine's guess. Questions are authored in the admin panel (Firestore) and copied into the bundle before a release with `tool/pull_firestore_questions.py`, so the offline copy grows without an app update; `tool/validate_questions.py` refuses to let an incomplete or inconsistent bank reach a build. Current bundle: **510 questions across 56 chapter banks, 100% in en/bn/hi** (`python3 tool/validate_questions.py --stats` prints the live numbers).
 11. **⚔️ Real 1-vs-1 Battle Arena:**
    - Live Firestore matchmaking finds a same-difficulty opponent (with a cricket-style VS intro + confetti); no real player found → a smart bot takes over so nobody waits. Every match deals **5 questions mixed from all chapters** and **never repeats a question** until the pool cycles. Symmetric scoring (`base + speed bonus + streak bonus`) keeps it fair for both sides; win by forfeit when the opponent drops. See `docs/12_BATTLE_1V1_REAL_PLAYER_PLAN.md`.
 12. **🔔 Daily Quiz reminders (on-device):**

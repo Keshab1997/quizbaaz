@@ -47,3 +47,6 @@ __pycache__/
 *.pyc
 # Widget Preview related
 .widget_preview/
+
+# flutter-builder keeps dated copies of the workflows it replaces; they do not belong in git
+.github/flutter-builder-backups/
