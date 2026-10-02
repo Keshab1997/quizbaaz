@@ -340,13 +340,13 @@ export const submitDailyResult = callable().https.onCall(
       // retry (a client-side push that replaces the locked score) cannot be
       // overwritten by the score the player was unhappy with.
       tx.set(
-        db().collection'leaderboard').doc(date).collection('scores').doc(uid),
+        db().collection('leaderboard').doc(date).collection('scores').doc(uid),
         {
           user_id: uid,
           username: u['username'] ?? '',
           name: u['full_name'] ?? '',
           avatar_path: u['avatar_path'] ?? '',
-          name_effect: u['tname_effect'] ?? '',
+          name_effect: u['name_effect'] ?? '',
           score,
           time_seconds: timeSeconds,
           streak: dailyStreak,
