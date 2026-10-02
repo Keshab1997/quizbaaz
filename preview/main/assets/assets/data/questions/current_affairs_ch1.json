@@ -614,6 +614,386 @@
       },
       "points": 10,
       "time_limit_sec": 30
+    },
+    {
+      "id": "ca_ch_01_q021",
+      "question": {
+        "en": "Which country won the ICC Men's T20 World Cup 2026 title?",
+        "bn": "কোন দেশ আইসিসি পুরুষ টি-টোয়েন্টি বিশ্বকাপ ২০২৬ শিরোপা জিতেছে?",
+        "hi": "किस देश ने आईसीसी पुरुष टी20 विश्व कप 2026 का खिताब जीता?"
+      },
+      "options": [
+        {
+          "en": "New Zealand",
+          "bn": "নিউজিল্যান্ড",
+          "hi": "न्यूजीलैंड"
+        },
+        {
+          "en": "India",
+          "bn": "ভারত",
+          "hi": "भारत"
+        },
+        {
+          "en": "Australia",
+          "bn": "অস্ট্রেলিয়া",
+          "hi": "ऑस्ट्रेलिया"
+        },
+        {
+          "en": "England",
+          "bn": "ইংল্যান্ড",
+          "hi": "इंग्लैंड"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "India defeated New Zealand in the final match played at the Narendra Modi Stadium in Ahmedabad to win the 2026 T20 World Cup.",
+        "bn": "আহমেদাবাদের নরেন্দ্র মোদী স্টেডিয়ামে অনুষ্ঠিত ফাইনাল ম্যাচে ভারত নিউজিল্যান্ডকে হারিয়ে ২০২৬ সালের টি-টোয়েন্টি বিশ্বকাপ জেতে।",
+        "hi": "भारत ने अहमदाबाद के नरेंद्र मोदी स्टेडियम में खेले गए फाइनल मैच में न्यूजीलैंड को हराकर 2026 टी20 विश्व कप जीता।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "ca_ch_01_q022",
+      "question": {
+        "en": "Which Italian cities co-hosted the 2026 Winter Olympic Games?",
+        "bn": "কোন ইতালীয় শহর দুটি যৌথভাবে ২০২৬ সালের শীতকালীন অলিম্পিক গেমস আয়োজন করে?",
+        "hi": "किन दो इतालवी शहरों ने संयुक्त रूप से 2026 शीतकालीन ओलंपिक खेलों की मेजबानी की?"
+      },
+      "options": [
+        {
+          "en": "Rome and Naples",
+          "bn": "রোম এবং নেপলস",
+          "hi": "रोम और नेपल्स"
+        },
+        {
+          "en": "Milan and Cortina d'Ampezzo",
+          "bn": "মিলান এবং কোর্তিনা ডি'আমপেজ্জো",
+          "hi": "मिलान और कॉर्टिना डी'एम्पेज़ो"
+        },
+        {
+          "en": "Turin and Venice",
+          "bn": "তুরিন এবং ভেনিস",
+          "hi": "ट्यूरिन और वेनिस"
+        },
+        {
+          "en": "Florence and Genoa",
+          "bn": "ফ্লোরেন্স এবং জেনোয়া",
+          "hi": "फ्लोरेंस और जेनोआ"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "The 2026 Winter Olympics were co-hosted by Milan and Cortina d'Ampezzo in Italy.",
+        "bn": "২০২৬ শীতকালীন অলিম্পিক ইতালির মিলান এবং কোর্তিনা ডি'আমপেজ্জো শহরে যৌথভাবে আয়োজিত হয়।",
+        "hi": "2026 शीतकालीन ओलंपिक की मेजबानी संयुक्त रूप से इटली के मिलान और कॉर्टिना डी'एम्पेज़ो शहरों द्वारा की गई थी।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "ca_ch_01_q023",
+      "question": {
+        "en": "Which country hosted the 51st G7 Summit in June 2025?",
+        "bn": "২০২৫ সালের জুনে ৫১তম জি-৭ (G7) সম্মেলন কোন দেশ আয়োজন করেছিল?",
+        "hi": "जून 2025 में 51वें G7 शिखर सम्मेलन की मेजबानी किस देश ने की थी?"
+      },
+      "options": [
+        {
+          "en": "Japan",
+          "bn": "জাপান",
+          "hi": "जापान"
+        },
+        {
+          "en": "Canada",
+          "bn": "কানাডা",
+          "hi": "कनाडा"
+        },
+        {
+          "en": "Germany",
+          "bn": "জার্মানি",
+          "hi": "जर्मनी"
+        },
+        {
+          "en": "France",
+          "bn": "ফ্রান্স",
+          "hi": "फ्रांस"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "Canada hosted the 51st G7 summit in Kananaskis, Alberta, in June 2025.",
+        "bn": "কানাডা ২০২৫ সালের জুনে আলবার্টার কানানাসকিসে ৫১তম জি-৭ সম্মেলন আয়োজন করে।",
+        "hi": "कनाडा ने जून 2025 में अल्बर्टा के कानानास्किस में 51वें G7 शिखर सम्मेलन की मेजबानी की थी।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "ca_ch_01_q024",
+      "question": {
+        "en": "In which Brazilian city was the UN Climate Change Conference (COP30) held in 2025?",
+        "bn": "২০২৫ সালে জাতিসংঘের জলবায়ু পরিবর্তন সম্মেলন (COP30) ব্রাজিলের কোন শহরে অনুষ্ঠিত হয়েছিল?",
+        "hi": "2025 में संयुक्त राष्ट्र जलवायु परिवर्तन सम्मेलन (COP30) ब्राजील के किस शहर में आयोजित किया गया था?"
+      },
+      "options": [
+        {
+          "en": "Rio de Janeiro",
+          "bn": "রিও ডি জেনিরো",
+          "hi": "रियो डी जेनेरियो"
+        },
+        {
+          "en": "Belém",
+          "bn": "বেলেম",
+          "hi": "बेलेम"
+        },
+        {
+          "en": "São Paulo",
+          "bn": "সাও পাওলো",
+          "hi": "साओ पाउलो"
+        },
+        {
+          "en": "Brasília",
+          "bn": "ব্রাজিলিয়া",
+          "hi": "ब्रासीलिया"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "The COP30 UN Climate Change Summit took place in Belém, Pará state, Brazil, in November 2025.",
+        "bn": "২০২৫ সালের নভেম্বরে ব্রাজিলের পারা রাজ্যের বেলেম শহরে সিওপি৩০ (COP30) জলবায়ু সম্মেলন অনুষ্ঠিত হয়।",
+        "hi": "COP30 संयुक्त राष्ट्र जलवायु शिखर सम्मेलन नवंबर 2025 में ब्राजील के पारा राज्य के शहर बेलेम में आयोजित किया गया था।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "ca_ch_01_q025",
+      "question": {
+        "en": "Which country is scheduled to host the 2027 FIFA Women's World Cup?",
+        "bn": "২০২৭ ফিফা নারী বিশ্বকাপ কোন দেশে অনুষ্ঠিত হওয়ার কথা রয়েছে?",
+        "hi": "2027 फीफा महिला विश्व कप का आयोजन किस देश में होना निर्धारित है?"
+      },
+      "options": [
+        {
+          "en": "Brazil",
+          "bn": "ব্রাজিল",
+          "hi": "ब्राजील"
+        },
+        {
+          "en": "South Africa",
+          "bn": "দক্ষিণ আফ্রিকা",
+          "hi": "दक्षिण अफ्रीका"
+        },
+        {
+          "en": "USA",
+          "bn": "আমেরিকা",
+          "hi": "अमेरिका"
+        },
+        {
+          "en": "Germany",
+          "bn": "জার্মানি",
+          "hi": "जर्मनी"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "FIFA awarded the hosting rights for the 2027 Women's World Cup to Brazil.",
+        "bn": "ফিফা ২০২৭ সালের নারী বিশ্বকাপ আয়োজনের অধিকার ব্রাজিলকে প্রদান করেছে।",
+        "hi": "फीफा ने 2027 महिला विश्व कप की मेजबानी के अधिकार ब्राजील को दिए हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "ca_ch_01_q026",
+      "question": {
+        "en": "Which space agency developed the Europa Clipper mission launched to study Jupiter's moon Europa?",
+        "bn": "বৃহস্পতির উপগ্রহ ইউরোপা অধ্যয়নের জন্য নিক্ষিপ্ত ইউরোপা ক্লিপার মিশনটি কোন মহাকাশ গবেষণা সংস্থা তৈরি করেছে?",
+        "hi": "बृहस्पति के चंद्रमा यूरोपा का अध्ययन करने के लिए प्रक्षेपित यूरोपा क्लिपर मिशन किस अंतरिक्ष एजेंसी द्वारा विकसित किया गया है?"
+      },
+      "options": [
+        {
+          "en": "ESA",
+          "bn": "ইএসএ (ESA)",
+          "hi": "ईएसए (ESA)"
+        },
+        {
+          "en": "NASA",
+          "bn": "নাসা (NASA)",
+          "hi": "नासा (NASA)"
+        },
+        {
+          "en": "JAXA",
+          "bn": "জাক্সা (JAXA)",
+          "hi": "जाक्सा (JAXA)"
+        },
+        {
+          "en": "ISRO",
+          "bn": "ইসরো (ISRO)",
+          "hi": "इसरो (ISRO)"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "NASA developed and launched the Europa Clipper spacecraft to investigate whether Jupiter's icy moon Europa could support life.",
+        "bn": "বৃহস্পতির বরফাবৃত উপগ্রহ ইউরোপা প্রাণের বাসযোগ্য কিনা তা অনুসন্ধানের জন্য নাসা ইউরোপা ক্লিপার মহাকাশযান তৈরি ও উৎক্ষেপণ করেছে।",
+        "hi": "नासा ने यह जांचने के लिए यूरोपा क्लिपर अंतरिक्ष यान विकसित और लॉन्च किया कि क्या बृहस्पति का बर्फीला चंद्रमा यूरोपा जीवन का समर्थन कर सकता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "ca_ch_01_q027",
+      "question": {
+        "en": "Which edition of the Quad Leaders' Summit was hosted by India in early 2025?",
+        "bn": "২০২৫ সালের শুরুতে ভারত কোয়াড (Quad) শীর্ষ সম্মেলনের কততম সংস্করণের আয়োজন করেছিল?",
+        "hi": "2025 के प्रारंभ में भारत द्वारा क्वाड (Quad) नेताओं के शिखर सम्मेलन के किस संस्करण की मेजबानी की गई थी?"
+      },
+      "options": [
+        {
+          "en": "4th",
+          "bn": "৪র্থ",
+          "hi": "चौथा"
+        },
+        {
+          "en": "6th",
+          "bn": "৬ষ্ঠ",
+          "hi": "छठा"
+        },
+        {
+          "en": "8th",
+          "bn": "৮ম",
+          "hi": "आठवां"
+        },
+        {
+          "en": "10th",
+          "bn": "১০ম",
+          "hi": "दसवां"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "India hosted the 6th Quad Leaders' Summit in 2025, bringing together leaders from India, US, Japan, and Australia.",
+        "bn": "ভারত ২০২৫ সালে ৬ষ্ঠ কোয়াড শীর্ষ সম্মেলন আয়োজন করেছিল, যেখানে ভারত, মার্কিন যুক্তরাষ্ট্র, জাপান ও অস্ট্রেলিয়ার নেতারা অংশ নেন।",
+        "hi": "भारत ने 2025 में छठे क्वाड शिखर सम्मेलन की मेजबानी की, जिसमें भारत, अमेरिका, जापान और ऑस्ट्रेलिया के नेता शामिल हुए।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "ca_ch_01_q028",
+      "question": {
+        "en": "Which country won the Men's FIH Hockey Pro League 2024-25 title?",
+        "bn": "কোন দেশ পুরুষদের এফআইএইচ হকি প্রো লিগ ২০২৪-২৫ শিরোপা জিতেছে?",
+        "hi": "किस देश ने पुरुष FIH हॉकी प्रो लीग 2024-25 का खिताब जीता?"
+      },
+      "options": [
+        {
+          "en": "India",
+          "bn": "ভারত",
+          "hi": "भारत"
+        },
+        {
+          "en": "Netherlands",
+          "bn": "নেদারল্যান্ডস",
+          "hi": "नीदरलैंड"
+        },
+        {
+          "en": "Australia",
+          "bn": "অস্ট্রেলিয়া",
+          "hi": "ऑस्ट्रेलिया"
+        },
+        {
+          "en": "Belgium",
+          "bn": "বেলজিয়াম",
+          "hi": "बेल्जियम"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "The Netherlands national field hockey team finished at the top of the table to secure the FIH Pro League title.",
+        "bn": "নেদারল্যান্ডস জাতীয় ফিল্ড হকি দল পয়েন্ট তালিকার শীর্ষে থেকে এফআইএইচ প্রো লিগ শিরোপা জয় করে।",
+        "hi": "नीदरलैंड की राष्ट्रीय फ़ील्ड हॉकी टीम अंक तालिका में शीर्ष पर रहकर FIH प्रो लीग का ख़िताब जीता।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "ca_ch_01_q029",
+      "question": {
+        "en": "ISRO's Gaganyaan-1 mission represents which milestone in India's space program?",
+        "bn": "ইসোর গগনযান-১ মিশনটি ভারতের মহাকাশ কর্মসূচিতে কোন মাইলফলক নির্দেশ করে?",
+        "hi": "इसरो का गगनयान-1 मिशन भारत के अंतरिक्ष कार्यक्रम में किस मील के पत्थर का प्रतिनिधित्व करता है?"
+      },
+      "options": [
+        {
+          "en": "First uncrewed test flight of the human spaceflight program",
+          "bn": "মানব মহাকাশযাত্রার প্রথম চালকহীন পরীক্ষা মূলক ফ্লাইট",
+          "hi": "मानव अंतरिक्ष उड़ान कार्यक्रम की पहली मानव रहित परीक्षण उड़ान"
+        },
+        {
+          "en": "First crewed lunar landing mission",
+          "bn": "প্রথম চালকসহ চাঁদে অবতরণ মিশন",
+          "hi": "पहला चालक दल वाला चंद्रमा लैंडिंग मिशन"
+        },
+        {
+          "en": "First solar observation satellite launch",
+          "bn": "প্রথম সূর্য পর্যবেক্ষণ উপগ্রহ উৎক্ষেপণ",
+          "hi": "पहला सूर्य अवलोकन उपग्रह प्रक्षेपण"
+        },
+        {
+          "en": "First Mars rover landing mission",
+          "bn": "প্রথম মঙ্গল রোভার অবতরণ মিশন",
+          "hi": "पहला मंगल रोवर लैंडिंग मिशन"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Gaganyaan-1 is the premier uncrewed orbital demonstration flight designed to validate human spaceflight safety systems before sending astronauts.",
+        "bn": "গগনযান-১ হলো মহাকাশচারীদের পাঠানোর আগে নিরাপত্তা ব্যবস্থা যাচাই করার জন্য প্রথম চালকহীন কক্ষপথীয় মহাকাশযাত্রা পরীক্ষা।",
+        "hi": "गगनयान-1 पहला मानव रहित कक्षीय परीक्षण है जिसे अंतरिक्ष यात्रियों को भेजने से पहले मानव अंतरिक्ष उड़ान सुरक्षा प्रणालियों को सत्यापित करने के लिए डिज़ाइन किया गया है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "ca_ch_01_q030",
+      "question": {
+        "en": "Which country hosted the 2025 World Aquatics Championships?",
+        "bn": "কোন দেশ ২০২৫ বিশ্ব অ্যাকুয়াটিক্স চ্যাম্পিয়নশিপ আয়োজন করেছিল?",
+        "hi": "2025 विश्व एक्वेटिक्स चैंपियनशिप की मेजबानी किस देश ने की थी?"
+      },
+      "options": [
+        {
+          "en": "Qatar",
+          "bn": "কাতার",
+          "hi": "कतर"
+        },
+        {
+          "en": "Singapore",
+          "bn": "সিঙ্গাপুর",
+          "hi": "सिंगापुर"
+        },
+        {
+          "en": "Japan",
+          "bn": "জাপান",
+          "hi": "जापान"
+        },
+        {
+          "en": "Hungary",
+          "bn": "হাঙ্গেরি",
+          "hi": "हंगरी"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "Singapore hosted the 2025 World Aquatics Championships, making it the first Southeast Asian nation to hold the flagship event.",
+        "bn": "সিঙ্গাপুর ২০২৫ বিশ্ব অ্যাকুয়াটিক্স চ্যাম্পিয়নশিপ আয়োজন করে, যা দক্ষিণ-পূর্ব এশিয়ার প্রথম দেশ হিসেবে এই ইভেন্ট পরিচালনা করার সম্মান অর্জন করে।",
+        "hi": "सिंगापुर ने 2025 विश्व एक्वेटिक्स चैंपियनशिप की मेजबानी की, जिससे वह इस प्रमुख आयोजन की मेजबानी करने वाला पहला दक्षिण पूर्व एशियाई राष्ट्र बन गया।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
     }
   ]
 }

@@ -6,5 +6,386 @@
     "hi": "वन एवं वन्य जीव संसाधन"
   },
   "class_standard": "Class 10",
-  "questions": []
+  "questions": [
+    {
+      "id": "geo_ch_02_q001",
+      "question": {
+        "en": "What is biodiversity?",
+        "bn": "জীববৈচিত্র্য কী?",
+        "hi": "जैव विविधता क्या है?"
+      },
+      "options": [
+        {
+          "en": "The variety of living organisms in a particular area",
+          "bn": "কোনো নির্দিষ্ট অঞ্চলে বিভিন্ন জীবের বৈচিত্র্য",
+          "hi": "किसी विशेष क्षेत्र में पाए जाने वाले विभिन्न जीवों की विविधता"
+        },
+        {
+          "en": "Only the number of forests in a region",
+          "bn": "কোনো অঞ্চলে শুধু অরণ্যের সংখ্যা",
+          "hi": "किसी क्षेत्र में केवल वनों की संख्या"
+        },
+        {
+          "en": "Only the variety of cultivated crops",
+          "bn": "শুধু চাষ করা ফসলের বৈচিত্র্য",
+          "hi": "केवल उगाई जाने वाली फसलों की विविधता"
+        },
+        {
+          "en": "Only the number of wild animals",
+          "bn": "শুধু বন্য প্রাণীর সংখ্যা",
+          "hi": "केवल वन्य जीवों की संख्या"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Biodiversity refers to the variety of flora and fauna found in a particular area. It includes different species of plants, animals and other organisms.",
+        "bn": "জীববৈচিত্র্য বলতে কোনো নির্দিষ্ট অঞ্চলে পাওয়া বিভিন্ন উদ্ভিদ, প্রাণী ও অন্যান্য জীবের বৈচিত্র্যকে বোঝায়।",
+        "hi": "जैव विविधता से किसी विशेष क्षेत्र में पाए जाने वाले विभिन्न पौधों, जीव-जंतुओं और अन्य जीवों की विविधता का बोध होता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "geo_ch_02_q002",
+      "question": {
+        "en": "Which species is classified as an endangered species?",
+        "bn": "কোন প্রজাতিকে বিপন্ন প্রজাতি হিসেবে শ্রেণিবদ্ধ করা হয়?",
+        "hi": "किस प्रजाति को संकटग्रस्त प्रजाति के रूप में वर्गीकृत किया जाता है?"
+      },
+      "options": [
+        {
+          "en": "A species facing a very high risk of extinction",
+          "bn": "যে প্রজাতি বিলুপ্তির অত্যন্ত উচ্চ ঝুঁকির সম্মুখীন",
+          "hi": "वह प्रजाति जिसके विलुप्त होने का बहुत अधिक खतरा हो"
+        },
+        {
+          "en": "A species found only in one particular area",
+          "bn": "যে প্রজাতি শুধু একটি নির্দিষ্ট অঞ্চলে পাওয়া যায়",
+          "hi": "वह प्रजाति जो केवल एक विशेष क्षेत्र में पाई जाती हो"
+        },
+        {
+          "en": "A species whose population is increasing rapidly",
+          "bn": "যে প্রজাতির সংখ্যা দ্রুত বৃদ্ধি পাচ্ছে",
+          "hi": "वह प्रजाति जिसकी संख्या तेजी से बढ़ रही हो"
+        },
+        {
+          "en": "A species introduced from another country",
+          "bn": "অন্য দেশ থেকে আনা কোনো প্রজাতি",
+          "hi": "किसी दूसरे देश से लाई गई प्रजाति"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Endangered species are those whose population has declined to a level where they face a very high risk of extinction.",
+        "bn": "বিপন্ন প্রজাতির সংখ্যা এমনভাবে কমে যায় যে তাদের বিলুপ্তির অত্যন্ত উচ্চ ঝুঁকি দেখা দেয়।",
+        "hi": "संकटग्रस्त प्रजातियों की संख्या इतनी कम हो जाती है कि उनके विलुप्त होने का बहुत अधिक खतरा रहता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "geo_ch_02_q003",
+      "question": {
+        "en": "Which category of forests is regarded as the most valuable for the conservation of forest and wildlife resources?",
+        "bn": "বন ও বন্যপ্রাণী সম্পদ সংরক্ষণের জন্য কোন শ্রেণির বনকে সবচেয়ে গুরুত্বপূর্ণ বলে গণ্য করা হয়?",
+        "hi": "वन एवं वन्य जीव संसाधनों के संरक्षण के लिए वनों की किस श्रेणी को सबसे अधिक मूल्यवान माना जाता है?"
+      },
+      "options": [
+        {
+          "en": "Reserved forests",
+          "bn": "সংরক্ষিত বন",
+          "hi": "आरक्षित वन"
+        },
+        {
+          "en": "Protected forests",
+          "bn": "সুরক্ষিত বন",
+          "hi": "संरक्षित वन"
+        },
+        {
+          "en": "Unclassed forests",
+          "bn": "শ্রেণিবিহীন বন",
+          "hi": "अवर्गीकृत वन"
+        },
+        {
+          "en": "Private forests",
+          "bn": "ব্যক্তিগত বন",
+          "hi": "निजी वन"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Reserved forests receive the highest degree of protection among the three main forest categories. They are considered the most valuable for conservation.",
+        "bn": "তিনটি প্রধান বন শ্রেণির মধ্যে সংরক্ষিত বন সর্বাধিক সুরক্ষা পায়। তাই সংরক্ষণের দিক থেকে এগুলিকে সবচেয়ে গুরুত্বপূর্ণ ধরা হয়।",
+        "hi": "तीन प्रमुख वन श्रेणियों में आरक्षित वनों को सबसे अधिक सुरक्षा दी जाती है। इसलिए संरक्षण की दृष्टि से इन्हें सबसे अधिक मूल्यवान माना जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "geo_ch_02_q004",
+      "question": {
+        "en": "Project Tiger was launched in India in which year?",
+        "bn": "ভারতে প্রজেক্ট টাইগার কোন সালে চালু হয়?",
+        "hi": "भारत में प्रोजेक्ट टाइगर किस वर्ष शुरू किया गया था?"
+      },
+      "options": [
+        {
+          "en": "1973",
+          "bn": "1973",
+          "hi": "1973"
+        },
+        {
+          "en": "1983",
+          "bn": "1983",
+          "hi": "1983"
+        },
+        {
+          "en": "1993",
+          "bn": "1993",
+          "hi": "1993"
+        },
+        {
+          "en": "1963",
+          "bn": "1963",
+          "hi": "1963"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Project Tiger was launched in 1973 to protect tigers and maintain viable tiger populations in their natural habitats.",
+        "bn": "বাঘ সংরক্ষণ এবং তাদের প্রাকৃতিক আবাসস্থলে বাঘের উপযুক্ত সংখ্যা বজায় রাখার জন্য 1973 সালে প্রজেক্ট টাইগার চালু হয়।",
+        "hi": "बाघों के संरक्षण और उनके प्राकृतिक आवासों में बाघों की व्यवहार्य संख्या बनाए रखने के लिए 1973 में प्रोजेक्ट टाइगर शुरू किया गया था।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "geo_ch_02_q005",
+      "question": {
+        "en": "Which of the following is a major cause of the depletion of flora and fauna?",
+        "bn": "নিচের কোনটি উদ্ভিদ ও প্রাণীজগতের অবক্ষয়ের একটি প্রধান কারণ?",
+        "hi": "निम्नलिखित में से कौन-सा वनस्पतियों और जीव-जंतुओं के ह्रास का एक प्रमुख कारण है?"
+      },
+      "options": [
+        {
+          "en": "Habitat destruction due to expanding agriculture and settlements",
+          "bn": "কৃষি ও বসতি সম্প্রসারণের ফলে আবাসস্থল ধ্বংস",
+          "hi": "कृषि और बस्तियों के विस्तार के कारण आवास का विनाश"
+        },
+        {
+          "en": "Increase in protected areas",
+          "bn": "সংরক্ষিত এলাকার বৃদ্ধি",
+          "hi": "संरक्षित क्षेत्रों में वृद्धि"
+        },
+        {
+          "en": "Expansion of wildlife sanctuaries",
+          "bn": "বন্যপ্রাণী অভয়ারণ্যের সম্প্রসারণ",
+          "hi": "वन्य जीव अभयारण्यों का विस्तार"
+        },
+        {
+          "en": "Community participation in conservation",
+          "bn": "সংরক্ষণে স্থানীয় সম্প্রদায়ের অংশগ্রহণ",
+          "hi": "संरक्षण में स्थानीय समुदाय की भागीदारी"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Expansion of agriculture and settlements can destroy or fragment natural habitats, reducing the space and resources available to wildlife.",
+        "bn": "কৃষি ও বসতি সম্প্রসারণে প্রাকৃতিক আবাসস্থল ধ্বংস বা খণ্ডিত হয়, ফলে বন্যপ্রাণীর জন্য স্থান ও খাদ্যসম্পদ কমে যায়।",
+        "hi": "कृषि और बस्तियों के विस्तार से प्राकृतिक आवास नष्ट या खंडित हो सकते हैं, जिससे वन्य जीवों के लिए स्थान और संसाधन कम हो जाते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "geo_ch_02_q006",
+      "question": {
+        "en": "Which type of species is found only in a particular geographical area and nowhere else naturally?",
+        "bn": "যে প্রজাতি প্রাকৃতিকভাবে শুধু একটি নির্দিষ্ট ভৌগোলিক অঞ্চলে পাওয়া যায়, তাকে কী বলা হয়?",
+        "hi": "जो प्रजाति प्राकृतिक रूप से केवल किसी विशेष भौगोलिक क्षेत्र में पाई जाती है, उसे क्या कहा जाता है?"
+      },
+      "options": [
+        {
+          "en": "Endemic species",
+          "bn": "স্থানীয় প্রজাতি",
+          "hi": "स्थानिक प्रजाति"
+        },
+        {
+          "en": "Normal species",
+          "bn": "সাধারণ প্রজাতি",
+          "hi": "सामान्य प्रजाति"
+        },
+        {
+          "en": "Extinct species",
+          "bn": "বিলুপ্ত প্রজাতি",
+          "hi": "विलुप्त प्रजाति"
+        },
+        {
+          "en": "Vulnerable species",
+          "bn": "অরক্ষিত প্রজাতি",
+          "hi": "असुरक्षित प्रजाति"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "An endemic species is naturally restricted to a particular geographical area. It is not naturally found outside that region.",
+        "bn": "স্থানীয় প্রজাতি প্রাকৃতিকভাবে একটি নির্দিষ্ট ভৌগোলিক অঞ্চলের মধ্যেই সীমাবদ্ধ থাকে এবং অন্যত্র স্বাভাবিকভাবে পাওয়া যায় না।",
+        "hi": "स्थानिक प्रजाति प्राकृतिक रूप से किसी विशेष भौगोलिक क्षेत्र तक सीमित होती है और उस क्षेत्र के बाहर स्वाभाविक रूप से नहीं पाई जाती।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "geo_ch_02_q007",
+      "question": {
+        "en": "Which conservation approach involves local communities protecting forests through traditional practices?",
+        "bn": "কোন সংরক্ষণ পদ্ধতিতে স্থানীয় সম্প্রদায় ঐতিহ্যবাহী প্রথার মাধ্যমে বন রক্ষা করে?",
+        "hi": "किस संरक्षण पद्धति में स्थानीय समुदाय पारंपरिक प्रथाओं के माध्यम से वनों की रक्षा करते हैं?"
+      },
+      "options": [
+        {
+          "en": "Sacred groves",
+          "bn": "পবিত্র অরণ্য",
+          "hi": "पवित्र उपवन"
+        },
+        {
+          "en": "Commercial plantations",
+          "bn": "বাণিজ্যিক বৃক্ষরোপণ",
+          "hi": "व्यावसायिक वृक्षारोपण"
+        },
+        {
+          "en": "Industrial forestry",
+          "bn": "শিল্পভিত্তিক বনায়ন",
+          "hi": "औद्योगिक वानिकी"
+        },
+        {
+          "en": "Mining zones",
+          "bn": "খনি অঞ্চল",
+          "hi": "खनन क्षेत्र"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Sacred groves are forest patches protected by local communities because of religious or cultural beliefs. Traditional restrictions help conserve biodiversity in these areas.",
+        "bn": "পবিত্র অরণ্য ধর্মীয় বা সাংস্কৃতিক বিশ্বাসের কারণে স্থানীয় সম্প্রদায়ের দ্বারা সংরক্ষিত বনভূমি। ঐতিহ্যগত নিষেধাজ্ঞা এসব অঞ্চলের জীববৈচিত্র্য রক্ষায় সাহায্য করে।",
+        "hi": "पवित्र उपवन धार्मिक या सांस्कृतिक मान्यताओं के कारण स्थानीय समुदायों द्वारा संरक्षित वन क्षेत्र हैं। पारंपरिक प्रतिबंध इन क्षेत्रों की जैव विविधता के संरक्षण में सहायता करते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "geo_ch_02_q008",
+      "question": {
+        "en": "In which state did the famous Chipko Movement help promote the conservation of forests?",
+        "bn": "কোন রাজ্যে বিখ্যাত চিপকো আন্দোলন বন সংরক্ষণে গুরুত্বপূর্ণ ভূমিকা নিয়েছিল?",
+        "hi": "किस राज्य में प्रसिद्ध चिपको आंदोलन ने वन संरक्षण को बढ़ावा देने में महत्वपूर्ण भूमिका निभाई?"
+      },
+      "options": [
+        {
+          "en": "Uttarakhand",
+          "bn": "উত্তরাখণ্ড",
+          "hi": "उत्तराखंड"
+        },
+        {
+          "en": "Gujarat",
+          "bn": "গুজরাট",
+          "hi": "गुजरात"
+        },
+        {
+          "en": "Tamil Nadu",
+          "bn": "তামিলনাড়ু",
+          "hi": "तमिलनाडु"
+        },
+        {
+          "en": "Bihar",
+          "bn": "বিহার",
+          "hi": "बिहार"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The Chipko Movement began in the Himalayan region of present-day Uttarakhand, where local people opposed commercial cutting of forests.",
+        "bn": "বর্তমান উত্তরাখণ্ডের হিমালয় অঞ্চলে চিপকো আন্দোলনের সূচনা হয়। স্থানীয় মানুষ বাণিজ্যিকভাবে গাছ কাটার বিরোধিতা করে বন রক্ষায় ভূমিকা নেয়।",
+        "hi": "चिपको आंदोलन की शुरुआत वर्तमान उत्तराखंड के हिमालयी क्षेत्र में हुई थी। स्थानीय लोगों ने वनों की व्यावसायिक कटाई का विरोध करके उनके संरक्षण में भूमिका निभाई।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "geo_ch_02_q009",
+      "question": {
+        "en": "Which conservation programme was specifically launched to protect the Indian rhinoceros?",
+        "bn": "ভারতীয় একশৃঙ্গ গণ্ডার সংরক্ষণের জন্য কোন সংরক্ষণ কর্মসূচি চালু করা হয়েছিল?",
+        "hi": "भारतीय एक-सींग वाले गैंडे के संरक्षण के लिए कौन-सा संरक्षण कार्यक्रम शुरू किया गया था?"
+      },
+      "options": [
+        {
+          "en": "Project Rhino",
+          "bn": "প্রজেক্ট রাইনো",
+          "hi": "प्रोजेक्ट राइनो"
+        },
+        {
+          "en": "Project Tiger",
+          "bn": "প্রজেক্ট টাইগার",
+          "hi": "प्रोजेक्ट टाइगर"
+        },
+        {
+          "en": "Project Elephant",
+          "bn": "প্রজেক্ট এলিফ্যান্ট",
+          "hi": "प्रोजेक्ट एलिफेंट"
+        },
+        {
+          "en": "Project Crocodile",
+          "bn": "প্রজেক্ট ক্রোকোডাইল",
+          "hi": "प्रोजेक्ट क्रोकोडाइल"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Project Rhino was initiated for the conservation of the Indian rhinoceros. The other projects named here focus on tigers, elephants and crocodiles respectively.",
+        "bn": "ভারতীয় একশৃঙ্গ গণ্ডার সংরক্ষণের জন্য প্রজেক্ট রাইনো চালু করা হয়। অন্য প্রকল্পগুলি যথাক্রমে বাঘ, হাতি ও কুমির সংরক্ষণের সঙ্গে সম্পর্কিত।",
+        "hi": "भारतीय एक-सींग वाले गैंडे के संरक्षण के लिए प्रोजेक्ट राइनो शुरू किया गया था। अन्य परियोजनाएँ क्रमशः बाघ, हाथी और मगरमच्छ के संरक्षण से संबंधित हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "geo_ch_02_q010",
+      "question": {
+        "en": "Why is conservation of biodiversity important for human society?",
+        "bn": "মানবসমাজের জন্য জীববৈচিত্র্য সংরক্ষণ কেন গুরুত্বপূর্ণ?",
+        "hi": "मानव समाज के लिए जैव विविधता का संरक्षण क्यों महत्वपूर्ण है?"
+      },
+      "options": [
+        {
+          "en": "It maintains ecological balance and provides resources for human needs.",
+          "bn": "এটি পরিবেশগত ভারসাম্য বজায় রাখে এবং মানুষের প্রয়োজনীয় সম্পদ সরবরাহ করে।",
+          "hi": "यह पारिस्थितिक संतुलन बनाए रखता है और मानव आवश्यकताओं के लिए संसाधन प्रदान करता है।"
+        },
+        {
+          "en": "It eliminates all natural forests from inhabited areas.",
+          "bn": "এটি জনবসতিপূর্ণ অঞ্চল থেকে সব প্রাকৃতিক বন সরিয়ে দেয়।",
+          "hi": "यह आबादी वाले क्षेत्रों से सभी प्राकृतिक वनों को हटा देता है।"
+        },
+        {
+          "en": "It prevents all species from adapting to environmental changes.",
+          "bn": "এটি সব প্রজাতিকে পরিবেশগত পরিবর্তনের সঙ্গে অভিযোজিত হতে বাধা দেয়।",
+          "hi": "यह सभी प्रजातियों को पर्यावरणीय परिवर्तनों के अनुकूल होने से रोकता है।"
+        },
+        {
+          "en": "It increases dependence on a single plant or animal species.",
+          "bn": "এটি একটি মাত্র উদ্ভিদ বা প্রাণী প্রজাতির ওপর নির্ভরতা বাড়ায়।",
+          "hi": "यह किसी एक ही पौधे या जीव-जंतु की प्रजाति पर निर्भरता बढ़ाता है।"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Biodiversity supports ecological processes and provides food, medicines, fuel and other resources. Conserving it therefore supports both ecosystems and human livelihoods.",
+        "bn": "জীববৈচিত্র্য পরিবেশগত প্রক্রিয়াকে সমর্থন করে এবং খাদ্য, ওষুধ, জ্বালানি ও অন্যান্য সম্পদ সরবরাহ করে। তাই এর সংরক্ষণ বাস্তুতন্ত্র ও মানুষের জীবিকা উভয়ের জন্য গুরুত্বপূর্ণ।",
+        "hi": "जैव विविधता पारिस्थितिक प्रक्रियाओं को सहारा देती है और भोजन, औषधि, ईंधन तथा अन्य संसाधन प्रदान करती है। इसलिए इसका संरक्षण पारितंत्र और मानव आजीविका दोनों के लिए महत्वपूर्ण है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    }
+  ]
 }

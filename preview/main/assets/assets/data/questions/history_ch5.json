@@ -6,5 +6,386 @@
     "hi": "औद्योगीकरण का युग"
   },
   "class_standard": "Class 10",
-  "questions": []
+  "questions": [
+    {
+      "id": "hist_ch_05_q001",
+      "question": {
+        "en": "Which industry was one of the first to develop in Britain during the Industrial Revolution?",
+        "bn": "শিল্পবিপ্লবের সময় ব্রিটেনে প্রথমদিকে কোন শিল্পের বিকাশ ঘটেছিল?",
+        "hi": "औद्योगिक क्रांति के दौरान ब्रिटेन में प्रारंभिक रूप से किस उद्योग का विकास हुआ?"
+      },
+      "options": [
+        {
+          "en": "Cotton textile industry",
+          "bn": "তুলাবস্ত্র শিল্প",
+          "hi": "सूती वस्त्र उद्योग"
+        },
+        {
+          "en": "Automobile industry",
+          "bn": "অটোমোবাইল শিল্প",
+          "hi": "ऑटोमोबाइल उद्योग"
+        },
+        {
+          "en": "Software industry",
+          "bn": "সফটওয়্যার শিল্প",
+          "hi": "सॉफ्टवेयर उद्योग"
+        },
+        {
+          "en": "Aircraft industry",
+          "bn": "বিমান শিল্প",
+          "hi": "विमान उद्योग"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The cotton textile industry was among the earliest industries to develop in Britain as mechanised production expanded during the Industrial Revolution.",
+        "bn": "শিল্পবিপ্লবের সময় যান্ত্রিক উৎপাদন বাড়ার সঙ্গে সঙ্গে ব্রিটেনে তুলাবস্ত্র শিল্প প্রথমদিকের বিকশিত শিল্পগুলির অন্যতম হয়ে ওঠে।",
+        "hi": "औद्योगिक क्रांति के दौरान मशीनी उत्पादन बढ़ने के साथ ब्रिटेन में सूती वस्त्र उद्योग प्रारंभिक विकसित उद्योगों में से एक बना।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "hist_ch_05_q002",
+      "question": {
+        "en": "Who developed the Spinning Jenny?",
+        "bn": "স্পিনিং জেনি কে আবিষ্কার করেছিলেন?",
+        "hi": "स्पिनिंग जेनी का आविष्कार किसने किया था?"
+      },
+      "options": [
+        {
+          "en": "James Hargreaves",
+          "bn": "জেমস হারগ্রিভস",
+          "hi": "जेम्स हारग्रीव्स"
+        },
+        {
+          "en": "James Watt",
+          "bn": "জেমস ওয়াট",
+          "hi": "जेम्स वाट"
+        },
+        {
+          "en": "Richard Arkwright",
+          "bn": "রিচার্ড আর্করাইট",
+          "hi": "रिचर्ड आर्कराइट"
+        },
+        {
+          "en": "Samuel Crompton",
+          "bn": "স্যামুয়েল ক্রম্পটন",
+          "hi": "सैमुअल क्रॉम्पटन"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "James Hargreaves developed the Spinning Jenny, which allowed a worker to spin several threads at the same time.",
+        "bn": "জেমস হারগ্রিভস স্পিনিং জেনি তৈরি করেন, যার সাহায্যে একজন শ্রমিক একই সময়ে একাধিক সুতো কাটতে পারত।",
+        "hi": "जेम्स हारग्रीव्स ने स्पिनिंग जेनी विकसित की, जिससे एक श्रमिक एक ही समय में कई धागे कात सकता था।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "hist_ch_05_q003",
+      "question": {
+        "en": "Why did merchants initially avoid producing goods in factories?",
+        "bn": "ব্যবসায়ীরা প্রথমদিকে কারখানায় পণ্য উৎপাদন এড়িয়ে চলত কেন?",
+        "hi": "व्यापारी प्रारंभ में कारखानों में वस्तुओं का उत्पादन करने से क्यों बचते थे?"
+      },
+      "options": [
+        {
+          "en": "They preferred production through dispersed rural households",
+          "bn": "তারা গ্রামাঞ্চলের বিভিন্ন পরিবারের মাধ্যমে ছড়িয়ে-ছিটিয়ে উৎপাদন করাতে বেশি পছন্দ করত",
+          "hi": "वे ग्रामीण परिवारों में बिखरी हुई उत्पादन व्यवस्था को अधिक पसंद करते थे"
+        },
+        {
+          "en": "Factories had no workers available",
+          "bn": "কারখানায় কোনো শ্রমিক পাওয়া যেত না",
+          "hi": "कारखानों में कोई श्रमिक उपलब्ध नहीं था"
+        },
+        {
+          "en": "Machines were banned in Britain",
+          "bn": "ব্রিটেনে যন্ত্রের ব্যবহার নিষিদ্ধ ছিল",
+          "hi": "ब्रिटेन में मशीनों के उपयोग पर प्रतिबंध था"
+        },
+        {
+          "en": "Factories could produce only agricultural goods",
+          "bn": "কারখানায় শুধু কৃষিজ পণ্য উৎপাদন করা যেত",
+          "hi": "कारखानों में केवल कृषि उत्पाद ही बनाए जा सकते थे"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Before factories became widespread, merchants often used rural households because production could be organised through a network of dispersed workers.",
+        "bn": "কারখানা ব্যাপকভাবে গড়ে ওঠার আগে ব্যবসায়ীরা ছড়িয়ে থাকা গ্রামীণ শ্রমিক ও পরিবারের মাধ্যমে উৎপাদন সংগঠিত করত।",
+        "hi": "कारखानों के व्यापक होने से पहले व्यापारी बिखरे हुए ग्रामीण श्रमिकों और परिवारों के माध्यम से उत्पादन करवाते थे।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "hist_ch_05_q004",
+      "question": {
+        "en": "Which Indian city became an important centre of the cotton textile industry in the nineteenth century?",
+        "bn": "ঊনবিংশ শতকে ভারতের কোন শহর তুলাবস্ত্র শিল্পের একটি গুরুত্বপূর্ণ কেন্দ্রে পরিণত হয়েছিল?",
+        "hi": "उन्नीसवीं शताब्दी में भारत का कौन-सा शहर सूती वस्त्र उद्योग का एक महत्वपूर्ण केंद्र बना?"
+      },
+      "options": [
+        {
+          "en": "Bombay",
+          "bn": "বোম্বাই",
+          "hi": "बॉम्बे"
+        },
+        {
+          "en": "Patna",
+          "bn": "পাটনা",
+          "hi": "पटना"
+        },
+        {
+          "en": "Lucknow",
+          "bn": "লখনউ",
+          "hi": "लखनऊ"
+        },
+        {
+          "en": "Amritsar",
+          "bn": "অমৃতসর",
+          "hi": "अमृतसर"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Bombay became a major centre of cotton textile production in the nineteenth century, supported by its port and access to cotton-growing regions.",
+        "bn": "ঊনবিংশ শতকে বন্দর ও তুলা উৎপাদনকারী অঞ্চলের সঙ্গে যোগাযোগের সুবিধার কারণে বোম্বাই তুলাবস্ত্র উৎপাদনের গুরুত্বপূর্ণ কেন্দ্রে পরিণত হয়।",
+        "hi": "उन्नीसवीं शताब्दी में बंदरगाह और कपास उत्पादक क्षेत्रों से संपर्क के कारण बॉम्बे सूती वस्त्र उत्पादन का प्रमुख केंद्र बना।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "hist_ch_05_q005",
+      "question": {
+        "en": "Who established the first successful cotton mill in Bombay in 1854?",
+        "bn": "1854 সালে বোম্বাইয়ে প্রথম সফল তুলা কল কে প্রতিষ্ঠা করেছিলেন?",
+        "hi": "1854 में बॉम्बे में पहली सफल सूती मिल किसने स्थापित की थी?"
+      },
+      "options": [
+        {
+          "en": "Cowasji Nanabhoy Davar",
+          "bn": "কাওয়াসজি নানাভয় দাভার",
+          "hi": "कावसजी नानाभाई दावर"
+        },
+        {
+          "en": "Dwarkanath Tagore",
+          "bn": "দ্বারকানাথ ঠাকুর",
+          "hi": "द्वारकानाथ टैगोर"
+        },
+        {
+          "en": "Jamsetjee Tata",
+          "bn": "জামশেদজি টাটা",
+          "hi": "जमशेदजी टाटा"
+        },
+        {
+          "en": "J.N. Tata",
+          "bn": "জে. এন. টাটা",
+          "hi": "जे. एन. टाटा"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Cowasji Nanabhoy Davar established the Bombay Spinning and Weaving Company in 1854, marking an early milestone in India's modern cotton textile industry.",
+        "bn": "কাওয়াসজি নানাভয় দাভার 1854 সালে বোম্বাই স্পিনিং অ্যান্ড উইভিং কোম্পানি প্রতিষ্ঠা করেন, যা ভারতের আধুনিক তুলাবস্ত্র শিল্পের প্রাথমিক গুরুত্বপূর্ণ পদক্ষেপ ছিল।",
+        "hi": "कावसजी नानाभाई दावर ने 1854 में बॉम्बे स्पिनिंग एंड वीविंग कंपनी स्थापित की, जो भारत के आधुनिक सूती वस्त्र उद्योग की प्रारंभिक महत्वपूर्ण उपलब्धि थी।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "hist_ch_05_q006",
+      "question": {
+        "en": "Which group of workers was especially important in the early years of Indian industrialisation?",
+        "bn": "ভারতে শিল্পায়নের প্রাথমিক পর্যায়ে কোন শ্রমিকগোষ্ঠী বিশেষভাবে গুরুত্বপূর্ণ ছিল?",
+        "hi": "भारत में औद्योगीकरण के प्रारंभिक वर्षों में श्रमिकों का कौन-सा समूह विशेष रूप से महत्वपूर्ण था?"
+      },
+      "options": [
+        {
+          "en": "Workers who migrated from villages to industrial centres",
+          "bn": "গ্রাম থেকে শিল্পকেন্দ্রে আসা শ্রমিকরা",
+          "hi": "गाँवों से औद्योगिक केंद्रों में आने वाले श्रमिक"
+        },
+        {
+          "en": "Only foreign engineers",
+          "bn": "শুধু বিদেশি ইঞ্জিনিয়াররা",
+          "hi": "केवल विदेशी इंजीनियर"
+        },
+        {
+          "en": "Only government officials",
+          "bn": "শুধু সরকারি কর্মচারীরা",
+          "hi": "केवल सरकारी कर्मचारी"
+        },
+        {
+          "en": "Only zamindars",
+          "bn": "শুধু জমিদাররা",
+          "hi": "केवल जमींदार"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Many early industrial workers came from villages, often moving to cities in search of employment in mills and factories.",
+        "bn": "প্রাথমিক শিল্পশ্রমিকদের অনেকেই গ্রাম থেকে এসেছিল এবং কলকারখানায় কাজের সন্ধানে শহরে চলে এসেছিল।",
+        "hi": "प्रारंभिक औद्योगिक श्रमिकों में बहुत से लोग गाँवों से आए और मिलों तथा कारखानों में रोजगार की तलाश में शहरों की ओर गए।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "hist_ch_05_q007",
+      "question": {
+        "en": "What was the main effect of British imports of machine-made textiles on Indian weavers?",
+        "bn": "ব্রিটেন থেকে যন্ত্রে তৈরি বস্ত্র আমদানির প্রধান প্রভাব ভারতীয় তাঁতিদের ওপর কী পড়েছিল?",
+        "hi": "ब्रिटेन से मशीन से बने वस्त्रों के आयात का भारतीय बुनकरों पर मुख्य प्रभाव क्या पड़ा?"
+      },
+      "options": [
+        {
+          "en": "They faced severe competition and loss of markets",
+          "bn": "তারা তীব্র প্রতিযোগিতা ও বাজার হারানোর সমস্যার মুখে পড়েছিল",
+          "hi": "उन्हें कड़ी प्रतिस्पर्धा और बाजारों के नुकसान का सामना करना पड़ा"
+        },
+        {
+          "en": "Their demand increased immediately",
+          "bn": "তাদের চাহিদা সঙ্গে সঙ্গে বেড়ে গিয়েছিল",
+          "hi": "उनकी माँग तुरंत बढ़ गई"
+        },
+        {
+          "en": "They stopped using handlooms completely",
+          "bn": "তারা সম্পূর্ণভাবে হাততাঁতের ব্যবহার বন্ধ করে দিয়েছিল",
+          "hi": "उन्होंने हथकरघे का उपयोग पूरी तरह बंद कर दिया"
+        },
+        {
+          "en": "They became government employees",
+          "bn": "তারা সরকারি কর্মচারীতে পরিণত হয়েছিল",
+          "hi": "वे सरकारी कर्मचारी बन गए"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Cheap machine-made imports from Britain competed with Indian handloom goods, reducing the markets available to many Indian weavers.",
+        "bn": "ব্রিটেনের সস্তা যন্ত্রে তৈরি বস্ত্র ভারতীয় হাতের তৈরি বস্ত্রের সঙ্গে প্রতিযোগিতা করায় বহু তাঁতির বাজার সংকুচিত হয়ে পড়ে।",
+        "hi": "ब्रिटेन के सस्ते मशीन से बने वस्त्र भारतीय हथकरघा वस्त्रों से प्रतिस्पर्धा करते थे, जिससे कई भारतीय बुनकरों के बाजार सीमित हो गए।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "hist_ch_05_q008",
+      "question": {
+        "en": "Why did Indian industrialists initially avoid competing directly with British producers in export markets?",
+        "bn": "ভারতীয় শিল্পপতিরা প্রথমদিকে রপ্তানি বাজারে ব্রিটিশ উৎপাদকদের সঙ্গে সরাসরি প্রতিযোগিতা এড়িয়ে চলত কেন?",
+        "hi": "भारतीय उद्योगपति प्रारंभ में निर्यात बाजारों में ब्रिटिश उत्पादकों से सीधे प्रतिस्पर्धा करने से क्यों बचते थे?"
+      },
+      "options": [
+        {
+          "en": "British manufacturers controlled many overseas markets",
+          "bn": "ব্রিটিশ নির্মাতারা বহু বিদেশি বাজার নিয়ন্ত্রণ করত",
+          "hi": "ब्रिटिश निर्माताओं का कई विदेशी बाजारों पर नियंत्रण था"
+        },
+        {
+          "en": "Indian factories were not allowed to produce textiles",
+          "bn": "ভারতীয় কারখানাগুলিকে বস্ত্র উৎপাদনের অনুমতি দেওয়া হত না",
+          "hi": "भारतीय कारखानों को वस्त्र बनाने की अनुमति नहीं थी"
+        },
+        {
+          "en": "India had no cotton available",
+          "bn": "ভারতে কোনো তুলা পাওয়া যেত না",
+          "hi": "भारत में कपास उपलब्ध नहीं थी"
+        },
+        {
+          "en": "Indian workers refused factory employment",
+          "bn": "ভারতীয় শ্রমিকরা কারখানায় কাজ করতে অস্বীকার করত",
+          "hi": "भारतीय श्रमिक कारखानों में काम करने से इनकार करते थे"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "British manufacturers had established strong positions in overseas markets, making direct competition difficult for emerging Indian industrialists.",
+        "bn": "ব্রিটিশ নির্মাতারা বিদেশি বাজারে শক্তিশালী অবস্থান তৈরি করেছিল, তাই নতুন ভারতীয় শিল্পপতিদের পক্ষে সরাসরি প্রতিযোগিতা করা কঠিন ছিল।",
+        "hi": "ब्रिटिश निर्माताओं ने विदेशी बाजारों में मजबूत स्थिति बना ली थी, इसलिए नए भारतीय उद्योगपतियों के लिए सीधे प्रतिस्पर्धा करना कठिन था।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "hist_ch_05_q009",
+      "question": {
+        "en": "What was the significance of the Swadeshi movement for Indian industries?",
+        "bn": "ভারতীয় শিল্পের ক্ষেত্রে স্বদেশি আন্দোলনের গুরুত্ব কী ছিল?",
+        "hi": "भारतीय उद्योगों के लिए स्वदेशी आंदोलन का क्या महत्व था?"
+      },
+      "options": [
+        {
+          "en": "It encouraged the use of Indian-made goods",
+          "bn": "এটি ভারতীয় তৈরি পণ্য ব্যবহারে উৎসাহ দিয়েছিল",
+          "hi": "इसने भारतीय निर्मित वस्तुओं के उपयोग को प्रोत्साहित किया"
+        },
+        {
+          "en": "It promoted the import of British textiles",
+          "bn": "এটি ব্রিটিশ বস্ত্র আমদানিতে উৎসাহ দিয়েছিল",
+          "hi": "इसने ब्रिटिश वस्त्रों के आयात को प्रोत्साहित किया"
+        },
+        {
+          "en": "It ended all factory production in India",
+          "bn": "এটি ভারতে সমস্ত কারখানা উৎপাদন বন্ধ করে দিয়েছিল",
+          "hi": "इसने भारत में सभी कारखाना उत्पादन बंद कर दिए"
+        },
+        {
+          "en": "It replaced Indian industries with British industries",
+          "bn": "এটি ভারতীয় শিল্পের পরিবর্তে ব্রিটিশ শিল্পকে প্রতিষ্ঠা করেছিল",
+          "hi": "इसने भारतीय उद्योगों के स्थान पर ब्रिटिश उद्योगों को स्थापित किया"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The Swadeshi movement promoted the use of Indian-made goods and encouraged support for indigenous industries.",
+        "bn": "স্বদেশি আন্দোলন ভারতীয় তৈরি পণ্য ব্যবহারে উৎসাহ দেয় এবং দেশীয় শিল্পকে সমর্থন করার আহ্বান জানায়।",
+        "hi": "स्वदेशी आंदोलन ने भारतीय निर्मित वस्तुओं के उपयोग को बढ़ावा दिया और देशी उद्योगों के समर्थन को प्रोत्साहित किया।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "hist_ch_05_q010",
+      "question": {
+        "en": "Which industry grew rapidly in India during the First World War because British imports declined?",
+        "bn": "প্রথম বিশ্বযুদ্ধের সময় ব্রিটিশ আমদানি কমে যাওয়ায় ভারতে কোন শিল্প দ্রুত বৃদ্ধি পেয়েছিল?",
+        "hi": "प्रथम विश्व युद्ध के दौरान ब्रिटिश आयात कम होने के कारण भारत में किस उद्योग का तेजी से विकास हुआ?"
+      },
+      "options": [
+        {
+          "en": "Cotton textile industry",
+          "bn": "তুলাবস্ত্র শিল্প",
+          "hi": "सूती वस्त्र उद्योग"
+        },
+        {
+          "en": "Film industry",
+          "bn": "চলচ্চিত্র শিল্প",
+          "hi": "फिल्म उद्योग"
+        },
+        {
+          "en": "Information technology industry",
+          "bn": "তথ্যপ্রযুক্তি শিল্প",
+          "hi": "सूचना प्रौद्योगिकी उद्योग"
+        },
+        {
+          "en": "Aircraft manufacturing industry",
+          "bn": "বিমান নির্মাণ শিল্প",
+          "hi": "विमान निर्माण उद्योग"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "During the First World War, British textile imports into India declined, creating greater demand for Indian cotton textiles and encouraging their production.",
+        "bn": "প্রথম বিশ্বযুদ্ধের সময় ভারতে ব্রিটিশ বস্ত্র আমদানি কমে যাওয়ায় ভারতীয় তুলাবস্ত্রের চাহিদা বাড়ে এবং উৎপাদন উৎসাহিত হয়।",
+        "hi": "प्रथम विश्व युद्ध के दौरान भारत में ब्रिटिश वस्त्रों का आयात घट गया, जिससे भारतीय सूती वस्त्रों की माँग और उत्पादन बढ़ा।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    }
+  ]
 }

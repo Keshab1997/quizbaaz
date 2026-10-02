@@ -278,7 +278,7 @@
           "description": {
             "en": "Combination, decomposition, displacement, redox"
           },
-          "total_questions": 10,
+          "total_questions": 20,
           "json_file": "assets/data/questions/class10_phys_ch1.json",
           "is_unlocked": true,
           "stars": 0,
@@ -397,7 +397,7 @@
           "description": {
             "en": "Solenoid, motor, generator, domestic circuits"
           },
-          "total_questions": 0,
+          "total_questions": 27,
           "json_file": "assets/data/questions/class10_phys_ch8.json",
           "is_unlocked": true,
           "stars": 0,
@@ -427,7 +427,7 @@
           "description": {
             "en": "Nutrition, respiration, transport, excretion"
           },
-          "total_questions": 20,
+          "total_questions": 30,
           "json_file": "assets/data/questions/class10_bio_ch1.json",
           "is_unlocked": true,
           "stars": 0,
@@ -461,7 +461,7 @@
           "description": {
             "en": "Asexual & sexual reproduction, reproduction health"
           },
-          "total_questions": 10,
+          "total_questions": 40,
           "json_file": "assets/data/questions/class10_bio_ch3.json",
           "is_unlocked": true,
           "stars": 0,
@@ -593,7 +593,7 @@
           "description": {
             "en": "Factories, workers, industrial growth in India"
           },
-          "total_questions": 0,
+          "total_questions": 10,
           "json_file": "assets/data/questions/history_ch5.json",
           "is_unlocked": true,
           "stars": 0,
@@ -640,7 +640,7 @@
           "description": {
             "en": "Biodiversity, conservation projects"
           },
-          "total_questions": 0,
+          "total_questions": 10,
           "json_file": "assets/data/questions/class10_geo_ch2.json",
           "is_unlocked": true,
           "stars": 0,
@@ -657,7 +657,7 @@
           "description": {
             "en": "Dams, rainwater harvesting, water scarcity"
           },
-          "total_questions": 0,
+          "total_questions": 10,
           "json_file": "assets/data/questions/class10_geo_ch3.json",
           "is_unlocked": true,
           "stars": 0,
@@ -674,7 +674,7 @@
           "description": {
             "en": "Cropping patterns, institutional reforms, food security"
           },
-          "total_questions": 0,
+          "total_questions": 10,
           "json_file": "assets/data/questions/class10_geo_ch4.json",
           "is_unlocked": true,
           "stars": 0,
@@ -691,7 +691,7 @@
           "description": {
             "en": "Ferrous/non-ferrous, conventional & non-conventional energy"
           },
-          "total_questions": 0,
+          "total_questions": 10,
           "json_file": "assets/data/questions/class10_geo_ch5.json",
           "is_unlocked": true,
           "stars": 0,
@@ -708,7 +708,7 @@
           "description": {
             "en": "Types, location factors, industrial pollution"
           },
-          "total_questions": 0,
+          "total_questions": 10,
           "json_file": "assets/data/questions/class10_geo_ch6.json",
           "is_unlocked": true,
           "stars": 0,
@@ -725,7 +725,7 @@
           "description": {
             "en": "Roadways, railways, ports, international trade"
           },
-          "total_questions": 0,
+          "total_questions": 10,
           "json_file": "assets/data/questions/class10_geo_ch7.json",
           "is_unlocked": true,
           "stars": 0,
@@ -772,7 +772,7 @@
           "description": {
             "en": "Union & state lists, decentralisation, language policy"
           },
-          "total_questions": 0,
+          "total_questions": 10,
           "json_file": "assets/data/questions/class10_polsci_ch2.json",
           "is_unlocked": true,
           "stars": 0,
@@ -789,7 +789,7 @@
           "description": {
             "en": "Communalism, caste in politics, feminist movements"
           },
-          "total_questions": 0,
+          "total_questions": 10,
           "json_file": "assets/data/questions/class10_polsci_ch3.json",
           "is_unlocked": true,
           "stars": 0,
@@ -806,7 +806,7 @@
           "description": {
             "en": "National & state parties, challenges, reforms"
           },
-          "total_questions": 0,
+          "total_questions": 20,
           "json_file": "assets/data/questions/class10_polsci_ch4.json",
           "is_unlocked": true,
           "stars": 0,
@@ -853,7 +853,7 @@
           "description": {
             "en": "Income & other criteria, HDI, sustainability"
           },
-          "total_questions": 0,
+          "total_questions": 10,
           "json_file": "assets/data/questions/class10_eco_ch1.json",
           "is_unlocked": true,
           "stars": 0,
@@ -870,7 +870,7 @@
           "description": {
             "en": "Primary/secondary/tertiary, organised vs unorganised"
           },
-          "total_questions": 0,
+          "total_questions": 10,
           "json_file": "assets/data/questions/class10_eco_ch2.json",
           "is_unlocked": true,
           "stars": 0,
@@ -1075,7 +1075,7 @@
           "description": {
             "en": "Superlatives, inventions, awards"
           },
-          "total_questions": 0,
+          "total_questions": 10,
           "json_file": "assets/data/questions/gk_ch1.json",
           "is_unlocked": true,
           "stars": 0,
@@ -1105,7 +1105,7 @@
           "description": {
             "en": "Latest summits, sports, science events"
           },
-          "total_questions": 16,
+          "total_questions": 26,
           "json_file": "assets/data/questions/current_affairs_ch1.json",
           "is_unlocked": true,
           "stars": 0,

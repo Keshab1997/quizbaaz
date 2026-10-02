@@ -6,5 +6,386 @@
     "hi": "कृषि"
   },
   "class_standard": "Class 10",
-  "questions": []
+  "questions": [
+    {
+      "id": "geo_ch_04_q001",
+      "question": {
+        "en": "Which cropping pattern involves growing two or more crops on the same land during a year?",
+        "bn": "এক বছরে একই জমিতে দুই বা ততোধিক ফসল উৎপাদনের পদ্ধতিকে কী বলা হয়?",
+        "hi": "एक वर्ष में एक ही भूमि पर दो या दो से अधिक फसलें उगाने की पद्धति को क्या कहा जाता है?"
+      },
+      "options": [
+        {
+          "en": "Multiple cropping",
+          "bn": "বহুফসলি চাষ",
+          "hi": "बहुफसली खेती"
+        },
+        {
+          "en": "Shifting cultivation",
+          "bn": "স্থানান্তরিত চাষ",
+          "hi": "स्थानांतरण कृषि"
+        },
+        {
+          "en": "Plantation farming",
+          "bn": "বাগান কৃষি",
+          "hi": "बागान कृषि"
+        },
+        {
+          "en": "Commercial farming",
+          "bn": "বাণিজ্যিক কৃষি",
+          "hi": "वाणिज्यिक कृषि"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Multiple cropping means growing more than one crop on the same piece of land in a year, increasing the use of available land.",
+        "bn": "বহুফসলি চাষে একই জমিতে এক বছরে একাধিক ফসল উৎপাদন করা হয়, ফলে জমির ব্যবহার বৃদ্ধি পায়।",
+        "hi": "बहुफसली खेती में एक ही भूमि पर एक वर्ष में एक से अधिक फसलें उगाई जाती हैं, जिससे भूमि का उपयोग बढ़ता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "geo_ch_04_q002",
+      "question": {
+        "en": "Which crop is mainly grown as a kharif crop in India?",
+        "bn": "ভারতে কোন ফসলটি প্রধানত খরিফ ফসল হিসেবে চাষ করা হয়?",
+        "hi": "भारत में कौन-सी फसल मुख्यतः खरीफ फसल के रूप में उगाई जाती है?"
+      },
+      "options": [
+        {
+          "en": "Rice",
+          "bn": "ধান",
+          "hi": "चावल"
+        },
+        {
+          "en": "Wheat",
+          "bn": "গম",
+          "hi": "गेहूँ"
+        },
+        {
+          "en": "Gram",
+          "bn": "ছোলা",
+          "hi": "चना"
+        },
+        {
+          "en": "Mustard",
+          "bn": "সরিষা",
+          "hi": "सरसों"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Rice is generally sown with the onset of the monsoon and is therefore a major kharif crop, unlike wheat, gram and mustard, which are mainly rabi crops.",
+        "bn": "বর্ষার আগমনের সঙ্গে সাধারণত ধান বোনা হয়, তাই এটি একটি প্রধান খরিফ ফসল; গম, ছোলা ও সরিষা প্রধানত রবি ফসল।",
+        "hi": "धान सामान्यतः मानसून के आगमन के साथ बोया जाता है, इसलिए यह प्रमुख खरीफ फसल है; गेहूँ, चना और सरसों मुख्यतः रबी फसलें हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "geo_ch_04_q003",
+      "question": {
+        "en": "Which crop is known as a major rabi crop in India?",
+        "bn": "ভারতে কোন ফসলটি প্রধান রবি ফসল হিসেবে পরিচিত?",
+        "hi": "भारत में कौन-सी फसल प्रमुख रबी फसल के रूप में जानी जाती है?"
+      },
+      "options": [
+        {
+          "en": "Wheat",
+          "bn": "গম",
+          "hi": "गेहूँ"
+        },
+        {
+          "en": "Rice",
+          "bn": "ধান",
+          "hi": "चावल"
+        },
+        {
+          "en": "Jute",
+          "bn": "পাট",
+          "hi": "जूट"
+        },
+        {
+          "en": "Cotton",
+          "bn": "তুলা",
+          "hi": "कपास"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Wheat is sown mainly in the winter season and harvested in spring, which places it among India's major rabi crops.",
+        "bn": "গম প্রধানত শীতকালে বোনা হয় এবং বসন্তকালে কাটা হয়, তাই এটি ভারতের প্রধান রবি ফসলগুলির একটি।",
+        "hi": "गेहूँ मुख्यतः सर्दियों में बोया जाता है और वसंत ऋतु में काटा जाता है, इसलिए यह भारत की प्रमुख रबी फसलों में शामिल है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "geo_ch_04_q004",
+      "question": {
+        "en": "What was one important objective of land reform measures after independence?",
+        "bn": "স্বাধীনতার পর ভূমি সংস্কারের একটি গুরুত্বপূর্ণ উদ্দেশ্য কী ছিল?",
+        "hi": "स्वतंत्रता के बाद भूमि सुधार उपायों का एक प्रमुख उद्देश्य क्या था?"
+      },
+      "options": [
+        {
+          "en": "Abolition of zamindari",
+          "bn": "জমিদারি প্রথার বিলোপ",
+          "hi": "जमींदारी प्रथा का उन्मूलन"
+        },
+        {
+          "en": "Expansion of colonial land revenue systems",
+          "bn": "ঔপনিবেশিক ভূমি রাজস্ব ব্যবস্থা সম্প্রসারণ",
+          "hi": "औपनिवेशिक भू-राजस्व व्यवस्था का विस्तार"
+        },
+        {
+          "en": "Removal of all agricultural land",
+          "bn": "সমস্ত কৃষিজমি সরিয়ে ফেলা",
+          "hi": "सभी कृषि भूमि को हटा देना"
+        },
+        {
+          "en": "Ending cultivation by small farmers",
+          "bn": "ক্ষুদ্র কৃষকদের চাষাবাদ বন্ধ করা",
+          "hi": "छोटे किसानों की खेती बंद करना"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Abolishing zamindari was intended to remove intermediaries between cultivators and the state and improve the position of actual cultivators.",
+        "bn": "জমিদারি প্রথার বিলোপের উদ্দেশ্য ছিল চাষি ও সরকারের মধ্যবর্তী মধ্যস্বত্বভোগীদের সরিয়ে প্রকৃত চাষিদের অবস্থার উন্নতি করা।",
+        "hi": "जमींदारी प्रथा समाप्त करने का उद्देश्य किसानों और राज्य के बीच मध्यस्थों को हटाकर वास्तविक cultivators की स्थिति सुधारना था।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "geo_ch_04_q005",
+      "question": {
+        "en": "Which technological development contributed significantly to the Green Revolution in India?",
+        "bn": "ভারতে সবুজ বিপ্লবের বিকাশে কোন প্রযুক্তিগত অগ্রগতি গুরুত্বপূর্ণ ভূমিকা নিয়েছিল?",
+        "hi": "भारत में हरित क्रांति के विकास में किस तकनीकी प्रगति ने महत्वपूर्ण भूमिका निभाई?"
+      },
+      "options": [
+        {
+          "en": "High-yielding variety seeds",
+          "bn": "উচ্চফলনশীল জাতের বীজ",
+          "hi": "उच्च उपज देने वाली किस्मों के बीज"
+        },
+        {
+          "en": "Replacement of irrigation with rainfall",
+          "bn": "সেচের পরিবর্তে শুধুমাত্র বৃষ্টির ওপর নির্ভরতা",
+          "hi": "सिंचाई के स्थान पर केवल वर्षा पर निर्भरता"
+        },
+        {
+          "en": "Complete removal of fertilizers",
+          "bn": "সার সম্পূর্ণভাবে বাদ দেওয়া",
+          "hi": "उर्वरकों का पूरी तरह उपयोग बंद करना"
+        },
+        {
+          "en": "Reduction of agricultural technology",
+          "bn": "কৃষি প্রযুক্তির ব্যবহার কমিয়ে দেওয়া",
+          "hi": "कृषि तकनीक का उपयोग कम करना"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The Green Revolution relied heavily on high-yielding variety seeds along with irrigation, fertilizers and modern farming practices to raise crop production.",
+        "bn": "সবুজ বিপ্লবে উচ্চফলনশীল বীজের সঙ্গে সেচ, সার ও আধুনিক কৃষিপদ্ধতি ব্যবহার করে ফসলের উৎপাদন বাড়ানো হয়েছিল।",
+        "hi": "हरित क्रांति में उच्च उपज वाली किस्मों के बीज के साथ सिंचाई, उर्वरक और आधुनिक कृषि पद्धतियों का उपयोग करके उत्पादन बढ़ाया गया।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "geo_ch_04_q006",
+      "question": {
+        "en": "Which institution maintains buffer stocks of food grains in India?",
+        "bn": "ভারতে খাদ্যশস্যের বাফার স্টক কোন প্রতিষ্ঠান সংরক্ষণ করে?",
+        "hi": "भारत में खाद्यान्न का बफर स्टॉक कौन-सी संस्था बनाए रखती है?"
+      },
+      "options": [
+        {
+          "en": "Food Corporation of India",
+          "bn": "ফুড কর্পোরেশন অফ ইন্ডিয়া",
+          "hi": "भारतीय खाद्य निगम"
+        },
+        {
+          "en": "Reserve Bank of India",
+          "bn": "রিজার্ভ ব্যাঙ্ক অফ ইন্ডিয়া",
+          "hi": "भारतीय रिज़र्व बैंक"
+        },
+        {
+          "en": "Election Commission of India",
+          "bn": "ভারতের নির্বাচন কমিশন",
+          "hi": "भारत निर्वाचन आयोग"
+        },
+        {
+          "en": "Central Board of Direct Taxes",
+          "bn": "সেন্ট্রাল বোর্ড অফ ডাইরেক্ট ট্যাক্সেস",
+          "hi": "केंद्रीय प्रत्यक्ष कर बोर्ड"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The Food Corporation of India procures and stores food grains to maintain buffer stocks, which can be used during shortages and for the public distribution system.",
+        "bn": "ফুড কর্পোরেশন অফ ইন্ডিয়া খাদ্যশস্য সংগ্রহ ও সংরক্ষণ করে বাফার স্টক বজায় রাখে, যা ঘাটতির সময় এবং গণবণ্টন ব্যবস্থায় কাজে লাগে।",
+        "hi": "भारतीय खाद्य निगम खाद्यान्न की खरीद और भंडारण करके बफर स्टॉक बनाए रखता है, जिसका उपयोग कमी के समय और सार्वजनिक वितरण प्रणाली में किया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "geo_ch_04_q007",
+      "question": {
+        "en": "What is the main purpose of the Public Distribution System (PDS)?",
+        "bn": "গণবণ্টন ব্যবস্থা (PDS)-এর প্রধান উদ্দেশ্য কী?",
+        "hi": "सार्वजनिक वितरण प्रणाली (PDS) का मुख्य उद्देश्य क्या है?"
+      },
+      "options": [
+        {
+          "en": "To provide essential food grains at subsidised prices",
+          "bn": "ভর্তুকিযুক্ত দামে প্রয়োজনীয় খাদ্যশস্য সরবরাহ করা",
+          "hi": "रियायती कीमतों पर आवश्यक खाद्यान्न उपलब्ध कराना"
+        },
+        {
+          "en": "To export all food grains",
+          "bn": "সমস্ত খাদ্যশস্য রপ্তানি করা",
+          "hi": "सभी खाद्यान्न का निर्यात करना"
+        },
+        {
+          "en": "To increase food grain prices for consumers",
+          "bn": "ভোক্তাদের জন্য খাদ্যশস্যের দাম বাড়ানো",
+          "hi": "उपभोक्ताओं के लिए खाद्यान्न की कीमत बढ़ाना"
+        },
+        {
+          "en": "To replace agriculture with industry",
+          "bn": "কৃষির পরিবর্তে শিল্প স্থাপন করা",
+          "hi": "कृषि के स्थान पर उद्योग स्थापित करना"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The PDS distributes essential food grains through designated outlets at subsidised prices, helping improve access to food for eligible households.",
+        "bn": "গণবণ্টন ব্যবস্থা নির্দিষ্ট দোকানের মাধ্যমে ভর্তুকিযুক্ত দামে প্রয়োজনীয় খাদ্যশস্য সরবরাহ করে, ফলে যোগ্য পরিবারগুলির খাদ্যপ্রাপ্তি সহজ হয়।",
+        "hi": "सार्वजनिक वितरण प्रणाली निर्धारित दुकानों के माध्यम से रियायती कीमतों पर आवश्यक खाद्यान्न उपलब्ध कराती है, जिससे पात्र परिवारों की खाद्य तक पहुँच बेहतर होती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "geo_ch_04_q008",
+      "question": {
+        "en": "Which of the following best describes subsistence farming?",
+        "bn": "নিচের কোনটি জীবিকানির্ভর কৃষিকে সবচেয়ে ভালোভাবে বর্ণনা করে?",
+        "hi": "निम्नलिखित में से कौन-सा निर्वाह कृषि का सबसे उपयुक्त वर्णन है?"
+      },
+      "options": [
+        {
+          "en": "Farming mainly to meet the farmer's family's needs",
+          "bn": "প্রধানত কৃষকের পরিবারের প্রয়োজন মেটানোর জন্য কৃষিকাজ",
+          "hi": "मुख्यतः किसान के परिवार की आवश्यकताओं को पूरा करने के लिए खेती"
+        },
+        {
+          "en": "Farming only for international export",
+          "bn": "শুধুমাত্র আন্তর্জাতিক রপ্তানির জন্য কৃষিকাজ",
+          "hi": "केवल अंतरराष्ट्रीय निर्यात के लिए खेती"
+        },
+        {
+          "en": "Farming exclusively with machines on large estates",
+          "bn": "শুধু বড় খামারে যন্ত্রের সাহায্যে কৃষিকাজ",
+          "hi": "केवल बड़े खेतों में मशीनों से खेती"
+        },
+        {
+          "en": "Farming only for industrial raw materials",
+          "bn": "শুধুমাত্র শিল্পের কাঁচামালের জন্য কৃষিকাজ",
+          "hi": "केवल औद्योगिक कच्चे माल के लिए खेती"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Subsistence farming focuses primarily on producing food for the farmer's household rather than producing mainly for commercial sale.",
+        "bn": "জীবিকানির্ভর কৃষির প্রধান লক্ষ্য হল কৃষকের পরিবারের খাদ্যের চাহিদা মেটানো, বাণিজ্যিক বিক্রির জন্য উৎপাদন করা নয়।",
+        "hi": "निर्वाह कृषि का मुख्य उद्देश्य किसान के परिवार की खाद्य आवश्यकताओं को पूरा करना होता है, न कि मुख्य रूप से बिक्री के लिए उत्पादन करना।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "geo_ch_04_q009",
+      "question": {
+        "en": "Why is food security closely linked with agricultural production?",
+        "bn": "খাদ্য নিরাপত্তা কৃষি উৎপাদনের সঙ্গে ঘনিষ্ঠভাবে যুক্ত কেন?",
+        "hi": "खाद्य सुरक्षा कृषि उत्पादन से निकटता से क्यों जुड़ी है?"
+      },
+      "options": [
+        {
+          "en": "Adequate production helps ensure availability of food",
+          "bn": "পর্যাপ্ত উৎপাদন খাদ্যের প্রাপ্যতা নিশ্চিত করতে সাহায্য করে",
+          "hi": "पर्याप्त उत्पादन खाद्य की उपलब्धता सुनिश्चित करने में सहायता करता है"
+        },
+        {
+          "en": "Higher production always eliminates poverty",
+          "bn": "উৎপাদন বাড়লেই দারিদ্র্য সবসময় দূর হয়",
+          "hi": "उत्पादन बढ़ने से गरीबी हमेशा समाप्त हो जाती है"
+        },
+        {
+          "en": "Food security depends only on exports",
+          "bn": "খাদ্য নিরাপত্তা শুধুমাত্র রপ্তানির ওপর নির্ভর করে",
+          "hi": "खाद्य सुरक्षा केवल निर्यात पर निर्भर करती है"
+        },
+        {
+          "en": "Agricultural production has no relation to food availability",
+          "bn": "কৃষি উৎপাদনের সঙ্গে খাদ্যের প্রাপ্যতার কোনো সম্পর্ক নেই",
+          "hi": "कृषि उत्पादन का खाद्य उपलब्धता से कोई संबंध नहीं है"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Adequate agricultural production increases the physical availability of food, while distribution and people's access also determine overall food security.",
+        "bn": "পর্যাপ্ত কৃষি উৎপাদন খাদ্যের বাস্তব প্রাপ্যতা বাড়ায়; তবে বণ্টন ও মানুষের খাদ্য পাওয়ার ক্ষমতাও সামগ্রিক খাদ্য নিরাপত্তার জন্য গুরুত্বপূর্ণ।",
+        "hi": "पर्याप्त कृषि उत्पादन से खाद्य की उपलब्धता बढ़ती है; लेकिन वितरण और लोगों की भोजन तक पहुँच भी खाद्य सुरक्षा के लिए महत्वपूर्ण हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "geo_ch_04_q010",
+      "question": {
+        "en": "How did the Green Revolution contribute to India's food security?",
+        "bn": "সবুজ বিপ্লব কীভাবে ভারতের খাদ্য নিরাপত্তায় অবদান রেখেছিল?",
+        "hi": "हरित क्रांति ने भारत की खाद्य सुरक्षा में किस प्रकार योगदान दिया?"
+      },
+      "options": [
+        {
+          "en": "It increased the production of major food grains",
+          "bn": "এটি প্রধান খাদ্যশস্যের উৎপাদন বৃদ্ধি করেছিল",
+          "hi": "इसने प्रमुख खाद्यान्नों के उत्पादन में वृद्धि की"
+        },
+        {
+          "en": "It reduced the use of irrigation in agriculture",
+          "bn": "এটি কৃষিতে সেচের ব্যবহার কমিয়ে দিয়েছিল",
+          "hi": "इसने कृषि में सिंचाई के उपयोग को कम कर दिया"
+        },
+        {
+          "en": "It made India completely dependent on food imports",
+          "bn": "এটি ভারতকে সম্পূর্ণভাবে খাদ্য আমদানির ওপর নির্ভরশীল করে তুলেছিল",
+          "hi": "इसने भारत को पूरी तरह खाद्य आयात पर निर्भर बना दिया"
+        },
+        {
+          "en": "It ended the cultivation of wheat and rice",
+          "bn": "এটি গম ও ধানের চাষ বন্ধ করে দিয়েছিল",
+          "hi": "इसने गेहूँ और चावल की खेती समाप्त कर दी"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The Green Revolution increased yields, particularly of wheat and rice, helping India raise food-grain availability and strengthen food security.",
+        "bn": "সবুজ বিপ্লব বিশেষত গম ও ধানের ফলন বাড়িয়ে খাদ্যশস্যের প্রাপ্যতা বৃদ্ধি করেছিল এবং ভারতের খাদ্য নিরাপত্তাকে শক্তিশালী করতে সাহায্য করেছিল।",
+        "hi": "हरित क्रांति ने विशेष रूप से गेहूँ और चावल की उपज बढ़ाई, जिससे भारत में खाद्यान्न की उपलब्धता बढ़ी और खाद्य सुरक्षा मजबूत हुई।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    }
+  ]
 }
