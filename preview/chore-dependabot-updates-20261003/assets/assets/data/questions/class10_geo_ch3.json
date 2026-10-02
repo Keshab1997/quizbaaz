@@ -1,0 +1,391 @@
+{
+  "chapter_id": "geo_ch_03",
+  "chapter_title": {
+    "en": "Water Resources",
+    "bn": "জল সম্পদ",
+    "hi": "जल संसाधन"
+  },
+  "class_standard": "Class 10",
+  "questions": [
+    {
+      "id": "geo_ch_03_q001",
+      "question": {
+        "en": "Which of the following is a major purpose of building dams?",
+        "bn": "নিচের কোনটি বাঁধ নির্মাণের একটি প্রধান উদ্দেশ্য?",
+        "hi": "निम्नलिखित में से बाँध बनाने का प्रमुख उद्देश्य क्या है?"
+      },
+      "options": [
+        {
+          "en": "Water storage and irrigation",
+          "bn": "জল সংরক্ষণ ও সেচ",
+          "hi": "जल संग्रहण और सिंचाई"
+        },
+        {
+          "en": "Increasing soil erosion",
+          "bn": "মাটির ক্ষয় বৃদ্ধি করা",
+          "hi": "मृदा अपरदन बढ़ाना"
+        },
+        {
+          "en": "Reducing groundwater recharge",
+          "bn": "ভূগর্ভস্থ জল পুনর্ভরণ কমানো",
+          "hi": "भूजल पुनर्भरण कम करना"
+        },
+        {
+          "en": "Preventing all rainfall",
+          "bn": "সমস্ত বৃষ্টিপাত বন্ধ করা",
+          "hi": "सभी वर्षा को रोकना"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Dams store water and regulate its supply, making it available for irrigation and other uses during periods of need.",
+        "bn": "বাঁধ জল সংরক্ষণ করে এবং তার সরবরাহ নিয়ন্ত্রণ করে, ফলে প্রয়োজনের সময় সেচ ও অন্যান্য কাজে জল পাওয়া যায়।",
+        "hi": "बाँध जल का संग्रहण और उसके प्रवाह का नियंत्रण करते हैं, जिससे आवश्यकता के समय सिंचाई और अन्य कार्यों के लिए जल उपलब्ध होता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "geo_ch_03_q002",
+      "question": {
+        "en": "Which multipurpose project is built on the Mahanadi River?",
+        "bn": "মহানদী নদীর ওপর কোন বহুমুখী প্রকল্প নির্মিত হয়েছে?",
+        "hi": "महानदी नदी पर कौन-सी बहुउद्देशीय परियोजना बनाई गई है?"
+      },
+      "options": [
+        {
+          "en": "Hirakud Dam",
+          "bn": "হিরাকুদ বাঁধ",
+          "hi": "हीराकुंड बाँध"
+        },
+        {
+          "en": "Bhakra Nangal Project",
+          "bn": "ভাকরা নাঙ্গাল প্রকল্প",
+          "hi": "भाखड़ा नांगल परियोजना"
+        },
+        {
+          "en": "Tehri Dam",
+          "bn": "টেহরি বাঁধ",
+          "hi": "टिहरी बाँध"
+        },
+        {
+          "en": "Sardar Sarovar Project",
+          "bn": "সর্দার সরোবর প্রকল্প",
+          "hi": "सरदार सरोवर परियोजना"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The Hirakud Dam is constructed across the Mahanadi River and serves purposes such as flood control, irrigation and hydroelectric power generation.",
+        "bn": "হিরাকুদ বাঁধ মহানদী নদীর ওপর নির্মিত এবং এটি বন্যা নিয়ন্ত্রণ, সেচ ও জলবিদ্যুৎ উৎপাদনের মতো কাজে ব্যবহৃত হয়।",
+        "hi": "हीराकुंड बाँध महानदी नदी पर बना है और इसका उपयोग बाढ़ नियंत्रण, सिंचाई तथा जलविद्युत उत्पादन जैसे कार्यों के लिए होता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "geo_ch_03_q003",
+      "question": {
+        "en": "What is rainwater harvesting?",
+        "bn": "বৃষ্টির জল সংরক্ষণ বা Rainwater Harvesting কী?",
+        "hi": "वर्षा जल संचयन क्या है?"
+      },
+      "options": [
+        {
+          "en": "Collecting and storing rainwater for later use",
+          "bn": "বৃষ্টির জল সংগ্রহ করে পরবর্তী ব্যবহারের জন্য সংরক্ষণ করা",
+          "hi": "वर्षा जल को एकत्र करके बाद में उपयोग के लिए संग्रहित करना"
+        },
+        {
+          "en": "Diverting all river water into the sea",
+          "bn": "সমস্ত নদীর জল সমুদ্রে প্রবাহিত করা",
+          "hi": "सभी नदी के जल को समुद्र में बहा देना"
+        },
+        {
+          "en": "Removing groundwater from wells",
+          "bn": "কূপ থেকে ভূগর্ভস্থ জল তুলে ফেলা",
+          "hi": "कुओं से भूजल निकाल देना"
+        },
+        {
+          "en": "Increasing water pollution",
+          "bn": "জলদূষণ বৃদ্ধি করা",
+          "hi": "जल प्रदूषण बढ़ाना"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Rainwater harvesting captures rainwater from suitable surfaces and stores it or directs it underground for future use.",
+        "bn": "বৃষ্টির জল সংরক্ষণে উপযুক্ত স্থান থেকে বৃষ্টির জল সংগ্রহ করে সংরক্ষণ করা হয় অথবা ভবিষ্যৎ ব্যবহারের জন্য ভূগর্ভে প্রবেশ করানো হয়।",
+        "hi": "वर्षा जल संचयन में उपयुक्त सतहों से वर्षा जल एकत्र करके उसे संग्रहित किया जाता है या भविष्य के उपयोग के लिए भूजल में पहुँचाया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "geo_ch_03_q004",
+      "question": {
+        "en": "Which state has a long tradition of rooftop rainwater harvesting?",
+        "bn": "কোন রাজ্যে ছাদ থেকে বৃষ্টির জল সংরক্ষণের দীর্ঘ ঐতিহ্য রয়েছে?",
+        "hi": "किस राज्य में छत से वर्षा जल संचयन की लंबे समय से परंपरा रही है?"
+      },
+      "options": [
+        {
+          "en": "Rajasthan",
+          "bn": "রাজস্থান",
+          "hi": "राजस्थान"
+        },
+        {
+          "en": "Assam",
+          "bn": "অসম",
+          "hi": "असम"
+        },
+        {
+          "en": "Kerala",
+          "bn": "কেরল",
+          "hi": "केरल"
+        },
+        {
+          "en": "Bihar",
+          "bn": "বিহার",
+          "hi": "बिहार"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Rajasthan has traditionally used rooftop rainwater harvesting, especially in areas where rainfall is limited and water is scarce.",
+        "bn": "রাজস্থানে ঐতিহ্যগতভাবে ছাদ থেকে বৃষ্টির জল সংগ্রহ করা হয়, বিশেষত কম বৃষ্টিপাত ও জলাভাবপূর্ণ অঞ্চলে।",
+        "hi": "राजस्थान में परंपरागत रूप से छत से वर्षा जल एकत्र किया जाता है, विशेषकर कम वर्षा और जल की कमी वाले क्षेत्रों में।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "geo_ch_03_q005",
+      "question": {
+        "en": "Which of the following is a major cause of water scarcity in many regions?",
+        "bn": "অনেক অঞ্চলে জলাভাবের একটি প্রধান কারণ কোনটি?",
+        "hi": "कई क्षेत्रों में जल की कमी का प्रमुख कारण निम्नलिखित में से कौन-सा है?"
+      },
+      "options": [
+        {
+          "en": "Rapid population growth and increased demand",
+          "bn": "দ্রুত জনসংখ্যা বৃদ্ধি ও জলের চাহিদা বৃদ্ধি",
+          "hi": "तेजी से बढ़ती जनसंख्या और जल की बढ़ती माँग"
+        },
+        {
+          "en": "Reduction in water use",
+          "bn": "জলের ব্যবহার কমে যাওয়া",
+          "hi": "जल के उपयोग में कमी"
+        },
+        {
+          "en": "Increase in water conservation",
+          "bn": "জল সংরক্ষণ বৃদ্ধি",
+          "hi": "जल संरक्षण में वृद्धि"
+        },
+        {
+          "en": "Decline in domestic consumption",
+          "bn": "গৃহস্থালিতে জলের ব্যবহার কমে যাওয়া",
+          "hi": "घरेलू जल उपयोग में कमी"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Population growth increases demand for domestic, agricultural and industrial water, which can intensify pressure on limited supplies.",
+        "bn": "জনসংখ্যা বৃদ্ধি পাওয়ায় গৃহস্থালি, কৃষি ও শিল্পক্ষেত্রে জলের চাহিদা বাড়ে, ফলে সীমিত জলসম্পদের ওপর চাপ বৃদ্ধি পায়।",
+        "hi": "जनसंख्या बढ़ने से घरेलू, कृषि और औद्योगिक क्षेत्रों में जल की माँग बढ़ती है, जिससे सीमित जल संसाधनों पर दबाव बढ़ता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "geo_ch_03_q006",
+      "question": {
+        "en": "Which of the following can directly help recharge groundwater?",
+        "bn": "নিচের কোনটি সরাসরি ভূগর্ভস্থ জল পুনর্ভরণে সাহায্য করতে পারে?",
+        "hi": "निम्नलिखित में से कौन-सा भूजल पुनर्भरण में सीधे सहायता कर सकता है?"
+      },
+      "options": [
+        {
+          "en": "Rainwater harvesting",
+          "bn": "বৃষ্টির জল সংরক্ষণ",
+          "hi": "वर्षा जल संचयन"
+        },
+        {
+          "en": "Excessive groundwater pumping",
+          "bn": "অতিরিক্ত ভূগর্ভস্থ জল উত্তোলন",
+          "hi": "अत्यधिक भूजल दोहन"
+        },
+        {
+          "en": "Paving all open ground",
+          "bn": "সমস্ত খোলা জমি পাকা করে দেওয়া",
+          "hi": "सभी खुले भू-भाग को पक्का कर देना"
+        },
+        {
+          "en": "Increasing water pollution",
+          "bn": "জলদূষণ বৃদ্ধি করা",
+          "hi": "जल प्रदूषण बढ़ाना"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Rainwater harvesting can allow collected water to percolate into the ground, increasing the amount of water entering underground aquifers.",
+        "bn": "বৃষ্টির জল সংরক্ষণ পদ্ধতিতে সংগৃহীত জল মাটির মধ্যে প্রবেশ করতে পারে, ফলে ভূগর্ভস্থ জলাধারে জলের পরিমাণ বাড়ে।",
+        "hi": "वर्षा जल संचयन से एकत्र जल को जमीन में रिसने दिया जा सकता है, जिससे भूमिगत जलभृतों में जल की मात्रा बढ़ती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "geo_ch_03_q007",
+      "question": {
+        "en": "Why are multipurpose river valley projects sometimes opposed by local communities?",
+        "bn": "বহুমুখী নদী উপত্যকা প্রকল্পের বিরোধিতা স্থানীয় সম্প্রদায়গুলি কখনও কেন করে?",
+        "hi": "बहुउद्देशीय नदी घाटी परियोजनाओं का स्थानीय समुदाय कभी-कभी विरोध क्यों करते हैं?"
+      },
+      "options": [
+        {
+          "en": "They may cause displacement and submergence of land",
+          "bn": "এগুলির কারণে মানুষকে উচ্ছেদ করতে হতে পারে এবং জমি জলমগ্ন হতে পারে",
+          "hi": "इनसे लोगों का विस्थापन और भूमि का जलमग्न होना हो सकता है"
+        },
+        {
+          "en": "They always stop all irrigation",
+          "bn": "এগুলি সবসময় সমস্ত সেচ ব্যবস্থা বন্ধ করে দেয়",
+          "hi": "ये हमेशा पूरी सिंचाई व्यवस्था बंद कर देती हैं"
+        },
+        {
+          "en": "They cannot store any water",
+          "bn": "এগুলি কোনো জল সংরক্ষণ করতে পারে না",
+          "hi": "ये कोई जल संग्रहित नहीं कर सकतीं"
+        },
+        {
+          "en": "They are built only in deserts",
+          "bn": "এগুলি শুধু মরুভূমিতে নির্মিত হয়",
+          "hi": "ये केवल रेगिस्तानों में बनाई जाती हैं"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Large dams can submerge villages and agricultural land, requiring people to relocate and sometimes affecting their livelihoods.",
+        "bn": "বড় বাঁধ নির্মাণের ফলে গ্রাম ও কৃষিজমি জলমগ্ন হতে পারে, যার কারণে মানুষকে স্থানান্তরিত হতে হয় এবং জীবিকাও প্রভাবিত হতে পারে।",
+        "hi": "बड़े बाँधों से गाँव और कृषि भूमि जलमग्न हो सकते हैं, जिसके कारण लोगों को विस्थापित होना पड़ता है और उनकी आजीविका प्रभावित हो सकती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "geo_ch_03_q008",
+      "question": {
+        "en": "Which traditional rainwater storage structure is commonly associated with Rajasthan?",
+        "bn": "রাজস্থানের সঙ্গে কোন ঐতিহ্যবাহী বৃষ্টির জল সংরক্ষণ কাঠামোটি বিশেষভাবে যুক্ত?",
+        "hi": "राजस्थान से कौन-सी पारंपरिक वर्षा जल संग्रहण संरचना विशेष रूप से जुड़ी है?"
+      },
+      "options": [
+        {
+          "en": "Khadins and tankas",
+          "bn": "খাদিন ও টাঁকা",
+          "hi": "खादिन और टांका"
+        },
+        {
+          "en": "Bamboo drip irrigation",
+          "bn": "বাঁশের ফোঁটা সেচ",
+          "hi": "बाँस की टपक सिंचाई"
+        },
+        {
+          "en": "Ahar-Pyne",
+          "bn": "আহার-পাইন",
+          "hi": "आहर-पाइन"
+        },
+        {
+          "en": "Kuls",
+          "bn": "কুল",
+          "hi": "कुल"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Khadins and tankas are traditional water-harvesting systems associated with Rajasthan's dry regions and help conserve scarce rainwater.",
+        "bn": "খাদিন ও টাঁকা রাজস্থানের শুষ্ক অঞ্চলের ঐতিহ্যবাহী জলসংরক্ষণ ব্যবস্থা, যা অল্প বৃষ্টির জল সংরক্ষণে সাহায্য করে।",
+        "hi": "खादिन और टांका राजस्थान के शुष्क क्षेत्रों से जुड़ी पारंपरिक जल-संरक्षण प्रणालियाँ हैं, जो कम वर्षा के जल को बचाने में सहायता करती हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "geo_ch_03_q009",
+      "question": {
+        "en": "How can intensive irrigation contribute to water scarcity?",
+        "bn": "নিবিড় সেচ কীভাবে জলাভাব সৃষ্টি করতে পারে?",
+        "hi": "गहन सिंचाई जल की कमी में कैसे योगदान कर सकती है?"
+      },
+      "options": [
+        {
+          "en": "It can lead to excessive withdrawal of groundwater",
+          "bn": "এর ফলে অতিরিক্ত পরিমাণে ভূগর্ভস্থ জল উত্তোলন হতে পারে",
+          "hi": "इससे भूजल का अत्यधिक दोहन हो सकता है"
+        },
+        {
+          "en": "It always increases groundwater levels",
+          "bn": "এটি সবসময় ভূগর্ভস্থ জলের স্তর বাড়ায়",
+          "hi": "यह हमेशा भूजल स्तर बढ़ाती है"
+        },
+        {
+          "en": "It completely stops evaporation",
+          "bn": "এটি সম্পূর্ণভাবে বাষ্পীভবন বন্ধ করে দেয়",
+          "hi": "यह वाष्पीकरण को पूरी तरह रोक देती है"
+        },
+        {
+          "en": "It prevents all agricultural water use",
+          "bn": "এটি কৃষিতে সমস্ত জলের ব্যবহার বন্ধ করে দেয়",
+          "hi": "यह कृषि में जल के सभी उपयोग को रोक देती है"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "When irrigation depends heavily on groundwater, continuous pumping can remove water faster than natural recharge, lowering groundwater levels.",
+        "bn": "সেচের জন্য অতিরিক্ত ভূগর্ভস্থ জল তোলা হলে প্রাকৃতিক পুনর্ভরণের তুলনায় দ্রুত জল কমে যেতে পারে এবং ভূগর্ভস্থ জলের স্তর নেমে যায়।",
+        "hi": "जब सिंचाई के लिए भूजल पर अधिक निर्भरता होती है, तो लगातार दोहन प्राकृतिक पुनर्भरण से अधिक हो सकता है और भूजल स्तर घट सकता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "geo_ch_03_q010",
+      "question": {
+        "en": "Why is water scarcity possible even in areas with adequate rainfall?",
+        "bn": "পর্যাপ্ত বৃষ্টিপাত হলেও কোনো অঞ্চলে জলাভাব কেন হতে পারে?",
+        "hi": "पर्याप्त वर्षा होने पर भी किसी क्षेत्र में जल की कमी क्यों हो सकती है?"
+      },
+      "options": [
+        {
+          "en": "Water may be polluted, unevenly distributed, or poorly managed",
+          "bn": "জল দূষিত হতে পারে, অসমভাবে বণ্টিত হতে পারে বা সঠিকভাবে ব্যবস্থাপনা না-ও হতে পারে",
+          "hi": "जल प्रदूषित, असमान रूप से वितरित या उचित रूप से प्रबंधित नहीं हो सकता"
+        },
+        {
+          "en": "Rainfall always guarantees clean drinking water",
+          "bn": "বৃষ্টিপাত হলেই সবসময় বিশুদ্ধ পানীয় জল নিশ্চিত হয়",
+          "hi": "वर्षा होने से हमेशा स्वच्छ पेयजल सुनिश्चित होता है"
+        },
+        {
+          "en": "Rainwater cannot enter rivers",
+          "bn": "বৃষ্টির জল কখনও নদীতে প্রবেশ করতে পারে না",
+          "hi": "वर्षा जल कभी नदियों में प्रवेश नहीं कर सकता"
+        },
+        {
+          "en": "Groundwater is never affected by human use",
+          "bn": "মানুষের ব্যবহারে ভূগর্ভস্থ জল কখনও প্রভাবিত হয় না",
+          "hi": "मानवीय उपयोग से भूजल कभी प्रभावित नहीं होता"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Water scarcity depends not only on rainfall but also on water quality, distribution, availability and management; pollution or excessive use can reduce usable water.",
+        "bn": "জলাভাব শুধু বৃষ্টিপাতের ওপর নির্ভর করে না; জলের গুণমান, বণ্টন, প্রাপ্যতা ও ব্যবস্থাপনাও গুরুত্বপূর্ণ। দূষণ বা অতিরিক্ত ব্যবহার ব্যবহারযোগ্য জল কমিয়ে দিতে পারে।",
+        "hi": "जल की कमी केवल वर्षा पर निर्भर नहीं करती; जल की गुणवत्ता, वितरण, उपलब्धता और प्रबंधन भी महत्वपूर्ण हैं। प्रदूषण या अत्यधिक उपयोग से उपयोग योग्य जल कम हो सकता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    }
+  ]
+}
