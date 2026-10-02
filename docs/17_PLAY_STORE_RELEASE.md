@@ -27,6 +27,18 @@ openssl base64 -A -in android/app/google-services.json | gh secret set GOOGLE_SE
 Keep your local copy (gitignored); re-set the secret only when Firebase gives
 you a refreshed file.
 
+The secret is required by **every** Android workflow, not just the release one —
+an APK built without it installs and then throws on `Firebase.initializeApp()`:
+
+| Workflow | How it reaches the builder |
+|---|---|
+| `publish-release.yml` | `secrets: inherit`, plus `preflight-require-firebase: true` so an empty secret fails the run instead of shipping an offline-only build |
+| `manual-build.yml` | explicit `GOOGLE_SERVICES_JSON_BASE64:` mapping in the job's `secrets:` block |
+| `release.yml` (tag) | explicit mapping, same as above |
+
+A `with:` input cannot read the secrets context — GitHub rejects the whole
+workflow at parse time — so the file always travels as a secret.
+
 
 ### 1. Create and protect the upload key
 
