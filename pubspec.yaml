@@ -54,7 +54,7 @@ dependencies:
   timezone: ^0.11.1
   flutter_timezone: ^4.1.1
   # Live push via OneSignal (FCM under the hood). See docs/16.
-  onesignal_flutter: ^5.3.4
+  onesignal_flutter: ^5.7.0
   # Real versionName/versionCode for splash + Profile (never hardcode 1.0.0).
   package_info_plus: ^8.3.0
   # Play in-app updates so Closed testing testers get the new AAB in-app.
