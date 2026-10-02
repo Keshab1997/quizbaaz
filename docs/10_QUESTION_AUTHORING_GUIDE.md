@@ -1,7 +1,7 @@
 # Question Authoring Guide — QuizBaaz 3D
 
 How to add questions to the bank so they render correctly in **English,
-বাংলা and हिन्दी**, and pass `tool/validate_questions.py`.
+বাংলা and हिन्दी**, and pass `tool/validate_questions.py --strict`.
 
 ---
 
@@ -132,7 +132,7 @@ validator.
 ## 4. Before committing — always
 
 ```bash
-python3 tool/validate_questions.py
+python3 tool/validate_questions.py --strict
 ```
 
 It catches what a quick read misses:
@@ -148,7 +148,7 @@ Useful variants:
 
 ```bash
 python3 tool/validate_questions.py --stats    # per-chapter coverage table
-python3 tool/validate_questions.py --strict   # fail on warnings too
+python3 tool/validate_questions.py --strict   # same strict gate used in CI
 ```
 
 ---
