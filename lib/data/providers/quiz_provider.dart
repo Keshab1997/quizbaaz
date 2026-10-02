@@ -834,8 +834,32 @@ class QuizProvider extends ChangeNotifier {
         correct: _correctCount,
         total: _questions.length,
         timeSeconds: _totalTimeSeconds,
+        // Per-question breakdown so the server can re-score the run against the
+        // published packet + question bank instead of trusting our count. The
+        // option order is shuffled per device, so we send the chosen option's
+        // *text* (all languages), which is what the answer key holds.
+        answers: _buildServerAnswers(),
       );
     }
+  }
+
+  /// The per-question payload for `submitDailyResult`: the id of each question
+  /// played and the chosen option's localized text (null on a timeout/skip).
+  /// The server matches the text against the packet's answer key.
+  List<Map<String, dynamic>> _buildServerAnswers() {
+    return [
+      for (final record in _answerRecords)
+        <String, dynamic>{
+          'question_id': record.question.id,
+          'selected':
+              record.status == AnswerStatus.answered &&
+                      record.selectedIndex != null &&
+                      record.selectedIndex! >= 0 &&
+                      record.selectedIndex! < record.question.optionTexts.length
+                  ? record.question.optionTexts[record.selectedIndex!].toJson()
+                  : null,
+        },
+    ];
   }
 
   // -------------------------------------------------------------- Lifelines --
