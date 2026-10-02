@@ -18,6 +18,8 @@ import '../../../data/services/question_prompt_builder.dart';
 import '../../../data/services/question_validator.dart';
 import '../../widgets/glass_card.dart';
 import 'ai_generation_review_screen.dart';
+import 'widgets/admin_access_banner.dart';
+import 'widgets/admin_access_widgets.dart';
 import 'widgets/trilingual_field.dart';
 
 /// The question bank for one chapter.
@@ -230,6 +232,11 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
                   padding: const EdgeInsets.fromLTRB(16, 8, 16, 150),
                   children: [
                     _header(untranslated),
+                    const SizedBox(height: 12),
+                    AdminPromptCopyCard(
+                      chapter: widget.chapter,
+                      subjectName: widget.subjectName,
+                    ),
                     const SizedBox(height: 12),
                     _searchBox(),
                     const SizedBox(height: 10),
@@ -778,7 +785,23 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
       await _load();
       if (mounted) _showAppendResult(result);
     } catch (e) {
-      _toast('Could not save: $e', error: true);
+      if (!mounted) return;
+      await showDialog(
+        context: context,
+        builder:
+            (ctx) => AlertDialog(
+              backgroundColor: AppColors.bgCard,
+              content: SingleChildScrollView(
+                child: AdminAccessBanner(error: e),
+              ),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(ctx),
+                  child: const Text('Close'),
+                ),
+              ],
+            ),
+      );
     }
   }
 
@@ -882,7 +905,23 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
       }
       await _load();
     } catch (e) {
-      _toast('Save failed: $e', error: true);
+      if (!mounted) return;
+      await showDialog(
+        context: context,
+        builder:
+            (ctx) => AlertDialog(
+              backgroundColor: AppColors.bgCard,
+              content: SingleChildScrollView(
+                child: AdminAccessBanner(error: e),
+              ),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(ctx),
+                  child: const Text('Close'),
+                ),
+              ],
+            ),
+      );
     }
   }
 
@@ -1288,6 +1327,15 @@ class _QuestionSheetState extends State<_QuestionSheet> {
         List.generate(4, (_) => const LocalizedText.empty());
     _explanation = e?.explanationText ?? const LocalizedText.empty();
     _correctIndex = e?.correctIndex ?? 0;
+    _translator = AiQuestionGenerator();
+  }
+
+  AiQuestionGenerator? _translator;
+
+  Future<Map<String, String>?> _translateOne(String english) {
+    final translator = _translator;
+    if (translator == null || english.trim().isEmpty) return Future.value(null);
+    return translator.translateField(english.trim());
   }
 
   @override
@@ -1377,6 +1425,7 @@ class _QuestionSheetState extends State<_QuestionSheet> {
                       minLines: 2,
                       maxLines: 5,
                       onChanged: (v) => setState(() => _question = v),
+                      onTranslate: _translateOne,
                     ),
                     const SizedBox(height: 18),
                     const Text(
@@ -1401,6 +1450,7 @@ class _QuestionSheetState extends State<_QuestionSheet> {
                       maxLines: 4,
                       helperText: 'shown on the review screen',
                       onChanged: (v) => setState(() => _explanation = v),
+                      onTranslate: _translateOne,
                     ),
                     const SizedBox(height: 16),
                     Row(
@@ -1514,6 +1564,7 @@ class _QuestionSheetState extends State<_QuestionSheet> {
               minLines: 1,
               maxLines: 2,
               onChanged: (v) => setState(() => _options[index] = v),
+              onTranslate: _translateOne,
             ),
           ),
           if (_options.length > 2)

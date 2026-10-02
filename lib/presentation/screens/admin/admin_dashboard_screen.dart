@@ -9,6 +9,7 @@ import 'shop_manager_screen.dart';
 import 'avatar_manager_screen.dart';
 import 'chapter_manager_screen.dart';
 import '../../../l10n/app_strings.dart';
+import 'widgets/admin_access_banner.dart';
 
 /// Admin Dashboard - Main admin panel with overview and navigation
 class AdminDashboardScreen extends StatelessWidget {
@@ -54,6 +55,7 @@ class AdminDashboardScreen extends StatelessWidget {
           ],
         ),
         actions: [
+          const AdminClaimChip(),
           Container(
             margin: const EdgeInsets.only(right: 16),
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
