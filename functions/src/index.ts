@@ -5,13 +5,15 @@
 // state (P0 security fix, R02):
 //
 //   * setAdmin          — issue/revoke the `admin` custom claim (bootstrap).
-//   * submitDailyResult — server-computed, once-per-day daily quiz credit.
+//   * submitDailyResult — server-verified, once-per-day daily quiz credit.
 //   * purchaseItem      — atomic server-side wallet check, deduct & grant.
 //   * resolveBattle     — server-declared battle winner (clients can't).
 //
-// Clients remain offline-first: the game runs locally in Hive, and these
-// operations fire when the player is signed in + online. Until this project
-// is deployed, the client fail-softs and keeps its local behaviour.
+// Every callable is built through `./options`, which pins the region to
+// asia-south1 and enforces App Check on all of them. Clients remain
+// offline-first: the game runs locally in Hive, and these operations fire when
+// the player is signed in + online. Until this project is deployed, the client
+// fail-softs and keeps its local behaviour.
 //
 // Deploy:
 //   cd functions && npm install && npm run build
