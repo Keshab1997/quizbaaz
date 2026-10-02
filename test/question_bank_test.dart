@@ -245,6 +245,49 @@ void main() {
       expect(result.isAcceptable, isTrue, reason: result.summary);
     });
 
+    test('and so are ratios, measurements and formulas', () {
+      // They contain spaces but no prose: "50 Hz" reads the same in all three
+      // languages, so identical copies are not a skipped translation.
+      final result = QuestionValidator.validate(
+        buildQuestion(
+          options: const [
+            {'en': '50 Hz', 'bn': '50 Hz', 'hi': '50 Hz'},
+            {'en': '100 kPa', 'bn': '100 kPa', 'hi': '100 kPa'},
+            {'en': '1 : 2', 'bn': '1 : 2', 'hi': '1 : 2'},
+            {
+              'en': 'H = I² · R · t',
+              'bn': 'H = I² · R · t',
+              'hi': 'H = I² · R · t',
+            },
+          ],
+        ),
+      );
+      expect(result.isAcceptable, isTrue, reason: result.summary);
+    });
+
+    test('but short English phrases pasted back are still rejected', () {
+      // Two-letter words alone ("It is") must not pass as symbols, and a
+      // proper-noun phrase still needs its own script.
+      for (final english in const ['It is', 'Bengal Gazette']) {
+        final result = QuestionValidator.validate(
+          buildQuestion(
+            options: [
+              {'en': english, 'bn': english, 'hi': 'हिंदी'},
+              {'en': 'Four', 'bn': 'চার', 'hi': 'चार'},
+              {'en': 'Eight', 'bn': 'আট', 'hi': 'आठ'},
+              {'en': 'Sixteen', 'bn': 'ষোলো', 'hi': 'सोलह'},
+            ],
+          ),
+        );
+        expect(result.isAcceptable, isFalse, reason: english);
+        expect(
+          result.summary,
+          contains('identical to English'),
+          reason: english,
+        );
+      }
+    });
+
     test('a single technical term kept in English is allowed', () {
       // The authoring guide says a term may stay in English when that is what
       // the classroom uses. Only multi-word prose counts as untranslated.
