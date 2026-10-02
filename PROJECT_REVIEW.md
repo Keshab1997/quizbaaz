@@ -1,5 +1,12 @@
 # Project Review — QuizBaaz Flutter
 
+> [!NOTE]
+> **Historical snapshot (7 Sep 2026).** Kept for the reasoning behind each finding, but the numbers and
+> status below are out of date: the bundled banks are no longer empty (510 questions / 56 chapter banks),
+> the sound assets are real files, GitHub Actions CI exists, and the three P0 items (R01–R03) were fixed —
+> see [`docs/SECURITY_P0_FIXES.md`](docs/SECURITY_P0_FIXES.md). The status of R04–R24 was not re-audited
+> when this note was added; check the code before acting on one.
+
 > **Review date:** 7 September 2026 · Asia/Kolkata<br>
 > **Repository:** [Keshab1997/quizbaaz-flutter](https://github.com/Keshab1997/quizbaaz-flutter)<br>
 > **Reviewed snapshot:** [`5de9fff83cdc74b28a79d68a8f7c60d6ee1490c2`](https://github.com/Keshab1997/quizbaaz-flutter/commit/5de9fff83cdc74b28a79d68a8f7c60d6ee1490c2) · branch `main`<br>
