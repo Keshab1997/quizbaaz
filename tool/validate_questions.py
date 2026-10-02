@@ -54,6 +54,24 @@ def localized(raw):
     return {}
 
 
+def _is_shared_option_label(text):
+    """Recognises answer-choice notation that is normally language-neutral."""
+    # Numbers, measurements, ratios and scientific/mathematical notation are
+    # often identical in every language; flagging them as untranslated is noise.
+    if any(char.isdigit() for char in text):
+        return True
+    if any(char in text for char in '=+-−×÷*/<>≤≥∝→·'):
+        return True
+
+    # Short title-cased labels are commonly publication names or proper nouns
+    # (for example, "Bengal Gazette"), not copied prose.
+    punctuation = ".,:;!?()[]{}\"'"
+    words = [word.strip(punctuation) for word in text.split()]
+    words = [word for word in words if word]
+    return (2 <= len(words) <= 3 and
+            all(word[0].isupper() and word[1:].islower() for word in words))
+
+
 def check_localized(report, where, field, raw, *, required=True):
     """Verifies one translatable field and returns the languages it covers."""
     values = localized(raw)
@@ -77,14 +95,9 @@ def check_localized(report, where, field, raw, *, required=True):
     if missing:
         report.warn(where, f'{field} missing {", ".join(missing)}')
 
-    # Untranslated copy-paste: identical text in two languages usually means
-    # the translation step was skipped. Mirrors `_looksUntranslated` in
-    # lib/data/services/question_validator.dart — keep the two in step.
-    #
-    # Single tokens are exempt: 'H2O', 'NaCl', '1947' and technical terms the
-    # classroom keeps in English ('Router') legitimately read the same in all
-    # three languages. Requiring a space isolates real prose.
-    #
+    # Untranslated copy-paste: identical prose in two languages usually means
+    # the translation step was skipped. Short answer choices are different:
+    # units, equations, ratios and proper names often should stay unchanged.
     # Deliberate difference from the Dart validator: this is a *warning* here
     # and a *rejection* there. Assets are hand-authored and reviewed, so the
     # author gets the final say; a generated draft can simply be regenerated.
@@ -95,6 +108,8 @@ def check_localized(report, where, field, raw, *, required=True):
                 continue
             if any(ord(c) > 0x24F for c in english):
                 continue  # already non-Latin, so not a skipped translation
+            if field.startswith('options[') and _is_shared_option_label(english):
+                continue
             report.warn(where, f'{field}.{lang} is identical to English')
 
     return values

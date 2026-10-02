@@ -45,7 +45,7 @@ jobs:
         run: flutter test
 
       - name: Question banks are valid
-        run: python3 tool/validate_questions.py
+        run: python3 tool/validate_questions.py --strict
 
       # Needs a service account, so it only runs where secrets exist —
       # on the weekly schedule or an explicit manual run, not on fork PRs.
@@ -132,7 +132,7 @@ jobs:
         run: python3 tool/pull_firestore_questions.py --update-catalog-counts
 
       - name: Validate what we just wrote
-        run: python3 tool/validate_questions.py
+        run: python3 tool/validate_questions.py --strict
 
       - name: Open a pull request when the banks moved
         env:
@@ -166,7 +166,7 @@ jobs:
                 '' \
                 'Checklist before merging:' \
                 '- [ ] `flutter analyze` / `flutter test` are green on this branch' \
-                '- [ ] `python3 tool/validate_questions.py` passes' \
+                '- [ ] `python3 tool/validate_questions.py --strict` passes' \
                 '- [ ] spot-check one bank in the Files changed tab' \
                 '' \
                 'See `docs/19_FIRESTORE_TO_BUNDLE_PULL.md`.')"
