@@ -141,6 +141,23 @@ test('guest: cannot read user profiles or content', async () => {
   await env.cleanup();
 });
 
+test('profile: signed-in student can read one profile by uid but cannot list or query the collection', async () => {
+  const env = await makeEnv(OTHER);
+  await seed(env, { 'users/student-a': PROFILE });
+  await assertSucceeds(env.firestore.collection('users').doc(STUDENT).get());
+  await assertFails(env.firestore.collection('users').get());
+  await assertFails(env.firestore.collection('users').where('is_guest', '==', true).get());
+  await env.cleanup();
+});
+
+test('profile: admin (claim) can list and query the whole collection', async () => {
+  const env = await makeEnv(ADMIN, { admin: true });
+  await seed(env, { 'users/student-a': PROFILE });
+  await assertSucceeds(env.firestore.collection('users').get());
+  await assertSucceeds(env.firestore.collection('users').where('is_guest', '==', true).get());
+  await env.cleanup();
+});
+
 // ---------------------------------------------------------------------------
 // 2. Profile writes — the client-authority wall (R02)
 // ---------------------------------------------------------------------------

@@ -3,7 +3,8 @@ rules_version = '2';
 // ============================================================================
 // QuizBaaz 3D — Firestore Security Rules
 // ----------------------------------------------------------------------------
-// Version: 2.0.0  (P0 security hardening — 2026-09-13)
+// Version: 2.1.0  (2.1.0: users collection list is admin-only — 2026-10-02;
+//                  2.0.0: P0 security hardening — 2026-09-13)
 //
 // Authority model
 //   * "admin" means a Firebase custom claim `admin: true`, issued by the
@@ -56,11 +57,14 @@ service cloud.firestore {
 
     // --------------------------------------------------------------- users --
     match /users/{uid} {
-      // Profiles are readable by any signed-in player (leaderboard/VS display
-      // needs them). After the P0 fix the document no longer carries wallet
-      // state from client writes, so a listed profile exposes display data
-      // only. Tightening per-field visibility is tracked as a P2.
-      allow get, list: if signedIn();
+      // One profile can be read by uid by any signed-in player (leaderboard
+      // and VS display need them). The collection itself can NOT be listed,
+      // queried or counted by a player: enumerating every student's profile
+      // is admin-only. The admin panel (ShopService.getUsers / getAdminStats,
+      // FirestoreService.adminMetrics) runs under the `admin` custom claim.
+      // Tightening per-field visibility is still tracked as a P2.
+      allow get: if signedIn();
+      allow list: if isAdmin();
 
       // New profile: owner only, needs a username, and it must NOT smuggle
       // sensitive fields.
