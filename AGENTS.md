@@ -221,6 +221,11 @@ ones there so everything can be invalidated in one place. Use
 
 **Firestore collections:** `users` · `scores` · `leaderboard` · `winners` ·
 `gifts` · `quiz_history` · `purchase_history` · `meta` · `admin_audit_logs`.
+Also written/read by the `admin_api_key_manager` package: `admin_api_keys` ·
+`admin_key_groups` · `api_error_logs` · `admin_alerts`. **A collection with no
+rule in `firestore.rules` is denied outright** (there is no catch-all), so a new
+collection is broken the moment the client touches it — that is exactly how Admin
+→ API Keys ended up rendering `permission-denied` (rules v2.2.0).
 
 **Remote config beats code.** `config/app` is an `AppConfig` document, and
 `AppConfig.fromJson` prefers its keys over the built-in defaults, so editing

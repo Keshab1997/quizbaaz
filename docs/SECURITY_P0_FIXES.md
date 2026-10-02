@@ -32,6 +32,30 @@
 > Note: `submitDailyResult` v1 credits the **plain config formula** (no booster
 > multiplier) — strictly no more generous than the old client path.
 
+### v2.2.0 — the admin LLM key collections
+
+`firestore.rules` v2.0.0 never mentioned `admin_api_keys`,
+`admin_key_groups`, `api_error_logs` or `admin_alerts` — the four collections
+the `admin_api_key_manager` package (pubspec → `admin_api_key_manager`,
+docs/11) owns — so the catch-all denied them and **Admin → API Keys rendered
+`Error: [cloud_firestore/permission-denied]`** instead of the key list. The
+denial also hit every player, because `main.dart` opens the pool listener for
+the whole app at startup.
+
+v2.2.0 adds them as **admin-claim-only** (read + write), which is what the
+package already assumes ("Only admin writes pass the rules", "rules allow
+admin read/delete on `api_error_logs`; non-admin devices fail silently"). It is
+admin-only on purpose: a player-readable key pool would hand the raw LLM
+credentials to every install. A student's listener is refused and moves on.
+
+Deploy like any rules change:
+
+```bash
+firebase deploy --only firestore:rules
+```
+
+Covered by `tool/security/tests/rules.test.mjs` → *llm keys: … admin-only*.
+
 ## ⚠️ YOUR actions (in this order)
 
 1. **Rotate the exposed ImgBB key NOW.**
