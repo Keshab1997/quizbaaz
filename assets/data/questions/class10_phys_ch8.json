@@ -6,5 +6,1032 @@
     "hi": "विद्युत धारा के चुम्बकीय प्रभाव"
   },
   "class_standard": "Class 10",
-  "questions": []
+  "questions": [
+    {
+      "id": "phys_ch_08_q001",
+      "question": {
+        "en": "What is the shape of the magnetic field produced by a current-carrying solenoid?",
+        "bn": "তড়িৎপ্রবাহী solenoid-এর দ্বারা উৎপন্ন চৌম্বক ক্ষেত্রের আকৃতি কেমন?",
+        "hi": "विद्युत धारा प्रवाहित करने वाली परिनालिका द्वारा उत्पन्न चुंबकीय क्षेत्र का आकार कैसा होता है?"
+      },
+      "options": [
+        {
+          "en": "Similar to the magnetic field of a bar magnet",
+          "bn": "দণ্ড চুম্বকের চৌম্বক ক্ষেত্রের অনুরূপ",
+          "hi": "दंड चुंबक के चुंबकीय क्षेत्र के समान"
+        },
+        {
+          "en": "Similar to the electric field of a point charge",
+          "bn": "বিন্দু আধানের তড়িৎ ক্ষেত্রের অনুরূপ",
+          "hi": "बिंदु आवेश के विद्युत क्षेत्र के समान"
+        },
+        {
+          "en": "Circular only outside the solenoid",
+          "bn": "শুধুমাত্র solenoid-এর বাইরে বৃত্তাকার",
+          "hi": "केवल परिनालिका के बाहर वृत्ताकार"
+        },
+        {
+          "en": "Zero everywhere",
+          "bn": "সর্বত্র শূন্য",
+          "hi": "हर जगह शून्य"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "A current-carrying solenoid produces a magnetic field pattern similar to that of a bar magnet, with distinct north and south poles.",
+        "bn": "তড়িৎপ্রবাহী solenoid-এর চৌম্বক ক্ষেত্রের বিন্যাস দণ্ড চুম্বকের মতো হয় এবং এর উত্তর ও দক্ষিণ মেরু থাকে।",
+        "hi": "विद्युत धारा प्रवाहित करने वाली परिनालिका का चुंबकीय क्षेत्र दंड चुंबक के समान होता है तथा इसमें उत्तर और दक्षिण ध्रुव होते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "phys_ch_08_q002",
+      "question": {
+        "en": "Which rule is used to determine the direction of force on a current-carrying conductor placed in a magnetic field?",
+        "bn": "চৌম্বক ক্ষেত্রে স্থাপিত তড়িৎপ্রবাহী পরিবাহীর ওপর বলের দিক নির্ণয় করতে কোন নিয়ম ব্যবহার করা হয়?",
+        "hi": "चुंबकीय क्षेत्र में रखे धारावाही चालक पर लगने वाले बल की दिशा ज्ञात करने के लिए किस नियम का उपयोग किया जाता है?"
+      },
+      "options": [
+        {
+          "en": "Fleming's left-hand rule",
+          "bn": "Fleming-এর বামহাত নিয়ম",
+          "hi": "फ्लेमिंग का वामहस्त नियम"
+        },
+        {
+          "en": "Fleming's right-hand rule",
+          "bn": "Fleming-এর ডানহাত নিয়ম",
+          "hi": "फ्लेमिंग का दक्षिणहस्त नियम"
+        },
+        {
+          "en": "Right-hand thumb rule",
+          "bn": "ডানহাতের বুড়ো আঙুলের নিয়ম",
+          "hi": "दक्षिणहस्त अंगुष्ठ नियम"
+        },
+        {
+          "en": "Ohm's law",
+          "bn": "ওহমের সূত্র",
+          "hi": "ओम का नियम"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Fleming's left-hand rule gives the direction of force on a current-carrying conductor in a magnetic field by relating the field, current and force directions.",
+        "bn": "Fleming-এর বামহাত নিয়ম চৌম্বক ক্ষেত্র, তড়িৎ প্রবাহ ও বলের পারস্পরিক দিক নির্ণয় করতে সাহায্য করে।",
+        "hi": "फ्लेमिंग का वामहस्त नियम चुंबकीय क्षेत्र, विद्युत धारा और बल की दिशाओं के बीच संबंध बताकर बल की दिशा ज्ञात करता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "phys_ch_08_q004",
+      "question": {
+        "en": "Which rule gives the direction of induced current in a generator?",
+        "bn": "জেনারেটরে আবিষ্ট তড়িৎ প্রবাহের দিক কোন নিয়ম দ্বারা নির্ণয় করা হয়?",
+        "hi": "जनित्र में प्रेरित विद्युत धारा की दिशा किस नियम से ज्ञात की जाती है?"
+      },
+      "options": [
+        {
+          "en": "Fleming's right-hand rule",
+          "bn": "Fleming-এর ডানহাত নিয়ম",
+          "hi": "फ्लेमिंग का दक्षिणहस्त नियम"
+        },
+        {
+          "en": "Fleming's left-hand rule",
+          "bn": "Fleming-এর বামহাত নিয়ম",
+          "hi": "फ्लेमिंग का वामहस्त नियम"
+        },
+        {
+          "en": "Right-hand thumb rule",
+          "bn": "ডানহাতের বুড়ো আঙুলের নিয়ম",
+          "hi": "दक्षिणहस्त अंगुष्ठ नियम"
+        },
+        {
+          "en": "Joule's law",
+          "bn": "জুলের সূত্র",
+          "hi": "जूल का नियम"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Fleming's right-hand rule determines the direction of induced current when a conductor moves in a magnetic field.",
+        "bn": "চৌম্বক ক্ষেত্রে পরিবাহীর গতির ফলে আবিষ্ট তড়িৎ প্রবাহের দিক Fleming-এর ডানহাত নিয়ম দ্বারা নির্ণয় করা হয়।",
+        "hi": "चुंबकीय क्षेत्र में चालक की गति के कारण उत्पन्न प्रेरित धारा की दिशा फ्लेमिंग के दक्षिणहस्त नियम से ज्ञात की जाती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "phys_ch_08_q005",
+      "question": {
+        "en": "What is the main function of a fuse in a domestic electric circuit?",
+        "bn": "গৃহস্থালির বৈদ্যুতিক বর্তনীতে fuse-এর প্রধান কাজ কী?",
+        "hi": "घरेलू विद्युत परिपथ में फ्यूज का मुख्य कार्य क्या है?"
+      },
+      "options": [
+        {
+          "en": "To protect the circuit from excessive current",
+          "bn": "অতিরিক্ত তড়িৎ প্রবাহ থেকে বর্তনীকে রক্ষা করা",
+          "hi": "अत्यधिक विद्युत धारा से परिपथ की रक्षा करना"
+        },
+        {
+          "en": "To increase the voltage of the supply",
+          "bn": "সরবরাহের ভোল্টেজ বৃদ্ধি করা",
+          "hi": "आपूर्ति के वोल्टेज को बढ़ाना"
+        },
+        {
+          "en": "To store electrical energy",
+          "bn": "বৈদ্যুতিক শক্তি সঞ্চয় করা",
+          "hi": "विद्युत ऊर्जा को संचित करना"
+        },
+        {
+          "en": "To change AC into DC",
+          "bn": "AC-কে DC-তে পরিবর্তন করা",
+          "hi": "AC को DC में बदलना"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "A fuse contains a wire that melts when excessive current flows, thereby breaking the circuit and protecting appliances and wiring.",
+        "bn": "অতিরিক্ত তড়িৎ প্রবাহ হলে fuse wire গলে বর্তনী বিচ্ছিন্ন করে এবং যন্ত্রপাতি ও তারকে রক্ষা করে।",
+        "hi": "अत्यधिक धारा प्रवाहित होने पर फ्यूज तार पिघलकर परिपथ को तोड़ देता है और उपकरणों तथा तारों की रक्षा करता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "phys_ch_08_q006",
+      "question": {
+        "en": "In domestic electric circuits, why are electrical appliances connected in parallel?",
+        "bn": "গৃহস্থালির বৈদ্যুতিক বর্তনীতে বৈদ্যুতিক যন্ত্রগুলি সমান্তরালভাবে যুক্ত করা হয় কেন?",
+        "hi": "घरेलू विद्युत परिपथ में विद्युत उपकरणों को समानांतर क्रम में क्यों जोड़ा जाता है?"
+      },
+      "options": [
+        {
+          "en": "Each appliance receives the supply voltage and can operate independently",
+          "bn": "প্রতিটি যন্ত্র সরবরাহ ভোল্টেজ পায় এবং স্বাধীনভাবে কাজ করতে পারে",
+          "hi": "प्रत्येक उपकरण को आपूर्ति वोल्टेज मिलता है और वह स्वतंत्र रूप से काम कर सकता है"
+        },
+        {
+          "en": "The same current must pass through every appliance",
+          "bn": "প্রতিটি যন্ত্রের মধ্য দিয়ে একই তড়িৎ প্রবাহ অবশ্যই যায়",
+          "hi": "प्रत्येक उपकरण से समान विद्युत धारा का गुजरना आवश्यक होता है"
+        },
+        {
+          "en": "The total voltage is divided equally among all appliances",
+          "bn": "সমস্ত যন্ত্রের মধ্যে মোট ভোল্টেজ সমানভাবে ভাগ হয়",
+          "hi": "कुल वोल्टेज सभी उपकरणों में समान रूप से विभाजित हो जाता है"
+        },
+        {
+          "en": "Switching off one appliance switches off all appliances",
+          "bn": "একটি যন্ত্র বন্ধ করলে সব যন্ত্র বন্ধ হয়ে যায়",
+          "hi": "एक उपकरण को बंद करने पर सभी उपकरण बंद हो जाते हैं"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Parallel connection gives each appliance the supply voltage and allows appliances to be switched and operated independently.",
+        "bn": "সমান্তরাল সংযোগে প্রতিটি যন্ত্র সরবরাহ ভোল্টেজ পায় এবং একটি যন্ত্র বন্ধ করলেও অন্যগুলি স্বাধীনভাবে চলতে পারে।",
+        "hi": "समानांतर संयोजन में प्रत्येक उपकरण को आपूर्ति वोल्टेज मिलता है और एक उपकरण बंद होने पर भी अन्य उपकरण स्वतंत्र रूप से काम कर सकते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "phys_ch_08_q007",
+      "question": {
+        "en": "What happens to the magnetic field inside a solenoid when the number of turns per unit length is increased, keeping the current unchanged?",
+        "bn": "তড়িৎ প্রবাহ অপরিবর্তিত রেখে প্রতি একক দৈর্ঘ্যে পাকের সংখ্যা বাড়ালে solenoid-এর ভিতরের চৌম্বক ক্ষেত্রের কী পরিবর্তন হয়?",
+        "hi": "विद्युत धारा को अपरिवर्तित रखते हुए प्रति इकाई लंबाई फेरों की संख्या बढ़ाने पर परिनालिका के अंदर चुंबकीय क्षेत्र में क्या परिवर्तन होता है?"
+      },
+      "options": [
+        {
+          "en": "It becomes stronger",
+          "bn": "এটি শক্তিশালী হয়",
+          "hi": "यह अधिक प्रबल हो जाता है"
+        },
+        {
+          "en": "It becomes weaker",
+          "bn": "এটি দুর্বল হয়",
+          "hi": "यह कमजोर हो जाता है"
+        },
+        {
+          "en": "It becomes zero",
+          "bn": "এটি শূন্য হয়ে যায়",
+          "hi": "यह शून्य हो जाता है"
+        },
+        {
+          "en": "Its direction necessarily reverses",
+          "bn": "এর দিক অবশ্যই বিপরীত হয়ে যায়",
+          "hi": "इसकी दिशा अनिवार्य रूप से उलट जाती है"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "For a long solenoid, the magnetic field is proportional to the number of turns per unit length when the current is unchanged, so the field becomes stronger.",
+        "bn": "দীর্ঘ solenoid-এর ক্ষেত্রে তড়িৎ প্রবাহ অপরিবর্তিত থাকলে প্রতি একক দৈর্ঘ্যে পাকের সংখ্যা বাড়ার সঙ্গে চৌম্বক ক্ষেত্রও বৃদ্ধি পায়।",
+        "hi": "लंबी परिनालिका में धारा अपरिवर्तित होने पर प्रति इकाई लंबाई फेरों की संख्या बढ़ने से चुंबकीय क्षेत्र भी बढ़ता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "phys_ch_08_q008",
+      "question": {
+        "en": "Which energy conversion takes place in an electric generator?",
+        "bn": "বৈদ্যুতিক জেনারেটরে কোন শক্তির রূপান্তর ঘটে?",
+        "hi": "विद्युत जनित्र में किस ऊर्जा का रूपांतरण होता है?"
+      },
+      "options": [
+        {
+          "en": "Mechanical energy into electrical energy",
+          "bn": "যান্ত্রিক শক্তি থেকে বৈদ্যুতিক শক্তি",
+          "hi": "यांत्रिक ऊर्जा से विद्युत ऊर्जा"
+        },
+        {
+          "en": "Electrical energy into mechanical energy",
+          "bn": "বৈদ্যুতিক শক্তি থেকে যান্ত্রিক শক্তি",
+          "hi": "विद्युत ऊर्जा से यांत्रिक ऊर्जा"
+        },
+        {
+          "en": "Chemical energy into electrical energy",
+          "bn": "রাসায়নিক শক্তি থেকে বৈদ্যুতিক শক্তি",
+          "hi": "रासायनिक ऊर्जा से विद्युत ऊर्जा"
+        },
+        {
+          "en": "Electrical energy into chemical energy",
+          "bn": "বৈদ্যুতিক শক্তি থেকে রাসায়নিক শক্তি",
+          "hi": "विद्युत ऊर्जा से रासायनिक ऊर्जा"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "A generator uses mechanical motion to rotate a coil or magnet in a magnetic field, producing electrical energy by electromagnetic induction.",
+        "bn": "জেনারেটরে যান্ত্রিক শক্তি দিয়ে কুণ্ডলী বা চুম্বক ঘোরানো হয় এবং তড়িৎচৌম্বকীয় আবেশের মাধ্যমে বৈদ্যুতিক শক্তি উৎপন্ন হয়।",
+        "hi": "जनित्र में यांत्रिक ऊर्जा से कुंडली या चुंबक को घुमाया जाता है और विद्युतचुंबकीय प्रेरण द्वारा विद्युत ऊर्जा उत्पन्न होती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "phys_ch_08_q010",
+      "question": {
+        "en": "A current-carrying conductor is placed perpendicular to a magnetic field. If the direction of current is reversed while the magnetic field remains unchanged, what happens to the force on the conductor?",
+        "bn": "একটি তড়িৎপ্রবাহী পরিবাহীকে চৌম্বক ক্ষেত্রের লম্বভাবে রাখা হয়েছে। চৌম্বক ক্ষেত্র অপরিবর্তিত রেখে তড়িৎ প্রবাহের দিক বিপরীত করলে পরিবাহীর ওপর বলের কী পরিবর্তন হবে?",
+        "hi": "एक धारावाही चालक को चुंबकीय क्षेत्र के लंबवत रखा गया है। चुंबकीय क्षेत्र को अपरिवर्तित रखते हुए धारा की दिशा उलटने पर चालक पर लगने वाले बल में क्या परिवर्तन होगा?"
+      },
+      "options": [
+        {
+          "en": "The direction of force reverses",
+          "bn": "বলের দিক বিপরীত হয়ে যায়",
+          "hi": "बल की दिशा उलट जाती है"
+        },
+        {
+          "en": "The magnitude of force becomes zero",
+          "bn": "বলের মান শূন্য হয়ে যায়",
+          "hi": "बल का परिमाण शून्य हो जाता है"
+        },
+        {
+          "en": "The direction and magnitude of force both remain unchanged",
+          "bn": "বলের দিক ও মান উভয়ই অপরিবর্তিত থাকে",
+          "hi": "बल की दिशा और परिमाण दोनों अपरिवर्तित रहते हैं"
+        },
+        {
+          "en": "The magnetic field reverses automatically",
+          "bn": "চৌম্বক ক্ষেত্র স্বয়ংক্রিয়ভাবে বিপরীত হয়ে যায়",
+          "hi": "चुंबकीय क्षेत्र अपने आप उलट जाता है"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The force on a current-carrying conductor depends on the direction of current and magnetic field. Reversing only the current reverses the direction of force while its magnitude remains the same.",
+        "bn": "তড়িৎপ্রবাহের দিক পরিবর্তন করলে, চৌম্বক ক্ষেত্র অপরিবর্তিত থাকায় বলের দিক বিপরীত হয়; তবে বলের মান একই থাকে।",
+        "hi": "धारा की दिशा बदलने पर, चुंबकीय क्षेत्र अपरिवर्तित रहने से बल की दिशा उलट जाती है, जबकि बल का परिमाण समान रहता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "phys_ch_08_q011",
+      "question": {
+        "en": "What material is preferred for making the core of an electromagnet?",
+        "bn": "ইলেক্ট্রোম্যাগনেট বা কাঁচা চৌম্বক তৈরি করতে কোন উপাদানটি সর্বাধিক ব্যবহৃত হয়?",
+        "hi": "विद्युत चुंबक का क्रोड (core) बनाने के लिए किस पदार्थ का उपयोग किया जाता है?"
+      },
+      "options": [
+        {
+          "en": "Soft iron",
+          "bn": "কাঁচা লোহা (Soft iron)",
+          "hi": "नर्म लोहा (Soft iron)"
+        },
+        {
+          "en": "Steel",
+          "bn": "ইস্পাত (Steel)",
+          "hi": "इस्पात (Steel)"
+        },
+        {
+          "en": "Copper",
+          "bn": "তামা (Copper)",
+          "hi": "तांबा (Copper)"
+        },
+        {
+          "en": "Alnico",
+          "bn": "এলনিকো (Alnico)",
+          "hi": "ऐल्निको (Alnico)"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Soft iron easily magnetizes when current flows and quickly loses its magnetism when current stops, making it ideal for electromagnets.",
+        "bn": "কাঁচা লোহা সহজেই চৌম্বকত্ব লাভ করে এবং প্রবাহ বন্ধ হলে দ্রুত চৌম্বকত্ব হারায়, তাই এটি ইলেক্ট্রোম্যাগনেটে ব্যবহৃত হয়।",
+        "hi": "नर्म लोहा धारा प्रवाहित होने पर आसानी से चुंबकीय हो जाता है और धारा बंद होने पर तुरंत अपना चुंबकत्व खो देता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "phys_ch_08_q012",
+      "question": {
+        "en": "Which device changes the direction of current in the coil of a Direct Current (DC) motor?",
+        "bn": "ডিসি (DC) মোটর-এর কুণ্ডলীতে প্রবাহের দিক পরিবর্তন করতে কোন অংশটি ব্যবহৃত হয়?",
+        "hi": "दिश धारा (DC) मोटर की कुंडली में धारा की दिशा को बदलने के लिए किस युक्ति का उपयोग किया जाता है?"
+      },
+      "options": [
+        {
+          "en": "Slip rings",
+          "bn": "স্লিপ রিং (Slip rings)",
+          "hi": "सर्पी वलय (Slip rings)"
+        },
+        {
+          "en": "Split-ring commutator",
+          "bn": "স্প্লিট-রিং কমিউটেটর (Split-ring commutator)",
+          "hi": "विभक्त वलय कम्यूटर (Split-ring commutator)"
+        },
+        {
+          "en": "Carbon brushes",
+          "bn": "কার্বন ব্রাশ (Carbon brushes)",
+          "hi": "कार्बन ब्रश (Carbon brushes)"
+        },
+        {
+          "en": "Armature core",
+          "bn": "আর্মেচার কোর (Armature core)",
+          "hi": "आर्मेचर क्रोड (Armature core)"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "A split-ring commutator reverses the direction of current in the armature coil every half rotation to maintain continuous rotation.",
+        "bn": "স্প্লিট-রিং কমিউটেটর প্রতিটি অর্ধ-ঘূর্ণনে কুণ্ডলীতে বিদ্যুৎ প্রবাহের দিক উল্টে দিয়ে ক্রমাগত একই দিকে ঘোরাতে সাহায্য করে।",
+        "hi": "विभक्त वलय कम्यूटर प्रत्येक आधे घूर्णन के बाद कुंडली में धारा की दिशा को बदल देता है जिससे निरंतर घूर्णन बना रहता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "phys_ch_08_q013",
+      "question": {
+        "en": "In an AC generator, what component is used to transfer current from the rotating coil to the external circuit?",
+        "bn": "এসি (AC) জেনারেটরে ঘূর্ণায়মান কুণ্ডলী থেকে বহিস্থ সার্কিটে বিদ্যুৎ প্রেরণের জন্য কী ব্যবহৃত হয়?",
+        "hi": "AC जनित्र में घूर्णन करती हुई कुंडली से बाहरी परिपथ में धारा भेजने के लिए किसका उपयोग किया जाता है?"
+      },
+      "options": [
+        {
+          "en": "Split rings",
+          "bn": "স্প্লিট রিং (Split rings)",
+          "hi": "विभक्त वलय (Split rings)"
+        },
+        {
+          "en": "Slip rings and carbon brushes",
+          "bn": "স্লিপ রিং ও কার্বন ব্রাশ (Slip rings and carbon brushes)",
+          "hi": "सर्पी वलय और कार्बन ब्रश (Slip rings and carbon brushes)"
+        },
+        {
+          "en": "A diode bridge",
+          "bn": "ডায়োড ব্রিজ (Diode bridge)",
+          "hi": "डायोड ब्रिज (Diode bridge)"
+        },
+        {
+          "en": "A step-up transformer",
+          "bn": "স্টেপ-আপ ট্রান্সফরমার (Step-up transformer)",
+          "hi": "स्टेप-अप ट्रांसफार्मर (Step-up transformer)"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "AC generators use continuous slip rings along with stationary carbon brushes to collect alternating current without altering its polarity reversal.",
+        "bn": "এসি জেনারেটরে স্লিপ রিং ও কার্বন ব্রাশের সাহায্যে ঘূর্ণায়মান কুণ্ডলী থেকে পরিবর্তী প্রবাহ (AC) বহিস্থ সার্কিটে প্রবাহিত হয়।",
+        "hi": "AC जनित्र में सर्पी वलयों और कार्बन ब्रशों का उपयोग घूर्णन करती कुंडली से प्रत्यावर्ती धारा को बाहरी परिपथ में ले जाने के लिए किया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "phys_ch_08_q014",
+      "question": {
+        "en": "What color insulation wire is standard for the earth connection in domestic electric circuits?",
+        "bn": "বাসাবাড়ির বৈদ্যুতিক সার্কিটে আর্থিং তারের (Earth wire) জন্য কোন রঙের অন্তরণ (insulation) ব্যবহৃত হয়?",
+        "hi": "घरेलू विद्युत परिपथों में भू-संपर्क तार (Earth wire) पर किस रंग का विद्युतरोधी आवरण होता है?"
+      },
+      "options": [
+        {
+          "en": "Red",
+          "bn": "লাল (Red)",
+          "hi": "लाल (Red)"
+        },
+        {
+          "en": "Black",
+          "bn": "কালো (Black)",
+          "hi": "काला (Black)"
+        },
+        {
+          "en": "Green",
+          "bn": "সবুজ (Green)",
+          "hi": "हरा (Green)"
+        },
+        {
+          "en": "Blue",
+          "bn": "নীল (Blue)",
+          "hi": "नीला (Blue)"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "en": "By international and Indian standards, green insulation (or green with yellow stripes) denotes the earth safety wire.",
+        "bn": "আন্তর্জাতিক ও ভারতীয় মান অনুযায়ী সবুজ রঙের ইনসুলেশন যুক্ত তারকে সুরক্ষা নিশ্চিতকারী আর্থিং তার হিসেবে ব্যবহার করা হয়।",
+        "hi": "मानक नियमों के अनुसार, भू-संपर्क (सुरक्षा) तार के लिए हरे रंग के विद्युतरोधी आवरण का उपयोग किया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "phys_ch_08_q015",
+      "question": {
+        "en": "When does short-circuiting occur in a household electrical circuit?",
+        "bn": "গৃহস্থালির বৈদ্যুতিক সার্কিটে কখন শর্ট-সার্কিট (Short-circuit) ঘটে?",
+        "hi": "घरेलू विद्युत परिपथ में अतिभारण या लघुपथन (Short-circuit) कब होता है?"
+      },
+      "options": [
+        {
+          "en": "When live and neutral wires come into direct contact",
+          "bn": "যখন লাইভ তার ও নিউট্রাল তার সরাসরি একে অপরের সংস্পর্শে আসে",
+          "hi": "जब लाइव तार (सजीव तार) और उदासीन तार सीधे संपर्क में आते हैं"
+        },
+        {
+          "en": "When earth wire touches the live wire",
+          "bn": "যখন আর্থ তার লাইভ তারকে স্পর্শ করে",
+          "hi": "जब भू-संपर्क तार सजीव तार को स्पर्श करता है"
+        },
+        {
+          "en": "When potential difference drops to zero across the supply mains",
+          "bn": "যখন মূল লাইনের বিভব প্রভেদ শূন্যে নেমে আসে",
+          "hi": "जब आपूर्ति मेन्स का विभवांतर शून्य हो जाता है"
+        },
+        {
+          "en": "When total resistance of the domestic circuit becomes very high",
+          "bn": "যখন সার্কিটের মোট রোধ অত্যাধিক বৃদ্ধি পায়",
+          "hi": "जब घरेलू परिपथ का कुल प्रतिरोध बहुत अधिक बढ़ जाता है"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Short-circuiting happens when insulation fails and the live wire touches the neutral wire directly, reducing resistance near zero and drawing a dangerous surge of current.",
+        "bn": "লাইভ ও নিউট্রাল তারের অন্তরণ নষ্ট হয়ে তারা সরাসরি স্পর্শ করলে সার্কিটের রোধ প্রায় শূন্য হয়ে যায় এবং প্রচুর বিদ্যুৎ প্রবাহিত হয়, যাকে শর্ট-সার্কিট বলে।",
+        "hi": "जब सजीव और उदासीन तार का विद्युतरोधी आवरण क्षतिग्रस्त होने से वे सीधे संपर्क में आ जाते हैं, तो प्रतिरोध नगण्य हो जाता है और अत्यधिक धारा प्रवाहित होती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "phys_ch_08_q016",
+      "question": {
+        "en": "What is the phenomenon of producing an induced electromotive force in a coil due to a changing magnetic flux called?",
+        "bn": "পরিবর্তনশীল চৌম্বক প্রবাহের কারণে কুণ্ডলীতে আবিষ্ট তড়িৎচালক বল সৃষ্টির ঘটনাকে কী বলা হয়?",
+        "hi": "परिवर्तनशील चुंबकीय फ्लक्स के कारण किसी कुंडली में प्रेरित विद्युत वाहक बल उत्पन्न होने की परिघटना को क्या कहते हैं?"
+      },
+      "options": [
+        {
+          "en": "Electromagnetic Induction",
+          "bn": "তড়িৎচৌম্বকীয় আবেশ (Electromagnetic Induction)",
+          "hi": "विद्युत चुंबकीय प्रेरण (Electromagnetic Induction)"
+        },
+        {
+          "en": "Magnetic effect of current",
+          "bn": "বিদ্যুৎ প্রবাহের চৌম্বক ফল (Magnetic effect of current)",
+          "hi": "विद्युत धारा का चुंबकीय प्रभाव (Magnetic effect of current)"
+        },
+        {
+          "en": "Joule heating effect",
+          "bn": "জুল উত্তাপন প্রভাব (Joule heating effect)",
+          "hi": "जूल तापन प्रभाव (Joule heating effect)"
+        },
+        {
+          "en": "Electrostatic Induction",
+          "bn": "স্থিরতড়িৎ আবেশ (Electrostatic Induction)",
+          "hi": "स्थिरवैद्युत प्रेरण (Electrostatic Induction)"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Electromagnetic induction, discovered by Faraday, is the generation of voltage across a conductor when exposed to a varying magnetic field.",
+        "bn": "ফার্যাডে কর্তৃক আবিষ্কৃত পরিবর্তনশীল চৌম্বকক্ষেত্রের মাধ্যমে তড়িৎচালক বল বা বিদ্যুৎ উৎপন্ন করার ঘটনাকে তড়িৎচৌম্বকীয় আবেশ বলে।",
+        "hi": "फैराडे द्वारा खोजे गए, बदलते चुंबकीय क्षेत्र के कारण चालक में विद्युत वाहक बल उत्पन्न होने की प्रक्रिया को विद्युत चुंबकीय प्रेरण कहते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "phys_ch_08_q017",
+      "question": {
+        "en": "What is the frequency of alternating current (AC) supplied for domestic use in India?",
+        "bn": "ভারতে গৃহস্থালি ব্যবহারের জন্য সরবরাহ করা পরিবর্তী প্রবাহের (AC) কম্পাঙ্ক কত?",
+        "hi": "भारत में घरेलू उपयोग के लिए आपूर्ति की जाने वाली प्रत्यावर्ती धारा (AC) की आवृत्ति कितनी होती है?"
+      },
+      "options": [
+        {
+          "en": "50 Hz",
+          "bn": "50 Hz",
+          "hi": "50 Hz"
+        },
+        {
+          "en": "60 Hz",
+          "bn": "60 Hz",
+          "hi": "60 Hz"
+        },
+        {
+          "en": "100 Hz",
+          "bn": "100 Hz",
+          "hi": "100 Hz"
+        },
+        {
+          "en": "220 Hz",
+          "bn": "220 Hz",
+          "hi": "220 Hz"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "In India, domestic AC mains supply operates at 220 V with a standardized frequency of 50 Hz.",
+        "bn": "ভারতে বাসাবাড়িতে ব্যবহৃত এসি (AC) লাইনের ভোল্টেজ ২২০ ভোল্ট এবং কম্পাঙ্ক ৫০ হার্টজ (50 Hz)।",
+        "hi": "भारत में घरेलू प्रत्यावर्ती धारा (AC) की आपूर्ति 220 V पर होती है और इसकी मानक आवृत्ति 50 Hz होती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "phys_ch_08_q018",
+      "question": {
+        "en": "How does the magnetic field strength inside a current-carrying long straight solenoid vary along its axis?",
+        "bn": "তড়িৎপ্রবাহী দীর্ঘ ঋজু সোলেনয়েডের অক্ষ বরাবর অভ্যন্তরে চৌম্বকক্ষেত্রের প্রাবল্য কীভাবে পরিবর্তিত হয়?",
+        "hi": "धारावाही लंबी सीधी परिनालिका (solenoid) के अंदर उसके अक्ष के अनुदिश चुंबकीय क्षेत्र की तीव्रता कैसे बदलती है?"
+      },
+      "options": [
+        {
+          "en": "It is uniform at all points inside",
+          "bn": "এটি অভ্যন্তরের সমস্ত বিন্দুতে সুষম বা একই থাকে",
+          "hi": "यह परिनालिका के अंदर सभी बिंदुओं पर समान रहती है"
+        },
+        {
+          "en": "It decreases linearly from the center toward the ends",
+          "bn": "কেন্দ্র থেকে প্রান্তের দিকে এটি রৈখিকভাবে কমতে থাকে",
+          "hi": "यह केंद्र से सिरों की ओर रैखिक रूप से घटती है"
+        },
+        {
+          "en": "It is maximum at the middle and zero at the ends",
+          "bn": "এটি ঠিক মাঝে সর্বাধিক এবং দুই প্রান্তে শূন্য হয়",
+          "hi": "यह बीच में अधिकतम और सिरों पर शून्य होती है"
+        },
+        {
+          "en": "It varies inversely with the distance from the axis",
+          "bn": "এটি অক্ষ থেকে দূরত্বের ব্যস্তানুপাতে পরিবর্তিত হয়",
+          "hi": "यह अक्ष से दूरी के व्युत्क्रमानुपाती होती है"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The magnetic field lines inside a long solenoid are parallel and evenly spaced, representing a uniform magnetic field along its core.",
+        "bn": "দীঘ সোলেনয়েডের ভেতরের চৌম্বক বলরেখাগুলি পরস্পর সমান্তরাল ও সমদূরবর্তী হয়, যা নির্দেশ করে যে ভেতরে চৌম্বকক্ষেত্র সর্বত্র সুষম।",
+        "hi": "लंबी परिनालिका के भीतर चुंबकीय क्षेत्र रेखाएं एक-दूसरे के समांतर होती हैं, जो दर्शाती हैं कि इसके अंदर चुंबकीय क्षेत्र सभी बिंदुओं पर एकसमान है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "phys_ch_08_q019",
+      "question": {
+        "en": "An appliance rated 2 kW is used in a 220 V domestic circuit protected by a 5 A fuse. What will happen when the appliance is switched on?",
+        "bn": "২২০ ভোল্ট সার্কিটে ৫ অ্যাম্পিয়ার ফিউজ যুক্ত একটি লাইনে ২ কিলোওয়াট ক্ষমতার একটি যন্ত্র চালালে কী ঘটবে?",
+        "hi": "220 V के घरेलू परिपथ में 5 A का फ्यूज लगा है। यदि इसमें 2 kW की युक्ति चलाई जाए, तो क्या होगा?"
+      },
+      "options": [
+        {
+          "en": "The fuse will melt and break the circuit because current exceeds 5 A",
+          "bn": "প্রবাহমাত্রা ৫ অ্যাম্পিয়ারের বেশি হওয়ায় ফিউজ তার গলে গিয়ে সার্কিট বিচ্ছিন্ন হবে",
+          "hi": "धारा 5 A से अधिक होने के कारण फ्यूज गल जाएगा और परिपथ टूट जाएगा"
+        },
+        {
+          "en": "The appliance will function normally drawing exactly 5 A",
+          "bn": "যন্ত্রটি ঠিক ৫ অ্যাম্পিয়ার প্রবাহ টেনে স্বাভাবিকভাবে চলবে",
+          "hi": "युक्ति ठीक 5 A धारा लेकर सामान्य रूप से कार्य करेगी"
+        },
+        {
+          "en": "The voltage of the circuit will automatically drop to 100 V",
+          "bn": "সার্কিটের ভোল্টেজ স্বয়ংক্রিয়ভাবে ১০০ ভোল্টে নেমে আসবে",
+          "hi": "परिपथ का विभवांतर स्वतः घटकर 100 V हो जाएगा"
+        },
+        {
+          "en": "The appliance will run at double power rating",
+          "bn": "যন্ত্রটি দ্বিগুণ ক্ষমতায় চলতে শুরু করবে",
+          "hi": "युक्ति अपनी दोगुनी क्षमता पर चलने लगेगी"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The current required is I = P/V = 2000 W / 220 V ≈ 9.09 A, which exceeds the 5 A fuse rating, causing the fuse wire to blow.",
+        "bn": "যন্ত্রটির প্রয়োজনীয় প্রবাহমাত্রা I = P/V = ২০০০/২২০ ≈ ৯.০৯ অ্যাম্পিয়ার, যা ৫ অ্যাম্পিয়ারের বেশি হওয়ায় ফিউজ গলে সার্কিট বন্ধ হবে।",
+        "hi": "आवश्यक धारा I = P/V = 2000/220 ≈ 9.09 A होगी, जो 5 A की सीमा से अधिक है, अतः फ्यूज पिघल जाएगा।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "phys_ch_08_q020",
+      "question": {
+        "en": "What is the primary function of the earth wire attached to metallic electric appliances?",
+        "bn": "ধাতব খোলসযুক্ত বৈদুতিক যন্ত্রপাতিতে ব্যবহৃত আর্থিং তারের প্রধান কাজ কী?",
+        "hi": "धातु के आवरण वाले विद्युत साधित्रों को भू-संपर्कित (earthing) करने का मुख्य उद्देश्य क्या है?"
+      },
+      "options": [
+        {
+          "en": "To prevent electric shock by discharging current leakage safely into the ground",
+          "bn": "ক্ষরিত বিদ্যুৎ মাটিতে পাঠিয়ে ব্যবহারকারীকে বৈদ্যুতিক শকের হাত থেকে রক্ষা করা",
+          "hi": "क्षरित धारा को भूमि में भेजकर उपयोगकर्ता को विद्युत आघात (शॉक) से बचाना"
+        },
+        {
+          "en": "To increase the energy efficiency and reduce electricity bills",
+          "bn": "যন্ত্রের দক্ষতা বৃদ্ধি করা এবং বিদ্যুতের বিল কমানো",
+          "hi": "साधित्र की दक्षता बढ़ाना और बिजली का बिल कम करना"
+        },
+        {
+          "en": "To maintain a constant current flow in the live wire",
+          "bn": "লাইভ তারে ধ্রুবক প্রবাহ বজায় রাখা",
+          "hi": "सजीव तार में स्थिर धारा बनाए रखना"
+        },
+        {
+          "en": "To convert alternating current into direct current",
+          "bn": "পরিবর্তী প্রবাহকে একমুখী প্রবাহে রূপান্তর করা",
+          "hi": "प्रत्यावर्ती धारा को दिश धारा में परिवर्तित करना"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The earth wire connects the metallic body to the ground, providing a low-resistance path for leakage current and blowing the fuse to protect users from severe shock.",
+        "bn": "আর্থ তার ধাতব অংশকে মাটির সাথে যুক্ত করে নিম্ন রোধের পথ তৈরি করে, ফলে ক্ষরিত বিদ্যুৎ নিরাপদে মাটিতে চলে যায় এবং শকের ঝুঁকি কমে।",
+        "hi": "भू-संपर्क तार धातु के आवरण को पृथ्वी से जोड़कर अल्प प्रतिरोध का पथ प्रदान करता है, जिससे लीकेज धारा भूमि में चली जाती है और शॉक नहीं लगता।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "phys_ch_08_q021",
+      "question": {
+        "en": "Which essential component of an electric motor rotates along with the coil inside the magnetic field?",
+        "bn": "বৈদ্যুতিক মোটরের কোন মূল অংশটি চৌম্বকক্ষেত্রের ভেতরে কুণ্ডলীর সাথে সাথে ঘোরে?",
+        "hi": "विद्युत मोटर का कौन सा मुख्य भाग चुंबकीय क्षेत्र के अंदर कुंडली के साथ घूर्णन करता है?"
+      },
+      "options": [
+        {
+          "en": "Armature",
+          "bn": "আর্মেচার (Armature)",
+          "hi": "आर्मेचर (Armature)"
+        },
+        {
+          "en": "Carbon brushes",
+          "bn": "কার্বন ব্রাশ (Carbon brushes)",
+          "hi": "कार्बन ब्रश (Carbon brushes)"
+        },
+        {
+          "en": "Field magnet poles",
+          "bn": "ক্ষেত্রের চৌম্বক মেরু (Field magnet poles)",
+          "hi": "क्षेत्र चुंबक के ध्रुव (Field magnet poles)"
+        },
+        {
+          "en": "External DC source",
+          "bn": "বহিঃস্থ ডিসি উৎস (External DC source)",
+          "hi": "बाहरी DC स्रोत (External DC source)"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The armature, consisting of a soft iron core with insulated copper wire turns, rotates between the magnetic poles when current flows.",
+        "bn": "আর্মেচার হলো কাঁচা লোহার কোরের ওপর পেঁচানো কুণ্ডলী, যা বিদ্যুৎ প্রবাহের ফলে চৌম্বকক্ষেত্রের মধ্যে ঘোরে।",
+        "hi": "आर्मेचर में नर्म लोहे के क्रोड पर रोधित तांबे के तार लिपटे होते हैं, जो धारा प्रवाहित होने पर चुंबकीय ध्रुवों के बीच घूर्णन करता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "phys_ch_08_q023",
+      "question": {
+        "en": "Which insulation color is used for the neutral wire in standard domestic electrical wiring in India?",
+        "bn": "ভারতের মানক গৃহস্থালি ওয়্যারিং-এ নিউট্রাল তারের (Neutral wire) জন্য কোন রঙের অন্তরণ (insulation) ব্যবহৃত হয়?",
+        "hi": "भारत में मानक घरेलू वायरिंग में उदासीन तार (Neutral wire) के लिए किस रंग के विद्युतरोधी आवरण का उपयोग किया जाता है?"
+      },
+      "options": [
+        {
+          "en": "Red",
+          "bn": "লাল (Red)",
+          "hi": "लाल (Red)"
+        },
+        {
+          "en": "Black",
+          "bn": "কালো (Black)",
+          "hi": "काला (Black)"
+        },
+        {
+          "en": "Green",
+          "bn": "সবুজ (Green)",
+          "hi": "हरा (Green)"
+        },
+        {
+          "en": "Yellow",
+          "bn": "হলুদ (Yellow)",
+          "hi": "पीला (Yellow)"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "In traditional Indian wiring standards, red insulation represents the live wire, green represents earth, and black represents neutral.",
+        "bn": "ঐতিহ্যবাহী ভারতীয় ওয়্যারিং নিয়ম অনুসারে লাল তার লাইভ, সবুজ তার আর্থ এবং কালো তার নিউট্রালকে নির্দেশ করে।",
+        "hi": "पारंपरिक भारतीय वायरिंग मानकों के अनुसार, लाल रंग सजीव तार, हरा रंग भू-संपर्क तार तथा काला रंग उदासीन तार को दर्शाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "phys_ch_08_q024",
+      "question": {
+        "en": "What energy transformation occurs in an electric motor?",
+        "bn": "বৈদ্যুতিক মোটরে কোন শক্তি কোন শক্তিতে রূপান্তরিত হয়?",
+        "hi": "विद्युत मोटर में किस ऊर्जा का किस ऊर्जा में रूपांतरण होता है?"
+      },
+      "options": [
+        {
+          "en": "Mechanical energy into electrical energy",
+          "bn": "যান্ত্রিক শক্তি থেকে তড়িৎ শক্তি",
+          "hi": "यांत्रिक ऊर्जा से विद्युत ऊर्जा"
+        },
+        {
+          "en": "Electrical energy into mechanical energy",
+          "bn": "তড়িৎ শক্তি থেকে যান্ত্রিক শক্তি",
+          "hi": "विद्युत ऊर्जा से यांत्रिक ऊर्जा"
+        },
+        {
+          "en": "Chemical energy into electrical energy",
+          "bn": "রাসায়নিক শক্তি থেকে তড়িৎ শক্তি",
+          "hi": "रासायनिक ऊर्जा से विद्युत ऊर्जा"
+        },
+        {
+          "en": "Magnetic energy into chemical energy",
+          "bn": "চৌম্বক শক্তি থেকে রাসায়নিক শক্তি",
+          "hi": "चुंबकीय ऊर्जा से रासायनिक ऊर्जा"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "An electric motor takes in electrical energy from a power source and converts it into mechanical rotation of its shaft.",
+        "bn": "বৈদ্যুতিক মোটর বিদ্যুৎ শক্তি গ্রহণ করে এবং তার অক্ষ বা শ্যাফটের ঘূর্ণন সৃষ্টি করে যান্ত্রিক শক্তিতে রূপান্তরিত করে।",
+        "hi": "विद्युत मोटर विद्युत धारा ग्रहण करके उसकी कुंडली को घुमाती है, जिससे विद्युत ऊर्जा यांत्रिक ऊर्जा में बदलती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "phys_ch_08_q025",
+      "question": {
+        "en": "What happens to the strength of the magnetic field of a solenoid if a soft iron rod is inserted inside it?",
+        "bn": "তড়িৎপ্রবাহী সোলেনয়েডের ভেতরে একটি কাঁচা লোহার দণ্ড প্রবেশ করালে চৌম্বকক্ষেত্রের প্রাবল্যের কী পরিবর্তন হয়?",
+        "hi": "यदि किसी धारावाही परिनालिका के अंदर नर्म लोहे की छड़ रख दी जाए, तो इसके चुंबकीय क्षेत्र की तीव्रता पर क्या प्रभाव पड़ेगा?"
+      },
+      "options": [
+        {
+          "en": "It increases significantly",
+          "bn": "এটি বহুলাংশে বৃদ্ধি পায়",
+          "hi": "यह अत्यधिक बढ़ जाती है"
+        },
+        {
+          "en": "It decreases to zero",
+          "bn": "এটি কমে শূন্য হয়ে যায়",
+          "hi": "यह घटकर शून्य हो जाती है"
+        },
+        {
+          "en": "It remains exactly unchanged",
+          "bn": "এটি সম্পূর্ণ অপরিবর্তিত থাকে",
+          "hi": "यह पूरी तरह अपरिवर्तित रहती है"
+        },
+        {
+          "en": "It reverses its direction",
+          "bn": "এর দিক বিপরীত হয়ে যায়",
+          "hi": "इसकी दिशा विपरीत हो जाती है"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Soft iron has high magnetic permeability, which strongly concentrates magnetic field lines and drastically increases field strength.",
+        "bn": "কাঁচা লোহার উচ্চ চৌম্বক প্রবেশ্যতার কারণে এটি সোলেনয়েডের চৌম্বক বলরেখাকে ঘনীভূত করে চৌম্বকক্ষেত্রকে অনেক শক্তিশালী করে।",
+        "hi": "नर्म लोहे की उच्च चुंबकशीलता चुंबकीय क्षेत्र रेखाओं को अत्यधिक सघन कर देती है, जिससे चुंबकीय क्षेत्र बहुत शक्तिशाली हो जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "phys_ch_08_q026",
+      "question": {
+        "en": "How can the strength of the magnetic field produced by a current-carrying solenoid be increased?",
+        "bn": "তড়িৎপ্রবাহী সোলেনয়েড দ্বারা সৃষ্ট চৌম্বকক্ষেত্রের প্রাবল্য কীভাবে বৃদ্ধি করা যায়?",
+        "hi": "धारावाही परिनालिका द्वारा उत्पन्न चुंबकीय क्षेत्र की तीव्रता को कैसे बढ़ाया जा सकता है?"
+      },
+      "options": [
+        {
+          "en": "By increasing the current passing through the solenoid",
+          "bn": "সোলেনয়েডের মধ্য দিয়ে বিদ্যুৎ প্রবাহ বৃদ্ধি করে",
+          "hi": "परिनालिका में प्रवाहित होने वाली धारा का मान बढ़ाकर"
+        },
+        {
+          "en": "By decreasing the number of turns in the solenoid",
+          "bn": "সোলেনয়েডের পাকসংখ্যা কমিয়ে",
+          "hi": "परिनालिका में फेरों की संख्या घटाकर"
+        },
+        {
+          "en": "By replacing the core with a copper rod",
+          "bn": "কোর হিসেবে তামার দণ্ড ব্যবহার করে",
+          "hi": "क्रोड के रूप में तांबे की छड़ का प्रयोग करके"
+        },
+        {
+          "en": "By reversing the direction of current",
+          "bn": "বিদ্যুৎ প্রবাহের দিক বিপরীত করে",
+          "hi": "धारा की दिशा को बदलकर"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The magnetic field B of a solenoid is directly proportional to the electric current I flowing through it.",
+        "bn": "সোলেনয়েডের চৌম্বকক্ষেত্র B এর মধ্য দিয়ে প্রবাহিত বিদ্যুৎ I-এর সমানুপাতিক, তাই প্রবাহ বাড়ালে চৌম্বকক্ষেত্র বাড়ে।",
+        "hi": "परिनालिका का चुंबकीय क्षेत्र B उसमें प्रवाहित धारा I के समानुपाती होता है, इसलिए धारा बढ़ाने पर क्षेत्र बढ़ता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "phys_ch_08_q027",
+      "question": {
+        "en": "In a domestic circuit, overloading occurs primarily due to which condition?",
+        "bn": "গৃহস্থালি সার্কিটে ওভারলোডিং (Overloading) প্রধানত কোন কারণে ঘটে?",
+        "hi": "घरेलू परिपथ में अतिभारण (Overloading) मुख्य रूप से किस स्थिति के कारण होता है?"
+      },
+      "options": [
+        {
+          "en": "Connecting too many electrical appliances of high power rating to a single socket simultaneously",
+          "bn": "একটি মাত্র সকেটে একসাথে অনেকগুলি উচ্চ ক্ষমতাসম্পন্ন বৈদ্যুতিক যন্ত্র যুক্ত করলে",
+          "hi": "एक ही सॉकेट से एक साथ कई उच्च शक्ति वाले साधित्रों को जोड़ देने पर"
+        },
+        {
+          "en": "Using a fuse with a current rating lower than required",
+          "bn": "প্রয়োজনের চেয়ে কম মানমাত্রার ফিউজ ব্যবহার করলে",
+          "hi": "आवश्यकता से कम क्षमता का फ्यूज प्रयोग करने पर"
+        },
+        {
+          "en": "Disconnection of the earth wire from the appliance body",
+          "bn": "যন্ত্রের শরীর থেকে আর্থিং তার বিচ্ছিন্ন হয়ে গেলে",
+          "hi": "साधित्र के शरीर से भू-संपर्क तार कट जाने पर"
+        },
+        {
+          "en": "Fluctuation in the supply frequency below 50 Hz",
+          "bn": "সরবরাহ কম্পাঙ্ক ৫০ হার্টজের নিচে নেমে গেলে",
+          "hi": "आपूर्ति की आवृत्ति 50 Hz से कम हो जाने पर"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Overloading occurs when total power drawn by connected devices exceeds the maximum current capacity of the supply wires.",
+        "bn": "অনেকগুলি উচ্চ ক্ষমতার যন্ত্র একই সাথে চালু করলে মোট গৃহীত বিদ্যুৎ প্রবাহ তারের সহনক্ষমতা ছাড়িয়ে যায়, যাকে ওভারলোডিং বলে।",
+        "hi": "जब एक साथ कई उच्च शक्ति वाले उपकरण चालू किए जाते हैं, तो कुल धारा तारों की वहन क्षमता से अधिक हो जाती है, जिसे अतिभारण कहते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "phys_ch_08_q028",
+      "question": {
+        "en": "What is the key difference between an AC generator and a DC generator?",
+        "bn": "এসি (AC) জেনারেটর এবং ডিসি (DC) জেনারেটরের মধ্যে প্রধান মূলগত পার্থক্য কী?",
+        "hi": "AC जनित्र और DC जनित्र में मुख्य संरचनात्मक अंतर क्या है?"
+      },
+      "options": [
+        {
+          "en": "An AC generator uses slip rings while a DC generator uses a split-ring commutator",
+          "bn": "এসি জেনারেটরে স্লিপ রিং থাকে কিন্তু ডিসি জেনারেটরে স্প্লিট-রিং কমিউটেটর থাকে",
+          "hi": "AC जनित्र में सर्पी वलय होते हैं जबकि DC जनित्र में विभक्त वलय कम्यूटर होता है"
+        },
+        {
+          "en": "An AC generator produces mechanical energy while a DC generator produces chemical energy",
+          "bn": "এসি জেনারেটর যান্ত্রিক শক্তি এবং ডিসি জেনারেটর রাসায়নিক শক্তি তৈরি করে",
+          "hi": "AC जनित्र यांत्रिक ऊर्जा और DC जनित्र रासायनिक ऊर्जा उत्पन्न करता है"
+        },
+        {
+          "en": "An AC generator requires a permanent magnet while a DC generator uses an electromagnet",
+          "bn": "এসি জেনারেটরে স্থায়ী চুম্বক এবং ডিসি জেনারেটরে ইলেকট্রোম্যাগনেট লাগে",
+          "hi": "AC जनित्र में स्थायी चुंबक और DC जनित्र में विद्युत चुंबक आवश्यक है"
+        },
+        {
+          "en": "An AC generator works on electromagnetic induction while a DC generator does not",
+          "bn": "এসি জেনারেটর তড়িৎচৌম্বকীয় আবেশের ওপর কাজ করে কিন্তু ডিসি জেনারেটর করে না",
+          "hi": "AC जनित्र विद्युत चुंबकीय प्रेरण पर काम करता है जबकि DC जनित्र नहीं"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Both generators work on electromagnetic induction, but AC generators use full slip rings to yield alternating output, whereas DC generators use split rings to rectify current into unidirectional DC.",
+        "bn": "উভয় জেনারেটরই আবেশের নিয়মে কাজ করে, তবে এসি জেনারেটরে স্লিপ রিং এবং ডিসি জেনারেটরে একমুখী প্রবাহ পেতে স্প্লিট-রিং কমিউটেটর ব্যবহৃত হয়।",
+        "hi": "दोनों जनित्र प्रेरण सिद्धांत पर काम करते हैं, परंतु AC जनित्र में सर्पी वलय होते हैं और DC जनित्र में एकदिश धारा पाने के लिए कम्यूटर का उपयोग होता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "phys_ch_08_q029",
+      "question": {
+        "en": "What is the direction of the magnetic field lines inside a current-carrying solenoid relative to its magnetic poles?",
+        "bn": "তড়িৎপ্রবাহী সোলেনয়েডের ভেতরে চৌম্বক বলরেখার দিক চৌম্বক মেরুর সাপেক্ষে কেমন হয়?",
+        "hi": "किसी धारावाही परिनालिका के अंदर चुंबकीय क्षेत्र रेखाओं की दिशा उसके चुंबकीय ध्रुवों के सापेक्ष क्या होती है?"
+      },
+      "options": [
+        {
+          "en": "From South pole to North pole",
+          "bn": "দক্ষিণ মেরু থেকে উত্তর মেরুর দিকে",
+          "hi": "दक्षिण ध्रुव से उत्तर ध्रुव की ओर"
+        },
+        {
+          "en": "From North pole to South pole",
+          "bn": "উত্তর মেরু থেকে দক্ষিণ মেরুর দিকে",
+          "hi": "उत्तर ध्रुव से दक्षिण ध्रुव की ओर"
+        },
+        {
+          "en": "Radially outward from the central axis",
+          "bn": "কেন্দ্রীয় অক্ষ থেকে বাইরের দিকে ব্যাসার্ধ বরাবর",
+          "hi": "केंद्रीय अक्ष से बाहर की ओर त्रिज्या के अनुदिश"
+        },
+        {
+          "en": "Circular around the longitudinal axis",
+          "bn": "দৈর্ঘ্য অক্ষের চারপাশে বৃত্তাকারে",
+          "hi": "लंबाई के अक्ष के चारों ओर वृत्ताकार"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Outside a magnet or solenoid, magnetic field lines travel from North to South, so inside the continuous closed loop, they must travel from South to North.",
+        "bn": "চৌম্বক বলরেখাগুলি বন্ধ লুপ তৈরি করে; সোলেনয়েডের বাইরে এগুলি উত্তর থেকে দক্ষিণ মেরুর দিকে গেলেও ভেতরে দক্ষিণ থেকে উত্তর মেরুর দিকে যায়।",
+        "hi": "चुंबकीय बल रेखाएं बंद वक्र बनाती हैं; परिनालिका के बाहर ये उत्तर से दक्षिण की ओर जाती हैं, इसलिए अंदर ये दक्षिण से उत्तर ध्रुव की ओर चलती हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "phys_ch_08_q030",
+      "question": {
+        "en": "A rectangular coil placed in a uniform magnetic field experiences maximum torque when the angle between the plane of the coil and the magnetic field lines is:",
+        "bn": "সুষম চৌম্বকক্ষেত্রে স্থাপিত একটি আয়তাকার কুণ্ডলী সর্বাধিক টর্ক (টান) অনুভব করে যখন কুণ্ডলীর তলের সাথে চৌম্বক বলরেখার কোণ হয়—",
+        "hi": "एकसमान चुंबकीय क्षेत्र में रखी एक आयताकार कुंडली पर अधिकतम टॉर्क (बल-आघूर्ण) तब लगता है जब कुंडली के तल और चुंबकीय क्षेत्र रेखाओं के बीच का कोण होता है:"
+      },
+      "options": [
+        {
+          "en": "0° (plane is parallel to field lines)",
+          "bn": "0° (কুণ্ডলীর তল বলরেখার সমান্তরাল)",
+          "hi": "0° (तल क्षेत्र रेखाओं के समांतर)"
+        },
+        {
+          "en": "45°",
+          "bn": "45°",
+          "hi": "45°"
+        },
+        {
+          "en": "90° (plane is perpendicular to field lines)",
+          "bn": "90° (কুণ্ডলীর তল বলরেখার লম্ব)",
+          "hi": "90° (तल क्षेत्र रेखाओं के लंबवत)"
+        },
+        {
+          "en": "180°",
+          "bn": "180°",
+          "hi": "180°"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Torque is maximum when magnetic forces on opposite arms have the greatest perpendicular distance between them, which occurs when the plane of the coil lies parallel (0°) to the magnetic field lines.",
+        "bn": "যখন কুণ্ডলীর তল বলরেখার সমান্তরাল (0°) থাকে, তখন বাহুগুলির ওপর প্রযুক্ত বলদ্বয়ের লম্ব দূরত্ব সর্বাধিক হওয়ায় উৎপন্ন টর্ক সর্বোচ্চ হয়।",
+        "hi": "जब कुंडली का तल चुंबकीय क्षेत्र रेखाओं के समांतर (0°) होता है, तब विपरीत भुजाओं पर लगने वाले बलों के बीच लंबवत दूरी अधिकतम होने के कारण टॉर्क अधिकतम होता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    }
+  ]
 }

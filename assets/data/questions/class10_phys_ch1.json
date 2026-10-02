@@ -386,6 +386,386 @@
       },
       "points": 10,
       "time_limit_sec": 30
+    },
+    {
+      "id": "phys_ch_01_q011",
+      "question": {
+        "en": "Which equation represents a combination reaction?",
+        "bn": "কোন সমীকরণটি একটি সংযোজন বিক্রিয়াকে প্রকাশ করে?",
+        "hi": "कौन-सा समीकरण संयोजन अभिक्रिया को दर्शाता है?"
+      },
+      "options": [
+        {
+          "en": "CaO + H₂O → Ca(OH)₂",
+          "bn": "CaO + H₂O → Ca(OH)₂",
+          "hi": "CaO + H₂O → Ca(OH)₂"
+        },
+        {
+          "en": "CaCO₃ → CaO + CO₂",
+          "bn": "CaCO₃ → CaO + CO₂",
+          "hi": "CaCO₃ → CaO + CO₂"
+        },
+        {
+          "en": "Zn + CuSO₄ → ZnSO₄ + Cu",
+          "bn": "Zn + CuSO₄ → ZnSO₄ + Cu",
+          "hi": "Zn + CuSO₄ → ZnSO₄ + Cu"
+        },
+        {
+          "en": "2HgO → 2Hg + O₂",
+          "bn": "2HgO → 2Hg + O₂",
+          "hi": "2HgO → 2Hg + O₂"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "In a combination reaction, two or more substances combine to form a single product. Here, CaO and H₂O combine to form only Ca(OH)₂.",
+        "bn": "সংযোজন বিক্রিয়ায় দুই বা ততোধিক পদার্থ যুক্ত হয়ে একটি মাত্র উৎপাদ তৈরি করে। এখানে CaO ও H₂O যুক্ত হয়ে শুধু Ca(OH)₂ তৈরি হয়েছে।",
+        "hi": "संयोजन अभिक्रिया में दो या अधिक पदार्थ मिलकर एक ही उत्पाद बनाते हैं। यहाँ CaO और H₂O मिलकर केवल Ca(OH)₂ बनाते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "phys_ch_01_q012",
+      "question": {
+        "en": "Which reaction is an example of thermal decomposition?",
+        "bn": "কোন বিক্রিয়াটি তাপীয় বিয়োজন বিক্রিয়ার উদাহরণ?",
+        "hi": "कौन-सी अभिक्रिया ऊष्मीय अपघटन अभिक्रिया का उदाहरण है?"
+      },
+      "options": [
+        {
+          "en": "2KClO₃ → 2KCl + 3O₂",
+          "bn": "2KClO₃ → 2KCl + 3O₂",
+          "hi": "2KClO₃ → 2KCl + 3O₂"
+        },
+        {
+          "en": "HCl + NaOH → NaCl + H₂O",
+          "bn": "HCl + NaOH → NaCl + H₂O",
+          "hi": "HCl + NaOH → NaCl + H₂O"
+        },
+        {
+          "en": "N₂ + 3H₂ → 2NH₃",
+          "bn": "N₂ + 3H₂ → 2NH₃",
+          "hi": "N₂ + 3H₂ → 2NH₃"
+        },
+        {
+          "en": "Fe + CuSO₄ → FeSO₄ + Cu",
+          "bn": "Fe + CuSO₄ → FeSO₄ + Cu",
+          "hi": "Fe + CuSO₄ → FeSO₄ + Cu"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Thermal decomposition occurs when heat breaks one compound into simpler substances. On heating KClO₃, it produces KCl and O₂.",
+        "bn": "তাপীয় বিয়োজনে তাপের প্রভাবে একটি যৌগ ভেঙে সরল পদার্থে পরিণত হয়। KClO₃ উত্তপ্ত করলে KCl ও O₂ উৎপন্ন হয়।",
+        "hi": "ऊष्मीय अपघटन में ऊष्मा के प्रभाव से एक यौगिक टूटकर सरल पदार्थ बनाता है। KClO₃ को गर्म करने पर KCl और O₂ बनते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "phys_ch_01_q013",
+      "question": {
+        "en": "In the reaction Zn + 2HCl → ZnCl₂ + H₂, which element displaces hydrogen from the acid?",
+        "bn": "Zn + 2HCl → ZnCl₂ + H₂ বিক্রিয়ায় কোন মৌলটি অ্যাসিড থেকে হাইড্রোজেনকে প্রতিস্থাপিত করে?",
+        "hi": "Zn + 2HCl → ZnCl₂ + H₂ अभिक्रिया में कौन-सा तत्व अम्ल से हाइड्रोजन को विस्थापित करता है?"
+      },
+      "options": [
+        {
+          "en": "Zinc",
+          "bn": "দস্তা",
+          "hi": "जस्ता"
+        },
+        {
+          "en": "Chlorine",
+          "bn": "ক্লোরিন",
+          "hi": "क्लोरीन"
+        },
+        {
+          "en": "Hydrogen",
+          "bn": "হাইড্রোজেন",
+          "hi": "हाइड्रोजन"
+        },
+        {
+          "en": "Zinc chloride",
+          "bn": "জিঙ্ক ক্লোরাইড",
+          "hi": "जिंक क्लोराइड"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Zinc is more reactive than hydrogen and replaces hydrogen from HCl. The displaced hydrogen is released as H₂ gas.",
+        "bn": "দস্তা হাইড্রোজেনের চেয়ে বেশি সক্রিয় হওয়ায় HCl থেকে হাইড্রোজেনকে প্রতিস্থাপিত করে। প্রতিস্থাপিত হাইড্রোজেন H₂ গ্যাস হিসেবে বের হয়।",
+        "hi": "जस्ता हाइड्रोजन से अधिक क्रियाशील होने के कारण HCl से हाइड्रोजन को विस्थापित करता है। विस्थापित हाइड्रोजन H₂ गैस के रूप में निकलता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "phys_ch_01_q014",
+      "question": {
+        "en": "Which reaction represents decomposition by electricity?",
+        "bn": "কোন বিক্রিয়াটি বিদ্যুতের মাধ্যমে বিয়োজনকে প্রকাশ করে?",
+        "hi": "कौन-सी अभिक्रिया विद्युत द्वारा अपघटन को दर्शाती है?"
+      },
+      "options": [
+        {
+          "en": "2H₂O → 2H₂ + O₂",
+          "bn": "2H₂O → 2H₂ + O₂",
+          "hi": "2H₂O → 2H₂ + O₂"
+        },
+        {
+          "en": "2H₂ + O₂ → 2H₂O",
+          "bn": "2H₂ + O₂ → 2H₂O",
+          "hi": "2H₂ + O₂ → 2H₂O"
+        },
+        {
+          "en": "C + O₂ → CO₂",
+          "bn": "C + O₂ → CO₂",
+          "hi": "C + O₂ → CO₂"
+        },
+        {
+          "en": "Fe + S → FeS",
+          "bn": "Fe + S → FeS",
+          "hi": "Fe + S → FeS"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "In electrolytic decomposition, electricity breaks a compound into simpler substances. Water splits into hydrogen and oxygen in the reaction shown.",
+        "bn": "তড়িৎ-বিয়োজনে বিদ্যুতের সাহায্যে একটি যৌগ ভেঙে সরল পদার্থে পরিণত হয়। এখানে জল ভেঙে হাইড্রোজেন ও অক্সিজেন তৈরি হয়।",
+        "hi": "विद्युत अपघटन में विद्युत की सहायता से एक यौगिक टूटकर सरल पदार्थ बनाता है। यहाँ जल टूटकर हाइड्रोजन और ऑक्सीजन बनाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "phys_ch_01_q015",
+      "question": {
+        "en": "In the reaction CuO + H₂ → Cu + H₂O, which substance is oxidized?",
+        "bn": "CuO + H₂ → Cu + H₂O বিক্রিয়ায় কোন পদার্থটি জারিত হয়?",
+        "hi": "CuO + H₂ → Cu + H₂O अभिक्रिया में कौन-सा पदार्थ ऑक्सीकृत होता है?"
+      },
+      "options": [
+        {
+          "en": "CuO",
+          "bn": "CuO",
+          "hi": "CuO"
+        },
+        {
+          "en": "H₂",
+          "bn": "H₂",
+          "hi": "H₂"
+        },
+        {
+          "en": "Cu",
+          "bn": "Cu",
+          "hi": "Cu"
+        },
+        {
+          "en": "H₂O",
+          "bn": "H₂O",
+          "hi": "H₂O"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "Hydrogen combines with oxygen from CuO to form H₂O. Since hydrogen gains oxygen, it is oxidized.",
+        "bn": "হাইড্রোজেন CuO থেকে অক্সিজেন নিয়ে H₂O তৈরি করে। অক্সিজেন যুক্ত হওয়ায় হাইড্রোজেন জারিত হয়।",
+        "hi": "हाइड्रोजन CuO से ऑक्सीजन लेकर H₂O बनाता है। ऑक्सीजन जुड़ने के कारण हाइड्रोजन ऑक्सीकृत होता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "phys_ch_01_q016",
+      "question": {
+        "en": "Which statement correctly describes a displacement reaction?",
+        "bn": "কোন বক্তব্যটি প্রতিস্থাপন বিক্রিয়াকে সঠিকভাবে বর্ণনা করে?",
+        "hi": "कौन-सा कथन विस्थापन अभिक्रिया का सही वर्णन करता है?"
+      },
+      "options": [
+        {
+          "en": "A more reactive element replaces a less reactive element from its compound.",
+          "bn": "বেশি সক্রিয় মৌল একটি যৌগ থেকে কম সক্রিয় মৌলকে প্রতিস্থাপিত করে।",
+          "hi": "अधिक क्रियाशील तत्व अपने यौगिक से कम क्रियाशील तत्व को विस्थापित करता है।"
+        },
+        {
+          "en": "Two compounds exchange their ions to form two new compounds.",
+          "bn": "দুটি যৌগ তাদের আয়ন বিনিময় করে দুটি নতুন যৌগ তৈরি করে।",
+          "hi": "दो यौगिक अपने आयनों का आदान-प्रदान करके दो नए यौगिक बनाते हैं।"
+        },
+        {
+          "en": "Two or more substances combine to form only one product.",
+          "bn": "দুই বা ততোধিক পদার্থ যুক্ত হয়ে মাত্র একটি উৎপাদ তৈরি করে।",
+          "hi": "दो या अधिक पदार्थ मिलकर केवल एक उत्पाद बनाते हैं।"
+        },
+        {
+          "en": "One compound breaks into two or more simpler substances.",
+          "bn": "একটি যৌগ ভেঙে দুই বা ততোধিক সরল পদার্থ তৈরি করে।",
+          "hi": "एक यौगिक टूटकर दो या अधिक सरल पदार्थ बनाता है।"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "A displacement reaction involves a more reactive element replacing a less reactive element from its compound. The other statements describe double displacement, combination and decomposition respectively.",
+        "bn": "প্রতিস্থাপন বিক্রিয়ায় বেশি সক্রিয় মৌল একটি যৌগ থেকে কম সক্রিয় মৌলকে সরিয়ে তার স্থান দখল করে। অন্য বক্তব্যগুলি যথাক্রমে দ্বি-প্রতিস্থাপন, সংযোজন ও বিয়োজন বিক্রিয়াকে বোঝায়।",
+        "hi": "विस्थापन अभिक्रिया में अधिक क्रियाशील तत्व किसी यौगिक से कम क्रियाशील तत्व को हटाकर उसका स्थान लेता है। अन्य कथन क्रमशः द्विविस्थापन, संयोजन और अपघटन अभिक्रियाओं को दर्शाते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "phys_ch_01_q017",
+      "question": {
+        "en": "In the reaction 2Mg + O₂ → 2MgO, what happens to magnesium?",
+        "bn": "2Mg + O₂ → 2MgO বিক্রিয়ায় ম্যাগনেসিয়ামের কী ঘটে?",
+        "hi": "2Mg + O₂ → 2MgO अभिक्रिया में मैग्नीशियम के साथ क्या होता है?"
+      },
+      "options": [
+        {
+          "en": "It is oxidized.",
+          "bn": "এটি জারিত হয়।",
+          "hi": "यह ऑक्सीकृत होता है।"
+        },
+        {
+          "en": "It is reduced.",
+          "bn": "এটি বিজারিত হয়।",
+          "hi": "यह अपचयित होता है।"
+        },
+        {
+          "en": "It undergoes decomposition.",
+          "bn": "এটি বিয়োজন ঘটায়।",
+          "hi": "यह अपघटन करता है।"
+        },
+        {
+          "en": "It remains unchanged.",
+          "bn": "এটি অপরিবর্তিত থাকে।",
+          "hi": "यह अपरिवर्तित रहता है।"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Magnesium combines with oxygen to form magnesium oxide. Gain of oxygen is oxidation, so magnesium is oxidized.",
+        "bn": "ম্যাগনেসিয়াম অক্সিজেনের সঙ্গে যুক্ত হয়ে ম্যাগনেসিয়াম অক্সাইড তৈরি করে। অক্সিজেন গ্রহণকে জারণ বলা হয়, তাই ম্যাগনেসিয়াম জারিত হয়।",
+        "hi": "मैग्नीशियम ऑक्सीजन के साथ मिलकर मैग्नीशियम ऑक्साइड बनाता है। ऑक्सीजन का जुड़ना ऑक्सीकरण कहलाता है, इसलिए मैग्नीशियम ऑक्सीकृत होता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "phys_ch_01_q018",
+      "question": {
+        "en": "Which reaction involves both oxidation and reduction?",
+        "bn": "কোন বিক্রিয়ায় একই সঙ্গে জারণ ও বিজারণ ঘটে?",
+        "hi": "किस अभिक्रिया में एक साथ ऑक्सीकरण और अपचयन दोनों होते हैं?"
+      },
+      "options": [
+        {
+          "en": "ZnO + C → Zn + CO",
+          "bn": "ZnO + C → Zn + CO",
+          "hi": "ZnO + C → Zn + CO"
+        },
+        {
+          "en": "CaO + H₂O → Ca(OH)₂",
+          "bn": "CaO + H₂O → Ca(OH)₂",
+          "hi": "CaO + H₂O → Ca(OH)₂"
+        },
+        {
+          "en": "2KClO₃ → 2KCl + 3O₂",
+          "bn": "2KClO₃ → 2KCl + 3O₂",
+          "hi": "2KClO₃ → 2KCl + 3O₂"
+        },
+        {
+          "en": "AgNO₃ + NaCl → AgCl + NaNO₃",
+          "bn": "AgNO₃ + NaCl → AgCl + NaNO₃",
+          "hi": "AgNO₃ + NaCl → AgCl + NaNO₃"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "In ZnO + C → Zn + CO, ZnO loses oxygen and is reduced, while carbon gains oxygen and is oxidized. Therefore, both oxidation and reduction occur.",
+        "bn": "ZnO + C → Zn + CO বিক্রিয়ায় ZnO অক্সিজেন হারিয়ে বিজারিত হয় এবং কার্বন অক্সিজেন গ্রহণ করে জারিত হয়। তাই এখানে একই সঙ্গে জারণ ও বিজারণ ঘটে।",
+        "hi": "ZnO + C → Zn + CO में ZnO ऑक्सीजन खोकर अपचयित होता है, जबकि कार्बन ऑक्सीजन ग्रहण करके ऑक्सीकृत होता है। इसलिए दोनों प्रक्रियाएँ एक साथ होती हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "phys_ch_01_q019",
+      "question": {
+        "en": "In the reaction Fe₂O₃ + 3CO → 2Fe + 3CO₂, which substance is reduced?",
+        "bn": "Fe₂O₃ + 3CO → 2Fe + 3CO₂ বিক্রিয়ায় কোন পদার্থটি বিজারিত হয়?",
+        "hi": "Fe₂O₃ + 3CO → 2Fe + 3CO₂ अभिक्रिया में कौन-सा पदार्थ अपचयित होता है?"
+      },
+      "options": [
+        {
+          "en": "Fe₂O₃",
+          "bn": "Fe₂O₃",
+          "hi": "Fe₂O₃"
+        },
+        {
+          "en": "CO",
+          "bn": "CO",
+          "hi": "CO"
+        },
+        {
+          "en": "Fe",
+          "bn": "Fe",
+          "hi": "Fe"
+        },
+        {
+          "en": "CO₂",
+          "bn": "CO₂",
+          "hi": "CO₂"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Fe₂O₃ loses oxygen and changes into Fe. Loss of oxygen is reduction, so Fe₂O₃ is reduced.",
+        "bn": "Fe₂O₃ অক্সিজেন হারিয়ে Fe-তে পরিণত হয়। অক্সিজেন হারানোকে বিজারণ বলা হয়, তাই Fe₂O₃ বিজারিত হয়।",
+        "hi": "Fe₂O₃ ऑक्सीजन खोकर Fe में बदलता है। ऑक्सीजन का हटना अपचयन कहलाता है, इसलिए Fe₂O₃ अपचयित होता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "phys_ch_01_q020",
+      "question": {
+        "en": "A compound AB breaks into A and B when heated. Which general form represents this reaction?",
+        "bn": "একটি AB যৌগ উত্তপ্ত করলে A ও B-তে ভেঙে যায়। এই বিক্রিয়াটির সাধারণ রূপ কোনটি?",
+        "hi": "एक AB यौगिक को गर्म करने पर A और B में टूट जाता है। इस अभिक्रिया का सामान्य रूप कौन-सा है?"
+      },
+      "options": [
+        {
+          "en": "AB → A + B",
+          "bn": "AB → A + B",
+          "hi": "AB → A + B"
+        },
+        {
+          "en": "A + B → AB",
+          "bn": "A + B → AB",
+          "hi": "A + B → AB"
+        },
+        {
+          "en": "A + BC → AC + B",
+          "bn": "A + BC → AC + B",
+          "hi": "A + BC → AC + B"
+        },
+        {
+          "en": "AB + CD → AD + CB",
+          "bn": "AB + CD → AD + CB",
+          "hi": "AB + CD → AD + CB"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "A decomposition reaction occurs when one compound breaks into two or more simpler substances. Therefore, AB changing into A and B has the form AB → A + B.",
+        "bn": "বিয়োজন বিক্রিয়ায় একটি যৌগ ভেঙে দুই বা ততোধিক সরল পদার্থ তৈরি করে। তাই AB ভেঙে A ও B হওয়ার সাধারণ রূপ হল AB → A + B।",
+        "hi": "अपघटन अभिक्रिया में एक यौगिक टूटकर दो या अधिक सरल पदार्थ बनाता है। इसलिए AB के A और B में टूटने का सामान्य रूप AB → A + B है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
     }
   ]
 }

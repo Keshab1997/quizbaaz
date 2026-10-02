@@ -766,6 +766,386 @@
       },
       "points": 10,
       "time_limit_sec": 30
+    },
+    {
+      "id": "bio_ch_01_q021",
+      "question": {
+        "en": "Which gas is absorbed by plants during photosynthesis?",
+        "bn": "সালোকসংশ্লেষের সময় গাছ কোন গ্যাস গ্রহণ করে?",
+        "hi": "प्रकाश संश्लेषण के दौरान पौधे कौन सी गैस लेते हैं?"
+      },
+      "options": [
+        {
+          "en": "Oxygen",
+          "bn": "অক্সিজেন",
+          "hi": "ऑक्सीजन"
+        },
+        {
+          "en": "Carbon dioxide",
+          "bn": "কার্বন ডাইঅক্সাইড",
+          "hi": "कार्बन डाइऑक्साइड"
+        },
+        {
+          "en": "Nitrogen",
+          "bn": "নাইট্রোজেন",
+          "hi": "नाइट्रोजन"
+        },
+        {
+          "en": "Hydrogen",
+          "bn": "হাইড্রোজেন",
+          "hi": "हाइड्रोजन"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "Plants take in carbon dioxide and release oxygen during photosynthesis, using it with water to make glucose.",
+        "bn": "সালোকসংশ্লেষে গাছ কার্বন ডাইঅক্সাইড গ্রহণ করে এবং জল-সহ গ্লুকোজ তৈরি করে অক্সিজেন ত্যাগ করে।",
+        "hi": "प्रकाश संश्लेषण में पौधे कार्बन डाइऑक्साइड लेते हैं और जल के साथ ग्लूकोज बनाकर ऑक्सीजन छोड़ते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "bio_ch_01_q022",
+      "question": {
+        "en": "Which organelle is known as the site of photosynthesis in green plant cells?",
+        "bn": "সবুজ উদ্ভিদ কোশের কোন অঙ্গাণুতে সালোকসংশ্লেষ ঘটে?",
+        "hi": "हरे पौधे की कोशिकाओं में प्रकाश संश्लेषण किस कोशिकांग में होता है?"
+      },
+      "options": [
+        {
+          "en": "Mitochondria",
+          "bn": "মাইটোকন্ড্রিয়া",
+          "hi": "माइटोकॉन्ड्रिया"
+        },
+        {
+          "en": "Chloroplast",
+          "bn": "ক্লোরোপ্লাস্ট",
+          "hi": "क्लोरोप्लास्ट"
+        },
+        {
+          "en": "Ribosome",
+          "bn": "রাইবোজোম",
+          "hi": "राइबोसोम"
+        },
+        {
+          "en": "Golgi apparatus",
+          "bn": "গলগি বস্তু",
+          "hi": "गाल्जी उपकरण"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "Chloroplasts contain chlorophyll pigments that trap light energy required to carry out photosynthesis.",
+        "bn": "ক্লোরোপ্লাস্টে ক্লোরোফিল রঞ্জক থাকে যা সালোকসংশ্লেষের জন্য প্রয়োজনীয় আলোক শক্তি আবদ্ধ করে।",
+        "hi": "क्लोरोप्लास्ट में क्लोरोफिल वर्णक होता है जो प्रकाश संश्लेषण के लिए आवश्यक प्रकाश ऊर्जा को ट्रैप करता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "bio_ch_01_q023",
+      "question": {
+        "en": "Which element present in hemoglobin binds reversibly with oxygen?",
+        "bn": "হিমোগ্লোবিনে উপস্থিত কোন মৌলটি অক্সিজেনের সাথে উভমুখীভাবে যুক্ত হয়?",
+        "hi": "हीमोग्लोबिन में उपस्थित कौन सा तत्व ऑक्सीजन के साथ उत्क्रमणीय रूप से जुड़ता है?"
+      },
+      "options": [
+        {
+          "en": "Magnesium",
+          "bn": "ম্যাগনেসিয়াম",
+          "hi": "मैग्नीशियम"
+        },
+        {
+          "en": "Copper",
+          "bn": "কপার",
+          "hi": "कॉपर"
+        },
+        {
+          "en": "Iron",
+          "bn": "আয়রন",
+          "hi": "आयरन"
+        },
+        {
+          "en": "Calcium",
+          "bn": "ক্যালসিয়াম",
+          "hi": "कैल्शियम"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "en": "Hemoglobin contains iron, which binds to oxygen in the lungs to form oxyhemoglobin for transport to tissues.",
+        "bn": "হিমোগ্লোবিনে আয়রন থাকে, যা ফুসফুসে অক্সিজেনের সাথে যুক্ত হয়ে অক্সিহিমোগ্লোবিন গঠন করে কলাকোষে পরিবাহিত হয়।",
+        "hi": "हीमोग्लोबिन में आयरन होता है, जो फेफड़ों में ऑक्सीजन के साथ जुड़कर ऊतकों तक परिवहन के लिए ऑक्सीहीमोग्लोबिन बनाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "bio_ch_01_q024",
+      "question": {
+        "en": "In human digestive system, peristalsis mainly takes place in which structure to move food downward?",
+        "bn": "মানব পরিপাকতন্ত্রের কোন অংশে পেরিস্টালসিস প্রক্রিয়ার মাধ্যমে খাদ্য নিচের দিকে নেমে যায়?",
+        "hi": "मानव पाचन तंत्र में भोजन को नीचे ले जाने के लिए क्रमाकुंचन (peristalsis) मुख्य रूप से कहाँ होता है?"
+      },
+      "options": [
+        {
+          "en": "Esophagus",
+          "bn": "গ্রাসনালী",
+          "hi": "ग्रासनली"
+        },
+        {
+          "en": "Trachea",
+          "bn": "শ্বাসনালী",
+          "hi": "श्वास नली"
+        },
+        {
+          "en": "Liver",
+          "bn": "যকৃৎ",
+          "hi": "यकृत"
+        },
+        {
+          "en": "Pancreas",
+          "bn": "অগ্ন্যাশয়",
+          "hi": "अग्न्याशय"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Rhythmic contraction and relaxation of muscles in the esophageal wall push swallowed food into the stomach.",
+        "bn": "গ্রাসনালীর পেশির পর্যায়ক্রমিক সংকোচন ও প্রসারণের (পেরিস্টালসিস) মাধ্যমে গৃহীত খাদ্য পাকস্থলীতে পৌঁছায়।",
+        "hi": "ग्रासनली की भित्ति की मांसपेशियों के लयबद्ध संकुचन और शिथिलन से निकला हुआ भोजन आमाशय में जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "bio_ch_01_q025",
+      "question": {
+        "en": "Which enzyme present in gastric juice acts on proteins in the acidic medium of the stomach?",
+        "bn": "পাকস্থলীর আম্লিক মাধ্যমে গ্যস্ট্রিক রসের কোন উৎসেচক প্রোটিনের ওপর ক্রিয়া করে?",
+        "hi": "आमाशय के अम्लीय माध्यम में जठर रस का कौन सा एंजाइम प्रोटीन पर क्रिया करता है?"
+      },
+      "options": [
+        {
+          "en": "Trypsin",
+          "bn": "ট্রিপসিন",
+          "hi": "ट्रिप्सिन"
+        },
+        {
+          "en": "Pepsin",
+          "bn": "পেপসিন",
+          "hi": "पेप्सिन"
+        },
+        {
+          "en": "Lipase",
+          "bn": "লাইপেজ",
+          "hi": "लाइपेज"
+        },
+        {
+          "en": "Amylase",
+          "bn": "অ্যামাইলেজ",
+          "hi": "एमाइलेज"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "Pepsin is secreted in gastric juice and requires the acidic environment created by hydrochloric acid to digest proteins into peptones.",
+        "bn": "পেপসিন পাকরসে নিঃসৃত হয় এবং হাইড্রোক্লোরিক অ্যাসিডের উপস্থিতিতে আম্লিক মাধ্যমে প্রোটিনকে পেপ্টোনে ভেঙে ফেলে।",
+        "hi": "पेप्सिन जठर रस में स्रावित होता है और हाइड्रोक्लोरिक अम्ल द्वारा बनाए गए अम्लीय माध्यम में प्रोटीन को पेप्टोन में तोड़ता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "bio_ch_01_q026",
+      "question": {
+        "en": "What provides the main suction force for driving water upward in tall plants during the daytime?",
+        "bn": "দিনের বেলায় উঁচু উদ্ভিদে জল ওপরের দিকে ওঠার জন্য প্রধান শোষণ বল সরবরাহ করে কোনটি?",
+        "hi": "दिन के समय ऊँचे पौधों में जल को ऊपर खींचने के लिए मुख्य चूषण बल कौन प्रदान करता है?"
+      },
+      "options": [
+        {
+          "en": "Transpiration pull",
+          "bn": "বাষ্পমোচন টান",
+          "hi": "वाष्पोत्सर्जन खिंचाव"
+        },
+        {
+          "en": "Root pressure",
+          "bn": "মূলজ চাপ",
+          "hi": "मूल दाब"
+        },
+        {
+          "en": "Translocation",
+          "bn": "খাদ্য পরিবহন",
+          "hi": "स्थानांतरण"
+        },
+        {
+          "en": "Guttation",
+          "bn": "গাটেশন",
+          "hi": "बिंदुस्राव"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Evaporation of water through stomata creates a suction pull that continuously draws xylem sap upward in tall trees during the day.",
+        "bn": "পত্ররন্ধ্রের মাধ্যমে জল বাষ্পাকারে বের হয়ে যাওয়ার ফলে উৎপন্ন বাষ্পমোচন টান লম্বা গাছে জাইলেম বাহিকার জলকে ওপরে টানে।",
+        "hi": "रंध्रों से जल का वाष्पीकरण एक चूषण बल पैदा करता है जो दिन के समय बड़े वृक्षों में जाइलम के माध्यम से जल को ऊपर खींचता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "bio_ch_01_q027",
+      "question": {
+        "en": "Which sequence correctly traces the pathway of urine from kidneys to outside the human body?",
+        "bn": "মানবদেহে বৃক্ক থেকে মূত্র নিষ্কাশনের সঠিক পথটি কোনটি?",
+        "hi": "मानव शरीर में गुर्दे से मूत्र निष्कासन का सही मार्ग कौन सा है?"
+      },
+      "options": [
+        {
+          "en": "Kidney -> Ureter -> Urinary bladder -> Urethra",
+          "bn": "বৃক্ক -> গবিনী -> মূত্রাশয় -> মূত্রনালী",
+          "hi": "वृक्क -> मूत्रवाहिनी -> मूत्राशय -> मूत्रमार्ग"
+        },
+        {
+          "en": "Kidney -> Urethra -> Urinary bladder -> Ureter",
+          "bn": "বৃক্ক -> মূত্রনালী -> মূত্রাশয় -> গবিনী",
+          "hi": "वृक्क -> मूत्रमार्ग -> मूत्राशय -> मूत्रवाहिनी"
+        },
+        {
+          "en": "Kidney -> Urinary bladder -> Ureter -> Urethra",
+          "bn": "বৃক্ক -> মূত্রাশয় -> গবিনী -> মূত্রনালী",
+          "hi": "वृक्क -> मूत्राशय -> मूत्रवाहिनी -> मूत्रमार्ग"
+        },
+        {
+          "en": "Kidney -> Ureter -> Urethra -> Urinary bladder",
+          "bn": "বৃক্ক -> গবিনী -> মূত্রনালী -> মূত্রাশয়",
+          "hi": "वृक्क -> मूत्रवाहिनी -> मूत्रमार्ग -> मूत्राशय"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Urine produced in the kidneys passes through ureters to be stored in the urinary bladder before passing out through the urethra.",
+        "bn": "বৃক্কে উৎপন্ন মূত্র গবিনীর (ureter) মাধ্যমে মূত্রাশয়ে জমা হয় এবং পরবর্তীতে মূত্রনালী (urethra) দিয়ে নির্গত হয়।",
+        "hi": "वृक्क में बना मूत्र मूत्रवाहिनी द्वारा मूत्राशय में एकत्र होता है और फिर मूत्रमार्ग से बाहर निकलता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "bio_ch_01_q028",
+      "question": {
+        "en": "Why is ATP often referred to as the 'energy currency' of living cells?",
+        "bn": "ATP-কে কেন জীবকোশের 'শক্তি মুদ্রা' (energy currency) বলা হয়?",
+        "hi": "ATP को जीवित कोशिकाओं की 'ऊर्जा मुद्रा' (energy currency) क्यों कहा जाता है?"
+      },
+      "options": [
+        {
+          "en": "It is the primary structural carbohydrate of the cell wall.",
+          "bn": "এটি কোশপ্রাচীরের প্রধান গঠনাগত কার্বোহাইড্রেট।",
+          "hi": "यह कोशिका भित्ति का प्राथमिक संरचनात्मक कार्बोहाइड्रेट है।"
+        },
+        {
+          "en": "It stores terminal phosphate bond energy released during respiration to drive cellular processes.",
+          "bn": "এটি শ্বসনে নির্গত শক্তি প্রান্তীয় ফসফেট বন্ধনীতে সঞ্চিত রেখে কোশের বিভিন্ন বিক্রিয়ায় সরবরাহ করে।",
+          "hi": "यह श्वसन में मुक्त ऊर्जा को टर्मिनल फॉस्फेट बंध में संचित रखता है जो कोशकीय क्रियाओं को ऊर्जा देता है।"
+        },
+        {
+          "en": "It directly transports oxygen molecules across all cell membranes.",
+          "bn": "এটি সমস্ত কোশপর্দার মধ্য দিয়ে সরাসরি অক্সিজেন অণু পরিবহন করে।",
+          "hi": "यह सभी कोशिका झिल्लियों के पार सीधे ऑक्सीजन अणुओं का परिवहन करता है।"
+        },
+        {
+          "en": "It acts as the principal enzyme in the digestion of dietary lipids.",
+          "bn": "এটি পরিপাকে লিপিদ ভঙনের প্রধান উৎসেচক হিসেবে কাজ করে।",
+          "hi": "यह भोजन के लिपिड पाचन में मुख्य एंजाइम के रूप में कार्य करता है।"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "Energy released during respiration is stored in high-energy phosphate bonds of ATP and breaks down to power cellular activities on demand.",
+        "bn": "শ্বসনে মুক্ত শক্তি ATP-এর উচ্চ-শক্তি ফসফেট বন্ধনীতে সঞ্চিত হয় এবং কোশের জৈবনিক প্রয়োজনে তা ভেঙে শক্তি সরবরাহ করে।",
+        "hi": "श्वसन में मुक्त ऊर्जा ATP के उच्च-ऊर्जा फॉस्फेट बंधों में संचित होती है और आवश्यकता पड़ने पर कोशकीय कार्यों के लिए ऊर्जा प्रदान करती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "bio_ch_01_q029",
+      "question": {
+        "en": "In human double circulation, which chamber of the heart pumps deoxygenated blood to the lungs via the pulmonary artery?",
+        "bn": "মানুষের দ্বিসংবহন তন্ত্রে হৃৎপিণ্ডের কোন প্রকোষ্ঠ থেকে ফুসফুসীয় ধমনীর মাধ্যমে দূষিত (O2-কম) রক্ত ফুসফুসে যায়?",
+        "hi": "मानव द्वि-परिसंचरण में, हृदय का कौन सा कोष्ठ फुफ्फुस धमनी के माध्यम से विऑक्सीजनित रक्त फेफड़ों में पंप करता है?"
+      },
+      "options": [
+        {
+          "en": "Left atrium",
+          "bn": "বাম অলিন্দ",
+          "hi": "बायां आलिंद"
+        },
+        {
+          "en": "Left ventricle",
+          "bn": "বাম নিলয়",
+          "hi": "बायां निलय"
+        },
+        {
+          "en": "Right atrium",
+          "bn": "ডান অলিন্দ",
+          "hi": "दायां आलिंद"
+        },
+        {
+          "en": "Right ventricle",
+          "bn": "ডান নিলয়",
+          "hi": "दायां निलय"
+        }
+      ],
+      "correct_index": 3,
+      "explanation": {
+        "en": "The right ventricle contracts to send deoxygenated blood into the pulmonary artery toward the lungs for oxygenation.",
+        "bn": "ডান নিলয় সংকুচিত হয়ে ফুসফুসীয় ধমনীর মধ্য দিয়ে অক্সিজেন-হীন রক্তকে অক্সিজেনে সমৃদ্ধ করার জন্য ফুসফুসে পাঠায়।",
+        "hi": "दायां निलय संकुचित होकर विऑक्सीजनित रक्त को ऑक्सीजनन के लिए फुफ्फुस धमनी द्वारा फेफड़ों में भेजता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "bio_ch_01_q030",
+      "question": {
+        "en": "How does translocation of sucrose through phloem tissue differ fundamentally from water transport in xylem?",
+        "bn": "ফ্লোয়েম কলার মাধ্যমে সুক্রোজের পরিবহন জাইলেমে জল পরিবহনের থেকে কীভাবে মৌলিকভাবে আলাদা?",
+        "hi": "फ्लोएम ऊतक के माध्यम से सुक्रोज का स्थानांतरण जाइलम में जल परिवहन से मौलिक रूप से कैसे भिन्न है?"
+      },
+      "options": [
+        {
+          "en": "Phloem transport is a purely physical passive process requiring no cell energy.",
+          "bn": "ফ্লোয়েম পরিবহন সম্পূর্ণ নিষ্ক্রিয় ভৌত প্রক্রিয়া যাতে কোনো শক্তির প্রয়োজন হয় না।",
+          "hi": "फ्लोएम परिवहन एक विशुद्ध रूप से निष्क्रिय भौतिक प्रक्रिया है जिसमें ऊर्जा की आवश्यकता नहीं होती।"
+        },
+        {
+          "en": "Phloem translocation utilizes energy from ATP to create osmotic pressure for movement in both directions.",
+          "bn": "ফ্লোয়েম পরিবহনে ATP থেকে শক্তি ব্যবহার করে অভিস্রাবণিক চাপ সৃষ্টি হয়, যা উভয় দিকে খাদ্য পরিবহন করে।",
+          "hi": "फ्लोएम स्थानांतरण दोनों दिशाओं में गति के लिए परासरण दाब बनाने हेतु ATP से ऊर्जा का उपयोग करता है।"
+        },
+        {
+          "en": "Phloem tissue is made entirely of non-living dead tracheids and vessels.",
+          "bn": "ফ্লোয়েম কলা সম্পূর্ণ মৃত ট্র্যাকিড এবং বাহিকা দিয়ে গঠিত।",
+          "hi": "फ्लोएम ऊतक पूरी तरह से निर्जीव वाहिनिकाओं और वाहिकाओं से बना होता है।"
+        },
+        {
+          "en": "Phloem moves materials exclusively upwards from roots to leaves.",
+          "bn": "ফ্লোয়েম কেবল মূল থেকে পাতার দিকে একমুখী পরিবহন ঘটায়।",
+          "hi": "फ्लोएम पदार्थों को केवल जड़ों से पत्तियों की ओर ऊपर दिशा में ले जाता है।"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "Translocation in phloem actively uses ATP energy to load sucrose, creating osmotic pressure that drives sap multidirectionally, unlike passive physical xylem transport.",
+        "bn": "ফ্লোয়েমে ATP শক্তি প্রয়োগ করে সুক্রোজ লোড হয় যা অভিস্রাবণিক চাপের মাধ্যমে উভমুখী পরিবহন ঘটায়, যা জাইলেমের নিষ্ক্রিয় পরিবহনের বিপরীত।",
+        "hi": "फ्लोएम में ATP ऊर्जा का उपयोग करके सुक्रोज लोड होता है जिससे परासरण दाब बनता है और भोजन का बहुदिशीय स्थानांतरण होता है, जो जाइलम के निष्क्रय परिवहन से भिन्न है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
     }
   ]
 }

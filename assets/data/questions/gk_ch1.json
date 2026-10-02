@@ -6,5 +6,386 @@
     "hi": "विश्व व भारत: सर्वोच्च तथ्य, खोजें और पुरस्कार"
   },
   "class_standard": "Class 10",
-  "questions": []
+  "questions": [
+    {
+      "id": "gk_ch_01_q001",
+      "question": {
+        "en": "Which is the highest civilian award of India?",
+        "bn": "ভারতের সর্বোচ্চ বেসামরিক পুরস্কার কোনটি?",
+        "hi": "भारत का सर्वोच्च नागरिक पुरस्कार कौन-सा है?"
+      },
+      "options": [
+        {
+          "en": "Padma Shri",
+          "bn": "পদ্মশ্রী",
+          "hi": "पद्म श्री"
+        },
+        {
+          "en": "Padma Bhushan",
+          "bn": "পদ্মভূষণ",
+          "hi": "पद्म भूषण"
+        },
+        {
+          "en": "Bharat Ratna",
+          "bn": "ভারতরত্ন",
+          "hi": "भारत रत्न"
+        },
+        {
+          "en": "Padma Vibhushan",
+          "bn": "পদ্মবিভূষণ",
+          "hi": "पद्म विभूषण"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "en": "Bharat Ratna is the highest civilian award of India and is awarded for exceptional service or performance of the highest order.",
+        "bn": "ভারতরত্ন ভারতের সর্বোচ্চ বেসামরিক পুরস্কার। এটি সর্বোচ্চ স্তরের অসাধারণ অবদান বা কৃতিত্বের জন্য প্রদান করা হয়।",
+        "hi": "भारत रत्न भारत का सर्वोच्च नागरिक पुरस्कार है। यह सर्वोच्च स्तर की असाधारण सेवा या उपलब्धि के लिए प्रदान किया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "gk_ch_01_q002",
+      "question": {
+        "en": "Which is the largest continent in the world by area?",
+        "bn": "আয়তনের দিক থেকে বিশ্বের বৃহত্তম মহাদেশ কোনটি?",
+        "hi": "क्षेत्रफल की दृष्टि से विश्व का सबसे बड़ा महाद्वीप कौन-सा है?"
+      },
+      "options": [
+        {
+          "en": "Africa",
+          "bn": "আফ্রিকা",
+          "hi": "अफ्रीका"
+        },
+        {
+          "en": "Asia",
+          "bn": "এশিয়া",
+          "hi": "एशिया"
+        },
+        {
+          "en": "North America",
+          "bn": "উত্তর আমেরিকা",
+          "hi": "उत्तरी अमेरिका"
+        },
+        {
+          "en": "Europe",
+          "bn": "ইউরোপ",
+          "hi": "यूरोप"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "Asia covers more land area than any other continent, making it the largest continent in the world.",
+        "bn": "এশিয়ার স্থলভাগের আয়তন অন্যান্য সব মহাদেশের তুলনায় বেশি, তাই এটি বিশ্বের বৃহত্তম মহাদেশ।",
+        "hi": "एशिया का स्थल क्षेत्रफल अन्य सभी महाद्वीपों से अधिक है, इसलिए यह विश्व का सबसे बड़ा महाद्वीप है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "gk_ch_01_q003",
+      "question": {
+        "en": "Who is credited with inventing the telephone?",
+        "bn": "টেলিফোন আবিষ্কারের কৃতিত্ব কাকে দেওয়া হয়?",
+        "hi": "टेलीफोन के आविष्कार का श्रेय किसे दिया जाता है?"
+      },
+      "options": [
+        {
+          "en": "Thomas Edison",
+          "bn": "থমাস এডিসন",
+          "hi": "थॉमस एडिसन"
+        },
+        {
+          "en": "Alexander Graham Bell",
+          "bn": "আলেকজান্ডার গ্রাহাম বেল",
+          "hi": "अलेक्जेंडर ग्राहम बेल"
+        },
+        {
+          "en": "James Watt",
+          "bn": "জেমস ওয়াট",
+          "hi": "जेम्स वाट"
+        },
+        {
+          "en": "Michael Faraday",
+          "bn": "মাইকেল ফ্যারাডে",
+          "hi": "माइकल फैराडे"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "Alexander Graham Bell is traditionally credited with inventing the practical telephone and received a patent for it in 1876.",
+        "bn": "আলেকজান্ডার গ্রাহাম বেলকে প্রচলিতভাবে ব্যবহারযোগ্য টেলিফোন আবিষ্কারের কৃতিত্ব দেওয়া হয় এবং 1876 সালে তিনি এর পেটেন্ট পান।",
+        "hi": "अलेक्जेंडर ग्राहम बेल को सामान्यतः व्यावहारिक टेलीफोन के आविष्कार का श्रेय दिया जाता है और उन्हें 1876 में इसका पेटेंट मिला।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "gk_ch_01_q004",
+      "question": {
+        "en": "Which is the highest mountain peak in the world above sea level?",
+        "bn": "সমুদ্রপৃষ্ঠ থেকে উচ্চতার বিচারে বিশ্বের সর্বোচ্চ পর্বতশৃঙ্গ কোনটি?",
+        "hi": "समुद्र तल से ऊँचाई की दृष्टि से विश्व की सबसे ऊँची पर्वत चोटी कौन-सी है?"
+      },
+      "options": [
+        {
+          "en": "K2",
+          "bn": "K2",
+          "hi": "K2"
+        },
+        {
+          "en": "Mount Everest",
+          "bn": "মাউন্ট এভারেস্ট",
+          "hi": "माउंट एवरेस्ट"
+        },
+        {
+          "en": "Kangchenjunga",
+          "bn": "কাঞ্চনজঙ্ঘা",
+          "hi": "कंचनजंघा"
+        },
+        {
+          "en": "Lhotse",
+          "bn": "লোৎসে",
+          "hi": "ल्होत्से"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "Mount Everest has the greatest elevation above mean sea level, at about 8,849 metres, making it the world's highest mountain peak.",
+        "bn": "মাউন্ট এভারেস্টের গড় সমুদ্রপৃষ্ঠ থেকে উচ্চতা প্রায় 8,849 মিটার, যা এটিকে বিশ্বের সর্বোচ্চ পর্বতশৃঙ্গ করেছে।",
+        "hi": "माउंट एवरेस्ट की औसत समुद्र तल से ऊँचाई लगभग 8,849 मीटर है, इसलिए यह विश्व की सबसे ऊँची पर्वत चोटी है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "gk_ch_01_q005",
+      "question": {
+        "en": "Who discovered penicillin?",
+        "bn": "পেনিসিলিন কে আবিষ্কার করেন?",
+        "hi": "पेनिसिलिन की खोज किसने की?"
+      },
+      "options": [
+        {
+          "en": "Louis Pasteur",
+          "bn": "লুই পাস্তুর",
+          "hi": "लुई पाश्चर"
+        },
+        {
+          "en": "Alexander Fleming",
+          "bn": "আলেকজান্ডার ফ্লেমিং",
+          "hi": "अलेक्जेंडर फ्लेमिंग"
+        },
+        {
+          "en": "Edward Jenner",
+          "bn": "এডওয়ার্ড জেনার",
+          "hi": "एडवर्ड जेनर"
+        },
+        {
+          "en": "Robert Koch",
+          "bn": "রবার্ট কখ",
+          "hi": "रॉबर्ट कॉख"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "Alexander Fleming discovered the antibacterial substance penicillin in 1928 when he observed that a mould inhibited bacterial growth.",
+        "bn": "1928 সালে আলেকজান্ডার ফ্লেমিং লক্ষ্য করেন যে একটি ছত্রাক ব্যাকটেরিয়ার বৃদ্ধি রোধ করছে; এখান থেকেই পেনিসিলিনের আবিষ্কার হয়।",
+        "hi": "1928 में अलेक्जेंडर फ्लेमिंग ने देखा कि एक फफूंद बैक्टीरिया की वृद्धि रोक रही थी; इसी से पेनिसिलिन की खोज हुई।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "gk_ch_01_q006",
+      "question": {
+        "en": "Which Indian scientist won the Nobel Prize in Physics in 1930 for his work on the scattering of light?",
+        "bn": "আলোর বিচ্ছুরণ নিয়ে কাজের জন্য 1930 সালে কোন ভারতীয় বিজ্ঞানী পদার্থবিজ্ঞানে নোবেল পুরস্কার পান?",
+        "hi": "प्रकाश के प्रकीर्णन पर कार्य के लिए 1930 में किस भारतीय वैज्ञानिक को भौतिकी का नोबेल पुरस्कार मिला?"
+      },
+      "options": [
+        {
+          "en": "Satyendra Nath Bose",
+          "bn": "সত্যেন্দ্রনাথ বসু",
+          "hi": "सत्येंद्र नाथ बोस"
+        },
+        {
+          "en": "C. V. Raman",
+          "bn": "সি. ভি. রমন",
+          "hi": "सी. वी. रमन"
+        },
+        {
+          "en": "Homi J. Bhabha",
+          "bn": "হোমি জে. ভাবা",
+          "hi": "होमी जे. भाभा"
+        },
+        {
+          "en": "Jagadish Chandra Bose",
+          "bn": "জগদীশচন্দ্র বসু",
+          "hi": "जगदीश चंद्र बोस"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "C. V. Raman received the 1930 Nobel Prize in Physics for his work on the scattering of light and the discovery of the effect named after him.",
+        "bn": "সি. ভি. রমন আলোর বিচ্ছুরণ নিয়ে গবেষণা এবং রমন প্রভাব আবিষ্কারের জন্য 1930 সালে পদার্থবিজ্ঞানে নোবেল পুরস্কার পান।",
+        "hi": "सी. वी. रमन ने प्रकाश के प्रकीर्णन पर अपने शोध और रमन प्रभाव की खोज के लिए 1930 में भौतिकी का नोबेल पुरस्कार प्राप्त किया।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "gk_ch_01_q007",
+      "question": {
+        "en": "Which is the smallest country in the world by area?",
+        "bn": "আয়তনের দিক থেকে বিশ্বের ক্ষুদ্রতম দেশ কোনটি?",
+        "hi": "क्षेत्रफल की दृष्टि से विश्व का सबसे छोटा देश कौन-सा है?"
+      },
+      "options": [
+        {
+          "en": "Monaco",
+          "bn": "মোনাকো",
+          "hi": "मोनाको"
+        },
+        {
+          "en": "Vatican City",
+          "bn": "ভ্যাটিকান সিটি",
+          "hi": "वेटिकन सिटी"
+        },
+        {
+          "en": "San Marino",
+          "bn": "সান মারিনো",
+          "hi": "सैन मरीनो"
+        },
+        {
+          "en": "Liechtenstein",
+          "bn": "লিশটেনস্টাইন",
+          "hi": "लिकटेंस्टाइन"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "Vatican City has an area of about 0.49 square kilometres, making it the smallest independent country in the world by area.",
+        "bn": "ভ্যাটিকান সিটির আয়তন প্রায় 0.49 বর্গকিলোমিটার, তাই আয়তনের দিক থেকে এটি বিশ্বের ক্ষুদ্রতম স্বাধীন দেশ।",
+        "hi": "वेटिकन सिटी का क्षेत्रफल लगभग 0.49 वर्ग किलोमीटर है, इसलिए क्षेत्रफल की दृष्टि से यह विश्व का सबसे छोटा स्वतंत्र देश है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "gk_ch_01_q008",
+      "question": {
+        "en": "Who was the first Indian to win an individual Olympic gold medal?",
+        "bn": "ব্যক্তিগত বিভাগে অলিম্পিক সোনা জয়ী প্রথম ভারতীয় কে?",
+        "hi": "व्यक्तिगत स्पर्धा में ओलंपिक स्वर्ण पदक जीतने वाले पहले भारतीय कौन थे?"
+      },
+      "options": [
+        {
+          "en": "Abhinav Bindra",
+          "bn": "অভিনব বিন্দ্রা",
+          "hi": "अभिनव बिंद्रा"
+        },
+        {
+          "en": "Neeraj Chopra",
+          "bn": "নীরজ চোপড়া",
+          "hi": "नीरज चोपड़ा"
+        },
+        {
+          "en": "Leander Paes",
+          "bn": "লিয়েন্ডার পেজ",
+          "hi": "लिएंडर पेस"
+        },
+        {
+          "en": "Rajyavardhan Singh Rathore",
+          "bn": "রাজ্যবর্ধন সিং রাঠোর",
+          "hi": "राज्यवर्धन सिंह राठौड़"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Abhinav Bindra won the men's 10 m air rifle gold medal at the 2008 Beijing Olympics, becoming India's first individual Olympic gold medallist.",
+        "bn": "2008 সালের বেইজিং অলিম্পিকে অভিনব বিন্দ্রা পুরুষদের 10 m air rifle বিভাগে সোনা জিতে ভারতের প্রথম ব্যক্তিগত অলিম্পিক সোনাজয়ী হন।",
+        "hi": "2008 के बीजिंग ओलंपिक में अभिनव बिंद्रा ने पुरुषों की 10 m air rifle स्पर्धा में स्वर्ण पदक जीतकर भारत के पहले व्यक्तिगत ओलंपिक स्वर्ण पदक विजेता बने।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "gk_ch_01_q009",
+      "question": {
+        "en": "Which scientist is associated with the discovery of the law of universal gravitation?",
+        "bn": "সার্বজনীন মহাকর্ষের সূত্র আবিষ্কারের সঙ্গে কোন বিজ্ঞানীর নাম যুক্ত?",
+        "hi": "सार्वत्रिक गुरुत्वाकर्षण के नियम की खोज से किस वैज्ञानिक का नाम जुड़ा है?"
+      },
+      "options": [
+        {
+          "en": "Galileo Galilei",
+          "bn": "গ্যালিলিও গ্যালিলেই",
+          "hi": "गैलीलियो गैलीली"
+        },
+        {
+          "en": "Isaac Newton",
+          "bn": "আইজ্যাক নিউটন",
+          "hi": "आइज़ैक न्यूटन"
+        },
+        {
+          "en": "Albert Einstein",
+          "bn": "আলবার্ট আইনস্টাইন",
+          "hi": "अल्बर्ट आइंस्टीन"
+        },
+        {
+          "en": "Johannes Kepler",
+          "bn": "জোহানেস কেপলার",
+          "hi": "जोहानेस केपलर"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "Isaac Newton formulated the law of universal gravitation, which describes the attractive force between masses.",
+        "bn": "আইজ্যাক নিউটন সার্বজনীন মহাকর্ষের সূত্র প্রণয়ন করেন, যা ভরের মধ্যে আকর্ষণ বল ব্যাখ্যা করে।",
+        "hi": "आइज़ैक न्यूटन ने सार्वत्रिक गुरुत्वाकर्षण का नियम प्रतिपादित किया, जो द्रव्यमानों के बीच आकर्षण बल को समझाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "gk_ch_01_q010",
+      "question": {
+        "en": "Which is the highest civilian award of India that was first awarded in 1954?",
+        "bn": "1954 সালে প্রথম প্রদান করা ভারতের সর্বোচ্চ বেসামরিক পুরস্কার কোনটি?",
+        "hi": "1954 में पहली बार प्रदान किया गया भारत का सर्वोच्च नागरिक पुरस्कार कौन-सा है?"
+      },
+      "options": [
+        {
+          "en": "Bharat Ratna",
+          "bn": "ভারতরত্ন",
+          "hi": "भारत रत्न"
+        },
+        {
+          "en": "Padma Vibhushan",
+          "bn": "পদ্মবিভূষণ",
+          "hi": "पद्म विभूषण"
+        },
+        {
+          "en": "Padma Bhushan",
+          "bn": "পদ্মভূষণ",
+          "hi": "पद्म भूषण"
+        },
+        {
+          "en": "Padma Shri",
+          "bn": "পদ্মশ্রী",
+          "hi": "पद्म श्री"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Bharat Ratna is India's highest civilian award and was instituted and first awarded in 1954.",
+        "bn": "ভারতরত্ন ভারতের সর্বোচ্চ বেসামরিক পুরস্কার। এটি 1954 সালে প্রবর্তিত হয় এবং সেই বছরই প্রথম প্রদান করা হয়।",
+        "hi": "भारत रत्न भारत का सर्वोच्च नागरिक पुरस्कार है। इसे 1954 में स्थापित किया गया और उसी वर्ष पहली बार प्रदान किया गया।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    }
+  ]
 }
