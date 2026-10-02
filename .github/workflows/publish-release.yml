@@ -22,8 +22,17 @@ permissions:
 jobs:
   publish:
     uses: Keshab1997/flutter-builder/.github/workflows/publish-release.yml@v1.9.1
+    # android/app/google-services.json is untracked (see .gitignore and
+    # docs/17_PLAY_STORE_RELEASE.md). The builder writes it from the repository
+    # secret GOOGLE_SERVICES_JSON_BASE64 before compiling — it reaches the
+    # builder through `secrets: inherit` below, because a `with:` input cannot
+    # reference the secrets context. A `with:` entry would fail the whole
+    # workflow at parse time, so the mapping stays explicit here.
     with:
       working-directory: "."
+      # This app is Firebase-backed: without the config file the release would
+      # install fine and then fail at startup. Fail the run instead.
+      preflight-require-firebase: true
       release-draft: ${{ inputs.draft }}
       release-prerelease: ${{ inputs.prerelease }}
     secrets: inherit
