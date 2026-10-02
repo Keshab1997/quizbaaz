@@ -1,0 +1,69 @@
+name: Manual Android Build
+
+# Builds a release APK (phone install / testers) or a signed AAB (Play Console)
+# through the shared Keshab1997/flutter-builder workflow. Nothing is published;
+# the file appears under the run's Artifacts. For a tagged GitHub Release use
+# "Publish Android Release" instead.
+#
+# AdMob: the real IDs live in Settings → Secrets and variables → Actions →
+# Variables (ADMOB_APP_ID, ADMOB_BANNER_ID, ADMOB_INTERSTITIAL_ID). They are
+# injected exactly the way docs/17 describes for a local release build:
+#   ADMOB_APP_ID=…  flutter build … --dart-define=ADMOB_*=…
+# Leave `ads` on "test" to build with Google's test units instead — the only
+# safe choice for a build you will click ads in yourself.
+
+on:
+  workflow_dispatch:
+    inputs:
+      format:
+        description: Which Android file should be built?
+        required: true
+        type: choice
+        options:
+          - apk
+          - aab
+        default: apk
+      ads:
+        description: AdMob IDs baked into the build
+        required: true
+        type: choice
+        options:
+          - test
+          - real
+        default: test
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    uses: Keshab1997/flutter-builder/.github/workflows/flutter-build.yml@v1.8.1
+    # The GOOGLE_SERVICES_JSON_BASE64 secret below makes the builder write
+    # android/app/google-services.json before the build (untracked file).
+    with:
+      flutter-channel: stable
+      # Validation already runs on every push in content-and-quality.yml;
+      # a manual build should not be blocked by a formatting nit.
+      run-format-check: false
+      run-analyze: false
+      run-tests: false
+      build-apk: ${{ inputs.format == 'apk' }}
+      build-aab: ${{ inputs.format == 'aab' }}
+      artifact-retention-days: 14
+      # With ads=test Google's test unit IDs are passed explicitly so the
+      # build shows test ads without any ad ID living under lib/ (the shared
+      # builder rejects a release while test unit IDs appear in the source).
+      dart-defines: |
+        ADMOB_APP_ID=${{ inputs.ads == 'real' && vars.ADMOB_APP_ID || 'ca-app-pub-3940256099942544~3347511713' }}
+        ADMOB_BANNER_ID=${{ inputs.ads == 'real' && vars.ADMOB_BANNER_ID || 'ca-app-pub-3940256099942544/6300978111' }}
+        ADMOB_INTERSTITIAL_ID=${{ inputs.ads == 'real' && vars.ADMOB_INTERSTITIAL_ID || 'ca-app-pub-3940256099942544/1033173712' }}
+      # android/app/build.gradle.kts reads ADMOB_APP_ID from the environment
+      # for the AndroidManifest APPLICATION_ID placeholder.
+      build-env: |
+        ADMOB_APP_ID=${{ inputs.ads == 'real' && vars.ADMOB_APP_ID || 'ca-app-pub-3940256099942544~3347511713' }}
+    secrets:
+      ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+      GOOGLE_SERVICES_JSON_BASE64: ${{ secrets.GOOGLE_SERVICES_JSON_BASE64 }}
+      KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+      KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+      KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}

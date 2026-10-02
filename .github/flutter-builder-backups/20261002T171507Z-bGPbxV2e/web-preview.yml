@@ -1,0 +1,27 @@
+name: Web Preview
+
+# Builds the app for web on every push and PR and deploys to GitHub Pages
+# under preview/<branch>, so you can test in browser without APK install.
+# One-time setup: Settings -> Pages -> Deploy from a branch -> gh-pages (root).
+# First run creates gh-pages branch.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: web-preview-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  preview:
+    uses: Keshab1997/flutter-builder/.github/workflows/web-preview.yml@v1.8.1
+    with:
+      comment-on-pr: true
+    secrets: inherit

@@ -1,15 +1,20 @@
-name: Flutter CI
+name: Flutter CI — Format, Analyze & Test
 
-# Basic CI via reusable builder — format, analyze, test
-# quizbaaz also has content-and-quality.yml which does extra validation
-# (question banks, firestore rules, refresh PR). This is the lightweight
-# fast check that flutter-builder installer provides.
-
+# Validates every pull request; on main it validates the merge result. The push
+# trigger is main-only on purpose: a feature branch with an open pull request
+# already runs through the pull_request event, and running both validated the
+# same commit twice under different concurrency groups.
 on:
   pull_request:
     branches: [main]
   push:
     branches: [main]
+    # Prose and store metadata cannot change a Dart build: skip the run.
+    paths-ignore:
+      - "**.md"
+      - "docs/**"
+      - "distribution/**"
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -20,11 +25,16 @@ concurrency:
 
 jobs:
   ci:
-    uses: Keshab1997/flutter-builder/.github/workflows/flutter-build.yml@v1.8.1
+    # A draft pull request is a scratchpad: CI starts when it is marked ready
+    # for review, so iterating costs no runs at all.
+    if: github.event_name != 'pull_request' || github.event.pull_request.draft == false
+    uses: Keshab1997/flutter-builder/.github/workflows/flutter-build.yml@v1.9.1
     with:
       flutter-channel: stable
+      working-directory: "."
       run-format-check: true
       run-analyze: true
       run-tests: true
+      code-coverage: true
       build-apk: false
       build-aab: false
