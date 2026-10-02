@@ -271,6 +271,59 @@ test('content: admin_audit_logs is admin-only (read + write)', async () => {
   await admin.cleanup();
 });
 
+test('llm keys: admin_api_key_manager collections are admin-only (read + write)', async () => {
+  // The key pool, its per-provider groups, the error log and the outage alert
+  // hold raw LLM credentials, so a signed-in player must not be able to read
+  // them. The v2 rules had no block for these at all, which is what made Admin
+  // -> API Keys render a permission-denied instead of the list.
+  const student = await makeEnv(STUDENT);
+  const guest = await makeEnv(null);
+  const admin = await makeEnv(ADMIN, { admin: true });
+  const key = {
+    name: 'openrouter-primary',
+    key: 'sk-or-v1-secret',
+    baseUrl: 'https://openrouter.ai/api/v1',
+    model: 'some/model',
+    provider: 'openrouter',
+    isActive: true,
+    priority: 1,
+  };
+  await seed(admin, {
+    'admin_api_keys/k1': key,
+    'admin_key_groups/g1': { provider: 'openrouter', group: 'fast' },
+    'api_error_logs/l1': { statusCode: 429, timestamp: 1_757_000_000_000 },
+    'admin_alerts/api_keys_failed': { type: 'api_keys_failed', resolved: false },
+  });
+
+  for (const col of ['admin_api_keys', 'admin_key_groups', 'api_error_logs', 'admin_alerts']) {
+    // The student's startup listeners (main.dart -> ApiKeyManager.initialize)
+    // must be refused, not silently allowed.
+    await assertFails(student.firestore.collection(col).get(), `student list ${col}`);
+    await assertFails(student.firestore.collection(col).doc('anything').get(), `student get ${col}`);
+    await assertFails(student.firestore.collection(col).doc('anything').set({ name: 'evil' }), `student write ${col}`);
+    await assertFails(student.firestore.collection(col).doc('anything').delete(), `student delete ${col}`);
+    await assertFails(guest.firestore.collection(col).doc('anything').get(), `guest get ${col}`);
+
+    // The admin claim is the only thing that unlocks them.
+    await assertSucceeds(admin.firestore.collection(col).get(), `admin list ${col}`);
+    await assertSucceeds(admin.firestore.collection(col).doc('anything').set({ name: 'ok' }), `admin write ${col}`);
+  }
+
+  // The exact reads the admin screen performs.
+  await assertSucceeds(admin.firestore.collection('admin_api_keys').orderBy('priority').get());
+  await assertSucceeds(admin.firestore.collection('admin_api_keys').doc('k1').update({ isActive: false }));
+  await assertSucceeds(admin.firestore.collection('admin_api_keys').doc('k2').set({ ...key, usageCount: 0 }, { merge: true }));
+  await assertSucceeds(admin.firestore.collection('admin_api_keys').doc('k1').delete());
+  // Usage/error counters and the 30-day log cleanup are admin-only as well;
+  // a student's attempt is what the package swallows silently.
+  await assertSucceeds(admin.firestore.collection('api_error_logs').where('timestamp', '<', Date.now()).get());
+  await assertFails(student.firestore.collection('api_error_logs').doc('l2').set({ statusCode: 500 }));
+
+  await student.cleanup();
+  await guest.cleanup();
+  await admin.cleanup();
+});
+
 // ---------------------------------------------------------------------------
 // 4. Config & champions — admin-only writes
 // ---------------------------------------------------------------------------

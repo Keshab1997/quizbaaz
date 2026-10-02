@@ -227,6 +227,13 @@ Stream<GenerationProgress> generate({
 - Handles `null` key (no healthy key) with a clear message pointing at the API
   Keys screen.
 
+> **Rules dependency:** the key pool lives in Firestore, so
+> `admin_api_keys` / `admin_key_groups` / `api_error_logs` / `admin_alerts`
+> need a rule. `firestore.rules` v2.2.0 grants them to the `admin` custom claim
+> only — a player-readable pool would hand the raw keys to every install. Until
+> the rules are **deployed**, Admin → API Keys shows
+> `[cloud_firestore/permission-denied]` and no key ever reaches the generator.
+
 - [ ] **T4.1** `AiQuestionGenerator` with progress stream
 - [ ] **T4.2** Provider adapters: Gemini native and OpenAI-compatible `/chat/completions`
 - [ ] **T4.3** Chunking, retry, top-up

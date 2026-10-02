@@ -3,7 +3,8 @@ rules_version = '2';
 // ============================================================================
 // QuizBaaz 3D — Firestore Security Rules
 // ----------------------------------------------------------------------------
-// Version: 2.1.0  (2.1.0: users collection list is admin-only — 2026-10-02;
+// Version: 2.2.0  (2.2.0: admin_api_key_manager collections added — 2026-10-03;
+//                  2.1.0: users collection list is admin-only — 2026-10-02;
 //                  2.0.0: P0 security hardening — 2026-09-13)
 //
 // Authority model
@@ -358,6 +359,38 @@ service cloud.firestore {
 
     // ------------------------------------------------------- audit trail --
     match /admin_audit_logs/{logId} {
+      allow get, list, write: if isAdmin();
+    }
+
+    // ---------------------------------------------------- admin LLM keys --
+    // `admin_api_keys` / `admin_key_groups` / `api_error_logs` /
+    // `admin_alerts` belong to the `admin_api_key_manager` package (pubspec,
+    // docs/11), which holds the raw LLM credentials for question generation.
+    // The rules were missing entirely, so the catch-all below denied the pool
+    // and Admin -> API Keys rendered "Error: [cloud_firestore/permission-
+    // denied]" (and every device's startup listener logged the same).
+    //
+    // Admin-claim-only, and deliberately so: a signed-in player must never be
+    // able to list these documents, because that would hand the raw keys to
+    // every install. Only an admin device generates questions anyway (the
+    // docs/11 review gate), so only an admin device needs the pool. A student's
+    // startup listener is denied and moves on — ApiKeyManager logs it and keeps
+    // whatever it cached — so the usage counters, the cooldown flushes and the
+    // auto-deactivation it tries from a student device fail silently, which is
+    // the behaviour the package itself documents.
+    match /admin_api_keys/{keyId} {
+      allow get, list, write: if isAdmin();
+    }
+
+    match /admin_key_groups/{groupId} {
+      allow get, list, write: if isAdmin();
+    }
+
+    match /api_error_logs/{logId} {
+      allow get, list, write: if isAdmin();
+    }
+
+    match /admin_alerts/{alertId} {
       allow get, list, write: if isAdmin();
     }
 
