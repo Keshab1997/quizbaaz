@@ -19,9 +19,6 @@ permissions:
 jobs:
   build:
     uses: Keshab1997/flutter-builder/.github/workflows/flutter-build.yml@v1.12.1
-    # Without the Firebase config the app starts and then throws on
-    # Firebase.initializeApp(), so the secret belongs on this path too, not only
-    # on the release one. See docs/17_PLAY_STORE_RELEASE.md.
     with:
       flutter-channel: stable
       working-directory: "."
@@ -33,4 +30,3 @@ jobs:
       KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
       KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
       KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
-      GOOGLE_SERVICES_JSON_BASE64: ${{ secrets.GOOGLE_SERVICES_JSON_BASE64 }}
