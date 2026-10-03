@@ -1,0 +1,391 @@
+{
+  "chapter_id": "polsci_ch_02",
+  "chapter_title": {
+    "en": "Federalism",
+    "bn": "যুক্তরাষ্ট্রবাদ",
+    "hi": "संघवाद"
+  },
+  "class_standard": "Class 10",
+  "questions": [
+    {
+      "id": "polsci_ch_02_q001",
+      "question": {
+        "en": "Which subject is included in the Union List of the Indian Constitution?",
+        "bn": "ভারতীয় সংবিধানের কেন্দ্রীয় তালিকায় কোন বিষয়টি অন্তর্ভুক্ত?",
+        "hi": "भारतीय संविधान की संघ सूची में कौन-सा विषय शामिल है?"
+      },
+      "options": [
+        {
+          "en": "Police",
+          "bn": "পুলিশ",
+          "hi": "पुलिस"
+        },
+        {
+          "en": "Agriculture",
+          "bn": "কৃষি",
+          "hi": "कृषि"
+        },
+        {
+          "en": "Defence",
+          "bn": "প্রতিরক্ষা",
+          "hi": "रक्षा"
+        },
+        {
+          "en": "Public health",
+          "bn": "জনস্বাস্থ্য",
+          "hi": "सार्वजनिक स्वास्थ्य"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "en": "Defence is a Union List subject, so the Union government has primary legislative authority over it.",
+        "bn": "প্রতিরক্ষা কেন্দ্রীয় তালিকার বিষয়, তাই এই বিষয়ে আইন প্রণয়নের প্রধান ক্ষমতা কেন্দ্রীয় সরকারের।",
+        "hi": "रक्षा संघ सूची का विषय है, इसलिए इस पर कानून बनाने का मुख्य अधिकार संघ सरकार के पास है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "polsci_ch_02_q002",
+      "question": {
+        "en": "Which subject belongs to the State List?",
+        "bn": "নিচের কোন বিষয়টি রাজ্য তালিকার অন্তর্ভুক্ত?",
+        "hi": "निम्नलिखित में से कौन-सा विषय राज्य सूची में आता है?"
+      },
+      "options": [
+        {
+          "en": "Foreign affairs",
+          "bn": "বিদেশ বিষয়ক নীতি",
+          "hi": "विदेश मामले"
+        },
+        {
+          "en": "Currency",
+          "bn": "মুদ্রা",
+          "hi": "मुद्रा"
+        },
+        {
+          "en": "Police",
+          "bn": "পুলিশ",
+          "hi": "पुलिस"
+        },
+        {
+          "en": "Defence",
+          "bn": "প্রতিরক্ষা",
+          "hi": "रक्षा"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "en": "Police is a State List subject, so state governments have the main responsibility for making laws on it.",
+        "bn": "পুলিশ রাজ্য তালিকার বিষয়, তাই এই বিষয়ে আইন প্রণয়নের প্রধান দায়িত্ব রাজ্য সরকারের।",
+        "hi": "पुलिस राज्य सूची का विषय है, इसलिए इस पर कानून बनाने की मुख्य जिम्मेदारी राज्य सरकारों की है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "polsci_ch_02_q003",
+      "question": {
+        "en": "Which list includes subjects on which both the Union and State governments can make laws?",
+        "bn": "কোন তালিকায় এমন বিষয় রয়েছে যার উপর কেন্দ্র ও রাজ্য উভয় সরকারই আইন প্রণয়ন করতে পারে?",
+        "hi": "किस सूची में ऐसे विषय शामिल हैं जिन पर संघ और राज्य दोनों सरकारें कानून बना सकती हैं?"
+      },
+      "options": [
+        {
+          "en": "Union List",
+          "bn": "কেন্দ্রীয় তালিকা",
+          "hi": "संघ सूची"
+        },
+        {
+          "en": "State List",
+          "bn": "রাজ্য তালিকা",
+          "hi": "राज्य सूची"
+        },
+        {
+          "en": "Concurrent List",
+          "bn": "যৌথ তালিকা",
+          "hi": "समवर्ती सूची"
+        },
+        {
+          "en": "Local List",
+          "bn": "স্থানীয় তালিকা",
+          "hi": "स्थानीय सूची"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "en": "The Concurrent List contains subjects on which both the Union and State governments can make laws.",
+        "bn": "যৌথ তালিকায় এমন বিষয় থাকে যার উপর কেন্দ্র ও রাজ্য উভয় সরকার আইন প্রণয়ন করতে পারে।",
+        "hi": "समवर्ती सूची में ऐसे विषय होते हैं जिन पर संघ और राज्य दोनों सरकारें कानून बना सकती हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "polsci_ch_02_q004",
+      "question": {
+        "en": "What happens when a law made by a State government on a Concurrent List subject conflicts with a Union law?",
+        "bn": "যৌথ তালিকার কোনো বিষয়ে রাজ্য সরকারের আইন কেন্দ্রীয় আইনের সঙ্গে বিরোধ করলে কী হয়?",
+        "hi": "समवर्ती सूची के किसी विषय पर राज्य सरकार का कानून संघ के कानून से टकराने पर क्या होता है?"
+      },
+      "options": [
+        {
+          "en": "The State law always prevails",
+          "bn": "রাজ্য আইন সবসময় প্রাধান্য পায়",
+          "hi": "राज्य का कानून हमेशा प्रभावी होता है"
+        },
+        {
+          "en": "The Union law generally prevails",
+          "bn": "সাধারণত কেন্দ্রীয় আইন প্রাধান্য পায়",
+          "hi": "सामान्यतः संघ का कानून प्रभावी होता है"
+        },
+        {
+          "en": "Both laws automatically become invalid",
+          "bn": "উভয় আইন স্বয়ংক্রিয়ভাবে বাতিল হয়ে যায়",
+          "hi": "दोनों कानून स्वतः अमान्य हो जाते हैं"
+        },
+        {
+          "en": "The local government decides which law applies",
+          "bn": "স্থানীয় সরকার ঠিক করে কোন আইন প্রযোজ্য হবে",
+          "hi": "स्थानीय सरकार तय करती है कि कौन-सा कानून लागू होगा"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "In case of a conflict on a Concurrent List subject, the Constitution generally gives precedence to the Union law, subject to constitutional exceptions.",
+        "bn": "যৌথ তালিকার বিষয়ে বিরোধ হলে সংবিধান সাধারণত কেন্দ্রীয় আইনকে প্রাধান্য দেয়, যদিও কিছু সাংবিধানিক ব্যতিক্রম রয়েছে।",
+        "hi": "समवर्ती सूची के विषय में टकराव होने पर संविधान सामान्यतः संघ के कानून को प्राथमिकता देता है, हालांकि कुछ संवैधानिक अपवाद हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "polsci_ch_02_q005",
+      "question": {
+        "en": "What is the main purpose of decentralisation?",
+        "bn": "ক্ষমতার বিকেন্দ্রীকরণের প্রধান উদ্দেশ্য কী?",
+        "hi": "विकेंद्रीकरण का मुख्य उद्देश्य क्या है?"
+      },
+      "options": [
+        {
+          "en": "To transfer power from local bodies to the Union government",
+          "bn": "স্থানীয় সংস্থার কাছ থেকে কেন্দ্রীয় সরকারের কাছে ক্ষমতা হস্তান্তর করা",
+          "hi": "स्थानीय निकायों से संघ सरकार को सत्ता हस्तांतरित करना"
+        },
+        {
+          "en": "To give more power to local governments",
+          "bn": "স্থানীয় সরকারকে আরও ক্ষমতা দেওয়া",
+          "hi": "स्थानीय सरकारों को अधिक अधिकार देना"
+        },
+        {
+          "en": "To abolish State governments",
+          "bn": "রাজ্য সরকারগুলিকে বিলুপ্ত করা",
+          "hi": "राज्य सरकारों को समाप्त करना"
+        },
+        {
+          "en": "To concentrate all power at the Union level",
+          "bn": "সমস্ত ক্ষমতা কেন্দ্রীয় স্তরে কেন্দ্রীভূত করা",
+          "hi": "सारी सत्ता संघ स्तर पर केंद्रित करना"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "Decentralisation means transferring powers from higher levels of government to local bodies so that decisions can be taken closer to the people.",
+        "bn": "বিকেন্দ্রীকরণ বলতে উচ্চতর স্তরের সরকার থেকে স্থানীয় সংস্থার হাতে ক্ষমতা হস্তান্তর বোঝায়, যাতে মানুষের কাছাকাছি সিদ্ধান্ত নেওয়া যায়।",
+        "hi": "विकेंद्रीकरण का अर्थ उच्च स्तर की सरकारों से स्थानीय निकायों को अधिकार देना है, ताकि लोगों के निकट निर्णय लिए जा सकें।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "polsci_ch_02_q006",
+      "question": {
+        "en": "Which constitutional amendment gave constitutional status to local governments in India?",
+        "bn": "কোন সাংবিধানিক সংশোধনের মাধ্যমে ভারতে স্থানীয় সরকার সাংবিধানিক মর্যাদা পায়?",
+        "hi": "किस संवैधानिक संशोधन ने भारत में स्थानीय सरकारों को संवैधानिक दर्जा दिया?"
+      },
+      "options": [
+        {
+          "en": "42nd Amendment",
+          "bn": "42তম সংশোধন",
+          "hi": "42वाँ संशोधन"
+        },
+        {
+          "en": "61st Amendment",
+          "bn": "61তম সংশোধন",
+          "hi": "61वाँ संशोधन"
+        },
+        {
+          "en": "73rd and 74th Amendments",
+          "bn": "73তম ও 74তম সংশোধন",
+          "hi": "73वाँ और 74वाँ संशोधन"
+        },
+        {
+          "en": "86th Amendment",
+          "bn": "86তম সংশোধন",
+          "hi": "86वाँ संशोधन"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "en": "The 73rd Amendment strengthened rural local governments, while the 74th Amendment strengthened urban local governments by giving them constitutional status.",
+        "bn": "73তম সংশোধন গ্রামীণ স্থানীয় সরকার এবং 74তম সংশোধন শহুরে স্থানীয় সরকারকে সাংবিধানিক মর্যাদা দিয়ে শক্তিশালী করে।",
+        "hi": "73वें संशोधन ने ग्रामीण स्थानीय सरकारों और 74वें संशोधन ने शहरी स्थानीय सरकारों को संवैधानिक दर्जा देकर मजबूत किया।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "polsci_ch_02_q007",
+      "question": {
+        "en": "Which body is the basic institution of rural local self-government in India?",
+        "bn": "ভারতে গ্রামীণ স্থানীয় স্বশাসনের প্রাথমিক প্রতিষ্ঠান কোনটি?",
+        "hi": "भारत में ग्रामीण स्थानीय स्वशासन की मूल संस्था कौन-सी है?"
+      },
+      "options": [
+        {
+          "en": "Gram Panchayat",
+          "bn": "গ্রাম পঞ্চায়েত",
+          "hi": "ग्राम पंचायत"
+        },
+        {
+          "en": "Lok Sabha",
+          "bn": "লোকসভা",
+          "hi": "लोकसभा"
+        },
+        {
+          "en": "Rajya Sabha",
+          "bn": "রাজ্যসভা",
+          "hi": "राज्यसभा"
+        },
+        {
+          "en": "State Legislative Assembly",
+          "bn": "রাজ্য বিধানসভা",
+          "hi": "राज्य विधान सभा"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The Gram Panchayat operates at the village level and forms the basic elected institution of rural local government.",
+        "bn": "গ্রাম পঞ্চায়েত গ্রাম স্তরে কাজ করে এবং এটি গ্রামীণ স্থানীয় সরকারের প্রাথমিক নির্বাচিত প্রতিষ্ঠান।",
+        "hi": "ग्राम पंचायत गाँव के स्तर पर काम करती है और ग्रामीण स्थानीय सरकार की मूल निर्वाचित संस्था है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "polsci_ch_02_q008",
+      "question": {
+        "en": "Which language policy helped India accommodate linguistic diversity?",
+        "bn": "কোন ভাষানীতি ভারতে ভাষাগত বৈচিত্র্যকে সামঞ্জস্য করতে সাহায্য করেছে?",
+        "hi": "किस भाषा नीति ने भारत में भाषाई विविधता को समायोजित करने में मदद की?"
+      },
+      "options": [
+        {
+          "en": "Making Hindi the only official language for all purposes",
+          "bn": "সব ক্ষেত্রে হিন্দিকে একমাত্র সরকারি ভাষা করা",
+          "hi": "सभी कार्यों के लिए हिंदी को एकमात्र राजभाषा बनाना"
+        },
+        {
+          "en": "Recognising the use of multiple languages and allowing states to use their own official languages",
+          "bn": "বহু ভাষার ব্যবহারকে স্বীকৃতি দেওয়া এবং রাজ্যগুলিকে নিজস্ব সরকারি ভাষা ব্যবহারের অনুমতি দেওয়া",
+          "hi": "बहुभाषी प्रयोग को मान्यता देना और राज्यों को अपनी राजभाषाएँ अपनाने की अनुमति देना"
+        },
+        {
+          "en": "Abolishing regional languages from administration",
+          "bn": "প্রশাসন থেকে আঞ্চলিক ভাষাগুলি বাদ দেওয়া",
+          "hi": "प्रशासन से क्षेत्रीय भाषाओं को हटाना"
+        },
+        {
+          "en": "Using only English in every State",
+          "bn": "প্রতিটি রাজ্যে শুধুমাত্র ইংরেজি ব্যবহার করা",
+          "hi": "हर राज्य में केवल अंग्रेज़ी का उपयोग करना"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "India's language policy recognises linguistic diversity and allows states to use their own official languages, while Hindi and English continue to be used at the Union level as provided by law.",
+        "bn": "ভারতের ভাষানীতি ভাষাগত বৈচিত্র্যকে স্বীকৃতি দেয় এবং রাজ্যগুলিকে নিজস্ব সরকারি ভাষা ব্যবহারের সুযোগ দেয়; আইন অনুযায়ী কেন্দ্রীয় স্তরেও হিন্দি ও ইংরেজির ব্যবহার রয়েছে।",
+        "hi": "भारत की भाषा नीति भाषाई विविधता को मान्यता देती है और राज्यों को अपनी राजभाषाएँ अपनाने की अनुमति देती है; कानून के अनुसार संघ स्तर पर हिंदी और अंग्रेज़ी का भी उपयोग होता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "polsci_ch_02_q009",
+      "question": {
+        "en": "Which statement best describes federalism?",
+        "bn": "কোন বক্তব্যটি যুক্তরাষ্ট্রবাদের বৈশিষ্ট্যকে সবচেয়ে ভালোভাবে বর্ণনা করে?",
+        "hi": "कौन-सा कथन संघवाद की विशेषता का सबसे अच्छा वर्णन करता है?"
+      },
+      "options": [
+        {
+          "en": "All powers are concentrated in one level of government",
+          "bn": "সমস্ত ক্ষমতা সরকারের একটি স্তরের হাতে কেন্দ্রীভূত থাকে",
+          "hi": "सारी शक्तियाँ सरकार के एक ही स्तर में केंद्रित रहती हैं"
+        },
+        {
+          "en": "Two or more levels of government share power according to constitutional arrangements",
+          "bn": "সংবিধান অনুযায়ী দুই বা ততোধিক স্তরের সরকার ক্ষমতা ভাগ করে নেয়",
+          "hi": "संवैधानिक व्यवस्था के अनुसार दो या अधिक स्तरों की सरकारें सत्ता साझा करती हैं"
+        },
+        {
+          "en": "Local governments are completely independent of the Constitution",
+          "bn": "স্থানীয় সরকারগুলি সংবিধান থেকে সম্পূর্ণ স্বাধীন",
+          "hi": "स्थानीय सरकारें संविधान से पूरी तरह स्वतंत्र होती हैं"
+        },
+        {
+          "en": "State governments have no constitutionally assigned powers",
+          "bn": "রাজ্য সরকারের কোনো সাংবিধানিকভাবে নির্ধারিত ক্ষমতা নেই",
+          "hi": "राज्य सरकारों के पास संविधान द्वारा निर्धारित कोई शक्ति नहीं होती"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "Federalism divides governmental powers between different levels, with each level having constitutionally defined areas of authority.",
+        "bn": "যুক্তরাষ্ট্রবাদে সরকারের বিভিন্ন স্তরের মধ্যে ক্ষমতা ভাগ করা হয় এবং প্রতিটি স্তরের ক্ষমতার ক্ষেত্র সংবিধান দ্বারা নির্ধারিত থাকে।",
+        "hi": "संघवाद में सरकार के विभिन्न स्तरों के बीच शक्तियों का विभाजन होता है और प्रत्येक स्तर के अधिकार संविधान द्वारा निर्धारित होते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "polsci_ch_02_q010",
+      "question": {
+        "en": "Why did the creation of linguistic states strengthen federalism in India?",
+        "bn": "ভাষাভিত্তিক রাজ্য গঠন ভারতে যুক্তরাষ্ট্রবাদকে শক্তিশালী করেছিল কেন?",
+        "hi": "भाषाई राज्यों के गठन ने भारत में संघवाद को मजबूत क्यों किया?"
+      },
+      "options": [
+        {
+          "en": "It allowed linguistic identities to receive political recognition within the federal system",
+          "bn": "এটি যুক্তরাষ্ট্রীয় ব্যবস্থার মধ্যে ভাষাগত পরিচয়কে রাজনৈতিক স্বীকৃতি দেওয়ার সুযোগ দেয়",
+          "hi": "इससे संघीय व्यवस्था के भीतर भाषाई पहचान को राजनीतिक मान्यता मिली"
+        },
+        {
+          "en": "It abolished all State governments",
+          "bn": "এটি সমস্ত রাজ্য সরকারকে বিলুপ্ত করেছিল",
+          "hi": "इसने सभी राज्य सरकारों को समाप्त कर दिया"
+        },
+        {
+          "en": "It transferred all State powers to the Union",
+          "bn": "এটি রাজ্যগুলির সমস্ত ক্ষমতা কেন্দ্রের হাতে হস্তান্তর করেছিল",
+          "hi": "इसने राज्यों की सभी शक्तियाँ संघ को हस्तांतरित कर दीं"
+        },
+        {
+          "en": "It made every State use the same official language",
+          "bn": "এটি প্রতিটি রাজ্যকে একই সরকারি ভাষা ব্যবহার করতে বাধ্য করেছিল",
+          "hi": "इसने प्रत्येक राज्य को एक ही राजभाषा का उपयोग करने के लिए बाध्य किया"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Recognising linguistic identities through state boundaries helped different language communities participate within the federal structure rather than treating linguistic diversity as a threat.",
+        "bn": "রাজ্যের সীমানার মাধ্যমে ভাষাগত পরিচয়কে স্বীকৃতি দেওয়া বিভিন্ন ভাষাভাষী জনগোষ্ঠীকে যুক্তরাষ্ট্রীয় কাঠামোর মধ্যে অংশগ্রহণের সুযোগ দেয় এবং বৈচিত্র্যকে স্বীকৃতি দেয়।",
+        "hi": "राज्यों की सीमाओं के माध्यम से भाषाई पहचान को मान्यता देने से विभिन्न भाषाई समुदायों को संघीय ढाँचे में भागीदारी का अवसर मिला और विविधता को स्वीकार किया गया।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    }
+  ]
+}
