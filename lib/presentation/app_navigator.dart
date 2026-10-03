@@ -8,6 +8,7 @@ import 'screens/daily_quiz/daily_quiz_ready_screen.dart';
 import 'screens/daily_quiz/daily_quiz_screen.dart';
 import 'screens/leaderboard/leaderboard_screen.dart';
 import 'screens/shop/shop_screen.dart';
+import 'screens/update/update_center_screen.dart';
 
 /// Root navigator so a OneSignal tap can open a screen even when the app
 /// was killed. [MaterialApp] in `main.dart` must use [key].
@@ -21,10 +22,13 @@ class AppNavigator {
   /// Handles a OneSignal `additionalData.open` value.
   ///
   /// Known values: `daily_quiz`, `battle`, `online_battle`, `leaderboard`,
-  /// `shop`. Anything else (or null) just brings the app to the dashboard.
+  /// `shop`, `app_update`. Anything else (or null) just brings the app to
+  /// the dashboard.
   ///
   /// `daily_quiz` opens the ready gate (or resumes a live run): tapping the
   /// 19:00 reminder must not spend the day's counted attempt on its own.
+  /// `app_update` opens the Update Center (changelog + Play update) — it is
+  /// the landing pad for release pushes and the dashboard banner.
   static void handleOpen(String? open) {
     if (open == null || open.isEmpty) return;
     final nav = key.currentState;
@@ -69,6 +73,11 @@ class AppNavigator {
         break;
       case 'shop':
         nav.push(MaterialPageRoute<void>(builder: (_) => const ShopScreen()));
+        break;
+      case 'app_update':
+        nav.push(
+          MaterialPageRoute<void>(builder: (_) => const UpdateCenterScreen()),
+        );
         break;
       default:
         break;

@@ -20,6 +20,11 @@ class AppVersion extends ChangeNotifier {
   static Future<void> load() => instance._load();
 
   Future<void> _load() async {
+    // package_info answers the same thing for the life of the install, so
+    // only the first caller hits the channel; the rest (profile, dashboard,
+    // update flows) reuse it. A failed first attempt leaves [version] empty
+    // and the next caller retries.
+    if (version.isNotEmpty) return;
     try {
       final info = await PackageInfo.fromPlatform();
       version = info.version;

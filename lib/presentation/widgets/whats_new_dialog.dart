@@ -21,6 +21,44 @@ class WhatsNewDialog {
       builder: (_) => _WhatsNewBody(version: version, bullets: bullets),
     );
   }
+
+  /// The bullet list markup itself — shared with the Update Center screen so
+  /// the dialog and the screen render identical notes.
+  static Widget bulletList(List<String> bullets) {
+    return Column(
+      children: [
+        for (final line in bullets)
+          Padding(
+            padding: const EdgeInsets.only(bottom: 10),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Padding(
+                  padding: EdgeInsets.only(top: 4),
+                  child: Icon(
+                    Icons.auto_awesome_rounded,
+                    size: 14,
+                    color: AppColors.neonGold,
+                  ),
+                ),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    line,
+                    style: const TextStyle(
+                      color: AppColors.textSecondary,
+                      fontSize: 13,
+                      height: 1.35,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+      ],
+    );
+  }
 }
 
 class _WhatsNewBody extends StatelessWidget {
@@ -66,39 +104,7 @@ class _WhatsNewBody extends StatelessWidget {
             ConstrainedBox(
               constraints: const BoxConstraints(maxHeight: 280),
               child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    for (final line in bullets)
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 10),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Padding(
-                              padding: EdgeInsets.only(top: 4),
-                              child: Icon(
-                                Icons.auto_awesome_rounded,
-                                size: 14,
-                                color: AppColors.neonGold,
-                              ),
-                            ),
-                            const SizedBox(width: 8),
-                            Expanded(
-                              child: Text(
-                                line,
-                                style: const TextStyle(
-                                  color: AppColors.textSecondary,
-                                  fontSize: 13,
-                                  height: 1.35,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                  ],
-                ),
+                child: WhatsNewDialog.bulletList(bullets),
               ),
             ),
             const SizedBox(height: 8),

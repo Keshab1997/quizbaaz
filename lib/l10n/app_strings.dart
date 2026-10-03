@@ -285,6 +285,31 @@ class S {
   static String whatsNewTitle({required Object v}) =>
       fill(raw('whatsNewTitle'), {'v': v});
   static String get whatsNewGotIt => raw('whatsNewGotIt');
+  static String get updateBannerAvailableTitle =>
+      raw('updateBannerAvailableTitle');
+  static String get updateBannerAvailableBody =>
+      raw('updateBannerAvailableBody');
+  static String get updateBannerChangelogBody =>
+      raw('updateBannerChangelogBody');
+  static String get updateBannerCtaUpdate => raw('updateBannerCtaUpdate');
+  static String get updateBannerCtaWhatsNew => raw('updateBannerCtaWhatsNew');
+  static String get updateCenterTitle => raw('updateCenterTitle');
+  static String get updateCenterUpToDate => raw('updateCenterUpToDate');
+  static String get updateCenterUpToDateBody => raw('updateCenterUpToDateBody');
+  static String updateCenterInstalled({required Object v}) =>
+      fill(raw('updateCenterInstalled'), {'v': v});
+  static String get updateCenterAvailableTitle =>
+      raw('updateCenterAvailableTitle');
+  static String get updateCenterAvailableBody =>
+      raw('updateCenterAvailableBody');
+  static String get updateCenterUpdateNow => raw('updateCenterUpdateNow');
+  static String get updateCenterDownloading => raw('updateCenterDownloading');
+  static String get updateCenterDownloadedBody =>
+      raw('updateCenterDownloadedBody');
+  static String get updateCenterRestartNow => raw('updateCenterRestartNow');
+  static String get updateCenterOpenStore => raw('updateCenterOpenStore');
+  static String get updateCenterUpdateFailed => raw('updateCenterUpdateFailed');
+  static String get updateCenterNoNotes => raw('updateCenterNoNotes');
   static String get profileConsentOptions => raw('profileConsentOptions');
   static String get profileSignIn => raw('profileSignIn');
   static String get profileSignOut => raw('profileSignOut');

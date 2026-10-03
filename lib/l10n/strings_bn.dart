@@ -217,6 +217,28 @@ const Map<String, String> kStringsBn = {
   'whatsNewEyebrow': 'এখনই আপডেট হয়েছে',
   'whatsNewTitle': '{v}-এ নতুন কী',
   'whatsNewGotIt': 'বুঝেছি',
+  'updateBannerAvailableTitle': 'নতুন আপডেট প্রস্তুত',
+  'updateBannerAvailableBody':
+      'নতুন ভার্সন এসেছে — কী নতুন হচ্ছে দেখে এক ট্যাপে আপডেট করুন।',
+  'updateBannerChangelogBody': 'এই আপডেটে কী নতুন হয়েছে দেখতে খুলুন।',
+  'updateBannerCtaUpdate': 'আপডেট',
+  'updateBannerCtaWhatsNew': 'কী নতুন',
+  'updateCenterTitle': 'আপডেট',
+  'updateCenterUpToDate': 'আপনি সর্বশেষ ভার্সনেই আছেন',
+  'updateCenterUpToDateBody': 'সবই আপডেটেড আছে।',
+  'updateCenterInstalled': 'ইনস্টলকরা: {v}',
+  'updateCenterAvailableTitle': 'নতুন আপডেট প্রস্তুত',
+  'updateCenterAvailableBody':
+      'এখান থেকেই ডাউনলোড করুন, অথবা Play Store খুলুন।',
+  'updateCenterUpdateNow': 'এখনই আপডেট করুন',
+  'updateCenterDownloading': 'আপডেট ডাউনলোড হচ্ছে…',
+  'updateCenterDownloadedBody':
+      'আপডেট ডাউনলোড হয়ে গেছে। ইনস্টল শেষ করতে অ্যাপটি রিস্টার্ট করুন।',
+  'updateCenterRestartNow': 'রিস্টার্ট ও আপডেট',
+  'updateCenterOpenStore': 'Play Store খুলুন',
+  'updateCenterUpdateFailed':
+      'ইন-অ্যাপ আপডেট শুরু করা গেল না। Play Store থেকে আপডেট করুন।',
+  'updateCenterNoNotes': 'এই ভার্সনে কোনো পরিবর্তনের তালিকা নেই।',
   'profileConsentOptions': 'বিজ্ঞাপন সম্মতির বিকল্প',
   'profileSignIn': 'সাইন ইন',
   'profileSignOut': 'সাইন আউট',

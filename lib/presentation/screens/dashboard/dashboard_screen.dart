@@ -41,6 +41,7 @@ import '../../widgets/aura_avatar.dart';
 import '../../widgets/cached_avatar.dart';
 import '../../widgets/daily_winner_celebration_dialog.dart';
 import '../../widgets/streak_reset_dialog.dart';
+import '../../widgets/update_banner.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -90,7 +91,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
         }
       }
       if (mounted) {
-        await AppUpdateService.checkAfterDashboardReady(context);
+        // Silent check: flips the top banner (changelog / available update).
+        // It never pops UI itself — see AppUpdateService.
+        await AppUpdateService.instance.checkAfterDashboardReady();
       }
     });
   }
@@ -165,71 +168,83 @@ class _DashboardScreenState extends State<DashboardScreen> {
       extendBody: true,
       body: SafeArea(
         bottom: false,
-        child: RefreshIndicator(
-          color: AppColors.neonCyan,
-          backgroundColor: AppColors.surfaceElevated,
-          onRefresh: _refresh,
-          child: CustomScrollView(
-            physics: const BouncingScrollPhysics(
-              parent: AlwaysScrollableScrollPhysics(),
-            ),
-            slivers: [
-              SliverPadding(
-                padding: const EdgeInsets.fromLTRB(18, 12, 18, 132),
-                sliver: SliverToBoxAdapter(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // 1. Header — নাম + coins/gems
-                      _buildHeader(user, userProvider),
-                      const SizedBox(height: 16),
-
-                      // 2. Streak Card
-                      _buildStreakCard(user, userProvider),
-                      const SizedBox(height: 16),
-
-                      // 3. Battle Arena Card
-                      const _BattleArenaCard(),
-                      const SizedBox(height: 16),
-
-                      // 4. Daily Quiz Hero Card
-                      _buildHeroCard(heroAsset, userProvider),
-                      const SizedBox(height: 14),
-
-                      // 5. Stat Strip
-                      _buildStatStrip(user, userProvider),
-                      const SizedBox(height: 22),
-
-                      // 6. Daily Quiz Champion Card
-                      _buildChampionCard(userProvider),
-                      const SizedBox(height: 22),
-
-                      // 7. Daily Quiz Leaderboard
-                      _buildSectionHeader(
-                        eyebrow: S.dashLiveToday,
-                        title: S.dashLeaderboard,
-                        actionLabel: S.dashViewFull,
-                        onAction: () => _onNavTap(2),
-                      ),
-                      const SizedBox(height: 12),
-                      _buildLeaderboardPreview(userProvider),
-                      const SizedBox(height: 22),
-
-                      // 8. Quick Actions
-                      _buildSectionHeader(
-                        eyebrow: S.dashExploreMore,
-                        title: S.dashMoreOptions,
-                      ),
-                      const SizedBox(height: 12),
-                      _buildQuickActions(),
-                      const SizedBox(height: 12),
-                      if (userProvider.isAdmin) _buildAdminShortcut(),
-                    ],
-                  ),
+        child: Stack(
+          children: [
+            RefreshIndicator(
+              color: AppColors.neonCyan,
+              backgroundColor: AppColors.surfaceElevated,
+              onRefresh: _refresh,
+              child: CustomScrollView(
+                physics: const BouncingScrollPhysics(
+                  parent: AlwaysScrollableScrollPhysics(),
                 ),
+                slivers: [
+                  SliverPadding(
+                    padding: const EdgeInsets.fromLTRB(18, 12, 18, 132),
+                    sliver: SliverToBoxAdapter(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          // 1. Header — নাম + coins/gems
+                          _buildHeader(user, userProvider),
+                          const SizedBox(height: 16),
+
+                          // 2. Streak Card
+                          _buildStreakCard(user, userProvider),
+                          const SizedBox(height: 16),
+
+                          // 3. Battle Arena Card
+                          const _BattleArenaCard(),
+                          const SizedBox(height: 16),
+
+                          // 4. Daily Quiz Hero Card
+                          _buildHeroCard(heroAsset, userProvider),
+                          const SizedBox(height: 14),
+
+                          // 5. Stat Strip
+                          _buildStatStrip(user, userProvider),
+                          const SizedBox(height: 22),
+
+                          // 6. Daily Quiz Champion Card
+                          _buildChampionCard(userProvider),
+                          const SizedBox(height: 22),
+
+                          // 7. Daily Quiz Leaderboard
+                          _buildSectionHeader(
+                            eyebrow: S.dashLiveToday,
+                            title: S.dashLeaderboard,
+                            actionLabel: S.dashViewFull,
+                            onAction: () => _onNavTap(2),
+                          ),
+                          const SizedBox(height: 12),
+                          _buildLeaderboardPreview(userProvider),
+                          const SizedBox(height: 22),
+
+                          // 8. Quick Actions
+                          _buildSectionHeader(
+                            eyebrow: S.dashExploreMore,
+                            title: S.dashMoreOptions,
+                          ),
+                          const SizedBox(height: 12),
+                          _buildQuickActions(),
+                          const SizedBox(height: 12),
+                          if (userProvider.isAdmin) _buildAdminShortcut(),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+            // Update / changelog banner — slides in after the readiness
+            // check, never blocks a touch on the dashboard behind it.
+            const Positioned(
+              top: 8,
+              left: 16,
+              right: 16,
+              child: UpdateBanner(),
+            ),
+          ],
         ),
       ),
       bottomNavigationBar: Column(
