@@ -53,3 +53,5 @@ __pycache__/
 
 # flutter-builder: replaced tool files are kept here
 .agent-pack-backups/
+# flutter-builder: see_screen.py downloads screenshots here
+.agent-screens/
