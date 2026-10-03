@@ -63,7 +63,7 @@
 7. **🚪 Zero-Friction Guest Trial Onboarding:**
    - Visitors can explore the dashboard and play trial quizzes immediately without forced registration, boosting user acquisition.
 8. **🛡️ In-App Admin Control Panel (author-only):**
-   - Chapter/subject manager, question bank with search and filters, review-before-append AI question generator (10 questions per run, trilingual), shop and avatar managers, question-count sync, audit log. Gated on the Firebase `admin` custom claim, so ordinary accounts never see it.
+   - Chapter/subject manager, AI-assisted trilingual subject/chapter drafts with review-before-save, question bank with search and filters, review-before-append AI question generator (10 questions per run, trilingual), shop and avatar managers, question-count sync, audit log. Gated on the Firebase `admin` custom claim, so ordinary accounts never see it.
 9. **🌍 Fully Trilingual (English · বাংলা · हिन्दी):**
    - Interface *and* quiz content in three languages from one switch. Picked automatically from the device locale, changeable any time from **Profile → Settings → Language**, stored locally and kept across restarts. The font swaps to Hind Siliguri for Bangla so no glyph is ever missing.
 10. **📚 Trilingual Question Bank:**

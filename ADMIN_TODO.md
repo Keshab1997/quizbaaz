@@ -11,6 +11,7 @@
 - [x] `tool/validate_questions.py` — schema, duplicate ids, translation coverage
 - [x] Chapter visibility toggle — disable a chapter to hide it from students
 - [x] Admin question sets — questions are grouped in 10s; a confirmed set delete removes only that set's explicit question IDs
+- [x] AI subject/chapter authoring — generate trilingual catalogue drafts, review/select chapters, assign safe ids, and save the approved batch atomically
 
 Notes:
 - Audit logs are written to `admin_audit_logs` with actor uid/email when Firebase Auth is available.

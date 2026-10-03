@@ -10,6 +10,7 @@ import '../../../data/services/ai_question_generator.dart';
 import '../../../data/services/bulk_chapter_importer.dart';
 import '../../../data/services/chapter_catalog_service.dart';
 import '../../widgets/glass_card.dart';
+import 'widgets/ai_catalog_add_sheet.dart';
 import 'widgets/bulk_chapter_add_sheet.dart';
 import 'question_manager_screen.dart';
 import 'widgets/trilingual_field.dart';
@@ -117,6 +118,14 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
         ),
         actions: [
+          IconButton(
+            tooltip: 'AI add subject or chapters',
+            icon: const Icon(
+              Icons.auto_awesome_rounded,
+              color: AppColors.neonGold,
+            ),
+            onPressed: _loading ? null : _openAiCatalogAdd,
+          ),
           IconButton(
             tooltip: 'Reload',
             icon: const Icon(Icons.refresh_rounded),
@@ -485,6 +494,24 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
   }
 
   // --------------------------------------------------------------- editing --
+
+  Future<void> _openAiCatalogAdd() async {
+    final saved = await showModalBottomSheet<bool>(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder:
+          (_) =>
+              AiCatalogAddSheet(categories: _categories, actorUid: _actorUid),
+    );
+    if (saved == true && mounted) {
+      await _load();
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('AI catalogue draft saved.')),
+      );
+    }
+  }
 
   Future<void> _addSubject() => _editSubject(null);
 

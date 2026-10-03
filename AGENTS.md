@@ -663,3 +663,8 @@ response or action, including clarifying questions.
 | Cross-repo architecture question | `graphify` |
 | Turn a repeated workflow into a skill | `skill-creator` |
 | Telegram pairing / broadcast | `telegram:configure`, `telegram:access` |
+
+## Current product notes
+
+- The Admin Chapter Manager includes an AI subject/chapter authoring assistant.
+  It uses the existing API-key pool, presents a trilingual draft for review, assigns ids locally, and saves the approved category/chapter batch atomically.

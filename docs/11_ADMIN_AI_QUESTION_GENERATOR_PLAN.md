@@ -253,11 +253,16 @@ Stream<GenerationProgress> generate({
   A disabled chapter is hidden from student chapter lists; it remains visible
   to admins so it can be enabled again.
 - **Add subject** sheet with three-language name, icon and colour.
+- **AI subject/chapter authoring** from the Chapter Manager: generate a
+  trilingual subject plus chapters, or add chapters to an existing subject;
+  review/select the draft first, then save the category and chapter batch
+  atomically with ids assigned by the app.
 
 - [ ] **T5.1** Chapter tree with counts and coverage
 - [ ] **T5.2** Add/edit chapter sheet (trilingual)
 - [ ] **T5.3** Add/edit subject sheet (trilingual)
 - [ ] **T5.4** Reorder chapters
+- [x] **T5.16** AI subject/chapter authoring assistant
 
 ### 5.2 Question Manager — `admin/question_manager_screen.dart`
 - Opened from a chapter. Lists existing questions with search and filters

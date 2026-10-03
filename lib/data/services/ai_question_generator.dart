@@ -336,6 +336,20 @@ class AiQuestionGenerator {
     );
   }
 
+  /// Requests a structured model response through the same key pool used by
+  /// question generation. Callers own parsing and review; this method never
+  /// writes application data.
+  Future<String?> requestJson(
+    String prompt, {
+    String actorUid = 'admin',
+    String feature = 'structured_generation',
+  }) async {
+    if (_keys.peekFirstKey() == null) {
+      await _keys.ensureReady();
+    }
+    return _callModel(prompt, actorUid: actorUid, feature: feature);
+  }
+
   /// Translates one field into bn and hi, for the admin forms.
   Future<Map<String, String>?> translateField(String english) async {
     final raw = await _callModel(
@@ -362,7 +376,11 @@ class AiQuestionGenerator {
   /// Returns null only when the pool is exhausted. Success and failure are
   /// reported back to [ApiKeyManager] so cooldowns, failover and the admin's
   /// error stats all stay accurate.
-  Future<String?> _callModel(String prompt, {required String actorUid}) async {
+  Future<String?> _callModel(
+    String prompt, {
+    required String actorUid,
+    String feature = _feature,
+  }) async {
     for (var attempt = 0; attempt < 4; attempt++) {
       final key = _keys.getNextKey();
       if (key == null) return null;
@@ -376,14 +394,14 @@ class AiQuestionGenerator {
           if (text != null && text.trim().isNotEmpty) return text;
 
           // A 200 with nothing usable in it is still a failure of this key.
-          _keys.reportFailure(key, 200, _feature, actorUid);
+          _keys.reportFailure(key, 200, feature, actorUid);
           continue;
         }
 
-        _keys.reportFailure(key, response.statusCode, _feature, actorUid);
+        _keys.reportFailure(key, response.statusCode, feature, actorUid);
       } catch (e) {
         debugPrint('AiQuestionGenerator: ${key.name} failed — $e');
-        _keys.reportFailure(key, 0, _feature, actorUid);
+        _keys.reportFailure(key, 0, feature, actorUid);
       }
     }
     return null;

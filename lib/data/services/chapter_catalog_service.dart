@@ -199,6 +199,56 @@ class ChapterCatalogService {
 
   // ----------------------------------------------------------------- write --
 
+  /// Saves a reviewed AI draft in one batch so a new subject cannot be left
+  /// half-created if one chapter write fails.
+  Future<void> saveCategoryWithChapters({
+    required String categoryId,
+    required LocalizedText name,
+    required String icon,
+    required String colorHex,
+    required int priority,
+    required List<ChapterModel> chapters,
+    required String actorUid,
+    bool generatedByAi = false,
+  }) async {
+    final batch = _db.batch();
+    batch.set(_categories.doc(categoryId), {
+      'category_id': categoryId,
+      'category_name': name.toJson(),
+      'category_icon': icon,
+      'color_hex': colorHex,
+      'priority': priority,
+      'updated_at': FieldValue.serverTimestamp(),
+      'updated_by': actorUid,
+    }, SetOptions(merge: true));
+
+    for (final chapter in chapters) {
+      batch.set(_chapters(categoryId).doc(chapter.chapterId), {
+        'chapter_id': chapter.chapterId,
+        'title': chapter.titleText.toJson(),
+        'description': chapter.descriptionText.toJson(),
+        'chapter_number': chapter.chapterNumber,
+        'is_unlocked': chapter.isUnlocked,
+        'is_enabled': chapter.isEnabled,
+        'json_file': chapter.jsonFile,
+        'updated_at': FieldValue.serverTimestamp(),
+        'updated_by': actorUid,
+      }, SetOptions(merge: true));
+    }
+
+    await batch.commit();
+    await _audit(
+      generatedByAi ? 'ai_catalog_saved' : 'catalog_saved',
+      actorUid,
+      {
+        'category_id': categoryId,
+        'chapter_ids': [for (final chapter in chapters) chapter.chapterId],
+        'generated_by_ai': generatedByAi,
+      },
+    );
+    await _invalidateCatalogueCache();
+  }
+
   /// Creates or updates a subject.
   Future<void> saveCategory({
     required String categoryId,
