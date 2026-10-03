@@ -48,7 +48,7 @@ jobs:
 
   release-aab:
     needs: check-admob-config
-    uses: Keshab1997/flutter-builder/.github/workflows/flutter-build.yml@v1.10.0
+    uses: Keshab1997/flutter-builder/.github/workflows/flutter-build.yml@v1.11.1
     # The GOOGLE_SERVICES_JSON_BASE64 secret below makes the builder write
     # android/app/google-services.json before the build (untracked file).
     with:
