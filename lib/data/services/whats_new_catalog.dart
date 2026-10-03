@@ -7,6 +7,29 @@ class WhatsNewCatalog {
   WhatsNewCatalog._();
 
   static const Map<String, Map<String, List<String>>> _releases = {
+    '1.0.15': {
+      'en': [
+        'Create a complete subject and its chapters with AI from Chapter Manager.',
+        'Add chapters to an existing subject with the AI syllabus assistant.',
+        'Review and select AI-generated English, Bangla and Hindi titles and descriptions.',
+        'Duplicate chapters and incomplete translations are caught before saving.',
+        'Subject and chapter updates are saved together for safer authoring.',
+      ],
+      'bn': [
+        'Chapter Manager থেকে এখন AI-এর সাহায্যে পুরো subject ও তার chapter তৈরি করা যাবে।',
+        'Existing subject-এ নতুন chapter যোগ করার জন্য AI syllabus assistant ব্যবহার করুন।',
+        'Save করার আগে AI তৈরি করা English, বাংলা ও Hindi title এবং description দেখে বেছে নিন।',
+        'Duplicate chapter ও অসম্পূর্ণ translation save হওয়ার আগেই ধরা পড়বে।',
+        'Subject ও chapter-এর পরিবর্তন একসঙ্গে নিরাপদে save হবে।',
+      ],
+      'hi': [
+        'Chapter Manager से AI की मदद से subject और chapters बनाएँ।',
+        'मौजूदा subject में नए chapters के लिए AI syllabus assistant का उपयोग करें।',
+        'Save से पहले English, Bangla और Hindi titles और descriptions review करें।',
+        'Duplicate chapters और अधूरे translations save होने से पहले रुकते हैं।',
+        'Subject और chapter changes एक साथ सुरक्षित रूप से save होते हैं।',
+      ],
+    },
     '1.0.13': {
       'en': [
         'Every question now gets 30 seconds, up from 15 — daily quizzes, chapter sets and battles.',

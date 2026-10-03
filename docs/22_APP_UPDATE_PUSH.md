@@ -30,7 +30,7 @@ does **not** send a custom tag. The release push uses:
 
 ```json
 "filters": [
-  { "field": "app_version", "relation": "!=", "value": "1.0.14" }
+  { "field": "app_version", "relation": "!=", "value": "1.0.15" }
 ]
 ```
 
@@ -53,14 +53,14 @@ the in-app language switch) — one send covers en/bn/hi.
 
    | | |
    |---|---|
-   | en | **QuizBaaz 1.0.14 is here 🚀** — *See what's changed and update to the latest version.* |
-   | bn | **QuizBaaz 1.0.14 এসেছে 🚀** — *কী নতুন হয়েছে দেখুন আর সর্বশেষ ভার্সনে আপডেট করুন।* |
-   | hi | **QuizBaaz 1.0.14 आ गया है 🚀** — *देखिए क्या नया है और सबसे नए वर्शन में अपडेट करिए।* |
+   | en | **QuizBaaz 1.0.15 is here 🚀** — *See what's changed and update to the latest version.* |
+   | bn | **QuizBaaz 1.0.15 এসেছে 🚀** — *কী নতুন হয়েছে দেখুন আর সর্বশেষ ভার্সনে আপডেট করুন।* |
+   | hi | **QuizBaaz 1.0.15 आ गया है 🚀** — *देखिए क्या नया है और सबसे नए वर्शन में अपडेट करिए।* |
 
 3. **Advanced → data** (this is what routes the tap to the Update Center):
 
    ```json
-   { "open": "app_update", "version": "1.0.14" }
+   { "open": "app_update", "version": "1.0.15" }
    ```
 
 4. **Target → filter**: `app_version` `is not` `<new version>` (or send to
@@ -100,7 +100,7 @@ Manual curl (same payload the script sends):
 curl -fsS -X POST "$QB_BROADCAST_URL" \
   -H "x-qb-broadcast-secret: $QB_BROADCAST_SECRET" \
   -H 'Content-Type: application/json' \
-  -d '{"app_id":"<onesignal-app-id>","version":"1.0.14",
+  -d '{"app_id":"<onesignal-app-id>","version":"1.0.15",
        "notes":{"en":"…","bn":"…","hi":"…"}}'
 ```
 
