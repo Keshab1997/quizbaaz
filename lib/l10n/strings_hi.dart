@@ -121,6 +121,11 @@ const Map<String, String> kStringsHi = {
       'आज का लीडरबोर्ड स्कोर {score} लॉक है — यह रन सिर्फ अभ्यास के लिए है।',
   'dailyUnrankedBanner':
       'प्रैक्टिस सेट — आज का कॉम्पिटीशन पैकेट उपलब्ध नहीं है, इसलिए यह स्कोर लीडरबोर्ड पर नहीं जाएगा।',
+  'dailyReadyEyebrow': 'आज की लाइव क्विज़',
+  'dailyReadyTitle': 'आज की रन के लिए तैयार?',
+  'dailyReadyBody': '10 सवाल। आज की पहली पूरी रन ही लीडरबोर्ड स्कोर तय करेगी।',
+  'dailyReadyStart': 'क्विज़ शुरू करें',
+  'dailyReadyNotNow': 'अभी नहीं',
   'quizNoFiftyFifty': '50-50 लाइफ़लाइन खत्म! शॉप से और खरीदें। 🛒',
   'quizFiftyFiftyUsed': 'इस सवाल पर 50-50 पहले ही इस्तेमाल हो चुका है।',
   'quizFiftyFiftyBlocked': 'अभी 50-50 इस्तेमाल नहीं कर सकते।',

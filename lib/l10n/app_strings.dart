@@ -181,6 +181,11 @@ class S {
   static String dailyRetryBanner({required Object score}) =>
       fill(raw('dailyRetryBanner'), {'score': score});
   static String get dailyUnrankedBanner => raw('dailyUnrankedBanner');
+  static String get dailyReadyEyebrow => raw('dailyReadyEyebrow');
+  static String get dailyReadyTitle => raw('dailyReadyTitle');
+  static String get dailyReadyBody => raw('dailyReadyBody');
+  static String get dailyReadyStart => raw('dailyReadyStart');
+  static String get dailyReadyNotNow => raw('dailyReadyNotNow');
   static String get quizNoFiftyFifty => raw('quizNoFiftyFifty');
   static String get quizFiftyFiftyUsed => raw('quizFiftyFiftyUsed');
   static String get quizFiftyFiftyBlocked => raw('quizFiftyFiftyBlocked');

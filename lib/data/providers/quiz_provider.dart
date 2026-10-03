@@ -166,6 +166,18 @@ class QuizProvider extends ChangeNotifier {
   bool get isDailyRanked => _isDailyQuiz && _isDailyRanked;
   String? get dailyUnrankedReason => _dailyUnrankedReason;
 
+  /// True while a **daily** run is in flight: it is either still loading its
+  /// questions, or they are loaded and it has neither finished nor been quit.
+  ///
+  /// Notification taps read this to choose between resuming the live run and
+  /// opening the ready gate ([DailyQuizReadyScreen]). Restarting here would
+  /// throw away a run the player has already started — and stacking a second
+  /// quiz screen under a live one is no better.
+  bool get hasLiveDailyRun =>
+      _isDailyQuiz &&
+      (_isLoading ||
+          (_questions.isNotEmpty && !_isQuizCompleted && !_abandoned));
+
   /// What this run did to today's leaderboard row: counted, replaced (Score
   /// Shield), ignored (the day was already locked) or not applicable (a
   /// chapter quiz, a practice run, an unranked daily set or a guest).

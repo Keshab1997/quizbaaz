@@ -130,6 +130,12 @@ const Map<String, String> kStringsEn = {
       'Score Shield active — this run replaces today\'s score ({score}).',
   'dailyUnrankedBanner':
       'Practice set — today\'s competition packet is not available, so this score will not reach the leaderboard.',
+  'dailyReadyEyebrow': 'DAILY LIVE QUIZ',
+  'dailyReadyTitle': 'Ready for today\'s run?',
+  'dailyReadyBody':
+      '10 questions. Your first finished run sets today\'s leaderboard score.',
+  'dailyReadyStart': 'START QUIZ',
+  'dailyReadyNotNow': 'Not now',
   'quizNoFiftyFifty': 'No 50-50 lifelines left! Buy more in the Shop. 🛒',
   'quizFiftyFiftyUsed': 'Already used 50-50 on this question.',
   'quizFiftyFiftyBlocked': 'Cannot use 50-50 now.',
