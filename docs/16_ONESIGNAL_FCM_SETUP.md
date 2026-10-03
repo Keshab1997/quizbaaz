@@ -31,7 +31,9 @@ Click payload (`additionalData`):
 { "open": "daily_quiz" }
 ```
 
-Other `open` values: `battle`, `online_battle`, `leaderboard`, `shop`.
+Other `open` values: `battle`, `online_battle`, `leaderboard`, `shop`,
+`app_update` (release pushes → the Update Center; see
+[`docs/22_APP_UPDATE_PUSH.md`](./22_APP_UPDATE_PUSH.md)).
 
 ---
 

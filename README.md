@@ -75,7 +75,9 @@
 13. **📡 Live push via OneSignal (FCM under the hood):**
    - Admin broadcasts and 1v1 pings when the app is killed. Paste the OneSignal App ID into `lib/core/constants/onesignal_config.dart` after uploading the Firebase service-account JSON to OneSignal. See `docs/16_ONESIGNAL_FCM_SETUP.md`.
 14. **🧭 Safe Quiz & Match Exit:**
-   - Leaving an in-progress quiz cancels its timer and any delayed progression before the route closes. Leaving a battle also stops its timers and detaches room/challenge listeners, so a background match cannot reopen or mutate a later screen.
+    - Leaving an in-progress quiz cancels its timer and any delayed progression before the route closes. Leaving a battle also stops its timers and detaches room/challenge listeners, so a background match cannot reopen or mutate a later screen.
+15. **📣 Release Push → Update Center:**
+    - A new version ships with a trilingual OneSignal push (tap → Update Center), a non-blocking "what changed" / "update ready" dashboard banner, and an in-app flexible Play update that only installs on an explicit tap — no surprise modal, no mid-scroll restart. See [`docs/22_APP_UPDATE_PUSH.md`](./docs/22_APP_UPDATE_PUSH.md).
 
 ---
 
@@ -95,6 +97,7 @@ All architectural and step-by-step blueprints are documented in the [`docs/`](./
 * ✅ **[`18_PLAY_STORE_PUBLISH_TODO.md`](./docs/18_PLAY_STORE_PUBLISH_TODO.md)**: Owner checklist from account setup through post-launch AdMob verification.
 * 📥 **[`19_FIRESTORE_TO_BUNDLE_PULL.md`](./docs/19_FIRESTORE_TO_BUNDLE_PULL.md)**: Pull admin-authored questions into the bundled banks (offline parity), with the CI gate.
 * 🚀 **[`20_PLAY_STORE_API_PUBLISH.md`](./docs/20_PLAY_STORE_API_PUBLISH.md)**: Publish the store listing + AAB via the Play Developer API (once-off setup, then automated).
+* 📣 **[`22_APP_UPDATE_PUSH.md`](./docs/22_APP_UPDATE_PUSH.md)**: The release push — dashboard banner, `open: app_update` deep link, Update Center, OneSignal targeting and the publish hook.
 * 🔐 **[`SECURITY_P0_FIXES.md`](./docs/SECURITY_P0_FIXES.md)**: What the P0 hardening changed, and the owner's deploy steps.
 
 ---

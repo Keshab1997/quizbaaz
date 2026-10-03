@@ -439,6 +439,65 @@ def publish_bundle(client: PlayClient, cfg: dict, edit_id: str, aab: Path,
 
 
 # --------------------------------------------------------------------------- #
+# release broadcast (docs/22)
+# --------------------------------------------------------------------------- #
+ONESIGNAL_CONFIG_PATH = REPO_ROOT / 'lib' / 'core' / 'constants' / 'onesignal_config.dart'
+
+
+def notify_update_broadcast() -> None:
+    """Best-effort OneSignal release push after an AAB lands (docs/22).
+
+    Fires only when QB_BROADCAST_URL + QB_BROADCAST_SECRET are set, and can
+    never fail the publish itself — a missed broadcast costs one manual
+    send; a red publish costs a re-upload.
+    """
+    url = os.environ.get('QB_BROADCAST_URL', '').strip()
+    secret = os.environ.get('QB_BROADCAST_SECRET', '').strip()
+    if not url or not secret:
+        note('update broadcast skipped — set QB_BROADCAST_URL and '
+             'QB_BROADCAST_SECRET to notify users '
+             '(docs/22_APP_UPDATE_PUSH.md)')
+        return
+
+    data = load_whats_new()
+    version = str(data.get('current') or '').strip()
+    if not re.match(r'^\d+\.\d+\.\d+$', version):
+        note('whats_new.yaml has no valid `current` version — broadcast skipped')
+        return
+    block = (data.get('releases') or {}).get(version) or {}
+    notes = {lang: str(block.get(lang) or '').strip()
+             for lang in ('en', 'bn', 'hi')}
+
+    try:
+        config_text = ONESIGNAL_CONFIG_PATH.read_text(encoding='utf-8')
+    except OSError:
+        config_text = ''
+    app_id = re.search(r"appId\s*=\s*'([0-9a-fA-F-]{36})'", config_text)
+    if not app_id:
+        note('onesignal_config.dart has no App ID — broadcast skipped')
+        return
+
+    payload = {'app_id': app_id.group(1), 'version': version, 'notes': notes}
+    try:
+        import requests
+        resp = requests.post(url, json=payload,
+                             headers={'x-qb-broadcast-secret': secret},
+                             timeout=30)
+        try:
+            result = resp.json()
+        except ValueError:
+            result = {}
+        if resp.ok and result.get('ok'):
+            ok(f'update broadcast sent — {result.get("recipients", 0)} '
+               f'recipient(s)')
+        else:
+            note(f'update broadcast failed (HTTP {resp.status_code}): '
+                 f'{str(result)[:200]}')
+    except Exception as exc:  # noqa: BLE001 - advisory step, never fatal
+        note(f'update broadcast failed: {exc}')
+
+
+# --------------------------------------------------------------------------- #
 # CLI
 # --------------------------------------------------------------------------- #
 def parse_args(argv: list[str]) -> argparse.Namespace:
@@ -520,6 +579,8 @@ def main(argv: list[str] | None = None) -> int:
 
     client.commit(edit_id)
     ok(f'committed edit {edit_id}')
+    if args.aab:
+        notify_update_broadcast()
     note('the listing appears in the Play Console; App content forms (Data '
          'safety, content rating, etc.) are still manual — docs/20')
     return 0

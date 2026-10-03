@@ -394,9 +394,10 @@ python3 tool/validate_questions.py --strict
   `docs/11` the admin generator plan, `docs/12` the battle arena, `docs/16`
   OneSignal/FCM live push, `docs/17` the Google Play release runbook, `docs/18`
   the owner-facing publish checklist, `docs/19` the Firestore→bundle pull,
-  `docs/20` the Play Developer API autopublish of the store listing + AAB and
+  `docs/20` the Play Developer API autopublish of the store listing + AAB,
   `docs/21` the daily competition (one counted score per day, packets, the
-  publishing cron).
+  publishing cron) and `docs/22` the release-push pipeline (dashboard
+  banner, `open: app_update` deep link, Update Center, OneSignal targeting).
   **Read the matching doc before touching that subsystem.** `ADMIN_TODO.md`
   tracks admin work; `PROJECT_REVIEW.md` holds the audit that the P1 sweep
   worked through.
