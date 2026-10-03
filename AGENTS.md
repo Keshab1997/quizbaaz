@@ -26,8 +26,10 @@ python3 tool/agent_loop.py -m "fix(scope): what changed"   # all five steps, one
 3. **Commit.** While the branch is still yours, `git commit --amend` instead of
    piling "fix ci" commits on top.
 4. **Push once.** Never push WIP "to see what happens". If you have several
-   things to try, open the PR as a **draft** — drafts do not run CI, so iterate
-   freely; mark *Ready for review* when you want the run.
+   things to try, open the PR as a **draft** — drafts skip `ci.yml` and the
+   screenshots workflow, while Content & Quality and the Web Preview still run
+   on every push, so iterate freely; mark *Ready for review* when you want the
+   full run.
 5. **`python3 tool/ci_watch.py`** — it polls for you (no turn-by-turn waiting)
    and prints the conclusion of every workflow plus the interesting lines of
    the failed ones.
@@ -46,7 +48,7 @@ first thing that would waste a run:
 python3 tool/agent_loop.py -m "fix(profile): guard a null avatar"
 python3 tool/agent_loop.py -m "fix(profile): drop the unused import" --amend
 python3 tool/agent_loop.py -m "feat(cv): add PDF export" --draft-pr
-python3 tool/agent_loop.py -m "..." --ready          # drafts run no CI: this starts it
+python3 tool/agent_loop.py -m "..." --ready          # a draft skips CI; this starts it
 python3 tool/agent_loop.py -m "..." --no-watch       # push and return immediately
 ```
 
@@ -96,10 +98,10 @@ python3 tool/see_screen.py --route /settings --wait-ms 12000   # slow first fram
 | Situation | What runs |
 |---|---|
 | Push to a feature branch **with an open PR** | the PR event only — the push trigger is main-only, so no duplicate |
-| Push to `main` | CI (+ Web Preview) once |
-| **Draft** PR | nothing, until you press *Ready for review* |
-| Docs-only change (`**.md`, `docs/**`, `distribution/**`) | nothing (excluded by `paths-ignore`) |
-| Merge | CI on `main` + Web Preview deploy |
+| Push to `main` | CI + Content & Quality (+ Web Preview) once |
+| **Draft** PR | `ci.yml` and `ui-screenshots.yml` wait for *Ready for review*; `content-and-quality.yml` and `web-preview.yml` run on every push |
+| Docs-only change (`**.md`, `docs/**`, `distribution/**`) | pushed straight to `main`: CI and Web Preview skip (`paths-ignore`), Content & Quality still runs. In a PR: nothing is filtered — every workflow runs |
+| Merge | CI + Content & Quality on `main` + Web Preview deploy |
 
 If a run is cancelled or skipped, do **not** retrigger it with an empty commit —
 use *Actions → Run workflow* or the re-run API call.
