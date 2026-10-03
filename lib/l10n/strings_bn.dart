@@ -121,6 +121,12 @@ const Map<String, String> kStringsBn = {
       'স্কোর শিল্ড সক্রিয় — এই রান আজকের লিডারবোর্ড স্কোর ({score}) বদলে দেবে।',
   'dailyUnrankedBanner':
       'অনুশীলন সেট — আজকের প্রতিযোগিতার প্যাকেট পাওয়া যায়নি, তাই এই স্কোর লিডারবোর্ডে যাবে না।',
+  'dailyReadyEyebrow': 'আজকের লাইভ কুইজ',
+  'dailyReadyTitle': 'আজকের রানের জন্য তৈরি তো?',
+  'dailyReadyBody':
+      '১০টি প্রশ্ন। আজকের প্রথম সম্পূর্ণ রানটিই লিডারবোর্ডের স্কোর ঠিক করবে।',
+  'dailyReadyStart': 'কুইজ শুরু করুন',
+  'dailyReadyNotNow': 'এখন নয়',
   'quizNoFiftyFifty': '৫০-৫০ লাইফলাইন শেষ! শপ থেকে আরও কিনুন। 🛒',
   'quizFiftyFiftyUsed': 'এই প্রশ্নে ৫০-৫০ ইতিমধ্যে ব্যবহার করেছেন।',
   'quizFiftyFiftyBlocked': 'এখন ৫০-৫০ ব্যবহার করা যাবে না।',
