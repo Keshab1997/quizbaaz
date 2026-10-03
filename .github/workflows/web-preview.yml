@@ -30,7 +30,7 @@ concurrency:
 jobs:
   preview:
     if: github.event_name != 'delete'
-    uses: Keshab1997/flutter-builder/.github/workflows/web-preview.yml@v1.12.1
+    uses: Keshab1997/flutter-builder/.github/workflows/web-preview.yml@v1.13.0
     with:
       working-directory: "."
       comment-on-pr: true
@@ -48,7 +48,7 @@ jobs:
   # merge this file before relying on that.
   cleanup:
     if: github.event_name == 'delete' && github.event.ref_type == 'branch'
-    uses: Keshab1997/flutter-builder/.github/workflows/preview-cleanup.yml@v1.12.1
+    uses: Keshab1997/flutter-builder/.github/workflows/preview-cleanup.yml@v1.13.0
     with:
       branch-name: ${{ github.event.ref }}
     permissions:
