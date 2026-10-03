@@ -1,0 +1,391 @@
+{
+  "chapter_id": "geo_ch_07",
+  "chapter_title": {
+    "en": "Lifelines of National Economy",
+    "bn": "জাতীয় অর্থনীতির জীবনরেখা",
+    "hi": "राष्ट्रीय अर्थव्यवस्था की जीवन रेखाएँ"
+  },
+  "class_standard": "Class 10",
+  "questions": [
+    {
+      "id": "geo_ch_07_q001",
+      "question": {
+        "en": "Which mode of transport is most suitable for carrying bulky goods over short distances?",
+        "bn": "স্বল্প দূরত্বে ভারী ও বৃহৎ আকারের পণ্য পরিবহণের জন্য কোন পরিবহণ ব্যবস্থা সবচেয়ে উপযুক্ত?",
+        "hi": "कम दूरी पर भारी और बड़े आकार के माल के परिवहन के लिए कौन-सा परिवहन साधन सबसे उपयुक्त है?"
+      },
+      "options": [
+        {
+          "en": "Roadways",
+          "bn": "সড়কপথ",
+          "hi": "सड़कमार्ग"
+        },
+        {
+          "en": "Airways",
+          "bn": "আকাশপথ",
+          "hi": "वायुमार्ग"
+        },
+        {
+          "en": "Pipelines",
+          "bn": "পাইপলাইন",
+          "hi": "पाइपलाइन"
+        },
+        {
+          "en": "Waterways",
+          "bn": "জলপথ",
+          "hi": "जलमार्ग"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Roadways provide door-to-door service and are convenient for transporting goods over short distances, especially between local markets and production centres.",
+        "bn": "সড়কপথে সরাসরি উৎপাদনকেন্দ্র থেকে বাজারে পণ্য পৌঁছানো যায়, তাই স্বল্প দূরত্বে পণ্য পরিবহণে এটি সুবিধাজনক।",
+        "hi": "सड़कमार्ग द्वारा उत्पादन केंद्र से बाजार तक सीधे माल पहुँचाया जा सकता है, इसलिए कम दूरी पर माल परिवहन में यह सुविधाजनक है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "geo_ch_07_q002",
+      "question": {
+        "en": "Which type of roads are constructed and maintained by the Central Public Works Department?",
+        "bn": "কেন্দ্রীয় গণপূর্ত দপ্তর দ্বারা কোন ধরনের সড়ক নির্মাণ ও রক্ষণাবেক্ষণ করা হয়?",
+        "hi": "केंद्रीय लोक निर्माण विभाग द्वारा किस प्रकार की सड़कों का निर्माण और रखरखाव किया जाता है?"
+      },
+      "options": [
+        {
+          "en": "National Highways",
+          "bn": "জাতীয় মহাসড়ক",
+          "hi": "राष्ट्रीय राजमार्ग"
+        },
+        {
+          "en": "State Highways",
+          "bn": "রাজ্য মহাসড়ক",
+          "hi": "राज्य राजमार्ग"
+        },
+        {
+          "en": "District Roads",
+          "bn": "জেলা সড়ক",
+          "hi": "जिला सड़कें"
+        },
+        {
+          "en": "Village Roads",
+          "bn": "গ্রামীণ সড়ক",
+          "hi": "ग्रामीण सड़कें"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "National Highways form the main road network connecting important cities, ports and industrial centres, and their development is under central authority.",
+        "bn": "জাতীয় মহাসড়ক গুরুত্বপূর্ণ শহর, বন্দর ও শিল্পকেন্দ্রকে যুক্ত করে এবং এগুলির উন্নয়ন কেন্দ্রীয় কর্তৃপক্ষের অধীনে হয়।",
+        "hi": "राष्ट्रीय राजमार्ग प्रमुख शहरों, बंदरगाहों और औद्योगिक केंद्रों को जोड़ते हैं तथा उनका विकास केंद्रीय प्राधिकरण के अधीन होता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "geo_ch_07_q003",
+      "question": {
+        "en": "Why are railways particularly suitable for transporting heavy and bulky goods over long distances?",
+        "bn": "দীর্ঘ দূরত্বে ভারী ও বৃহৎ আকারের পণ্য পরিবহণের জন্য রেলপথ কেন বিশেষভাবে উপযুক্ত?",
+        "hi": "लंबी दूरी पर भारी और बड़े आकार के माल के परिवहन के लिए रेलमार्ग विशेष रूप से उपयुक्त क्यों हैं?"
+      },
+      "options": [
+        {
+          "en": "They can carry large quantities at relatively low cost",
+          "bn": "তুলনামূলক কম খরচে বিপুল পরিমাণ পণ্য বহন করতে পারে",
+          "hi": "वे अपेक्षाकृत कम लागत में बड़ी मात्रा में माल ले जा सकते हैं"
+        },
+        {
+          "en": "They provide door-to-door service everywhere",
+          "bn": "সব জায়গায় সরাসরি বাড়ি থেকে বাড়ি পরিষেবা দেয়",
+          "hi": "वे हर जगह घर-घर सेवा प्रदान करते हैं"
+        },
+        {
+          "en": "They require no fixed tracks",
+          "bn": "তাদের কোনো নির্দিষ্ট রেলপথের প্রয়োজন হয় না",
+          "hi": "उन्हें किसी निश्चित रेल पटरियों की आवश्यकता नहीं होती"
+        },
+        {
+          "en": "They are faster than airways for all goods",
+          "bn": "সব ধরনের পণ্যের ক্ষেত্রে এগুলি আকাশপথের চেয়ে দ্রুত",
+          "hi": "सभी प्रकार के माल के लिए वे वायुमार्ग से तेज हैं"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Railways have high carrying capacity and are economical for moving large quantities of heavy goods over long distances.",
+        "bn": "রেলপথের বহনক্ষমতা বেশি এবং দীর্ঘ দূরত্বে বিপুল পরিমাণ ভারী পণ্য পরিবহণ তুলনামূলকভাবে সাশ্রয়ী।",
+        "hi": "रेलमार्ग की वहन क्षमता अधिक होती है और लंबी दूरी पर भारी माल की बड़ी मात्रा ले जाना अपेक्षाकृत किफायती होता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "geo_ch_07_q004",
+      "question": {
+        "en": "Which transport system is best suited for carrying petroleum and natural gas over long distances?",
+        "bn": "দীর্ঘ দূরত্বে পেট্রোলিয়াম ও প্রাকৃতিক গ্যাস পরিবহণের জন্য কোন পরিবহণ ব্যবস্থা সবচেয়ে উপযুক্ত?",
+        "hi": "लंबी दूरी तक पेट्रोलियम और प्राकृतिक गैस के परिवहन के लिए कौन-सी परिवहन प्रणाली सबसे उपयुक्त है?"
+      },
+      "options": [
+        {
+          "en": "Pipeline transport",
+          "bn": "পাইপলাইন পরিবহণ",
+          "hi": "पाइपलाइन परिवहन"
+        },
+        {
+          "en": "Road transport",
+          "bn": "সড়ক পরিবহণ",
+          "hi": "सड़क परिवहन"
+        },
+        {
+          "en": "Rail transport",
+          "bn": "রেল পরিবহণ",
+          "hi": "रेल परिवहन"
+        },
+        {
+          "en": "Air transport",
+          "bn": "আকাশ পরিবহণ",
+          "hi": "वायु परिवहन"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Pipelines provide a continuous flow of petroleum, natural gas and other fluids, making them efficient for long-distance transport.",
+        "bn": "পাইপলাইনের মাধ্যমে পেট্রোলিয়াম, প্রাকৃতিক গ্যাস ও অন্যান্য তরল পদার্থ অবিচ্ছিন্নভাবে পরিবহণ করা যায়, তাই দীর্ঘ দূরত্বে এটি কার্যকর।",
+        "hi": "पाइपलाइन से पेट्रोलियम, प्राकृतिक गैस और अन्य तरल पदार्थों का निरंतर प्रवाह संभव होता है, इसलिए लंबी दूरी के लिए यह प्रभावी है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "geo_ch_07_q005",
+      "question": {
+        "en": "Which is the most important advantage of waterways for transporting heavy goods?",
+        "bn": "ভারী পণ্য পরিবহণে জলপথের সবচেয়ে গুরুত্বপূর্ণ সুবিধা কোনটি?",
+        "hi": "भारी माल के परिवहन में जलमार्ग का सबसे महत्वपूर्ण लाभ क्या है?"
+      },
+      "options": [
+        {
+          "en": "Low cost of transport",
+          "bn": "পরিবহণের কম খরচ",
+          "hi": "परिवहन की कम लागत"
+        },
+        {
+          "en": "Highest speed among all modes",
+          "bn": "সব পরিবহণ ব্যবস্থার মধ্যে সর্বাধিক গতি",
+          "hi": "सभी परिवहन साधनों में सबसे अधिक गति"
+        },
+        {
+          "en": "Door-to-door delivery everywhere",
+          "bn": "সব জায়গায় সরাসরি বাড়ি থেকে বাড়ি পণ্য পৌঁছানো",
+          "hi": "हर जगह घर-घर माल पहुँचाना"
+        },
+        {
+          "en": "No dependence on navigable routes",
+          "bn": "নৌচলাচলযোগ্য পথের উপর কোনো নির্ভরতা নেই",
+          "hi": "नौगम्य मार्गों पर कोई निर्भरता नहीं"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Waterways are economical because vessels can carry large quantities of bulky goods using relatively little fuel per unit of cargo.",
+        "bn": "জাহাজ বা নৌযান তুলনামূলক কম জ্বালানি খরচে বিপুল পরিমাণ ভারী পণ্য বহন করতে পারে বলে জলপথ সাশ্রয়ী।",
+        "hi": "जलयान अपेक्षाकृत कम ईंधन में भारी माल की बड़ी मात्रा ले जा सकते हैं, इसलिए जलमार्ग किफायती होते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "geo_ch_07_q006",
+      "question": {
+        "en": "What is the main function of a seaport in international trade?",
+        "bn": "আন্তর্জাতিক বাণিজ্যে সমুদ্রবন্দরের প্রধান কাজ কী?",
+        "hi": "अंतरराष्ट्रीय व्यापार में समुद्री बंदरगाह का मुख्य कार्य क्या है?"
+      },
+      "options": [
+        {
+          "en": "To handle loading and unloading of goods between ships and land transport",
+          "bn": "জাহাজ ও স্থল পরিবহণের মধ্যে পণ্য ওঠানো-নামানোর ব্যবস্থা করা",
+          "hi": "जहाजों और स्थल परिवहन के बीच माल की लदाई-उतराई की व्यवस्था करना"
+        },
+        {
+          "en": "To produce all imported goods",
+          "bn": "সমস্ত আমদানি করা পণ্য উৎপাদন করা",
+          "hi": "सभी आयातित वस्तुओं का उत्पादन करना"
+        },
+        {
+          "en": "To provide railway tracks in every village",
+          "bn": "প্রতিটি গ্রামে রেলপথ সরবরাহ করা",
+          "hi": "हर गाँव में रेल पटरियाँ उपलब्ध कराना"
+        },
+        {
+          "en": "To replace all road transport",
+          "bn": "সমস্ত সড়ক পরিবহণের পরিবর্তে কাজ করা",
+          "hi": "सभी सड़क परिवहन का स्थान लेना"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Ports act as gateways for overseas trade by transferring cargo between ships and inland transport systems such as roads and railways.",
+        "bn": "বন্দর বিদেশি বাণিজ্যের প্রবেশদ্বার হিসেবে কাজ করে এবং জাহাজ ও সড়ক বা রেলপথের মধ্যে পণ্য স্থানান্তর করে।",
+        "hi": "बंदरगाह विदेशी व्यापार के प्रवेशद्वार के रूप में कार्य करते हैं और जहाजों तथा सड़क या रेल परिवहन के बीच माल का स्थानांतरण करते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "geo_ch_07_q007",
+      "question": {
+        "en": "Which statement correctly describes international trade?",
+        "bn": "আন্তর্জাতিক বাণিজ্য সম্পর্কে কোন বক্তব্যটি সঠিক?",
+        "hi": "अंतरराष्ट्रीय व्यापार का सही वर्णन कौन-सा है?"
+      },
+      "options": [
+        {
+          "en": "Exchange of goods and services between countries",
+          "bn": "দেশগুলির মধ্যে পণ্য ও পরিষেবার আদান-প্রদান",
+          "hi": "देशों के बीच वस्तुओं और सेवाओं का आदान-प्रदान"
+        },
+        {
+          "en": "Exchange only between villages of one country",
+          "bn": "একটি দেশের কেবল গ্রামের মধ্যে আদান-প্রদান",
+          "hi": "केवल एक देश के गाँवों के बीच आदान-प्रदान"
+        },
+        {
+          "en": "Movement of people only within a city",
+          "bn": "শুধু একটি শহরের মধ্যে মানুষের চলাচল",
+          "hi": "केवल एक शहर के भीतर लोगों की आवाजाही"
+        },
+        {
+          "en": "Production of goods without any exchange",
+          "bn": "কোনো আদান-প্রদান ছাড়া পণ্য উৎপাদন",
+          "hi": "बिना किसी आदान-प्रदान के वस्तुओं का उत्पादन"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "International trade involves the exchange of goods and services across national borders, including both exports and imports.",
+        "bn": "আন্তর্জাতিক বাণিজ্যে দেশের সীমানা অতিক্রম করে পণ্য ও পরিষেবার আদান-প্রদান হয়, যার মধ্যে রপ্তানি ও আমদানি উভয়ই অন্তর্ভুক্ত।",
+        "hi": "अंतरराष्ट्रीय व्यापार में देशों की सीमाओं के पार वस्तुओं और सेवाओं का आदान-प्रदान होता है, जिसमें निर्यात और आयात दोनों शामिल हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "geo_ch_07_q008",
+      "question": {
+        "en": "Which transport mode is considered the fastest for carrying passengers and high-value goods over long distances?",
+        "bn": "দীর্ঘ দূরত্বে যাত্রী ও উচ্চমূল্যের পণ্য পরিবহণের জন্য কোন পরিবহণ ব্যবস্থা দ্রুততম?",
+        "hi": "लंबी दूरी पर यात्रियों और उच्च मूल्य वाले माल के परिवहन के लिए कौन-सा परिवहन साधन सबसे तेज है?"
+      },
+      "options": [
+        {
+          "en": "Airways",
+          "bn": "আকাশপথ",
+          "hi": "वायुमार्ग"
+        },
+        {
+          "en": "Roadways",
+          "bn": "সড়কপথ",
+          "hi": "सड़कमार्ग"
+        },
+        {
+          "en": "Waterways",
+          "bn": "জলপথ",
+          "hi": "जलमार्ग"
+        },
+        {
+          "en": "Railways",
+          "bn": "রেলপথ",
+          "hi": "रेलमार्ग"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Airways provide the fastest long-distance transport, making them suitable for passengers and valuable or time-sensitive goods.",
+        "bn": "আকাশপথ দীর্ঘ দূরত্বে দ্রুততম পরিবহণ ব্যবস্থা হওয়ায় যাত্রী এবং মূল্যবান বা সময়-সংবেদনশীল পণ্য পরিবহণে উপযোগী।",
+        "hi": "वायुमार्ग लंबी दूरी के लिए सबसे तेज परिवहन साधन है, इसलिए यह यात्रियों तथा मूल्यवान या समय-संवेदनशील माल के लिए उपयुक्त है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "geo_ch_07_q009",
+      "question": {
+        "en": "If the value of a country's exports is greater than the value of its imports, what is the trade balance called?",
+        "bn": "কোনো দেশের রপ্তানির মূল্য আমদানির মূল্যের চেয়ে বেশি হলে সেই বাণিজ্য ভারসাম্যকে কী বলা হয়?",
+        "hi": "यदि किसी देश के निर्यात का मूल्य उसके आयात के मूल्य से अधिक हो, तो इस व्यापार संतुलन को क्या कहा जाता है?"
+      },
+      "options": [
+        {
+          "en": "Favourable trade balance",
+          "bn": "অনুকূল বাণিজ্য ভারসাম্য",
+          "hi": "अनुकूल व्यापार संतुलन"
+        },
+        {
+          "en": "Unfavourable trade balance",
+          "bn": "প্রতিকূল বাণিজ্য ভারসাম্য",
+          "hi": "प्रतिकूल व्यापार संतुलन"
+        },
+        {
+          "en": "Balanced trade",
+          "bn": "সুষম বাণিজ্য",
+          "hi": "संतुलित व्यापार"
+        },
+        {
+          "en": "Trade deficit",
+          "bn": "বাণিজ্য ঘাটতি",
+          "hi": "व्यापार घाटा"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "When export value exceeds import value, the country earns more from exports than it spends on imports, resulting in a favourable trade balance.",
+        "bn": "রপ্তানি থেকে আয় আমদানিতে ব্যয়ের চেয়ে বেশি হলে বাণিজ্য ভারসাম্য অনুকূল হয়।",
+        "hi": "जब निर्यात से प्राप्त मूल्य आयात पर खर्च किए गए मूल्य से अधिक होता है, तो व्यापार संतुलन अनुकूल होता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "geo_ch_07_q010",
+      "question": {
+        "en": "Why are transport and communication networks called the lifelines of a national economy?",
+        "bn": "পরিবহণ ও যোগাযোগ ব্যবস্থাকে জাতীয় অর্থনীতির জীবনরেখা বলা হয় কেন?",
+        "hi": "परिवहन और संचार के साधनों को राष्ट्रीय अर्थव्यवस्था की जीवन रेखाएँ क्यों कहा जाता है?"
+      },
+      "options": [
+        {
+          "en": "They connect producers, markets and consumers and support the movement of goods and information",
+          "bn": "এগুলি উৎপাদক, বাজার ও ভোক্তাদের যুক্ত করে এবং পণ্য ও তথ্যের চলাচলে সাহায্য করে",
+          "hi": "वे उत्पादकों, बाजारों और उपभोक्ताओं को जोड़ते हैं तथा वस्तुओं और सूचनाओं के प्रवाह में सहायता करते हैं"
+        },
+        {
+          "en": "They are used only for tourism",
+          "bn": "এগুলি শুধু পর্যটনের জন্য ব্যবহৃত হয়",
+          "hi": "इनका उपयोग केवल पर्यटन के लिए होता है"
+        },
+        {
+          "en": "They prevent movement of goods between regions",
+          "bn": "এগুলি বিভিন্ন অঞ্চলের মধ্যে পণ্যের চলাচল বন্ধ করে",
+          "hi": "वे विभिन्न क्षेत्रों के बीच वस्तुओं की आवाजाही रोकते हैं"
+        },
+        {
+          "en": "They reduce all industrial production",
+          "bn": "এগুলি সমস্ত শিল্প উৎপাদন কমিয়ে দেয়",
+          "hi": "वे सभी औद्योगिक उत्पादन को कम करते हैं"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Transport and communication link different parts of the country, enabling the movement of goods, people, services and information necessary for economic activity.",
+        "bn": "পরিবহণ ও যোগাযোগ দেশের বিভিন্ন অঞ্চলকে যুক্ত করে এবং অর্থনৈতিক কর্মকাণ্ডের জন্য প্রয়োজনীয় পণ্য, মানুষ, পরিষেবা ও তথ্যের চলাচল নিশ্চিত করে।",
+        "hi": "परिवहन और संचार देश के विभिन्न भागों को जोड़ते हैं तथा आर्थिक गतिविधियों के लिए आवश्यक वस्तुओं, लोगों, सेवाओं और सूचनाओं के प्रवाह को संभव बनाते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    }
+  ]
+}
