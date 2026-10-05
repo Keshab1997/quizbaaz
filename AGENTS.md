@@ -668,3 +668,4 @@ response or action, including clarifying questions.
 
 - The Admin Chapter Manager includes an AI subject/chapter authoring assistant.
   It uses the existing API-key pool, presents a trilingual draft for review, assigns ids locally, and saves the approved category/chapter batch atomically.
+- The Chapter Manager also imports chapters from any AI chat: paste the syllabus, copy the generated prompt, paste the JSON answer back, review the preview, save. No API key needed.

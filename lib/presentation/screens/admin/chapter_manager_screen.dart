@@ -11,6 +11,7 @@ import '../../../data/services/bulk_chapter_importer.dart';
 import '../../../data/services/chapter_catalog_service.dart';
 import '../../widgets/glass_card.dart';
 import 'widgets/ai_catalog_add_sheet.dart';
+import 'widgets/ai_json_import_sheet.dart';
 import 'widgets/bulk_chapter_add_sheet.dart';
 import 'question_manager_screen.dart';
 import 'widgets/trilingual_field.dart';
@@ -350,6 +351,21 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
                       ),
                     ),
                     TextButton.icon(
+                      onPressed: () => _aiJsonImport(category),
+                      icon: const Icon(
+                        Icons.auto_awesome_rounded,
+                        size: 16,
+                        color: AppColors.neonGold,
+                      ),
+                      label: const Text(
+                        'AI import',
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: AppColors.neonGold,
+                        ),
+                      ),
+                    ),
+                    TextButton.icon(
                       onPressed: () => _editSubject(category),
                       icon: const Icon(
                         Icons.edit_rounded,
@@ -577,13 +593,7 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
     CategoryModel category,
     ChapterModel? existing,
   ) async {
-    final nextNumber =
-        category.chapters.isEmpty
-            ? 1
-            : category.chapters
-                    .map((c) => c.chapterNumber)
-                    .reduce((a, b) => a > b ? a : b) +
-                1;
+    final nextNumber = _nextChapterNumber(category);
 
     final saved = await showModalBottomSheet<bool>(
       context: context,
@@ -614,17 +624,22 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
     if (saved == true) _load();
   }
 
+  /// Ids already in this subject — every add flow refuses these, so a new
+  /// chapter can never silently overwrite an existing one.
+  Set<String> _takenChapterIds(CategoryModel category) => {
+    for (final c in category.chapters) c.chapterId,
+  };
+
+  /// First free chapter number in this subject.
+  int _nextChapterNumber(CategoryModel category) =>
+      category.chapters.isEmpty
+          ? 1
+          : category.chapters
+                  .map((c) => c.chapterNumber)
+                  .reduce((a, b) => a > b ? a : b) +
+              1;
+
   Future<void> _bulkAddChapters(CategoryModel category) async {
-    // The sheet must know which ids and numbers are taken: without them it
-    // numbers from 1 and its merge-write silently renames existing chapters.
-    final takenIds = {for (final c in category.chapters) c.chapterId};
-    final startNumber =
-        category.chapters.isEmpty
-            ? 1
-            : category.chapters
-                    .map((c) => c.chapterNumber)
-                    .reduce((a, b) => a > b ? a : b) +
-                1;
     final result = await showModalBottomSheet<BulkChapterResult>(
       context: context,
       isScrollControlled: true,
@@ -634,23 +649,44 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
           (_) => BulkChapterAddSheet(
             categoryId: category.categoryId,
             actorUid: _actorUid,
-            takenIds: takenIds,
-            startNumber: startNumber,
+            takenIds: _takenChapterIds(category),
+            startNumber: _nextChapterNumber(category),
           ),
     );
-    if (result != null && mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            result.created > 0
-                ? 'Added ${result.created} chapters'
-                    '${result.skipped > 0 ? ' (${result.skipped} skipped)' : ''}.'
-                : 'No new chapters to add.',
+    if (result != null) await _announceBulkResult(result);
+  }
+
+  Future<void> _aiJsonImport(CategoryModel category) async {
+    final result = await showModalBottomSheet<BulkChapterResult>(
+      context: context,
+      isScrollControlled: true,
+      useSafeArea: true,
+      backgroundColor: Colors.transparent,
+      builder:
+          (_) => AiJsonImportSheet(
+            categoryId: category.categoryId,
+            subjectName: category.categoryName,
+            actorUid: _actorUid,
+            takenIds: _takenChapterIds(category),
+            startNumber: _nextChapterNumber(category),
           ),
+    );
+    if (result != null) await _announceBulkResult(result);
+  }
+
+  Future<void> _announceBulkResult(BulkChapterResult result) async {
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          result.created > 0
+              ? 'Added ${result.created} chapters'
+                  '${result.skipped > 0 ? ' (${result.skipped} skipped)' : ''}.'
+              : 'No new chapters to add.',
         ),
-      );
-      if (result.created > 0) await _load();
-    }
+      ),
+    );
+    if (result.created > 0) await _load();
   }
 
   Future<void> _reorderChapters(CategoryModel category) async {
