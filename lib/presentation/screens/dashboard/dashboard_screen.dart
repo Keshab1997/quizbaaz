@@ -41,6 +41,8 @@ import '../../widgets/aura_avatar.dart';
 import '../../widgets/cached_avatar.dart';
 import '../../widgets/daily_winner_celebration_dialog.dart';
 import '../../widgets/streak_reset_dialog.dart';
+import '../../widgets/streak_flame_widget.dart';
+import '../../widgets/champion_podium_widget.dart';
 import '../../widgets/update_banner.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -190,7 +192,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           const SizedBox(height: 16),
 
                           // 2. Streak Card
-                          _buildStreakCard(user, userProvider),
+                          StreakFlameWidget(streakDays: user.dailyStreak),
                           const SizedBox(height: 16),
 
                           // 3. Battle Arena Card
@@ -206,7 +208,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           const SizedBox(height: 22),
 
                           // 6. Daily Quiz Champion Card
-                          _buildChampionCard(userProvider),
+                          ChampionPodiumWidget(
+                            champion: userProvider.yesterdayTopChampion,
+                          ),
                           const SizedBox(height: 22),
 
                           // 7. Daily Quiz Leaderboard
@@ -824,6 +828,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
     }
   }
 
+  // Kept as a fallback while the reusable streak widget is rolled out.
+  // ignore: unused_element
   Widget _buildStreakCard(UserModel user, UserProvider userProvider) {
     final goal = userProvider.config.streakGoalDays;
     final completed = user.dailyStreak.clamp(0, goal).toInt();
@@ -1206,6 +1212,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   /// Yesterday's champion — real data from Hive/Firestore, or an honest
   /// empty state while nobody has been crowned yet.
+  // Kept as a fallback while the reusable champion widget is rolled out.
+  // ignore: unused_element
   Widget _buildChampionCard(UserProvider userProvider) {
     final ChampionModel? champ = userProvider.yesterdayTopChampion;
 
