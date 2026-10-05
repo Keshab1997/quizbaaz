@@ -162,7 +162,8 @@ class AdminDashboardScreen extends StatelessWidget {
           crossAxisCount: MediaQuery.sizeOf(context).width >= 600 ? 4 : 2,
           mainAxisSpacing: 12,
           crossAxisSpacing: 12,
-          childAspectRatio: MediaQuery.sizeOf(context).width >= 600 ? 1.15 : 1.0,
+          childAspectRatio:
+              MediaQuery.sizeOf(context).width >= 600 ? 1.15 : 1.0,
           children: [
             _buildStatCard(
               icon: Icons.people_rounded,
