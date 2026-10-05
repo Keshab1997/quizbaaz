@@ -12,9 +12,14 @@ import '../../../l10n/app_strings.dart';
 import 'widgets/admin_access_banner.dart';
 
 /// Admin Dashboard - Main admin panel with overview and navigation
-class AdminDashboardScreen extends StatelessWidget {
+class AdminDashboardScreen extends StatefulWidget {
   const AdminDashboardScreen({super.key});
 
+  @override
+  State<AdminDashboardScreen> createState() => _AdminDashboardScreenState();
+}
+
+class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -431,11 +436,10 @@ class AdminDashboardScreen extends StatelessWidget {
           icon: Icons.refresh_rounded,
           label: 'Refresh Data',
           color: AppColors.neonCyan,
-          onTap: () {
-            ScaffoldMessenger.of(
-              context,
-            ).showSnackBar(const SnackBar(content: Text('🔄 Data refreshed!')));
-          },
+          // The stats FutureBuilder builds a new future on every build, so
+          // a setState is a real refetch of the Firestore counters — not
+          // the fake snackbar this used to be.
+          onTap: () => setState(() {}),
         ),
       ],
     );

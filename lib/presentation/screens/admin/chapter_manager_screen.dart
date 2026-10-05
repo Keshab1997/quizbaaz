@@ -313,8 +313,11 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
               for (final chapter in category.chapters)
                 _chapterRow(category, chapter, color),
               Padding(
-                padding: const EdgeInsets.fromLTRB(16, 4, 16, 4),
-                child: Row(
+                padding: const EdgeInsets.fromLTRB(8, 4, 8, 4),
+                // Wrap, not Row: on a 360px phone the four actions do not
+                // fit side by side and a Row overflows by ~40px.
+                child: Wrap(
+                  crossAxisAlignment: WrapCrossAlignment.center,
                   children: [
                     TextButton.icon(
                       onPressed: () => _editChapter(category, null),
@@ -346,7 +349,6 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
                         ),
                       ),
                     ),
-                    const Spacer(),
                     TextButton.icon(
                       onPressed: () => _editSubject(category),
                       icon: const Icon(
