@@ -3,7 +3,9 @@ rules_version = '2';
 // ============================================================================
 // QuizBaaz 3D — Firestore Security Rules
 // ----------------------------------------------------------------------------
-// Version: 2.2.0  (2.2.0: admin_api_key_manager collections added — 2026-10-03;
+// Version: 2.3.0  (2.3.0: forged battle forfeit + self-challenge + spoofed
+//                         user_id blocked — 2026-10-06;
+//                  2.2.0: admin_api_key_manager collections added — 2026-10-03;
 //                  2.1.0: users collection list is admin-only — 2026-10-02;
 //                  2.0.0: P0 security hardening — 2026-09-13)
 //
@@ -69,9 +71,16 @@ service cloud.firestore {
 
       // New profile: owner only, needs a username, and it must NOT smuggle
       // sensitive fields.
+      //
+      // `user_id` must equal the document id. It is redundant with the path,
+      // but the app reads it back as the identity (`user_list_screen`,
+      // `FirestoreService.saveLeaderboardEntry`), so a profile claiming to be
+      // somebody else is a spoof waiting to happen. `.get(..., uid)` keeps a
+      // legacy document that never wrote the field createable.
       allow create: if isOwner(uid)
         && request.resource.data.get('username', '') is string
         && request.resource.data.get('username', '').size() > 0
+        && request.resource.data.get('user_id', uid) == uid
         && !request.resource.data.keys().hasAny(sensitiveKeys());
 
       // Update: owner may touch profile fields only; any write that affects
@@ -79,6 +88,7 @@ service cloud.firestore {
       // (custom claim) may edit anything.
       allow update: if isAdmin()
         || (isOwner(uid)
+            && request.resource.data.get('user_id', uid) == uid
             && !request.resource.data.diff(resource.data)
                  .affectedKeys().hasAny(sensitiveKeys()));
 
@@ -137,9 +147,14 @@ service cloud.firestore {
       allow get, list: if isParticipant();
 
       // Only the sender may create, always as a pending challenge from
-      // themselves, with a known difficulty.
+      // themselves, to somebody else, with a known difficulty.
+      // `to_uid != from_uid` is what stops a self-challenge: the receiver
+      // branch of the update rule below accepts on `to_uid`, so a document
+      // where both sides are the caller could be accepted by its own sender,
+      // i.e. a player queueing a match against themselves.
       allow create: if signedIn()
         && request.resource.data['from_uid'] == request.auth.uid
+        && request.resource.data.get('to_uid', '') != request.auth.uid
         && request.resource.data['status'] == 'pending'
         && validDifficulty().hasAny([request.resource.data.get('difficulty', '')]);
 
@@ -235,6 +250,26 @@ service cloud.firestore {
         // *error* (= denial), which would freeze every legacy room mid-match.
         // Present-but-changed is still rejected (R11/R17).
         && request.resource.data.get('match_id', '') == resource.data.get('match_id', '')
+        // A player may abandon a match, but only AS THEMSELVES: a write that
+        // touches the abandon flags must name the caller's own side. Without
+        // this, side A writes `abandoned: true, abandoned_by: 'b'`, the
+        // opponent's client reads `abandonedBy != _side`, declares an instant
+        // forfeit win (BattleProvider `_onRoom`) and pays 40 coins + 2 gems
+        // for a match the opponent is still playing. The honest abandon
+        // (BattleRoomService.abandonRoom) always passes the caller's own
+        // `_side`, so binding the value to it keeps that path working.
+        //
+        // Scoped to the affected keys on purpose: an ordinary answer/score
+        // write leaves both flags untouched, and comparing them unconditionally
+        // would freeze the whole match (the stored value is null, the caller's
+        // side is not).
+        && (
+          !request.resource.data.diff(resource.data).affectedKeys()
+               .hasAny(['abandoned', 'abandoned_by'])
+          || (request.resource.data.get('abandoned', false) == true
+              && request.resource.data.get('abandoned_by', null)
+                   == (request.auth.uid == resource.data.players.a.uid ? 'a' : 'b'))
+        )
         && (request.resource.data['status'] == resource.data['status']
             || request.resource.data['status'] == 'abandoned'
             || (resource.data['status'] == 'created'

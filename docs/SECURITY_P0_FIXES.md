@@ -32,6 +32,33 @@
 > Note: `submitDailyResult` v1 credits the **plain config formula** (no booster
 > multiplier) — strictly no more generous than the old client path.
 
+### v2.3.0 — battle integrity + identity spoofing
+
+A rules audit (each hole reproduced against the Firestore emulator before it
+was fixed) closed three ways a tampered client could mint itself an unfair
+result. None of them needed a client change — every legitimate path keeps
+working, which is why the fix is rules-only.
+
+| Hole | What the client did | What it bought |
+|---|---|---|
+| **Forged forfeit** | Side A wrote `abandoned: true, abandoned_by: 'b'` — naming the **opponent** as the one who left | The opponent's client reads `abandonedBy != _side`, declares an instant forfeit win (`BattleProvider._onRoom`) and pays **40 coins + 2 gems** for a match they were still playing |
+| **Self-challenge** | Created a `battle_challenges` doc with `to_uid == from_uid` | Satisfied the *receiver* branch of the update rule, so the sender accepted their own challenge and played a match against themselves |
+| **Identity spoof** | Wrote `user_id: <someone else>` into their own `users/{uid}` doc | The field is read back as the identity (admin user list, leaderboard rows), so the profile claimed to be another player |
+
+The forfeit guard is scoped to writes that actually touch
+`abandoned`/`abandoned_by`. Comparing the flags on *every* room update looks
+equivalent and is not: an ordinary answer/score write leaves both untouched,
+so the stored `null` would be compared against the caller's side and freeze
+every live match. `tool/security/tests/rules.test.mjs` pins that distinction
+(`room: an ordinary answer write does not disturb the abandon flags`).
+
+Each new test was confirmed to **fail against v2.2.0** and pass against
+v2.3.0 — a regression test that passes on the broken rules proves nothing.
+
+```bash
+firebase deploy --only firestore:rules
+```
+
 ### v2.2.0 — the admin LLM key collections
 
 `firestore.rules` v2.0.0 never mentioned `admin_api_keys`,
@@ -122,3 +149,19 @@ with the previous `firestore.rules` (tag `e74fb6e`) restores the old policy.
   `firebase deploy --only firestore:rules`.
 - Booster multipliers in server-side daily credit (v1 deliberately credits
   the plain formula).
+- **Battle rewards are still client-computed.** v2.3.0 stops a player from
+  *forging* a forfeit, but the 40 coins + 2 gems for a win are granted locally
+  in `BattleProvider._finishBattle` and `winner` is settled server-side by
+  `resolveBattle` only when that callable is deployed. Until it is, a patched
+  client can still report a score it did not earn. Closing it properly means
+  server-owned battle rewards, not a rules change.
+- **`battle_queue` entries can be deleted by any signed-in player.** This is
+  deliberate (the matchmaking claim evicts both entries in one transaction
+  under the claimant's identity — R11), so an owner-only rule would abort live
+  matchmaking. It costs an attacker nothing but another player's search
+  delay; worth revisiting if griefing shows up in practice.
+- **Leaderboard scores are client-supplied up to 1000.** The daily max is
+  200, so the ceiling is loose, but the score is the client's own claim.
+  `submitDailyResult` re-scores the submitted answers server-side — deploying
+  it (and routing the leaderboard row through it) is what makes the board
+  authoritative.

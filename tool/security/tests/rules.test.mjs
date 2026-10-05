@@ -209,6 +209,27 @@ test('profile: owner update of sensitive fields -> denied (self-escalation block
   await env.cleanup();
 });
 
+test('profile: user_id must match the document id (no identity spoof)', async () => {
+  // The app reads `user_id` back as the identity (admin user list, leaderboard
+  // rows), so a profile whose `user_id` names somebody else is a spoof.
+  const env = await makeEnv(STUDENT);
+  await assertFails(
+    env.firestore.collection('users').doc(STUDENT).set({ ...PROFILE, user_id: OTHER }),
+    'create claiming another uid must fail',
+  );
+
+  await seed(env, { 'users/student-a': PROFILE });
+  await assertFails(
+    env.firestore.collection('users').doc(STUDENT).set({ user_id: OTHER }, { merge: true }),
+    'update to another uid must fail',
+  );
+  // …and the honest value still writes.
+  await assertSucceeds(
+    env.firestore.collection('users').doc(STUDENT).set({ user_id: STUDENT }, { merge: true }),
+  );
+  await env.cleanup();
+});
+
 test('profile: another user cannot edit my document', async () => {
   const env = await makeEnv(OTHER);
   await seed(env, { 'users/student-a': PROFILE });
@@ -391,6 +412,24 @@ test('challenge: identities & difficulty are immutable', async () => {
   await env.cleanup();
 });
 
+test('challenge: a player cannot challenge themselves', async () => {
+  // to_uid == from_uid would satisfy the receiver branch of the update rule,
+  // so the sender could accept their own challenge and play a match against
+  // themselves (and collect its rewards).
+  const env = await makeEnv(STUDENT);
+  await assertFails(
+    env.firestore.collection('battle_challenges').doc('ch_self').set({
+      ...challengeData,
+      to_uid: STUDENT,
+    }),
+  );
+  // …while the normal cross-player challenge still works.
+  await assertSucceeds(
+    env.firestore.collection('battle_challenges').doc('ch_ok').set(challengeData),
+  );
+  await env.cleanup();
+});
+
 // ---------------------------------------------------------------------------
 // 6. Battle rooms — own-side only; winner is server-owned
 // ---------------------------------------------------------------------------
@@ -430,6 +469,52 @@ test('room: winner/questions/difficulty immutable; only active->finished allowed
   await assertSucceeds(env.firestore.collection('battle_rooms').doc(ROOM_ID).set({ status: 'finished' }, { merge: true }));
   // Reversing finished -> active must be denied.
   await assertFails(env.firestore.collection('battle_rooms').doc(ROOM_ID).set({ status: 'active' }, { merge: true }));
+  await env.cleanup();
+});
+
+test('room: a player can only abandon as themselves (no forged forfeit)', async () => {
+  // Writing `abandoned_by` with the OPPONENT's side made their client read
+  // `abandonedBy != _side`, declare an instant forfeit win and pay 40 coins
+  // + 2 gems for a match they were still playing.
+  const env = await makeEnv(STUDENT);
+  await seed(env, { [`battle_rooms/${ROOM_ID}`]: roomData() });
+
+  // Honest abandon: side A (the caller) names itself. Must keep working.
+  await assertSucceeds(
+    env.firestore.collection('battle_rooms').doc(ROOM_ID).set(
+      { status: 'abandoned', abandoned: true, abandoned_by: 'a' },
+      { merge: true },
+    ),
+  );
+  // Forged: side A claiming side B forfeited.
+  await assertFails(
+    env.firestore.collection('battle_rooms').doc(ROOM_ID).set(
+      { status: 'abandoned', abandoned: true, abandoned_by: 'b' },
+      { merge: true },
+    ),
+  );
+  await env.cleanup();
+});
+
+test('room: an ordinary answer write does not disturb the abandon flags', async () => {
+  // The forged-forfeit guard is scoped to writes that actually touch
+  // `abandoned`/`abandoned_by`. If it compared them unconditionally it would
+  // freeze every in-progress match (stored value null vs the caller's side).
+  const env = await makeEnv(STUDENT);
+  await seed(env, { [`battle_rooms/${ROOM_ID}`]: roomData() });
+
+  await assertSucceeds(
+    env.firestore.collection('battle_rooms').doc(ROOM_ID).set(
+      { players: { a: { score: 30, correct: 3 } } },
+      { merge: true },
+    ),
+  );
+  await assertSucceeds(
+    env.firestore.collection('battle_rooms').doc(ROOM_ID).set(
+      { state: { phase: 'question', q_index: 1 } },
+      { merge: true },
+    ),
+  );
   await env.cleanup();
 });
 
