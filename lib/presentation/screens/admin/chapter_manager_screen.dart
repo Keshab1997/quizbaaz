@@ -182,17 +182,28 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
     return GlassCard(
       borderRadius: 18,
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-      child: Row(
-        children: [
-          _stat('Subjects', '${_categories.length}', AppColors.neonPurple),
-          _stat('Chapters', '$chapterCount', AppColors.neonCyan),
-          _stat('Questions', '$totalQuestions', AppColors.neonGreen),
-          _stat(
-            'Empty',
-            '$empty',
-            empty == 0 ? AppColors.neonGreen : AppColors.neonGold,
-          ),
-        ],
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          final columns = constraints.maxWidth < 420 ? 2 : 4;
+          return GridView.count(
+            crossAxisCount: columns,
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            mainAxisSpacing: 10,
+            crossAxisSpacing: 8,
+            childAspectRatio: columns == 2 ? 2.2 : 1.45,
+            children: [
+              _stat('Subjects', '${_categories.length}', AppColors.neonPurple),
+              _stat('Chapters', '$chapterCount', AppColors.neonCyan),
+              _stat('Questions', '$totalQuestions', AppColors.neonGreen),
+              _stat(
+                'Empty',
+                '$empty',
+                empty == 0 ? AppColors.neonGreen : AppColors.neonGold,
+              ),
+            ],
+          );
+        },
       ),
     );
   }
