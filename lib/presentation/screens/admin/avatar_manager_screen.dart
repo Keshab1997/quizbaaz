@@ -262,8 +262,8 @@ class _AvatarManagerScreenState extends State<AvatarManagerScreen> {
   Widget _buildAvatarGrid(List<_AdminAvatar> avatars) {
     return GridView.builder(
       padding: const EdgeInsets.fromLTRB(16, 8, 16, 100),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
+      gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+        maxCrossAxisExtent: 190,
         mainAxisSpacing: 12,
         crossAxisSpacing: 12,
         childAspectRatio: 0.85,
