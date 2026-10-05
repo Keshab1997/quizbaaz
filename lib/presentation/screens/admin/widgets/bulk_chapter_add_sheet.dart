@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../data/services/bulk_chapter_importer.dart';
 import '../../../widgets/glass_card.dart';
+import 'admin_toast.dart';
 
 /// Paste-a-list → live preview → save sheet for adding many chapters at once.
 ///
@@ -62,10 +63,9 @@ class _BulkChapterAddSheetState extends State<BulkChapterAddSheet> {
   Future<void> _save() async {
     final valid = _drafts.where((d) => d.isValid).toList();
     if (valid.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Nothing to save — paste at least one chapter line.'),
-        ),
+      AdminToast.showInfo(
+        context,
+        'Nothing to save — paste at least one chapter line.',
       );
       return;
     }
@@ -81,9 +81,7 @@ class _BulkChapterAddSheetState extends State<BulkChapterAddSheet> {
       Navigator.pop(context, result);
     } catch (e) {
       if (!mounted) return;
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text('Could not save: $e')));
+      AdminToast.showError(context, 'Could not save: $e');
     } finally {
       if (mounted) setState(() => _saving = false);
     }

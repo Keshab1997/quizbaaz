@@ -6,6 +6,7 @@ import '../../../../core/constants/app_colors.dart';
 import '../../../../data/services/ai_syllabus_importer.dart';
 import '../../../../data/services/bulk_chapter_importer.dart';
 import '../../../widgets/glass_card.dart';
+import 'admin_toast.dart';
 
 /// Paste syllabus → copy prompt → paste AI JSON → chapters.
 ///
@@ -96,20 +97,18 @@ class _AiJsonImportSheetState extends State<AiJsonImportSheet> {
   Future<void> _copyPrompt() async {
     await Clipboard.setData(ClipboardData(text: _prompt));
     if (!mounted) return;
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Prompt copied — paste it into ChatGPT or Gemini.'),
-      ),
+    AdminToast.showSuccess(
+      context,
+      'Prompt copied — paste it into ChatGPT or Gemini.',
     );
   }
 
   Future<void> _save() async {
     final valid = _drafts.where((d) => d.isValid).toList();
     if (valid.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Nothing to save — paste the AI answer first.'),
-        ),
+      AdminToast.showInfo(
+        context,
+        'Nothing to save — paste the AI answer first.',
       );
       return;
     }
@@ -125,9 +124,7 @@ class _AiJsonImportSheetState extends State<AiJsonImportSheet> {
       Navigator.pop(context, result);
     } catch (e) {
       if (!mounted) return;
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text('Could not save: $e')));
+      AdminToast.showError(context, 'Could not save: $e');
     } finally {
       if (mounted) setState(() => _saving = false);
     }

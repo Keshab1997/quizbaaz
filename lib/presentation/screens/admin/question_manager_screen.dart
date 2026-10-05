@@ -20,6 +20,7 @@ import '../../widgets/glass_card.dart';
 import 'ai_generation_review_screen.dart';
 import 'widgets/admin_access_banner.dart';
 import 'widgets/admin_access_widgets.dart';
+import 'widgets/admin_toast.dart';
 import 'widgets/trilingual_field.dart';
 
 /// The question bank for one chapter.
@@ -72,23 +73,6 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
   void initState() {
     super.initState();
     _load();
-  }
-
-  @override
-  void dispose() {
-    // Without this the "47 -> 55 questions" bar reappears over the chapter
-    // list, and its Undo would act on a screen the admin has already left.
-    _messenger?.hideCurrentSnackBar();
-    super.dispose();
-  }
-
-  ScaffoldMessengerState? _messenger;
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    // Captured here because dispose() must not look up an inherited widget.
-    _messenger = ScaffoldMessenger.of(context);
   }
 
   Future<void> _load() async {
@@ -813,38 +797,12 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
   /// Showing "47 → 55" rather than "saved" is the point: it is the proof that
   /// the previous 47 are still there.
   void _showAppendResult(AppendResult result) {
-    ScaffoldMessenger.of(context)
-      ..hideCurrentSnackBar()
-      ..showSnackBar(
-        SnackBar(
-          // ScaffoldMessenger sits above the Navigator, so a long-lived snackbar
-          // rides along to whatever screen the admin opens next. Short, and
-          // cleared in dispose.
-          duration: const Duration(seconds: 5),
-          backgroundColor: AppColors.surfaceElevated,
-          content: Row(
-            children: [
-              const Icon(
-                Icons.check_circle_rounded,
-                size: 18,
-                color: AppColors.neonGreen,
-              ),
-              const SizedBox(width: 10),
-              Expanded(
-                child: Text(
-                  'Added ${result.added} · ${result.countLabel}',
-                  style: const TextStyle(fontSize: 13, color: Colors.white),
-                ),
-              ),
-            ],
-          ),
-          action: SnackBarAction(
-            label: 'Undo',
-            textColor: AppColors.neonGold,
-            onPressed: () => _undoBatch(result.batchId),
-          ),
-        ),
-      );
+    AdminToast.showSuccess(
+      context,
+      'Added ${result.added} · ${result.countLabel}',
+      actionLabel: 'Undo',
+      onAction: () => _undoBatch(result.batchId),
+    );
   }
 
   Future<void> _undoBatch(String batchId) async {
@@ -1059,14 +1017,11 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
 
   void _toast(String message, {bool error = false}) {
     if (!mounted) return;
-    ScaffoldMessenger.of(context)
-      ..hideCurrentSnackBar()
-      ..showSnackBar(
-        SnackBar(
-          content: Text(message),
-          backgroundColor: error ? AppColors.neonRed : null,
-        ),
-      );
+    if (error) {
+      AdminToast.showError(context, message);
+    } else {
+      AdminToast.showSuccess(context, message);
+    }
   }
 
   Future<void> _showJsonImportSheet() async {
@@ -1709,11 +1664,9 @@ class _JsonImportSheetState extends State<_JsonImportSheet> {
 
   void _copyPrompt() {
     Clipboard.setData(ClipboardData(text: widget.prompt));
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('✅ AI Prompt copied! Paste into ChatGPT or Gemini.'),
-        backgroundColor: AppColors.neonGreen,
-      ),
+    AdminToast.showSuccess(
+      context,
+      'AI prompt copied — paste it into ChatGPT or Gemini.',
     );
   }
 
@@ -1724,9 +1677,7 @@ class _JsonImportSheetState extends State<_JsonImportSheet> {
         _textController.text = data.text!;
       });
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('📋 Pasted from clipboard!')),
-        );
+        AdminToast.showSuccess(context, 'Pasted from clipboard.');
       }
     }
   }

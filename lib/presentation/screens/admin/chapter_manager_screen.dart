@@ -12,6 +12,7 @@ import '../../../data/services/chapter_catalog_service.dart';
 import '../../widgets/glass_card.dart';
 import 'widgets/ai_catalog_add_sheet.dart';
 import 'widgets/ai_json_import_sheet.dart';
+import 'widgets/admin_toast.dart';
 import 'widgets/bulk_chapter_add_sheet.dart';
 import 'question_manager_screen.dart';
 import 'widgets/trilingual_field.dart';
@@ -543,9 +544,7 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
     if (saved == true && mounted) {
       await _load();
       if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('AI catalogue draft saved.')),
-      );
+      AdminToast.showSuccess(context, 'AI catalogue draft saved.');
     }
   }
 
@@ -599,14 +598,11 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
         // so "deleted" is only true when the id is actually gone.
         final stillThere = _categories.any((c) => c.categoryId == categoryId);
         if (!mounted) return;
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              stillThere
-                  ? 'Removed your edits — the bundled "$name" is back.'
-                  : '"$name" deleted.',
-            ),
-          ),
+        AdminToast.showSuccess(
+          context,
+          stillThere
+              ? 'Removed your edits — the bundled "$name" is back.'
+              : '"$name" deleted.',
         );
       }
     }
@@ -696,14 +692,11 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
             .expand((c) => c.chapters)
             .any((c) => c.chapterId == chapterId);
         if (!mounted) return;
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              stillThere
-                  ? 'Removed your edits — the bundled "$title" is back.'
-                  : '"$title" deleted.',
-            ),
-          ),
+        AdminToast.showSuccess(
+          context,
+          stillThere
+              ? 'Removed your edits — the bundled "$title" is back.'
+              : '"$title" deleted.',
         );
       }
     }
@@ -777,16 +770,15 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
 
   Future<void> _announceBulkResult(BulkChapterResult result) async {
     if (!mounted) return;
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(
-          result.created > 0
-              ? 'Added ${result.created} chapters'
-                  '${result.skipped > 0 ? ' (${result.skipped} skipped)' : ''}.'
-              : 'No new chapters to add.',
-        ),
-      ),
-    );
+    if (result.created > 0) {
+      AdminToast.showSuccess(
+        context,
+        'Added ${result.created} chapters'
+        '${result.skipped > 0 ? ' (${result.skipped} skipped)' : ''}.',
+      );
+    } else {
+      AdminToast.showInfo(context, 'No new chapters to add.');
+    }
     if (result.created > 0) await _load();
   }
 
@@ -815,9 +807,7 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
       await _load();
     } catch (e) {
       if (!mounted) return;
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text('Could not reorder: $e')));
+      AdminToast.showError(context, 'Could not reorder: $e');
     }
   }
 
@@ -834,21 +824,16 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
         actorUid: _actorUid,
       );
       if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            isEnabled
-                ? '${chapter.titleText.resolve('en')} is now visible to students.'
-                : '${chapter.titleText.resolve('en')} is now hidden from students.',
-          ),
-        ),
+      AdminToast.showSuccess(
+        context,
+        isEnabled
+            ? '${chapter.titleText.resolve('en')} is now visible to students.'
+            : '${chapter.titleText.resolve('en')} is now hidden from students.',
       );
       await _load();
     } catch (e) {
       if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Could not update chapter visibility: $e')),
-      );
+      AdminToast.showError(context, 'Could not update chapter visibility: $e');
     }
   }
 }
@@ -1181,12 +1166,9 @@ class _SubjectSheetState extends State<_SubjectSheet> {
       if (!removed) {
         // Purely bundled: there was no document to delete.
         setState(() => _deleting = false);
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text(
-              'This is a bundled subject — hide its chapters with the eye icon instead.',
-            ),
-          ),
+        AdminToast.showInfo(
+          context,
+          'This is a bundled subject — hide its chapters with the eye icon instead.',
         );
         return;
       }
@@ -1469,12 +1451,9 @@ class _ChapterSheetState extends State<_ChapterSheet> {
       if (!removed) {
         // Purely bundled: there was no document to delete.
         setState(() => _deleting = false);
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text(
-              'This is a bundled chapter — hide it with the eye icon instead.',
-            ),
-          ),
+        AdminToast.showInfo(
+          context,
+          'This is a bundled chapter — hide it with the eye icon instead.',
         );
         return;
       }
