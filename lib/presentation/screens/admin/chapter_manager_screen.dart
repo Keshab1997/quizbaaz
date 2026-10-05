@@ -598,16 +598,27 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
   }
 
   Future<void> _bulkAddChapters(CategoryModel category) async {
+    // The sheet must know which ids and numbers are taken: without them it
+    // numbers from 1 and its merge-write silently renames existing chapters.
+    final takenIds = {for (final c in category.chapters) c.chapterId};
+    final startNumber =
+        category.chapters.isEmpty
+            ? 1
+            : category.chapters
+                    .map((c) => c.chapterNumber)
+                    .reduce((a, b) => a > b ? a : b) +
+                1;
     final result = await showModalBottomSheet<BulkChapterResult>(
       context: context,
       isScrollControlled: true,
-      showDragHandle: true,
       useSafeArea: true,
       backgroundColor: Colors.transparent,
       builder:
           (_) => BulkChapterAddSheet(
             categoryId: category.categoryId,
             actorUid: _actorUid,
+            takenIds: takenIds,
+            startNumber: startNumber,
           ),
     );
     if (result != null && mounted) {
