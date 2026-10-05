@@ -867,6 +867,8 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
     final draft = await showModalBottomSheet<QuestionModel>(
       context: context,
       isScrollControlled: true,
+      showDragHandle: true,
+      useSafeArea: true,
       backgroundColor: Colors.transparent,
       builder:
           (_) => _QuestionSheet(
@@ -1079,6 +1081,8 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
     final jsonText = await showModalBottomSheet<String>(
       context: context,
       isScrollControlled: true,
+      showDragHandle: true,
+      useSafeArea: true,
       backgroundColor: Colors.transparent,
       builder: (_) => _JsonImportSheet(prompt: prompt),
     );

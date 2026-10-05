@@ -510,6 +510,8 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
     final saved = await showModalBottomSheet<bool>(
       context: context,
       isScrollControlled: true,
+      showDragHandle: true,
+      useSafeArea: true,
       backgroundColor: Colors.transparent,
       builder:
           (_) =>
@@ -530,6 +532,8 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
     final saved = await showModalBottomSheet<bool>(
       context: context,
       isScrollControlled: true,
+      showDragHandle: true,
+      useSafeArea: true,
       backgroundColor: Colors.transparent,
       builder:
           (_) => _SubjectSheet(
@@ -563,6 +567,8 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
     final saved = await showModalBottomSheet<bool>(
       context: context,
       isScrollControlled: true,
+      showDragHandle: true,
+      useSafeArea: true,
       backgroundColor: Colors.transparent,
       builder:
           (_) => _ChapterSheet(
@@ -590,6 +596,8 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
     final result = await showModalBottomSheet<BulkChapterResult>(
       context: context,
       isScrollControlled: true,
+      showDragHandle: true,
+      useSafeArea: true,
       backgroundColor: Colors.transparent,
       builder:
           (_) => BulkChapterAddSheet(
@@ -617,6 +625,8 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
     final updated = await showModalBottomSheet<List<String>>(
       context: context,
       isScrollControlled: true,
+      showDragHandle: true,
+      useSafeArea: true,
       backgroundColor: Colors.transparent,
       builder: (_) => _ReorderSheet(chapterIds: order),
     );

@@ -452,6 +452,8 @@ class _AvatarManagerScreenState extends State<AvatarManagerScreen> {
     final changed = await showModalBottomSheet<bool>(
       context: context,
       isScrollControlled: true,
+      showDragHandle: true,
+      useSafeArea: true,
       backgroundColor: Colors.transparent,
       builder: (context) => const _AddEditAvatarSheet(),
     );
@@ -462,6 +464,8 @@ class _AvatarManagerScreenState extends State<AvatarManagerScreen> {
     final changed = await showModalBottomSheet<bool>(
       context: context,
       isScrollControlled: true,
+      showDragHandle: true,
+      useSafeArea: true,
       backgroundColor: Colors.transparent,
       builder: (context) => _AddEditAvatarSheet(avatar: avatar),
     );

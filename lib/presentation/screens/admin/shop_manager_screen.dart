@@ -449,6 +449,8 @@ class _ShopManagerScreenState extends State<ShopManagerScreen> {
     final changed = await showModalBottomSheet<bool>(
       context: context,
       isScrollControlled: true,
+      showDragHandle: true,
+      useSafeArea: true,
       backgroundColor: Colors.transparent,
       builder: (context) => const AddEditItemSheet(),
     );
@@ -459,6 +461,8 @@ class _ShopManagerScreenState extends State<ShopManagerScreen> {
     final changed = await showModalBottomSheet<bool>(
       context: context,
       isScrollControlled: true,
+      showDragHandle: true,
+      useSafeArea: true,
       backgroundColor: Colors.transparent,
       builder:
           (context) =>
