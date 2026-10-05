@@ -552,6 +552,10 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
   Future<void> _addSubject() => _editSubject(null);
 
   Future<void> _editSubject(CategoryModel? existing) async {
+    var deleted = false;
+    final name = existing?.categoryName ?? '';
+    final categoryId = existing?.categoryId ?? '';
+
     final saved = await showModalBottomSheet<bool>(
       context: context,
       isScrollControlled: true,
@@ -562,6 +566,21 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
             existing: existing,
             initialPriority: _priorityFor(existing),
             takenIds: {for (final c in _categories) c.categoryId},
+            questionCount:
+                existing == null
+                    ? 0
+                    : existing.chapters.fold<int>(
+                      0,
+                      (sum, c) => sum + (_counts[c.chapterId] ?? 0),
+                    ),
+            onDelete:
+                existing == null
+                    ? null
+                    : () async {
+                      final done = await _removeSubject(existing);
+                      if (done) deleted = true;
+                      return done;
+                    },
             onSave:
                 (id, name, icon, color, priority) => _catalog.saveCategory(
                   categoryId: id,
@@ -573,7 +592,38 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
                 ),
           ),
     );
-    if (saved == true) _load();
+    if (saved == true) {
+      await _load();
+      if (deleted && mounted) {
+        // Deleting a bundled subject's overrides restores the asset version,
+        // so "deleted" is only true when the id is actually gone.
+        final stillThere = _categories.any((c) => c.categoryId == categoryId);
+        if (!mounted) return;
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              stillThere
+                  ? 'Removed your edits — the bundled "$name" is back.'
+                  : '"$name" deleted.',
+            ),
+          ),
+        );
+      }
+    }
+  }
+
+  /// Deletes a subject's catalogue documents with its chapters. Returns
+  /// false (nothing removed) when the subject is purely bundled.
+  Future<bool> _removeSubject(CategoryModel subject) async {
+    final exists = await _catalog.categoryOverrideExists(
+      categoryId: subject.categoryId,
+    );
+    if (!exists) return false;
+    await _catalog.deleteCategory(
+      categoryId: subject.categoryId,
+      actorUid: _actorUid,
+    );
+    return true;
   }
 
   /// The order value a subject edit must keep. A lost priority drops the
@@ -594,6 +644,9 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
     ChapterModel? existing,
   ) async {
     final nextNumber = _nextChapterNumber(category);
+    var deleted = false;
+    final title = existing?.titleText.resolve('en') ?? '';
+    final chapterId = existing?.chapterId ?? '';
 
     final saved = await showModalBottomSheet<bool>(
       context: context,
@@ -605,8 +658,21 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
             categoryId: category.categoryId,
             categoryName: category.categoryName,
             existing: existing,
-            takenIds: {for (final c in category.chapters) c.chapterId},
+            takenIds: _takenChapterIds(category),
             defaultNumber: nextNumber,
+            questionCount:
+                existing == null ? 0 : _counts[existing.chapterId] ?? 0,
+            onDelete:
+                existing == null
+                    ? null
+                    : () async {
+                      final done = await _removeChapter(
+                        category.categoryId,
+                        existing,
+                      );
+                      if (done) deleted = true;
+                      return done;
+                    },
             onSave:
                 (id, title, description, number, unlocked, enabled) =>
                     _catalog.saveChapter(
@@ -621,7 +687,42 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
                     ),
           ),
     );
-    if (saved == true) _load();
+    if (saved == true) {
+      await _load();
+      if (deleted && mounted) {
+        // Deleting a bundled chapter's overrides restores the asset version,
+        // so "deleted" is only true when the id is actually gone.
+        final stillThere = _categories
+            .expand((c) => c.chapters)
+            .any((c) => c.chapterId == chapterId);
+        if (!mounted) return;
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              stillThere
+                  ? 'Removed your edits — the bundled "$title" is back.'
+                  : '"$title" deleted.',
+            ),
+          ),
+        );
+      }
+    }
+  }
+
+  /// Deletes a chapter's catalogue documents. Returns false (nothing
+  /// removed) when the chapter is purely bundled.
+  Future<bool> _removeChapter(String categoryId, ChapterModel chapter) async {
+    final exists = await _catalog.chapterOverrideExists(
+      categoryId: categoryId,
+      chapterId: chapter.chapterId,
+    );
+    if (!exists) return false;
+    await _catalog.deleteChapter(
+      categoryId: categoryId,
+      chapterId: chapter.chapterId,
+      actorUid: _actorUid,
+    );
+    return true;
   }
 
   /// Ids already in this subject — every add flow refuses these, so a new
@@ -923,6 +1024,57 @@ class _ReorderSheetState extends State<_ReorderSheet> {
   }
 }
 
+/// Red delete confirmation shared by the subject and chapter sheets.
+///
+/// Returns true only when the admin taps the Delete button — dismissing the
+/// dialog counts as Cancel.
+Future<bool> _confirmDelete(
+  BuildContext context, {
+  required String title,
+  required String message,
+  required String confirmLabel,
+}) async {
+  final confirmed = await showDialog<bool>(
+    context: context,
+    builder:
+        (ctx) => AlertDialog(
+          backgroundColor: AppColors.bgNavy,
+          title: Text(
+            title,
+            style: const TextStyle(fontSize: 16, color: Colors.white),
+          ),
+          content: Text(
+            message,
+            style: const TextStyle(
+              fontSize: 12.5,
+              color: AppColors.textSecondary,
+              height: 1.45,
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(ctx, false),
+              child: const Text(
+                'Cancel',
+                style: TextStyle(color: AppColors.textSecondary),
+              ),
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: AppColors.neonRed,
+              ),
+              onPressed: () => Navigator.pop(ctx, true),
+              child: Text(
+                confirmLabel,
+                style: const TextStyle(color: Colors.white),
+              ),
+            ),
+          ],
+        ),
+  );
+  return confirmed == true;
+}
+
 // ============================================================ subject sheet ==
 
 class _SubjectSheet extends StatefulWidget {
@@ -935,6 +1087,15 @@ class _SubjectSheet extends StatefulWidget {
   /// Subject ids already on file. A *new* subject reusing one would
   /// silently overwrite it, so the sheet refuses those ids.
   final Set<String> takenIds;
+
+  /// Live question total across the subject's chapters, shown in the delete
+  /// confirmation.
+  final int questionCount;
+
+  /// Removes the subject's catalogue documents with its chapters. Returns
+  /// false when the subject is purely bundled (nothing to remove). Null for
+  /// a new subject, which has no delete button.
+  final Future<bool> Function()? onDelete;
   final Future<void> Function(
     String id,
     LocalizedText name,
@@ -948,6 +1109,8 @@ class _SubjectSheet extends StatefulWidget {
     required this.existing,
     required this.initialPriority,
     required this.takenIds,
+    required this.questionCount,
+    required this.onDelete,
     required this.onSave,
   });
 
@@ -962,6 +1125,7 @@ class _SubjectSheetState extends State<_SubjectSheet> {
   late final TextEditingController _priority;
   late LocalizedText _name;
   bool _saving = false;
+  bool _deleting = false;
   String? _error;
 
   @override
@@ -984,6 +1148,57 @@ class _SubjectSheetState extends State<_SubjectSheet> {
     _color.dispose();
     _priority.dispose();
     super.dispose();
+  }
+
+  Future<void> _delete() async {
+    final existing = widget.existing;
+    final onDelete = widget.onDelete;
+    if (existing == null || onDelete == null || _deleting) return;
+
+    // Confirm first — nothing is removed until the admin taps Delete.
+    final name = existing.categoryName;
+    final chapters = existing.chapters.length;
+    final count = widget.questionCount;
+    final confirmed = await _confirmDelete(
+      context,
+      title: 'Delete "$name"?',
+      message:
+          'This removes the subject with its $chapters chapter${chapters == 1 ? '' : 's'}'
+          '${count > 0 ? ' and $count question${count == 1 ? '' : 's'}' : ''}. '
+          'Admin-added chapters are gone for good; bundled ones revert to the shipped version. '
+          'This cannot be undone.',
+      confirmLabel: 'Delete',
+    );
+    if (!confirmed || !mounted) return;
+
+    setState(() {
+      _deleting = true;
+      _error = null;
+    });
+    try {
+      final removed = await onDelete();
+      if (!mounted) return;
+      if (!removed) {
+        // Purely bundled: there was no document to delete.
+        setState(() => _deleting = false);
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text(
+              'This is a bundled subject — hide its chapters with the eye icon instead.',
+            ),
+          ),
+        );
+        return;
+      }
+      Navigator.pop(context, true);
+    } catch (e) {
+      if (mounted) {
+        setState(() {
+          _deleting = false;
+          _error = '$e';
+        });
+      }
+    }
   }
 
   Future<void> _save() async {
@@ -1028,7 +1243,7 @@ class _SubjectSheetState extends State<_SubjectSheet> {
   Widget build(BuildContext context) {
     return _SheetShell(
       title: widget.existing == null ? 'New subject' : 'Edit subject',
-      saving: _saving,
+      saving: _saving || _deleting,
       error: _error,
       onSave: _save,
       children: [
@@ -1075,6 +1290,34 @@ class _SubjectSheetState extends State<_SubjectSheet> {
             ),
           ],
         ),
+        if (widget.existing != null && widget.onDelete != null) ...[
+          const SizedBox(height: 4),
+          SizedBox(
+            width: double.infinity,
+            child: TextButton.icon(
+              onPressed: _deleting || _saving ? null : _delete,
+              icon:
+                  _deleting
+                      ? const SizedBox(
+                        width: 14,
+                        height: 14,
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2,
+                          color: AppColors.neonRed,
+                        ),
+                      )
+                      : const Icon(
+                        Icons.delete_outline_rounded,
+                        size: 17,
+                        color: AppColors.neonRed,
+                      ),
+              label: const Text(
+                'Delete subject',
+                style: TextStyle(fontSize: 13, color: AppColors.neonRed),
+              ),
+            ),
+          ),
+        ],
       ],
     );
   }
@@ -1091,6 +1334,14 @@ class _ChapterSheet extends StatefulWidget {
   /// these would silently overwrite it, so the sheet refuses those ids.
   final Set<String> takenIds;
   final int defaultNumber;
+
+  /// Live question count, shown in the delete confirmation.
+  final int questionCount;
+
+  /// Removes the chapter's catalogue documents. Returns false when the
+  /// chapter is purely bundled (nothing to remove). Null for a new chapter,
+  /// which has no delete button.
+  final Future<bool> Function()? onDelete;
   final Future<void> Function(
     String id,
     LocalizedText title,
@@ -1107,6 +1358,8 @@ class _ChapterSheet extends StatefulWidget {
     required this.existing,
     required this.takenIds,
     required this.defaultNumber,
+    required this.questionCount,
+    required this.onDelete,
     required this.onSave,
   });
 
@@ -1122,6 +1375,7 @@ class _ChapterSheetState extends State<_ChapterSheet> {
   late bool _unlocked;
   late bool _enabled;
   bool _saving = false;
+  bool _deleting = false;
   String? _error;
   AiQuestionGenerator? _translator;
 
@@ -1186,6 +1440,55 @@ class _ChapterSheetState extends State<_ChapterSheet> {
     super.dispose();
   }
 
+  Future<void> _delete() async {
+    final existing = widget.existing;
+    final onDelete = widget.onDelete;
+    if (existing == null || onDelete == null || _deleting) return;
+
+    // Confirm first — nothing is removed until the admin taps Delete.
+    final title = existing.titleText.resolve('en');
+    final count = widget.questionCount;
+    final confirmed = await _confirmDelete(
+      context,
+      title: 'Delete "$title"?',
+      message:
+          count > 0
+              ? 'This removes the chapter and hides its $count question${count == 1 ? '' : 's'} (they stay stored, but unreachable). This cannot be undone.'
+              : 'This removes the chapter. This cannot be undone.',
+      confirmLabel: 'Delete',
+    );
+    if (!confirmed || !mounted) return;
+
+    setState(() {
+      _deleting = true;
+      _error = null;
+    });
+    try {
+      final removed = await onDelete();
+      if (!mounted) return;
+      if (!removed) {
+        // Purely bundled: there was no document to delete.
+        setState(() => _deleting = false);
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text(
+              'This is a bundled chapter — hide it with the eye icon instead.',
+            ),
+          ),
+        );
+        return;
+      }
+      Navigator.pop(context, true);
+    } catch (e) {
+      if (mounted) {
+        setState(() {
+          _deleting = false;
+          _error = '$e';
+        });
+      }
+    }
+  }
+
   Future<void> _save() async {
     final id = _id.text.trim();
     if (id.isEmpty) return setState(() => _error = 'Chapter id is required');
@@ -1232,7 +1535,7 @@ class _ChapterSheetState extends State<_ChapterSheet> {
           widget.existing == null
               ? 'New chapter · ${widget.categoryName}'
               : 'Edit chapter',
-      saving: _saving,
+      saving: _saving || _deleting,
       error: _error,
       onSave: _save,
       children: [
@@ -1312,6 +1615,34 @@ class _ChapterSheetState extends State<_ChapterSheet> {
             ),
           ),
         ),
+        if (widget.existing != null && widget.onDelete != null) ...[
+          const SizedBox(height: 4),
+          SizedBox(
+            width: double.infinity,
+            child: TextButton.icon(
+              onPressed: _deleting || _saving ? null : _delete,
+              icon:
+                  _deleting
+                      ? const SizedBox(
+                        width: 14,
+                        height: 14,
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2,
+                          color: AppColors.neonRed,
+                        ),
+                      )
+                      : const Icon(
+                        Icons.delete_outline_rounded,
+                        size: 17,
+                        color: AppColors.neonRed,
+                      ),
+              label: const Text(
+                'Delete chapter',
+                style: TextStyle(fontSize: 13, color: AppColors.neonRed),
+              ),
+            ),
+          ),
+        ],
       ],
     );
   }

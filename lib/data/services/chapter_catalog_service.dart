@@ -414,6 +414,63 @@ class ChapterCatalogService {
     await _invalidateCatalogueCache();
   }
 
+  /// Whether the catalogue holds a Firestore document for this chapter.
+  ///
+  /// False means the chapter is purely bundled, so deleting would silently
+  /// do nothing — the UI uses this to offer Hide instead of Delete.
+  Future<bool> chapterOverrideExists({
+    required String categoryId,
+    required String chapterId,
+  }) async {
+    try {
+      final doc = await _chapters(categoryId).doc(chapterId).get();
+      return doc.exists;
+    } catch (e) {
+      debugPrint('ChapterCatalogService: override check skipped — $e');
+      return false;
+    }
+  }
+
+  /// Whether the catalogue holds anything for this subject: its own document
+  /// or at least one chapter document. False means the subject is purely
+  /// bundled and there is nothing to delete.
+  Future<bool> categoryOverrideExists({required String categoryId}) async {
+    try {
+      final parent = await _categories.doc(categoryId).get();
+      if (parent.exists) return true;
+      final chapters = await _chapters(categoryId).limit(1).get();
+      return chapters.docs.isNotEmpty;
+    } catch (e) {
+      debugPrint('ChapterCatalogService: override check skipped — $e');
+      return false;
+    }
+  }
+
+  /// Removes an admin-created subject with all its chapters in one batch.
+  ///
+  /// Like [deleteChapter], bundled content cannot be removed this way:
+  /// deleting the override documents just restores the asset versions, and
+  /// questions in `question_banks/*` are deliberately left alone.
+  Future<void> deleteCategory({
+    required String categoryId,
+    required String actorUid,
+  }) async {
+    final chapters = await _chapters(categoryId).get();
+    final batch = _db.batch();
+    for (final doc in chapters.docs) {
+      batch.delete(doc.reference);
+    }
+    batch.delete(_categories.doc(categoryId));
+    await batch.commit();
+
+    await _audit('category_deleted', actorUid, {
+      'category_id': categoryId,
+      'chapter_ids': [for (final doc in chapters.docs) doc.id],
+      'note': 'questions retained in question_banks',
+    });
+    await _invalidateCatalogueCache();
+  }
+
   Future<void> _audit(
     String action,
     String actorUid,
