@@ -495,7 +495,7 @@
           "description": {
             "en": "Food chain, trophic levels, ozone depletion"
           },
-          "total_questions": 10,
+          "total_questions": 29,
           "json_file": "assets/data/questions/class10_bio_ch5.json",
           "is_unlocked": true,
           "stars": 0,
