@@ -455,6 +455,8 @@ class S {
   static String get resultTotalScore => raw('resultTotalScore');
   static String get resultReview => raw('resultReview');
   static String get resultLeaderboard => raw('resultLeaderboard');
+  static String get resultRetrySet => raw('resultRetrySet');
+  static String get resultNextSet => raw('resultNextSet');
   static String get resultBackHome => raw('resultBackHome');
   static String get resultPerfect => raw('resultPerfect');
   static String get resultSaveScore => raw('resultSaveScore');

@@ -380,6 +380,8 @@ const Map<String, String> kStringsBn = {
   'resultTotalScore': 'মোট স্কোর',
   'resultReview': 'উত্তর দেখুন 📖',
   'resultLeaderboard': 'লিডারবোর্ড দেখুন 🏆',
+  'resultRetrySet': 'সেট আবার খেলুন 🔁',
+  'resultNextSet': 'পরের সেট ▶️',
   'resultBackHome': 'হোমে ফিরে যান',
   'resultPerfect': '🔥 পারফেক্ট স্কোর! +১০০ কয়েন বোনাস',
   'resultSaveScore': 'স্কোর সেভ করে লিডারবোর্ডে যোগ দিন!',

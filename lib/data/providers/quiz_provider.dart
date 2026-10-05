@@ -129,6 +129,10 @@ class QuizProvider extends ChangeNotifier {
   /// abandoned run cannot notify a dead listener.
   bool _disposed = false;
 
+  /// The bank the current chapter run reads from, kept so a finished set can
+  /// be replayed (or the next one started) without the screen remembering it.
+  String? _jsonFile;
+
   String? _chapterId;
   String? _categoryTitle;
   String? _categoryTitleBn;
@@ -305,6 +309,7 @@ class QuizProvider extends ChangeNotifier {
     _resetQuizState();
     final runGeneration = _runGeneration;
     _isDailyQuiz = false;
+    _jsonFile = jsonFilePath;
     _chapterId = chapterId ?? jsonFilePath;
     _categoryTitle = categoryTitle;
     _categoryTitleBn = categoryTitleBn;
@@ -356,6 +361,54 @@ class QuizProvider extends ChangeNotifier {
 
   /// True when nothing in this run counts towards rewards or stats.
   bool get isPractice => _isPractice;
+
+  /// True when the finished run was a chapter set that can offer a replay.
+  bool get isChapterRun =>
+      !_isDailyQuiz && _chapterId != null && _questions.isNotEmpty;
+
+  /// True when a set follows the finished one.
+  bool get hasNextChapterSet => isChapterRun && _setIndex + 1 < setCount;
+
+  /// Replays the finished set for revision.
+  ///
+  /// Always practice — the sets screen's row applies the same rule
+  /// (`practice: done != null`), and this set just finished, so a replay
+  /// must never farm rewards. No-op unless the last run was a chapter quiz.
+  Future<void> retryChapterSet() {
+    if (!isChapterRun || _jsonFile == null) return Future.value();
+    return startChapterQuiz(
+      _jsonFile!,
+      chapterId: _chapterId,
+      categoryTitle: _categoryTitle,
+      categoryTitleBn: _categoryTitleBn,
+      chapterTitle: _chapterTitle,
+      chapterTitleBn: _chapterTitleBn,
+      setIndex: _setIndex,
+      practice: true,
+    );
+  }
+
+  /// Plays the set after the finished one.
+  ///
+  /// A set the student already cleared replays as practice; the frontier
+  /// plays scored — the same rule the sets screen applies to its rows.
+  /// No-op unless a following set exists.
+  Future<void> playNextChapterSet() {
+    if (!hasNextChapterSet || _jsonFile == null) return Future.value();
+    final cleared = HiveService.chapterSetsFor(
+      _chapterId!,
+    ).any((entry) => entry.setIndex == _setIndex + 1);
+    return startChapterQuiz(
+      _jsonFile!,
+      chapterId: _chapterId,
+      categoryTitle: _categoryTitle,
+      categoryTitleBn: _categoryTitleBn,
+      chapterTitle: _chapterTitle,
+      chapterTitleBn: _chapterTitleBn,
+      setIndex: _setIndex + 1,
+      practice: cleared,
+    );
+  }
 
   /// Language the question text is currently rendered in.
   String get displayLanguage => _displayLanguage ?? S.code;
@@ -469,6 +522,7 @@ class QuizProvider extends ChangeNotifier {
     _dailyRewardSkipped = false;
     _answerRecords.clear();
     _totalTimeSeconds = 0;
+    _jsonFile = null;
     _chapterId = null;
     _categoryTitle = null;
     _categoryTitleBn = null;

@@ -97,4 +97,93 @@ void main() {
     expect(quiz.currentIndex, 0);
     expect(quiz.isQuizCompleted, isFalse);
   });
+
+  group('chapter set replay from the result screen', () {
+    QuizProvider quizWithChapter(int questionCount) => QuizProvider(
+      UserProvider(),
+      repository: _ControlledQuizRepository(
+        chapterQuestions: Future<List<QuestionModel>>.value([
+          for (var i = 0; i < questionCount; i++) _question('q$i'),
+        ]),
+      ),
+    );
+
+    test('retry replays the same set as practice', () async {
+      final quiz = quizWithChapter(25); // 3 sets of ten
+      await quiz.startChapterQuiz(
+        'bank.json',
+        chapterId: 'replay-retry',
+        setIndex: 1,
+      );
+
+      expect(quiz.isChapterRun, isTrue);
+      expect(quiz.setCount, 3);
+
+      await quiz.retryChapterSet();
+
+      expect(quiz.setIndex, 1);
+      expect(quiz.isPractice, isTrue);
+      expect(quiz.questions, hasLength(10));
+      expect(quiz.isQuizCompleted, isFalse);
+    });
+
+    test('next plays the following set scored on the frontier', () async {
+      final quiz = quizWithChapter(25);
+      await quiz.startChapterQuiz(
+        'bank.json',
+        chapterId: 'replay-frontier',
+        setIndex: 0,
+      );
+
+      expect(quiz.hasNextChapterSet, isTrue);
+
+      await quiz.playNextChapterSet();
+
+      expect(quiz.setIndex, 1);
+      expect(quiz.isPractice, isFalse);
+      expect(quiz.questions, hasLength(10));
+    });
+
+    test('next replays as practice past an already cleared set', () async {
+      await HiveService.saveChapterSet(
+        chapterId: 'replay-cleared',
+        setIndex: 1,
+        score: 100,
+        correct: 10,
+        total: 10,
+      );
+      final quiz = quizWithChapter(25);
+      await quiz.startChapterQuiz(
+        'bank.json',
+        chapterId: 'replay-cleared',
+        setIndex: 0,
+      );
+
+      await quiz.playNextChapterSet();
+
+      expect(quiz.setIndex, 1);
+      expect(quiz.isPractice, isTrue);
+    });
+
+    test(
+      'no next set on the last set; replay is a no-op without a run',
+      () async {
+        final quiz = quizWithChapter(25);
+        await quiz.startChapterQuiz(
+          'bank.json',
+          chapterId: 'replay-last',
+          setIndex: 2,
+        );
+
+        expect(quiz.hasNextChapterSet, isFalse);
+
+        final fresh = quizWithChapter(25);
+        expect(fresh.isChapterRun, isFalse);
+        expect(fresh.hasNextChapterSet, isFalse);
+        await fresh.retryChapterSet();
+        await fresh.playNextChapterSet();
+        expect(fresh.questions, isEmpty);
+      },
+    );
+  });
 }

@@ -13,6 +13,7 @@ import '../../../data/services/hive_service.dart';
 import '../../widgets/streak_motivation_dialog.dart';
 import '../../widgets/glass_card.dart';
 import '../../widgets/neon_button.dart';
+import '../daily_quiz/daily_quiz_screen.dart';
 import '../leaderboard/leaderboard_screen.dart';
 import 'review_answers_screen.dart';
 import '../../widgets/cached_avatar.dart';
@@ -299,6 +300,25 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
                   ],
 
                   // Action Buttons
+                  // Chapter sets: replay this set or continue to the next one.
+                  // Daily runs never see these — that flow stays exactly as is.
+                  if (!quiz.isDailyQuiz && quiz.isChapterRun) ...[
+                    NeonButton(
+                      text: S.resultRetrySet,
+                      gradient: const LinearGradient(
+                        colors: [AppColors.neonCyan, AppColors.neonPurple],
+                      ),
+                      onPressed: () => _replaySet(next: false),
+                    ),
+                    const SizedBox(height: 12),
+                    if (quiz.hasNextChapterSet) ...[
+                      NeonButton(
+                        text: S.resultNextSet,
+                        onPressed: () => _replaySet(next: true),
+                      ),
+                      const SizedBox(height: 12),
+                    ],
+                  ],
                   NeonButton(
                     text: S.resultLeaderboard,
                     onPressed: () {
@@ -531,6 +551,26 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
     // replaces today's score.
     navigator.popUntil((route) => route.isFirst);
     messenger.showSnackBar(SnackBar(content: Text(S.resultShieldRetryDone)));
+  }
+
+  /// Starts the same set again ([next] false) or the following set, then
+  /// swaps the result screen for the quiz player — the sets screen stays
+  /// underneath, so Back from the new run lands back on the chapter.
+  Future<void> _replaySet({required bool next}) async {
+    // Grabbed before the awaits: the same BuildContext must not be touched
+    // across an async gap.
+    final quiz = context.read<QuizProvider>();
+    final navigator = Navigator.of(context);
+
+    if (next) {
+      await quiz.playNextChapterSet();
+    } else {
+      await quiz.retryChapterSet();
+    }
+    if (!mounted) return;
+    navigator.pushReplacement(
+      MaterialPageRoute(builder: (_) => const DailyQuizScreen()),
+    );
   }
 
   Future<void> _handleGoogleSignIn(BuildContext context) async {

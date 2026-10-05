@@ -377,6 +377,8 @@ const Map<String, String> kStringsHi = {
   'resultTotalScore': 'कुल स्कोर',
   'resultReview': 'उत्तर देखें 📖',
   'resultLeaderboard': 'लीडरबोर्ड देखें 🏆',
+  'resultRetrySet': 'सेट फिर खेलें 🔁',
+  'resultNextSet': 'अगला सेट ▶️',
   'resultBackHome': 'होम पर वापस जाएँ',
   'resultPerfect': '🔥 परफ़ेक्ट स्कोर! +100 कॉइन बोनस',
   'resultSaveScore': 'स्कोर सेव करें और लीडरबोर्ड में शामिल हों!',

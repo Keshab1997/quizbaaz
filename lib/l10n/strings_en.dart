@@ -390,6 +390,8 @@ const Map<String, String> kStringsEn = {
   'resultTotalScore': 'TOTAL SCORE',
   'resultReview': 'REVIEW ANSWERS 📖',
   'resultLeaderboard': 'CHECK LEADERBOARD 🏆',
+  'resultRetrySet': 'RETRY SET 🔁',
+  'resultNextSet': 'NEXT SET ▶️',
   'resultBackHome': 'Back to Home Dashboard',
   'resultPerfect': '🔥 PERFECT SCORE! +100 coin bonus',
   'resultSaveScore': 'Save Your Score & Join the Leaderboard!',
