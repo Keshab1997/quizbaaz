@@ -159,10 +159,10 @@ class AdminDashboardScreen extends StatelessWidget {
         return GridView.count(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
-          crossAxisCount: 2,
+          crossAxisCount: MediaQuery.sizeOf(context).width >= 600 ? 4 : 2,
           mainAxisSpacing: 12,
           crossAxisSpacing: 12,
-          childAspectRatio: 1.0,
+          childAspectRatio: MediaQuery.sizeOf(context).width >= 600 ? 1.15 : 1.0,
           children: [
             _buildStatCard(
               icon: Icons.people_rounded,
@@ -262,10 +262,10 @@ class AdminDashboardScreen extends StatelessWidget {
     return GridView.count(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-      crossAxisCount: 2,
+      crossAxisCount: MediaQuery.sizeOf(context).width >= 600 ? 4 : 2,
       mainAxisSpacing: 12,
       crossAxisSpacing: 12,
-      childAspectRatio: 1.0,
+      childAspectRatio: MediaQuery.sizeOf(context).width >= 600 ? 1.15 : 1.0,
       children: [
         _buildManagementCard(
           icon: Icons.people_rounded,
