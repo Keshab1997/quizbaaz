@@ -584,11 +584,11 @@ class UserProvider extends ChangeNotifier {
   /// Checks yesterday's leaderboard rank and automatically claims shop gifts,
   /// coins, gems, and winning streak grand prizes if player placed in Top 10!
   Future<DailyRewardResult?> checkAndClaimDailyLeaderboardRewards() async {
-    final now = DateTime.now();
-    final yesterday = now.subtract(const Duration(days: 1));
-    final m = yesterday.month.toString().padLeft(2, '0');
-    final d = yesterday.day.toString().padLeft(2, '0');
-    final yesterdayKey = '${yesterday.year}-$m-$d';
+    // Use the same competition timezone as leaderboard publishing. A device
+    // in another timezone must not claim a different day's reward.
+    final yesterdayKey = CompetitionClock.previousDateKey(
+      CompetitionClock.dateKey(DateTime.now()),
+    );
 
     final claimedKey = 'claimed_daily_rank_$yesterdayKey';
     if (HiveService.getMeta<bool>(claimedKey) == true) return null;
