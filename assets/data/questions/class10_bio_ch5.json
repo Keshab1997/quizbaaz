@@ -386,6 +386,728 @@
       },
       "points": 10,
       "time_limit_sec": 30
+    },
+    {
+      "id": "bio_ch_05_q011",
+      "question": {
+        "en": "What does the arrow in a food chain mainly represent?",
+        "hi": "खाद्य श्रृंखला में तीर मुख्यतः क्या दर्शाता है?",
+        "bn": "খাদ্যশৃঙ্খলে তীরচিহ্ন প্রধানত কী নির্দেশ করে?"
+      },
+      "options": [
+        {
+          "en": "Direction of energy flow",
+          "hi": "ऊर्जा प्रवाह की दिशा",
+          "bn": "শক্তি প্রবাহের দিক"
+        },
+        {
+          "en": "Direction of water flow",
+          "hi": "जल प्रवाह की दिशा",
+          "bn": "জল প্রবাহের দিক"
+        },
+        {
+          "en": "Movement of soil",
+          "hi": "मिट्टी की गति",
+          "bn": "মাটির চলাচলের দিক"
+        },
+        {
+          "en": "Direction of oxygen flow",
+          "hi": "ऑक्सीजन प्रवाह की दिशा",
+          "bn": "অক্সিজেন প্রবাহের দিক"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The arrow shows the transfer of energy from the organism being eaten to the organism that eats it.",
+        "hi": "तीर खाए जाने वाले जीव से उसे खाने वाले जीव की ओर ऊर्जा के स्थानांतरण को दर्शाता है।",
+        "bn": "তীরচিহ্ন খাদ্য হিসেবে ব্যবহৃত জীব থেকে খাদ্যগ্রহণকারী জীবে শক্তি স্থানান্তরের দিক দেখায়।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "bio_ch_05_q012",
+      "question": {
+        "en": "In the chain Plants → Rabbit → Fox, what is the trophic level of the fox?",
+        "hi": "पौधे → खरगोश → लोमड़ी खाद्य श्रृंखला में लोमड़ी का पोषी स्तर क्या है?",
+        "bn": "উদ্ভিদ → খরগোশ → শিয়াল খাদ্যশৃঙ্খলে শিয়ালের পৌষ্টিক স্তর কত?"
+      },
+      "options": [
+        {
+          "en": "First trophic level",
+          "hi": "पहला पोषी स्तर",
+          "bn": "প্রথম পৌষ্টিক স্তর"
+        },
+        {
+          "en": "Second trophic level",
+          "hi": "दूसरा पोषी स्तर",
+          "bn": "দ্বিতীয় পৌষ্টিক স্তর"
+        },
+        {
+          "en": "Third trophic level",
+          "hi": "तीसरा पोषी स्तर",
+          "bn": "তৃতীয় পৌষ্টিক স্তর"
+        },
+        {
+          "en": "Fourth trophic level",
+          "hi": "चौथा पोषी स्तर",
+          "bn": "চতুর্থ পৌষ্টিক স্তর"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "en": "Plants form the first level, rabbit the second, and fox the third trophic level.",
+        "hi": "पौधे पहले, खरगोश दूसरे और लोमड़ी तीसरे पोषी स्तर पर होते हैं।",
+        "bn": "উদ্ভিদ প্রথম, খরগোশ দ্বিতীয় এবং শিয়াল তৃতীয় পৌষ্টিক স্তর দখল করে।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "bio_ch_05_q013",
+      "question": {
+        "en": "Which condition can cause harmful chemicals to become more concentrated at higher trophic levels?",
+        "hi": "किस स्थिति में ऊँचे पोषी स्तरों पर हानिकारक रसायनों की सांद्रता बढ़ सकती है?",
+        "bn": "কোন অবস্থায় উচ্চতর পৌষ্টিক স্তরে ক্ষতিকর রাসায়নিকের ঘনত্ব বাড়তে পারে?"
+      },
+      "options": [
+        {
+          "en": "Decomposition",
+          "hi": "अपघटन",
+          "bn": "বিয়োজন"
+        },
+        {
+          "en": "Biomagnification",
+          "hi": "जैव आवर्धन",
+          "bn": "জৈব বিবর্ধন"
+        },
+        {
+          "en": "Photosynthesis",
+          "hi": "प्रकाश संश्लेषण",
+          "bn": "সালোকসংশ্লেষ"
+        },
+        {
+          "en": "Transpiration",
+          "hi": "वाष्पोत्सर्जन",
+          "bn": "প্রস্বেদন"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "Biomagnification causes certain non-biodegradable chemicals to increase in concentration at successive trophic levels.",
+        "hi": "जैव आवर्धन से कुछ अपघटनीय रसायनों की सांद्रता क्रमिक पोषी स्तरों पर बढ़ती जाती है।",
+        "bn": "জৈব বিবর্ধনের ফলে কিছু অবিয়োজ্য রাসায়নিকের ঘনত্ব ক্রমশ উচ্চতর পৌষ্টিক স্তরে বৃদ্ধি পায়।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "bio_ch_05_q014",
+      "question": {
+        "en": "Which organism can occupy different trophic levels in different food chains?",
+        "hi": "कौन-सा जीव अलग-अलग खाद्य श्रृंखलाओं में अलग पोषी स्तरों पर हो सकता है?",
+        "bn": "কোন জীব বিভিন্ন খাদ্যশৃঙ্খলে ভিন্ন পৌষ্টিক স্তরে থাকতে পারে?"
+      },
+      "options": [
+        {
+          "en": "Grass",
+          "hi": "घास",
+          "bn": "ঘাস"
+        },
+        {
+          "en": "Rabbit",
+          "hi": "खरगोश",
+          "bn": "খরগোশ"
+        },
+        {
+          "en": "Lion",
+          "hi": "शेर",
+          "bn": "সিংহ"
+        },
+        {
+          "en": "Human",
+          "hi": "मनुष्य",
+          "bn": "মানুষ"
+        }
+      ],
+      "correct_index": 3,
+      "explanation": {
+        "en": "Humans are omnivores and may eat plants or animals, so their trophic level can vary with the food chain.",
+        "hi": "मनुष्य सर्वाहारी है और पौधे या जन्तु खा सकता है, इसलिए खाद्य श्रृंखला के अनुसार उसका पोषी स्तर बदल सकता है।",
+        "bn": "মানুষ সর্বভুক; উদ্ভিদ বা প্রাণী খাওয়ার কারণে খাদ্যশৃঙ্খল অনুযায়ী তার পৌষ্টিক স্তর পরিবর্তিত হতে পারে।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "bio_ch_05_q015",
+      "question": {
+        "en": "Which sequence correctly shows energy transfer in a food chain?",
+        "hi": "कौन-सा क्रम खाद्य श्रृंखला में ऊर्जा स्थानांतरण को सही दिखाता है?",
+        "bn": "কোন ক্রমটি খাদ্যশৃঙ্খলে শক্তি স্থানান্তর সঠিকভাবে দেখায়?"
+      },
+      "options": [
+        {
+          "en": "Consumer → Producer → Sun",
+          "hi": "उपभोक्ता → उत्पादक → सूर्य",
+          "bn": "খাদক → উৎপাদক → সূর্য"
+        },
+        {
+          "en": "Sun → Producer → Consumer",
+          "hi": "सूर्य → उत्पादक → उपभोक्ता",
+          "bn": "সূর্য → উৎপাদক → খাদক"
+        },
+        {
+          "en": "Producer → Sun → Consumer",
+          "hi": "उत्पादक → सूर्य → उपभोक्ता",
+          "bn": "উৎপাদক → সূর্য → খাদক"
+        },
+        {
+          "en": "Consumer → Sun → Producer",
+          "hi": "उपभोक्ता → सूर्य → उत्पादक",
+          "bn": "খাদক → সূর্য → উৎপাদক"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "Solar energy is captured by producers and then transferred to consumers through feeding relationships.",
+        "hi": "उत्पादक सौर ऊर्जा ग्रहण करते हैं और भोजन के माध्यम से यह ऊर्जा उपभोक्ताओं तक पहुँचती है।",
+        "bn": "উৎপাদক সৌরশক্তি গ্রহণ করে এবং খাদ্যগ্রহণের মাধ্যমে সেই শক্তি খাদকদের মধ্যে স্থানান্তরিত হয়।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "bio_ch_05_q016",
+      "question": {
+        "en": "Which change would most directly disturb a food chain if a top predator disappeared?",
+        "hi": "यदि शीर्ष शिकारी विलुप्त हो जाए, तो खाद्य श्रृंखला में कौन-सा परिवर्तन सबसे सीधे हो सकता है?",
+        "bn": "শীর্ষ খাদক বিলুপ্ত হলে খাদ্যশৃঙ্খলে কোন পরিবর্তনটি সবচেয়ে সরাসরি ঘটতে পারে?"
+      },
+      "options": [
+        {
+          "en": "Prey population may increase",
+          "hi": "शिकार की संख्या बढ़ सकती है",
+          "bn": "শিকারের সংখ্যা বাড়তে পারে"
+        },
+        {
+          "en": "Sunlight may disappear",
+          "hi": "सूर्यप्रकाश गायब हो सकता है",
+          "bn": "সূর্যালোক অদৃশ্য হতে পারে"
+        },
+        {
+          "en": "Plants may stop photosynthesis",
+          "hi": "पौधों का प्रकाश संश्लेषण रुक सकता है",
+          "bn": "উদ্ভিদের সালোকসংশ্লেষ বন্ধ হতে পারে"
+        },
+        {
+          "en": "Oxygen may become zero",
+          "hi": "ऑक्सीजन शून्य हो सकती है",
+          "bn": "অক্সিজেন শূন্য হয়ে যেতে পারে"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Removing a top predator reduces predation on its prey, so the prey population may rise and disturb lower trophic levels.",
+        "hi": "शीर्ष शिकारी के हटने पर उसके शिकार पर शिकारी का दबाव घटता है, इसलिए शिकार की संख्या बढ़ सकती है।",
+        "bn": "শীর্ষ খাদক না থাকলে তার শিকারের ওপর শিকারজনিত চাপ কমে যায়, ফলে শিকারের সংখ্যা বাড়তে পারে।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "bio_ch_05_q017",
+      "question": {
+        "en": "Which gas is converted into ozone in the upper atmosphere by the action of ultraviolet radiation?",
+        "hi": "ऊपरी वायुमंडल में पराबैंगनी विकिरण की क्रिया से कौन-सी गैस ओजोन में बदलती है?",
+        "bn": "উচ্চ বায়ুমণ্ডলে অতিবেগুনি রশ্মির ক্রিয়ায় কোন গ্যাস ওজোনে রূপান্তরিত হয়?"
+      },
+      "options": [
+        {
+          "en": "Oxygen",
+          "hi": "ऑक्सीजन",
+          "bn": "অক্সিজেন"
+        },
+        {
+          "en": "Nitrogen",
+          "hi": "नाइट्रोजन",
+          "bn": "নাইট্রোজেন"
+        },
+        {
+          "en": "Carbon dioxide",
+          "hi": "कार्बन डाइऑक्साइड",
+          "bn": "কার্বন ডাইঅক্সাইড"
+        },
+        {
+          "en": "Methane",
+          "hi": "मीथेन",
+          "bn": "মিথেন"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Ultraviolet radiation splits oxygen molecules, and the resulting oxygen atoms combine with O2 to form ozone.",
+        "hi": "पराबैंगनी विकिरण ऑक्सीजन अणुओं को तोड़ता है और बने ऑक्सीजन परमाणु O2 से मिलकर ओजोन बनाते हैं।",
+        "bn": "অতিবেগুনি রশ্মি অক্সিজেন অণু ভেঙে দেয় এবং উৎপন্ন অক্সিজেন পরমাণু O2-এর সঙ্গে যুক্ত হয়ে ওজোন তৈরি করে।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "bio_ch_05_q018",
+      "question": {
+        "en": "Why is the ozone layer important for organisms living on Earth?",
+        "hi": "पृथ्वी पर रहने वाले जीवों के लिए ओजोन परत क्यों महत्वपूर्ण है?",
+        "bn": "পৃথিবীতে বসবাসকারী জীবের জন্য ওজোন স্তর কেন গুরুত্বপূর্ণ?"
+      },
+      "options": [
+        {
+          "en": "It absorbs harmful UV radiation",
+          "hi": "यह हानिकारक पराबैंगनी विकिरण को अवशोषित करती है",
+          "bn": "এটি ক্ষতিকর অতিবেগুনি রশ্মি শোষণ করে"
+        },
+        {
+          "en": "It produces all atmospheric oxygen",
+          "hi": "यह वायुमंडल की सारी ऑक्सीजन बनाती है",
+          "bn": "এটি বায়ুমণ্ডলের সব অক্সিজেন তৈরি করে"
+        },
+        {
+          "en": "It increases soil nutrients",
+          "hi": "यह मिट्टी के पोषक तत्व बढ़ाती है",
+          "bn": "এটি মাটির পুষ্টি বৃদ্ধি করে"
+        },
+        {
+          "en": "It stops all infrared radiation",
+          "hi": "यह सभी अवरक्त विकिरण रोकती है",
+          "bn": "এটি সমস্ত অবলোহিত রশ্মি আটকায়"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The ozone layer absorbs much of the Sun's harmful ultraviolet radiation before it reaches Earth's surface.",
+        "hi": "ओजोन परत सूर्य के हानिकारक पराबैंगनी विकिरण के बड़े भाग को अवशोषित करके उसे पृथ्वी की सतह तक पहुँचने से रोकती है।",
+        "bn": "ওজোন স্তর সূর্যের ক্ষতিকর অতিবেগুনি রশ্মির একটি বড় অংশ শোষণ করে পৃথিবীর পৃষ্ঠে পৌঁছাতে বাধা দেয়।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "bio_ch_05_q019",
+      "question": {
+        "en": "Which type of waste is most likely to persist and enter food chains?",
+        "hi": "किस प्रकार का कचरा लंबे समय तक बना रहकर खाद्य श्रृंखलाओं में प्रवेश कर सकता है?",
+        "bn": "কোন ধরনের বর্জ্য পরিবেশে দীর্ঘদিন থেকে খাদ্যশৃঙ্খলে প্রবেশ করার সম্ভাবনা বেশি?"
+      },
+      "options": [
+        {
+          "en": "Biodegradable waste",
+          "hi": "जैव निम्नीकरणीय कचरा",
+          "bn": "জীবাণুবিয়োজ্য বর্জ্য"
+        },
+        {
+          "en": "Non-biodegradable waste",
+          "hi": "अजैव निम्नीकरणीय कचरा",
+          "bn": "অজীবাণুবিয়োজ্য বর্জ্য"
+        },
+        {
+          "en": "Fresh plant waste",
+          "hi": "ताजा पादप अपशिष्ट",
+          "bn": "তাজা উদ্ভিদজাত বর্জ্য"
+        },
+        {
+          "en": "Animal manure",
+          "hi": "पशु खाद",
+          "bn": "পশুর গোবর"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "Non-biodegradable substances persist in the environment and can accumulate in organisms and move through food chains.",
+        "hi": "अजैव निम्नीकरणीय पदार्थ लंबे समय तक बने रहते हैं और जीवों में जमा होकर खाद्य श्रृंखला में आगे बढ़ सकते हैं।",
+        "bn": "অজীবাণুবিয়োজ্য পদার্থ পরিবেশে দীর্ঘদিন থাকে এবং জীবদেহে সঞ্চিত হয়ে খাদ্যশৃঙ্খলের মাধ্যমে স্থানান্তরিত হতে পারে।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "bio_ch_05_q020",
+      "question": {
+        "en": "If a food chain has four trophic levels, which level contains the secondary consumer?",
+        "hi": "यदि खाद्य श्रृंखला में चार पोषी स्तर हों, तो द्वितीयक उपभोक्ता किस स्तर पर होता है?",
+        "bn": "একটি খাদ্যশৃঙ্খলে চারটি পৌষ্টিক স্তর থাকলে দ্বিতীয় শ্রেণির খাদক কোন স্তরে থাকে?"
+      },
+      "options": [
+        {
+          "en": "First",
+          "hi": "पहले",
+          "bn": "প্রথম"
+        },
+        {
+          "en": "Second",
+          "hi": "दूसरे",
+          "bn": "দ্বিতীয়"
+        },
+        {
+          "en": "Third",
+          "hi": "तीसरे",
+          "bn": "তৃতীয়"
+        },
+        {
+          "en": "Fourth",
+          "hi": "चौथे",
+          "bn": "চতুর্থ"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "en": "Producers occupy the first level, primary consumers the second, and secondary consumers the third trophic level.",
+        "hi": "उत्पादक पहले, प्राथमिक उपभोक्ता दूसरे और द्वितीयक उपभोक्ता तीसरे पोषी स्तर पर होते हैं।",
+        "bn": "উৎপাদক প্রথম, প্রাথমিক খাদক দ্বিতীয় এবং দ্বিতীয় শ্রেণির খাদক তৃতীয় পৌষ্টিক স্তরে থাকে।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "bio_ch_05_q021",
+      "question": {
+        "en": "Which group includes both biotic and abiotic components of an ecosystem?",
+        "hi": "किसमें पारितंत्र के जैविक और अजैविक दोनों घटक शामिल होते हैं?",
+        "bn": "কোনটি বাস্তুতন্ত্রের জীবজ ও অজীব উভয় উপাদানকে অন্তর্ভুক্ত করে?"
+      },
+      "options": [
+        {
+          "en": "Ecosystem",
+          "hi": "पारितंत्र",
+          "bn": "বাস্তুতন্ত্র"
+        },
+        {
+          "en": "Food chain",
+          "hi": "खाद्य श्रृंखला",
+          "bn": "খাদ্যশৃঙ্খল"
+        },
+        {
+          "en": "Trophic level",
+          "hi": "पोषी स्तर",
+          "bn": "পৌষ্টিক স্তর"
+        },
+        {
+          "en": "Food web",
+          "hi": "खाद्य जाल",
+          "bn": "খাদ্যজাল"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "An ecosystem consists of living organisms and non-living factors such as air, water and soil interacting together.",
+        "hi": "पारितंत्र में जीवित जीवों के साथ वायु, जल और मिट्टी जैसे अजैविक घटक परस्पर क्रिया करते हैं।",
+        "bn": "বাস্তুতন্ত্রে জীবজ উপাদানের সঙ্গে বায়ু, জল ও মাটির মতো অজীব উপাদান পারস্পরিকভাবে ক্রিয়া করে।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "bio_ch_05_q022",
+      "question": {
+        "en": "What is a food web?",
+        "hi": "खाद्य जाल क्या है?",
+        "bn": "খাদ্যজাল কী?"
+      },
+      "options": [
+        {
+          "en": "A single feeding relationship",
+          "hi": "एकल भोजन संबंध",
+          "bn": "একটি মাত্র খাদ্য সম্পর্ক"
+        },
+        {
+          "en": "Interconnected food chains",
+          "hi": "परस्पर जुड़ी खाद्य श्रृंखलाएँ",
+          "bn": "পরস্পর সংযুক্ত খাদ্যশৃঙ্খল"
+        },
+        {
+          "en": "Only producer organisms",
+          "hi": "केवल उत्पादक जीव",
+          "bn": "শুধু উৎপাদক জীব"
+        },
+        {
+          "en": "Only decomposer organisms",
+          "hi": "केवल अपघटक जीव",
+          "bn": "শুধু বিয়োজক জীব"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "A food web is formed when several food chains in an ecosystem are interconnected.",
+        "hi": "जब पारितंत्र की कई खाद्य श्रृंखलाएँ आपस में जुड़ती हैं, तब खाद्य जाल बनता है।",
+        "bn": "বাস্তুতন্ত্রের একাধিক খাদ্যশৃঙ্খল পরস্পরের সঙ্গে যুক্ত হলে খাদ্যজাল গঠিত হয়।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "bio_ch_05_q023",
+      "question": {
+        "en": "Approximately how much energy is transferred to the next trophic level?",
+        "hi": "अगले पोषी स्तर पर लगभग कितने प्रतिशत ऊर्जा स्थानांतरित होती है?",
+        "bn": "পরবর্তী পৌষ্টিক স্তরে প্রায় কত শতাংশ শক্তি স্থানান্তরিত হয়?"
+      },
+      "options": [
+        {
+          "en": "1%",
+          "hi": "1%",
+          "bn": "1%"
+        },
+        {
+          "en": "10%",
+          "hi": "10%",
+          "bn": "10%"
+        },
+        {
+          "en": "50%",
+          "hi": "50%",
+          "bn": "50%"
+        },
+        {
+          "en": "90%",
+          "hi": "90%",
+          "bn": "90%"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "According to the 10% law, only about 10% of energy at one trophic level passes to the next level.",
+        "hi": "10% के नियम के अनुसार एक पोषी स्तर की लगभग 10% ऊर्जा अगले स्तर तक पहुँचती है।",
+        "bn": "১০% সূত্র অনুযায়ী একটি পৌষ্টিক স্তরের প্রায় 10% শক্তি পরবর্তী স্তরে স্থানান্তরিত হয়।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "bio_ch_05_q024",
+      "question": {
+        "en": "Which organisms convert complex organic matter into simpler substances during decomposition?",
+        "hi": "अपघटन के दौरान कौन-से जीव जटिल कार्बनिक पदार्थों को सरल पदार्थों में बदलते हैं?",
+        "bn": "বিয়োজনের সময় কোন জীবগুলি জটিল জৈব পদার্থকে সরল পদার্থে পরিণত করে?"
+      },
+      "options": [
+        {
+          "en": "Producers",
+          "hi": "उत्पादक",
+          "bn": "উৎপাদক"
+        },
+        {
+          "en": "Herbivores",
+          "hi": "शाकाहारी",
+          "bn": "তৃণভোজী"
+        },
+        {
+          "en": "Decomposers",
+          "hi": "अपघटक",
+          "bn": "বিয়োজক"
+        },
+        {
+          "en": "Top consumers",
+          "hi": "शीर्ष उपभोक्ता",
+          "bn": "শীর্ষ খাদক"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "en": "Decomposers such as bacteria and fungi break down complex organic matter into simpler substances.",
+        "hi": "बैक्टीरिया और कवक जैसे अपघटक जटिल कार्बनिक पदार्थों को तोड़कर सरल पदार्थ बनाते हैं।",
+        "bn": "ব্যাকটেরিয়া ও ছত্রাকের মতো বিয়োজক জটিল জৈব পদার্থকে ভেঙে সরল পদার্থে পরিণত করে।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "bio_ch_05_q025",
+      "question": {
+        "en": "Which practice is most suitable for managing biodegradable kitchen waste?",
+        "hi": "जैव निम्नीकरणीय रसोई कचरे के प्रबंधन के लिए कौन-सी विधि सबसे उपयुक्त है?",
+        "bn": "জীবাণুবিয়োজ্য রান্নাঘরের বর্জ্য ব্যবস্থাপনার জন্য কোন পদ্ধতিটি সবচেয়ে উপযুক্ত?"
+      },
+      "options": [
+        {
+          "en": "Composting",
+          "hi": "कम्पोस्ट बनाना",
+          "bn": "কম্পোস্ট তৈরি"
+        },
+        {
+          "en": "Burning plastic",
+          "hi": "प्लास्टिक जलाना",
+          "bn": "প্লাস্টিক পোড়ানো"
+        },
+        {
+          "en": "Dumping into rivers",
+          "hi": "नदियों में फेंकना",
+          "bn": "নদীতে ফেলে দেওয়া"
+        },
+        {
+          "en": "Storing indefinitely",
+          "hi": "अनिश्चित समय तक जमा रखना",
+          "bn": "অনির্দিষ্টকাল জমিয়ে রাখা"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Biodegradable kitchen waste can be decomposed naturally and converted into useful compost.",
+        "hi": "जैव निम्नीकरणीय रसोई कचरा प्राकृतिक रूप से अपघटित होकर उपयोगी कम्पोस्ट में बदल सकता है।",
+        "bn": "জীবাণুবিয়োজ্য রান্নাঘরের বর্জ্য প্রাকৃতিকভাবে বিয়োজিত হয়ে উপকারী কম্পোস্টে পরিণত হতে পারে।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "bio_ch_05_q026",
+      "question": {
+        "en": "Which statement correctly distinguishes biodegradable and non-biodegradable waste?",
+        "hi": "जैव निम्नीकरणीय और अजैव निम्नीकरणीय कचरे में सही अंतर क्या है?",
+        "bn": "জীবাণুবিয়োজ্য ও অজীবাণুবিয়োজ্য বর্জ্যের সঠিক পার্থক্য কোনটি?"
+      },
+      "options": [
+        {
+          "en": "Biodegradable waste breaks down naturally",
+          "hi": "जैव निम्नीकरणीय कचरा प्राकृतिक रूप से टूटता है",
+          "bn": "জীবাণুবিয়োজ্য বর্জ্য প্রাকৃতিকভাবে বিয়োজিত হয়"
+        },
+        {
+          "en": "Both types break down equally fast",
+          "hi": "दोनों प्रकार का कचरा समान तेजी से टूटता है",
+          "bn": "উভয় ধরনের বর্জ্য সমান দ্রুত বিয়োজিত হয়"
+        },
+        {
+          "en": "Non-biodegradable waste always decomposes quickly",
+          "hi": "अजैव निम्नीकरणीय कचरा हमेशा जल्दी टूटता है",
+          "bn": "অজীবাণুবিয়োজ্য বর্জ্য সবসময় দ্রুত বিয়োজিত হয়"
+        },
+        {
+          "en": "Biodegradable waste never decomposes",
+          "hi": "जैव निम्नीकरणीय कचरा कभी नहीं टूटता",
+          "bn": "জীবাণুবিয়োজ্য বর্জ্য কখনও বিয়োজিত হয় না"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Biodegradable substances can be broken down by microorganisms, while non-biodegradable substances resist natural decomposition.",
+        "hi": "जैव निम्नीकरणीय पदार्थ सूक्ष्मजीवों द्वारा टूट सकते हैं, जबकि अजैव निम्नीकरणीय पदार्थ प्राकृतिक अपघटन का प्रतिरोध करते हैं।",
+        "bn": "জীবাণুবিয়োজ্য পদার্থ অণুজীব দ্বারা বিয়োজিত হতে পারে, কিন্তু অজীবাণুবিয়োজ্য পদার্থ প্রাকৃতিক বিয়োজন প্রতিরোধ করে।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "bio_ch_05_q027",
+      "question": {
+        "en": "Which substance was widely used in refrigerators and is associated with ozone depletion?",
+        "hi": "रेफ्रिजरेटर में व्यापक रूप से प्रयुक्त कौन-सा पदार्थ ओजोन क्षय से जुड़ा है?",
+        "bn": "রেফ্রিজারেটরে ব্যাপকভাবে ব্যবহৃত কোন পদার্থটি ওজোন ক্ষয়ের সঙ্গে যুক্ত?"
+      },
+      "options": [
+        {
+          "en": "CFCs",
+          "hi": "CFCs",
+          "bn": "CFCs"
+        },
+        {
+          "en": "Oxygen",
+          "hi": "ऑक्सीजन",
+          "bn": "অক্সিজেন"
+        },
+        {
+          "en": "Nitrogen",
+          "hi": "नाइट्रोजन",
+          "bn": "নাইট্রোজেন"
+        },
+        {
+          "en": "Water vapour",
+          "hi": "जलवाष्प",
+          "bn": "জলীয় বাষ্প"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "CFCs can release chlorine in the upper atmosphere, which participates in reactions that destroy ozone.",
+        "hi": "ऊपरी वायुमंडल में CFCs से क्लोरीन निकल सकता है, जो ओजोन को नष्ट करने वाली अभिक्रियाओं में भाग लेता है।",
+        "bn": "উচ্চ বায়ুমণ্ডলে CFCs থেকে ক্লোরিন মুক্ত হয়ে এমন বিক্রিয়ায় অংশ নেয় যা ওজোন ধ্বংস করে।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "bio_ch_05_q028",
+      "question": {
+        "en": "In a food chain, why does a pesticide concentration often become highest in the top consumer?",
+        "hi": "खाद्य श्रृंखला में शीर्ष उपभोक्ता के शरीर में कीटनाशक की सांद्रता अक्सर सबसे अधिक क्यों होती है?",
+        "bn": "খাদ্যশৃঙ্খলে শীর্ষ খাদকের দেহে কীটনাশকের ঘনত্ব প্রায়শই সর্বাধিক হয় কেন?"
+      },
+      "options": [
+        {
+          "en": "It produces more pesticide",
+          "hi": "वह अधिक कीटनाशक बनाता है",
+          "bn": "সে বেশি কীটনাশক তৈরি করে"
+        },
+        {
+          "en": "It receives chemicals from many prey",
+          "hi": "उसे अनेक शिकारों से रसायन मिलते हैं",
+          "bn": "অনেক শিকারের মাধ্যমে রাসায়নিক গ্রহণ করে"
+        },
+        {
+          "en": "It has no body water",
+          "hi": "उसके शरीर में जल नहीं होता",
+          "bn": "তার দেহে জল থাকে না"
+        },
+        {
+          "en": "It performs more photosynthesis",
+          "hi": "वह अधिक प्रकाश संश्लेषण करता है",
+          "bn": "সে বেশি সালোকসংশ্লেষ করে"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "Persistent chemicals can accumulate through repeated feeding, causing their concentration to increase at higher trophic levels.",
+        "hi": "स्थायी रसायन बार-बार भोजन के साथ जमा होते हैं, जिससे ऊँचे पोषी स्तरों पर उनकी सांद्रता बढ़ जाती है।",
+        "bn": "অবিয়োজ্য রাসায়নিক বারবার খাদ্যগ্রহণের মাধ্যমে সঞ্চিত হয় এবং উচ্চতর পৌষ্টিক স্তরে তাদের ঘনত্ব বাড়ে।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "bio_ch_05_q030",
+      "question": {
+        "en": "Which change would most likely make an ecosystem less stable?",
+        "hi": "किस परिवर्तन से किसी पारितंत्र की स्थिरता सबसे अधिक घट सकती है?",
+        "bn": "কোন পরিবর্তনের ফলে একটি বাস্তুতন্ত্রের স্থিতিশীলতা সবচেয়ে বেশি কমতে পারে?"
+      },
+      "options": [
+        {
+          "en": "Increase in biodiversity",
+          "hi": "जैव विविधता में वृद्धि",
+          "bn": "জীববৈচিত্র্য বৃদ্ধি"
+        },
+        {
+          "en": "More interconnected food chains",
+          "hi": "अधिक परस्पर जुड़ी खाद्य श्रृंखलाएँ",
+          "bn": "আরও বেশি সংযুক্ত খাদ্যশৃঙ্খল"
+        },
+        {
+          "en": "Loss of several species",
+          "hi": "कई प्रजातियों का लुप्त होना",
+          "bn": "বেশ কয়েকটি প্রজাতির বিলুপ্তি"
+        },
+        {
+          "en": "Greater variety of producers",
+          "hi": "उत्पादकों की अधिक विविधता",
+          "bn": "উৎপাদকের বেশি বৈচিত্র্য"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "en": "Loss of species can break feeding relationships and reduce the number of alternative pathways in the ecosystem.",
+        "hi": "प्रजातियों की हानि भोजन संबंधों को तोड़ सकती है और पारितंत्र में वैकल्पिक खाद्य मार्गों की संख्या घटा सकती है।",
+        "bn": "প্রজাতির বিলুপ্তি খাদ্য সম্পর্ক নষ্ট করতে পারে এবং বাস্তুতন্ত্রে বিকল্প খাদ্যপথের সংখ্যা কমিয়ে দেয়।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
     }
   ]
 }
