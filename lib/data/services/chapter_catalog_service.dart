@@ -194,6 +194,7 @@ class ChapterCatalogService {
       colorHex: override.colorHex.isEmpty ? base.colorHex : override.colorHex,
       totalChapters: merged.length,
       chapters: merged,
+      priority: override.priority != 0 ? override.priority : base.priority,
     );
   }
 

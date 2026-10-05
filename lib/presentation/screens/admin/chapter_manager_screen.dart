@@ -98,6 +98,7 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
             colorHex: category.colorHex,
             totalChapters: chapters.length,
             chapters: chapters,
+            priority: category.priority,
           );
         })
         .where((c) => c.chapters.isNotEmpty)
@@ -794,6 +795,14 @@ class _ReorderSheetState extends State<_ReorderSheet> {
 
 class _SubjectSheet extends StatefulWidget {
   final CategoryModel? existing;
+
+  /// Prefilled order value — the existing priority on edit, length + 1 for
+  /// a new subject — so saving never silently reorders the subject list.
+  final int initialPriority;
+
+  /// Subject ids already on file. A *new* subject reusing one would
+  /// silently overwrite it, so the sheet refuses those ids.
+  final Set<String> takenIds;
   final Future<void> Function(
     String id,
     LocalizedText name,
@@ -803,7 +812,12 @@ class _SubjectSheet extends StatefulWidget {
   )
   onSave;
 
-  const _SubjectSheet({required this.existing, required this.onSave});
+  const _SubjectSheet({
+    required this.existing,
+    required this.initialPriority,
+    required this.takenIds,
+    required this.onSave,
+  });
 
   @override
   State<_SubjectSheet> createState() => _SubjectSheetState();
@@ -843,6 +857,16 @@ class _SubjectSheetState extends State<_SubjectSheet> {
   Future<void> _save() async {
     final id = _id.text.trim();
     if (id.isEmpty) return setState(() => _error = 'Subject id is required');
+    if (!RegExp(r'^[a-z0-9_]+$').hasMatch(id)) {
+      return setState(
+        () => _error = 'Id: lowercase letters, numbers and _ only',
+      );
+    }
+    if (widget.existing == null && widget.takenIds.contains(id)) {
+      return setState(
+        () => _error = '"$id" already exists — pick another id',
+      );
+    }
     if (!_name.has('en')) {
       return setState(() => _error = 'English name is required');
     }
@@ -857,7 +881,7 @@ class _SubjectSheetState extends State<_SubjectSheet> {
         _name,
         _icon.text.trim(),
         _color.text.trim(),
-        int.tryParse(_priority.text.trim()) ?? 1,
+        int.tryParse(_priority.text.trim()) ?? widget.initialPriority,
       );
       if (mounted) Navigator.pop(context, true);
     } catch (e) {
@@ -996,16 +1020,7 @@ class _ChapterSheetState extends State<_ChapterSheet> {
       }
     });
     _number.addListener(_resuggestId);
-    _title = e?.titleText ?? const LocalizedText.empty();
-    _description = e?.descriptionText ?? const LocalizedText.empty();
-    _unlocked = e?.isUnlocked ?? true;
-    _enabled = e?.isEnabled ?? true;
-    _translator = AiQuestionGenerator();
-  }
-
-  /// Follows the chapter number while the admin has not typed their own id.
-  void _resuggestId() {
-    if (widget.existing != null || _idTouched) return;
+    _title = e?.titleText ?? const LocalizedText.empty();idget.existing != null || _idTouched) return;
     final number = int.tryParse(_number.text.trim()) ?? widget.defaultNumber;
     final next = BulkChapterImporter.suggestChapterId(
       widget.categoryId,
@@ -1367,6 +1382,21 @@ class _PlainField extends StatelessWidget {
             ),
           ),
         ),
+        if (helper != null) ...[
+          const SizedBox(height: 5),
+          Text(
+            helper!,
+            style: const TextStyle(
+              fontSize: 10.5,
+              color: AppColors.textMuted,
+              height: 1.3,
+            ),
+          ),
+        ],
+      ],
+    );
+  }
+}
         if (helper != null) ...[
           const SizedBox(height: 5),
           Text(

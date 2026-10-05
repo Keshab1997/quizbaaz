@@ -10,6 +10,10 @@ class CategoryModel {
   final int totalChapters;
   final List<ChapterModel> chapters;
 
+  /// Position in the Firestore-ordered subject list. Zero means the document
+  /// never had one (bundled subjects) — callers fall back to list position.
+  final int priority;
+
   const CategoryModel({
     required this.categoryId,
     required this.nameText,
@@ -17,6 +21,7 @@ class CategoryModel {
     required this.colorHex,
     required this.totalChapters,
     required this.chapters,
+    this.priority = 0,
   });
 
   /// Subject name in the current UI language.
