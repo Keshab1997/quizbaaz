@@ -556,43 +556,52 @@ void main() {
 
     test('subject priority survives a category JSON round trip', () {
       final restored = CategoryModel.fromJson(
-        category('cat_math', [chapter('math_ch_01')])
-            .copyWith(priority: 3)
-            .toJson(),
+        category('cat_math', [
+          chapter('math_ch_01'),
+        ]).copyWith(priority: 3).toJson(),
       );
 
       expect(restored.priority, 3);
     });
 
-    test('merge keeps the Firestore priority, base when the shell has none', () {
-      // Regression: the admin sheet used to save every subject edit with
-      // priority 1 because the model did not carry the value at all.
-      final assets = [category('cat_math', [chapter('math_ch_01')])];
+    test(
+      'merge keeps the Firestore priority, base when the shell has none',
+      () {
+        // Regression: the admin sheet used to save every subject edit with
+        // priority 1 because the model did not carry the value at all.
+        final assets = [
+          category('cat_math', [chapter('math_ch_01')]),
+        ];
 
-      final withPriority = CategoryModel.fromJson({
-        ...assets.single.toJson(),
-        'priority': 4,
-      });
-      expect(
-        ChapterCatalogService.mergeWithAssets(assets, [withPriority]).single
-            .priority,
-        4,
-      );
+        final withPriority = CategoryModel.fromJson({
+          ...assets.single.toJson(),
+          'priority': 4,
+        });
+        expect(
+          ChapterCatalogService.mergeWithAssets(assets, [
+            withPriority,
+          ]).single.priority,
+          4,
+        );
 
-      final shell = CategoryModel.fromJson({
-        ...assets.single.toJson(),
-        'category_name': <String, String>{},
-        'priority': 0,
-      });
-      final base = CategoryModel.fromJson({
-        ...assets.single.toJson(),
-        'priority': 2,
-      });
-      expect(
-        ChapterCatalogService.mergeWithAssets([base], [shell]).single.priority,
-        2,
-      );
-    });
+        final shell = CategoryModel.fromJson({
+          ...assets.single.toJson(),
+          'category_name': <String, String>{},
+          'priority': 0,
+        });
+        final base = CategoryModel.fromJson({
+          ...assets.single.toJson(),
+          'priority': 2,
+        });
+        expect(
+          ChapterCatalogService.mergeWithAssets(
+            [base],
+            [shell],
+          ).single.priority,
+          2,
+        );
+      },
+    );
   });
 
   group('admin question sets', () {

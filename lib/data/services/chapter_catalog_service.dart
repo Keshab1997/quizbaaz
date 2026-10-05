@@ -122,6 +122,7 @@ class ChapterCatalogService {
               colorHex: existing.colorHex,
               totalChapters: existing.chapters.length + 1,
               chapters: [...existing.chapters, chapter],
+              priority: existing.priority,
             );
           }
         }

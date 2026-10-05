@@ -516,7 +516,6 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
     final saved = await showModalBottomSheet<bool>(
       context: context,
       isScrollControlled: true,
-      showDragHandle: true,
       useSafeArea: true,
       backgroundColor: Colors.transparent,
       builder:
@@ -538,12 +537,13 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
     final saved = await showModalBottomSheet<bool>(
       context: context,
       isScrollControlled: true,
-      showDragHandle: true,
       useSafeArea: true,
       backgroundColor: Colors.transparent,
       builder:
           (_) => _SubjectSheet(
             existing: existing,
+            initialPriority: _priorityFor(existing),
+            takenIds: {for (final c in _categories) c.categoryId},
             onSave:
                 (id, name, icon, color, priority) => _catalog.saveCategory(
                   categoryId: id,
@@ -556,6 +556,19 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
           ),
     );
     if (saved == true) _load();
+  }
+
+  /// The order value a subject edit must keep. A lost priority drops the
+  /// subject to the top of the Firestore-ordered list, so an edit keeps its
+  /// value (or its current position when the document never had one) and a
+  /// new subject goes last.
+  int _priorityFor(CategoryModel? existing) {
+    if (existing == null) return _categories.length + 1;
+    if (existing.priority > 0) return existing.priority;
+    final at = _categories.indexWhere(
+      (c) => c.categoryId == existing.categoryId,
+    );
+    return at >= 0 ? at + 1 : _categories.length + 1;
   }
 
   Future<void> _editChapter(
@@ -573,7 +586,6 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
     final saved = await showModalBottomSheet<bool>(
       context: context,
       isScrollControlled: true,
-      showDragHandle: true,
       useSafeArea: true,
       backgroundColor: Colors.transparent,
       builder:
@@ -640,14 +652,19 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
   }
 
   Future<void> _reorderChapters(CategoryModel category) async {
-    final order = [for (final c in category.chapters) c.chapterId];
+    // Reorder always covers the whole subject: the visible list may be
+    // search-filtered, and renumbering only that subset would scramble the
+    // chapters the search hid.
+    final full = _categories.firstWhere(
+      (c) => c.categoryId == category.categoryId,
+      orElse: () => category,
+    );
     final updated = await showModalBottomSheet<List<String>>(
       context: context,
       isScrollControlled: true,
-      showDragHandle: true,
       useSafeArea: true,
       backgroundColor: Colors.transparent,
-      builder: (_) => _ReorderSheet(chapterIds: order),
+      builder: (_) => _ReorderSheet(chapters: full.chapters),
     );
     if (updated == null) return;
     try {
@@ -699,29 +716,30 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
 
 // ============================================================ reorder sheet ==
 
-/// Up/down reorder list for chapters. Returns the new id order on save.
+/// Up/down reorder list for chapters. Shows titles (not raw ids) and returns
+/// the new id order on save.
 class _ReorderSheet extends StatefulWidget {
-  final List<String> chapterIds;
-  const _ReorderSheet({required this.chapterIds});
+  final List<ChapterModel> chapters;
+  const _ReorderSheet({required this.chapters});
   @override
   State<_ReorderSheet> createState() => _ReorderSheetState();
 }
 
 class _ReorderSheetState extends State<_ReorderSheet> {
-  late List<String> _order;
+  late List<ChapterModel> _order;
 
   @override
   void initState() {
     super.initState();
-    _order = List<String>.from(widget.chapterIds);
+    _order = List<ChapterModel>.from(widget.chapters);
   }
 
   void _move(int index, int delta) {
     final next = index + delta;
     if (next < 0 || next >= _order.length) return;
     setState(() {
-      final id = _order.removeAt(index);
-      _order.insert(next, id);
+      final chapter = _order.removeAt(index);
+      _order.insert(next, chapter);
     });
   }
 
@@ -738,9 +756,24 @@ class _ReorderSheetState extends State<_ReorderSheet> {
         maxChildSize: 0.9,
         builder:
             (context, controller) => Container(
-              padding: const EdgeInsets.all(18),
+              decoration: const BoxDecoration(
+                color: AppColors.bgCard,
+                borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+              ),
+              padding: const EdgeInsets.fromLTRB(18, 10, 18, 18),
               child: Column(
                 children: [
+                  Center(
+                    child: Container(
+                      width: 42,
+                      height: 4,
+                      decoration: BoxDecoration(
+                        color: Colors.white24,
+                        borderRadius: BorderRadius.circular(3),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 12),
                   const Text(
                     'Reorder chapters',
                     style: TextStyle(
@@ -749,39 +782,100 @@ class _ReorderSheetState extends State<_ReorderSheet> {
                       color: Colors.white,
                     ),
                   ),
+                  const SizedBox(height: 4),
+                  const Text(
+                    'Top of the list becomes chapter 1.',
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: AppColors.textSecondary,
+                    ),
+                  ),
                   const SizedBox(height: 12),
                   Expanded(
                     child: ListView.builder(
                       controller: controller,
                       itemCount: _order.length,
-                      itemBuilder:
-                          (context, index) => ListTile(
-                            key: ValueKey(_order[index]),
-                            title: Text(
-                              _order[index],
-                              style: const TextStyle(color: Colors.white),
-                            ),
-                            trailing: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                IconButton(
-                                  icon: const Icon(Icons.arrow_upward_rounded),
-                                  onPressed: () => _move(index, -1),
-                                ),
-                                IconButton(
-                                  icon: const Icon(
-                                    Icons.arrow_downward_rounded,
-                                  ),
-                                  onPressed: () => _move(index, 1),
-                                ),
-                              ],
+                      itemBuilder: (context, index) {
+                        final chapter = _order[index];
+                        return ListTile(
+                          key: ValueKey(chapter.chapterId),
+                          contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 4,
+                          ),
+                          leading: SizedBox(
+                            width: 26,
+                            child: Text(
+                              '${index + 1}',
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.w900,
+                                color: AppColors.neonCyan,
+                              ),
                             ),
                           ),
+                          title: Text(
+                            chapter.titleText.resolve('en'),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(
+                              fontSize: 13.5,
+                              color: Colors.white,
+                            ),
+                          ),
+                          subtitle: Text(
+                            chapter.chapterId,
+                            style: const TextStyle(
+                              fontSize: 11,
+                              color: AppColors.textMuted,
+                            ),
+                          ),
+                          trailing: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              IconButton(
+                                tooltip: 'Move up',
+                                icon: const Icon(Icons.arrow_upward_rounded),
+                                iconSize: 20,
+                                color: AppColors.textSecondary,
+                                onPressed:
+                                    index == 0 ? null : () => _move(index, -1),
+                              ),
+                              IconButton(
+                                tooltip: 'Move down',
+                                icon: const Icon(Icons.arrow_downward_rounded),
+                                iconSize: 20,
+                                color: AppColors.textSecondary,
+                                onPressed:
+                                    index == _order.length - 1
+                                        ? null
+                                        : () => _move(index, 1),
+                              ),
+                            ],
+                          ),
+                        );
+                      },
                     ),
                   ),
-                  FilledButton(
-                    onPressed: () => Navigator.pop(context, _order),
-                    child: const Text('Save order'),
+                  const SizedBox(height: 8),
+                  SizedBox(
+                    width: double.infinity,
+                    height: 46,
+                    child: FilledButton(
+                      style: FilledButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(14),
+                        ),
+                      ),
+                      onPressed:
+                          () => Navigator.pop(context, [
+                            for (final c in _order) c.chapterId,
+                          ]),
+                      child: const Text(
+                        'Save order',
+                        style: TextStyle(fontWeight: FontWeight.w900),
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -841,7 +935,7 @@ class _SubjectSheetState extends State<_SubjectSheet> {
       text: e?.categoryIcon ?? 'assets/icons/coin_and_gem_3d.png',
     );
     _color = TextEditingController(text: e?.colorHex ?? '#53E6FF');
-    _priority = TextEditingController(text: '1');
+    _priority = TextEditingController(text: '${widget.initialPriority}');
     _name = e?.nameText ?? const LocalizedText.empty();
   }
 
@@ -863,9 +957,7 @@ class _SubjectSheetState extends State<_SubjectSheet> {
       );
     }
     if (widget.existing == null && widget.takenIds.contains(id)) {
-      return setState(
-        () => _error = '"$id" already exists — pick another id',
-      );
+      return setState(() => _error = '"$id" already exists — pick another id');
     }
     if (!_name.has('en')) {
       return setState(() => _error = 'English name is required');
@@ -972,8 +1064,10 @@ class _ChapterSheet extends StatefulWidget {
   onSave;
 
   const _ChapterSheet({
+    required this.categoryId,
     required this.categoryName,
     required this.existing,
+    required this.takenIds,
     required this.defaultNumber,
     required this.onSave,
   });
@@ -1020,7 +1114,16 @@ class _ChapterSheetState extends State<_ChapterSheet> {
       }
     });
     _number.addListener(_resuggestId);
-    _title = e?.titleText ?? const LocalizedText.empty();idget.existing != null || _idTouched) return;
+    _title = e?.titleText ?? const LocalizedText.empty();
+    _description = e?.descriptionText ?? const LocalizedText.empty();
+    _unlocked = e?.isUnlocked ?? true;
+    _enabled = e?.isEnabled ?? true;
+    _translator = AiQuestionGenerator();
+  }
+
+  /// Follows the chapter number while the admin has not typed their own id.
+  void _resuggestId() {
+    if (widget.existing != null || _idTouched) return;
     final number = int.tryParse(_number.text.trim()) ?? widget.defaultNumber;
     final next = BulkChapterImporter.suggestChapterId(
       widget.categoryId,
@@ -1054,9 +1157,7 @@ class _ChapterSheetState extends State<_ChapterSheet> {
       );
     }
     if (widget.existing == null && widget.takenIds.contains(id)) {
-      return setState(
-        () => _error = '"$id" already exists — pick another id',
-      );
+      return setState(() => _error = '"$id" already exists — pick another id');
     }
     if (!_title.has('en')) {
       return setState(() => _error = 'English title is required');
@@ -1382,21 +1483,6 @@ class _PlainField extends StatelessWidget {
             ),
           ),
         ),
-        if (helper != null) ...[
-          const SizedBox(height: 5),
-          Text(
-            helper!,
-            style: const TextStyle(
-              fontSize: 10.5,
-              color: AppColors.textMuted,
-              height: 1.3,
-            ),
-          ),
-        ],
-      ],
-    );
-  }
-}
         if (helper != null) ...[
           const SizedBox(height: 5),
           Text(

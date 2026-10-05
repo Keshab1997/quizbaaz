@@ -107,9 +107,7 @@ class _BulkChapterAddSheetState extends State<BulkChapterAddSheet> {
             (context, controller) => Container(
               decoration: const BoxDecoration(
                 color: AppColors.bgCard,
-                borderRadius: BorderRadius.vertical(
-                  top: Radius.circular(24),
-                ),
+                borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
               ),
               padding: const EdgeInsets.fromLTRB(18, 10, 18, 18),
               child: ListView(
@@ -168,9 +166,7 @@ class _BulkChapterAddSheetState extends State<BulkChapterAddSheet> {
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
-                        borderSide: const BorderSide(
-                          color: AppColors.neonCyan,
-                        ),
+                        borderSide: const BorderSide(color: AppColors.neonCyan),
                       ),
                     ),
                   ),
@@ -244,9 +240,7 @@ class _BulkChapterAddSheetState extends State<BulkChapterAddSheet> {
               Padding(
                 padding: const EdgeInsets.only(top: 1),
                 child: Icon(
-                  ok
-                      ? Icons.check_circle_rounded
-                      : Icons.error_outline_rounded,
+                  ok ? Icons.check_circle_rounded : Icons.error_outline_rounded,
                   size: 16,
                   color: ok ? AppColors.neonGreen : AppColors.neonRed,
                 ),

@@ -27,7 +27,7 @@ class CategoryModel {
   /// Subject name in the current UI language.
   String get categoryName => nameText.current;
 
-  CategoryModel copyWith({List<ChapterModel>? chapters}) {
+  CategoryModel copyWith({List<ChapterModel>? chapters, int? priority}) {
     final resolved = chapters ?? this.chapters;
     return CategoryModel(
       categoryId: categoryId,
@@ -36,6 +36,7 @@ class CategoryModel {
       colorHex: colorHex,
       totalChapters: resolved.length,
       chapters: resolved,
+      priority: priority ?? this.priority,
     );
   }
 
@@ -46,6 +47,7 @@ class CategoryModel {
       categoryIcon: json['category_icon'] ?? '',
       colorHex: json['color_hex'] ?? '#3B82F6',
       totalChapters: (json['total_chapters'] as num?)?.toInt() ?? 0,
+      priority: (json['priority'] as num?)?.toInt() ?? 0,
       chapters:
           (json['chapters'] as List? ?? const [])
               .whereType<Map>()
@@ -60,6 +62,7 @@ class CategoryModel {
     'category_icon': categoryIcon,
     'color_hex': colorHex,
     'total_chapters': totalChapters,
+    'priority': priority,
     'chapters': chapters.map((c) => c.toJson()).toList(),
   };
 }

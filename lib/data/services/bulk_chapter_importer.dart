@@ -82,7 +82,7 @@ class BulkChapterImporter {
         id = parts[0];
         title = _splitTitle(parts.sublist(1));
       } else {
-        id = '${idStem}_ch_${number.toString().padLeft(2, '0')}';
+        id = suggestChapterId(categoryId, number);
         title = _splitTitle(parts);
       }
       final description = _splitDescription(title.resolve('en'));
