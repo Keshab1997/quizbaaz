@@ -550,7 +550,10 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
             ),
             subtitle: Padding(
               padding: const EdgeInsets.only(top: 5),
-              child: Row(
+              child: Wrap(
+                spacing: 8,
+                runSpacing: 4,
+                crossAxisAlignment: WrapCrossAlignment.center,
                 children: [
                   Text(
                     '$position · ${question.id}',
