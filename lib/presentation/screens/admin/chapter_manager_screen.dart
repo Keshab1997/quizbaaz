@@ -209,10 +209,15 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
   }
 
   Widget _stat(String label, String value, Color color) {
-    return Expanded(
-      child: Column(
-        children: [
-          Text(
+    // No Expanded here: grid children are not in a Flex, and an Expanded
+    // directly under a GridView throws an Incorrect-use-of-ParentData error
+    // that blanks the whole summary card.
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(
             value,
             style: TextStyle(
               fontSize: 19,
@@ -220,16 +225,16 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
               color: color,
             ),
           ),
-          const SizedBox(height: 2),
-          Text(
-            label,
-            style: const TextStyle(
-              fontSize: 10.5,
-              color: AppColors.textSecondary,
-            ),
+        ),
+        const SizedBox(height: 2),
+        Text(
+          label,
+          style: const TextStyle(
+            fontSize: 10.5,
+            color: AppColors.textSecondary,
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 
