@@ -577,8 +577,10 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
       backgroundColor: Colors.transparent,
       builder:
           (_) => _ChapterSheet(
+            categoryId: category.categoryId,
             categoryName: category.categoryName,
             existing: existing,
+            takenIds: {for (final c in category.chapters) c.chapterId},
             defaultNumber: nextNumber,
             onSave:
                 (id, title, description, number, unlocked, enabled) =>
@@ -927,8 +929,13 @@ class _SubjectSheetState extends State<_SubjectSheet> {
 // ============================================================ chapter sheet ==
 
 class _ChapterSheet extends StatefulWidget {
+  final String categoryId;
   final String categoryName;
   final ChapterModel? existing;
+
+  /// Chapter ids already in this subject. A *new* chapter reusing one of
+  /// these would silently overwrite it, so the sheet refuses those ids.
+  final Set<String> takenIds;
   final int defaultNumber;
   final Future<void> Function(
     String id,
@@ -962,19 +969,52 @@ class _ChapterSheetState extends State<_ChapterSheet> {
   String? _error;
   AiQuestionGenerator? _translator;
 
+  /// The last id this sheet suggested itself. The admin's own typing is
+  /// detected as any deviation from it — from that point the id is theirs
+  /// and the sheet stops overwriting it.
+  String _autoId = '';
+  bool _idTouched = false;
+
   @override
   void initState() {
     super.initState();
     final e = widget.existing;
-    _id = TextEditingController(text: e?.chapterId ?? '');
+    _idTouched = e != null;
+    _autoId =
+        e?.chapterId ??
+        BulkChapterImporter.suggestChapterId(
+          widget.categoryId,
+          widget.defaultNumber,
+        );
+    _id = TextEditingController(text: e?.chapterId ?? _autoId);
     _number = TextEditingController(
       text: '${e?.chapterNumber ?? widget.defaultNumber}',
     );
+    _id.addListener(() {
+      if (_id.text != _autoId && !_idTouched) {
+        setState(() => _idTouched = true);
+      }
+    });
+    _number.addListener(_resuggestId);
     _title = e?.titleText ?? const LocalizedText.empty();
     _description = e?.descriptionText ?? const LocalizedText.empty();
     _unlocked = e?.isUnlocked ?? true;
     _enabled = e?.isEnabled ?? true;
     _translator = AiQuestionGenerator();
+  }
+
+  /// Follows the chapter number while the admin has not typed their own id.
+  void _resuggestId() {
+    if (widget.existing != null || _idTouched) return;
+    final number = int.tryParse(_number.text.trim()) ?? widget.defaultNumber;
+    final next = BulkChapterImporter.suggestChapterId(
+      widget.categoryId,
+      number,
+    );
+    if (next != _autoId) {
+      _autoId = next;
+      _id.text = next;
+    }
   }
 
   Future<Map<String, String>?> _translateOne(String english) {
@@ -993,6 +1033,16 @@ class _ChapterSheetState extends State<_ChapterSheet> {
   Future<void> _save() async {
     final id = _id.text.trim();
     if (id.isEmpty) return setState(() => _error = 'Chapter id is required');
+    if (!RegExp(r'^[a-z0-9_]+$').hasMatch(id)) {
+      return setState(
+        () => _error = 'Id: lowercase letters, numbers and _ only',
+      );
+    }
+    if (widget.existing == null && widget.takenIds.contains(id)) {
+      return setState(
+        () => _error = '"$id" already exists — pick another id',
+      );
+    }
     if (!_title.has('en')) {
       return setState(() => _error = 'English title is required');
     }

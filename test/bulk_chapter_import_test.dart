@@ -113,5 +113,15 @@ void main() {
         'math_ch_03',
       ]);
     });
+
+    test('suggestChapterId matches the ids parse() generates', () {
+      expect(BulkChapterImporter.suggestChapterId('cat_math', 7), 'math_ch_07');
+      final drafts = BulkChapterImporter.parse(
+        'A | bn | hi',
+        categoryId: 'cat_math',
+        startNumber: 7,
+      );
+      expect(drafts.single.chapterId, 'math_ch_07');
+    });
   });
 }

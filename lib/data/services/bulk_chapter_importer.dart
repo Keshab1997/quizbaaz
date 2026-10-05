@@ -52,7 +52,6 @@ class BulkChapterImporter {
     final drafts = <BulkChapterDraft>[];
     final seen = <String>{};
     var number = startNumber;
-    final idStem = _idStem(categoryId);
 
     for (final rawLine in raw.split('\n')) {
       final line = rawLine.trim();
@@ -221,6 +220,14 @@ class BulkChapterImporter {
     if (match == null) return english;
     final stem = match.group(1)!.trim();
     return stem.isEmpty ? english : stem;
+  }
+
+  /// The id a new chapter gets: `<stem>_ch_<nn>`, e.g. `math_ch_15`.
+  /// Shared with the single-chapter sheet so both add flows suggest the
+  /// same ids.
+  static String suggestChapterId(String categoryId, int chapterNumber) {
+    final idStem = _idStem(categoryId);
+    return '${idStem}_ch_${chapterNumber.toString().padLeft(2, '0')}';
   }
 
   static bool _looksLikeId(String part) =>
