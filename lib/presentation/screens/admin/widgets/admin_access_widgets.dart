@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../../../../core/constants/app_colors.dart';
+import 'admin_toast.dart';
 import '../../../../data/models/chapter_model.dart';
 import '../../../../data/services/admin_ai_prompt_builder.dart';
 import '../../../widgets/glass_card.dart';
@@ -42,11 +43,9 @@ class _AdminPromptCopyCardState extends State<AdminPromptCopyCard> {
         _copiedFix = true;
       }
     });
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Prompt copied — paste it into ChatGPT / Gemini'),
-        duration: Duration(seconds: 2),
-      ),
+    AdminToast.showSuccess(
+      context,
+      'Prompt copied — paste it into ChatGPT / Gemini.',
     );
     await Future.delayed(const Duration(seconds: 2));
     if (mounted) {

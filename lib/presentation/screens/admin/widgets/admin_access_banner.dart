@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../../../../core/constants/app_colors.dart';
+import 'admin_toast.dart';
 import '../../../../data/services/admin_access_service.dart';
 import '../../../widgets/glass_card.dart';
 
@@ -40,13 +41,11 @@ class _AdminAccessBannerState extends State<AdminAccessBanner> {
       _hasClaim = has;
       _refreshing = false;
     });
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(
-          has ? 'Admin claim active — try saving again.' : 'Still no claim.',
-        ),
-      ),
-    );
+    if (has) {
+      AdminToast.showSuccess(context, 'Admin claim active — try saving again.');
+    } else {
+      AdminToast.showError(context, 'Still no claim.');
+    }
   }
 
   @override

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/constants/app_colors.dart';
+import 'widgets/admin_toast.dart';
 import '../../../data/services/shop_service.dart';
 import '../../../data/services/trusted_ops_service.dart';
 import '../../../l10n/app_strings.dart';
@@ -558,11 +559,10 @@ class _UserListScreenState extends State<UserListScreen> {
   }
 
   void _showSnack(String message, bool success) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(message),
-        backgroundColor: success ? AppColors.neonGreen : AppColors.neonRed,
-      ),
-    );
+    if (success) {
+      AdminToast.showSuccess(context, message);
+    } else {
+      AdminToast.showError(context, message);
+    }
   }
 }

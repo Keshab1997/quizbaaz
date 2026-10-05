@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../core/constants/app_colors.dart';
+import 'widgets/admin_toast.dart';
 import '../../../data/services/image_upload_service.dart';
 import '../../../data/services/shop_service.dart';
 import '../../widgets/glass_card.dart';
@@ -490,17 +491,14 @@ class _AvatarManagerScreenState extends State<AvatarManagerScreen> {
                   Navigator.pop(ctx);
                   final success = await ShopService.deleteAvatar(avatar.id);
                   if (!mounted) return;
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text(
-                        success
-                            ? '✅ Avatar deleted'
-                            : '❌ ${ShopService.lastError ?? 'Delete failed'}',
-                      ),
-                      backgroundColor:
-                          success ? AppColors.neonGreen : AppColors.neonRed,
-                    ),
-                  );
+                  if (success) {
+                    AdminToast.showSuccess(context, 'Avatar deleted.');
+                  } else {
+                    AdminToast.showError(
+                      context,
+                      ShopService.lastError ?? 'Delete failed.',
+                    );
+                  }
                   if (success) setState(_refreshAvatars);
                 },
                 child: const Text(
@@ -568,22 +566,12 @@ class _AddEditAvatarSheetState extends State<_AddEditAvatarSheet> {
             _isUploading = false;
           });
           if (mounted) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('✅ Avatar image uploaded!'),
-                backgroundColor: AppColors.neonGreen,
-              ),
-            );
+            AdminToast.showSuccess(context, 'Avatar image uploaded.');
           }
         } else {
           setState(() => _isUploading = false);
           if (mounted) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('❌ Upload failed. Try again.'),
-                backgroundColor: AppColors.neonRed,
-              ),
-            );
+            AdminToast.showError(context, 'Avatar upload failed. Try again.');
           }
         }
       }
@@ -927,24 +915,21 @@ class _AddEditAvatarSheetState extends State<_AddEditAvatarSheet> {
 
     if (mounted) {
       Navigator.pop(context, success);
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            success
-                ? (widget.avatar == null
-                    ? '✅ Avatar added!'
-                    : '✅ Avatar updated!')
-                : '❌ ${ShopService.lastError ?? 'Failed to save. Try again.'}',
-          ),
-          backgroundColor: success ? AppColors.neonPink : AppColors.neonRed,
-        ),
-      );
+      if (success) {
+        AdminToast.showSuccess(
+          context,
+          widget.avatar == null ? 'Avatar added.' : 'Avatar updated.',
+        );
+      } else {
+        AdminToast.showError(
+          context,
+          ShopService.lastError ?? 'Failed to save. Try again.',
+        );
+      }
     }
   }
 
   void _showError(String message) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('❌ $message'), backgroundColor: AppColors.neonRed),
-    );
+    AdminToast.showError(context, message);
   }
 }

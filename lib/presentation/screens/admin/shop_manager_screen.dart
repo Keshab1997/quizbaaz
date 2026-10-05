@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../core/constants/app_colors.dart';
+import 'widgets/admin_toast.dart';
 import '../../../data/models/shop_item.dart';
 import '../../../data/services/image_upload_service.dart';
 import '../../../data/services/shop_service.dart';
@@ -489,17 +490,14 @@ class _ShopManagerScreenState extends State<ShopManagerScreen> {
                   Navigator.pop(ctx);
                   final success = await ShopService.deleteShopItem(item.id);
                   if (!mounted) return;
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text(
-                        success
-                            ? '✅ ${item.name} deleted'
-                            : '❌ ${ShopService.lastError ?? 'Delete failed'}',
-                      ),
-                      backgroundColor:
-                          success ? AppColors.neonGreen : AppColors.neonRed,
-                    ),
-                  );
+                  if (success) {
+                    AdminToast.showSuccess(context, '${item.name} deleted.');
+                  } else {
+                    AdminToast.showError(
+                      context,
+                      ShopService.lastError ?? 'Delete failed.',
+                    );
+                  }
                   if (success) setState(_refreshItems);
                 },
                 child: const Text(
@@ -593,22 +591,12 @@ class _AddEditItemSheetState extends State<AddEditItemSheet> {
             _isUploading = false;
           });
           if (mounted) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('✅ Image uploaded successfully!'),
-                backgroundColor: AppColors.neonGreen,
-              ),
-            );
+            AdminToast.showSuccess(context, 'Image uploaded successfully.');
           }
         } else {
           setState(() => _isUploading = false);
           if (mounted) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('❌ Image upload failed. Try again.'),
-                backgroundColor: AppColors.neonRed,
-              ),
-            );
+            AdminToast.showError(context, 'Image upload failed. Try again.');
           }
         }
       }
@@ -1053,23 +1041,22 @@ class _AddEditItemSheetState extends State<AddEditItemSheet> {
 
       if (mounted) {
         Navigator.pop(context, success);
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              success
-                  ? (widget.item != null ? '✅ Item updated!' : '✅ Item added!')
-                  : '❌ ${ShopService.lastError ?? 'Failed to save. Try again.'}',
-            ),
-            backgroundColor: success ? AppColors.neonGreen : AppColors.neonRed,
-          ),
-        );
+        if (success) {
+          AdminToast.showSuccess(
+            context,
+            widget.item != null ? 'Item updated.' : 'Item added.',
+          );
+        } else {
+          AdminToast.showError(
+            context,
+            ShopService.lastError ?? 'Failed to save. Try again.',
+          );
+        }
       }
     }
   }
 
   void _showError(String message) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('❌ $message'), backgroundColor: AppColors.neonRed),
-    );
+    AdminToast.showError(context, message);
   }
 }
