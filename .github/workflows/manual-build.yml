@@ -25,8 +25,8 @@ jobs:
       build-apk: ${{ inputs.format == 'apk' }}
       build-aab: ${{ inputs.format == 'aab' }}
       artifact-retention-days: 14
-    secrets:
-      ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
-      KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
-      KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
-      KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+    # inherit (not an explicit list): the builder also needs
+    # GOOGLE_SERVICES_JSON_BASE64 to write android/app/google-services.json
+    # before the build — the explicit list missed it and the release build
+    # failed at :app:processReleaseGoogleServices.
+    secrets: inherit
