@@ -54,6 +54,7 @@ class DashboardScreen extends StatefulWidget {
 
 class _DashboardScreenState extends State<DashboardScreen> {
   int _currentNavIndex = 0;
+  bool _startupHandled = false;
   final bool _isFemaleMascot = false;
 
   @override
@@ -79,18 +80,24 @@ class _DashboardScreenState extends State<DashboardScreen> {
       // Preload the AdMob interstitial so it is ready when a quiz ends.
       AdService.instance.preloadInterstitial();
 
-      // Check and claim yesterday's daily leaderboard rewards!
+      // The dashboard can be recreated while a user navigates during startup.
+      // Claiming is idempotent, but showing a late dialog over another screen
+      // is not. Only this dashboard instance may present the startup message.
       final reward = await userProvider.checkAndClaimDailyLeaderboardRewards();
+      if (!mounted || !ModalRoute.of(context)!.isCurrent || _startupHandled) {
+        return;
+      }
+      _startupHandled = true;
 
       // Streak reset warning takes priority over the reward celebration —
       // it is the more urgent message (and both can occur on the same day).
-      if (mounted) {
-        final streakReset = userProvider.checkStreakResetWarning();
-        if (streakReset != null) {
-          StreakResetDialog.show(context, streakReset);
-        } else if (reward != null) {
-          DailyWinnerCelebrationDialog.show(context, reward);
-        }
+      final streakReset = userProvider.checkStreakResetWarning();
+      if (streakReset != null) {
+        await StreakResetDialog.show(context, streakReset);
+      } else if (reward != null &&
+          mounted &&
+          ModalRoute.of(context)!.isCurrent) {
+        await DailyWinnerCelebrationDialog.show(context, reward);
       }
       if (mounted) {
         // Silent check: flips the top banner (changelog / available update).
