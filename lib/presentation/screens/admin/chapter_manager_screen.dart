@@ -9,6 +9,7 @@ import '../../../data/repositories/quiz_repository.dart';
 import '../../../data/services/ai_question_generator.dart';
 import '../../../data/services/bulk_chapter_importer.dart';
 import '../../../data/services/chapter_catalog_service.dart';
+import '../../../data/services/question_bank_service.dart';
 import '../../widgets/glass_card.dart';
 import 'widgets/ai_catalog_add_sheet.dart';
 import 'widgets/ai_json_import_sheet.dart';
@@ -36,6 +37,7 @@ class ChapterManagerScreen extends StatefulWidget {
 class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
   final _repository = QuizRepository();
   final _catalog = ChapterCatalogService();
+  final _banks = QuestionBankService();
 
   List<CategoryModel> _categories = [];
   Map<String, int> _counts = {};
@@ -615,6 +617,16 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
       categoryId: subject.categoryId,
     );
     if (!exists) return false;
+    // Every chapter's bank goes with the subject — including bundled
+    // chapters that only carry admin questions, which deleteCategory never
+    // touches as documents. Bank before catalogue, per _removeChapter.
+    for (final chapter in subject.chapters) {
+      await _banks.deleteChapterBank(
+        chapterId: chapter.chapterId,
+        actorUid: _actorUid,
+      );
+      await _repository.invalidateQuestionCache(jsonFilePath: chapter.jsonFile);
+    }
     await _catalog.deleteCategory(
       categoryId: subject.categoryId,
       actorUid: _actorUid,
@@ -702,19 +714,27 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
     }
   }
 
-  /// Deletes a chapter's catalogue documents. Returns false (nothing
-  /// removed) when the chapter is purely bundled.
+  /// Deletes a chapter's question bank, then its catalogue documents.
+  /// Returns false (nothing removed) when the chapter is purely bundled.
   Future<bool> _removeChapter(String categoryId, ChapterModel chapter) async {
     final exists = await _catalog.chapterOverrideExists(
       categoryId: categoryId,
       chapterId: chapter.chapterId,
     );
     if (!exists) return false;
+    // Bank first: Firestore has no cascade, and while the chapter document
+    // still exists nothing has visibly changed — if the bank delete throws,
+    // a retry repeats deletes that are already idempotent.
+    await _banks.deleteChapterBank(
+      chapterId: chapter.chapterId,
+      actorUid: _actorUid,
+    );
     await _catalog.deleteChapter(
       categoryId: categoryId,
       chapterId: chapter.chapterId,
       actorUid: _actorUid,
     );
+    await _repository.invalidateQuestionCache(jsonFilePath: chapter.jsonFile);
     return true;
   }
 
@@ -1435,8 +1455,8 @@ class _ChapterSheetState extends State<_ChapterSheet> {
       title: 'Delete "$title"?',
       message:
           count > 0
-              ? 'This removes the chapter and hides its $count question${count == 1 ? '' : 's'} (they stay stored, but unreachable). This cannot be undone.'
-              : 'This removes the chapter. This cannot be undone.',
+              ? 'This deletes the chapter and permanently removes its $count question${count == 1 ? '' : 's'} from the question bank. A bundled chapter falls back to its shipped version. This cannot be undone.'
+              : 'This deletes the chapter. A bundled chapter falls back to its shipped version. This cannot be undone.',
       confirmLabel: 'Delete',
     );
     if (!confirmed || !mounted) return;

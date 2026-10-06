@@ -394,12 +394,14 @@ class ChapterCatalogService {
     await _invalidateCatalogueCache();
   }
 
-  /// Removes an admin-created chapter.
+  /// Removes an admin-created chapter's catalogue document.
   ///
   /// A **bundled** chapter cannot be removed this way — deleting the override
   /// document just restores the asset version, which is the right behaviour:
-  /// the app must keep working for someone who never syncs. Its questions in
-  /// `question_banks/{chapterId}` are deliberately left alone.
+  /// the app must keep working for someone who never syncs. The chapter's
+  /// question bank is deleted by the caller
+  /// (`QuestionBankService.deleteChapterBank`) alongside this call, so
+  /// admin-authored questions never outlive their chapter.
   Future<void> deleteChapter({
     required String categoryId,
     required String chapterId,
@@ -409,7 +411,6 @@ class ChapterCatalogService {
     await _audit('chapter_deleted', actorUid, {
       'category_id': categoryId,
       'chapter_id': chapterId,
-      'note': 'questions retained in question_banks',
     });
     await _invalidateCatalogueCache();
   }
@@ -449,8 +450,10 @@ class ChapterCatalogService {
   /// Removes an admin-created subject with all its chapters in one batch.
   ///
   /// Like [deleteChapter], bundled content cannot be removed this way:
-  /// deleting the override documents just restores the asset versions, and
-  /// questions in `question_banks/*` are deliberately left alone.
+  /// deleting the override documents just restores the asset versions. The
+  /// caller deletes each chapter's question bank alongside this, so shipped
+  /// questions (in assets) stay while admin-authored ones go with the
+  /// subject.
   Future<void> deleteCategory({
     required String categoryId,
     required String actorUid,
@@ -466,7 +469,6 @@ class ChapterCatalogService {
     await _audit('category_deleted', actorUid, {
       'category_id': categoryId,
       'chapter_ids': [for (final doc in chapters.docs) doc.id],
-      'note': 'questions retained in question_banks',
     });
     await _invalidateCatalogueCache();
   }

@@ -351,6 +351,55 @@ class QuestionBankService {
     );
   }
 
+  /// Deletes the chapter's entire question bank: every question document,
+  /// then the parent `question_banks/{chapterId}` counter doc.
+  ///
+  /// Firestore does not cascade — deleting a chapter document would leave
+  /// this subcollection behind, unreachable but still there (and the
+  /// Firestore→bundle pull would happily resurrect it). The caller runs this
+  /// *before* deleting the chapter itself, so a failure means nothing has
+  /// been removed yet and a retry is safe.
+  ///
+  /// Questions are paged by document id so any chapter size stays within the
+  /// batch cap. Returns how many question documents were removed.
+  Future<int> deleteChapterBank({
+    required String chapterId,
+    required String actorUid,
+  }) async {
+    final db = _db;
+    final col = _questions(chapterId);
+    if (db == null || col == null) return 0;
+
+    var deleted = 0;
+    while (true) {
+      final page =
+          await col
+              .orderBy(FieldPath.documentId)
+              .limit(_maxBatchOperations)
+              .get();
+      if (page.docs.isEmpty) break;
+
+      final batch = db.batch();
+      for (final doc in page.docs) {
+        batch.delete(doc.reference);
+        deleted++;
+      }
+      await batch.commit();
+    }
+
+    final bankDoc = _bank(chapterId);
+    if (bankDoc != null) await bankDoc.delete();
+
+    await _writeAudit(
+      action: 'question_bank_deleted',
+      chapterId: chapterId,
+      actorUid: actorUid,
+      details: {'deleted_count': deleted},
+    );
+
+    return deleted;
+  }
+
   /// Removes only the questions written by [batchId], within [undoWindow].
   Future<int> undoBatch({
     required String chapterId,
