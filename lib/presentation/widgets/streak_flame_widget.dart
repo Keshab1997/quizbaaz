@@ -26,6 +26,7 @@ class StreakFlameWidget extends StatelessWidget {
                 AppAssets.streakFire,
                 width: 38,
                 height: 38,
+                fit: BoxFit.contain,
                 errorBuilder:
                     (context, error, stackTrace) => const Icon(
                       Icons.local_fire_department,
