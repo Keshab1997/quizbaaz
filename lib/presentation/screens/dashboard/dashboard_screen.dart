@@ -1915,7 +1915,7 @@ class _BattleArenaCardState extends State<_BattleArenaCard>
                 MaterialPageRoute(builder: (_) => const BattleScreen()),
               ),
           child: Container(
-            height: 200,
+            height: 212,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(28),
               gradient: const LinearGradient(
@@ -1971,9 +1971,11 @@ class _BattleArenaCardState extends State<_BattleArenaCard>
                   // from an AnimatedBuilder breaks parent-data ordering and
                   // trips '!semantics.parentDataDirty' every animation tick.
                   // The bob motion is a Transform instead — visually identical.
+                  // bottom clears the CTA bar (~54 px) so the YOU/BOT nameplate
+                  // never collides with the "BATTLE ARENA" title row.
                   Positioned(
                     left: 0,
-                    bottom: 28,
+                    bottom: 60,
                     child: AnimatedBuilder(
                       animation: _floatAnim,
                       builder:
@@ -1992,7 +1994,7 @@ class _BattleArenaCardState extends State<_BattleArenaCard>
                   // ── Right fighter (pink) — floats opposite phase ──
                   Positioned(
                     right: 0,
-                    bottom: 28,
+                    bottom: 60,
                     child: AnimatedBuilder(
                       animation: _floatAnim,
                       builder:
