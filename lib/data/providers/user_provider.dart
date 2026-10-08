@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:flutter/material.dart';
 
@@ -38,6 +39,30 @@ class DailyRewardResult {
     required this.winningStreak,
     this.milestonePrizeTitle,
   });
+
+  /// Serialised into the pending-celebration slot (see
+  /// [UserProvider.pendingDailyCelebration]) so a claim that no dashboard
+  /// could present yet is not lost with the app session.
+  Map<String, dynamic> toJson() => {
+    'rank': rank,
+    'coins': coins,
+    'gems': gems,
+    'item_names': itemNames,
+    'winning_streak': winningStreak,
+    'milestone_prize_title': milestonePrizeTitle,
+  };
+
+  factory DailyRewardResult.fromJson(Map<String, dynamic> json) =>
+      DailyRewardResult(
+        rank: (json['rank'] as num?)?.toInt() ?? 0,
+        coins: (json['coins'] as num?)?.toInt() ?? 0,
+        gems: (json['gems'] as num?)?.toInt() ?? 0,
+        itemNames:
+            (json['item_names'] as List?)?.whereType<String>().toList() ??
+            const [],
+        winningStreak: (json['winning_streak'] as num?)?.toInt() ?? 0,
+        milestonePrizeTitle: json['milestone_prize_title'] as String?,
+      );
 }
 
 /// Details when a user's daily streak gets reset due to missing a day.
@@ -683,7 +708,7 @@ class UserProvider extends ChangeNotifier {
       notifyListeners();
       await _persistUser();
 
-      return DailyRewardResult(
+      final result = DailyRewardResult(
         rank: userRank,
         coins: coins,
         gems: gems,
@@ -691,6 +716,21 @@ class UserProvider extends ChangeNotifier {
         winningStreak: streak,
         milestonePrizeTitle: milestoneTitle,
       );
+
+      // Claiming and presenting are separate steps. The coins, gems and items
+      // above are already credited, but the celebration popup can only be
+      // shown by a dashboard that is current — and this claim is marked once
+      // per day, so it never fires again. Park the result in the pending slot
+      // until a dashboard actually presents it, otherwise a claim that
+      // resolves while the player already navigated away (or while another
+      // dialog holds the route) would be credited silently and the popup
+      // would never appear at all.
+      await HiveService.setMeta(
+        _pendingCelebrationKey,
+        jsonEncode(result.toJson()),
+      );
+
+      return result;
     } catch (e) {
       debugPrint(
         'UserProvider: checkAndClaimDailyLeaderboardRewards failed – $e',
@@ -698,6 +738,34 @@ class UserProvider extends ChangeNotifier {
       return null;
     }
   }
+
+  /// Hive key of the claimed-but-not-yet-presented celebration slot.
+  static const String _pendingCelebrationKey = 'pending_daily_celebration';
+
+  /// The daily-winner celebration that was already claimed and credited but
+  /// has not been presented by a dashboard yet, or null when there is nothing
+  /// waiting.
+  ///
+  /// The dashboard shows it when this run's own claim came back empty (the
+  /// reward was claimed by an earlier dashboard start that had to skip the
+  /// popup) and clears the slot with [markDailyCelebrationShown] once it has
+  /// been on screen — so the celebration is deferred, never dropped.
+  DailyRewardResult? get pendingDailyCelebration {
+    final raw = HiveService.getMeta<String>(_pendingCelebrationKey);
+    if (raw == null || raw.isEmpty) return null;
+    try {
+      return DailyRewardResult.fromJson(
+        jsonDecode(raw) as Map<String, dynamic>,
+      );
+    } catch (e) {
+      debugPrint('UserProvider: pending celebration unreadable – $e');
+      return null;
+    }
+  }
+
+  /// Clears the pending celebration slot after the dialog has been shown.
+  Future<void> markDailyCelebrationShown() =>
+      HiveService.setMeta(_pendingCelebrationKey, null);
 
   bool grantQuizRewards({
     required int coins,

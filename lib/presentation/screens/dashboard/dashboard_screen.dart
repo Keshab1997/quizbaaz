@@ -92,12 +92,19 @@ class _DashboardScreenState extends State<DashboardScreen> {
       // Streak reset warning takes priority over the reward celebration —
       // it is the more urgent message (and both can occur on the same day).
       final streakReset = userProvider.checkStreakResetWarning();
-      if (streakReset != null) {
+      if (streakReset != null && mounted && ModalRoute.of(context)!.isCurrent) {
         await StreakResetDialog.show(context, streakReset);
-      } else if (reward != null &&
-          mounted &&
-          ModalRoute.of(context)!.isCurrent) {
-        await DailyWinnerCelebrationDialog.show(context, reward);
+      }
+
+      // This run's claim, or one an earlier dashboard start claimed but could
+      // not present (the guard above skips the popup when the dashboard is
+      // not current — the claim itself is already done and marked for the
+      // day). The pending slot keeps the celebration until it has actually
+      // been shown, so it can never be swallowed by the claim.
+      final celebration = reward ?? userProvider.pendingDailyCelebration;
+      if (celebration != null && mounted && ModalRoute.of(context)!.isCurrent) {
+        await DailyWinnerCelebrationDialog.show(context, celebration);
+        await userProvider.markDailyCelebrationShown();
       }
       if (mounted) {
         // Silent check: flips the top banner (changelog / available update).
