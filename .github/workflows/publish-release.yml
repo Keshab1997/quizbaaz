@@ -2,6 +2,10 @@ name: Publish Signed Android Release
 
 # Manual only: builds a signed APK/AAB, creates a version tag and GitHub Release.
 # The reusable publish wrapper enforces version and placeholder safety checks.
+# Play upload is opt-in per run; the package name is read from the Gradle
+# applicationId unless package_name overrides it. Release notes for Play live in
+# distribution/whatsnew/ at the repository root (one whatsnew-<locale> file per
+# locale) — edit them before each release.
 on:
   workflow_dispatch:
     inputs:
@@ -15,15 +19,28 @@ on:
         required: false
         type: boolean
         default: false
+      upload_to_play_internal:
+        description: Also upload the signed AAB to Google Play Internal testing?
+        required: false
+        type: boolean
+        default: false
+      package_name:
+        description: Play package name override (leave blank to read android/app/build.gradle)
+        required: false
+        type: string
 
 permissions:
   contents: write
 
 jobs:
   publish:
-    uses: Keshab1997/flutter-builder/.github/workflows/publish-release.yml@v1.13.0
+    uses: Keshab1997/flutter-builder/.github/workflows/publish-release.yml@v1.14.1
     with:
       working-directory: "."
       release-draft: ${{ inputs.draft }}
       release-prerelease: ${{ inputs.prerelease }}
+      play-track: ${{ inputs.upload_to_play_internal && 'internal' || '' }}
+      play-package-name: ${{ inputs.package_name }}
+      play-whats-new-directory: ${{ inputs.upload_to_play_internal && 'distribution/whatsnew' || '' }}
+      play-status: completed
     secrets: inherit
