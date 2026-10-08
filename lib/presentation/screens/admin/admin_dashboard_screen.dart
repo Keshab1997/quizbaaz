@@ -37,7 +37,7 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
         title: Row(
           children: [
             Container(
-              padding: const EdgeInsets.all(8),
+              padding: const EdgeInsets.all(6),
               decoration: BoxDecoration(
                 color: AppColors.neonGold.withValues(alpha: 0.2),
                 borderRadius: BorderRadius.circular(10),
@@ -45,22 +45,30 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
               child: const Icon(
                 Icons.shield_rounded,
                 color: AppColors.neonGold,
-                size: 20,
+                size: 18,
               ),
             ),
-            const SizedBox(width: 10),
-            Text(
-              S.dashAdminPanel,
-              style: const TextStyle(
-                color: AppColors.textPrimary,
-                fontSize: 20,
-                fontWeight: FontWeight.w900,
+            const SizedBox(width: 8),
+            // The title shares its row with the status chip in `actions`, so
+            // on a narrow screen the unconstrained text ran underneath it.
+            // Flexible + ellipsis keeps the header honest at any width.
+            Flexible(
+              child: Text(
+                S.dashAdminPanel,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
+                  color: AppColors.textPrimary,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w900,
+                ),
               ),
             ),
           ],
         ),
         actions: [
-          const AdminClaimChip(),
+          // One status chip only. The claim chip lives in the body now (see
+          // below the welcome copy) — two chips plus the title did not fit.
           Container(
             margin: const EdgeInsets.only(right: 16),
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
@@ -107,6 +115,13 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
                 color: AppColors.textMuted.withValues(alpha: 0.7),
                 fontSize: 14,
               ),
+            ),
+            const SizedBox(height: 10),
+            // The admin-claim status chip, moved out of the app bar where it
+            // collided with the title on narrow screens.
+            const Align(
+              alignment: Alignment.centerLeft,
+              child: AdminClaimChip(),
             ),
             const SizedBox(height: 24),
 

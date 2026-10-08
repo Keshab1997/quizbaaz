@@ -172,36 +172,17 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
           ),
         ],
       ),
-      floatingActionButton: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          FloatingActionButton.extended(
-            heroTag: 'import_json',
-            backgroundColor: AppColors.neonGold,
-            foregroundColor: Colors.black,
-            onPressed: _showJsonImportSheet,
-            icon: const Icon(Icons.content_paste_rounded, size: 19),
-            label: const Text('Import JSON'),
-          ),
-          const SizedBox(height: 10),
-          FloatingActionButton.extended(
-            heroTag: 'generate',
-            backgroundColor: AppColors.neonPurple,
-            onPressed: _generateWithAi,
-            icon: const Icon(Icons.auto_awesome_rounded, size: 19),
-            label: const Text('Generate 10'),
-          ),
-          const SizedBox(height: 10),
-          FloatingActionButton.extended(
-            heroTag: 'manual',
-            backgroundColor: AppColors.neonCyan,
-            foregroundColor: AppColors.bgDark,
-            onPressed: () => _editQuestion(null),
-            icon: const Icon(Icons.add_rounded, size: 20),
-            label: const Text('Add'),
-          ),
-        ],
+      // One FAB for the screen's primary action — add a question by hand.
+      // "Import JSON" and "Generate 10" are steps of the Ask-ChatGPT card and
+      // live inside it now: as a stack of FABs they covered that card, the
+      // search box and the filter row they were floating over.
+      floatingActionButton: FloatingActionButton.extended(
+        heroTag: 'manual',
+        backgroundColor: AppColors.neonCyan,
+        foregroundColor: AppColors.bgDark,
+        onPressed: () => _editQuestion(null),
+        icon: const Icon(Icons.add_rounded, size: 20),
+        label: const Text('Add'),
       ),
       body:
           _loading
@@ -213,13 +194,16 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
                 color: AppColors.neonCyan,
                 backgroundColor: AppColors.surfaceElevated,
                 child: ListView(
-                  padding: const EdgeInsets.fromLTRB(16, 8, 16, 150),
+                  // Bottom padding clears the single Add FAB, not a stack.
+                  padding: const EdgeInsets.fromLTRB(16, 8, 16, 110),
                   children: [
                     _header(untranslated),
                     const SizedBox(height: 12),
                     AdminPromptCopyCard(
                       chapter: widget.chapter,
                       subjectName: widget.subjectName,
+                      onImportJson: _showJsonImportSheet,
+                      onGenerate: _generateWithAi,
                     ),
                     const SizedBox(height: 12),
                     _searchBox(),

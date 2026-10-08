@@ -12,10 +12,18 @@ class AdminPromptCopyCard extends StatefulWidget {
   final ChapterModel chapter;
   final String subjectName;
 
+  /// The two ends of this workflow: paste the model's JSON back, or generate
+  /// a batch through the API key pool. They used to float over the list as
+  /// FABs and covered the very card they belong to — now they close it.
+  final VoidCallback? onImportJson;
+  final VoidCallback? onGenerate;
+
   const AdminPromptCopyCard({
     super.key,
     required this.chapter,
     required this.subjectName,
+    this.onImportJson,
+    this.onGenerate,
   });
 
   @override
@@ -145,6 +153,51 @@ class _AdminPromptCopyCardState extends State<AdminPromptCopyCard> {
                     false,
                   ),
             ),
+            if (widget.onImportJson != null || widget.onGenerate != null) ...[
+              const SizedBox(height: 12),
+              Row(
+                children: [
+                  if (widget.onImportJson != null)
+                    Expanded(
+                      child: OutlinedButton.icon(
+                        onPressed: widget.onImportJson,
+                        icon: const Icon(Icons.content_paste_rounded, size: 17),
+                        label: const Text('Import JSON'),
+                        style: OutlinedButton.styleFrom(
+                          foregroundColor: AppColors.neonGold,
+                          side: BorderSide(
+                            color: AppColors.neonGold.withValues(alpha: 0.55),
+                          ),
+                          padding: const EdgeInsets.symmetric(vertical: 12),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                        ),
+                      ),
+                    ),
+                  if (widget.onImportJson != null && widget.onGenerate != null)
+                    const SizedBox(width: 10),
+                  if (widget.onGenerate != null)
+                    Expanded(
+                      child: OutlinedButton.icon(
+                        onPressed: widget.onGenerate,
+                        icon: const Icon(Icons.auto_awesome_rounded, size: 17),
+                        label: const Text('Generate 10'),
+                        style: OutlinedButton.styleFrom(
+                          foregroundColor: AppColors.neonPurple,
+                          side: BorderSide(
+                            color: AppColors.neonPurple.withValues(alpha: 0.6),
+                          ),
+                          padding: const EdgeInsets.symmetric(vertical: 12),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                        ),
+                      ),
+                    ),
+                ],
+              ),
+            ],
           ],
         ),
       ),
