@@ -7,6 +7,26 @@ class WhatsNewCatalog {
   WhatsNewCatalog._();
 
   static const Map<String, Map<String, List<String>>> _releases = {
+    '1.0.18': {
+      'en': [
+        'Smart Weekly Streak Calendar: played days show ✓ and missed days show ✕ on the exact weekday.',
+        'Battle Arena and Daily Quiz both count toward your daily streak.',
+        'Streak Milestone Rewards: unlock bonus Coins, Gems & Power-Ups at 3, 7, 14 and 30 days.',
+        'Mistake Notebook: revise questions you missed — answer right twice in a row to master and clear them.',
+      ],
+      'bn': [
+        'স্মার্ট স্ট্রিক ক্যালেন্ডার: সপ্তাহের যেদিন খেলবেন সেদিন টিক (✓) এবং মিস হলে ক্রস (✕) দেখাবে।',
+        'Daily Quiz এবং Battle Arena — দুটো খেললেই এখন ডেইলি স্ট্রিক বাড়বে।',
+        'স্ট্রিক মাইলস্টোন বোনাস: ৩, ৭, ১৪ ও ৩০ দিনের স্ট্রিকে ফ্রি Coins, Gems ও Power-Ups জিতুন।',
+        'ভুল প্রশ্নের খাতা (Mistake Notebook): ভুল হওয়া প্রশ্ন আলাদা প্র্যাকটিস করুন — পরপর ২ বার ঠিক উত্তর দিলে ক্লিয়ার হবে।',
+      ],
+      'hi': [
+        'स्मार्ट वीकली स्ट्रीक कैलेंडर: खेले गए दिन पर टिक (✓) और छूटे हुए दिन पर क्रॉस (✕) दिखेगा।',
+        'Daily Quiz और Battle Arena — दोनों खेलने पर अब डेली स्ट्रीक बढ़ेगी।',
+        'स्ट्रीक माइलस्टोन इनाम: 3, 7, 14 और 30 दिन की स्ट्रीक पर बोनस Coins, Gems और Power-Ups पाएँ।',
+        'गलतियों की नोटबुक (Mistake Notebook): गलत हुए प्रश्नों का अभ्यास करें — लगातार 2 बार सही उत्तर देकर क्लियर करें।',
+      ],
+    },
     '1.0.15': {
       'en': [
         'Create a complete subject and its chapters with AI from Chapter Manager.',
