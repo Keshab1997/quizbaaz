@@ -534,4 +534,8 @@ const Map<String, String> kStringsHi = {
   'onboard3Desc':
       'अध्यायवार प्रश्नों का अभ्यास करें, विस्तृत नोट्स देखें और 3D पोडियम पर चैंपियन के रूप में चमकें!',
   'splashTagline': 'नेक्स्ट-जेन 3D गेमिंग लर्निंग प्लेटफॉर्म',
+  'mistakeNotebookTitle': 'गलतियों की नोटबुक',
+  'mistakeNotebookSubtitle':
+      '{n} प्रश्न रिवाइज़ करें — लगातार 2 बार सही उत्तर देकर क्लियर करें!',
+  'mistakeNotebookBtn': 'गलतियाँ सुधारें ({n})',
 };

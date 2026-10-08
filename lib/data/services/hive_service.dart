@@ -5,6 +5,7 @@ import 'package:hive/hive.dart';
 
 import '../models/chapter_set_progress.dart';
 import '../models/notification_item.dart';
+import '../models/question_model.dart';
 import '../models/user_model.dart';
 import '../models/user_stats.dart';
 
@@ -43,8 +44,15 @@ class HiveService {
   static const _purchaseHistoryKey = 'purchase_history';
   static const _notificationHistoryKey = 'notification_history';
   static const _chapterSetsKey = 'chapter_set_progress';
+  static const _mistakeQuestionsKey = 'mistake_questions';
   static const _battleUsedQuestionsKey = 'battle_used_questions';
   static const _battleProcessedRoomsKey = 'battle_processed_rooms';
+
+  /// Consecutive correct answers in Mistake Revision needed to clear a question.
+  static const int mistakeMasteryStreak = 2;
+
+  /// Maximum number of questions kept in the Mistake Notebook.
+  static const int mistakeQuestionsCap = 100;
 
   /// How many question ids are remembered before the no-repeat cycle restarts.
   static const battleUsedQuestionsCap = 1000;
@@ -550,6 +558,115 @@ class HiveService {
 
   static Future<void> clearCache() async {
     await _cacheBox.clear();
+  }
+
+  // ----------------------------------------------------- Mistake notebook --
+
+  static List<Map<String, dynamic>> _loadRawMistakes() {
+    final raw = _statsBox.get(_mistakeQuestionsKey);
+    if (raw is! String || raw.isEmpty) return <Map<String, dynamic>>[];
+    try {
+      final decoded = jsonDecode(raw);
+      if (decoded is! List) return <Map<String, dynamic>>[];
+      return decoded
+          .whereType<Map>()
+          .map((e) => Map<String, dynamic>.from(e))
+          .toList();
+    } catch (e) {
+      debugPrint('Hive: corrupt mistake_questions – $e');
+      return <Map<String, dynamic>>[];
+    }
+  }
+
+  /// Number of unmastered questions currently stored in the Mistake Notebook.
+  static int mistakeQuestionCount() => loadMistakeQuestions().length;
+
+  /// Loads questions from the Mistake Notebook (most recent mistake first).
+  static List<QuestionModel> loadMistakeQuestions({int? limit}) {
+    final rows = _loadRawMistakes();
+    final questions = <QuestionModel>[];
+    for (final row in rows) {
+      final qMap = row['question'];
+      if (qMap is Map) {
+        try {
+          questions.add(
+            QuestionModel.fromJson(Map<String, dynamic>.from(qMap)),
+          );
+        } catch (_) {}
+      }
+      if (limit != null && questions.length >= limit) break;
+    }
+    return questions;
+  }
+
+  /// How many consecutive times [questionId] has been answered right in
+  /// Mistake Revision (`0` when freshly added or after another wrong answer).
+  static int mistakeCorrectStreak(String questionId) {
+    for (final row in _loadRawMistakes()) {
+      final qMap = row['question'];
+      if (qMap is Map && qMap['id']?.toString() == questionId) {
+        return (row['correct_streak'] as num?)?.toInt() ?? 0;
+      }
+    }
+    return 0;
+  }
+
+  /// Records a question outcome for the Mistake Notebook.
+  ///
+  /// * Any wrong answer (`isCorrect == false`) adds or bumps the question in
+  ///   the notebook and resets its `correct_streak` to `0`.
+  /// * A right answer during Mistake Revision (`isCorrect == true` and
+  ///   `isMistakeRevision == true`) increments `correct_streak`; reaching
+  ///   [mistakeMasteryStreak] (`2`) removes the question from the notebook.
+  static Future<void> recordQuestionAttempt(
+    QuestionModel question, {
+    required bool isCorrect,
+    bool isMistakeRevision = false,
+  }) async {
+    if (question.id.isEmpty) return;
+    final rows = _loadRawMistakes();
+    final idx = rows.indexWhere((r) {
+      final qMap = r['question'];
+      return qMap is Map && qMap['id']?.toString() == question.id;
+    });
+
+    if (!isCorrect) {
+      final nowMs = DateTime.now().millisecondsSinceEpoch;
+      if (idx >= 0) {
+        final prevWrong = (rows[idx]['wrong_count'] as num?)?.toInt() ?? 1;
+        final updated = <String, dynamic>{
+          'question': question.toJson(),
+          'wrong_count': prevWrong + 1,
+          'correct_streak': 0,
+          'updated_at': nowMs,
+        };
+        rows.removeAt(idx);
+        rows.insert(0, updated);
+      } else {
+        rows.insert(0, <String, dynamic>{
+          'question': question.toJson(),
+          'wrong_count': 1,
+          'correct_streak': 0,
+          'updated_at': nowMs,
+        });
+        if (rows.length > mistakeQuestionsCap) {
+          rows.removeRange(mistakeQuestionsCap, rows.length);
+        }
+      }
+      await _statsBox.put(_mistakeQuestionsKey, jsonEncode(rows));
+      return;
+    }
+
+    if (isMistakeRevision && idx >= 0) {
+      final nextStreak =
+          ((rows[idx]['correct_streak'] as num?)?.toInt() ?? 0) + 1;
+      if (nextStreak >= mistakeMasteryStreak) {
+        rows.removeAt(idx);
+      } else {
+        rows[idx]['correct_streak'] = nextStreak;
+      }
+      await _statsBox.put(_mistakeQuestionsKey, jsonEncode(rows));
+    }
   }
 
   // -------------------------------------------------- Offline write queue --

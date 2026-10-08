@@ -347,6 +347,25 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
                       );
                     },
                   ),
+                  if (HiveService.mistakeQuestionCount() > 0) ...[
+                    const SizedBox(height: 12),
+                    NeonButton(
+                      text: S.mistakeNotebookBtn(
+                        n: HiveService.mistakeQuestionCount(),
+                      ),
+                      gradient: AppColors.fireGradient,
+                      onPressed: () async {
+                        final navigator = Navigator.of(context);
+                        await context.read<QuizProvider>().startMistakeQuiz();
+                        if (!mounted) return;
+                        navigator.pushReplacement(
+                          MaterialPageRoute(
+                            builder: (_) => const DailyQuizScreen(),
+                          ),
+                        );
+                      },
+                    ),
+                  ],
                   const SizedBox(height: 12),
                   OutlinedButton(
                     style: OutlinedButton.styleFrom(

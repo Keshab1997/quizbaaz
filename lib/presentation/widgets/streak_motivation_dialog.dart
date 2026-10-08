@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import '../../core/constants/app_assets.dart';
@@ -54,6 +56,7 @@ class _StreakMotivationDialogState extends State<StreakMotivationDialog>
   late AnimationController _controller;
   late Animation<double> _scaleAnimation;
   late Animation<double> _fireAnimation;
+  Timer? _repeatTimer;
 
   @override
   void initState() {
@@ -75,7 +78,7 @@ class _StreakMotivationDialogState extends State<StreakMotivationDialog>
 
     _controller.forward();
 
-    Future.delayed(const Duration(milliseconds: 600), () {
+    _repeatTimer = Timer(const Duration(milliseconds: 600), () {
       if (mounted) {
         _controller.repeat(reverse: true);
       }
@@ -84,6 +87,7 @@ class _StreakMotivationDialogState extends State<StreakMotivationDialog>
 
   @override
   void dispose() {
+    _repeatTimer?.cancel();
     _controller.dispose();
     super.dispose();
   }

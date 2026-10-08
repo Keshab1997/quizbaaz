@@ -38,6 +38,9 @@ class QuizProvider extends ChangeNotifier {
   /// True when this run is a replay and must not credit anything.
   bool _isPractice = false;
 
+  /// True when this run is revising wrong answers from the Mistake Notebook.
+  bool _isMistakeRevision = false;
+
   /// True after the player quits mid-run.
   ///
   /// Quitting must freeze the run completely: the countdown stops, and the
@@ -362,6 +365,30 @@ class QuizProvider extends ChangeNotifier {
   /// True when nothing in this run counts towards rewards or stats.
   bool get isPractice => _isPractice;
 
+  /// True when this run is a Mistake Notebook revision session.
+  bool get isMistakeRevision => _isMistakeRevision;
+
+  /// Starts a Mistake Notebook revision session from stored wrong answers.
+  ///
+  /// Runs as practice (`_isPractice = true`) so it cannot be used to farm
+  /// coins/gems/leaderboard, and answering a question right twice in a row
+  /// clears it from the notebook.
+  Future<void> startMistakeQuiz({int maxQuestions = 10}) async {
+    _resetQuizState();
+    _isDailyQuiz = false;
+    _isPractice = true;
+    _isMistakeRevision = true;
+
+    final mistakes = HiveService.loadMistakeQuestions(limit: maxQuestions);
+    _questions = _shuffleOptions(mistakes);
+    _isLoading = false;
+
+    if (_questions.isNotEmpty) _startTimer();
+    SoundService.instance.play('quiz_start');
+    Haptics.tap();
+    notifyListeners();
+  }
+
   /// True when the finished run was a chapter set that can offer a replay.
   bool get isChapterRun =>
       !_isDailyQuiz && _chapterId != null && _questions.isNotEmpty;
@@ -491,6 +518,8 @@ class QuizProvider extends ChangeNotifier {
     _dailyUnrankedReason = null;
     _dailyScoreOutcome = DailyScoreOutcome.notApplicable;
     _setIndex = 0;
+    _isPractice = false;
+    _isMistakeRevision = false;
     _chapterQuestionCount = 0;
     _currentIndex = 0;
     _score = 0;
@@ -623,6 +652,13 @@ class QuizProvider extends ChangeNotifier {
           status: AnswerStatus.answered,
         ),
       );
+      unawaited(
+        HiveService.recordQuestionAttempt(
+          q,
+          isCorrect: index == correctIndex,
+          isMistakeRevision: _isMistakeRevision,
+        ),
+      );
     }
 
     notifyListeners();
@@ -663,6 +699,13 @@ class QuizProvider extends ChangeNotifier {
           question: q,
           selectedIndex: null,
           status: AnswerStatus.timedOut,
+        ),
+      );
+      unawaited(
+        HiveService.recordQuestionAttempt(
+          q,
+          isCorrect: false,
+          isMistakeRevision: _isMistakeRevision,
         ),
       );
     }

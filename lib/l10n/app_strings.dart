@@ -613,4 +613,9 @@ class S {
   static String get onboard3Title => raw('onboard3Title');
   static String get onboard3Desc => raw('onboard3Desc');
   static String get splashTagline => raw('splashTagline');
+  static String get mistakeNotebookTitle => raw('mistakeNotebookTitle');
+  static String mistakeNotebookSubtitle({required Object n}) =>
+      fill(raw('mistakeNotebookSubtitle'), {'n': n});
+  static String mistakeNotebookBtn({required Object n}) =>
+      fill(raw('mistakeNotebookBtn'), {'n': n});
 }

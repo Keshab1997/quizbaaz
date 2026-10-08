@@ -18,6 +18,7 @@ import '../../../data/services/ad_service.dart';
 import '../../../data/services/app_update_service.dart';
 import '../../../data/services/consent_service.dart';
 import '../../../data/services/haptic_service.dart';
+import '../../../data/services/hive_service.dart';
 import '../../../data/services/notification_inbox.dart';
 import '../../../data/services/notification_service.dart';
 import '../../../data/services/onesignal_service.dart';
@@ -175,6 +176,18 @@ class _DashboardScreenState extends State<DashboardScreen> {
     );
   }
 
+  Future<void> _startMistakeQuiz() async {
+    SoundService.instance.play('ui_whoosh');
+    Haptics.tap();
+    await context.read<QuizProvider>().startMistakeQuiz();
+    if (!mounted) return;
+    await Navigator.push(
+      context,
+      MaterialPageRoute(builder: (_) => const DailyQuizScreen()),
+    );
+    if (mounted) setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     final userProvider = context.watch<UserProvider>();
@@ -237,6 +250,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
                           // 5. Stat Strip
                           _buildStatStrip(user, userProvider),
+                          if (HiveService.mistakeQuestionCount() > 0) ...[
+                            const SizedBox(height: 16),
+                            _buildMistakeNotebookCard(
+                              HiveService.mistakeQuestionCount(),
+                            ),
+                          ],
                           const SizedBox(height: 22),
 
                           // 6. Daily Quiz Champion Card
@@ -711,6 +730,73 @@ class _DashboardScreenState extends State<DashboardScreen> {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildMistakeNotebookCard(int mistakeCount) {
+    return GlassCard(
+      onTap: _startMistakeQuiz,
+      borderRadius: 20,
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 14),
+      borderColor: AppColors.neonPurple.withValues(alpha: 0.45),
+      child: Row(
+        children: [
+          Container(
+            width: 42,
+            height: 42,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: AppColors.neonPurple.withValues(alpha: 0.2),
+              border: Border.all(
+                color: AppColors.neonPurple.withValues(alpha: 0.5),
+              ),
+            ),
+            child: const Icon(
+              Icons.psychology_alt_rounded,
+              color: AppColors.neonCyan,
+              size: 23,
+            ),
+          ),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  S.mistakeNotebookTitle,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+                const SizedBox(height: 2),
+                Text(
+                  S.mistakeNotebookSubtitle(n: mistakeCount),
+                  style: const TextStyle(
+                    color: AppColors.textSecondary,
+                    fontSize: 11,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(width: 8),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+            decoration: BoxDecoration(
+              gradient: AppColors.primaryGradient,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: const Icon(
+              Icons.play_arrow_rounded,
+              color: Colors.white,
+              size: 18,
+            ),
+          ),
+        ],
       ),
     );
   }

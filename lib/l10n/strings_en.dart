@@ -549,4 +549,8 @@ const Map<String, String> kStringsEn = {
   'onboard3Desc':
       "Practice chapter-wise questions, view detailed notes, and shine as Yesterday's Champion on the 3D podium!",
   'splashTagline': 'A Next-Gen 3D Gamified Learning Platform',
+  'mistakeNotebookTitle': 'Mistake Notebook',
+  'mistakeNotebookSubtitle':
+      '{n} question(s) to revise — answer right twice to master!',
+  'mistakeNotebookBtn': 'Revise Mistakes ({n})',
 };

@@ -3,8 +3,11 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hive/hive.dart';
+import 'package:quizbaaz/data/models/localized_text.dart';
+import 'package:quizbaaz/data/models/question_model.dart';
 import 'package:quizbaaz/data/models/shop_item.dart';
 import 'package:quizbaaz/data/models/user_model.dart';
+import 'package:quizbaaz/data/providers/quiz_provider.dart';
 import 'package:quizbaaz/data/providers/user_provider.dart';
 import 'package:quizbaaz/data/services/hive_service.dart';
 import 'package:quizbaaz/data/services/onesignal_service.dart';
@@ -223,6 +226,77 @@ void main() {
         expect(find.text('7-Day Streak'), findsOneWidget);
         expect(find.text('14-Day Streak'), findsOneWidget);
         expect(find.text('30-Day Streak'), findsOneWidget);
+      },
+    );
+  });
+
+  group('Mistake Notebook revision mode', () {
+    QuestionModel sampleQuestion(String id) => QuestionModel(
+      id: id,
+      questionText: LocalizedText({'en': 'Question $id'}),
+      optionTexts: const [
+        LocalizedText({'en': 'A'}),
+        LocalizedText({'en': 'B'}),
+        LocalizedText({'en': 'C'}),
+        LocalizedText({'en': 'D'}),
+      ],
+      correctIndex: 1,
+      explanationText: const LocalizedText({'en': 'Explanation'}),
+      points: 10,
+      timeLimitSec: 15,
+    );
+
+    test(
+      'Wrong answers enter the Mistake Notebook and clear after 2 consecutive right revision answers',
+      () async {
+        final q1 = sampleQuestion('m_1');
+        final q2 = sampleQuestion('m_2');
+
+        expect(HiveService.mistakeQuestionCount(), 0);
+
+        await HiveService.recordQuestionAttempt(q1, isCorrect: false);
+        await HiveService.recordQuestionAttempt(q2, isCorrect: false);
+        expect(HiveService.mistakeQuestionCount(), 2);
+
+        // Start a Mistake Revision session via QuizProvider
+        final userProvider = UserProvider();
+        final quizProvider = QuizProvider(userProvider);
+        await quizProvider.startMistakeQuiz();
+        expect(quizProvider.isMistakeRevision, isTrue);
+        expect(quizProvider.isPractice, isTrue);
+        expect(quizProvider.questions.length, 2);
+        quizProvider.quitQuiz();
+
+        // 1st correct revision on q1 -> streak 1, still in notebook
+        await HiveService.recordQuestionAttempt(
+          q1,
+          isCorrect: true,
+          isMistakeRevision: true,
+        );
+        expect(HiveService.mistakeCorrectStreak('m_1'), 1);
+        expect(HiveService.mistakeQuestionCount(), 2);
+
+        // Getting q1 wrong again resets its streak to 0
+        await HiveService.recordQuestionAttempt(
+          q1,
+          isCorrect: false,
+          isMistakeRevision: true,
+        );
+        expect(HiveService.mistakeCorrectStreak('m_1'), 0);
+
+        // Two consecutive correct revisions on q1 clear it from the notebook
+        await HiveService.recordQuestionAttempt(
+          q1,
+          isCorrect: true,
+          isMistakeRevision: true,
+        );
+        await HiveService.recordQuestionAttempt(
+          q1,
+          isCorrect: true,
+          isMistakeRevision: true,
+        );
+        expect(HiveService.mistakeQuestionCount(), 1);
+        expect(HiveService.loadMistakeQuestions().single.id, 'm_2');
       },
     );
   });
