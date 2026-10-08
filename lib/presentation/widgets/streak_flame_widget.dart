@@ -180,35 +180,75 @@ class StreakFlameWidget extends StatelessWidget {
                 labelColor = AppColors.textMuted;
               }
 
-              return Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Container(
-                    width: 34,
-                    height: 34,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: fillColor,
-                      border: Border.all(
-                        color: borderColor,
-                        width: isToday ? 2 : 1.2,
+              return GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: () {
+                  const dayNames = [
+                    'Mon',
+                    'Tue',
+                    'Wed',
+                    'Thu',
+                    'Fri',
+                    'Sat',
+                    'Sun',
+                  ];
+                  final dateStr = '${dayDate.day}/${dayDate.month}';
+                  final statusText =
+                      isPlayed
+                          ? 'Played ✓'
+                          : isMissed
+                          ? 'Missed ✕'
+                          : isToday
+                          ? 'Today — Play Daily Quiz or Battle Arena!'
+                          : 'Upcoming';
+                  final messenger = ScaffoldMessenger.maybeOf(context);
+                  if (messenger == null) return;
+                  messenger.hideCurrentSnackBar();
+                  messenger.showSnackBar(
+                    SnackBar(
+                      duration: const Duration(seconds: 2),
+                      content: Text(
+                        '📅 ${dayNames[index]} ($dateStr): $statusText',
+                      ),
+                      backgroundColor:
+                          isPlayed
+                              ? AppColors.neonGreen
+                              : (isMissed
+                                  ? AppColors.neonRed
+                                  : AppColors.surfaceElevated),
+                    ),
+                  );
+                },
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Container(
+                      width: 34,
+                      height: 34,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: fillColor,
+                        border: Border.all(
+                          color: borderColor,
+                          width: isToday ? 2 : 1.2,
+                        ),
+                      ),
+                      child: Center(child: centerChild),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      days[index],
+                      style: TextStyle(
+                        fontSize: 10,
+                        fontWeight:
+                            (isToday || isPlayed || isMissed)
+                                ? FontWeight.w800
+                                : FontWeight.w600,
+                        color: labelColor,
                       ),
                     ),
-                    child: Center(child: centerChild),
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    days[index],
-                    style: TextStyle(
-                      fontSize: 10,
-                      fontWeight:
-                          (isToday || isPlayed || isMissed)
-                              ? FontWeight.w800
-                              : FontWeight.w600,
-                      color: labelColor,
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               );
             }),
           ),

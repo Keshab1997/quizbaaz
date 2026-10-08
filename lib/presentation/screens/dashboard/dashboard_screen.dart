@@ -8,6 +8,7 @@ import '../../../core/constants/app_assets.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../data/models/champion_model.dart';
 import '../../../data/models/leaderboard_model.dart';
+import '../../../data/models/shop_item.dart';
 import '../../../data/models/user_model.dart';
 import '../../../data/models/user_stats.dart';
 import '../../../data/providers/quiz_provider.dart';
@@ -40,6 +41,7 @@ import '../shop/shop_screen.dart';
 import '../../widgets/aura_avatar.dart';
 import '../../widgets/cached_avatar.dart';
 import '../../widgets/daily_winner_celebration_dialog.dart';
+import '../../widgets/streak_motivation_dialog.dart';
 import '../../widgets/streak_reset_dialog.dart';
 import '../../widgets/streak_flame_widget.dart';
 import '../../widgets/champion_podium_widget.dart';
@@ -210,6 +212,18 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             streakDays: user.dailyStreak,
                             lastStreakDate: user.lastStreakDate,
                             streakDates: user.streakDates,
+                            onTap:
+                                () => StreakMotivationDialog.show(
+                                  context,
+                                  currentStreak: user.dailyStreak,
+                                  streakGoal:
+                                      userProvider.config.streakGoalDays,
+                                  hasShield: userProvider.hasItem(
+                                    ShopItemIds.streakShield,
+                                  ),
+                                  unlockedReward:
+                                      userProvider.takePendingStreakMilestone(),
+                                ),
                           ),
                           const SizedBox(height: 16),
 

@@ -3,11 +3,13 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hive/hive.dart';
+import 'package:quizbaaz/data/models/shop_item.dart';
 import 'package:quizbaaz/data/models/user_model.dart';
 import 'package:quizbaaz/data/providers/user_provider.dart';
 import 'package:quizbaaz/data/services/hive_service.dart';
 import 'package:quizbaaz/data/services/onesignal_service.dart';
 import 'package:quizbaaz/presentation/widgets/streak_flame_widget.dart';
+import 'package:quizbaaz/presentation/widgets/streak_motivation_dialog.dart';
 
 void main() {
   late Directory tempDir;
@@ -105,6 +107,46 @@ void main() {
       );
       expect(provider.user.dailyStreak, 0);
     });
+
+    test(
+      'StreakMilestoneReward grants coins, gems and items on 3, 7, 14, 30 days',
+      () async {
+        expect(StreakMilestoneReward.forStreak(1), isNull);
+        final r3 = StreakMilestoneReward.forStreak(3)!;
+        expect(r3.coins, 25);
+        expect(r3.gems, 2);
+
+        final r7 = StreakMilestoneReward.forStreak(7)!;
+        expect(r7.coins, 50);
+        expect(r7.gems, 5);
+        expect(r7.itemIds, contains(ShopItemIds.fiftyFifty));
+
+        final r14 = StreakMilestoneReward.forStreak(14)!;
+        expect(r14.coins, 100);
+        expect(r14.gems, 10);
+        expect(r14.itemIds, contains(ShopItemIds.streakShield));
+
+        // Simulate reaching Day 3 via Battle Arena after a 2-day streak from yesterday
+        final yesterday = DateTime.now().subtract(const Duration(days: 1));
+        final seeded = UserModel.newPlayer().copyWith(
+          dailyStreak: 2,
+          lastStreakDate: UserModel.dateKey(yesterday),
+        );
+        await HiveService.saveUser(seeded);
+
+        final provider = UserProvider();
+        await provider.initialize();
+        await provider.recordBattleResult(won: true);
+
+        expect(provider.user.dailyStreak, 3);
+        expect(provider.user.coins, 25);
+        expect(provider.user.gems, 2);
+        final unlocked = provider.takePendingStreakMilestone();
+        expect(unlocked, isNotNull);
+        expect(unlocked!.streakDays, 3);
+        expect(provider.takePendingStreakMilestone(), isNull);
+      },
+    );
   });
 
   group('StreakFlameWidget weekly calendar markers', () {
@@ -157,6 +199,30 @@ void main() {
         expect(find.byIcon(Icons.check_rounded), findsNWidgets(2));
         // Tue & Wed missed -> 2 crosses
         expect(find.byIcon(Icons.close_rounded), findsNWidgets(2));
+      },
+    );
+
+    testWidgets(
+      'StreakMotivationDialog displays milestone roadmap and unlocked reward banner',
+      (tester) async {
+        await tester.pumpWidget(
+          MaterialApp(
+            home: Scaffold(
+              body: StreakMotivationDialog(
+                currentStreak: 3,
+                streakGoal: 7,
+                unlockedReward: StreakMilestoneReward.forStreak(3),
+              ),
+            ),
+          ),
+        );
+        await tester.pump(const Duration(milliseconds: 500));
+
+        expect(find.text('🎁 3-DAY MILESTONE UNLOCKED!'), findsOneWidget);
+        expect(find.text('3-Day Streak'), findsOneWidget);
+        expect(find.text('7-Day Streak'), findsOneWidget);
+        expect(find.text('14-Day Streak'), findsOneWidget);
+        expect(find.text('30-Day Streak'), findsOneWidget);
       },
     );
   });

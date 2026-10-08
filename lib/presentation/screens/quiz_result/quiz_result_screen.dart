@@ -38,14 +38,15 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
     });
   }
 
-  /// Celebrates streak milestones (e.g. every [AppConfig.streakGoalDays]
-  /// days) once per streak value — guarded in Hive so it never repeats.
+  /// Celebrates streak milestones (3, 7, 14, 30+ days) once per streak value —
+  /// guarded in Hive so it never repeats.
   void _maybeShowStreakMotivation() {
     final userProvider = context.read<UserProvider>();
     final streak = userProvider.user.dailyStreak;
     final goal = userProvider.config.streakGoalDays;
-    if (streak <= 0 || goal <= 0) return;
-    if (streak % goal != 0) return;
+    final unlockedReward = userProvider.takePendingStreakMilestone();
+    if (streak <= 0) return;
+    if (unlockedReward == null && (goal <= 0 || streak % goal != 0)) return;
 
     if (HiveService.getMeta<int>('last_streak_motivation') == streak) return;
     HiveService.setMeta('last_streak_motivation', streak);
@@ -56,6 +57,7 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
       currentStreak: streak,
       streakGoal: goal,
       hasShield: userProvider.hasItem(ShopItemIds.streakShield),
+      unlockedReward: unlockedReward,
     );
   }
 

@@ -73,6 +73,71 @@ class StreakResetDetails {
   const StreakResetDetails({required this.lostStreak, required this.hasShield});
 }
 
+/// Reward granted when a user reaches a daily streak milestone (3, 7, 14, 30+ days).
+class StreakMilestoneReward {
+  final int streakDays;
+  final int coins;
+  final int gems;
+  final List<String> itemIds;
+  final List<String> itemNames;
+
+  const StreakMilestoneReward({
+    required this.streakDays,
+    required this.coins,
+    required this.gems,
+    this.itemIds = const <String>[],
+    this.itemNames = const <String>[],
+  });
+
+  /// Returns the next milestone day target above [currentStreak].
+  static int nextGoalFor(int currentStreak) {
+    if (currentStreak < 3) return 3;
+    if (currentStreak < 7) return 7;
+    if (currentStreak < 14) return 14;
+    if (currentStreak < 30) return 30;
+    return ((currentStreak ~/ 7) + 1) * 7;
+  }
+
+  /// Returns the milestone reward for [streak], or null when [streak] is not a
+  /// milestone day.
+  static StreakMilestoneReward? forStreak(int streak) {
+    if (streak == 3) {
+      return const StreakMilestoneReward(streakDays: 3, coins: 25, gems: 2);
+    }
+    if (streak == 7) {
+      return const StreakMilestoneReward(
+        streakDays: 7,
+        coins: 50,
+        gems: 5,
+        itemIds: [ShopItemIds.fiftyFifty],
+        itemNames: ['50-50 Lifeline'],
+      );
+    }
+    if (streak == 14) {
+      return const StreakMilestoneReward(
+        streakDays: 14,
+        coins: 100,
+        gems: 10,
+        itemIds: [ShopItemIds.streakShield],
+        itemNames: ['Streak Freeze Shield'],
+      );
+    }
+    if (streak >= 30 && streak % 30 == 0) {
+      return StreakMilestoneReward(
+        streakDays: streak,
+        coins: 250,
+        gems: 25,
+        itemIds: const [ShopItemIds.streakShield, ShopItemIds.coinBooster],
+        itemNames: const ['Streak Freeze Shield', '2x Coin Booster'],
+      );
+    }
+    if (streak > 14 && streak % 7 == 0) {
+      return StreakMilestoneReward(streakDays: streak, coins: 75, gems: 8);
+    }
+    return null;
+  }
+}
+
 /// Owns the player's profile, stats and ranking data.
 ///
 /// **Hive is the source of truth.** Every mutation writes to Hive first and
@@ -91,6 +156,17 @@ class UserProvider extends ChangeNotifier {
   bool _isLoading = false;
   bool _isInitialized = false;
   String? _lastDailyRewardDate;
+  StreakMilestoneReward? _pendingStreakMilestone;
+
+  /// Newly unlocked streak milestone reward waiting to be celebrated in UI.
+  StreakMilestoneReward? get pendingStreakMilestone => _pendingStreakMilestone;
+
+  /// Consumes and returns any pending streak milestone reward.
+  StreakMilestoneReward? takePendingStreakMilestone() {
+    final reward = _pendingStreakMilestone;
+    _pendingStreakMilestone = null;
+    return reward;
+  }
 
   /// Highest daily score the current flat scoring can produce: 10 questions ×
   /// 10 points, doubled by the Double Points booster. Anything above this is
@@ -885,6 +961,27 @@ class UserProvider extends ChangeNotifier {
       _user.dailyStreak = previousStreak; // Restore previous streak
       final yesterday = now.subtract(const Duration(days: 1));
       _user.recordStreakDate(UserModel.dateKey(yesterday));
+    }
+
+    if (_user.dailyStreak != previousStreak) {
+      if (_user.dailyStreak <= 1) {
+        HiveService.setMeta('last_rewarded_streak_milestone', 0);
+      }
+      final lastRewarded =
+          HiveService.getMeta<int>('last_rewarded_streak_milestone') ?? 0;
+      final reward = StreakMilestoneReward.forStreak(_user.dailyStreak);
+      if (reward != null && _user.dailyStreak > lastRewarded) {
+        _user.coins += reward.coins;
+        _user.gems += reward.gems;
+        for (final itemId in reward.itemIds) {
+          _user.inventory[itemId] = (_user.inventory[itemId] ?? 0) + 1;
+        }
+        HiveService.setMeta(
+          'last_rewarded_streak_milestone',
+          _user.dailyStreak,
+        );
+        _pendingStreakMilestone = reward;
+      }
     }
 
     _stats.touchStreak(_user.dailyStreak);
