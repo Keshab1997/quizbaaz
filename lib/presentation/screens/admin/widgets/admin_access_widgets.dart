@@ -95,7 +95,7 @@ class _AdminPromptCopyCardState extends State<AdminPromptCopyCard> {
             ),
             const SizedBox(height: 6),
             const Text(
-              'Copy a prompt, get JSON back, then use Paste JSON below. Nothing is auto-saved.',
+              'Copy a prompt, get JSON back, then Import JSON below. Nothing is auto-saved.',
               style: TextStyle(
                 fontSize: 11.5,
                 color: AppColors.textSecondary,
@@ -104,7 +104,8 @@ class _AdminPromptCopyCardState extends State<AdminPromptCopyCard> {
             ),
             const SizedBox(height: 12),
             _promptRow(
-              title: '1 · Write 10 questions',
+              step: '1',
+              title: 'Write 10 questions',
               subtitle: 'Model writes fresh en/bn/hi JSON for this chapter.',
               copied: _copiedWrite,
               onCopy:
@@ -125,7 +126,7 @@ class _AdminPromptCopyCardState extends State<AdminPromptCopyCard> {
               style: const TextStyle(color: Colors.white, fontSize: 13),
               decoration: InputDecoration(
                 hintText:
-                    'Optional: paste normal questions here — the Fix prompt includes them.',
+                    'Optional: paste plain questions here — step 2 converts them to JSON.',
                 hintStyle: const TextStyle(
                   color: AppColors.textMuted,
                   fontSize: 12,
@@ -140,7 +141,8 @@ class _AdminPromptCopyCardState extends State<AdminPromptCopyCard> {
             ),
             const SizedBox(height: 10),
             _promptRow(
-              title: '2 · Fix my text into JSON',
+              step: '2',
+              title: 'Fix my text into JSON',
               subtitle: 'Model converts the text above into import-ready JSON.',
               copied: _copiedFix,
               enabled: _plainController.text.trim().isNotEmpty,
@@ -154,7 +156,32 @@ class _AdminPromptCopyCardState extends State<AdminPromptCopyCard> {
                   ),
             ),
             if (widget.onImportJson != null || widget.onGenerate != null) ...[
-              const SizedBox(height: 12),
+              const SizedBox(height: 14),
+              // The two ends of the flow, labelled so the order reads:
+              // copy a prompt → then bring the result back (or let the key
+              // pool write it). The steps above produce the JSON; these
+              // accept it.
+              Row(
+                children: [
+                  Text(
+                    'THEN',
+                    style: TextStyle(
+                      fontSize: 10.5,
+                      fontWeight: FontWeight.w900,
+                      letterSpacing: 1.1,
+                      color: AppColors.textMuted.withValues(alpha: 0.9),
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: Divider(
+                      height: 1,
+                      color: Colors.white.withValues(alpha: 0.08),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 10),
               Row(
                 children: [
                   if (widget.onImportJson != null)
@@ -204,7 +231,33 @@ class _AdminPromptCopyCardState extends State<AdminPromptCopyCard> {
     );
   }
 
+  /// Numbered badge, matching the step markers in the Import JSON sheet so
+  /// both halves of the workflow read the same way. Dims with the row when
+  /// the step is not available yet.
+  Widget _stepBadge(String number, {bool enabled = true}) {
+    final colour = enabled ? AppColors.neonGold : AppColors.textMuted;
+    return Container(
+      width: 22,
+      height: 22,
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        color: colour.withValues(alpha: 0.16),
+        borderRadius: BorderRadius.circular(7),
+        border: Border.all(color: colour.withValues(alpha: 0.5)),
+      ),
+      child: Text(
+        number,
+        style: TextStyle(
+          fontSize: 12,
+          fontWeight: FontWeight.w900,
+          color: colour,
+        ),
+      ),
+    );
+  }
+
   Widget _promptRow({
+    required String step,
     required String title,
     required String subtitle,
     required bool copied,
@@ -220,6 +273,8 @@ class _AdminPromptCopyCardState extends State<AdminPromptCopyCard> {
       ),
       child: Row(
         children: [
+          _stepBadge(step, enabled: enabled),
+          const SizedBox(width: 10),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
