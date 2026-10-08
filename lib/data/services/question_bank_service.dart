@@ -111,6 +111,26 @@ class QuestionBankService {
     }
   }
 
+  /// IDs of questions explicitly deleted by an admin in [chapterId], stored on
+  /// the `question_banks/{chapterId}` document so bundled asset questions with
+  /// those IDs are also hidden from students after deletion.
+  Future<Set<String>> fetchDeletedQuestionIds(String chapterId) async {
+    final bankDoc = _bank(chapterId);
+    if (bankDoc == null) return const <String>{};
+    try {
+      final snap = await bankDoc.get();
+      final raw = snap.data()?['deleted_question_ids'];
+      if (raw is! List) return const <String>{};
+      return {
+        for (final item in raw)
+          if (item.toString().trim().isNotEmpty) item.toString().trim(),
+      };
+    } catch (e) {
+      debugPrint('QuestionBankService: deleted ids unavailable — $e');
+      return const <String>{};
+    }
+  }
+
   /// Question count for one chapter, without downloading the questions.
   Future<int> countQuestions(String chapterId) async {
     final col = _questions(chapterId);
@@ -212,6 +232,7 @@ class QuestionBankService {
       await bankDoc.set({
         'chapter_id': chapterId,
         'question_count': countAfter,
+        'deleted_question_ids': FieldValue.arrayRemove(written),
         'updated_at': FieldValue.serverTimestamp(),
         'updated_by': actorUid,
       }, SetOptions(merge: true));
@@ -255,6 +276,15 @@ class QuestionBankService {
       'updated_by': actorUid,
       'updated_at': FieldValue.serverTimestamp(),
     }, SetOptions(merge: true));
+
+    final bankDoc = _bank(chapterId);
+    if (bankDoc != null) {
+      await bankDoc.set({
+        'deleted_question_ids': FieldValue.arrayRemove([question.id]),
+        'updated_at': FieldValue.serverTimestamp(),
+        'updated_by': actorUid,
+      }, SetOptions(merge: true));
+    }
 
     await _writeAudit(
       action: 'question_updated',
@@ -325,7 +355,9 @@ class QuestionBankService {
     final bankDoc = _bank(chapterId);
     if (bankDoc != null) {
       await bankDoc.set({
+        'chapter_id': chapterId,
         'question_count': countAfter,
+        'deleted_question_ids': FieldValue.arrayUnion(ids),
         'updated_at': FieldValue.serverTimestamp(),
         'updated_by': actorUid,
       }, SetOptions(merge: true));

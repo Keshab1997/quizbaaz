@@ -2,6 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:quizbaaz/data/models/chapter_model.dart';
 import 'package:quizbaaz/data/models/content_deletions.dart';
 import 'package:quizbaaz/data/models/localized_text.dart';
+import 'package:quizbaaz/data/repositories/quiz_repository.dart';
 import 'package:quizbaaz/data/services/chapter_catalog_service.dart';
 
 /// Deleting content must actually delete it.
@@ -141,5 +142,28 @@ void main() {
       expect(merged.single.chapters.single.chapterId, 'math_ch_01');
       expect(merged.single.totalChapters, 1);
     });
+
+    test(
+      'mergeQuestionsById drops deleted question IDs from bundled and remote banks',
+      () {
+        final bundled = [
+          {'id': 'q1', 'question': 'Bundled 1'},
+          {'id': 'q2', 'question': 'Bundled 2'},
+        ];
+        final remote = [
+          {'id': 'q2', 'question': 'Edited 2'},
+          {'id': 'q3', 'question': 'Remote 3'},
+        ];
+
+        final merged = QuizRepository.mergeQuestionsById(
+          bundled,
+          remote,
+          deletedIds: const {'q1', 'q3'},
+        );
+
+        expect(merged.map((q) => q['id']), ['q2']);
+        expect(merged.single['question'], 'Edited 2');
+      },
+    );
   });
 }

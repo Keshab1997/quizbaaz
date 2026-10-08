@@ -186,10 +186,20 @@ class QuizRepository {
         chapterId == null
             ? const <Map<String, dynamic>>[]
             : await _fetchRemoteQuestions(chapterId);
+    final deletedIds =
+        chapterId == null
+            ? const <String>{}
+            : await _bankService.fetchDeletedQuestionIds(chapterId);
 
-    final merged = _mergeById(assetRows, remoteRows);
+    final merged = mergeQuestionsById(
+      assetRows,
+      remoteRows,
+      deletedIds: deletedIds,
+    );
     if (merged.isNotEmpty) {
       await HiveService.cachePut(cacheKey, merged);
+    } else {
+      await HiveService.cacheRemove(cacheKey);
     }
     return merged.map(QuestionModel.fromJson).toList();
   }
@@ -247,21 +257,23 @@ class QuizRepository {
     }
   }
 
-  /// Merges two question lists on `id`, with [overrides] taking precedence.
+  /// Merges two question lists on `id`, with [overrides] taking precedence and
+  /// [deletedIds] removed from both bundled and remote layers.
   ///
   /// Order is preserved: bundled questions keep their authored sequence and
   /// anything new is appended, so a chapter does not reshuffle itself when the
   /// admin adds to it.
-  static List<Map<String, dynamic>> _mergeById(
+  static List<Map<String, dynamic>> mergeQuestionsById(
     List<Map<String, dynamic>> base,
-    List<Map<String, dynamic>> overrides,
-  ) {
+    List<Map<String, dynamic>> overrides, {
+    Set<String> deletedIds = const <String>{},
+  }) {
     final merged = <String, Map<String, dynamic>>{};
     final order = <String>[];
 
     void put(Map<String, dynamic> row) {
       final id = row['id']?.toString() ?? '';
-      if (id.isEmpty) return;
+      if (id.isEmpty || deletedIds.contains(id)) return;
       if (!merged.containsKey(id)) order.add(id);
       merged[id] = row;
     }

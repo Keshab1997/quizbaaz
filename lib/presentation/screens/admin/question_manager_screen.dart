@@ -79,7 +79,17 @@ class _QuestionManagerScreenState extends State<QuestionManagerScreen> {
     setState(() => _loading = true);
     List<QuestionModel> questions;
     try {
-      questions = await _bank.fetchQuestions(_chapterId);
+      if (widget.chapter.jsonFile.isNotEmpty) {
+        questions = await _repository.getChapterQuestions(
+          widget.chapter.jsonFile,
+          chapterId: _chapterId,
+          forceRefresh: true,
+        );
+      } else {
+        final remote = await _bank.fetchQuestions(_chapterId);
+        final deletedIds = await _bank.fetchDeletedQuestionIds(_chapterId);
+        questions = remote.where((q) => !deletedIds.contains(q.id)).toList();
+      }
     } catch (e) {
       questions = [];
       if (mounted) _toast('Could not load questions: $e', error: true);
