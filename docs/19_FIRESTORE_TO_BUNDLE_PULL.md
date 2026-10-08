@@ -171,3 +171,49 @@ validate_questions.py → Question banks are valid ✅
 সেই pull-এর সময় বাকি ৩৮টি চ্যাপ্টার খালি ছিল। বর্তমান coverage দেখতে
 `python3 tool/validate_questions.py --stats` চালাও; খালি চ্যাপ্টারগুলো
 পরের pull-এ Firestore-এ প্রশ্ন যোগ হলে bundle-এ ঢুকবে।
+
+---
+
+## মুছে ফেলা কনটেন্ট: `config/content_deletions`
+
+Admin panel থেকে chapter বা subject delete করলে সেটা কয়েকটা স্তরে যেতে হয় — আর
+একটা স্তরে যাওয়া চলতি অ্যাপের পক্ষে **কখনোই সম্ভব নয়**:
+
+| স্তর | কী হয় | কে করে |
+|---|---|---|
+| Firestore question bank | `question_banks/{chapterId}` আর তার সব প্রশ্ন মুছে যায় | অ্যাপ (`deleteChapterBank`) |
+| Firestore catalogue | override document গুলো মুছে যায় | অ্যাপ (`deleteChapter` / `deleteCategory`) |
+| প্রতিটি ডিভাইস | chapter/subject আর দেখায় না | অ্যাপ — merge-এর শেষে registry পড়ে |
+| **installed asset bundle** | **অসম্ভব** — অ্যাপ নিজের bundle লিখতে পারে না | — |
+| repo-র asset | ব্যাংক ফাইল + catalogue entry মুছে যায় | `tool/apply_content_deletions.py` |
+
+Bundled chapter-এর JSON অ্যাপের ভিতরে বাঁধা, তাই delete-টা Firestore-এ একটা
+**registry** হিসেবেও লেখা হয়:
+
+```text
+config/content_deletions
+  deleted_chapter_ids : ["sci_ch_02", …]
+  deleted_category_ids: ["cat_hist", …]
+```
+
+* `ChapterCatalogService.mergeWithAssets(..., removals:)` এই id গুলো merge-এর শেষ
+  ধাপে বাদ দেয় — bundle আর Firestore দুই দিক থেকেই। ফলে চ্যাপ্টারটা প্রত্যেক
+  ডিভাইসে চলে যায়; অফলাইনে থাকা ডিভাইস শেষবার দেখা registry ক্যাশ থেকে চালায়,
+  তাই নেট না থাকলেও মুছে ফেলা কনটেন্ট ফিরে আসে না।
+* repo-র bundle বদলাতে (এটাই "asset থেকে delete" এর অর্ধেকটা):
+
+```bash
+export GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json
+python3 tool/apply_content_deletions.py          # dry run — কী কী মুছবে
+python3 tool/apply_content_deletions.py --apply  # bundle থেকে মুছে দাও
+python3 tool/apply_content_deletions.py --check  # কিছু বাকি থাকলে exit 1
+python3 tool/validate_questions.py --strict      # তারপর validator
+```
+
+Key ছাড়া rehearsal: `--fixture deletions.json`; বা হাতে id দিয়ে
+`--chapter sci_ch_02 --apply`।
+
+**নিয়ম:** একই id দিয়ে chapter/subject আবার বানালে সেটা আবার দেখা যাবে — save
+path গুলো (`saveChapter`, `saveCategory`, `saveCategoryWithChapters`) registry থেকে
+সেই id মুছে দেয়। ব্যাংক ফাইল কেবল তখনই মোছে যখন বাকি কোনো চ্যাপ্টার আর সেটা
+ব্যবহার করে না।

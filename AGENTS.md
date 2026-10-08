@@ -363,6 +363,12 @@ rule in `firestore.rules` is denied outright** (there is no catch-all), so a new
 collection is broken the moment the client touches it — that is exactly how Admin
 → API Keys ended up rendering `permission-denied` (rules v2.2.0).
 
+**Deleting content is a registry, not a file delete.** A bundled chapter or
+subject lives in the asset bundle, which no installed app can rewrite, so a
+delete records its id in `config/content_deletions`; every device drops it at
+merge time and `tool/apply_content_deletions.py` removes the shipped JSON from
+the repo. Re-creating an id makes it visible again (the save paths clear it).
+
 **Remote config beats code.** `config/app` is an `AppConfig` document, and
 `AppConfig.fromJson` prefers its keys over the built-in defaults, so editing
 `app_config.dart` changes *nothing* on a device while the document still holds
@@ -471,7 +477,9 @@ python3 tool/validate_questions.py --strict
 - `docs/03` holds the JSON schemas, `docs/10` the question authoring guide,
   `docs/11` the admin generator plan, `docs/12` the battle arena, `docs/16`
   OneSignal/FCM live push, `docs/17` the Google Play release runbook, `docs/18`
-  the owner-facing publish checklist, `docs/19` the Firestore→bundle pull,
+  the owner-facing publish checklist, `docs/19` the Firestore→bundle pull
+  (and `config/content_deletions`, the registry a chapter/subject delete
+  writes — `tool/apply_content_deletions.py` drops those from the bundle),
   `docs/20` the Play Developer API autopublish of the store listing + AAB,
   `docs/21` the daily competition (one counted score per day, packets, the
   publishing cron) and `docs/22` the release-push pipeline (dashboard

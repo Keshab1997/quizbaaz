@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 
 import '../models/chapter_model.dart';
+import '../models/content_deletions.dart';
 import '../models/localized_text.dart';
 import 'hive_service.dart';
 
@@ -34,6 +35,15 @@ class ChapterCatalogService {
   static const String categoriesCollection = 'question_categories';
   static const String chaptersSubcollection = 'chapters';
   static const String auditCollection = 'admin_audit_logs';
+
+  /// Where the deletion registry lives.
+  ///
+  /// `config` rather than a collection of its own on purpose: the deployed
+  /// rules already allow "read for any signed-in player, write for an admin"
+  /// on every `config/{doc}`, so a delete keeps working on devices that have
+  /// the current rules — no rules deploy needed to ship this.
+  static const String configCollection = 'config';
+  static const String deletionsDocId = 'content_deletions';
 
   CollectionReference<Map<String, dynamic>> get _categories =>
       _db.collection(categoriesCollection);
@@ -144,10 +154,15 @@ class ChapterCatalogService {
   /// Subjects and chapters are matched on id. A Firestore document replaces
   /// the bundled one entirely rather than merging field by field — a partial
   /// merge would leave an admin unable to *clear* a field they had set.
+  ///
+  /// [removals] is the deletion registry, applied last so a deleted chapter
+  /// disappears whether it came from the bundle or from Firestore (see
+  /// [ContentDeletions]).
   static List<CategoryModel> mergeWithAssets(
     List<CategoryModel> assets,
-    List<CategoryModel> remote,
-  ) {
+    List<CategoryModel> remote, {
+    ContentDeletions removals = ContentDeletions.none,
+  }) {
     final byId = <String, CategoryModel>{};
     final order = <String>[];
 
@@ -163,7 +178,28 @@ class ChapterCatalogService {
     assets.forEach(put);
     remote.forEach(put);
 
-    return [for (final id in order) byId[id]!];
+    final merged = [for (final id in order) byId[id]!];
+    if (removals.isEmpty) return merged;
+
+    return [
+      for (final category in merged)
+        if (!removals.categoryIds.contains(category.categoryId))
+          _withoutDeletedChapters(category, removals),
+    ];
+  }
+
+  /// Drops the chapters the registry deletes, along with the subject's stale
+  /// chapter count.
+  static CategoryModel _withoutDeletedChapters(
+    CategoryModel category,
+    ContentDeletions removals,
+  ) {
+    final kept = [
+      for (final chapter in category.chapters)
+        if (!removals.chapterIds.contains(chapter.chapterId)) chapter,
+    ];
+    if (kept.length == category.chapters.length) return category;
+    return category.copyWith(chapters: kept);
   }
 
   /// Chapters are merged within a subject so an admin can add a chapter to a
@@ -248,6 +284,13 @@ class ChapterCatalogService {
         'generated_by_ai': generatedByAi,
       },
     );
+    // A subject (or chapter) that was deleted and is saved again must come
+    // back — otherwise the registry would keep hiding it forever.
+    await clearDeletions(
+      chapterIds: [for (final chapter in chapters) chapter.chapterId],
+      categoryIds: [categoryId],
+      actorUid: actorUid,
+    );
     await _invalidateCatalogueCache();
   }
 
@@ -271,6 +314,11 @@ class ChapterCatalogService {
     }, SetOptions(merge: true));
 
     await _audit('category_saved', actorUid, {'category_id': categoryId});
+    await clearDeletions(
+      chapterIds: const [],
+      categoryIds: [categoryId],
+      actorUid: actorUid,
+    );
     await _invalidateCatalogueCache();
   }
 
@@ -340,6 +388,11 @@ class ChapterCatalogService {
       'category_id': categoryId,
       'chapter_id': chapterId,
     });
+    await clearDeletions(
+      chapterIds: [chapterId],
+      categoryIds: const [],
+      actorUid: actorUid,
+    );
     await _invalidateCatalogueCache();
   }
 
@@ -394,13 +447,13 @@ class ChapterCatalogService {
     await _invalidateCatalogueCache();
   }
 
-  /// Removes an admin-created chapter's catalogue document.
+  /// Removes a chapter's catalogue documents.
   ///
-  /// A **bundled** chapter cannot be removed this way — deleting the override
-  /// document just restores the asset version, which is the right behaviour:
-  /// the app must keep working for someone who never syncs. The chapter's
-  /// question bank is deleted by the caller
-  /// (`QuestionBankService.deleteChapterBank`) alongside this call, so
+  /// A **bundled** chapter has no documents of its own, so this is a no-op for
+  /// it; deleting one works through the deletion registry instead
+  /// ([recordChapterDeletion]) — its JSON lives in the app bundle, which no
+  /// installed app can rewrite. The chapter's question bank is deleted by the
+  /// caller (`QuestionBankService.deleteChapterBank`) alongside this call, so
   /// admin-authored questions never outlive their chapter.
   Future<void> deleteChapter({
     required String categoryId,
@@ -415,56 +468,179 @@ class ChapterCatalogService {
     await _invalidateCatalogueCache();
   }
 
-  /// Whether the catalogue holds a Firestore document for this chapter.
+  // -------------------------------------------------- deletion registry --
+
+  /// The admin's deletion registry, cached in Hive.
   ///
-  /// False means the chapter is purely bundled, so deleting would silently
-  /// do nothing — the UI uses this to offer Hide instead of Delete.
-  Future<bool> chapterOverrideExists({
-    required String categoryId,
-    required String chapterId,
-  }) async {
+  /// Callers apply this in [mergeWithAssets]. When Firestore is unreachable
+  /// the last registry this device saw is returned — an offline refresh must
+  /// not put a deleted chapter back.
+  Future<ContentDeletions> fetchDeletions() async {
     try {
-      final doc = await _chapters(categoryId).doc(chapterId).get();
-      return doc.exists;
+      final snapshot =
+          await _db.collection(configCollection).doc(deletionsDocId).get();
+      final parsed =
+          snapshot.exists
+              ? ContentDeletions.fromJson(snapshot.data() ?? const {})
+              : ContentDeletions.none;
+      await HiveService.cachePut(
+        HiveService.cacheContentDeletions,
+        parsed.toJson(),
+      );
+      return parsed;
     } catch (e) {
-      debugPrint('ChapterCatalogService: override check skipped — $e');
-      return false;
+      debugPrint('ChapterCatalogService: deletion registry unavailable — $e');
+      return cachedDeletions();
     }
   }
 
-  /// Whether the catalogue holds anything for this subject: its own document
-  /// or at least one chapter document. False means the subject is purely
-  /// bundled and there is nothing to delete.
-  Future<bool> categoryOverrideExists({required String categoryId}) async {
+  /// The last registry this device saw, or nothing when it has never read one.
+  static ContentDeletions cachedDeletions() {
+    final raw = HiveService.cacheGet(
+      HiveService.cacheContentDeletions,
+      allowStale: true,
+    );
+    if (raw is! Map) return ContentDeletions.none;
+    return ContentDeletions.fromJson(Map<String, dynamic>.from(raw));
+  }
+
+  /// Records that a chapter is deleted. Works for bundled chapters too —
+  /// that is the point: their JSON cannot be removed from an installed
+  /// bundle, so every device learns about the removal from here.
+  Future<void> recordChapterDeletion({
+    required String chapterId,
+    required String actorUid,
+  }) => _recordDeletions(
+    chapterIds: [chapterId],
+    categoryIds: const [],
+    actorUid: actorUid,
+  );
+
+  /// Records that a subject and its chapters are deleted, so re-creating the
+  /// subject later starts empty instead of pulling its old bundled chapters
+  /// back in.
+  Future<void> recordCategoryDeletion({
+    required String categoryId,
+    required Iterable<String> chapterIds,
+    required String actorUid,
+  }) => _recordDeletions(
+    chapterIds: chapterIds,
+    categoryIds: [categoryId],
+    actorUid: actorUid,
+  );
+
+  /// Drops ids from the registry — the save paths call this so a chapter or
+  /// subject re-created with the same id becomes visible again.
+  Future<void> clearDeletions({
+    required Iterable<String> chapterIds,
+    required Iterable<String> categoryIds,
+    required String actorUid,
+  }) async {
+    final chapterList = chapterIds.where((id) => id.trim().isNotEmpty).toList();
+    final categoryList =
+        categoryIds.where((id) => id.trim().isNotEmpty).toList();
+    if (chapterList.isEmpty && categoryList.isEmpty) return;
+
+    var next = ContentDeletions.none;
+    var changed = false;
     try {
-      final parent = await _categories.doc(categoryId).get();
-      if (parent.exists) return true;
-      final chapters = await _chapters(categoryId).limit(1).get();
-      return chapters.docs.isNotEmpty;
+      await _db.runTransaction((transaction) async {
+        final ref = _db.collection(configCollection).doc(deletionsDocId);
+        final snapshot = await transaction.get(ref);
+        final current =
+            snapshot.exists
+                ? ContentDeletions.fromJson(snapshot.data() ?? const {})
+                : ContentDeletions.none;
+        next = current.without(chapters: chapterList, categories: categoryList);
+        changed = next.length != current.length;
+        if (!changed) return; // nothing to clear — leave the document alone
+        transaction.set(ref, {
+          ...next.toJson(),
+          'updated_at': FieldValue.serverTimestamp(),
+          'updated_by': actorUid,
+        }, SetOptions(merge: true));
+      });
     } catch (e) {
-      debugPrint('ChapterCatalogService: override check skipped — $e');
-      return false;
+      debugPrint('ChapterCatalogService: deletion registry clear skipped — $e');
+      return;
     }
+    if (changed) {
+      await HiveService.cachePut(
+        HiveService.cacheContentDeletions,
+        next.toJson(),
+      );
+    }
+  }
+
+  /// Adds ids to the registry in a transaction, so two admins deleting at the
+  /// same moment cannot drop each other's entry.
+  Future<void> _recordDeletions({
+    required Iterable<String> chapterIds,
+    required Iterable<String> categoryIds,
+    required String actorUid,
+  }) async {
+    var next = ContentDeletions.none;
+    try {
+      await _db.runTransaction((transaction) async {
+        final ref = _db.collection(configCollection).doc(deletionsDocId);
+        final snapshot = await transaction.get(ref);
+        next =
+            snapshot.exists
+                ? ContentDeletions.fromJson(snapshot.data() ?? const {})
+                : ContentDeletions.none;
+        for (final id in chapterIds) {
+          if (id.trim().isNotEmpty) next = next.withChapter(id.trim());
+        }
+        for (final id in categoryIds) {
+          if (id.trim().isNotEmpty) next = next.withCategory(id.trim());
+        }
+        transaction.set(ref, {
+          ...next.toJson(),
+          'updated_at': FieldValue.serverTimestamp(),
+          'updated_by': actorUid,
+        }, SetOptions(merge: true));
+      });
+    } catch (e) {
+      // Rethrown: the caller must know the deletion did not take effect,
+      // otherwise it reports a delete that a later refresh silently undoes.
+      debugPrint('ChapterCatalogService: deletion registry write failed — $e');
+      rethrow;
+    }
+
+    // Keep this device's copy current, so the list it reloads next is already
+    // filtered without waiting for a round trip.
+    await HiveService.cachePut(
+      HiveService.cacheContentDeletions,
+      next.toJson(),
+    );
+    await _invalidateCatalogueCache();
   }
 
   /// Removes an admin-created subject with all its chapters in one batch.
   ///
-  /// Like [deleteChapter], bundled content cannot be removed this way:
-  /// deleting the override documents just restores the asset versions. The
-  /// caller deletes each chapter's question bank alongside this, so shipped
-  /// questions (in assets) stay while admin-authored ones go with the
-  /// subject.
+  /// A **bundled** subject has no documents of its own — nothing to remove
+  /// here. Deleting one works through the deletion registry
+  /// ([recordCategoryDeletion]); the caller deletes each chapter's question
+  /// bank alongside this, so shipped questions (in assets) stay in the repo
+  /// until `tool/apply_content_deletions.py` drops them from the bundle.
   Future<void> deleteCategory({
     required String categoryId,
     required String actorUid,
   }) async {
     final chapters = await _chapters(categoryId).get();
-    final batch = _db.batch();
-    for (final doc in chapters.docs) {
-      batch.delete(doc.reference);
+    if (chapters.docs.isNotEmpty) {
+      final batch = _db.batch();
+      for (final doc in chapters.docs) {
+        batch.delete(doc.reference);
+      }
+      batch.delete(_categories.doc(categoryId));
+      await batch.commit();
+    } else {
+      // Purely bundled: the parent document may not exist either, and a plain
+      // delete of a missing document is a no-op (a batch with zero writes is
+      // not always accepted, so this path stays a single delete).
+      await _categories.doc(categoryId).delete();
     }
-    batch.delete(_categories.doc(categoryId));
-    await batch.commit();
 
     await _audit('category_deleted', actorUid, {
       'category_id': categoryId,

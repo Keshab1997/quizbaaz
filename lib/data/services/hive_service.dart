@@ -81,6 +81,11 @@ class HiveService {
   static String cacheLeaderboardFor(String dateKey) => 'leaderboard_$dateKey';
   static const cacheChampions = 'champions_yesterday';
   static const cacheChapters = 'chapters_list_v2';
+
+  /// Last deletion registry this device saw (`config/content_deletions`).
+  /// Kept so an offline refresh still hides deleted chapters instead of
+  /// resurrecting them from the bundled assets.
+  static const cacheContentDeletions = 'content_deletions_registry';
   static const cacheDailyQuiz = 'daily_quiz_questions';
   static const cacheShopItems = 'shop_items';
 

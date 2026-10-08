@@ -555,7 +555,6 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
   Future<void> _editSubject(CategoryModel? existing) async {
     var deleted = false;
     final name = existing?.categoryName ?? '';
-    final categoryId = existing?.categoryId ?? '';
 
     final saved = await showModalBottomSheet<bool>(
       context: context,
@@ -578,9 +577,8 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
                 existing == null
                     ? null
                     : () async {
-                      final done = await _removeSubject(existing);
-                      if (done) deleted = true;
-                      return done;
+                      await _removeSubject(existing);
+                      deleted = true;
                     },
             onSave:
                 (id, name, icon, color, priority) => _catalog.saveCategory(
@@ -596,27 +594,23 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
     if (saved == true) {
       await _load();
       if (deleted && mounted) {
-        // Deleting a bundled subject's overrides restores the asset version,
-        // so "deleted" is only true when the id is actually gone.
-        final stillThere = _categories.any((c) => c.categoryId == categoryId);
-        if (!mounted) return;
-        AdminToast.showSuccess(
-          context,
-          stillThere
-              ? 'Removed your edits — the bundled "$name" is back.'
-              : '"$name" deleted.',
-        );
+        AdminToast.showSuccess(context, '"$name" deleted.');
       }
     }
   }
 
-  /// Deletes a subject's catalogue documents with its chapters. Returns
-  /// false (nothing removed) when the subject is purely bundled.
-  Future<bool> _removeSubject(CategoryModel subject) async {
-    final exists = await _catalog.categoryOverrideExists(
-      categoryId: subject.categoryId,
-    );
-    if (!exists) return false;
+  /// Deletes a subject with everything under it.
+  ///
+  /// Three layers, in order: every chapter's question bank leaves Firestore,
+  /// the subject's own catalogue documents go, and the deletion registry gets
+  /// the ids. The registry is what removes a **bundled** subject — its JSON
+  /// ships inside the app bundle, which no installed app can rewrite, so the
+  /// removal travels through Firestore and every device drops it at merge
+  /// time. `tool/apply_content_deletions.py` removes the shipped JSON from
+  /// the repo before the next build, and each chapter id is recorded too so
+  /// re-creating the subject later starts empty instead of pulling the old
+  /// bundled chapters back in.
+  Future<void> _removeSubject(CategoryModel subject) async {
     // Every chapter's bank goes with the subject — including bundled
     // chapters that only carry admin questions, which deleteCategory never
     // touches as documents. Bank before catalogue, per _removeChapter.
@@ -631,7 +625,11 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
       categoryId: subject.categoryId,
       actorUid: _actorUid,
     );
-    return true;
+    await _catalog.recordCategoryDeletion(
+      categoryId: subject.categoryId,
+      chapterIds: [for (final chapter in subject.chapters) chapter.chapterId],
+      actorUid: _actorUid,
+    );
   }
 
   /// The order value a subject edit must keep. A lost priority drops the
@@ -654,7 +652,6 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
     final nextNumber = _nextChapterNumber(category);
     var deleted = false;
     final title = existing?.titleText.resolve('en') ?? '';
-    final chapterId = existing?.chapterId ?? '';
 
     final saved = await showModalBottomSheet<bool>(
       context: context,
@@ -674,12 +671,8 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
                 existing == null
                     ? null
                     : () async {
-                      final done = await _removeChapter(
-                        category.categoryId,
-                        existing,
-                      );
-                      if (done) deleted = true;
-                      return done;
+                      await _removeChapter(category.categoryId, existing);
+                      deleted = true;
                     },
             onSave:
                 (id, title, description, number, unlocked, enabled) =>
@@ -698,30 +691,21 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
     if (saved == true) {
       await _load();
       if (deleted && mounted) {
-        // Deleting a bundled chapter's overrides restores the asset version,
-        // so "deleted" is only true when the id is actually gone.
-        final stillThere = _categories
-            .expand((c) => c.chapters)
-            .any((c) => c.chapterId == chapterId);
-        if (!mounted) return;
-        AdminToast.showSuccess(
-          context,
-          stillThere
-              ? 'Removed your edits — the bundled "$title" is back.'
-              : '"$title" deleted.',
-        );
+        AdminToast.showSuccess(context, '"$title" deleted.');
       }
     }
   }
 
-  /// Deletes a chapter's question bank, then its catalogue documents.
-  /// Returns false (nothing removed) when the chapter is purely bundled.
-  Future<bool> _removeChapter(String categoryId, ChapterModel chapter) async {
-    final exists = await _catalog.chapterOverrideExists(
-      categoryId: categoryId,
-      chapterId: chapter.chapterId,
-    );
-    if (!exists) return false;
+  /// Deletes a chapter: its question bank, its catalogue documents, and its
+  /// entry in the deletion registry.
+  ///
+  /// The registry is what makes this a real delete for a **bundled** chapter.
+  /// Its JSON ships inside the app bundle, and no installed app can rewrite
+  /// its own bundle — so the deletion travels through Firestore, every device
+  /// drops the chapter at merge time (`ChapterCatalogService.mergeWithAssets`),
+  /// and `tool/apply_content_deletions.py` removes the shipped JSON from the
+  /// repo before the next build.
+  Future<void> _removeChapter(String categoryId, ChapterModel chapter) async {
     // Bank first: Firestore has no cascade, and while the chapter document
     // still exists nothing has visibly changed — if the bank delete throws,
     // a retry repeats deletes that are already idempotent.
@@ -734,8 +718,11 @@ class _ChapterManagerScreenState extends State<ChapterManagerScreen> {
       chapterId: chapter.chapterId,
       actorUid: _actorUid,
     );
+    await _catalog.recordChapterDeletion(
+      chapterId: chapter.chapterId,
+      actorUid: _actorUid,
+    );
     await _repository.invalidateQuestionCache(jsonFilePath: chapter.jsonFile);
-    return true;
   }
 
   /// Ids already in this subject — every add flow refuses these, so a new
@@ -1097,10 +1084,9 @@ class _SubjectSheet extends StatefulWidget {
   /// confirmation.
   final int questionCount;
 
-  /// Removes the subject's catalogue documents with its chapters. Returns
-  /// false when the subject is purely bundled (nothing to remove). Null for
-  /// a new subject, which has no delete button.
-  final Future<bool> Function()? onDelete;
+  /// Deletes the subject with its chapters, their question banks and its
+  /// registry entry. Null for a new subject, which has no delete button.
+  final Future<void> Function()? onDelete;
   final Future<void> Function(
     String id,
     LocalizedText name,
@@ -1170,7 +1156,8 @@ class _SubjectSheetState extends State<_SubjectSheet> {
       message:
           'This removes the subject with its $chapters chapter${chapters == 1 ? '' : 's'}'
           '${count > 0 ? ' and $count question${count == 1 ? '' : 's'}' : ''}. '
-          'Admin-added chapters are gone for good; bundled ones revert to the shipped version. '
+          'Bundled chapters go too — removed from every device, and dropped '
+          'from the shipped bundle by tool/apply_content_deletions.py. '
           'This cannot be undone.',
       confirmLabel: 'Delete',
     );
@@ -1181,17 +1168,8 @@ class _SubjectSheetState extends State<_SubjectSheet> {
       _error = null;
     });
     try {
-      final removed = await onDelete();
+      await onDelete();
       if (!mounted) return;
-      if (!removed) {
-        // Purely bundled: there was no document to delete.
-        setState(() => _deleting = false);
-        AdminToast.showInfo(
-          context,
-          'This is a bundled subject — hide its chapters with the eye icon instead.',
-        );
-        return;
-      }
       Navigator.pop(context, true);
     } catch (e) {
       if (mounted) {
@@ -1340,10 +1318,9 @@ class _ChapterSheet extends StatefulWidget {
   /// Live question count, shown in the delete confirmation.
   final int questionCount;
 
-  /// Removes the chapter's catalogue documents. Returns false when the
-  /// chapter is purely bundled (nothing to remove). Null for a new chapter,
-  /// which has no delete button.
-  final Future<bool> Function()? onDelete;
+  /// Deletes the chapter with its question bank and its registry entry. Null
+  /// for a new chapter, which has no delete button.
+  final Future<void> Function()? onDelete;
   final Future<void> Function(
     String id,
     LocalizedText title,
@@ -1455,8 +1432,8 @@ class _ChapterSheetState extends State<_ChapterSheet> {
       title: 'Delete "$title"?',
       message:
           count > 0
-              ? 'This deletes the chapter and permanently removes its $count question${count == 1 ? '' : 's'} from the question bank. A bundled chapter falls back to its shipped version. This cannot be undone.'
-              : 'This deletes the chapter. A bundled chapter falls back to its shipped version. This cannot be undone.',
+              ? 'This deletes the chapter and permanently removes its $count question${count == 1 ? '' : 's'} from the question bank. A bundled chapter is removed from every device and from the shipped bundle too. This cannot be undone.'
+              : 'This deletes the chapter — from every device and from the shipped bundle. This cannot be undone.',
       confirmLabel: 'Delete',
     );
     if (!confirmed || !mounted) return;
@@ -1466,17 +1443,8 @@ class _ChapterSheetState extends State<_ChapterSheet> {
       _error = null;
     });
     try {
-      final removed = await onDelete();
+      await onDelete();
       if (!mounted) return;
-      if (!removed) {
-        // Purely bundled: there was no document to delete.
-        setState(() => _deleting = false);
-        AdminToast.showInfo(
-          context,
-          'This is a bundled chapter — hide it with the eye icon instead.',
-        );
-        return;
-      }
       Navigator.pop(context, true);
     } catch (e) {
       if (mounted) {

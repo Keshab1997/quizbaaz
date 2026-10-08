@@ -103,9 +103,19 @@ class QuizRepository {
     final assetCategories = assetRows.map(CategoryModel.fromJson).toList();
 
     final remoteCategories = await _catalogService.fetchCategories();
+    // Content the admin deleted. Fetched with the catalogue so the merge can
+    // drop bundled chapters too — their JSON cannot be removed from an
+    // installed bundle, so the registry is what removes them (R12-style
+    // "one source of truth", and `tool/apply_content_deletions.py` uses the
+    // same list to drop the asset before the next build).
+    final deletions = await _catalogService.fetchDeletions();
 
     final merged = _withLiveCounts(
-      ChapterCatalogService.mergeWithAssets(assetCategories, remoteCategories),
+      ChapterCatalogService.mergeWithAssets(
+        assetCategories,
+        remoteCategories,
+        removals: deletions,
+      ),
       await _bankService.fetchQuestionCounts(),
     );
 
