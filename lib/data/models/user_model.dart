@@ -27,6 +27,12 @@ class UserModel {
   /// reset [dailyStreak] without any hardcoded value.
   String? lastStreakDate;
 
+  /// `yyyy-MM-dd` dates on which the user played a streak-qualifying mode
+  /// (Daily Quiz or Battle Arena). Kept trimmed to the most recent 35 days so
+  /// the current week's checkmarks/crosses remain accurate even if the
+  /// consecutive [dailyStreak] broke mid-week.
+  List<String> streakDates;
+
   /// Owned shop items: itemId (ShopItemIds) -> quantity owned.
   Map<String, int> inventory;
 
@@ -47,8 +53,11 @@ class UserModel {
     this.playedTodayDailyQuiz = false,
     this.isAdmin = false,
     this.lastStreakDate,
+    List<String>? streakDates,
     Map<String, int>? inventory,
-  }) : inventory = inventory ?? {};
+  }) : streakDates =
+           streakDates != null ? List<String>.from(streakDates) : <String>[],
+       inventory = inventory ?? {};
 
   /// How many units of [itemId] this user owns.
   int inventoryCount(String itemId) => inventory[itemId] ?? 0;
@@ -84,17 +93,71 @@ class UserModel {
   String get effectiveAvatar => avatarUrl ?? avatarPath;
   bool get hasGoogleAvatar => avatarUrl != null && avatarUrl!.isNotEmpty;
 
+  /// Records [dateKey] (`yyyy-MM-dd`) in [streakDates] (unique, sorted, last 35 days).
+  void recordStreakDate(String dateKey) {
+    if (dateKey.isEmpty) return;
+    if (!streakDates.contains(dateKey)) {
+      streakDates.add(dateKey);
+      streakDates.sort();
+      if (streakDates.length > 35) {
+        streakDates.removeRange(0, streakDates.length - 35);
+      }
+    }
+  }
+
   /// Grows or resets the daily streak based on the last play date.
-  /// Returns true when the streak changed (so the caller can persist).
-  bool registerPlayOn(DateTime now) {
+  ///
+  /// Both Daily Quiz and Battle Arena advance the daily streak. Only a Daily
+  /// Quiz run marks [playedTodayDailyQuiz] as `true`.
+  /// Returns true when user state changed (so the caller can persist).
+  bool registerPlayOn(DateTime now, {bool isDailyQuiz = true}) {
     final today = _dateKey(now);
-    if (lastStreakDate == today) return false;
+    final addedDate = !streakDates.contains(today);
+    recordStreakDate(today);
+
+    if (lastStreakDate == today) {
+      if (isDailyQuiz && !playedTodayDailyQuiz) {
+        playedTodayDailyQuiz = true;
+        return true;
+      }
+      return addedDate;
+    }
 
     final yesterday = _dateKey(now.subtract(const Duration(days: 1)));
     dailyStreak = lastStreakDate == yesterday ? dailyStreak + 1 : 1;
     lastStreakDate = today;
-    playedTodayDailyQuiz = true;
+    playedTodayDailyQuiz = isDailyQuiz;
     return true;
+  }
+
+  /// True when the player completed a streak-qualifying mode (Daily Quiz or
+  /// Battle Arena) on calendar [day].
+  bool hasPlayedOnDate(DateTime day) => isDatePlayed(
+    day,
+    streakDays: dailyStreak,
+    lastStreakDate: lastStreakDate,
+    streakDates: streakDates,
+  );
+
+  static bool isDatePlayed(
+    DateTime day, {
+    required int streakDays,
+    String? lastStreakDate,
+    Iterable<String> streakDates = const <String>[],
+  }) {
+    final targetDay = DateTime(day.year, day.month, day.day);
+    final key = _dateKey(targetDay);
+    if (streakDates.contains(key)) return true;
+
+    if (streakDays <= 0) return false;
+    DateTime? lastPlay;
+    if (lastStreakDate != null && lastStreakDate.isNotEmpty) {
+      lastPlay = DateTime.tryParse(lastStreakDate);
+    }
+    if (lastPlay == null) return false;
+    final lastDay = DateTime(lastPlay.year, lastPlay.month, lastPlay.day);
+    final diff = lastDay.difference(targetDay).inDays;
+    return diff >= 0 && diff < streakDays;
   }
 
   /// Clears [playedTodayDailyQuiz] when the stored streak date is not today.
@@ -103,6 +166,8 @@ class UserModel {
       playedTodayDailyQuiz = false;
     }
   }
+
+  static String dateKey(DateTime d) => _dateKey(d);
 
   static String _dateKey(DateTime d) =>
       '${d.year}-${d.month.toString().padLeft(2, '0')}-${d.day.toString().padLeft(2, '0')}';
@@ -142,6 +207,7 @@ class UserModel {
     'played_today_daily_quiz': playedTodayDailyQuiz,
     'is_admin': isAdmin,
     'last_streak_date': lastStreakDate,
+    'streak_dates': streakDates,
     'inventory': inventory,
   };
 
@@ -168,6 +234,12 @@ class UserModel {
       playedTodayDailyQuiz: json['played_today_daily_quiz'] as bool? ?? false,
       isAdmin: json['is_admin'] as bool? ?? false,
       lastStreakDate: json['last_streak_date'] as String?,
+      streakDates:
+          (json['streak_dates'] as List<dynamic>?)
+              ?.map((e) => e.toString())
+              .where((e) => e.isNotEmpty)
+              .toList() ??
+          <String>[],
       inventory:
           (json['inventory'] as Map<String, dynamic>?)?.map(
             (k, v) => MapEntry(k, (v as num).toInt()),
@@ -225,6 +297,7 @@ class UserModel {
     bool? playedTodayDailyQuiz,
     bool? isAdmin,
     String? lastStreakDate,
+    List<String>? streakDates,
     Map<String, int>? inventory,
   }) {
     return UserModel(
@@ -244,6 +317,7 @@ class UserModel {
       playedTodayDailyQuiz: playedTodayDailyQuiz ?? this.playedTodayDailyQuiz,
       isAdmin: isAdmin ?? this.isAdmin,
       lastStreakDate: lastStreakDate ?? this.lastStreakDate,
+      streakDates: streakDates ?? List<String>.from(this.streakDates),
       inventory: inventory ?? Map<String, int>.from(this.inventory),
     );
   }

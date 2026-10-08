@@ -206,7 +206,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           const SizedBox(height: 16),
 
                           // 2. Streak Card
-                          StreakFlameWidget(streakDays: user.dailyStreak),
+                          StreakFlameWidget(
+                            streakDays: user.dailyStreak,
+                            lastStreakDate: user.lastStreakDate,
+                            streakDates: user.streakDates,
+                          ),
                           const SizedBox(height: 16),
 
                           // 3. Battle Arena Card

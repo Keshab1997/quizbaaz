@@ -244,6 +244,7 @@ class UserProvider extends ChangeNotifier {
     if (storedUser != null) {
       _user = storedUser;
       _user.refreshDailyFlags(DateTime.now());
+      _backfillStreakDatesFromHistory();
     }
     _stats = HiveService.loadStats();
     _config = SyncService.cachedConfig();
@@ -252,6 +253,34 @@ class UserProvider extends ChangeNotifier {
     );
     _champions = _rankings.cachedChampions();
     _leaderboard = _rankings.cachedLeaderboard();
+  }
+
+  /// Seeds [UserModel.streakDates] from the active streak window and any
+  /// persisted Daily Quiz / Battle Arena history so the current week's
+  /// calendar row immediately reflects days already played.
+  void _backfillStreakDatesFromHistory() {
+    if (_user.dailyStreak > 0 &&
+        _user.lastStreakDate != null &&
+        _user.lastStreakDate!.isNotEmpty) {
+      final lastPlay = DateTime.tryParse(_user.lastStreakDate!);
+      if (lastPlay != null) {
+        for (var i = 0; i < _user.dailyStreak; i++) {
+          _user.recordStreakDate(
+            UserModel.dateKey(lastPlay.subtract(Duration(days: i))),
+          );
+        }
+      }
+    }
+    for (final raw in HiveService.loadQuizHistory()) {
+      final h = QuizResultHistory.fromJson(raw);
+      final isBattleOrDaily =
+          h.quizType == 'daily' ||
+          h.quizType == 'battle' ||
+          (h.chapterId == null || h.chapterId!.isEmpty);
+      if (isBattleOrDaily) {
+        _user.recordStreakDate(UserModel.dateKey(h.playedAt));
+      }
+    }
   }
 
   /// Refreshes rankings, using the Hive cache while the network call runs.
@@ -601,6 +630,11 @@ class UserProvider extends ChangeNotifier {
     final d = yesterday.day.toString().padLeft(2, '0');
     _user.lastStreakDate = '${yesterday.year}-$m-$d';
     _user.dailyStreak = lostStreak;
+    for (var i = 0; i < lostStreak; i++) {
+      _user.recordStreakDate(
+        UserModel.dateKey(yesterday.subtract(Duration(days: i))),
+      );
+    }
     notifyListeners();
     _persistUser();
     return true;
@@ -830,6 +864,33 @@ class UserProvider extends ChangeNotifier {
 
   // ---------------------------------------------------------------- Stats --
 
+  /// Advances the daily streak when the player completes a Daily Quiz or
+  /// Battle Arena match.
+  ///
+  /// Returns `true` when `_user` changed and should be persisted.
+  bool _advanceDailyStreak({required bool isDailyQuiz}) {
+    // Check for streak shield before updating streak. This is the fallback
+    // auto-freeze path (used when the reset was not seen, e.g. the app was
+    // reopened straight into the quiz): if the streak was just reset to 1
+    // and the player owned a shield, the shield restores it.
+    final hadStreakShield = hasItem(ShopItemIds.streakShield);
+    final previousStreak = _user.dailyStreak;
+    final now = DateTime.now();
+
+    final changed = _user.registerPlayOn(now, isDailyQuiz: isDailyQuiz);
+
+    // If streak was reset (went to 1) but shield is active, restore streak
+    if (hadStreakShield && _user.dailyStreak == 1 && previousStreak > 1) {
+      consumeItem(ShopItemIds.streakShield);
+      _user.dailyStreak = previousStreak; // Restore previous streak
+      final yesterday = now.subtract(const Duration(days: 1));
+      _user.recordStreakDate(UserModel.dateKey(yesterday));
+    }
+
+    _stats.touchStreak(_user.dailyStreak);
+    return changed;
+  }
+
   /// Records a finished quiz: updates [UserStats], the daily streak and —
   /// when it is the player's first ranked run of the day — the leaderboard
   /// entry. Everything lands in Hive first.
@@ -865,22 +926,7 @@ class UserProvider extends ChangeNotifier {
     );
 
     if (isDaily) {
-      // Check for streak shield before updating streak. This is the fallback
-      // auto-freeze path (used when the reset was not seen, e.g. the app was
-      // reopened straight into the quiz): if the streak was just reset to 1
-      // and the player owned a shield, the shield restores it.
-      final hadStreakShield = hasItem(ShopItemIds.streakShield);
-      final previousStreak = _user.dailyStreak;
-
-      _user.registerPlayOn(DateTime.now());
-
-      // If streak was reset (went to 1) but shield is active, restore streak
-      if (hadStreakShield && _user.dailyStreak == 1 && previousStreak > 1) {
-        consumeItem(ShopItemIds.streakShield);
-        _user.dailyStreak = previousStreak; // Restore previous streak
-      }
-
-      _stats.touchStreak(_user.dailyStreak);
+      _advanceDailyStreak(isDailyQuiz: true);
     }
 
     notifyListeners();
@@ -1018,11 +1064,17 @@ class UserProvider extends ChangeNotifier {
     return history;
   }
 
-  /// Records a battle result.
+  /// Records a battle result and advances the daily streak.
   Future<void> recordBattleResult({required bool won}) async {
     _stats.recordBattle(won: won);
+    final streakChanged = _advanceDailyStreak(isDailyQuiz: false);
     notifyListeners();
     await HiveService.saveStats(_stats);
+    if (streakChanged) {
+      await HiveService.saveUser(_user);
+      await SyncService.pushUser(_user);
+      unawaited(PushSync.syncFromHive());
+    }
     await SyncService.pushStats(_user.userId, _stats);
   }
 
@@ -1139,6 +1191,7 @@ class UserProvider extends ChangeNotifier {
       playedTodayDailyQuiz: _user.playedTodayDailyQuiz,
       isAdmin: _user.isAdmin,
       lastStreakDate: _user.lastStreakDate,
+      streakDates: _user.streakDates,
       inventory: _user.inventory,
     );
     notifyListeners();

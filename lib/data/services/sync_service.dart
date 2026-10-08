@@ -320,6 +320,12 @@ class SyncService {
     }
 
     final wallet = mergeWallet(local, remote);
+    final mergedStreakDates =
+        <String>{...local.streakDates, ...remote.streakDates}.toList()..sort();
+    if (mergedStreakDates.length > 35) {
+      mergedStreakDates.removeRange(0, mergedStreakDates.length - 35);
+    }
+
     final merged = local.copyWith(
       coins: wallet.coins,
       gems: wallet.gems,
@@ -327,6 +333,7 @@ class SyncService {
       dailyStreak: mergedStreak,
       isAdmin: local.isAdmin || remote.isAdmin,
       lastStreakDate: mergedDate,
+      streakDates: mergedStreakDates,
       avatarUrl: local.avatarUrl ?? remote.avatarUrl,
       nameEffect: local.nameEffect ?? remote.nameEffect,
     );
