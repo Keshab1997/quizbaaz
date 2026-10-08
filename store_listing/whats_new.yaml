@@ -6,9 +6,34 @@
 #   python3 tool/publish_play.py --aab app.aab --track alpha
 # which reads this file automatically. `--release-note` overrides English only.
 
-current: "1.0.18"
+current: "1.0.19"
 
 releases:
+  "1.0.19":
+    en: |-
+      What's new in 1.0.19:
+
+      • Smart Weekly Streak Calendar: played days show ✓ and missed days show ✕ on the exact weekday.
+      • Battle Arena + Daily Quiz both count toward your daily streak!
+      • Streak Milestone Rewards: unlock bonus Coins, Gems & Power-Ups at 3, 7, 14 and 30 days.
+      • Mistake Notebook: practice questions you got wrong — answer right twice in a row to master & clear them!
+      • Admin Question Bank: deleted questions and sets now stay hidden permanently across all devices.
+    bn: |-
+      QuizBaaz ১.০.১৯-এ যা নতুন:
+
+      • স্মার্ট স্ট্রিক ক্যালেন্ডার: সপ্তাহের যেদিন খেলবেন সেদিন টিক (✓) এবং মিস হলে ক্রস (✕) দেখাবে।
+      • Daily Quiz এবং Battle Arena — দুটো খেললেই এখন ডেইলি স্ট্রিক বাড়বে!
+      • স্ট্রিক মাইলস্টোন বোনাস: ৩, ৭, ১৪ ও ৩০ দিনের স্ট্রিকে ফ্রি Coins, Gems ও Power-Ups জিতুন।
+      • ভুল প্রশ্নের খাতা (Mistake Notebook): ভুল হওয়া প্রশ্ন প্র্যাকটিস করুন — পরপর ২ বার ঠিক উত্তর দিলে ক্লিয়ার হবে!
+      • Admin Question Bank: মুছে ফেলা প্রশ্ন ও সেট এখন স্থায়ীভাবে সব ডিভাইসে সরানো থাকবে।
+    hi: |-
+      QuizBaaz 1.0.19 में नया:
+
+      • स्मार्ट वीकली स्ट्रीक कैलेंडर: खेले गए दिन पर टिक (✓) और छूटे हुए दिन पर क्रॉस (✕) दिखेगा।
+      • Daily Quiz और Battle Arena — दोनों खेलने पर अब डेली स्ट्रीक बढ़ेगी!
+      • स्ट्रीक माइलस्टोन इनाम: 3, 7, 14 और 30 दिन की स्ट्रीक पर बोनस Coins, Gems और Power-Ups पाएँ।
+      • गलतियों की नोटबुक (Mistake Notebook): गलत हुए प्रश्नों का अभ्यास करें — लगातार 2 बार सही उत्तर देकर क्लियर करें!
+      • Admin Question Bank: हटाए गए प्रश्न और सेट अब सभी डिवाइस से स्थायी रूप से हटेंगे।
   "1.0.18":
     en: |-
       What's new in 1.0.18:
