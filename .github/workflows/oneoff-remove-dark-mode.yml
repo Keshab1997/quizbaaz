@@ -1,0 +1,61 @@
+name: One-off — remove the dark-mode option
+
+# Temporary workflow: removes the (non-functional) Dark Mode row from the
+# profile settings card and commits the change. It is dispatched once, then
+# deleted. Kept as a workflow rather than a local edit so the 1800-line Dart
+# file is never re-typed by hand — the edit is an exact string removal that
+# aborts unless it matches exactly once.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: oneoff-remove-dark-mode
+  cancel-in-progress: false
+
+jobs:
+  edit:
+    name: remove the dark-mode row
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Edit the profile screen
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          path = Path('lib/presentation/screens/profile/profile_screen.dart')
+          src = path.read_text(encoding='utf-8')
+          block = (
+              "                  const Divider(color: Colors.white12),\n"
+              "                  _buildSettingRow(\n"
+              "                    context,\n"
+              "                    userProvider,\n"
+              "                    Icons.dark_mode_rounded,\n"
+              "                    S.profileDarkMode,\n"
+              "                    UserProvider.settingDarkMode,\n"
+              "                  ),\n"
+          )
+          found = src.count(block)
+          if found != 1:
+              raise SystemExit(f'expected 1 dark-mode block, found {found}')
+          path.write_text(src.replace(block, ''), encoding='utf-8')
+          print('removed the dark-mode row')
+          PY
+
+      - name: Commit the change
+        run: |
+          set -euo pipefail
+          if git diff --quiet; then
+            echo "Nothing changed."
+            exit 0
+          fi
+          git config user.name "quizbaaz-sync[bot]"
+          git config user.email "quizbaaz-sync@users.noreply.github.com"
+          git add -- lib/presentation/screens/profile/profile_screen.dart
+          git commit -m "feat(profile): remove the non-functional dark-mode option"
+          git push
