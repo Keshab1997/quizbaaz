@@ -1,0 +1,4571 @@
+{
+  "chapter_id": "chhaya_prakashani_ch_02",
+  "chapter_title": {
+    "en": "Chemistry",
+    "bn": "রসায়ন",
+    "hi": "रसायन विज्ञान"
+  },
+  "class_standard": "Class 10",
+  "questions": [
+    {
+      "id": "chhaya_prakashani_ch_02_q001",
+      "question": {
+        "bn": "যেসব পরমাণুর পারমাণবিক সংখ্যা একই কিন্তু ভরসংখ্যা আলাদা, তাদের কী বলা হয়?",
+        "en": "What are atoms of the same element having the same atomic number but different mass numbers called?",
+        "hi": "समान परमाणु क्रमांक परंतु भिन्न द्रव्यमान संख्या वाले परमाणुओं को क्या कहा जाता है?"
+      },
+      "options": [
+        {
+          "bn": "আইসোটোপ",
+          "en": "Isotopes",
+          "hi": "समस्थानिक (Isotopes)"
+        },
+        {
+          "bn": "আইসোবার",
+          "en": "Isobars",
+          "hi": "समभारिक (Isobars)"
+        },
+        {
+          "bn": "আইসোটোন",
+          "en": "Isotones",
+          "hi": "समन्यूट्रॉनिक (Isotones)"
+        },
+        {
+          "bn": "আইসোমার",
+          "en": "Isomers",
+          "hi": "समावयवी (Isomers)"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "যেসব পরমাণুর পারমাণবিক সংখ্যা একই কিন্তু ভরসংখ্যা আলাদা তাদের আইসোটোপ বলা হয়।",
+        "en": "Atoms with the same atomic number but different mass numbers are called isotopes.",
+        "hi": "समान परमाणु क्रमांक लेकिन भिन्न द्रव्यमान संख्या वाले परमाणुओं को समस्थानिक (Isotopes) कहते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q002",
+      "question": {
+        "bn": "ভিন্ন পারমাণবিক সংখ্যাবিশিষ্ট কিন্তু একই ভরসংখ্যার পরমাণুগুলিকে কী বলা হয়?",
+        "en": "What are atoms having different atomic numbers but the same mass number called?",
+        "hi": "भिन्न परमाणु क्रमांक परंतु समान द्रव्यमान संख्या वाले परमाणुओं को क्या कहा जाता है?"
+      },
+      "options": [
+        {
+          "bn": "আইসোটোপ",
+          "en": "Isotopes",
+          "hi": "समस्थानিক (Isotopes)"
+        },
+        {
+          "bn": "আইসোবার",
+          "en": "Isobars",
+          "hi": "समभारিক (Isobars)"
+        },
+        {
+          "bn": "আইসোটোন",
+          "en": "Isotones",
+          "hi": "समन्यूट्रॉनिक (Isotones)"
+        },
+        {
+          "bn": "রূপভেদ",
+          "en": "Allotropes",
+          "hi": "अपररूप (Allotropes)"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "ভিন্ন পারমাণবিক সংখ্যাবিশিষ্ট কিন্তু একই ভরসংখ্যার পরমাণুগুলিকে আইসোবার বলে।",
+        "en": "Atoms with different atomic numbers but the same mass number are called isobars.",
+        "hi": "भिन्न परमाणु क्रमांक लेकिन समान द्रव्यमान संख्या वाले परमाणुओं को समभारिक (Isobars) कहते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q003",
+      "question": {
+        "bn": "ভিন্ন প্রোটন সংখ্যা কিন্তু একই নিউট্রন সংখ্যার ভিন্ন মৌলের পরমাণুগুলিকে কী বলা হয়?",
+        "en": "What are atoms of different elements having different proton numbers but the same number of neutrons called?",
+        "hi": "भिन्न प्रोटॉन संख्या परंतु समान न्यूट्रॉन संख्या वाले परमाणुओं को क्या कहा जाता है?"
+      },
+      "options": [
+        {
+          "bn": "আইসোটোপ",
+          "en": "Isotopes",
+          "hi": "समस्थानिक (Isotopes)"
+        },
+        {
+          "bn": "আইসোবার",
+          "en": "Isobars",
+          "hi": "समभारिक (Isobars)"
+        },
+        {
+          "bn": "আইসোটোন",
+          "en": "Isotones",
+          "hi": "সমনিউট্রনিক (Isotones)"
+        },
+        {
+          "bn": "আইসোইলেকট্রনিক",
+          "en": "Isoelectronic",
+          "hi": "समइलेक्ट्रॉनिक (Isoelectronic)"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "bn": "ভিন্ন প্রোটন সংখ্যা কিন্তু একই নিউট্রন সংখ্যার পরমাণুগুলিকে আইসোটোন বলে।",
+        "en": "Atoms of different elements having the same number of neutrons are called isotones.",
+        "hi": "समान न्यूट्रॉन संख्या वाले भिन्न तत्वों के परमाणुओं को समन्यूट्रॉनिक (Isotones) कहते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q004",
+      "question": {
+        "bn": "পরমাণুর সবথেকে হালকা কণা কোনটি?",
+        "en": "Which is the lightest particle in an atom?",
+        "hi": "परमाणु का सबसे हल्का कण कौन सा है?"
+      },
+      "options": [
+        {
+          "bn": "ইলেকট্রন",
+          "en": "Electron",
+          "hi": "इलेक्ट्रॉन (Electron)"
+        },
+        {
+          "bn": "প্রোটন",
+          "en": "Proton",
+          "hi": "प्रोटॉन (Proton)"
+        },
+        {
+          "bn": "নিউট্রন",
+          "en": "Neutron",
+          "hi": "न्यूट्रॉन (Neutron)"
+        },
+        {
+          "bn": "পজিট্রন",
+          "en": "Positron",
+          "hi": "पॉज़िट्रॉन (Positron)"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "পরমাণুর সবথেকে হালকা কণা হলো ইলেকট্রন।",
+        "en": "Electron is the lightest particle in an atom with a mass of about 9.11 × 10^-31 kg (0.000549 amu).",
+        "hi": "इलेक्ट्रॉन परमाणु का सबसे हल्का कण है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q005",
+      "question": {
+        "bn": "জে জে টমসন কোনো উপপারমাণবিক কণাটি আবিষ্কার করেছিলেন?",
+        "en": "Which subatomic particle was discovered by J.J. Thomson?",
+        "hi": "जे. जे. थॉमसन द्वारा किस उप-परमाणु कण की खोज की गई थी?"
+      },
+      "options": [
+        {
+          "bn": "ইলেকট্রন",
+          "en": "Electron",
+          "hi": "इलेक्ट्रॉन (Electron)"
+        },
+        {
+          "bn": "প্রোটন",
+          "en": "Proton",
+          "hi": "प्रोटॉन (Proton)"
+        },
+        {
+          "bn": "নিউট্রন",
+          "en": "Neutron",
+          "hi": "न्यूट्रॉन (Neutron)"
+        },
+        {
+          "bn": "নিউক্লিয়াস",
+          "en": "Nucleus",
+          "hi": "नाभिक (Nucleus)"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "জে জে টমসন ইলেকট্রন আবিষ্কার করেন।",
+        "en": "J.J. Thomson discovered the electron.",
+        "hi": "जे. जे. थॉमसन ने इलेक्ट्रॉन की खोज की थी।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q006",
+      "question": {
+        "bn": "নিউট্রন কে আবিষ্কার করেন?",
+        "en": "Who discovered the neutron?",
+        "hi": "न्यूट्रॉन की खोज किसने की थी?"
+      },
+      "options": [
+        {
+          "bn": "জে জে টমসন",
+          "en": "J.J. Thomson",
+          "hi": "जे. जे. थॉमसन"
+        },
+        {
+          "bn": "গোল্ডস্টাইন",
+          "en": "Goldstein",
+          "hi": "गोल्डस्टीन"
+        },
+        {
+          "bn": "চ্যাডউইক",
+          "en": "Chadwick",
+          "hi": "चैडविक"
+        },
+        {
+          "bn": "রাদারফোর্ড",
+          "en": "Rutherford",
+          "hi": "रदरफोर्ड"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "bn": "নিউট্রন আবিষ্কার করেন চ্যাডউইক।",
+        "en": "Neutron was discovered by James Chadwick.",
+        "hi": "न्यूट्रॉन की खोज जेम्स चैडविक ने की थी।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q007",
+      "question": {
+        "bn": "মেন্ডেলিফের পর্যায়সূত্র অনুসারে মৌলের ভৌত ও রাসায়নিক ধর্ম তাদের কোন ধর্মের সাথে পর্যায়ক্রমে পুনরাবৃত্ত হয়?",
+        "en": "According to Mendeleev's periodic law, the physical and chemical properties of elements are periodic functions of their:",
+        "hi": "मेंडलीव के आवर्त नियम के अनुसार, तत्वों के भौतिक और रासायनिक गुण उनके किसके आवर्ती फलन होते हैं?"
+      },
+      "options": [
+        {
+          "bn": "পারমাণবিক সংখ্যা",
+          "en": "Atomic number",
+          "hi": "परमाणु क्रमांक"
+        },
+        {
+          "bn": "পারমাণবিক ভর",
+          "en": "Atomic mass",
+          "hi": "परमाणु द्रव्यमान"
+        },
+        {
+          "bn": "ঘনত্ব",
+          "en": "Density",
+          "hi": "घनत्व"
+        },
+        {
+          "bn": "যোজ্যতা",
+          "en": "Valency",
+          "hi": "संयोजकता"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "মেন্ডেলিফের পর্যায়সূত্র অনুযায়ী মৌলের ধর্মাবলি তাদের পারমাণবিক ভরের সঙ্গে পর্যায়ক্রমে পুনরাবৃত্ত হয়।",
+        "en": "Mendeleev's periodic law states that physical and chemical properties of elements are periodic functions of their atomic masses.",
+        "hi": "मेंडलीव के नियम के अनुसार तत्वों के गुणधर्म उनके परमाणु द्रव्यमान के आवर्ती फलन होते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q008",
+      "question": {
+        "bn": "মেন্ডেলিফের পর্যায় সারণিতে কয়টি পর্যায় ও কয়টি শ্রেণি ছিল?",
+        "en": "How many periods and groups were there in Mendeleev's periodic table?",
+        "hi": "मेंडलीव की आवर्त सारणी में कितने आवर्त और कितने समूह थे?"
+      },
+      "options": [
+        {
+          "bn": "7 টি পর্যায় ও 8 টি শ্রেণি",
+          "en": "7 periods and 8 groups",
+          "hi": "7 आवर्त और 8 समूह"
+        },
+        {
+          "bn": "7 টি পর্যায় ও 18 টি শ্রেণি",
+          "en": "7 periods and 18 groups",
+          "hi": "7 आवर्त और 18 समूह"
+        },
+        {
+          "bn": "6 টি পর্যায় ও 8 টি শ্রেণি",
+          "en": "6 periods and 8 groups",
+          "hi": "6 आवर्त और 8 समूह"
+        },
+        {
+          "bn": "8 টি পর্যায় ও 7 টি শ্রেণি",
+          "en": "8 periods and 7 groups",
+          "hi": "8 आवर्त और 7 समूह"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "মেন্ডেলিফের পর্যায় সারণিতে 7 টি পর্যায় ও 8 টি শ্রেণি ছিল।",
+        "en": "Mendeleev's periodic table consisted of 7 periods and 8 groups.",
+        "hi": "मेंडलीव की आवर्त सारणी में 7 आवर्त और 8 समूह थे।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q009",
+      "question": {
+        "bn": "দীর্ঘ পর্যায় সারণিতে কয়টি পর্যায় ও কয়টি শ্রেণি আছে?",
+        "en": "How many periods and groups are present in the modern long form of the periodic table?",
+        "hi": "आधुनिक दीर्घ आवर्त सारणी में कितने आवर्त और कितने समूह हैं?"
+      },
+      "options": [
+        {
+          "bn": "7 টি পর্যায় ও 8 টি শ্রেণি",
+          "en": "7 periods and 8 groups",
+          "hi": "7 आवर्त और 8 समूह"
+        },
+        {
+          "bn": "7 টি পর্যায় ও 18 টি শ্রেণি",
+          "en": "7 periods and 18 groups",
+          "hi": "7 आवर्त और 18 समूह"
+        },
+        {
+          "bn": "6 টি পর্যায় ও 18 টি শ্রেণি",
+          "en": "6 periods and 18 groups",
+          "hi": "6 आवर्त और 18 समूह"
+        },
+        {
+          "bn": "8 টি পর্যায় ও 18 টি শ্রেণি",
+          "en": "8 periods and 18 groups",
+          "hi": "8 आवर्त और 18 समूह"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "দীর্ঘ পর্যায় সারণিতে 7 টি পর্যায় ও 18 টি শ্রেণি রয়েছে।",
+        "en": "The long form of periodic table contains 7 periods and 18 groups.",
+        "hi": "दीर्घ आवर्त सारणी में 7 आवर्त और 18 समूह होते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q010",
+      "question": {
+        "bn": "দীর্ঘ পর্যায় সারণির কোন শ্রেণিতে হ্যালোজেন মৌলগুলি অবস্থিত?",
+        "en": "Which group of the long periodic table contains the Halogens?",
+        "hi": "दीर्घ आवर्त सारणी के किस समूह में हैलोजन तत्व स्थित हैं?"
+      },
+      "options": [
+        {
+          "bn": "শ্রেণি-1",
+          "en": "Group 1",
+          "hi": "समूह-1"
+        },
+        {
+          "bn": "শ্রেণি-16",
+          "en": "Group 16",
+          "hi": "समूह-16"
+        },
+        {
+          "bn": "শ্রেণি-17",
+          "en": "Group 17",
+          "hi": "समूह-17"
+        },
+        {
+          "bn": "শ্রেণি-18",
+          "en": "Group 18",
+          "hi": "समूह-18"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "bn": "হ্যালোজেন মৌলগুলি পর্যায় সারণির শ্রেণি-17-এ অবস্থিত।",
+        "en": "Halogen elements (F, Cl, Br, I, At) belong to Group 17 of the periodic table.",
+        "hi": "हैलोजन तत्व आवर्त सारणी के समूह-17 में स्थित हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q011",
+      "question": {
+        "bn": "শ্রেণি-16 এর মৌলগুলিকে (O, S, Te ইত্যাদি) কী বলা হয়?",
+        "en": "Group 16 elements (O, S, Se, Te) are collectively known as:",
+        "hi": "समूह 16 के तत्वों (O, S, Te आदि) को सामूहिक रूप से क्या कहा जाता है?"
+      },
+      "options": [
+        {
+          "bn": "হ্যালোজেন",
+          "en": "Halogens",
+          "hi": "हैलोजन"
+        },
+        {
+          "bn": "চ্যালকোজেন",
+          "en": "Chalcogens",
+          "hi": "चाल्कोजन"
+        },
+        {
+          "bn": "নিকটোজেন",
+          "en": "Pnictogens",
+          "hi": "निक्टोजन"
+        },
+        {
+          "bn": "ক্ষার ধাতু",
+          "en": "Alkali metals",
+          "hi": "क्षारीय धातु"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "পর্যায় সারণির শ্রেণি-16-এর মৌলগুলিকে চ্যালকোজেন বলা হয়।",
+        "en": "Elements of Group 16 are called chalcogens (ore-forming elements).",
+        "hi": "समूह 16 के तत्वों को चाल्कोजन कहा जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q012",
+      "question": {
+        "bn": "পর্যায় সারণির কোন শ্রেণিতে নোব্ল বা নিষ্ক্রিয় গ্যাসগুলি অবস্থিত?",
+        "en": "In which group of the periodic table are Noble gases placed?",
+        "hi": "आवर्त सारणी के किस समूह में नोबल गैसें रखी गई हैं?"
+      },
+      "options": [
+        {
+          "bn": "শ্রেণি-1",
+          "en": "Group 1",
+          "hi": "समूह-1"
+        },
+        {
+          "bn": "শ্রেণি-2",
+          "en": "Group 2",
+          "hi": "समूह-2"
+        },
+        {
+          "bn": "শ্রেণি-17",
+          "en": "Group 17",
+          "hi": "समूह-17"
+        },
+        {
+          "bn": "শ্রেণি-18",
+          "en": "Group 18",
+          "hi": "समूह-18"
+        }
+      ],
+      "correct_index": 3,
+      "explanation": {
+        "bn": "নোব্ল গ্যাসগুলি পর্যায় সারণির শ্রেণি-18-এ অবস্থিত।",
+        "en": "Noble gases (He, Ne, Ar, Kr, Xe, Rn) are placed in Group 18 of the periodic table.",
+        "hi": "नोबल गैसें आवर्त सारणी के समूह 18 में स्थित हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q013",
+      "question": {
+        "bn": "নিম্নলিখিত কোনটি সাধারণ উষ্ণেতায় তরল ধাতু?",
+        "en": "Which of the following is a liquid metal at room temperature?",
+        "hi": "निम्नलिखित में से कौन सी धातु कमरे के तापमान पर द्रव अवस्था में होती है?"
+      },
+      "options": [
+        {
+          "bn": "পারদ (Hg)",
+          "en": "Mercury (Hg)",
+          "hi": "पारा / मरकरी (Hg)"
+        },
+        {
+          "bn": "সোডিয়াম (Na)",
+          "en": "Sodium (Na)",
+          "hi": "सोडियम (Na)"
+        },
+        {
+          "bn": "ব্রোমিন (Br)",
+          "en": "Bromine (Br)",
+          "hi": "ब्रोमीन (Br)"
+        },
+        {
+          "bn": "ক্যালশিয়াম (Ca)",
+          "en": "Calcium (Ca)",
+          "hi": "कैल्शियम (Ca)"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "পারদ (Hg) হলো স্বাভাবিক উষ্ণতায় তরল ধাতু।",
+        "en": "Mercury (Hg) and Gallium (Ga) are metals that exist in liquid state at or near room temperature.",
+        "hi": "पारा (Hg) सामान्य ताप पर द्रव अवस्था में पाई जाने वाली धातु है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q014",
+      "question": {
+        "bn": "স্বাভাবিক উষ্ণতায় তরল অধাতু কোনটি?",
+        "en": "Which non-metal is liquid at room temperature?",
+        "hi": "सामान्य तापमान पर द्रव अवस्था में पाई जाने वाली अधातु कौन सी है?"
+      },
+      "options": [
+        {
+          "bn": "ব্রোমিন (Br)",
+          "en": "Bromine (Br)",
+          "hi": "ब्रोमीन (Br)"
+        },
+        {
+          "bn": "পারদ (Hg)",
+          "en": "Mercury (Hg)",
+          "hi": "पारा (Hg)"
+        },
+        {
+          "bn": "আয়োডিন (I)",
+          "en": "Iodine (I)",
+          "hi": "आयोडीन (I)"
+        },
+        {
+          "bn": "ক্লোরিন (Cl)",
+          "en": "Chlorine (Cl)",
+          "hi": "क्लोरीन (Cl)"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "ব্রোমিন (Br) হলো একমাত্র অধাতু যা সাধারণ উষ্ণতায় তরল অবস্থায় থাকে।",
+        "en": "Bromine (Br) is the only non-metal that exists as a liquid at room temperature.",
+        "hi": "ब्रोमीन (Br) एकमात्र ऐसी अधातु है जो कमरे के तापमान पर द्रव अवस्था में होती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q015",
+      "question": {
+        "bn": "ভূপৃষ্ঠে সর্বাধিক উপস্থিত মৌল কোনটি?",
+        "en": "Which is the most abundant element in the Earth's crust?",
+        "hi": "पृथ्वी की भूपर्पटी (Earth's crust) में सर्वाधिक प्रचुर मात्रा में पाया जाने वाला तत्व कौन सा है?"
+      },
+      "options": [
+        {
+          "bn": "সিলিকন (Si)",
+          "en": "Silicon (Si)",
+          "hi": "सिलिकॉन (Si)"
+        },
+        {
+          "bn": "অক্সিজেন (O)",
+          "en": "Oxygen (O)",
+          "hi": "ऑक्सीजन (O)"
+        },
+        {
+          "bn": "অ্যালুমিনিয়াম (Al)",
+          "en": "Aluminum (Al)",
+          "hi": "एल्युमीनियम (Al)"
+        },
+        {
+          "bn": "আয়রন (Fe)",
+          "en": "Iron (Fe)",
+          "hi": "लोहा (Fe)"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "ভূপৃষ্ঠে সর্বাধিক উপস্থিত মৌল হলো অক্সিজেন (প্রায় 46.5%)।",
+        "en": "Oxygen is the most abundant element in the Earth's crust (~46.5%), followed by Silicon (~28%).",
+        "hi": "पृथ्वी की भूपर्पटी में ऑक्सीजन सबसे प्रचुर मात्रा में (~46.5%) पाया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q016",
+      "question": {
+        "bn": "ভূপৃষ্ঠে সর্বাধিক উপস্থিত ধাতু কোনটি?",
+        "en": "Which is the most abundant metal in the Earth's crust?",
+        "hi": "पृथ्वी की भूपर्पटी में सर्वाधिक मात्रा में पाई जाने वाली धातु कौन सी है?"
+      },
+      "options": [
+        {
+          "bn": "আয়রন (Fe)",
+          "en": "Iron (Fe)",
+          "hi": "लोहा (Fe)"
+        },
+        {
+          "bn": "ক্যালশিয়াম (Ca)",
+          "en": "Calcium (Ca)",
+          "hi": "कैल्शियम (Ca)"
+        },
+        {
+          "bn": "অ্যালুমিনিয়াম (Al)",
+          "en": "Aluminum (Al)",
+          "hi": "এল्युमीनियम (Al)"
+        },
+        {
+          "bn": "সোডিয়াম (Na)",
+          "en": "Sodium (Na)",
+          "hi": "सोडियम (Na)"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "bn": "ভূপৃষ্ঠে সর্বাধিক উপস্থিত ধাতু হলো অ্যালুমিনিয়াম (7-8%)।",
+        "en": "Aluminum (Al) is the most abundant metal in the Earth's crust (7-8%).",
+        "hi": "एल्युमीनियम (Al) पृथ्वी की भूपर्पटी में सर्वाधिक पाई जाने वाली धातु (7-8%) है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q017",
+      "question": {
+        "bn": "বায়ুমণ্ডলে সর্বাধিক উপস্থিত মৌল কোনটি?",
+        "en": "Which is the most abundant element in the atmosphere?",
+        "hi": "वायुमंडल में सर्वाधिक मात्रा में पाया जाने वाला तत्व कौन सा है?"
+      },
+      "options": [
+        {
+          "bn": "অক্সিজেন (O)",
+          "en": "Oxygen (O)",
+          "hi": "ऑक्सीजन (O)"
+        },
+        {
+          "bn": "নাইট্রোজেন (N)",
+          "en": "Nitrogen (N)",
+          "hi": "नाइट्रोजन (N)"
+        },
+        {
+          "bn": "কার্বন ডাইঅক্সাইড (CO2)",
+          "en": "Carbon Dioxide (CO2)",
+          "hi": "कार्बन डाइऑक्साइड (CO2)"
+        },
+        {
+          "bn": "আর্গন (Ar)",
+          "en": "Argon (Ar)",
+          "hi": "आर्गन (Ar)"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "বায়ুমণ্ডলে সর্বাধিক উপস্থিত মৌল হলো নাইট্রোজেন (প্রায় 77.17%)।",
+        "en": "Nitrogen (N) is the most abundant element in the atmosphere (~78%).",
+        "hi": "वायुमंडल में सर्वाधिक प्रचुर मात्रा में नाइट्रोजन (लगभग 78%) पाई जाती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q018",
+      "question": {
+        "bn": "মহাবিশ্বে সর্বাধিক উপস্থিত মৌল কোনটি?",
+        "en": "Which is the most abundant element in the universe?",
+        "hi": "ब्रह्मांड में सर्वाधिक प्रचुर मात्रा में पाया जाने वाला तत्व कौन सा है?"
+      },
+      "options": [
+        {
+          "bn": "হিলিয়াম (He)",
+          "en": "Helium (He)",
+          "hi": "हीलियम (He)"
+        },
+        {
+          "bn": "হাইড্রোজেন (H)",
+          "en": "Hydrogen (H)",
+          "hi": "हाइड्रोजन (H)"
+        },
+        {
+          "bn": "অক্সিজেন (O)",
+          "en": "Oxygen (O)",
+          "hi": "ऑक्सीजन (O)"
+        },
+        {
+          "bn": "কার্বন (C)",
+          "en": "Carbon (C)",
+          "hi": "कार्बन (C)"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "মহাবিশ্বে সর্বাধিক উপস্থিত মৌল হলো হাইড্রোজেন।",
+        "en": "Hydrogen (H) is the most abundant element in the universe.",
+        "hi": "हाइड्रोजन (H) पूरे ब्रह्मांड में सबसे प्रचुर मात्रा में पाया जाने वाला तत्व है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q019",
+      "question": {
+        "bn": "সবচেয়ে হালকা ধাতু কোনটি?",
+        "en": "Which is the lightest metal?",
+        "hi": "सबसे हल्की धातु कौन सी है?"
+      },
+      "options": [
+        {
+          "bn": "লিথিয়াম (Li)",
+          "en": "Lithium (Li)",
+          "hi": "लिथियम (Li)"
+        },
+        {
+          "bn": "সোডিয়াম (Na)",
+          "en": "Sodium (Na)",
+          "hi": "सोडियम (Na)"
+        },
+        {
+          "bn": "পটাশিয়াম (K)",
+          "en": "Potassium (K)",
+          "hi": "पोटैशियम (K)"
+        },
+        {
+          "bn": "হাইড্রোজেন (H)",
+          "en": "Hydrogen (H)",
+          "hi": "हाइड्रोजन (H)"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "সবচেয়ে হালকা ধাতু হলো লিথিয়াম (Li)।",
+        "en": "Lithium (Li) is the lightest metal in existence.",
+        "hi": "लिथियम (Li) सबसे हल्की धातु है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q020",
+      "question": {
+        "bn": "সবচেয়ে হালকা গ্যাস কোনটি?",
+        "en": "Which is the lightest gas?",
+        "hi": "सबसे हल्की गैस कौन सी है?"
+      },
+      "options": [
+        {
+          "bn": "হিলিয়াম (He)",
+          "en": "Helium (He)",
+          "hi": "हीलियम (He)"
+        },
+        {
+          "bn": "হাইড্রোজেন (H)",
+          "en": "Hydrogen (H)",
+          "hi": "हाइड्रोजन (H)"
+        },
+        {
+          "bn": "নাইট্রোজেন (N)",
+          "en": "Nitrogen (N)",
+          "hi": "नाइट्रोजन (N)"
+        },
+        {
+          "bn": "অক্সিজেন (O)",
+          "en": "Oxygen (O)",
+          "hi": "ऑक्सीजन (O)"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "সবচেয়ে হালকা গ্যাস হলো হাইড্রোজেন (H)।",
+        "en": "Hydrogen (H) is the lightest gas.",
+        "hi": "हाइड्रोजन (H) सबसे हल्की गैस है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q021",
+      "question": {
+        "bn": "সবচেয়ে ভারী গ্যাস কোনটি?",
+        "en": "Which is the heaviest gas?",
+        "hi": "सबसे भारी गैस कौन सी है?"
+      },
+      "options": [
+        {
+          "bn": "কার্বন ডাইঅক্সাইড (CO2)",
+          "en": "Carbon Dioxide (CO2)",
+          "hi": "कार्बन डाइऑक्साइड (CO2)"
+        },
+        {
+          "bn": "রেডন (Rn)",
+          "en": "Radon (Rn)",
+          "hi": "रेडॉन (Rn)"
+        },
+        {
+          "bn": "জেনন (Xe)",
+          "en": "Xenon (Xe)",
+          "hi": "ज़ेनॉन (Xe)"
+        },
+        {
+          "bn": "ক্লোরিন (Cl2)",
+          "en": "Chlorine (Cl2)",
+          "hi": "क्लोरीन (Cl2)"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "সবচেয়ে ভারী গ্যাস হলো রেডন (Rn)।",
+        "en": "Radon (Rn) is the heaviest known gas.",
+        "hi": "रेडॉन (Rn) सबसे भारी गैस है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q022",
+      "question": {
+        "bn": "কঠিনতম মৌলিক পদার্থ কোনটি?",
+        "en": "Which is the hardest natural element/substance?",
+        "hi": "सब্স কঠোরতম প্রাকৃতিক तत्व/पदार्थ कौन सा है?"
+      },
+      "options": [
+        {
+          "bn": "গ্রাফাইট",
+          "en": "Graphite",
+          "hi": "ग्रेफाइट"
+        },
+        {
+          "bn": "হীরক (C)",
+          "en": "Diamond (C)",
+          "hi": "हीरा (C)"
+        },
+        {
+          "bn": "প্ল্যাটিনাম",
+          "en": "Platinum",
+          "hi": "प्लेटिनम"
+        },
+        {
+          "bn": "লোহা",
+          "en": "Iron",
+          "hi": "লোহা"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "কঠিনতম মৌলিক পদার্থ হলো হীরক (কার্বনের একটি রূপভেদ)।",
+        "en": "Diamond, an allotrope of carbon, is the hardest naturally occurring elemental substance.",
+        "hi": "हीरा (कार्बन का एक अपररूप) सबसे कठोर प्राकृतिक पदार्थ है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q023",
+      "question": {
+        "bn": "অক্সিজেন সিলিন্ডারে অক্সিজেনের সঙ্গে কোন গ্যাস মেশানো হয়?",
+        "en": "Which gas is mixed with oxygen in diving oxygen cylinders?",
+        "hi": "ऑक्सीजन सिलेंडरों में ऑक्सीजन के साथ कौन सी गैस मिलाई जाती है?"
+      },
+      "options": [
+        {
+          "bn": "হিলিয়াম (He)",
+          "en": "Helium (He)",
+          "hi": "हीलियम (He)"
+        },
+        {
+          "bn": "হাইড্রোজেন (H)",
+          "en": "Hydrogen (H)",
+          "hi": "हाइड्रोजन (H)"
+        },
+        {
+          "bn": "নাইট্রোজেন (N2)",
+          "en": "Nitrogen (N2)",
+          "hi": "नाइट्रोजन (N2)"
+        },
+        {
+          "bn": "আর্গন (Ar)",
+          "en": "Argon (Ar)",
+          "hi": "আর্গন (Ar)"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "অক্সিজেন সিলিন্ডারে অক্সিজেনের সাথে হিলিয়াম গ্যাস মেশানো হয়।",
+        "en": "Helium (He) is mixed with oxygen in breathing gas cylinders for deep-sea diving.",
+        "hi": "ऑक्सीजन सिलेंडरों में ऑक्सीजन के साथ हीलियम (He) गैस मिलाई जाती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q024",
+      "question": {
+        "bn": "তাপ ও তড়িতের পরিবাহী অধাতু কোনটি?",
+        "en": "Which non-metal is a good conductor of heat and electricity?",
+        "hi": "ऊष्मा और विद्युत की सुचालक अधातु कौन सी है?"
+      },
+      "options": [
+        {
+          "bn": "হীরক",
+          "en": "Diamond",
+          "hi": "हीरा"
+        },
+        {
+          "bn": "সালফার",
+          "en": "Sulphur",
+          "hi": "सल्फर"
+        },
+        {
+          "bn": "গ্রাফাইট",
+          "en": "Graphite",
+          "hi": "ग्रेफाइट"
+        },
+        {
+          "bn": "ফসফরাস",
+          "en": "Phosphorus",
+          "hi": "फ़ॉस्फ़ोरस"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "bn": "কার্বনের রূপভেদ গ্রাফাইট তাপ ও তড়িতের সুপরিবাহী অধাতু।",
+        "en": "Graphite (an allotrope of carbon) is a non-metal that conducts electricity and heat well.",
+        "hi": "ग्रेफाइट (कार्बन का एक अपररूप) विद्युत और ऊष्मा की सुचालक अधातु है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q025",
+      "question": {
+        "bn": "একটি তড়িৎ-ধনাত্মক অধাতু কোনটি?",
+        "en": "Which non-metal is electropositive in nature?",
+        "hi": "एक विद्युत-धनात्मक (electropositive) अधातु कौन सी है?"
+      },
+      "options": [
+        {
+          "bn": "হাইড্রোজেন (H)",
+          "en": "Hydrogen (H)",
+          "hi": "हाइड्रोजन (H)"
+        },
+        {
+          "bn": "অক্সিজেন (O)",
+          "en": "Oxygen (O)",
+          "hi": "ऑक्सीजन (O)"
+        },
+        {
+          "bn": "ক্লোরিন (Cl)",
+          "en": "Chlorine (Cl)",
+          "hi": "क्लोरीन (Cl)"
+        },
+        {
+          "bn": "নাইট্রোজেন (N)",
+          "en": "Nitrogen (N)",
+          "hi": "नाइट्रोजन (N)"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "হাইড্রোজেন (H) হলো একটি তড়িৎ-ধনাত্মক অধাতু।",
+        "en": "Hydrogen behaves as an electropositive non-metal by losing an electron to form H+.",
+        "hi": "हाइड्रोजन (H) एक विद्युत-धनात्मक अधातु है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q026",
+      "question": {
+        "bn": "সর্বাপেক্ষা হালকা নিষ্ক্রিয় গ্যাস কোনটি?",
+        "en": "Which is the lightest noble gas?",
+        "hi": "सबसे हल्की उत्कृष्ट (नोबल) गैस कौन सी है?"
+      },
+      "options": [
+        {
+          "bn": "নিয়ন (Ne)",
+          "en": "Neon (Ne)",
+          "hi": "नियॉन (Ne)"
+        },
+        {
+          "bn": "হিলিয়াম (He)",
+          "en": "Helium (He)",
+          "hi": "हीलियम (He)"
+        },
+        {
+          "bn": "আর্গন (Ar)",
+          "en": "Argon (Ar)",
+          "hi": "আर्गन (Ar)"
+        },
+        {
+          "bn": "ক্রিপটন (Kr)",
+          "en": "Krypton (Kr)",
+          "hi": "क्रिप्टॉन (Kr)"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "সর্বাপেক্ষা হালকা নিষ্ক্রিয় গ্যাস হলো হিলিয়াম (He)।",
+        "en": "Helium (He) is the lightest noble gas.",
+        "hi": "हीलियम (He) सबसे हल्की नोबल गैस है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q027",
+      "question": {
+        "bn": "জলের চেয়ে হালকা ধাতু কোনটি?",
+        "en": "Which metal is lighter than water?",
+        "hi": "जल से भी हल्की धातु कौन सी है?"
+      },
+      "options": [
+        {
+          "bn": "সোডিয়াম (Na)",
+          "en": "Sodium (Na)",
+          "hi": "सोडियम (Na)"
+        },
+        {
+          "bn": "আয়রন (Fe)",
+          "en": "Iron (Fe)",
+          "hi": "लोहा (Fe)"
+        },
+        {
+          "bn": "তামা (Cu)",
+          "en": "Copper (Cu)",
+          "hi": "तांबा (Cu)"
+        },
+        {
+          "bn": "সোনা (Au)",
+          "en": "Gold (Au)",
+          "hi": "সোনা (Au)"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "সোডিয়াম (Na) জলের চেয়ে হালকা ধাতু এবং এটি জলের ওপর ভাসে।",
+        "en": "Sodium (Na) has a density less than water (~0.97 g/cm³), making it float on water.",
+        "hi": "सोडियम (Na) का घनत्व जल से कम होता है, इसलिए यह जल से हल्की धातु है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q028",
+      "question": {
+        "bn": "সর্বাপেক্ষা নমনীয় ধাতু কোনটি?",
+        "en": "Which is the most malleable metal?",
+        "hi": "सर्वाधिक आघातवर्धनीय (malleable) धातु कौन सी है?"
+      },
+      "options": [
+        {
+          "bn": "রুপো (Ag)",
+          "en": "Silver (Ag)",
+          "hi": "चांदी (Ag)"
+        },
+        {
+          "bn": "সোনা (Au)",
+          "en": "Gold (Au)",
+          "hi": "सोना (Au)"
+        },
+        {
+          "bn": "অ্যালুমিনিয়াম (Al)",
+          "en": "Aluminum (Al)",
+          "hi": "এল्युमीनियम (Al)"
+        },
+        {
+          "bn": "তামা (Cu)",
+          "en": "Copper (Cu)",
+          "hi": "तांबा (Cu)"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "সর্বাপেক্ষা নমনীয় ধাতু হলো সোনা (Au)।",
+        "en": "Gold (Au) is the most malleable metal.",
+        "hi": "सोना (Au) सबसे अधिक आघातवर्धनीय/नमनीय धातु है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q029",
+      "question": {
+        "bn": "একটি ভঙ্গুর অধাতু কোনটি?",
+        "en": "Which non-metal is brittle in nature?",
+        "hi": "एक भंगुर (brittle) अधातु कौन सी है?"
+      },
+      "options": [
+        {
+          "bn": "বিসমাথ (Bi)",
+          "en": "Bismuth (Bi)",
+          "hi": "बिस्मथ (Bi)"
+        },
+        {
+          "bn": "সালফার (S)",
+          "en": "Sulfur (S)",
+          "hi": "सल्फर (S)"
+        },
+        {
+          "bn": "সোডিয়াম (Na)",
+          "en": "Sodium (Na)",
+          "hi": "সোডিয়াম (Na)"
+        },
+        {
+          "bn": "তামা (Cu)",
+          "en": "Copper (Cu)",
+          "hi": "तांबा (Cu)"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "বিসমাথ (Bi) হলো একটি ভঙ্গুর অধাতব ধর্মযুক্ত মৌল।",
+        "en": "Bismuth (Bi) is a brittle element showing non-metallic character in brittleness.",
+        "hi": "बिस्मथ (Bi) एक भंगुर तत्व है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q030",
+      "question": {
+        "bn": "নিচের কোন মৌলগুলিতে ধাতব ও অধাতব উভয় ধর্ম বর্তমান (ধাতুকল্প)?",
+        "en": "Which of the following elements are metalloids (possess both metallic and non-metallic properties)?",
+        "hi": "निम्नलिखित में से कौन से तत्व उपधातु (धातु और अधातु दोनों के गुण रखने वाले) हैं?"
+      },
+      "options": [
+        {
+          "bn": "সোডিয়াম (Na) ও পটাশিয়াম (K)",
+          "en": "Sodium (Na) and Potassium (K)",
+          "hi": "सोडियम (Na) और पोटैशियम (K)"
+        },
+        {
+          "bn": "অ্যান্টিমনি (Sb), সিলিকন (Si) এবং আর্সেনিক (As)",
+          "en": "Antimony (Sb), Silicon (Si), and Arsenic (As)",
+          "hi": "एंटीमनी (Sb), सिलिकॉन (Si) और आर्सेनिक (As)"
+        },
+        {
+          "bn": "সোনা (Au) ও রুপো (Ag)",
+          "en": "Gold (Au) and Silver (Ag)",
+          "hi": "सोना (Au) और चांदी (Ag)"
+        },
+        {
+          "bn": "হিলিয়াম (He) ও নিয়ন (Ne)",
+          "en": "Helium (He) and Neon (Ne)",
+          "hi": "हीलियम (He) और नियॉन (Ne)"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "অ্যান্টিমনি (Sb), সিলিকন (Si) এবং আর্সেনিক (As) হলো ধাতুকল্প।",
+        "en": "Antimony (Sb), Silicon (Si), and Arsenic (As) display both metallic and non-metallic properties (metalloids).",
+        "hi": "एंटीमनी (Sb), सिलिकॉन (Si) और आर्सेनिक (As) उपधातु (metalloids) हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q031",
+      "question": {
+        "bn": "দুটি উজ্জ্বল অধাতু কোনটি?",
+        "en": "Which non-metals possess a lustrous appearance?",
+        "hi": "दो चमकदार (lustrous) अधातुएँ कौन सी हैं?"
+      },
+      "options": [
+        {
+          "bn": "আয়োডিন (I) ও গ্রাফাইট (C)",
+          "en": "Iodine (I) and Graphite (C)",
+          "hi": "आयोडीन (I) और ग्रेफाइट (C)"
+        },
+        {
+          "bn": "অক্সিজেন (O) ও নাইট্রোজেন (N)",
+          "en": "Oxygen (O) and Nitrogen (N)",
+          "hi": "ऑक्सीजन (O) और नाइट्रोजन (N)"
+        },
+        {
+          "bn": "সালফার (S) ও ফসফরাস (P)",
+          "en": "Sulfur (S) and Phosphorus (P)",
+          "hi": "সल्फर (S) और फ़ॉस्फ़ोरस (P)"
+        },
+        {
+          "bn": "হিলিয়াম (He) ও আর্গন (Ar)",
+          "en": "Helium (He) and Argon (Ar)",
+          "hi": "हीलियम (He) और आर्गन (Ar)"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "আয়োডিন (I) এবং গ্রাফাইট (C) হলো উজ্জ্বল অধাতু।",
+        "en": "Iodine (I) and Graphite (C) are non-metals that exhibit metallic luster.",
+        "hi": "आयोडीन (I) और ग्रेफाइट (C) चमकदार अधातुएँ हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q032",
+      "question": {
+        "bn": "সবচেয়ে ভারী অধাতু কোনটি?",
+        "en": "Which is the heaviest non-metal?",
+        "hi": "सबसे भारी अधातु कौन सी है?"
+      },
+      "options": [
+        {
+          "bn": "আয়োডিন (I)",
+          "en": "Iodine (I)",
+          "hi": "आयोडीन (I)"
+        },
+        {
+          "bn": "অ্যাস্টেটাইন (At)",
+          "en": "Astatine (At)",
+          "hi": "एस्टैटीन (At)"
+        },
+        {
+          "bn": "ব্রোমিন (Br)",
+          "en": "Bromine (Br)",
+          "hi": "ब्रोमीन (Br)"
+        },
+        {
+          "bn": "কার্বন (C)",
+          "en": "Carbon (C)",
+          "hi": "कार्बन (C)"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "সবচেয়ে ভারী অধাতু হলো অ্যাস্টেটাইন (At)।",
+        "en": "Astatine (At) is considered the heaviest non-metal/halogen element.",
+        "hi": "एस्टैटीन (At) सबसे भारी अधातु है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q033",
+      "question": {
+        "bn": "কোন নিষ্ক্রিয় গ্যাসটি বায়ুতে অনুপস্থিত?",
+        "en": "Which noble gas is absent in atmospheric air?",
+        "hi": "कौन सी उत्कृष्ट (नोबल) गैस वायुमंडल में अनुपस्थित है?"
+      },
+      "options": [
+        {
+          "bn": "আর্গন (Ar)",
+          "en": "Argon (Ar)",
+          "hi": "আर्गन (Ar)"
+        },
+        {
+          "bn": "হিলিয়াম (He)",
+          "en": "Helium (He)",
+          "hi": "हीलियम (He)"
+        },
+        {
+          "bn": "নিয়ন (Ne)",
+          "en": "Neon (Ne)",
+          "hi": "नियॉन (Ne)"
+        },
+        {
+          "bn": "রেডন (Rn)",
+          "en": "Radon (Rn)",
+          "hi": "রেডॉन (Rn)"
+        }
+      ],
+      "correct_index": 3,
+      "explanation": {
+        "bn": "রেডন (Rn) বায়ুমণ্ডলে অনুপস্থিত থাকে।",
+        "en": "Radon (Rn) is a radioactive noble gas and is absent in air.",
+        "hi": "रेडॉन (Rn) वायु में अनुपस्थित रहने वाली नोबल गैस है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q034",
+      "question": {
+        "bn": "সবচেয়ে বেশি তড়িৎ-ঋণাত্মক মৌল কোনটি?",
+        "en": "Which is the most electronegative element in the periodic table?",
+        "hi": "आवर्त सारणी में सबसे अधिक विद्युत-ऋणात्मक (electronegative) तत्व कौन सा है?"
+      },
+      "options": [
+        {
+          "bn": "ক্লোরিন (Cl)",
+          "en": "Chlorine (Cl)",
+          "hi": "क्लोरीन (Cl)"
+        },
+        {
+          "bn": "ফ্লুরিন (F)",
+          "en": "Fluorine (F)",
+          "hi": "फ़्लोरीन (F)"
+        },
+        {
+          "bn": "অক্সিজেন (O)",
+          "en": "Oxygen (O)",
+          "hi": "ऑक्सीजन (O)"
+        },
+        {
+          "bn": "নাইট্রোজেন (N)",
+          "en": "Nitrogen (N)",
+          "hi": "नाइट्रोजन (N)"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "সবচেয়ে বেশি তড়িৎ-ঋণাত্মক মৌল হলো ফ্লুরিন (F)।",
+        "en": "Fluorine (F) has the highest electronegativity value (4.0 on Pauling scale).",
+        "hi": "फ़्लोरीन (F) सबसे अधिक विद्युत-ऋणात्मक तत्व है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q035",
+      "question": {
+        "bn": "সবচেয়ে বেশি তড়িৎ-ধনাত্মক মৌল কোনটি?",
+        "en": "Which is the most electropositive element?",
+        "hi": "सबसे अधिक विद्युत-धनात्मक (electropositive) तत्व कौन सा है?"
+      },
+      "options": [
+        {
+          "bn": "ফ্রান্সিয়াম (Fr)",
+          "en": "Francium (Fr)",
+          "hi": "फ़्रैंशियम (Fr)"
+        },
+        {
+          "bn": "সিজিয়াম (Cs)",
+          "en": "Cesium (Cs)",
+          "hi": "सीज़ियम (Cs)"
+        },
+        {
+          "bn": "সোডিয়াম (Na)",
+          "en": "Sodium (Na)",
+          "hi": "সোডিয়াম (Na)"
+        },
+        {
+          "bn": "পটাশিয়াম (K)",
+          "en": "Potassium (K)",
+          "hi": "पोटैशियम (K)"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "সবচেয়ে বেশি তড়িৎ-ধনাত্মক মৌল হলো ফ্রান্সিয়াম (Fr)।",
+        "en": "Francium (Fr) is the most electropositive element in the periodic table.",
+        "hi": "फ़्रैंशियम (Fr) सबसे अधिक विद्युत-धनात्मक तत्व है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q036",
+      "question": {
+        "bn": "কোন মৌলগুলিকে মুদ্রা ধাতু বা কয়েনেজ মেটাল বলা হয়?",
+        "en": "Which elements are known as coinage metals?",
+        "hi": "किन तत्वों को सिक्का धातु (coinage metals) कहा जाता है?"
+      },
+      "options": [
+        {
+          "bn": "আয়রন (Fe), কোবাল্ট (Co), নিকেল (Ni)",
+          "en": "Iron (Fe), Cobalt (Co), Nickel (Ni)",
+          "hi": "लोहा (Fe), कोबाल्ट (Co), निकल (Ni)"
+        },
+        {
+          "bn": "তামা (Cu), রুপো (Ag), সোনা (Au)",
+          "en": "Copper (Cu), Silver (Ag), Gold (Au)",
+          "hi": "तांबा (Cu), चांदी (Ag), सोना (Au)"
+        },
+        {
+          "bn": "সোডিয়াম (Na), পটাশিয়াম (K), লিথিয়াম (Li)",
+          "en": "Sodium (Na), Potassium (K), Lithium (Li)",
+          "hi": "सोडियम (Na), पोटैशियम (K), लिथियम (Li)"
+        },
+        {
+          "bn": "জিঙ্ক (Zn), ক্যাডমিয়াম (Cd), পারদ (Hg)",
+          "en": "Zinc (Zn), Cadmium (Cd), Mercury (Hg)",
+          "hi": "जिंक (Zn), कैडमियम (Cd), पारा (Hg)"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "তামা (Cu), রুপো (Ag) এবং সোনা (Au)-কে মুদ্রা ধাতু বলা হয়।",
+        "en": "Copper (Cu), Silver (Ag), and Gold (Au) are traditional coinage metals (Group 11).",
+        "hi": "तांबा (Cu), चांदी (Ag) और सोना (Au) को सिक्का धातुएँ कहा जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q037",
+      "question": {
+        "bn": "কোন মৌলগুলিকে বরধাতু বা নোব্ল মেটাল বলা হয়?",
+        "en": "Which elements are classified as Noble Metals?",
+        "hi": "किन तत्वों को उत्कृष्ट धातुएँ (noble metals) कहा जाता है?"
+      },
+      "options": [
+        {
+          "bn": "সোডিয়াম (Na), পটাশিয়াম (K), লিথিয়াম (Li)",
+          "en": "Sodium (Na), Potassium (K), Lithium (Li)",
+          "hi": "সোডিয়াম (Na), पोटैशियम (K), लिथियम (Li)"
+        },
+        {
+          "bn": "সোনা (Au), প্ল্যাটিনাম (Pt), রুপো (Ag)",
+          "en": "Gold (Au), Platinum (Pt), Silver (Ag)",
+          "hi": "सोना (Au), प्लेटिनम (Pt), चांदी (Ag)"
+        },
+        {
+          "bn": "আয়রন (Fe), তামা (Cu), জিঙ্ক (Zn)",
+          "en": "Iron (Fe), Copper (Cu), Zinc (Zn)",
+          "hi": "लोहा (Fe), तांबा (Cu), जिंक (Zn)"
+        },
+        {
+          "bn": "ম্যাগনেসিয়াম (Mg), ক্যালশিয়াম (Ca), বেরিয়াম (Ba)",
+          "en": "Magnesium (Mg), Calcium (Ca), Barium (Ba)",
+          "hi": "मैग्नीशियम (Mg), कैल्शियम (Ca), बेरियम (Ba)"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "সোনা (Au), প্ল্যাটিনাম (Pt) এবং রুপো (Ag) ক্ষয় ও জারণ প্রতিরোধের কারণে বরধাতু নামে পরিচিত।",
+        "en": "Gold (Au), Platinum (Pt), and Silver (Ag) are noble metals due to their resistance to corrosion and oxidation.",
+        "hi": "सोना (Au), प्लेटिनम (Pt) और चांदी (Ag) संक्षारण और ऑक्सीकरण के प्रति अपने प्रतिरोध के कारण उत्कृष्ट धातुएँ कहलाती हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q038",
+      "question": {
+        "bn": "কোন প্রকার কয়লায় কার্বনের পরিমাণ সর্বাধিক (প্রায় 94%) এবং এটি ধাতু নিষ্কাশনে বিজারকরূপে ব্যবহৃত হয়?",
+        "en": "Which type of coal has the highest carbon content (approx. 94%) and is used as a reducing agent in metallurgy?",
+        "hi": "किस प्रकार के कोयले में कार्बन की मात्रा सर्वाधिक (लगभग 94%) होती है और इसका उपयोग धातुओं के निष्कर्षण में अपचायक के रूप में किया जाता है?"
+      },
+      "options": [
+        {
+          "bn": "অ্যানথ্রাসাইট",
+          "en": "Anthracite",
+          "hi": "एंथ्रेसाइट"
+        },
+        {
+          "bn": "বিটুমিনাস",
+          "en": "Bituminous",
+          "hi": "बिटुमिनस"
+        },
+        {
+          "bn": "লিগনাইট",
+          "en": "Lignite",
+          "hi": "लिग्नाइट"
+        },
+        {
+          "bn": "পিট",
+          "en": "Peat",
+          "hi": "पीट"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "অ্যানথ্রাসাইট কয়লায় প্রায় 94% কার্বন থাকে, যা একে সর্ব উৎকৃষ্টমানের কয়লা ও বিজারক হিসেবে কার্যকরী করে।",
+        "en": "Anthracite contains around 94% carbon, making it the highest grade coal used as a reducing agent.",
+        "hi": "एंथ्रेसाइट कोयले में लगभग 94% कार्बन होता है, जो इसे सर्वोत्तम श्रेणी का कोयला और उत्कृष्ट अपचायक बनाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q039",
+      "question": {
+        "bn": "এলপিজি (LPG)-এর প্রধান গ্যাসীয় উপাদানগুলি কী কী?",
+        "en": "What are the main gaseous components of Liquefied Petroleum Gas (LPG)?",
+        "hi": "तरलीकृत पेट्रोलियम गैस (LPG) के मुख्य गैसीय घटक कौन-से हैं?"
+      },
+      "options": [
+        {
+          "bn": "প্রোপেন ও বিউটেন",
+          "en": "Propane and Butane",
+          "hi": "प्रोपेन और ब्यूटेन"
+        },
+        {
+          "bn": "মিথেন ও ইথেন",
+          "en": "Methane and Ethane",
+          "hi": "मीथेन और एथेन"
+        },
+        {
+          "bn": "কার্বন মনোক্সাইড ও হাইড্রোজেন",
+          "en": "Carbon Monoxide and Hydrogen",
+          "hi": "कार्बन मोनोऑक्साइड और हाइड्रोजन"
+        },
+        {
+          "bn": "কার্বন মনোক্সাইড ও নাইট্রোজেন",
+          "en": "Carbon Monoxide and Nitrogen",
+          "hi": "कार्बन मोनोऑक्साइड और नाइट्रोजन"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "এলপিজি হলো প্রধানত প্রোপেন (C3H8) ও বিউটেন (C4H10)-এর গ্যাসীয় মিশ্রণ।",
+        "en": "LPG is primarily a gaseous mixture of propane (C3H8) and butane (C4H10).",
+        "hi": "LPG मुख्य रूप से प्रोपेन (C3H8) और ब्यूटेन (C4H10) का गैसीय मिश्रण है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q040",
+      "question": {
+        "bn": "সংনমিত প্রাকৃতিক গ্যাস বা সিএনজি (CNG)-এর প্রধান উপাদান কী?",
+        "en": "What is the main component of Compressed Natural Gas (CNG)?",
+        "hi": "संपीड़ित प्राकृतिक गैस (CNG) का मुख्य घटक क्या है?"
+      },
+      "options": [
+        {
+          "bn": "মিথেন",
+          "en": "Methane",
+          "hi": "मीथेन"
+        },
+        {
+          "bn": "বিউটেন",
+          "en": "Butane",
+          "hi": "ब्यूटेन"
+        },
+        {
+          "bn": "প্রোপেন",
+          "en": "Propane",
+          "hi": "प्रोपेन"
+        },
+        {
+          "bn": "অ্যাসিটিলিন",
+          "en": "Acetylene",
+          "hi": "एसिटिलीन"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "সিএনজি (CNG)-এর প্রধান উপাদান হলো মিথেন (CH4)।",
+        "en": "Methane (CH4) is the primary constituent of CNG.",
+        "hi": "CNG का प्राथमिक घटक मीथेन (CH4) है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q041",
+      "question": {
+        "bn": "1000°C উষ্ণতায় লোহিততপ্ত কয়লার ওপর দিয়ে জলীয় বাষ্প চালনা করলে উৎপন্ন ওয়াটার গ্যাস কিসের মিশ্রণ?",
+        "en": "Water gas is produced by passing steam over red-hot coal at 1000°C. What is its composition?",
+        "hi": "1000°C तापमान पर लाल तप्त कोयले के ऊपर से जलवाष्प प्रवाहित करने पर बनने वाली वॉटर गैस किसका मिश्रण है?"
+      },
+      "options": [
+        {
+          "bn": "কার্বন মনোক্সাইড (CO) ও হাইড্রোজেন (H₂)",
+          "en": "Carbon Monoxide (CO) and Hydrogen (H₂)",
+          "hi": "कार्बन मोनोऑक्साइड (CO) और हाइड्रोजन (H₂)"
+        },
+        {
+          "bn": "কার্বন মনোক্সাইড (CO) ও নাইট্রোজেন (N₂)",
+          "en": "Carbon Monoxide (CO) and Nitrogen (N₂)",
+          "hi": "कार्बन मोनोऑक्साइड (CO) और नाइट्रोजन (N₂)"
+        },
+        {
+          "bn": "মিথেন (CH₄) ও কার্বন ডাইঅক্সাইড (CO₂)",
+          "en": "Methane (CH₄) and Carbon Dioxide (CO₂)",
+          "hi": "मीथेन (CH₄) और कार्बन डाइऑक्साइड (CO₂)"
+        },
+        {
+          "bn": "হাইড্রোজেন (H₂) ও নাইট্রোজেন (N₂)",
+          "en": "Hydrogen (H₂) and Nitrogen (N₂)",
+          "hi": "हाइड्रोजन (H₂) और नाइट्रोजन (N₂)"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "ওয়াটার গ্যাস হলো কার্বন মনোক্সাইড (CO) ও হাইড্রোজেন (H2)-এর গ্যাসীয় মিশ্রণ।",
+        "en": "Water gas is a gaseous mixture of Carbon Monoxide (CO) and Hydrogen (H2).",
+        "hi": "वॉटर गैस कार्बन मोनोऑक्साइड (CO) और हाइड्रोजन (H2) का गैसीय मिश्रण है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q042",
+      "question": {
+        "bn": "স্বল্প পরিমাণ বাতাসের উপস্থিতিতে কয়লা পুড়িয়ে তৈরি প্রোডিউসার গ্যাসের উপাদান কী?",
+        "en": "Producer gas is formed by burning coal in a limited supply of air. What does it consist of?",
+        "hi": "सीमित वायु की उपस्थिति में कोयले को जलाने से बनने वाली प्रोड्यूसर गैस का घटक क्या है?"
+      },
+      "options": [
+        {
+          "bn": "কার্বন মনোক্সাইড (CO) ও নাইট্রোজেন (N₂)",
+          "en": "Carbon Monoxide (CO) and Nitrogen (N₂)",
+          "hi": "कार्बन मोनोऑक्साइड (CO) और नाइट्रोजन (N₂)"
+        },
+        {
+          "bn": "কার্বন মনোক্সাইড (CO) ও হাইড্রোজেন (H₂)",
+          "en": "Carbon Monoxide (CO) and Hydrogen (H₂)",
+          "hi": "कार्बन मोनोऑक्साइड (CO) और हाइड्रोजन (H₂)"
+        },
+        {
+          "bn": "মিথেন (CH₄) ও অক্সিজেন (O₂)",
+          "en": "Methane (CH₄) and Oxygen (O₂)",
+          "hi": "मीथेन (CH₄) और ऑक्सीजन (O₂)"
+        },
+        {
+          "bn": "কার্বন ডাইঅক্সাইড (CO₂) ও নাইট্রোজেন (N₂)",
+          "en": "Carbon Dioxide (CO₂) and Nitrogen (N₂)",
+          "hi": "कार्बन डाइऑक्साइड (CO₂) और नाइट्रोजन (N₂)"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "প্রোডিউসার গ্যাস হলো কার্বন মনোক্সাইড (CO) ও নাইট্রোজেন (N2)-এর মিশ্রণ।",
+        "en": "Producer gas is a mixture of Carbon Monoxide (CO) and Nitrogen (N2).",
+        "hi": "प्रोड्यूसर गैस कार्बन मोनोऑक्साइड (CO) और नाइट्रोजन (N2) का मिश्रण है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q043",
+      "question": {
+        "bn": "কোনো বস্তুর ওপর তামার (Cu) তড়িৎলেপন করার সময় অ্যানোড হিসেবে কী ব্যবহার করা হয়?",
+        "en": "During electroplating of copper (Cu) on an article, what is used as the anode?",
+        "hi": "किसी वस्तु पर तांबे (Cu) का विद्युत लेपन करते समय एनोड के रूप में किसका उपयोग किया जाता है?"
+      },
+      "options": [
+        {
+          "bn": "বিশুদ্ধ তামার পাত",
+          "en": "Pure copper plate",
+          "hi": "शुद्ध तांबे की प्लेट"
+        },
+        {
+          "bn": "যে বস্তুর ওপর তড়িৎলেপন করতে হবে",
+          "en": "The article to be electroplated",
+          "hi": "वह वस्तु जिस पर विद्युत लेपन करना है"
+        },
+        {
+          "bn": "কপার সালফেটের জলীয় দ্রবণ",
+          "en": "Aqueous solution of Copper Sulfate",
+          "hi": "कॉपर सल्फेट का जलीय विलयन"
+        },
+        {
+          "bn": "বিশুদ্ধ নিকেলের পাত",
+          "en": "Pure nickel plate",
+          "hi": "शुद्ध निकल की प्लेट"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "তড়িৎলেপনে যে ধাতুর প্রলেপ দেওয়া হয় (তামা), তার বিশুদ্ধ পাতকে অ্যানোড করা হয়।",
+        "en": "In electroplating, a pure plate of the coating metal (Copper) is made the anode.",
+        "hi": "विद्युत लेपन में, लेपन की जाने वाली धातु (तांबा) की शुद्ध प्लेट को एनोड बनाया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q044",
+      "question": {
+        "bn": "সোনার (Au) তড়িৎলেপনের সময় তড়িবিশ্লেষ্য হিসেবে কী ব্যবহৃত হয়?",
+        "en": "Which electrolyte is used during gold (Au) electroplating?",
+        "hi": "सोने (Au) के विद्युत लेपन के दौरान विद्युत अपघट्य के रूप में किसका उपयोग किया जाता है?"
+      },
+      "options": [
+        {
+          "bn": "পটাশিয়াম অরোসায়ানাইড দ্রবণ",
+          "en": "Potassium aurocyanide solution",
+          "hi": "पोटेशियम ऑरौसाइनाइड का विलयन"
+        },
+        {
+          "bn": "পটাশিয়াম আর্জেন্টো-সায়ানাইড দ্রবণ",
+          "en": "Potassium argentocyanide solution",
+          "hi": "पोटेशियम अर्जेंटोसाइनाइड का विलयन"
+        },
+        {
+          "bn": "কপার সালফেট দ্রবণ",
+          "en": "Copper sulfate solution",
+          "hi": "कॉपर सल्फेट विलयन"
+        },
+        {
+          "bn": "নিকেল সালফেট দ্রবণ",
+          "en": "Nickel sulfate solution",
+          "hi": "निकल सल्फेट विलयन"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "সোনার তড়িৎলেপনে তড়িবিশ্লেষ্য হিসেবে পটাশিয়াম অরোসায়ানাইড K[Au(CN)2] দ্রবণ ব্যবহৃত হয়।",
+        "en": "Potassium aurocyanide K[Au(CN)2] solution is used as the electrolyte for gold plating.",
+        "hi": "सोने के लेपन के लिए पोटेशियम ऑरौसाइनाइड K[Au(CN)2] विलयन का उपयोग विद्युत अपघट्य के रूप में किया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q045",
+      "question": {
+        "bn": "কোন অ্যাসিডকে 'মিউরিয়েটিক অ্যাসিড' বা 'সামুদ্রিক অ্যাসিড' বলা হয়?",
+        "en": "Which acid is commonly known as 'Muriatic acid' or 'Marine acid'?",
+        "hi": "किस अम्ल को आमतौर पर 'म्यूरिएटिक एसिड' या 'समुद्री अम्ल' कहा जाता है?"
+      },
+      "options": [
+        {
+          "bn": "লঘু হাইড্রোক্লোরিক অ্যাসিড (HCl)",
+          "en": "Dilute Hydrochloric acid (HCl)",
+          "hi": "तनु हाइड्रोक्लोरिक अम्ल (HCl)"
+        },
+        {
+          "bn": "সালফিউরিক অ্যাসিড (H₂SO₄)",
+          "en": "Sulfuric acid (H₂SO₄)",
+          "hi": "सल्फ्यूरिक अम्ल (H₂SO₄)"
+        },
+        {
+          "bn": "নাইট্রিক অ্যাসিড (HNO₃)",
+          "en": "Nitric acid (HNO₃)",
+          "hi": "नाइट्रिक अम्ल (HNO₃)"
+        },
+        {
+          "bn": "কার্বনিক অ্যাসিড (H₂CO₃)",
+          "en": "Carbonic acid (H₂CO₃)",
+          "hi": "कार्बोनिक अम्ल (H₂CO₃)"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "লঘু হাইড্রোক্লোরিক অ্যাসিড (HCl)-কে মিউরিয়েটিক অ্যাসিড বা সামুদ্রিক অ্যাসিড বলা হয়।",
+        "en": "Dilute Hydrochloric acid (HCl) is known as Muriatic acid or Marine acid.",
+        "hi": "तनु हाइड्रोक्लोरिक अम्ल (HCl) को म्यूरिएटिक एसिड या समुद्री अम्ल के रूप में जाना जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q046",
+      "question": {
+        "bn": "কোন অ্যাসিডকে 'অয়েল অব্ ভিট্রিয়ল' বা 'রসায়নের রাজা' বলা হয়?",
+        "en": "Which acid is known as 'Oil of Vitriol' or the 'King of Chemicals'?",
+        "hi": "किस अम्ल को 'ऑयल ऑफ विट्रिओल' या 'रसायनों का राजा' कहा जाता है?"
+      },
+      "options": [
+        {
+          "bn": "সালফিউরিক অ্যাসিড (H₂SO₄)",
+          "en": "Sulfuric acid (H₂SO₄)",
+          "hi": "सल्फ्यूरिक अम्ल (H₂SO₄)"
+        },
+        {
+          "bn": "হাইড্রোক্লোরিক অ্যাসিড (HCl)",
+          "en": "Hydrochloric acid (HCl)",
+          "hi": "हाइड्रोक्लोरिक अम्ल (HCl)"
+        },
+        {
+          "bn": "নাইট্রিক অ্যাসিড (HNO₃)",
+          "en": "Nitric acid (HNO₃)",
+          "hi": "नाइट्रिक अम्ल (HNO₃)"
+        },
+        {
+          "bn": "অ্যাসিটিক অ্যাসিড (CH₃COOH)",
+          "en": "Acetic acid (CH₃COOH)",
+          "hi": "एसिटिक अम्ल (CH₃COOH)"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "সালফিউরিক অ্যাসিড (H2SO4)-কে অয়েল অব্ ভিট্রিয়ল ও রসায়নের রাজা বলা হয়।",
+        "en": "Sulfuric acid (H2SO4) is popularly termed as Oil of Vitriol and King of Chemicals.",
+        "hi": "सल्फ्यूरिक अम्ल (H2SO4) को ऑयल ऑफ विट्रिओल और रसायनों का राजा कहा जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q047",
+      "question": {
+        "bn": "নাইট্রিক অ্যাসিড (HNO₃)-কে ঐতিহাসিকভাবে কী নামে ডাকা হয়?",
+        "en": "Nitric acid (HNO₃) is historically known by which name?",
+        "hi": "नाइट्रिक अम्ल (HNO₃) को ऐतिहासिक रूप से किस नाम से जाना जाता है?"
+      },
+      "options": [
+        {
+          "bn": "অ্যাকোয়া ফর্টিস",
+          "en": "Aqua Fortis",
+          "hi": "एक्वा फोर्टिस"
+        },
+        {
+          "bn": "মিউরিয়েটিক অ্যাসিড",
+          "en": "Muriatic Acid",
+          "hi": "म्यूरिएटिक एसिड"
+        },
+        {
+          "bn": "অয়েল অব্ ভিট্রিয়ল",
+          "en": "Oil of Vitriol",
+          "hi": "ऑयल ऑफ विट्रिओल"
+        },
+        {
+          "bn": "অ্যাকোয়া রেজিয়া",
+          "en": "Aqua Regia",
+          "hi": "एक्वा रेजिया"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "নাইট্রিক অ্যাসিড (HNO3)-কে অ্যাকোয়া ফর্টিস (অর্থাত্ শক্তিশালী জল) বলা হয়।",
+        "en": "Nitric acid (HNO3) is known as Aqua Fortis (meaning strong water).",
+        "hi": "नाइट्रिक अम्ल (HNO3) को एक्वा फोर्टिस (जिसका अर्थ है शक्तिशाली जल) कहा जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q049",
+      "question": {
+        "bn": "এলপিজি (LPG)-এর প্রধান গ্যাসীয় উপাদানগুলি কী কী?",
+        "en": "What are the primary gaseous components of LPG (Liquefied Petroleum Gas)?",
+        "hi": "एलपीजी (LPG) के मुख्य गैसीय घटक कौन से हैं?"
+      },
+      "options": [
+        {
+          "bn": "মিথেন ও ইথেন",
+          "en": "Methane and Ethane",
+          "hi": "मीथेन और एथेन"
+        },
+        {
+          "bn": "প্রোপেন ও বিউটেন",
+          "en": "Propane and Butane",
+          "hi": "प्रोपेन और ब्यूटेन"
+        },
+        {
+          "bn": "কার্বন মনোক্সাইড ও হাইড্রোজেন",
+          "en": "Carbon monoxide and Hydrogen",
+          "hi": "कार्बन मोनोऑक्साइड और हाइड्रोजन"
+        },
+        {
+          "bn": "মিথেন ও অ্যাসিটিলিন",
+          "en": "Methane and Acetylene",
+          "hi": "मीथेन और एसिटिलीन"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "এলপিজি হলো প্রধানত প্রোপেন (C3H8) ও বিউটেন (C4H10)-এর গ্যাসীয় মিশ্রণ।",
+        "en": "LPG is a gaseous mixture primarily consisting of propane (C3H8) and butane (C4H10).",
+        "hi": "एलपीजी मुख्य रूप से प्रोपेन (C3H8) और ब्यूटेन (C4H10) का गैसीय मिश्रण है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q051",
+      "question": {
+        "bn": "1000°C উষ্ণতায় লোহিততপ্ত কয়লার মধ্য দিয়ে জলীয় বাষ্প পাঠালে CO ও H2-এর যে মিশ্রণ উৎপন্ন হয় তাকে কী বলে?",
+        "en": "Which gaseous mixture of CO and H2 is produced when steam is passed over red-hot coal at 1000°C?",
+        "hi": "1000°C तापमान पर लाल गर्म कोयले के ऊपर से भाप गुजारने पर CO और H2 का जो मिश्रण बनता है, उसे क्या कहते हैं?"
+      },
+      "options": [
+        {
+          "bn": "প্রোডিউসার গ্যাস",
+          "en": "Producer gas",
+          "hi": "प्रोड्यूसर गैस"
+        },
+        {
+          "bn": "ওয়াটার গ্যাস",
+          "en": "Water gas",
+          "hi": "वाटर गैस"
+        },
+        {
+          "bn": "কোল গ্যাস",
+          "en": "Coal gas",
+          "hi": "कोल गैस"
+        },
+        {
+          "bn": "অয়েল গ্যাস",
+          "en": "Oil gas",
+          "hi": "ऑयल गैस"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "1000°C উষ্ণতায় লোহিততপ্ত কয়লার ওপর দিয়ে জলীয় বাষ্প চালনা করলে কার্বন মনোক্সাইড (CO) ও হাইড্রোজেন (H2)-এর ওয়াটার গ্যাস মিশ্রণ তৈরি হয়।",
+        "en": "Water gas is a mixture of Carbon Monoxide (CO) and Hydrogen (H2) formed by passing steam over red-hot coke at 1000°C.",
+        "hi": "1000°C पर लाल तप्त कोयले पर भाप प्रवाहित करने से कार्बन मोनोऑक्साइड (CO) और हाइड्रोजन (H2) का वाटर गैस मिश्रण प्राप्त होता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q052",
+      "question": {
+        "bn": "প্রোডিউসার গ্যাস কোন দুটি গ্যাসের মিশ্রণ?",
+        "en": "Producer gas is a gaseous mixture of which two main gases?",
+        "hi": "प्रोड्यूसर गैस किन दो गैसों का मिश्रण है?"
+      },
+      "options": [
+        {
+          "bn": "CO এবং N2",
+          "en": "CO and N2",
+          "hi": "CO और N2"
+        },
+        {
+          "bn": "CO এবং H2",
+          "en": "CO and H2",
+          "hi": "CO और H2"
+        },
+        {
+          "bn": "CH4 এবং CO2",
+          "en": "CH4 and CO2",
+          "hi": "CH4 और CO2"
+        },
+        {
+          "bn": "H2 এবং N2",
+          "en": "H2 and N2",
+          "hi": "H2 और N2"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "স্বল্প পরিমাণ বাতাসের উপস্থিতিতে কয়লা পোড়ালে কার্বন মনোক্সাইড (CO) ও নাইট্রোজেন (N2)-এর মিশ্রণে প্রোডিউসার গ্যাস তৈরি হয়।",
+        "en": "Producer gas is formed by burning coal in a limited supply of air and consists mainly of CO and N2.",
+        "hi": "सीमित वायु की उपस्थिति में कोयले को जलाने पर CO और N2 के मिश्रण से प्रोड्यूसर गैस बनती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q053",
+      "question": {
+        "bn": "তামা বা কপার (Cu)-এর তড়িৎলেপনে অ্যানোড হিসেবে কী ব্যবহার করা হয়?",
+        "en": "In the process of electroplating copper (Cu), what material is used as the anode?",
+        "hi": "तांबे (Cu) के विद्युत लेपन (इलेक्ट्रोप्लेटिंग) में एनोड के रूप में किसका उपयोग किया जाता है?"
+      },
+      "options": [
+        {
+          "bn": "বিশুদ্ধ তামার পাত",
+          "en": "Pure copper plate",
+          "hi": "शुद्ध तांबे की प्लेट"
+        },
+        {
+          "bn": "যে বস্তুর ওপর তড়িৎলেপন করতে হবে",
+          "en": "Article to be electroplated",
+          "hi": "वह वस्तु जिस पर लेपन करना है"
+        },
+        {
+          "bn": "গ্রাফাইট দণ্ড",
+          "en": "Graphite rod",
+          "hi": "ग्रेफाइट की छड़"
+        },
+        {
+          "bn": "বিশুদ্ধ প্ল্যাটিনাম তার",
+          "en": "Pure platinum wire",
+          "hi": "शुद्ध प्लैटिनम तार"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "তড়িৎলেপনের সময় যে ধাতুর প্রলেপ দেওয়া হবে তার একটি বিশুদ্ধ পাতকে (বিশুদ্ধ তামার পাত) অ্যানোড করা হয়।",
+        "en": "During electroplating, a pure plate of the metal to be deposited (pure copper) is made the anode.",
+        "hi": "विद्युत लेपन के दौरान जिस धातु की परत चढ़ानी होती है उसकी शुद्ध प्लेट (शुद्ध तांबे की प्लेट) को एनोड बनाया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q056",
+      "question": {
+        "bn": "লঘু হাইড্রোক্লোরিক অ্যাসিড (HCl)-এর প্রচলিত বাণিজ্যিক নাম কী?",
+        "en": "What is the common commercial name for dilute Hydrochloric acid (HCl)?",
+        "hi": "तनु हाइड्रोक्लोरिक अम्ल (HCl) का सामान्य व्यावसायिक नाम क्या है?"
+      },
+      "options": [
+        {
+          "bn": "মিউরিয়েটিক অ্যাসিড",
+          "en": "Muriatic acid",
+          "hi": "म्यूरिएटिक अम्ल"
+        },
+        {
+          "bn": "অ্যাকোয়া ফর্টিস",
+          "en": "Aqua Fortis",
+          "hi": "ऐक्वा फोर्टिस"
+        },
+        {
+          "bn": "অয়েল অব ভিট্রিয়ল",
+          "en": "Oil of Vitriol",
+          "hi": "ऑयल ऑफ विट्रियॉल"
+        },
+        {
+          "bn": "কার্বলিক অ্যাসিড",
+          "en": "Carbolic acid",
+          "hi": "कार्बोलिक अम्ल"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "লঘু হাইড্রোক্লোরিক অ্যাসিড (HCl)-কে মিউরিয়েটিক অ্যাসিড বা সামুদ্রিক অ্যাসিড বলা হয়।",
+        "en": "Dilute Hydrochloric acid (HCl) is also known as Muriatic acid or marine acid.",
+        "hi": "तनु हाइड्रोक्लोरिक अम्ल (HCl) को म्यूरिएटिक अम्ल भी कहा जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q057",
+      "question": {
+        "bn": "কোন অ্যাসিডটি ঐতিহাসিকভাবে 'অ্যাকোয়া ফর্টিস' বা শক্তিশালী জল নামে পরিচিত?",
+        "en": "Which acid is historically known as 'Aqua Fortis' (strong water)?",
+        "hi": "ऐतिहासिक रूप से किस अम्ल को 'ऐक्वा फोर्टिस' (शक्तिशाली जल) के नाम से जाना जाता है?"
+      },
+      "options": [
+        {
+          "bn": "সালফিউরিক অ্যাসিড (H2SO4)",
+          "en": "Sulfuric acid (H2SO4)",
+          "hi": "सल्फ्यूरिक अम्ल (H2SO4)"
+        },
+        {
+          "bn": "নাইট্রিক অ্যাসিড (HNO3)",
+          "en": "Nitric acid (HNO3)",
+          "hi": "नाइट्रिक अम्ल (HNO3)"
+        },
+        {
+          "bn": "হাইড্রোক্লোরিক অ্যাসিড (HCl)",
+          "en": "Hydrochloric acid (HCl)",
+          "hi": "हाइड्रोक्लोरिक अम्ल (HCl)"
+        },
+        {
+          "bn": "কার্বনিক অ্যাসিড (H2CO3)",
+          "en": "Carbonic acid (H2CO3)",
+          "hi": "कार्बोनিক अम्ल (H2CO3)"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "নাইট্রিক অ্যাসিড (HNO3)-কে তার তীব্র ক্ষয়কারী ধর্মের জন্য অ্যাকোয়া ফর্টিস বা শক্তিশালী জল বলা হয়।",
+        "en": "Nitric acid (HNO3) is traditionally referred to as Aqua Fortis due to its strong corrosive nature.",
+        "hi": "नाइट्रिक अम्ल (HNO3) को पारंपरिक रूप से ऐक्वा फोर्टिस कहा जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q059",
+      "question": {
+        "bn": "সাধারণ উষ্ণতায় কোন অ্যাসিডটি গ্যাসীয় অবস্থায় থাকে?",
+        "en": "Which acid remains in a gaseous state at ordinary room temperature?",
+        "hi": "सामान्य तापमान पर कौन सा अम्ल गैसीय अवस्था में रहता है?"
+      },
+      "options": [
+        {
+          "bn": "সালফিউরিক অ্যাসিড (H2SO4)",
+          "en": "Sulfuric acid (H2SO4)",
+          "hi": "सल्फ्यूरिक अम्ल (H2SO4)"
+        },
+        {
+          "bn": "নাইট্রিক অ্যাসিড (HNO3)",
+          "en": "Nitric acid (HNO3)",
+          "hi": "नाइट्रिक अम्ल (HNO3)"
+        },
+        {
+          "bn": "হাইড্রোক্লোরিক অ্যাসিড (HCl)",
+          "en": "Hydrochloric acid (HCl)",
+          "hi": "हाइड्रोक्लोरिक अम्ल (HCl)"
+        },
+        {
+          "bn": "অ্যাসিটিক অ্যাসিড (CH3COOH)",
+          "en": "Acetic acid (CH3COOH)",
+          "hi": "एसिटिक अम्ल (CH3COOH)"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "bn": "হাইড্রোজেন ক্লোরাইড (HCl) সাধারণ ঘরের উষ্ণতায় গ্যাসীয় অবস্থায় থাকে।",
+        "en": "Hydrogen chloride (HCl) exists as a gas at room temperature.",
+        "hi": "हाइड्रोजन क्लोराइड (HCl) कमरे के तापमान पर गैस के रूप में मौजूद रहता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q060",
+      "question": {
+        "bn": "নিচের কোন জোড়াটি জারক অ্যাসিডের উদাহরণ?",
+        "en": "Which of the following pair consists of oxidizing acids?",
+        "hi": "निम्नलिखित में से कौन सा जोड़ा ऑक्सीकारक अम्लों का उदाहरण है?"
+      },
+      "options": [
+        {
+          "bn": "H2SO4 এবং HNO3",
+          "en": "H2SO4 and HNO3",
+          "hi": "H2SO4 और HNO3"
+        },
+        {
+          "bn": "HCl এবং HBr",
+          "en": "HCl and HBr",
+          "hi": "HCl और HBr"
+        },
+        {
+          "bn": "CH3COOH এবং H2CO3",
+          "en": "CH3COOH and H2CO3",
+          "hi": "CH3COOH और H2CO3"
+        },
+        {
+          "bn": "HCl এবং HI",
+          "en": "HCl and HI",
+          "hi": "HCl और HI"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "সালফিউরিক অ্যাসিড (H2SO4) ও নাইট্রিক অ্যাসিড (HNO3) তীব্র জারক অ্যাসিড হিসেবে কাজ করে।",
+        "en": "Sulfuric acid (H2SO4) and Nitric acid (HNO3) act as strong oxidizing acids.",
+        "hi": "सल्फ्यूरिक अम्ल (H2SO4) और नाइट्रिक अम्ल (HNO3) प्रबल ऑक्सीकारक अम्ल के रूप में कार्य करते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q061",
+      "question": {
+        "bn": "ওলিয়াম বা ধূমায়মান সালফিউরিক অ্যাসিডের রাসায়নিক সংকেত কী?",
+        "en": "What is the chemical formula of Oleum (fuming sulfuric acid)?",
+        "hi": "ओलियम (धूमायमान सल्फ्यूरिक अम्ल) का रासायनिक सूत्र क्या है?"
+      },
+      "options": [
+        {
+          "bn": "H2SO4",
+          "en": "H2SO4",
+          "hi": "H2SO4"
+        },
+        {
+          "bn": "H2S2O7",
+          "en": "H2S2O7",
+          "hi": "H2S2O7"
+        },
+        {
+          "bn": "H2S2O8",
+          "en": "H2S2O8",
+          "hi": "H2S2O8"
+        },
+        {
+          "bn": "H2SO3",
+          "en": "H2SO3",
+          "hi": "H2SO3"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "ওলিয়াম হলো পাইরোসালফিউরিক অ্যাসিড, যার রাসায়নিক সংকেত H2S2O7।",
+        "en": "Oleum is pyrosulfuric acid with the chemical formula H2S2O7.",
+        "hi": "ओलियम पाइरोसल्फ्यूरिक अम्ल है जिसका रासायनिक सूत्र H2S2O7 है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q062",
+      "question": {
+        "bn": "কোন অ্যাসিডটি তীব্র নিরুদক বা জলশোষক হিসেবে কাজ করে?",
+        "en": "Which acid acts as a strong dehydrating agent?",
+        "hi": "कौन सा अम्ल तीव्र निर्जलीकारक (जलशोषक) के रूप में कार्य करता है?"
+      },
+      "options": [
+        {
+          "bn": "লঘু HCl",
+          "en": "Dilute HCl",
+          "hi": "तनु HCl"
+        },
+        {
+          "bn": "গাঢ় H2SO4",
+          "en": "Concentrated H2SO4",
+          "hi": "सांद्र H2SO4"
+        },
+        {
+          "bn": "লঘু HNO3",
+          "en": "Dilute HNO3",
+          "hi": "तनु HNO3"
+        },
+        {
+          "bn": "CH3COOH",
+          "en": "CH3COOH",
+          "hi": "CH3COOH"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "গাঢ় সালফিউরিক অ্যাসিড (H2SO4)-এর জলের প্রতি তীব্র আকর্ষণ থাকায় এটি তীব্র নিরুদক হিসেবে কাজ করে।",
+        "en": "Concentrated sulfuric acid (H2SO4) has a high affinity for water and acts as a powerful dehydrating agent.",
+        "hi": "सांद्र सल्फ्यूरिक अम्ल (H2SO4) में जल के प्रति अत्यधिक आकर्षण होता है और यह एक शक्तिशाली निर्जलीकारक के रूप में कार्य करता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q063",
+      "question": {
+        "bn": "কোন অ্যাসিডকে উত্তপ্ত করলে বাদামি বর্ণের গ্যাস নির্গত হয়?",
+        "en": "Which acid releases brown fumes upon heating?",
+        "hi": "किस अम्ल को गर्म करने पर भूरे रंग की गैस निकलती है?"
+      },
+      "options": [
+        {
+          "bn": "নাইট্রিক অ্যাসিড (HNO3)",
+          "en": "Nitric acid (HNO3)",
+          "hi": "नाइट्रिक अम्ल (HNO3)"
+        },
+        {
+          "bn": "হাইড্রোক্লোরিক অ্যাসিড (HCl)",
+          "en": "Hydrochloric acid (HCl)",
+          "hi": "हाइड्रोक्लोरिक अम्ल (HCl)"
+        },
+        {
+          "bn": "সালফিউরিক অ্যাসিড (H2SO4)",
+          "en": "Sulfuric acid (H2SO4)",
+          "hi": "सल्फ्यूरिक अम्ल (H2SO4)"
+        },
+        {
+          "bn": "ফসফরিক অ্যাসিড (H3PO4)",
+          "en": "Phosphoric acid (H3PO4)",
+          "hi": "फॉस्फोरिक अम्ल (H3PO4)"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "নাইট্রিক অ্যাসিড উত্তপ্ত হলে বিয়োজিত হয়ে বাদামি বর্ণের নাইট্রোজেন ডাইঅক্সাইড (NO2) গ্যাস উৎপন্ন করে।",
+        "en": "Nitric acid decomposes on heating to produce brown nitrogen dioxide (NO2) gas.",
+        "hi": "नाइट्रिक अम्ल गर्म करने पर विघटित होकर भूरे रंग की नाइट्रोजन डाइऑक्साइड (NO2) गैस उत्पन्न करता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q065",
+      "question": {
+        "bn": "অম্লরাজ বা অ্যাকোয়া রিজিয়ায় গাঢ় HCl এবং গাঢ় HNO3-এর আয়তন অনুপাত কত?",
+        "en": "What is the volume ratio of concentrated HCl and concentrated HNO3 in Aqua Regia?",
+        "hi": "ऐक्वा रेजिया में सांद्र HCl और सांद्र HNO3 का आयतन अनुपात क्या है?"
+      },
+      "options": [
+        {
+          "bn": "1:3",
+          "en": "1:3",
+          "hi": "1:3"
+        },
+        {
+          "bn": "3:1",
+          "en": "3:1",
+          "hi": "3:1"
+        },
+        {
+          "bn": "2:1",
+          "en": "2:1",
+          "hi": "2:1"
+        },
+        {
+          "bn": "1:1",
+          "en": "1:1",
+          "hi": "1:1"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "অ্যাকোয়া রিজিয়া বা অম্লরাজ হলো ৩ আয়তন গাঢ় HCl এবং ১ আয়তন গাঢ় HNO3-এর মিশ্রণ।",
+        "en": "Aqua Regia is a mixture of 3 volumes of concentrated HCl and 1 volume of concentrated HNO3.",
+        "hi": "ऐक्वा रेजिया 3 आयतन सांद्र HCl और 1 आयतन सांद्र HNO3 का मिश्रण होता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q066",
+      "question": {
+        "bn": "কোন অ্যাসিড অতি গাঢ় বা ধূমায়মান অবস্থায় লোহাকে নিষ্ক্রিয় করে দেয়?",
+        "en": "Which acid causes iron to become passive when concentrated or fuming?",
+        "hi": "अत्यधिक सांद्र या धूमायमान अवस्था में कौन सा अम्ल लोहे को निष्क्रिय (पैसिव) कर देता है?"
+      },
+      "options": [
+        {
+          "bn": "হাইড্রোক্লোরিক অ্যাসিড (HCl)",
+          "en": "Hydrochloric acid (HCl)",
+          "hi": "हाइड्रोक्लोरिक अम्ल (HCl)"
+        },
+        {
+          "bn": "নাইট্রিক অ্যাসিড (HNO3)",
+          "en": "Nitric acid (HNO3)",
+          "hi": "नाइट्रिक अम्ल (HNO3)"
+        },
+        {
+          "bn": "অ্যাসিটিক অ্যাসিড (CH3COOH)",
+          "en": "Acetic acid (CH3COOH)",
+          "hi": "एसिटिक अम्ल (CH3COOH)"
+        },
+        {
+          "bn": "কার্বনিক অ্যাসিড (H2CO3)",
+          "en": "Carbonic acid (H2CO3)",
+          "hi": "कार्बोनिक अम्ल (H2CO3)"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "গাঢ় নাইট্রিক অ্যাসিড লোহার ওপর অক্সাইডের একটি পাতলা আস্তরণ তৈরি করে তাকে নিষ্ক্রিয় করে দেয়।",
+        "en": "Concentrated Nitric acid forms an oxide film on iron, rendering it passive.",
+        "hi": "सांद्र नाइट्रिक अम्ल लोहे पर एक ऑक्साइड की परत बना देता है, जिससे वह निष्क्रिय हो जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q067",
+      "question": {
+        "bn": "স্পর্শ পদ্ধতিতে কোন অ্যাসিড প্রস্তুত করা হয়?",
+        "en": "Which acid is manufactured by the Contact Process?",
+        "hi": "संपर्क विधि (Contact Process) द्वारा किस अम्ल का निर्माण किया जाता है?"
+      },
+      "options": [
+        {
+          "bn": "নাইট্রিক অ্যাসিড (HNO3)",
+          "en": "Nitric acid (HNO3)",
+          "hi": "नाइट्रिक अम्ल (HNO3)"
+        },
+        {
+          "bn": "হাইড্রোক্লোরিক অ্যাসিড (HCl)",
+          "en": "Hydrochloric acid (HCl)",
+          "hi": "हाइड्रोक्लोरिक अम्ल (HCl)"
+        },
+        {
+          "bn": "সালফিউরিক অ্যাসিড (H2SO4)",
+          "en": "Sulfuric acid (H2SO4)",
+          "hi": "सल्फ्यूरिक अम्ल (H2SO4)"
+        },
+        {
+          "bn": "ফসফরিক অ্যাসিড (H3PO4)",
+          "en": "Phosphoric acid (H3PO4)",
+          "hi": "फॉस्फोरिक अम्ल (H3PO4)"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "bn": "স্পর্শ পদ্ধতিতে শিল্পক্ষেত্রে বড় মাত্রায় সালফিউরিক অ্যাসিড প্রস্তুত করা হয়।",
+        "en": "Sulfuric acid is commercially manufactured on a large scale using the Contact Process.",
+        "hi": "संपर्क विधि द्वारा औद्योगिक पैमाने पर सल्फ्यूरिक अम्ल का उत्पादन किया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q068",
+      "question": {
+        "bn": "সোনা (Au) ও প্ল্যাটিনাম (Pt)-এর মতো নোবেল ধাতুগুলি কোন বিকারকের সাথে বিক্রিয়া করে দ্রবীভূত হয়?",
+        "en": "Which reagent dissolves noble metals like Gold (Au) and Platinum (Pt)?",
+        "hi": "सोना (Au) और प्लैटिनम (Pt) जैसी उत्कृष्ट धातुएं केवल किस अभिकर्मक के साथ प्रतिक्रिया करके घुल जाती हैं?"
+      },
+      "options": [
+        {
+          "bn": "গাঢ় H2SO4",
+          "en": "Concentrated H2SO4",
+          "hi": "सांद्र H2SO4"
+        },
+        {
+          "bn": "অ্যাকোয়া রিজিয়া",
+          "en": "Aqua Regia",
+          "hi": "ऐक्वा रेजिया"
+        },
+        {
+          "bn": "গাঢ় HNO3",
+          "en": "Concentrated HNO3",
+          "hi": "सांद्र HNO3"
+        },
+        {
+          "bn": "লঘু HCl",
+          "en": "Dilute HCl",
+          "hi": "तनु HCl"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "অম্লরাজ বা অ্যাকোয়া রিজিয়া সোনা ও প্ল্যাটিনামের মতো ধাতুর সঙ্গে বিক্রিয়া করে তাদের দ্রবীভূত করে।",
+        "en": "Aqua Regia reacts with noble metals like Gold and Platinum to form soluble complex salts.",
+        "hi": "ऐक्वा रेजिया सोना और प्लैटिनम जैसी उत्कृष्ट धातुओं के साथ प्रतिक्रिया करके उन्हें घोल देता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q069",
+      "question": {
+        "bn": "অ্যাসিডের সংস্পর্শে লিটমাসের বর্ণ কীভাবে পরিবর্তিত হয়?",
+        "en": "How does litmus paper change color in the presence of an acid?",
+        "hi": "अम्ल के संपर्क में आने पर लिटमस का रंग कैसे बदलता है?"
+      },
+      "options": [
+        {
+          "bn": "লাল থেকে নীল",
+          "en": "Red to Blue",
+          "hi": "लाल से नीला"
+        },
+        {
+          "bn": "নীল থেকে লাল",
+          "en": "Blue to Red",
+          "hi": "नीला से लाल"
+        },
+        {
+          "bn": "বর্ণহীন থেকে গোলাপী",
+          "en": "Colorless to Pink",
+          "hi": "रंगहीन से गुलाबी"
+        },
+        {
+          "bn": "হলুদ থেকে লাল",
+          "en": "Yellow to Red",
+          "hi": "पीला से लाल"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "অ্যাসিড নীল লিটমাস কাগজকে লালে রূপান্তরিত করে।",
+        "en": "An acid turns blue litmus paper red.",
+        "hi": "अम्ल नीले लिटमस पत्र को लाल कर देता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q070",
+      "question": {
+        "bn": "কোন অ্যাসিডের সংস্পর্শে চিনি জল হারিয়ে কালো হয়ে ছাই হয়ে যায়?",
+        "en": "Which acid turns sugar black by charring it due to dehydration?",
+        "hi": "किस अम्ल के संपर्क में आने पर चीनी निर्जलीकरण के कारण काली हो जाती है?"
+      },
+      "options": [
+        {
+          "bn": "সালফিউরিক অ্যাসিড (H2SO4)",
+          "en": "Sulfuric acid (H2SO4)",
+          "hi": "सल्फ्यूरिक अम्ल (H2SO4)"
+        },
+        {
+          "bn": "নাইট্রিক অ্যাসিড (HNO3)",
+          "en": "Nitric acid (HNO3)",
+          "hi": "नाइट्रिक अम्ल (HNO3)"
+        },
+        {
+          "bn": "হাইড্রোক্লোরিক অ্যাসিড (HCl)",
+          "en": "Hydrochloric acid (HCl)",
+          "hi": "हाइड्रोक्लोरिक अम्ल (HCl)"
+        },
+        {
+          "bn": "অ্যাসিটিক অ্যাসিড (CH3COOH)",
+          "en": "Acetic acid (CH3COOH)",
+          "hi": "एसिटिक अम्ल (CH3COOH)"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "গাঢ় সালফিউরিক অ্যাসিড চিনি থেকে জল শোষণ করে তা কাঁচামাল কার্বনে পরিণত করায় চিনি কালো হয়ে যায়।",
+        "en": "Concentrated sulfuric acid dehydrates cane sugar, removing water and leaving behind black carbon.",
+        "hi": "सांद्र सल्फ्यूरिक अम्ल चीनी से जल को सोख लेता है, जिससे काला कार्बन शेष रह जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q071",
+      "question": {
+        "bn": "HCl গ্যাসকে শুষ্ক করতে কোনটি ব্যবহার করা হয়?",
+        "en": "Which substance is used as a drying agent for damp HCl gas?",
+        "hi": "HCl गैस को शुष्क करने के लिए किसका उपयोग किया जाता है?"
+      },
+      "options": [
+        {
+          "bn": "পোড়াচুন (CaO)",
+          "en": "Quicklime (CaO)",
+          "hi": "बिना बुझा चूना (CaO)"
+        },
+        {
+          "bn": "গাঢ় সালফিউরিক অ্যাসিড (H2SO4)",
+          "en": "Concentrated Sulfuric acid (H2SO4)",
+          "hi": "सांद्र सल्फ्यूरिक अम्ल (H2SO4)"
+        },
+        {
+          "bn": "ফসফরাস পেন্টক্সাইড (P2O5)",
+          "en": "Phosphorus pentoxide (P2O5)",
+          "hi": "फॉस्फोरस पेंटाऑक्साइड (P2O5)"
+        },
+        {
+          "bn": "অনাদ্র ক্যালসিয়াম ক্লোরাইড (CaCl2)",
+          "en": "Anhydrous Calcium chloride (CaCl2)",
+          "hi": "निर्जल कैल्शियम क्लोराइड (CaCl2)"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "গাঢ় H2SO4, HCl গ্যাসের সাথে বিক্রিয়া করে না বলে এটি HCl গ্যাস শুষ্ক করতে ব্যবহৃত হয়।",
+        "en": "Concentrated H2SO4 is used as a drying agent for HCl gas because it does not react with HCl.",
+        "hi": "सांद्र H2SO4, HCl गैस के साथ प्रतिक्रिया नहीं करता है, इसलिए इसका उपयोग HCl गैस को सुखाने के लिए किया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q072",
+      "question": {
+        "bn": "অতি লঘু HNO3-এর সঙ্গে বিক্রিয়ায় কোন ধাতুগুলি হাইড্রোজেন (H2) গ্যাস উৎপন্ন করে?",
+        "en": "Which metals react with very dilute HNO3 to produce hydrogen gas?",
+        "hi": "अत्यधिक तनु HNO3 के साथ प्रतिक्रिया करके कौन सी धातुएं हाइड्रोजन (H2) गैस उत्पन्न करती हैं?"
+      },
+      "options": [
+        {
+          "bn": "ম্যাগনেসিয়াম (Mg) ও ম্যাঙ্গানিজ (Mn)",
+          "en": "Magnesium (Mg) and Manganese (Mn)",
+          "hi": "मैग्नीशियम (Mg) और मैंगनीज (Mn)"
+        },
+        {
+          "bn": "কপার (Cu) ও জিংক (Zn)",
+          "en": "Copper (Cu) and Zinc (Zn)",
+          "hi": "कॉपर (Cu) और जिंक (Zn)"
+        },
+        {
+          "bn": "লোহা (Fe) ও অ্যালুমিনিয়াম (Al)",
+          "en": "Iron (Fe) and Aluminum (Al)",
+          "hi": "लोहा (Fe) और एल्युमीनियम (Al)"
+        },
+        {
+          "bn": "সোডিয়াম (Na) ও পটাশিয়াম (K)",
+          "en": "Sodium (Na) and Potassium (K)",
+          "hi": "सोडियम (Na) और पोटेशियम (K)"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "ম্যাগনেসিয়াম এবং ম্যাঙ্গানিজ শীতল ও অতি লঘু (~1%) নাইট্রিক অ্যাসিডের সঙ্গে বিক্রিয়া করে হাইড্রোজেন গ্যাস উৎপন্ন করে।",
+        "en": "Magnesium and Manganese react with cold, very dilute (~1%) nitric acid to evolve hydrogen gas.",
+        "hi": "मैग्नीशियम और मैंगनीज ठंडे और अत्यधिक तनु (~1%) नाइट्रिक अम्ल के साथ प्रतिक्रिया करके हाइड्रोजन गैस उत्पन्न करते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q073",
+      "question": {
+        "bn": "সঞ্চয়ক কোশ বা বৈদ্যুতিক কোশে তড়িবিশ্লেষ্য হিসেবে কোন অ্যাসিড ব্যবহৃত হয়?",
+        "en": "Which acid is used as an electrolyte in lead storage batteries?",
+        "hi": "संचायक सेल (लेड स्टोरेज बैटरी) बनाने में किस अम्ल का उपयोग किया जाता है?"
+      },
+      "options": [
+        {
+          "bn": "হাইড্রোক্লোরিক অ্যাসিড (HCl)",
+          "en": "Hydrochloric acid (HCl)",
+          "hi": "हाइड्रोक्लोरिक अम्ल (HCl)"
+        },
+        {
+          "bn": "সালফিউরিক অ্যাসিড (H2SO4)",
+          "en": "Sulfuric acid (H2SO4)",
+          "hi": "सल्फ्यूरिक अम्ल (H2SO4)"
+        },
+        {
+          "bn": "নাইট্রিক অ্যাসিড (HNO3)",
+          "en": "Nitric acid (HNO3)",
+          "hi": "नाइट्रिक अम्ल (HNO3)"
+        },
+        {
+          "bn": "ফসফরিক অ্যাসিড (H3PO4)",
+          "en": "Phosphoric acid (H3PO4)",
+          "hi": "फॉस्फोरिक अम्ल (H3PO4)"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "লেড-অ্যাসিড সঞ্চয়ক কোশে তড়িবিশ্লেষ্য দ্রবণ হিসেবে লঘু সালফিউরিক অ্যাসিড ব্যবহৃত হয়।",
+        "en": "Dilute sulfuric acid is used as the electrolyte in lead-acid storage batteries.",
+        "hi": "लेड-एसिड संचायक बैटरी में विद्युत अपघट्य के रूप में तनु सल्फ्यूरिक अम्ल का उपयोग किया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q074",
+      "question": {
+        "bn": "ভিনিগারে উপস্থিত প্রধান অ্যাসিড কোনটি?",
+        "en": "What is the main acid present in Vinegar?",
+        "hi": "सिरके (Vinegar) में पाया जाने वाला मुख्य अम्ल कौन सा है?"
+      },
+      "options": [
+        {
+          "bn": "ফরমিক অ্যাসিড (HCOOH)",
+          "en": "Formic acid (HCOOH)",
+          "hi": "फॉर्मिक अम्ल (HCOOH)"
+        },
+        {
+          "bn": "অ্যাসিটিক অ্যাসিড (CH3COOH)",
+          "en": "Acetic acid (CH3COOH)",
+          "hi": "एसिटिक अम्ल (CH3COOH)"
+        },
+        {
+          "bn": "সাইট্রিক অ্যাসিড (C6H8O7)",
+          "en": "Citric acid (C6H8O7)",
+          "hi": "साइट्रिक अम्ल (C6H8O7)"
+        },
+        {
+          "bn": "ল্যাকটিক অ্যাসিড (C3H6O3)",
+          "en": "Lactic acid (C3H6O3)",
+          "hi": "लैक्टिक अम्ल (C3H6O3)"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "ভিনিগার হলো অ্যাসিটিক অ্যাসিডের (CH3COOH) ৪-৮% লঘু জলীয় দ্রবণ।",
+        "en": "Vinegar is a 4-8% dilute aqueous solution of acetic acid (CH3COOH).",
+        "hi": "सिरका एसिटिक अम्ल (CH3COOH) का 4-8% तनु जलीय घोल है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q075",
+      "question": {
+        "bn": "প্রোটিন গঠনের মূল উপাদান কোনটি?",
+        "en": "Which acid is the building block of proteins?",
+        "hi": "प्रोटीन का मूल घटक कौन सा अम्ल है?"
+      },
+      "options": [
+        {
+          "bn": "ফ্যাটি অ্যাসিড",
+          "en": "Fatty acid",
+          "hi": "फैटी अम्ल"
+        },
+        {
+          "bn": "অ্যামিনো অ্যাসিড",
+          "en": "Amino acid",
+          "hi": "अमीनो अम्ल"
+        },
+        {
+          "bn": "নিউক্লিক অ্যাসিড",
+          "en": "Nucleic acid",
+          "hi": "न्यूक्लिक अम्ल"
+        },
+        {
+          "bn": "ইউরিক অ্যাসিড",
+          "en": "Uric acid",
+          "hi": "यूरिक अम्ल"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "প্রোটিন হলো অ্যামিনো অ্যাসিড নামক এককের সমন্বয়ে গঠিত জটিল জৈব পলিমার।",
+        "en": "Proteins are complex organic polymers composed of monomers called amino acids.",
+        "hi": "प्रोटीन जटिल जैविक बहुलक हैं जो अमीनो अम्ल नामक इकाइयों से बने होते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q076",
+      "question": {
+        "bn": "লেবুতে কোন অ্যাসিড থাকে?",
+        "en": "Which acid is contained in citrus fruits like lemons?",
+        "hi": "नींबू जैसे खट्टे फलों में कौन सा अम्ल पाया जाता है?"
+      },
+      "options": [
+        {
+          "bn": "ল্যাকটিক অ্যাসিড",
+          "en": "Lactic acid",
+          "hi": "लैक्टिक अम्ल"
+        },
+        {
+          "bn": "সাইট্রিক অ্যাসিড",
+          "en": "Citric acid",
+          "hi": "साइट्रिक अम्ल"
+        },
+        {
+          "bn": "টারটারিক অ্যাসিড",
+          "en": "Tartaric acid",
+          "hi": "टार्टरिक अम्ल"
+        },
+        {
+          "bn": "ম্যালিক অ্যাসিড",
+          "en": "Malic acid",
+          "hi": "मैलिक अम्ल"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "লেবুর মতো সাইট্রাস জাতীয় ফলে সাইট্রিক অ্যাসিড উপস্থিত থাকে।",
+        "en": "Citrus fruits like lemons contain citric acid.",
+        "hi": "नींबू जैसे साइट्रस फलों में साइट्रिक अम्ल पाया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q077",
+      "question": {
+        "bn": "দই-তে কোন অ্যাসিড উপস্থিত থাকে?",
+        "en": "Which acid is present in sour curd/yogurt?",
+        "hi": "दही में कौन सा अम्ल पाया जाता है?"
+      },
+      "options": [
+        {
+          "bn": "সাইট্রিক অ্যাসিড",
+          "en": "Citric acid",
+          "hi": "साइट्रिक अम्ल"
+        },
+        {
+          "bn": "ল্যাকটিক অ্যাসিড",
+          "en": "Lactic acid",
+          "hi": "लैक्टिक अम्ल"
+        },
+        {
+          "bn": "টারটারিক অ্যাসিড",
+          "en": "Tartaric acid",
+          "hi": "टार्टरिक अम्ल"
+        },
+        {
+          "bn": "অক্সালিক অ্যাসিড",
+          "en": "Oxalic acid",
+          "hi": "ऑक्सैलिक अम्ल"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "দই-তে ল্যাকটোব্যাসিলাস ব্যাকটেরিয়ার ক্রিয়ায় ল্যাকটোজ থেকে ল্যাকটিক অ্যাসিড তৈরি হয়।",
+        "en": "Lactic acid is produced in curd by the bacterial fermentation of lactose.",
+        "hi": "दही में बैक्टीरिया द्वारा लैक्टोज के किण्वन से लैक्टिक अम्ल बनता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q078",
+      "question": {
+        "bn": "চা-এ কোন জৈব অ্যাসিড উপস্থিত থাকে?",
+        "en": "Which organic acid is present in tea leaves?",
+        "hi": "चाय की पत्तियों में कौन सा कार्बनिक अम्ल पाया जाता है?"
+      },
+      "options": [
+        {
+          "bn": "ট্যানিক অ্যাসিড",
+          "en": "Tannic acid",
+          "hi": "टैनिक अम्ल"
+        },
+        {
+          "bn": "ম্যালিক অ্যাসিড",
+          "en": "Malic acid",
+          "hi": "मैलिक अम्ल"
+        },
+        {
+          "bn": "অ্যাসিটিক অ্যাসিড",
+          "en": "Acetic acid",
+          "hi": "एसिटिक अम्ल"
+        },
+        {
+          "bn": "ফরমিক অ্যাসিড",
+          "en": "Formic acid",
+          "hi": "फॉर्मिक अम्ल"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "চা-এর পাতায় ট্যানিক অ্যাসিড থাকে, যা চায়ের কষানো স্বাদের জন্য দায়ী।",
+        "en": "Tea leaves contain tannic acid, which gives tea its astringent taste.",
+        "hi": "चाय की पत्तियों में टैनिक अम्ल पाया जाता है, जो इसे कसैला स्वाद देता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q079",
+      "question": {
+        "bn": "আপেলে প্রধানত কোন অ্যাসিড থাকে?",
+        "en": "Which acid is predominantly found in apples?",
+        "hi": "सेब में मुख्य रूप से कौन सा अम्ल पाया जाता है?"
+      },
+      "options": [
+        {
+          "bn": "টারটারিক অ্যাসিড",
+          "en": "Tartaric acid",
+          "hi": "टार्टरिक अम्ल"
+        },
+        {
+          "bn": "ম্যালিক অ্যাসিড",
+          "en": "Malic acid",
+          "hi": "मैलिक अम्ल"
+        },
+        {
+          "bn": "সাইট্রিক অ্যাসিড",
+          "en": "Citric acid",
+          "hi": "साइट्रिक अम्ल"
+        },
+        {
+          "bn": "ফরমিক অ্যাসিড",
+          "en": "Formic acid",
+          "hi": "फॉर्मिक अम्ल"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "আপেলে প্রচুর পরিমাণে ম্যালিক অ্যাসিড থাকে।",
+        "en": "Apples are rich in malic acid.",
+        "hi": "सेब में प्रचुर मात्रा में मैलिक अम्ल पाया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q080",
+      "question": {
+        "bn": "তেঁতুলে কোন অ্যাসিড পাওয়া যায়?",
+        "en": "Which acid is found in tamarind?",
+        "hi": "इमली में कौन सा अम्ल पाया जाता है?"
+      },
+      "options": [
+        {
+          "bn": "ম্যালিক অ্যাসিড",
+          "en": "Malic acid",
+          "hi": "मैलिक अम्ल"
+        },
+        {
+          "bn": "টারটারিক অ্যাসিড",
+          "en": "Tartaric acid",
+          "hi": "टार्टरिक अम्ल"
+        },
+        {
+          "bn": "অ্যাসিটিক অ্যাসিড",
+          "en": "Acetic acid",
+          "hi": "एसिटिक अम्ल"
+        },
+        {
+          "bn": "অক্সালিক অ্যাসিড",
+          "en": "Oxalic acid",
+          "hi": "ऑक्सैलिक अम्ल"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "তেঁতুলে প্রচুর পরিমাণে টারটারিক অ্যাসিড থাকে।",
+        "en": "Tamarind contains a high concentration of tartaric acid.",
+        "hi": "इमली में उच्च सांद्रता में टार्टरिक अम्ल पाया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q081",
+      "question": {
+        "bn": "পিঁপড়ে ও মৌমাছির হুলে কোন অ্যাসিড উপস্থিত থাকে?",
+        "en": "Which acid is present in the stings of ants and honeybees?",
+        "hi": "चींटी और मधुमक्खी के डंक में कौन सा अम्ल उपस्थित होता है?"
+      },
+      "options": [
+        {
+          "bn": "ফরমিক অ্যাসিড (মিথানোয়িক অ্যাসিড)",
+          "en": "Formic acid (Methanoic acid)",
+          "hi": "फॉर्मिक अम्ल (मेथेनॉइक अम्ल)"
+        },
+        {
+          "bn": "অ্যাসিটিক অ্যাসিড (ইথানোয়িক অ্যাসিড)",
+          "en": "Acetic acid (Ethanoic acid)",
+          "hi": "एसिटिक अम्ल (एथेनॉइक अम्ल)"
+        },
+        {
+          "bn": "সাইট্রিক অ্যাসিড",
+          "en": "Citric acid",
+          "hi": "साइट्रिक अम्ल"
+        },
+        {
+          "bn": "ল্যাকটিক অ্যাসিড",
+          "en": "Lactic acid",
+          "hi": "लैक्टিক अम्ल"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "পিঁপড়ে ও মৌমাছির হুলে ফরমিক অ্যাসিড (মিথানোয়িক অ্যাসিড, HCOOH) থাকায় হুল ফোটালে জ্বালা করে।",
+        "en": "Formic acid (methanoic acid, HCOOH) causes irritation and burning sensation from ant and bee stings.",
+        "hi": "चींटी और मधुमक्खी के डंक में फॉर्मिक अम्ल (मेथेनॉइक अम्ल, HCOOH) होता है जिसके कारण जलन होती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q082",
+      "question": {
+        "bn": "মানুষের পাকরসে পরিপাকে সাহায্য করার জন্য কোন অ্যাসিড নিঃসৃত হয়?",
+        "en": "Which acid is secreted in the human gastric juice to aid digestion?",
+        "hi": "पाचन में सहायता के लिए मानव जठर रस (Gastric Juice) में कौन सा अम्ल स्रावित होता है?"
+      },
+      "options": [
+        {
+          "bn": "সালফিউরিক অ্যাসিড (H2SO4)",
+          "en": "Sulfuric acid (H2SO4)",
+          "hi": "सल्फ्यूरिक अम्ल (H2SO4)"
+        },
+        {
+          "bn": "হাইড্রোক্লোরিক অ্যাসিড (HCl)",
+          "en": "Hydrochloric acid (HCl)",
+          "hi": "हाइड्रोक्लोरिक अम्ल (HCl)"
+        },
+        {
+          "bn": "নাইট্রিক অ্যাসিড (HNO3)",
+          "en": "Nitric acid (HNO3)",
+          "hi": "नाइट্রিক अम्ल (HNO3)"
+        },
+        {
+          "bn": "অ্যাসিটিক অ্যাসিড (CH3COOH)",
+          "en": "Acetic acid (CH3COOH)",
+          "hi": "एसिटিক अम्ल (CH3COOH)"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "পাকস্থলীতে পরিপাক উৎসেচকের কার্যকারিতার জন্য লঘু হাইড্রোক্লোরিক অ্যাসিড (HCl) নিঃসৃত হয়।",
+        "en": "Hydrochloric acid (HCl) is secreted in gastric juice to maintain an acidic pH for digestive enzymes.",
+        "hi": "पाचन एंजाइमों की क्रिया के लिए जठर रस में हाइड्रोक्लोरिक अम्ल (HCl) का स्राव होता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q083",
+      "question": {
+        "bn": "মানুষের মূত্রে কোন বর্জ্য অ্যাসিডটি উপস্থিত থাকে?",
+        "en": "Which metabolic waste acid is excreted in human urine?",
+        "hi": "मानव मूत्र में कौन सा अपशिष्ट अम्ल उपस्थित होता है?"
+      },
+      "options": [
+        {
+          "bn": "ইউরিক অ্যাসিড",
+          "en": "Uric acid",
+          "hi": "यूरिक अम्ल"
+        },
+        {
+          "bn": "টারটারিক অ্যাসিড",
+          "en": "Tartaric acid",
+          "hi": "टार्टरिक अम्ल"
+        },
+        {
+          "bn": "সাইট্রিক অ্যাসিড",
+          "en": "Citric acid",
+          "hi": "साइट्रिक अम्ल"
+        },
+        {
+          "bn": "ফরমিক অ্যাসিড",
+          "en": "Formic acid",
+          "hi": "फॉर्मिक अम्ल"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "ইউরিক অ্যাসিড হলো নাইট্রোজেনঘটিত বিপাকীয় বর্জ্য যা মানুষের মূত্রে পাওয়া যায়।",
+        "en": "Uric acid is a nitrogenous byproduct excreted in small amounts in human urine.",
+        "hi": "यूरिक अम्ल एक नाइट्रोजन युक्त अपशिष्ट उत्पाद है जो मानव मूत्र में पाया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q084",
+      "question": {
+        "bn": "লিটমাস নির্দেশকের স্বাভাবিক (প্রশমনক্ষণে) বর্ণ কী?",
+        "en": "What is the natural (neutral) color of Litmus indicator?",
+        "hi": "लिटमस सूचक का प्राकृतिक (उदासीन) रंग क्या होता है?"
+      },
+      "options": [
+        {
+          "bn": "বেগুনি",
+          "en": "Purple",
+          "hi": "बैंगनी"
+        },
+        {
+          "bn": "লাল",
+          "en": "Red",
+          "hi": "लाल"
+        },
+        {
+          "bn": "নীল",
+          "en": "Blue",
+          "hi": "नीला"
+        },
+        {
+          "bn": "গোলাপি",
+          "en": "Pink",
+          "hi": "गुलाबी"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "প্রশমন দ্রবণে লিটমাস নির্দেশকের স্বাভাবিক বর্ণ বেগুনি হয়।",
+        "en": "Litmus indicator has a natural purple color in a neutral solution.",
+        "hi": "उदासीन विलयन में लिटमस सूचक का प्राकृतिक रंग बैंगनी होता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q085",
+      "question": {
+        "bn": "ক্ষারীয় দ্রবণে মিথাইল অরেঞ্জ নির্দেশক কী বর্ণ ধারণ করে?",
+        "en": "What color does Methyl Orange exhibit in an alkaline (basic) solution?",
+        "hi": "क्षारीय विलयन में मिथाइल ऑरेंज कौन सा रंग प्रदर्शित करता है?"
+      },
+      "options": [
+        {
+          "bn": "গোলাপি-লাল",
+          "en": "Pink-Red",
+          "hi": "गुलाबी-लाल"
+        },
+        {
+          "bn": "হলুদ",
+          "en": "Yellow",
+          "hi": "पीला"
+        },
+        {
+          "bn": "কমলা",
+          "en": "Orange",
+          "hi": "नारंगी"
+        },
+        {
+          "bn": "বর্ণহীন",
+          "en": "Colorless",
+          "hi": "रंगहीन"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "মিথাইল অরেঞ্জ ক্ষারীয় দ্রবণে হলুদ বর্ণ ধারণ করে।",
+        "en": "Methyl orange turns yellow in basic/alkaline solutions.",
+        "hi": "क्षारीय विलयन में मिथाइल ऑरेंज पीला रंग देता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q086",
+      "question": {
+        "bn": "অ্যাসিড দ্রবণে ফেনলফথ্যালিন যোগ করলে কী বর্ণ দেখা যায়?",
+        "en": "What color change is observed when Phenolphthalein is added to an acidic solution?",
+        "hi": "अम्लीय विलयन में फिनोलफ्थलीन मिलाने पर कौन सा रंग दिखाई देता है?"
+      },
+      "options": [
+        {
+          "bn": "লালচে-বেগুনি",
+          "en": "Pink-Purple",
+          "hi": "गुलाबी-बैंगनी"
+        },
+        {
+          "bn": "লাল",
+          "en": "Red",
+          "hi": "लाल"
+        },
+        {
+          "bn": "বর্ণহীন",
+          "en": "Colorless",
+          "hi": "रंगहीन"
+        },
+        {
+          "bn": "হলুদ",
+          "en": "Yellow",
+          "hi": "पीला"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "bn": "অ্যাসিড দ্রবণে ফেনলফথ্যালিন বর্ণহীন থাকে।",
+        "en": "Phenolphthalein remains colorless in acidic solutions.",
+        "hi": "अम्लीय विलयन में फिनोलफ्थलीन रंगहीन रहता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q087",
+      "question": {
+        "bn": "পরীক্ষাগারে অ্যামোনিয়া (NH3) প্রস্তুতিতে কোন বিকারকগুলি উত্তপ্ত করা হয়?",
+        "en": "Which reactants are heated in the laboratory preparation of Ammonia (NH3)?",
+        "hi": "प्रयोगशाला में अमोनिया (NH3) बनाने के लिए किन अभिकर्मकों को गर्म किया जाता है?"
+      },
+      "options": [
+        {
+          "bn": "NH4Cl এবং Ca(OH)2",
+          "en": "NH4Cl and Ca(OH)2",
+          "hi": "NH4Cl और Ca(OH)2"
+        },
+        {
+          "bn": "NaCl এবং Ca(OH)2",
+          "en": "NaCl and Ca(OH)2",
+          "hi": "NaCl और Ca(OH)2"
+        },
+        {
+          "bn": "NH4NO3 এবং NaOH",
+          "en": "NH4NO3 and NaOH",
+          "hi": "NH4NO3 और NaOH"
+        },
+        {
+          "bn": "Mg3N2 এবং H2SO4",
+          "en": "Mg3N2 and H2SO4",
+          "hi": "Mg3N2 और H2SO4"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "পরীক্ষাগারে অ্যামোনিয়াম ক্লোরাইড (NH4Cl) ও ক্যালসিয়াম হাইড্রক্সাইড [Ca(OH)2]-এর মিশ্রণ উত্তপ্ত করে অ্যামোনিয়া প্রস্তুত করা হয়।",
+        "en": "Ammonia is prepared in the laboratory by heating a mixture of ammonium chloride (NH4Cl) and calcium hydroxide [Ca(OH)2].",
+        "hi": "प्रयोगशाला में अमोनियम क्लोराइड (NH4Cl) और कैल्शियम हाइड्रॉक्साइड [Ca(OH)2] के मिश्रण को गर्म करके अमोनिया बनाया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q088",
+      "question": {
+        "bn": "ম্যাগনেসিয়াম নাইট্রাইড (Mg3N2)-এর সাথে ফুটন্ত জলের বিক্রিয়ায় কোন গ্যাস উৎপন্ন হয়?",
+        "en": "What gas is produced when boiling water reacts with Magnesium Nitride (Mg3N2)?",
+        "hi": "मैग्नीशियम नाइट्राइड (Mg3N2) की उबलते जल के साथ अभिक्रिया कराने पर कौन सी गैस उत्पन्न होती है?"
+      },
+      "options": [
+        {
+          "bn": "নাইট্রোজেন (N2)",
+          "en": "Nitrogen (N2)",
+          "hi": "नाइट्रोजन (N2)"
+        },
+        {
+          "bn": "অ্যামোনিয়া (NH3)",
+          "en": "Ammonia (NH3)",
+          "hi": "अमोनिया (NH3)"
+        },
+        {
+          "bn": "হাইড্রোজেন (H2)",
+          "en": "Hydrogen (H2)",
+          "hi": "हाइड्रोजन (H2)"
+        },
+        {
+          "bn": "নাইট্রিক অক্সাইড (NO)",
+          "en": "Nitric Oxide (NO)",
+          "hi": "नाइट्रिक ऑक्साइड (NO)"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "bn": "ম্যাগনেসিয়াম নাইট্রাইডের সাথে ফুটন্ত জলের বিক্রিয়ায় অ্যামোনিয়া গ্যাস ও ম্যাগনেসিয়াম হাইড্রক্সাইড তৈরি হয়।",
+        "en": "Boiling water reacts with magnesium nitride to produce ammonia gas and magnesium hydroxide.",
+        "hi": "मैग्नीशियम नाइट्राइड उबलते पानी के साथ प्रतिक्रिया करके अमोनिया गैस और मैग्नीशियम हाइड्रॉक्साइड बनाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q089",
+      "question": {
+        "bn": "হেবার পদ্ধতিতে অ্যামোনিয়া সংশ্লেষণের জন্য কোন অনুঘটক ও তাপমাত্রা ব্যবহার করা হয়?",
+        "en": "What catalyst and temperature conditions are used in Haber's process for Ammonia synthesis?",
+        "hi": "अमोनिया संश्लेषण की हैबर विधि में किस उत्प्रेरक और तापमान स्थितियों का उपयोग किया जाता है?"
+      },
+      "options": [
+        {
+          "bn": "Fe অনুঘটক, 700 K",
+          "en": "Fe catalyst, 700 K",
+          "hi": "Fe उत्प्रेरक, 700 K"
+        },
+        {
+          "bn": "Ni অনুঘটক, 450 K",
+          "en": "Ni catalyst, 450 K",
+          "hi": "Ni उत्प्रेरक, 450 K"
+        },
+        {
+          "bn": "Pt অনুঘটক, 500 K",
+          "en": "Pt catalyst, 500 K",
+          "hi": "Pt उत्प्रेरक, 500 K"
+        },
+        {
+          "bn": "Cu অনুঘটক, 300 K",
+          "en": "Cu catalyst, 300 K",
+          "hi": "Cu उत्प्रेरक, 300 K"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "হেবার পদ্ধতিতে প্রায় 700 K উষ্ণতা এবং 200 atm চাপে আয়রন (Fe) অনুঘটকের উপস্থিতিতে অ্যামোনিয়া উৎপন্ন হয়।",
+        "en": "Haber's process uses an Iron (Fe) catalyst at around 700 K and 200 atm pressure to manufacture Ammonia.",
+        "hi": "हैबर विधि में अमोनिया का उत्पादन लगभग 700 K तापमान और 200 atm दाब पर आयरन (Fe) उत्प्रेरक की उपस्थिति में किया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q090",
+      "question": {
+        "bn": "অ্যামোনিয়ার গাঢ় জলীয় দ্রবণকে বাণিজ্যিকভাবে কী বলা হয়?",
+        "en": "What concentrated aqueous solution of Ammonia is commercially known as?",
+        "hi": "अमोनिया के सांद्र जलीय विलयन को व्यावसायिक रूप से क्या कहा जाता है?"
+      },
+      "options": [
+        {
+          "bn": "লাইকার অ্যামোনিয়া",
+          "en": "Liquor Ammonia",
+          "hi": "लॉकर अमोनिया"
+        },
+        {
+          "bn": "তরল অ্যামোনিয়া",
+          "en": "Liquid Ammonia",
+          "hi": "द्रव अमोनिया"
+        },
+        {
+          "bn": "অ্যামোনিয়াম হাইড্রক্সাইড দ্রবণ",
+          "en": "Ammonium Hydroxide solution",
+          "hi": "अमोनियम हाइड्रॉक्साइड विलयन"
+        },
+        {
+          "bn": "অ্যাকোয়া রিজিয়া",
+          "en": "Aqua Regia",
+          "hi": "ऐक्वा रेजिया"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "অ্যামোনিয়ার গাঢ় জলীয় দ্রবণকে লাইকার অ্যামোনিয়া বলা হয়।",
+        "en": "A concentrated aqueous solution of ammonia is called Liquor Ammonia.",
+        "hi": "अमोनिया के सांद्र जलीय घोल को लिकर अमोनिया कहा जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q091",
+      "question": {
+        "bn": "অ্যামোনিয়া গ্যাস ও হাইড্রোজেন ক্লোরাইড (HCl) গ্যাস পরস্পরের সংস্পর্শে এলে কী উৎপন্ন হয়?",
+        "en": "What forms when Ammonia gas comes in contact with Hydrogen Chloride (HCl) gas?",
+        "hi": "अमोनिया गैस और हाइड्रोजन क्लोराइड (HCl) गैस के संपर्क में आने पर क्या बनता है?"
+      },
+      "options": [
+        {
+          "bn": "NH4Cl-এর সাদা ধোঁয়া",
+          "en": "White fumes of NH4Cl",
+          "hi": "NH4Cl का सफेद धुआँ"
+        },
+        {
+          "bn": "NO2-এর বাদামি গ্যাস",
+          "en": "Brown gas of NO2",
+          "hi": "NO2 की भूरी गैस"
+        },
+        {
+          "bn": "সালফারের হলুদ অধঃক্ষেপ",
+          "en": "Yellow precipitate of Sulfur",
+          "hi": "सल्फर का पीला अवक्षेप"
+        },
+        {
+          "bn": "বর্ণহীন N2 গ্যাস",
+          "en": "Colorless N2 gas",
+          "hi": "रंगहीन N2 गैस"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "অ্যামোনিয়া ও HCl গ্যাস বিক্রিয়া করে কঠিন অ্যামোনিয়াম ক্লোরাইডের (NH4Cl) ঘন সাদা ধোঁয়া উৎপন্ন করে।",
+        "en": "Ammonia and HCl gas react to form dense white fumes of solid Ammonium Chloride (NH4Cl).",
+        "hi": "अमोनिया और HCl गैस प्रतिक्रिया करके ठोस अमोनियम क्लोराइड (NH4Cl) का घना सफेद धुआँ बनाते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q092",
+      "question": {
+        "bn": "সাধারণ উষ্ণতায় ফেরাস সালফাইড (FeS) ও লঘু সালফিউরিক অ্যাসিডের (H2SO4) বিক্রিয়ায় কোন গ্যাস উৎপন্ন হয়?",
+        "en": "Which gas is produced by reacting Ferrous Sulfide (FeS) with dilute Sulfuric Acid (H2SO4) at room temperature?",
+        "hi": "सामान्य तापमान पर फेरस सल्फाइड (FeS) और तनु सल्फ्यूरिक अम्ल (H2SO4) की अभिक्रिया से कौन सी गैस बनती है?"
+      },
+      "options": [
+        {
+          "bn": "হাইড্রোজেন সালফাইড (H2S)",
+          "en": "Hydrogen Sulfide (H2S)",
+          "hi": "हाइड्रोजन सल्फाइड (H2S)"
+        },
+        {
+          "bn": "সালফার ডাইঅক্সাইড (SO2)",
+          "en": "Sulfur Dioxide (SO2)",
+          "hi": "सल्फर डाइऑक्साइड (SO2)"
+        },
+        {
+          "bn": "অ্যামোনিয়া (NH3)",
+          "en": "Ammonia (NH3)",
+          "hi": "अमोनिया (NH3)"
+        },
+        {
+          "bn": "হাইড্রোজেন (H2)",
+          "en": "Hydrogen (H2)",
+          "hi": "हाइड्रोजन (H2)"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "ফেরাস সালফাইডের সাথে লঘু H2SO4-এর বিক্রিয়ায় হাইড্রোজেন সালফাইড (H2S) গ্যাস নির্গত হয়।",
+        "en": "Ferrous sulfide reacts with dilute H2SO4 to evolve Hydrogen Sulfide (H2S) gas.",
+        "hi": "फेरस सल्फाइड तनु H2SO4 के साथ अभिक्रिया करके हाइड्रोजन सल्फाइड (H2S) गैस उत्पन्न करता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q093",
+      "question": {
+        "bn": "হাইড্রোজেন সালফাইড (H2S) গ্যাসের চারিত্রিক গন্ধ কেমন?",
+        "en": "What characteristic smell is associated with Hydrogen Sulfide (H2S) gas?",
+        "hi": "हाइड्रोजन सल्फाइड (H2S) गैस की विशिष्ट गंध कैसी होती है?"
+      },
+      "options": [
+        {
+          "bn": "পচা ডিমের মতো গন্ধ",
+          "en": "Rotten egg smell",
+          "hi": "सड़े हुए अंडे जैसी गंध"
+        },
+        {
+          "bn": "ঝাঁজালো গন্ধ",
+          "en": "Pungent choking smell",
+          "hi": "तीखी गंध"
+        },
+        {
+          "bn": "গন্ধহীন",
+          "en": "Odorless",
+          "hi": "गंंधहीन"
+        },
+        {
+          "bn": "ফলের মতো মিষ্টি গন্ধ",
+          "en": "Fruity smell",
+          "hi": "फलों जैसी गंध"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "হাইড্রোজেন সালফাইড (H2S) হলো পচা ডিমের মতো গন্ধযুক্ত একটি বর্ণহীন গ্যাস।",
+        "en": "Hydrogen Sulfide (H2S) is a colorless gas with a distinct rotten egg smell.",
+        "hi": "हाइड्रोजन सल्फाइड (H2S) सड़े हुए अंडे जैसी विशिष्ट गंध वाली एक रंगहीन गैस है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q094",
+      "question": {
+        "bn": "H2S গ্যাসের সংস্পর্শে লেড অ্যাসিটেট সিক্ত কাগজ কী বর্ণ ধারণ করে?",
+        "en": "What color change occurs on paper soaked in Lead Acetate solution when brought into contact with H2S gas?",
+        "hi": "H2S गैस के संपर्क में आने पर लेड एसिटेट से भीगा कागज किस रंग में बदल जाता है?"
+      },
+      "options": [
+        {
+          "bn": "কালো",
+          "en": "Black",
+          "hi": "काला"
+        },
+        {
+          "bn": "নীল",
+          "en": "Blue",
+          "hi": "नीला"
+        },
+        {
+          "bn": "হলুদ",
+          "en": "Yellow",
+          "hi": "पीला"
+        },
+        {
+          "bn": "সাদা",
+          "en": "White",
+          "hi": "सफेद"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "H2S গ্যাসের সংস্পর্শে লেড সালফাইড (PbS) উৎপন্ন হওয়ার কারণে লেড অ্যাসিটেট কাগজ কালো হয়ে যায়।",
+        "en": "Lead acetate paper turns black due to the formation of Lead Sulfide (PbS) when exposed to H2S gas.",
+        "hi": "H2S गैस के संपर्क में आने पर लेड सल्फाइड (PbS) बनने के कारण लेड एसिटेट पत्र काला हो जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q095",
+      "question": {
+        "bn": "অ্যাকোয়া রিজিয়া (Aqua Regia) কী?",
+        "en": "What is Aqua Regia?",
+        "hi": "ऐक्वा रेजिया (Aqua Regia) क्या है?"
+      },
+      "options": [
+        {
+          "bn": "গাঢ় HNO3 এবং গাঢ় HCl-এর 1:3 মিশ্রণ",
+          "en": "1:3 mixture of conc. HNO3 and conc. HCl",
+          "hi": "सांद्र HNO3 और सांद्र HCl का 1:3 मिश्रण"
+        },
+        {
+          "bn": "গাঢ় HNO3 এবং গাঢ় HCl-এর 3:1 মিশ্রণ",
+          "en": "3:1 mixture of conc. HNO3 and conc. HCl",
+          "hi": "सांद्र HNO3 और सांद्र HCl का 3:1 मिश्रण"
+        },
+        {
+          "bn": "গাঢ় H2SO4 এবং গাঢ় HCl-এর 1:1 মিশ্রণ",
+          "en": "1:1 mixture of conc. H2SO4 and conc. HCl",
+          "hi": "सांद्र H2SO4 और सांद्र HCl का 1:1 मिश्रण"
+        },
+        {
+          "bn": "গাঢ় HCl এবং গাঢ় H2SO4-এর 1:3 মিশ্রণ",
+          "en": "1:3 mixture of conc. HCl and conc. H2SO4",
+          "hi": "सांद्र HCl और सांद्र H2SO4 का 1:3 मिश्रण"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "আয়তন অনুপাতে 1 ভাগ গাঢ় নাইট্রিক অ্যাসিড (HNO3) এবং 3 ভাগ গাঢ় হাইড্রোক্লোরিক অ্যাসিডের (HCl) মিশ্রণকে অ্যাকোয়া রিজিয়া বলে।",
+        "en": "Aqua Regia is a mixture of concentrated Nitric Acid (HNO3) and concentrated Hydrochloric Acid (HCl) in a 1:3 ratio by volume.",
+        "hi": "आयतन के अनुसार 1 भाग सांद्र नाइट्रिक अम्ल (HNO3) और 3 भाग सांद्र हाइड्रोक्लोरिक अम्ल (HCl) के मिश्रण को ऐक्वा रेजिया कहते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q096",
+      "question": {
+        "bn": "HCl যুক্ত দ্রবণে সিলভার নাইট্রেট (AgNO3) দ্রবণ যোগ করলে কী রঙের অধঃক্ষেপ উৎপন্ন হয়?",
+        "en": "What precipitate is formed when Silver Nitrate (AgNO3) solution is added to a solution containing HCl?",
+        "hi": "HCl युक्त विलयन में सिल्वर नाइट्रेट (AgNO3) घोल मिलाने पर किस रंग का अवक्षेप बनता है?"
+      },
+      "options": [
+        {
+          "bn": "HNO3-তে অদ্রাব্য সাদা অধঃক্ষেপ",
+          "en": "White precipitate insoluble in HNO3",
+          "hi": "HNO3 में अघुलनशील सफेद अवक्षेप"
+        },
+        {
+          "bn": "HNO3-তে দ্রাব্য হলুদ অধঃক্ষেপ",
+          "en": "Yellow precipitate soluble in HNO3",
+          "hi": "HNO3 में घुलनशील पीला अवक्षेप"
+        },
+        {
+          "bn": "NH4OH-এ অদ্রাব্য কালো অধঃক্ষেপ",
+          "en": "Black precipitate insoluble in NH4OH",
+          "hi": "NH4OH में अघुलनशील काला अवक्षेप"
+        },
+        {
+          "bn": "জলে অদ্রাব্য বাদামি অধঃক্ষেপ",
+          "en": "Brown precipitate insoluble in water",
+          "hi": "जल में अघुलनशील भूरा अवक्षेप"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "HCl দ্রবণে AgNO3 যোগ করলে AgCl-এর সাদা অধঃক্ষেপ পড়ে যা লঘু HNO3-তে অদ্রাব্য কিন্তু অতিরিক্ত NH4OH-এ দ্রাব্য।",
+        "en": "Adding AgNO3 to an HCl solution produces a white precipitate of AgCl that is insoluble in dilute HNO3 but soluble in excess NH4OH.",
+        "hi": "HCl विलयन में AgNO3 मिलाने पर AgCl का सफेद अवक्षेप बनता है जो तनु HNO3 में अघुलनशील लेकिन अतिरिक्त NH4OH में घुलनशील है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q097",
+      "question": {
+        "bn": "নাইট্রিক অ্যাসিডের (HNO3) শিল্পোৎপাদনে কোন পদ্ধতি ব্যবহার করা হয়?",
+        "en": "Which industrial process is used for the large-scale production of Nitric Acid (HNO3)?",
+        "hi": "नाइट्रिक अम्ल (HNO3) के औद्योगिक उत्पादन के लिए किस विधि का उपयोग किया जाता है?"
+      },
+      "options": [
+        {
+          "bn": "ওস্টওয়াল্ড পদ্ধতি",
+          "en": "Ostwald's process",
+          "hi": "ओस्टवाल्ड विधि"
+        },
+        {
+          "bn": "হেবার পদ্ধতি",
+          "en": "Haber's process",
+          "hi": "हैबर विधि"
+        },
+        {
+          "bn": "স্পর্শ পদ্ধতি",
+          "en": "Contact process",
+          "hi": "संपर्क विधि"
+        },
+        {
+          "bn": "সলভে পদ্ধতি",
+          "en": "Solvay process",
+          "hi": "सॉल्वे विधि"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "নাইট্রিক অ্যাসিড শিল্পক্ষেত্রে ওস্টওয়াল্ড পদ্ধতিতে বাণিজ্যিকভাবে প্রস্তুত করা হয়।",
+        "en": "Nitric acid is industrially manufactured on a large scale by Ostwald's process.",
+        "hi": "नाइट्रिक अम्ल का औद्योगिक पैमाने पर उत्पादन ओस्टवाल्ड विधि द्वारा किया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q098",
+      "question": {
+        "bn": "ওস্টওয়াল্ড পদ্ধতিতে অ্যামোনিয়ার অনুঘটকীয় জারণের জন্য কোন তারজালি অনুঘটক হিসেবে ব্যবহৃত হয়?",
+        "en": "What catalyst and gauze material are used in the Ostwald process for catalytic oxidation of Ammonia?",
+        "hi": "ओस्टवाल्ड विधि में अमोनिया के उत्प्रेरकीय ऑक्सीकरण के लिए किस जाली उत्प्रेरक का उपयोग किया जाता है?"
+      },
+      "options": [
+        {
+          "bn": "প্ল্যাটিনাম-রোডিয়াম (Pt-Rh) তারজালি",
+          "en": "Platinum-Rhodium (Pt-Rh) gauze",
+          "hi": "प्लेटिनम-रोडियम (Pt-Rh) जाली"
+        },
+        {
+          "bn": "আইরন-মলিবডেনাম (Fe-Mo) তারজালি",
+          "en": "Iron-Molybdenum (Fe-Mo) gauze",
+          "hi": "आयरन-मोलिब्डेनम (Fe-Mo) जाली"
+        },
+        {
+          "bn": "নিকেল-কপার (Ni-Cu) তারজালি",
+          "en": "Nickel-Copper (Ni-Cu) gauze",
+          "hi": "निकेल-कॉपर (Ni-Cu) जाली"
+        },
+        {
+          "bn": "ভ্যানাডিয়াম পেন্টক্সাইড (V2O5) মেশ",
+          "en": "Vanadium Pentoxide (V2O5) mesh",
+          "hi": "वेनेडियम पेंटाक्साइड (V2O5) मेश"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "ওস্টওয়াল্ড পদ্ধতিতে উচ্চ উষ্ণতায় প্ল্যাটিনাম-রোডিয়াম (Pt-Rh) তারজালির ওপর দিয়ে অ্যামোনিয়া ও বায়ুর মিশ্রণ চালনা করে জারিত করা হয়।",
+        "en": "Ammonia is oxidized by air using a Platinum-Rhodium (Pt-Rh) gauze catalyst at high temperatures in Ostwald's process.",
+        "hi": "ओस्टवाल्ड विधि में अमोनिया को प्लेटिनम-रोडियम (Pt-Rh) जाली उत्प्रेरक के ऊपर से गुजारकर ऑक्सीकृत किया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q099",
+      "question": {
+        "bn": "নাইট্রিক অ্যাসিড (HNO3) শনাক্তকরণের জন্য কোন পরীক্ষাগার পরীক্ষাটি ব্যবহৃত হয়?",
+        "en": "Which laboratory test is used to identify Nitric Acid (HNO3)?",
+        "hi": "नाइट्रिक अम्ल (HNO3) की पहचान के लिए किस प्रयोगशाला परीक्षण का उपयोग किया जाता है?"
+      },
+      "options": [
+        {
+          "bn": "বলয় পরীক্ষা (Brown Ring Test)",
+          "en": "Brown Ring Test",
+          "hi": "वलय परीक्षण (Brown Ring Test)"
+        },
+        {
+          "bn": "শিখা পরীক্ষা (Flame Test)",
+          "en": "Flame Test",
+          "hi": "ज्वाला परीक्षण (Flame Test)"
+        },
+        {
+          "bn": "নেসলার পরীক্ষা (Nessler's Test)",
+          "en": "Nessler's Test",
+          "hi": "नेसलर परीक्षण (Nessler's Test)"
+        },
+        {
+          "bn": "লিটমাস বিরঞ্জন পরীক্ষা",
+          "en": "Litmus Bleaching Test",
+          "hi": "लिटमस विरंजन परीक्षण"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "গাঢ় H2SO4 এবং FeSO4 দ্রবণের সাহায্যে বলয় পরীক্ষার মাধ্যমে নাইট্রিক অ্যাসিড শনাক্ত করা হয়।",
+        "en": "Nitric acid and nitrate ions are identified using the Brown Ring Test with FeSO4 and conc. H2SO4.",
+        "hi": "सांद्र H2SO4 और FeSO4 घोल की सहायता से वलय परीक्षण द्वारा नाइट्रिक अम्ल की पहचान की जाती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q100",
+      "question": {
+        "bn": "হাইড্রোক্লোরিক অ্যাসিডের সাথে সোডিয়াম কার্বনেটের (Na2CO3) বিক্রিয়ায় কোন গ্যাস উৎপন্ন হয়?",
+        "en": "What gas is evolved when Hydrochloric Acid reacts with Sodium Carbonate (Na2CO3)?",
+        "hi": "सोडियम कार्बोनेट (Na2CO3) के साथ हाइड्रोक्लोरिक अम्ल की अभिक्रिया से कौन सी गैस निकलती है?"
+      },
+      "options": [
+        {
+          "bn": "কার্বন ডাইঅক্সাইড (CO2)",
+          "en": "Carbon Dioxide (CO2)",
+          "hi": "कार्बन डाइऑक्साइड (CO2)"
+        },
+        {
+          "bn": "ক্লোরিন (Cl2)",
+          "en": "Chlorine (Cl2)",
+          "hi": "क्लोरीन (Cl2)"
+        },
+        {
+          "bn": "হাইড্রোজেন (H2)",
+          "en": "Hydrogen (H2)",
+          "hi": "हाइड्रोजन (H2)"
+        },
+        {
+          "bn": "সালফার ডাইঅক্সাইড (SO2)",
+          "en": "Sulfur Dioxide (SO2)",
+          "hi": "सल्फर डाइऑक्साइड (SO2)"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "HCl অ্যাসিড Na2CO3-এর মতো কার্বনেটের সাথে বিক্রিয়া করে কার্বন ডাইঅক্সাইড (CO2) গ্যাস, জল এবং লবণ উৎপন্ন করে।",
+        "en": "HCl reacts with metal carbonates like Na2CO3 to release Carbon Dioxide (CO2) gas, water, and salt.",
+        "hi": "HCl अम्ल Na2CO3 जैसे कार्बोनेट के साथ प्रतिक्रिया करके कार्बन डाइऑक्साइड (CO2) गैस, पानी और लवण बनाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q101",
+      "question": {
+        "bn": "সালফিউরিক অ্যাসিডের (H2SO4) শিল্পোৎপাদনে কোন পদ্ধতি ব্যবহার করা হয়?",
+        "en": "Which industrial process is used for the large-scale manufacture of Sulfuric Acid (H2SO4)?",
+        "hi": "सल्फ्यूरिक अम्ल (H2SO4) के औद्योगिक उत्पादन के लिए किस विधि का उपयोग किया जाता है?"
+      },
+      "options": [
+        {
+          "bn": "স্পর্শ পদ্ধতি",
+          "en": "Contact process",
+          "hi": "संपर्क विधि"
+        },
+        {
+          "bn": "ওস্টওয়াল্ড পদ্ধতি",
+          "en": "Ostwald's process",
+          "hi": "ओस्टवाल्ड विधि"
+        },
+        {
+          "bn": "হেবার পদ্ধতি",
+          "en": "Haber's process",
+          "hi": "हैबर विधि"
+        },
+        {
+          "bn": "সলভে পদ্ধতি",
+          "en": "Solvay process",
+          "hi": "सॉल्वे विधि"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "স্পর্শ পদ্ধতিতে শিল্পক্ষেত্রে প্রচুর পরিমাণে সালফিউরিক অ্যাসিড প্রস্তুত করা হয়।",
+        "en": "Sulfuric Acid is manufactured industrially on a large scale by the Contact process.",
+        "hi": "औद्योगिक पैमाने पर सल्फ्यूरिक अम्ल का निर्माण संपर्क विधि द्वारा किया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q102",
+      "question": {
+        "bn": "স্পর্শ পদ্ধতিতে SO2-কে জারিত করে SO3-তে পরিণত করতে কোন অনুঘটক ব্যবহৃত হয়?",
+        "en": "Which catalyst is used in the Contact process to oxidize SO2 to SO3?",
+        "hi": "संपर्क विधि में SO2 को ऑक्सीकृत करके SO3 में बदलने के लिए किस उत्प्रेरक का उपयोग किया जाता है?"
+      },
+      "options": [
+        {
+          "bn": "ভ্যানাডিয়াম পেন্টক্সাইড (V2O5)",
+          "en": "Vanadium Pentoxide (V2O5)",
+          "hi": "वेनेडियम पेंटाक्साइड (V2O5)"
+        },
+        {
+          "bn": "আয়রন চূর্ণ (Fe)",
+          "en": "Iron (Fe) powder",
+          "hi": "आयरन चूर्ण (Fe)"
+        },
+        {
+          "bn": "নিকেল চূর্ণ (Ni)",
+          "en": "Nickel (Ni) powder",
+          "hi": "निकेल चूर्ण (Ni)"
+        },
+        {
+          "bn": "কপার কুচি (Cu)",
+          "en": "Copper (Cu) filings",
+          "hi": "कॉपर छीलन (Cu)"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "450 °C উষ্ণতায় V2O5 অনুঘটকের উপস্থিতিতে SO2 জারিত হয়ে SO3 উৎপন্ন করে।",
+        "en": "Vanadium Pentoxide (V2O5) is used as a catalyst at around 450 °C to oxidize SO2 into SO3.",
+        "hi": "450 °C तापमान पर V2O5 उत्प्रेरक की उपस्थिति में SO2 ऑक्सीकृत होकर SO3 बनाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q104",
+      "question": {
+        "bn": "অদ্রাব্য সাদা অধঃক্ষেপ সৃষ্টির মাধ্যমে সালফেট আয়ন বা H2SO4 শনাক্ত করতে কোন বিকারক ব্যবহার করা হয়?",
+        "en": "What reagent is used to identify the presence of Sulfate ions or H2SO4 by forming an insoluble white precipitate?",
+        "hi": "अघुलनशील सफेद अवक्षेप बनाकर सल्फेट आयन या H2SO4 की पहचान करने के लिए किस अभिकर्मक का उपयोग किया जाता है?"
+      },
+      "options": [
+        {
+          "bn": "বেরিয়াম ক্লোরাইড (BaCl2) দ্রবণ",
+          "en": "Barium Chloride (BaCl2) solution",
+          "hi": "बेरियम क्लोराइड (BaCl2) घोल"
+        },
+        {
+          "bn": "সিলভার নাইট্রেট (AgNO3) দ্রবণ",
+          "en": "Silver Nitrate (AgNO3) solution",
+          "hi": "सिल्वर नाइट्रेट (AgNO3) घोल"
+        },
+        {
+          "bn": "অ্যামোনিয়াম হাইড্রক্সাইড (NH4OH)",
+          "en": "Ammonium Hydroxide (NH4OH)",
+          "hi": "अमोनियम हाइड्रॉक्साइड (NH4OH)"
+        },
+        {
+          "bn": "সোডিয়াম কার্বনেট (Na2CO3) দ্রবণ",
+          "en": "Sodium Carbonate (Na2CO3) solution",
+          "hi": "सोडियम कार्बोनेट (Na2CO3) घोल"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "H2SO4 দ্রবণে BaCl2 যোগ করলে BaSO4-এর সাদা অধঃক্ষেপ পড়ে যা লঘু HCl-এ অদ্রাব্য।",
+        "en": "Adding BaCl2 to a solution containing H2SO4 produces a white precipitate of BaSO4 that is insoluble in dilute HCl.",
+        "hi": "H2SO4 घोल में BaCl2 मिलाने पर BaSO4 का सफेद अवक्षेप बनता है जो तनु HCl में अघुलनशील है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q105",
+      "question": {
+        "bn": "গাঢ় H2SO4-এর কোন ধর্মের কারণে চিনি (C12H22O11) কালো কার্বনে পরিণত হয়?",
+        "en": "Which property of concentrated H2SO4 causes cane sugar (C12H22O11) to turn into a black carbon mass?",
+        "hi": "सांद्र H2SO4 के किस गुण के कारण चीनी (C12H22O11) काले कार्बन में बदल जाती है?"
+      },
+      "options": [
+        {
+          "bn": "নিরুদন ধর্ম",
+          "en": "Dehydrating property",
+          "hi": "निर्जलीकरण गुण"
+        },
+        {
+          "bn": "জারণ ধর্ম",
+          "en": "Oxidizing property",
+          "hi": "ऑक्सीकरण गुण"
+        },
+        {
+          "bn": "ক্ষারীয় ধর্ম",
+          "en": "Basic property",
+          "hi": "क्षारीय गुण"
+        },
+        {
+          "bn": "বিজারণ ধর্ম",
+          "en": "Reducing property",
+          "hi": "अपचयन गुण"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "গাঢ় H2SO4 একটি তীব্র নিরুদক হিসেবে কাজ করে চিনি থেকে জল বের করে নেয় এবং কালো কার্বন অবশিষ্টাংশ হিসেবে রেখে দেয়।",
+        "en": "Concentrated H2SO4 acts as a strong dehydrating agent by removing water molecules from cane sugar, leaving black carbon.",
+        "hi": "सांद्र H2SO4 एक प्रबल निर्जलीकरण एजेंट के रूप में कार्य करता है जो चीनी से पानी के अणुओं को हटाकर काला कार्बन छोड़ देता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q106",
+      "question": {
+        "bn": "অ্যালুমিনিয়ামের প্রধান আকরিক কোনটি?",
+        "en": "What is the main ore of Aluminium?",
+        "hi": "एल्युमिनियम का मुख्य अयस्क कौन सा है?"
+      },
+      "options": [
+        {
+          "bn": "বক্সাইট (Al2O3·2H2O)",
+          "en": "Bauxite (Al2O3·2H2O)",
+          "hi": "बॉक्साइट (Al2O3·2H2O)"
+        },
+        {
+          "bn": "ক্যালামাইন (ZnCO3)",
+          "en": "Calamine (ZnCO3)",
+          "hi": "कैलामाइन (ZnCO3)"
+        },
+        {
+          "bn": "হেম্যাটাইট (Fe2O3)",
+          "en": "Haematite (Fe2O3)",
+          "hi": "हेमेटाइट (Fe2O3)"
+        },
+        {
+          "bn": "কপার পাইরাইটস (CuFeS2)",
+          "en": "Copper Pyrites (CuFeS2)",
+          "hi": "कॉपर पायराइट्स (CuFeS2)"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "অ্যালুমিনিয়াম ধাতু নিষ্কাশনের জন্য প্রধানত বক্সাইট আকরিক ব্যবহার করা হয়।",
+        "en": "Bauxite is the primary ore used for the industrial extraction of Aluminium metal.",
+        "hi": "एल्युमिनियम धातु के निष्कर्षण के लिए मुख्य रूप से बॉक्साइट अयस्क का उपयोग किया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q107",
+      "question": {
+        "bn": "বিশুদ্ধ অ্যালুমিনা থেকে কোন পদ্ধতিতে বিশুদ্ধ অ্যালুমিনিয়াম নিষ্কাশন করা হয়?",
+        "en": "By which method is pure Aluminium extracted from pure Alumina?",
+        "hi": "शुद्ध एल्युमिना से किस विधि द्वारा शुद्ध एल्युमिनियम का निष्कर्षण किया जाता है?"
+      },
+      "options": [
+        {
+          "bn": "গলিত মিশ্রণের (অ্যালুমিনা, ক্রায়োলাইট ও ফ্লুওস্পার) তড়িৎবিশ্লেষণ",
+          "en": "Electrolysis of molten mixture (Alumina, Cryolite, and Fluorspar)",
+          "hi": "गलित मिश्रण (एल्युमिना, क्रायोलाइट और फ्लोरास्पार) का विद्युत अपघटन"
+        },
+        {
+          "bn": "কার্বন বিজারণ পদ্ধতি",
+          "en": "Carbon reduction process",
+          "hi": "कार्बन अपचयन विधि"
+        },
+        {
+          "bn": "স্বতঃ-বিজারণ পদ্ধতি",
+          "en": "Self-reduction process",
+          "hi": "स्व-अपचयन विधि"
+        },
+        {
+          "bn": "তাপীয় বিয়োজন",
+          "en": "Thermal decomposition",
+          "hi": "तापीय अपघटन"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "অ্যালুমিনা, ক্রায়োলাইট ও ফ্লুওস্পারের (1:3:1) গলিত মিশ্রণের তড়িৎবিশ্লেষণ করে অ্যালুমিনিয়াম ধাতু নিষ্কাশন করা হয়।",
+        "en": "Aluminium is extracted by electrolytic reduction of a molten mixture of alumina, cryolite, and fluorspar in a 1:3:1 ratio.",
+        "hi": "एल्युमिना, क्रायोलाइट और फ्लोरास्पार के पिघले हुए मिश्रण का विद्युत अपघटन करके एल्युमिनियम निकाला जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q108",
+      "question": {
+        "bn": "জিংকিং অক্সাইড (ZnO) থেকে জিংক ধাতু নিষ্কাশনে মূলত কোন পদ্ধতি ব্যবহার করা হয়?",
+        "en": "Which method is primarily used to extract Zinc metal from Zinc Oxide (ZnO)?",
+        "hi": "जिंक ऑक्साइड (ZnO) से जिंक धातु निकालने के लिए मुख्य रूप से किस विधि का उपयोग किया जाता है?"
+      },
+      "options": [
+        {
+          "bn": "কার্বন বিজারণ পদ্ধতি",
+          "en": "Carbon reduction process",
+          "hi": "कार्बन अपचयन विधि"
+        },
+        {
+          "bn": "তড়িৎবিশ্লেষণ বিজারণ পদ্ধতি",
+          "en": "Electrolytic reduction process",
+          "hi": "विद्युत अपघटनी अपचयन विधि"
+        },
+        {
+          "bn": "থার্মিট পদ্ধতি",
+          "en": "Thermite process",
+          "hi": "थर्माइट विधि"
+        },
+        {
+          "bn": "সায়ানাইড পদ্ধতি",
+          "en": "Cyanide process",
+          "hi": "साइनाइड विधि"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "উচ্চ উষ্ণতায় জিংক অক্সাইডকে কার্বন দ্বারা বিজারিত করে বিশুদ্ধ জিংক ধাতু নিষ্কাশিত করা হয়।",
+        "en": "Zinc oxide is reduced to pure Zinc metal using carbon at high temperatures.",
+        "hi": "उच्च तापमान पर कार्बन का उपयोग करके जिंक ऑक्साइड को जिंक धातु में अपचयित किया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q109",
+      "question": {
+        "bn": "নিচের কোনটি জিংকের একটি আকরিক?",
+        "en": "Which of the following is an ore of Zinc?",
+        "hi": "निम्नलिखित में से कौन सा जिंक का अयस्क है?"
+      },
+      "options": [
+        {
+          "bn": "ক্যালামাইন (ZnCO3)",
+          "en": "Calamine (ZnCO3)",
+          "hi": "कैलामाइन (ZnCO3)"
+        },
+        {
+          "bn": "ক্রায়োলাইট (Na3AlF6)",
+          "en": "Cryolite (Na3AlF6)",
+          "hi": "क्रायोलाइट (Na3AlF6)"
+        },
+        {
+          "bn": "কোরান্ডাম (Al2O3)",
+          "en": "Corundum (Al2O3)",
+          "hi": "कोरंडम (Al2O3)"
+        },
+        {
+          "bn": "গিবসাইট (Al2O3·3H2O)",
+          "en": "Gibbsite (Al2O3·3H2O)",
+          "hi": "गिब्सन (Al2O3·3H2O)"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "ক্যালামাইন (ZnCO3), জিংকাইট (ZnO) এবং জিংক ব্লেন্ড (ZnS) হলো জিংকের আকরিক।",
+        "en": "Calamine (ZnCO3), Zincite (ZnO), and Zinc Blende (ZnS) are ores of Zinc.",
+        "hi": "कैलामाइन (ZnCO3), जिंकाइट (ZnO) और जिंक ब्लेंड (ZnS) जिंक के अयस्क हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q110",
+      "question": {
+        "bn": "কপার পাইরাইটস আকরিক থেকে মূলত কোন পদ্ধতির মাধ্যমে কপার (Cu) ধাতু নিষ্কাশন করা হয়?",
+        "en": "By which method is Copper (Cu) metal primarily extracted from its pyrites ore?",
+        "hi": "कॉपर पायराइट्स अयस्क से मुख्य रूप से किस विधि द्वारा कॉपर (Cu) धातु का निष्कर्षण किया जाता है?"
+      },
+      "options": [
+        {
+          "bn": "স্বতঃবিজারণ পদ্ধতি",
+          "en": "Self-reduction process",
+          "hi": "स्व-अपचयन विधि"
+        },
+        {
+          "bn": "কার্বন-বিজারণ পদ্ধতি",
+          "en": "Carbon reduction process",
+          "hi": "कार्बन-अपचयन विधि"
+        },
+        {
+          "bn": "তড়িদ্বিশ্লেষণ পদ্ধতি",
+          "en": "Electrolytic reduction process",
+          "hi": "विद्युत अपघटनी विधि"
+        },
+        {
+          "bn": "থার্মিট পদ্ধতি",
+          "en": "Thermite process",
+          "hi": "थर्माइट विधि"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "কপার পাইরাইটসের মতো সালফাইড আকরিক থেকে মূলত স্বতঃবিজারণ পদ্ধতির মাধ্যমে কপার ধাতু নিষ্কাশন করা হয়।",
+        "en": "Copper is primarily extracted from its sulfide ores like copper pyrites by the self-reduction process.",
+        "hi": "कॉपर पायराइट्स जैसे सल्फाइड अयस्क से मुख्य रूप से स्व-अपचयन विधि द्वारा कॉपर धातु का निष्कर्षण किया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q111",
+      "question": {
+        "bn": "মূলত কোন আকরিকটির কার্বন-বিজারণের মাধ্যমে আয়রন (Fe) নিষ্কাশন করা হয়?",
+        "en": "Which ore is primarily reduced using Carbon to extract Iron (Fe)?",
+        "hi": "मुख्य रूप से किस अयस्क के कार्बन-अपचयन द्वारा आयरन (Fe) का निष्कर्षण किया जाता है?"
+      },
+      "options": [
+        {
+          "bn": "রেড হিমাটাইট (Fe2O3)",
+          "en": "Red Haematite (Fe2O3)",
+          "hi": "रेड हेमेटाइट (Fe2O3)"
+        },
+        {
+          "bn": "ম্যাগনেটাইট (Fe3O4)",
+          "en": "Magnetite (Fe3O4)",
+          "hi": "मैग्नेटाइट (Fe3O4)"
+        },
+        {
+          "bn": "সিডারাইট (FeCO3)",
+          "en": "Siderite (FeCO3)",
+          "hi": "सिडेराइट (FeCO3)"
+        },
+        {
+          "bn": "আয়ন পাইরাইটস (FeS2)",
+          "en": "Iron Pyrites (FeS2)",
+          "hi": "आयरन पायराइट्स (FeS2)"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "রেড হিমাটাইটের (Fe2O3) কার্বন-বিজারণের মাধ্যমেই মূলত আয়রন নিষ্কাশন করা হয়।",
+        "en": "Iron is mainly extracted by the carbon-reduction of Red Haematite (Fe2O3) in a blast furnace.",
+        "hi": "मुख्य रूप से रेड हेमेटाइट (Fe2O3) के कार्बन-अपचयन द्वारा आयरन निकाला जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q112",
+      "question": {
+        "bn": "কোন গলিত আকরিকের তড়িদ্বিশ্লেষণ দ্বারা মূলত ম্যাগনেসিয়াম (Mg) ধাতু নিষ্কাশন করা হয়?",
+        "en": "Magnesium (Mg) metal is mainly extracted by the electrolysis of which fused ore?",
+        "hi": "मुख्य रूप से किस गलित अयस्क के विद्युत अपघटन द्वारा मैग्नीशियम (Mg) धातु का निष्कर्षण किया जाता है?"
+      },
+      "options": [
+        {
+          "bn": "কার্নালাইট (KCl·MgCl2·6H2O)",
+          "en": "Carnallite (KCl·MgCl2·6H2O)",
+          "hi": "कार्नलाइट (KCl·MgCl2·6H2O)"
+        },
+        {
+          "bn": "ডলোমাইট (CaCO3·MgCO3)",
+          "en": "Dolomite (CaCO3·MgCO3)",
+          "hi": "डोलोमाइट (CaCO3·MgCO3)"
+        },
+        {
+          "bn": "ম্যাগনেসাইট (MgCO3)",
+          "en": "Magnesite (MgCO3)",
+          "hi": "मैग्नेसाइट (MgCO3)"
+        },
+        {
+          "bn": "এপসমাইট (MgSO4·7H2O)",
+          "en": "Epsomite (MgSO4·7H2O)",
+          "hi": "एप्सोमाइट (MgSO4·7H2O)"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "প্রধানত কার্নালাইট আকরিকের তড়িদ্বিশ্লেষণ দ্বারা ম্যাগনেসিয়াম ধাতু নিষ্কাশন করা হয়।",
+        "en": "Magnesium metal is mainly extracted by the electrolysis of anhydrous carnallite/magnesium chloride.",
+        "hi": "मुख्य रूप से कार्नलाइट अयस्क के विद्युत अपघटन द्वारा मैग्नीशियम धातु निकाली जाती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q113",
+      "question": {
+        "bn": "সোডিয়াম (Na) নিষ্কাশনে গলিত NaCl-এর তড়িদ্বিশ্লেষণের সময় কোন ক্যাথোড ও অ্যানোড ব্যবহার করা হয়?",
+        "en": "What electrodes are used during the electrolysis of molten NaCl to extract Sodium (Na)?",
+        "hi": "सोडियम (Na) के निष्कर्षण में गलित NaCl के विद्युत अपघटन के दौरान किन कैथोड और एनोड का उपयोग किया जाता है?"
+      },
+      "options": [
+        {
+          "bn": "আয়রন ক্যাথোড ও গ্রাফাইট অ্যানোড",
+          "en": "Iron cathode and Graphite anode",
+          "hi": "आयरन कैथोड और ग्रेफाइट एनोड"
+        },
+        {
+          "bn": "কপার ক্যাথোড ও প্ল্যাটিনাম অ্যানোড",
+          "en": "Copper cathode and Platinum anode",
+          "hi": "कॉपर कैथोड और प्लेटिनम एनोड"
+        },
+        {
+          "bn": "গ্রাফাইট ক্যাথোড ও আয়রন অ্যানোড",
+          "en": "Graphite cathode and Iron anode",
+          "hi": "ग्रेफाइट कैथोड और आयरन एनोड"
+        },
+        {
+          "bn": "জিংক ক্যাথোড ও কার্বন অ্যানোড",
+          "en": "Zinc cathode and Carbon anode",
+          "hi": "जिंक कैथोड और कार्बन एनोड"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "আয়রন ক্যাথোড ও গ্রাফাইট অ্যানোড ব্যবহার করে গলিত NaCl-এর তড়িদ্বিশ্লেষণ করে সোডিয়াম ধাতু পাওয়া যায়।",
+        "en": "Sodium is obtained by electrolyzing molten NaCl using an Iron cathode and a Graphite anode.",
+        "hi": "आयरন कैथोड और ग्रेफाइट एनोड का उपयोग करके गलিত NaCl के विद्युत अपघटन से सोडियम धातु प्राप्त होती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q114",
+      "question": {
+        "bn": "সিনেবার (Cinnabar) নিচের কোন ধাতুর একটি আকরিক?",
+        "en": "Which of the following is Cinnabar an ore of?",
+        "hi": "सिनेबार (Cinnabar) निम्नलिखित में से किस धातु का अयस्क है?"
+      },
+      "options": [
+        {
+          "bn": "মার্কারি / পারদ (Hg)",
+          "en": "Mercury (Hg)",
+          "hi": "मर्करी / पारा (Hg)"
+        },
+        {
+          "bn": "সিসা (Pb)",
+          "en": "Lead (Pb)",
+          "hi": "सीसा (Pb)"
+        },
+        {
+          "bn": "টিন (Sn)",
+          "en": "Tin (Sn)",
+          "hi": "टिन (Sn)"
+        },
+        {
+          "bn": "পটাশিয়াম (K)",
+          "en": "Potassium (K)",
+          "hi": "पोटैशियम (K)"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "সিনেবার হলো মার্কারি বা পারদ (Hg)-এর প্রধান আকরিক।",
+        "en": "Cinnabar (HgS) is the principal ore of Mercury (Hg).",
+        "hi": "सिनेबार मर्करी या पारे (Hg) का मुख्य अयस्क है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q115",
+      "question": {
+        "bn": "গ্যালেনা (Galena) কোন ধাতুর প্রধান আকরিক?",
+        "en": "Galena is the main ore of which metal?",
+        "hi": "गेलेना (Galena) किस धातु का मुख्य अयस्क है?"
+      },
+      "options": [
+        {
+          "bn": "সিসা (Pb)",
+          "en": "Lead (Pb)",
+          "hi": "सीसा (Pb)"
+        },
+        {
+          "bn": "তামা (Cu)",
+          "en": "Copper (Cu)",
+          "hi": "तांबा (Cu)"
+        },
+        {
+          "bn": "টিন (Sn)",
+          "en": "Tin (Sn)",
+          "hi": "टिन (Sn)"
+        },
+        {
+          "bn": "সোনা (Au)",
+          "en": "Gold (Au)",
+          "hi": "सोना (Au)"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "গ্যালেনা হলো সিসা (Pb)-এর প্রধান আকরিক।",
+        "en": "Galena (PbS) is the main ore of Lead (Pb).",
+        "hi": "गेलेना सीसा (Pb) का मुख्य अयस्क है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q116",
+      "question": {
+        "bn": "কাপড় কাচার সোডার রাসায়নিক নাম ও গঠন-সংকেত কী?",
+        "en": "What is the chemical name and formula for Washing Soda?",
+        "hi": "धावन सोडा (Washing Soda) का रासायनिक नाम और सूत्र क्या है?"
+      },
+      "options": [
+        {
+          "bn": "সোডিয়াম কার্বনেট ডেকাহাইড্রেট (Na2CO3·10H2O)",
+          "en": "Sodium Carbonate decahydrate (Na2CO3·10H2O)",
+          "hi": "सोडियम कार्बोनेट डेकाहाइड्रेट (Na2CO3·10H2O)"
+        },
+        {
+          "bn": "সোডিয়াম বাইকার্বনেট (NaHCO3)",
+          "en": "Sodium Bicarbonate (NaHCO3)",
+          "hi": "सोडियम बाइकार्बोनेट (NaHCO3)"
+        },
+        {
+          "bn": "সোডিয়াম হাইড্রক্সাইড (NaOH)",
+          "en": "Sodium Hydroxide (NaOH)",
+          "hi": "सोडियम हाइड्रॉक्साइड (NaOH)"
+        },
+        {
+          "bn": "পটাশিয়াম কার্বনেট (K2CO3)",
+          "en": "Potassium Carbonate (K2CO3)",
+          "hi": "पोटैशियम कार्बोनेट (K2CO3)"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "কাপড় কাচার সোডা বা স্যালসোডা হলো সোডিয়াম কার্বনেট ডেকাহাইড্রেট (Na2CO3·10H2O)।",
+        "en": "Washing soda is hydrated Sodium Carbonate with the chemical formula Na2CO3·10H2O.",
+        "hi": "धावन सोडा सोडियम कार्बोनेट डेकाहाइड्रेट (Na2CO3·10H2O) है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q117",
+      "question": {
+        "bn": "বেকিং পাউডার হলো সোডিয়াম বাইকার্বনেটের (NaHCO3) সাথে কোন যৌগের মিশ্রণ?",
+        "en": "Baking Powder consists of Sodium Bicarbonate (NaHCO3) mixed with which compound?",
+        "hi": "बेकिंग पाउडर सोडियम बाइकार्बोनेट (NaHCO3) और किस यौगिक का मिश्रण है?"
+      },
+      "options": [
+        {
+          "bn": "পটাশিয়াম হাইড্রোজেন টার্টারেট",
+          "en": "Potassium Hydrogen Tartrate",
+          "hi": "पोटैशियम हाइड्रोजन टार्टरेट"
+        },
+        {
+          "bn": "পটাশিয়াম নাইট্রেট",
+          "en": "Potassium Nitrate",
+          "hi": "पोटैशियम नाइट्रेट"
+        },
+        {
+          "bn": "ক্যালসিয়াম ক্লোরাইড",
+          "en": "Calcium Chloride",
+          "hi": "कैल्शियम क्लोराइड"
+        },
+        {
+          "bn": "সোডিয়াম সালফেট",
+          "en": "Sodium Sulfate",
+          "hi": "सोडियम सल्फेट"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "বেকিং পাউডার হলো সোডিয়াম বাইকার্বনেট ও পটাশিয়াম হাইড্রোজেন টার্টারেটের মিশ্রণ।",
+        "en": "Baking powder is a mixture of Sodium Bicarbonate (NaHCO3) and Potassium Hydrogen Tartrate.",
+        "hi": "बेकिंग पाउडर सोडियम बाइकार्बोनेट और पोटैशियम हाइड्रोजन टार्टरेट का मिश्रण है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q118",
+      "question": {
+        "bn": "পটাশিয়াম নাইট্রেটের (KNO3) সাধারণ নাম কী?",
+        "en": "What is the common name for Potassium Nitrate (KNO3)?",
+        "hi": "पोटैशियम नाइट्रेट (KNO3) का सामान्य नाम क्या है?"
+      },
+      "options": [
+        {
+          "bn": "সোরা বা নাইটার",
+          "en": "Niter or Saltpeter",
+          "hi": "शोरा या नाइटर"
+        },
+        {
+          "bn": "পার্ল অ্যাশ",
+          "en": "Pearl Ash",
+          "hi": "पर्ल ऐश"
+        },
+        {
+          "bn": "কস্টিক পটাশ",
+          "en": "Caustic Potash",
+          "hi": "कास्टिक पोटाश"
+        },
+        {
+          "bn": "রক সল্ট",
+          "en": "Rock Salt",
+          "hi": "रॉक साल्ट"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "পটাশিয়াম নাইট্রেট (KNO3) সাধারণ ভাষায় সোরা বা নাইটার নামে পরিচিত।",
+        "en": "Potassium Nitrate (KNO3) is commonly known as Niter or Saltpeter.",
+        "hi": "पोटैशियम नाइट्रेट (KNO3) को सामान्यतः शोरा या नाइटर के नाम से जाना जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q119",
+      "question": {
+        "bn": "পোড়া চুন বা কুইক লাইমের রাসায়নিক নাম ও সংকেত কোনটি?",
+        "en": "What is the chemical name and formula for Quick Lime?",
+        "hi": "बिना बुझा चूना (Quick Lime) का रासायनिक नाम और सूत्र क्या है?"
+      },
+      "options": [
+        {
+          "bn": "ক্যালশিয়াম অক্সাইড [CaO]",
+          "en": "Calcium Oxide [CaO]",
+          "hi": "कैल्शियम ऑक्साइड [CaO]"
+        },
+        {
+          "bn": "ক্যালশিয়াম হাইড্রক্সাইড [Ca(OH)2]",
+          "en": "Calcium Hydroxide [Ca(OH)2]",
+          "hi": "कैल्शियम हाइड्रोक्साइड [Ca(OH)2]"
+        },
+        {
+          "bn": "ক্যালশিয়াম সালফেট [CaSO4·2H2O]",
+          "en": "Calcium Sulfate [CaSO4·2H2O]",
+          "hi": "कैल्शियम सल्फेट [CaSO4·2H2O]"
+        },
+        {
+          "bn": "ক্যালশিয়াম কার্বনেট [CaCO3]",
+          "en": "Calcium Carbonate [CaCO3]",
+          "hi": "कैल्शियम कार्बोनेट [CaCO3]"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "পোড়া চুন বা কুইক লাইমের রাসায়নিক নাম ক্যালশিয়াম অক্সাইড এবং সংকেত CaO।",
+        "en": "Quick lime is chemically known as Calcium Oxide with the chemical formula CaO.",
+        "hi": "बिना बुझा चूना (Quick Lime) का रासायनिक नाम कैल्शियम ऑक्साइड और सूत्र CaO है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q120",
+      "question": {
+        "bn": "ব্লিচিং পাউডারের রাসায়নিক সংকেত কোনটি?",
+        "en": "What is the chemical composition of Bleaching Powder?",
+        "hi": "ब्लीचिंग पाउडर का रासायनिक सूत्र क्या है?"
+      },
+      "options": [
+        {
+          "bn": "Ca(OCl)Cl",
+          "en": "Ca(OCl)Cl",
+          "hi": "Ca(OCl)Cl"
+        },
+        {
+          "bn": "CaSO4·1/2H2O",
+          "en": "CaSO4·1/2H2O",
+          "hi": "CaSO4·1/2H2O"
+        },
+        {
+          "bn": "MgSO4·7H2O",
+          "en": "MgSO4·7H2O",
+          "hi": "MgSO4·7H2O"
+        },
+        {
+          "bn": "CuSO4·5H2O",
+          "en": "CuSO4·5H2O",
+          "hi": "CuSO4·5H2O"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "ব্লিচিং পাউডার হলো ক্যালশিয়াম ক্লোরো-হাইপোক্লোরাইট, যার সংকেত Ca(OCl)Cl।",
+        "en": "Bleaching powder is Calcium Chloro-hypochlorite, represented by the formula Ca(OCl)Cl.",
+        "hi": "ब्लीचिंग पाउडर कैल्शियम क्लोरो-हाइपोक्लोराइट है, जिसका सूत्र Ca(OCl)Cl है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q121",
+      "question": {
+        "bn": "তুঁতে বা ব্লু-ভিট্রিয়ল নামে কোন রাসায়নিক যৌগটি পরিচিত?",
+        "en": "Which chemical compound is commonly known as Blue Vitriol (তুঁতে)?",
+        "hi": "ब्लू विट्रियोल (तुंते) के नाम से कौन सा रासायनिक यौगिक जाना जाता है?"
+      },
+      "options": [
+        {
+          "bn": "কপার সালফেট (CuSO4·5H2O)",
+          "en": "Copper Sulfate (CuSO4·5H2O)",
+          "hi": "कॉपर सल्फेट (CuSO4·5H2O)"
+        },
+        {
+          "bn": "ফেরাস সালফেট (FeSO4·7H2O)",
+          "en": "Ferrous Sulfate (FeSO4·7H2O)",
+          "hi": "फेरस सल्फेट (FeSO4·7H2O)"
+        },
+        {
+          "bn": "জিংক অক্সাইড (ZnO)",
+          "en": "Zinc Oxide (ZnO)",
+          "hi": "जिंक ऑक्साइड (ZnO)"
+        },
+        {
+          "bn": "ম্যাগনেশিয়াম সালফেট (MgSO4·7H2O)",
+          "en": "Magnesium Sulfate (MgSO4·7H2O)",
+          "hi": "मैग्नीशियम सल्फेट (MgSO4·7H2O)"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "তুঁতে বা ব্লু-ভিট্রিয়ল হলো কপার সালফেট (CuSO4·5H2O)।",
+        "en": "Blue Vitriol is hydrated Copper Sulfate with formula CuSO4·5H2O.",
+        "hi": "ब्लू विट्रियोल हाइड्रेटेड कॉपर सल्फेट (CuSO4·5H2O) है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q122",
+      "question": {
+        "bn": "জিংক অক্সাইড (ZnO) সাধারণ ভাষায় কী নামে পরিচিত?",
+        "en": "What is Zinc Oxide (ZnO) commonly known as?",
+        "hi": "जिंक ऑक्साइड (ZnO) को आमतौर पर किस नाम से जाना जाता है?"
+      },
+      "options": [
+        {
+          "bn": "দার্শনিকের উল (Philosopher's Wool)",
+          "en": "Philosopher's Wool",
+          "hi": "फिलोसोफर्स वूल (Philosopher's Wool)"
+        },
+        {
+          "bn": "এপসম সল্ট",
+          "en": "Epsom Salt",
+          "hi": "एप्सम साल्ट"
+        },
+        {
+          "bn": "প্লাস্টার অব প্যারিস",
+          "en": "Plaster of Paris",
+          "hi": "प्लास्टर ऑफ पेरिस"
+        },
+        {
+          "bn": "কোরান্ডাম",
+          "en": "Corundum",
+          "hi": "कोरंडम"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "জিংক অক্সাইডকে (ZnO) সাধারণ ভাষায় 'দার্শনিকের উল' বলা হয়।",
+        "en": "Zinc Oxide (ZnO) is commonly referred to as Philosopher's Wool.",
+        "hi": "जिंक ऑक्साइड (ZnO) को आमतौर पर 'फिलोसोफर्स वूल' कहा जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q123",
+      "question": {
+        "bn": "গান পাউডারের উপাদানসমূহ (KNO3 : সালফার : চারকোল) কী অনুপাতে মিশ্রিত থাকে?",
+        "en": "What are the main components of Gunpowder and their ratio (KNO3 : S : Charcoal)?",
+        "hi": "गनपाउडर के मुख्य घटक और उनका अनुपात (KNO3 : सल्फर : चारकोल) क्या है?"
+      },
+      "options": [
+        {
+          "bn": "পটাশিয়াম নাইট্রেট, সালফার এবং চারকোল ৬:১:১ অনুপাতে",
+          "en": "Potassium Nitrate, Sulfur, and Charcoal in 6:1:1 ratio",
+          "hi": "पोटेशियम नाइट्रेट, सल्फर और चारकोल 6:1:1 के अनुपात में"
+        },
+        {
+          "bn": "সোডিয়াম কার্বনেট, সালফার এবং কার্বন ২:১:১ অনুপাতে",
+          "en": "Sodium Carbonate, Sulfur, and Carbon in 2:1:1 ratio",
+          "hi": "सोडियम कार्बोनेट, सल्फर और कार्बन 2:1:1 के अनुपात में"
+        },
+        {
+          "bn": "ক্যালশিয়াম অক্সাইড, সালফার এবং চারকোল ১:১:১ অনুপাতে",
+          "en": "Calcium Oxide, Sulfur, and Charcoal in 1:1:1 ratio",
+          "hi": "कैल्शियम ऑक्साइड, सल्फर और चारकोल 1:1:1 के अनुपात में"
+        },
+        {
+          "bn": "কপার সালফেট, কার্বন এবং সালফার ৪:২:১ অনুপাতে",
+          "en": "Copper Sulfate, Carbon, and Sulfur in 4:2:1 ratio",
+          "hi": "कॉपर सल्फेट, कार्बन और सल्फर 4:2:1 के अनुपात में"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "গান পাউডার হলো পটাশিয়াম নাইট্রেট (KNO3), গন্ধক বা সালফার (S) এবং চারকোলের ৬:১:১ অনুপাতের একটি মিশ্রণ।",
+        "en": "Gunpowder is a mixture of Potassium Nitrate (KNO3), Sulfur (S), and Charcoal in a 6:1:1 ratio.",
+        "hi": "गनपाउडर पोटेशियम नाइट्रेट (KNO3), सल्फर (S) और चारकोल का 6:1:1 के अनुपात में मिश्रण है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q124",
+      "question": {
+        "bn": "জার্মান সিলভার নামক ধাতুসংকরের উপাদানগুলি কী কী?",
+        "en": "Which metals make up the alloy German Silver?",
+        "hi": "जर्मन सिल्वर नामक मिश्र धातु में कौन सी धातुएं होती हैं?"
+      },
+      "options": [
+        {
+          "bn": "কপার (Cu), জিংক (Zn) এবং নিকেল (Ni)",
+          "en": "Copper (Cu), Zinc (Zn), and Nickel (Ni)",
+          "hi": "कॉपर (Cu), जिंक (Zn) और निकल (Ni)"
+        },
+        {
+          "bn": "কপার (Cu) এবং টিন (Sn)",
+          "en": "Copper (Cu) and Tin (Sn)",
+          "hi": "कॉपर (Cu) और टिन (Sn)"
+        },
+        {
+          "bn": "কপার (Cu) এবং জিংক (Zn)",
+          "en": "Copper (Cu) and Zinc (Zn)",
+          "hi": "कॉपर (Cu) और जिंक (Zn)"
+        },
+        {
+          "bn": "আয়রন (Fe), ক্রোমিয়াম (Cr) এবং নিকেল (Ni)",
+          "en": "Iron (Fe), Chromium (Cr), and Nickel (Ni)",
+          "hi": "आयरन (Fe), क्रोमियम (Cr) और निकल (Ni)"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "জার্মান সিলভারের উপাদানগুলো হলো কপার (Cu), জিংক (Zn) এবং নিকেল (Ni)।",
+        "en": "German Silver contains Copper (Cu), Zinc (Zn), and Nickel (Ni). Note that it contains no actual silver.",
+        "hi": "जर्मन सिल्वर कॉपर (Cu), जिंक (Zn) और निकल (Ni) से मिलकर बनता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q125",
+      "question": {
+        "bn": "বিমানের কাঠামো ও অংশ তৈরির জন্য ব্যাপকভাবে ব্যবহৃত হালকা ধাতুসংকর কোনটি?",
+        "en": "Which lightweight alloy is widely used for constructing aircraft frames?",
+        "hi": "हवाई जहाज के ढांचे के निर्माण में किस हल्की मिश्र धातु का व्यापक रूप से उपयोग किया जाता है?"
+      },
+      "options": [
+        {
+          "bn": "ডুরালুমিন",
+          "en": "Duralumin",
+          "hi": "ड्यूरालुमिन"
+        },
+        {
+          "bn": "পিতল",
+          "en": "Brass",
+          "hi": "पीतल"
+        },
+        {
+          "bn": "গান মেটাল",
+          "en": "Gun Metal",
+          "hi": "गन मेटल"
+        },
+        {
+          "bn": "রাংঝাল",
+          "en": "Solder (রাংঝাল)",
+          "hi": "टांका (सोल्डर)"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "ডুরালুমিন হালকা ও মজবুত হওয়ায় এটি বিমান ও যানবাহনের কাঠামো নির্মাণে ব্যবহৃত হয়।",
+        "en": "Duralumin (Al + Cu + Mg + Mn) is lightweight and strong, making it ideal for aircraft bodies.",
+        "hi": "ड्यूरालुमिन हल्का और मजबूत होने के कारण हवाई जहाज के ढांचे के निर्माण में उपयोग किया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q126",
+      "question": {
+        "bn": "ঝালাইয়ের কাজে ব্যবহৃত রাংঝালের উপাদান কোনগুলি?",
+        "en": "What alloy composition is used for making Solder (রাংঝাল)?",
+        "hi": "टांका लगाने (सोल्डरिंग) के लिए उपयोग किए जाने वाले सोल्डर के घटक कौन से हैं?"
+      },
+      "options": [
+        {
+          "bn": "সিসা (Pb) এবং টিন (Sn)",
+          "en": "Lead (Pb) and Tin (Sn)",
+          "hi": "सीसा (Pb) और टिन (Sn)"
+        },
+        {
+          "bn": "কপার (Cu) এবং জিংক (Zn)",
+          "en": "Copper (Cu) and Zinc (Zn)",
+          "hi": "कॉपर (Cu) और जिंक (Zn)"
+        },
+        {
+          "bn": "আয়রন (Fe) এবং কার্বন (C)",
+          "en": "Iron (Fe) and Carbon (C)",
+          "hi": "आयरन (Fe) और कार्बन (C)"
+        },
+        {
+          "bn": "অ্যালুমিনিয়াম (Al) এবং কপার (Cu)",
+          "en": "Aluminum (Al) and Copper (Cu)",
+          "hi": "एल्युमीनियम (Al) और कॉपर (Cu)"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "রাংঝাল সিসা (Pb) এবং টিন (Sn)-এর সংকর ধাতু, যা ঝালাইয়ের কাজে ব্যবহৃত হয়।",
+        "en": "Solder (রাংঝাল) is an alloy composed of Lead (Pb) and Tin (Sn), primarily used for joining metal parts.",
+        "hi": "सोल्डर (टांका) सीसा (Pb) और टिन (Sn) की मिश्र धातु है, जिसका उपयोग वेल्डिंग में किया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_02_q127",
+      "question": {
+        "bn": "আয়রন, ক্রোমিয়াম, নিকেল ও কার্বনের সমন্বয়ে গঠিত কোন ধাতুসংকরটি শল্যচিকিৎসার যন্ত্রপাতি তৈরিতে ব্যবহৃত হয়?",
+        "en": "Which alloy is composed of Iron, Chromium, Nickel, and Carbon and is used to make surgical instruments?",
+        "hi": "आयरन, क्रोमियम, निकल और कार्बन से बनी कौन सी मिश्र धातु शल्य चिकित्सा के उपकरणों को बनाने में उपयोग की जाती है?"
+      },
+      "options": [
+        {
+          "bn": "স্টেনলেস স্টিল বা কলঙ্কহীন ইস্পাত",
+          "en": "Stainless Steel",
+          "hi": "स्टेनलेस स्टील"
+        },
+        {
+          "bn": "জার্মান সিলভার",
+          "en": "German Silver",
+          "hi": "जर्मन सिल्वर"
+        },
+        {
+          "bn": "ডাচ মেটাল",
+          "en": "Dutch Metal",
+          "hi": "डच मेटल"
+        },
+        {
+          "bn": "রোজ মেটাল",
+          "en": "Rose Metal",
+          "hi": "रोज़ मेटल"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "bn": "স্টেনলেস স্টিল বা কলঙ্কহীন ইস্পাত আয়রন, ক্রোমিয়াম, নিকেল ও কার্বনের সংকর ধাতু, যা শল্যচিকিৎসার যন্ত্রপাতি এবং বাসনপত্র তৈরিতে ব্যবহৃত হয়।",
+        "en": "Stainless Steel consists of Iron (Fe), Chromium (Cr), Nickel (Ni), and Carbon (C) and resists corrosion, making it suitable for surgical tools.",
+        "hi": "स्टेनलेस स्टील आयरन, क्रोमियम, निकल और कार्बन से मिलकर बनता है और इसका उपयोग सर्जिकल उपकरण बनाने में किया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    }
+  ]
+}
