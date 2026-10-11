@@ -7,6 +7,26 @@ class WhatsNewCatalog {
   WhatsNewCatalog._();
 
   static const Map<String, Map<String, List<String>>> _releases = {
+    '1.0.20': {
+      'en': [
+        'New subject — Chhaya Prakashani — with 1,200+ fresh questions in Physics, Chemistry and Biology.',
+        'Daily Quiz: the competition set for the day is now always ready, so your score always reaches the leaderboard.',
+        'New questions and subjects now arrive automatically from the admin panel.',
+        'Removed the Dark Mode toggle in Profile — it had no effect; the app is always in dark mode.',
+      ],
+      'bn': [
+        'নতুন সাবজেক্ট — ছায়া প্রকাশনী — পদার্থ, রসায়ন ও জীববিজ্ঞানে ১,২০০+ নতুন প্রশ্ন।',
+        'ডেইলি কুইজ: দিনের প্রতিযোগিতার সেট এখন সবসময় প্রস্তুত, তাই আপনার স্কোর সবসময় লিডারবোর্ডে পৌঁছাবে।',
+        'নতুন প্রশ্ন ও সাবজেক্ট এখন অ্যাডমিন প্যানেল থেকে নিজে থেকেই চলে আসে।',
+        'প্রোফাইল থেকে ডার্ক মোড অপশন সরানো হয়েছে — এটি কোনো কাজ করত না; অ্যাপ সবসময় ডার্ক মোডে থাকে।',
+      ],
+      'hi': [
+        'नया विषय — Chhaya Prakashani — भौतिकी, रसायन और जीव विज्ञान में 1,200+ नए प्रश्न।',
+        'डेली क्विज़: दिन का प्रतियोगिता सेट अब हमेशा तैयार रहता है, इसलिए आपका स्कोर हमेशा लीडरबोर्ड तक पहुँचता है।',
+        'नए प्रश्न और विषय अब एडमिन पैनल से अपने आप आ जाते हैं।',
+        'प्रोफ़ाइल से डार्क मोड विकल्प हटा दिया गया — उसका कोई असर नहीं था; ऐप हमेशा डार्क मोड में रहता है।',
+      ],
+    },
     '1.0.19': {
       'en': [
         'Smart Weekly Streak Calendar: played days show ✓ and missed days show ✕ on the exact weekday.',
