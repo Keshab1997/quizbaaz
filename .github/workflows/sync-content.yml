@@ -1,0 +1,103 @@
+name: Sync Content (Firestore → bundle)
+
+# Keeps the bundled assets in step with the admin panel, automatically.
+#
+# The admin panel authors questions, subjects and chapters in Firestore. The app
+# merges that live layer at runtime, so students see it at once — but the
+# *bundled* copy under `assets/data/` is what the offline app and the daily
+# competition packet read, and it is only refreshed by hand today. This job does
+# that refresh on a schedule so nobody has to remember:
+#
+#   1. register_firestore_chapters — add admin-created subjects/chapters to
+#      `chapters_list.json` (+ skeleton banks), which the pull tool needs;
+#   2. apply_content_deletions     — drop subjects/chapters the admin deleted
+#      from the bundle (registry: `config/content_deletions`);
+#   3. pull_firestore_questions    — copy new/updated questions in, and with
+#      `--prune` remove questions the admin deleted in Firestore;
+#   4. validate_questions --strict — refuse to commit a broken bank.
+#
+# Only when validation passes is the result committed to main. The daily packet
+# workflow (and the next app build) then picks the new content up on its own.
+
+on:
+  schedule:
+    - cron: '30 21 * * *'   # 03:00 IST — after the day's authoring
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Show what would change; commit nothing'
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-content
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    name: sync Firestore into assets/data
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install the Firestore client
+        run: pip install --quiet google-cloud-firestore
+
+      - name: Prepare the service account
+        env:
+          # A read-only account (roles/datastore.viewer) is enough and safer;
+          # fall back to the packet-writer account if that is all you have.
+          SYNC_SA: ${{ secrets.FIREBASE_READONLY_SA || secrets.FIREBASE_PACKET_WRITER_SA }}
+        run: |
+          set -euo pipefail
+          if [ -z "$SYNC_SA" ]; then
+            echo "::error::Neither FIREBASE_READONLY_SA nor FIREBASE_PACKET_WRITER_SA is set — nothing was synced. Add a service account (Firestore read) under Settings → Secrets and variables → Actions."
+            exit 1
+          fi
+          printf '%s' "$SYNC_SA" > "$RUNNER_TEMP/sync-sa.json"
+
+      - name: Sync the bundle
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/sync-sa.json
+          DRY_RUN: ${{ inputs.dry_run == true && 'true' || 'false' }}
+        run: |
+          set -euo pipefail
+          if [ "$DRY_RUN" = "true" ]; then
+            python3 tool/register_firestore_chapters.py
+            python3 tool/apply_content_deletions.py
+            python3 tool/pull_firestore_questions.py --update-catalog-counts --prune --dry-run
+            echo "Dry run — nothing written."
+            exit 0
+          fi
+          python3 tool/register_firestore_chapters.py --apply
+          python3 tool/apply_content_deletions.py --apply
+          python3 tool/pull_firestore_questions.py --update-catalog-counts --prune
+          python3 tool/validate_questions.py --strict
+
+      - name: Commit the synced content
+        if: ${{ inputs.dry_run != true }}
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- assets/data && \
+             [ -z "$(git status --porcelain -- assets/data)" ]; then
+            echo "Nothing changed — the bundle is already in sync."
+            exit 0
+          fi
+          git config user.name "quizbaaz-sync[bot]"
+          git config user.email "quizbaaz-sync@users.noreply.github.com"
+          git add -- assets/data
+          git commit -m "chore(content): sync Firestore → bundle"
+          # Someone may have pushed while we synced — rebase once and retry.
+          git pull --rebase --autostash origin "${GITHUB_REF_NAME}"
+          git push
