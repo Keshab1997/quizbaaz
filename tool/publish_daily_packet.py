@@ -22,6 +22,29 @@ Selection is deterministic per competition day (same seed the app shares), so
 re-publishing the same day re-issues the *same* set — a re-issue only bumps
 `version` so devices with a cached resolved set re-resolve it.
 
+Keeping the leaderboard alive
+-----------------------------
+A packet is only useful while the app can still resolve every id it names. The
+app resolves a packet through the **student-visible** catalogue: it drops
+chapters an admin deleted (the `config/content_deletions` registry), chapters
+an admin disabled (`question_categories/*/chapters/*.is_enabled == false`) and
+questions an admin deleted (`question_banks/{chapterId}.deleted_question_ids`).
+A packet published three days early can therefore rot: the day is only skipped
+when a packet *exists*, not when it still *resolves*, so one admin delete in
+between used to turn a whole competition day unranked and empty the
+leaderboard — silently.
+
+This tool closes that hole two ways:
+
+* the selection pool is filtered to the same visible content the app uses, so a
+  freshly built packet never names a hidden chapter or question; and
+* an existing packet is re-issued (bumped `version`) whenever it no longer
+  matches the current visible pool — not blindly skipped.
+
+The write also targets the app's project explicitly (`.firebaserc`), so a
+service account from the wrong project fails loudly instead of filing packets
+somewhere no install can read.
+
 Usage
 -----
     export GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json
@@ -31,14 +54,17 @@ Usage
     python3 tool/publish_daily_packet.py --chapters phys_ch_01 bio_ch_01
 
 Publishing several days at once (what the daily cron does, so a missed run
-never leaves a competition day without a packet). Days that already have a
-packet are left alone unless --force is passed:
+never leaves a competition day without a packet). A day that already has a
+*valid* packet is left alone; a day whose packet no longer resolves is
+re-issued, and --force re-issues every requested day:
 
     python3 tool/publish_daily_packet.py --days 3         # today + the next two
     python3 tool/publish_daily_packet.py --days 3 --force # re-issue all three
 
 The service account writes one collection (`daily_quiz_packets`); the console's
-Owner/Editor or a custom role scoped to Firestore is enough.
+Owner/Editor or a custom role scoped to Firestore is enough. It also needs read
+access to `config/content_deletions`, `question_categories` and `question_banks`
+to keep hidden content out of the packet.
 """
 
 from __future__ import annotations
@@ -54,6 +80,10 @@ from pathlib import Path
 IST = timezone(timedelta(hours=5, minutes=30))
 DEFAULT_COUNT = 10
 SCORING_CONTRACT = 'v1'
+
+#: The Firebase project the app reads `daily_quiz_packets` from. A packet filed
+#: anywhere else is invisible to every install (mirrors `.firebaserc`).
+DEFAULT_PROJECT = 'quizbaaz-740bd'
 
 
 # --------------------------------------------------------------------------- #
@@ -183,9 +213,94 @@ def pick_questions(refs: list[tuple[str, str]], count: int, date_key: str,
 
 
 # --------------------------------------------------------------------------- #
+# visibility (what the app will actually show)
+# --------------------------------------------------------------------------- #
+def fetch_hidden_content(client) -> tuple[set[str], set[str], set[str]]:
+    """(deleted_chapters, deleted_categories, disabled_chapters) from Firestore.
+
+    Mirrors the app's student view: `config/content_deletions` removes chapters
+    and whole subjects, and a chapter doc with `is_enabled: false` is dropped by
+    `QuizRepository.filterForStudents`. Best-effort — an unreadable registry
+    only means we fall back to the bundled view, never that we fail the run.
+    """
+    deleted_chapters: set[str] = set()
+    deleted_categories: set[str] = set()
+    disabled_chapters: set[str] = set()
+
+    try:
+        snap = client.collection('config').document('content_deletions').get()
+        data = snap.to_dict() or {}
+        deleted_chapters = {
+            str(item).strip()
+            for item in (data.get('deleted_chapter_ids') or [])
+            if str(item).strip()
+        }
+        deleted_categories = {
+            str(item).strip()
+            for item in (data.get('deleted_category_ids') or [])
+            if str(item).strip()
+        }
+    except Exception as exc:  # noqa: BLE001 - best-effort, surfaced as a warning
+        print(f'warn: content deletions unreadable — {exc}')
+
+    try:
+        for doc in client.collection_group('chapters').get():
+            data = doc.to_dict() or {}
+            if data.get('is_enabled') is False:
+                disabled_chapters.add(doc.id)
+    except Exception as exc:  # noqa: BLE001
+        print(f'warn: chapter visibility unreadable — {exc}')
+
+    return deleted_chapters, deleted_categories, disabled_chapters
+
+
+def fetch_deleted_question_ids(client, chapter_ids: set[str]) -> dict[str, set[str]]:
+    """chapter_id -> deleted question ids, for the chapters in play only."""
+    out: dict[str, set[str]] = {}
+    for chapter_id in chapter_ids:
+        try:
+            snap = client.collection('question_banks').document(chapter_id).get()
+            data = snap.to_dict() or {}
+            raw = data.get('deleted_question_ids')
+            if isinstance(raw, list):
+                out[chapter_id] = {
+                    str(item).strip() for item in raw if str(item).strip()
+                }
+        except Exception as exc:  # noqa: BLE001
+            print(f'warn: deleted ids unreadable for {chapter_id} — {exc}')
+    return out
+
+
+def visible_refs(refs, chapters, hidden):
+    """Drop the refs the app would hide, so a packet always resolves."""
+    deleted_chapters, deleted_categories, disabled_chapters, deleted_questions = hidden
+    out: list[tuple[str, str]] = []
+    for chapter_id, question_id in refs:
+        if chapter_id in deleted_chapters or chapter_id in disabled_chapters:
+            continue
+        category_id = chapters.get(chapter_id, {}).get('category_id', '')
+        if category_id and category_id in deleted_categories:
+            continue
+        if question_id in deleted_questions.get(chapter_id, ()):
+            continue
+        out.append((chapter_id, question_id))
+    return out
+
+
+# --------------------------------------------------------------------------- #
 # Firestore
 # --------------------------------------------------------------------------- #
-def build_client(service_account: str | None, project: str | None):
+def default_project(root: Path) -> str | None:
+    """The default Firebase project from `.firebaserc`, if it has one."""
+    try:
+        data = json.loads((root / '.firebaserc').read_text(encoding='utf-8'))
+        project = data.get('projects', {}).get('default')
+        return project if isinstance(project, str) and project else None
+    except Exception:  # noqa: BLE001 - missing/broken file -> caller default
+        return None
+
+
+def build_client(service_account: str | None, project: str):
     try:
         from google.cloud import firestore as gcf  # type: ignore
     except ImportError:
@@ -194,12 +309,33 @@ def build_client(service_account: str | None, project: str | None):
             '  pip install google-cloud-firestore\n'
             '(--dry-run works without it)'
         )
+
+    credentials_path = service_account or os.environ.get(
+        'GOOGLE_APPLICATION_CREDENTIALS')
     if service_account:
         os.environ.setdefault('GOOGLE_APPLICATION_CREDENTIALS', service_account)
+
+    # A service account from another project would file packets where no install
+    # can read them — the leaderboard would be empty while every run "succeeds".
+    # Fail loudly instead.
+    if credentials_path and Path(credentials_path).exists():
+        try:
+            sa = json.loads(Path(credentials_path).read_text(encoding='utf-8'))
+            sa_project = sa.get('project_id')
+            if sa_project and sa_project != project:
+                sys.exit(
+                    f'the service account belongs to project "{sa_project}", '
+                    f'but the app reads daily_quiz_packets from "{project}". '
+                    f'Packets filed under "{sa_project}" are invisible to every '
+                    f'install. Use a service account for "{project}".'
+                )
+        except json.JSONDecodeError:
+            sys.exit(f'{credentials_path} is not a service-account JSON file.')
+
     try:
-        return gcf.Client(project=project) if project else gcf.Client()
+        return gcf.Client(project=project)
     except Exception as exc:  # noqa: BLE001 - surfaced to the operator verbatim
-        sys.exit(f'could not create a Firestore client: {exc}')
+        sys.exit(f'could not create a Firestore client for {project}: {exc}')
 
 
 def configured_count(client) -> int:
@@ -215,25 +351,51 @@ def configured_count(client) -> int:
     return DEFAULT_COUNT
 
 
-def existing_version(client, date_key: str) -> int:
+def existing_packet(client, date_key: str) -> dict | None:
+    """The packet document already filed for a day, or None."""
     try:
         snap = client.collection('daily_quiz_packets').document(date_key).get()
-        data = snap.to_dict() or {}
-        version = data.get('version')
-        if isinstance(version, (int, float)) and int(version) > 0:
-            return int(version)
-    except Exception:  # noqa: BLE001 - unreadable old doc -> start at 1
-        pass
-    return 1
+        if not snap.exists:
+            return None
+        return snap.to_dict() or {}
+    except Exception:  # noqa: BLE001 - unreadable old doc -> treat as missing
+        return None
 
 
-def packet_exists(client, date_key: str) -> bool:
-    """True when a packet is already filed for that competition day."""
-    try:
-        return client.collection('daily_quiz_packets').document(
-            date_key).get().exists
-    except Exception:  # noqa: BLE001 - unreadable doc -> treat as missing
+def existing_version(client, date_key: str) -> int:
+    """The filed packet's version, or 0 so the first publish is version 1."""
+    packet = existing_packet(client, date_key)
+    if not packet:
+        return 0
+    version = packet.get('version')
+    if isinstance(version, (int, float)) and int(version) > 0:
+        return int(version)
+    return 0
+
+
+def packet_still_valid(packet: dict | None, valid_refs: set[tuple[str, str]],
+                       count: int) -> bool:
+    """True when an already-published packet still resolves on the app.
+
+    A packet is only worth keeping when it is approved, carries the announced
+    number of questions and every id it names is still in the visible pool. Any
+    other case (unapproved, short, a chapter or question since hidden) has to be
+    re-issued, or the whole day silently goes unranked.
+    """
+    if not packet:
         return False
+    if packet.get('approved') is not True:
+        return False
+    questions = packet.get('questions')
+    if not isinstance(questions, list) or len(questions) != count:
+        return False
+    for entry in questions:
+        if not isinstance(entry, dict):
+            return False
+        key = (str(entry.get('chapter_id', '')), str(entry.get('question_id', '')))
+        if key not in valid_refs:
+            return False
+    return True
 
 
 def publish(client, document: dict, date_key: str) -> None:
@@ -253,7 +415,9 @@ def main() -> int:
     parser.add_argument('--service-account', default=None,
                         help='service-account JSON (or set '
                              'GOOGLE_APPLICATION_CREDENTIALS)')
-    parser.add_argument('--project', default=None, help='override the project id')
+    parser.add_argument('--project', default=None,
+                        help='Firebase project to write (default: the '
+                             '.firebaserc default, else ' + DEFAULT_PROJECT + ')')
     parser.add_argument('--date', default=None,
                         help='competition day yyyy-MM-dd (default: today, IST)')
     parser.add_argument('--count', type=int, default=None,
@@ -268,7 +432,7 @@ def main() -> int:
     parser.add_argument('--days', type=int, default=1,
                         help='publish this many consecutive competition days, '
                              'starting at --date (default: 1). Days that '
-                             'already have a packet are skipped.')
+                             'already have a valid packet are skipped.')
     parser.add_argument('--force', action='store_true',
                         help='re-issue days that already have a packet '
                              '(bumps the version so devices re-resolve the '
@@ -286,6 +450,8 @@ def main() -> int:
         sys.exit(f'{root} does not look like the QuizBaaz repo root '
                  f'(no assets/data) — pass --repo-root')
 
+    project = args.project or default_project(root) or DEFAULT_PROJECT
+
     _, chapters = load_catalog(root)
     only = set(args.chapters) if args.chapters else None
     date_key = args.date or competition_date_key()
@@ -296,26 +462,59 @@ def main() -> int:
         sys.exit('no bundled questions found — nothing to publish. '
                  'Add questions to a chapter bank first.')
 
-    client = None if args.dry_run else build_client(args.service_account, args.project)
+    client = None if args.dry_run else build_client(args.service_account, project)
+
+    # Drop everything the app would hide, so the packet always resolves.
+    if client is not None:
+        deleted_chapters, deleted_categories, disabled_chapters = \
+            fetch_hidden_content(client)
+        deleted_questions = fetch_deleted_question_ids(
+            client, {chapter_id for chapter_id, _ in refs})
+        before = len(refs)
+        refs = visible_refs(
+            refs,
+            chapters,
+            (deleted_chapters, deleted_categories, disabled_chapters,
+             deleted_questions),
+        )
+        hidden = before - len(refs)
+        if hidden and not args.quiet:
+            print(f'excluded {hidden} bundled question(s) hidden by admin '
+                  f'deletions/disable')
+        if not refs:
+            sys.exit('every bundled question is hidden by admin deletions — '
+                     'nothing left to publish. Re-enable content or author '
+                     'more questions.')
+
     if count is None:
         count = configured_count(client) if client else DEFAULT_COUNT
 
     if len(refs) < count:
-        sys.exit(f'only {len(refs)} bundled question(s) but --count {count}; '
-                 f'publish fewer or author more questions.')
+        sys.exit(f'only {len(refs)} visible bundled question(s) but --count '
+                 f'{count}; publish fewer or author more questions.')
+
+    valid_refs = {(chapter_id, question_id) for chapter_id, question_id in refs}
 
     days = max(1, args.days)
     date_keys = [shift_day(date_key, i) for i in range(days)]
 
     documents: list[tuple[str, dict]] = []
     for day in date_keys:
-        # A day that already has a packet keeps it: re-issuing bumps the
-        # version, which makes every device throw away its resolved set, and
-        # a re-pick with the same seed returns the same questions anyway.
-        if client is not None and not args.force and packet_exists(client, day):
-            print(f'skip {day}: a packet is already published '
-                  f'(use --force to re-issue it)')
-            continue
+        # A day that already has a packet that still *resolves* keeps it:
+        # re-issuing bumps the version, which makes every device throw away its
+        # resolved set, and a re-pick with the same seed returns the same
+        # questions anyway. A packet that no longer resolves (hidden content,
+        # short, unapproved) is re-issued instead of skipped — otherwise the
+        # day silently goes unranked.
+        if client is not None and not args.force:
+            existing = existing_packet(client, day)
+            if packet_still_valid(existing, valid_refs, count):
+                print(f'skip {day}: a valid packet is already published '
+                      f'(use --force to re-issue it)')
+                continue
+            if existing is not None:
+                print(f're-issuing {day}: the published packet no longer '
+                      f'resolves against the visible pool')
 
         chosen = pick_questions(refs, count, day, args.seed)
         version = args.version if args.version is not None else (
@@ -336,7 +535,8 @@ def main() -> int:
         }))
 
     if not documents:
-        print('nothing to publish — every requested day already has a packet')
+        print('nothing to publish — every requested day already has a valid '
+              'packet')
         return 0
 
     if args.json_report:

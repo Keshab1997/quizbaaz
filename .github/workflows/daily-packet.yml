@@ -12,10 +12,17 @@ name: Daily Quiz Packet
 # It runs at 18:30 UTC (00:00 IST — the start of the new competition day) and
 # publishes three days at a time: one missed run then still leaves two days of
 # packets in place, so the competition never silently dies over a weekend.
+#
+# Two further runs during the day re-validate today's packet. The publisher
+# re-issues a packet that no longer resolves (a chapter/question deleted or
+# disabled after it was filed), so an admin content change can no longer turn a
+# live competition day unranked between runs.
 
 on:
   schedule:
-    - cron: '30 18 * * *'
+    - cron: '30 18 * * *'   # 00:00 IST — new competition day, three days ahead
+    - cron: '30 6 * * *'    # 12:00 IST — re-validate today
+    - cron: '30 12 * * *'   # 18:00 IST — re-validate today
   workflow_dispatch:
     inputs:
       days:
