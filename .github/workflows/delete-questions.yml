@@ -1,0 +1,71 @@
+name: Delete Firestore Questions (one-off)
+
+# Removes specific admin-authored questions from Firestore
+# (`question_banks/{chapter_id}/questions/{question_id}`).
+#
+# The admin panel is the normal place to delete a question. This workflow is the
+# escape hatch for a fixed list of ids — for example the handful of questions a
+# strict validation run reported as broken, which have to go before the content
+# sync will pass.
+#
+# It deletes exactly the ids you give it and nothing else, and it is a DRY RUN
+# unless you tick `apply`. Always run it once without `apply` and read the log:
+# each line prints the question's English stem, so you can confirm the target
+# before anything is destroyed. Deletion cannot be undone.
+
+on:
+  workflow_dispatch:
+    inputs:
+      ids:
+        description: 'chapter_id/question_id pairs (comma or newline separated)'
+        required: true
+        type: string
+      apply:
+        description: 'Actually delete. Leave off for a dry run.'
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: delete-questions
+  cancel-in-progress: false
+
+jobs:
+  delete:
+    name: delete questions
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install the Firestore client
+        run: pip install --quiet google-cloud-firestore
+
+      - name: Prepare the service account
+        env:
+          # Deleting needs write access, so prefer the packet-writer account;
+          # the read-only one is only a fallback.
+          DELETE_SA: ${{ secrets.FIREBASE_PACKET_WRITER_SA || secrets.FIREBASE_READONLY_SA }}
+        run: |
+          set -euo pipefail
+          if [ -z "$DELETE_SA" ]; then
+            echo "::error::Neither FIREBASE_PACKET_WRITER_SA nor FIREBASE_READONLY_SA is set — cannot reach Firestore."
+            exit 1
+          fi
+          printf '%s' "$DELETE_SA" > "$RUNNER_TEMP/delete-sa.json"
+
+      - name: Delete the questions
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/delete-sa.json
+          IDS: ${{ inputs.ids }}
+          APPLY: ${{ inputs.apply == true && '--apply' || '' }}
+        run: |
+          set -euo pipefail
+          python3 tool/delete_firestore_questions.py --ids "$IDS" $APPLY
