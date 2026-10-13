@@ -909,7 +909,7 @@
             "bn": "রসায়নের মৌলিক ধারণা ও নীতিগুলি।",
             "hi": "रसायन विज्ञान की मूल अवधारणाएँ और सिद्धांत।"
           },
-          "total_questions": 120,
+          "total_questions": 301,
           "json_file": "assets/data/questions/chhaya_prakashani_ch_02.json",
           "is_unlocked": true,
           "stars": 0,
