@@ -53,6 +53,10 @@ const Map<String, String> kStringsBn = {
 
   // ------------------------------------------------------------- dashboard --
   'dashPlayYourWay': 'নিজের মতো খেলুন',
+  'dashGoogleSignInTitle': 'আপনার অগ্রগতি সেভ করুন',
+  'dashGoogleSignInSubtitle': 'স্কোর সিঙ্ক করুন, লিডারবোর্ডে খেলুন',
+  'dashGoogleSignInButton': 'Google দিয়ে চালিয়ে যান',
+  'dashGoogleSignInFailed': 'সাইন-ইন সম্পূর্ণ করা যায়নি। আবার চেষ্টা করুন।',
   'dashQuickActions': 'দ্রুত অ্যাকশন',
   'dashSeeAll': 'সব দেখুন',
   'dashLiveToday': 'দৈনিক কুইজ',

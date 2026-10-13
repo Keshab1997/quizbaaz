@@ -60,6 +60,10 @@ const Map<String, String> kStringsEn = {
 
   // ------------------------------------------------------------- dashboard --
   'dashPlayYourWay': 'PLAY YOUR WAY',
+  'dashGoogleSignInTitle': 'Save your progress',
+  'dashGoogleSignInSubtitle': 'Sync scores and compete on the leaderboard',
+  'dashGoogleSignInButton': 'Continue with Google',
+  'dashGoogleSignInFailed': 'Could not finish sign-in. Please try again.',
   'dashQuickActions': 'Quick actions',
   'dashSeeAll': 'See all',
   'dashLiveToday': 'DAILY QUIZ',

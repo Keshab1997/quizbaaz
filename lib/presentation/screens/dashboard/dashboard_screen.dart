@@ -11,6 +11,7 @@ import '../../../data/models/leaderboard_model.dart';
 import '../../../data/models/shop_item.dart';
 import '../../../data/models/user_model.dart';
 import '../../../data/models/user_stats.dart';
+import '../../../data/providers/auth_provider.dart';
 import '../../../data/providers/quiz_provider.dart';
 import '../../../data/providers/rewards_provider.dart';
 import '../../../data/providers/user_provider.dart';
@@ -127,6 +128,60 @@ class _DashboardScreenState extends State<DashboardScreen> {
     ]);
   }
 
+  void _onGoogleSignInTap() {
+    SoundService.instance.play('ui_click');
+    Haptics.tap();
+    unawaited(_handleGoogleSignIn());
+  }
+
+  Future<void> _handleGoogleSignIn() async {
+    final auth = context.read<AuthProvider>();
+    if (auth.isBusy) return;
+
+    final userProvider = context.read<UserProvider>();
+    final messenger = ScaffoldMessenger.of(context);
+
+    try {
+      final signedIn = await auth.signInWithGoogle();
+      if (!mounted) return;
+      if (!signedIn) {
+        messenger.showSnackBar(SnackBar(content: Text(S.authSignInCanceled)));
+        return;
+      }
+
+      final account = auth.firebaseUser;
+      if (account == null) {
+        throw AuthException(S.dashGoogleSignInFailed);
+      }
+
+      await userProvider.linkGoogleAccount(
+        account.displayName ?? account.email ?? S.profilePlayerFallback,
+        account.email ?? account.uid,
+        photoURL: account.photoURL,
+        uid: account.uid,
+      );
+      if (!mounted) return;
+      messenger.showSnackBar(SnackBar(content: Text(S.profileSignedInGoogle)));
+    } on AuthException catch (e) {
+      if (!mounted) return;
+      messenger.showSnackBar(
+        SnackBar(
+          content: Text(e.message),
+          backgroundColor: Colors.red.shade800,
+        ),
+      );
+    } catch (e) {
+      debugPrint('DashboardScreen: Google Sign-In failed – $e');
+      if (!mounted) return;
+      messenger.showSnackBar(
+        SnackBar(
+          content: Text(S.dashGoogleSignInFailed),
+          backgroundColor: Colors.red.shade800,
+        ),
+      );
+    }
+  }
+
   /// Opens a tab and restores the Home highlight once the user comes back,
   /// so the bottom bar never lies about where you are.
   Future<void> _openTab(int index, Widget screen) async {
@@ -191,6 +246,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
     final userProvider = context.watch<UserProvider>();
+    final auth = context.watch<AuthProvider>();
     final user = userProvider.user;
     final heroAsset = _isFemaleMascot ? AppAssets.heroGirl : AppAssets.heroBoy;
 
@@ -219,6 +275,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           // 1. Header — নাম + coins/gems
                           _buildHeader(user, userProvider),
                           const SizedBox(height: 16),
+                          if (user.isGuest) ...[
+                            _buildGoogleSignInCard(auth),
+                            const SizedBox(height: 16),
+                          ],
 
                           // 2. Streak Card
                           StreakFlameWidget(
@@ -356,6 +416,115 @@ class _DashboardScreenState extends State<DashboardScreen> {
       errorBuilder:
           (_, __, ___) =>
               Icon(fallbackIcon, color: Colors.white, size: fallbackSize),
+    );
+  }
+
+  Widget _buildGoogleSignInCard(AuthProvider auth) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final compact = constraints.maxWidth < 350;
+        final markSize = compact ? 34.0 : 40.0;
+        final buttonWidth = compact ? 110.0 : 140.0;
+
+        return GlassCard(
+          borderRadius: 22,
+          padding: const EdgeInsets.symmetric(horizontal: 13, vertical: 12),
+          borderColor: AppColors.neonPurple.withValues(alpha: 0.45),
+          backgroundColor: AppColors.bgCardGlass,
+          shadows: [
+            BoxShadow(
+              color: AppColors.neonPurple.withValues(alpha: 0.16),
+              blurRadius: 22,
+              offset: const Offset(0, 10),
+            ),
+          ],
+          child: Row(
+            children: [
+              CustomPaint(
+                size: Size.square(markSize),
+                painter: _GoogleMarkPainter(),
+              ),
+              const SizedBox(width: 10),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      S.dashGoogleSignInTitle,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                        color: AppColors.textPrimary,
+                        fontSize: 13,
+                        fontWeight: FontWeight.w900,
+                        letterSpacing: -0.1,
+                        height: 1.15,
+                      ),
+                    ),
+                    const SizedBox(height: 3),
+                    Text(
+                      S.dashGoogleSignInSubtitle,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                        color: AppColors.textSecondary,
+                        fontSize: 10.5,
+                        fontWeight: FontWeight.w600,
+                        height: 1.2,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(width: 8),
+              SizedBox(
+                width: buttonWidth,
+                child: ElevatedButton(
+                  onPressed: auth.isBusy ? null : _onGoogleSignInTap,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    foregroundColor: AppColors.bgDark,
+                    disabledBackgroundColor: Colors.white70,
+                    disabledForegroundColor: AppColors.textMuted,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 8,
+                      vertical: 10,
+                    ),
+                    minimumSize: const Size(0, 44),
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    visualDensity: VisualDensity.compact,
+                    elevation: 0,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(14),
+                    ),
+                  ),
+                  child:
+                      auth.isBusy
+                          ? const SizedBox.square(
+                            dimension: 17,
+                            child: CircularProgressIndicator(
+                              strokeWidth: 2.2,
+                              color: AppColors.bgDark,
+                            ),
+                          )
+                          : Text(
+                            S.dashGoogleSignInButton,
+                            textAlign: TextAlign.center,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              fontSize: compact ? 9.5 : 10.5,
+                              fontWeight: FontWeight.w800,
+                              height: 1.1,
+                            ),
+                          ),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 
@@ -1784,6 +1953,55 @@ class _QuickAction {
   final VoidCallback onTap;
 
   const _QuickAction(this.title, this.icon, this.color, this.onTap);
+}
+
+class _GoogleMarkPainter extends CustomPainter {
+  static const double _gap = 0.07;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    if (size.isEmpty) return;
+
+    final side = math.min(size.width, size.height);
+    final center = Offset(size.width / 2, size.height / 2);
+    final radius = side * 0.37;
+    final strokeWidth = side * 0.18;
+    final ring = Rect.fromCircle(center: center, radius: radius);
+    const colors = <Color>[
+      AppColors.googleRed,
+      AppColors.googleYellow,
+      AppColors.googleGreen,
+      AppColors.googleBlue,
+    ];
+
+    for (var i = 0; i < colors.length; i++) {
+      final start = -3 * math.pi / 4 + i * math.pi / 2 + _gap / 2;
+      canvas.drawArc(
+        ring,
+        start,
+        math.pi / 2 - _gap,
+        false,
+        Paint()
+          ..color = colors[i]
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = strokeWidth
+          ..strokeCap = StrokeCap.butt,
+      );
+    }
+
+    canvas.drawLine(
+      Offset(center.dx + radius * 0.05, center.dy),
+      Offset(center.dx + radius + strokeWidth * 0.42, center.dy),
+      Paint()
+        ..color = AppColors.googleBlue
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = strokeWidth
+        ..strokeCap = StrokeCap.round,
+    );
+  }
+
+  @override
+  bool shouldRepaint(_GoogleMarkPainter oldDelegate) => false;
 }
 
 /// A single-line text that scrolls horizontally (marquee) when it overflows

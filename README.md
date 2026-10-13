@@ -61,7 +61,7 @@
 6. **📚 Chapter-wise JSON Question Bank:**
    - Modular JSON-driven question banks organized by Categories and Chapters (General Science, Tech, History, Geography, Math, etc.).
 7. **🚪 Zero-Friction Guest Trial Onboarding:**
-   - Visitors can explore the dashboard and play trial quizzes immediately without forced registration, boosting user acquisition.
+   - Visitors can explore the dashboard and play trial quizzes immediately without forced registration. Guest players get an optional Google sign-in card below the home header, so they can link and sync their progress without visiting Profile.
 8. **🛡️ In-App Admin Control Panel (author-only):**
    - Chapter/subject manager, AI-assisted trilingual subject/chapter drafts with review-before-save, question bank with search and filters, review-before-append AI question generator (10 questions per run, trilingual), shop and avatar managers, question-count sync, audit log. Gated on the Firebase `admin` custom claim, so ordinary accounts never see it.
 9. **🌍 Fully Trilingual (English · বাংলা · हिन्दी):**

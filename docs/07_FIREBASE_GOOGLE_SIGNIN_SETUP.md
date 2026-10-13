@@ -99,7 +99,7 @@ flutter pub get
 flutter run
 ```
 
-Profile screen বা quiz result-এ গিয়ে **Sign In** চাপলেই Google account picker আসবে। ✅
+Home dashboard-এর guest sign-in card, Profile screen বা quiz result-এ গিয়ে **Sign In** চাপলেই Google account picker আসবে। Home card থেকে guest-এর local progress-ও link হয়ে যাবে। ✅
 
 ---
 
@@ -125,6 +125,7 @@ Profile screen বা quiz result-এ গিয়ে **Sign In** চাপল�
 | `data/providers/user_provider.dart` | `linkGoogleAccount()` — guest → registered, bonus + data sync |
 | `quiz_result_screen.dart` | Real 1-tap Google Sign-In (score save) |
 | `profile_screen.dart` | Google account card + Sign In / Sign Out |
+| `dashboard_screen.dart` | Guest-only Home card links local progress through `linkGoogleAccount()` |
 
 ---
 

@@ -18,6 +18,12 @@ class AppColors {
   static const Color neonRed = Color(0xFFFF6B7A);
   static const Color neonOrange = Color(0xFFFF9B3D);
 
+  // Google branding, used only for the sign-in mark.
+  static const Color googleBlue = Color(0xFF4285F4);
+  static const Color googleRed = Color(0xFFEA4335);
+  static const Color googleYellow = Color(0xFFFBBC05);
+  static const Color googleGreen = Color(0xFF34A853);
+
   // Intentional gradients used throughout the app.
   static const LinearGradient primaryGradient = LinearGradient(
     colors: [Color(0xFF7C4DFF), Color(0xFF4E5BFF)],

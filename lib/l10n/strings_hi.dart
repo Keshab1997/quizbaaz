@@ -53,6 +53,10 @@ const Map<String, String> kStringsHi = {
 
   // ------------------------------------------------------------- dashboard --
   'dashPlayYourWay': 'अपने तरीके से खेलें',
+  'dashGoogleSignInTitle': 'अपनी प्रगति सेव करें',
+  'dashGoogleSignInSubtitle': 'स्कोर सिंक करें और लीडरबोर्ड पर खेलें',
+  'dashGoogleSignInButton': 'Google से जारी रखें',
+  'dashGoogleSignInFailed': 'साइन-इन पूरा नहीं हो सका। कृपया फिर कोशिश करें।',
   'dashQuickActions': 'क्विक ऐक्शन',
   'dashSeeAll': 'सभी देखें',
   'dashLiveToday': 'डेली क्विज़',

@@ -112,6 +112,10 @@ class S {
 
   // ---- dashboard
   static String get dashPlayYourWay => raw('dashPlayYourWay');
+  static String get dashGoogleSignInTitle => raw('dashGoogleSignInTitle');
+  static String get dashGoogleSignInSubtitle => raw('dashGoogleSignInSubtitle');
+  static String get dashGoogleSignInButton => raw('dashGoogleSignInButton');
+  static String get dashGoogleSignInFailed => raw('dashGoogleSignInFailed');
   static String get dashQuickActions => raw('dashQuickActions');
   static String get dashSeeAll => raw('dashSeeAll');
   static String get dashLiveToday => raw('dashLiveToday');
