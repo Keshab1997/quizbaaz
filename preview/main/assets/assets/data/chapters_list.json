@@ -14,76 +14,8 @@
       },
       "category_icon": "assets/icons/coin_and_gem_3d.png",
       "color_hex": "#F59E0B",
-      "total_chapters": 14,
+      "total_chapters": 10,
       "chapters": [
-        {
-          "chapter_id": "math_ch_01",
-          "chapter_number": 1,
-          "title": {
-            "en": "Real Numbers",
-            "bn": "বাস্তব সংখ্যা",
-            "hi": "वास्तविक संख्याएँ"
-          },
-          "description": {
-            "en": "Euclid division, HCF/LCM, irrationality proofs"
-          },
-          "total_questions": 6,
-          "json_file": "assets/data/questions/class10_math_ch1.json",
-          "is_unlocked": true,
-          "stars": 0,
-          "best_score": 0
-        },
-        {
-          "chapter_id": "math_ch_02",
-          "chapter_number": 2,
-          "title": {
-            "en": "Polynomials",
-            "bn": "বহুপদী রাশি",
-            "hi": "बहुपद"
-          },
-          "description": {
-            "en": "Zeros, relationship between zeros & coefficients"
-          },
-          "total_questions": 9,
-          "json_file": "assets/data/questions/class10_math_ch2.json",
-          "is_unlocked": true,
-          "stars": 0,
-          "best_score": 0
-        },
-        {
-          "chapter_id": "math_ch_03",
-          "chapter_number": 3,
-          "title": {
-            "en": "Pair of Linear Equations in Two Variables",
-            "bn": "দুই চলকের রৈখিক সমীকরণ যুগ্ম",
-            "hi": "दो चरों वाले रैखिक समीकरण युग्म"
-          },
-          "description": {
-            "en": "Graphical & algebraic methods, consistency"
-          },
-          "total_questions": 0,
-          "json_file": "assets/data/questions/class10_math_ch3.json",
-          "is_unlocked": true,
-          "stars": 0,
-          "best_score": 0
-        },
-        {
-          "chapter_id": "math_ch_04",
-          "chapter_number": 4,
-          "title": {
-            "en": "Quadratic Equations",
-            "bn": "দ্বিঘাত সমীকরণ",
-            "hi": "द्विघात समीकरण"
-          },
-          "description": {
-            "en": "Roots, factorisation, discriminant, word problems"
-          },
-          "total_questions": 0,
-          "json_file": "assets/data/questions/class10_math_ch4.json",
-          "is_unlocked": true,
-          "stars": 0,
-          "best_score": 0
-        },
         {
           "chapter_id": "math_ch_05",
           "chapter_number": 5,
@@ -734,104 +666,6 @@
       ]
     },
     {
-      "category_id": "cat_polsci",
-      "category_name": {
-        "en": "Political Science — Democratic Politics II",
-        "bn": "রাষ্ট্রবিজ্ঞান",
-        "hi": "राजनीति विज्ञान — लोकतांत्रिक राजनीति II"
-      },
-      "category_icon": "assets/icons/gift_box_3d.png",
-      "color_hex": "#7C3AED",
-      "total_chapters": 5,
-      "chapters": [
-        {
-          "chapter_id": "polsci_ch_01",
-          "chapter_number": 1,
-          "title": {
-            "en": "Power Sharing",
-            "bn": "ক্ষমতার বণ্টন",
-            "hi": "सत्ता की साझेदारी"
-          },
-          "description": {
-            "en": "Belgium & Sri Lanka, forms of power sharing"
-          },
-          "total_questions": 10,
-          "json_file": "assets/data/questions/class10_polsci_ch1.json",
-          "is_unlocked": true,
-          "stars": 0,
-          "best_score": 0
-        },
-        {
-          "chapter_id": "polsci_ch_02",
-          "chapter_number": 2,
-          "title": {
-            "en": "Federalism",
-            "bn": "যুক্তরাষ্ট্রবাদ",
-            "hi": "संघवाद"
-          },
-          "description": {
-            "en": "Union & state lists, decentralisation, language policy"
-          },
-          "total_questions": 10,
-          "json_file": "assets/data/questions/class10_polsci_ch2.json",
-          "is_unlocked": true,
-          "stars": 0,
-          "best_score": 0
-        },
-        {
-          "chapter_id": "polsci_ch_03",
-          "chapter_number": 3,
-          "title": {
-            "en": "Gender, Religion and Caste",
-            "bn": "লিঙ্গ, ধর্ম ও জাতি",
-            "hi": "जाति, धर्म और लैंगिक मसले"
-          },
-          "description": {
-            "en": "Communalism, caste in politics, feminist movements"
-          },
-          "total_questions": 10,
-          "json_file": "assets/data/questions/class10_polsci_ch3.json",
-          "is_unlocked": true,
-          "stars": 0,
-          "best_score": 0
-        },
-        {
-          "chapter_id": "polsci_ch_04",
-          "chapter_number": 4,
-          "title": {
-            "en": "Political Parties",
-            "bn": "রাজনৈতিক দলসমূহ",
-            "hi": "राजनीतिक दल"
-          },
-          "description": {
-            "en": "National & state parties, challenges, reforms"
-          },
-          "total_questions": 20,
-          "json_file": "assets/data/questions/class10_polsci_ch4.json",
-          "is_unlocked": true,
-          "stars": 0,
-          "best_score": 0
-        },
-        {
-          "chapter_id": "polsci_ch_05",
-          "chapter_number": 5,
-          "title": {
-            "en": "Outcomes of Democracy",
-            "bn": "গণতন্ত্রের পরিণাম",
-            "hi": "लोकतंत्र के परिणाम"
-          },
-          "description": {
-            "en": "Accountability, inequality, dignity & freedom"
-          },
-          "total_questions": 0,
-          "json_file": "assets/data/questions/class10_polsci_ch5.json",
-          "is_unlocked": true,
-          "stars": 0,
-          "best_score": 0
-        }
-      ]
-    },
-    {
       "category_id": "cat_economics",
       "category_name": {
         "en": "Economics — Understanding Economic Development",
@@ -906,87 +740,6 @@
           },
           "total_questions": 0,
           "json_file": "assets/data/questions/class10_eco_ch4.json",
-          "is_unlocked": true,
-          "stars": 0,
-          "best_score": 0
-        }
-      ]
-    },
-    {
-      "category_id": "cat_cs_it",
-      "category_name": {
-        "en": "Computer Science & IT",
-        "bn": "কম্পিউটার ও আইটি",
-        "hi": "कंप्यूटर विज्ञान और आईटी"
-      },
-      "category_icon": "assets/icons/shop_stall_3d.png",
-      "color_hex": "#6366F1",
-      "total_chapters": 4,
-      "chapters": [
-        {
-          "chapter_id": "cs_ch_01",
-          "chapter_number": 1,
-          "title": {
-            "en": "HTML, Web Design & Networking",
-            "bn": "HTML, ওয়েব ডিজাইন ও নেটওয়ার্কিং",
-            "hi": "HTML, वेब डिज़ाइन और नेटवर्किंग"
-          },
-          "description": {
-            "en": "Tags, links, images, network basics"
-          },
-          "total_questions": 0,
-          "json_file": "assets/data/questions/class10_cs_ch1.json",
-          "is_unlocked": true,
-          "stars": 0,
-          "best_score": 0
-        },
-        {
-          "chapter_id": "cs_ch_02",
-          "chapter_number": 2,
-          "title": {
-            "en": "Digital Documentation (Advanced)",
-            "bn": "উন্নত ডিজিটাল ডকুমেন্টেশন",
-            "hi": "डिजिटल डॉक्युमेंटेशन (उन्नत)"
-          },
-          "description": {
-            "en": "Styles, images, TOC — LibreOffice Writer"
-          },
-          "total_questions": 0,
-          "json_file": "assets/data/questions/class10_cs_ch2.json",
-          "is_unlocked": true,
-          "stars": 0,
-          "best_score": 0
-        },
-        {
-          "chapter_id": "cs_ch_03",
-          "chapter_number": 3,
-          "title": {
-            "en": "Electronic Spreadsheet (Advanced)",
-            "bn": "উন্নত ইলেকট্রনিক স্প্রেডশিট",
-            "hi": "इलेक्ट्रॉनिक स्प्रेडशीट (उन्नत)"
-          },
-          "description": {
-            "en": "Scenarios, goal seek, macros, linking — Calc"
-          },
-          "total_questions": 0,
-          "json_file": "assets/data/questions/class10_cs_ch3.json",
-          "is_unlocked": true,
-          "stars": 0,
-          "best_score": 0
-        },
-        {
-          "chapter_id": "cs_ch_04",
-          "chapter_number": 4,
-          "title": {
-            "en": "Database Management System",
-            "bn": "ডেটাবেজ ম্যানেজমেন্ট সিস্টেম",
-            "hi": "डेटाबेस प्रबंधन प्रणाली"
-          },
-          "description": {
-            "en": "Tables, keys, queries, forms — Base"
-          },
-          "total_questions": 0,
-          "json_file": "assets/data/questions/class10_cs_ch4.json",
           "is_unlocked": true,
           "stars": 0,
           "best_score": 0
@@ -1107,6 +860,114 @@
           },
           "total_questions": 26,
           "json_file": "assets/data/questions/current_affairs_ch1.json",
+          "is_unlocked": true,
+          "stars": 0,
+          "best_score": 0
+        }
+      ]
+    },
+    {
+      "category_id": "chhaya_prakashani",
+      "category_name": {
+        "en": "Chhaya Prakashani",
+        "bn": "ছায়া প্রকাশনী",
+        "hi": "शैडो पब्लिशिंग"
+      },
+      "category_icon": "assets/icons/coin_and_gem_3d.png",
+      "color_hex": "#53E6FF",
+      "total_chapters": 5,
+      "chapters": [
+        {
+          "chapter_id": "chhaya_prakashani_ch_01",
+          "chapter_number": 1,
+          "title": {
+            "en": "Physics",
+            "bn": "পদার্থবিদ্যা",
+            "hi": "भौतिक विज्ञान"
+          },
+          "description": {
+            "en": "Fundamental concepts and principles of physics.",
+            "bn": "পদার্থবিদ্যার মৌলিক ধারণা ও নীতিগুলি।",
+            "hi": "भौतिक विज्ञान की मूल अवधारणाएँ और सिद्धांत।"
+          },
+          "total_questions": 537,
+          "json_file": "assets/data/questions/chhaya_prakashani_ch_01.json",
+          "is_unlocked": true,
+          "stars": 0,
+          "best_score": 0
+        },
+        {
+          "chapter_id": "chhaya_prakashani_ch_02",
+          "chapter_number": 2,
+          "title": {
+            "en": "Chemistry",
+            "bn": "রসায়ন",
+            "hi": "रसायन विज्ञान"
+          },
+          "description": {
+            "en": "Basic concepts and principles of chemistry.",
+            "bn": "রসায়নের মৌলিক ধারণা ও নীতিগুলি।",
+            "hi": "रसायन विज्ञान की मूल अवधारणाएँ और सिद्धांत।"
+          },
+          "total_questions": 301,
+          "json_file": "assets/data/questions/chhaya_prakashani_ch_02.json",
+          "is_unlocked": true,
+          "stars": 0,
+          "best_score": 0
+        },
+        {
+          "chapter_id": "chhaya_prakashani_ch_03",
+          "chapter_number": 3,
+          "title": {
+            "en": "Biology",
+            "bn": "জীববিদ্যা",
+            "hi": "जीव विज्ञान"
+          },
+          "description": {
+            "en": "Fundamental concepts of living organisms and life processes.",
+            "bn": "জীব ও জীবনপ্রক্রিয়া সম্পর্কিত মৌলিক ধারণা।",
+            "hi": "जीवों और जीवन प्रक्रियाओं की मूल अवधारणाएँ।"
+          },
+          "total_questions": 578,
+          "json_file": "assets/data/questions/chhaya_prakashani_ch_03.json",
+          "is_unlocked": true,
+          "stars": 0,
+          "best_score": 0
+        },
+        {
+          "chapter_id": "chhaya_prakashani_ch_04",
+          "chapter_number": 4,
+          "title": {
+            "en": "Environmental Science",
+            "bn": "পরিবেশ বিজ্ঞান",
+            "hi": "पर्यावरण विज्ञान"
+          },
+          "description": {
+            "en": "Key concepts related to the environment and its protection.",
+            "bn": "পরিবেশ ও তার সংরক্ষণ সম্পর্কিত গুরুত্বপূর্ণ ধারণা।",
+            "hi": "पर्यावरण और उसके संरक्षण से संबंधित महत्वपूर्ण अवधारणाएँ।"
+          },
+          "total_questions": 0,
+          "json_file": "assets/data/questions/chhaya_prakashani_ch_04.json",
+          "is_unlocked": true,
+          "stars": 0,
+          "best_score": 0
+        },
+        {
+          "chapter_id": "chhaya_prakashani_ch_05",
+          "chapter_number": 5,
+          "title": {
+            "en": "Computer & IT",
+            "bn": "কম্পিউটার ও তথ্যপ্রযুক্তি",
+            "hi": "कंप्यूटर और सूचना प्रौद्योगिकी"
+          },
+          "description": {
+            "en": "Fundamentals of computers and information technology.",
+            "bn": "কম্পিউটার ও তথ্যপ্রযুক্তির মৌলিক বিষয়গুলি।",
+            "hi": "कंप्यूटर और सूचना प्रौद्योगिकी की मूल बातें।"
+          },
+          "total_questions": 0,
+          "json_file": "assets/data/questions/chhaya_prakashani_ch_05.json",
           "is_unlocked": true,
           "stars": 0,
           "best_score": 0
