@@ -9,7 +9,7 @@ How to add questions to the bank so they render correctly in **English,
 
 ```text
 assets/data/
-├── chapters_list.json          index of 12 subjects → 56 chapters
+├── chapters_list.json          index of 11 subjects → 48 chapters
 ├── daily_quiz.json             the 10 questions of the day
 └── questions/
     ├── class10_math_ch1.json   one bank per chapter

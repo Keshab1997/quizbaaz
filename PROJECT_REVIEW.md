@@ -2,7 +2,7 @@
 
 > [!NOTE]
 > **Historical snapshot (7 Sep 2026).** Kept for the reasoning behind each finding, but the numbers and
-> status below are out of date: the bundled banks are no longer empty (510 questions / 56 chapter banks),
+> status below are out of date: the bundled banks are no longer empty (1880 questions / 48 chapter banks),
 > the sound assets are real files, GitHub Actions CI exists, and the three P0 items (R01–R03) were fixed —
 > see [`docs/SECURITY_P0_FIXES.md`](docs/SECURITY_P0_FIXES.md). The status of R04–R24 was not re-audited
 > when this note was added; check the code before acting on one.
