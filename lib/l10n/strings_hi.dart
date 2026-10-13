@@ -501,6 +501,8 @@ const Map<String, String> kStringsHi = {
   'setsEmpty': 'इस अध्याय में अभी कोई प्रश्न नहीं',
   'setsEmptyBody': 'प्रश्न जोड़े जा रहे हैं। जल्द देखें!',
   'setsPlayedOn': 'अंतिम बार खेला {date}',
+  'reviseAction': 'पढ़ो',
+  'reviseNote': 'सिर्फ़ पढ़ने का मोड — कुछ गिना नहीं जाएगा',
 
   // ------------------------------------------------------ notifications --
   'notifDailyTitle': 'डेली क्विज़ लाइव है',

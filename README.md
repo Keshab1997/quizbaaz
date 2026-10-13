@@ -60,6 +60,7 @@
    - A cached chapter keeps working when the network drops: an aged cache is still served while a refresh is attempted in the background, so a chapter never turns into "no questions yet" mid-session.
 6. **📚 Chapter-wise JSON Question Bank:**
    - Modular JSON-driven question banks organized by Categories and Chapters (General Science, Tech, History, Geography, Math, etc.).
+   - Every set doubles as a reading-only Revision screen (per-set "Revise" chip): all options with the correct answer highlighted plus explanations — new bundled or admin-added questions appear automatically.
 7. **🚪 Zero-Friction Guest Trial Onboarding:**
    - Visitors can explore the dashboard and play trial quizzes immediately without forced registration. Guest players get an optional Google sign-in card below the home header, so they can link and sync their progress without visiting Profile.
 8. **🛡️ In-App Admin Control Panel (author-only):**

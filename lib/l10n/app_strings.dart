@@ -584,6 +584,8 @@ class S {
   static String get setsEmptyBody => raw('setsEmptyBody');
   static String setsPlayedOn({required Object date}) =>
       fill(raw('setsPlayedOn'), {'date': date});
+  static String get reviseAction => raw('reviseAction');
+  static String get reviseNote => raw('reviseNote');
 
   // ---- notifications
   static String get notifDailyTitle => raw('notifDailyTitle');

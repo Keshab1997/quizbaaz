@@ -504,6 +504,8 @@ const Map<String, String> kStringsBn = {
   'setsEmpty': 'এই অধ্যায়ে এখনও কোনো প্রশ্ন নেই',
   'setsEmptyBody': 'প্রশ্ন যোগ করা হচ্ছে। শীঘ্রই দেখুন!',
   'setsPlayedOn': 'শেষ খেলা {date}',
+  'reviseAction': 'পড়ো',
+  'reviseNote': 'শুধু পড়ার মোড — কিছু গোনা হবে না',
 
   // ------------------------------------------------------ notifications --
   'notifDailyTitle': 'ডেইলি কুইজ লাইভ',

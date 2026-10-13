@@ -515,6 +515,8 @@ const Map<String, String> kStringsEn = {
   'setsEmpty': 'No questions in this chapter yet',
   'setsEmptyBody': 'Questions are being added. Check back soon!',
   'setsPlayedOn': 'Last played {date}',
+  'reviseAction': 'Revise',
+  'reviseNote': 'Reading mode — nothing is counted',
 
   // ------------------------------------------------------ notifications --
   'notifDailyTitle': 'Daily Quiz is live',

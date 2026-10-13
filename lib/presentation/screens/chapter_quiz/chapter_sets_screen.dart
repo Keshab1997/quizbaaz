@@ -12,6 +12,7 @@ import '../../../data/services/sound_service.dart';
 import '../../../l10n/app_strings.dart';
 import '../../widgets/glass_card.dart';
 import '../daily_quiz/daily_quiz_screen.dart';
+import 'chapter_revision_screen.dart';
 
 /// Sets of a chapter, and the history of the ones already cleared.
 ///
@@ -347,13 +348,21 @@ class _ChapterSetsScreenState extends State<ChapterSetsScreen>
                 ],
               ),
             ),
-            if (done != null)
-              _retryChip(index)
-            else if (isNext)
-              Icon(
-                Icons.play_circle_fill_rounded,
-                size: 26,
-                color: widget.accent,
+            if (!locked)
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  if (done != null)
+                    _retryChip(index)
+                  else if (isNext)
+                    Icon(
+                      Icons.play_circle_fill_rounded,
+                      size: 26,
+                      color: widget.accent,
+                    ),
+                  _reviseChip(index),
+                ],
               ),
           ],
         ),
@@ -379,6 +388,27 @@ class _ChapterSetsScreenState extends State<ChapterSetsScreen>
       label: Text(
         S.setsRetry,
         style: const TextStyle(fontSize: 11.5, color: AppColors.textSecondary),
+      ),
+    );
+  }
+
+  Widget _reviseChip(int index) {
+    return TextButton.icon(
+      // Reading-only revision of the set: no timer, no score, nothing counted.
+      onPressed: () => _revise(index),
+      style: TextButton.styleFrom(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        minimumSize: const Size(0, 32),
+        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+      ),
+      icon: Icon(
+        Icons.menu_book_rounded,
+        size: 15,
+        color: widget.accent,
+      ),
+      label: Text(
+        S.reviseAction,
+        style: TextStyle(fontSize: 11.5, color: widget.accent),
       ),
     );
   }
@@ -626,5 +656,24 @@ class _ChapterSetsScreenState extends State<ChapterSetsScreen>
 
     // Coming back from a run, the set may now be cleared and the next unlocked.
     if (mounted) _load();
+  }
+
+  Future<void> _revise(int setIndex) async {
+    SoundService.instance.play('ui_click');
+    Haptics.tap();
+    await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder:
+            (_) => ChapterRevisionScreen(
+              chapter: widget.chapter,
+              categoryTitle: widget.categoryTitle,
+              setIndex: setIndex,
+              setCount: _setCount,
+              accent: widget.accent,
+            ),
+      ),
+    );
+    // Revision changes nothing, so no reload on return.
   }
 }
