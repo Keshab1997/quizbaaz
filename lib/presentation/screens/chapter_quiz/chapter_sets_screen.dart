@@ -274,141 +274,168 @@ class _ChapterSetsScreenState extends State<ChapterSetsScreen>
       padding: const EdgeInsets.only(bottom: 10),
       child: GlassCard(
         borderRadius: 16,
-        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 13),
+        padding: const EdgeInsets.fromLTRB(14, 13, 14, 12),
         borderColor: isNext ? widget.accent.withValues(alpha: 0.45) : null,
         // A finished set replayed from the list is practice too, otherwise the
         // reward guard in QuizProvider could be bypassed by tapping the row
-        // instead of the Retry chip.
+        // instead of the Retry button.
         onTap: locked ? null : () => _play(index, practice: done != null),
-        child: Row(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              width: 44,
-              height: 44,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(14),
-                color: colour.withValues(alpha: 0.16),
-                border: Border.all(color: colour.withValues(alpha: 0.45)),
-              ),
-              child: Center(
-                child:
-                    locked
-                        ? const Icon(
-                          Icons.lock_rounded,
-                          size: 18,
-                          color: AppColors.textMuted,
-                        )
-                        : done != null
-                        ? Icon(
-                          done.isPerfect
-                              ? Icons.workspace_premium_rounded
-                              : Icons.check_rounded,
-                          size: 20,
-                          color: colour,
-                        )
-                        : Text(
-                          '${index + 1}',
-                          style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w900,
-                            color: colour,
-                          ),
+            Row(
+              children: [
+                Container(
+                  width: 44,
+                  height: 44,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(14),
+                    color: colour.withValues(alpha: 0.16),
+                    border: Border.all(color: colour.withValues(alpha: 0.45)),
+                  ),
+                  child: Center(
+                    child:
+                        locked
+                            ? const Icon(
+                              Icons.lock_rounded,
+                              size: 18,
+                              color: AppColors.textMuted,
+                            )
+                            : done != null
+                            ? Icon(
+                              done.isPerfect
+                                  ? Icons.workspace_premium_rounded
+                                  : Icons.check_rounded,
+                              size: 20,
+                              color: colour,
+                            )
+                            : Text(
+                              '${index + 1}',
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w900,
+                                color: colour,
+                              ),
+                            ),
+                  ),
+                ),
+                const SizedBox(width: 14),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        S.setsSet(n: index + 1),
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w800,
+                          color: locked ? AppColors.textMuted : Colors.white,
                         ),
-              ),
+                      ),
+                      const SizedBox(height: 3),
+                      Text(
+                        locked
+                            ? S.setsLocked(n: index)
+                            : done != null
+                            ? '${S.setsCleared} · '
+                                '${S.setsBest(correct: done.bestCorrect, total: done.totalQuestions)}'
+                            : S.setsQuestions(n: length),
+                        style: TextStyle(
+                          fontSize: 11.5,
+                          color:
+                              done != null
+                                  ? AppColors.neonGreen
+                                  : AppColors.textSecondary,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
-            const SizedBox(width: 14),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+            if (!locked) ...[
+              const SizedBox(height: 12),
+              Row(
                 children: [
-                  Text(
-                    S.setsSet(n: index + 1),
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w800,
-                      color: locked ? AppColors.textMuted : Colors.white,
-                    ),
-                  ),
-                  const SizedBox(height: 3),
-                  Text(
-                    locked
-                        ? S.setsLocked(n: index)
-                        : done != null
-                        ? '${S.setsCleared} · '
-                            '${S.setsBest(correct: done.bestCorrect, total: done.totalQuestions)}'
-                        : S.setsQuestions(n: length),
-                    style: TextStyle(
-                      fontSize: 11.5,
-                      color:
-                          done != null
-                              ? AppColors.neonGreen
-                              : AppColors.textSecondary,
-                    ),
-                  ),
+                  Expanded(child: _playButton(index, done)),
+                  const SizedBox(width: 8),
+                  Expanded(child: _reviseButton(index)),
                 ],
               ),
-            ),
-            if (!locked)
-              Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  if (done != null)
-                    _retryChip(index)
-                  else if (isNext)
-                    Icon(
-                      Icons.play_circle_fill_rounded,
-                      size: 26,
-                      color: widget.accent,
-                    ),
-                  _reviseChip(index),
-                ],
-              ),
+            ],
           ],
         ),
       ),
     );
   }
 
-  Widget _retryChip(int index) {
-    return TextButton.icon(
-      // Retry means "play the finished set again" — practice, so it neither
-      // pays out again nor spends power-ups.
-      onPressed: () => _play(index, practice: true),
-      style: TextButton.styleFrom(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        minimumSize: const Size(0, 32),
-        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-      ),
-      icon: const Icon(
-        Icons.refresh_rounded,
-        size: 15,
-        color: AppColors.textSecondary,
-      ),
-      label: Text(
-        S.setsRetry,
-        style: const TextStyle(fontSize: 11.5, color: AppColors.textSecondary),
+  Widget _playButton(int index, ChapterSetProgress? done) {
+    final replay = done != null;
+    final label =
+        replay
+            ? S.setsRetry
+            : _progress.isEmpty
+            ? S.setsStart(n: index + 1)
+            : S.setsContinue(n: index + 1);
+
+    return SizedBox(
+      height: 36,
+      child: ElevatedButton.icon(
+        // Retry means "play the finished set again" — practice, so it neither
+        // pays out again nor spends power-ups.
+        onPressed: () => _play(index, practice: replay),
+        style: ElevatedButton.styleFrom(
+          backgroundColor: widget.accent,
+          foregroundColor: AppColors.bgDark,
+          elevation: 0,
+          padding: const EdgeInsets.symmetric(horizontal: 8),
+          minimumSize: const Size(0, 36),
+          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(11),
+          ),
+        ),
+        icon: Icon(
+          replay ? Icons.refresh_rounded : Icons.play_arrow_rounded,
+          size: 16,
+        ),
+        label: Flexible(
+          child: Text(
+            label,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: const TextStyle(fontSize: 11.5, fontWeight: FontWeight.w800),
+          ),
+        ),
       ),
     );
   }
 
-  Widget _reviseChip(int index) {
-    return TextButton.icon(
-      // Reading-only revision of the set: no timer, no score, nothing counted.
-      onPressed: () => _revise(index),
-      style: TextButton.styleFrom(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        minimumSize: const Size(0, 32),
-        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-      ),
-      icon: Icon(
-        Icons.menu_book_rounded,
-        size: 15,
-        color: widget.accent,
-      ),
-      label: Text(
-        S.reviseAction,
-        style: TextStyle(fontSize: 11.5, color: widget.accent),
+  Widget _reviseButton(int index) {
+    return SizedBox(
+      height: 36,
+      child: OutlinedButton.icon(
+        // Reading-only revision of the set: no timer, no score, nothing counted.
+        onPressed: () => _revise(index),
+        style: OutlinedButton.styleFrom(
+          foregroundColor: widget.accent,
+          padding: const EdgeInsets.symmetric(horizontal: 8),
+          minimumSize: const Size(0, 36),
+          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          side: BorderSide(color: widget.accent.withValues(alpha: 0.55)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(11),
+          ),
+        ),
+        icon: const Icon(Icons.menu_book_rounded, size: 15),
+        label: Flexible(
+          child: Text(
+            S.reviseAction,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: const TextStyle(fontSize: 11.5, fontWeight: FontWeight.w800),
+          ),
+        ),
       ),
     );
   }
