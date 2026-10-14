@@ -7,6 +7,23 @@ class WhatsNewCatalog {
   WhatsNewCatalog._();
 
   static const Map<String, Map<String, List<String>>> _releases = {
+    '1.0.23': {
+      'en': [
+        'Update screen, fixed — when a new update is ready, you now see that update\'s own notes before you install it, not the previous version\'s.',
+        'This very note reached your phone automatically — release notes now publish themselves with every release.',
+        'Small fixes and polish for a smoother app.',
+      ],
+      'bn': [
+        'আপডেট স্ক্রিন ঠিক করা হয়েছে — নতুন আপডেট এলেই এবার ইনস্টলের আগেই সেই আপডেটের নিজের নোট দেখতে পাবেন, আগের ভার্সনেরটা নয়।',
+        'এই নোটটাই তার প্রমাণ — এখন থেকে প্রতিটি রিলিজের নোট নিজে থেকেই আপনার ফোনে পৌঁছে যাবে।',
+        'অ্যাপ আরও মসৃণ করতে ছোটখাটো ঠিকঠাক ও পালিশ।',
+      ],
+      'hi': [
+        'अपडेट स्क्रीन ठीक की गई — नया अपडेट तैयार होते ही अब इंस्टॉल से पहले उसी अपडेट के नोट दिखेंगे, पिछले वर्शन के नहीं।',
+        'यह नोट ही इसका सबूत है — अब से हर रिलीज़ के नोट अपने आप आपके फ़ोन तक पहुँचेंगे।',
+        'ऐप को और सहज बनाने के लिए छोटे सुधार और पॉलिश।',
+      ],
+    },
     '1.0.22': {
       'en': [
         'Chapter sets feel smoother — the Start and Revise buttons are now bigger, clearer and easier to tap.',

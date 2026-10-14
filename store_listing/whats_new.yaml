@@ -6,9 +6,28 @@
 #   python3 tool/publish_play.py --aab app.aab --track alpha
 # which reads this file automatically. `--release-note` overrides English only.
 
-current: "1.0.22"
+current: "1.0.23"
 
 releases:
+  "1.0.23":
+    en: |-
+      What's new in 1.0.23:
+
+      • Update screen, fixed — when a new update is ready, you now see that update's own notes before you install it, not the previous version's.
+      • This very note reached your phone automatically — release notes now publish themselves with every release.
+      • Small fixes and polish for a smoother app.
+    bn: |-
+      QuizBaaz ১.০.২৩-এ যা নতুন:
+
+      • আপডেট স্ক্রিন ঠিক করা হয়েছে — নতুন আপডেট এলেই এবার ইনস্টলের আগেই সেই আপডেটের নিজের নোট দেখতে পাবেন, আগের ভার্সনেরটা নয়।
+      • এই নোটটাই তার প্রমাণ — এখন থেকে প্রতিটি রিলিজের নোট নিজে থেকেই আপনার ফোনে পৌঁছে যাবে।
+      • অ্যাপ আরও মসৃণ করতে ছোটখাটো ঠিকঠাক ও পালিশ।
+    hi: |-
+      QuizBaaz 1.0.23 में नया:
+
+      • अपडेट स्क्रीन ठीक की गई — नया अपडेट तैयार होते ही अब इंस्टॉल से पहले उसी अपडेट के नोट दिखेंगे, पिछले वर्शन के नहीं।
+      • यह नोट ही इसका सबूत है — अब से हर रिलीज़ के नोट अपने आप आपके फ़ोन तक पहुँचेंगे।
+      • ऐप को और सहज बनाने के लिए छोटे सुधार और पॉलिश।
   "1.0.22":
     en: |-
       What's new in 1.0.22:
