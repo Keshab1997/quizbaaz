@@ -136,7 +136,7 @@ def main() -> int:
     if firestore is None or db is None:
         return 1
 
-    ref = db.collection(COLLECTION).doc(DOC_ID)
+    ref = db.collection(COLLECTION).document(DOC_ID)
     snapshot = ref.get()
     if not snapshot.exists:
         print(f'{COLLECTION}/{DOC_ID} does not exist — nothing to update.')
