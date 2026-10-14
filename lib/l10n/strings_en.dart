@@ -251,6 +251,9 @@ const Map<String, String> kStringsEn = {
   'updateCenterUpdateFailed':
       'Couldn\'t start the in-app update. Update from the Play Store instead.',
   'updateCenterNoNotes': 'No changes listed for this version.',
+  'whatsNewUpcomingEyebrow': 'IN THIS UPDATE',
+  'updateCenterNotesAfterUpdate':
+      'What\'s new will be listed here once the update is installed. You can also read it on the Play Store page.',
   'profileConsentOptions': 'Ad Consent Options',
   'profileSignIn': 'Sign In',
   'profileSignOut': 'Sign Out',

@@ -314,6 +314,9 @@ class S {
   static String get updateCenterOpenStore => raw('updateCenterOpenStore');
   static String get updateCenterUpdateFailed => raw('updateCenterUpdateFailed');
   static String get updateCenterNoNotes => raw('updateCenterNoNotes');
+  static String get whatsNewUpcomingEyebrow => raw('whatsNewUpcomingEyebrow');
+  static String get updateCenterNotesAfterUpdate =>
+      raw('updateCenterNotesAfterUpdate');
   static String get profileConsentOptions => raw('profileConsentOptions');
   static String get profileSignIn => raw('profileSignIn');
   static String get profileSignOut => raw('profileSignOut');

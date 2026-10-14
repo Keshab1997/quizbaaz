@@ -240,4 +240,27 @@ class WhatsNewCatalog {
     if (byLang == null) return const [];
     return byLang[S.code] ?? byLang['en'] ?? const [];
   }
+
+  /// Notes for a release that is **not installed yet**, published remotely
+  /// in the Firestore document `config/app` (`AppConfig.latestReleaseNotes`).
+  ///
+  /// The bundled [_releases] map can never answer this: a phone on 1.0.20
+  /// does not carry 1.0.21's notes inside its binary. Looking the *installed*
+  /// version up anyway — the old Update Center behaviour — showed the
+  /// previous release's notes under the update prompt, which read as if the
+  /// new update changed nothing. Remote notes fix that; when none have been
+  /// published this returns empty and the caller must say so instead of
+  /// falling back to the installed build's notes.
+  ///
+  /// Pure and static so the decision is unit-testable without Firestore.
+  static List<String> upcomingBullets({
+    required String installedVersion,
+    required String remoteVersion,
+    required Map<String, List<String>> remoteNotes,
+  }) {
+    final version = remoteVersion.trim();
+    if (version.isEmpty || version == installedVersion) return const [];
+    if (remoteNotes.isEmpty) return const [];
+    return remoteNotes[S.code] ?? remoteNotes['en'] ?? const [];
+  }
 }

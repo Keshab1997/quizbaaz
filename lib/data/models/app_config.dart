@@ -66,6 +66,16 @@ class AppConfig {
   /// Minutes before cached leaderboard data is considered stale.
   final int leaderboardCacheMinutes;
 
+  /// Newest release the owner has published notes for, and those notes
+  /// (language code → bullet lines). This is how a phone still running the
+  /// *previous* build can show the incoming update's notes in the Update
+  /// Center: the bundled [WhatsNewCatalog] only knows releases up to the
+  /// installed build, so without a remote copy the "what's new" card could
+  /// only ever repeat the old version's notes. Written at release time by
+  /// `tool/publish_release_notes.py`; empty until then.
+  final String latestReleaseVersion;
+  final Map<String, List<String>> latestReleaseNotes;
+
   const AppConfig({
     this.dailyQuestionCount = 10,
     this.secondsPerQuestion = 30,
@@ -87,7 +97,19 @@ class AppConfig {
     this.battleSearchSeconds = 6,
     this.adminUserIds = const <String>[],
     this.leaderboardCacheMinutes = 10,
+    this.latestReleaseVersion = '',
+    this.latestReleaseNotes = const <String, List<String>>{},
   });
+
+  /// The published notes for [latestReleaseVersion] in [code], falling back
+  /// to English. Empty when nothing has been published (or for a language
+  /// with no translation yet).
+  List<String> latestNotesFor(String code) {
+    if (latestReleaseVersion.isEmpty || latestReleaseNotes.isEmpty) {
+      return const [];
+    }
+    return latestReleaseNotes[code] ?? latestReleaseNotes['en'] ?? const [];
+  }
 
   /// Maximum points a single battle question can pay out
   /// (base 10 + speed 10 + first 2 + capped streak 6 = 28).
@@ -139,11 +161,43 @@ class AppConfig {
     'battle_search_seconds': battleSearchSeconds,
     'admin_user_ids': adminUserIds,
     'leaderboard_cache_minutes': leaderboardCacheMinutes,
+    'latest_release_version': latestReleaseVersion,
+    'latest_release_notes': latestReleaseNotes,
   };
 
   factory AppConfig.fromJson(Map<String, dynamic> json) {
     const fallback = AppConfig();
     int intOr(String key, int def) => (json[key] as num?)?.toInt() ?? def;
+
+    // Release notes arrive as `{en: [...], bn: [...], hi: [...]}`. A plain
+    // string is also accepted (one bullet per line, `•` stripped) so the
+    // owner can paste the Play notes text without reshaping it.
+    List<String> bulletList(Object? raw) {
+      if (raw is List) {
+        return [
+          for (final e in raw)
+            if ('$e'.trim().isNotEmpty) '$e'.trim(),
+        ];
+      }
+      if (raw is String) {
+        return [
+          for (final line in raw.split('\n'))
+            if (line.trim().isNotEmpty)
+              line.trim().replaceFirst(RegExp(r'^•\s*'), ''),
+        ];
+      }
+      return const [];
+    }
+
+    final rawNotes = json['latest_release_notes'];
+    final notes = <String, List<String>>{};
+    if (rawNotes is Map) {
+      for (final entry in rawNotes.entries) {
+        final list = bulletList(entry.value);
+        if (list.isNotEmpty) notes['${entry.key}'] = list;
+      }
+    }
+
     return AppConfig(
       dailyQuestionCount: intOr(
         'daily_question_count',
@@ -202,6 +256,8 @@ class AppConfig {
         'leaderboard_cache_minutes',
         fallback.leaderboardCacheMinutes,
       ),
+      latestReleaseVersion: '${json['latest_release_version'] ?? ''}'.trim(),
+      latestReleaseNotes: notes,
     );
   }
 }

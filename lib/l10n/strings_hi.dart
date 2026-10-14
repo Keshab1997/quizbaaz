@@ -240,6 +240,9 @@ const Map<String, String> kStringsHi = {
   'updateCenterUpdateFailed':
       'इन-ऐप अपडेट शुरू नहीं हो सका। Play Store से अपडेट करें।',
   'updateCenterNoNotes': 'इस वर्शन के लिए कोई बदलाव सूची नहीं है।',
+  'whatsNewUpcomingEyebrow': 'इस अपडेट में',
+  'updateCenterNotesAfterUpdate':
+      'अपडेट इंस्टॉल होते ही नए बदलावों की सूची यहाँ दिखेगी। आप इसे Play Store पेज पर भी पढ़ सकते हैं।',
   'profileConsentOptions': 'विज्ञापन सहमति विकल्प',
   'profileSignIn': 'साइन इन',
   'profileSignOut': 'साइन आउट',

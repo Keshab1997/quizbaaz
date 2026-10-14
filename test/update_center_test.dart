@@ -3,9 +3,11 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hive/hive.dart';
+import 'package:quizbaaz/data/models/app_config.dart';
 import 'package:quizbaaz/data/services/app_update_service.dart';
 import 'package:quizbaaz/data/services/app_version.dart';
 import 'package:quizbaaz/data/services/hive_service.dart';
+import 'package:quizbaaz/data/services/whats_new_catalog.dart';
 import 'package:quizbaaz/data/services/update_banner_target.dart';
 import 'package:quizbaaz/l10n/app_strings.dart';
 import 'package:quizbaaz/presentation/screens/update/update_center_screen.dart';
@@ -112,6 +114,74 @@ void main() {
         ),
         isFalse,
       );
+    });
+  });
+
+  group('upcoming release notes (remote config)', () {
+    // Regression: on 1.0.20 with a Play update waiting, the Update Center
+    // titled its card with the *installed* build and listed 1.0.20's notes,
+    // so the incoming update looked like the previous one. The incoming
+    // notes now come from `config/app`; these pin the decision rules.
+    test('remote notes for a newer release are offered', () {
+      expect(
+        WhatsNewCatalog.upcomingBullets(
+          installedVersion: '1.0.20',
+          remoteVersion: '1.0.21',
+          remoteNotes: const {
+            'en': ['New thing'],
+          },
+        ),
+        ['New thing'],
+      );
+    });
+
+    test('remote notes equal to installed are not "upcoming"', () {
+      expect(
+        WhatsNewCatalog.upcomingBullets(
+          installedVersion: '1.0.21',
+          remoteVersion: '1.0.21',
+          remoteNotes: const {
+            'en': ['Same thing'],
+          },
+        ),
+        isEmpty,
+      );
+    });
+
+    test('nothing published remotely → empty, never the old notes', () {
+      expect(
+        WhatsNewCatalog.upcomingBullets(
+          installedVersion: '1.0.20',
+          remoteVersion: '',
+          remoteNotes: const {},
+        ),
+        isEmpty,
+      );
+    });
+
+    test('AppConfig parses the published notes (list and pasted text)', () {
+      final fromLists = AppConfig.fromJson(const {
+        'latest_release_version': '1.0.21',
+        'latest_release_notes': {
+          'en': ['One', 'Two'],
+          'bn': ['এক'],
+        },
+      });
+      expect(fromLists.latestReleaseVersion, '1.0.21');
+      expect(fromLists.latestNotesFor('en'), ['One', 'Two']);
+      expect(fromLists.latestNotesFor('bn'), ['এক']);
+      // Unknown language falls back to English.
+      expect(fromLists.latestNotesFor('hi'), ['One', 'Two']);
+
+      final fromText = AppConfig.fromJson(const {
+        'latest_release_version': '1.0.21',
+        'latest_release_notes': {'en': "• One\n• Two\n"},
+      });
+      expect(fromText.latestNotesFor('en'), ['One', 'Two']);
+
+      const untouched = AppConfig();
+      expect(untouched.latestReleaseVersion, '');
+      expect(untouched.latestNotesFor('en'), isEmpty);
     });
   });
 

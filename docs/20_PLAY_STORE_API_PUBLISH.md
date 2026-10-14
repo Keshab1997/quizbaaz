@@ -17,7 +17,16 @@ On each version bump:
 1. Add a `releases.<version>` block and set `current`.
 2. Copy the same bullets into `WhatsNewCatalog`.
 3. Bump `pubspec.yaml` (`1.x.y+N`).
-4. Publish AAB to Closed testing:
+4. Publish the same notes to remote config so devices still on the old
+   build see the *incoming* release's notes in the Update Center (the old
+   binary does not carry them — without this step it can only repeat its
+   own version's notes):
+
+   ```bash
+   python3 tool/publish_release_notes.py
+   ```
+
+5. Publish AAB to Closed testing:
 
 ```bash
 python3 tool/publish_play.py --aab app-release.aab --track closedtesting

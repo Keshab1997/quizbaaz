@@ -9,8 +9,14 @@ How a new release reaches a player's phone, end to end:
    `{"open": "app_update"}`.
 3. **Tap (or the inbox row, or the dashboard banner)** opens the **Update
    Center** (`lib/presentation/screens/update/update_center_screen.dart`):
-   current version, what changed (`WhatsNewCatalog`), flexible in-app
-   download (`Update now` → `Restart & update`), Play Store fallback.
+   current version, what changed, flexible in-app download (`Update now` →
+   `Restart & update`), Play Store fallback. *What changed* is the incoming
+   release's notes from `config/app` (`latest_release_*`, published by
+   `tool/publish_release_notes.py`) while a Play update is still waiting,
+   and the installed build's bundled notes (`WhatsNewCatalog`) once the new
+   build is on the phone. Showing the installed build's notes before the
+   install — the old behaviour — made every update display the previous
+   release's notes.
 4. **After install**, a non-blocking dashboard banner offers the same notes
    once — the old surprise modal and the auto `performImmediateUpdate()`
    are gone by design (`AppUpdateService`).
@@ -116,4 +122,5 @@ curl -fsS -X POST "$QB_BROADCAST_URL" \
 | `recipients: 0` | OneSignal App ID in the payload; subscription state of the app |
 | Updated users still nudged | They have not opened the new build yet — its `app_version` only updates when the SDK reports in |
 | Tap opens the dashboard, not the Update Center | Missing `"open": "app_update"` in the data payload (check docs/16) |
+| Update Center repeats the previous version's notes | The app build predates the remote-notes fix (fixed in 1.0.22), or `tool/publish_release_notes.py` was not run for this release — check `latest_release_version` in `config/app` |
 | No push at all | `ONESIGNAL_REST_KEY` set? OneSignal → delivery logs |

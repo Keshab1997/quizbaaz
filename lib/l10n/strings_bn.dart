@@ -243,6 +243,9 @@ const Map<String, String> kStringsBn = {
   'updateCenterUpdateFailed':
       'ইন-অ্যাপ আপডেট শুরু করা গেল না। Play Store থেকে আপডেট করুন।',
   'updateCenterNoNotes': 'এই ভার্সনে কোনো পরিবর্তনের তালিকা নেই।',
+  'whatsNewUpcomingEyebrow': 'এই আপডেটে',
+  'updateCenterNotesAfterUpdate':
+      'আপডেট ইনস্টল হলেই এখানে নতুন পরিবর্তনের তালিকা দেখা যাবে। Play Store পেজেও পড়তে পারবেন।',
   'profileConsentOptions': 'বিজ্ঞাপন সম্মতির বিকল্প',
   'profileSignIn': 'সাইন ইন',
   'profileSignOut': 'সাইন আউট',

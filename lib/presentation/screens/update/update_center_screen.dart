@@ -6,6 +6,7 @@ import '../../../core/constants/app_links.dart';
 import '../../../data/services/app_update_service.dart';
 import '../../../data/services/app_version.dart';
 import '../../../data/services/play_update_info.dart';
+import '../../../data/services/sync_service.dart';
 import '../../../data/services/whats_new_catalog.dart';
 import '../../../l10n/app_strings.dart';
 import '../../widgets/glass_card.dart';
@@ -18,10 +19,18 @@ enum _Phase { loading, idle, downloading, downloaded }
 ///
 /// Reached from three doors — the dashboard banner, a push with
 /// `open: app_update`, and an inbox row tap — and it always answers the same
-/// two questions: *what changed* (this build's notes, straight from
-/// [WhatsNewCatalog]) and *how do I update* (flexible in-app download when
-/// Play offers one, Play Store otherwise). Nothing here restarts the app
-/// without an explicit "Restart & update" tap.
+/// two questions: *what changed* and *how do I update* (flexible in-app
+/// download when Play offers one, Play Store otherwise). Nothing here
+/// restarts the app without an explicit "Restart & update" tap.
+///
+/// *What changed* depends on where the player stands. Already on the new
+/// build: this build's bundled notes ([WhatsNewCatalog]). Still on the old
+/// build with a Play update waiting: the **incoming** release's notes,
+/// published remotely in `config/app` — the old binary cannot carry them,
+/// and showing its own version's notes here (the previous behaviour) made
+/// every update look like the last one. When no remote notes have been
+/// published yet, the card says the notes arrive with the update instead of
+/// repeating the installed build's.
 class UpdateCenterScreen extends StatefulWidget {
   const UpdateCenterScreen({super.key});
 
@@ -36,6 +45,12 @@ class _UpdateCenterScreenState extends State<UpdateCenterScreen> {
   bool _busy = false;
   List<String> _bullets = const [];
 
+  /// Version the notes card is titled with, and whether those notes belong
+  /// to a release that still has to be installed ([WhatsNewCatalog] cannot
+  /// know it — they came from `config/app`).
+  String _notesVersion = '';
+  bool _notesUpcoming = false;
+
   @override
   void initState() {
     super.initState();
@@ -45,11 +60,40 @@ class _UpdateCenterScreenState extends State<UpdateCenterScreen> {
   Future<void> _load() async {
     await AppVersion.load();
     final info = await AppUpdateService.playAvailability();
+    // Fresh remote config, fail-soft: offline (or Firestore not ready) this
+    // returns null and the Hive-cached copy below is used instead.
+    await SyncService.pullConfig();
     if (!mounted) return;
+
+    final installed = AppVersion.instance.version;
+    var bullets = WhatsNewCatalog.bulletsFor(installed);
+    var notesVersion = AppVersion.instance.label;
+    var upcoming = false;
+
+    if (info.updateAvailable) {
+      // A newer bundle is waiting, so the player is asking "what will I
+      // get?" — never answer with the installed build's notes.
+      upcoming = true;
+      final config = SyncService.cachedConfig();
+      bullets = WhatsNewCatalog.upcomingBullets(
+        installedVersion: installed,
+        remoteVersion: config.latestReleaseVersion,
+        remoteNotes: config.latestReleaseNotes,
+      );
+      notesVersion =
+          bullets.isNotEmpty
+              ? config.latestReleaseVersion
+              : (config.latestReleaseVersion.isNotEmpty
+                  ? config.latestReleaseVersion
+                  : '');
+    }
+
     setState(() {
       _info = info;
       _phase = _Phase.idle;
-      _bullets = WhatsNewCatalog.bulletsFor(AppVersion.instance.version);
+      _bullets = bullets;
+      _notesVersion = notesVersion;
+      _notesUpcoming = upcoming;
     });
     // Opening this screen counts as having seen the changelog — same as
     // dismissing the old dialog, so the banner does not come back.
@@ -140,7 +184,7 @@ class _UpdateCenterScreenState extends State<UpdateCenterScreen> {
         children: [
           _statusCard(version),
           const SizedBox(height: 14),
-          _whatsNewCard(version),
+          _whatsNewCard(),
           const SizedBox(height: 14),
           NeonButton(
             text: S.updateCenterOpenStore,
@@ -281,13 +325,13 @@ class _UpdateCenterScreenState extends State<UpdateCenterScreen> {
     );
   }
 
-  Widget _whatsNewCard(String version) {
+  Widget _whatsNewCard() {
     return GlassCard(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Text(
-            S.whatsNewEyebrow,
+            _notesUpcoming ? S.whatsNewUpcomingEyebrow : S.whatsNewEyebrow,
             textAlign: TextAlign.center,
             style: const TextStyle(
               color: AppColors.neonCyan,
@@ -298,7 +342,9 @@ class _UpdateCenterScreenState extends State<UpdateCenterScreen> {
           ),
           const SizedBox(height: 6),
           Text(
-            S.whatsNewTitle(v: version),
+            _notesVersion.isNotEmpty
+                ? S.whatsNewTitle(v: _notesVersion)
+                : S.updateCenterTitle,
             textAlign: TextAlign.center,
             style: const TextStyle(
               color: AppColors.textPrimary,
@@ -309,7 +355,9 @@ class _UpdateCenterScreenState extends State<UpdateCenterScreen> {
           const SizedBox(height: 14),
           if (_bullets.isEmpty)
             Text(
-              S.updateCenterNoNotes,
+              _notesUpcoming
+                  ? S.updateCenterNotesAfterUpdate
+                  : S.updateCenterNoNotes,
               textAlign: TextAlign.center,
               style: const TextStyle(
                 color: AppColors.textSecondary,
