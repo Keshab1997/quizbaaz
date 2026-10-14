@@ -7,6 +7,26 @@ class WhatsNewCatalog {
   WhatsNewCatalog._();
 
   static const Map<String, Map<String, List<String>>> _releases = {
+    '1.0.22': {
+      'en': [
+        'Chapter sets feel smoother — the Start and Revise buttons are now bigger, clearer and easier to tap.',
+        'Start stands out with a soft glow, while Revise sits calmly beside it — play first, revise anytime.',
+        'History → Retry matches the same polished style.',
+        'Small design fixes for a cleaner, calmer study flow.',
+      ],
+      'bn': [
+        'চ্যাপ্টার সেট এখন আরও ঝরঝরে — Start ও Revise বাটন আরও বড়, পরিষ্কার ও সহজে চাপার মতো করা হয়েছে।',
+        'Start বাটন হালকা গ্লো নিয়ে চোখে পড়ে, পাশে Revise থাকে শান্ত tinted বাটন হিসেবে — আগে খেলুন, যেকোনো সময় পড়ুন।',
+        'History ট্যাবের Retry বাটনও একই পরিষ্কার স্টাইলে সাজানো হয়েছে।',
+        'পড়ার অভিজ্ঞতা আরও মসৃণ করতে ছোটখাটো ডিজাইন ঠিক করা হয়েছে।',
+      ],
+      'hi': [
+        'चैप्टर सेट अब और भी सहज — Start और Revise बटन अब बड़े, साफ़ और आसानी से दबाए जा सकते हैं।',
+        'Start बटन हल्की चमक के साथ सामने दिखता है, पास में Revise शांत tinted बटन के रूप में — पहले खेलें, कभी भी पढ़ें।',
+        'History टैब का Retry बटन भी इसी साफ़ स्टाइल में है।',
+        'पढ़ाई के अनुभव को सहज बनाने के लिए छोटे डिज़ाइन सुधार किए गए।',
+      ],
+    },
     '1.0.21': {
       'en': [
         'New Revise mode — open any chapter set as a read-only revision: every question with the correct answer highlighted and its explanation. Nothing is scored.',
