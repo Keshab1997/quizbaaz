@@ -228,24 +228,27 @@ class _ChapterSetsScreenState extends State<ChapterSetsScreen>
           else
             SizedBox(
               width: double.infinity,
-              height: 48,
+              height: 52,
               child: ElevatedButton.icon(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: widget.accent,
                   foregroundColor: AppColors.bgDark,
+                  elevation: 6,
+                  shadowColor: widget.accent.withValues(alpha: 0.45),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(14),
+                    borderRadius: BorderRadius.circular(16),
                   ),
                 ),
                 onPressed: () => _play(next, practice: false),
-                icon: const Icon(Icons.play_arrow_rounded, size: 22),
+                icon: const Icon(Icons.play_arrow_rounded, size: 24),
                 label: Text(
                   _progress.isEmpty
                       ? S.setsStart(n: next + 1)
                       : S.setsContinue(n: next + 1),
                   style: const TextStyle(
                     fontWeight: FontWeight.w900,
-                    fontSize: 14,
+                    fontSize: 15,
+                    letterSpacing: 0.2,
                   ),
                 ),
               ),
@@ -354,12 +357,14 @@ class _ChapterSetsScreenState extends State<ChapterSetsScreen>
               ],
             ),
             if (!locked) ...[
-              const SizedBox(height: 12),
+              const SizedBox(height: 14),
               Row(
                 children: [
-                  Expanded(child: _playButton(index, done)),
-                  const SizedBox(width: 8),
-                  Expanded(child: _reviseButton(index)),
+                  // Play is the primary action, Revise the quieter study
+                  // action — the width split says so before the colours do.
+                  Expanded(flex: 5, child: _playButton(index, done)),
+                  const SizedBox(width: 10),
+                  Expanded(flex: 4, child: _reviseButton(index)),
                 ],
               ),
             ],
@@ -379,7 +384,7 @@ class _ChapterSetsScreenState extends State<ChapterSetsScreen>
             : S.setsContinue(n: index + 1);
 
     return SizedBox(
-      height: 36,
+      height: 44,
       child: ElevatedButton.icon(
         // Retry means "play the finished set again" — practice, so it neither
         // pays out again nor spends power-ups.
@@ -387,24 +392,29 @@ class _ChapterSetsScreenState extends State<ChapterSetsScreen>
         style: ElevatedButton.styleFrom(
           backgroundColor: widget.accent,
           foregroundColor: AppColors.bgDark,
-          elevation: 0,
-          padding: const EdgeInsets.symmetric(horizontal: 8),
-          minimumSize: const Size(0, 36),
+          elevation: 4,
+          shadowColor: widget.accent.withValues(alpha: 0.4),
+          padding: const EdgeInsets.symmetric(horizontal: 12),
+          minimumSize: const Size(0, 44),
           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(11),
+            borderRadius: BorderRadius.circular(14),
           ),
         ),
         icon: Icon(
           replay ? Icons.refresh_rounded : Icons.play_arrow_rounded,
-          size: 16,
+          size: 19,
         ),
         label: Flexible(
           child: Text(
             label,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: const TextStyle(fontSize: 11.5, fontWeight: FontWeight.w800),
+            style: const TextStyle(
+              fontSize: 13,
+              fontWeight: FontWeight.w900,
+              letterSpacing: 0.2,
+            ),
           ),
         ),
       ),
@@ -413,27 +423,37 @@ class _ChapterSetsScreenState extends State<ChapterSetsScreen>
 
   Widget _reviseButton(int index) {
     return SizedBox(
-      height: 36,
+      height: 44,
       child: OutlinedButton.icon(
         // Reading-only revision of the set: no timer, no score, nothing counted.
         onPressed: () => _revise(index),
         style: OutlinedButton.styleFrom(
+          // A tinted fill, not a bare outline: on the dark glass card a
+          // 1px outline alone reads as disabled, which Revise is not.
+          backgroundColor: widget.accent.withValues(alpha: 0.14),
           foregroundColor: widget.accent,
-          padding: const EdgeInsets.symmetric(horizontal: 8),
-          minimumSize: const Size(0, 36),
+          padding: const EdgeInsets.symmetric(horizontal: 12),
+          minimumSize: const Size(0, 44),
           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-          side: BorderSide(color: widget.accent.withValues(alpha: 0.55)),
+          side: BorderSide(
+            color: widget.accent.withValues(alpha: 0.75),
+            width: 1.3,
+          ),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(11),
+            borderRadius: BorderRadius.circular(14),
           ),
         ),
-        icon: const Icon(Icons.menu_book_rounded, size: 15),
+        icon: const Icon(Icons.menu_book_rounded, size: 18),
         label: Flexible(
           child: Text(
             S.reviseAction,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: const TextStyle(fontSize: 11.5, fontWeight: FontWeight.w800),
+            style: const TextStyle(
+              fontSize: 13,
+              fontWeight: FontWeight.w900,
+              letterSpacing: 0.2,
+            ),
           ),
         ),
       ),
@@ -634,15 +654,28 @@ class _ChapterSetsScreenState extends State<ChapterSetsScreen>
             ),
             OutlinedButton.icon(
               style: OutlinedButton.styleFrom(
-                minimumSize: const Size(0, 34),
-                padding: const EdgeInsets.symmetric(horizontal: 12),
-                side: BorderSide(color: widget.accent.withValues(alpha: 0.5)),
+                // Same tonal treatment as the Revise button on the Sets tab,
+                // so the secondary action reads identically in both tabs.
+                backgroundColor: widget.accent.withValues(alpha: 0.14),
+                minimumSize: const Size(0, 40),
+                padding: const EdgeInsets.symmetric(horizontal: 14),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                side: BorderSide(
+                  color: widget.accent.withValues(alpha: 0.75),
+                  width: 1.3,
+                ),
               ),
               onPressed: () => _play(entry.setIndex, practice: true),
-              icon: Icon(Icons.refresh_rounded, size: 15, color: widget.accent),
+              icon: Icon(Icons.refresh_rounded, size: 16, color: widget.accent),
               label: Text(
                 S.setsRetry,
-                style: TextStyle(fontSize: 11.5, color: widget.accent),
+                style: TextStyle(
+                  fontSize: 12.5,
+                  fontWeight: FontWeight.w800,
+                  color: widget.accent,
+                ),
               ),
             ),
           ],
