@@ -6,5 +6,5668 @@
     "hi": "कंप्यूटर और सूचना प्रौद्योगिकी"
   },
   "class_standard": "Class 10",
-  "questions": []
+  "questions": [
+    {
+      "id": "chhaya_prakashani_ch_05_q001",
+      "question": {
+        "en": "What is the meaning of the word 'Computer'?",
+        "bn": "'Computer' শব্দটির অর্থ কী?",
+        "hi": "'Computer' शब्द का अर्थ क्या है?"
+      },
+      "options": [
+        {
+          "en": "Calculation",
+          "bn": "গণনা করা",
+          "hi": "गणना करना"
+        },
+        {
+          "en": "Communication",
+          "bn": "যোগাযোগ করা",
+          "hi": "संचार करना"
+        },
+        {
+          "en": "Programming",
+          "bn": "প্রোগ্রামিং করা",
+          "hi": "प्रोग्रामिंग करना"
+        },
+        {
+          "en": "Storing",
+          "bn": "সংরক্ষণ করা",
+          "hi": "संग्रह करना"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The word 'Computer' is derived from 'Compute', which means to calculate.",
+        "bn": "'Computer' শব্দটি 'Compute' থেকে এসেছে, যার অর্থ গণনা করা।",
+        "hi": "'Computer' शब्द 'Compute' से बना है, जिसका अर्थ गणना करना है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q002",
+      "question": {
+        "en": "How many basic stages are there in the working process of a computer?",
+        "bn": "কম্পিউটারের কাজের প্রক্রিয়ায় কয়টি মৌলিক ধাপ রয়েছে?",
+        "hi": "कंप्यूटर की कार्यप्रणाली में कितने मूल चरण होते हैं?"
+      },
+      "options": [
+        {
+          "en": "Two",
+          "bn": "দুটি",
+          "hi": "दो"
+        },
+        {
+          "en": "Three",
+          "bn": "তিনটি",
+          "hi": "तीन"
+        },
+        {
+          "en": "Four",
+          "bn": "চারটি",
+          "hi": "चार"
+        },
+        {
+          "en": "Five",
+          "bn": "পাঁচটি",
+          "hi": "पाँच"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "en": "The four basic stages are Input, Processing, Output, and Storage.",
+        "bn": "চারটি মৌলিক ধাপ হল ইনপুট, প্রসেসিং, আউটপুট এবং স্টোরেজ।",
+        "hi": "चार मूल चरण हैं इनपुट, प्रोसेसिंग, आउटपुट और स्टोरेज।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q003",
+      "question": {
+        "en": "What is the combined sequence of Input, Processing, Output, and Storage called?",
+        "bn": "ইনপুট, প্রসেসিং, আউটপুট ও স্টোরেজের সমন্বিত প্রক্রিয়াকে কী বলা হয়?",
+        "hi": "इनपुट, प्रोसेसिंग, आउटपुट और स्टोरेज की संयुक्त प्रक्रिया को क्या कहा जाता है?"
+      },
+      "options": [
+        {
+          "en": "Operating System",
+          "bn": "অপারেটিং সিস্টেম",
+          "hi": "ऑपरेटिंग सिस्टम"
+        },
+        {
+          "en": "Information Processing Cycle",
+          "bn": "ইনফরমেশন প্রসেসিং সাইকেল",
+          "hi": "सूचना प्रसंस्करण चक्र"
+        },
+        {
+          "en": "Computer Network",
+          "bn": "কম্পিউটার নেটওয়ার্ক",
+          "hi": "कंप्यूटर नेटवर्क"
+        },
+        {
+          "en": "Programming Cycle",
+          "bn": "প্রোগ্রামিং সাইকেল",
+          "hi": "प्रोग्रामिंग चक्र"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "The sequence of Input, Processing, Output, and Storage is called the Information Processing Cycle.",
+        "bn": "ইনপুট, প্রসেসিং, আউটপুট ও স্টোরেজের ধারাবাহিক প্রক্রিয়াকে ইনফরমেশন প্রসেসিং সাইকেল বলে।",
+        "hi": "इनपुट, प्रोसेसिंग, आउटपुट और स्टोरेज की क्रमिक प्रक्रिया को सूचना प्रसंस्करण चक्र कहते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q004",
+      "question": {
+        "en": "Who is known as the Father of Computer Science?",
+        "bn": "কম্পিউটার বিজ্ঞানের জনক কাকে বলা হয়?",
+        "hi": "कंप्यूटर विज्ञान का जनक किसे कहा जाता है?"
+      },
+      "options": [
+        {
+          "en": "Alan Turing",
+          "bn": "অ্যালান টুরিং",
+          "hi": "एलन ट्यूरिंग"
+        },
+        {
+          "en": "Charles Babbage",
+          "bn": "চার্লস ব্যাবেজ",
+          "hi": "चार्ल्स बैबेज"
+        },
+        {
+          "en": "Bill Gates",
+          "bn": "বিল গেটস",
+          "hi": "बिल गेट्स"
+        },
+        {
+          "en": "John von Neumann",
+          "bn": "জন ভন নিউম্যান",
+          "hi": "जॉन वॉन न्यूमैन"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "Charles Babbage is known as the Father of Computer Science for his pioneering work on mechanical computers.",
+        "bn": "যান্ত্রিক কম্পিউটার নির্মাণের অগ্রণী প্রচেষ্টার জন্য চার্লস ব্যাবেজকে কম্পিউটার বিজ্ঞানের জনক বলা হয়।",
+        "hi": "यांत्रिक कंप्यूटर के विकास में अग्रणी कार्य के कारण चार्ल्स बैबेज को कंप्यूटर विज्ञान का जनक कहा जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q005",
+      "question": {
+        "en": "In which year did the first computer arrive in India at ISI?",
+        "bn": "কোন সালে ভারতে ISI-তে প্রথম কম্পিউটার আসে?",
+        "hi": "किस वर्ष भारत में ISI में पहला कंप्यूटर आया था?"
+      },
+      "options": [
+        {
+          "en": "1947",
+          "bn": "1947",
+          "hi": "1947"
+        },
+        {
+          "en": "1950",
+          "bn": "1950",
+          "hi": "1950"
+        },
+        {
+          "en": "1956",
+          "bn": "1956",
+          "hi": "1956"
+        },
+        {
+          "en": "1965",
+          "bn": "1965",
+          "hi": "1965"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "en": "According to the textbook passage, the first computer arrived at ISI in India in 1956.",
+        "bn": "পাঠ্যাংশ অনুযায়ী, 1956 সালে ভারতে ISI-তে প্রথম কম্পিউটার আসে।",
+        "hi": "पाठ्यांश के अनुसार, 1956 में भारत के ISI में पहला कंप्यूटर आया था।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q006",
+      "question": {
+        "en": "Which of the following is a type of digital computer?",
+        "bn": "নিচের কোনটি ডিজিটাল কম্পিউটারের একটি প্রকার?",
+        "hi": "निम्नलिखित में से कौन-सा डिजिटल कंप्यूटर का एक प्रकार है?"
+      },
+      "options": [
+        {
+          "en": "Microcomputer",
+          "bn": "মাইক্রোকম্পিউটার",
+          "hi": "माइक्रो कंप्यूटर"
+        },
+        {
+          "en": "Analog thermometer",
+          "bn": "অ্যানালগ থার্মোমিটার",
+          "hi": "एनालॉग थर्मामीटर"
+        },
+        {
+          "en": "Mercury barometer",
+          "bn": "পারদ ব্যারোমিটার",
+          "hi": "पारा बैरोमीटर"
+        },
+        {
+          "en": "Mechanical clock",
+          "bn": "যান্ত্রিক ঘড়ি",
+          "hi": "यांत्रिक घड़ी"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "A microcomputer is one of the main types of digital computers.",
+        "bn": "মাইক্রোকম্পিউটার ডিজিটাল কম্পিউটারের একটি প্রধান প্রকার।",
+        "hi": "माइक्रो कंप्यूटर डिजिटल कंप्यूटर के प्रमुख प्रकारों में से एक है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q007",
+      "question": {
+        "en": "Which of the following is another type of digital computer?",
+        "bn": "নিচের কোনটি ডিজিটাল কম্পিউটারের অন্য একটি প্রকার?",
+        "hi": "निम्नलिखित में से कौन-सा डिजिटल कंप्यूटर का एक अन्य प्रकार है?"
+      },
+      "options": [
+        {
+          "en": "Minicomputer",
+          "bn": "মিনিকম্পিউটার",
+          "hi": "मिनी कंप्यूटर"
+        },
+        {
+          "en": "Photocopier",
+          "bn": "ফটোকপিয়ার",
+          "hi": "फोटोकॉपी मशीन"
+        },
+        {
+          "en": "Scanner paper",
+          "bn": "স্ক্যানারের কাগজ",
+          "hi": "स्कैनर का कागज़"
+        },
+        {
+          "en": "Projector screen",
+          "bn": "প্রজেক্টরের পর্দা",
+          "hi": "प्रोजेक्टर की स्क्रीन"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "A minicomputer is a category of digital computer.",
+        "bn": "মিনিকম্পিউটার ডিজিটাল কম্পিউটারের একটি শ্রেণি।",
+        "hi": "मिनी कंप्यूटर डिजिटल कंप्यूटर की एक श्रेणी है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q011",
+      "question": {
+        "en": "How many main units does a computer have according to the textbook?",
+        "bn": "পাঠ্যবই অনুযায়ী, কম্পিউটারের প্রধান ইউনিট কয়টি?",
+        "hi": "पाठ्यपुस्तक के अनुसार, कंप्यूटर की मुख्य इकाइयाँ कितनी हैं?"
+      },
+      "options": [
+        {
+          "en": "Two",
+          "bn": "দুটি",
+          "hi": "दो"
+        },
+        {
+          "en": "Three",
+          "bn": "তিনটি",
+          "hi": "तीन"
+        },
+        {
+          "en": "Four",
+          "bn": "চারটি",
+          "hi": "चार"
+        },
+        {
+          "en": "Six",
+          "bn": "ছয়টি",
+          "hi": "छह"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "en": "The four main units are the CPU, Input Unit, Output Unit, and Mass Storage Unit.",
+        "bn": "চারটি প্রধান ইউনিট হল CPU, ইনপুট ইউনিট, আউটপুট ইউনিট এবং মাস স্টোরেজ ইউনিট।",
+        "hi": "चार मुख्य इकाइयाँ हैं CPU, इनपुट यूनिट, आउटपुट यूनिट और मास स्टोरेज यूनिट।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q012",
+      "question": {
+        "en": "Which component is known as the brain of the computer?",
+        "bn": "কম্পিউটারের মস্তিষ্ক কোন অংশকে বলা হয়?",
+        "hi": "कंप्यूटर का मस्तिष्क किस भाग को कहा जाता है?"
+      },
+      "options": [
+        {
+          "en": "Monitor",
+          "bn": "মনিটর",
+          "hi": "मॉनिटर"
+        },
+        {
+          "en": "CPU",
+          "bn": "CPU",
+          "hi": "CPU"
+        },
+        {
+          "en": "Keyboard",
+          "bn": "কীবোর্ড",
+          "hi": "कीबोर्ड"
+        },
+        {
+          "en": "Mouse",
+          "bn": "মাউস",
+          "hi": "माउस"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "The CPU controls and processes computer operations, so it is known as the brain of the computer.",
+        "bn": "CPU কম্পিউটারের কার্যাবলি নিয়ন্ত্রণ ও প্রক্রিয়াকরণ করে, তাই একে কম্পিউটারের মস্তিষ্ক বলা হয়।",
+        "hi": "CPU कंप्यूटर के कार्यों को नियंत्रित और संसाधित करता है, इसलिए इसे कंप्यूटर का मस्तिष्क कहा जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q013",
+      "question": {
+        "en": "What is another common name for the CPU?",
+        "bn": "CPU-এর আরেকটি প্রচলিত নাম কী?",
+        "hi": "CPU का दूसरा प्रचलित नाम क्या है?"
+      },
+      "options": [
+        {
+          "en": "Microprocessor",
+          "bn": "মাইক্রোপ্রসেসর",
+          "hi": "माइक्रोप्रोसेसर"
+        },
+        {
+          "en": "Hard Disk",
+          "bn": "হার্ড ডিস্ক",
+          "hi": "हार्ड डिस्क"
+        },
+        {
+          "en": "Power Supply",
+          "bn": "পাওয়ার সাপ্লাই",
+          "hi": "पावर सप्लाई"
+        },
+        {
+          "en": "Monitor",
+          "bn": "মনিটর",
+          "hi": "मॉनिटर"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The CPU is often referred to as a microprocessor.",
+        "bn": "CPU-কে অনেক সময় মাইক্রোপ্রসেসর বলা হয়।",
+        "hi": "CPU को अक्सर माइक्रोप्रोसेसर कहा जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q014",
+      "question": {
+        "en": "Which of the following is a main component of the CPU?",
+        "bn": "নিচের কোনটি CPU-এর একটি প্রধান অংশ?",
+        "hi": "निम्नलिखित में से कौन-सा CPU का एक मुख्य भाग है?"
+      },
+      "options": [
+        {
+          "en": "Arithmetic Logic Unit (ALU)",
+          "bn": "অ্যারিথমেটিক লজিক ইউনিট (ALU)",
+          "hi": "अंकगणितीय तर्क इकाई (ALU)"
+        },
+        {
+          "en": "Keyboard",
+          "bn": "কীবোর্ড",
+          "hi": "कीबोर्ड"
+        },
+        {
+          "en": "Printer",
+          "bn": "প্রিন্টার",
+          "hi": "प्रिंटर"
+        },
+        {
+          "en": "Speaker",
+          "bn": "স্পিকার",
+          "hi": "स्पीकर"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The ALU performs arithmetic calculations and logical operations within the CPU.",
+        "bn": "ALU CPU-এর মধ্যে গাণিতিক হিসাব ও যৌক্তিক কাজ সম্পাদন করে।",
+        "hi": "ALU, CPU में अंकगणितीय गणनाएँ और तार्किक क्रियाएँ करता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q015",
+      "question": {
+        "en": "What is the full form of ALU?",
+        "bn": "ALU-এর সম্পূর্ণ রূপ কী?",
+        "hi": "ALU का पूरा नाम क्या है?"
+      },
+      "options": [
+        {
+          "en": "Arithmetic Logic Unit",
+          "bn": "অ্যারিথমেটিক লজিক ইউনিট",
+          "hi": "अंकगणितीय तर्क इकाई"
+        },
+        {
+          "en": "Automatic Language Unit",
+          "bn": "অটোমেটিক ল্যাঙ্গুয়েজ ইউনিট",
+          "hi": "स्वचालित भाषा इकाई"
+        },
+        {
+          "en": "Advanced Link Utility",
+          "bn": "অ্যাডভান্সড লিংক ইউটিলিটি",
+          "hi": "उन्नत लिंक उपयोगिता"
+        },
+        {
+          "en": "Application Logic Utility",
+          "bn": "অ্যাপ্লিকেশন লজিক ইউটিলিটি",
+          "hi": "एप्लिकेशन तर्क उपयोगिता"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "ALU stands for Arithmetic Logic Unit.",
+        "bn": "ALU-এর সম্পূর্ণ রূপ হল Arithmetic Logic Unit।",
+        "hi": "ALU का पूरा नाम Arithmetic Logic Unit है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q016",
+      "question": {
+        "en": "What is the full form of CU in a computer?",
+        "bn": "কম্পিউটারে CU-এর সম্পূর্ণ রূপ কী?",
+        "hi": "कंप्यूटर में CU का पूरा नाम क्या है?"
+      },
+      "options": [
+        {
+          "en": "Control Unit",
+          "bn": "কন্ট্রোল ইউনিট",
+          "hi": "नियंत्रण इकाई"
+        },
+        {
+          "en": "Computer Utility",
+          "bn": "কম্পিউটার ইউটিলিটি",
+          "hi": "कंप्यूटर उपयोगिता"
+        },
+        {
+          "en": "Central User",
+          "bn": "সেন্ট্রাল ইউজার",
+          "hi": "केंद्रीय उपयोगकर्ता"
+        },
+        {
+          "en": "Calculation Unit",
+          "bn": "ক্যালকুলেশন ইউনিট",
+          "hi": "गणना इकाई"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "CU stands for Control Unit, which directs and coordinates computer operations.",
+        "bn": "CU-এর সম্পূর্ণ রূপ হল Control Unit, যা কম্পিউটারের কার্যাবলি পরিচালনা ও সমন্বয় করে।",
+        "hi": "CU का पूरा नाम Control Unit है, जो कंप्यूटर के कार्यों को नियंत्रित और समन्वित करता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q017",
+      "question": {
+        "en": "Which unit is also known as the primary storage unit of the CPU?",
+        "bn": "CPU-এর প্রাথমিক স্টোরেজ ইউনিট হিসেবে কোন অংশটি পরিচিত?",
+        "hi": "CPU की प्राथमिक स्टोरेज इकाई के रूप में किस भाग को जाना जाता है?"
+      },
+      "options": [
+        {
+          "en": "Memory",
+          "bn": "মেমরি",
+          "hi": "मेमोरी"
+        },
+        {
+          "en": "Mouse",
+          "bn": "মাউস",
+          "hi": "माउस"
+        },
+        {
+          "en": "Printer",
+          "bn": "প্রিন্টার",
+          "hi": "प्रिंटर"
+        },
+        {
+          "en": "Scanner",
+          "bn": "স্ক্যানার",
+          "hi": "स्कैनर"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Memory serves as the primary storage unit in the computer system.",
+        "bn": "মেমরি কম্পিউটার সিস্টেমের প্রাথমিক স্টোরেজ ইউনিট হিসেবে কাজ করে।",
+        "hi": "मेमोरी कंप्यूटर सिस्टम की प्राथमिक स्टोरेज इकाई के रूप में कार्य करती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q018",
+      "question": {
+        "en": "Where is the processing section of a computer located?",
+        "bn": "কম্পিউটারের প্রসেসিং অংশ কোথায় থাকে?",
+        "hi": "कंप्यूटर का प्रोसेसिंग भाग कहाँ स्थित होता है?"
+      },
+      "options": [
+        {
+          "en": "Inside the system unit",
+          "bn": "সিস্টেম ইউনিটের ভিতরে",
+          "hi": "सिस्टम यूनिट के अंदर"
+        },
+        {
+          "en": "Inside the keyboard",
+          "bn": "কীবোর্ডের ভিতরে",
+          "hi": "कीबोर्ड के अंदर"
+        },
+        {
+          "en": "Inside the monitor screen",
+          "bn": "মনিটরের পর্দার ভিতরে",
+          "hi": "मॉनिटर की स्क्रीन के अंदर"
+        },
+        {
+          "en": "Inside the mouse",
+          "bn": "মাউসের ভিতরে",
+          "hi": "माउस के अंदर"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The processing components are located inside the system unit.",
+        "bn": "প্রসেসিংয়ের উপাদানগুলি সিস্টেম ইউনিটের ভিতরে থাকে।",
+        "hi": "प्रोसेसिंग के घटक सिस्टम यूनिट के अंदर स्थित होते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q019",
+      "question": {
+        "en": "What is the full form of SMPS?",
+        "bn": "SMPS-এর সম্পূর্ণ রূপ কী?",
+        "hi": "SMPS का पूरा नाम क्या है?"
+      },
+      "options": [
+        {
+          "en": "Switched Mode Power Supply",
+          "bn": "সুইচড মোড পাওয়ার সাপ্লাই",
+          "hi": "स्विच्ड मोड पावर सप्लाई"
+        },
+        {
+          "en": "System Memory Processing Service",
+          "bn": "সিস্টেম মেমরি প্রসেসিং সার্ভিস",
+          "hi": "सिस्टम मेमोरी प्रोसेसिंग सेवा"
+        },
+        {
+          "en": "Standard Main Power System",
+          "bn": "স্ট্যান্ডার্ড মেইন পাওয়ার সিস্টেম",
+          "hi": "मानक मुख्य विद्युत प्रणाली"
+        },
+        {
+          "en": "Software Management Program System",
+          "bn": "সফটওয়্যার ম্যানেজমেন্ট প্রোগ্রাম সিস্টেম",
+          "hi": "सॉफ्टवेयर प्रबंधन प्रोग्राम प्रणाली"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "SMPS stands for Switched Mode Power Supply and supplies regulated power to computer components.",
+        "bn": "SMPS-এর সম্পূর্ণ রূপ হল Switched Mode Power Supply, যা কম্পিউটারের বিভিন্ন অংশে নিয়ন্ত্রিত বিদ্যুৎ সরবরাহ করে।",
+        "hi": "SMPS का पूरा नाम Switched Mode Power Supply है, जो कंप्यूटर के विभिन्न घटकों को नियंत्रित विद्युत आपूर्ति करता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q020",
+      "question": {
+        "en": "Which of the following is a component inside the system unit?",
+        "bn": "নিচের কোনটি সিস্টেম ইউনিটের ভিতরে থাকা একটি উপাদান?",
+        "hi": "निम्नलिखित में से कौन-सा सिस्टम यूनिट के अंदर स्थित एक घटक है?"
+      },
+      "options": [
+        {
+          "en": "Motherboard",
+          "bn": "মাদারবোর্ড",
+          "hi": "मदरबोर्ड"
+        },
+        {
+          "en": "Mouse pad",
+          "bn": "মাউস প্যাড",
+          "hi": "माउस पैड"
+        },
+        {
+          "en": "Desk",
+          "bn": "ডেস্ক",
+          "hi": "मेज़"
+        },
+        {
+          "en": "Headphones",
+          "bn": "হেডফোন",
+          "hi": "हेडफोन"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The motherboard is a major internal component that connects the computer's hardware.",
+        "bn": "মাদারবোর্ড কম্পিউটারের একটি প্রধান অভ্যন্তরীণ উপাদান, যা বিভিন্ন হার্ডওয়্যার অংশকে সংযুক্ত করে।",
+        "hi": "मदरबोर्ड कंप्यूटर का एक प्रमुख आंतरिक घटक है, जो विभिन्न हार्डवेयर भागों को जोड़ता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q021",
+      "question": {
+        "en": "Which memory retains its stored information even when the power supply is disconnected?",
+        "bn": "বিদ্যুৎ সংযোগ বিচ্ছিন্ন হলেও কোন মেমরিতে সঞ্চিত তথ্য অক্ষত থাকে?",
+        "hi": "विद्युत आपूर्ति बंद होने पर भी किस मेमोरी में संग्रहीत जानकारी बनी रहती है?"
+      },
+      "options": [
+        {
+          "en": "RAM",
+          "bn": "RAM",
+          "hi": "RAM"
+        },
+        {
+          "en": "ROM",
+          "bn": "ROM",
+          "hi": "ROM"
+        },
+        {
+          "en": "Cache memory",
+          "bn": "ক্যাশ মেমরি",
+          "hi": "कैश मेमोरी"
+        },
+        {
+          "en": "Register",
+          "bn": "রেজিস্টার",
+          "hi": "रजिस्टर"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "ROM is non-volatile memory, so it retains its contents even when the power is disconnected.",
+        "bn": "ROM হল নন-ভোলাটাইল মেমরি, তাই বিদ্যুৎ সংযোগ বিচ্ছিন্ন হলেও এতে সঞ্চিত তথ্য মুছে যায় না।",
+        "hi": "ROM नॉन-वोलेटाइल मेमोरी है, इसलिए विद्युत आपूर्ति बंद होने पर भी इसमें संग्रहीत जानकारी नहीं मिटती।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q022",
+      "question": {
+        "en": "What is the full form of ROM?",
+        "bn": "ROM-এর সম্পূর্ণ রূপ কী?",
+        "hi": "ROM का पूरा नाम क्या है?"
+      },
+      "options": [
+        {
+          "en": "Read Only Memory",
+          "bn": "রিড অনলি মেমরি",
+          "hi": "रीड ओनली मेमोरी"
+        },
+        {
+          "en": "Random Output Memory",
+          "bn": "র‍্যান্ডম আউটপুট মেমরি",
+          "hi": "रैंडम आउटपुट मेमोरी"
+        },
+        {
+          "en": "Read Open Module",
+          "bn": "রিড ওপেন মডিউল",
+          "hi": "रीड ओपन मॉड्यूल"
+        },
+        {
+          "en": "Rapid Operating Memory",
+          "bn": "র‍্যাপিড অপারেটিং মেমরি",
+          "hi": "रैपिड ऑपरेटिंग मेमोरी"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "ROM stands for Read Only Memory.",
+        "bn": "ROM-এর সম্পূর্ণ রূপ হল Read Only Memory।",
+        "hi": "ROM का पूरा नाम Read Only Memory है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q023",
+      "question": {
+        "en": "What does POST stand for in computer terminology?",
+        "bn": "কম্পিউটার পরিভাষায় POST-এর সম্পূর্ণ রূপ কী?",
+        "hi": "कंप्यूटर शब्दावली में POST का पूरा नाम क्या है?"
+      },
+      "options": [
+        {
+          "en": "Power-On Self-Test",
+          "bn": "পাওয়ার-অন সেল্ফ-টেস্ট",
+          "hi": "पावर-ऑन सेल्फ-टेस्ट"
+        },
+        {
+          "en": "Program Operating System Test",
+          "bn": "প্রোগ্রাম অপারেটিং সিস্টেম টেস্ট",
+          "hi": "प्रोग्राम ऑपरेटिंग सिस्टम टेस्ट"
+        },
+        {
+          "en": "Power Output Storage Test",
+          "bn": "পাওয়ার আউটপুট স্টোরেজ টেস্ট",
+          "hi": "पावर आउटपुट स्टोरेज टेस्ट"
+        },
+        {
+          "en": "Primary Online System Tool",
+          "bn": "প্রাইমারি অনলাইন সিস্টেম টুল",
+          "hi": "प्राइमरी ऑनलाइन सिस्टम टूल"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "POST stands for Power-On Self-Test, which checks essential hardware when a computer starts.",
+        "bn": "POST-এর সম্পূর্ণ রূপ Power-On Self-Test, যা কম্পিউটার চালু হওয়ার সময় গুরুত্বপূর্ণ হার্ডওয়্যার পরীক্ষা করে।",
+        "hi": "POST का पूरा नाम Power-On Self-Test है, जो कंप्यूटर चालू होने पर आवश्यक हार्डवेयर की जाँच करता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q024",
+      "question": {
+        "en": "Which memory is volatile and loses its stored data when the power supply is disconnected?",
+        "bn": "কোন মেমরি ভোলাটাইল এবং বিদ্যুৎ সংযোগ বিচ্ছিন্ন হলে এর সঞ্চিত তথ্য মুছে যায়?",
+        "hi": "कौन-सी मेमोरी वोलेटाइल होती है और विद्युत आपूर्ति बंद होने पर उसका डेटा मिट जाता है?"
+      },
+      "options": [
+        {
+          "en": "ROM",
+          "bn": "ROM",
+          "hi": "ROM"
+        },
+        {
+          "en": "RAM",
+          "bn": "RAM",
+          "hi": "RAM"
+        },
+        {
+          "en": "DVD",
+          "bn": "DVD",
+          "hi": "DVD"
+        },
+        {
+          "en": "Hard Disk",
+          "bn": "হার্ড ডিস্ক",
+          "hi": "हार्ड डिस्क"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "RAM is volatile memory and loses its stored data when power is disconnected.",
+        "bn": "RAM হল ভোলাটাইল মেমরি, তাই বিদ্যুৎ সংযোগ বিচ্ছিন্ন হলে এর সঞ্চিত তথ্য মুছে যায়।",
+        "hi": "RAM वोलेटाइल मेमोरी है, इसलिए विद्युत आपूर्ति बंद होने पर इसमें संग्रहीत डेटा मिट जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q025",
+      "question": {
+        "en": "What is the primary function of the input unit?",
+        "bn": "ইনপুট ইউনিটের প্রধান কাজ কী?",
+        "hi": "इनपुट यूनिट का मुख्य कार्य क्या है?"
+      },
+      "options": [
+        {
+          "en": "To receive data and instructions from outside the computer",
+          "bn": "কম্পিউটারের বাইরে থেকে তথ্য ও নির্দেশ গ্রহণ করা",
+          "hi": "कंप्यूटर के बाहर से डेटा और निर्देश प्राप्त करना"
+        },
+        {
+          "en": "To display results on the screen",
+          "bn": "পর্দায় ফলাফল প্রদর্শন করা",
+          "hi": "स्क्रीन पर परिणाम प्रदर्शित करना"
+        },
+        {
+          "en": "To print documents",
+          "bn": "নথি মুদ্রণ করা",
+          "hi": "दस्तावेज़ों को प्रिंट करना"
+        },
+        {
+          "en": "To supply electricity to the computer",
+          "bn": "কম্পিউটারে বিদ্যুৎ সরবরাহ করা",
+          "hi": "कंप्यूटर को विद्युत आपूर्ति करना"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The input unit receives data and instructions from external sources for processing.",
+        "bn": "ইনপুট ইউনিট প্রক্রিয়াকরণের জন্য বাইরের উৎস থেকে তথ্য ও নির্দেশ গ্রহণ করে।",
+        "hi": "इनपुट यूनिट प्रसंस्करण के लिए बाहरी स्रोतों से डेटा और निर्देश प्राप्त करती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q026",
+      "question": {
+        "en": "Into which form does the input unit convert data and instructions before sending them to the computer?",
+        "bn": "কম্পিউটারে পাঠানোর আগে ইনপুট ইউনিট তথ্য ও নির্দেশকে কোন রূপে পরিবর্তন করে?",
+        "hi": "कंप्यूटर को भेजने से पहले इनपुट यूनिट डेटा और निर्देशों को किस रूप में बदलती है?"
+      },
+      "options": [
+        {
+          "en": "Binary form",
+          "bn": "বাইনারি রূপ",
+          "hi": "बाइनरी रूप"
+        },
+        {
+          "en": "Decimal form only",
+          "bn": "শুধুমাত্র দশমিক রূপ",
+          "hi": "केवल दशमलव रूप"
+        },
+        {
+          "en": "Roman numerals",
+          "bn": "রোমান সংখ্যা",
+          "hi": "रोमन अंक"
+        },
+        {
+          "en": "Alphabetical form only",
+          "bn": "শুধুমাত্র বর্ণমালার রূপ",
+          "hi": "केवल वर्णमाला का रूप"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The input unit converts data and instructions into binary form so that the computer can process them.",
+        "bn": "কম্পিউটার প্রক্রিয়াকরণ করতে পারে বলে ইনপুট ইউনিট তথ্য ও নির্দেশকে বাইনারি রূপে পরিবর্তন করে।",
+        "hi": "कंप्यूटर द्वारा प्रसंस्करण किए जाने के लिए इनपुट यूनिट डेटा और निर्देशों को बाइनरी रूप में बदलती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q027",
+      "question": {
+        "en": "Which of the following is an input device?",
+        "bn": "নিচের কোনটি একটি ইনপুট ডিভাইস?",
+        "hi": "निम्नलिखित में से कौन-सा इनपुट डिवाइस है?"
+      },
+      "options": [
+        {
+          "en": "Keyboard",
+          "bn": "কীবোর্ড",
+          "hi": "कीबोर्ड"
+        },
+        {
+          "en": "Monitor",
+          "bn": "মনিটর",
+          "hi": "मॉनिटर"
+        },
+        {
+          "en": "Printer",
+          "bn": "প্রিন্টার",
+          "hi": "प्रिंटर"
+        },
+        {
+          "en": "Speaker",
+          "bn": "স্পিকার",
+          "hi": "स्पीकर"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "A keyboard is an input device used to enter data and instructions into a computer.",
+        "bn": "কীবোর্ড হল একটি ইনপুট ডিভাইস, যা কম্পিউটারে তথ্য ও নির্দেশ প্রবেশ করাতে ব্যবহৃত হয়।",
+        "hi": "कीबोर्ड एक इनपुट डिवाइस है, जिसका उपयोग कंप्यूटर में डेटा और निर्देश दर्ज करने के लिए किया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q028",
+      "question": {
+        "en": "Which input device reads information from punched cards?",
+        "bn": "কোন ইনপুট ডিভাইস পাঞ্চড কার্ড থেকে তথ্য পড়ে?",
+        "hi": "कौन-सा इनपुट डिवाइस पंच कार्ड से जानकारी पढ़ता है?"
+      },
+      "options": [
+        {
+          "en": "Punched Card Reader",
+          "bn": "পাঞ্চড কার্ড রিডার",
+          "hi": "पंच कार्ड रीडर"
+        },
+        {
+          "en": "Mouse",
+          "bn": "মাউস",
+          "hi": "माउस"
+        },
+        {
+          "en": "Microphone",
+          "bn": "মাইক্রোফোন",
+          "hi": "माइक्रोफ़ोन"
+        },
+        {
+          "en": "Light Pen",
+          "bn": "লাইট পেন",
+          "hi": "लाइट पेन"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "A punched card reader reads encoded information from punched cards.",
+        "bn": "পাঞ্চড কার্ড রিডার পাঞ্চড কার্ডে থাকা সাংকেতিক তথ্য পড়ে।",
+        "hi": "पंच कार्ड रीडर पंच कार्ड में दर्ज कूटबद्ध जानकारी पढ़ता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q029",
+      "question": {
+        "en": "Which input device is used to read data stored on paper tape?",
+        "bn": "কাগজের টেপে সঞ্চিত তথ্য পড়তে কোন ইনপুট ডিভাইস ব্যবহৃত হয়?",
+        "hi": "पेपर टेप पर संग्रहीत डेटा पढ़ने के लिए किस इनपुट डिवाइस का उपयोग किया जाता है?"
+      },
+      "options": [
+        {
+          "en": "Paper Tape Reader",
+          "bn": "পেপার টেপ রিডার",
+          "hi": "पेपर टेप रीडर"
+        },
+        {
+          "en": "Joystick",
+          "bn": "জয়স্টিক",
+          "hi": "जॉयस्टिक"
+        },
+        {
+          "en": "Monitor",
+          "bn": "মনিটর",
+          "hi": "मॉनिटर"
+        },
+        {
+          "en": "Printer",
+          "bn": "প্রিন্টার",
+          "hi": "प्रिंटर"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "A paper tape reader reads encoded information stored on paper tape.",
+        "bn": "পেপার টেপ রিডার কাগজের টেপে সঞ্চিত সাংকেতিক তথ্য পড়ে।",
+        "hi": "पेपर टेप रीडर पेपर टेप पर संग्रहीत कूटबद्ध जानकारी पढ़ता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q030",
+      "question": {
+        "en": "Which input device is used to enter sound into a computer?",
+        "bn": "কম্পিউটারে শব্দ প্রবেশ করাতে কোন ইনপুট ডিভাইস ব্যবহৃত হয়?",
+        "hi": "कंप्यूटर में ध्वनि दर्ज करने के लिए किस इनपुट डिवाइस का उपयोग किया जाता है?"
+      },
+      "options": [
+        {
+          "en": "Microphone",
+          "bn": "মাইক্রোফোন",
+          "hi": "माइक्रोफ़ोन"
+        },
+        {
+          "en": "Speaker",
+          "bn": "স্পিকার",
+          "hi": "स्पीकर"
+        },
+        {
+          "en": "Monitor",
+          "bn": "মনিটর",
+          "hi": "मॉनिटर"
+        },
+        {
+          "en": "Plotter",
+          "bn": "প্লটার",
+          "hi": "प्लॉटर"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "A microphone captures sound and sends it to the computer as input.",
+        "bn": "মাইক্রোফোন শব্দ ধারণ করে ইনপুট হিসেবে কম্পিউটারে পাঠায়।",
+        "hi": "माइक्रोफ़ोन ध्वनि को ग्रहण करके इनपुट के रूप में कंप्यूटर को भेजता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q031",
+      "question": {
+        "en": "Which input device can be used to point or draw directly on a compatible screen?",
+        "bn": "উপযুক্ত পর্দায় সরাসরি নির্দেশ করা বা আঁকার জন্য কোন ইনপুট ডিভাইস ব্যবহার করা যায়?",
+        "hi": "उपयुक्त स्क्रीन पर सीधे संकेत करने या चित्र बनाने के लिए किस इनपुट डिवाइस का उपयोग किया जा सकता है?"
+      },
+      "options": [
+        {
+          "en": "Light Pen",
+          "bn": "লাইট পেন",
+          "hi": "लाइट पेन"
+        },
+        {
+          "en": "Speaker",
+          "bn": "স্পিকার",
+          "hi": "स्पीकर"
+        },
+        {
+          "en": "Printer",
+          "bn": "প্রিন্টার",
+          "hi": "प्रिंटर"
+        },
+        {
+          "en": "Power Supply",
+          "bn": "পাওয়ার সাপ্লাই",
+          "hi": "पावर सप्लाई"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "A light pen is a pointing input device that can interact directly with a compatible display.",
+        "bn": "লাইট পেন একটি পয়েন্টিং ইনপুট ডিভাইস, যা উপযুক্ত ডিসপ্লের সঙ্গে সরাসরি কাজ করতে পারে।",
+        "hi": "लाइट पेन एक पॉइंटिंग इनपुट डिवाइस है, जो उपयुक्त डिस्प्ले के साथ सीधे कार्य कर सकता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q032",
+      "question": {
+        "en": "Which input device is commonly used to control the movement of objects in computer games?",
+        "bn": "কম্পিউটার গেমে বস্তুর গতিবিধি নিয়ন্ত্রণ করতে সাধারণত কোন ইনপুট ডিভাইস ব্যবহৃত হয়?",
+        "hi": "कंप्यूटर गेम में वस्तुओं की गति नियंत्रित करने के लिए सामान्यतः किस इनपुट डिवाइस का उपयोग किया जाता है?"
+      },
+      "options": [
+        {
+          "en": "Joystick",
+          "bn": "জয়স্টিক",
+          "hi": "जॉयस्टिक"
+        },
+        {
+          "en": "Printer",
+          "bn": "প্রিন্টার",
+          "hi": "प्रिंटर"
+        },
+        {
+          "en": "Speaker",
+          "bn": "স্পিকার",
+          "hi": "स्पीकर"
+        },
+        {
+          "en": "Scanner stand",
+          "bn": "স্ক্যানার স্ট্যান্ড",
+          "hi": "स्कैनर स्टैंड"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "A joystick is an input device commonly used to control movement in computer games.",
+        "bn": "জয়স্টিক একটি ইনপুট ডিভাইস, যা কম্পিউটার গেমে গতিবিধি নিয়ন্ত্রণ করতে ব্যবহৃত হয়।",
+        "hi": "जॉयस्टिक एक इनपुट डिवाइस है, जिसका उपयोग कंप्यूटर गेम में गति नियंत्रित करने के लिए किया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q033",
+      "question": {
+        "en": "Which of the following is a voice input system?",
+        "bn": "নিচের কোনটি একটি ভয়েস ইনপুট সিস্টেম?",
+        "hi": "निम्नलिखित में से कौन-सा वॉइस इनपुट सिस्टम है?"
+      },
+      "options": [
+        {
+          "en": "Voice Input System",
+          "bn": "ভয়েস ইনপুট সিস্টেম",
+          "hi": "वॉइस इनपुट सिस्टम"
+        },
+        {
+          "en": "Laser Printer",
+          "bn": "লেজার প্রিন্টার",
+          "hi": "लेज़र प्रिंटर"
+        },
+        {
+          "en": "Monitor Display",
+          "bn": "মনিটর ডিসপ্লে",
+          "hi": "मॉनिटर डिस्प्ले"
+        },
+        {
+          "en": "Plotter Output",
+          "bn": "প্লটার আউটপুট",
+          "hi": "प्लॉटर आउटपुट"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "A voice input system accepts spoken words or sound as input to a computer.",
+        "bn": "ভয়েস ইনপুট সিস্টেম কথ্য শব্দ বা ধ্বনিকে কম্পিউটারের ইনপুট হিসেবে গ্রহণ করে।",
+        "hi": "वॉइस इनपुट सिस्टम बोले गए शब्दों या ध्वनि को कंप्यूटर के इनपुट के रूप में स्वीकार करता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q034",
+      "question": {
+        "en": "Which device is used to read or write data on magnetic tape?",
+        "bn": "ম্যাগনেটিক টেপে তথ্য পড়তে বা লিখতে কোন ডিভাইস ব্যবহৃত হয়?",
+        "hi": "मैग्नेटिक टेप पर डेटा पढ़ने या लिखने के लिए किस डिवाइस का उपयोग किया जाता है?"
+      },
+      "options": [
+        {
+          "en": "Magnetic Tape Drive",
+          "bn": "ম্যাগনেটিক টেপ ড্রাইভ",
+          "hi": "मैग्नेटिक टेप ड्राइव"
+        },
+        {
+          "en": "Light Pen",
+          "bn": "লাইট পেন",
+          "hi": "लाइट पेन"
+        },
+        {
+          "en": "Joystick",
+          "bn": "জয়স্টিক",
+          "hi": "जॉयस्टिक"
+        },
+        {
+          "en": "Monitor",
+          "bn": "মনিটর",
+          "hi": "मॉनिटर"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "A magnetic tape drive reads and writes data on magnetic tape.",
+        "bn": "ম্যাগনেটিক টেপ ড্রাইভ ম্যাগনেটিক টেপে তথ্য পড়ে ও লেখে।",
+        "hi": "मैग्नेटिक टेप ड्राइव मैग्नेटिक टेप पर डेटा पढ़ता और लिखता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q035",
+      "question": {
+        "en": "Which input device is used to move the pointer on a computer screen?",
+        "bn": "কম্পিউটারের পর্দায় পয়েন্টার সরাতে কোন ইনপুট ডিভাইস ব্যবহৃত হয়?",
+        "hi": "कंप्यूटर स्क्रीन पर पॉइंटर को स्थानांतरित करने के लिए किस इनपुट डिवाइस का उपयोग किया जाता है?"
+      },
+      "options": [
+        {
+          "en": "Mouse",
+          "bn": "মাউস",
+          "hi": "माउस"
+        },
+        {
+          "en": "Printer",
+          "bn": "প্রিন্টার",
+          "hi": "प्रिंटर"
+        },
+        {
+          "en": "Speaker",
+          "bn": "স্পিকার",
+          "hi": "स्पीकर"
+        },
+        {
+          "en": "Projector",
+          "bn": "প্রজেক্টর",
+          "hi": "प्रोजेक्टर"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "A mouse is a pointing input device used to control the pointer on the screen.",
+        "bn": "মাউস একটি পয়েন্টিং ইনপুট ডিভাইস, যা পর্দায় পয়েন্টার নিয়ন্ত্রণ করতে ব্যবহৃত হয়।",
+        "hi": "माउस एक पॉइंटिंग इनपुट डिवाइस है, जिसका उपयोग स्क्रीन पर पॉइंटर को नियंत्रित करने के लिए किया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q036",
+      "question": {
+        "en": "Which input device is used to verify the authenticity of bank documents such as drafts and cheques?",
+        "bn": "ব্যাংকের ড্রাফট ও চেকের মতো নথিপত্রের সত্যতা নির্ণয়ের জন্য কোন ইনপুট ডিভাইস ব্যবহৃত হয়?",
+        "hi": "ड्राफ्ट और चेक जैसे बैंक दस्तावेज़ों की प्रामाणिकता जाँचने के लिए किस इनपुट डिवाइस का उपयोग किया जाता है?"
+      },
+      "options": [
+        {
+          "en": "Magnetic Ink Character Reader (MICR)",
+          "bn": "ম্যাগনেটিক ইঙ্ক ক্যারেক্টার রিডার (MICR)",
+          "hi": "मैग्नेटिक इंक कैरेक्टर रीडर (MICR)"
+        },
+        {
+          "en": "Optical Mark Reader (OMR)",
+          "bn": "অপটিক্যাল মার্ক রিডার (OMR)",
+          "hi": "ऑप्टिकल मार्क रीडर (OMR)"
+        },
+        {
+          "en": "Optical Character Recognition (OCR)",
+          "bn": "অপটিক্যাল ক্যারেক্টার রিকগনিশন (OCR)",
+          "hi": "ऑप्टिकल कैरेक्टर रिकग्निशन (OCR)"
+        },
+        {
+          "en": "Barcode Reader",
+          "bn": "বারকোড রিডার",
+          "hi": "बारकोड रीडर"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "MICR reads magnetic ink characters on bank documents and helps verify their authenticity.",
+        "bn": "MICR ব্যাংকের নথিতে থাকা চৌম্বকীয় কালি দিয়ে লেখা অক্ষর পড়ে এবং সেগুলির সত্যতা যাচাই করতে সাহায্য করে।",
+        "hi": "MICR बैंक दस्तावेज़ों पर चुंबकीय स्याही से लिखे अक्षरों को पढ़ता है और उनकी प्रामाणिकता जाँचने में सहायता करता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q037",
+      "question": {
+        "en": "What is the primary function of the output unit?",
+        "bn": "আউটপুট ইউনিটের প্রধান কাজ কী?",
+        "hi": "आउटपुट यूनिट का मुख्य कार्य क्या है?"
+      },
+      "options": [
+        {
+          "en": "To receive input data from the user",
+          "bn": "ব্যবহারকারীর কাছ থেকে ইনপুট তথ্য গ্রহণ করা",
+          "hi": "उपयोगकर्ता से इनपुट डेटा प्राप्त करना"
+        },
+        {
+          "en": "To convert machine-readable results into understandable form and display or print them",
+          "bn": "যন্ত্রের ভাষায় থাকা ফলাফলকে বোধগম্য রূপে পরিবর্তন করে প্রদর্শন বা মুদ্রণ করা",
+          "hi": "मशीन की भाषा में मौजूद परिणामों को समझने योग्य रूप में बदलकर प्रदर्शित या मुद्रित करना"
+        },
+        {
+          "en": "To perform calculations only",
+          "bn": "শুধুমাত্র গণনা করা",
+          "hi": "केवल गणना करना"
+        },
+        {
+          "en": "To store data permanently",
+          "bn": "স্থায়ীভাবে তথ্য সংরক্ষণ করা",
+          "hi": "डेटा को स्थायी रूप से संग्रहीत करना"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "The output unit converts processed results into a human-understandable form and displays or prints them.",
+        "bn": "আউটপুট ইউনিট প্রক্রিয়াকৃত ফলাফলকে মানুষের বোধগম্য রূপে পরিবর্তন করে প্রদর্শন বা মুদ্রণ করে।",
+        "hi": "आउटपुट यूनिट संसाधित परिणामों को मनुष्य के समझने योग्य रूप में बदलकर प्रदर्शित या मुद्रित करती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q038",
+      "question": {
+        "en": "Which of the following is an output device?",
+        "bn": "নিচের কোনটি একটি আউটপুট ডিভাইস?",
+        "hi": "निम्नलिखित में से कौन-सा आउटपुट डिवाइस है?"
+      },
+      "options": [
+        {
+          "en": "Keyboard",
+          "bn": "কীবোর্ড",
+          "hi": "कीबोर्ड"
+        },
+        {
+          "en": "Mouse",
+          "bn": "মাউস",
+          "hi": "माउस"
+        },
+        {
+          "en": "Monitor (VDU)",
+          "bn": "মনিটর (VDU)",
+          "hi": "मॉनिटर (VDU)"
+        },
+        {
+          "en": "Scanner",
+          "bn": "স্ক্যানার",
+          "hi": "स्कैनर"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "en": "A monitor, also known as a Visual Display Unit (VDU), displays computer output.",
+        "bn": "মনিটর, যা Visual Display Unit (VDU) নামেও পরিচিত, কম্পিউটারের আউটপুট প্রদর্শন করে।",
+        "hi": "मॉनिटर, जिसे Visual Display Unit (VDU) भी कहा जाता है, कंप्यूटर का आउटपुट प्रदर्शित करता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q039",
+      "question": {
+        "en": "Which of the following is used to produce a printed copy of computer output?",
+        "bn": "কম্পিউটারের আউটপুটের মুদ্রিত কপি তৈরি করতে কোনটি ব্যবহৃত হয়?",
+        "hi": "कंप्यूटर आउटपुट की मुद्रित प्रति तैयार करने के लिए किसका उपयोग किया जाता है?"
+      },
+      "options": [
+        {
+          "en": "Printer",
+          "bn": "প্রিন্টার",
+          "hi": "प्रिंटर"
+        },
+        {
+          "en": "Microphone",
+          "bn": "মাইক্রোফোন",
+          "hi": "माइक्रोफ़ोन"
+        },
+        {
+          "en": "Joystick",
+          "bn": "জয়স্টিক",
+          "hi": "जॉयस्टिक"
+        },
+        {
+          "en": "Barcode Reader",
+          "bn": "বারকোড রিডার",
+          "hi": "बारकोड रीडर"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "A printer produces a hard copy of computer output on paper.",
+        "bn": "প্রিন্টার কাগজে কম্পিউটারের আউটপুটের হার্ড কপি তৈরি করে।",
+        "hi": "प्रिंटर कागज़ पर कंप्यूटर आउटपुट की हार्ड कॉपी तैयार करता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q040",
+      "question": {
+        "en": "Which output device is used to produce large technical drawings and graphs?",
+        "bn": "বড় প্রযুক্তিগত নকশা ও গ্রাফ তৈরি করতে কোন আউটপুট ডিভাইস ব্যবহৃত হয়?",
+        "hi": "बड़े तकनीकी चित्र और ग्राफ बनाने के लिए किस आउटपुट डिवाइस का उपयोग किया जाता है?"
+      },
+      "options": [
+        {
+          "en": "Plotter",
+          "bn": "প্লটার",
+          "hi": "प्लॉटर"
+        },
+        {
+          "en": "Mouse",
+          "bn": "মাউস",
+          "hi": "माउस"
+        },
+        {
+          "en": "Keyboard",
+          "bn": "কীবোর্ড",
+          "hi": "कीबोर्ड"
+        },
+        {
+          "en": "Microphone",
+          "bn": "মাইক্রোফোন",
+          "hi": "माइक्रोफ़ोन"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "A plotter is an output device used to produce large drawings, charts, and technical designs.",
+        "bn": "প্লটার একটি আউটপুট ডিভাইস, যা বড় নকশা, চার্ট ও প্রযুক্তিগত চিত্র তৈরি করতে ব্যবহৃত হয়।",
+        "hi": "प्लॉटर एक आउटपुट डिवाइस है, जिसका उपयोग बड़े चित्र, चार्ट और तकनीकी डिज़ाइन बनाने के लिए किया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q041",
+      "question": {
+        "en": "Which output device produces sound from a computer?",
+        "bn": "কম্পিউটার থেকে শব্দ শোনানোর জন্য কোন আউটপুট ডিভাইস ব্যবহৃত হয়?",
+        "hi": "कंप्यूटर से ध्वनि सुनाने के लिए किस आउटपुट डिवाइस का उपयोग किया जाता है?"
+      },
+      "options": [
+        {
+          "en": "Speaker",
+          "bn": "স্পিকার",
+          "hi": "स्पीकर"
+        },
+        {
+          "en": "Scanner",
+          "bn": "স্ক্যানার",
+          "hi": "स्कैनर"
+        },
+        {
+          "en": "Keyboard",
+          "bn": "কীবোর্ড",
+          "hi": "कीबोर्ड"
+        },
+        {
+          "en": "Light Pen",
+          "bn": "লাইট পেন",
+          "hi": "लाइट पेन"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "A speaker converts audio signals into sound that users can hear.",
+        "bn": "স্পিকার অডিও সংকেতকে শ্রবণযোগ্য শব্দে রূপান্তরিত করে।",
+        "hi": "स्पीकर ऑडियो संकेतों को सुनाई देने वाली ध्वनि में बदलता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q042",
+      "question": {
+        "en": "Which device displays computer output on a large screen for an audience?",
+        "bn": "দর্শকদের জন্য বড় পর্দায় কম্পিউটারের আউটপুট প্রদর্শন করতে কোন ডিভাইস ব্যবহৃত হয়?",
+        "hi": "दर्शकों के लिए बड़ी स्क्रीन पर कंप्यूटर आउटपुट प्रदर्शित करने हेतु किस डिवाइस का उपयोग किया जाता है?"
+      },
+      "options": [
+        {
+          "en": "Projector",
+          "bn": "প্রজেক্টর",
+          "hi": "प्रोजेक्टर"
+        },
+        {
+          "en": "Mouse",
+          "bn": "মাউস",
+          "hi": "माउस"
+        },
+        {
+          "en": "Barcode Reader",
+          "bn": "বারকোড রিডার",
+          "hi": "बारकोड रीडर"
+        },
+        {
+          "en": "Microphone",
+          "bn": "মাইক্রোফোন",
+          "hi": "माइक्रोफ़ोन"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "A projector displays computer images and presentations on a large screen.",
+        "bn": "প্রজেক্টর কম্পিউটারের ছবি ও উপস্থাপনা বড় পর্দায় প্রদর্শন করে।",
+        "hi": "प्रोजेक्टर कंप्यूटर की छवियों और प्रस्तुतियों को बड़ी स्क्रीन पर प्रदर्शित करता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q043",
+      "question": {
+        "en": "What is the full form of DAC?",
+        "bn": "DAC-এর সম্পূর্ণ রূপ কী?",
+        "hi": "DAC का पूरा नाम क्या है?"
+      },
+      "options": [
+        {
+          "en": "Digital to Analog Converter",
+          "bn": "ডিজিটাল টু অ্যানালগ কনভার্টার",
+          "hi": "डिजिटल टू एनालॉग कन्वर्टर"
+        },
+        {
+          "en": "Data Access Controller",
+          "bn": "ডেটা অ্যাক্সেস কন্ট্রোলার",
+          "hi": "डेटा एक्सेस कंट्रोलर"
+        },
+        {
+          "en": "Digital Audio Channel",
+          "bn": "ডিজিটাল অডিও চ্যানেল",
+          "hi": "डिजिटल ऑडियो चैनल"
+        },
+        {
+          "en": "Direct Application Control",
+          "bn": "ডাইরেক্ট অ্যাপ্লিকেশন কন্ট্রোল",
+          "hi": "डायरेक्ट एप्लिकेशन कंट्रोल"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "DAC stands for Digital to Analog Converter, which converts digital signals into analog signals.",
+        "bn": "DAC-এর সম্পূর্ণ রূপ Digital to Analog Converter, যা ডিজিটাল সংকেতকে অ্যানালগ সংকেতে রূপান্তরিত করে।",
+        "hi": "DAC का पूरा नाम Digital to Analog Converter है, जो डिजिटल संकेतों को एनालॉग संकेतों में बदलता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q044",
+      "question": {
+        "en": "What is the primary function of a modem?",
+        "bn": "মডেমের প্রধান কাজ কী?",
+        "hi": "मॉडेम का मुख्य कार्य क्या है?"
+      },
+      "options": [
+        {
+          "en": "To enable communication between a computer and a telephone line",
+          "bn": "কম্পিউটার ও টেলিফোন লাইনের মধ্যে যোগাযোগ স্থাপন করা",
+          "hi": "कंप्यूटर और टेलीफोन लाइन के बीच संचार स्थापित करना"
+        },
+        {
+          "en": "To print documents",
+          "bn": "নথি মুদ্রণ করা",
+          "hi": "दस्तावेज़ों को प्रिंट करना"
+        },
+        {
+          "en": "To store files permanently",
+          "bn": "স্থায়ীভাবে ফাইল সংরক্ষণ করা",
+          "hi": "फ़ाइलों को स्थायी रूप से संग्रहीत करना"
+        },
+        {
+          "en": "To display images on a monitor",
+          "bn": "মনিটরে ছবি প্রদর্শন করা",
+          "hi": "मॉनिटर पर चित्र प्रदर्शित करना"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "A modem enables a computer to communicate over a telephone line by converting signals.",
+        "bn": "মডেম সংকেত রূপান্তরের মাধ্যমে কম্পিউটারকে টেলিফোন লাইনের সাহায্যে যোগাযোগ করতে সক্ষম করে।",
+        "hi": "मॉडेम संकेतों को परिवर्तित करके कंप्यूटर को टेलीफोन लाइन के माध्यम से संचार करने में सक्षम बनाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q045",
+      "question": {
+        "en": "What is BIOS in a computer?",
+        "bn": "কম্পিউটারে BIOS কী?",
+        "hi": "कंप्यूटर में BIOS क्या है?"
+      },
+      "options": [
+        {
+          "en": "Firmware containing instructions needed to start the computer",
+          "bn": "কম্পিউটার চালু করার প্রয়োজনীয় নির্দেশাবলি থাকা ফার্মওয়্যার",
+          "hi": "कंप्यूटर चालू करने के लिए आवश्यक निर्देशों वाला फर्मवेयर"
+        },
+        {
+          "en": "A type of printer",
+          "bn": "এক ধরনের প্রিন্টার",
+          "hi": "एक प्रकार का प्रिंटर"
+        },
+        {
+          "en": "A computer game",
+          "bn": "একটি কম্পিউটার গেম",
+          "hi": "एक कंप्यूटर गेम"
+        },
+        {
+          "en": "A type of external storage disk",
+          "bn": "এক ধরনের বাহ্যিক স্টোরেজ ডিস্ক",
+          "hi": "एक प्रकार की बाहरी स्टोरेज डिस्क"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "BIOS is firmware stored on a motherboard chip that contains instructions required to start the computer.",
+        "bn": "BIOS হল মাদারবোর্ডের চিপে সংরক্ষিত ফার্মওয়্যার, যাতে কম্পিউটার চালু করার প্রয়োজনীয় নির্দেশাবলি থাকে।",
+        "hi": "BIOS मदरबोर्ड की चिप में संग्रहीत फर्मवेयर है, जिसमें कंप्यूटर चालू करने के आवश्यक निर्देश होते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q046",
+      "question": {
+        "en": "Which type of memory is cache memory?",
+        "bn": "ক্যাশ মেমরি কোন ধরনের মেমরি?",
+        "hi": "कैश मेमोरी किस प्रकार की मेमोरी है?"
+      },
+      "options": [
+        {
+          "en": "High-speed memory used to store frequently needed data and instructions",
+          "bn": "বারবার প্রয়োজনীয় তথ্য ও নির্দেশ সংরক্ষণকারী উচ্চগতির মেমরি",
+          "hi": "बार-बार आवश्यक डेटा और निर्देशों को संग्रहीत करने वाली उच्च गति की मेमोरी"
+        },
+        {
+          "en": "A type of optical disc",
+          "bn": "এক ধরনের অপটিক্যাল ডিস্ক",
+          "hi": "एक प्रकार की ऑप्टिकल डिस्क"
+        },
+        {
+          "en": "A permanent paper storage device",
+          "bn": "স্থায়ী কাগজভিত্তিক স্টোরেজ ডিভাইস",
+          "hi": "एक स्थायी कागज़-आधारित स्टोरेज डिवाइस"
+        },
+        {
+          "en": "A type of output printer",
+          "bn": "এক ধরনের আউটপুট প্রিন্টার",
+          "hi": "एक प्रकार का आउटपुट प्रिंटर"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Cache memory is high-speed memory that stores frequently accessed data and instructions to improve processing speed.",
+        "bn": "ক্যাশ মেমরি হল উচ্চগতির মেমরি, যা বারবার ব্যবহৃত তথ্য ও নির্দেশ সংরক্ষণ করে প্রক্রিয়াকরণের গতি বাড়ায়।",
+        "hi": "कैश मेमोरी उच्च गति वाली मेमोरी है, जो बार-बार उपयोग किए जाने वाले डेटा और निर्देशों को संग्रहीत करके प्रसंस्करण की गति बढ़ाती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q047",
+      "question": {
+        "en": "Which input device is used to read product information encoded in barcodes?",
+        "bn": "বারকোডে সংকেতবদ্ধ পণ্যের তথ্য পড়তে কোন ইনপুট ডিভাইস ব্যবহৃত হয়?",
+        "hi": "बारकोड में कूटबद्ध उत्पाद की जानकारी पढ़ने के लिए किस इनपुट डिवाइस का उपयोग किया जाता है?"
+      },
+      "options": [
+        {
+          "en": "Barcode Reader",
+          "bn": "বারকোড রিডার",
+          "hi": "बारकोड रीडर"
+        },
+        {
+          "en": "MICR",
+          "bn": "MICR",
+          "hi": "MICR"
+        },
+        {
+          "en": "Plotter",
+          "bn": "প্লটার",
+          "hi": "प्लॉटर"
+        },
+        {
+          "en": "Speaker",
+          "bn": "স্পিকার",
+          "hi": "स्पीकर"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "A barcode reader scans barcodes to retrieve encoded product information such as product codes.",
+        "bn": "বারকোড রিডার বারকোড স্ক্যান করে পণ্যের কোডের মতো সংকেতবদ্ধ তথ্য সংগ্রহ করে।",
+        "hi": "बारकोड रीडर बारकोड को स्कैन करके उत्पाद कोड जैसी कूटबद्ध जानकारी प्राप्त करता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q048",
+      "question": {
+        "en": "How many digits does a standard barcode generally contain according to the textbook?",
+        "bn": "পাঠ্যবই অনুযায়ী, একটি সাধারণ বারকোডে সাধারণত কয়টি ডিজিট থাকে?",
+        "hi": "पाठ्यपुस्तक के अनुसार, एक सामान्य बारकोड में आमतौर पर कितने अंक होते हैं?"
+      },
+      "options": [
+        {
+          "en": "8 digits",
+          "bn": "8 ডিজিট",
+          "hi": "8 अंक"
+        },
+        {
+          "en": "10 digits",
+          "bn": "10 ডিজিট",
+          "hi": "10 अंक"
+        },
+        {
+          "en": "12 digits",
+          "bn": "12 ডিজিট",
+          "hi": "12 अंक"
+        },
+        {
+          "en": "13 digits",
+          "bn": "13 ডিজিট",
+          "hi": "13 अंक"
+        }
+      ],
+      "correct_index": 3,
+      "explanation": {
+        "en": "The textbook describes a barcode as generally containing 13 digits.",
+        "bn": "পাঠ্যবইয়ে বারকোডে সাধারণত 13টি ডিজিট থাকার কথা বলা হয়েছে।",
+        "hi": "पाठ्यपुस्तक के अनुसार, बारकोड में आमतौर पर 13 अंक होते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q049",
+      "question": {
+        "en": "What does the first part of a 13-digit barcode represent according to the textbook?",
+        "bn": "পাঠ্যবই অনুযায়ী, 13 ডিজিটের বারকোডের প্রথম অংশ কী বোঝায়?",
+        "hi": "पाठ्यपुस्तक के अनुसार, 13 अंकों वाले बारकोड का पहला भाग क्या दर्शाता है?"
+      },
+      "options": [
+        {
+          "en": "The country of the manufacturer",
+          "bn": "প্রস্তুতকারক দেশ",
+          "hi": "निर्माता देश"
+        },
+        {
+          "en": "The product price",
+          "bn": "পণ্যের দাম",
+          "hi": "उत्पाद की कीमत"
+        },
+        {
+          "en": "The product weight",
+          "bn": "পণ্যের ওজন",
+          "hi": "उत्पाद का वज़न"
+        },
+        {
+          "en": "The expiry date",
+          "bn": "মেয়াদ উত্তীর্ণের তারিখ",
+          "hi": "समाप्ति तिथि"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "According to the textbook, the first two digits indicate the country associated with the manufacturer.",
+        "bn": "পাঠ্যবই অনুযায়ী, প্রথম দুটি ডিজিট প্রস্তুতকারকের সঙ্গে সম্পর্কিত দেশকে নির্দেশ করে।",
+        "hi": "पाठ्यपुस्तक के अनुसार, पहले दो अंक निर्माता से संबंधित देश को दर्शाते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q050",
+      "question": {
+        "en": "What is the last digit of a barcode called?",
+        "bn": "বারকোডের শেষ ডিজিটকে কী বলা হয়?",
+        "hi": "बारकोड के अंतिम अंक को क्या कहा जाता है?"
+      },
+      "options": [
+        {
+          "en": "Check digit",
+          "bn": "চেক ডিজিট",
+          "hi": "चेक डिजिट"
+        },
+        {
+          "en": "Country digit",
+          "bn": "কান্ট্রি ডিজিট",
+          "hi": "कंट्री डिजिट"
+        },
+        {
+          "en": "Manufacturer digit",
+          "bn": "প্রস্তুতকারক ডিজিট",
+          "hi": "निर्माता अंक"
+        },
+        {
+          "en": "Price digit",
+          "bn": "প্রাইস ডিজিট",
+          "hi": "प्राइस डिजिट"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The last digit is called the check digit and is used to help verify whether the barcode has been read correctly.",
+        "bn": "শেষ ডিজিটকে চেক ডিজিট বলা হয়, যা বারকোড সঠিকভাবে পড়া হয়েছে কি না তা যাচাই করতে সাহায্য করে।",
+        "hi": "अंतिम अंक को चेक डिजिट कहा जाता है, जो यह जाँचने में सहायता करता है कि बारकोड सही ढंग से पढ़ा गया है या नहीं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q051",
+      "question": {
+        "en": "Which electronic component was used in first-generation computers?",
+        "bn": "প্রথম প্রজন্মের কম্পিউটারে কোন ইলেকট্রনিক উপাদান ব্যবহৃত হত?",
+        "hi": "पहली पीढ़ी के कंप्यूटरों में किस इलेक्ट्रॉनिक घटक का उपयोग किया जाता था?"
+      },
+      "options": [
+        {
+          "en": "Vacuum Tube",
+          "bn": "ভ্যাকুয়াম টিউব",
+          "hi": "वैक्यूम ट्यूब"
+        },
+        {
+          "en": "Transistor",
+          "bn": "ট্রানজিস্টর",
+          "hi": "ट्रांजिस्टर"
+        },
+        {
+          "en": "Integrated Circuit",
+          "bn": "ইন্টিগ্রেটেড সার্কিট",
+          "hi": "इंटीग्रेटेड सर्किट"
+        },
+        {
+          "en": "Microprocessor",
+          "bn": "মাইক্রোপ্রসেসর",
+          "hi": "माइक्रोप्रोसेसर"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "First-generation computers used vacuum tubes as their main electronic components.",
+        "bn": "প্রথম প্রজন্মের কম্পিউটারে প্রধান ইলেকট্রনিক উপাদান হিসেবে ভ্যাকুয়াম টিউব ব্যবহৃত হত।",
+        "hi": "पहली पीढ़ी के कंप्यूटरों में मुख्य इलेक्ट्रॉनिक घटक के रूप में वैक्यूम ट्यूब का उपयोग होता था।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q052",
+      "question": {
+        "en": "Which electronic component was used in second-generation computers?",
+        "bn": "দ্বিতীয় প্রজন্মের কম্পিউটারে কোন ইলেকট্রনিক উপাদান ব্যবহৃত হত?",
+        "hi": "दूसरी पीढ़ी के कंप्यूटरों में किस इलेक्ट्रॉनिक घटक का उपयोग किया जाता था?"
+      },
+      "options": [
+        {
+          "en": "Vacuum Tube",
+          "bn": "ভ্যাকুয়াম টিউব",
+          "hi": "वैक्यूम ट्यूब"
+        },
+        {
+          "en": "Transistor",
+          "bn": "ট্রানজিস্টর",
+          "hi": "ट्रांजिस्टर"
+        },
+        {
+          "en": "Integrated Circuit",
+          "bn": "ইন্টিগ্রেটেড সার্কিট",
+          "hi": "इंटीग्रेटेड सर्किट"
+        },
+        {
+          "en": "ULSI",
+          "bn": "ULSI",
+          "hi": "ULSI"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "Second-generation computers used transistors instead of vacuum tubes.",
+        "bn": "দ্বিতীয় প্রজন্মের কম্পিউটারে ভ্যাকুয়াম টিউবের পরিবর্তে ট্রানজিস্টর ব্যবহৃত হত।",
+        "hi": "दूसरी पीढ़ी के कंप्यूटरों में वैक्यूम ट्यूब के स्थान पर ट्रांजिस्टर का उपयोग होता था।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q053",
+      "question": {
+        "en": "Which electronic component was used in third-generation computers?",
+        "bn": "তৃতীয় প্রজন্মের কম্পিউটারে কোন ইলেকট্রনিক উপাদান ব্যবহৃত হত?",
+        "hi": "तीसरी पीढ़ी के कंप्यूटरों में किस इलेक्ट्रॉनिक घटक का उपयोग किया जाता था?"
+      },
+      "options": [
+        {
+          "en": "Integrated Circuit",
+          "bn": "ইন্টিগ্রেটেড সার্কিট",
+          "hi": "इंटीग्रेटेड सर्किट"
+        },
+        {
+          "en": "Vacuum Tube",
+          "bn": "ভ্যাকুয়াম টিউব",
+          "hi": "वैक्यूम ट्यूब"
+        },
+        {
+          "en": "Mechanical Relay",
+          "bn": "মেকানিক্যাল রিলে",
+          "hi": "यांत्रिक रिले"
+        },
+        {
+          "en": "Paper Tape",
+          "bn": "পেপার টেপ",
+          "hi": "पेपर टेप"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Third-generation computers used integrated circuits.",
+        "bn": "তৃতীয় প্রজন্মের কম্পিউটারে ইন্টিগ্রেটেড সার্কিট ব্যবহৃত হত।",
+        "hi": "तीसरी पीढ़ी के कंप्यूटरों में इंटीग्रेटेड सर्किट का उपयोग होता था।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q054",
+      "question": {
+        "en": "Which technology is associated with fourth-generation computers in the given textbook classification?",
+        "bn": "পাঠ্যবইয়ের শ্রেণিবিভাগ অনুযায়ী, চতুর্থ প্রজন্মের কম্পিউটারের সঙ্গে কোন প্রযুক্তি যুক্ত?",
+        "hi": "पाठ्यपुस्तक के वर्गीकरण के अनुसार, चौथी पीढ़ी के कंप्यूटरों से कौन-सी तकनीक जुड़ी है?"
+      },
+      "options": [
+        {
+          "en": "LSIC and VLSIC",
+          "bn": "LSIC ও VLSIC",
+          "hi": "LSIC और VLSIC"
+        },
+        {
+          "en": "Vacuum Tubes",
+          "bn": "ভ্যাকুয়াম টিউব",
+          "hi": "वैक्यूम ट्यूब"
+        },
+        {
+          "en": "Transistors only",
+          "bn": "শুধুমাত্র ট্রানজিস্টর",
+          "hi": "केवल ट्रांजिस्टर"
+        },
+        {
+          "en": "Mechanical gears",
+          "bn": "যান্ত্রিক গিয়ার",
+          "hi": "यांत्रिक गियर"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The given textbook classification associates fourth-generation computers with LSIC and VLSIC technology.",
+        "bn": "পাঠ্যবইয়ের প্রদত্ত শ্রেণিবিভাগে চতুর্থ প্রজন্মের কম্পিউটারের সঙ্গে LSIC ও VLSIC প্রযুক্তিকে যুক্ত করা হয়েছে।",
+        "hi": "पाठ्यपुस्तक के दिए गए वर्गीकरण में चौथी पीढ़ी के कंप्यूटरों को LSIC और VLSIC तकनीक से जोड़ा गया है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q055",
+      "question": {
+        "en": "Which technology is associated with fifth-generation computers in the given textbook classification?",
+        "bn": "পাঠ্যবইয়ের শ্রেণিবিভাগ অনুযায়ী, পঞ্চম প্রজন্মের কম্পিউটারের সঙ্গে কোন প্রযুক্তি যুক্ত?",
+        "hi": "पाठ्यपुस्तक के वर्गीकरण के अनुसार, पाँचवीं पीढ़ी के कंप्यूटरों से कौन-सी तकनीक जुड़ी है?"
+      },
+      "options": [
+        {
+          "en": "ULSI",
+          "bn": "ULSI",
+          "hi": "ULSI"
+        },
+        {
+          "en": "Vacuum Tube",
+          "bn": "ভ্যাকুয়াম টিউব",
+          "hi": "वैक्यूम ट्यूब"
+        },
+        {
+          "en": "Transistor",
+          "bn": "ট্রানজিস্টর",
+          "hi": "ट्रांजिस्टर"
+        },
+        {
+          "en": "Magnetic Tape",
+          "bn": "ম্যাগনেটিক টেপ",
+          "hi": "मैग्नेटिक टेप"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The given textbook classification associates fifth-generation computers with ULSI technology.",
+        "bn": "পাঠ্যবইয়ের প্রদত্ত শ্রেণিবিভাগে পঞ্চম প্রজন্মের কম্পিউটারের সঙ্গে ULSI প্রযুক্তিকে যুক্ত করা হয়েছে।",
+        "hi": "पाठ्यपुस्तक के दिए गए वर्गीकरण में पाँचवीं पीढ़ी के कंप्यूटरों को ULSI तकनीक से जोड़ा गया है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q056",
+      "question": {
+        "en": "What is computer hardware?",
+        "bn": "কম্পিউটার হার্ডওয়্যার কী?",
+        "hi": "कंप्यूटर हार्डवेयर क्या है?"
+      },
+      "options": [
+        {
+          "en": "The physical components and devices of a computer system",
+          "bn": "কম্পিউটার সিস্টেমের সমস্ত ভৌত উপাদান ও ডিভাইস",
+          "hi": "कंप्यूटर सिस्टम के सभी भौतिक घटक और डिवाइस"
+        },
+        {
+          "en": "A collection of computer programs only",
+          "bn": "শুধুমাত্র কম্পিউটার প্রোগ্রামের সমষ্টি",
+          "hi": "केवल कंप्यूटर प्रोग्रामों का समूह"
+        },
+        {
+          "en": "A set of internet websites",
+          "bn": "ইন্টারনেট ওয়েবসাইটের সমষ্টি",
+          "hi": "इंटरनेट वेबसाइटों का समूह"
+        },
+        {
+          "en": "A programming language",
+          "bn": "একটি প্রোগ্রামিং ভাষা",
+          "hi": "एक प्रोग्रामिंग भाषा"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Hardware includes the physical parts of a computer, such as the keyboard, printer, and monitor.",
+        "bn": "হার্ডওয়্যারের মধ্যে কীবোর্ড, প্রিন্টার ও মনিটরের মতো কম্পিউটারের ভৌত অংশগুলি অন্তর্ভুক্ত।",
+        "hi": "हार्डवेयर में कीबोर्ड, प्रिंटर और मॉनिटर जैसे कंप्यूटर के भौतिक भाग शामिल होते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q057",
+      "question": {
+        "en": "Which of the following is an example of a computer input unit device?",
+        "bn": "নিচের কোনটি কম্পিউটারের ইনপুট ইউনিটের একটি ডিভাইস?",
+        "hi": "निम्नलिखित में से कौन-सा कंप्यूटर की इनपुट यूनिट का एक डिवाइस है?"
+      },
+      "options": [
+        {
+          "en": "Scanner",
+          "bn": "স্ক্যানার",
+          "hi": "स्कैनर"
+        },
+        {
+          "en": "Monitor",
+          "bn": "মনিটর",
+          "hi": "मॉनिटर"
+        },
+        {
+          "en": "Printer",
+          "bn": "প্রিন্টার",
+          "hi": "प्रिंटर"
+        },
+        {
+          "en": "Plotter",
+          "bn": "প্লটার",
+          "hi": "प्लॉटर"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "A scanner is an input device used to enter images or documents into a computer.",
+        "bn": "স্ক্যানার একটি ইনপুট ডিভাইস, যা কম্পিউটারে ছবি বা নথি প্রবেশ করাতে ব্যবহৃত হয়।",
+        "hi": "स्कैनर एक इनपुट डिवाइस है, जिसका उपयोग कंप्यूटर में चित्र या दस्तावेज़ दर्ज करने के लिए किया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q058",
+      "question": {
+        "en": "Which unit of a computer contains the microprocessor?",
+        "bn": "কম্পিউটারের কোন ইউনিটে মাইক্রোপ্রসেসর থাকে?",
+        "hi": "कंप्यूटर की किस इकाई में माइक्रोप्रोसेसर होता है?"
+      },
+      "options": [
+        {
+          "en": "Processing Unit",
+          "bn": "প্রসেসিং ইউনিট",
+          "hi": "प्रोसेसिंग यूनिट"
+        },
+        {
+          "en": "Input Unit",
+          "bn": "ইনপুট ইউনিট",
+          "hi": "इनपुट यूनिट"
+        },
+        {
+          "en": "Output Unit",
+          "bn": "আউটপুট ইউনিট",
+          "hi": "आउटपुट यूनिट"
+        },
+        {
+          "en": "Storage Unit only",
+          "bn": "শুধুমাত্র স্টোরেজ ইউনিট",
+          "hi": "केवल स्टोरेज यूनिट"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The processing unit contains the microprocessor, which executes instructions and processes data.",
+        "bn": "প্রসেসিং ইউনিটে মাইক্রোপ্রসেসর থাকে, যা নির্দেশ কার্যকর করে এবং তথ্য প্রক্রিয়াকরণ করে।",
+        "hi": "प्रोसेसिंग यूनिट में माइक्रोप्रोसेसर होता है, जो निर्देशों को निष्पादित करता है और डेटा का प्रसंस्करण करता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q059",
+      "question": {
+        "en": "Which of the following is an example of a computer storage unit device?",
+        "bn": "নিচের কোনটি কম্পিউটারের স্টোরেজ ইউনিটের একটি ডিভাইস?",
+        "hi": "निम्नलिखित में से कौन-सा कंप्यूटर की स्टोरेज यूनिट का एक डिवाइस है?"
+      },
+      "options": [
+        {
+          "en": "Hard Disk",
+          "bn": "হার্ড ডিস্ক",
+          "hi": "हार्ड डिस्क"
+        },
+        {
+          "en": "Keyboard",
+          "bn": "কীবোর্ড",
+          "hi": "कीबोर्ड"
+        },
+        {
+          "en": "Mouse",
+          "bn": "মাউস",
+          "hi": "माउस"
+        },
+        {
+          "en": "Monitor",
+          "bn": "মনিটর",
+          "hi": "मॉनिटर"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "A hard disk is a storage device used to store digital data.",
+        "bn": "হার্ড ডিস্ক একটি স্টোরেজ ডিভাইস, যা ডিজিটাল তথ্য সংরক্ষণ করে।",
+        "hi": "हार्ड डिस्क एक स्टोरेज डिवाइस है, जिसका उपयोग डिजिटल डेटा संग्रहीत करने के लिए किया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q060",
+      "question": {
+        "en": "What is a computer program?",
+        "bn": "কম্পিউটার প্রোগ্রাম কী?",
+        "hi": "कंप्यूटर प्रोग्राम क्या है?"
+      },
+      "options": [
+        {
+          "en": "A sequence of instructions used to perform one or more tasks on a computer",
+          "bn": "কম্পিউটারে এক বা একাধিক কাজ সম্পাদনের জন্য ব্যবহৃত ধারাবাহিক নির্দেশাবলি",
+          "hi": "कंप्यूटर पर एक या अधिक कार्य करने के लिए उपयोग किए जाने वाले क्रमिक निर्देश"
+        },
+        {
+          "en": "A physical computer component",
+          "bn": "কম্পিউটারের একটি ভৌত উপাদান",
+          "hi": "कंप्यूटर का एक भौतिक घटक"
+        },
+        {
+          "en": "A type of monitor",
+          "bn": "এক ধরনের মনিটর",
+          "hi": "एक प्रकार का मॉनिटर"
+        },
+        {
+          "en": "An electrical power cable",
+          "bn": "একটি বৈদ্যুতিক পাওয়ার কেবল",
+          "hi": "एक विद्युत पावर केबल"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "A computer program is an ordered set of instructions that tells a computer how to perform tasks.",
+        "bn": "কম্পিউটার প্রোগ্রাম হল ধারাবাহিক নির্দেশাবলির একটি সমষ্টি, যা কম্পিউটারকে কাজ সম্পাদনের পদ্ধতি জানায়।",
+        "hi": "कंप्यूटर प्रोग्राम क्रमबद्ध निर्देशों का एक समूह है, जो कंप्यूटर को कार्य करने का तरीका बताता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q061",
+      "question": {
+        "en": "What is a programming language?",
+        "bn": "প্রোগ্রামিং ল্যাঙ্গুয়েজ কী?",
+        "hi": "प्रोग्रामिंग भाषा क्या है?"
+      },
+      "options": [
+        {
+          "en": "A language used to write computer programs",
+          "bn": "কম্পিউটার প্রোগ্রাম লেখার জন্য ব্যবহৃত ভাষা",
+          "hi": "कंप्यूटर प्रोग्राम लिखने के लिए उपयोग की जाने वाली भाषा"
+        },
+        {
+          "en": "A physical storage device",
+          "bn": "একটি ভৌত স্টোরেজ ডিভাইস",
+          "hi": "एक भौतिक स्टोरेज डिवाइस"
+        },
+        {
+          "en": "A computer output device",
+          "bn": "একটি কম্পিউটার আউটপুট ডিভাইস",
+          "hi": "एक कंप्यूटर आउटपुट डिवाइस"
+        },
+        {
+          "en": "A type of computer cable",
+          "bn": "এক ধরনের কম্পিউটার কেবল",
+          "hi": "एक प्रकार की कंप्यूटर केबल"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "A programming language is used to express instructions that a computer can execute.",
+        "bn": "প্রোগ্রামিং ল্যাঙ্গুয়েজের সাহায্যে কম্পিউটারকে কার্যকর করার জন্য নির্দেশাবলি লেখা হয়।",
+        "hi": "प्रोग्रामिंग भाषा का उपयोग कंप्यूटर द्वारा निष्पादित किए जाने वाले निर्देश लिखने के लिए किया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q062",
+      "question": {
+        "en": "Which of the following is a machine-level programming language?",
+        "bn": "নিচের কোনটি একটি মেশিন-স্তরের প্রোগ্রামিং ভাষা?",
+        "hi": "निम्नलिखित में से कौन-सी मशीन-स्तरीय प्रोग्रामिंग भाषा है?"
+      },
+      "options": [
+        {
+          "en": "Machine Language",
+          "bn": "মেশিন ল্যাঙ্গুয়েজ",
+          "hi": "मशीन भाषा"
+        },
+        {
+          "en": "FORTRAN",
+          "bn": "FORTRAN",
+          "hi": "FORTRAN"
+        },
+        {
+          "en": "COBOL",
+          "bn": "COBOL",
+          "hi": "COBOL"
+        },
+        {
+          "en": "PASCAL",
+          "bn": "PASCAL",
+          "hi": "PASCAL"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Machine language consists of binary instructions that can be executed directly by the processor.",
+        "bn": "মেশিন ল্যাঙ্গুয়েজ বাইনারি নির্দেশাবলি দিয়ে গঠিত, যা প্রসেসর সরাসরি কার্যকর করতে পারে।",
+        "hi": "मशीन भाषा बाइनरी निर्देशों से बनी होती है, जिन्हें प्रोसेसर सीधे निष्पादित कर सकता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q063",
+      "question": {
+        "en": "Which of the following is an assembly language?",
+        "bn": "নিচের কোনটি একটি অ্যাসেম্বলি ল্যাঙ্গুয়েজ?",
+        "hi": "निम्नलिखित में से कौन-सी असेंबली भाषा है?"
+      },
+      "options": [
+        {
+          "en": "Assembly Language",
+          "bn": "অ্যাসেম্বলি ল্যাঙ্গুয়েজ",
+          "hi": "असेंबली भाषा"
+        },
+        {
+          "en": "HTML",
+          "bn": "HTML",
+          "hi": "HTML"
+        },
+        {
+          "en": "CSS",
+          "bn": "CSS",
+          "hi": "CSS"
+        },
+        {
+          "en": "SQL",
+          "bn": "SQL",
+          "hi": "SQL"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Assembly language uses mnemonic instructions that are translated into machine code by an assembler.",
+        "bn": "অ্যাসেম্বলি ল্যাঙ্গুয়েজে ম্নেমোনিক নির্দেশ ব্যবহার করা হয়, যা অ্যাসেম্বলার মেশিন কোডে রূপান্তরিত করে।",
+        "hi": "असेंबली भाषा में मेमोनिक निर्देशों का उपयोग होता है, जिन्हें असेंबलर मशीन कोड में बदलता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q064",
+      "question": {
+        "en": "Which of the following is a high-level programming language mentioned in the textbook?",
+        "bn": "পাঠ্যবইয়ে উল্লিখিত নিচের কোনটি একটি উচ্চস্তরের প্রোগ্রামিং ভাষা?",
+        "hi": "पाठ्यपुस्तक में उल्लिखित निम्नलिखित में से कौन-सी उच्च-स्तरीय प्रोग्रामिंग भाषा है?"
+      },
+      "options": [
+        {
+          "en": "FORTRAN",
+          "bn": "FORTRAN",
+          "hi": "FORTRAN"
+        },
+        {
+          "en": "Machine Language",
+          "bn": "মেশিন ল্যাঙ্গুয়েজ",
+          "hi": "मशीन भाषा"
+        },
+        {
+          "en": "Assembly Language",
+          "bn": "অ্যাসেম্বলি ল্যাঙ্গুয়েজ",
+          "hi": "असेंबली भाषा"
+        },
+        {
+          "en": "Binary Code",
+          "bn": "বাইনারি কোড",
+          "hi": "बाइनरी कोड"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "FORTRAN is a high-level programming language listed in the textbook.",
+        "bn": "FORTRAN একটি উচ্চস্তরের প্রোগ্রামিং ভাষা, যা পাঠ্যবইয়ে উল্লেখ করা হয়েছে।",
+        "hi": "FORTRAN एक उच्च-स्तरीय प्रोग्रामिंग भाषा है, जिसका उल्लेख पाठ्यपुस्तक में किया गया है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q065",
+      "question": {
+        "en": "Which of the following is another high-level programming language mentioned in the textbook?",
+        "bn": "পাঠ্যবইয়ে উল্লিখিত অন্য কোনটি একটি উচ্চস্তরের প্রোগ্রামিং ভাষা?",
+        "hi": "पाठ्यपुस्तक में उल्लिखित अन्य कौन-सी उच्च-स्तरीय प्रोग्रामिंग भाषा है?"
+      },
+      "options": [
+        {
+          "en": "COBOL",
+          "bn": "COBOL",
+          "hi": "COBOL"
+        },
+        {
+          "en": "Machine Code",
+          "bn": "মেশিন কোড",
+          "hi": "मशीन कोड"
+        },
+        {
+          "en": "Binary Digits",
+          "bn": "বাইনারি ডিজিট",
+          "hi": "बाइनरी अंक"
+        },
+        {
+          "en": "Assembly Mnemonics only",
+          "bn": "শুধুমাত্র অ্যাসেম্বলি ম্নেমোনিক",
+          "hi": "केवल असेंबली मेमोनिक"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "COBOL is a high-level programming language used especially for business data processing.",
+        "bn": "COBOL একটি উচ্চস্তরের প্রোগ্রামিং ভাষা, যা বিশেষত ব্যবসায়িক তথ্য প্রক্রিয়াকরণে ব্যবহৃত হয়।",
+        "hi": "COBOL एक उच्च-स्तरीय प्रोग्रामिंग भाषा है, जिसका उपयोग विशेष रूप से व्यावसायिक डेटा प्रसंस्करण में होता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q066",
+      "question": {
+        "en": "Which of the following is an example of a programming language mentioned alongside C?",
+        "bn": "C-এর পাশাপাশি উল্লেখ করা নিচের কোনটি একটি প্রোগ্রামিং ভাষা?",
+        "hi": "C के साथ उल्लिखित निम्नलिखित में से कौन-सी प्रोग्रामिंग भाषा है?"
+      },
+      "options": [
+        {
+          "en": "PASCAL",
+          "bn": "PASCAL",
+          "hi": "PASCAL"
+        },
+        {
+          "en": "BIOS",
+          "bn": "BIOS",
+          "hi": "BIOS"
+        },
+        {
+          "en": "RAM",
+          "bn": "RAM",
+          "hi": "RAM"
+        },
+        {
+          "en": "ROM",
+          "bn": "ROM",
+          "hi": "ROM"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "PASCAL is a programming language listed alongside C in the textbook.",
+        "bn": "পাঠ্যবইয়ে C-এর পাশাপাশি PASCAL-কে একটি প্রোগ্রামিং ভাষা হিসেবে উল্লেখ করা হয়েছে।",
+        "hi": "पाठ्यपुस्तक में C के साथ PASCAL को भी एक प्रोग्रामिंग भाषा के रूप में दिया गया है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q070",
+      "question": {
+        "en": "What is software?",
+        "bn": "সফটওয়্যার কী?",
+        "hi": "सॉफ्टवेयर क्या है?"
+      },
+      "options": [
+        {
+          "en": "A collection of programs and data used to perform specific tasks on a computer",
+          "bn": "কম্পিউটারে নির্দিষ্ট কাজ সম্পাদনের জন্য ব্যবহৃত প্রোগ্রাম ও তথ্যের সমষ্টি",
+          "hi": "कंप्यूटर पर विशिष्ट कार्य करने के लिए उपयोग किए जाने वाले प्रोग्रामों और डेटा का समूह"
+        },
+        {
+          "en": "The physical components of a computer",
+          "bn": "কম্পিউটারের ভৌত উপাদানসমূহ",
+          "hi": "कंप्यूटर के भौतिक घटक"
+        },
+        {
+          "en": "Only the computer monitor",
+          "bn": "শুধুমাত্র কম্পিউটার মনিটর",
+          "hi": "केवल कंप्यूटर मॉनिटर"
+        },
+        {
+          "en": "A type of electrical circuit board",
+          "bn": "এক ধরনের বৈদ্যুতিক সার্কিট বোর্ড",
+          "hi": "एक प्रकार का विद्युत सर्किट बोर्ड"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Software is a collection of programs and related data that enables a computer to perform specific tasks.",
+        "bn": "সফটওয়্যার হল প্রোগ্রাম ও সংশ্লিষ্ট তথ্যের সমষ্টি, যা কম্পিউটারকে নির্দিষ্ট কাজ সম্পাদন করতে সক্ষম করে।",
+        "hi": "सॉफ्टवेयर प्रोग्रामों और संबंधित डेटा का समूह है, जो कंप्यूटर को विशिष्ट कार्य करने में सक्षम बनाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q071",
+      "question": {
+        "en": "Which operating system acts as system software and controls computer hardware while providing a link between the user and the computer?",
+        "bn": "কোন অপারেটিং সিস্টেমটি সিস্টেম সফটওয়্যার হিসেবে কম্পিউটারের যন্ত্রাংশ পরিচালনা করে এবং ব্যবহারকারী ও কম্পিউটারের মধ্যে সংযোগ স্থাপন করে?",
+        "hi": "कौन-सा ऑपरेटिंग सिस्टम सिस्टम सॉफ्टवेयर के रूप में कंप्यूटर के हार्डवेयर को नियंत्रित करता है और उपयोगकर्ता तथा कंप्यूटर के बीच संपर्क स्थापित करता है?"
+      },
+      "options": [
+        {
+          "en": "Operating System",
+          "bn": "অপারেটিং সিস্টেম",
+          "hi": "ऑपरेटिंग सिस्टम"
+        },
+        {
+          "en": "Compiler",
+          "bn": "কম্পাইলার",
+          "hi": "कंपाइलर"
+        },
+        {
+          "en": "Interpreter",
+          "bn": "ইন্টারপ্রিটার",
+          "hi": "इंटरप्रिटर"
+        },
+        {
+          "en": "Assembler",
+          "bn": "অ্যাসেম্বলার",
+          "hi": "असेम्बलर"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "An operating system manages computer hardware, controls operations, and provides an interface between the user and the computer.",
+        "bn": "অপারেটিং সিস্টেম কম্পিউটারের যন্ত্রাংশ পরিচালনা করে, কাজকর্ম নিয়ন্ত্রণ করে এবং ব্যবহারকারী ও কম্পিউটারের মধ্যে সংযোগ স্থাপন করে।",
+        "hi": "ऑपरेटिंग सिस्टम कंप्यूटर के हार्डवेयर का प्रबंधन करता है, कार्यों को नियंत्रित करता है और उपयोगकर्ता तथा कंप्यूटर के बीच संपर्क स्थापित करता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q074",
+      "question": {
+        "en": "Which translator converts assembly language into machine language?",
+        "bn": "কোন ট্রান্সলেটর অ্যাসেম্বলি ল্যাঙ্গুয়েজকে মেশিন ল্যাঙ্গুয়েজে রূপান্তরিত করে?",
+        "hi": "कौन-सा ट्रांसलेटर असेंबली लैंग्वेज को मशीन लैंग्वेज में बदलता है?"
+      },
+      "options": [
+        {
+          "en": "Assembler",
+          "bn": "অ্যাসেম্বলার",
+          "hi": "असेम्बलर"
+        },
+        {
+          "en": "Compiler",
+          "bn": "কম্পাইলার",
+          "hi": "कंपाइलर"
+        },
+        {
+          "en": "Interpreter",
+          "bn": "ইনটারপ্রিটার",
+          "hi": "इंटरप्रिटर"
+        },
+        {
+          "en": "Operating System",
+          "bn": "অপারেটিং সিস্টেম",
+          "hi": "ऑपरेटिंग सिस्टम"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "An assembler translates assembly-language source code into machine-language object code.",
+        "bn": "অ্যাসেম্বলার অ্যাসেম্বলি ল্যাঙ্গুয়েজের সোর্স কোডকে মেশিন ল্যাঙ্গুয়েজের অবজেক্ট কোডে রূপান্তরিত করে।",
+        "hi": "असेम्बलर असेंबली लैंग्वेज के सोर्स कोड को मशीन लैंग्वेज के ऑब्जेक्ट कोड में बदलता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q075",
+      "question": {
+        "en": "Which translator converts high-level programming language source code into machine-language object code?",
+        "bn": "কোন ট্রান্সলেটর হাই-লেভেল প্রোগ্রামিং ল্যাঙ্গুয়েজের সোর্স কোডকে মেশিন ল্যাঙ্গুয়েজের অবজেক্ট কোডে রূপান্তরিত করে?",
+        "hi": "कौन-सा ट्रांसलेटर हाई-लेवल प्रोग्रामिंग लैंग्वेज के सोर्स कोड को मशीन लैंग्वेज के ऑब्जेक्ट कोड में बदलता है?"
+      },
+      "options": [
+        {
+          "en": "Compiler",
+          "bn": "কম্পাইলার",
+          "hi": "कंपाइलर"
+        },
+        {
+          "en": "Assembler",
+          "bn": "অ্যাসেম্বলার",
+          "hi": "असेम्बलर"
+        },
+        {
+          "en": "Interpreter",
+          "bn": "ইনটারপ্রিটার",
+          "hi": "इंटरप्रिटर"
+        },
+        {
+          "en": "Device driver",
+          "bn": "ডিভাইস ড্রাইভার",
+          "hi": "डिवाइस ड्राइवर"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "A compiler translates high-level source code into machine code or object code.",
+        "bn": "কম্পাইলার হাই-লেভেল সোর্স কোডকে মেশিন কোড বা অবজেক্ট কোডে রূপান্তরিত করে।",
+        "hi": "कंपाइलर हाई-लेवल सोर्स कोड को मशीन कोड या ऑब्जेक्ट कोड में बदलता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q076",
+      "question": {
+        "en": "How does an interpreter translate a high-level programming language?",
+        "bn": "ইনটারপ্রিটার কীভাবে হাই-লেভেল প্রোগ্রামিং ল্যাঙ্গুয়েজকে রূপান্তরিত করে?",
+        "hi": "इंटरप्रिटर हाई-लेवल प्रोग्रामिंग लैंग्वेज को किस प्रकार बदलता है?"
+      },
+      "options": [
+        {
+          "en": "It translates instructions one at a time",
+          "bn": "এটি একবারে একটি করে নির্দেশ রূপান্তরিত করে",
+          "hi": "यह एक बार में एक निर्देश का अनुवाद करता है"
+        },
+        {
+          "en": "It translates the entire program at once",
+          "bn": "এটি সম্পূর্ণ প্রোগ্রাম একসঙ্গে রূপান্তরিত করে",
+          "hi": "यह पूरे प्रोग्राम का एक साथ अनुवाद करता है"
+        },
+        {
+          "en": "It translates only assembly language",
+          "bn": "এটি কেবল অ্যাসেম্বলি ল্যাঙ্গুয়েজ রূপান্তরিত করে",
+          "hi": "यह केवल असेंबली लैंग्वेज का अनुवाद करता है"
+        },
+        {
+          "en": "It manages computer hardware",
+          "bn": "এটি কম্পিউটারের যন্ত্রাংশ পরিচালনা করে",
+          "hi": "यह कंप्यूटर के हार्डवेयर का प्रबंधन करता है"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "An interpreter translates and executes instructions individually rather than translating the entire program at once.",
+        "bn": "ইনটারপ্রিটার সম্পূর্ণ প্রোগ্রাম একসঙ্গে রূপান্তরিত না করে প্রতিটি নির্দেশ পৃথকভাবে রূপান্তরিত করে।",
+        "hi": "इंटरप्रिटर पूरे प्रोग्राम का एक साथ अनुवाद करने के बजाय प्रत्येक निर्देश का अलग-अलग अनुवाद करता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q077",
+      "question": {
+        "en": "Which translator may take more time because it processes instructions individually?",
+        "bn": "প্রতিটি নির্দেশ পৃথকভাবে প্রক্রিয়াকরণ করার কারণে কোন ট্রান্সলেটরের বেশি সময় লাগতে পারে?",
+        "hi": "निर्देशों को अलग-अलग संसाधित करने के कारण किस ट्रांसलेटर को अधिक समय लग सकता है?"
+      },
+      "options": [
+        {
+          "en": "Interpreter",
+          "bn": "ইনটারপ্রিটার",
+          "hi": "इंटरप्रिटर"
+        },
+        {
+          "en": "Compiler",
+          "bn": "কম্পাইলার",
+          "hi": "कंपाइलर"
+        },
+        {
+          "en": "Assembler",
+          "bn": "অ্যাসেম্বলার",
+          "hi": "असेम्बलर"
+        },
+        {
+          "en": "Operating System",
+          "bn": "অপারেটিং সিস্টেম",
+          "hi": "ऑपरेटिंग सिस्टम"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "An interpreter processes instructions individually, which can make execution slower than using compiled code.",
+        "bn": "ইনটারপ্রিটার নির্দেশগুলি পৃথকভাবে প্রক্রিয়াকরণ করে, ফলে কম্পাইল করা কোডের তুলনায় কাজ ধীর হতে পারে।",
+        "hi": "इंटरप्रिटर निर्देशों को अलग-अलग संसाधित करता है, इसलिए कंपाइल किए गए कोड की तुलना में कार्य धीमा हो सकता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q078",
+      "question": {
+        "en": "Which of the following is a system software used to translate programming language instructions?",
+        "bn": "প্রোগ্রামিং ল্যাঙ্গুয়েজের নির্দেশ রূপান্তর করতে ব্যবহৃত কোনটি সিস্টেম সফটওয়্যার?",
+        "hi": "प्रोग्रामिंग लैंग्वेज के निर्देशों का अनुवाद करने के लिए उपयोग किया जाने वाला कौन-सा सॉफ्टवेयर सिस्टम सॉफ्टवेयर है?"
+      },
+      "options": [
+        {
+          "en": "Translator",
+          "bn": "ট্রান্সলেটর",
+          "hi": "ट्रांसलेटर"
+        },
+        {
+          "en": "Word processor",
+          "bn": "ওয়ার্ড প্রসেসর",
+          "hi": "वर्ड प्रोसेसर"
+        },
+        {
+          "en": "Media player",
+          "bn": "মিডিয়া প্লেয়ার",
+          "hi": "मीडिया प्लेयर"
+        },
+        {
+          "en": "Web browser",
+          "bn": "ওয়েব ব্রাউজার",
+          "hi": "वेब ब्राउज़र"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "A translator is system software that converts source code into a form the computer can process.",
+        "bn": "ট্রান্সলেটর হল এমন একটি সিস্টেম সফটওয়্যার, যা সোর্স কোডকে কম্পিউটারের প্রক্রিয়াকরণযোগ্য রূপে পরিবর্তন করে।",
+        "hi": "ट्रांसलेटर एक सिस्टम सॉफ्टवेयर है, जो सोर्स कोड को कंप्यूटर द्वारा संसाधित किए जाने योग्य रूप में बदलता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q079",
+      "question": {
+        "en": "Which company was founded by Larry Page and Sergey Brin?",
+        "bn": "ল্যারি পেজ এবং সের্গেই ব্রিন কোন সংস্থাটি প্রতিষ্ঠা করেন?",
+        "hi": "लैरी पेज और सर्गेई ब्रिन ने किस कंपनी की स्थापना की?"
+      },
+      "options": [
+        {
+          "en": "Google",
+          "bn": "গুগল",
+          "hi": "गूगल"
+        },
+        {
+          "en": "Microsoft",
+          "bn": "মাইক্রোসফট",
+          "hi": "माइक्रोसॉफ्ट"
+        },
+        {
+          "en": "Facebook",
+          "bn": "ফেসবুক",
+          "hi": "फेसबुक"
+        },
+        {
+          "en": "Twitter",
+          "bn": "টুইটার",
+          "hi": "ट्विटर"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Larry Page and Sergey Brin founded Google, which provides internet-related services.",
+        "bn": "ল্যারি পেজ এবং সের্গেই ব্রিন গুগল প্রতিষ্ঠা করেন। সংস্থাটি ইন্টারনেট-সংক্রান্ত বিভিন্ন পরিষেবা প্রদান করে।",
+        "hi": "लैरी पेज और सर्गेई ब्रिन ने गूगल की स्थापना की। यह कंपनी इंटरनेट से संबंधित विभिन्न सेवाएँ प्रदान करती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q080",
+      "question": {
+        "en": "What is Google Search?",
+        "bn": "গুগল সার্চ কী?",
+        "hi": "गूगल सर्च क्या है?"
+      },
+      "options": [
+        {
+          "en": "A web search engine",
+          "bn": "একটি ওয়েব সার্চ ইঞ্জিন",
+          "hi": "एक वेब सर्च इंजन"
+        },
+        {
+          "en": "An operating system",
+          "bn": "একটি অপারেটিং সিস্টেম",
+          "hi": "एक ऑपरेटिंग सिस्टम"
+        },
+        {
+          "en": "A video-editing application",
+          "bn": "একটি ভিডিও এডিটিং অ্যাপ্লিকেশন",
+          "hi": "एक वीडियो एडिटिंग एप्लिकेशन"
+        },
+        {
+          "en": "A programming language",
+          "bn": "একটি প্রোগ্রামিং ল্যাঙ্গুয়েজ",
+          "hi": "एक प्रोग्रामिंग लैंग्वेज"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Google Search is a web search engine developed by Google.",
+        "bn": "গুগল সার্চ হল গুগল কর্তৃক তৈরি একটি ওয়েব সার্চ ইঞ্জিন।",
+        "hi": "गूगल सर्च, गूगल द्वारा विकसित एक वेब सर्च इंजन है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q081",
+      "question": {
+        "en": "Who founded Microsoft in 1975?",
+        "bn": "1975 সালে মাইক্রোসফট কে প্রতিষ্ঠা করেন?",
+        "hi": "1975 में माइक्रोसॉफ्ट की स्थापना किसने की?"
+      },
+      "options": [
+        {
+          "en": "Bill Gates and Paul Allen",
+          "bn": "বিল গেটস এবং পল অ্যালেন",
+          "hi": "बिल गेट्स और पॉल एलन"
+        },
+        {
+          "en": "Larry Page and Sergey Brin",
+          "bn": "ল্যারি পেজ এবং সের্গেই ব্রিন",
+          "hi": "लैरी पेज और सर्गेई ब्रिन"
+        },
+        {
+          "en": "Mark Zuckerberg and his associates",
+          "bn": "মার্ক জুকারবার্গ এবং তাঁর সহযোগীরা",
+          "hi": "मार्क जुकरबर्ग और उनके सहयोगी"
+        },
+        {
+          "en": "Jack Dorsey and Evan Williams",
+          "bn": "জ্যাক ডরসি এবং ইভান উইলিয়ামস",
+          "hi": "जैक डोर्सी और इवान विलियम्स"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Bill Gates and Paul Allen founded Microsoft in 1975.",
+        "bn": "বিল গেটস এবং পল অ্যালেন 1975 সালে মাইক্রোসফট প্রতিষ্ঠা করেন।",
+        "hi": "बिल गेट्स और पॉल एलन ने 1975 में माइक्रोसॉफ्ट की स्थापना की।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q082",
+      "question": {
+        "en": "Who was the Indian-origin CEO of Microsoft mentioned in the textbook?",
+        "bn": "পাঠ্যাংশে উল্লেখিত ভারতীয় বংশোদ্ভূত মাইক্রোসফটের সিইও কে?",
+        "hi": "पाठ्यांश में बताए गए भारतीय मूल के माइक्रोसॉफ्ट के CEO कौन हैं?"
+      },
+      "options": [
+        {
+          "en": "Satya Nadella",
+          "bn": "সত্য নাডেলা",
+          "hi": "सत्य नडेला"
+        },
+        {
+          "en": "Bill Gates",
+          "bn": "বিল গেটস",
+          "hi": "बिल गेट्स"
+        },
+        {
+          "en": "Paul Allen",
+          "bn": "পল অ্যালেন",
+          "hi": "पॉल एलन"
+        },
+        {
+          "en": "Mark Zuckerberg",
+          "bn": "মার্ক জুকারবার্গ",
+          "hi": "मार्क जुकरबर्ग"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The textbook identifies Satya Nadella as the Indian-origin CEO of Microsoft.",
+        "bn": "পাঠ্যাংশে সত্য নাডেলাকে ভারতীয় বংশোদ্ভূত মাইক্রোসফটের সিইও হিসেবে উল্লেখ করা হয়েছে।",
+        "hi": "पाठ्यांश में सत्य नडेला को भारतीय मूल के माइक्रोसॉफ्ट CEO के रूप में बताया गया है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q083",
+      "question": {
+        "en": "Which organisation operates Wikipedia?",
+        "bn": "উইকিপিডিয়া কোন সংস্থা পরিচালনা করে?",
+        "hi": "विकिपीडिया का संचालन कौन-सी संस्था करती है?"
+      },
+      "options": [
+        {
+          "en": "Wikimedia Foundation",
+          "bn": "উইকিমিডিয়া ফাউন্ডেশন",
+          "hi": "विकिमीडिया फाउंडेशन"
+        },
+        {
+          "en": "Microsoft Corporation",
+          "bn": "মাইক্রোসফট কর্পোরেশন",
+          "hi": "माइक्रोसॉफ्ट कॉर्पोरेशन"
+        },
+        {
+          "en": "Google LLC",
+          "bn": "গুগল এলএলসি",
+          "hi": "गूगल LLC"
+        },
+        {
+          "en": "Meta Platforms",
+          "bn": "মেটা প্ল্যাটফর্মস",
+          "hi": "मेटा प्लेटफ़ॉर्म्स"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Wikipedia is an online encyclopaedia operated by the non-profit Wikimedia Foundation.",
+        "bn": "উইকিপিডিয়া একটি অনলাইন বিশ্বকোষ, যা অলাভজনক উইকিমিডিয়া ফাউন্ডেশন পরিচালনা করে।",
+        "hi": "विकिपीडिया एक ऑनलाइन विश्वकोश है, जिसका संचालन गैर-लाभकारी विकिमीडिया फाउंडेशन करती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q084",
+      "question": {
+        "en": "Who founded Wikipedia?",
+        "bn": "উইকিপিডিয়ার প্রতিষ্ঠাতা কে?",
+        "hi": "विकिपीडिया के संस्थापक कौन हैं?"
+      },
+      "options": [
+        {
+          "en": "Jimmy Wales",
+          "bn": "জিমি ওয়েলস",
+          "hi": "जिमी वेल्स"
+        },
+        {
+          "en": "Bill Gates",
+          "bn": "বিল গেটস",
+          "hi": "बिल गेट्स"
+        },
+        {
+          "en": "Larry Page",
+          "bn": "ল্যারি পেজ",
+          "hi": "लैरी पेज"
+        },
+        {
+          "en": "Steve Chen",
+          "bn": "স্টিভ চেন",
+          "hi": "स्टीव चेन"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Jimmy Wales is identified in the textbook as the founder of Wikipedia.",
+        "bn": "পাঠ্যাংশে জিমি ওয়েলসকে উইকিপিডিয়ার প্রতিষ্ঠাতা হিসেবে উল্লেখ করা হয়েছে।",
+        "hi": "पाठ्यांश में जिमी वेल्स को विकिपीडिया का संस्थापक बताया गया है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q085",
+      "question": {
+        "en": "Which city is known as the Silicon Valley of India?",
+        "bn": "ভারতের সিলিকন ভ্যালি নামে কোন শহর পরিচিত?",
+        "hi": "भारत की सिलिकॉन वैली के नाम से कौन-सा शहर प्रसिद्ध है?"
+      },
+      "options": [
+        {
+          "en": "Bengaluru",
+          "bn": "বেঙ্গালুরু",
+          "hi": "बेंगलुरु"
+        },
+        {
+          "en": "Kolkata",
+          "bn": "কলকাতা",
+          "hi": "कोलकाता"
+        },
+        {
+          "en": "Mumbai",
+          "bn": "মুম্বাই",
+          "hi": "मुंबई"
+        },
+        {
+          "en": "Chennai",
+          "bn": "চেন্নাই",
+          "hi": "चेन्नई"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Bengaluru is commonly known as the Silicon Valley of India because of its technology industry.",
+        "bn": "প্রযুক্তি শিল্পের বিকাশের কারণে বেঙ্গালুরু ভারতের সিলিকন ভ্যালি নামে পরিচিত।",
+        "hi": "प्रौद्योगिकी उद्योग के विकास के कारण बेंगलुरु को भारत की सिलिकॉन वैली कहा जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q086",
+      "question": {
+        "en": "Where is Silicon Valley located?",
+        "bn": "সিলিকন ভ্যালি কোথায় অবস্থিত?",
+        "hi": "सिलिकॉन वैली कहाँ स्थित है?"
+      },
+      "options": [
+        {
+          "en": "Southern part of the San Francisco Bay Area in Northern California, USA",
+          "bn": "আমেরিকা যুক্তরাষ্ট্রের উত্তর ক্যালিফোর্নিয়ার সান ফ্রান্সিসকো বে এরিয়ার দক্ষিণাংশে",
+          "hi": "अमेरिका के उत्तरी कैलिफ़ोर्निया में सैन फ्रांसिस्को बे एरिया के दक्षिणी भाग में"
+        },
+        {
+          "en": "Central London, United Kingdom",
+          "bn": "যুক্তরাজ্যের মধ্য লন্ডনে",
+          "hi": "यूनाइटेड किंगडम के मध्य लंदन में"
+        },
+        {
+          "en": "Eastern Tokyo, Japan",
+          "bn": "জাপানের পূর্ব টোকিওতে",
+          "hi": "जापान के पूर्वी टोक्यो में"
+        },
+        {
+          "en": "Northern Sydney, Australia",
+          "bn": "অস্ট্রেলিয়ার উত্তর সিডনিতে",
+          "hi": "ऑस्ट्रेलिया के उत्तरी सिडनी में"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Silicon Valley is located in the southern part of the San Francisco Bay Area in Northern California, USA.",
+        "bn": "সিলিকন ভ্যালি আমেরিকা যুক্তরাষ্ট্রের উত্তর ক্যালিফোর্নিয়ার সান ফ্রান্সিসকো বে এরিয়ার দক্ষিণাংশে অবস্থিত।",
+        "hi": "सिलिकॉन वैली अमेरिका के उत्तरी कैलिफ़ोर्निया में सैन फ्रांसिस्को बे एरिया के दक्षिणी भाग में स्थित है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q087",
+      "question": {
+        "en": "Which company developed the Android operating system?",
+        "bn": "অ্যান্ড্রয়েড অপারেটিং সিস্টেম কোন সংস্থা তৈরি করেছে?",
+        "hi": "एंड्रॉइड ऑपरेटिंग सिस्टम किस कंपनी ने विकसित किया?"
+      },
+      "options": [
+        {
+          "en": "Google",
+          "bn": "গুগল",
+          "hi": "गूगल"
+        },
+        {
+          "en": "Apple",
+          "bn": "অ্যাপল",
+          "hi": "ऐप्पल"
+        },
+        {
+          "en": "Microsoft",
+          "bn": "মাইক্রোসফট",
+          "hi": "माइक्रोसॉफ्ट"
+        },
+        {
+          "en": "Meta",
+          "bn": "মেটা",
+          "hi": "मेटा"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Android is a Linux-based operating system designed mainly for smartphones and tablet computers, developed by Google.",
+        "bn": "অ্যান্ড্রয়েড হল লিনাক্স-ভিত্তিক অপারেটিং সিস্টেম, যা মূলত স্মার্টফোন ও ট্যাবলেট কম্পিউটারের জন্য তৈরি করেছে গুগল।",
+        "hi": "एंड्रॉइड एक लिनक्स-आधारित ऑपरेटिंग सिस्टम है, जिसे मुख्य रूप से स्मार्टफोन और टैबलेट कंप्यूटर के लिए गूगल ने विकसित किया।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q088",
+      "question": {
+        "en": "Android is primarily designed for which devices?",
+        "bn": "অ্যান্ড্রয়েড মূলত কোন ডিভাইসগুলির জন্য তৈরি?",
+        "hi": "एंड्रॉइड मुख्य रूप से किन उपकरणों के लिए बनाया गया है?"
+      },
+      "options": [
+        {
+          "en": "Smartphones and tablet computers",
+          "bn": "স্মার্টফোন ও ট্যাবলেট কম্পিউটার",
+          "hi": "स्मार्टफोन और टैबलेट कंप्यूटर"
+        },
+        {
+          "en": "Printers and scanners",
+          "bn": "প্রিন্টার ও স্ক্যানার",
+          "hi": "प्रिंटर और स्कैनर"
+        },
+        {
+          "en": "Desktop monitors only",
+          "bn": "শুধুমাত্র ডেস্কটপ মনিটর",
+          "hi": "केवल डेस्कटॉप मॉनिटर"
+        },
+        {
+          "en": "Routers only",
+          "bn": "শুধুমাত্র রাউটার",
+          "hi": "केवल राउटर"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Android is a Linux-based operating system primarily intended for smartphones and tablet computers.",
+        "bn": "অ্যান্ড্রয়েড একটি লিনাক্স-ভিত্তিক অপারেটিং সিস্টেম, যা মূলত স্মার্টফোন ও ট্যাবলেট কম্পিউটারের জন্য তৈরি।",
+        "hi": "एंड्रॉइड एक लिनक्स-आधारित ऑपरेटिंग सिस्टम है, जिसे मुख्य रूप से स्मार्टफोन और टैबलेट कंप्यूटर के लिए बनाया गया है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q091",
+      "question": {
+        "en": "Which programming language is identified as a major language used for Android applications?",
+        "bn": "অ্যান্ড্রয়েড অ্যাপ্লিকেশনে ব্যবহৃত একটি প্রধান প্রোগ্রামিং ল্যাঙ্গুয়েজ কোনটি?",
+        "hi": "एंड्रॉइड एप्लिकेशन में उपयोग की जाने वाली प्रमुख प्रोग्रामिंग लैंग्वेज में से एक कौन-सी है?"
+      },
+      "options": [
+        {
+          "en": "Java",
+          "bn": "জাভা",
+          "hi": "जावा"
+        },
+        {
+          "en": "HTML",
+          "bn": "HTML",
+          "hi": "HTML"
+        },
+        {
+          "en": "SQL",
+          "bn": "SQL",
+          "hi": "SQL"
+        },
+        {
+          "en": "CSS",
+          "bn": "CSS",
+          "hi": "CSS"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Java is a major programming language traditionally used to develop Android applications.",
+        "bn": "জাভা অ্যান্ড্রয়েড অ্যাপ্লিকেশন তৈরিতে ঐতিহ্যগতভাবে ব্যবহৃত একটি প্রধান প্রোগ্রামিং ল্যাঙ্গুয়েজ।",
+        "hi": "जावा पारंपरिक रूप से एंड्रॉइड एप्लिकेशन बनाने में उपयोग की जाने वाली प्रमुख प्रोग्रामिंग लैंग्वेज है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q092",
+      "question": {
+        "en": "What is a smartphone?",
+        "bn": "স্মার্টফোন কী?",
+        "hi": "स्मार्टफोन क्या है?"
+      },
+      "options": [
+        {
+          "en": "An advanced mobile phone with functions similar to a computer",
+          "bn": "কম্পিউটারের মতো বিভিন্ন কাজ করতে সক্ষম উন্নত মোবাইল ফোন",
+          "hi": "कंप्यूटर जैसी सुविधाओं वाला एक उन्नत मोबाइल फोन"
+        },
+        {
+          "en": "A device used only for printing",
+          "bn": "শুধুমাত্র প্রিন্ট করার যন্ত্র",
+          "hi": "केवल प्रिंट करने वाला उपकरण"
+        },
+        {
+          "en": "A type of computer monitor",
+          "bn": "এক ধরনের কম্পিউটার মনিটর",
+          "hi": "एक प्रकार का कंप्यूटर मॉनिटर"
+        },
+        {
+          "en": "A device used only for storing files",
+          "bn": "শুধুমাত্র ফাইল সংরক্ষণের যন্ত্র",
+          "hi": "केवल फाइलें संग्रहीत करने वाला उपकरण"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "A smartphone is more advanced than a basic mobile phone and can perform many tasks similar to a computer.",
+        "bn": "স্মার্টফোন সাধারণ মোবাইল ফোনের তুলনায় উন্নত এবং কম্পিউটারের মতো অনেক কাজ করতে পারে।",
+        "hi": "स्मार्टफोन सामान्य मोबाइल फोन से अधिक उन्नत होता है और कंप्यूटर की तरह कई कार्य कर सकता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q093",
+      "question": {
+        "en": "Which company developed YouTube, whose founders are Steve Chen and Chad Hurley?",
+        "bn": "স্টিভ চেন ও চ্যাড হারলি প্রতিষ্ঠিত ইউটিউব কী ধরনের পরিষেবা?",
+        "hi": "स्टीव चेन और चैड हर्ली द्वारा स्थापित यूट्यूब किस प्रकार की सेवा है?"
+      },
+      "options": [
+        {
+          "en": "Online video streaming service",
+          "bn": "অনলাইন ভিডিও স্ট্রিমিং পরিষেবা",
+          "hi": "ऑनलाइन वीडियो स्ट्रीमिंग सेवा"
+        },
+        {
+          "en": "Online encyclopaedia",
+          "bn": "অনলাইন বিশ্বকোষ",
+          "hi": "ऑनलाइन विश्वकोश"
+        },
+        {
+          "en": "Operating system",
+          "bn": "অপারেটিং সিস্টেম",
+          "hi": "ऑपरेटिंग सिस्टम"
+        },
+        {
+          "en": "Search engine only",
+          "bn": "শুধুমাত্র সার্চ ইঞ্জিন",
+          "hi": "केवल सर्च इंजन"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "YouTube is an online video streaming service founded by Steve Chen and Chad Hurley, along with Jawed Karim.",
+        "bn": "ইউটিউব একটি অনলাইন ভিডিও স্ট্রিমিং পরিষেবা। এর প্রতিষ্ঠাতাদের মধ্যে স্টিভ চেন ও চ্যাড হারলি রয়েছেন।",
+        "hi": "यूट्यूब एक ऑनलाइन वीडियो स्ट्रीमिंग सेवा है। इसके संस्थापकों में स्टीव चेन और चैड हर्ली शामिल हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q094",
+      "question": {
+        "en": "Who founded Facebook in 2004?",
+        "bn": "2004 সালে ফেসবুক কে প্রতিষ্ঠা করেন?",
+        "hi": "2004 में फेसबुक की स्थापना किसने की?"
+      },
+      "options": [
+        {
+          "en": "Mark Zuckerberg and his associates",
+          "bn": "মার্ক জুকারবার্গ এবং তাঁর সহযোগীরা",
+          "hi": "मार्क जुकरबर्ग और उनके सहयोगी"
+        },
+        {
+          "en": "Larry Page and Sergey Brin",
+          "bn": "ল্যারি পেজ এবং সের্গেই ব্রিন",
+          "hi": "लैरी पेज और सर्गेई ब्रिन"
+        },
+        {
+          "en": "Bill Gates and Paul Allen",
+          "bn": "বিল গেটস এবং পল অ্যালেন",
+          "hi": "बिल गेट्स और पॉल एलन"
+        },
+        {
+          "en": "Jack Dorsey and Evan Williams",
+          "bn": "জ্যাক ডরসি এবং ইভান উইলিয়ামস",
+          "hi": "जैक डोर्सी और इवान विलियम्स"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Facebook was founded in 2004 by Mark Zuckerberg and his college associates.",
+        "bn": "মার্ক জুকারবার্গ এবং তাঁর কলেজের সহযোগীরা 2004 সালে ফেসবুক প্রতিষ্ঠা করেন।",
+        "hi": "मार्क जुकरबर्ग और उनके कॉलेज के सहयोगियों ने 2004 में फेसबुक की स्थापना की।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q095",
+      "question": {
+        "en": "Where is Facebook's headquarters located according to the textbook?",
+        "bn": "পাঠ্যাংশ অনুযায়ী ফেসবুকের প্রধান কার্যালয় কোথায় অবস্থিত?",
+        "hi": "पाठ्यांश के अनुसार फेसबुक का मुख्यालय कहाँ स्थित है?"
+      },
+      "options": [
+        {
+          "en": "Menlo Park, California",
+          "bn": "মেনলো পার্ক, ক্যালিফোর্নিয়া",
+          "hi": "मेनलो पार्क, कैलिफ़ोर्निया"
+        },
+        {
+          "en": "Mountain View, California",
+          "bn": "মাউন্টেন ভিউ, ক্যালিফোর্নিয়া",
+          "hi": "माउंटेन व्यू, कैलिफ़ोर्निया"
+        },
+        {
+          "en": "Seattle, Washington",
+          "bn": "সিয়াটল, ওয়াশিংটন",
+          "hi": "सीएटल, वॉशिंगटन"
+        },
+        {
+          "en": "New York City",
+          "bn": "নিউ ইয়র্ক সিটি",
+          "hi": "न्यूयॉर्क सिटी"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The textbook gives Menlo Park, California, as Facebook's headquarters location.",
+        "bn": "পাঠ্যাংশে ফেসবুকের প্রধান কার্যালয় মেনলো পার্ক, ক্যালিফোর্নিয়ায় অবস্থিত বলে উল্লেখ করা হয়েছে।",
+        "hi": "पाठ्यांश में फेसबुक का मुख्यालय मेनलो पार्क, कैलिफ़ोर्निया में बताया गया है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q096",
+      "question": {
+        "en": "What type of service is Twitter?",
+        "bn": "টুইটার কী ধরনের পরিষেবা?",
+        "hi": "ट्विटर किस प्रकार की सेवा है?"
+      },
+      "options": [
+        {
+          "en": "Online social networking and microblogging service",
+          "bn": "অনলাইন সোশ্যাল নেটওয়ার্কিং ও মাইক্রোব্লগিং পরিষেবা",
+          "hi": "ऑनलाइन सोशल नेटवर्किंग और माइक्रोब्लॉगिंग सेवा"
+        },
+        {
+          "en": "Online video streaming service",
+          "bn": "অনলাইন ভিডিও স্ট্রিমিং পরিষেবা",
+          "hi": "ऑनलाइन वीडियो स्ट्रीमिंग सेवा"
+        },
+        {
+          "en": "Online encyclopaedia",
+          "bn": "অনলাইন বিশ্বকোষ",
+          "hi": "ऑनलाइन विश्वकोश"
+        },
+        {
+          "en": "Mobile operating system",
+          "bn": "মোবাইল অপারেটিং সিস্টেম",
+          "hi": "मोबाइल ऑपरेटिंग सिस्टम"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Twitter is an online social networking and microblogging service.",
+        "bn": "টুইটার একটি অনলাইন সোশ্যাল নেটওয়ার্কিং ও মাইক্রোব্লগিং পরিষেবা।",
+        "hi": "ट्विटर एक ऑनलाइन सोशल नेटवर्किंग और माइक्रोब्लॉगिंग सेवा है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q097",
+      "question": {
+        "en": "Who were among the founders of Twitter in March 2006?",
+        "bn": "2006 সালের মার্চ মাসে টুইটারের প্রতিষ্ঠাতাদের মধ্যে কারা ছিলেন?",
+        "hi": "मार्च 2006 में ट्विटर के संस्थापकों में कौन शामिल थे?"
+      },
+      "options": [
+        {
+          "en": "Jack Dorsey, Evan Williams, Biz Stone and Noah Glass",
+          "bn": "জ্যাক ডরসি, ইভান উইলিয়ামস, বিজ স্টোন এবং নোয়া গ্লাস",
+          "hi": "जैक डोर्सी, इवान विलियम्स, बिज़ स्टोन और नोआ ग्लास"
+        },
+        {
+          "en": "Bill Gates and Paul Allen",
+          "bn": "বিল গেটস এবং পল অ্যালেন",
+          "hi": "बिल गेट्स और पॉल एलन"
+        },
+        {
+          "en": "Larry Page and Sergey Brin",
+          "bn": "ল্যারি পেজ এবং সের্গেই ব্রিন",
+          "hi": "लैरी पेज और सर्गेई ब्रिन"
+        },
+        {
+          "en": "Steve Chen and Chad Hurley",
+          "bn": "স্টিভ চেন এবং চ্যাড হারলি",
+          "hi": "स्टीव चेन और चैड हर्ली"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Jack Dorsey, Evan Williams, Biz Stone and Noah Glass are associated with the founding of Twitter in 2006.",
+        "bn": "জ্যাক ডরসি, ইভান উইলিয়ামস, বিজ স্টোন এবং নোয়া গ্লাস 2006 সালে টুইটার প্রতিষ্ঠার সঙ্গে যুক্ত ছিলেন।",
+        "hi": "जैक डोर्सी, इवान विलियम्स, बिज़ स्टोन और नोआ ग्लास 2006 में ट्विटर की स्थापना से जुड़े थे।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q098",
+      "question": {
+        "en": "What type of service is WhatsApp?",
+        "bn": "হোয়াটসঅ্যাপ কী ধরনের পরিষেবা?",
+        "hi": "व्हाट्सऐप किस प्रकार की सेवा है?"
+      },
+      "options": [
+        {
+          "en": "Messaging and communication service",
+          "bn": "মেসেজিং ও যোগাযোগ পরিষেবা",
+          "hi": "मैसेजिंग और संचार सेवा"
+        },
+        {
+          "en": "Online encyclopaedia",
+          "bn": "অনলাইন বিশ্বকোষ",
+          "hi": "ऑनलाइन विश्वकोश"
+        },
+        {
+          "en": "Desktop operating system",
+          "bn": "ডেস্কটপ অপারেটিং সিস্টেম",
+          "hi": "डेस्कटॉप ऑपरेटिंग सिस्टम"
+        },
+        {
+          "en": "Video-editing software",
+          "bn": "ভিডিও এডিটিং সফটওয়্যার",
+          "hi": "वीडियो एडिटिंग सॉफ्टवेयर"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "WhatsApp is a messaging and communication service used to exchange text, voice, video and other content.",
+        "bn": "হোয়াটসঅ্যাপ একটি মেসেজিং ও যোগাযোগ পরিষেবা, যার মাধ্যমে লেখা, কণ্ঠস্বর, ভিডিও এবং অন্যান্য বিষয় আদান-প্রদান করা যায়।",
+        "hi": "व्हाट्सऐप एक मैसेजिंग और संचार सेवा है, जिसके माध्यम से टेक्स्ट, आवाज़, वीडियो और अन्य सामग्री साझा की जा सकती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q099",
+      "question": {
+        "en": "Who founded WhatsApp?",
+        "bn": "হোয়াটসঅ্যাপ কে প্রতিষ্ঠা করেন?",
+        "hi": "व्हाट्सऐप की स्थापना किसने की?"
+      },
+      "options": [
+        {
+          "en": "Brian Acton and Jan Koum",
+          "bn": "ব্রায়ান অ্যাকটন এবং জান কউম",
+          "hi": "ब्रायन एक्टन और जान कूम"
+        },
+        {
+          "en": "Jack Dorsey and Evan Williams",
+          "bn": "জ্যাক ডরসি এবং ইভান উইলিয়ামস",
+          "hi": "जैक डोर्सी और इवान विलियम्स"
+        },
+        {
+          "en": "Steve Chen and Chad Hurley",
+          "bn": "স্টিভ চেন এবং চ্যাড হারলি",
+          "hi": "स्टीव चेन और चैड हर्ली"
+        },
+        {
+          "en": "Larry Page and Sergey Brin",
+          "bn": "ল্যারি পেজ এবং সের্গেই ব্রিন",
+          "hi": "लैरी पेज और सर्गेई ब्रिन"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Brian Acton and Jan Koum founded WhatsApp.",
+        "bn": "ব্রায়ান অ্যাকটন এবং জান কউম হোয়াটসঅ্যাপ প্রতিষ্ঠা করেন।",
+        "hi": "ब्रायन एक्टन और जान कूम ने व्हाट्सऐप की स्थापना की।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q100",
+      "question": {
+        "en": "What type of service is Skype?",
+        "bn": "স্কাইপ কী ধরনের পরিষেবা?",
+        "hi": "स्काइप किस प्रकार की सेवा है?"
+      },
+      "options": [
+        {
+          "en": "Online communication service with video calling",
+          "bn": "ভিডিও কলিং-সহ অনলাইন যোগাযোগ পরিষেবা",
+          "hi": "वीडियो कॉलिंग वाली ऑनलाइन संचार सेवा"
+        },
+        {
+          "en": "Online search engine",
+          "bn": "অনলাইন সার্চ ইঞ্জিন",
+          "hi": "ऑनलाइन सर्च इंजन"
+        },
+        {
+          "en": "Operating system",
+          "bn": "অপারেটিং সিস্টেম",
+          "hi": "ऑपरेटिंग सिस्टम"
+        },
+        {
+          "en": "Online encyclopaedia",
+          "bn": "অনলাইন বিশ্বকোষ",
+          "hi": "ऑनलाइन विश्वकोश"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Skype provides online communication, including voice and video calls.",
+        "bn": "স্কাইপ অনলাইনে যোগাযোগের পরিষেবা প্রদান করে, যার মধ্যে কণ্ঠস্বর ও ভিডিও কল রয়েছে।",
+        "hi": "स्काइप ऑनलाइन संचार सेवा प्रदान करता है, जिसमें वॉइस और वीडियो कॉल शामिल हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q101",
+      "question": {
+        "en": "Who were the founders of Skype mentioned in the textbook?",
+        "bn": "পাঠ্যাংশে স্কাইপের প্রতিষ্ঠাতা হিসেবে কাদের নাম উল্লেখ করা হয়েছে?",
+        "hi": "पाठ्यांश में स्काइप के संस्थापकों के रूप में किनके नाम बताए गए हैं?"
+      },
+      "options": [
+        {
+          "en": "Niklas Zennström and Janus Friis",
+          "bn": "নিকলাস জেনস্ট্রোম এবং জ্যানুস ফ্রিস",
+          "hi": "निक्लास ज़ेनस्ट्रॉम और जानुस फ्रिस"
+        },
+        {
+          "en": "Bill Gates and Paul Allen",
+          "bn": "বিল গেটস এবং পল অ্যালেন",
+          "hi": "बिल गेट्स और पॉल एलन"
+        },
+        {
+          "en": "Mark Zuckerberg and his associates",
+          "bn": "মার্ক জুকারবার্গ এবং তাঁর সহযোগীরা",
+          "hi": "मार्क जुकरबर्ग और उनके सहयोगी"
+        },
+        {
+          "en": "Brian Acton and Jan Koum",
+          "bn": "ব্রায়ান অ্যাকটন এবং জান কউম",
+          "hi": "ब्रायन एक्टन और जान कूम"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Niklas Zennström and Janus Friis are identified in the textbook as Skype's founders.",
+        "bn": "পাঠ্যাংশে নিকলাস জেনস্ট্রোম এবং জ্যানুস ফ্রিসকে স্কাইপের প্রতিষ্ঠাতা হিসেবে উল্লেখ করা হয়েছে।",
+        "hi": "पाठ्यांश में निक्लास ज़ेनस्ट्रॉम और जानुस फ्रिस को स्काइप का संस्थापक बताया गया है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q125",
+      "question": {
+        "en": "Which of the following is a supercomputer in India?",
+        "bn": "নিচের কোনটি ভারতের একটি সুপারকম্পিউটার?",
+        "hi": "निम्नलिखित में से कौन-सा भारत का एक सुपरकंप्यूटर है?"
+      },
+      "options": [
+        {
+          "en": "Pratyush",
+          "bn": "প্রত্যুষ",
+          "hi": "प्रत्युष"
+        },
+        {
+          "en": "ENIAC",
+          "bn": "ENIAC",
+          "hi": "ENIAC"
+        },
+        {
+          "en": "MS-DOS",
+          "bn": "MS-DOS",
+          "hi": "MS-DOS"
+        },
+        {
+          "en": "COBOL",
+          "bn": "COBOL",
+          "hi": "COBOL"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Pratyush is an Indian supercomputer used for weather and climate research.",
+        "bn": "প্রত্যুষ ভারতের একটি সুপারকম্পিউটার, যা আবহাওয়া ও জলবায়ু গবেষণায় ব্যবহৃত হয়।",
+        "hi": "प्रत्युष भारत का एक सुपरकंप्यूटर है, जिसका उपयोग मौसम और जलवायु अनुसंधान में किया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q126",
+      "question": {
+        "en": "What is a bit?",
+        "bn": "বিট কী?",
+        "hi": "बिट क्या है?"
+      },
+      "options": [
+        {
+          "en": "The smallest unit of computer memory",
+          "bn": "কম্পিউটার মেমরির ক্ষুদ্রতম একক",
+          "hi": "कंप्यूटर मेमोरी की सबसे छोटी इकाई"
+        },
+        {
+          "en": "A group of 8 bytes",
+          "bn": "8 বাইটের একটি গুচ্ছ",
+          "hi": "8 बाइट का समूह"
+        },
+        {
+          "en": "A type of printer",
+          "bn": "এক ধরনের প্রিন্টার",
+          "hi": "एक प्रकार का प्रिंटर"
+        },
+        {
+          "en": "A computer operating system",
+          "bn": "একটি কম্পিউটার অপারেটিং সিস্টেম",
+          "hi": "एक कंप्यूटर ऑपरेटिंग सिस्टम"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Bit means Binary Digit and is the smallest unit of digital information.",
+        "bn": "Bit-এর অর্থ Binary Digit। এটি ডিজিটাল তথ্যের ক্ষুদ্রতম একক।",
+        "hi": "Bit का अर्थ Binary Digit है। यह डिजिटल जानकारी की सबसे छोटी इकाई है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q127",
+      "question": {
+        "en": "How many bits are there in one nibble?",
+        "bn": "একটি নিবলে কত বিট থাকে?",
+        "hi": "एक निबल में कितने बिट होते हैं?"
+      },
+      "options": [
+        {
+          "en": "4 bits",
+          "bn": "4 বিট",
+          "hi": "4 बिट"
+        },
+        {
+          "en": "8 bits",
+          "bn": "8 বিট",
+          "hi": "8 बिट"
+        },
+        {
+          "en": "16 bits",
+          "bn": "16 বিট",
+          "hi": "16 बिट"
+        },
+        {
+          "en": "2 bits",
+          "bn": "2 বিট",
+          "hi": "2 बिट"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "One nibble consists of 4 bits.",
+        "bn": "একটি নিবল 4 বিট নিয়ে গঠিত।",
+        "hi": "एक निबल में 4 बिट होते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q128",
+      "question": {
+        "en": "How many bits are there in one byte?",
+        "bn": "এক বাইটে কত বিট থাকে?",
+        "hi": "एक बाइट में कितने बिट होते हैं?"
+      },
+      "options": [
+        {
+          "en": "8 bits",
+          "bn": "8 বিট",
+          "hi": "8 बिट"
+        },
+        {
+          "en": "4 bits",
+          "bn": "4 বিট",
+          "hi": "4 बिट"
+        },
+        {
+          "en": "16 bits",
+          "bn": "16 বিট",
+          "hi": "16 बिट"
+        },
+        {
+          "en": "32 bits",
+          "bn": "32 বিট",
+          "hi": "32 बिट"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "One byte consists of 8 bits.",
+        "bn": "এক বাইটে 8 বিট থাকে।",
+        "hi": "एक बाइट में 8 बिट होते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q129",
+      "question": {
+        "en": "According to the textbook's binary storage-unit convention, 1024 bytes equal how many kilobytes?",
+        "bn": "পাঠ্যাংশে ব্যবহৃত বাইনারি স্টোরেজ এককের নিয়ম অনুযায়ী 1024 বাইটে কত কিলোবাইট হয়?",
+        "hi": "पाठ्यांश में दिए गए बाइनरी स्टोरेज इकाई के अनुसार 1024 बाइट कितने किलोबाइट के बराबर हैं?"
+      },
+      "options": [
+        {
+          "en": "1 KB",
+          "bn": "1 KB",
+          "hi": "1 KB"
+        },
+        {
+          "en": "1 MB",
+          "bn": "1 MB",
+          "hi": "1 MB"
+        },
+        {
+          "en": "1 GB",
+          "bn": "1 GB",
+          "hi": "1 GB"
+        },
+        {
+          "en": "1 TB",
+          "bn": "1 TB",
+          "hi": "1 TB"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The textbook uses the convention 1024 B = 1 KB.",
+        "bn": "পাঠ্যাংশে 1024 B = 1 KB নিয়মটি ব্যবহার করা হয়েছে।",
+        "hi": "पाठ्यांश में 1024 B = 1 KB का नियम दिया गया है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q130",
+      "question": {
+        "en": "According to the textbook's storage-unit convention, 1024 KB equal how many megabytes?",
+        "bn": "পাঠ্যাংশের স্টোরেজ এককের নিয়ম অনুযায়ী 1024 KB-তে কত MB হয়?",
+        "hi": "पाठ्यांश के स्टोरेज इकाई नियम के अनुसार 1024 KB कितने MB के बराबर हैं?"
+      },
+      "options": [
+        {
+          "en": "1 MB",
+          "bn": "1 MB",
+          "hi": "1 MB"
+        },
+        {
+          "en": "1 GB",
+          "bn": "1 GB",
+          "hi": "1 GB"
+        },
+        {
+          "en": "1 KB",
+          "bn": "1 KB",
+          "hi": "1 KB"
+        },
+        {
+          "en": "1 TB",
+          "bn": "1 TB",
+          "hi": "1 TB"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The textbook uses the convention 1024 KB = 1 MB.",
+        "bn": "পাঠ্যাংশে 1024 KB = 1 MB নিয়মটি ব্যবহার করা হয়েছে।",
+        "hi": "पाठ्यांश में 1024 KB = 1 MB का नियम दिया गया है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q131",
+      "question": {
+        "en": "According to the textbook's storage-unit convention, 1024 MB equal how many gigabytes?",
+        "bn": "পাঠ্যাংশের স্টোরেজ এককের নিয়ম অনুযায়ী 1024 MB-তে কত GB হয়?",
+        "hi": "पाठ्यांश के स्टोरेज इकाई नियम के अनुसार 1024 MB कितने GB के बराबर हैं?"
+      },
+      "options": [
+        {
+          "en": "1 GB",
+          "bn": "1 GB",
+          "hi": "1 GB"
+        },
+        {
+          "en": "1 TB",
+          "bn": "1 TB",
+          "hi": "1 TB"
+        },
+        {
+          "en": "1 KB",
+          "bn": "1 KB",
+          "hi": "1 KB"
+        },
+        {
+          "en": "1 PB",
+          "bn": "1 PB",
+          "hi": "1 PB"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The textbook uses the convention 1024 MB = 1 GB.",
+        "bn": "পাঠ্যাংশে 1024 MB = 1 GB নিয়মটি ব্যবহার করা হয়েছে।",
+        "hi": "पाठ्यांश में 1024 MB = 1 GB का नियम दिया गया है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q132",
+      "question": {
+        "en": "According to the textbook's storage-unit convention, 1024 GB equal how many terabytes?",
+        "bn": "পাঠ্যাংশের স্টোরেজ এককের নিয়ম অনুযায়ী 1024 GB-তে কত TB হয়?",
+        "hi": "पाठ्यांश के स्टोरेज इकाई नियम के अनुसार 1024 GB कितने TB के बराबर हैं?"
+      },
+      "options": [
+        {
+          "en": "1 TB",
+          "bn": "1 TB",
+          "hi": "1 TB"
+        },
+        {
+          "en": "1 PB",
+          "bn": "1 PB",
+          "hi": "1 PB"
+        },
+        {
+          "en": "1 GB",
+          "bn": "1 GB",
+          "hi": "1 GB"
+        },
+        {
+          "en": "1 EB",
+          "bn": "1 EB",
+          "hi": "1 EB"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The textbook uses the convention 1024 GB = 1 TB.",
+        "bn": "পাঠ্যাংশে 1024 GB = 1 TB নিয়মটি ব্যবহার করা হয়েছে।",
+        "hi": "पाठ्यांश में 1024 GB = 1 TB का नियम दिया गया है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q134",
+      "question": {
+        "en": "Which of the following is not an input device?",
+        "bn": "নিম্নলিখিত কোনটি ইনপুট ডিভাইস নয়?",
+        "hi": "निम्नलिखित में से कौन-सा इनपुट डिवाइस नहीं है?"
+      },
+      "options": [
+        {
+          "en": "Keyboard",
+          "bn": "কিবোর্ড",
+          "hi": "कीबोर्ड"
+        },
+        {
+          "en": "Scanner",
+          "bn": "স্ক্যানার",
+          "hi": "स्कैनर"
+        },
+        {
+          "en": "Mouse",
+          "bn": "মাউস",
+          "hi": "माउस"
+        },
+        {
+          "en": "Printer",
+          "bn": "প্রিন্টার",
+          "hi": "प्रिंटर"
+        }
+      ],
+      "correct_index": 3,
+      "explanation": {
+        "en": "A printer is an output device because it produces printed information.",
+        "bn": "প্রিন্টার একটি আউটপুট ডিভাইস, কারণ এটি তথ্য মুদ্রণ করে।",
+        "hi": "प्रिंटर एक आउटपुट डिवाइस है, क्योंकि यह जानकारी को छापता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q135",
+      "question": {
+        "en": "http://www.discovery.com is an example of:",
+        "bn": "http://www.discovery.com হল একটি",
+        "hi": "http://www.discovery.com किसका उदाहरण है?"
+      },
+      "options": [
+        {
+          "en": "Internet Service Provider",
+          "bn": "ইন্টারনেট সার্ভিস প্রোভাইডার",
+          "hi": "इंटरनेट सेवा प्रदाता"
+        },
+        {
+          "en": "Web browser",
+          "bn": "ওয়েব ব্রাউজার",
+          "hi": "वेब ब्राउज़र"
+        },
+        {
+          "en": "Website",
+          "bn": "ওয়েবসাইট",
+          "hi": "वेबसाइट"
+        },
+        {
+          "en": "AutoCorrect",
+          "bn": "অটোকরেক্ট",
+          "hi": "ऑटोकरेक्ट"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "en": "The given address identifies a website on the internet.",
+        "bn": "প্রদত্ত ঠিকানাটি ইন্টারনেটে একটি ওয়েবসাইটকে নির্দেশ করে।",
+        "hi": "दिया गया पता इंटरनेट पर एक वेबसाइट को दर्शाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q136",
+      "question": {
+        "en": "What is an error in computer programming called?",
+        "bn": "কম্পিউটার প্রোগ্রামিংয়ে কোনো ত্রুটিকে কী বলা হয়?",
+        "hi": "कंप्यूटर प्रोग्रामिंग में त्रुटि को क्या कहा जाता है?"
+      },
+      "options": [
+        {
+          "en": "Bug",
+          "bn": "বাগ",
+          "hi": "बग"
+        },
+        {
+          "en": "Virus",
+          "bn": "ভাইরাস",
+          "hi": "वायरस"
+        },
+        {
+          "en": "Bit",
+          "bn": "বিট",
+          "hi": "बिट"
+        },
+        {
+          "en": "None of these",
+          "bn": "কোনোটিই নয়",
+          "hi": "इनमें से कोई नहीं"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "A bug is an error or flaw in a computer program.",
+        "bn": "কম্পিউটার প্রোগ্রামের ত্রুটি বা ভুলকে বাগ বলা হয়।",
+        "hi": "कंप्यूटर प्रोग्राम में मौजूद त्रुटि या दोष को बग कहा जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q137",
+      "question": {
+        "en": "Which word-processing function automatically corrects typed words?",
+        "bn": "কম্পিউটারে টাইপ করা শব্দ স্বয়ংক্রিয়ভাবে সংশোধন করার ফাংশনকে কী বলে?",
+        "hi": "टाइप किए गए शब्दों को अपने-आप सही करने वाले वर्ड प्रोसेसिंग फ़ंक्शन को क्या कहते हैं?"
+      },
+      "options": [
+        {
+          "en": "AutoCorrect",
+          "bn": "অটোকরেক্ট",
+          "hi": "ऑटोकरेक्ट"
+        },
+        {
+          "en": "AutoSummarize",
+          "bn": "অটো সামারাইজ",
+          "hi": "ऑटो समराइज़"
+        },
+        {
+          "en": "AutoInsert",
+          "bn": "অটো ইনসার্ট",
+          "hi": "ऑटो इंसर्ट"
+        },
+        {
+          "en": "Page Setup",
+          "bn": "পেজ সেটআপ",
+          "hi": "पेज सेटअप"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "AutoCorrect automatically corrects common typing and spelling mistakes.",
+        "bn": "অটোকরেক্ট সাধারণ টাইপিং ও বানান-সংক্রান্ত ভুল স্বয়ংক্রিয়ভাবে সংশোধন করে।",
+        "hi": "ऑटोकरेक्ट टाइपिंग और वर्तनी की सामान्य गलतियों को अपने-आप सुधारता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q138",
+      "question": {
+        "en": "By default, how is a document printed in portrait orientation?",
+        "bn": "ডিফল্টভাবে কম্পিউটারে কোনো ডকুমেন্ট কোন অভিমুখে প্রিন্ট হয়?",
+        "hi": "डिफ़ॉल्ट रूप से कंप्यूटर में दस्तावेज़ किस अभिविन्यास में प्रिंट होता है?"
+      },
+      "options": [
+        {
+          "en": "Portrait",
+          "bn": "পোর্ট্রেট",
+          "hi": "पोर्ट्रेट"
+        },
+        {
+          "en": "Landscape",
+          "bn": "ল্যান্ডস্কেপ",
+          "hi": "लैंडस्केप"
+        },
+        {
+          "en": "Print View",
+          "bn": "প্রিন্ট ভিউ",
+          "hi": "प्रिंट व्यू"
+        },
+        {
+          "en": "Track Changes",
+          "bn": "ট্র্যাক চেঞ্জেস",
+          "hi": "ट्रैक चेंजेस"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Portrait is the usual default page orientation in many word-processing applications.",
+        "bn": "অনেক ওয়ার্ড প্রসেসিং অ্যাপ্লিকেশনে পোর্ট্রেট হল সাধারণ ডিফল্ট পেজ অভিমুখ।",
+        "hi": "कई वर्ड प्रोसेसिंग एप्लिकेशन में पोर्ट्रेट सामान्य डिफ़ॉल्ट पेज अभिविन्यास होता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q139",
+      "question": {
+        "en": "What is Silicon Valley famous for?",
+        "bn": "সিলিকন ভ্যালি কীসের জন্য বিখ্যাত?",
+        "hi": "सिलिकॉन वैली किसके लिए प्रसिद्ध है?"
+      },
+      "options": [
+        {
+          "en": "Silicon production",
+          "bn": "সিলিকন উৎপাদন",
+          "hi": "सिलिकॉन उत्पादन"
+        },
+        {
+          "en": "River valleys",
+          "bn": "নদী উপত্যকা",
+          "hi": "नदी घाटियाँ"
+        },
+        {
+          "en": "Computer software and technology companies",
+          "bn": "কম্পিউটার সফটওয়্যার ও প্রযুক্তি সংস্থা",
+          "hi": "कंप्यूटर सॉफ्टवेयर और प्रौद्योगिकी कंपनियाँ"
+        },
+        {
+          "en": "Environmental conservation",
+          "bn": "পরিবেশ সংরক্ষণ",
+          "hi": "पर्यावरण संरक्षण"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "en": "Silicon Valley is famous as a major hub for technology companies and innovation.",
+        "bn": "সিলিকন ভ্যালি প্রযুক্তি সংস্থা ও উদ্ভাবনের একটি প্রধান কেন্দ্র হিসেবে বিখ্যাত।",
+        "hi": "सिलिकॉन वैली प्रौद्योगिकी कंपनियों और नवाचार के प्रमुख केंद्र के रूप में प्रसिद्ध है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q144",
+      "question": {
+        "en": "Which device connects a computer to a telephone line?",
+        "bn": "কম্পিউটারের সঙ্গে টেলিফোন লাইন সংযোগকারী যন্ত্রটির নাম কী?",
+        "hi": "कंप्यूटर को टेलीफोन लाइन से जोड़ने वाले उपकरण का नाम क्या है?"
+      },
+      "options": [
+        {
+          "en": "Scanner",
+          "bn": "স্ক্যানার",
+          "hi": "स्कैनर"
+        },
+        {
+          "en": "Modem",
+          "bn": "মডেম",
+          "hi": "मॉडेम"
+        },
+        {
+          "en": "CD-ROM",
+          "bn": "সিডি-রম",
+          "hi": "सीडी-रोम"
+        },
+        {
+          "en": "Printer",
+          "bn": "প্রিন্টার",
+          "hi": "प्रिंटर"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "A modem enables a computer to communicate over a communication line by modulating and demodulating signals.",
+        "bn": "মডেম সংকেত মডুলেশন ও ডিমডুলেশনের মাধ্যমে কম্পিউটারকে যোগাযোগ লাইনে তথ্য আদান-প্রদান করতে সাহায্য করে।",
+        "hi": "मॉडेम संकेतों के मॉड्यूलेशन और डिमॉड्यूलेशन द्वारा कंप्यूटर को संचार लाइन पर डेटा भेजने और प्राप्त करने में मदद करता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q145",
+      "question": {
+        "en": "Windows, used on computers, is a type of:",
+        "bn": "কম্পিউটারে ব্যবহৃত Windows হল একধরনের",
+        "hi": "कंप्यूटर में उपयोग किया जाने वाला Windows किस प्रकार का है?"
+      },
+      "options": [
+        {
+          "en": "Software",
+          "bn": "সফটওয়্যার",
+          "hi": "सॉफ्टवेयर"
+        },
+        {
+          "en": "Hardware",
+          "bn": "হার্ডওয়্যার",
+          "hi": "हार्डवेयर"
+        },
+        {
+          "en": "Both software and hardware",
+          "bn": "সফটওয়্যার এবং হার্ডওয়্যার উভয়ই",
+          "hi": "सॉफ्टवेयर और हार्डवेयर दोनों"
+        },
+        {
+          "en": "Neither",
+          "bn": "কোনোটিই নয়",
+          "hi": "इनमें से कोई नहीं"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Windows is an operating system, which is a type of system software.",
+        "bn": "Windows একটি অপারেটিং সিস্টেম, যা একধরনের সিস্টেম সফটওয়্যার।",
+        "hi": "Windows एक ऑपरेटिंग सिस्टम है, जो एक प्रकार का सिस्टम सॉफ्टवेयर है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q146",
+      "question": {
+        "en": "A computer virus primarily damages or affects:",
+        "bn": "কম্পিউটার ভাইরাস মূলত কী নষ্ট বা ক্ষতিগ্রস্ত করে?",
+        "hi": "कंप्यूटर वायरस मुख्य रूप से किसे नुकसान पहुँचाता है?"
+      },
+      "options": [
+        {
+          "en": "Data",
+          "bn": "তথ্য",
+          "hi": "डेटा"
+        },
+        {
+          "en": "Programs",
+          "bn": "প্রোগ্রাম",
+          "hi": "प्रोग्राम"
+        },
+        {
+          "en": "Both data and programs",
+          "bn": "তথ্য ও প্রোগ্রাম উভয়ই",
+          "hi": "डेटा और प्रोग्राम दोनों"
+        },
+        {
+          "en": "Neither data nor programs",
+          "bn": "তথ্য বা প্রোগ্রাম কোনোটিই নয়",
+          "hi": "न तो डेटा और न ही प्रोग्राम"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "en": "A computer virus can corrupt data and damage or disrupt programs.",
+        "bn": "কম্পিউটার ভাইরাস তথ্য নষ্ট করতে পারে এবং প্রোগ্রাম ক্ষতিগ্রস্ত বা ব্যাহত করতে পারে।",
+        "hi": "कंप्यूटर वायरस डेटा को दूषित कर सकता है और प्रोग्रामों को नुकसान पहुँचा सकता है या बाधित कर सकता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q147",
+      "question": {
+        "en": "Supercomputers are mainly used for:",
+        "bn": "সুপারকম্পিউটার প্রধানত কোন কাজে ব্যবহৃত হয়?",
+        "hi": "सुपरकंप्यूटर का मुख्य उपयोग किस कार्य के लिए होता है?"
+      },
+      "options": [
+        {
+          "en": "Intensive input and output operations only",
+          "bn": "শুধুমাত্র নিবিড় ইনপুট-আউটপুট কাজ",
+          "hi": "केवल गहन इनपुट-आउटपुट कार्य"
+        },
+        {
+          "en": "Data recovery only",
+          "bn": "শুধুমাত্র তথ্য পুনরুদ্ধার",
+          "hi": "केवल डेटा पुनर्प्राप्ति"
+        },
+        {
+          "en": "Mathematical and scientific computations",
+          "bn": "বিভিন্ন গাণিতিক ও বৈজ্ঞানিক গণনা",
+          "hi": "विभिन्न गणितीय और वैज्ञानिक गणनाएँ"
+        },
+        {
+          "en": "Word processing only",
+          "bn": "শুধুমাত্র ওয়ার্ড প্রসেসিং",
+          "hi": "केवल वर्ड प्रोसेसिंग"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "en": "Supercomputers are designed to perform extremely complex and large-scale scientific and mathematical computations.",
+        "bn": "সুপারকম্পিউটার অত্যন্ত জটিল ও বৃহৎ পরিসরের বৈজ্ঞানিক এবং গাণিতিক গণনার জন্য তৈরি।",
+        "hi": "सुपरकंप्यूटर अत्यंत जटिल और बड़े पैमाने की वैज्ञानिक तथा गणितीय गणनाओं के लिए बनाए जाते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q148",
+      "question": {
+        "en": "Which computer component allows additional hardware and capabilities to be added to a computer system?",
+        "bn": "কম্পিউটার ব্যবস্থায় অতিরিক্ত যন্ত্রাংশ ও ক্ষমতা যুক্ত করতে কোনটির সাহায্য নেওয়া হয়?",
+        "hi": "कंप्यूटर सिस्टम में अतिरिक्त हार्डवेयर और क्षमताएँ जोड़ने के लिए किसका उपयोग किया जाता है?"
+      },
+      "options": [
+        {
+          "en": "System board",
+          "bn": "সিস্টেম বোর্ড",
+          "hi": "सिस्टम बोर्ड"
+        },
+        {
+          "en": "Input devices",
+          "bn": "ইনপুট ডিভাইস",
+          "hi": "इनपुट डिवाइस"
+        },
+        {
+          "en": "Expansion slots",
+          "bn": "এক্সপ্যানশন স্লট",
+          "hi": "एक्सपैंशन स्लॉट"
+        },
+        {
+          "en": "System software",
+          "bn": "সিস্টেম সফটওয়্যার",
+          "hi": "सिस्टम सॉफ्टवेयर"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "en": "Expansion slots allow compatible expansion cards to be installed to add functions to a computer.",
+        "bn": "এক্সপ্যানশন স্লটে উপযুক্ত এক্সপ্যানশন কার্ড লাগিয়ে কম্পিউটারে অতিরিক্ত সুবিধা যোগ করা যায়।",
+        "hi": "एक्सपैंशन स्लॉट में उपयुक्त एक्सपैंशन कार्ड लगाकर कंप्यूटर में अतिरिक्त सुविधाएँ जोड़ी जा सकती हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q149",
+      "question": {
+        "en": "Who is known as the father of the computer?",
+        "bn": "কম্পিউটারের জনক কে?",
+        "hi": "कंप्यूटर का जनक किसे कहा जाता है?"
+      },
+      "options": [
+        {
+          "en": "Blaise Pascal",
+          "bn": "ব্লেইজ প্যাস্কাল",
+          "hi": "ब्लेज़ पास्कल"
+        },
+        {
+          "en": "Charles Babbage",
+          "bn": "চার্লস ব্যাবেজ",
+          "hi": "चार्ल्स बैबेज"
+        },
+        {
+          "en": "Bill Gates",
+          "bn": "বিল গেটস",
+          "hi": "बिल गेट्स"
+        },
+        {
+          "en": "None of these",
+          "bn": "কোনোটিই নয়",
+          "hi": "इनमें से कोई नहीं"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "Charles Babbage is widely regarded as the father of the computer for his designs of early mechanical computing machines.",
+        "bn": "প্রাথমিক যান্ত্রিক গণনাযন্ত্রের নকশার জন্য চার্লস ব্যাবেজকে সাধারণত কম্পিউটারের জনক বলা হয়।",
+        "hi": "प्रारंभिक यांत्रिक गणना मशीनों के डिज़ाइन के कारण चार्ल्स बैबेज को कंप्यूटर का जनक माना जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q150",
+      "question": {
+        "en": "Which of the following is associated with HTML coding?",
+        "bn": "HTML কোডিংয়ের সঙ্গে কোনটি সম্পর্কিত?",
+        "hi": "HTML कोडिंग से निम्नलिखित में से कौन संबंधित है?"
+      },
+      "options": [
+        {
+          "en": "Notepad",
+          "bn": "নোটপ্যাড",
+          "hi": "नोटपैड"
+        },
+        {
+          "en": "WordPad",
+          "bn": "ওয়ার্ডপ্যাড",
+          "hi": "वर्डपैड"
+        },
+        {
+          "en": "WordArt",
+          "bn": "ওয়ার্ডআর্ট",
+          "hi": "वर्डआर्ट"
+        },
+        {
+          "en": "MS Paint",
+          "bn": "এমএস পেইন্ট",
+          "hi": "एमएस पेंट"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Notepad can be used to write and edit HTML code as plain text.",
+        "bn": "নোটপ্যাডে সাধারণ টেক্সট হিসেবে HTML কোড লেখা ও সম্পাদনা করা যায়।",
+        "hi": "नोटपैड में HTML कोड को साधारण टेक्स्ट के रूप में लिखा और संपादित किया जा सकता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q151",
+      "question": {
+        "en": "Which term is associated with the internet?",
+        "bn": "নিম্নলিখিত কোন শব্দগুলি ইন্টারনেটের সঙ্গে সম্পর্কিত?",
+        "hi": "निम्नलिखित में से कौन-से शब्द इंटरनेट से संबंधित हैं?"
+      },
+      "options": [
+        {
+          "en": "WWW",
+          "bn": "WWW",
+          "hi": "WWW"
+        },
+        {
+          "en": "HTTP",
+          "bn": "HTTP",
+          "hi": "HTTP"
+        },
+        {
+          "en": "E-mail",
+          "bn": "ই-মেল",
+          "hi": "ई-मेल"
+        },
+        {
+          "en": "All of these",
+          "bn": "সবকটি",
+          "hi": "ये सभी"
+        }
+      ],
+      "correct_index": 3,
+      "explanation": {
+        "en": "WWW, HTTP, and e-mail are all associated with internet technologies and services.",
+        "bn": "WWW, HTTP এবং ই-মেল—সবকটিই ইন্টারনেট প্রযুক্তি ও পরিষেবার সঙ্গে সম্পর্কিত।",
+        "hi": "WWW, HTTP और ई-मेल सभी इंटरनेट तकनीकों और सेवाओं से संबंधित हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q152",
+      "question": {
+        "en": "Which key is present on a computer keyboard but not on a conventional typewriter keyboard?",
+        "bn": "পার্সোনাল কম্পিউটারের কিবোর্ডে থাকা কোন বোতামটি প্রচলিত টাইপরাইটারের কিবোর্ডে থাকে না?",
+        "hi": "कंप्यूटर कीबोर्ड पर मौजूद कौन-सी कुंजी पारंपरिक टाइपराइटर कीबोर्ड पर नहीं होती?"
+      },
+      "options": [
+        {
+          "en": "Spacebar",
+          "bn": "স্পেসবার",
+          "hi": "स्पेसबार"
+        },
+        {
+          "en": "Backspace",
+          "bn": "ব্যাকস্পেস",
+          "hi": "बैकस्पेस"
+        },
+        {
+          "en": "Enter",
+          "bn": "এন্টার",
+          "hi": "एंटर"
+        },
+        {
+          "en": "Tab",
+          "bn": "ট্যাব",
+          "hi": "टैब"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "Backspace is commonly identified as a computer keyboard key that removes the character to the left of the cursor.",
+        "bn": "ব্যাকস্পেস সাধারণত কম্পিউটার কিবোর্ডের এমন একটি বোতাম, যা কার্সরের বাঁদিকের অক্ষর মুছে দেয়।",
+        "hi": "बैकस्पेस कंप्यूटर कीबोर्ड की वह कुंजी है जो कर्सर के बाईं ओर का अक्षर मिटाती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q153",
+      "question": {
+        "en": "What is required for a mobile phone to function?",
+        "bn": "মোবাইল ফোন কাজ করার জন্য কোনটি প্রয়োজন?",
+        "hi": "मोबाइल फोन के काम करने के लिए क्या आवश्यक है?"
+      },
+      "options": [
+        {
+          "en": "A suitable handset",
+          "bn": "উপযুক্ত হ্যান্ডসেট",
+          "hi": "उपयुक्त हैंडसेट"
+        },
+        {
+          "en": "A SIM card",
+          "bn": "সিম কার্ড",
+          "hi": "सिम कार्ड"
+        },
+        {
+          "en": "The service provider's network",
+          "bn": "পরিষেবা প্রদানকারীর নেটওয়ার্ক",
+          "hi": "सेवा प्रदाता का नेटवर्क"
+        },
+        {
+          "en": "All of these",
+          "bn": "সবকটি",
+          "hi": "ये सभी"
+        }
+      ],
+      "correct_index": 3,
+      "explanation": {
+        "en": "For ordinary cellular service, a compatible handset, a SIM or equivalent subscriber identity, and network coverage are generally required.",
+        "bn": "সাধারণ সেলুলার পরিষেবার জন্য উপযুক্ত হ্যান্ডসেট, সিম বা সমতুল্য গ্রাহক পরিচয় এবং নেটওয়ার্ক কভারেজ সাধারণত প্রয়োজন।",
+        "hi": "सामान्य सेलुलर सेवा के लिए उपयुक्त हैंडसेट, सिम या समकक्ष ग्राहक पहचान और नेटवर्क कवरेज सामान्यतः आवश्यक हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q154",
+      "question": {
+        "en": "LOTUS, JAVA, and ORACLE are associated with which field?",
+        "bn": "LOTUS, JAVA এবং ORACLE শব্দগুলি কোন ক্ষেত্রের সঙ্গে সম্পর্কিত?",
+        "hi": "LOTUS, JAVA और ORACLE शब्द किस क्षेत्र से संबंधित हैं?"
+      },
+      "options": [
+        {
+          "en": "Missile technology",
+          "bn": "মিসাইল প্রযুক্তি",
+          "hi": "मिसाइल प्रौद्योगिकी"
+        },
+        {
+          "en": "Computer software and information technology",
+          "bn": "কম্পিউটার সফটওয়্যার ও তথ্যপ্রযুক্তি",
+          "hi": "कंप्यूटर सॉफ्टवेयर और सूचना प्रौद्योगिकी"
+        },
+        {
+          "en": "Agriculture",
+          "bn": "কৃষি",
+          "hi": "कृषि"
+        },
+        {
+          "en": "None of these",
+          "bn": "এগুলির কোনোটিই নয়",
+          "hi": "इनमें से कोई नहीं"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "LOTUS, JAVA, and ORACLE are names associated with computer software, programming, and information technology.",
+        "bn": "LOTUS, JAVA এবং ORACLE কম্পিউটার সফটওয়্যার, প্রোগ্রামিং ও তথ্যপ্রযুক্তির সঙ্গে সম্পর্কিত নাম।",
+        "hi": "LOTUS, JAVA और ORACLE कंप्यूटर सॉफ्टवेयर, प्रोग्रामिंग और सूचना प्रौद्योगिकी से संबंधित नाम हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q155",
+      "question": {
+        "en": "Which of the following terms are associated with the Internet?",
+        "bn": "ইন্টারনেটের সঙ্গে কোন কোন শব্দ জড়িত?",
+        "hi": "इंटरनेट से निम्नलिखित में से कौन-कौन से शब्द संबंधित हैं?"
+      },
+      "options": [
+        {
+          "en": "World Wide Web",
+          "bn": "ওয়ার্ল্ড ওয়াইড ওয়েব",
+          "hi": "वर्ल्ड वाइड वेब"
+        },
+        {
+          "en": "Website and Homepage",
+          "bn": "ওয়েবসাইট ও হোমপেজ",
+          "hi": "वेबसाइट और होमपेज"
+        },
+        {
+          "en": "Navigator and Java",
+          "bn": "নেভিগেটর ও জাভা",
+          "hi": "नेविगेटर और जावा"
+        },
+        {
+          "en": "All of the above",
+          "bn": "উপরের সবকটি",
+          "hi": "उपरोक्त सभी"
+        }
+      ],
+      "correct_index": 3,
+      "explanation": {
+        "en": "The World Wide Web, websites, homepages, navigators, and Java are associated with Internet technology.",
+        "bn": "ওয়ার্ল্ড ওয়াইড ওয়েব, ওয়েবসাইট, হোমপেজ, নেভিগেটর ও জাভা ইন্টারনেট প্রযুক্তির সঙ্গে সম্পর্কিত।",
+        "hi": "वर्ल्ड वाइड वेब, वेबसाइट, होमपेज, नेविगेटर और जावा इंटरनेट तकनीक से संबंधित हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q156",
+      "question": {
+        "en": "What is Disk Operating System (DOS) used in computers?",
+        "bn": "কম্পিউটারে ব্যবহৃত ডিস্ক অপারেটিং সিস্টেম (DOS) কী?",
+        "hi": "कंप्यूटर में प्रयुक्त डिस्क ऑपरेटिंग सिस्टम (DOS) क्या है?"
+      },
+      "options": [
+        {
+          "en": "A program that controls the basic operations of a computer",
+          "bn": "একটি প্রোগ্রাম, যা কম্পিউটারের মৌলিক কাজকর্ম নিয়ন্ত্রণ করে",
+          "hi": "एक प्रोग्राम जो कंप्यूटर के मूल कार्यों को नियंत्रित करता है"
+        },
+        {
+          "en": "A search engine",
+          "bn": "একটি সার্চ ইঞ্জিন",
+          "hi": "एक सर्च इंजन"
+        },
+        {
+          "en": "Antivirus software",
+          "bn": "অ্যান্টিভাইরাস সফটওয়্যার",
+          "hi": "एंटीवायरस सॉफ्टवेयर"
+        },
+        {
+          "en": "A device used to connect to the Internet",
+          "bn": "ইন্টারনেট সংযোগের জন্য ব্যবহৃত একটি যন্ত্র",
+          "hi": "इंटरनेट से जुड़ने के लिए इस्तेमाल होने वाला उपकरण"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "DOS is an operating system that manages a computer's basic operations.",
+        "bn": "DOS একটি অপারেটিং সিস্টেম, যা কম্পিউটারের মৌলিক কাজ পরিচালনা করে।",
+        "hi": "DOS एक ऑपरेटिंग सिस्टम है, जो कंप्यूटर के मूल कार्यों का प्रबंधन करता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q157",
+      "question": {
+        "en": "Which of the following is an Indian online retail company?",
+        "bn": "নিচের কোনটি একটি ভারতীয় অনলাইন খুচরা বিক্রয়কারী সংস্থা?",
+        "hi": "निम्नलिखित में से कौन-सी एक भारतीय ऑनलाइन खुदरा बिक्री कंपनी है?"
+      },
+      "options": [
+        {
+          "en": "Alibaba Group",
+          "bn": "আলিবাবা গ্রুপ",
+          "hi": "अलीबाबा ग्रुप"
+        },
+        {
+          "en": "eBay",
+          "bn": "ইবে",
+          "hi": "ईबे"
+        },
+        {
+          "en": "Flipkart",
+          "bn": "ফ্লিপকার্ট",
+          "hi": "फ्लिपकार्ट"
+        },
+        {
+          "en": "Wikipedia",
+          "bn": "উইকিপিডিয়া",
+          "hi": "विकिपीडिया"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "en": "Flipkart is an Indian e-commerce company.",
+        "bn": "ফ্লিপকার্ট একটি ভারতীয় ই-কমার্স সংস্থা।",
+        "hi": "फ्लिपकार्ट एक भारतीय ई-कॉमर्स कंपनी है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q158",
+      "question": {
+        "en": "Which of the following is not a social networking site?",
+        "bn": "নিচের কোনটি একটি সামাজিক যোগাযোগের ওয়েবসাইট নয়?",
+        "hi": "निम्नलिखित में से कौन-सी सोशल नेटवर्किंग साइट नहीं है?"
+      },
+      "options": [
+        {
+          "en": "Amazon",
+          "bn": "আমাজন",
+          "hi": "अमेज़न"
+        },
+        {
+          "en": "Jabong",
+          "bn": "জাবং",
+          "hi": "जाबॉन्ग"
+        },
+        {
+          "en": "Hi5",
+          "bn": "হাই5",
+          "hi": "हाई5"
+        },
+        {
+          "en": "Facebook",
+          "bn": "ফেসবুক",
+          "hi": "फेसबुक"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Amazon is primarily an e-commerce platform, not a social networking site.",
+        "bn": "আমাজন মূলত একটি ই-কমার্স প্ল্যাটফর্ম, সামাজিক যোগাযোগের ওয়েবসাইট নয়।",
+        "hi": "अमेज़न मुख्य रूप से एक ई-कॉमर्स प्लेटफ़ॉर्म है, सोशल नेटवर्किंग साइट नहीं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q159",
+      "question": {
+        "en": "Select the odd one out.",
+        "bn": "বেমানান বিকল্পটি নির্বাচন করুন।",
+        "hi": "विषम विकल्प चुनिए।"
+      },
+      "options": [
+        {
+          "en": "Keyboard",
+          "bn": "কীবোর্ড",
+          "hi": "कीबोर्ड"
+        },
+        {
+          "en": "Mouse",
+          "bn": "মাউস",
+          "hi": "माउस"
+        },
+        {
+          "en": "Twitter",
+          "bn": "টুইটার",
+          "hi": "ट्विटर"
+        },
+        {
+          "en": "Scanner",
+          "bn": "স্ক্যানার",
+          "hi": "स्कैनर"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "en": "Twitter is a social networking platform, while the other options are computer input devices.",
+        "bn": "টুইটার একটি সামাজিক যোগাযোগের প্ল্যাটফর্ম, অন্য বিকল্পগুলি কম্পিউটারের ইনপুট ডিভাইস।",
+        "hi": "ट्विटर एक सोशल नेटवर्किंग प्लेटफ़ॉर्म है, जबकि अन्य विकल्प कंप्यूटर के इनपुट उपकरण हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q160",
+      "question": {
+        "en": "Mark Zuckerberg is the CEO of which company?",
+        "bn": "মার্ক জাকারবার্গ কোন সংস্থার CEO?",
+        "hi": "मार्क ज़करबर्ग किस कंपनी के CEO हैं?"
+      },
+      "options": [
+        {
+          "en": "Twitter",
+          "bn": "টুইটার",
+          "hi": "ट्विटर"
+        },
+        {
+          "en": "Snapchat",
+          "bn": "স্ন্যাপচ্যাট",
+          "hi": "स्नैपचैट"
+        },
+        {
+          "en": "Facebook",
+          "bn": "ফেসবুক",
+          "hi": "फेसबुक"
+        },
+        {
+          "en": "Google",
+          "bn": "গুগল",
+          "hi": "गूगल"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "en": "Mark Zuckerberg co-founded Facebook and leads its parent company, Meta.",
+        "bn": "মার্ক জাকারবার্গ ফেসবুকের সহ-প্রতিষ্ঠাতা এবং এর মূল সংস্থা মেটার নেতৃত্ব দেন।",
+        "hi": "मार्क ज़करबर्ग फेसबुक के सह-संस्थापक हैं और इसकी मूल कंपनी मेटा का नेतृत्व करते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q161",
+      "question": {
+        "en": "Which of the following is an operating system?",
+        "bn": "নিচের কোনটি একটি অপারেটিং সিস্টেম?",
+        "hi": "निम्नलिखित में से कौन-सा एक ऑपरेटिंग सिस्टम है?"
+      },
+      "options": [
+        {
+          "en": "Dotnet",
+          "bn": "ডটনেট",
+          "hi": "डॉटनेट"
+        },
+        {
+          "en": "Java",
+          "bn": "জাভা",
+          "hi": "जावा"
+        },
+        {
+          "en": "Maya",
+          "bn": "মায়া",
+          "hi": "माया"
+        },
+        {
+          "en": "Unix",
+          "bn": "ইউনিক্স",
+          "hi": "यूनिक्स"
+        }
+      ],
+      "correct_index": 3,
+      "explanation": {
+        "en": "Unix is an operating system.",
+        "bn": "ইউনিক্স একটি অপারেটিং সিস্টেম।",
+        "hi": "यूनिक्स एक ऑपरेटिंग सिस्टम है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q162",
+      "question": {
+        "en": "Which on-demand Internet streaming service recently started its service in India?",
+        "bn": "কোন অন-ডিমান্ড ইন্টারনেট স্ট্রিমিং পরিষেবা সম্প্রতি ভারতে পরিষেবা শুরু করেছিল?",
+        "hi": "किस ऑन-डिमांड इंटरनेट स्ट्रीमिंग सेवा ने हाल ही में भारत में अपनी सेवा शुरू की थी?"
+      },
+      "options": [
+        {
+          "en": "Netflix",
+          "bn": "নেটফ্লিক্স",
+          "hi": "नेटफ्लिक्स"
+        },
+        {
+          "en": "Yahoo",
+          "bn": "ইয়াহু",
+          "hi": "याहू"
+        },
+        {
+          "en": "Google",
+          "bn": "গুগল",
+          "hi": "गूगल"
+        },
+        {
+          "en": "Java",
+          "bn": "জাভা",
+          "hi": "जावा"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Netflix is an on-demand streaming service that launched in India in 2016.",
+        "bn": "নেটফ্লিক্স একটি অন-ডিমান্ড স্ট্রিমিং পরিষেবা, যা ২০১৬ সালে ভারতে চালু হয়।",
+        "hi": "नेटफ्लिक्स एक ऑन-डिमांड स्ट्रीमिंग सेवा है, जिसने 2016 में भारत में शुरुआत की।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q163",
+      "question": {
+        "en": "Which component performs arithmetic and logical operations in a computer?",
+        "bn": "কম্পিউটারের কোন অংশ গাণিতিক ও যৌক্তিক কাজ সম্পাদন করে?",
+        "hi": "कंप्यूटर का कौन-सा भाग अंकगणितीय और तार्किक क्रियाएँ करता है?"
+      },
+      "options": [
+        {
+          "en": "Internet",
+          "bn": "ইন্টারনেট",
+          "hi": "इंटरनेट"
+        },
+        {
+          "en": "LAN",
+          "bn": "LAN",
+          "hi": "LAN"
+        },
+        {
+          "en": "CPU",
+          "bn": "CPU",
+          "hi": "CPU"
+        },
+        {
+          "en": "ALU",
+          "bn": "ALU",
+          "hi": "ALU"
+        }
+      ],
+      "correct_index": 3,
+      "explanation": {
+        "en": "The Arithmetic Logic Unit (ALU) performs arithmetic and logical operations.",
+        "bn": "অ্যারিথমেটিক লজিক ইউনিট (ALU) গাণিতিক ও যৌক্তিক কাজ সম্পাদন করে।",
+        "hi": "अंकगणितीय तर्क इकाई (ALU) अंकगणितीय और तार्किक क्रियाएँ करती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q164",
+      "question": {
+        "en": "What is another name for a computer chip?",
+        "bn": "কম্পিউটার চিপের আরেকটি নাম কী?",
+        "hi": "कंप्यूटर चिप का दूसरा नाम क्या है?"
+      },
+      "options": [
+        {
+          "en": "Microprocessor",
+          "bn": "মাইক্রোপ্রসেসর",
+          "hi": "माइक्रोप्रोसेसर"
+        },
+        {
+          "en": "RAM",
+          "bn": "RAM",
+          "hi": "RAM"
+        },
+        {
+          "en": "Motherboard",
+          "bn": "মাদারবোর্ড",
+          "hi": "मदरबोर्ड"
+        },
+        {
+          "en": "Hard disk",
+          "bn": "হার্ড ডিস্ক",
+          "hi": "हार्ड डिस्क"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "A microprocessor is an integrated electronic chip that processes instructions.",
+        "bn": "মাইক্রোপ্রসেসর একটি সমন্বিত ইলেকট্রনিক চিপ, যা নির্দেশ প্রক্রিয়াকরণ করে।",
+        "hi": "माइक्रोप्रोसेसर एक एकीकृत इलेक्ट्रॉनिक चिप है, जो निर्देशों को संसाधित करता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q165",
+      "question": {
+        "en": "What is the full form of ADSL?",
+        "bn": "ADSL-এর পূর্ণরূপ কী?",
+        "hi": "ADSL का पूर्ण रूप क्या है?"
+      },
+      "options": [
+        {
+          "en": "Asymmetric Dual Subscriber Line",
+          "bn": "অ্যাসিমেট্রিক ডুয়াল সাবস্ক্রাইবার লাইন",
+          "hi": "एसिमेट्रिक ड्यूल सब्सक्राइबर लाइन"
+        },
+        {
+          "en": "Asymmetric Digital Subscriber Line",
+          "bn": "অ্যাসিমেট্রিক ডিজিটাল সাবস্ক্রাইবার লাইন",
+          "hi": "एसिमेट्रिक डिजिटल सब्सक्राइबर लाइन"
+        },
+        {
+          "en": "Asymmetric Digital Subscription Line",
+          "bn": "অ্যাসিমেট্রিক ডিজিটাল সাবস্ক্রিপশন লাইন",
+          "hi": "एसिमेट्रिक डिजिटल सब्सक्रिप्शन लाइन"
+        },
+        {
+          "en": "Asymmetric Dual Subscription Line",
+          "bn": "অ্যাসিমেট্রিক ডুয়াল সাবস্ক্রিপশন লাইন",
+          "hi": "एसिमेट्रिक ड्यूल सब्सक्रिप्शन लाइन"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "ADSL stands for Asymmetric Digital Subscriber Line.",
+        "bn": "ADSL-এর পূর্ণরূপ Asymmetric Digital Subscriber Line।",
+        "hi": "ADSL का पूर्ण रूप Asymmetric Digital Subscriber Line है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q166",
+      "question": {
+        "en": "Which application uses the .docx file extension?",
+        "bn": "কোন অ্যাপ্লিকেশনে .docx ফাইল এক্সটেনশন ব্যবহৃত হয়?",
+        "hi": ".docx फ़ाइल एक्सटेंशन का उपयोग किस एप्लिकेशन में होता है?"
+      },
+      "options": [
+        {
+          "en": "Microsoft Word",
+          "bn": "মাইক্রোসফট ওয়ার্ড",
+          "hi": "माइक्रोसॉफ्ट वर्ड"
+        },
+        {
+          "en": "Paint",
+          "bn": "পেইন্ট",
+          "hi": "पेंट"
+        },
+        {
+          "en": "Adobe Reader",
+          "bn": "অ্যাডোব রিডার",
+          "hi": "एडोबी रीडर"
+        },
+        {
+          "en": "Microsoft Excel",
+          "bn": "মাইক্রোসফট এক্সেল",
+          "hi": "माइक्रोसॉफ्ट एक्सेल"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The .docx extension is the standard document format used by Microsoft Word.",
+        "bn": ".docx হলো মাইক্রোসফট ওয়ার্ডের ব্যবহৃত সাধারণ ডকুমেন্ট ফরম্যাট।",
+        "hi": ".docx माइक्रोसॉफ्ट वर्ड में उपयोग होने वाला सामान्य दस्तावेज़ फ़ॉर्मेट है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q167",
+      "question": {
+        "en": "What is the world's largest computer network?",
+        "bn": "পৃথিবীর বৃহত্তম কম্পিউটার নেটওয়ার্ক কোনটি?",
+        "hi": "दुनिया का सबसे बड़ा कंप्यूटर नेटवर्क कौन-सा है?"
+      },
+      "options": [
+        {
+          "en": "Internet",
+          "bn": "ইন্টারনেট",
+          "hi": "इंटरनेट"
+        },
+        {
+          "en": "Intranet",
+          "bn": "ইন্ট্রানেট",
+          "hi": "इंट्रानेट"
+        },
+        {
+          "en": "Yahoo",
+          "bn": "ইয়াহু",
+          "hi": "याहू"
+        },
+        {
+          "en": "LAN",
+          "bn": "LAN",
+          "hi": "LAN"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The Internet is the world's largest interconnected computer network.",
+        "bn": "ইন্টারনেট হলো বিশ্বের বৃহত্তম আন্তঃসংযুক্ত কম্পিউটার নেটওয়ার্ক।",
+        "hi": "इंटरनेट दुनिया का सबसे बड़ा परस्पर जुड़ा कंप्यूटर नेटवर्क है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q168",
+      "question": {
+        "en": "Which of the following is not a computer operating system?",
+        "bn": "নিচের কোনটি কম্পিউটারের অপারেটিং সিস্টেম নয়?",
+        "hi": "निम्नलिखित में से कौन-सा कंप्यूटर ऑपरेटिंग सिस्टम नहीं है?"
+      },
+      "options": [
+        {
+          "en": "Office",
+          "bn": "অফিস",
+          "hi": "ऑफिस"
+        },
+        {
+          "en": "Linux",
+          "bn": "লিনাক্স",
+          "hi": "लिनक्स"
+        },
+        {
+          "en": "Windows",
+          "bn": "উইন্ডোজ",
+          "hi": "विंडोज़"
+        },
+        {
+          "en": "Unix",
+          "bn": "ইউনিক্স",
+          "hi": "यूनिक्स"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Office is productivity software, whereas Linux, Windows, and Unix are operating systems.",
+        "bn": "অফিস একটি প্রোডাক্টিভিটি সফটওয়্যার, কিন্তু লিনাক্স, উইন্ডোজ ও ইউনিক্স অপারেটিং সিস্টেম।",
+        "hi": "ऑफिस उत्पादकता सॉफ्टवेयर है, जबकि लिनक्स, विंडोज़ और यूनिक्स ऑपरेटिंग सिस्टम हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q169",
+      "question": {
+        "en": "What does a computer backup do?",
+        "bn": "কম্পিউটারের ব্যাকআপ কী কাজ করে?",
+        "hi": "कंप्यूटर बैकअप क्या करता है?"
+      },
+      "options": [
+        {
+          "en": "Copies and stores computer data",
+          "bn": "কম্পিউটারের ডেটা কপি করে সংরক্ষণ করে",
+          "hi": "कंप्यूटर के डेटा की प्रतिलिपि बनाकर उसे सुरक्षित रखता है"
+        },
+        {
+          "en": "Copies and pastes computer data",
+          "bn": "কম্পিউটারের ডেটা কপি ও পেস্ট করে",
+          "hi": "कंप्यूटर के डेटा को कॉपी और पेस्ट करता है"
+        },
+        {
+          "en": "Cuts and pastes computer data",
+          "bn": "কম্পিউটারের ডেটা কাট ও পেস্ট করে",
+          "hi": "कंप्यूटर के डेटा को कट और पेस्ट करता है"
+        },
+        {
+          "en": "Cuts and stores computer data",
+          "bn": "কম্পিউটারের ডেটা কাট করে সংরক্ষণ করে",
+          "hi": "कंप्यूटर के डेटा को कट करके सुरक्षित रखता है"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "A backup creates and stores a copy of data so it can be restored if needed.",
+        "bn": "ব্যাকআপ ডেটার একটি অনুলিপি তৈরি করে সংরক্ষণ করে, যাতে প্রয়োজনে তা পুনরুদ্ধার করা যায়।",
+        "hi": "बैकअप डेटा की एक प्रति बनाकर सुरक्षित रखता है, ताकि आवश्यकता पड़ने पर उसे पुनः प्राप्त किया जा सके।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q170",
+      "question": {
+        "en": "Which was the world's first electronic digital computer?",
+        "bn": "বিশ্বের প্রথম ইলেকট্রনিক ডিজিটাল কম্পিউটার কোনটি ছিল?",
+        "hi": "दुनिया का पहला इलेक्ट्रॉनिक डिजिटल कंप्यूटर कौन-सा था?"
+      },
+      "options": [
+        {
+          "en": "PARAM",
+          "bn": "PARAM",
+          "hi": "PARAM"
+        },
+        {
+          "en": "UNIVAC",
+          "bn": "UNIVAC",
+          "hi": "UNIVAC"
+        },
+        {
+          "en": "ENIAC",
+          "bn": "ENIAC",
+          "hi": "ENIAC"
+        },
+        {
+          "en": "PROLOG",
+          "bn": "PROLOG",
+          "hi": "PROLOG"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "en": "ENIAC is widely recognized as an early general-purpose electronic digital computer.",
+        "bn": "ENIAC-কে প্রাথমিক সাধারণ-উদ্দেশ্য ইলেকট্রনিক ডিজিটাল কম্পিউটারগুলির অন্যতম হিসেবে স্বীকৃতি দেওয়া হয়।",
+        "hi": "ENIAC को शुरुआती सामान्य-उद्देश्य वाले इलेक्ट्रॉनिक डिजिटल कंप्यूटरों में से एक माना जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q171",
+      "question": {
+        "en": "Which abbreviation and its full form are incorrectly matched?",
+        "bn": "নিচের কোন সংক্ষিপ্ত রূপ ও পূর্ণরূপের জোড়টি ভুল?",
+        "hi": "निम्नलिखित में से किस संक्षिप्त रूप और उसके पूर्ण रूप का मिलान गलत है?"
+      },
+      "options": [
+        {
+          "en": "DBMS — Data Base Management System",
+          "bn": "DBMS — Data Base Management System",
+          "hi": "DBMS — Data Base Management System"
+        },
+        {
+          "en": "URL — Uniform Reserve Locator",
+          "bn": "URL — Uniform Reserve Locator",
+          "hi": "URL — Uniform Reserve Locator"
+        },
+        {
+          "en": "RAM — Random Access Memory",
+          "bn": "RAM — Random Access Memory",
+          "hi": "RAM — Random Access Memory"
+        },
+        {
+          "en": "FAX — Facsimile",
+          "bn": "FAX — Facsimile",
+          "hi": "FAX — Facsimile"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "URL stands for Uniform Resource Locator, not Uniform Reserve Locator.",
+        "bn": "URL-এর পূর্ণরূপ Uniform Resource Locator, Uniform Reserve Locator নয়।",
+        "hi": "URL का पूर्ण रूप Uniform Resource Locator है, Uniform Reserve Locator नहीं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q172",
+      "question": {
+        "en": "What is the act of trying to obtain another person's user ID, password, or credit card information for criminal purposes called?",
+        "bn": "অপরাধমূলক উদ্দেশ্যে অন্য ব্যক্তির User ID, Password বা ক্রেডিট কার্ডের তথ্য জানার চেষ্টাকে কী বলে?",
+        "hi": "अपराधिक उद्देश्य से किसी अन्य व्यक्ति की User ID, Password या क्रेडिट कार्ड की जानकारी प्राप्त करने के प्रयास को क्या कहते हैं?"
+      },
+      "options": [
+        {
+          "en": "Phishing",
+          "bn": "ফিশিং (Phishing)",
+          "hi": "फिशिंग (Phishing)"
+        },
+        {
+          "en": "Surfing",
+          "bn": "সার্ফিং (Surfing)",
+          "hi": "सर्फिंग (Surfing)"
+        },
+        {
+          "en": "Digging",
+          "bn": "ডিগিং (Digging)",
+          "hi": "डिगिंग (Digging)"
+        },
+        {
+          "en": "Neting",
+          "bn": "নেটিং (Neting)",
+          "hi": "नेटिंग (Neting)"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Phishing is a fraudulent attempt to steal sensitive information such as passwords and payment details.",
+        "bn": "ফিশিং হলো প্রতারণার মাধ্যমে পাসওয়ার্ড ও আর্থিক তথ্যের মতো গোপন তথ্য চুরি করার চেষ্টা।",
+        "hi": "फिशिंग धोखाधड़ी के जरिए पासवर्ड और भुगतान संबंधी जानकारी जैसी संवेदनशील जानकारी चुराने का प्रयास है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q173",
+      "question": {
+        "en": "What is the full form of ESS in an enterprise data system?",
+        "bn": "এন্টারপ্রাইজ ডেটা সিস্টেমের ক্ষেত্রে ESS-এর পূর্ণরূপ কী?",
+        "hi": "एंटरप्राइज डेटा सिस्टम के संदर्भ में ESS का पूर्ण रूप क्या है?"
+      },
+      "options": [
+        {
+          "en": "Executive Support System",
+          "bn": "এক্সিকিউটিভ সাপোর্ট সিস্টেম",
+          "hi": "एक्जीक्यूटिव सपोर्ट सिस्टम"
+        },
+        {
+          "en": "Executive Senior System",
+          "bn": "এক্সিকিউটিভ সিনিয়র সিস্টেম",
+          "hi": "एक्जीक्यूटिव सीनियर सिस्टम"
+        },
+        {
+          "en": "Executive Service System",
+          "bn": "এক্সিকিউটিভ সার্ভিস সিস্টেম",
+          "hi": "एक्जीक्यूटिव सर्विस सिस्टम"
+        },
+        {
+          "en": "Executive Series System",
+          "bn": "এক্সিকিউটিভ সিরিজ সিস্টেম",
+          "hi": "एक्जीक्यूटिव सीरीज़ सिस्टम"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "ESS commonly stands for Executive Support System, which supports executive-level decision-making.",
+        "bn": "ESS-এর অর্থ সাধারণত Executive Support System, যা উচ্চপর্যায়ের সিদ্ধান্ত গ্রহণে সহায়তা করে।",
+        "hi": "ESS का सामान्य पूर्ण रूप Executive Support System है, जो उच्चस्तरीय निर्णय लेने में सहायता करता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q174",
+      "question": {
+        "en": "What is another name for a computer monitor?",
+        "bn": "কম্পিউটার মনিটরকে আর কী বলা হয়?",
+        "hi": "कंप्यूटर मॉनिटर को और किस नाम से जाना जाता है?"
+      },
+      "options": [
+        {
+          "en": "Search engine",
+          "bn": "সার্চ ইঞ্জিন",
+          "hi": "सर्च इंजन"
+        },
+        {
+          "en": "LED",
+          "bn": "LED",
+          "hi": "LED"
+        },
+        {
+          "en": "CPU",
+          "bn": "CPU",
+          "hi": "CPU"
+        },
+        {
+          "en": "VDU",
+          "bn": "VDU",
+          "hi": "VDU"
+        }
+      ],
+      "correct_index": 3,
+      "explanation": {
+        "en": "VDU stands for Visual Display Unit, another term for a computer monitor.",
+        "bn": "VDU-এর পূর্ণরূপ Visual Display Unit, যা কম্পিউটার মনিটরের আরেকটি নাম।",
+        "hi": "VDU का पूर्ण रूप Visual Display Unit है, जो कंप्यूटर मॉनिटर का दूसरा नाम है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q175",
+      "question": {
+        "en": "Which of the following is a computer's primary memory?",
+        "bn": "নিচের কোনটি কম্পিউটারের প্রাথমিক মেমোরি?",
+        "hi": "निम्नलिखित में से कौन-सी कंप्यूटर की प्राथमिक मेमोरी है?"
+      },
+      "options": [
+        {
+          "en": "RAM",
+          "bn": "RAM",
+          "hi": "RAM"
+        },
+        {
+          "en": "DVD",
+          "bn": "DVD",
+          "hi": "DVD"
+        },
+        {
+          "en": "USB drive",
+          "bn": "USB ড্রাইভ",
+          "hi": "USB ड्राइव"
+        },
+        {
+          "en": "CD",
+          "bn": "CD",
+          "hi": "CD"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "RAM is primary memory used by a computer while programs are running.",
+        "bn": "RAM হলো প্রাথমিক মেমোরি, যা প্রোগ্রাম চলার সময় কম্পিউটার ব্যবহার করে।",
+        "hi": "RAM प्राथमिक मेमोरी है, जिसका उपयोग कंप्यूटर प्रोग्राम चलाते समय करता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q177",
+      "question": {
+        "en": "In computing, what is a spider?",
+        "bn": "কম্পিউটিং-এর ক্ষেত্রে স্পাইডার কী?",
+        "hi": "कंप्यूटिंग में स्पाइडर क्या होता है?"
+      },
+      "options": [
+        {
+          "en": "An application used to view websites",
+          "bn": "ওয়েবসাইট দেখার জন্য ব্যবহৃত একটি অ্যাপ্লিকেশন",
+          "hi": "वेबसाइट देखने के लिए इस्तेमाल होने वाला एप्लिकेशन"
+        },
+        {
+          "en": "A program that builds a catalog or index of websites",
+          "bn": "ওয়েবসাইটের ক্যাটালগ বা সূচি তৈরি করে এমন একটি প্রোগ্রাম",
+          "hi": "वेबसाइटों की सूची या इंडेक्स बनाने वाला प्रोग्राम"
+        },
+        {
+          "en": "A hacker who breaks into corporate computer systems",
+          "bn": "কর্পোরেট কম্পিউটার সিস্টেমে অনুপ্রবেশকারী হ্যাকার",
+          "hi": "कॉर्पोरेट कंप्यूटर सिस्टम में सेंध लगाने वाला हैकर"
+        },
+        {
+          "en": "A program used to edit photographs",
+          "bn": "ছবি সম্পাদনার জন্য ব্যবহৃত একটি প্রোগ্রাম",
+          "hi": "तस्वीरें संपादित करने के लिए इस्तेमाल होने वाला प्रोग्राम"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "A web spider is an automated program that crawls websites to discover and index pages.",
+        "bn": "ওয়েব স্পাইডার একটি স্বয়ংক্রিয় প্রোগ্রাম, যা ওয়েবপেজ খুঁজে বের করে সূচিভুক্ত করে।",
+        "hi": "वेब स्पाइडर एक स्वचालित प्रोग्राम है, जो वेबपेज खोजकर उन्हें इंडेक्स करता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q179",
+      "question": {
+        "en": "Cupcake, Donut, Eclair, and Gingerbread are codenames for different versions of which operating system?",
+        "bn": "কাপকেক, ডোনাট, একলেয়ার এবং জিঞ্জারব্রেড কোন অপারেটিং সিস্টেমের বিভিন্ন সংস্করণের কোডনেম?",
+        "hi": "कपकेक, डोनट, एक्लेयर और जिंजरब्रेड किस ऑपरेटिंग सिस्टम के विभिन्न संस्करणों के कोडनेम हैं?"
+      },
+      "options": [
+        {
+          "en": "Piano",
+          "bn": "পিয়ানো",
+          "hi": "पियानो"
+        },
+        {
+          "en": "Android",
+          "bn": "অ্যান্ড্রয়েড",
+          "hi": "एंड्रॉइड"
+        },
+        {
+          "en": "Computer",
+          "bn": "কম্পিউটার",
+          "hi": "कंप्यूटर"
+        },
+        {
+          "en": "Windows",
+          "bn": "উইন্ডোজ",
+          "hi": "विंडोज़"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "Cupcake, Donut, Eclair, and Gingerbread are historical codenames of Android versions.",
+        "bn": "কাপকেক, ডোনাট, একলেয়ার এবং জিঞ্জারব্রেড অ্যান্ড্রয়েডের পুরোনো সংস্করণগুলির কোডনেম।",
+        "hi": "कपकेक, डोनट, एक्लेयर और जिंजरब्रेड एंड्रॉइड के पुराने संस्करणों के कोडनेम हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q181",
+      "question": {
+        "en": "How many columns are there in an Excel 2010 worksheet?",
+        "bn": "Excel 2010-এর একটি ওয়ার্কশিটে কতগুলি কলাম থাকে?",
+        "hi": "Excel 2010 की एक वर्कशीट में कितने कॉलम होते हैं?"
+      },
+      "options": [
+        {
+          "en": "16,024",
+          "bn": "১৬,০২৪",
+          "hi": "16,024"
+        },
+        {
+          "en": "16,384",
+          "bn": "১৬,৩৮৪",
+          "hi": "16,384"
+        },
+        {
+          "en": "1,600",
+          "bn": "১,৬০০",
+          "hi": "1,600"
+        },
+        {
+          "en": "1,024",
+          "bn": "১,০২৪",
+          "hi": "1,024"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "An Excel 2010 worksheet contains 16,384 columns, from A to XFD.",
+        "bn": "Excel 2010-এর একটি ওয়ার্কশিটে A থেকে XFD পর্যন্ত মোট ১৬,৩৮৪টি কলাম থাকে।",
+        "hi": "Excel 2010 की एक वर्कशीट में A से XFD तक कुल 16,384 कॉलम होते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q182",
+      "question": {
+        "en": "Which of the following is not an output device of a computer?",
+        "bn": "নীচের কোনটি কম্পিউটারের আউটপুট ডিভাইস নয়?",
+        "hi": "निम्नलिखित में से कौन-सा कंप्यूटर का आउटपुट डिवाइस नहीं है?"
+      },
+      "options": [
+        {
+          "en": "Storage unit",
+          "bn": "স্টোরেজ ইউনিট",
+          "hi": "स्टोरेज यूनिट"
+        },
+        {
+          "en": "Server",
+          "bn": "সার্ভার",
+          "hi": "सर्वर"
+        },
+        {
+          "en": "Printer",
+          "bn": "প্রিন্টার",
+          "hi": "प्रिंटर"
+        },
+        {
+          "en": "Scanner",
+          "bn": "স্ক্যানার",
+          "hi": "स्कैनर"
+        }
+      ],
+      "correct_index": 3,
+      "explanation": {
+        "en": "A scanner is an input device because it transfers images or documents into a computer. A storage unit is also not a conventional output device, so the question is ambiguous.",
+        "bn": "স্ক্যানার একটি ইনপুট ডিভাইস, কারণ এটি ছবি বা নথি কম্পিউটারে পাঠায়। স্টোরেজ ইউনিটও প্রচলিত অর্থে আউটপুট ডিভাইস নয়, তাই প্রশ্নটি কিছুটা অস্পষ্ট।",
+        "hi": "स्कैनर एक इनपुट डिवाइस है, क्योंकि यह चित्रों या दस्तावेज़ों को कंप्यूटर में भेजता है। स्टोरेज यूनिट भी सामान्य अर्थ में आउटपुट डिवाइस नहीं है, इसलिए प्रश्न अस्पष्ट है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q184",
+      "question": {
+        "en": "What is a Visual Display Unit (VDU)?",
+        "bn": "ভিজ্যুয়াল ডিসপ্লে ইউনিট (VDU) কী?",
+        "hi": "विज़ुअल डिस्प्ले यूनिट (VDU) क्या है?"
+      },
+      "options": [
+        {
+          "en": "Projector",
+          "bn": "প্রজেক্টর",
+          "hi": "प्रोजेक्टर"
+        },
+        {
+          "en": "Monitor",
+          "bn": "মনিটর",
+          "hi": "मॉनिटर"
+        },
+        {
+          "en": "System memory",
+          "bn": "সিস্টেম মেমোরি",
+          "hi": "सिस्टम मेमोरी"
+        },
+        {
+          "en": "None of these",
+          "bn": "কোনোটিই নয়",
+          "hi": "इनमें से कोई नहीं"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "A VDU is a display device, commonly known as a monitor, that presents visual information.",
+        "bn": "VDU হলো একটি ডিসপ্লে ডিভাইস, যা সাধারণত মনিটর নামে পরিচিত এবং দৃশ্যমান তথ্য দেখায়।",
+        "hi": "VDU एक डिस्प्ले डिवाइस है, जिसे सामान्यतः मॉनिटर कहा जाता है और जो दृश्य जानकारी दिखाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q186",
+      "question": {
+        "en": "Which of the following is not a characteristic of a computer?",
+        "bn": "নীচের কোনটি কম্পিউটারের বৈশিষ্ট্য নয়?",
+        "hi": "निम्नलिखित में से कौन-सा कंप्यूटर की विशेषता नहीं है?"
+      },
+      "options": [
+        {
+          "en": "Intelligence Quotient",
+          "bn": "ইন্টেলিজেন্স কোশেন্ট",
+          "hi": "बुद्धिलब्धि (Intelligence Quotient)"
+        },
+        {
+          "en": "Speed",
+          "bn": "গতি",
+          "hi": "गति"
+        },
+        {
+          "en": "Time sharing",
+          "bn": "টাইম শেয়ারিং",
+          "hi": "टाइम शेयरिंग"
+        },
+        {
+          "en": "Time slicing",
+          "bn": "টাইম স্লাইসিং",
+          "hi": "टाइम स्लाइसिंग"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "A computer has speed and can support time-sharing and time-slicing, but it does not possess human intelligence measured by IQ.",
+        "bn": "কম্পিউটারের গতি আছে এবং এটি টাইম শেয়ারিং ও টাইম স্লাইসিং সমর্থন করতে পারে, কিন্তু মানুষের মতো IQ-ভিত্তিক বুদ্ধিমত্তা নেই।",
+        "hi": "कंप्यूटर तेज़ गति से काम करता है और टाइम शेयरिंग व टाइम स्लाइसिंग का समर्थन कर सकता है, लेकिन उसमें IQ से मापी जाने वाली मानवीय बुद्धिमत्ता नहीं होती।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q188",
+      "question": {
+        "en": "What is the full form of LIFO in computing?",
+        "bn": "কম্পিউটারের ক্ষেত্রে LIFO-এর পূর্ণরূপ কী?",
+        "hi": "कंप्यूटर के संदर्भ में LIFO का पूर्ण रूप क्या है?"
+      },
+      "options": [
+        {
+          "en": "Last-In-First-Out",
+          "bn": "Last-In-First-Out",
+          "hi": "Last-In-First-Out"
+        },
+        {
+          "en": "Last-In-Finish-Out",
+          "bn": "Last-In-Finish-Out",
+          "hi": "Last-In-Finish-Out"
+        },
+        {
+          "en": "Left-In-First-Out",
+          "bn": "Left-In-First-Out",
+          "hi": "Left-In-First-Out"
+        },
+        {
+          "en": "Lost-In-First-Out",
+          "bn": "Lost-In-First-Out",
+          "hi": "Lost-In-First-Out"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "LIFO means Last-In-First-Out, where the most recently added item is removed first.",
+        "bn": "LIFO-এর অর্থ Last-In-First-Out, যেখানে সর্বশেষে যোগ করা উপাদানটি প্রথমে সরানো হয়।",
+        "hi": "LIFO का अर्थ Last-In-First-Out है, जिसमें सबसे अंत में जोड़ा गया तत्व सबसे पहले हटाया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q189",
+      "question": {
+        "en": "How many terabytes (TB) are equal to 1 petabyte (PB) according to the traditional binary convention used in this question?",
+        "bn": "এই প্রশ্নে ব্যবহৃত প্রচলিত বাইনারি হিসাব অনুযায়ী 1 Petabyte (PB) কত TB-এর সমান?",
+        "hi": "इस प्रश्न में प्रयुक्त पारंपरिक बाइनरी गणना के अनुसार 1 Petabyte (PB) कितने TB के बराबर है?"
+      },
+      "options": [
+        {
+          "en": "1024 TB",
+          "bn": "১০২৪ TB",
+          "hi": "1024 TB"
+        },
+        {
+          "en": "1024 GB",
+          "bn": "১০২৪ GB",
+          "hi": "1024 GB"
+        },
+        {
+          "en": "1024 KB",
+          "bn": "১০২৪ KB",
+          "hi": "1024 KB"
+        },
+        {
+          "en": "1024 MB",
+          "bn": "১০২৪ MB",
+          "hi": "1024 MB"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "In the traditional binary convention used in many textbooks, 1 PB is treated as 1024 TB.",
+        "bn": "অনেক পাঠ্যবইয়ে ব্যবহৃত প্রচলিত বাইনারি হিসাব অনুযায়ী 1 PB-কে ১০২৪ TB ধরা হয়।",
+        "hi": "कई पाठ्यपुस्तकों में प्रयुक्त पारंपरिक बाइनरी गणना के अनुसार 1 PB को 1024 TB माना जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q190",
+      "question": {
+        "en": "In which decade was the C++ programming language developed by Bjarne Stroustrup at AT&T Bell Laboratories?",
+        "bn": "AT&T Bell Laboratories-এ Bjarne Stroustrup কোন দশকে C++ প্রোগ্রামিং ভাষা তৈরি করেন?",
+        "hi": "AT&T Bell Laboratories में Bjarne Stroustrup ने किस दशक में C++ प्रोग्रामिंग भाषा विकसित की?"
+      },
+      "options": [
+        {
+          "en": "1960s",
+          "bn": "১৯৬০-এর দশক",
+          "hi": "1960 का दशक"
+        },
+        {
+          "en": "1970s",
+          "bn": "১৯৭০-এর দশক",
+          "hi": "1970 का दशक"
+        },
+        {
+          "en": "1980s",
+          "bn": "১৯৮০-এর দশক",
+          "hi": "1980 का दशक"
+        },
+        {
+          "en": "1990s",
+          "bn": "১৯৯০-এর দশক",
+          "hi": "1990 का दशक"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "en": "C++ originated in 1979, and its development continued into the 1980s.",
+        "bn": "C++-এর কাজ ১৯৭৯ সালে শুরু হয় এবং ১৯৮০-এর দশকে এর উন্নয়ন চলতে থাকে।",
+        "hi": "C++ का विकास 1979 में शुरू हुआ और 1980 के दशक में जारी रहा।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q191",
+      "question": {
+        "en": "Which of the following is not a component or standard hardware part of a personal computer?",
+        "bn": "নীচের কোনটি পার্সোনাল কম্পিউটারের কোনো উপাদান বা প্রচলিত হার্ডওয়্যার অংশ নয়?",
+        "hi": "निम्नलिखित में से कौन-सा पर्सनल कंप्यूटर का घटक या सामान्य हार्डवेयर भाग नहीं है?"
+      },
+      "options": [
+        {
+          "en": "USB",
+          "bn": "USB",
+          "hi": "USB"
+        },
+        {
+          "en": "CPU",
+          "bn": "CPU",
+          "hi": "CPU"
+        },
+        {
+          "en": "ROM",
+          "bn": "ROM",
+          "hi": "ROM"
+        },
+        {
+          "en": "RAM",
+          "bn": "RAM",
+          "hi": "RAM"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "USB is a connectivity standard and interface, whereas CPU, ROM, and RAM are standard computer components or memory types.",
+        "bn": "USB হলো সংযোগের একটি মান ও ইন্টারফেস; অন্যদিকে CPU, ROM এবং RAM কম্পিউটারের প্রচলিত উপাদান বা মেমোরির ধরন।",
+        "hi": "USB एक कनेक्टिविटी मानक और इंटरफ़ेस है, जबकि CPU, ROM और RAM कंप्यूटर के सामान्य घटक या मेमोरी के प्रकार हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q192",
+      "question": {
+        "en": "Which of the following is a programming language rather than a computer virus?",
+        "bn": "নীচের কোনটি কম্পিউটার ভাইরাস নয়, বরং একটি প্রোগ্রামিং ভাষা?",
+        "hi": "निम्नलिखित में से कौन-सा कंप्यूटर वायरस नहीं, बल्कि एक प्रोग्रामिंग भाषा है?"
+      },
+      "options": [
+        {
+          "en": "Python",
+          "bn": "পাইথন",
+          "hi": "पाइथन"
+        },
+        {
+          "en": "Code Red",
+          "bn": "কোড রেড",
+          "hi": "कोड रेड"
+        },
+        {
+          "en": "Conficker",
+          "bn": "কনফিকার",
+          "hi": "कन्फिकर"
+        },
+        {
+          "en": "Sasser",
+          "bn": "সাসার",
+          "hi": "सासर"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Python is a programming language, while Code Red, Conficker, and Sasser are names of malicious computer worms.",
+        "bn": "পাইথন একটি প্রোগ্রামিং ভাষা; Code Red, Conficker এবং Sasser ক্ষতিকর কম্পিউটার ওয়ার্মের নাম।",
+        "hi": "पाइथन एक प्रोग्रामिंग भाषा है, जबकि Code Red, Conficker और Sasser हानिकारक कंप्यूटर वर्म के नाम हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_05_q193",
+      "question": {
+        "en": "What is the time taken to retrieve data from a storage device or a peripheral unit called?",
+        "bn": "স্টোরেজ ডিভাইস বা পেরিফেরাল ইউনিট থেকে ডেটা পেতে যে সময় লাগে, তাকে কী বলে?",
+        "hi": "स्टोरेज डिवाइस या पेरिफेरल यूनिट से डेटा प्राप्त करने में लगने वाले समय को क्या कहते हैं?"
+      },
+      "options": [
+        {
+          "en": "Data storage",
+          "bn": "ডেটা স্টোরেজ",
+          "hi": "डेटा स्टोरेज"
+        },
+        {
+          "en": "Accuracy",
+          "bn": "নির্ভুলতা",
+          "hi": "सटीकता"
+        },
+        {
+          "en": "Downtime",
+          "bn": "ডাউনটাইম",
+          "hi": "डाउनटाइम"
+        },
+        {
+          "en": "Access time",
+          "bn": "অ্যাকসেস টাইম",
+          "hi": "एक्सेस टाइम"
+        }
+      ],
+      "correct_index": 3,
+      "explanation": {
+        "en": "Access time is the time required to locate and retrieve data from a storage device or access a peripheral.",
+        "bn": "অ্যাকসেস টাইম হলো স্টোরেজ ডিভাইস থেকে ডেটা খুঁজে পেতে ও পড়তে বা পেরিফেরাল অ্যাক্সেস করতে প্রয়োজনীয় সময়।",
+        "hi": "एक्सेस टाइम वह समय है जो स्टोरेज डिवाइस से डेटा खोजने और प्राप्त करने या किसी पेरिफेरल तक पहुँचने में लगता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    }
+  ]
 }

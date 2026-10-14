@@ -6,5 +6,4452 @@
     "hi": "पर्यावरण विज्ञान"
   },
   "class_standard": "Class 10",
-  "questions": []
+  "questions": [
+    {
+      "id": "chhaya_prakashani_ch_04_q001",
+      "question": {
+        "en": "What is the percentage of nitrogen in the Earth's atmosphere?",
+        "bn": "বায়ুমণ্ডলে নাইট্রোজেনের পরিমাণ কত?",
+        "hi": "वायुमंडल में नाइट्रोजन का प्रतिशत कितना है?"
+      },
+      "options": [
+        {
+          "en": "78.09%",
+          "bn": "78.09%",
+          "hi": "78.09%"
+        },
+        {
+          "en": "20.95%",
+          "bn": "20.95%",
+          "hi": "20.95%"
+        },
+        {
+          "en": "0.93%",
+          "bn": "0.93%",
+          "hi": "0.93%"
+        },
+        {
+          "en": "0.03%",
+          "bn": "0.03%",
+          "hi": "0.03%"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Nitrogen makes up approximately 78.09% of the Earth's atmosphere.",
+        "bn": "বায়ুমণ্ডলে প্রায় 78.09% নাইট্রোজেন গ্যাস বর্তমান।",
+        "hi": "वायुमंडल में नाइट्रोजन लगभग 78.09% उपस्थित है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q002",
+      "question": {
+        "en": "Which of the following is an example of a secondary pollutant?",
+        "bn": "নিচের কোনটি গৌণ দূষকের উদাহরণ?",
+        "hi": "निम्नलिखित में से कौन सा एक द्वितीयक प्रदूषक का उदाहरण है?"
+      },
+      "options": [
+        {
+          "en": "Carbon monoxide (CO)",
+          "bn": "কার্বন মনোক্সাইড (CO)",
+          "hi": "कार्बन मोनोऑक्साइड (CO)"
+        },
+        {
+          "en": "Peroxyacetyl nitrate (PAN)",
+          "bn": "পারক্সিঅ্যাসিটাইল নাইট্রেট (PAN)",
+          "hi": "पेरोक्सीएसिटाइल नाइट्रेट (PAN)"
+        },
+        {
+          "en": "Carbon dioxide (CO₂)",
+          "bn": "কার্বন ডাইঅক্সাইড (CO₂)",
+          "hi": "कार्बन डाइऑक्साइड (CO₂)"
+        },
+        {
+          "en": "Sulfur dioxide (SO₂)",
+          "bn": "সালফার ডাইঅক্সাইড (SO₂)",
+          "hi": "सल्फर डाइऑक्साइड (SO₂)"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "Peroxyacetyl nitrate (PAN) is formed through reactions among primary pollutants, making it a secondary pollutant.",
+        "bn": "পারক্সিঅ্যাসিটাইল নাইট্রেট (PAN) প্রাথমিক দূষকগুলির মধ্যে প্রতিক্রিয়ার ফলে উৎপন্ন হয়, তাই এটি একটি গৌণ দূষক।",
+        "hi": "पेरोक्सीएसिटाइल नाइट्रेट (PAN) प्राथमिक प्रदूषकों के बीच प्रतिक्रिया से उत्पन्न होता है, इसलिए यह एक द्वितीयक प्रदूषक है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q003",
+      "question": {
+        "en": "What is the permissible noise level in a silence zone during the night?",
+        "bn": "নীরব অঞ্চলে (Silence zone) রাত্রিবেলায় শব্দের নির্ধারিত সীমা কত?",
+        "hi": "साइलेंस जोन में रात्रि के समय ध्वनि की निर्धारित सीमा क्या है?"
+      },
+      "options": [
+        {
+          "en": "50 dB",
+          "bn": "50 dB",
+          "hi": "50 dB"
+        },
+        {
+          "en": "40 dB",
+          "bn": "40 dB",
+          "hi": "40 dB"
+        },
+        {
+          "en": "55 dB",
+          "bn": "55 dB",
+          "hi": "55 dB"
+        },
+        {
+          "en": "45 dB",
+          "bn": "45 dB",
+          "hi": "45 dB"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "The noise level limit in a silence zone during the night is 40 dB.",
+        "bn": "নীরব অঞ্চলে রাত্রিবেলায় শব্দের সীমা 40 dB নির্ধারিত।",
+        "hi": "साइलेंस जोन में रात्रि के समय ध्वनि सीमा 40 dB होती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q004",
+      "question": {
+        "en": "In which year was the Air (Prevention and Control of Pollution) Act enacted?",
+        "bn": "বায়ুদূষণ প্রতিরোধ সংক্রান্ত আইন (Air Prevention and Control of Pollution Act) কোন সালে প্রণীত হয়?",
+        "hi": "वायु (प्रदूषण निवारण और नियंत्रण) अधिनियम किस वर्ष पारित किया गया था?"
+      },
+      "options": [
+        {
+          "en": "1971",
+          "bn": "1971",
+          "hi": "1971"
+        },
+        {
+          "en": "1981",
+          "bn": "1981",
+          "hi": "1981"
+        },
+        {
+          "en": "1991",
+          "bn": "1991",
+          "hi": "1991"
+        },
+        {
+          "en": "2001",
+          "bn": "2001",
+          "hi": "2001"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "The Air (Prevention and Control of Pollution) Act was enacted in 1981.",
+        "bn": "বায়ুদূষণ প্রতিরোধ সংক্রান্ত আইনটি 1981 সালে প্রণীত হয়েছিল।",
+        "hi": "वायु (प्रदूषण निवारण और नियंत्रण) अधिनियम 1981 में पारित किया गया था।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q005",
+      "question": {
+        "en": "What causes eutrophication in water bodies?",
+        "bn": "জলাশয়ে ইউট্রোফিকেশনের প্রধান কারণ কী?",
+        "hi": "जलाशयों में यूट्रोफिकेसन (Eutrophication) का मुख्य कारण क्या है?"
+      },
+      "options": [
+        {
+          "en": "Agricultural fertilizers and detergent phosphate compounds",
+          "bn": "কৃষিজমির সার ও ডিটারজেন্টের ট্রাইফসফেট যৌগ",
+          "hi": "कृषि उर्वरक और डिटर्जेंट के ट्राइफॉस्फेट यौगिक"
+        },
+        {
+          "en": "Radioactive uranium and plutonium",
+          "bn": "তেজস্ক্রিয় ইউরেনিয়াম ও প্লুটোনিয়াম",
+          "hi": "रेडियोधर्मी यूरेनियम और प्लूटोनियम"
+        },
+        {
+          "en": "Non-biodegradable plastics",
+          "bn": "অপচনশীল প্লাস্টিক",
+          "hi": "गैर-बायोडिग्रेडेबल प्लास्टिक"
+        },
+        {
+          "en": "Carbon dioxide emissions",
+          "bn": "কার্বন ডাইঅক্সাইড নির্গমন",
+          "hi": "कार्बन डाइऑक्साइड उत्सर्जन"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Eutrophication is caused by agricultural fertilizers and detergent phosphates entering water bodies and promoting rapid plant growth.",
+        "bn": "জলাশয়ে কৃষিজমির সার ও ডিটারজেন্টের ট্রাইফসফেট যৌগ মিশে জলজ উদ্ভিদের দ্রুত বৃদ্ধি ঘটায়, যা ইউট্রোফিকেশনের কারণ।",
+        "hi": "जलाशयों में कृषि उर्वरक और डिटर्जेंट के ट्राइफॉस्फेट यौगिक मिलने से जलीय पौधों की तीव्र वृद्धि होती है, जो यूट्रोफिकेसन का कारण बनता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q006",
+      "question": {
+        "en": "In which year did the Three Mile Island nuclear accident occur in Pennsylvania, USA?",
+        "bn": "আমেরিকার পেনসিলভানিয়ায় থ্রিমাইল আইল্যান্ড পারমাণবিক দুর্ঘটনাটি কোন সালে ঘটেছিল?",
+        "hi": "अमेरिका के पेंसिल्वेनिया में थ्रिमाइल आइलैंड परमाणु दुर्घटना किस वर्ष हुई थी?"
+      },
+      "options": [
+        {
+          "en": "1952",
+          "bn": "1952",
+          "hi": "1952"
+        },
+        {
+          "en": "1979",
+          "bn": "1979",
+          "hi": "1979"
+        },
+        {
+          "en": "1984",
+          "bn": "1984",
+          "hi": "1984"
+        },
+        {
+          "en": "1986",
+          "bn": "1986",
+          "hi": "1986"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "The Three Mile Island nuclear accident occurred in 1979 in Pennsylvania, USA.",
+        "bn": "1979 সালে আমেরিকার পেনসিলভানিয়া প্রদেশের থ্রিমাইল আইল্যান্ডে এই পারমাণবিক দুর্ঘটনা ঘটেছিল।",
+        "hi": "1979 में अमेरिका के पेंसिल्वेनिया प्रांत के थ्रिमाइल आइलैंड में यह परमाणु दुर्घटना हुई थी।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q007",
+      "question": {
+        "en": "In which unit is the thickness or density of the ozone layer measured?",
+        "bn": "ওজোন স্তরের ঘনত্ব বা বেধ কোন এককে পরিমাপ করা হয়?",
+        "hi": "ओजोन परत की मोटाई या घनत्व किस इकाई में मापा जाता है?"
+      },
+      "options": [
+        {
+          "en": "Decibel (dB)",
+          "bn": "ডেসিবেল (dB)",
+          "hi": "डेसीबल (dB)"
+        },
+        {
+          "en": "Dobson unit",
+          "bn": "ডবসন একক",
+          "hi": "डॉबसन यूनिट"
+        },
+        {
+          "en": "Pascal",
+          "bn": "প্যাসকাল",
+          "hi": "पास्कल"
+        },
+        {
+          "en": "Hertz",
+          "bn": "হার্জ",
+          "hi": "हर्ट्ज़"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "The thickness of the ozone layer is measured in Dobson units.",
+        "bn": "ওজোনস্তরের ঘনত্ব ডবসন এককে পরিমাপ করা হয়।",
+        "hi": "ओजोन परत का घनत्व डॉबसन यूनिट में मापा जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q008",
+      "question": {
+        "en": "When is World Ozone Day celebrated every year?",
+        "bn": "প্রতি বছর কবে বিশ্ব ওজোন দিবস পালন করা হয়?",
+        "hi": "प्रत्येक वर्ष विश्व ओजोन दिवस कब मनाया जाता है?"
+      },
+      "options": [
+        {
+          "en": "June 5",
+          "bn": "5 জুন",
+          "hi": "5 जून"
+        },
+        {
+          "en": "September 16",
+          "bn": "16 সেপ্টেম্বর",
+          "hi": "16 सितंबर"
+        },
+        {
+          "en": "April 22",
+          "bn": "22 এপ্রিল",
+          "hi": "22 अप्रैल"
+        },
+        {
+          "en": "December 1",
+          "bn": "1 ডিসেম্বর",
+          "hi": "1 दिसंबर"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "World Ozone Day is celebrated every year on September 16.",
+        "bn": "প্রতি বছর 16 সেপ্টেম্বর বিশ্ব ওজোন দিবস পালন করা হয়।",
+        "hi": "प्रत्येक वर्ष 16 सितंबर को विश्व ओजोन दिवस मनाया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q009",
+      "question": {
+        "en": "What does the term 'Smog' primarily consist of a mixture of?",
+        "bn": "'ধোঁয়াশা' বা স্মগ (Smog) মূলত কিসের মিশ্রণ?",
+        "hi": "'धुंध' या स्मॉग (Smog) मुख्य रूप से किसका मिश्रण है?"
+      },
+      "options": [
+        {
+          "en": "Smoke and Fog",
+          "bn": "ধোঁয়া ও কুয়াশা",
+          "hi": "धुआँ और कोहरा"
+        },
+        {
+          "en": "Smoke and Gas",
+          "bn": "ধোঁয়া ও গ্যাস",
+          "hi": "धुआँ और गैस"
+        },
+        {
+          "en": "Dust and Mist",
+          "bn": "ধুলো ও কুয়াশা",
+          "hi": "धूल और कोहरा"
+        },
+        {
+          "en": "Fog and Carbon dioxide",
+          "bn": "কুয়াশা ও কার্বন ডাইঅক্সাইড",
+          "hi": "कोहरा और कार्बन डाइऑक्साइड"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Smog is formed by the mixture of smoke and fog (Smog = Smoke + fog).",
+        "bn": "ধোঁয়া ও কুয়াশার মিশ্রণকে ধোঁয়াশা বা স্মগ (Smog = Smoke + fog) বলা হয়।",
+        "hi": "धुआँ और कोहरे के मिश्रण को स्मॉग (Smog = Smoke + fog) कहा जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q010",
+      "question": {
+        "en": "What is London smog, also known as Great Smog?",
+        "bn": "লন্ডন ধোঁয়াশা বা গ্রেট স্মগ (Great Smog) কী?",
+        "hi": "लंदन धूम-कोहरा या ग्रेट स्मॉग (Great Smog) क्या है?"
+      },
+      "options": [
+        {
+          "en": "Industrial smog first observed in London",
+          "bn": "লন্ডন শহরে প্রথম পরিলক্ষিত শিল্পজাত ধোঁয়াশা",
+          "hi": "लंदन शहर में पहली बार देखा गया औद्योगिक धूम-कोहरा"
+        },
+        {
+          "en": "Photochemical smog first observed in Los Angeles",
+          "bn": "লস অ্যাঞ্জেলেসে প্রথম পরিলক্ষিত আলোক-রাসায়নিক ধোঁয়াশা",
+          "hi": "लॉस एंजेलिस में पहली बार देखा गया प्रकाश-रासायनिक धूम-कोहरा"
+        },
+        {
+          "en": "Smoke produced only by forest fires",
+          "bn": "শুধুমাত্র বনভূমিতে আগুন লাগার ফলে উৎপন্ন ধোঁয়া",
+          "hi": "केवल जंगलों में आग लगने से उत्पन्न धुआँ"
+        },
+        {
+          "en": "Fog formed only from water vapour",
+          "bn": "শুধুমাত্র জলীয় বাষ্প থেকে সৃষ্ট কুয়াশা",
+          "hi": "केवल जलवाष्प से बनने वाला कोहरा"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "London smog, or Great Smog, is a type of industrial smog associated with severe air pollution in London.",
+        "bn": "লন্ডন ধোঁয়াশা বা গ্রেট স্মগ হলো শিল্পজাত বায়ুদূষণের সঙ্গে সম্পর্কিত এক ধরনের ধোঁয়াশা।",
+        "hi": "लंदन धूम-कोहरा या ग्रेट स्मॉग औद्योगिक वायु प्रदूषण से संबंधित एक प्रकार का धूम-कोहरा है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q011",
+      "question": {
+        "en": "Which of the following is a harmful effect of smog?",
+        "bn": "নিচের কোনটি ধোঁয়াশার ক্ষতিকারক প্রভাব?",
+        "hi": "निम्नलिखित में से कौन-सा धूम-कोहरे का हानिकारक प्रभाव है?"
+      },
+      "options": [
+        {
+          "en": "Improvement in respiratory health",
+          "bn": "শ্বাসযন্ত্রের স্বাস্থ্যের উন্নতি",
+          "hi": "श्वसन स्वास्थ्य में सुधार"
+        },
+        {
+          "en": "Reduced visibility and increased risk of road accidents",
+          "bn": "দৃষ্টিসীমা হ্রাস ও পথদুর্ঘটনার ঝুঁকি বৃদ্ধি",
+          "hi": "दृश्यता में कमी और सड़क दुर्घटनाओं का जोखिम बढ़ना"
+        },
+        {
+          "en": "Increase in soil fertility",
+          "bn": "মাটির উর্বরতা বৃদ্ধি",
+          "hi": "मृदा की उर्वरता में वृद्धि"
+        },
+        {
+          "en": "Improvement in air quality",
+          "bn": "বায়ুর গুণমানের উন্নতি",
+          "hi": "वायु की गुणवत्ता में सुधार"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "Smog reduces visibility, makes driving difficult, and increases the risk of accidents; it can also cause respiratory diseases.",
+        "bn": "ধোঁয়াশা দৃষ্টিসীমা কমিয়ে দেয়, গাড়ি চালানো কঠিন করে তোলে এবং দুর্ঘটনার ঝুঁকি বাড়ায়; এটি শ্বাসযন্ত্রের রোগও সৃষ্টি করতে পারে।",
+        "hi": "धूम-कोहरा दृश्यता कम करता है, वाहन चलाना कठिन बनाता है और दुर्घटनाओं का जोखिम बढ़ाता है; इससे श्वसन संबंधी रोग भी हो सकते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q012",
+      "question": {
+        "en": "In which year was photochemical smog first observed in Los Angeles, USA?",
+        "bn": "মার্কিন যুক্তরাষ্ট্রের লস অ্যাঞ্জেলেস শহরে প্রথম কোন সালে আলোক-রাসায়নিক ধোঁয়াশা পরিলক্ষিত হয়?",
+        "hi": "संयुक्त राज्य अमेरिका के लॉस एंजेलिस शहर में प्रकाश-रासायनिक धूम-कोहरा पहली बार किस वर्ष देखा गया था?"
+      },
+      "options": [
+        {
+          "en": "1930",
+          "bn": "1930",
+          "hi": "1930"
+        },
+        {
+          "en": "1943",
+          "bn": "1943",
+          "hi": "1943"
+        },
+        {
+          "en": "1956",
+          "bn": "1956",
+          "hi": "1956"
+        },
+        {
+          "en": "1987",
+          "bn": "1987",
+          "hi": "1987"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "Photochemical smog was first observed in Los Angeles in 1943.",
+        "bn": "1943 সালে লস অ্যাঞ্জেলেসে প্রথম আলোক-রাসায়নিক ধোঁয়াশা পরিলক্ষিত হয়।",
+        "hi": "1943 में लॉस एंजेलिस में पहली बार प्रकाश-रासायनिक धूम-कोहरा देखा गया था।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q013",
+      "question": {
+        "en": "Which of the following is a major component of photochemical smog?",
+        "bn": "নিচের কোনটি আলোক-রাসায়নিক ধোঁয়াশার একটি প্রধান উপাদান?",
+        "hi": "निम्नलिखित में से कौन-सा प्रकाश-रासायनिक धूम-कोहरे का एक प्रमुख घटक है?"
+      },
+      "options": [
+        {
+          "en": "Ozone (O₃)",
+          "bn": "ওজোন (O₃)",
+          "hi": "ओज़ोन (O₃)"
+        },
+        {
+          "en": "Pure oxygen (O₂) only",
+          "bn": "শুধুমাত্র বিশুদ্ধ অক্সিজেন (O₂)",
+          "hi": "केवल शुद्ध ऑक्सीजन (O₂)"
+        },
+        {
+          "en": "Hydrogen (H₂)",
+          "bn": "হাইড্রোজেন (H₂)",
+          "hi": "हाइड्रोजन (H₂)"
+        },
+        {
+          "en": "Helium (He)",
+          "bn": "হিলিয়াম (He)",
+          "hi": "हीलियम (He)"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Photochemical smog contains ozone, nitrogen dioxide, PAN, aldehydes, ketones, and hydrocarbons.",
+        "bn": "আলোক-রাসায়নিক ধোঁয়াশায় ওজোন, নাইট্রোজেন ডাইঅক্সাইড, PAN, অ্যালডিহাইড, কিটোন ও হাইড্রোকার্বন থাকে।",
+        "hi": "प्रकाश-रासायनिक धूम-कोहरे में ओज़ोन, नाइट्रोजन डाइऑक्साइड, PAN, एल्डिहाइड, कीटोन और हाइड्रोकार्बन होते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q014",
+      "question": {
+        "en": "When does photochemical smog generally form?",
+        "bn": "সাধারণত কখন আলোক-রাসায়নিক ধোঁয়াশা সৃষ্টি হয়?",
+        "hi": "सामान्यतः प्रकाश-रासायनिक धूम-कोहरा कब बनता है?"
+      },
+      "options": [
+        {
+          "en": "During winter nights without sunlight",
+          "bn": "সূর্যালোকহীন শীতের রাতে",
+          "hi": "सूर्य के प्रकाश के बिना सर्दियों की रातों में"
+        },
+        {
+          "en": "During warm weather when sunlight is intense",
+          "bn": "গরমকালে যখন সূর্যালোকের তীব্রতা বেশি থাকে",
+          "hi": "गर्मियों में जब सूर्य का प्रकाश तीव्र होता है"
+        },
+        {
+          "en": "Only during heavy rainfall",
+          "bn": "শুধুমাত্র প্রবল বৃষ্টিপাতের সময়",
+          "hi": "केवल भारी वर्षा के दौरान"
+        },
+        {
+          "en": "Only during snowfall",
+          "bn": "শুধুমাত্র তুষারপাতের সময়",
+          "hi": "केवल हिमपात के दौरान"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "Photochemical smog generally forms in warm weather when intense sunlight drives photochemical reactions involving air pollutants.",
+        "bn": "গরমকালে তীব্র সূর্যালোক বায়ুদূষক পদার্থের মধ্যে আলোক-রাসায়নিক বিক্রিয়া ঘটালে সাধারণত এই ধোঁয়াশা সৃষ্টি হয়।",
+        "hi": "गर्मियों में तीव्र सूर्य का प्रकाश वायु प्रदूषकों के बीच प्रकाश-रासायनिक अभिक्रियाएँ कराता है, जिससे सामान्यतः यह धूम-कोहरा बनता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q015",
+      "question": {
+        "en": "Which part of the human body is most severely affected by photochemical smog?",
+        "bn": "আলোক-রাসায়নিক ধোঁয়াশায় মানবদেহের কোন অংশটি সবচেয়ে বেশি ক্ষতিগ্রস্ত হয়?",
+        "hi": "प्रकाश-रासायनिक धूम-कोहरे से मानव शरीर का कौन-सा भाग सबसे अधिक प्रभावित होता है?"
+      },
+      "options": [
+        {
+          "en": "Eyes",
+          "bn": "চোখ",
+          "hi": "आँखें"
+        },
+        {
+          "en": "Hair",
+          "bn": "চুল",
+          "hi": "बाल"
+        },
+        {
+          "en": "Nails",
+          "bn": "নখ",
+          "hi": "नाखून"
+        },
+        {
+          "en": "Teeth",
+          "bn": "দাঁত",
+          "hi": "दाँत"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Photochemical smog irritates the eyes, nose, and throat, with the eyes generally being the most severely affected.",
+        "bn": "আলোক-রাসায়নিক ধোঁয়াশা চোখ, নাক ও গলায় জ্বালাভাব সৃষ্টি করে; সাধারণত চোখ সবচেয়ে বেশি ক্ষতিগ্রস্ত হয়।",
+        "hi": "प्रकाश-रासायनिक धूम-कोहरा आँखों, नाक और गले में जलन पैदा करता है; सामान्यतः आँखें सबसे अधिक प्रभावित होती हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q016",
+      "question": {
+        "en": "What is the approximate pH of normal rainwater?",
+        "bn": "স্বাভাবিক বৃষ্টির জলের আনুমানিক pH কত?",
+        "hi": "सामान्य वर्षा जल का अनुमानित pH कितना होता है?"
+      },
+      "options": [
+        {
+          "en": "3.5",
+          "bn": "3.5",
+          "hi": "3.5"
+        },
+        {
+          "en": "5.6",
+          "bn": "5.6",
+          "hi": "5.6"
+        },
+        {
+          "en": "7.0",
+          "bn": "7.0",
+          "hi": "7.0"
+        },
+        {
+          "en": "9.0",
+          "bn": "9.0",
+          "hi": "9.0"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "Normal rainwater has a pH of approximately 5.6 because dissolved carbon dioxide forms weak carbonic acid.",
+        "bn": "দ্রবীভূত কার্বন ডাইঅক্সাইড থেকে দুর্বল কার্বনিক অ্যাসিড তৈরি হওয়ার কারণে স্বাভাবিক বৃষ্টির জলের pH প্রায় 5.6 হয়।",
+        "hi": "घुली हुई कार्बन डाइऑक्साइड से कमजोर कार्बोनिक अम्ल बनने के कारण सामान्य वर्षा जल का pH लगभग 5.6 होता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q017",
+      "question": {
+        "en": "What is acid rain?",
+        "bn": "অম্লবৃষ্টি বা অ্যাসিড বৃষ্টি কাকে বলে?",
+        "hi": "अम्ल वर्षा किसे कहते हैं?"
+      },
+      "options": [
+        {
+          "en": "Rainwater containing excessive amounts of acids",
+          "bn": "অতিরিক্ত পরিমাণে অ্যাসিড মিশ্রিত বৃষ্টির জল",
+          "hi": "अधिक मात्रा में अम्ल मिले हुए वर्षा जल को"
+        },
+        {
+          "en": "Rainwater containing only pure water",
+          "bn": "শুধুমাত্র বিশুদ্ধ জলযুক্ত বৃষ্টির জল",
+          "hi": "केवल शुद्ध जल वाले वर्षा जल को"
+        },
+        {
+          "en": "Rainwater with a pH of exactly 7.0",
+          "bn": "যে বৃষ্টির জলের pH ঠিক 7.0",
+          "hi": "जिस वर्षा जल का pH ठीक 7.0 हो"
+        },
+        {
+          "en": "Rainwater containing dissolved oxygen only",
+          "bn": "শুধুমাত্র দ্রবীভূত অক্সিজেনযুক্ত বৃষ্টির জল",
+          "hi": "केवल घुली हुई ऑक्सीजन वाले वर्षा जल को"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Acid rain is precipitation containing elevated levels of acids, mainly sulfuric acid and nitric acid.",
+        "bn": "অম্লবৃষ্টি হলো এমন বৃষ্টিপাত যাতে স্বাভাবিকের তুলনায় বেশি পরিমাণে অ্যাসিড, প্রধানত সালফিউরিক অ্যাসিড ও নাইট্রিক অ্যাসিড থাকে।",
+        "hi": "अम्ल वर्षा वह वर्षा है जिसमें सामान्य से अधिक मात्रा में अम्ल, मुख्यतः सल्फ्यूरिक अम्ल और नाइट्रिक अम्ल होते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q018",
+      "question": {
+        "en": "Which pair of acids is mainly responsible for acid rain?",
+        "bn": "অম্লবৃষ্টির জন্য প্রধানত কোন দুটি অ্যাসিড দায়ী?",
+        "hi": "अम्ल वर्षा के लिए मुख्यतः कौन-से दो अम्ल उत्तरदायी हैं?"
+      },
+      "options": [
+        {
+          "en": "Sulfuric acid (H₂SO₄) and nitric acid (HNO₃)",
+          "bn": "সালফিউরিক অ্যাসিড (H₂SO₄) ও নাইট্রিক অ্যাসিড (HNO₃)",
+          "hi": "सल्फ्यूरिक अम्ल (H₂SO₄) और नाइट्रिक अम्ल (HNO₃)"
+        },
+        {
+          "en": "Hydrochloric acid (HCl) and acetic acid (CH₃COOH) only",
+          "bn": "শুধুমাত্র হাইড্রোক্লোরিক অ্যাসিড (HCl) ও অ্যাসিটিক অ্যাসিড (CH₃COOH)",
+          "hi": "केवल हाइड्रोक्लोरिक अम्ल (HCl) और एसीटिक अम्ल (CH₃COOH)"
+        },
+        {
+          "en": "Carbonic acid (H₂CO₃) and boric acid (H₃BO₃)",
+          "bn": "কার্বনিক অ্যাসিড (H₂CO₃) ও বোরিক অ্যাসিড (H₃BO₃)",
+          "hi": "कार्बोनिक अम्ल (H₂CO₃) और बोरिक अम्ल (H₃BO₃)"
+        },
+        {
+          "en": "Phosphoric acid (H₃PO₄) and citric acid (C₆H₈O₇)",
+          "bn": "ফসফরিক অ্যাসিড (H₃PO₄) ও সাইট্রিক অ্যাসিড (C₆H₈O₇)",
+          "hi": "फॉस्फोरिक अम्ल (H₃PO₄) और साइट्रिक अम्ल (C₆H₈O₇)"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Sulfuric acid and nitric acid are the principal acids in acid rain, formed from atmospheric sulfur and nitrogen oxides.",
+        "bn": "বায়ুমণ্ডলীয় সালফার ও নাইট্রোজেনের অক্সাইড থেকে তৈরি সালফিউরিক অ্যাসিড ও নাইট্রিক অ্যাসিড অম্লবৃষ্টির প্রধান উপাদান।",
+        "hi": "वायुमंडल में सल्फर और नाइट्रोजन के ऑक्साइडों से बनने वाले सल्फ्यूरिक अम्ल और नाइट्रिक अम्ल अम्ल वर्षा के प्रमुख घटक हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q019",
+      "question": {
+        "en": "What is the approximate pH range of acid rain given in the textbook passage?",
+        "bn": "পাঠ্যাংশে অম্লবৃষ্টির pH-এর আনুমানিক সীমা কত দেওয়া হয়েছে?",
+        "hi": "पाठ्यांश में अम्ल वर्षा का अनुमानित pH परास कितना दिया गया है?"
+      },
+      "options": [
+        {
+          "en": "5.6 to 7.0",
+          "bn": "5.6 থেকে 7.0",
+          "hi": "5.6 से 7.0"
+        },
+        {
+          "en": "3.5 to 5.6",
+          "bn": "3.5 থেকে 5.6",
+          "hi": "3.5 से 5.6"
+        },
+        {
+          "en": "7.0 to 9.0",
+          "bn": "7.0 থেকে 9.0",
+          "hi": "7.0 से 9.0"
+        },
+        {
+          "en": "1.0 to 2.0",
+          "bn": "1.0 থেকে 2.0",
+          "hi": "1.0 से 2.0"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "The passage gives the pH of acid rain as approximately 3.5 to 5.6.",
+        "bn": "পাঠ্যাংশ অনুযায়ী, অম্লবৃষ্টির pH প্রায় 3.5 থেকে 5.6-এর মধ্যে থাকে।",
+        "hi": "पाठ्यांश के अनुसार, अम्ल वर्षा का pH लगभग 3.5 से 5.6 के बीच होता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q020",
+      "question": {
+        "en": "Which of the following is a harmful effect of acid rain on the environment?",
+        "bn": "পরিবেশের ওপর অম্লবৃষ্টির নিচের কোনটি ক্ষতিকারক প্রভাব?",
+        "hi": "पर्यावरण पर अम्ल वर्षा का निम्नलिखित में से कौन-सा हानिकारक प्रभाव है?"
+      },
+      "options": [
+        {
+          "en": "Increased soil fertility",
+          "bn": "মাটির উর্বরতা বৃদ্ধি",
+          "hi": "मृदा की उर्वरता में वृद्धि"
+        },
+        {
+          "en": "Damage to plant leaves and disruption of aquatic ecosystems",
+          "bn": "উদ্ভিদের পাতা ক্ষতিগ্রস্ত হওয়া এবং জলজ বাস্তুতন্ত্রের বিঘ্ন",
+          "hi": "पौधों की पत्तियों को नुकसान और जलीय पारितंत्र में व्यवधान"
+        },
+        {
+          "en": "Prevention of metal corrosion",
+          "bn": "ধাতুর ক্ষয় রোধ",
+          "hi": "धातुओं के क्षरण की रोकथाम"
+        },
+        {
+          "en": "Improvement in the health of aquatic organisms",
+          "bn": "জলজ জীবের স্বাস্থ্যের উন্নতি",
+          "hi": "जलीय जीवों के स्वास्थ्य में सुधार"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "Acid rain reduces soil fertility, damages plant leaves, and disrupts aquatic ecosystems.",
+        "bn": "অম্লবৃষ্টি মাটির উর্বরতা হ্রাস করে, উদ্ভিদের পাতা ক্ষতিগ্রস্ত করে এবং জলজ বাস্তুতন্ত্রের ভারসাম্য নষ্ট করে।",
+        "hi": "अम्ल वर्षा मृदा की उर्वरता घटाती है, पौधों की पत्तियों को नुकसान पहुँचाती है और जलीय पारितंत्र का संतुलन बिगाड़ती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q021",
+      "question": {
+        "en": "What is meant by stone cancer?",
+        "bn": "স্টোন ক্যানসার বা পাথরের কুষ্ঠ বলতে কী বোঝায়?",
+        "hi": "स्टोन कैंसर या पत्थर का कुष्ठ रोग किसे कहते हैं?"
+      },
+      "options": [
+        {
+          "en": "The formation of calcium sulfate deposits on marble structures due to acid rain",
+          "bn": "অম্লবৃষ্টির ফলে মার্বেল পাথরের স্থাপত্যের ওপর ক্যালসিয়াম সালফেটের আস্তরণ সৃষ্টি",
+          "hi": "अम्ल वर्षा के कारण संगमरमर की इमारतों पर कैल्शियम सल्फेट की परत बनना"
+        },
+        {
+          "en": "The growth of moss on wooden furniture",
+          "bn": "কাঠের আসবাবের ওপর শ্যাওলা জন্মানো",
+          "hi": "लकड़ी के फर्नीचर पर काई उगना"
+        },
+        {
+          "en": "The natural polishing of marble by rainwater",
+          "bn": "বৃষ্টির জলে মার্বেল পাথরের স্বাভাবিক মসৃণতা বৃদ্ধি",
+          "hi": "वर्षा जल से संगमरमर का प्राकृतिक रूप से चमकदार होना"
+        },
+        {
+          "en": "The formation of ice on stone surfaces",
+          "bn": "পাথরের পৃষ্ঠে বরফ জমা",
+          "hi": "पत्थर की सतह पर बर्फ जमना"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Stone cancer occurs when acid rain reacts with marble and forms calcium sulfate deposits that reduce the brightness of monuments and sculptures.",
+        "bn": "অম্লবৃষ্টি মার্বেল পাথরের সঙ্গে বিক্রিয়া করে ক্যালসিয়াম সালফেটের আস্তরণ তৈরি করলে স্থাপত্য ও ভাস্কর্যের ঔজ্জ্বল্য কমে যায়; এই ঘটনাকে স্টোন ক্যানসার বলে।",
+        "hi": "अम्ल वर्षा संगमरमर से अभिक्रिया करके कैल्शियम सल्फेट की परत बनाती है, जिससे स्मारकों और मूर्तियों की चमक कम हो जाती है; इसे स्टोन कैंसर कहते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q022",
+      "question": {
+        "en": "Which monument is mentioned in connection with stone cancer caused by acid rain?",
+        "bn": "অম্লবৃষ্টিজনিত স্টোন ক্যানসারের সঙ্গে কোন স্মৃতিসৌধটির নাম উল্লেখ করা হয়েছে?",
+        "hi": "अम्ल वर्षा से होने वाले स्टोन कैंसर के संदर्भ में किस स्मारक का उल्लेख किया गया है?"
+      },
+      "options": [
+        {
+          "en": "Taj Mahal",
+          "bn": "তাজমহল",
+          "hi": "ताजमहल"
+        },
+        {
+          "en": "Qutub Minar",
+          "bn": "কুতুব মিনার",
+          "hi": "कुतुब मीनार"
+        },
+        {
+          "en": "India Gate",
+          "bn": "ইন্ডিয়া গেট",
+          "hi": "इंडिया गेट"
+        },
+        {
+          "en": "Charminar",
+          "bn": "চারমিনার",
+          "hi": "चारमीनार"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The passage mentions damage observed on the Taj Mahal and links it to sulfur dioxide emissions from the Mathura oil refinery.",
+        "bn": "পাঠ্যাংশে তাজমহলের গায়ে সৃষ্ট ক্ষতির কথা উল্লেখ করা হয়েছে এবং এর সঙ্গে মথুরা তৈল শোধনাগার থেকে নির্গত সালফার ডাইঅক্সাইডের সম্পর্ক দেখানো হয়েছে।",
+        "hi": "पाठ्यांश में ताजमहल पर हुए नुकसान का उल्लेख है और इसे मथुरा तेल शोधनागार से निकलने वाली सल्फर डाइऑक्साइड से जोड़ा गया है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q023",
+      "question": {
+        "en": "Which heavy metal is associated with Minamata disease?",
+        "bn": "মিনামাটা রোগের সঙ্গে কোন ভারী ধাতু যুক্ত?",
+        "hi": "मिनामाटा रोग किस भारी धातु से संबंधित है?"
+      },
+      "options": [
+        {
+          "en": "Mercury (Hg)",
+          "bn": "পারদ (Hg)",
+          "hi": "पारा (Hg)"
+        },
+        {
+          "en": "Lead (Pb)",
+          "bn": "লেড (Pb)",
+          "hi": "सीसा (Pb)"
+        },
+        {
+          "en": "Cadmium (Cd)",
+          "bn": "ক্যাডমিয়াম (Cd)",
+          "hi": "कैडमियम (Cd)"
+        },
+        {
+          "en": "Manganese (Mn)",
+          "bn": "ম্যাঙ্গানিজ (Mn)",
+          "hi": "मैंगनीज़ (Mn)"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Minamata disease is caused by exposure to methylmercury, a toxic form of mercury that can damage the nervous system.",
+        "bn": "মিনামাটা রোগ মিথাইলমারকারির সংস্পর্শে আসার ফলে হয়; পারদের এই বিষাক্ত রূপ স্নায়ুতন্ত্রের ক্ষতি করতে পারে।",
+        "hi": "मिनामाटा रोग मिथाइलमरकरी के संपर्क में आने से होता है; पारे का यह विषैला रूप तंत्रिका तंत्र को नुकसान पहुँचा सकता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q024",
+      "question": {
+        "en": "Which disease is associated with cadmium (Cd) poisoning?",
+        "bn": "ক্যাডমিয়াম (Cd) বিষক্রিয়ার সঙ্গে কোন রোগটি যুক্ত?",
+        "hi": "कैडमियम (Cd) के विषाक्त प्रभाव से कौन-सा रोग संबंधित है?"
+      },
+      "options": [
+        {
+          "en": "Itai-itai disease",
+          "bn": "ইটাই-ইটাই রোগ",
+          "hi": "इटाई-इटाई रोग"
+        },
+        {
+          "en": "Minamata disease",
+          "bn": "মিনামাটা রোগ",
+          "hi": "मिनामाटा रोग"
+        },
+        {
+          "en": "Blackfoot disease",
+          "bn": "ব্ল্যাকফুট রোগ",
+          "hi": "ब्लैकफुट रोग"
+        },
+        {
+          "en": "Malaria",
+          "bn": "ম্যালেরিয়া",
+          "hi": "मलेरिया"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Itai-itai disease is associated with chronic cadmium exposure and can cause severe bone and kidney damage.",
+        "bn": "দীর্ঘদিন ক্যাডমিয়ামের সংস্পর্শে থাকার সঙ্গে ইটাই-ইটাই রোগের সম্পর্ক রয়েছে; এই রোগে হাড় ও কিডনির গুরুতর ক্ষতি হতে পারে।",
+        "hi": "लंबे समय तक कैडमियम के संपर्क में रहने से इटाई-इटाई रोग हो सकता है, जिसमें हड्डियों और गुर्दों को गंभीर नुकसान पहुँचता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q025",
+      "question": {
+        "en": "Blackfoot disease is associated with contamination by which element?",
+        "bn": "ব্ল্যাকফুট রোগ কোন মৌলের দূষণের সঙ্গে সম্পর্কিত?",
+        "hi": "ब्लैकफुट रोग किस तत्व के प्रदूषण से संबंधित है?"
+      },
+      "options": [
+        {
+          "en": "Arsenic (As)",
+          "bn": "আর্সেনিক (As)",
+          "hi": "आर्सेनिक (As)"
+        },
+        {
+          "en": "Mercury (Hg)",
+          "bn": "পারদ (Hg)",
+          "hi": "पारा (Hg)"
+        },
+        {
+          "en": "Cobalt (Co)",
+          "bn": "কোবাল্ট (Co)",
+          "hi": "कोबाल्ट (Co)"
+        },
+        {
+          "en": "Iron (Fe)",
+          "bn": "লোহা (Fe)",
+          "hi": "लोहा (Fe)"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Blackfoot disease is associated with long-term exposure to arsenic-contaminated drinking water.",
+        "bn": "আর্সেনিক-দূষিত পানীয় জলের দীর্ঘমেয়াদি সংস্পর্শের সঙ্গে ব্ল্যাকফুট রোগের সম্পর্ক রয়েছে।",
+        "hi": "आर्सेनिक से दूषित पेयजल के लंबे समय तक सेवन का संबंध ब्लैकफुट रोग से है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q026",
+      "question": {
+        "en": "Which heavy metal is associated with neurological disorders and reduced male reproductive capacity, according to the passage?",
+        "bn": "পাঠ্যাংশ অনুযায়ী, কোন ভারী ধাতু স্নায়ুতন্ত্রের রোগ ও পুরুষের প্রজননক্ষমতা হ্রাসের সঙ্গে যুক্ত?",
+        "hi": "पाठ्यांश के अनुसार, कौन-सी भारी धातु तंत्रिका तंत्र के रोगों और पुरुषों की प्रजनन क्षमता में कमी से संबंधित है?"
+      },
+      "options": [
+        {
+          "en": "Mercury (Hg)",
+          "bn": "পারদ (Hg)",
+          "hi": "पारा (Hg)"
+        },
+        {
+          "en": "Cobalt (Co)",
+          "bn": "কোবাল্ট (Co)",
+          "hi": "कोबाल्ट (Co)"
+        },
+        {
+          "en": "Manganese (Mn)",
+          "bn": "ম্যাঙ্গানিজ (Mn)",
+          "hi": "मैंगनीज़ (Mn)"
+        },
+        {
+          "en": "Calcium (Ca)",
+          "bn": "ক্যালসিয়াম (Ca)",
+          "hi": "कैल्शियम (Ca)"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Mercury poisoning can damage the nervous system and kidneys and may impair reproductive health.",
+        "bn": "পারদের বিষক্রিয়া স্নায়ুতন্ত্র ও কিডনির ক্ষতি করতে পারে এবং প্রজননস্বাস্থ্যের ওপর বিরূপ প্রভাব ফেলতে পারে।",
+        "hi": "पारे का विषाक्त प्रभाव तंत्रिका तंत्र और गुर्दों को नुकसान पहुँचा सकता है तथा प्रजनन स्वास्थ्य पर प्रतिकूल प्रभाव डाल सकता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q027",
+      "question": {
+        "en": "Which of the following health problems is associated with lead (Pb) poisoning in the passage?",
+        "bn": "পাঠ্যাংশে লেড (Pb) বিষক্রিয়ার সঙ্গে নিচের কোন স্বাস্থ্যসমস্যার উল্লেখ রয়েছে?",
+        "hi": "पाठ्यांश में सीसा (Pb) के विषाक्त प्रभाव से संबंधित किस स्वास्थ्य समस्या का उल्लेख है?"
+      },
+      "options": [
+        {
+          "en": "Loss of appetite, nausea, constipation, and anaemia",
+          "bn": "ক্ষুধামান্দ্য, বমিভাব, কোষ্ঠকাঠিন্য ও রক্তাল্পতা",
+          "hi": "भूख में कमी, मतली, कब्ज और रक्ताल्पता"
+        },
+        {
+          "en": "Improved kidney function",
+          "bn": "কিডনির কার্যক্ষমতার উন্নতি",
+          "hi": "गुर्दों की कार्यक्षमता में सुधार"
+        },
+        {
+          "en": "Improved vision",
+          "bn": "দৃষ্টিশক্তির উন্নতি",
+          "hi": "दृष्टि में सुधार"
+        },
+        {
+          "en": "Increased bone strength in all cases",
+          "bn": "সব ক্ষেত্রেই হাড়ের শক্তি বৃদ্ধি",
+          "hi": "सभी स्थितियों में हड्डियों की मजबूती बढ़ना"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Lead exposure can cause loss of appetite, nausea, constipation, and anaemia, among other health problems.",
+        "bn": "লেডের সংস্পর্শে ক্ষুধামান্দ্য, বমিভাব, কোষ্ঠকাঠিন্য ও রক্তাল্পতাসহ বিভিন্ন স্বাস্থ্যসমস্যা দেখা দিতে পারে।",
+        "hi": "सीसे के संपर्क में आने से भूख में कमी, मतली, कब्ज और रक्ताल्पता जैसी स्वास्थ्य समस्याएँ हो सकती हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q028",
+      "question": {
+        "en": "Which international agreement was adopted in 1987 to protect the ozone layer?",
+        "bn": "ওজোন স্তরকে রক্ষা করার জন্য 1987 সালে কোন আন্তর্জাতিক চুক্তি গৃহীত হয়?",
+        "hi": "ओज़ोन परत की रक्षा के लिए 1987 में कौन-सा अंतरराष्ट्रीय समझौता अपनाया गया था?"
+      },
+      "options": [
+        {
+          "en": "Montreal Protocol",
+          "bn": "মন্ট্রিয়ল প্রোটোকল",
+          "hi": "मॉन्ट्रियल प्रोटोकॉल"
+        },
+        {
+          "en": "Kyoto Protocol",
+          "bn": "কিয়োটো প্রোটোকল",
+          "hi": "क्योटो प्रोटोकॉल"
+        },
+        {
+          "en": "Paris Agreement",
+          "bn": "প্যারিস চুক্তি",
+          "hi": "पेरिस समझौता"
+        },
+        {
+          "en": "Ramsar Convention",
+          "bn": "রামসার কনভেনশন",
+          "hi": "रामसर अभिसमय"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The Montreal Protocol was adopted in 1987 to protect the ozone layer by controlling ozone-depleting substances.",
+        "bn": "ওজোন স্তর ক্ষয়কারী পদার্থের ব্যবহার নিয়ন্ত্রণ করে ওজোন স্তরকে রক্ষা করার জন্য 1987 সালে মন্ট্রিয়ল প্রোটোকল গৃহীত হয়।",
+        "hi": "ओज़ोन परत को क्षय करने वाले पदार्थों के उपयोग को नियंत्रित करके उसकी रक्षा करने के लिए 1987 में मॉन्ट्रियल प्रोटोकॉल अपनाया गया था।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q029",
+      "question": {
+        "en": "What was the main objective of the Montreal Protocol?",
+        "bn": "মন্ট্রিয়ল প্রোটোকলের প্রধান উদ্দেশ্য কী ছিল?",
+        "hi": "मॉन्ट्रियल प्रोटोकॉल का मुख्य उद्देश्य क्या था?"
+      },
+      "options": [
+        {
+          "en": "To control and phase out chlorofluorocarbons (CFCs) and other ozone-depleting substances",
+          "bn": "ক্লোরোফ্লুরোকার্বন (CFCs) ও অন্যান্য ওজোন-ক্ষয়কারী পদার্থের ব্যবহার নিয়ন্ত্রণ ও পর্যায়ক্রমে বন্ধ করা",
+          "hi": "क्लोरोफ्लोरोकार्बन (CFCs) और अन्य ओज़ोन-क्षयकारी पदार्थों के उपयोग को नियंत्रित करना और चरणबद्ध रूप से समाप्त करना"
+        },
+        {
+          "en": "To increase the production of CFCs",
+          "bn": "CFCs-এর উৎপাদন বৃদ্ধি করা",
+          "hi": "CFCs का उत्पादन बढ़ाना"
+        },
+        {
+          "en": "To promote acid rain",
+          "bn": "অম্লবৃষ্টিকে উৎসাহিত করা",
+          "hi": "अम्ल वर्षा को बढ़ावा देना"
+        },
+        {
+          "en": "To increase industrial smoke emissions",
+          "bn": "শিল্পজাত ধোঁয়ার নির্গমন বৃদ্ধি করা",
+          "hi": "औद्योगिक धुएँ का उत्सर्जन बढ़ाना"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The Montreal Protocol aims to protect the ozone layer by phasing out CFCs and other substances that deplete ozone.",
+        "bn": "ওজোন স্তর রক্ষার জন্য মন্ট্রিয়ল প্রোটোকলের লক্ষ্য হলো CFCs ও অন্যান্য ওজোন-ক্ষয়কারী পদার্থের ব্যবহার পর্যায়ক্রমে বন্ধ করা।",
+        "hi": "मॉन्ट्रियल प्रोटोकॉल का उद्देश्य CFCs और अन्य ओज़ोन-क्षयकारी पदार्थों के उपयोग को चरणबद्ध रूप से समाप्त करके ओज़ोन परत की रक्षा करना है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q030",
+      "question": {
+        "en": "In which year was the Ramsar Convention signed to protect wetlands?",
+        "bn": "জলাভূমি সংরক্ষণের উদ্দেশ্যে রামসার সম্মেলন কোন সালে স্বাক্ষরিত হয়?",
+        "hi": "आर्द्रभूमियों के संरक्षण के उद्देश्य से रामसर सम्मेलन पर किस वर्ष हस्ताक्षर किए गए थे?"
+      },
+      "options": [
+        {
+          "en": "1971",
+          "bn": "1971",
+          "hi": "1971"
+        },
+        {
+          "en": "1987",
+          "bn": "1987",
+          "hi": "1987"
+        },
+        {
+          "en": "1992",
+          "bn": "1992",
+          "hi": "1992"
+        },
+        {
+          "en": "2005",
+          "bn": "2005",
+          "hi": "2005"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The Ramsar Convention was signed in 1971 in Ramsar, Iran, to promote the conservation and wise use of wetlands.",
+        "bn": "জলাভূমি সংরক্ষণ ও সুষ্ঠু ব্যবহারের উদ্দেশ্যে 1971 সালে ইরানের রামসারে রামসার সম্মেলন স্বাক্ষরিত হয়।",
+        "hi": "आर्द्रभूमियों के संरक्षण और विवेकपूर्ण उपयोग को बढ़ावा देने के लिए 1971 में ईरान के रामसर में रामसर अभिसमय पर हस्ताक्षर किए गए थे।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q031",
+      "question": {
+        "en": "Which wetland in West Bengal is recognized as a Ramsar Site?",
+        "bn": "পশ্চিমবঙ্গের কোন জলাভূমি রামসার সাইট হিসেবে পরিচিত?",
+        "hi": "पश्चिम बंगाल की कौन-सी आर्द्रभूमि रामसर स्थल के रूप में प्रसिद्ध है?"
+      },
+      "options": [
+        {
+          "en": "East Kolkata Wetlands",
+          "bn": "পূর্ব কলকাতা জলাভূমি",
+          "hi": "पूर्वी कोलकाता आर्द्रभूमि"
+        },
+        {
+          "en": "Sundarbans National Park",
+          "bn": "সুন্দরবন জাতীয় উদ্যান",
+          "hi": "सुंदरबन राष्ट्रीय उद्यान"
+        },
+        {
+          "en": "Jaldapara National Park",
+          "bn": "জলদাপাড়া জাতীয় উদ্যান",
+          "hi": "जलदापाड़ा राष्ट्रीय उद्यान"
+        },
+        {
+          "en": "Buxa Tiger Reserve",
+          "bn": "বক্সা ব্যাঘ্র প্রকল্প",
+          "hi": "बक्सा बाघ अभयारण्य"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The East Kolkata Wetlands are a Ramsar Site known for their ecological importance and wastewater management functions.",
+        "bn": "পূর্ব কলকাতা জলাভূমি পরিবেশগত গুরুত্ব ও বর্জ্যজল ব্যবস্থাপনার জন্য পরিচিত একটি রামসার সাইট।",
+        "hi": "पूर्वी कोलकाता आर्द्रभूमि अपने पारिस्थितिक महत्व और अपशिष्ट जल प्रबंधन की भूमिका के लिए प्रसिद्ध एक रामसर स्थल है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q032",
+      "question": {
+        "en": "On which date is World Wetlands Day observed?",
+        "bn": "বিশ্ব জলাভূমি দিবস কোন তারিখে পালিত হয়?",
+        "hi": "विश्व आर्द्रभूमि दिवस किस तारीख को मनाया जाता है?"
+      },
+      "options": [
+        {
+          "en": "2 February",
+          "bn": "2 ফেব্রুয়ারি",
+          "hi": "2 फरवरी"
+        },
+        {
+          "en": "5 June",
+          "bn": "5 জুন",
+          "hi": "5 जून"
+        },
+        {
+          "en": "22 April",
+          "bn": "22 এপ্রিল",
+          "hi": "22 अप्रैल"
+        },
+        {
+          "en": "16 September",
+          "bn": "16 সেপ্টেম্বর",
+          "hi": "16 सितंबर"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "World Wetlands Day is observed on 2 February to mark the adoption of the Ramsar Convention.",
+        "bn": "রামসার সম্মেলন গৃহীত হওয়ার দিনটিকে স্মরণ করে 2 ফেব্রুয়ারি বিশ্ব জলাভূমি দিবস পালিত হয়।",
+        "hi": "रामसर अभिसमय को अपनाए जाने की स्मृति में 2 फरवरी को विश्व आर्द्रभूमि दिवस मनाया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q033",
+      "question": {
+        "en": "What was the main objective of the Ganga Action Plan (GAP), launched in 1986?",
+        "bn": "1986 সালে চালু হওয়া গঙ্গা অ্যাকশন প্ল্যানের (GAP) প্রধান উদ্দেশ্য কী ছিল?",
+        "hi": "1986 में शुरू की गई गंगा कार्य योजना (GAP) का मुख्य उद्देश्य क्या था?"
+      },
+      "options": [
+        {
+          "en": "To reduce pollution in the Ganga River",
+          "bn": "গঙ্গা নদীর দূষণ কমানো",
+          "hi": "गंगा नदी के प्रदूषण को कम करना"
+        },
+        {
+          "en": "To increase industrial waste discharge into the river",
+          "bn": "নদীতে শিল্পবর্জ্য নির্গমন বৃদ্ধি করা",
+          "hi": "नदी में औद्योगिक अपशिष्ट का निर्वहन बढ़ाना"
+        },
+        {
+          "en": "To stop all agricultural activities near the river",
+          "bn": "নদীর কাছে সমস্ত কৃষিকাজ বন্ধ করা",
+          "hi": "नदी के पास सभी कृषि गतिविधियों को रोकना"
+        },
+        {
+          "en": "To construct dams along the entire river",
+          "bn": "সমগ্র নদীপথে বাঁধ নির্মাণ করা",
+          "hi": "पूरी नदी के किनारे बाँध बनाना"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The Ganga Action Plan was launched in 1986 to reduce pollution in the Ganga River.",
+        "bn": "গঙ্গা নদীর দূষণ কমানোর উদ্দেশ্যে 1986 সালে গঙ্গা অ্যাকশন প্ল্যান চালু করা হয়।",
+        "hi": "गंगा नदी के प्रदूषण को कम करने के उद्देश्य से 1986 में गंगा कार्य योजना शुरू की गई थी।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q034",
+      "question": {
+        "en": "Which toxic gas was released during the Bhopal Gas Disaster of 1984?",
+        "bn": "1984 সালের ভোপাল গ্যাস দুর্ঘটনায় কোন বিষাক্ত গ্যাস নির্গত হয়েছিল?",
+        "hi": "1984 की भोपाल गैस त्रासदी के दौरान कौन-सी विषैली गैस का रिसाव हुआ था?"
+      },
+      "options": [
+        {
+          "en": "Methyl isocyanate (MIC)",
+          "bn": "মিথাইল আইসোসায়ানেট (MIC)",
+          "hi": "मिथाइल आइसोसाइनेट (MIC)"
+        },
+        {
+          "en": "Carbon dioxide (CO₂)",
+          "bn": "কার্বন ডাইঅক্সাইড (CO₂)",
+          "hi": "कार्बन डाइऑक्साइड (CO₂)"
+        },
+        {
+          "en": "Oxygen (O₂)",
+          "bn": "অক্সিজেন (O₂)",
+          "hi": "ऑक्सीजन (O₂)"
+        },
+        {
+          "en": "Hydrogen (H₂)",
+          "bn": "হাইড্রোজেন (H₂)",
+          "hi": "हाइड्रोजन (H₂)"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Methyl isocyanate (MIC) leaked from the Union Carbide India Limited plant in Bhopal during the disaster in December 1984.",
+        "bn": "1984 সালের ডিসেম্বর মাসে ভোপালের ইউনিয়ন কার্বাইড ইন্ডিয়া লিমিটেডের কারখানা থেকে মিথাইল আইসোসায়ানেট (MIC) নির্গত হয়েছিল।",
+        "hi": "दिसंबर 1984 में भोपाल स्थित यूनियन कार्बाइड इंडिया लिमिटेड के कारखाने से मिथाइल आइसोसाइनेट (MIC) का रिसाव हुआ था।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q035",
+      "question": {
+        "en": "On which date did the Bhopal Gas Disaster occur?",
+        "bn": "ভোপাল গ্যাস দুর্ঘটনা কোন তারিখে ঘটেছিল?",
+        "hi": "भोपाल गैस त्रासदी किस तारीख को हुई थी?"
+      },
+      "options": [
+        {
+          "en": "2 December 1984",
+          "bn": "2 ডিসেম্বর 1984",
+          "hi": "2 दिसंबर 1984"
+        },
+        {
+          "en": "5 June 1986",
+          "bn": "5 জুন 1986",
+          "hi": "5 जून 1986"
+        },
+        {
+          "en": "16 February 2005",
+          "bn": "16 ফেব্রুয়ারি 2005",
+          "hi": "16 फरवरी 2005"
+        },
+        {
+          "en": "26 April 1986",
+          "bn": "26 এপ্রিল 1986",
+          "hi": "26 अप्रैल 1986"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The Bhopal Gas Disaster began during the night of 2 December 1984 and continued into 3 December.",
+        "bn": "ভোপাল গ্যাস দুর্ঘটনা 2 ডিসেম্বর 1984-এর মধ্যরাতে শুরু হয় এবং 3 ডিসেম্বর পর্যন্ত এর প্রভাব ছড়িয়ে পড়ে।",
+        "hi": "भोपाल गैस त्रासदी 2 दिसंबर 1984 की रात शुरू हुई और इसका प्रभाव 3 दिसंबर तक फैल गया।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q036",
+      "question": {
+        "en": "What is the primary objective of the Kyoto Protocol?",
+        "bn": "কিয়োটো প্রোটোকলের প্রধান উদ্দেশ্য কী?",
+        "hi": "क्योटो प्रोटोकॉल का मुख्य उद्देश्य क्या है?"
+      },
+      "options": [
+        {
+          "en": "To reduce greenhouse gas emissions, particularly by industrialized countries",
+          "bn": "বিশেষত শিল্পোন্নত দেশগুলির গ্রিনহাউস গ্যাসের নির্গমন কমানো",
+          "hi": "विशेष रूप से औद्योगिक देशों द्वारा ग्रीनहाउस गैसों के उत्सर्जन को कम करना"
+        },
+        {
+          "en": "To increase greenhouse gas emissions",
+          "bn": "গ্রিনহাউস গ্যাসের নির্গমন বৃদ্ধি করা",
+          "hi": "ग्रीनहाउस गैसों के उत्सर्जन को बढ़ाना"
+        },
+        {
+          "en": "To protect only endangered animal species",
+          "bn": "শুধুমাত্র বিপন্ন প্রাণী প্রজাতিকে রক্ষা করা",
+          "hi": "केवल संकटग्रस्त पशु प्रजातियों की रक्षा करना"
+        },
+        {
+          "en": "To regulate international wetland conservation",
+          "bn": "আন্তর্জাতিক জলাভূমি সংরক্ষণ নিয়ন্ত্রণ করা",
+          "hi": "अंतरराष्ट्रीय आर्द्रभूमि संरक्षण को नियंत्रित करना"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The Kyoto Protocol is an international agreement aimed at reducing greenhouse gas emissions, with binding targets for participating industrialized countries.",
+        "bn": "কিয়োটো প্রোটোকল একটি আন্তর্জাতিক চুক্তি, যার লক্ষ্য গ্রিনহাউস গ্যাসের নির্গমন কমানো; এতে অংশগ্রহণকারী শিল্পোন্নত দেশগুলির জন্য বাধ্যতামূলক লক্ষ্যমাত্রা নির্ধারিত হয়েছিল।",
+        "hi": "क्योटो प्रोटोकॉल ग्रीनहाउस गैसों के उत्सर्जन को कम करने वाला एक अंतरराष्ट्रीय समझौता है, जिसमें भाग लेने वाले औद्योगिक देशों के लिए बाध्यकारी लक्ष्य निर्धारित किए गए थे।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q037",
+      "question": {
+        "en": "In which year was the Kyoto Protocol adopted in Japan?",
+        "bn": "জাপানে কিয়োটো প্রোটোকল কোন সালে গৃহীত হয়?",
+        "hi": "जापान में क्योटो प्रोटोकॉल किस वर्ष अपनाया गया था?"
+      },
+      "options": [
+        {
+          "en": "1987",
+          "bn": "1987",
+          "hi": "1987"
+        },
+        {
+          "en": "1992",
+          "bn": "1992",
+          "hi": "1992"
+        },
+        {
+          "en": "1997",
+          "bn": "1997",
+          "hi": "1997"
+        },
+        {
+          "en": "2005",
+          "bn": "2005",
+          "hi": "2005"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "en": "The Kyoto Protocol was adopted in December 1997 in Kyoto, Japan, and entered into force on 16 February 2005.",
+        "bn": "1997 সালের ডিসেম্বর মাসে জাপানের কিয়োটোতে কিয়োটো প্রোটোকল গৃহীত হয় এবং 16 ফেব্রুয়ারি 2005 থেকে কার্যকর হয়।",
+        "hi": "क्योटो प्रोटोकॉल दिसंबर 1997 में जापान के क्योटो में अपनाया गया और 16 फरवरी 2005 से प्रभावी हुआ।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q038",
+      "question": {
+        "en": "What does IPCC stand for?",
+        "bn": "IPCC-এর পূর্ণরূপ কী?",
+        "hi": "IPCC का पूर्ण रूप क्या है?"
+      },
+      "options": [
+        {
+          "en": "Intergovernmental Panel on Climate Change",
+          "bn": "ইন্টারগভর্নমেন্টাল প্যানেল অন ক্লাইমেট চেঞ্জ",
+          "hi": "जलवायु परिवर्तन पर अंतरसरकारी पैनल"
+        },
+        {
+          "en": "International Programme for Climate Conservation",
+          "bn": "ইন্টারন্যাশনাল প্রোগ্রাম ফর ক্লাইমেট কনজারভেশন",
+          "hi": "जलवायु संरक्षण के लिए अंतरराष्ट्रीय कार्यक्रम"
+        },
+        {
+          "en": "Indian Panel for Carbon Control",
+          "bn": "ইন্ডিয়ান প্যানেল ফর কার্বন কন্ট্রোল",
+          "hi": "कार्बन नियंत्रण के लिए भारतीय पैनल"
+        },
+        {
+          "en": "International Pollution Control Council",
+          "bn": "ইন্টারন্যাশনাল পলিউশন কন্ট্রোল কাউন্সিল",
+          "hi": "अंतरराष्ट्रीय प्रदूषण नियंत्रण परिषद"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "IPCC stands for Intergovernmental Panel on Climate Change, which assesses scientific knowledge about climate change.",
+        "bn": "IPCC-এর পূর্ণরূপ Intergovernmental Panel on Climate Change; এটি জলবায়ু পরিবর্তন সম্পর্কিত বৈজ্ঞানিক তথ্য মূল্যায়ন করে।",
+        "hi": "IPCC का पूर्ण रूप Intergovernmental Panel on Climate Change है; यह जलवायु परिवर्तन से संबंधित वैज्ञानिक जानकारी का आकलन करता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q039",
+      "question": {
+        "en": "In which year was the IPCC established?",
+        "bn": "IPCC কোন সালে প্রতিষ্ঠিত হয়?",
+        "hi": "IPCC की स्थापना किस वर्ष हुई थी?"
+      },
+      "options": [
+        {
+          "en": "1971",
+          "bn": "1971",
+          "hi": "1971"
+        },
+        {
+          "en": "1986",
+          "bn": "1986",
+          "hi": "1986"
+        },
+        {
+          "en": "1988",
+          "bn": "1988",
+          "hi": "1988"
+        },
+        {
+          "en": "1997",
+          "bn": "1997",
+          "hi": "1997"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "en": "The IPCC was established in 1988 by the World Meteorological Organization (WMO) and the United Nations Environment Programme (UNEP).",
+        "bn": "বিশ্ব আবহাওয়া সংস্থা (WMO) ও রাষ্ট্রসংঘের পরিবেশ কর্মসূচি (UNEP) 1988 সালে IPCC প্রতিষ্ঠা করে।",
+        "hi": "विश्व मौसम विज्ञान संगठन (WMO) और संयुक्त राष्ट्र पर्यावरण कार्यक्रम (UNEP) ने 1988 में IPCC की स्थापना की थी।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q040",
+      "question": {
+        "en": "What was the main objective of the Chipko Movement?",
+        "bn": "চিপকো আন্দোলনের প্রধান উদ্দেশ্য কী ছিল?",
+        "hi": "चिपको आंदोलन का मुख्य उद्देश्य क्या था?"
+      },
+      "options": [
+        {
+          "en": "To protect trees from being cut down",
+          "bn": "গাছ কাটা থেকে রক্ষা করা",
+          "hi": "पेड़ों को कटने से बचाना"
+        },
+        {
+          "en": "To promote mining in forests",
+          "bn": "বনাঞ্চলে খননকার্যকে উৎসাহিত করা",
+          "hi": "वनों में खनन को बढ़ावा देना"
+        },
+        {
+          "en": "To increase the use of plastic",
+          "bn": "প্লাস্টিকের ব্যবহার বৃদ্ধি করা",
+          "hi": "प्लास्टिक के उपयोग को बढ़ाना"
+        },
+        {
+          "en": "To construct factories in protected forests",
+          "bn": "সংরক্ষিত বনাঞ্চলে কারখানা নির্মাণ করা",
+          "hi": "संरक्षित वनों में कारखाने बनाना"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The Chipko Movement began in 1973 to protect trees by having people embrace them to prevent felling.",
+        "bn": "1973 সালে শুরু হওয়া চিপকো আন্দোলনে মানুষ গাছকে আলিঙ্গন করে বৃক্ষচ্ছেদন রোধ করত।",
+        "hi": "1973 में शुरू हुए चिपको आंदोलन में लोग पेड़ों को गले लगाकर उनकी कटाई रोकते थे।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q041",
+      "question": {
+        "en": "Where did the Chipko Movement originate?",
+        "bn": "চিপকো আন্দোলনের সূচনা কোথায় হয়েছিল?",
+        "hi": "चिपको आंदोलन की शुरुआत कहाँ हुई थी?"
+      },
+      "options": [
+        {
+          "en": "Chamoli district, in present-day Uttarakhand",
+          "bn": "বর্তমান উত্তরাখণ্ডের চামোলি জেলায়",
+          "hi": "वर्तमान उत्तराखंड के चमोली जिले में"
+        },
+        {
+          "en": "Bhopal, Madhya Pradesh",
+          "bn": "মধ্যপ্রদেশের ভোপালে",
+          "hi": "मध्य प्रदेश के भोपाल में"
+        },
+        {
+          "en": "Kolkata, West Bengal",
+          "bn": "পশ্চিমবঙ্গের কলকাতায়",
+          "hi": "पश्चिम बंगाल के कोलकाता में"
+        },
+        {
+          "en": "Chennai, Tamil Nadu",
+          "bn": "তামিলনাড়ুর চেন্নাইয়ে",
+          "hi": "तमिलनाडु के चेन्नई में"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The Chipko Movement originated in the Chamoli district of the then Uttar Pradesh, now part of Uttarakhand.",
+        "bn": "তৎকালীন উত্তরপ্রদেশের, বর্তমানে উত্তরাখণ্ডের অন্তর্গত চামোলি জেলায় চিপকো আন্দোলনের সূচনা হয়েছিল।",
+        "hi": "चिपको आंदोलन की शुरुआत तत्कालीन उत्तर प्रदेश के चमोली जिले में हुई थी, जो अब उत्तराखंड का हिस्सा है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q042",
+      "question": {
+        "en": "Who was a prominent leader of the Chipko Movement?",
+        "bn": "চিপকো আন্দোলনের একজন বিশিষ্ট নেতা কে ছিলেন?",
+        "hi": "चिपको आंदोलन के एक प्रमुख नेता कौन थे?"
+      },
+      "options": [
+        {
+          "en": "Sunderlal Bahuguna",
+          "bn": "সুন্দরলাল বহুগুণা",
+          "hi": "सुंदरलाल बहुगुणा"
+        },
+        {
+          "en": "Medha Patkar",
+          "bn": "মেধা পাটকর",
+          "hi": "मेधा पाटकर"
+        },
+        {
+          "en": "Rajiv Gandhi",
+          "bn": "রাজীব গান্ধী",
+          "hi": "राजीव गांधी"
+        },
+        {
+          "en": "Verghese Kurien",
+          "bn": "ভার্গিস কুরিয়েন",
+          "hi": "वर्गीज़ कुरियन"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Sunderlal Bahuguna was a prominent environmentalist and leader associated with the Chipko Movement.",
+        "bn": "সুন্দরলাল বহুগুণা ছিলেন একজন বিশিষ্ট পরিবেশবিদ এবং চিপকো আন্দোলনের সঙ্গে যুক্ত অন্যতম প্রধান নেতা।",
+        "hi": "सुंदरलाल बहुगुणा एक प्रमुख पर्यावरणविद् और चिपको आंदोलन से जुड़े प्रमुख नेताओं में से एक थे।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q043",
+      "question": {
+        "en": "What was the main method used in the Narmada Bachao Andolan?",
+        "bn": "নর্মদা বাঁচাও আন্দোলনের প্রধান হাতিয়ার কী ছিল?",
+        "hi": "नर्मदा बचाओ आंदोलन का प्रमुख तरीका क्या था?"
+      },
+      "options": [
+        {
+          "en": "Fasting and peaceful protest",
+          "bn": "অনশন ও শান্তিপূর্ণ প্রতিবাদ",
+          "hi": "अनशन और शांतिपूर्ण विरोध"
+        },
+        {
+          "en": "Armed conflict",
+          "bn": "সশস্ত্র সংঘর্ষ",
+          "hi": "सशस्त्र संघर्ष"
+        },
+        {
+          "en": "Industrial expansion",
+          "bn": "শিল্পের সম্প্রসারণ",
+          "hi": "औद्योगिक विस्तार"
+        },
+        {
+          "en": "Commercial hunting",
+          "bn": "বাণিজ্যিক শিকার",
+          "hi": "व्यावसायिक शिकार"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The Narmada Bachao Andolan used peaceful protest, including fasting, to oppose large dam projects and highlight their social and environmental impacts.",
+        "bn": "বৃহৎ বাঁধ নির্মাণের বিরোধিতা এবং তার সামাজিক ও পরিবেশগত প্রভাব তুলে ধরতে নর্মদা বাঁচাও আন্দোলনে অনশনসহ শান্তিপূর্ণ প্রতিবাদ করা হয়েছিল।",
+        "hi": "बड़े बाँधों का विरोध करने और उनके सामाजिक तथा पर्यावरणीय प्रभावों को उजागर करने के लिए नर्मदा बचाओ आंदोलन में अनशन सहित शांतिपूर्ण विरोध किया गया।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q044",
+      "question": {
+        "en": "Who were prominent spokespersons of the Narmada Bachao Andolan?",
+        "bn": "নর্মদা বাঁচাও আন্দোলনের প্রধান মুখপাত্র কারা ছিলেন?",
+        "hi": "नर्मदा बचाओ आंदोलन के प्रमुख प्रवक्ता कौन थे?"
+      },
+      "options": [
+        {
+          "en": "Medha Patkar and Baba Amte",
+          "bn": "মেধা পাটকর ও বাবা আমটে",
+          "hi": "मेधा पाटकर और बाबा आमटे"
+        },
+        {
+          "en": "Sunderlal Bahuguna and Rajiv Gandhi",
+          "bn": "সুন্দরলাল বহুগুণা ও রাজীব গান্ধী",
+          "hi": "सुंदरलाल बहुगुणा और राजीव गांधी"
+        },
+        {
+          "en": "Indira Gandhi and Verghese Kurien",
+          "bn": "ইন্দিরা গান্ধী ও ভার্গিস কুরিয়েন",
+          "hi": "इंदिरा गांधी और वर्गीज़ कुरियन"
+        },
+        {
+          "en": "M. S. Swaminathan and Homi Bhabha",
+          "bn": "এম. এস. স্বামীনাথন ও হোমি ভাবা",
+          "hi": "एम. एस. स्वामीनाथन और होमी भाभा"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Medha Patkar and Baba Amte were prominent figures associated with the Narmada Bachao Andolan.",
+        "bn": "মেধা পাটকর ও বাবা আমটে নর্মদা বাঁচাও আন্দোলনের সঙ্গে যুক্ত বিশিষ্ট ব্যক্তিত্ব ছিলেন।",
+        "hi": "मेधा पाटकर और बाबा आमटे नर्मदा बचाओ आंदोलन से जुड़े प्रमुख व्यक्तित्व थे।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q045",
+      "question": {
+        "en": "In which year was Agenda 21 adopted?",
+        "bn": "অ্যাজেন্ডা 21 কোন সালে গৃহীত হয়?",
+        "hi": "एजेंडा 21 किस वर्ष अपनाया गया था?"
+      },
+      "options": [
+        {
+          "en": "1971",
+          "bn": "1971",
+          "hi": "1971"
+        },
+        {
+          "en": "1987",
+          "bn": "1987",
+          "hi": "1987"
+        },
+        {
+          "en": "1992",
+          "bn": "1992",
+          "hi": "1992"
+        },
+        {
+          "en": "2005",
+          "bn": "2005",
+          "hi": "2005"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "en": "Agenda 21 was adopted at the 1992 United Nations Conference on Environment and Development in Rio de Janeiro, Brazil.",
+        "bn": "1992 সালে ব্রাজিলের রিও ডি জেনেরোতে অনুষ্ঠিত রাষ্ট্রসংঘের পরিবেশ ও উন্নয়ন সম্মেলনে অ্যাজেন্ডা 21 গৃহীত হয়।",
+        "hi": "1992 में ब्राज़ील के रियो डी जेनेरो में आयोजित संयुक्त राष्ट्र पर्यावरण और विकास सम्मेलन में एजेंडा 21 अपनाया गया था।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q046",
+      "question": {
+        "en": "What was the main theme of the 1992 Rio Earth Summit?",
+        "bn": "1992 সালের রিও ধরিত্রী সম্মেলনের প্রধান বিষয় কী ছিল?",
+        "hi": "1992 के रियो पृथ्वी सम्मेलन का मुख्य विषय क्या था?"
+      },
+      "options": [
+        {
+          "en": "Sustainable development",
+          "bn": "স্থিতিশীল উন্নয়ন",
+          "hi": "सतत विकास"
+        },
+        {
+          "en": "Expansion of fossil fuel use",
+          "bn": "জীবাশ্ম জ্বালানির ব্যবহার সম্প্রসারণ",
+          "hi": "जीवाश्म ईंधन के उपयोग का विस्तार"
+        },
+        {
+          "en": "Promotion of deforestation",
+          "bn": "বনচ্ছেদনকে উৎসাহিত করা",
+          "hi": "वनों की कटाई को बढ़ावा देना"
+        },
+        {
+          "en": "Increase in nuclear testing",
+          "bn": "পারমাণবিক পরীক্ষার সংখ্যা বৃদ্ধি",
+          "hi": "परमाणु परीक्षणों में वृद्धि"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The 1992 Rio Earth Summit focused on sustainable development and international cooperation on environmental protection.",
+        "bn": "1992 সালের রিও ধরিত্রী সম্মেলনে স্থিতিশীল উন্নয়ন ও পরিবেশ সংরক্ষণে আন্তর্জাতিক সহযোগিতার ওপর গুরুত্ব দেওয়া হয়।",
+        "hi": "1992 के रियो पृथ्वी सम्मेलन में सतत विकास और पर्यावरण संरक्षण के लिए अंतरराष्ट्रीय सहयोग पर जोर दिया गया।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q047",
+      "question": {
+        "en": "When did the Chernobyl nuclear disaster occur?",
+        "bn": "চেরনোবিল পারমাণবিক দুর্ঘটনা কবে ঘটেছিল?",
+        "hi": "चेर्नोबिल परमाणु दुर्घटना कब हुई थी?"
+      },
+      "options": [
+        {
+          "en": "26 April 1986",
+          "bn": "26 এপ্রিল 1986",
+          "hi": "26 अप्रैल 1986"
+        },
+        {
+          "en": "2 December 1984",
+          "bn": "2 ডিসেম্বর 1984",
+          "hi": "2 दिसंबर 1984"
+        },
+        {
+          "en": "16 February 2005",
+          "bn": "16 ফেব্রুয়ারি 2005",
+          "hi": "16 फरवरी 2005"
+        },
+        {
+          "en": "5 June 1992",
+          "bn": "5 জুন 1992",
+          "hi": "5 जून 1992"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The Chernobyl nuclear disaster occurred on 26 April 1986, releasing radioactive materials into the environment.",
+        "bn": "26 এপ্রিল 1986 সালে চেরনোবিল পারমাণবিক দুর্ঘটনা ঘটে এবং এর ফলে তেজস্ক্রিয় পদার্থ পরিবেশে ছড়িয়ে পড়ে।",
+        "hi": "26 अप्रैल 1986 को चेर्नोबिल परमाणु दुर्घटना हुई, जिसके कारण रेडियोधर्मी पदार्थ पर्यावरण में फैल गए।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q048",
+      "question": {
+        "en": "Which Indian national mission promotes the use of solar energy?",
+        "bn": "ভারতের কোন জাতীয় মিশন সৌরশক্তির ব্যবহার প্রসারিত করে?",
+        "hi": "भारत का कौन-सा राष्ट्रीय मिशन सौर ऊर्जा के उपयोग को बढ़ावा देता है?"
+      },
+      "options": [
+        {
+          "en": "National Solar Mission",
+          "bn": "ন্যাশনাল সোলার মিশন",
+          "hi": "राष्ट्रीय सौर मिशन"
+        },
+        {
+          "en": "National Water Mission",
+          "bn": "ন্যাশনাল ওয়াটার মিশন",
+          "hi": "राष्ट्रीय जल मिशन"
+        },
+        {
+          "en": "National Mission for a Green India",
+          "bn": "ন্যাশনাল মিশন ফর এ গ্রিন ইন্ডিয়া",
+          "hi": "हरित भारत के लिए राष्ट्रीय मिशन"
+        },
+        {
+          "en": "National Mission on Sustainable Habitat",
+          "bn": "ন্যাশনাল মিশন অন সাসটেনেবল হ্যাবিট্যাট",
+          "hi": "राष्ट्रीय सतत आवास मिशन"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The National Solar Mission promotes solar energy generation and wider adoption of solar power in India.",
+        "bn": "ন্যাশনাল সোলার মিশন ভারতে সৌরবিদ্যুৎ উৎপাদন ও সৌরশক্তির ব্যাপক ব্যবহার প্রসারিত করে।",
+        "hi": "राष्ट्रीय सौर मिशन भारत में सौर ऊर्जा उत्पादन और सौर ऊर्जा के व्यापक उपयोग को बढ़ावा देता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q049",
+      "question": {
+        "en": "Which Indian national mission focuses on water conservation and reducing water wastage?",
+        "bn": "জল সংরক্ষণ ও জলের অপচয় রোধে ভারতের কোন জাতীয় মিশন গুরুত্ব দেয়?",
+        "hi": "जल संरक्षण और पानी की बर्बादी रोकने पर भारत का कौन-सा राष्ट्रीय मिशन ध्यान देता है?"
+      },
+      "options": [
+        {
+          "en": "National Water Mission",
+          "bn": "ন্যাশনাল ওয়াটার মিশন",
+          "hi": "राष्ट्रीय जल मिशन"
+        },
+        {
+          "en": "National Solar Mission",
+          "bn": "ন্যাশনাল সোলার মিশন",
+          "hi": "राष्ट्रीय सौर मिशन"
+        },
+        {
+          "en": "National Mission for a Green India",
+          "bn": "ন্যাশনাল মিশন ফর এ গ্রিন ইন্ডিয়া",
+          "hi": "हरित भारत के लिए राष्ट्रीय मिशन"
+        },
+        {
+          "en": "National Mission on Strategic Knowledge for Climate Change",
+          "bn": "ন্যাশনাল মিশন অন স্ট্র্যাটেজিক নলেজ ফর ক্লাইমেট চেঞ্জ",
+          "hi": "जलवायु परिवर्तन पर रणनीतिक ज्ञान के लिए राष्ट्रीय मिशन"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The National Water Mission aims to conserve water, improve water-use efficiency, and promote sustainable water management.",
+        "bn": "ন্যাশনাল ওয়াটার মিশনের লক্ষ্য হলো জল সংরক্ষণ, জলের ব্যবহারের দক্ষতা বৃদ্ধি এবং টেকসই জল ব্যবস্থাপনা প্রসারিত করা।",
+        "hi": "राष्ट्रीय जल मिशन का उद्देश्य जल संरक्षण, जल उपयोग की दक्षता बढ़ाना और सतत जल प्रबंधन को बढ़ावा देना है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q050",
+      "question": {
+        "en": "Which Indian national mission focuses on protecting the Himalayan ecosystem?",
+        "bn": "হিমালয়ের বাস্তুতন্ত্র সংরক্ষণে ভারতের কোন জাতীয় মিশন কাজ করে?",
+        "hi": "हिमालयी पारितंत्र के संरक्षण पर भारत का कौन-सा राष्ट्रीय मिशन कार्य करता है?"
+      },
+      "options": [
+        {
+          "en": "National Mission for Sustaining the Himalayan Ecosystem",
+          "bn": "ন্যাশনাল মিশন ফর সাসটেনিং দ্য হিমালয়ান ইকোসিস্টেম",
+          "hi": "हिमालयी पारितंत्र को बनाए रखने के लिए राष्ट्रीय मिशन"
+        },
+        {
+          "en": "National Solar Mission",
+          "bn": "ন্যাশনাল সোলার মিশন",
+          "hi": "राष्ट्रीय सौर मिशन"
+        },
+        {
+          "en": "National Water Mission",
+          "bn": "ন্যাশনাল ওয়াটার মিশন",
+          "hi": "राष्ट्रीय जल मिशन"
+        },
+        {
+          "en": "National Mission for a Green India",
+          "bn": "ন্যাশনাল মিশন ফর এ গ্রিন ইন্ডিয়া",
+          "hi": "हरित भारत के लिए राष्ट्रीय मिशन"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The National Mission for Sustaining the Himalayan Ecosystem focuses on conserving the Himalayan environment and addressing threats such as glacier retreat.",
+        "bn": "ন্যাশনাল মিশন ফর সাসটেনিং দ্য হিমালয়ান ইকোসিস্টেম হিমালয়ের পরিবেশ সংরক্ষণ এবং হিমবাহের পশ্চাদপসরণের মতো সমস্যা মোকাবিলায় কাজ করে।",
+        "hi": "हिमालयी पारितंत्र को बनाए रखने के लिए राष्ट्रीय मिशन हिमालयी पर्यावरण के संरक्षण और हिमनदों के पीछे हटने जैसी समस्याओं से निपटने पर ध्यान देता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q051",
+      "question": {
+        "en": "Which Indian national mission aims to increase forest cover?",
+        "bn": "বনভূমির পরিমাণ বৃদ্ধি করার লক্ষ্য নিয়ে ভারতের কোন জাতীয় মিশন গঠিত হয়েছে?",
+        "hi": "वन क्षेत्र बढ़ाने के उद्देश्य से भारत का कौन-सा राष्ट्रीय मिशन बनाया गया है?"
+      },
+      "options": [
+        {
+          "en": "National Mission for a Green India",
+          "bn": "ন্যাশনাল মিশন ফর এ গ্রিন ইন্ডিয়া",
+          "hi": "हरित भारत के लिए राष्ट्रीय मिशन"
+        },
+        {
+          "en": "National Water Mission",
+          "bn": "ন্যাশনাল ওয়াটার মিশন",
+          "hi": "राष्ट्रीय जल मिशन"
+        },
+        {
+          "en": "National Solar Mission",
+          "bn": "ন্যাশনাল সোলার মিশন",
+          "hi": "राष्ट्रीय सौर मिशन"
+        },
+        {
+          "en": "National Mission on Sustainable Habitat",
+          "bn": "ন্যাশনাল মিশন অন সাসটেনেবল হ্যাবিট্যাট",
+          "hi": "राष्ट्रीय सतत आवास मिशन"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The National Mission for a Green India aims to increase forest and tree cover and improve ecosystem services.",
+        "bn": "ন্যাশনাল মিশন ফর এ গ্রিন ইন্ডিয়ার লক্ষ্য হলো বনভূমি ও বৃক্ষাবরণ বৃদ্ধি করা এবং বাস্তুতান্ত্রিক পরিষেবার উন্নতি ঘটানো।",
+        "hi": "हरित भारत के लिए राष्ट्रीय मिशन का उद्देश्य वन और वृक्ष आवरण बढ़ाना तथा पारितंत्र सेवाओं में सुधार करना है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q052",
+      "question": {
+        "en": "In which year was the Wildlife Protection Act introduced in India?",
+        "bn": "ভারতে বন্যপ্রাণী সুরক্ষা আইন কোন সালে প্রবর্তিত হয়?",
+        "hi": "भारत में वन्यजीव संरक्षण अधिनियम किस वर्ष लागू किया गया था?"
+      },
+      "options": [
+        {
+          "en": "1972",
+          "bn": "1972",
+          "hi": "1972"
+        },
+        {
+          "en": "1974",
+          "bn": "1974",
+          "hi": "1974"
+        },
+        {
+          "en": "1980",
+          "bn": "1980",
+          "hi": "1980"
+        },
+        {
+          "en": "2002",
+          "bn": "2002",
+          "hi": "2002"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The Wildlife (Protection) Act was enacted in India in 1972 to protect wild animals, birds, and plants.",
+        "bn": "বন্যপ্রাণী, পাখি ও উদ্ভিদ সংরক্ষণের উদ্দেশ্যে ভারতে বন্যপ্রাণী সুরক্ষা আইন 1972 সালে প্রণীত হয়।",
+        "hi": "वन्यजीवों, पक्षियों और पौधों के संरक्षण के उद्देश्य से भारत में वन्यजीव संरक्षण अधिनियम 1972 में बनाया गया था।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q053",
+      "question": {
+        "en": "In which year was the Water (Prevention and Control of Pollution) Act introduced in India?",
+        "bn": "ভারতে জলদূষণ প্রতিরোধ ও নিয়ন্ত্রণ আইন কোন সালে প্রবর্তিত হয়?",
+        "hi": "भारत में जल प्रदूषण निवारण एवं नियंत्रण अधिनियम किस वर्ष लागू किया गया था?"
+      },
+      "options": [
+        {
+          "en": "1972",
+          "bn": "1972",
+          "hi": "1972"
+        },
+        {
+          "en": "1974",
+          "bn": "1974",
+          "hi": "1974"
+        },
+        {
+          "en": "1981",
+          "bn": "1981",
+          "hi": "1981"
+        },
+        {
+          "en": "2002",
+          "bn": "2002",
+          "hi": "2002"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "The Water (Prevention and Control of Pollution) Act was enacted in 1974 to prevent and control water pollution.",
+        "bn": "জলদূষণ প্রতিরোধ ও নিয়ন্ত্রণের উদ্দেশ্যে 1974 সালে জলদূষণ প্রতিরোধ ও নিয়ন্ত্রণ আইন প্রণীত হয়।",
+        "hi": "जल प्रदूषण की रोकथाम और नियंत्रण के उद्देश्य से जल प्रदूषण निवारण एवं नियंत्रण अधिनियम 1974 में बनाया गया था।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q054",
+      "question": {
+        "en": "In which year was the Forest (Conservation) Act introduced in India?",
+        "bn": "ভারতে বন সংরক্ষণ আইন কোন সালে প্রবর্তিত হয়?",
+        "hi": "भारत में वन संरक्षण अधिनियम किस वर्ष लागू किया गया था?"
+      },
+      "options": [
+        {
+          "en": "1927",
+          "bn": "1927",
+          "hi": "1927"
+        },
+        {
+          "en": "1974",
+          "bn": "1974",
+          "hi": "1974"
+        },
+        {
+          "en": "1980",
+          "bn": "1980",
+          "hi": "1980"
+        },
+        {
+          "en": "1981",
+          "bn": "1981",
+          "hi": "1981"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "en": "The Forest (Conservation) Act was enacted in 1980 to regulate the diversion of forest land for non-forest purposes.",
+        "bn": "বনভূমিকে বন-বহির্ভূত কাজে ব্যবহার করার নিয়ন্ত্রণের উদ্দেশ্যে 1980 সালে বন সংরক্ষণ আইন প্রণীত হয়।",
+        "hi": "वन भूमि को गैर-वन उद्देश्यों के लिए उपयोग करने पर नियंत्रण के उद्देश्य से 1980 में वन संरक्षण अधिनियम बनाया गया था।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q055",
+      "question": {
+        "en": "In which year was the Air (Prevention and Control of Pollution) Act introduced in India?",
+        "bn": "ভারতে বায়ুদূষণ প্রতিরোধ ও নিয়ন্ত্রণ আইন কোন সালে প্রবর্তিত হয়?",
+        "hi": "भारत में वायु प्रदूषण निवारण एवं नियंत्रण अधिनियम किस वर्ष लागू किया गया था?"
+      },
+      "options": [
+        {
+          "en": "1972",
+          "bn": "1972",
+          "hi": "1972"
+        },
+        {
+          "en": "1980",
+          "bn": "1980",
+          "hi": "1980"
+        },
+        {
+          "en": "1981",
+          "bn": "1981",
+          "hi": "1981"
+        },
+        {
+          "en": "2002",
+          "bn": "2002",
+          "hi": "2002"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "en": "The Air (Prevention and Control of Pollution) Act was enacted in 1981 to prevent, control, and reduce air pollution.",
+        "bn": "বায়ুদূষণ প্রতিরোধ, নিয়ন্ত্রণ ও হ্রাস করার উদ্দেশ্যে 1981 সালে বায়ুদূষণ প্রতিরোধ ও নিয়ন্ত্রণ আইন প্রণীত হয়।",
+        "hi": "वायु प्रदूषण की रोकथाम, नियंत्रण और कमी के उद्देश्य से 1981 में वायु प्रदूषण निवारण एवं नियंत्रण अधिनियम बनाया गया था।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q056",
+      "question": {
+        "en": "In which year was the Biological Diversity Act introduced in India?",
+        "bn": "ভারতে জীববৈচিত্র্য আইন কোন সালে প্রবর্তিত হয়?",
+        "hi": "भारत में जैव विविधता अधिनियम किस वर्ष लागू किया गया था?"
+      },
+      "options": [
+        {
+          "en": "1980",
+          "bn": "1980",
+          "hi": "1980"
+        },
+        {
+          "en": "1981",
+          "bn": "1981",
+          "hi": "1981"
+        },
+        {
+          "en": "1992",
+          "bn": "1992",
+          "hi": "1992"
+        },
+        {
+          "en": "2002",
+          "bn": "2002",
+          "hi": "2002"
+        }
+      ],
+      "correct_index": 3,
+      "explanation": {
+        "en": "The Biological Diversity Act was enacted in 2002 to conserve biodiversity, promote sustainable use, and ensure fair sharing of benefits.",
+        "bn": "জীববৈচিত্র্য সংরক্ষণ, তার টেকসই ব্যবহার এবং সম্পদ থেকে প্রাপ্ত সুফলের ন্যায্য বণ্টনের উদ্দেশ্যে 2002 সালে জীববৈচিত্র্য আইন প্রণীত হয়।",
+        "hi": "जैव विविधता के संरक्षण, उसके सतत उपयोग और संसाधनों से प्राप्त लाभों के न्यायसंगत बँटवारे के लिए 2002 में जैव विविधता अधिनियम बनाया गया था।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q057",
+      "question": {
+        "en": "In which year was the Indian Forest Act introduced?",
+        "bn": "ভারতীয় অরণ্য আইন কোন সালে প্রবর্তিত হয়?",
+        "hi": "भारतीय वन अधिनियम किस वर्ष लागू किया गया था?"
+      },
+      "options": [
+        {
+          "en": "1905",
+          "bn": "1905",
+          "hi": "1905"
+        },
+        {
+          "en": "1927",
+          "bn": "1927",
+          "hi": "1927"
+        },
+        {
+          "en": "1972",
+          "bn": "1972",
+          "hi": "1972"
+        },
+        {
+          "en": "1980",
+          "bn": "1980",
+          "hi": "1980"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "The Indian Forest Act was enacted in 1927 to consolidate laws relating to forests, forest produce, and the transit of forest produce.",
+        "bn": "বন, বনজ সম্পদ এবং বনজ সম্পদের পরিবহণ-সংক্রান্ত আইনগুলিকে সংহত করার উদ্দেশ্যে 1927 সালে ভারতীয় অরণ্য আইন প্রণীত হয়।",
+        "hi": "वनों, वन उपज और वन उपज के परिवहन से संबंधित कानूनों को समेकित करने के लिए 1927 में भारतीय वन अधिनियम बनाया गया था।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q058",
+      "question": {
+        "en": "On which date is National Science Day observed in India?",
+        "bn": "ভারতে জাতীয় বিজ্ঞান দিবস কোন তারিখে পালিত হয়?",
+        "hi": "भारत में राष्ट्रीय विज्ञान दिवस किस तारीख को मनाया जाता है?"
+      },
+      "options": [
+        {
+          "en": "28 February",
+          "bn": "28 ফেব্রুয়ারি",
+          "hi": "28 फरवरी"
+        },
+        {
+          "en": "7 April",
+          "bn": "7 এপ্রিল",
+          "hi": "7 अप्रैल"
+        },
+        {
+          "en": "5 June",
+          "bn": "5 জুন",
+          "hi": "5 जून"
+        },
+        {
+          "en": "11 July",
+          "bn": "11 জুলাই",
+          "hi": "11 जुलाई"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "National Science Day is observed on 28 February to commemorate C. V. Raman's discovery of the Raman effect.",
+        "bn": "সি. ভি. রমনের রমন প্রভাব আবিষ্কারের স্মরণে 28 ফেব্রুয়ারি জাতীয় বিজ্ঞান দিবস পালিত হয়।",
+        "hi": "सी. वी. रमन द्वारा रमन प्रभाव की खोज की स्मृति में 28 फरवरी को राष्ट्रीय विज्ञान दिवस मनाया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q059",
+      "question": {
+        "en": "On which date is World Health Day observed?",
+        "bn": "বিশ্ব স্বাস্থ্য দিবস কোন তারিখে পালিত হয়?",
+        "hi": "विश्व स्वास्थ्य दिवस किस तारीख को मनाया जाता है?"
+      },
+      "options": [
+        {
+          "en": "7 April",
+          "bn": "7 এপ্রিল",
+          "hi": "7 अप्रैल"
+        },
+        {
+          "en": "31 May",
+          "bn": "31 মে",
+          "hi": "31 मई"
+        },
+        {
+          "en": "22 April",
+          "bn": "22 এপ্রিল",
+          "hi": "22 अप्रैल"
+        },
+        {
+          "en": "4 October",
+          "bn": "4 অক্টোবর",
+          "hi": "4 अक्टूबर"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "World Health Day is observed annually on 7 April to mark the founding of the World Health Organization.",
+        "bn": "বিশ্ব স্বাস্থ্য সংস্থার প্রতিষ্ঠা দিবস স্মরণে প্রতি বছর 7 এপ্রিল বিশ্ব স্বাস্থ্য দিবস পালিত হয়।",
+        "hi": "विश्व स्वास्थ्य संगठन की स्थापना की स्मृति में प्रत्येक वर्ष 7 अप्रैल को विश्व स्वास्थ्य दिवस मनाया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q060",
+      "question": {
+        "en": "On which date is World No Tobacco Day observed?",
+        "bn": "বিশ্ব তামাক বর্জন দিবস কোন তারিখে পালিত হয়?",
+        "hi": "विश्व तंबाकू निषेध दिवस किस तारीख को मनाया जाता है?"
+      },
+      "options": [
+        {
+          "en": "31 May",
+          "bn": "31 মে",
+          "hi": "31 मई"
+        },
+        {
+          "en": "7 April",
+          "bn": "7 এপ্রিল",
+          "hi": "7 अप्रैल"
+        },
+        {
+          "en": "5 June",
+          "bn": "5 জুন",
+          "hi": "5 जून"
+        },
+        {
+          "en": "22 May",
+          "bn": "22 মে",
+          "hi": "22 मई"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "World No Tobacco Day is observed every year on 31 May to raise awareness of the harmful effects of tobacco.",
+        "bn": "তামাকের ক্ষতিকারক প্রভাব সম্পর্কে সচেতনতা বৃদ্ধির জন্য প্রতি বছর 31 মে বিশ্ব তামাক বর্জন দিবস পালিত হয়।",
+        "hi": "तंबाकू के हानिकारक प्रभावों के बारे में जागरूकता बढ़ाने के लिए हर वर्ष 31 मई को विश्व तंबाकू निषेध दिवस मनाया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q061",
+      "question": {
+        "en": "On which date is World Environment Day observed?",
+        "bn": "বিশ্ব পরিবেশ দিবস কোন তারিখে পালিত হয়?",
+        "hi": "विश्व पर्यावरण दिवस किस तारीख को मनाया जाता है?"
+      },
+      "options": [
+        {
+          "en": "5 June",
+          "bn": "5 জুন",
+          "hi": "5 जून"
+        },
+        {
+          "en": "22 April",
+          "bn": "22 এপ্রিল",
+          "hi": "22 अप्रैल"
+        },
+        {
+          "en": "21 March",
+          "bn": "21 মার্চ",
+          "hi": "21 मार्च"
+        },
+        {
+          "en": "22 March",
+          "bn": "22 মার্চ",
+          "hi": "22 मार्च"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "World Environment Day is observed on 5 June to encourage awareness and action for environmental protection.",
+        "bn": "পরিবেশ সংরক্ষণ সম্পর্কে সচেতনতা ও কার্যক্রম বাড়ানোর উদ্দেশ্যে 5 জুন বিশ্ব পরিবেশ দিবস পালিত হয়।",
+        "hi": "पर्यावरण संरक्षण के प्रति जागरूकता और कार्रवाई को बढ़ावा देने के लिए 5 जून को विश्व पर्यावरण दिवस मनाया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q062",
+      "question": {
+        "en": "On which date is World Population Day observed?",
+        "bn": "বিশ্ব জনসংখ্যা দিবস কোন তারিখে পালিত হয়?",
+        "hi": "विश्व जनसंख्या दिवस किस तारीख को मनाया जाता है?"
+      },
+      "options": [
+        {
+          "en": "11 July",
+          "bn": "11 জুলাই",
+          "hi": "11 जुलाई"
+        },
+        {
+          "en": "5 June",
+          "bn": "5 জুন",
+          "hi": "5 जून"
+        },
+        {
+          "en": "7 April",
+          "bn": "7 এপ্রিল",
+          "hi": "7 अप्रैल"
+        },
+        {
+          "en": "21 March",
+          "bn": "21 মার্চ",
+          "hi": "21 मार्च"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "World Population Day is observed on 11 July to raise awareness of population-related issues.",
+        "bn": "জনসংখ্যা-সংক্রান্ত বিভিন্ন সমস্যা সম্পর্কে সচেতনতা বৃদ্ধির জন্য 11 জুলাই বিশ্ব জনসংখ্যা দিবস পালিত হয়।",
+        "hi": "जनसंख्या से संबंधित मुद्दों के बारे में जागरूकता बढ़ाने के लिए 11 जुलाई को विश्व जनसंख्या दिवस मनाया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q063",
+      "question": {
+        "en": "On which date is World Animal Day observed?",
+        "bn": "বিশ্ব প্রাণী দিবস কোন তারিখে পালিত হয়?",
+        "hi": "विश्व पशु दिवस किस तारीख को मनाया जाता है?"
+      },
+      "options": [
+        {
+          "en": "4 October",
+          "bn": "4 অক্টোবর",
+          "hi": "4 अक्टूबर"
+        },
+        {
+          "en": "22 May",
+          "bn": "22 মে",
+          "hi": "22 मई"
+        },
+        {
+          "en": "21 March",
+          "bn": "21 মার্চ",
+          "hi": "21 मार्च"
+        },
+        {
+          "en": "28 February",
+          "bn": "28 ফেব্রুয়ারি",
+          "hi": "28 फरवरी"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "World Animal Day is observed on 4 October to promote animal welfare and awareness of animal protection.",
+        "bn": "প্রাণীকল্যাণ ও প্রাণী সংরক্ষণ সম্পর্কে সচেতনতা বৃদ্ধির জন্য 4 অক্টোবর বিশ্ব প্রাণী দিবস পালিত হয়।",
+        "hi": "पशु कल्याण और पशु संरक्षण के प्रति जागरूकता बढ़ाने के लिए 4 अक्टूबर को विश्व पशु दिवस मनाया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q064",
+      "question": {
+        "en": "On which date is the International Day for Biological Diversity observed?",
+        "bn": "আন্তর্জাতিক জীববৈচিত্র্য দিবস কোন তারিখে পালিত হয়?",
+        "hi": "अंतरराष्ट्रीय जैव विविधता दिवस किस तारीख को मनाया जाता है?"
+      },
+      "options": [
+        {
+          "en": "22 May",
+          "bn": "22 মে",
+          "hi": "22 मई"
+        },
+        {
+          "en": "5 June",
+          "bn": "5 জুন",
+          "hi": "5 जून"
+        },
+        {
+          "en": "22 March",
+          "bn": "22 মার্চ",
+          "hi": "22 मार्च"
+        },
+        {
+          "en": "11 July",
+          "bn": "11 জুলাই",
+          "hi": "11 जुलाई"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The International Day for Biological Diversity is observed on 22 May to promote awareness of biodiversity issues.",
+        "bn": "জীববৈচিত্র্য-সংক্রান্ত বিষয় সম্পর্কে সচেতনতা বৃদ্ধির জন্য 22 মে আন্তর্জাতিক জীববৈচিত্র্য দিবস পালিত হয়।",
+        "hi": "जैव विविधता से जुड़े मुद्दों के प्रति जागरूकता बढ़ाने के लिए 22 मई को अंतरराष्ट्रीय जैव विविधता दिवस मनाया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q065",
+      "question": {
+        "en": "On which date is the International Day of Forests observed?",
+        "bn": "বিশ্ব অরণ্য দিবস কোন তারিখে পালিত হয়?",
+        "hi": "अंतरराष्ट्रीय वन दिवस किस तारीख को मनाया जाता है?"
+      },
+      "options": [
+        {
+          "en": "21 March",
+          "bn": "21 মার্চ",
+          "hi": "21 मार्च"
+        },
+        {
+          "en": "22 April",
+          "bn": "22 এপ্রিল",
+          "hi": "22 अप्रैल"
+        },
+        {
+          "en": "22 May",
+          "bn": "22 মে",
+          "hi": "22 मई"
+        },
+        {
+          "en": "4 October",
+          "bn": "4 অক্টোবর",
+          "hi": "4 अक्टूबर"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The International Day of Forests is observed on 21 March to raise awareness of the importance of forests.",
+        "bn": "বনের গুরুত্ব সম্পর্কে সচেতনতা বৃদ্ধির জন্য 21 মার্চ আন্তর্জাতিক অরণ্য দিবস পালিত হয়।",
+        "hi": "वनों के महत्व के बारे में जागरूकता बढ़ाने के लिए 21 मार्च को अंतरराष्ट्रीय वन दिवस मनाया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q066",
+      "question": {
+        "en": "On which date is Earth Day observed?",
+        "bn": "বসুন্ধরা দিবস বা ধরিত্রী দিবস কোন তারিখে পালিত হয়?",
+        "hi": "पृथ्वी दिवस किस तारीख को मनाया जाता है?"
+      },
+      "options": [
+        {
+          "en": "22 April",
+          "bn": "22 এপ্রিল",
+          "hi": "22 अप्रैल"
+        },
+        {
+          "en": "21 March",
+          "bn": "21 মার্চ",
+          "hi": "21 मार्च"
+        },
+        {
+          "en": "5 June",
+          "bn": "5 জুন",
+          "hi": "5 जून"
+        },
+        {
+          "en": "7 April",
+          "bn": "7 এপ্রিল",
+          "hi": "7 अप्रैल"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Earth Day is observed on 22 April to promote environmental protection and sustainability.",
+        "bn": "পরিবেশ সংরক্ষণ ও স্থায়িত্বশীলতার প্রসারের জন্য 22 এপ্রিল ধরিত্রী দিবস পালিত হয়।",
+        "hi": "पर्यावरण संरक्षण और सतत विकास को बढ़ावा देने के लिए 22 अप्रैल को पृथ्वी दिवस मनाया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q067",
+      "question": {
+        "en": "On which date is World Water Day observed?",
+        "bn": "বিশ্ব জল দিবস কোন তারিখে পালিত হয়?",
+        "hi": "विश्व जल दिवस किस तारीख को मनाया जाता है?"
+      },
+      "options": [
+        {
+          "en": "22 March",
+          "bn": "22 মার্চ",
+          "hi": "22 मार्च"
+        },
+        {
+          "en": "22 April",
+          "bn": "22 এপ্রিল",
+          "hi": "22 अप्रैल"
+        },
+        {
+          "en": "5 June",
+          "bn": "5 জুন",
+          "hi": "5 जून"
+        },
+        {
+          "en": "31 May",
+          "bn": "31 মে",
+          "hi": "31 मई"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "World Water Day is observed on 22 March to highlight the importance of freshwater and sustainable water management.",
+        "bn": "মিষ্টি জলের গুরুত্ব ও টেকসই জল ব্যবস্থাপনার প্রয়োজনীয়তা তুলে ধরতে 22 মার্চ বিশ্ব জল দিবস পালিত হয়।",
+        "hi": "मीठे जल के महत्व और सतत जल प्रबंधन की आवश्यकता को उजागर करने के लिए 22 मार्च को विश्व जल दिवस मनाया जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q068",
+      "question": {
+        "en": "Which is the largest tiger reserve in India by area?",
+        "bn": "আয়তনের দিক থেকে ভারতের বৃহত্তম ব্যাঘ্র সংরক্ষণ প্রকল্প কোনটি?",
+        "hi": "क्षेत्रफल की दृष्टि से भारत का सबसे बड़ा बाघ अभयारण्य कौन-सा है?"
+      },
+      "options": [
+        {
+          "en": "Nagarjunsagar-Srisailam Tiger Reserve",
+          "bn": "নাগার্জুনসাগর-শ্রীশৈলম ব্যাঘ্র সংরক্ষণ প্রকল্প",
+          "hi": "नागार्जुनसागर-श्रीशैलम बाघ अभयारण्य"
+        },
+        {
+          "en": "Corbett Tiger Reserve",
+          "bn": "করবেট ব্যাঘ্র সংরক্ষণ প্রকল্প",
+          "hi": "कॉर्बेट बाघ अभयारण्य"
+        },
+        {
+          "en": "Sundarbans Tiger Reserve",
+          "bn": "সুন্দরবন ব্যাঘ্র সংরক্ষণ প্রকল্প",
+          "hi": "सुंदरबन बाघ अभयारण्य"
+        },
+        {
+          "en": "Kanha Tiger Reserve",
+          "bn": "কানহা ব্যাঘ্র সংরক্ষণ প্রকল্প",
+          "hi": "कान्हा बाघ अभयारण्य"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Nagarjunsagar-Srisailam is widely recognized as India's largest tiger reserve by area.",
+        "bn": "নাগার্জুনসাগর-শ্রীশৈলমকে আয়তনের দিক থেকে ভারতের বৃহত্তম ব্যাঘ্র সংরক্ষণ প্রকল্প হিসেবে স্বীকৃতি দেওয়া হয়।",
+        "hi": "नागार्जुनसागर-श्रीशैलम को क्षेत्रफल की दृष्टि से भारत का सबसे बड़ा बाघ अभयारण्य माना जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q069",
+      "question": {
+        "en": "In which state is Kaziranga National Park located?",
+        "bn": "কাজিরাঙা জাতীয় উদ্যান কোন রাজ্যে অবস্থিত?",
+        "hi": "काजीरंगा राष्ट्रीय उद्यान किस राज्य में स्थित है?"
+      },
+      "options": [
+        {
+          "en": "Assam",
+          "bn": "অসম",
+          "hi": "असम"
+        },
+        {
+          "en": "West Bengal",
+          "bn": "পশ্চিমবঙ্গ",
+          "hi": "पश्चिम बंगाल"
+        },
+        {
+          "en": "Madhya Pradesh",
+          "bn": "মধ্যপ্রদেশ",
+          "hi": "मध्य प्रदेश"
+        },
+        {
+          "en": "Odisha",
+          "bn": "ওডিশা",
+          "hi": "ओडिशा"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Kaziranga National Park is located in Assam and is famous for its population of Indian one-horned rhinoceroses.",
+        "bn": "কাজিরাঙা জাতীয় উদ্যান অসমে অবস্থিত এবং ভারতীয় একশৃঙ্গ গণ্ডারের জন্য বিখ্যাত।",
+        "hi": "काजीरंगा राष्ट्रीय उद्यान असम में स्थित है और भारतीय एक सींग वाले गैंडों के लिए प्रसिद्ध है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q070",
+      "question": {
+        "en": "In which state is Similipal Tiger Reserve located?",
+        "bn": "সিমলিপাল ব্যাঘ্র সংরক্ষণ প্রকল্প কোন রাজ্যে অবস্থিত?",
+        "hi": "सिमिलिपाल बाघ अभयारण्य किस राज्य में स्थित है?"
+      },
+      "options": [
+        {
+          "en": "Odisha",
+          "bn": "ওডিশা",
+          "hi": "ओडिशा"
+        },
+        {
+          "en": "Assam",
+          "bn": "অসম",
+          "hi": "असम"
+        },
+        {
+          "en": "Bihar",
+          "bn": "বিহার",
+          "hi": "बिहार"
+        },
+        {
+          "en": "Jharkhand",
+          "bn": "ঝাড়খণ্ড",
+          "hi": "झारखंड"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Similipal Tiger Reserve is located in Odisha.",
+        "bn": "সিমলিপাল ব্যাঘ্র সংরক্ষণ প্রকল্প ওডিশায় অবস্থিত।",
+        "hi": "सिमिलिपाल बाघ अभयारण्य ओडिशा में स्थित है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q071",
+      "question": {
+        "en": "In which state is Corbett National Park located?",
+        "bn": "করবেট জাতীয় উদ্যান কোন রাজ্যে অবস্থিত?",
+        "hi": "कॉर्बेट राष्ट्रीय उद्यान किस राज्य में स्थित है?"
+      },
+      "options": [
+        {
+          "en": "Uttarakhand",
+          "bn": "উত্তরাখণ্ড",
+          "hi": "उत्तराखंड"
+        },
+        {
+          "en": "Rajasthan",
+          "bn": "রাজস্থান",
+          "hi": "राजस्थान"
+        },
+        {
+          "en": "Assam",
+          "bn": "অসম",
+          "hi": "असम"
+        },
+        {
+          "en": "Madhya Pradesh",
+          "bn": "মধ্যপ্রদেশ",
+          "hi": "मध्य प्रदेश"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Jim Corbett National Park is located in Uttarakhand.",
+        "bn": "জিম করবেট জাতীয় উদ্যান উত্তরাখণ্ডে অবস্থিত।",
+        "hi": "जिम कॉर्बेट राष्ट्रीय उद्यान उत्तराखंड में स्थित है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q072",
+      "question": {
+        "en": "In which state is Ranthambore Tiger Reserve located?",
+        "bn": "রণথম্ভোর ব্যাঘ্র সংরক্ষণ প্রকল্প কোন রাজ্যে অবস্থিত?",
+        "hi": "रणथंभौर बाघ अभयारण्य किस राज्य में स्थित है?"
+      },
+      "options": [
+        {
+          "en": "Rajasthan",
+          "bn": "রাজস্থান",
+          "hi": "राजस्थान"
+        },
+        {
+          "en": "Odisha",
+          "bn": "ওডিশা",
+          "hi": "ओडिशा"
+        },
+        {
+          "en": "West Bengal",
+          "bn": "পশ্চিমবঙ্গ",
+          "hi": "पश्चिम बंगाल"
+        },
+        {
+          "en": "Kerala",
+          "bn": "কেরল",
+          "hi": "केरल"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Ranthambore Tiger Reserve is located in Rajasthan.",
+        "bn": "রণথম্ভোর ব্যাঘ্র সংরক্ষণ প্রকল্প রাজস্থানে অবস্থিত।",
+        "hi": "रणथंभौर बाघ अभयारण्य राजस्थान में स्थित है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q073",
+      "question": {
+        "en": "In which state is Kanha Tiger Reserve located?",
+        "bn": "কানহা ব্যাঘ্র সংরক্ষণ প্রকল্প কোন রাজ্যে অবস্থিত?",
+        "hi": "कान्हा बाघ अभयारण्य किस राज्य में स्थित है?"
+      },
+      "options": [
+        {
+          "en": "Madhya Pradesh",
+          "bn": "মধ্যপ্রদেশ",
+          "hi": "मध्य प्रदेश"
+        },
+        {
+          "en": "Assam",
+          "bn": "অসম",
+          "hi": "असम"
+        },
+        {
+          "en": "Bihar",
+          "bn": "বিহার",
+          "hi": "बिहार"
+        },
+        {
+          "en": "Arunachal Pradesh",
+          "bn": "অরুণাচল প্রদেশ",
+          "hi": "अरुणाचल प्रदेश"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Kanha Tiger Reserve is located in Madhya Pradesh.",
+        "bn": "কানহা ব্যাঘ্র সংরক্ষণ প্রকল্প মধ্যপ্রদেশে অবস্থিত।",
+        "hi": "कान्हा बाघ अभयारण्य मध्य प्रदेश में स्थित है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q074",
+      "question": {
+        "en": "In which state is the Buxa Tiger Reserve located?",
+        "bn": "বক্সা ব্যাঘ্র সংরক্ষণ প্রকল্প কোন রাজ্যে অবস্থিত?",
+        "hi": "बक्सा बाघ अभयारण्य किस राज्य में स्थित है?"
+      },
+      "options": [
+        {
+          "en": "West Bengal",
+          "bn": "পশ্চিমবঙ্গ",
+          "hi": "पश्चिम बंगाल"
+        },
+        {
+          "en": "Assam",
+          "bn": "অসম",
+          "hi": "असम"
+        },
+        {
+          "en": "Odisha",
+          "bn": "ওডিশা",
+          "hi": "ओडिशा"
+        },
+        {
+          "en": "Jharkhand",
+          "bn": "ঝাড়খণ্ড",
+          "hi": "झारखंड"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Buxa Tiger Reserve is located in the Alipurduar district of West Bengal.",
+        "bn": "বক্সা ব্যাঘ্র সংরক্ষণ প্রকল্প পশ্চিমবঙ্গের আলিপুরদুয়ার জেলায় অবস্থিত।",
+        "hi": "बक्सा बाघ अभयारण्य पश्चिम बंगाल के अलीपुरद्वार जिले में स्थित है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q075",
+      "question": {
+        "en": "Which state is associated with Jaldapara Wildlife Sanctuary, famous for the conservation of the Indian one-horned rhinoceros?",
+        "bn": "একশৃঙ্গ গণ্ডারের সংরক্ষণের জন্য বিখ্যাত জলদাপাড়া অভয়ারণ্য কোন রাজ্যে অবস্থিত?",
+        "hi": "भारतीय एक सींग वाले गैंडे के संरक्षण के लिए प्रसिद्ध जलदापाड़ा वन्यजीव अभयारण्य किस राज्य में स्थित है?"
+      },
+      "options": [
+        {
+          "en": "West Bengal",
+          "bn": "পশ্চিমবঙ্গ",
+          "hi": "पश्चिम बंगाल"
+        },
+        {
+          "en": "Assam",
+          "bn": "অসম",
+          "hi": "असम"
+        },
+        {
+          "en": "Odisha",
+          "bn": "ওড়িশা",
+          "hi": "ओडिशा"
+        },
+        {
+          "en": "Bihar",
+          "bn": "বিহার",
+          "hi": "बिहार"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Jaldapara Wildlife Sanctuary is located in West Bengal and is well known for its Indian one-horned rhinoceros population.",
+        "bn": "জলদাপাড়া অভয়ারণ্য পশ্চিমবঙ্গে অবস্থিত এবং ভারতীয় একশৃঙ্গ গণ্ডারের জন্য বিখ্যাত।",
+        "hi": "जलदापाड़ा वन्यजीव अभयारण्य पश्चिम बंगाल में स्थित है और भारतीय एक सींग वाले गैंडे के लिए प्रसिद्ध है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q076",
+      "question": {
+        "en": "What is the full form of WWF in the context of nature conservation?",
+        "bn": "প্রকৃতি সংরক্ষণের ক্ষেত্রে WWF-এর পূর্ণরূপ কী?",
+        "hi": "प्रकृति संरक्षण के संदर्भ में WWF का पूरा नाम क्या है?"
+      },
+      "options": [
+        {
+          "en": "World Wide Fund for Nature",
+          "bn": "ওয়ার্ল্ড ওয়াইড ফান্ড ফর নেচার",
+          "hi": "वर्ल्ड वाइड फंड फॉर नेचर"
+        },
+        {
+          "en": "World Wildlife Federation",
+          "bn": "ওয়ার্ল্ড ওয়াইল্ডলাইফ ফেডারেশন",
+          "hi": "वर्ल्ड वाइल्डलाइफ फेडरेशन"
+        },
+        {
+          "en": "Worldwide Water Foundation",
+          "bn": "ওয়ার্ল্ডওয়াইড ওয়াটার ফাউন্ডেশন",
+          "hi": "वर्ल्डवाइड वाटर फाउंडेशन"
+        },
+        {
+          "en": "World Forest Forum",
+          "bn": "ওয়ার্ল্ড ফরেস্ট ফোরাম",
+          "hi": "वर्ल्ड फॉरेस्ट फोरम"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "WWF stands for World Wide Fund for Nature, an international organization working on nature conservation.",
+        "bn": "WWF-এর পূর্ণরূপ World Wide Fund for Nature। এটি প্রকৃতি সংরক্ষণে কাজ করা একটি আন্তর্জাতিক সংস্থা।",
+        "hi": "WWF का पूरा नाम World Wide Fund for Nature है। यह प्रकृति संरक्षण के लिए काम करने वाला एक अंतरराष्ट्रीय संगठन है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q077",
+      "question": {
+        "en": "Which of the following is an example of an extinct bird?",
+        "bn": "নিচের কোনটি একটি বিলুপ্ত পাখির উদাহরণ?",
+        "hi": "निम्नलिखित में से कौन-सा एक विलुप्त पक्षी का उदाहरण है?"
+      },
+      "options": [
+        {
+          "en": "Dodo",
+          "bn": "ডোডো",
+          "hi": "डोडो"
+        },
+        {
+          "en": "Peacock",
+          "bn": "ময়ূর",
+          "hi": "मोर"
+        },
+        {
+          "en": "House sparrow",
+          "bn": "চড়ুই",
+          "hi": "गौरैया"
+        },
+        {
+          "en": "Indian parrot",
+          "bn": "ভারতীয় টিয়া",
+          "hi": "भारतीय तोता"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The dodo was a flightless bird that became extinct. The passenger pigeon is another well-known example of an extinct bird.",
+        "bn": "ডোডো ছিল উড়তে অক্ষম একটি পাখি, যা বিলুপ্ত হয়ে গেছে। প্যাসেঞ্জার পায়রাও একটি পরিচিত বিলুপ্ত পাখি।",
+        "hi": "डोडो एक उड़ान न भर सकने वाला पक्षी था, जो विलुप्त हो गया। पैसेंजर पिजन भी विलुप्त पक्षी का एक प्रसिद्ध उदाहरण है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q078",
+      "question": {
+        "en": "Which of the following is an example of an endangered animal?",
+        "bn": "নিচের কোনটি একটি বিপন্ন প্রাণীর উদাহরণ?",
+        "hi": "निम्नलिखित में से कौन-सा एक संकटग्रस्त प्राणी का उदाहरण है?"
+      },
+      "options": [
+        {
+          "en": "Snow leopard",
+          "bn": "তুষার চিতাবাঘ",
+          "hi": "हिम तेंदुआ"
+        },
+        {
+          "en": "Domestic cat",
+          "bn": "গৃহপালিত বিড়াল",
+          "hi": "पालतू बिल्ली"
+        },
+        {
+          "en": "House mouse",
+          "bn": "গৃহস্থালির ইঁদুর",
+          "hi": "घरेलू चूहा"
+        },
+        {
+          "en": "Domestic chicken",
+          "bn": "গৃহপালিত মুরগি",
+          "hi": "पालतू मुर्गी"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The snow leopard is a threatened wild cat native to the mountains of Central and South Asia. The Nilgiri langur is another species of conservation concern.",
+        "bn": "তুষার চিতাবাঘ মধ্য ও দক্ষিণ এশিয়ার পার্বত্য অঞ্চলের একটি বিপন্নতার ঝুঁকিতে থাকা বন্য বিড়ালজাতীয় প্রাণী। নীলগিরি লেঙ্গুরও সংরক্ষণের দিক থেকে গুরুত্বপূর্ণ।",
+        "hi": "हिम तेंदुआ मध्य और दक्षिण एशिया के पर्वतीय क्षेत्रों में पाया जाने वाला संकटग्रस्त जंगली बिल्लीवंशी प्राणी है। नीलगिरि लंगूर भी संरक्षण की दृष्टि से महत्वपूर्ण है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q079",
+      "question": {
+        "en": "Which publication is commonly known as the Red Data Book?",
+        "bn": "কোন প্রকাশনাটি সাধারণভাবে রেড ডাটা বুক নামে পরিচিত?",
+        "hi": "किस प्रकाशन को सामान्यतः रेड डेटा बुक कहा जाता है?"
+      },
+      "options": [
+        {
+          "en": "A compilation of information on threatened species",
+          "bn": "বিপন্ন প্রজাতি সম্পর্কিত তথ্যের সংকলন",
+          "hi": "संकटग्रस्त प्रजातियों से संबंधित जानकारी का संकलन"
+        },
+        {
+          "en": "A list of national parks only",
+          "bn": "শুধু জাতীয় উদ্যানের তালিকা",
+          "hi": "केवल राष्ट्रीय उद्यानों की सूची"
+        },
+        {
+          "en": "A record of rainfall",
+          "bn": "বৃষ্টিপাতের নথি",
+          "hi": "वर्षा का अभिलेख"
+        },
+        {
+          "en": "A list of mineral resources",
+          "bn": "খনিজ সম্পদের তালিকা",
+          "hi": "खनिज संसाधनों की सूची"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The Red Data Book contains information about threatened species. The IUCN Red List is a widely recognized global assessment of species extinction risk.",
+        "bn": "রেড ডাটা বুকে বিপন্ন প্রজাতি সম্পর্কে তথ্য থাকে। IUCN-এর রেড লিস্ট বিশ্বব্যাপী প্রজাতির বিলুপ্তির ঝুঁকি মূল্যায়নের একটি স্বীকৃত তালিকা।",
+        "hi": "रेड डेटा बुक में संकटग्रस्त प्रजातियों की जानकारी होती है। IUCN की रेड लिस्ट प्रजातियों के विलुप्त होने के जोखिम का एक व्यापक रूप से मान्यता प्राप्त वैश्विक आकलन है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q080",
+      "question": {
+        "en": "Where is the Achankmar-Amarkantak Biosphere Reserve located?",
+        "bn": "আচানকমার-অমরকণ্টক জীবমণ্ডল সংরক্ষণক্ষেত্র কোথায় অবস্থিত?",
+        "hi": "अचानकमार-अमरकंटक जैवमंडल आरक्षित क्षेत्र कहाँ स्थित है?"
+      },
+      "options": [
+        {
+          "en": "Chhattisgarh and Madhya Pradesh",
+          "bn": "ছত্তিশগড় ও মধ্যপ্রদেশ",
+          "hi": "छत्तीसगढ़ और मध्य प्रदेश"
+        },
+        {
+          "en": "West Bengal and Assam",
+          "bn": "পশ্চিমবঙ্গ ও অসম",
+          "hi": "पश्चिम बंगाल और असम"
+        },
+        {
+          "en": "Kerala and Tamil Nadu",
+          "bn": "কেরল ও তামিলনাড়ু",
+          "hi": "केरल और तमिलनाडु"
+        },
+        {
+          "en": "Sikkim and Arunachal Pradesh",
+          "bn": "সিকিম ও অরুণাচল প্রদেশ",
+          "hi": "सिक्किम और अरुणाचल प्रदेश"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The Achankmar-Amarkantak Biosphere Reserve extends across parts of Chhattisgarh and Madhya Pradesh.",
+        "bn": "আচানকমার-অমরকণ্টক জীবমণ্ডল সংরক্ষণক্ষেত্র ছত্তিশগড় ও মধ্যপ্রদেশের কিছু অংশ জুড়ে বিস্তৃত।",
+        "hi": "अचानकमार-अमरकंटक जैवमंडल आरक्षित क्षेत्र छत्तीसगढ़ और मध्य प्रदेश के कुछ हिस्सों में फैला हुआ है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q081",
+      "question": {
+        "en": "In which state is the Khangchendzonga Biosphere Reserve located?",
+        "bn": "কাঞ্চনজঙ্ঘা জীবমণ্ডল সংরক্ষণক্ষেত্র কোন রাজ্যে অবস্থিত?",
+        "hi": "कंचनजंघा जैवमंडल आरक्षित क्षेत्र किस राज्य में स्थित है?"
+      },
+      "options": [
+        {
+          "en": "Sikkim",
+          "bn": "সিকিম",
+          "hi": "सिक्किम"
+        },
+        {
+          "en": "Assam",
+          "bn": "অসম",
+          "hi": "असम"
+        },
+        {
+          "en": "Meghalaya",
+          "bn": "মেঘালয়",
+          "hi": "मेघालय"
+        },
+        {
+          "en": "Uttarakhand",
+          "bn": "উত্তরাখণ্ড",
+          "hi": "उत्तराखंड"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The Khangchendzonga Biosphere Reserve is located in Sikkim in the eastern Himalayas.",
+        "bn": "কাঞ্চনজঙ্ঘা জীবমণ্ডল সংরক্ষণক্ষেত্র পূর্ব হিমালয়ের সিকিম রাজ্যে অবস্থিত।",
+        "hi": "कंचनजंघा जैवमंडल आरक्षित क्षेत्र पूर्वी हिमालय में सिक्किम राज्य में स्थित है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q082",
+      "question": {
+        "en": "Which states are associated with the Agasthyamala Biosphere Reserve?",
+        "bn": "অগস্ত্যমালাই জীবমণ্ডল সংরক্ষণক্ষেত্র কোন কোন রাজ্যের সঙ্গে যুক্ত?",
+        "hi": "अगस्त्यमलाई जैवमंडल आरक्षित क्षेत्र किन राज्यों से संबंधित है?"
+      },
+      "options": [
+        {
+          "en": "Kerala and Tamil Nadu",
+          "bn": "কেরল ও তামিলনাড়ু",
+          "hi": "केरल और तमिलनाडु"
+        },
+        {
+          "en": "Odisha and West Bengal",
+          "bn": "ওড়িশা ও পশ্চিমবঙ্গ",
+          "hi": "ओडिशा और पश्चिम बंगाल"
+        },
+        {
+          "en": "Bihar and Jharkhand",
+          "bn": "বিহার ও ঝাড়খণ্ড",
+          "hi": "बिहार और झारखंड"
+        },
+        {
+          "en": "Assam and Meghalaya",
+          "bn": "অসম ও মেঘালয়",
+          "hi": "असम और मेघालय"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The Agasthyamala Biosphere Reserve spans parts of Kerala and Tamil Nadu in the southern Western Ghats.",
+        "bn": "অগস্ত্যমালাই জীবমণ্ডল সংরক্ষণক্ষেত্র দক্ষিণ পশ্চিমঘাটের কেরল ও তামিলনাড়ুর কিছু অংশ জুড়ে বিস্তৃত।",
+        "hi": "अगस्त्यमलाई जैवमंडल आरक्षित क्षेत्र दक्षिणी पश्चिमी घाट में केरल और तमिलनाडु के कुछ हिस्सों में फैला है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q083",
+      "question": {
+        "en": "The Great Nicobar Biosphere Reserve is located in which union territory?",
+        "bn": "গ্রেট নিকোবর জীবমণ্ডল সংরক্ষণক্ষেত্র কোন কেন্দ্রশাসিত অঞ্চলে অবস্থিত?",
+        "hi": "ग्रेट निकोबार जैवमंडल आरक्षित क्षेत्र किस केंद्रशासित प्रदेश में स्थित है?"
+      },
+      "options": [
+        {
+          "en": "Andaman and Nicobar Islands",
+          "bn": "আন্দামান ও নিকোবর দ্বীপপুঞ্জ",
+          "hi": "अंडमान और निकोबार द्वीपसमूह"
+        },
+        {
+          "en": "Lakshadweep",
+          "bn": "লাক্ষাদ্বীপ",
+          "hi": "लक्षद्वीप"
+        },
+        {
+          "en": "Puducherry",
+          "bn": "পুদুচেরি",
+          "hi": "पुदुचेरी"
+        },
+        {
+          "en": "Chandigarh",
+          "bn": "চণ্ডীগড়",
+          "hi": "चंडीगढ़"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The Great Nicobar Biosphere Reserve is located in the Nicobar group of the Andaman and Nicobar Islands.",
+        "bn": "গ্রেট নিকোবর জীবমণ্ডল সংরক্ষণক্ষেত্র আন্দামান ও নিকোবর দ্বীপপুঞ্জের নিকোবর দ্বীপগোষ্ঠীতে অবস্থিত।",
+        "hi": "ग्रेट निकोबार जैवमंडल आरक्षित क्षेत्र अंडमान और निकोबार द्वीपसमूह के निकोबार द्वीप समूह में स्थित है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q084",
+      "question": {
+        "en": "In which state is the Nokrek Biosphere Reserve located?",
+        "bn": "নকরেক জীবমণ্ডল সংরক্ষণক্ষেত্র কোন রাজ্যে অবস্থিত?",
+        "hi": "नोकरेक जैवमंडल आरक्षित क्षेत्र किस राज्य में स्थित है?"
+      },
+      "options": [
+        {
+          "en": "Meghalaya",
+          "bn": "মেঘালয়",
+          "hi": "मेघालय"
+        },
+        {
+          "en": "Manipur",
+          "bn": "মণিপুর",
+          "hi": "मणिपुर"
+        },
+        {
+          "en": "Tripura",
+          "bn": "ত্রিপুরা",
+          "hi": "त्रिपुरा"
+        },
+        {
+          "en": "Nagaland",
+          "bn": "নাগাল্যান্ড",
+          "hi": "नागालैंड"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The Nokrek Biosphere Reserve is located in Meghalaya in northeastern India.",
+        "bn": "নকরেক জীবমণ্ডল সংরক্ষণক্ষেত্র ভারতের উত্তর-পূর্বাঞ্চলের মেঘালয় রাজ্যে অবস্থিত।",
+        "hi": "नोकरेक जैवमंडल आरक्षित क्षेत्र भारत के पूर्वोत्तर में मेघालय राज्य में स्थित है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q085",
+      "question": {
+        "en": "In which state is the Dibru-Saikhowa National Park located?",
+        "bn": "ডিব্রু-সাইখোয়া জাতীয় উদ্যান কোন রাজ্যে অবস্থিত?",
+        "hi": "डिब्रू-सैखोवा राष्ट्रीय उद्यान किस राज्य में स्थित है?"
+      },
+      "options": [
+        {
+          "en": "Assam",
+          "bn": "অসম",
+          "hi": "असम"
+        },
+        {
+          "en": "Sikkim",
+          "bn": "সিকিম",
+          "hi": "सिक्किम"
+        },
+        {
+          "en": "West Bengal",
+          "bn": "পশ্চিমবঙ্গ",
+          "hi": "पश्चिम बंगाल"
+        },
+        {
+          "en": "Madhya Pradesh",
+          "bn": "মধ্যপ্রদেশ",
+          "hi": "मध्य प्रदेश"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Dibru-Saikhowa National Park is located in Assam and is known for its distinctive riverine and wetland habitats.",
+        "bn": "ডিব্রু-সাইখোয়া জাতীয় উদ্যান অসমে অবস্থিত এবং এর স্বতন্ত্র নদীসংলগ্ন ও জলাভূমির আবাসস্থলের জন্য পরিচিত।",
+        "hi": "डिब्रू-सैखोवा राष्ट्रीय उद्यान असम में स्थित है और अपने विशिष्ट नदीतटीय तथा आर्द्रभूमि आवासों के लिए जाना जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q086",
+      "question": {
+        "en": "Panna National Park is located in which state?",
+        "bn": "পান্না জাতীয় উদ্যান কোন রাজ্যে অবস্থিত?",
+        "hi": "पन्ना राष्ट्रीय उद्यान किस राज्य में स्थित है?"
+      },
+      "options": [
+        {
+          "en": "Madhya Pradesh",
+          "bn": "মধ্যপ্রদেশ",
+          "hi": "मध्य प्रदेश"
+        },
+        {
+          "en": "Rajasthan",
+          "bn": "রাজস্থান",
+          "hi": "राजस्थान"
+        },
+        {
+          "en": "Gujarat",
+          "bn": "গুজরাত",
+          "hi": "गुजरात"
+        },
+        {
+          "en": "Uttar Pradesh",
+          "bn": "উত্তরপ্রদেশ",
+          "hi": "उत्तर प्रदेश"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Panna National Park is located in Madhya Pradesh and is also known for tiger conservation.",
+        "bn": "পান্না জাতীয় উদ্যান মধ্যপ্রদেশে অবস্থিত এবং বাঘ সংরক্ষণের জন্যও পরিচিত।",
+        "hi": "पन्ना राष्ट्रीय उद्यान मध्य प्रदेश में स्थित है और बाघ संरक्षण के लिए भी जाना जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q087",
+      "question": {
+        "en": "Which wildlife sanctuary in West Bengal is associated with crocodile conservation on Lothian Island?",
+        "bn": "পশ্চিমবঙ্গের কোন দ্বীপে কুমির সংরক্ষণ প্রকল্পের সঙ্গে লোথিয়ান দ্বীপের নাম যুক্ত?",
+        "hi": "पश्चिम बंगाल में किस द्वीप का नाम मगरमच्छ संरक्षण परियोजना के संदर्भ में लोथियन द्वीप से जुड़ा है?"
+      },
+      "options": [
+        {
+          "en": "Lothian Island Wildlife Sanctuary",
+          "bn": "লোথিয়ান দ্বীপ অভয়ারণ্য",
+          "hi": "लोथियन द्वीप वन्यजीव अभयारण्य"
+        },
+        {
+          "en": "Jaldapara Wildlife Sanctuary",
+          "bn": "জলদাপাড়া অভয়ারণ্য",
+          "hi": "जलदापाड़ा वन्यजीव अभयारण्य"
+        },
+        {
+          "en": "Bethuadahari Wildlife Sanctuary",
+          "bn": "বেথুয়াডহরি অভয়ারণ্য",
+          "hi": "बेथुआडहरी वन्यजीव अभयारण्य"
+        },
+        {
+          "en": "Mahananda Wildlife Sanctuary",
+          "bn": "মহানন্দা অভয়ারণ্য",
+          "hi": "महानंदा वन्यजीव अभयारण्य"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Lothian Island is in the Sundarbans region of West Bengal and is associated with a wildlife sanctuary. Crocodile conservation projects are also known from other Indian sites, including Bhitarkanika in Odisha.",
+        "bn": "লোথিয়ান দ্বীপ পশ্চিমবঙ্গের সুন্দরবন অঞ্চলে অবস্থিত এবং এখানে একটি অভয়ারণ্য রয়েছে। ওড়িশার ভিতরকণিকাও কুমির সংরক্ষণ প্রকল্পের জন্য পরিচিত।",
+        "hi": "लोथियन द्वीप पश्चिम बंगाल के सुंदरबन क्षेत्र में स्थित है और यहाँ एक वन्यजीव अभयारण्य है। ओडिशा का भीतरकनिका भी मगरमच्छ संरक्षण परियोजना के लिए प्रसिद्ध है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q088",
+      "question": {
+        "en": "Which protected area in Odisha is particularly famous for saltwater crocodile conservation?",
+        "bn": "ওড়িশার কোন সংরক্ষিত অঞ্চল লবণাক্ত জলের কুমির সংরক্ষণের জন্য বিশেষভাবে বিখ্যাত?",
+        "hi": "ओडिशा का कौन-सा संरक्षित क्षेत्र खारे पानी के मगरमच्छों के संरक्षण के लिए विशेष रूप से प्रसिद्ध है?"
+      },
+      "options": [
+        {
+          "en": "Bhitarkanika",
+          "bn": "ভিতরকণিকা",
+          "hi": "भीतरकनिका"
+        },
+        {
+          "en": "Simlipal",
+          "bn": "সিমলিপাল",
+          "hi": "सिमलीपाल"
+        },
+        {
+          "en": "Nandankanan",
+          "bn": "নন্দনকানন",
+          "hi": "नंदनकानन"
+        },
+        {
+          "en": "Chilika",
+          "bn": "চিলিকা",
+          "hi": "चिलिका"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Bhitarkanika in Odisha is a major habitat and conservation area for saltwater crocodiles.",
+        "bn": "ওড়িশার ভিতরকণিকা লবণাক্ত জলের কুমিরের একটি গুরুত্বপূর্ণ আবাসস্থল ও সংরক্ষণক্ষেত্র।",
+        "hi": "ओडिशा का भीतरकनिका खारे पानी के मगरमच्छों का एक महत्वपूर्ण आवास और संरक्षण क्षेत्र है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q089",
+      "question": {
+        "en": "Which national park is located in Mumbai, Maharashtra?",
+        "bn": "মহারাষ্ট্রের মুম্বইয়ে কোন জাতীয় উদ্যান অবস্থিত?",
+        "hi": "महाराष्ट्र के मुंबई में कौन-सा राष्ट्रीय उद्यान स्थित है?"
+      },
+      "options": [
+        {
+          "en": "Sanjay Gandhi National Park",
+          "bn": "সঞ্জয় গান্ধী জাতীয় উদ্যান",
+          "hi": "संजय गांधी राष्ट्रीय उद्यान"
+        },
+        {
+          "en": "Kaziranga National Park",
+          "bn": "কাজিরাঙা জাতীয় উদ্যান",
+          "hi": "काजीरंगा राष्ट्रीय उद्यान"
+        },
+        {
+          "en": "Dudhwa National Park",
+          "bn": "দুধুয়া জাতীয় উদ্যান",
+          "hi": "दुधवा राष्ट्रीय उद्यान"
+        },
+        {
+          "en": "Bandhavgarh National Park",
+          "bn": "বান্ধবগড় জাতীয় উদ্যান",
+          "hi": "बांधवगढ़ राष्ट्रीय उद्यान"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Sanjay Gandhi National Park is located in Mumbai and protects forest habitats within the metropolitan region.",
+        "bn": "সঞ্জয় গান্ধী জাতীয় উদ্যান মুম্বইয়ে অবস্থিত এবং মহানগর অঞ্চলের বনাঞ্চল সংরক্ষণ করে।",
+        "hi": "संजय गांधी राष्ट्रीय उद्यान मुंबई में स्थित है और महानगरीय क्षेत्र के वन आवासों की रक्षा करता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q090",
+      "question": {
+        "en": "Which protected area is associated with the conservation of the one-horned rhinoceros in Assam?",
+        "bn": "অসমে একশৃঙ্গ গণ্ডার সংরক্ষণের জন্য কোন সংরক্ষিত অঞ্চল বিশেষভাবে পরিচিত?",
+        "hi": "असम में एक सींग वाले गैंडे के संरक्षण के लिए कौन-सा संरक्षित क्षेत्र विशेष रूप से प्रसिद्ध है?"
+      },
+      "options": [
+        {
+          "en": "Kaziranga National Park",
+          "bn": "কাজিরাঙা জাতীয় উদ্যান",
+          "hi": "काजीरंगा राष्ट्रीय उद्यान"
+        },
+        {
+          "en": "Gir National Park",
+          "bn": "গির জাতীয় উদ্যান",
+          "hi": "गिर राष्ट्रीय उद्यान"
+        },
+        {
+          "en": "Sariska Tiger Reserve",
+          "bn": "সরিস্কা ব্যাঘ্র সংরক্ষণক্ষেত্র",
+          "hi": "सरिस्का बाघ अभयारण्य"
+        },
+        {
+          "en": "Dachigam National Park",
+          "bn": "দাচিগাম জাতীয় উদ্যান",
+          "hi": "दाचीगाम राष्ट्रीय उद्यान"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Kaziranga National Park in Assam is internationally known for its population of Indian one-horned rhinoceroses.",
+        "bn": "অসমের কাজিরাঙা জাতীয় উদ্যান ভারতীয় একশৃঙ্গ গণ্ডারের জন্য আন্তর্জাতিকভাবে পরিচিত।",
+        "hi": "असम का काजीरंगा राष्ट्रीय उद्यान भारतीय एक सींग वाले गैंडों की आबादी के लिए अंतरराष्ट्रीय स्तर पर प्रसिद्ध है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q091",
+      "question": {
+        "en": "Which national park in Gujarat is famous for the Asiatic lion?",
+        "bn": "গুজরাতের কোন জাতীয় উদ্যান এশীয় সিংহের জন্য বিখ্যাত?",
+        "hi": "गुजरात का कौन-सा राष्ट्रीय उद्यान एशियाई सिंह के लिए प्रसिद्ध है?"
+      },
+      "options": [
+        {
+          "en": "Gir National Park",
+          "bn": "গির জাতীয় উদ্যান",
+          "hi": "गिर राष्ट्रीय उद्यान"
+        },
+        {
+          "en": "Panna National Park",
+          "bn": "পান্না জাতীয় উদ্যান",
+          "hi": "पन्ना राष्ट्रीय उद्यान"
+        },
+        {
+          "en": "Dudhwa National Park",
+          "bn": "দুধুয়া জাতীয় উদ্যান",
+          "hi": "दुधवा राष्ट्रीय उद्यान"
+        },
+        {
+          "en": "Nagarhole National Park",
+          "bn": "নাগারহোল জাতীয় উদ্যান",
+          "hi": "नागरहोल राष्ट्रीय उद्यान"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Gir National Park and its surrounding protected areas in Gujarat are the principal natural stronghold of the Asiatic lion.",
+        "bn": "গুজরাতের গির জাতীয় উদ্যান ও সংলগ্ন সংরক্ষিত অঞ্চল এশীয় সিংহের প্রধান প্রাকৃতিক আবাসস্থল।",
+        "hi": "गुजरात का गिर राष्ट्रीय उद्यान और इसके आसपास के संरक्षित क्षेत्र एशियाई सिंह का प्रमुख प्राकृतिक आवास हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q092",
+      "question": {
+        "en": "Which protected area is famous for the Nilgiri tahr?",
+        "bn": "নীলগিরি তাহরের জন্য কোন সংরক্ষিত অঞ্চল বিশেষভাবে পরিচিত?",
+        "hi": "नीलगिरि तहर के लिए कौन-सा संरक्षित क्षेत्र विशेष रूप से प्रसिद्ध है?"
+      },
+      "options": [
+        {
+          "en": "Eravikulam National Park",
+          "bn": "এরাভিকুলাম জাতীয় উদ্যান",
+          "hi": "एराविकुलम राष्ट्रीय उद्यान"
+        },
+        {
+          "en": "Sariska Tiger Reserve",
+          "bn": "সরিস্কা ব্যাঘ্র সংরক্ষণক্ষেত্র",
+          "hi": "सरिस्का बाघ अभयारण्य"
+        },
+        {
+          "en": "Dachigam National Park",
+          "bn": "দাচিগাম জাতীয় উদ্যান",
+          "hi": "दाचीगाम राष्ट्रीय उद्यान"
+        },
+        {
+          "en": "Buxa Tiger Reserve",
+          "bn": "বক্সা ব্যাঘ্র সংরক্ষণক্ষেত্র",
+          "hi": "बक्सा बाघ अभयारण्य"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Eravikulam National Park in Kerala is a major protected habitat for the Nilgiri tahr.",
+        "bn": "কেরলের এরাভিকুলাম জাতীয় উদ্যান নীলগিরি তাহরের একটি গুরুত্বপূর্ণ সংরক্ষিত আবাসস্থল।",
+        "hi": "केरल का एराविकुलम राष्ट्रीय उद्यान नीलगिरि तहर का एक महत्वपूर्ण संरक्षित आवास है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q093",
+      "question": {
+        "en": "Which of the following microorganisms fixes free atmospheric nitrogen in the soil?",
+        "bn": "নিম্নলিখিত কোন অণুজীব বায়ুমণ্ডলের মুক্ত নাইট্রোজেন মাটিতে আবদ্ধ করে?",
+        "hi": "निम्नलिखित में से कौन-सा सूक्ष्मजीव वायुमंडल की मुक्त नाइट्रोजन को मिट्टी में स्थिर करता है?"
+      },
+      "options": [
+        {
+          "en": "Azotobacter and Clostridium",
+          "bn": "অ্যাজোটোব্যাকটর ও ক্লস্ট্রিডিয়াম",
+          "hi": "एज़ोटोबैक्टर और क्लॉस्ट्रिडियम"
+        },
+        {
+          "en": "Lactobacillus and yeast",
+          "bn": "ল্যাক্টোব্যাসিলাস ও ইস্ট",
+          "hi": "लैक्टोबैसिलस और यीस्ट"
+        },
+        {
+          "en": "Plasmodium and Amoeba",
+          "bn": "প্লাজমোডিয়াম ও অ্যামিবা",
+          "hi": "प्लाज्मोडियम और अमीबा"
+        },
+        {
+          "en": "Rhizopus and Penicillium",
+          "bn": "রাইজোপাস ও পেনিসিলিয়াম",
+          "hi": "राइजोपस और पेनिसिलियम"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Azotobacter and certain Clostridium species can fix atmospheric nitrogen, converting it into forms that contribute to soil fertility.",
+        "bn": "অ্যাজোটোব্যাকটর এবং ক্লস্ট্রিডিয়ামের কিছু প্রজাতি বায়ুমণ্ডলীয় নাইট্রোজেন স্থির করে মাটির উর্বরতা বৃদ্ধিতে সাহায্য করে।",
+        "hi": "एज़ोटोबैक्टर और क्लॉस्ट्रिडियम की कुछ प्रजातियाँ वायुमंडलीय नाइट्रोजन का स्थिरीकरण करके मिट्टी की उर्वरता बढ़ाने में सहायता करती हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q094",
+      "question": {
+        "en": "What is Lindeman's 10% law related to?",
+        "bn": "লিন্ডেম্যানের ১০% সূত্র কোন বিষয়ের সঙ্গে সম্পর্কিত?",
+        "hi": "लिंडेमैन का 10% नियम किस विषय से संबंधित है?"
+      },
+      "options": [
+        {
+          "en": "Energy transfer between trophic levels",
+          "bn": "পুষ্টিস্তরগুলির মধ্যে শক্তির প্রবাহ",
+          "hi": "पोषण स्तरों के बीच ऊर्जा का स्थानांतरण"
+        },
+        {
+          "en": "Nitrogen fixation in soil",
+          "bn": "মাটিতে নাইট্রোজেন স্থিতিকরণ",
+          "hi": "मिट्टी में नाइट्रोजन स्थिरीकरण"
+        },
+        {
+          "en": "Ozone formation in the atmosphere",
+          "bn": "বায়ুমণ্ডলে ওজোনের সৃষ্টি",
+          "hi": "वायुमंडल में ओज़ोन का निर्माण"
+        },
+        {
+          "en": "Water circulation in the oceans",
+          "bn": "সমুদ্রে জলের আবর্তন",
+          "hi": "महासागरों में जल का परिसंचरण"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Lindeman's 10% law states that, approximately, only 10% of the energy available at one trophic level is transferred to the next trophic level.",
+        "bn": "লিন্ডেম্যানের ১০% সূত্র অনুযায়ী, একটি পুষ্টিস্তরে উপলব্ধ শক্তির প্রায় ১০% পরবর্তী পুষ্টিস্তরে প্রবাহিত হয়।",
+        "hi": "लिंडेमैन के 10% नियम के अनुसार, एक पोषण स्तर पर उपलब्ध ऊर्जा का लगभग 10% ही अगले पोषण स्तर तक पहुँचता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q095",
+      "question": {
+        "en": "What is the mascot of the World Wide Fund for Nature (WWF)?",
+        "bn": "ওয়ার্ল্ড ওয়াইড ফান্ড ফর নেচার (WWF)-এর মাসকট কোন প্রাণী?",
+        "hi": "वर्ल्ड वाइड फंड फॉर नेचर (WWF) का शुभंकर कौन-सा प्राणी है?"
+      },
+      "options": [
+        {
+          "en": "Giant panda",
+          "bn": "দৈত্যাকার পান্ডা",
+          "hi": "विशाल पांडा"
+        },
+        {
+          "en": "Tiger",
+          "bn": "বাঘ",
+          "hi": "बाघ"
+        },
+        {
+          "en": "Elephant",
+          "bn": "হাতি",
+          "hi": "हाथी"
+        },
+        {
+          "en": "Polar bear",
+          "bn": "মেরু ভাল্লুক",
+          "hi": "ध्रुवीय भालू"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The giant panda is the well-known symbol and mascot of WWF.",
+        "bn": "দৈত্যাকার পান্ডা WWF-এর পরিচিত প্রতীক ও মাসকট।",
+        "hi": "विशाल पांडा WWF का प्रसिद्ध प्रतीक और शुभंकर है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q096",
+      "question": {
+        "en": "What is a biodiversity hotspot?",
+        "bn": "জীববৈচিত্র্যের হটস্পট কাকে বলে?",
+        "hi": "जैव विविधता हॉटस्पॉट किसे कहते हैं?"
+      },
+      "options": [
+        {
+          "en": "A region with exceptionally high endemism and significant habitat loss",
+          "bn": "যে অঞ্চলে প্রচুর স্থানিক প্রজাতি রয়েছে এবং আবাসস্থলের উল্লেখযোগ্য ক্ষয় ঘটেছে",
+          "hi": "ऐसा क्षेत्र जहाँ स्थानिक प्रजातियों की अधिकता हो और प्राकृतिक आवास का काफी ह्रास हुआ हो"
+        },
+        {
+          "en": "A region containing only deserts",
+          "bn": "শুধু মরুভূমি রয়েছে এমন অঞ্চল",
+          "hi": "केवल मरुस्थलों वाला क्षेत्र"
+        },
+        {
+          "en": "An area without any living organisms",
+          "bn": "কোনো জীব নেই এমন অঞ্চল",
+          "hi": "ऐसा क्षेत्र जहाँ कोई जीव नहीं रहता"
+        },
+        {
+          "en": "A region containing only cultivated plants",
+          "bn": "শুধু চাষ করা উদ্ভিদ রয়েছে এমন অঞ্চল",
+          "hi": "केवल खेती किए गए पौधों वाला क्षेत्र"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "A biodiversity hotspot is a region with high endemism and substantial habitat loss. India overlaps four recognized hotspots: the Himalaya, Western Ghats and Sri Lanka, Indo-Burma, and Sundaland.",
+        "bn": "জীববৈচিত্র্যের হটস্পট হলো এমন অঞ্চল যেখানে স্থানিক প্রজাতির সংখ্যা বেশি এবং প্রাকৃতিক আবাসস্থলের উল্লেখযোগ্য ক্ষয় ঘটেছে। ভারতের সঙ্গে চারটি স্বীকৃত হটস্পট যুক্ত: হিমালয়, পশ্চিমঘাট ও শ্রীলঙ্কা, ইন্দো-বার্মা এবং সুন্দাল্যান্ড।",
+        "hi": "जैव विविधता हॉटस्पॉट ऐसा क्षेत्र है जहाँ स्थानिक प्रजातियों की संख्या अधिक होती है और प्राकृतिक आवास का व्यापक ह्रास हुआ होता है। भारत चार मान्यता प्राप्त हॉटस्पॉट से जुड़ा है: हिमालय, पश्चिमी घाट और श्रीलंका, इंडो-बर्मा तथा सुंडालैंड।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q097",
+      "question": {
+        "en": "What is a major cause of smog formation?",
+        "bn": "ধোঁয়াশা সৃষ্টির একটি প্রধান কারণ কী?",
+        "hi": "धूम-कोहरा बनने का एक प्रमुख कारण क्या है?"
+      },
+      "options": [
+        {
+          "en": "Mixing of smoke and pollutants with fog or moist air",
+          "bn": "ধোঁয়া ও দূষক পদার্থের কুয়াশা বা আর্দ্র বায়ুর সঙ্গে মিশ্রণ",
+          "hi": "धुएँ और प्रदूषकों का कोहरे या नम वायु के साथ मिलना"
+        },
+        {
+          "en": "Only the presence of pure oxygen",
+          "bn": "শুধু বিশুদ্ধ অক্সিজেনের উপস্থিতি",
+          "hi": "केवल शुद्ध ऑक्सीजन की उपस्थिति"
+        },
+        {
+          "en": "Only the evaporation of clean water",
+          "bn": "শুধু বিশুদ্ধ জলের বাষ্পীভবন",
+          "hi": "केवल स्वच्छ जल का वाष्पीकरण"
+        },
+        {
+          "en": "The absence of particles in the atmosphere",
+          "bn": "বায়ুমণ্ডলে কণার অনুপস্থিতি",
+          "hi": "वायुमंडल में कणों की अनुपस्थिति"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Smog forms when smoke and other air pollutants mix with fog or undergo atmospheric chemical reactions. Photochemical smog develops when sunlight acts on pollutants such as nitrogen oxides and volatile organic compounds.",
+        "bn": "ধোঁয়া ও অন্যান্য বায়ুদূষক কুয়াশার সঙ্গে মিশলে বা বায়ুমণ্ডলে রাসায়নিক বিক্রিয়া ঘটলে ধোঁয়াশা তৈরি হয়। সূর্যালোকের প্রভাবে নাইট্রোজেন অক্সাইড ও উদ্বায়ী জৈব যৌগের বিক্রিয়ায় আলোক-রাসায়নিক ধোঁয়াশা সৃষ্টি হয়।",
+        "hi": "धुआँ और अन्य वायु प्रदूषक जब कोहरे के साथ मिलते हैं या वायुमंडल में रासायनिक अभिक्रियाएँ करते हैं, तब धूम-कोहरा बनता है। सूर्य के प्रकाश में नाइट्रोजन ऑक्साइड और वाष्पशील कार्बनिक यौगिकों की अभिक्रिया से प्रकाश-रासायनिक धूम-कोहरा बनता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q098",
+      "question": {
+        "en": "Who is most closely associated with the Narmada Bachao Andolan?",
+        "bn": "নর্মদা বাঁচাও আন্দোলনের সঙ্গে সবচেয়ে বেশি কার নাম যুক্ত?",
+        "hi": "नर्मदा बचाओ आंदोलन से सबसे अधिक किसका नाम जुड़ा है?"
+      },
+      "options": [
+        {
+          "en": "Medha Patkar",
+          "bn": "মেধা পাটকর",
+          "hi": "मेधा पाटकर"
+        },
+        {
+          "en": "Vandana Shiva",
+          "bn": "বন্দনা শিবা",
+          "hi": "वंदना शिवा"
+        },
+        {
+          "en": "Sunita Narain",
+          "bn": "সুনীতা নারায়ণ",
+          "hi": "सुनीता नारायण"
+        },
+        {
+          "en": "Aruna Roy",
+          "bn": "অরুণা রায়",
+          "hi": "अरुणा रॉय"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Medha Patkar is a leading figure associated with the Narmada Bachao Andolan, which opposed displacement and raised environmental concerns linked to large dam projects.",
+        "bn": "মেধা পাটকর নর্মদা বাঁচাও আন্দোলনের অন্যতম প্রধান নেত্রী। এই আন্দোলন বড় বাঁধ প্রকল্পের কারণে মানুষের উচ্ছেদ ও পরিবেশগত সমস্যার প্রতিবাদে গড়ে ওঠে।",
+        "hi": "मेधा पाटकर नर्मदा बचाओ आंदोलन की प्रमुख नेताओं में से एक हैं। यह आंदोलन बड़े बाँध परियोजनाओं से होने वाले विस्थापन और पर्यावरणीय समस्याओं के विरोध में चला।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q099",
+      "question": {
+        "en": "Which of the following air pollutants can enter the human body through inhalation?",
+        "bn": "নিম্নলিখিত কোন বায়ুদূষকটি শ্বাসগ্রহণের মাধ্যমে মানবদেহে প্রবেশ করতে পারে?",
+        "hi": "निम्नलिखित में से कौन-सा वायु प्रदूषक साँस लेने के माध्यम से मानव शरीर में प्रवेश कर सकता है?"
+      },
+      "options": [
+        {
+          "en": "Chlorine gas",
+          "bn": "ক্লোরিন গ্যাস",
+          "hi": "क्लोरीन गैस"
+        },
+        {
+          "en": "Pure oxygen at normal concentration",
+          "bn": "স্বাভাবিক ঘনত্বে বিশুদ্ধ অক্সিজেন",
+          "hi": "सामान्य सांद्रता में शुद्ध ऑक्सीजन"
+        },
+        {
+          "en": "Distilled water",
+          "bn": "পাতিত জল",
+          "hi": "आसुत जल"
+        },
+        {
+          "en": "Table sugar",
+          "bn": "খাদ্যোপযোগী চিনি",
+          "hi": "खाने की चीनी"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Chlorine gas is a toxic inhaled pollutant that can severely irritate and damage the respiratory tract.",
+        "bn": "ক্লোরিন গ্যাস একটি বিষাক্ত শ্বাসগ্রহণযোগ্য দূষক, যা শ্বাসনালিতে তীব্র জ্বালা ও ক্ষতি ঘটাতে পারে।",
+        "hi": "क्लोरीन गैस एक विषैली वायु प्रदूषक है, जो साँस के साथ शरीर में प्रवेश करके श्वसन तंत्र में गंभीर जलन और क्षति पहुँचा सकती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q100",
+      "question": {
+        "en": "Which pollutant is a major component of traffic-related air pollution in large cities?",
+        "bn": "বড় শহরে যানবাহনজনিত বায়ুদূষণের একটি প্রধান উপাদান কোনটি?",
+        "hi": "बड़े शहरों में वाहनजनित वायु प्रदूषण का एक प्रमुख घटक कौन-सा है?"
+      },
+      "options": [
+        {
+          "en": "Carbon monoxide",
+          "bn": "কার্বন মনোক্সাইড",
+          "hi": "कार्बन मोनोऑक्साइड"
+        },
+        {
+          "en": "Helium",
+          "bn": "হিলিয়াম",
+          "hi": "हीलियम"
+        },
+        {
+          "en": "Neon",
+          "bn": "নিয়ন",
+          "hi": "नियॉन"
+        },
+        {
+          "en": "Hydrogen",
+          "bn": "হাইড্রোজেন",
+          "hi": "हाइड्रोजन"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Carbon monoxide can be produced by incomplete combustion of fuel in vehicle engines. Traffic also emits nitrogen oxides and particulate matter.",
+        "bn": "যানবাহনের ইঞ্জিনে জ্বালানির অসম্পূর্ণ দহনের ফলে কার্বন মনোক্সাইড তৈরি হতে পারে। যানবাহন থেকে নাইট্রোজেন অক্সাইড ও কণাও নির্গত হয়।",
+        "hi": "वाहनों के इंजन में ईंधन के अपूर्ण दहन से कार्बन मोनोऑक्साइड बन सकती है। वाहनों से नाइट्रोजन ऑक्साइड और कणीय पदार्थ भी निकलते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q102",
+      "question": {
+        "en": "Why is the ozone layer important for human life?",
+        "bn": "মানবজীবনের জন্য ওজোন স্তর গুরুত্বপূর্ণ কেন?",
+        "hi": "मानव जीवन के लिए ओज़ोन परत क्यों महत्वपूर्ण है?"
+      },
+      "options": [
+        {
+          "en": "It absorbs much of the Sun's harmful ultraviolet radiation",
+          "bn": "এটি সূর্যের ক্ষতিকর অতিবেগুনি রশ্মির অধিকাংশ শোষণ করে",
+          "hi": "यह सूर्य की अधिकांश हानिकारक पराबैंगनी किरणों को अवशोषित करती है"
+        },
+        {
+          "en": "It produces all the oxygen on Earth",
+          "bn": "এটি পৃথিবীর সমস্ত অক্সিজেন উৎপন্ন করে",
+          "hi": "यह पृथ्वी की सारी ऑक्सीजन उत्पन्न करती है"
+        },
+        {
+          "en": "It prevents all rainfall",
+          "bn": "এটি সমস্ত বৃষ্টিপাত বন্ধ করে",
+          "hi": "यह सभी वर्षा को रोकती है"
+        },
+        {
+          "en": "It removes all carbon dioxide from the atmosphere",
+          "bn": "এটি বায়ুমণ্ডল থেকে সমস্ত কার্বন ডাইঅক্সাইড সরিয়ে দেয়",
+          "hi": "यह वायुमंडल से सारी कार्बन डाइऑक्साइड हटा देती है"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The stratospheric ozone layer absorbs much of the Sun's harmful ultraviolet radiation, helping protect living organisms from damage.",
+        "bn": "সমতাপমণ্ডলের ওজোন স্তর সূর্যের ক্ষতিকর অতিবেগুনি রশ্মির অধিকাংশ শোষণ করে জীবজগৎকে ক্ষতির হাত থেকে রক্ষা করে।",
+        "hi": "समतापमंडल की ओज़ोन परत सूर्य की अधिकांश हानिकारक पराबैंगनी किरणों को अवशोषित करके जीवों को क्षति से बचाती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q103",
+      "question": {
+        "en": "Which gas is a major contributor to the enhanced greenhouse effect and global warming?",
+        "bn": "বর্ধিত গ্রিনহাউস প্রভাব ও বিশ্ব উষ্ণায়নের একটি প্রধান কারণ কোন গ্যাস?",
+        "hi": "बढ़े हुए ग्रीनहाउस प्रभाव और वैश्विक तापन का एक प्रमुख कारण कौन-सी गैस है?"
+      },
+      "options": [
+        {
+          "en": "Carbon dioxide",
+          "bn": "কার্বন ডাইঅক্সাইড",
+          "hi": "कार्बन डाइऑक्साइड"
+        },
+        {
+          "en": "Hydrogen",
+          "bn": "হাইড্রোজেন",
+          "hi": "हाइड्रोजन"
+        },
+        {
+          "en": "Helium",
+          "bn": "হিলিয়াম",
+          "hi": "हीलियम"
+        },
+        {
+          "en": "Neon",
+          "bn": "নিয়ন",
+          "hi": "नियॉन"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Carbon dioxide is a major greenhouse gas. Its increasing concentration from fossil fuel combustion and deforestation contributes to global warming.",
+        "bn": "কার্বন ডাইঅক্সাইড একটি প্রধান গ্রিনহাউস গ্যাস। জীবাশ্ম জ্বালানির দহন ও বন উজাড়ের ফলে এর ঘনত্ব বৃদ্ধি বিশ্ব উষ্ণায়নে অবদান রাখে।",
+        "hi": "कार्बन डाइऑक्साइड एक प्रमुख ग्रीनहाउस गैस है। जीवाश्म ईंधन के दहन और वनों की कटाई से इसकी सांद्रता बढ़ती है, जिससे वैश्विक तापन में योगदान होता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q104",
+      "question": {
+        "en": "Which type of radiation is absorbed by the ozone layer?",
+        "bn": "ওজোন স্তর কোন ধরনের রশ্মি শোষণ করে?",
+        "hi": "ओज़ोन परत किस प्रकार की किरणों को अवशोषित करती है?"
+      },
+      "options": [
+        {
+          "en": "Ultraviolet radiation",
+          "bn": "অতিবেগুনি রশ্মি",
+          "hi": "पराबैंगनी किरणें"
+        },
+        {
+          "en": "Radio waves",
+          "bn": "বেতার তরঙ্গ",
+          "hi": "रेडियो तरंगें"
+        },
+        {
+          "en": "Visible green light only",
+          "bn": "শুধু দৃশ্যমান সবুজ আলো",
+          "hi": "केवल दृश्य हरा प्रकाश"
+        },
+        {
+          "en": "Sound waves",
+          "bn": "শব্দ তরঙ্গ",
+          "hi": "ध्वनि तरंगें"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The ozone layer absorbs much of the harmful ultraviolet radiation emitted by the Sun, especially UV-B and nearly all UV-C.",
+        "bn": "ওজোন স্তর সূর্য থেকে নির্গত ক্ষতিকর অতিবেগুনি রশ্মির অধিকাংশ শোষণ করে, বিশেষত UV-B এবং প্রায় সমস্ত UV-C।",
+        "hi": "ओज़ोन परत सूर्य से आने वाली अधिकांश हानिकारक पराबैंगनी किरणों, विशेषकर UV-B और लगभग सभी UV-C, को अवशोषित करती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q105",
+      "question": {
+        "en": "Which fuel mixture is commonly known as gasohol?",
+        "bn": "কোন জ্বালানির মিশ্রণ গ্যাসোহল নামে পরিচিত?",
+        "hi": "किस ईंधन मिश्रण को गैसोहोल कहा जाता है?"
+      },
+      "options": [
+        {
+          "en": "Petrol and ethanol",
+          "bn": "পেট্রোল ও ইথানল",
+          "hi": "पेट्रोल और एथेनॉल"
+        },
+        {
+          "en": "Diesel and water",
+          "bn": "ডিজেল ও জল",
+          "hi": "डीज़ल और पानी"
+        },
+        {
+          "en": "Hydrogen and nitrogen",
+          "bn": "হাইড্রোজেন ও নাইট্রোজেন",
+          "hi": "हाइड्रोजन और नाइट्रोजन"
+        },
+        {
+          "en": "Coal and oxygen",
+          "bn": "কয়লা ও অক্সিজেন",
+          "hi": "कोयला और ऑक्सीजन"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Gasohol is a fuel blend of gasoline and ethanol. Ethanol is an alcohol that can be produced from biomass.",
+        "bn": "গ্যাসোহল হলো পেট্রোল বা গ্যাসোলিন ও ইথানলের মিশ্র জ্বালানি। ইথানল জৈব পদার্থ থেকে উৎপন্ন করা যায়।",
+        "hi": "गैसोहोल पेट्रोल या गैसोलीन और एथेनॉल का मिश्रित ईंधन है। एथेनॉल का उत्पादन जैविक पदार्थों से किया जा सकता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q106",
+      "question": {
+        "en": "The Montreal Protocol is primarily associated with controlling which environmental problem?",
+        "bn": "মন্ট্রিয়ল প্রোটোকল প্রধানত কোন পরিবেশগত সমস্যা নিয়ন্ত্রণের সঙ্গে সম্পর্কিত?",
+        "hi": "मॉन्ट्रियल प्रोटोकॉल मुख्य रूप से किस पर्यावरणीय समस्या को नियंत्रित करने से संबंधित है?"
+      },
+      "options": [
+        {
+          "en": "Ozone layer depletion",
+          "bn": "ওজোন স্তরের ক্ষয়",
+          "hi": "ओज़ोन परत का क्षय"
+        },
+        {
+          "en": "Noise pollution",
+          "bn": "শব্দদূষণ",
+          "hi": "ध्वनि प्रदूषण"
+        },
+        {
+          "en": "Deforestation alone",
+          "bn": "শুধু বন উজাড়",
+          "hi": "केवल वनों की कटाई"
+        },
+        {
+          "en": "Marine plastic pollution alone",
+          "bn": "শুধু সামুদ্রিক প্লাস্টিক দূষণ",
+          "hi": "केवल समुद्री प्लास्टिक प्रदूषण"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The Montreal Protocol is an international agreement designed to phase out ozone-depleting substances, including many chlorofluorocarbons.",
+        "bn": "মন্ট্রিয়ল প্রোটোকল হলো ওজোন স্তর ক্ষয়কারী পদার্থ, যেমন বহু ক্লোরোফ্লুরোকার্বন, ধাপে ধাপে বন্ধ করার জন্য গৃহীত একটি আন্তর্জাতিক চুক্তি।",
+        "hi": "मॉन्ट्रियल प्रोटोकॉल ओज़ोन परत को नुकसान पहुँचाने वाले पदार्थों, जिनमें कई क्लोरोफ्लोरोकार्बन शामिल हैं, को चरणबद्ध तरीके से समाप्त करने के लिए किया गया एक अंतरराष्ट्रीय समझौता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q107",
+      "question": {
+        "en": "What is a major environmental consequence of melting polar ice due to global warming?",
+        "bn": "বিশ্ব উষ্ণায়নের ফলে মেরু অঞ্চলের বরফ গলে যাওয়ার একটি প্রধান পরিবেশগত পরিণতি কী?",
+        "hi": "वैश्विक तापन के कारण ध्रुवीय बर्फ पिघलने का एक प्रमुख पर्यावरणीय परिणाम क्या है?"
+      },
+      "options": [
+        {
+          "en": "Sea-level rise and flooding in coastal areas",
+          "bn": "সমুদ্রপৃষ্ঠের উচ্চতা বৃদ্ধি এবং উপকূলীয় অঞ্চলে বন্যা",
+          "hi": "समुद्र के स्तर में वृद्धि और तटीय क्षेत्रों में बाढ़"
+        },
+        {
+          "en": "A permanent decrease in ocean levels",
+          "bn": "সমুদ্রপৃষ্ঠের স্থায়ী অবনমন",
+          "hi": "समुद्र के स्तर में स्थायी कमी"
+        },
+        {
+          "en": "The disappearance of all clouds",
+          "bn": "সমস্ত মেঘের বিলুপ্তি",
+          "hi": "सभी बादलों का गायब हो जाना"
+        },
+        {
+          "en": "An end to all ocean currents",
+          "bn": "সমস্ত সামুদ্রিক স্রোতের অবসান",
+          "hi": "सभी महासागरीय धाराओं का समाप्त हो जाना"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Melting land ice and the thermal expansion of seawater contribute to sea-level rise, increasing the risk of coastal flooding.",
+        "bn": "স্থলভাগের বরফ গলে যাওয়া এবং সমুদ্রের জলের তাপীয় প্রসারণ সমুদ্রপৃষ্ঠের উচ্চতা বাড়ায়, ফলে উপকূলীয় বন্যার ঝুঁকি বৃদ্ধি পায়।",
+        "hi": "स्थलीय बर्फ के पिघलने और समुद्री जल के तापीय प्रसार से समुद्र का स्तर बढ़ता है, जिससे तटीय बाढ़ का जोखिम बढ़ जाता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q108",
+      "question": {
+        "en": "Which of the following is a form of physical pollution?",
+        "bn": "নিম্নলিখিত কোনটি ভৌত দূষণের একটি উদাহরণ?",
+        "hi": "निम्नलिखित में से कौन-सा भौतिक प्रदूषण का एक उदाहरण है?"
+      },
+      "options": [
+        {
+          "en": "Noise pollution",
+          "bn": "শব্দদূষণ",
+          "hi": "ध्वनि प्रदूषण"
+        },
+        {
+          "en": "Nitrogen fixation",
+          "bn": "নাইট্রোজেন স্থিতিকরণ",
+          "hi": "नाइट्रोजन स्थिरीकरण"
+        },
+        {
+          "en": "Photosynthesis",
+          "bn": "সালোকসংশ্লেষ",
+          "hi": "प्रकाश संश्लेषण"
+        },
+        {
+          "en": "Pollination",
+          "bn": "পরাগযোগ",
+          "hi": "परागण"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Noise pollution is a form of physical pollution. Air, water and soil pollution are other major categories of environmental pollution.",
+        "bn": "শব্দদূষণ ভৌত দূষণের একটি উদাহরণ। বায়ুদূষণ, জলদূষণ ও মাটিদূষণ পরিবেশদূষণের অন্যান্য প্রধান শ্রেণি।",
+        "hi": "ध्वनि प्रदूषण भौतिक प्रदूषण का एक उदाहरण है। वायु, जल और मृदा प्रदूषण पर्यावरण प्रदूषण की अन्य प्रमुख श्रेणियाँ हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q109",
+      "question": {
+        "en": "Which natural phenomenon is an important part of the global carbon cycle?",
+        "bn": "নিম্নলিখিত কোন প্রাকৃতিক প্রক্রিয়াটি বিশ্বব্যাপী কার্বন চক্রের একটি গুরুত্বপূর্ণ অংশ?",
+        "hi": "निम्नलिखित में से कौन-सी प्राकृतिक प्रक्रिया वैश्विक कार्बन चक्र का एक महत्वपूर्ण भाग है?"
+      },
+      "options": [
+        {
+          "en": "Photosynthesis by green plants",
+          "bn": "সবুজ উদ্ভিদের সালোকসংশ্লেষ",
+          "hi": "हरे पौधों द्वारा प्रकाश संश्लेषण"
+        },
+        {
+          "en": "Formation of plastic from petroleum",
+          "bn": "পেট্রোলিয়াম থেকে প্লাস্টিক তৈরি",
+          "hi": "पेट्रोलियम से प्लास्टिक बनना"
+        },
+        {
+          "en": "Production of glass",
+          "bn": "কাচ উৎপাদন",
+          "hi": "काँच का उत्पादन"
+        },
+        {
+          "en": "Extraction of metal ores",
+          "bn": "ধাতব আকরিক উত্তোলন",
+          "hi": "धातु अयस्कों का निष्कर्षण"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "During photosynthesis, green plants absorb carbon dioxide from the atmosphere and use the carbon to produce organic compounds.",
+        "bn": "সালোকসংশ্লেষের সময় সবুজ উদ্ভিদ বায়ুমণ্ডল থেকে কার্বন ডাইঅক্সাইড গ্রহণ করে এবং সেই কার্বন ব্যবহার করে জৈব যৌগ তৈরি করে।",
+        "hi": "प्रकाश संश्लेषण के दौरान हरे पौधे वायुमंडल से कार्बन डाइऑक्साइड ग्रहण करते हैं और उस कार्बन का उपयोग करके कार्बनिक यौगिक बनाते हैं।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q110",
+      "question": {
+        "en": "Which Indian region is named after its extensive mangrove forests and is famous for the Royal Bengal tiger?",
+        "bn": "বিস্তীর্ণ ম্যানগ্রোভ অরণ্যের নামে পরিচিত এবং রয়্যাল বেঙ্গল টাইগারের জন্য বিখ্যাত ভারতের কোন অঞ্চল?",
+        "hi": "विस्तृत मैंग्रोव वनों के नाम से पहचाना जाने वाला और रॉयल बंगाल टाइगर के लिए प्रसिद्ध भारत का कौन-सा क्षेत्र है?"
+      },
+      "options": [
+        {
+          "en": "Sundarbans",
+          "bn": "সুন্দরবন",
+          "hi": "सुंदरबन"
+        },
+        {
+          "en": "Mussoorie",
+          "bn": "মুসৌরি",
+          "hi": "मसूरी"
+        },
+        {
+          "en": "Madhubani",
+          "bn": "মধুবনী",
+          "hi": "मधुबनी"
+        },
+        {
+          "en": "Pachmarhi",
+          "bn": "পাঁচমাড়ি",
+          "hi": "पचमढ़ी"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The Sundarbans are famous for their extensive mangrove forests and their population of Royal Bengal tigers.",
+        "bn": "সুন্দরবন বিস্তীর্ণ ম্যানগ্রোভ অরণ্য এবং রয়্যাল বেঙ্গল টাইগারের জন্য বিখ্যাত।",
+        "hi": "सुंदरबन अपने विस्तृत मैंग्रोव वनों और रॉयल बंगाल टाइगर की आबादी के लिए प्रसिद्ध है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q111",
+      "question": {
+        "en": "Which agreement was adopted to protect the ozone layer?",
+        "bn": "ওজোন স্তর রক্ষার জন্য কোন চুক্তি গৃহীত হয়েছিল?",
+        "hi": "ओज़ोन परत की रक्षा के लिए कौन-सा समझौता अपनाया गया था?"
+      },
+      "options": [
+        {
+          "en": "Montreal Protocol",
+          "bn": "মন্ট্রিয়ল প্রোটোকল",
+          "hi": "मॉन्ट्रियल प्रोटोकॉल"
+        },
+        {
+          "en": "Energy Community Treaty",
+          "bn": "শক্তি সম্প্রদায় চুক্তি",
+          "hi": "ऊर्जा समुदाय संधि"
+        },
+        {
+          "en": "Ozone Treaty",
+          "bn": "ওজোন চুক্তি",
+          "hi": "ओज़ोन संधि"
+        },
+        {
+          "en": "Minsk Protocol",
+          "bn": "মিনস্ক প্রোটোকল",
+          "hi": "मिन्स्क प्रोटोकॉल"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The Montreal Protocol, adopted in 1987, aims to phase out substances that deplete the ozone layer.",
+        "bn": "১৯৮৭ সালে গৃহীত মন্ট্রিয়ল প্রোটোকলের উদ্দেশ্য হলো ওজোন স্তর ক্ষয়কারী পদার্থগুলির ব্যবহার ধাপে ধাপে বন্ধ করা।",
+        "hi": "1987 में अपनाए गए मॉन्ट्रियल प्रोटोकॉल का उद्देश्य ओज़ोन परत को नष्ट करने वाले पदार्थों के उपयोग को चरणबद्ध तरीके से समाप्त करना है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q112",
+      "question": {
+        "en": "The Chipko Movement was primarily associated with the protection of which natural resource?",
+        "bn": "চিপকো আন্দোলন প্রধানত কোন প্রাকৃতিক সম্পদ রক্ষার সঙ্গে যুক্ত?",
+        "hi": "चिपको आंदोलन मुख्य रूप से किस प्राकृतिक संसाधन की रक्षा से संबंधित था?"
+      },
+      "options": [
+        {
+          "en": "Forests and trees",
+          "bn": "বন ও গাছপালা",
+          "hi": "वन और पेड़"
+        },
+        {
+          "en": "Tigers",
+          "bn": "বাঘ",
+          "hi": "बाघ"
+        },
+        {
+          "en": "Rivers",
+          "bn": "নদী",
+          "hi": "नदियाँ"
+        },
+        {
+          "en": "Coal mines",
+          "bn": "কয়লাখনি",
+          "hi": "कोयला खदानें"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "The Chipko Movement was a forest conservation movement in which people embraced trees to prevent them from being cut down.",
+        "bn": "চিপকো আন্দোলন ছিল একটি বন সংরক্ষণ আন্দোলন। এতে মানুষ গাছ কাটা বন্ধ করতে গাছকে জড়িয়ে ধরতেন।",
+        "hi": "चिपको आंदोलन वन संरक्षण का एक आंदोलन था, जिसमें लोग पेड़ों की कटाई रोकने के लिए उनसे चिपक जाते थे।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q113",
+      "question": {
+        "en": "Which statement about fossil fuels is incorrect?",
+        "bn": "জীবাশ্ম জ্বালানি সম্পর্কে কোন বিবৃতিটি ভুল?",
+        "hi": "जीवाश्म ईंधनों के बारे में कौन-सा कथन गलत है?"
+      },
+      "options": [
+        {
+          "en": "Coal, petroleum and natural gas should be used wisely",
+          "bn": "কয়লা, পেট্রোলিয়াম ও প্রাকৃতিক গ্যাস বিচক্ষণতার সঙ্গে ব্যবহার করা উচিত",
+          "hi": "कोयला, पेट्रोलियम और प्राकृतिक गैस का विवेकपूर्ण उपयोग करना चाहिए"
+        },
+        {
+          "en": "Coke, coal tar and coal gas are products obtained from coal",
+          "bn": "কোক, কোল টার ও কোল গ্যাস কয়লা থেকে প্রাপ্ত উপজাত",
+          "hi": "कोक, कोलतार और कोल गैस कोयले से प्राप्त उत्पाद हैं"
+        },
+        {
+          "en": "Fossil fuels are inexhaustible natural resources",
+          "bn": "জীবাশ্ম জ্বালানি অফুরন্ত প্রাকৃতিক সম্পদ",
+          "hi": "जीवाश्म ईंधन अक्षय प्राकृतिक संसाधन हैं"
+        },
+        {
+          "en": "Coal, petroleum and natural gas are fossil fuels",
+          "bn": "কয়লা, পেট্রোলিয়াম ও প্রাকৃতিক গ্যাস জীবাশ্ম জ্বালানি",
+          "hi": "कोयला, पेट्रोलियम और प्राकृतिक गैस जीवाश्म ईंधन हैं"
+        }
+      ],
+      "correct_index": 2,
+      "explanation": {
+        "en": "Fossil fuels are finite, non-renewable resources that take millions of years to form. Therefore, they should be used carefully.",
+        "bn": "জীবাশ্ম জ্বালানি সীমিত ও অনবীকরণযোগ্য সম্পদ, যা তৈরি হতে লক্ষ লক্ষ বছর লাগে। তাই এগুলি বিচক্ষণতার সঙ্গে ব্যবহার করা উচিত।",
+        "hi": "जीवाश्म ईंधन सीमित और अनवीकरणीय संसाधन हैं, जिन्हें बनने में लाखों वर्ष लगते हैं। इसलिए इनका विवेकपूर्ण उपयोग करना चाहिए।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q114",
+      "question": {
+        "en": "Excessive exposure to ultraviolet radiation can increase the risk of which disease?",
+        "bn": "অতিরিক্ত অতিবেগুনি রশ্মির সংস্পর্শে কোন রোগের ঝুঁকি বাড়তে পারে?",
+        "hi": "पराबैंगनी किरणों के अत्यधिक संपर्क से किस रोग का खतरा बढ़ सकता है?"
+      },
+      "options": [
+        {
+          "en": "Skin cancer",
+          "bn": "ত্বকের ক্যান্সার",
+          "hi": "त्वचा का कैंसर"
+        },
+        {
+          "en": "Liver cancer only",
+          "bn": "শুধুমাত্র যকৃতের ক্যান্সার",
+          "hi": "केवल यकृत का कैंसर"
+        },
+        {
+          "en": "Lung cancer only",
+          "bn": "শুধুমাত্র ফুসফুসের ক্যান্সার",
+          "hi": "केवल फेफड़ों का कैंसर"
+        },
+        {
+          "en": "Blood cancer only",
+          "bn": "শুধুমাত্র রক্তের ক্যান্সার",
+          "hi": "केवल रक्त का कैंसर"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "Excessive ultraviolet radiation can damage the DNA of skin cells and increase the risk of skin cancer.",
+        "bn": "অতিরিক্ত অতিবেগুনি রশ্মি ত্বকের কোষের DNA-র ক্ষতি করতে পারে এবং ত্বকের ক্যান্সারের ঝুঁকি বাড়ায়।",
+        "hi": "अत्यधिक पराबैंगनी विकिरण त्वचा की कोशिकाओं के DNA को नुकसान पहुँचा सकता है और त्वचा के कैंसर का खतरा बढ़ा सकता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q115",
+      "question": {
+        "en": "What was the name of the water management and policy centre inaugurated in March 2022 by the Government of India?",
+        "bn": "২০২২ সালের মার্চ মাসে ভারত সরকারের উদ্বোধন করা জল ব্যবস্থাপনা ও নীতি কেন্দ্রটির নাম কী ছিল?",
+        "hi": "मार्च 2022 में भारत सरकार द्वारा उद्घाटित जल प्रबंधन और नीति केंद्र का नाम क्या था?"
+      },
+      "options": [
+        {
+          "en": "Water Management and Policy Centre",
+          "bn": "ওয়াটার ম্যানেজমেন্ট অ্যান্ড পলিসি সেন্টার",
+          "hi": "वॉटर मैनेजमेंट एंड पॉलिसी सेंटर"
+        },
+        {
+          "en": "Wet MAP",
+          "bn": "ওয়েট ম্যাপ",
+          "hi": "वेट मैप"
+        },
+        {
+          "en": "HydroMAP",
+          "bn": "হাইড্রোম্যাপ",
+          "hi": "हाइड्रोमैप"
+        },
+        {
+          "en": "AquaMAP",
+          "bn": "অ্যাকোয়াম্যাপ",
+          "hi": "एक्वामैप"
+        }
+      ],
+      "correct_index": 3,
+      "explanation": {
+        "en": "AquaMAP is the water management and policy research centre associated with the Indian Institute of Technology Madras and its research partners.",
+        "bn": "অ্যাকোয়াম্যাপ হলো জল ব্যবস্থাপনা ও নীতি-সংক্রান্ত গবেষণা কেন্দ্র, যা ইন্ডিয়ান ইনস্টিটিউট অফ টেকনোলজি মাদ্রাজ এবং তার গবেষণা সহযোগীদের সঙ্গে যুক্ত।",
+        "hi": "एक्वामैप जल प्रबंधन और नीति अनुसंधान केंद्र है, जो भारतीय प्रौद्योगिकी संस्थान मद्रास और उसके अनुसंधान सहयोगियों से जुड़ा है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q117",
+      "question": {
+        "en": "Which group generally has the largest number of organisms in a simple food chain?",
+        "bn": "একটি সরল খাদ্যশৃঙ্খলে সাধারণত কোন গোষ্ঠীর জীবের সংখ্যা সবচেয়ে বেশি?",
+        "hi": "एक सरल खाद्य शृंखला में सामान्यतः किस समूह के जीवों की संख्या सबसे अधिक होती है?"
+      },
+      "options": [
+        {
+          "en": "Primary consumers",
+          "bn": "প্রাথমিক খাদক",
+          "hi": "प्राथमिक उपभोक्ता"
+        },
+        {
+          "en": "Producers",
+          "bn": "উৎপাদক",
+          "hi": "उत्पादक"
+        },
+        {
+          "en": "Secondary consumers",
+          "bn": "গৌণ খাদক",
+          "hi": "द्वितीयक उपभोक्ता"
+        },
+        {
+          "en": "Tertiary consumers",
+          "bn": "তৃতীয় স্তরের খাদক",
+          "hi": "तृतीयक उपभोक्ता"
+        }
+      ],
+      "correct_index": 1,
+      "explanation": {
+        "en": "In a typical terrestrial ecosystem, producers form the first trophic level and generally support the higher trophic levels. The exact number of organisms can vary by ecosystem.",
+        "bn": "একটি সাধারণ স্থলজ বাস্তুতন্ত্রে উৎপাদক প্রথম পুষ্টিস্তর গঠন করে এবং সাধারণত উচ্চতর পুষ্টিস্তরগুলিকে সহায়তা করে। তবে জীবের প্রকৃত সংখ্যা বাস্তুতন্ত্র অনুযায়ী পরিবর্তিত হতে পারে।",
+        "hi": "एक सामान्य स्थलीय पारितंत्र में उत्पादक पहला पोषण स्तर बनाते हैं और उच्च पोषण स्तरों को सहारा देते हैं। हालाँकि, जीवों की वास्तविक संख्या पारितंत्र के अनुसार बदल सकती है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q118",
+      "question": {
+        "en": "Which statement about an ecosystem is incorrect?",
+        "bn": "বাস্তুতন্ত্র সম্পর্কে কোন বিবৃতিটি ভুল?",
+        "hi": "पारितंत्र के बारे में कौन-सा कथन गलत है?"
+      },
+      "options": [
+        {
+          "en": "Its biotic components consist of living organisms",
+          "bn": "এর জীবজ উপাদানগুলি জীবিত জীব দ্বারা গঠিত",
+          "hi": "इसके जैविक घटक जीवित जीवों से बने होते हैं"
+        },
+        {
+          "en": "Green plants and some bacteria act as producers",
+          "bn": "সবুজ উদ্ভিদ ও কিছু ব্যাকটেরিয়া উৎপাদক হিসেবে কাজ করে",
+          "hi": "हरे पौधे और कुछ बैक्टीरिया उत्पादक के रूप में कार्य करते हैं"
+        },
+        {
+          "en": "Decomposers break down complex organic matter into simpler substances",
+          "bn": "বিয়োজকরা জটিল জৈব পদার্থকে ভেঙে সরল পদার্থে পরিণত করে",
+          "hi": "अपघटक जटिल कार्बनिक पदार्थों को तोड़कर सरल पदार्थों में बदलते हैं"
+        },
+        {
+          "en": "All bacteria belong to the fourth trophic level",
+          "bn": "সব ব্যাকটেরিয়া চতুর্থ পুষ্টিস্তরের অন্তর্ভুক্ত",
+          "hi": "सभी बैक्टीरिया चौथे पोषण स्तर से संबंधित होते हैं"
+        }
+      ],
+      "correct_index": 3,
+      "explanation": {
+        "en": "Bacteria have different ecological roles: some are producers, some are decomposers, and others occupy different roles. They do not all belong to the fourth trophic level.",
+        "bn": "ব্যাকটেরিয়ার বিভিন্ন পরিবেশগত ভূমিকা রয়েছে। কিছু উৎপাদক, কিছু বিয়োজক এবং অন্যরা ভিন্ন ভূমিকা পালন করে। তাই সব ব্যাকটেরিয়া চতুর্থ পুষ্টিস্তরের অন্তর্ভুক্ত নয়।",
+        "hi": "बैक्टीरिया की विभिन्न पारिस्थितिक भूमिकाएँ होती हैं। कुछ उत्पादक, कुछ अपघटक और अन्य अलग-अलग भूमिकाएँ निभाते हैं। इसलिए सभी बैक्टीरिया चौथे पोषण स्तर से संबंधित नहीं होते।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    },
+    {
+      "id": "chhaya_prakashani_ch_04_q119",
+      "question": {
+        "en": "In a typical terrestrial ecosystem, what percentage of incoming solar energy is captured by green plants through photosynthesis?",
+        "bn": "একটি সাধারণ স্থলজ বাস্তুতন্ত্রে সবুজ উদ্ভিদ সালোকসংশ্লেষের মাধ্যমে আগত সৌরশক্তির কত শতাংশ আবদ্ধ করে?",
+        "hi": "एक सामान्य स्थलीय पारितंत्र में हरे पौधे प्रकाश संश्लेषण द्वारा प्राप्त सौर ऊर्जा का कितना प्रतिशत ग्रहण करते हैं?"
+      },
+      "options": [
+        {
+          "en": "About 1%",
+          "bn": "প্রায় ১%",
+          "hi": "लगभग 1%"
+        },
+        {
+          "en": "About 10%",
+          "bn": "প্রায় ১০%",
+          "hi": "लगभग 10%"
+        },
+        {
+          "en": "About 50%",
+          "bn": "প্রায় ৫০%",
+          "hi": "लगभग 50%"
+        },
+        {
+          "en": "About 100%",
+          "bn": "প্রায় ১০০%",
+          "hi": "लगभग 100%"
+        }
+      ],
+      "correct_index": 0,
+      "explanation": {
+        "en": "In many textbook descriptions of terrestrial ecosystems, green plants capture approximately 1% of the incoming solar energy through photosynthesis, although the actual proportion varies.",
+        "bn": "অনেক পাঠ্যপুস্তকে স্থলজ বাস্তুতন্ত্রের ক্ষেত্রে সবুজ উদ্ভিদ আগত সৌরশক্তির প্রায় ১% সালোকসংশ্লেষের মাধ্যমে আবদ্ধ করে বলে উল্লেখ করা হয়। প্রকৃত অনুপাত অবশ্য পরিবর্তিত হতে পারে।",
+        "hi": "स्थलीय पारितंत्रों के कई पाठ्यपुस्तकीय वर्णनों में हरे पौधों द्वारा प्रकाश संश्लेषण से प्राप्त सौर ऊर्जा का लगभग 1% ग्रहण करने की बात कही जाती है। वास्तविक अनुपात अलग-अलग हो सकता है।"
+      },
+      "points": 10,
+      "time_limit_sec": 30
+    }
+  ]
 }
