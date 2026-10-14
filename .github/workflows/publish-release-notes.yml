@@ -1,0 +1,79 @@
+name: Publish Release Notes
+
+# Publishes the incoming release's notes to Firestore `config/app`
+# (`latest_release_version` / `latest_release_notes`) so a phone still on the
+# old build can show the *new* update's notes in the Update Center. The old
+# binary cannot carry notes written after it shipped — looking its own
+# version up instead showed the previous release's notes (see docs/22).
+#
+# Triggered on the version-bump push itself (the notes files are exactly what
+# a bump changes), not on a daily cron: notes only ever change at release
+# time, and devices only display them while Play also reports the newer
+# bundle — so publishing the moment the bump lands is both enough and safe.
+# Manual dispatch stays available for a retry or a dry run.
+#
+# One-time setup: the repository secret FIREBASE_PACKET_WRITER_SA (already
+# used by the daily-packet workflow) — a service account with
+# roles/datastore.user. The write is merge-only and idempotent:
+# `tool/publish_release_notes.py` touches nothing when the published notes
+# already match `store_listing/whats_new.yaml`.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'store_listing/whats_new.yaml'
+      - 'distribution/whatsnew/**'
+      - 'tool/publish_release_notes.py'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Show the payload; write nothing'
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: publish-release-notes
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    name: publish release notes to config/app
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install the Firestore client
+        run: pip install --quiet google-cloud-firestore PyYAML
+
+      - name: Prepare the service account
+        env:
+          RELEASE_NOTES_SA: ${{ secrets.FIREBASE_PACKET_WRITER_SA }}
+        run: |
+          set -euo pipefail
+          if [ -z "$RELEASE_NOTES_SA" ]; then
+            echo "::error::The secret FIREBASE_PACKET_WRITER_SA is not set — no notes were published. Add it under Settings → Secrets and variables → Actions: the JSON of a service account allowed to write Firestore (roles/datastore.user), the same one the daily-packet workflow uses."
+            exit 1
+          fi
+          printf '%s' "$RELEASE_NOTES_SA" > "$RUNNER_TEMP/release-notes-sa.json"
+
+      - name: Publish the release notes
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/release-notes-sa.json
+          DRY_RUN: ${{ inputs.dry_run == true && 'true' || 'false' }}
+        run: |
+          set -euo pipefail
+          if [ "$DRY_RUN" = "true" ]; then
+            python3 tool/publish_release_notes.py --dry-run
+          else
+            python3 tool/publish_release_notes.py
+          fi

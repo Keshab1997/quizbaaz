@@ -122,5 +122,5 @@ curl -fsS -X POST "$QB_BROADCAST_URL" \
 | `recipients: 0` | OneSignal App ID in the payload; subscription state of the app |
 | Updated users still nudged | They have not opened the new build yet — its `app_version` only updates when the SDK reports in |
 | Tap opens the dashboard, not the Update Center | Missing `"open": "app_update"` in the data payload (check docs/16) |
-| Update Center repeats the previous version's notes | The app build predates the remote-notes fix (fixed in 1.0.22), or `tool/publish_release_notes.py` was not run for this release — check `latest_release_version` in `config/app` |
+| Update Center repeats the previous version's notes | The app build predates the remote-notes fix (fixed in 1.0.22), or the `Publish Release Notes` workflow did not run/succeed for this release — check its Actions run and `latest_release_version` in `config/app` |
 | No push at all | `ONESIGNAL_REST_KEY` set? OneSignal → delivery logs |

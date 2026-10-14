@@ -17,10 +17,14 @@ On each version bump:
 1. Add a `releases.<version>` block and set `current`.
 2. Copy the same bullets into `WhatsNewCatalog`.
 3. Bump `pubspec.yaml` (`1.x.y+N`).
-4. Publish the same notes to remote config so devices still on the old
+4. The same notes are published to remote config so devices still on the old
    build see the *incoming* release's notes in the Update Center (the old
    binary does not carry them — without this step it can only repeat its
-   own version's notes):
+   own version's notes). This happens **automatically**: the
+   `Publish Release Notes` workflow runs `tool/publish_release_notes.py` on
+   every push that changes the notes files above (manual dispatch with a
+   dry-run option is under Actions). Run the same command by hand only as a
+   local fallback:
 
    ```bash
    python3 tool/publish_release_notes.py
