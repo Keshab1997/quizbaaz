@@ -30,7 +30,7 @@ dependencies:
   firebase_storage: ^13.0.0
   # Trusted backend callables (setAdmin, submitDailyResult, purchaseItem,
   # resolveBattle) — see /functions. Fail-soft when not deployed.
-  cloud_functions: ^6.0.0
+  cloud_functions: ^6.5.0
   # App Check: attaches an attestation token to every Firebase request so the
   # trusted callables (/functions, region asia-south1) can reject repackaged
   # clients. Activated in lib/main.dart.
