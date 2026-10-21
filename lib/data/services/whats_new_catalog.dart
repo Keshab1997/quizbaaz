@@ -7,6 +7,23 @@ class WhatsNewCatalog {
   WhatsNewCatalog._();
 
   static const Map<String, Map<String, List<String>>> _releases = {
+    '1.0.24': {
+      'en': [
+        'Free Practice — unlimited rounds! Every round draws 10 fresh random questions from the whole bank, or one subject you choose. Play as many times a day as you like — pure revision, nothing is counted.',
+        'Revision without locks — the new "Revise Chapter" button opens the whole chapter for reading anytime; locked sets can now be revised too. Playing stays in order, reading never waits.',
+        'Small fixes and polish for a smoother app.',
+      ],
+      'bn': [
+        'ফ্রি প্র্যাকটিস — অসীম রাউন্ড! প্রতি রাউন্ডে পুরো ব্যাংক থেকে (বা পছন্দের একটি বিষয় থেকে) ১০টি নতুন র‍্যান্ডম প্রশ্ন। দিনে যতবার খুশি খেলুন — শুধু অনুশীলন, কিছুই গোনা হয় না।',
+        'লক ছাড়াই রিভিশন — নতুন "পুরো অধ্যায় রিভিশন" বাটনে যেকোনো সময় পুরো অধ্যায় পড়ুন; লক করা সেটও এখন পড়া যায়। খেলা সিরিয়ালে, পড়া সব সময় খোলা।',
+        'অ্যাপ আরও মসৃণ করতে ছোটখাটো ঠিকঠাক ও পালিশ।',
+      ],
+      'hi': [
+        'फ्री प्रैक्टिस — अनलिमिटेड राउंड! हर राउंड में पूरे बैंक से (या अपने पसंदीदा विषय से) 10 नए रैंडम सवाल। दिन में जितनी बार चाहें खेलें — बस अभ्यास, कुछ भी गिना नहीं जाता।',
+        'बिना लॉक रिवाइज़ — नए "पूरा अध्याय रिवाइज़ करें" बटन से कभी भी पूरा अध्याय पढ़ें; लॉक किए सेट भी अब पढ़े जा सकते हैं। खेलना क्रम में, पढ़ना हमेशा खुला।',
+        'ऐप को और सहज बनाने के लिए छोटे सुधार और पॉलिश।',
+      ],
+    },
     '1.0.23': {
       'en': [
         'Update screen, fixed — when a new update is ready, you now see that update\'s own notes before you install it, not the previous version\'s.',

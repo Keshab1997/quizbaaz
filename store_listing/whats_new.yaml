@@ -6,9 +6,28 @@
 #   python3 tool/publish_play.py --aab app.aab --track alpha
 # which reads this file automatically. `--release-note` overrides English only.
 
-current: "1.0.23"
+current: "1.0.24"
 
 releases:
+  "1.0.24":
+    en: |-
+      What's new in 1.0.24:
+
+      • Free Practice — unlimited rounds! Every round draws 10 fresh random questions from the whole bank, or one subject you choose. Play as many times a day as you like — pure revision, nothing is counted.
+      • Revision without locks — the new "Revise Chapter" button opens the whole chapter for reading anytime; locked sets can now be revised too. Playing stays in order, reading never waits.
+      • Small fixes and polish for a smoother app.
+    bn: |-
+      QuizBaaz ১.০.২৪-এ যা নতুন:
+
+      • ফ্রি প্র্যাকটিস — অসীম রাউন্ড! প্রতি রাউন্ডে পুরো ব্যাংক থেকে (বা পছন্দের একটি বিষয় থেকে) ১০টি নতুন র‍্যান্ডম প্রশ্ন। দিনে যতবার খুশি খেলুন — শুধু অনুশীলন, কিছুই গোনা হয় না।
+      • লক ছাড়া রিভিশন — নতুন "পুরো অধ্যায় রিভিশন" বাটনে যেকোনো সময়ে পুরো অধ্যায় পড়ুন; লক করা সেট এখন পড়া যায়। খেলা সিরিয়ালে, পড়া সব সময়ে খোলা।
+      • অ্যাপ আরও মসৃণ করতে ছোটখাটো ঠিকঠাক ও পালিশ।
+    hi: |-
+      QuizBaaz 1.0.24 में नया:
+
+      • फ्री प्रैक्टिस — अनलिमिटेड राउंड! हर राउंड में पूरे बैंक से (या अपने पसंदीदा विषय से) 10 नए रैंडम सवाल। दिन में जितनी बार चाहें खेलें — बस अभ्यास, कुछ भी गिना नहीं जाता।
+      • बिना लॉक रिवाज़ — नए "पूरा अध्याय रिवाज़ करें" बटन से कभी भी पूरा अध्याय पढ़ें; लॉक किए सेट भी अब पढ़े जा सकते हैं। खेलना क्रम में, पढ़ना हमेशा खुला।
+      • ऐप को और सहज बनाने के लिए छोटे सुधार और पॉलिश।
   "1.0.23":
     en: |-
       What's new in 1.0.23:
