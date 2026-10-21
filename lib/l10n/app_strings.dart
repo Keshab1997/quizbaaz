@@ -589,6 +589,8 @@ class S {
       fill(raw('setsPlayedOn'), {'date': date});
   static String get reviseAction => raw('reviseAction');
   static String get reviseNote => raw('reviseNote');
+  static String get reviseChapter => raw('reviseChapter');
+  static String get reviseAllSubtitle => raw('reviseAllSubtitle');
 
   // ---- notifications
   static String get notifDailyTitle => raw('notifDailyTitle');

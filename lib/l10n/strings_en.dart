@@ -520,6 +520,8 @@ const Map<String, String> kStringsEn = {
   'setsPlayedOn': 'Last played {date}',
   'reviseAction': 'Revise',
   'reviseNote': 'Reading mode — nothing is counted',
+  'reviseChapter': 'Revise Chapter',
+  'reviseAllSubtitle': 'All sets',
 
   // ------------------------------------------------------ notifications --
   'notifDailyTitle': 'Daily Quiz is live',

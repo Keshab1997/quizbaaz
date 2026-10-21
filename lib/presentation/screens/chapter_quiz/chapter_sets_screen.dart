@@ -253,6 +253,40 @@ class _ChapterSetsScreenState extends State<ChapterSetsScreen>
                 ),
               ),
             ),
+          const SizedBox(height: 10),
+          // Revising the whole chapter is never locked and never gated on
+          // progress: reading costs nothing, cannot be farmed, and reading
+          // ahead before attempting a set is studying — only *playing* sets
+          // stays ordered.
+          SizedBox(
+            width: double.infinity,
+            height: 52,
+            child: OutlinedButton.icon(
+              onPressed: () => _revise(null),
+              style: OutlinedButton.styleFrom(
+                // Same tonal treatment as the per-set Revise buttons: a
+                // tinted fill, not a bare outline that reads as disabled.
+                backgroundColor: widget.accent.withValues(alpha: 0.14),
+                foregroundColor: widget.accent,
+                side: BorderSide(
+                  color: widget.accent.withValues(alpha: 0.75),
+                  width: 1.3,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
+              ),
+              icon: const Icon(Icons.menu_book_rounded, size: 20),
+              label: Text(
+                S.reviseChapter,
+                style: const TextStyle(
+                  fontWeight: FontWeight.w900,
+                  fontSize: 15,
+                  letterSpacing: 0.2,
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -263,6 +297,8 @@ class _ChapterSetsScreenState extends State<ChapterSetsScreen>
     final isNext = index == next;
     // Only one set ahead of the frontier is reachable, so progress through a
     // chapter stays ordered instead of the student cherry-picking set 7.
+    // Revision is exempt: a locked set can still be read (see the Revise
+    // button below), because reading is studying — only playing is ordered.
     final locked = done == null && !isNext;
     final length = setLengthFor(_questionCount, index);
 
@@ -356,18 +392,20 @@ class _ChapterSetsScreenState extends State<ChapterSetsScreen>
                 ),
               ],
             ),
-            if (!locked) ...[
-              const SizedBox(height: 14),
-              Row(
-                children: [
-                  // Play is the primary action, Revise the quieter study
-                  // action — the width split says so before the colours do.
+            const SizedBox(height: 14),
+            Row(
+              children: [
+                // Play is the primary action, Revise the quieter study
+                // action — the width split says so before the colours do.
+                // A locked set keeps Revise: only *playing* is ordered,
+                // reading never is.
+                if (!locked) ...[
                   Expanded(flex: 5, child: _playButton(index, done)),
                   const SizedBox(width: 10),
-                  Expanded(flex: 4, child: _reviseButton(index)),
                 ],
-              ),
-            ],
+                Expanded(flex: 4, child: _reviseButton(index)),
+              ],
+            ),
           ],
         ),
       ),
@@ -718,7 +756,7 @@ class _ChapterSetsScreenState extends State<ChapterSetsScreen>
     if (mounted) _load();
   }
 
-  Future<void> _revise(int setIndex) async {
+  Future<void> _revise(int? setIndex) async {
     SoundService.instance.play('ui_click');
     Haptics.tap();
     await Navigator.push(
@@ -728,6 +766,7 @@ class _ChapterSetsScreenState extends State<ChapterSetsScreen>
             (_) => ChapterRevisionScreen(
               chapter: widget.chapter,
               categoryTitle: widget.categoryTitle,
+              // null = the whole chapter, open regardless of set progress.
               setIndex: setIndex,
               setCount: _setCount,
               accent: widget.accent,

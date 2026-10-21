@@ -506,6 +506,8 @@ const Map<String, String> kStringsHi = {
   'setsPlayedOn': 'अंतिम बार खेला {date}',
   'reviseAction': 'पढ़ो',
   'reviseNote': 'सिर्फ़ पढ़ने का मोड — कुछ गिना नहीं जाएगा',
+  'reviseChapter': 'पूरा अध्याय रिवाइज़ करें',
+  'reviseAllSubtitle': 'सभी सेट',
 
   // ------------------------------------------------------ notifications --
   'notifDailyTitle': 'डेली क्विज़ लाइव है',

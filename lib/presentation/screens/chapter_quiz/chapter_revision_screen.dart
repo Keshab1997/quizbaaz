@@ -9,12 +9,32 @@ import '../../../l10n/app_strings.dart';
 import '../../widgets/glass_card.dart';
 import '../../widgets/quiz_language_pills.dart';
 
-/// Reading-only revision of one chapter set, for মুখস্থ.
+/// The questions one revision screen shows.
 ///
-/// Shows every question of the set with all options, the correct answer
+/// [setIndex] == null revises the whole chapter (authored order); any other
+/// value is that set's positional slice — the same boundaries the quiz
+/// plays, so "Set 2" always means the same ten questions everywhere.
+@visibleForTesting
+List<QuestionModel> revisionSlice(List<QuestionModel> all, {int? setIndex}) {
+  if (setIndex == null) return all;
+  final start = setStartIndex(setIndex);
+  if (start >= all.length) return const [];
+  return all.sublist(
+    start,
+    (start + setLengthFor(all.length, setIndex)).clamp(0, all.length),
+  );
+}
+
+/// Reading-only revision of one chapter set — or of the whole chapter when
+/// [setIndex] is omitted — for মুখস্থ.
+///
+/// Shows every question of the selection with all options, the correct answer
 /// highlighted and the explanation underneath — no timer, no scoring, no
 /// rewards. It deliberately never touches [QuizProvider]: opening revision
 /// cannot disturb an in-progress run, and it cannot farm anything.
+///
+/// Revision is never locked behind set progress: reading ahead is studying,
+/// not playing, so the whole chapter is open from day one.
 ///
 /// Questions load through [QuizRepository.getChapterQuestions], the exact
 /// same path the quiz uses, so a chapter or question added to the bundled
@@ -22,7 +42,7 @@ import '../../widgets/quiz_language_pills.dart';
 class ChapterRevisionScreen extends StatefulWidget {
   final ChapterModel chapter;
   final String categoryTitle;
-  final int setIndex;
+  final int? setIndex;
   final int setCount;
   final Color accent;
 
@@ -30,7 +50,7 @@ class ChapterRevisionScreen extends StatefulWidget {
     super.key,
     required this.chapter,
     required this.categoryTitle,
-    required this.setIndex,
+    this.setIndex,
     required this.setCount,
     this.accent = AppColors.neonCyan,
   });
@@ -58,19 +78,10 @@ class _ChapterRevisionScreenState extends State<ChapterRevisionScreen> {
       chapterId: widget.chapter.chapterId,
     );
     if (!mounted) return;
-    final start = setStartIndex(widget.setIndex);
     setState(() {
       // Authored order, never shuffled: stable numbering is what makes a
       // set re-readable for memorisation.
-      _questions = start >= all.length
-          ? const <QuestionModel>[]
-          : all.sublist(
-              start,
-              (start + setLengthFor(all.length, widget.setIndex)).clamp(
-                0,
-                all.length,
-              ),
-            );
+      _questions = revisionSlice(all, setIndex: widget.setIndex);
       _loading = false;
     });
   }
@@ -101,7 +112,12 @@ class _ChapterRevisionScreenState extends State<ChapterRevisionScreen> {
               style: const TextStyle(fontWeight: FontWeight.w900, fontSize: 16),
             ),
             Text(
-              S.setsSetOf(n: widget.setIndex + 1, total: widget.setCount),
+              widget.setIndex == null
+                  ? S.reviseAllSubtitle
+                  : S.setsSetOf(
+                    n: widget.setIndex! + 1,
+                    total: widget.setCount,
+                  ),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: const TextStyle(
@@ -120,26 +136,58 @@ class _ChapterRevisionScreenState extends State<ChapterRevisionScreen> {
           ),
         ],
       ),
-      body: _loading
-          ? const Center(child: CircularProgressIndicator())
-          : _questions.isEmpty
-          ? _emptyState()
-          : ListView(
-              padding: const EdgeInsets.fromLTRB(16, 12, 16, 28),
-              children: [
-                _noteCard(),
-                const SizedBox(height: 12),
-                for (var i = 0; i < _questions.length; i++)
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 12),
-                    child: _RevisionCard(
-                      number: i + 1,
-                      question: _questions[i],
-                      language: _language,
+      body:
+          _loading
+              ? const Center(child: CircularProgressIndicator())
+              : _questions.isEmpty
+              ? _emptyState()
+              : ListView(
+                padding: const EdgeInsets.fromLTRB(16, 12, 16, 28),
+                children: [
+                  _noteCard(),
+                  const SizedBox(height: 12),
+                  for (var i = 0; i < _questions.length; i++) ...[
+                    // Whole-chapter mode: a light "Set N" marker at every
+                    // boundary the quiz plays, so a 500-question chapter stays
+                    // navigable while the numbering stays continuous.
+                    if (widget.setIndex == null &&
+                        i > 0 &&
+                        i % kQuestionsPerSet == 0) ...[
+                      _setDivider(i ~/ kQuestionsPerSet + 1),
+                      const SizedBox(height: 12),
+                    ],
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 12),
+                      child: _RevisionCard(
+                        number: i + 1,
+                        question: _questions[i],
+                        language: _language,
+                      ),
                     ),
-                  ),
-              ],
+                  ],
+                ],
+              ),
+    );
+  }
+
+  /// "Set N" separator between sets in whole-chapter mode.
+  Widget _setDivider(int setNumber) {
+    return Row(
+      children: [
+        const Expanded(child: Divider(color: Colors.white12, height: 1)),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Text(
+            S.setsSet(n: setNumber),
+            style: const TextStyle(
+              fontSize: 11,
+              fontWeight: FontWeight.w800,
+              color: AppColors.textMuted,
             ),
+          ),
+        ),
+        const Expanded(child: Divider(color: Colors.white12, height: 1)),
+      ],
     );
   }
 
@@ -287,13 +335,15 @@ class _RevisionCard extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 9),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
-        color: isCorrect
-            ? AppColors.neonGreen.withValues(alpha: 0.12)
-            : Colors.white.withValues(alpha: 0.04),
+        color:
+            isCorrect
+                ? AppColors.neonGreen.withValues(alpha: 0.12)
+                : Colors.white.withValues(alpha: 0.04),
         border: Border.all(
-          color: isCorrect
-              ? AppColors.neonGreen.withValues(alpha: 0.65)
-              : Colors.white.withValues(alpha: 0.10),
+          color:
+              isCorrect
+                  ? AppColors.neonGreen.withValues(alpha: 0.65)
+                  : Colors.white.withValues(alpha: 0.10),
         ),
       ),
       child: Row(

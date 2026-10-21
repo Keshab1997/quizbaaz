@@ -509,6 +509,8 @@ const Map<String, String> kStringsBn = {
   'setsPlayedOn': 'শেষ খেলা {date}',
   'reviseAction': 'পড়ো',
   'reviseNote': 'শুধু পড়ার মোড — কিছু গোনা হবে না',
+  'reviseChapter': 'পুরো অধ্যায় রিভিশন',
+  'reviseAllSubtitle': 'সব সেট',
 
   // ------------------------------------------------------ notifications --
   'notifDailyTitle': 'ডেইলি কুইজ লাইভ',
