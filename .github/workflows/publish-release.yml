@@ -34,7 +34,7 @@ permissions:
 
 jobs:
   publish:
-    uses: Keshab1997/flutter-builder/.github/workflows/publish-release.yml@v1.15.0
+    uses: Keshab1997/flutter-builder/.github/workflows/publish-release.yml@v1.15.2
     with:
       working-directory: "."
       release-draft: ${{ inputs.draft }}
