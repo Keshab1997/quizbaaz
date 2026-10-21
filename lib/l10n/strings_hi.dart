@@ -547,4 +547,14 @@ const Map<String, String> kStringsHi = {
   'mistakeNotebookSubtitle':
       '{n} प्रश्न रिवाइज़ करें — लगातार 2 बार सही उत्तर देकर क्लियर करें!',
   'mistakeNotebookBtn': 'गलतियाँ सुधारें ({n})',
+
+  // ------------------------------------------------------ free practice --
+  'practiceTitle': 'फ्री प्रैक्टिस',
+  'practiceInfoBody':
+      'हर राउंड में पूरे बैंक से 10 नए रैंडम सवाल आएंगे। जितनी बार चाहें खेलें — कुछ भी गिना नहीं जाता, बस अभ्यास।',
+  'practiceStart': 'अभ्यास शुरू करें',
+  'practiceEmpty': 'अभी कोई सवाल उपलब्ध नहीं हैं',
+  'dashPractice': 'अभ्यास',
+  'resultPracticeAgain': 'फिर से अभ्यास करें',
+  'allSubjects': 'सभी विषय',
 };

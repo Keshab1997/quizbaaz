@@ -221,7 +221,20 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
                             ),
                           ),
                         ],
-                        if (rewardSkipped) ...[
+                        // Practice runs earn nothing by design — say that
+                        // plainly instead of borrowing the daily-reward note
+                        // ("already claimed") which reads like lost money.
+                        if (quiz.isPractice) ...[
+                          const SizedBox(height: 12),
+                          Text(
+                            S.setsPracticeNote,
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              fontSize: 11,
+                              color: AppColors.textSecondary,
+                            ),
+                          ),
+                        ] else if (rewardSkipped) ...[
                           const SizedBox(height: 12),
                           const Text(
                             'ℹ️ Today\'s daily reward already claimed — play again tomorrow!',
@@ -302,6 +315,18 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
                   ],
 
                   // Action Buttons
+                  // Free practice: another round of the same subject — the
+                  // section's promise is "as many rounds as you like".
+                  if (quiz.isFreePractice) ...[
+                    NeonButton(
+                      text: S.resultPracticeAgain,
+                      gradient: const LinearGradient(
+                        colors: [AppColors.neonCyan, AppColors.neonPurple],
+                      ),
+                      onPressed: () => _retryFreePractice(),
+                    ),
+                    const SizedBox(height: 12),
+                  ],
                   // Chapter sets: replay this set or continue to the next one.
                   // Daily runs never see these — that flow stays exactly as is.
                   if (!quiz.isDailyQuiz && quiz.isChapterRun) ...[
@@ -588,6 +613,19 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
     } else {
       await quiz.retryChapterSet();
     }
+    if (!mounted) return;
+    navigator.pushReplacement(
+      MaterialPageRoute(builder: (_) => const DailyQuizScreen()),
+    );
+  }
+
+  /// Swaps the result screen for another free-practice round, drawn from the
+  /// same subject filter as the run that just finished.
+  Future<void> _retryFreePractice() async {
+    final quiz = context.read<QuizProvider>();
+    final navigator = Navigator.of(context);
+
+    await quiz.retryFreePractice();
     if (!mounted) return;
     navigator.pushReplacement(
       MaterialPageRoute(builder: (_) => const DailyQuizScreen()),

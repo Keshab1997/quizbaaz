@@ -550,4 +550,14 @@ const Map<String, String> kStringsBn = {
   'mistakeNotebookSubtitle':
       '{n}টি প্রশ্ন রিভিশন বাকি — পরপর ২ বার ঠিক উত্তর দিলে ক্লিয়ার হবে!',
   'mistakeNotebookBtn': 'ভুল প্রশ্ন প্র্যাকটিস ({n})',
+
+  // ------------------------------------------------------ free practice --
+  'practiceTitle': 'ফ্রিপ্র্যাকটিস',
+  'practiceInfoBody':
+      'প্রতিটি রাউন্ডে পুরো প্রশ্ন ব্যাংক থেকে ১০টি নতুন র‍্যান্ডম প্রশ্ন আসবে। ইচ্ছেমতো বার বার খেলুন — কিছুই গোনা হয় না, শুধু অনুশীলন।',
+  'practiceStart': 'অনুশীলন শুরু করুন',
+  'practiceEmpty': 'এখনো কোনো প্রশ্ন নেই',
+  'dashPractice': 'অনুশীলন',
+  'resultPracticeAgain': 'আবার অনুশীলন করুন',
+  'allSubjects': 'সব বিষয়',
 };

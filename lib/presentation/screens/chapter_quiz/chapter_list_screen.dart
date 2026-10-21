@@ -138,7 +138,7 @@ class _ChapterListScreenState extends State<ChapterListScreen> {
 
   Widget _buildSubjectFilterPills() {
     final filterOptions = [
-      'All Subjects',
+      S.allSubjects,
       ..._categories.map((c) => c.categoryName.split('(').first.trim()),
     ];
 

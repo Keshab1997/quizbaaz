@@ -37,6 +37,7 @@ import '../daily_quiz/daily_quiz_screen.dart';
 import '../leaderboard/leaderboard_screen.dart';
 import '../history/quiz_history_screen.dart';
 import '../notifications/notification_history_screen.dart';
+import '../practice/practice_screen.dart';
 import '../profile/profile_screen.dart';
 import '../rewards/rewards_screen.dart';
 import '../shop/shop_screen.dart';
@@ -1390,6 +1391,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
         Icons.menu_book_rounded,
         AppColors.neonCyan,
         () => _onNavTap(1),
+      ),
+      _QuickAction(
+        S.dashPractice,
+        Icons.fitness_center_rounded,
+        AppColors.neonGreen,
+        () => Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => const PracticeQuizScreen()),
+        ),
       ),
       _QuickAction(
         S.dashHistory,

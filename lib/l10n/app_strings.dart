@@ -627,4 +627,13 @@ class S {
       fill(raw('mistakeNotebookSubtitle'), {'n': n});
   static String mistakeNotebookBtn({required Object n}) =>
       fill(raw('mistakeNotebookBtn'), {'n': n});
+
+  // ---- free practice
+  static String get practiceTitle => raw('practiceTitle');
+  static String get practiceInfoBody => raw('practiceInfoBody');
+  static String get practiceStart => raw('practiceStart');
+  static String get practiceEmpty => raw('practiceEmpty');
+  static String get dashPractice => raw('dashPractice');
+  static String get resultPracticeAgain => raw('resultPracticeAgain');
+  static String get allSubjects => raw('allSubjects');
 }

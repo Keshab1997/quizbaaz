@@ -61,23 +61,25 @@
 6. **📚 Chapter-wise JSON Question Bank:**
    - Modular JSON-driven question banks organized by Categories and Chapters (General Science, Tech, History, Geography, Math, etc.).
    - Every set doubles as a reading-only Revision screen (per-set "Revise" chip): all options with the correct answer highlighted plus explanations — new bundled or admin-added questions appear automatically.
-7. **🚪 Zero-Friction Guest Trial Onboarding:**
+7. **🎯 Free Practice — Unlimited Random Rounds:**
+   - A dedicated section that draws **10 fresh random questions** from the whole mixed bank (or one chosen subject) every round — play as many rounds a day as you like, each one a new draw. Pure revision: nothing is counted (no coins, gems, stats or leaderboard credit), so it can never be farmed. Wrong answers still land in the Mistake Notebook.
+8. **🚪 Zero-Friction Guest Trial Onboarding:**
    - Visitors can explore the dashboard and play trial quizzes immediately without forced registration. Guest players get an optional Google sign-in card below the home header, so they can link and sync their progress without visiting Profile.
-8. **🛡️ In-App Admin Control Panel (author-only):**
+9. **🛡️ In-App Admin Control Panel (author-only):**
    - Chapter/subject manager, AI-assisted trilingual subject/chapter drafts with review-before-save, question bank with search and filters, review-before-append AI question generator (10 questions per run, trilingual), shop and avatar managers, question-count sync, audit log. Gated on the Firebase `admin` custom claim, so ordinary accounts never see it.
-9. **🌍 Fully Trilingual (English · বাংলা · हिन्दी):**
+10. **🌍 Fully Trilingual (English · বাংলা · हिन्दी):**
    - Interface *and* quiz content in three languages from one switch. Picked automatically from the device locale, changeable any time from **Profile → Settings → Language**, stored locally and kept across restarts. The font swaps to Hind Siliguri for Bangla so no glyph is ever missing.
-10. **📚 Trilingual Question Bank:**
+11. **📚 Trilingual Question Bank:**
    - Every question, option and explanation is authored in all three languages and shipped inside the app — so it works with no network, opens instantly, and uses correct board terminology instead of a machine's guess. Questions are authored in the admin panel (Firestore) and copied into the bundle before a release with `tool/pull_firestore_questions.py`, so the offline copy grows without an app update; `tool/validate_questions.py` refuses to let an incomplete or inconsistent bank reach a build. Current bundle: **1880 questions across 48 chapter banks, 100% in en/bn/hi** (`python3 tool/validate_questions.py --stats` prints the live numbers).
-11. **⚔️ Real 1-vs-1 Battle Arena:**
+12. **⚔️ Real 1-vs-1 Battle Arena:**
    - Live Firestore matchmaking finds a same-difficulty opponent (with a cricket-style VS intro + confetti); no real player found → a smart bot takes over so nobody waits. Every match deals **5 questions mixed from all chapters** and **never repeats a question** until the pool cycles. Symmetric scoring (`base + speed bonus + streak bonus`) keeps it fair for both sides; win by forfeit when the opponent drops. See `docs/12_BATTLE_1V1_REAL_PLAYER_PLAN.md`.
-12. **🔔 Daily Quiz reminders (on-device):**
+13. **🔔 Daily Quiz reminders (on-device):**
    - Native OS notifications at 7:00 PM local, even if the app is killed. Completely free — scheduled on-device, restored after reboot. Streak copy when a streak is live; silent for the rest of the day once you've played. Toggle in Profile → Settings. The home-screen bell opens a local notification inbox (unread badge is real). Implemented in `lib/data/services/notification_service.dart`.
-13. **📡 Live push via OneSignal (FCM under the hood):**
+14. **📡 Live push via OneSignal (FCM under the hood):**
    - Admin broadcasts and 1v1 pings when the app is killed. Paste the OneSignal App ID into `lib/core/constants/onesignal_config.dart` after uploading the Firebase service-account JSON to OneSignal. See `docs/16_ONESIGNAL_FCM_SETUP.md`.
-14. **🧭 Safe Quiz & Match Exit:**
+15. **🧭 Safe Quiz & Match Exit:**
     - Leaving an in-progress quiz cancels its timer and any delayed progression before the route closes. Leaving a battle also stops its timers and detaches room/challenge listeners, so a background match cannot reopen or mutate a later screen.
-15. **📣 Release Push → Update Center:**
+16. **📣 Release Push → Update Center:**
     - A new version ships with a trilingual OneSignal push (tap → Update Center), a non-blocking "what changed" / "update ready" dashboard banner, and an in-app flexible Play update that only installs on an explicit tap — no surprise modal, no mid-scroll restart. See [`docs/22_APP_UPDATE_PUSH.md`](./docs/22_APP_UPDATE_PUSH.md).
 
 ---

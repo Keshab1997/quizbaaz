@@ -562,4 +562,14 @@ const Map<String, String> kStringsEn = {
   'mistakeNotebookSubtitle':
       '{n} question(s) to revise — answer right twice to master!',
   'mistakeNotebookBtn': 'Revise Mistakes ({n})',
+
+  // ------------------------------------------------------ free practice --
+  'practiceTitle': 'Free Practice',
+  'practiceInfoBody':
+      'Every round draws 10 fresh random questions from the whole question bank. Play as many rounds as you like — nothing is counted, it is pure revision.',
+  'practiceStart': 'Start Practice',
+  'practiceEmpty': 'No questions available yet',
+  'dashPractice': 'Practice',
+  'resultPracticeAgain': 'Practice Again',
+  'allSubjects': 'All Subjects',
 };

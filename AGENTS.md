@@ -674,6 +674,13 @@ response or action, including clarifying questions.
 
 ## Current product notes
 
+- Free Practice (`presentation/screens/practice/practice_screen.dart`, dashboard
+  quick action) plays unlimited rounds of 10 random questions drawn fresh from
+  the mixed pool (`QuizRepository.getPracticePool`, optional subject filter).
+  Always practice — no coins, gems, XP, stats, history or leaderboard — so
+  unlimited plays can never farm the economy; the result screen offers
+  "Practice Again" with the same filter. Wrong answers still feed the Mistake
+  Notebook like any other run.
 - The Admin Chapter Manager includes an AI subject/chapter authoring assistant.
   It uses the existing API-key pool, presents a trilingual draft for review, assigns ids locally, and saves the approved category/chapter batch atomically.
 - The Chapter Manager also imports chapters from any AI chat: paste the syllabus, copy the generated prompt, paste the JSON answer back, review the preview, save. No API key needed.
