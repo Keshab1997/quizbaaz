@@ -41,6 +41,15 @@ class QuizProvider extends ChangeNotifier {
   /// True when this run is revising wrong answers from the Mistake Notebook.
   bool _isMistakeRevision = false;
 
+  /// True when this run is Free Practice: a fresh random draw from the mixed
+  /// pool, playable unlimited times a day. Distinct from [isPractice] because
+  /// the result screen offers "again" only for this kind of run.
+  bool _isFreePractice = false;
+
+  /// Subject filter of the current Free Practice run (null = all subjects),
+  /// kept so a replay draws from the same pool.
+  String? _practiceCategoryId;
+
   /// True after the player quits mid-run.
   ///
   /// Quitting must freeze the run completely: the countdown stops, and the
@@ -368,6 +377,12 @@ class QuizProvider extends ChangeNotifier {
   /// True when this run is a Mistake Notebook revision session.
   bool get isMistakeRevision => _isMistakeRevision;
 
+  /// True when this run is a Free Practice round (random mixed pool).
+  bool get isFreePractice => _isFreePractice;
+
+  /// Subject filter of the current Free Practice run (null = all subjects).
+  String? get practiceCategoryId => _practiceCategoryId;
+
   /// Starts a Mistake Notebook revision session from stored wrong answers.
   ///
   /// Runs as practice (`_isPractice = true`) so it cannot be used to farm
@@ -388,6 +403,48 @@ class QuizProvider extends ChangeNotifier {
     Haptics.tap();
     notifyListeners();
   }
+
+  /// Starts a Free Practice round: a fresh random draw of at most
+  /// [kQuestionsPerSet] questions from the whole mixed pool, narrowed to one
+  /// subject when [categoryId] is given. Unlimited rounds per day — there is
+  /// no lock and no daily credit involved.
+  ///
+  /// Always practice: like every other replayable run it earns no coins,
+  /// gems, XP or stats, writes no history and touches no leaderboard.
+  /// Unlimited plays must never be a way to farm rewards — this section is
+  /// revision, not the economy.
+  Future<void> startFreePractice({String? categoryId}) async {
+    _resetQuizState();
+    final runGeneration = _runGeneration;
+    _isDailyQuiz = false;
+    _isPractice = true;
+    _isFreePractice = true;
+    _practiceCategoryId = categoryId;
+    _isLoading = true;
+    notifyListeners();
+
+    final pool = await _repository.getPracticePool(categoryId: categoryId);
+    // The player may have quit (or started another run) while the pool was
+    // loading — that request must not revive the abandoned screen.
+    if (runGeneration != _runGeneration) return;
+
+    final shuffled = [...pool]..shuffle(_rng);
+    _questions = _shuffleOptions(shuffled.take(kQuestionsPerSet).toList());
+    _isLoading = false;
+
+    // Check for active boosters
+    _checkActiveBoosters();
+
+    if (_questions.isNotEmpty) _startTimer();
+    SoundService.instance.play('quiz_start');
+    Haptics.tap();
+    notifyListeners();
+  }
+
+  /// Another Free Practice round with the same subject filter — the point of
+  /// the section is playing as many rounds as you like.
+  Future<void> retryFreePractice() =>
+      startFreePractice(categoryId: _practiceCategoryId);
 
   /// True when the finished run was a chapter set that can offer a replay.
   bool get isChapterRun =>
@@ -520,6 +577,8 @@ class QuizProvider extends ChangeNotifier {
     _setIndex = 0;
     _isPractice = false;
     _isMistakeRevision = false;
+    _isFreePractice = false;
+    _practiceCategoryId = null;
     _chapterQuestionCount = 0;
     _currentIndex = 0;
     _score = 0;

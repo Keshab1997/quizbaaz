@@ -204,6 +204,36 @@ class QuizRepository {
     return merged.map(QuestionModel.fromJson).toList();
   }
 
+  /// The mixed pool Free Practice draws from: every student-visible chapter's
+  /// merged bank (bundled + admin-authored), optionally narrowed to one
+  /// subject. Same shape as the daily fallback pool in `DailyQuizGenerator`,
+  /// but built through [getChapterQuestions] so content deletions and the
+  /// per-chapter caches apply here too.
+  ///
+  /// De-duplicated by English stem: a question that ships in two banks is
+  /// played once, not twice in the same sitting.
+  Future<List<QuestionModel>> getPracticePool({String? categoryId}) async {
+    final categories = await getCategoriesAndChapters();
+    final pool = <QuestionModel>[];
+    final seenStems = <String>{};
+    for (final category in categories) {
+      if (categoryId != null && category.categoryId != categoryId) continue;
+      for (final chapter in category.chapters) {
+        if (chapter.jsonFile.isEmpty) continue;
+        final questions = await getChapterQuestions(
+          chapter.jsonFile,
+          chapterId: chapter.chapterId,
+        );
+        for (final question in questions) {
+          final stem = question.questionText.resolve('en').trim().toLowerCase();
+          if (stem.isEmpty || !seenStems.add(stem)) continue;
+          pool.add(question);
+        }
+      }
+    }
+    return pool;
+  }
+
   /// Folds admin-authored question counts into each chapter's total.
   ///
   /// `total_questions` in the asset catalogue counts only the bundled
