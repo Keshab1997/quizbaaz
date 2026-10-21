@@ -666,87 +666,6 @@
       ]
     },
     {
-      "category_id": "cat_economics",
-      "category_name": {
-        "en": "Economics — Understanding Economic Development",
-        "bn": "অর্থনীতি",
-        "hi": "अर्थशास्त्र — आर्थिक विकास की समझ"
-      },
-      "category_icon": "assets/icons/coin_and_gem_3d.png",
-      "color_hex": "#D97706",
-      "total_chapters": 4,
-      "chapters": [
-        {
-          "chapter_id": "eco_ch_01",
-          "chapter_number": 1,
-          "title": {
-            "en": "Development",
-            "bn": "উন্নয়ন",
-            "hi": "विकास"
-          },
-          "description": {
-            "en": "Income & other criteria, HDI, sustainability"
-          },
-          "total_questions": 10,
-          "json_file": "assets/data/questions/class10_eco_ch1.json",
-          "is_unlocked": true,
-          "stars": 0,
-          "best_score": 0
-        },
-        {
-          "chapter_id": "eco_ch_02",
-          "chapter_number": 2,
-          "title": {
-            "en": "Sectors of the Indian Economy",
-            "bn": "ভারতীয় অর্থনীতির খাতসমূহ",
-            "hi": "भारतीय अर्थव्यवस्था के क्षेत्रक"
-          },
-          "description": {
-            "en": "Primary/secondary/tertiary, organised vs unorganised"
-          },
-          "total_questions": 10,
-          "json_file": "assets/data/questions/class10_eco_ch2.json",
-          "is_unlocked": true,
-          "stars": 0,
-          "best_score": 0
-        },
-        {
-          "chapter_id": "eco_ch_03",
-          "chapter_number": 3,
-          "title": {
-            "en": "Money and Credit",
-            "bn": "অর্থ ও ঋণ",
-            "hi": "मुद्रा और साख"
-          },
-          "description": {
-            "en": "Barter, loans, SHGs, formal vs informal credit"
-          },
-          "total_questions": 0,
-          "json_file": "assets/data/questions/class10_eco_ch3.json",
-          "is_unlocked": true,
-          "stars": 0,
-          "best_score": 0
-        },
-        {
-          "chapter_id": "eco_ch_04",
-          "chapter_number": 4,
-          "title": {
-            "en": "Globalisation and the Indian Economy",
-            "bn": "বিশ্বায়ন ও ভারতীয় অর্থনীতি",
-            "hi": "वैश्वीकरण और भारतीय अर्थव्यवस्था"
-          },
-          "description": {
-            "en": "MNCs, WTO, fair globalisation"
-          },
-          "total_questions": 0,
-          "json_file": "assets/data/questions/class10_eco_ch4.json",
-          "is_unlocked": true,
-          "stars": 0,
-          "best_score": 0
-        }
-      ]
-    },
-    {
       "category_id": "cat_gen_sci",
       "category_name": {
         "en": "General Science & Space",
@@ -770,36 +689,6 @@
           },
           "total_questions": 10,
           "json_file": "assets/data/questions/sci_ch_01.json",
-          "is_unlocked": true,
-          "stars": 0,
-          "best_score": 0
-        }
-      ]
-    },
-    {
-      "category_id": "cat_literature",
-      "category_name": {
-        "en": "Literature — Bengali & English",
-        "bn": "সাহিত্য",
-        "hi": "साहित्य — बांग्ला और अंग्रेज़ी"
-      },
-      "category_icon": "assets/icons/chapter_quiz_3d.png",
-      "color_hex": "#EC4899",
-      "total_chapters": 1,
-      "chapters": [
-        {
-          "chapter_id": "lit_ch_01",
-          "chapter_number": 1,
-          "title": {
-            "en": "Bengali Literature & Great Writers",
-            "bn": "বাংলা সাহিত্য ও বিখ্যাত লেখক",
-            "hi": "बांग्ला साहित्य और महान लेखक"
-          },
-          "description": {
-            "en": "Rabindranath, Bankim, Sarat Chandra & more"
-          },
-          "total_questions": 10,
-          "json_file": "assets/data/questions/literature_ch1.json",
           "is_unlocked": true,
           "stars": 0,
           "best_score": 0
@@ -947,7 +836,7 @@
             "bn": "পরিবেশ ও তার সংরক্ষণ সম্পর্কিত গুরুত্বপূর্ণ ধারণা।",
             "hi": "पर्यावरण और उसके संरक्षण से संबंधित महत्वपूर्ण अवधारणाएँ।"
           },
-          "total_questions": 0,
+          "total_questions": 117,
           "json_file": "assets/data/questions/chhaya_prakashani_ch_04.json",
           "is_unlocked": true,
           "stars": 0,
@@ -966,7 +855,7 @@
             "bn": "কম্পিউটার ও তথ্যপ্রযুক্তির মৌলিক বিষয়গুলি।",
             "hi": "कंप्यूटर और सूचना प्रौद्योगिकी की मूल बातें।"
           },
-          "total_questions": 0,
+          "total_questions": 149,
           "json_file": "assets/data/questions/chhaya_prakashani_ch_05.json",
           "is_unlocked": true,
           "stars": 0,
