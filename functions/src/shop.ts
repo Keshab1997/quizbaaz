@@ -1,9 +1,9 @@
 // Trusted shop purchase (R02 — server-side wallet ledger).
-import * as admin from 'firebase-admin';
+import { FieldValue, getFirestore } from 'firebase-admin/firestore';
 import { https, logger } from 'firebase-functions/v1';
 import { callable } from './options';
 
-const db = () => admin.firestore();
+const db = () => getFirestore();
 
 /** Upper bound on a single purchase, so a mis-authored item cannot grant a
  *  huge stack of an item (or blow past the Firestore 1 MiB document limit). */
@@ -104,9 +104,9 @@ export const purchaseItem = callable().https.onCall(
       inventory[itemId] = (inventory[itemId] ?? 0) + quantity;
 
       tx.update(userRef, {
-        [currency]: admin.firestore.FieldValue.increment(-price),
+        [currency]: FieldValue.increment(-price),
         inventory,
-        updated_at: admin.firestore.FieldValue.serverTimestamp(),
+        updated_at: FieldValue.serverTimestamp(),
       });
       tx.set(historyRef, {
         item_id: itemId,
@@ -118,7 +118,7 @@ export const purchaseItem = callable().https.onCall(
         // Server clock (this runs server-side), kept as an ISO string because
         // the client's PurchaseHistory model parses it that way.
         purchased_at: new Date().toISOString(),
-        purchased_at_ts: admin.firestore.FieldValue.serverTimestamp(),
+        purchased_at_ts: FieldValue.serverTimestamp(),
       });
 
       logger.info('purchaseItem', { uid, itemId, currency, price, quantity });
