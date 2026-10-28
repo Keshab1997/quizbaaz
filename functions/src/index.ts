@@ -23,15 +23,15 @@
 //   firebase functions:secrets:set INITIAL_ADMIN_UID
 //   (paste your own Firebase uid) — then call setAdmin from that account.
 // ============================================================================
-import * as admin from 'firebase-admin';
+import { getApps, initializeApp } from 'firebase-admin/app';
 import { setAdmin } from './admin';
 import { broadcastAppUpdate } from './broadcast';
 import { submitDailyResult } from './daily';
 import { purchaseItem } from './shop';
 import { resolveBattle } from './battle';
 
-if (!admin.apps.length) {
-  admin.initializeApp();
+if (!getApps().length) {
+  initializeApp();
 }
 
 export { setAdmin, submitDailyResult, purchaseItem, resolveBattle };

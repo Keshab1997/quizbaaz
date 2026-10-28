@@ -1,5 +1,6 @@
 // Admin claim bootstrap & management (R02 — server-issued authority).
-import * as admin from 'firebase-admin';
+import { getAuth } from 'firebase-admin/auth';
+import { FieldValue, getFirestore } from 'firebase-admin/firestore';
 import { https, logger } from 'firebase-functions/v1';
 import { callable } from './options';
 
@@ -62,7 +63,7 @@ export const setAdmin = callable({ secrets: ['INITIAL_ADMIN_UID'] }).https.onCal
       );
     }
 
-    const user = await admin.auth().getUser(uid).catch(() => null);
+    const user = await getAuth().getUser(uid).catch(() => null);
     if (!user) {
       throw new https.HttpsError(
         'not-found',
@@ -70,18 +71,17 @@ export const setAdmin = callable({ secrets: ['INITIAL_ADMIN_UID'] }).https.onCal
       );
     }
 
-    await admin.auth().setCustomUserClaims(uid, grant ? { admin: true } : null);
+    await getAuth().setCustomUserClaims(uid, grant ? { admin: true } : null);
 
     // Audit trail — best-effort: a log write must never fail the claim change.
-    await admin
-      .firestore()
+    await getFirestore()
       .collection('admin_audit_logs')
       .add({
         action: grant ? 'grant_admin' : 'revoke_admin',
         target_uid: uid,
         by_uid: callerUid,
         via_bootstrap: isBootstrap,
-        at: admin.firestore.FieldValue.serverTimestamp(),
+        at: FieldValue.serverTimestamp(),
       })
       .catch((e) => logger.warn('setAdmin: audit write failed', { error: String(e) }));
 

@@ -1,9 +1,9 @@
 // Trusted battle settlement (R02 — clients can never declare a remote winner).
-import * as admin from 'firebase-admin';
+import { FieldValue, getFirestore } from 'firebase-admin/firestore';
 import { https, logger } from 'firebase-functions/v1';
 import { callable } from './options';
 
-const db = () => admin.firestore();
+const db = () => getFirestore();
 
 /** A single battle question pays at most 28 (base 10 + speed 10 + first 2 +
  *  capped streak 6). Even a long match stays well under this ceiling; anything
@@ -118,7 +118,7 @@ export const resolveBattle = callable().https.onCall(
         winner,
         resolved: true,
         ...(matchId ? { match_id: matchId } : {}),
-        resolved_at: admin.firestore.FieldValue.serverTimestamp(),
+        resolved_at: FieldValue.serverTimestamp(),
       });
 
       logger.info('resolveBattle', { roomId, matchId, winner, by: callerUid });

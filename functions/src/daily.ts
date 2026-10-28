@@ -1,9 +1,9 @@
 // Trusted daily-quiz credit (R02 — server-computed rewards, once per day).
-import * as admin from 'firebase-admin';
+import { FieldValue, getFirestore } from 'firebase-admin/firestore';
 import { https, logger } from 'firebase-functions/v1';
 import { callable } from './options';
 
-const db = () => admin.firestore();
+const db = () => getFirestore();
 
 /** Fixed UTC+05:30 — the app's home timezone. */
 const KOLKATA_OFFSET_MINUTES = 330;
@@ -301,13 +301,13 @@ export const submitDailyResult = callable().https.onCall(
       const xp = ((u['xp'] as number) ?? 0) + Math.round(score);
 
       tx.update(userRef, {
-        coins: admin.firestore.FieldValue.increment(coins),
-        gems: admin.firestore.FieldValue.increment(gems),
+        coins: FieldValue.increment(coins),
+        gems: FieldValue.increment(gems),
         xp,
         daily_streak: dailyStreak,
         last_streak_date: date,
         played_today_daily_quiz: true,
-        updated_at: admin.firestore.FieldValue.serverTimestamp(),
+        updated_at: FieldValue.serverTimestamp(),
       });
       tx.set(
         userRef.collection('quiz_history').doc(`daily_${date}`),
@@ -331,7 +331,7 @@ export const submitDailyResult = callable().https.onCall(
         correct,
         total,
         verified: verified.ok,
-        credited_at: admin.firestore.FieldValue.serverTimestamp(),
+        credited_at: FieldValue.serverTimestamp(),
       });
       // Today's row is written once, here, on the first submission of the day
       // — which is the same "one counted score per day" rule the client
@@ -350,7 +350,7 @@ export const submitDailyResult = callable().https.onCall(
           score,
           time_seconds: timeSeconds,
           streak: dailyStreak,
-          timestamp: admin.firestore.FieldValue.serverTimestamp(),
+          timestamp: FieldValue.serverTimestamp(),
         },
         { merge: true },
       );
