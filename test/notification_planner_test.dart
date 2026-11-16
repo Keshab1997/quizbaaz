@@ -2,7 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:quizbaaz/data/services/notification_planner.dart';
 
 void main() {
-  group('NotificationPlanner', () {
+  group('NotificationPlanner (legacy 19:00 API)', () {
     const hour = NotificationPlanner.hour;
     const minute = NotificationPlanner.minute;
 
@@ -83,5 +83,145 @@ void main() {
         isEmpty,
       );
     });
+  });
+
+  group('NotificationPlanner.planSchedule (multi-slot)', () {
+    test('early morning, unplayed, no streak → 4 slots today, no rescue', () {
+      final now = DateTime(2026, 11, 16, 7, 30);
+      final plan = NotificationPlanner.planSchedule(
+        now: now,
+        playedToday: false,
+        streak: 0,
+        days: 1,
+      );
+      expect(plan.map((p) => p.slot), [
+        NotificationSlot.winnerReveal,
+        NotificationSlot.morningKickoff,
+        NotificationSlot.afternoonEngage,
+        NotificationSlot.eveningPrime,
+      ]);
+      expect(plan.map((p) => p.open), [
+        'winners',
+        'daily_quiz',
+        'battle',
+        'daily_quiz',
+      ]);
+    });
+
+    test('active streak adds 21:30 rescue slot when unplayed', () {
+      final now = DateTime(2026, 11, 16, 7, 30);
+      final plan = NotificationPlanner.planSchedule(
+        now: now,
+        playedToday: false,
+        streak: 5,
+        days: 1,
+      );
+      expect(plan.map((p) => p.slot), [
+        NotificationSlot.winnerReveal,
+        NotificationSlot.morningKickoff,
+        NotificationSlot.afternoonEngage,
+        NotificationSlot.eveningPrime,
+        NotificationSlot.streakRescue,
+      ]);
+      expect(plan.last.scheduledAt, DateTime(2026, 11, 16, 21, 30));
+    });
+
+    test('playing today cancels daily quiz & streak slots for today only', () {
+      final now = DateTime(2026, 11, 16, 10, 30);
+      final plan = NotificationPlanner.planSchedule(
+        now: now,
+        playedToday: true,
+        streak: 5,
+        todayWinnerAnnounced: true,
+        days: 2,
+      );
+      final todaySlots = plan.where((p) => p.dayIndex == 0).toList();
+      expect(todaySlots.map((p) => p.slot), [NotificationSlot.afternoonEngage]);
+
+      final tomorrowSlots = plan.where((p) => p.dayIndex == 1).toList();
+      expect(tomorrowSlots.map((p) => p.slot), [
+        NotificationSlot.winnerReveal,
+        NotificationSlot.morningKickoff,
+        NotificationSlot.afternoonEngage,
+        NotificationSlot.eveningPrime,
+        NotificationSlot.streakRescue,
+      ]);
+    });
+
+    test('todayWinnerAnnounced suppresses 08:15 winner slot for today', () {
+      final now = DateTime(2026, 11, 16, 7, 0);
+      final plan = NotificationPlanner.planSchedule(
+        now: now,
+        playedToday: false,
+        streak: 0,
+        todayWinnerAnnounced: true,
+        days: 1,
+      );
+      expect(
+        plan.where((p) => p.slot == NotificationSlot.winnerReveal),
+        isEmpty,
+      );
+    });
+
+    test('afternoon topic prioritizes mistakes when present, else rotates', () {
+      final now = DateTime(2026, 11, 16, 7, 0);
+      final withoutMistakes =
+          NotificationPlanner.planSchedule(
+            now: now,
+            playedToday: false,
+            streak: 0,
+            mistakeCount: 0,
+            days: 4,
+          ).where((p) => p.slot == NotificationSlot.afternoonEngage).toList();
+
+      expect(withoutMistakes.map((p) => p.engageTopic), [
+        EngageTopic.battleArena,
+        EngageTopic.freePractice,
+        EngageTopic.chapterChallenge,
+        EngageTopic.battleArena,
+      ]);
+
+      final withMistakes =
+          NotificationPlanner.planSchedule(
+            now: now,
+            playedToday: false,
+            streak: 0,
+            mistakeCount: 4,
+            days: 4,
+          ).where((p) => p.slot == NotificationSlot.afternoonEngage).toList();
+
+      expect(withMistakes.map((p) => p.engageTopic), [
+        EngageTopic.mistakeRevision,
+        EngageTopic.battleArena,
+        EngageTopic.mistakeRevision,
+        EngageTopic.freePractice,
+      ]);
+      expect(withMistakes.first.open, 'mistake_quiz');
+    });
+
+    test(
+      'full window stays <= 35 alarms and ids round-trip via slot lookup',
+      () {
+        final now = DateTime(2026, 11, 16, 0, 1);
+        final plan = NotificationPlanner.planSchedule(
+          now: now,
+          playedToday: false,
+          streak: 10,
+        );
+        expect(plan.length, lessThanOrEqualTo(35));
+
+        final ids = plan.map((p) => p.id).toSet();
+        expect(ids, hasLength(plan.length));
+
+        for (final item in plan) {
+          expect(item.id, greaterThan(0));
+          expect(item.id, lessThan(1 << 31));
+          expect(
+            NotificationPlanner.slotFromNotificationId(item.id),
+            item.slot,
+          );
+        }
+      },
+    );
   });
 }

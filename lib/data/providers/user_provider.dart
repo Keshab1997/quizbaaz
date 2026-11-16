@@ -3,9 +3,11 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 
+import '../../l10n/app_strings.dart';
 import '../models/app_config.dart';
 import '../models/champion_model.dart';
 import '../models/leaderboard_model.dart';
+import '../models/notification_item.dart';
 import '../models/purchase_history.dart';
 import '../models/quiz_result_history.dart';
 import '../models/shop_item.dart';
@@ -15,6 +17,9 @@ import '../repositories/leaderboard_repository.dart';
 import '../services/competition_clock.dart';
 import '../services/daily_score_lock.dart';
 import '../services/hive_service.dart';
+import '../services/notification_inbox.dart';
+import '../services/notification_service.dart';
+import '../services/notification_winner_sync.dart';
 import '../services/push_sync.dart';
 import '../services/sync_service.dart';
 import '../services/trusted_ops_service.dart';
@@ -183,19 +188,10 @@ class UserProvider extends ChangeNotifier {
   bool get isLoading => _isLoading;
   bool get isInitialized => _isInitialized;
 
-  /// Yesterday's #1 champion (matched by date), or null when no champion
-  /// has been published for yesterday yet.
-  ChampionModel? get yesterdayTopChampion {
-    final yesterday = DateTime.now().subtract(const Duration(days: 1));
-    final key =
-        '${yesterday.year}-'
-        '${yesterday.month.toString().padLeft(2, '0')}-'
-        '${yesterday.day.toString().padLeft(2, '0')}';
-    for (final c in _champions) {
-      if (c.dateKey == key && c.rank == 1) return c;
-    }
-    return null;
-  }
+  /// Yesterday's #1 champion (matched by competition day), or null when no
+  /// champion has been published for yesterday yet.
+  ChampionModel? get yesterdayTopChampion =>
+      NotificationWinnerSync.findYesterdayTopChampion(_champions);
 
   /// Only real admins (Firestore flag or the config allow-list) see the panel.
   bool get isAdmin => _user.isAdmin || _config.isAdmin(_user.userId);
@@ -366,6 +362,7 @@ class UserProvider extends ChangeNotifier {
 
     _champions = _rankings.cachedChampions();
     _leaderboard = _rankings.cachedLeaderboard();
+    await _announceYesterdayWinnerIfNeeded();
 
     await refreshRankings();
 
@@ -382,10 +379,21 @@ class UserProvider extends ChangeNotifier {
       if (force || !_rankings.areChampionsFresh(_config.leaderboardTtl)) {
         _champions = await _rankings.refreshChampions();
       }
+      await _announceYesterdayWinnerIfNeeded();
     } catch (e) {
       debugPrint('UserProvider: ranking refresh failed – $e');
     }
     notifyListeners();
+  }
+
+  Future<void> _announceYesterdayWinnerIfNeeded() async {
+    final announced = await NotificationWinnerSync.announceIfNeeded(
+      champions: _champions,
+      currentUserId: _user.userId,
+    );
+    if (announced) {
+      unawaited(NotificationService.instance.syncFromHive());
+    }
   }
 
   /// Drains the offline queue and merges remote profile/stats/config.
@@ -981,6 +989,21 @@ class UserProvider extends ChangeNotifier {
           _user.dailyStreak,
         );
         _pendingStreakMilestone = reward;
+        unawaited(
+          NotificationInbox.instance.add(
+            NotificationItem(
+              id: 'streak_milestone_${_user.dailyStreak}_${_todayKey()}',
+              kind: NotificationItem.kindEngage,
+              title: S.notifMilestoneTitle(n: _user.dailyStreak),
+              body: S.notifMilestoneBody(
+                coins: reward.coins,
+                gems: reward.gems,
+              ),
+              open: 'daily_quiz',
+              receivedAt: now,
+            ),
+          ),
+        );
       }
     }
 
@@ -1068,6 +1091,8 @@ class UserProvider extends ChangeNotifier {
     await SyncService.pushStats(_user.userId, _stats);
     if (isDaily) {
       unawaited(PushSync.syncFromHive());
+    } else {
+      unawaited(NotificationService.instance.syncFromHive());
     }
     return outcome;
   }
@@ -1171,6 +1196,8 @@ class UserProvider extends ChangeNotifier {
       await HiveService.saveUser(_user);
       await SyncService.pushUser(_user);
       unawaited(PushSync.syncFromHive());
+    } else {
+      unawaited(NotificationService.instance.syncFromHive());
     }
     await SyncService.pushStats(_user.userId, _stats);
   }

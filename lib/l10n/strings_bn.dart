@@ -515,24 +515,79 @@ const Map<String, String> kStringsBn = {
   // ------------------------------------------------------ notifications --
   'notifDailyTitle': 'ডেইলি কুইজ লাইভ',
   'notifDailyBody': '১০টা প্রশ্ন। এক রান। লিডারবোর্ডে উঠুন।',
+  'notifDailyTitle2': '🏆 আজকের ডেইলি কুইজ অপেক্ষা করছে',
+  'notifDailyBody2':
+      'ভালো স্কোর করুন, বোনাস জেম পান এবং চ্যাম্পিয়ন পডিয়ামে উঠুন!',
+  'notifDailyTitle3': '🚀 আজ আপনার দশম শ্রেণির প্রস্তুতি যাচাই করুন',
+  'notifDailyBody3': 'মাত্র ১০টি প্রশ্ন · আজকের লাইভ লিডারবোর্ডে উঠে আসুন!',
   'notifStreakTitle': 'আপনার স্ট্রিক হুমকির মুখে',
   'notifStreakBody':
       '{n} দিনের স্ট্রিক — আজকের ডেইলি কুইজ খেলুন, স্ট্রিক বাঁচান।',
+  'notifMorningTitle1': '🌅 আজকের নতুন ডেইলি কুইজ শুরু!',
+  'notifMorningBody1':
+      '১০টি নতুন প্রশ্ন এসে গেছে — সবার আগে সেরা স্কোর গড়ে তুলুন।',
+  'notifMorningTitle2': '⚡ সকালের শুরুতেই এগিয়ে থাকুন',
+  'notifMorningBody2':
+      'মাত্র ৫ মিনিটে আজকের ডেইলি কুইজ খেলে কয়েন ও জেম জিতুন!',
+  'notifMorningTitle3': '🎯 নতুন দিন, নতুন লিডারবোর্ড',
+  'notifMorningBody3': 'আজকের ডেইলি কুইজ র‍্যাংকিংয়ে সবার আগে জায়গা করে নিন!',
+  'notifMorningStreakTitle': '🔥 {n} দিনের স্ট্রিক ধরে রাখুন',
+  'notifMorningStreakBody':
+      'সকালেই আজকের ডেইলি কুইজ খেলে আপনার স্ট্রিক সুরক্ষিত করুন।',
+  'notifRescueTitle': '⏰ {n} দিনের স্ট্রিক বাঁচানোর শেষ সুযোগ!',
+  'notifRescueBody':
+      'রাত ১২টার আগেই আজকের ডেইলি কুইজ খেলুন, নইলে স্ট্রিক ভেঙে যাবে!',
+  'notifWinnerMorningTitle': '🏆 গতকালের ডেইলি কুইজের বিজয়ীরা ঘোষিত!',
+  'notifWinnerMorningBody':
+      'গতকালের লিডারবোর্ডে কে প্রথম হয়েছে দেখুন এবং পুরস্কার সংগ্রহ করুন।',
+  'notifWinnerTitle': '🏆 গতকালের বিজয়ী: {name}',
+  'notifWinnerBody':
+      'গতকালের ডেইলি কুইজে {score} পয়েন্ট নিয়ে প্রথম! আজ কি আপনি তাকে হারাতে পারবেন?',
+  'notifWinnerBodyWithGift':
+      '{score} পয়েন্টে জয়ী হয়ে {gift} জিতেছেন! বিজয়ীদের মঞ্চ দেখতে ট্যাপ করুন।',
+  'notifWinnerSelfChampTitle': '👑 আপনি গতকালের ডেইলি কুইজের চ্যাম্পিয়ন!',
+  'notifWinnerSelfChampBody':
+      'আপনি {score} পয়েন্ট নিয়ে ১ম হয়েছেন! বিজয়ীদের মঞ্চ দেখতে ট্যাপ করুন।',
+  'notifWinnerSelfTopTitle': '🏅 গতকালের কুইজে আপনার স্থান #{rank}!',
+  'notifWinnerSelfTopBody':
+      'চ্যাম্পিয়ন: {winner} ({score} পয়েন্ট)। সব বিজয়ীদের দেখতে ট্যাপ করুন!',
+  'notifMistakeTitle': '🧠 {n}টি ভুল প্রশ্ন রিভিশনের জন্য অপেক্ষা করছে',
+  'notifMistakeBody':
+      'দুর্বলতাকে শক্তিতে বদলান — পরপর ২ বার সঠিক উত্তর দিলেই মাস্টার হয়ে যাবেন!',
+  'notifBattleTitle': '⚔️ ১v১ কুইজ লড়াইয়ে নামবেন?',
+  'notifBattleBody':
+      'লাইভ প্লেয়ার বা স্মার্ট বটের সাথে খেলুন এবং বোনাস কয়েন জিতুন!',
+  'notifPracticeTitle': '⚡ দ্রুত ১০টি প্রশ্নের ফ্রি প্র্যাকটিস',
+  'notifPracticeBody':
+      'সীমাহীন মিক্সড প্রশ্ন, কোনো চাপ নেই — আপনার গতি বাড়িয়ে নিন!',
+  'notifChapterTitle': '📚 আজ নতুন একটি অধ্যায় আয়ত্ত করুন',
+  'notifChapterBody': 'যেকোনো বিষয়ের সেট খেলুন বা অধ্যায়ের নোটস রিভিশন করুন।',
+  'notifMilestoneTitle': '🔥 {n} দিনের স্ট্রিক মাইলফলক!',
+  'notifMilestoneBody':
+      '+{coins} কয়েন ও +{gems} জেম আনলক হয়েছে — এই ধারা বজায় রাখুন!',
   'notifPermissionDenied':
       'নোটিফিকেশন অনুমতি বন্ধ। ডেইলি কুইজ রিমাইন্ডার পেতে সিস্টেম সেটিংসে চালু করুন।',
-  'notifBellOn': 'ডেইলি কুইজ রিমাইন্ডার চালু · সন্ধ্যা ৭টা',
+  'notifBellOn':
+      'স্মার্ট অ্যালার্ট চালু · বিজয়ী ঘোষণা, অনুশীলন ও সন্ধ্যা ৭টা কুইজ',
   'notifBellOff': 'রিমাইন্ডার বন্ধ। প্রোফাইল → সেটিংসে নোটিফিকেশন চালু করুন।',
   'notifChannelName': 'দৈনিক রিমাইন্ডার',
   'notifChannelDesc': 'ডেইলি কুইজ ও স্ট্রিক রিমাইন্ডার',
+  'notifChannelWinnersName': 'ডেইলি কুইজ বিজয়ী',
+  'notifChannelWinnersDesc': 'গতকালের ডেইলি কুইজ চ্যাম্পিয়নের ফলাফল',
+  'notifChannelEngageName': 'অনুশীলন ও ব্যাটল',
+  'notifChannelEngageDesc': 'ভুল সংশোধন, ১v১ ব্যাটল ও অনুশীলন রিমাইন্ডার',
   'notifInboxTitle': 'নোটিফিকেশন',
   'notifInboxNone': 'এখনও কোনো নোটিফিকেশন নেই',
-  'notifInboxEmptyBody': 'ডেইলি কুইজ রিমাইন্ডার ও লাইভ পুশ এখানে দেখা যাবে।',
+  'notifInboxEmptyBody':
+      'ডেইলি কুইজ রিমাইন্ডার, গতকালের বিজয়ী, অনুশীলন ও লাইভ পুশ এখানে দেখা যাবে।',
   'notifInboxClear': 'সব মুছুন',
   'notifInboxClearConfirm':
       'এই ডিভাইস থেকে সব নোটিফিকেশন মুছে ফেলবেন? ফেরানো যাবে না।',
   'notifInboxCleared': 'নোটিফিকেশনের ইতিহাস মুছে গেছে',
   'notifKindReminder': 'রিমাইন্ডার',
   'notifKindPush': 'পুশ',
+  'notifKindWinner': 'বিজয়ী',
+  'notifKindEngage': 'চ্যালেঞ্জ',
   'notifJustNow': 'এখনই',
   'notifMinutesAgo': '{n} মি আগে',
   'onboardingSkip': 'এড়িয়ে যান',

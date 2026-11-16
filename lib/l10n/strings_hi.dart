@@ -512,24 +512,79 @@ const Map<String, String> kStringsHi = {
   // ------------------------------------------------------ notifications --
   'notifDailyTitle': 'डेली क्विज़ लाइव है',
   'notifDailyBody': '10 प्रश्न। एक रन। लीडरबोर्ड चढ़ो।',
+  'notifDailyTitle2': '🏆 आज की डेली क्विज़ आपका इंतज़ार कर रही है',
+  'notifDailyBody2':
+      'बढ़िया स्कोर करें, बोनस जेम्स कमाएँ और चैंपियन पोडियम पर छा जाएँ!',
+  'notifDailyTitle3': '🚀 आज अपनी कक्षा 10 की तैयारी परखें',
+  'notifDailyBody3': '10 तेज़ सवाल · आज के लाइव लीडरबोर्ड पर ऊपर चढ़ें!',
   'notifStreakTitle': 'आपकी स्ट्रीक खतरे में है',
   'notifStreakBody': '{n}-दिन की स्ट्रीक — आज की डेली क्विज़ खेलकर बचाएँ।',
+  'notifMorningTitle1': '🌅 आज की नई डेली क्विज़ तैयार है!',
+  'notifMorningBody1': '10 नए सवाल आ गए हैं — आज सबसे पहले टॉप स्कोर बनाएँ!',
+  'notifMorningTitle2': '⚡ सुबह की रेस में आगे निकलें',
+  'notifMorningBody2':
+      'सिर्फ़ 5 मिनट में आज की डेली क्विज़ खेलें और कॉइन व जेम्स जीतें!',
+  'notifMorningTitle3': '🎯 नया दिन, नया लीडरबोर्ड',
+  'notifMorningBody3':
+      'आज की डेली क्विज़ रैंकिंग में सबसे पहले अपनी जगह बनाएँ!',
+  'notifMorningStreakTitle': '🔥 अपनी {n}-दिन की स्ट्रीक जारी रखें',
+  'notifMorningStreakBody':
+      'सुबह ही आज की डेली क्विज़ खेलें और अपनी स्ट्रीक सुरक्षित रखें।',
+  'notifRescueTitle': '⏰ आपकी {n}-दिन की स्ट्रीक बचाने का आखिरी मौका!',
+  'notifRescueBody':
+      'रात 12 बजे से पहले आज की डेली क्विज़ खेलें वरना स्ट्रीक टूट जाएगी!',
+  'notifWinnerMorningTitle': '🏆 कल की डेली क्विज़ के विजेता आ गए!',
+  'notifWinnerMorningBody':
+      'देखिए कल लीडरबोर्ड पर किसने टॉप किया और इनाम जीतें!',
+  'notifWinnerTitle': '🏆 कल के विजेता: {name}',
+  'notifWinnerBody':
+      'कल की डेली क्विज़ में {score} अंक के साथ टॉप किया! क्या आप आज उन्हें हरा पाएंगे?',
+  'notifWinnerBodyWithGift':
+      '{score} अंक से जीतकर {gift} पाया! विजेता मंच देखने के लिए टैप करें।',
+  'notifWinnerSelfChampTitle': '👑 आप कल की डेली क्विज़ के चैंपियन बने!',
+  'notifWinnerSelfChampBody':
+      'आपने {score} अंक के साथ #1 स्थान पाया! विजेता मंच देखने के लिए टैप करें।',
+  'notifWinnerSelfTopTitle': '🏅 कल की क्विज़ में आपकी रैंक #{rank} रही!',
+  'notifWinnerSelfTopBody':
+      'चैंपियन: {winner} ({score} अंक)। सभी विजेता देखने के लिए टैप करें!',
+  'notifMistakeTitle': '🧠 {n} गलतियाँ सुधारने के लिए इंतज़ार कर रही हैं',
+  'notifMistakeBody':
+      'कमज़ोरी को ताक़त बनाएँ — लगातार 2 सही जवाब देकर इन्हें मास्टर करें!',
+  'notifBattleTitle': '⚔️ 1v1 क्विज़ बैटल के लिए तैयार हैं?',
+  'notifBattleBody':
+      'लाइव खिलाड़ी या स्मार्ट बॉट को चुनौती दें और बोनस कॉइन जीतें!',
+  'notifPracticeTitle': '⚡ 10 सवालों का तेज़ प्रैक्टिस स्प्रिंट',
+  'notifPracticeBody':
+      'अनलिमिटेड मिक्स सवाल, कोई दबाव नहीं — अपनी स्पीड तेज़ करें!',
+  'notifChapterTitle': '📚 आज एक नया अध्याय पूरा करें',
+  'notifChapterBody':
+      'किसी विषय का सेट खेलें या कुछ मिनटों में अध्याय नोट्स रिवाइज़ करें!',
+  'notifMilestoneTitle': '🔥 {n}-दिन की स्ट्रीक माइलस्टोन!',
+  'notifMilestoneBody':
+      '+{coins} कॉइन और +{gems} जेम्स अनलॉक हुए — ऐसे ही आगे बढ़ते रहें!',
   'notifPermissionDenied':
       'नोटिफिकेशन अनुमति बंद है। डेली क्विज़ रिमाइंडर के लिए सिस्टम सेटिंग में चालू करें।',
-  'notifBellOn': 'डेली क्विज़ रिमाइंडर चालू · शाम 7:00',
+  'notifBellOn': 'स्मार्ट अलर्ट चालू · विजेता घोषणा, अभ्यास और शाम 7:00 क्विज़',
   'notifBellOff':
       'रिमाइंडर बंद हैं। प्रोफ़ाइल → सेटिंग में नोटिफिकेशन चालू करें।',
   'notifChannelName': 'दैनिक रिमाइंडर',
   'notifChannelDesc': 'डेली क्विज़ और स्ट्रीक रिमाइंडर',
+  'notifChannelWinnersName': 'डेली क्विज़ विजेता',
+  'notifChannelWinnersDesc': 'कल के डेली क्विज़ चैंपियन के नतीजे',
+  'notifChannelEngageName': 'अभ्यास और बैटल',
+  'notifChannelEngageDesc': 'गलती सुधार, 1v1 बैटल और अभ्यास रिमाइंडर',
   'notifInboxTitle': 'नोटिफ़िकेशन',
   'notifInboxNone': 'अभी कोई नोटिफ़िकेशन नहीं',
-  'notifInboxEmptyBody': 'डेली क्विज़ रिमाइंडर और लाइव पुश यहाँ दिखेंगे।',
+  'notifInboxEmptyBody':
+      'डेली क्विज़ रिमाइंडर, कल के विजेता, अभ्यास और लाइव पुश यहाँ दिखेंगे।',
   'notifInboxClear': 'सब हटाएँ',
   'notifInboxClearConfirm':
       'इस डिवाइस से सारे नोटिफ़िकेशन हटा दें? यह वापस नहीं आएगा।',
   'notifInboxCleared': 'नोटिफ़िकेशन इतिहास साफ़ हो गया',
   'notifKindReminder': 'रिमाइंडर',
   'notifKindPush': 'पुश',
+  'notifKindWinner': 'विजेता',
+  'notifKindEngage': 'चुनौती',
   'notifJustNow': 'अभी',
   'notifMinutesAgo': '{n} मि पहले',
   'onboardingSkip': 'छोड़ें',

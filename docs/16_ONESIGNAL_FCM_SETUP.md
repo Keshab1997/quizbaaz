@@ -4,8 +4,10 @@ Live server-push (admin broadcast, 1v1 challenge ping, “you won yesterday”)
 needs Android **FCM** and iOS **APNs**. We do **not** add
 `firebase_messaging`. OneSignal owns the FCM token and the dashboard.
 
-Local 19:00 Daily Quiz reminders (docs/15) stay. They work offline with
-no App ID. OneSignal is extra, and stays off until the App ID is pasted.
+Local multi-slot reminders (08:15 winner check, 10:00 morning kickoff,
+16:00 practice/battle/mistake nudge, 19:00 Daily Quiz, and 21:30 streak
+rescue when an active streak is at risk) stay. They work offline with no
+App ID. OneSignal is extra, and stays off until the App ID is pasted.
 
 ---
 
@@ -15,11 +17,11 @@ no App ID. OneSignal is extra, and stays off until the App ID is pasted.
 |---|---|
 | After `runApp` | `OneSignal.initialize` + click + foreground listeners (unawaited, 8s timeout) |
 | Foreground / tap | Row written to the Hive inbox (`NotificationInbox`) |
-| Dashboard ready | `login(firebaseUid or Hive userId)` + tags |
+| Dashboard ready | `login(firebaseUid or Hive userId)` + tags; announces yesterday's #1 winner in `NotificationInbox` once per day |
 | Profile → Notifications off | `pushSubscription.optOut()` **and** cancel local reminders |
 | Google sign-in / sign-out | `login` / `logout` |
 | Language change | tag `lang` = `en` / `bn` / `hi` |
-| Daily Quiz finished | tag `played_today` / `streak` |
+| Daily Quiz finished | tag `played_today` / `streak`; cancels remaining daily slots for today |
 
 Tags you can segment on in the OneSignal dashboard:
 
@@ -31,9 +33,16 @@ Click payload (`additionalData`):
 { "open": "daily_quiz" }
 ```
 
-Other `open` values: `battle`, `online_battle`, `leaderboard`, `shop`,
-`app_update` (release pushes → the Update Center; see
+Other `open` values: `winners` (Leaderboard → WINNERS tab), `battle`,
+`online_battle`, `leaderboard`, `practice`, `chapters`, `mistake_quiz`,
+`rewards`, `shop`, `app_update` (release pushes → the Update Center; see
 [`docs/22_APP_UPDATE_PUSH.md`](./22_APP_UPDATE_PUSH.md)).
+
+### Yesterday's Daily Quiz Winner push
+
+`functions/src/broadcast.ts` also exposes:
+- `scheduledDailyWinnerPush` (08:15 IST cron) — reads `champions/{yesterday}/winners` (or `leaderboard/{yesterday}/scores`) and pushes a trilingual `en`/`bn`/`hi` notification with `{"open": "winners"}` via `ONESIGNAL_REST_KEY`.
+- `broadcastDailyWinner` (HTTP `POST`, guarded by `x-qb-broadcast-secret`) — manual/hook equivalent.
 
 ---
 

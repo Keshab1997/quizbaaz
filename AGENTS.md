@@ -294,7 +294,7 @@ lib/
 │   ├── models/       plain serialisable classes (fromJson/toJson)
 │   ├── providers/    ChangeNotifier state — the only source of UI state
 │   ├── repositories/ thin layer between providers and services
-│   └── services/     hive · firestore · sync · shop · imgbb · translation · notifications · inbox · onesignal
+│   └── services/     hive · firestore · sync · shop · imgbb · translation · notifications · planner · winner_sync · inbox · onesignal
 ├── l10n/             string catalogues + generated `S` accessor      (§5)
 └── presentation/
     ├── screens/      one folder per feature, one screen per file
@@ -309,7 +309,7 @@ One public class per file.
 **Size map** (helps you decide what to read before editing):
 `user_provider` ~1050 · `quiz_provider` 782 · `firestore_service` 470 ·
 `hive_service` ~620 · `shop_service` 418 · `sync_service` 355 ·
-`battle_provider` 1099 · `notification_service` ~260 · `onesignal_service` ~190 · `notification_inbox` ~180 · `locale_provider` 90.
+`battle_provider` 1099 · `notification_service` ~600 · `notification_planner` ~315 · `notification_winner_sync` ~135 · `onesignal_service` ~190 · `notification_inbox` ~180 · `locale_provider` 90.
 
 ---
 
@@ -687,3 +687,4 @@ response or action, including clarifying questions.
 - Guest players see an optional Google sign-in card below the dashboard header; it reuses `AuthProvider` and `UserProvider.linkGoogleAccount()` to link local progress without sending them to Profile.
 - Chapter sets have a reading-only Revision screen (`chapter_revision_screen.dart`, per-set "Revise" chip plus a chapter-level "Revise Chapter" button). Revision is never locked: any set can be read even while locked for play (only *playing* sets stays ordered), and `setIndex: null` revises the whole chapter in authored order with "Set N" markers at each set boundary. It loads through `QuizRepository.getChapterQuestions` like the quiz, so new bundled/admin questions appear automatically; it never touches `QuizProvider` state.
 - The Update Center shows the *incoming* release's notes before install, from `config/app` (`latest_release_version` / `latest_release_notes` on `AppConfig`). The `Publish Release Notes` workflow publishes them automatically on the version-bump push (`tool/publish_release_notes.py` does the write; run it by hand only as a fallback). The bundled `WhatsNewCatalog` only knows the installed build, so it serves the after-install view; without the remote fields the card says the notes arrive with the update — never repeat the installed build's notes under an update prompt.
+- Multi-slot notifications & yesterday's Daily Quiz winner reveal: `NotificationPlanner.planSchedule` schedules up to 5 slots/day over 7 days (<= 35 alarms) across three Android channels: `08:15` yesterday's winner reveal (`open: 'winners'`), `10:00` morning Daily Quiz kickoff, `16:00` personalized engagement prompt (prioritizing `mistake_quiz` when `mistakeCount > 0`, otherwise rotating `battle` / `practice` / `chapters`), `19:00` signature evening Daily Quiz reminder, and `21:30` last-chance streak rescue (armed only while `streak > 0 && !playedToday`). `NotificationWinnerSync.announceIfNeeded` writes yesterday's #1 champion (or personalized #1 / Top-10 rank) to `NotificationInbox` once per `CompetitionClock` day, and `functions/src/broadcast.ts` adds `scheduledDailyWinnerPush` (`15 8 * * *` `Asia/Kolkata`) + `broadcastDailyWinner`.

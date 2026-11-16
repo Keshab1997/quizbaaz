@@ -1,17 +1,23 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../data/providers/quiz_provider.dart';
+import '../data/services/hive_service.dart';
 import 'screens/battle/battle_screen.dart';
 import 'screens/battle/online_battle_screen.dart';
+import 'screens/chapter_quiz/chapter_list_screen.dart';
 import 'screens/daily_quiz/daily_quiz_ready_screen.dart';
 import 'screens/daily_quiz/daily_quiz_screen.dart';
 import 'screens/leaderboard/leaderboard_screen.dart';
+import 'screens/practice/practice_screen.dart';
+import 'screens/rewards/rewards_screen.dart';
 import 'screens/shop/shop_screen.dart';
 import 'screens/update/update_center_screen.dart';
 
-/// Root navigator so a OneSignal tap can open a screen even when the app
-/// was killed. [MaterialApp] in `main.dart` must use [key].
+/// Root navigator so a OneSignal or local notification tap can open a screen
+/// even when the app was killed. [MaterialApp] in `main.dart` must use [key].
 class AppNavigator {
   AppNavigator._();
 
@@ -19,16 +25,16 @@ class AppNavigator {
 
   static String? _pendingOpen;
 
-  /// Handles a OneSignal `additionalData.open` value.
+  /// Handles an `open` target from OneSignal `additionalData.open`, a local
+  /// notification payload, or an inbox card tap.
   ///
-  /// Known values: `daily_quiz`, `battle`, `online_battle`, `leaderboard`,
-  /// `shop`, `app_update`. Anything else (or null) just brings the app to
-  /// the dashboard.
+  /// Known values: `daily_quiz`, `winners`, `leaderboard`, `battle`,
+  /// `online_battle`, `practice`, `chapters`, `mistake_quiz`, `rewards`,
+  /// `shop`, `app_update`. Anything else (or null) brings the app to the
+  /// dashboard.
   ///
-  /// `daily_quiz` opens the ready gate (or resumes a live run): tapping the
-  /// 19:00 reminder must not spend the day's counted attempt on its own.
-  /// `app_update` opens the Update Center (changelog + Play update) — it is
-  /// the landing pad for release pushes and the dashboard banner.
+  /// `daily_quiz` opens the ready gate (or resumes a live run): tapping a
+  /// reminder must not spend the day's counted attempt on its own.
   static void handleOpen(String? open) {
     if (open == null || open.isEmpty) return;
     final nav = key.currentState;
@@ -58,6 +64,13 @@ class AppNavigator {
         // in flight is resumed rather than restarted.
         nav.push(MaterialPageRoute<void>(builder: (_) => _dailyQuizEntry(ctx)));
         break;
+      case 'winners':
+        nav.push(
+          MaterialPageRoute<void>(
+            builder: (_) => const LeaderboardScreen(initialTabIndex: 1),
+          ),
+        );
+        break;
       case 'battle':
         nav.push(MaterialPageRoute<void>(builder: (_) => const BattleScreen()));
         break;
@@ -69,6 +82,24 @@ class AppNavigator {
       case 'leaderboard':
         nav.push(
           MaterialPageRoute<void>(builder: (_) => const LeaderboardScreen()),
+        );
+        break;
+      case 'practice':
+        nav.push(
+          MaterialPageRoute<void>(builder: (_) => const PracticeQuizScreen()),
+        );
+        break;
+      case 'chapters':
+        nav.push(
+          MaterialPageRoute<void>(builder: (_) => const ChapterListScreen()),
+        );
+        break;
+      case 'mistake_quiz':
+        _openMistakeOrPractice(nav, ctx);
+        break;
+      case 'rewards':
+        nav.push(
+          MaterialPageRoute<void>(builder: (_) => const RewardsScreen()),
         );
         break;
       case 'shop':
@@ -94,5 +125,27 @@ class AppNavigator {
       // No QuizProvider in scope — the gate is the harmless option.
     }
     return liveRun ? const DailyQuizScreen() : const DailyQuizReadyScreen();
+  }
+
+  /// Starts Mistake Notebook revision when mistakes exist (outside route build),
+  /// else opens Free Practice so a cleared notebook never lands on an empty quiz.
+  static void _openMistakeOrPractice(NavigatorState nav, BuildContext ctx) {
+    try {
+      final hasMistakes =
+          HiveService.isInitialized && HiveService.mistakeQuestionCount() > 0;
+      final quiz = ctx.read<QuizProvider>();
+      if (hasMistakes && !quiz.hasLiveDailyRun) {
+        unawaited(quiz.startMistakeQuiz());
+        nav.push(
+          MaterialPageRoute<void>(builder: (_) => const DailyQuizScreen()),
+        );
+        return;
+      }
+    } catch (_) {
+      // Fall back to Free Practice if QuizProvider is out of scope.
+    }
+    nav.push(
+      MaterialPageRoute<void>(builder: (_) => const PracticeQuizScreen()),
+    );
   }
 }

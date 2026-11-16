@@ -11,7 +11,8 @@ import '../../../l10n/app_strings.dart';
 import '../../app_navigator.dart';
 import '../../widgets/glass_card.dart';
 
-/// Inbox of captured local reminders and OneSignal pushes.
+/// Inbox of captured local reminders, yesterday's winner alerts, engagement
+/// prompts, and OneSignal pushes.
 ///
 /// Hive only — a fresh install is empty on purpose.
 class NotificationHistoryScreen extends StatefulWidget {
@@ -224,14 +225,14 @@ class _NotificationHistoryScreenState extends State<NotificationHistoryScreen> {
   }
 
   Widget _buildCard(NotificationItem item) {
-    final color = item.isReminder ? AppColors.neonGold : AppColors.neonPurple;
-    final kindLabel = item.isReminder ? S.notifKindReminder : S.notifKindPush;
+    final style = _styleFor(item);
+    final hasAction = item.open != null && item.open!.isNotEmpty;
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 12),
       child: GlassCard(
         borderRadius: 18,
-        borderColor: color.withValues(alpha: item.read ? 0.18 : 0.45),
+        borderColor: style.color.withValues(alpha: item.read ? 0.18 : 0.45),
         onTap: () => _openItem(item),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -241,14 +242,10 @@ class _NotificationHistoryScreenState extends State<NotificationHistoryScreen> {
               height: 42,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: color.withValues(alpha: 0.14),
-                border: Border.all(color: color.withValues(alpha: 0.4)),
+                color: style.color.withValues(alpha: 0.14),
+                border: Border.all(color: style.color.withValues(alpha: 0.4)),
               ),
-              child: Icon(
-                item.isReminder ? Icons.alarm_rounded : Icons.campaign_rounded,
-                color: color,
-                size: 20,
-              ),
+              child: Icon(style.icon, color: style.color, size: 20),
             ),
             const SizedBox(width: 12),
             Expanded(
@@ -263,13 +260,13 @@ class _NotificationHistoryScreenState extends State<NotificationHistoryScreen> {
                           vertical: 2,
                         ),
                         decoration: BoxDecoration(
-                          color: color.withValues(alpha: 0.15),
+                          color: style.color.withValues(alpha: 0.15),
                           borderRadius: BorderRadius.circular(6),
                         ),
                         child: Text(
-                          kindLabel,
+                          style.label,
                           style: TextStyle(
-                            color: color,
+                            color: style.color,
                             fontSize: 9,
                             fontWeight: FontWeight.w900,
                           ),
@@ -323,10 +320,51 @@ class _NotificationHistoryScreenState extends State<NotificationHistoryScreen> {
                   color: AppColors.neonCyan,
                 ),
               ),
+            ] else if (hasAction) ...[
+              const SizedBox(width: 4),
+              const Padding(
+                padding: EdgeInsets.only(top: 10),
+                child: Icon(
+                  Icons.chevron_right_rounded,
+                  color: AppColors.textMuted,
+                  size: 18,
+                ),
+              ),
             ],
           ],
         ),
       ),
+    );
+  }
+
+  ({Color color, IconData icon, String label}) _styleFor(
+    NotificationItem item,
+  ) {
+    if (item.isWinner) {
+      return (
+        color: AppColors.neonGold,
+        icon: Icons.emoji_events_rounded,
+        label: S.notifKindWinner,
+      );
+    }
+    if (item.isEngage) {
+      return (
+        color: AppColors.neonCyan,
+        icon: Icons.bolt_rounded,
+        label: S.notifKindEngage,
+      );
+    }
+    if (item.isReminder) {
+      return (
+        color: AppColors.neonOrange,
+        icon: Icons.alarm_rounded,
+        label: S.notifKindReminder,
+      );
+    }
+    return (
+      color: AppColors.neonPurple,
+      icon: Icons.campaign_rounded,
+      label: S.notifKindPush,
     );
   }
 

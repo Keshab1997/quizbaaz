@@ -5,6 +5,15 @@
 class NotificationItem {
   static const kindReminder = 'reminder';
   static const kindPush = 'push';
+  static const kindWinner = 'winner';
+  static const kindEngage = 'engage';
+
+  static const Set<String> _knownKinds = {
+    kindReminder,
+    kindPush,
+    kindWinner,
+    kindEngage,
+  };
 
   final String id;
   final String kind;
@@ -25,6 +34,9 @@ class NotificationItem {
   });
 
   bool get isReminder => kind == kindReminder;
+  bool get isPush => kind == kindPush;
+  bool get isWinner => kind == kindWinner;
+  bool get isEngage => kind == kindEngage;
 
   NotificationItem copyWith({
     String? title,
@@ -54,9 +66,10 @@ class NotificationItem {
   };
 
   factory NotificationItem.fromJson(Map<String, dynamic> json) {
+    final rawKind = json['kind']?.toString() ?? '';
     return NotificationItem(
       id: json['id']?.toString() ?? '',
-      kind: json['kind']?.toString() == kindPush ? kindPush : kindReminder,
+      kind: _knownKinds.contains(rawKind) ? rawKind : kindReminder,
       title: json['title']?.toString() ?? '',
       body: json['body']?.toString() ?? '',
       open: json['open']?.toString(),

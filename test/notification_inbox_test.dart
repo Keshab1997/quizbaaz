@@ -103,6 +103,22 @@ void main() {
       expect(restored.receivedAt, original.receivedAt);
     });
 
+    test('winner and engage kinds round-trip and expose helpers', () {
+      final winner = NotificationItem.fromJson(
+        item(id: 'w1', kind: NotificationItem.kindWinner).toJson(),
+      );
+      expect(winner.kind, NotificationItem.kindWinner);
+      expect(winner.isWinner, isTrue);
+      expect(winner.isEngage, isFalse);
+
+      final engage = NotificationItem.fromJson(
+        item(id: 'e1', kind: NotificationItem.kindEngage).toJson(),
+      );
+      expect(engage.kind, NotificationItem.kindEngage);
+      expect(engage.isEngage, isTrue);
+      expect(engage.isWinner, isFalse);
+    });
+
     test('unknown kind falls back to reminder', () {
       final restored = NotificationItem.fromJson({
         'id': 'x',

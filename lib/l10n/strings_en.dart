@@ -526,25 +526,79 @@ const Map<String, String> kStringsEn = {
   // ------------------------------------------------------ notifications --
   'notifDailyTitle': 'Daily Quiz is live',
   'notifDailyBody': '10 questions. One run. Climb the board.',
+  'notifDailyTitle2': '🏆 Today\'s Daily Quiz awaits',
+  'notifDailyBody2':
+      'Score high, earn bonus gems, and challenge the champion podium!',
+  'notifDailyTitle3': '🚀 Test your Class 10 prep today',
+  'notifDailyBody3': '10 quick questions · Climb today\'s live leaderboard!',
   'notifStreakTitle': 'Your streak is on the line',
   'notifStreakBody': '{n}-day streak — play today\'s Daily Quiz to keep it.',
+  'notifMorningTitle1': '🌅 Fresh Daily Quiz is ready!',
+  'notifMorningBody1':
+      '10 new questions just dropped — set today\'s top score early.',
+  'notifMorningTitle2': '⚡ Beat the morning rush',
+  'notifMorningBody2':
+      'Play today\'s Daily Quiz in 5 minutes and earn coins & gems!',
+  'notifMorningTitle3': '🎯 New day, new leaderboard',
+  'notifMorningBody3': 'Be among the first on today\'s Daily Quiz ranking!',
+  'notifMorningStreakTitle': '🔥 Keep your {n}-day streak blazing',
+  'notifMorningStreakBody':
+      'Play today\'s Daily Quiz early and protect your winning streak.',
+  'notifRescueTitle': '⏰ Last chance for your {n}-day streak!',
+  'notifRescueBody':
+      'Midnight is near — play today\'s Daily Quiz before 12 AM to keep it alive.',
+  'notifWinnerMorningTitle': '🏆 Yesterday\'s Daily Quiz Winners are out!',
+  'notifWinnerMorningBody':
+      'Tap to see who topped yesterday\'s leaderboard & claim rewards.',
+  'notifWinnerTitle': '🏆 Yesterday\'s Winner: {name}',
+  'notifWinnerBody':
+      'Topped yesterday\'s Daily Quiz with {score} pts! Can you beat them today?',
+  'notifWinnerBodyWithGift':
+      'Won with {score} pts & unlocked {gift}! Tap to see the Winners podium.',
+  'notifWinnerSelfChampTitle': '👑 You won Yesterday\'s Daily Quiz!',
+  'notifWinnerSelfChampBody':
+      'You finished #1 with {score} pts! Tap to view the Winners podium.',
+  'notifWinnerSelfTopTitle': '🏅 You placed #{rank} in Yesterday\'s Quiz!',
+  'notifWinnerSelfTopBody':
+      'Champion: {winner} ({score} pts). Tap to view all winners!',
+  'notifMistakeTitle': '🧠 {n} mistakes waiting to be mastered',
+  'notifMistakeBody':
+      'Turn weak spots into strengths — 2 right answers in a row clears each one!',
+  'notifBattleTitle': '⚔️ Ready for a 1v1 quiz battle?',
+  'notifBattleBody':
+      'Challenge a live player or smart bot and win bonus coins!',
+  'notifPracticeTitle': '⚡ Quick 10-question practice sprint',
+  'notifPracticeBody':
+      'Unlimited mixed questions, zero pressure — sharpen your Class 10 speed!',
+  'notifChapterTitle': '📚 Conquer a new chapter today',
+  'notifChapterBody':
+      'Pick a subject set or revise chapter notes in just a few minutes.',
+  'notifMilestoneTitle': '🔥 {n}-Day Streak Milestone!',
+  'notifMilestoneBody':
+      'Unlocked +{coins} coins & +{gems} gems — keep the momentum going!',
   'notifPermissionDenied':
       'Notification permission is off. Enable it in system settings to get Daily Quiz reminders.',
-  'notifBellOn': 'Daily Quiz reminder is on · 7:00 PM',
+  'notifBellOn': 'Smart alerts on · Winner reveal, Practice & 7:00 PM Quiz',
   'notifBellOff':
       'Reminders are off. Turn on Notifications in Profile → Settings.',
   'notifChannelName': 'Daily reminders',
   'notifChannelDesc': 'Daily Quiz and streak reminders',
+  'notifChannelWinnersName': 'Daily Quiz Winners',
+  'notifChannelWinnersDesc': 'Yesterday\'s Daily Quiz champion results',
+  'notifChannelEngageName': 'Practice & Battles',
+  'notifChannelEngageDesc': 'Mistake revision, 1v1 battles and practice nudges',
   'notifInboxTitle': 'Notifications',
   'notifInboxNone': 'No notifications yet',
   'notifInboxEmptyBody':
-      'Daily Quiz reminders and live pushes will show up here.',
+      'Daily Quiz reminders, yesterday\'s winners, practice nudges, and live pushes will show up here.',
   'notifInboxClear': 'Clear all',
   'notifInboxClearConfirm':
       'Remove every notification from this device? This cannot be undone.',
   'notifInboxCleared': 'Notification history cleared',
   'notifKindReminder': 'REMINDER',
   'notifKindPush': 'PUSH',
+  'notifKindWinner': 'WINNER',
+  'notifKindEngage': 'CHALLENGE',
   'notifJustNow': 'Just now',
   'notifMinutesAgo': '{n}m ago',
   'onboardingSkip': 'Skip',

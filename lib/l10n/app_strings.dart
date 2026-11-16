@@ -595,14 +595,69 @@ class S {
   // ---- notifications
   static String get notifDailyTitle => raw('notifDailyTitle');
   static String get notifDailyBody => raw('notifDailyBody');
+  static String get notifDailyTitle2 => raw('notifDailyTitle2');
+  static String get notifDailyBody2 => raw('notifDailyBody2');
+  static String get notifDailyTitle3 => raw('notifDailyTitle3');
+  static String get notifDailyBody3 => raw('notifDailyBody3');
   static String get notifStreakTitle => raw('notifStreakTitle');
   static String notifStreakBody({required Object n}) =>
       fill(raw('notifStreakBody'), {'n': n});
+  static String get notifMorningTitle1 => raw('notifMorningTitle1');
+  static String get notifMorningBody1 => raw('notifMorningBody1');
+  static String get notifMorningTitle2 => raw('notifMorningTitle2');
+  static String get notifMorningBody2 => raw('notifMorningBody2');
+  static String get notifMorningTitle3 => raw('notifMorningTitle3');
+  static String get notifMorningBody3 => raw('notifMorningBody3');
+  static String notifMorningStreakTitle({required Object n}) =>
+      fill(raw('notifMorningStreakTitle'), {'n': n});
+  static String get notifMorningStreakBody => raw('notifMorningStreakBody');
+  static String notifRescueTitle({required Object n}) =>
+      fill(raw('notifRescueTitle'), {'n': n});
+  static String get notifRescueBody => raw('notifRescueBody');
+  static String get notifWinnerMorningTitle => raw('notifWinnerMorningTitle');
+  static String get notifWinnerMorningBody => raw('notifWinnerMorningBody');
+  static String notifWinnerTitle({required Object name}) =>
+      fill(raw('notifWinnerTitle'), {'name': name});
+  static String notifWinnerBody({required Object score}) =>
+      fill(raw('notifWinnerBody'), {'score': score});
+  static String notifWinnerBodyWithGift({
+    required Object gift,
+    required Object score,
+  }) => fill(raw('notifWinnerBodyWithGift'), {'gift': gift, 'score': score});
+  static String get notifWinnerSelfChampTitle =>
+      raw('notifWinnerSelfChampTitle');
+  static String notifWinnerSelfChampBody({required Object score}) =>
+      fill(raw('notifWinnerSelfChampBody'), {'score': score});
+  static String notifWinnerSelfTopTitle({required Object rank}) =>
+      fill(raw('notifWinnerSelfTopTitle'), {'rank': rank});
+  static String notifWinnerSelfTopBody({
+    required Object score,
+    required Object winner,
+  }) => fill(raw('notifWinnerSelfTopBody'), {'score': score, 'winner': winner});
+  static String notifMistakeTitle({required Object n}) =>
+      fill(raw('notifMistakeTitle'), {'n': n});
+  static String get notifMistakeBody => raw('notifMistakeBody');
+  static String get notifBattleTitle => raw('notifBattleTitle');
+  static String get notifBattleBody => raw('notifBattleBody');
+  static String get notifPracticeTitle => raw('notifPracticeTitle');
+  static String get notifPracticeBody => raw('notifPracticeBody');
+  static String get notifChapterTitle => raw('notifChapterTitle');
+  static String get notifChapterBody => raw('notifChapterBody');
+  static String notifMilestoneTitle({required Object n}) =>
+      fill(raw('notifMilestoneTitle'), {'n': n});
+  static String notifMilestoneBody({
+    required Object coins,
+    required Object gems,
+  }) => fill(raw('notifMilestoneBody'), {'coins': coins, 'gems': gems});
   static String get notifPermissionDenied => raw('notifPermissionDenied');
   static String get notifBellOn => raw('notifBellOn');
   static String get notifBellOff => raw('notifBellOff');
   static String get notifChannelName => raw('notifChannelName');
   static String get notifChannelDesc => raw('notifChannelDesc');
+  static String get notifChannelWinnersName => raw('notifChannelWinnersName');
+  static String get notifChannelWinnersDesc => raw('notifChannelWinnersDesc');
+  static String get notifChannelEngageName => raw('notifChannelEngageName');
+  static String get notifChannelEngageDesc => raw('notifChannelEngageDesc');
   static String get notifInboxTitle => raw('notifInboxTitle');
   static String get notifInboxNone => raw('notifInboxNone');
   static String get notifInboxEmptyBody => raw('notifInboxEmptyBody');
@@ -611,6 +666,8 @@ class S {
   static String get notifInboxCleared => raw('notifInboxCleared');
   static String get notifKindReminder => raw('notifKindReminder');
   static String get notifKindPush => raw('notifKindPush');
+  static String get notifKindWinner => raw('notifKindWinner');
+  static String get notifKindEngage => raw('notifKindEngage');
   static String get notifJustNow => raw('notifJustNow');
   static String notifMinutesAgo({required Object n}) =>
       fill(raw('notifMinutesAgo'), {'n': n});

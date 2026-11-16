@@ -25,7 +25,11 @@
 // ============================================================================
 import * as admin from 'firebase-admin';
 import { setAdmin } from './admin';
-import { broadcastAppUpdate } from './broadcast';
+import {
+  broadcastAppUpdate,
+  broadcastDailyWinner,
+  scheduledDailyWinnerPush,
+} from './broadcast';
 import { submitDailyResult } from './daily';
 import { purchaseItem } from './shop';
 import { resolveBattle } from './battle';
@@ -35,4 +39,8 @@ if (!admin.apps.length) {
 }
 
 export { setAdmin, submitDailyResult, purchaseItem, resolveBattle };
-export { broadcastAppUpdate };
+export {
+  broadcastAppUpdate,
+  broadcastDailyWinner,
+  scheduledDailyWinnerPush,
+};
