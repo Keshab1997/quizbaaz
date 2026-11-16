@@ -7,6 +7,23 @@ class WhatsNewCatalog {
   WhatsNewCatalog._();
 
   static const Map<String, Map<String, List<String>>> _releases = {
+    '1.0.25': {
+      'en': [
+        'Yesterday\'s Daily Quiz Winner alerts — morning reveal & inbox card showing who topped yesterday (plus personalized cards if you finished #1 or Top 10).',
+        'Smart quiz reminders & streak rescue — morning kickoff, afternoon practice/battle nudges, 7 PM Daily Quiz, and 9:30 PM rescue (auto-muted after you play).',
+        'Upgraded Notification Inbox with Winner & Challenge badges, direct deep links, and security & stability fixes.',
+      ],
+      'bn': [
+        'গতকালের ডেইলি কুইজ বিজয়ী অ্যালার্ট — সকালেই জানুন কে প্রথম হয়েছেন, আর আপনি #১ বা টপ-১০ হলে পাবেন বিশেষ অভিনন্দন কার্ড।',
+        'স্মার্ট কুইজ ও স্ট্রিক রেসকিউ রিমাইন্ডার — সকালের কুইজ, বিকেলের অনুশীলন/ব্যাটল/ভুল রিভিশন, সন্ধ্যা ৭টা ও রাত ৯:৩০ স্ট্রিক বাঁচানোর অ্যালার্ট (খেললেই চুপ)।',
+        'নতুন নোটিফিকেশন ইনবক্স (বিজয়ী ও চ্যালেঞ্জ ব্যাজ), সরাসরি পেজ ওপেন এবং সিকিউরিটি ও স্থায়িত্ব আপডেট।',
+      ],
+      'hi': [
+        'कल की डेली क्विज़ विजेता अलर्ट — सुबह जानें किसने टॉप किया, और आप #1 या टॉप-10 में आएँ तो ख़ास विजेता कार्ड पाएँ।',
+        'स्मार्ट क्विज़ व स्ट्रीक रेस्क्यू रिमाइंडर — सुबह क्विज़, दोपहर अभ्यास/बैटल/गलती रिवीज़न, शाम 7 बजे व रात 9:30 स्ट्रीक बचाव अलर्ट (खेलने पर शांत)।',
+        'नया नोटिफ़िकेशन इनबॉक्स (विजेता और चुनौती बैज), डायरेक्ट लिंक और सुरक्षा व स्थिरता सुधार।',
+      ],
+    },
     '1.0.24': {
       'en': [
         'Free Practice — unlimited rounds! Every round draws 10 fresh random questions from the whole bank, or one subject you choose. Play as many times a day as you like — pure revision, nothing is counted.',
