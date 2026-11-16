@@ -8,6 +8,12 @@
 # The following line activates a set of recommended lints for Flutter apps,
 # packages, and plugins designed to encourage good coding practices.
 analyzer:
+  errors:
+    # Flutter 3.47+ (stable 3.50) deprecated package:flutter/material.dart and
+    # Flutter's localization delegates in favor of package:material_ui /
+    # package:cupertino_ui. Ignore until we drop Flutter <3.47 compatibility
+    # and migrate imports across lib/ and test/.
+    deprecated_member_use: ignore
   exclude:
     - build/**
     - android/**
