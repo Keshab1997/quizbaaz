@@ -52,7 +52,7 @@ dependencies:
   # OS-scheduled Daily Quiz reminders (no FCM). See docs/15.
   flutter_local_notifications: ^22.3.0
   timezone: ^0.11.2
-  flutter_timezone: ^4.1.1
+  flutter_timezone: ^5.1.1
   # Live push via OneSignal (FCM under the hood). See docs/16.
   onesignal_flutter: ^5.3.4
   # Real versionName/versionCode for splash + Profile (never hardcode 1.0.0).
