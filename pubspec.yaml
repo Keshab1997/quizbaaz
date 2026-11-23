@@ -48,7 +48,7 @@ dependencies:
   # none are hardcoded under lib/.
   google_mobile_ads: ^9.1.0
   # SHA-1 for question fingerprints (duplicate detection).
-  crypto: ^3.0.3
+  crypto: ^3.0.8
   # OS-scheduled Daily Quiz reminders (no FCM). See docs/15.
   flutter_local_notifications: ^22.3.0
   timezone: ^0.11.2
