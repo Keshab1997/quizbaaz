@@ -14,10 +14,10 @@ packages:
     description:
       path: "."
       ref: master
-      resolved-ref: d78f2d9588c48966b77ff9f7a3827f123fba36d6
+      resolved-ref: e0ebe6e979083dca92f1473a36358a06e282f91e
       url: "https://github.com/Keshab1997/admin_api_key_manager"
     source: git
-    version: "1.2.0"
+    version: "1.4.0"
   archive:
     dependency: transitive
     description:
@@ -250,6 +250,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.9"
+  cupertino_ui:
+    dependency: transitive
+    description:
+      name: cupertino_ui
+      sha256: c3eaf7f5bdfee36deb0b14a4cbf7602f1b6b8d8b8576b81f38fc08c25881c94c
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.7"
   dbus:
     dependency: transitive
     description:
@@ -806,6 +814,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.13.0"
+  material_ui:
+    dependency: transitive
+    description:
+      name: material_ui
+      sha256: a6b19012df437a356cbc01f8ea22a105e07194c47c9a6009da0032a0ce35c4ab
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.11.1"
   meta:
     dependency: transitive
     description:
