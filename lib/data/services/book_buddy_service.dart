@@ -269,7 +269,7 @@ class BookBuddyService {
     }
     final text = (raw ?? '').toString().trim();
     if (text.isEmpty) return const LocalizedText.empty();
-    return LocalizedText({lang: text, 'en': text});
+    return LocalizedText({'en': text, 'bn': text, 'hi': text, lang: text});
   }
 
   static (String, String) _splitTitleAndBody(String rawResponse) {

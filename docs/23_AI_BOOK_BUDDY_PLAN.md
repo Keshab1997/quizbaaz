@@ -107,6 +107,9 @@ skipped** to avoid Firebase Blaze/Cloud Functions billing costs right now.
 - [x] **T7 — Verification & Quality Gates:**
   - [x] Add unit tests in `test/book_buddy_test.dart` (OCR routing, Q&A, MCQ parsing, Hive storage, 0-coin practice guarantee).
   - [x] Pass `python3 tool/preflight.py`, `python3 tool/verify_l10n.py`, `flutter analyze`, and `flutter test test/book_buddy_test.dart`.
+- [x] **T8 — Rich Study Typography & Independent AI Reply Language:**
+  - [x] Add `BookMarkdownView` (`lib/presentation/widgets/book_markdown_view.dart`) rendering styled section banners (`##`), neon study tables (`| ... |`), golden key-takeaway callouts (`**মূল কথা:**`), bullet/numbered lists, Hind Siliguri Bengali font auto-detection, and `A-` / `A+` font-size scaling.
+  - [x] Add dedicated AI Reply Language switcher (`বাংলা` / `English` / `हिन्दी`) persisted in Hive (`metaBookBuddyLanguage`) so students can get Bengali/Hindi explanations & MCQs even when the app UI is in English.
 
 ### Remaining / Future Enhancements (Deferred)
 - [ ] **F1 — Non-Admin Student Key Delivery (Zero-Cost Proxy or Student Key Pool):** Keep `firestore.rules` untouched for now; before public student rollout, attach either a free Cloudflare Worker endpoint or a dedicated rate-limited `student_ai_keys` Firestore collection so raw admin keys are never exposed to general players.

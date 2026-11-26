@@ -39,6 +39,7 @@ class BookStudySession {
   final int ocrScore;
   final bool usedVisionFallback;
   final String tokenSavingsLabel;
+  final String replyLanguage;
   final List<BookChatTurn> turns;
   final List<QuestionModel> generatedMcqs;
   final int createdAtMs;
@@ -51,6 +52,7 @@ class BookStudySession {
     this.ocrScore = 0,
     this.usedVisionFallback = false,
     this.tokenSavingsLabel = '',
+    this.replyLanguage = 'bn',
     this.turns = const [],
     this.generatedMcqs = const [],
     required this.createdAtMs,
@@ -66,6 +68,7 @@ class BookStudySession {
     int? ocrScore,
     bool? usedVisionFallback,
     String? tokenSavingsLabel,
+    String? replyLanguage,
     List<BookChatTurn>? turns,
     List<QuestionModel>? generatedMcqs,
     int? updatedAtMs,
@@ -77,6 +80,7 @@ class BookStudySession {
       ocrScore: ocrScore ?? this.ocrScore,
       usedVisionFallback: usedVisionFallback ?? this.usedVisionFallback,
       tokenSavingsLabel: tokenSavingsLabel ?? this.tokenSavingsLabel,
+      replyLanguage: replyLanguage ?? this.replyLanguage,
       turns: turns ?? this.turns,
       generatedMcqs: generatedMcqs ?? this.generatedMcqs,
       createdAtMs: createdAtMs,
@@ -94,6 +98,7 @@ class BookStudySession {
       ocrScore: (json['ocr_score'] as num?)?.toInt() ?? 0,
       usedVisionFallback: json['used_vision_fallback'] == true,
       tokenSavingsLabel: (json['token_savings_label'] ?? '').toString(),
+      replyLanguage: (json['reply_language'] ?? 'bn').toString(),
       turns:
           rawTurns
               .whereType<Map>()
@@ -124,6 +129,7 @@ class BookStudySession {
     'ocr_score': ocrScore,
     'used_vision_fallback': usedVisionFallback,
     'token_savings_label': tokenSavingsLabel,
+    'reply_language': replyLanguage,
     'turns': turns.map((t) => t.toJson()).toList(),
     'generated_mcqs': generatedMcqs.map((q) => q.toJson()).toList(),
     'created_at_ms': createdAtMs,

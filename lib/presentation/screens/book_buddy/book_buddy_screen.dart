@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
@@ -10,13 +11,18 @@ import '../../../data/providers/user_provider.dart';
 import '../../../data/services/haptic_service.dart';
 import '../../../data/services/sound_service.dart';
 import '../../../l10n/app_strings.dart';
+import '../../../l10n/strings_bn.dart';
+import '../../../l10n/strings_en.dart';
+import '../../../l10n/strings_hi.dart';
+import '../../widgets/book_markdown_view.dart';
 import '../../widgets/glass_card.dart';
 import '../../widgets/neon_button.dart';
 import '../daily_quiz/daily_quiz_screen.dart';
 
-/// AI Book Buddy — Students photograph a textbook page, receive a clear
-/// step-by-step explanation, ask follow-up questions, and launch an unranked
-/// practice MCQ quiz generated directly from their book page.
+/// AI Book Buddy — Students photograph a textbook page, choose their preferred
+/// AI explanation language (`বাংলা` / `English` / `हिन्दी` independent of app
+/// language), read rich formatted study cards with adjustable font size, ask
+/// follow-up questions, and launch an unranked practice MCQ quiz.
 class BookBuddyScreen extends StatefulWidget {
   const BookBuddyScreen({super.key});
 
@@ -35,6 +41,40 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
     super.dispose();
   }
 
+  /// Resolves a string key in the student's chosen AI reply language (`en`/`bn`/`hi`)
+  /// so quick-prompt chips and initial prompts match the selected reply language!
+  String _promptInLang(String key, String langCode) {
+    final map = switch (langCode) {
+      'bn' => kStringsBn,
+      'hi' => kStringsHi,
+      _ => kStringsEn,
+    };
+    return map[key] ?? kStringsEn[key] ?? S.raw(key);
+  }
+
+  TextStyle _contentStyle(
+    String langCode, {
+    required double fontSize,
+    FontWeight fontWeight = FontWeight.w700,
+    Color color = AppColors.textPrimary,
+    double height = 1.4,
+  }) {
+    if (langCode == 'bn') {
+      return GoogleFonts.hindSiliguri(
+        fontSize: fontSize,
+        fontWeight: fontWeight,
+        color: color,
+        height: height,
+      );
+    }
+    return GoogleFonts.poppins(
+      fontSize: fontSize,
+      fontWeight: fontWeight,
+      color: color,
+      height: height,
+    );
+  }
+
   Future<void> _pickAndScan(ImageSource source) async {
     final buddy = context.read<BookBuddyProvider>();
     if (buddy.isBusy) return;
@@ -44,6 +84,7 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
 
     final messenger = ScaffoldMessenger.of(context);
     final userId = context.read<UserProvider>().user.userId;
+    final replyLang = buddy.replyLanguage;
 
     try {
       final picked = await _picker.pickImage(
@@ -59,9 +100,12 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
 
       await buddy.scanBookPage(
         imageBytes: bytes,
-        languageCode: S.code,
-        defaultTitle: S.bookBuddyDefaultTitle,
-        initialQuestionLabel: S.bookBuddyInitialPrompt,
+        languageCode: replyLang,
+        defaultTitle: _promptInLang('bookBuddyDefaultTitle', replyLang),
+        initialQuestionLabel: _promptInLang(
+          'bookBuddyInitialPrompt',
+          replyLang,
+        ),
         userId: userId,
       );
     } catch (_) {
@@ -92,7 +136,7 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
     final userId = context.read<UserProvider>().user.userId;
     await buddy.askQuestion(
       question: text,
-      languageCode: S.code,
+      languageCode: buddy.replyLanguage,
       userId: userId,
     );
   }
@@ -105,7 +149,7 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
     Haptics.tap();
     final userId = context.read<UserProvider>().user.userId;
     await buddy.generateMcqs(
-      languageCode: S.code,
+      languageCode: buddy.replyLanguage,
       count: count,
       userId: userId,
     );
@@ -144,7 +188,7 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
       appBar: AppBar(
         title: Text(
           S.bookBuddyTitle,
-          style: const TextStyle(fontWeight: FontWeight.w900, fontSize: 17),
+          style: const TextStyle(fontWeight: FontWeight.w900, fontSize: 18),
         ),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios_new, size: 20),
@@ -152,33 +196,39 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
         ),
         actions: [
           if (session != null && !buddy.isBusy)
-            TextButton.icon(
-              onPressed: () {
-                SoundService.instance.playClick();
-                Haptics.tap();
-                setState(() => _showExtractedText = false);
-                buddy.startNewScan();
-              },
-              icon: const Icon(
-                Icons.add_a_photo_rounded,
-                size: 16,
-                color: AppColors.neonCyan,
-              ),
-              label: Text(
-                S.bookBuddyNewScan,
-                style: const TextStyle(
+            Padding(
+              padding: const EdgeInsets.only(right: 6),
+              child: TextButton.icon(
+                onPressed: () {
+                  SoundService.instance.playClick();
+                  Haptics.tap();
+                  setState(() => _showExtractedText = false);
+                  buddy.startNewScan();
+                },
+                icon: const Icon(
+                  Icons.add_a_photo_rounded,
+                  size: 17,
                   color: AppColors.neonCyan,
-                  fontWeight: FontWeight.w800,
-                  fontSize: 12,
+                ),
+                label: Text(
+                  S.bookBuddyNewScan,
+                  style: const TextStyle(
+                    color: AppColors.neonCyan,
+                    fontWeight: FontWeight.w800,
+                    fontSize: 13,
+                  ),
                 ),
               ),
             ),
         ],
       ),
       body: ListView(
-        padding: const EdgeInsets.fromLTRB(16, 8, 16, 36),
+        padding: const EdgeInsets.fromLTRB(16, 8, 16, 40),
         physics: const BouncingScrollPhysics(),
         children: [
+          // Top control bar: AI Reply Language selector + Font size A-/A+
+          _buildLanguageAndFontBar(buddy, showFontControls: session != null),
+          const SizedBox(height: 14),
           if (buddy.errorMessage != null) ...[
             _buildErrorBanner(buddy),
             const SizedBox(height: 14),
@@ -193,22 +243,191 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
             ],
           ] else ...[
             _buildSessionHeaderCard(buddy, session),
-            const SizedBox(height: 14),
+            const SizedBox(height: 16),
             for (final turn in session.turns) ...[
-              _buildTurnCard(turn),
-              const SizedBox(height: 12),
+              _buildTurnCard(buddy, turn),
+              const SizedBox(height: 14),
             ],
             if (buddy.isAsking) ...[
               _buildStatusTile(S.bookBuddyThinking),
-              const SizedBox(height: 12),
+              const SizedBox(height: 14),
             ],
             _buildQuickPromptsRow(buddy),
-            const SizedBox(height: 10),
+            const SizedBox(height: 12),
             _buildAskInputCard(buddy),
-            const SizedBox(height: 18),
+            const SizedBox(height: 20),
             _buildMcqGeneratorCard(buddy, session),
           ],
         ],
+      ),
+    );
+  }
+
+  /// Dedicated AI Reply Language selector (`বাংলা` / `English` / `हिन्दी`) +
+  /// instant text size `A-` / `A+` controls.
+  Widget _buildLanguageAndFontBar(
+    BookBuddyProvider buddy, {
+    required bool showFontControls,
+  }) {
+    final options = <(String, String)>[
+      ('bn', S.bookBuddyLangBn),
+      ('en', S.bookBuddyLangEn),
+      ('hi', S.bookBuddyLangHi),
+    ];
+
+    return GlassCard(
+      borderRadius: 18,
+      padding: const EdgeInsets.symmetric(horizontal: 13, vertical: 11),
+      borderColor: AppColors.neonPurple.withValues(alpha: 0.38),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              const Icon(
+                Icons.translate_rounded,
+                size: 17,
+                color: AppColors.neonCyan,
+              ),
+              const SizedBox(width: 7),
+              Expanded(
+                child: Text(
+                  S.bookBuddyLangLabel,
+                  style: const TextStyle(
+                    color: AppColors.textSecondary,
+                    fontSize: 12.5,
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+              ),
+              if (showFontControls) ...[
+                _buildFontStepButton(
+                  label: 'A-',
+                  enabled: buddy.textScale > BookBuddyProvider.minTextScale,
+                  onTap: () => buddy.adjustTextScale(-0.08),
+                ),
+                const SizedBox(width: 6),
+                _buildFontStepButton(
+                  label: 'A+',
+                  enabled: buddy.textScale < BookBuddyProvider.maxTextScale,
+                  onTap: () => buddy.adjustTextScale(0.08),
+                ),
+              ],
+            ],
+          ),
+          const SizedBox(height: 10),
+          Row(
+            children: [
+              for (var i = 0; i < options.length; i++) ...[
+                if (i > 0) const SizedBox(width: 8),
+                Expanded(
+                  child: _buildLanguagePill(
+                    code: options[i].$1,
+                    label: options[i].$2,
+                    selected: buddy.replyLanguage == options[i].$1,
+                    onTap:
+                        buddy.isBusy
+                            ? null
+                            : () {
+                              SoundService.instance.playClick();
+                              Haptics.tap();
+                              buddy.setReplyLanguage(options[i].$1);
+                            },
+                  ),
+                ),
+              ],
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildFontStepButton({
+    required String label,
+    required bool enabled,
+    required VoidCallback onTap,
+  }) {
+    return InkWell(
+      borderRadius: BorderRadius.circular(10),
+      onTap:
+          enabled
+              ? () {
+                SoundService.instance.playClick();
+                Haptics.tap();
+                onTap();
+              }
+              : null,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color:
+              enabled
+                  ? AppColors.neonCyan.withValues(alpha: 0.16)
+                  : Colors.white.withValues(alpha: 0.04),
+          border: Border.all(
+            color:
+                enabled
+                    ? AppColors.neonCyan.withValues(alpha: 0.45)
+                    : Colors.white12,
+          ),
+        ),
+        child: Text(
+          label,
+          style: TextStyle(
+            color: enabled ? AppColors.neonCyan : AppColors.textMuted,
+            fontSize: 12,
+            fontWeight: FontWeight.w900,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildLanguagePill({
+    required String code,
+    required String label,
+    required bool selected,
+    required VoidCallback? onTap,
+  }) {
+    return InkWell(
+      borderRadius: BorderRadius.circular(12),
+      onTap: onTap,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 170),
+        padding: const EdgeInsets.symmetric(vertical: 9),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          gradient: selected ? AppColors.cyanGradient : null,
+          color: selected ? null : Colors.white.withValues(alpha: 0.05),
+          border: Border.all(
+            color:
+                selected
+                    ? AppColors.neonCyan
+                    : Colors.white.withValues(alpha: 0.14),
+          ),
+          boxShadow:
+              selected
+                  ? [
+                    BoxShadow(
+                      color: AppColors.neonCyan.withValues(alpha: 0.28),
+                      blurRadius: 12,
+                    ),
+                  ]
+                  : null,
+        ),
+        child: Text(
+          label,
+          textAlign: TextAlign.center,
+          style: _contentStyle(
+            code,
+            fontSize: 13.5,
+            fontWeight: FontWeight.w800,
+            color: selected ? AppColors.bgDark : AppColors.textPrimary,
+            height: 1.2,
+          ),
+        ),
       ),
     );
   }
@@ -224,7 +443,7 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
           const Icon(
             Icons.error_outline_rounded,
             color: AppColors.neonRed,
-            size: 20,
+            size: 21,
           ),
           const SizedBox(width: 10),
           Expanded(
@@ -232,7 +451,7 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
               _localizedError(buddy.errorMessage!),
               style: const TextStyle(
                 color: AppColors.textPrimary,
-                fontSize: 12.5,
+                fontSize: 13.5,
                 fontWeight: FontWeight.w600,
               ),
             ),
@@ -264,7 +483,7 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
               borderRadius: BorderRadius.circular(14),
               child: Image.memory(
                 previewBytes,
-                height: 160,
+                height: 170,
                 width: double.infinity,
                 fit: BoxFit.cover,
               ),
@@ -278,7 +497,7 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
             textAlign: TextAlign.center,
             style: const TextStyle(
               color: AppColors.textPrimary,
-              fontSize: 14,
+              fontSize: 15,
               fontWeight: FontWeight.w700,
             ),
           ),
@@ -291,26 +510,26 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
     return GlassCard(
       borderRadius: 24,
       borderColor: AppColors.neonCyan.withValues(alpha: 0.38),
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.all(22),
       child: Column(
         children: [
           Container(
-            width: 68,
-            height: 68,
+            width: 72,
+            height: 72,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               gradient: AppColors.cyanGradient,
               boxShadow: [
                 BoxShadow(
                   color: AppColors.neonCyan.withValues(alpha: 0.35),
-                  blurRadius: 20,
+                  blurRadius: 22,
                 ),
               ],
             ),
             child: const Icon(
               Icons.document_scanner_rounded,
               color: AppColors.bgDark,
-              size: 34,
+              size: 36,
             ),
           ),
           const SizedBox(height: 16),
@@ -319,7 +538,7 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
             textAlign: TextAlign.center,
             style: const TextStyle(
               color: AppColors.textPrimary,
-              fontSize: 18,
+              fontSize: 20,
               fontWeight: FontWeight.w900,
             ),
           ),
@@ -329,27 +548,27 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
             textAlign: TextAlign.center,
             style: const TextStyle(
               color: AppColors.textSecondary,
-              fontSize: 13,
-              height: 1.45,
+              fontSize: 14.5,
+              height: 1.5,
             ),
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 22),
           Row(
             children: [
               Expanded(
                 child: NeonButton(
                   text: S.bookBuddyScanCamera,
-                  height: 48,
+                  height: 50,
                   gradient: AppColors.cyanGradient,
                   glowColor: AppColors.neonCyan,
                   icon: const Icon(
                     Icons.camera_alt_rounded,
                     color: AppColors.bgDark,
-                    size: 19,
+                    size: 20,
                   ),
                   textStyle: const TextStyle(
                     color: AppColors.bgDark,
-                    fontSize: 13.5,
+                    fontSize: 14,
                     fontWeight: FontWeight.w900,
                   ),
                   onPressed: () => _pickAndScan(ImageSource.camera),
@@ -359,17 +578,17 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
               Expanded(
                 child: NeonButton(
                   text: S.bookBuddyScanGallery,
-                  height: 48,
+                  height: 50,
                   gradient: AppColors.violetGradient,
                   glowColor: AppColors.neonPurple,
                   icon: const Icon(
                     Icons.photo_library_rounded,
                     color: Colors.white,
-                    size: 19,
+                    size: 20,
                   ),
                   textStyle: const TextStyle(
                     color: Colors.white,
-                    fontSize: 13.5,
+                    fontSize: 14,
                     fontWeight: FontWeight.w900,
                   ),
                   onPressed: () => _pickAndScan(ImageSource.gallery),
@@ -398,8 +617,8 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
             );
 
     return GlassCard(
-      borderRadius: 20,
-      borderColor: AppColors.neonCyan.withValues(alpha: 0.35),
+      borderRadius: 22,
+      borderColor: AppColors.neonCyan.withValues(alpha: 0.4),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -408,22 +627,27 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
             children: [
               if (previewBytes != null) ...[
                 ClipRRect(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(14),
                   child: Image.memory(
                     previewBytes,
-                    width: 58,
-                    height: 58,
+                    width: 62,
+                    height: 62,
                     fit: BoxFit.cover,
                   ),
                 ),
                 const SizedBox(width: 12),
               ] else ...[
                 Container(
-                  width: 44,
-                  height: 44,
+                  width: 48,
+                  height: 48,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: AppColors.neonCyan.withValues(alpha: 0.16),
+                    gradient: LinearGradient(
+                      colors: [
+                        AppColors.neonCyan.withValues(alpha: 0.25),
+                        AppColors.neonPurple.withValues(alpha: 0.2),
+                      ],
+                    ),
                     border: Border.all(
                       color: AppColors.neonCyan.withValues(alpha: 0.45),
                     ),
@@ -431,7 +655,7 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
                   child: const Icon(
                     Icons.auto_stories_rounded,
                     color: AppColors.neonCyan,
-                    size: 22,
+                    size: 24,
                   ),
                 ),
                 const SizedBox(width: 12),
@@ -442,30 +666,30 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
                   children: [
                     Text(
                       session.title,
-                      style: const TextStyle(
-                        color: AppColors.textPrimary,
-                        fontSize: 16,
+                      style: _contentStyle(
+                        session.replyLanguage,
+                        fontSize: 18 * buddy.textScale,
                         fontWeight: FontWeight.w900,
                       ),
                     ),
                     const SizedBox(height: 6),
                     Container(
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 8,
+                        horizontal: 9,
                         vertical: 4,
                       ),
                       decoration: BoxDecoration(
                         color: AppColors.neonGreen.withValues(alpha: 0.14),
                         borderRadius: BorderRadius.circular(8),
                         border: Border.all(
-                          color: AppColors.neonGreen.withValues(alpha: 0.35),
+                          color: AppColors.neonGreen.withValues(alpha: 0.38),
                         ),
                       ),
                       child: Text(
                         badgeText,
                         style: const TextStyle(
                           color: AppColors.neonGreen,
-                          fontSize: 10.5,
+                          fontSize: 11.5,
                           fontWeight: FontWeight.w800,
                         ),
                       ),
@@ -476,7 +700,7 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
             ],
           ),
           if (session.hasExtractedText) ...[
-            const SizedBox(height: 10),
+            const SizedBox(height: 12),
             InkWell(
               borderRadius: BorderRadius.circular(10),
               onTap:
@@ -488,7 +712,7 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
                   children: [
                     const Icon(
                       Icons.subject_rounded,
-                      size: 16,
+                      size: 17,
                       color: AppColors.neonCyan,
                     ),
                     const SizedBox(width: 6),
@@ -497,7 +721,7 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
                         S.bookBuddyExtractedHeader,
                         style: const TextStyle(
                           color: AppColors.neonCyan,
-                          fontSize: 12,
+                          fontSize: 13,
                           fontWeight: FontWeight.w800,
                         ),
                       ),
@@ -507,27 +731,29 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
                           ? Icons.keyboard_arrow_up_rounded
                           : Icons.keyboard_arrow_down_rounded,
                       color: AppColors.neonCyan,
-                      size: 20,
+                      size: 22,
                     ),
                   ],
                 ),
               ),
             ),
             if (_showExtractedText) ...[
-              const SizedBox(height: 6),
+              const SizedBox(height: 8),
               Container(
                 width: double.infinity,
-                padding: const EdgeInsets.all(10),
+                padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: AppColors.bgDark.withValues(alpha: 0.55),
-                  borderRadius: BorderRadius.circular(12),
+                  color: AppColors.bgDark.withValues(alpha: 0.58),
+                  borderRadius: BorderRadius.circular(14),
                 ),
                 child: SelectableText(
                   session.extractedText,
-                  style: const TextStyle(
+                  style: _contentStyle(
+                    session.replyLanguage,
+                    fontSize: 14 * buddy.textScale,
+                    fontWeight: FontWeight.w500,
                     color: AppColors.textSecondary,
-                    fontSize: 12,
-                    height: 1.45,
+                    height: 1.55,
                   ),
                 ),
               ),
@@ -538,60 +764,86 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
     );
   }
 
-  Widget _buildTurnCard(BookChatTurn turn) {
+  Widget _buildTurnCard(BookBuddyProvider buddy, BookChatTurn turn) {
+    final lang = buddy.replyLanguage;
     return GlassCard(
-      borderRadius: 18,
-      borderColor: AppColors.neonPurple.withValues(alpha: 0.3),
+      borderRadius: 22,
+      padding: const EdgeInsets.all(18),
+      borderColor: AppColors.neonPurple.withValues(alpha: 0.38),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            children: [
-              const Icon(
-                Icons.help_outline_rounded,
-                size: 15,
-                color: AppColors.neonGold,
+          // Student prompt pill
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.symmetric(horizontal: 13, vertical: 10),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(14),
+              color: AppColors.neonGold.withValues(alpha: 0.12),
+              border: Border.all(
+                color: AppColors.neonGold.withValues(alpha: 0.35),
               ),
-              const SizedBox(width: 6),
-              Expanded(
-                child: Text(
-                  turn.question,
-                  style: const TextStyle(
+            ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Padding(
+                  padding: EdgeInsets.only(top: 2),
+                  child: Icon(
+                    Icons.help_rounded,
+                    size: 18,
                     color: AppColors.neonGold,
-                    fontSize: 12.5,
-                    fontWeight: FontWeight.w800,
                   ),
                 ),
-              ),
-            ],
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    turn.question,
+                    style: _contentStyle(
+                      lang,
+                      fontSize: 15 * buddy.textScale,
+                      fontWeight: FontWeight.w800,
+                      color: AppColors.neonGold,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
-          const Divider(height: 18, color: AppColors.outline),
+          const SizedBox(height: 14),
+          // AI Tutor badge header
           Row(
             children: [
-              const Icon(
-                Icons.auto_awesome_rounded,
-                size: 15,
-                color: AppColors.neonCyan,
+              Container(
+                padding: const EdgeInsets.all(6),
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  gradient: AppColors.cyanGradient,
+                ),
+                child: const Icon(
+                  Icons.auto_awesome_rounded,
+                  size: 14,
+                  color: AppColors.bgDark,
+                ),
               ),
-              const SizedBox(width: 6),
+              const SizedBox(width: 8),
               Text(
                 S.bookBuddyAiTutor,
                 style: const TextStyle(
                   color: AppColors.neonCyan,
-                  fontSize: 11.5,
-                  fontWeight: FontWeight.w800,
+                  fontSize: 13.5,
+                  fontWeight: FontWeight.w900,
+                  letterSpacing: 0.3,
                 ),
               ),
             ],
           ),
-          const SizedBox(height: 8),
-          SelectableText(
-            turn.answer,
-            style: const TextStyle(
-              color: AppColors.textPrimary,
-              fontSize: 13.5,
-              height: 1.55,
-            ),
+          const SizedBox(height: 12),
+          // Rich formatted Markdown explanation (headings, tables, bold, callouts)
+          BookMarkdownView(
+            markdown: turn.answer,
+            languageCode: lang,
+            textScale: buddy.textScale,
           ),
         ],
       ),
@@ -601,14 +853,14 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
   Widget _buildStatusTile(String label) {
     return GlassCard(
       borderRadius: 16,
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 15),
       child: Row(
         children: [
           const SizedBox(
-            width: 18,
-            height: 18,
+            width: 20,
+            height: 20,
             child: CircularProgressIndicator(
-              strokeWidth: 2.2,
+              strokeWidth: 2.4,
               color: AppColors.neonCyan,
             ),
           ),
@@ -618,7 +870,7 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
               label,
               style: const TextStyle(
                 color: AppColors.textSecondary,
-                fontSize: 12.5,
+                fontSize: 14,
                 fontWeight: FontWeight.w700,
               ),
             ),
@@ -629,10 +881,11 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
   }
 
   Widget _buildQuickPromptsRow(BookBuddyProvider buddy) {
+    final lang = buddy.replyLanguage;
     final chips = [
-      S.bookBuddyQuickSimple,
-      S.bookBuddyQuickPoints,
-      S.bookBuddyQuickExamples,
+      _promptInLang('bookBuddyQuickSimple', lang),
+      _promptInLang('bookBuddyQuickPoints', lang),
+      _promptInLang('bookBuddyQuickExamples', lang),
     ];
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
@@ -642,16 +895,19 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
           for (var i = 0; i < chips.length; i++) ...[
             if (i > 0) const SizedBox(width: 8),
             ActionChip(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
               backgroundColor: AppColors.surfaceElevated,
               side: BorderSide(
-                color: AppColors.neonCyan.withValues(alpha: 0.35),
+                color: AppColors.neonCyan.withValues(alpha: 0.4),
               ),
               label: Text(
                 chips[i],
-                style: const TextStyle(
-                  color: AppColors.neonCyan,
-                  fontSize: 11.5,
+                style: _contentStyle(
+                  lang,
+                  fontSize: 13,
                   fontWeight: FontWeight.w700,
+                  color: AppColors.neonCyan,
+                  height: 1.2,
                 ),
               ),
               onPressed: buddy.isBusy ? null : () => _sendQuestion(chips[i]),
@@ -665,8 +921,8 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
   Widget _buildAskInputCard(BookBuddyProvider buddy) {
     return GlassCard(
       borderRadius: 18,
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-      borderColor: AppColors.neonCyan.withValues(alpha: 0.3),
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+      borderColor: AppColors.neonCyan.withValues(alpha: 0.35),
       child: Row(
         children: [
           Expanded(
@@ -677,15 +933,19 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
               maxLines: 3,
               textInputAction: TextInputAction.send,
               onSubmitted: (_) => _sendQuestion(),
-              style: const TextStyle(
-                color: AppColors.textPrimary,
-                fontSize: 13.5,
+              style: _contentStyle(
+                buddy.replyLanguage,
+                fontSize: 15,
+                fontWeight: FontWeight.w600,
               ),
               decoration: InputDecoration(
-                hintText: S.bookBuddyAskHint,
+                hintText: _promptInLang(
+                  'bookBuddyAskHint',
+                  buddy.replyLanguage,
+                ),
                 hintStyle: const TextStyle(
                   color: AppColors.textMuted,
-                  fontSize: 13,
+                  fontSize: 14,
                 ),
                 border: InputBorder.none,
                 isDense: true,
@@ -696,12 +956,12 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
           IconButton(
             onPressed: buddy.isBusy ? null : _sendQuestion,
             style: IconButton.styleFrom(
-              backgroundColor: AppColors.neonCyan.withValues(alpha: 0.2),
+              backgroundColor: AppColors.neonCyan.withValues(alpha: 0.22),
             ),
             icon: const Icon(
               Icons.send_rounded,
               color: AppColors.neonCyan,
-              size: 20,
+              size: 21,
             ),
             tooltip: S.bookBuddyAskSend,
           ),
@@ -716,15 +976,15 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
   ) {
     return GlassCard(
       borderRadius: 22,
-      borderColor: AppColors.neonGold.withValues(alpha: 0.4),
+      borderColor: AppColors.neonGold.withValues(alpha: 0.45),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
               Container(
-                width: 40,
-                height: 40,
+                width: 42,
+                height: 42,
                 decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                   gradient: AppColors.goldGradient,
@@ -732,7 +992,7 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
                 child: const Icon(
                   Icons.quiz_rounded,
                   color: AppColors.bgDark,
-                  size: 21,
+                  size: 22,
                 ),
               ),
               const SizedBox(width: 12),
@@ -744,7 +1004,7 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
                       S.bookBuddyMcqSectionTitle,
                       style: const TextStyle(
                         color: AppColors.textPrimary,
-                        fontSize: 15,
+                        fontSize: 16,
                         fontWeight: FontWeight.w900,
                       ),
                     ),
@@ -753,8 +1013,8 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
                       S.bookBuddyMcqSectionSubtitle,
                       style: const TextStyle(
                         color: AppColors.textSecondary,
-                        fontSize: 11.5,
-                        height: 1.35,
+                        fontSize: 12.5,
+                        height: 1.4,
                       ),
                     ),
                   ],
@@ -768,13 +1028,13 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
           else if (session.hasMcqs) ...[
             NeonButton(
               text: S.bookBuddyPlayQuiz(n: session.generatedMcqs.length),
-              height: 48,
+              height: 50,
               gradient: AppColors.goldGradient,
               glowColor: AppColors.neonGold,
               icon: const Icon(
                 Icons.play_arrow_rounded,
                 color: AppColors.bgDark,
-                size: 22,
+                size: 24,
               ),
               onPressed: () => _playGeneratedQuiz(session),
             ),
@@ -796,7 +1056,7 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
                       S.bookBuddyGen5Mcq,
                       style: const TextStyle(
                         color: AppColors.neonCyan,
-                        fontSize: 12,
+                        fontSize: 13,
                         fontWeight: FontWeight.w800,
                       ),
                     ),
@@ -818,7 +1078,7 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
                       S.bookBuddyGen10Mcq,
                       style: const TextStyle(
                         color: AppColors.neonPurple,
-                        fontSize: 12,
+                        fontSize: 13,
                         fontWeight: FontWeight.w800,
                       ),
                     ),
@@ -832,12 +1092,12 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
                 Expanded(
                   child: NeonButton(
                     text: S.bookBuddyGen5Mcq,
-                    height: 46,
+                    height: 48,
                     gradient: AppColors.cyanGradient,
                     glowColor: AppColors.neonCyan,
                     textStyle: const TextStyle(
                       color: AppColors.bgDark,
-                      fontSize: 13,
+                      fontSize: 13.5,
                       fontWeight: FontWeight.w900,
                     ),
                     onPressed: () => _generateMcqs(5),
@@ -847,12 +1107,12 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
                 Expanded(
                   child: NeonButton(
                     text: S.bookBuddyGen10Mcq,
-                    height: 46,
+                    height: 48,
                     gradient: AppColors.goldGradient,
                     glowColor: AppColors.neonGold,
                     textStyle: const TextStyle(
                       color: AppColors.bgDark,
-                      fontSize: 13,
+                      fontSize: 13.5,
                       fontWeight: FontWeight.w900,
                     ),
                     onPressed: () => _generateMcqs(10),
@@ -873,7 +1133,7 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
           S.bookBuddySavedHeader,
           style: const TextStyle(
             color: AppColors.textPrimary,
-            fontSize: 15,
+            fontSize: 16,
             fontWeight: FontWeight.w900,
           ),
         ),
@@ -886,8 +1146,8 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
             child: Row(
               children: [
                 Container(
-                  width: 38,
-                  height: 38,
+                  width: 40,
+                  height: 40,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: AppColors.neonCyan.withValues(alpha: 0.14),
@@ -895,7 +1155,7 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
                   child: const Icon(
                     Icons.menu_book_rounded,
                     color: AppColors.neonCyan,
-                    size: 19,
+                    size: 20,
                   ),
                 ),
                 const SizedBox(width: 12),
@@ -907,9 +1167,9 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
                         item.title,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(
-                          color: AppColors.textPrimary,
-                          fontSize: 13.5,
+                        style: _contentStyle(
+                          item.replyLanguage,
+                          fontSize: 15,
                           fontWeight: FontWeight.w800,
                         ),
                       ),
@@ -921,7 +1181,7 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
                         ),
                         style: const TextStyle(
                           color: AppColors.textMuted,
-                          fontSize: 11.5,
+                          fontSize: 12,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
@@ -934,7 +1194,7 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
                   icon: const Icon(
                     Icons.delete_outline_rounded,
                     color: AppColors.textMuted,
-                    size: 19,
+                    size: 20,
                   ),
                 ),
               ],

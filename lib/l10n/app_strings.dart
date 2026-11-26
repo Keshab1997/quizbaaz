@@ -743,5 +743,10 @@ class S {
   static String get bookBuddyErrNoKey => raw('bookBuddyErrNoKey');
   static String get bookBuddyErrEmptyMcq => raw('bookBuddyErrEmptyMcq');
   static String get bookBuddyErrPickFailed => raw('bookBuddyErrPickFailed');
+  static String get bookBuddyLangLabel => raw('bookBuddyLangLabel');
+  static String get bookBuddyLangEn => raw('bookBuddyLangEn');
+  static String get bookBuddyLangBn => raw('bookBuddyLangBn');
+  static String get bookBuddyLangHi => raw('bookBuddyLangHi');
+  static String get bookBuddyFontSize => raw('bookBuddyFontSize');
   static String get resultBookBuddyAgain => raw('resultBookBuddyAgain');
 }

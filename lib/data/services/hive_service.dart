@@ -77,6 +77,8 @@ class HiveService {
   static const metaLastSyncAt = 'last_sync_at_ms';
   static const metaLastPullAt = 'last_pull_at_ms';
   static const metaMigratedV2 = 'migrated_v2';
+  static const metaBookBuddyLanguage = 'book_buddy_language';
+  static const metaBookBuddyTextScale = 'book_buddy_text_scale';
 
   /// Current on-disk schema version.
   static const int schemaVersion = 2;

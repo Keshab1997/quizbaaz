@@ -661,5 +661,10 @@ const Map<String, String> kStringsHi = {
   'bookBuddyErrEmptyMcq':
       'इस पन्ने से स्पष्ट MCQ नहीं बन सके। कृपया साफ़ फोटो लेकर फिर कोशिश करें।',
   'bookBuddyErrPickFailed': 'चयनित फोटो पढ़ी नहीं जा सकी।',
+  'bookBuddyLangLabel': 'AI उत्तर की भाषा',
+  'bookBuddyLangEn': 'English',
+  'bookBuddyLangBn': 'বাংলা',
+  'bookBuddyLangHi': 'हिन्दी',
+  'bookBuddyFontSize': 'अक्षर आकार',
   'resultBookBuddyAgain': 'बुक क्विज़ फिर से खेलें',
 };

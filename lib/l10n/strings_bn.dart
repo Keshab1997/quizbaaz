@@ -663,5 +663,10 @@ const Map<String, String> kStringsBn = {
   'bookBuddyErrEmptyMcq':
       'এই পাতা থেকে স্পষ্ট MCQ তৈরি করা যায়নি। আরেকটু পরিষ্কার ছবি তুলে চেষ্টা করুন।',
   'bookBuddyErrPickFailed': 'ছবিটি পড়া যায়নি। আবার চেষ্টা করুন।',
+  'bookBuddyLangLabel': 'AI উত্তরের ভাষা',
+  'bookBuddyLangEn': 'English',
+  'bookBuddyLangBn': 'বাংলা',
+  'bookBuddyLangHi': 'हिन्दी',
+  'bookBuddyFontSize': 'লেখার আকার',
   'resultBookBuddyAgain': 'বইয়ের কুইজ আবার খেলুন',
 };

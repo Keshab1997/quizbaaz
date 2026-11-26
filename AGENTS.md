@@ -374,7 +374,8 @@ lib/
     ├── screens/      one folder per feature, one screen per file
     └── widgets/      reusable: glass_card · neon_button · cached_avatar ·
                       streak_flame · champion_podium · name_effect_text ·
-                      purchase_celebration · app_background · translatable_text
+                      purchase_celebration · app_background · translatable_text ·
+                      book_markdown_view
 ```
 
 Naming: `*_screen.dart`, `*_widget.dart`, `*_provider.dart`, `*_service.dart`.

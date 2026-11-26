@@ -674,5 +674,10 @@ const Map<String, String> kStringsEn = {
   'bookBuddyErrEmptyMcq':
       'Could not generate clear MCQs from this page. Try scanning a clearer page.',
   'bookBuddyErrPickFailed': 'Could not read the selected image.',
+  'bookBuddyLangLabel': 'AI Reply Language',
+  'bookBuddyLangEn': 'English',
+  'bookBuddyLangBn': 'বাংলা',
+  'bookBuddyLangHi': 'हिन्दी',
+  'bookBuddyFontSize': 'Text Size',
   'resultBookBuddyAgain': 'Replay Book Quiz',
 };
