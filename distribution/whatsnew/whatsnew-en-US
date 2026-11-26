@@ -1,5 +1,5 @@
-What's new in 1.0.26:
+What's new in 1.0.27:
 
-• New AI Book Buddy — scan any textbook page or note to get clear explanations, ask follow-up doubts, and play instant MCQ quizzes!
-• Rich Study Reader & Language Choice — formatted study tables, highlight cards, A-/A+ text size, and separate Bangla / English / Hindi AI reply choice.
-• Daily AI Quota Meter — track your free daily AI uses live, while reading saved notes & replaying quizzes stays 100% free offline.
+• Admin API keys — premium dashboard with gradient avatars, premium cards & instant Test with spinner (max 8s, shows elapsed)
+• Smarter Admin — form draft & scroll stay after refresh, Undo for delete/bulk, new free-model alerts
+• Free Model Explorer — browse OpenRouter free models, copy id or Get API key in one tap

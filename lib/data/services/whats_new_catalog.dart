@@ -7,6 +7,23 @@ class WhatsNewCatalog {
   WhatsNewCatalog._();
 
   static const Map<String, Map<String, List<String>>> _releases = {
+    '1.0.27': {
+      'en': [
+        'Admin API keys — premium dashboard with gradient avatars, premium cards & instant Test with spinner (max 8s, shows elapsed)',
+        'Smarter Admin — form draft & scroll stay after refresh, Undo for delete/bulk, new free-model alerts',
+        'Free Model Explorer — browse OpenRouter free models, copy id or Get API key in one tap',
+      ],
+      'bn': [
+        'Admin API Key — প্রিমিয়াম ড্যাশবোর্ড, গ্রেডিয়েন্ট অবতার, প্রিমিয়াম কার্ড ও স্পিনার সহ দ্রুত Test (সর্বোচ্চ ৮s, elapsed দেখায়)',
+        'আরও স্মার্ট Admin — রিফ্রেশেও ফর্ম ও স্ক্রল মনে থাকে, delete/bulk-এ Undo, নতুন ফ্রি মডেল অ্যালার্ট',
+        'ফ্রি মডেল এক্সপ্লোরার — OpenRouter-এর ফ্রি মডেল ব্রাউজ করুন, এক ট্যাপে কপি বা Get API key',
+      ],
+      'hi': [
+        'Admin API Keys — प्रीमियम डैशबोर्ड, ग्रेडिएंट अवतार, प्रीमियम कार्ड और स्पिनर के साथ तेज़ Test (अधिकतम 8s, elapsed दिखता है)',
+        'स्मार्ट Admin — रिफ्रेश के बाद भी फॉर्म और स्क्रॉल याद रहता है, delete/bulk पर Undo, नए फ्री मॉडल अलर्ट',
+        'फ्री मॉडल एक्सप्लोरर — OpenRouter के फ्री मॉडल ब्राउज़ करें, एक टैप में कॉपी या Get API key',
+      ],
+    },
     '1.0.26': {
       'en': [
         'New AI Book Buddy — scan any textbook page or note to get clear explanations, ask follow-up doubts, and play instant MCQ quizzes!',
