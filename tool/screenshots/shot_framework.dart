@@ -150,11 +150,12 @@ const ValueKey<String> shotRootKey = ValueKey<String>('agent-pack-shot-root');
 
 /// `--dart-define=SHOT=a,b` selects; empty means every shot.
 List<Shot> selectShots(List<Shot> shots, String requested) {
-  final wanted = requested
-      .split(',')
-      .map((name) => name.trim())
-      .where((name) => name.isNotEmpty)
-      .toSet();
+  final wanted =
+      requested
+          .split(',')
+          .map((name) => name.trim())
+          .where((name) => name.isNotEmpty)
+          .toSet();
   if (wanted.isEmpty) return shots;
   return shots.where((shot) => wanted.contains(shot.name)).toList();
 }
