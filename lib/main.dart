@@ -8,6 +8,7 @@ import 'package:firebase_core/firebase_core.dart';
 // else in the repo.
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
@@ -39,6 +40,12 @@ import 'presentation/widgets/app_background.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // 0) A widget that throws while building is painted, in a release build, as a
+  //    featureless grey rectangle: no text, no stack, nothing to report. The
+  //    Free models page did exactly that on the phone and it cost a whole build
+  //    cycle of guessing. Paint the exception itself instead.
+  ErrorWidget.builder = (details) => VisibleErrorPanel(details: details);
 
   // 1) Hive is the source of truth — it must be ready before anything reads.
   await Hive.initFlutter();
@@ -217,6 +224,109 @@ class QuizBaazApp extends StatelessWidget {
               },
               home: const SplashScreen(),
             ),
+      ),
+    );
+  }
+}
+
+
+/// The replacement for Flutter's grey box.
+///
+/// Flutter's default `ErrorWidget` in a release build is a plain grey
+/// rectangle — it deliberately hides the exception, which turns "the page is
+/// blank" into a guessing game with no way to report anything. This paints the
+/// exception text and the top of the stack, with a Copy button, so the phone can
+/// hand back a real bug report.
+///
+/// Deliberately built from the most basic widgets only: this is what runs when
+/// the theme, the provider tree or the whole app already failed to build.
+class VisibleErrorPanel extends StatefulWidget {
+  const VisibleErrorPanel({super.key, required this.details});
+
+  final FlutterErrorDetails details;
+
+  @override
+  State<VisibleErrorPanel> createState() => _VisibleErrorPanelState();
+}
+
+class _VisibleErrorPanelState extends State<VisibleErrorPanel> {
+  bool _copied = false;
+
+  String get _report {
+    final buffer = StringBuffer()..writeln(widget.details.exceptionAsString());
+    final context = widget.details.context?.toString();
+    if (context != null && context.isNotEmpty) {
+      buffer.writeln();
+      buffer.writeln('while: $context');
+    }
+    final stack = widget.details.stack?.toString() ?? '';
+    if (stack.isNotEmpty) {
+      buffer
+        ..writeln()
+        ..writeln(stack.split('\n').take(14).join('\n'));
+    }
+    // A crash report gets pasted into a chat; an API key must never ride along.
+    final text = buffer
+        .toString()
+        .replaceAll(RegExp(r'sk-[A-Za-z0-9_\-]{6,}'), 'sk-***');
+    return text.length <= 4000 ? text : '${text.substring(0, 4000)}\n…';
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    const mono = TextStyle(
+      fontFamily: 'monospace',
+      fontSize: 11,
+      height: 1.45,
+      color: Color(0xFFF3F4F6),
+    );
+    return Material(
+      color: const Color(0xFF1F1B24),
+      child: Directionality(
+        textDirection: TextDirection.ltr,
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              const Text(
+                'This part of the screen failed to draw',
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w700,
+                  color: Color(0xFFFCA5A5),
+                ),
+              ),
+              const SizedBox(height: 6),
+              const Text(
+                'Send this text back and the cause is fixable without guessing.',
+                style: TextStyle(fontSize: 11, color: Color(0xFFD1D5DB)),
+              ),
+              const SizedBox(height: 10),
+              Expanded(
+                child: Container(
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFF14111A),
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: const Color(0xFF3F3A4A)),
+                  ),
+                  child: SingleChildScrollView(
+                    child: SelectableText(_report, style: mono),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10),
+              FilledButton(
+                onPressed: () {
+                  Clipboard.setData(ClipboardData(text: _report));
+                  setState(() => _copied = true);
+                },
+                child: Text(_copied ? 'Copied' : 'Copy error'),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
