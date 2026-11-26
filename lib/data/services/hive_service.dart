@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 
+import '../models/book_study_session.dart';
 import '../models/chapter_set_progress.dart';
 import '../models/notification_item.dart';
 import '../models/question_model.dart';
@@ -47,6 +48,10 @@ class HiveService {
   static const _mistakeQuestionsKey = 'mistake_questions';
   static const _battleUsedQuestionsKey = 'battle_used_questions';
   static const _battleProcessedRoomsKey = 'battle_processed_rooms';
+  static const _bookStudySessionsKey = 'book_buddy_sessions';
+
+  /// Maximum number of AI Book Buddy study sessions stored locally in Hive.
+  static const int bookStudySessionsCap = 20;
 
   /// Consecutive correct answers in Mistake Revision needed to clear a question.
   static const int mistakeMasteryStreak = 2;
@@ -669,6 +674,62 @@ class HiveService {
     }
   }
 
+  // --------------------------------------------------- AI Book Buddy data --
+
+  /// Loads saved [BookStudySession] entries (newest first).
+  static List<BookStudySession> loadBookStudySessions() {
+    if (!_initialized) return const [];
+    final raw = _statsBox.get(_bookStudySessionsKey);
+    if (raw is! String || raw.isEmpty) return const [];
+    try {
+      final decoded = jsonDecode(raw) as List<dynamic>;
+      return decoded
+          .whereType<Map>()
+          .map(
+            (row) => BookStudySession.fromJson(
+              row.map((k, v) => MapEntry(k.toString(), v)),
+            ),
+          )
+          .toList();
+    } catch (e) {
+      debugPrint('Hive: failed to decode book study sessions – $e');
+      return const [];
+    }
+  }
+
+  /// Inserts or updates [session] at the front of the list (capped at
+  /// [bookStudySessionsCap] entries).
+  static Future<void> saveBookStudySession(BookStudySession session) async {
+    if (!_initialized) return;
+    final list = [...loadBookStudySessions()];
+    list.removeWhere((item) => item.id == session.id);
+    list.insert(0, session);
+    if (list.length > bookStudySessionsCap) {
+      list.removeRange(bookStudySessionsCap, list.length);
+    }
+    await _statsBox.put(
+      _bookStudySessionsKey,
+      jsonEncode(list.map((s) => s.toJson()).toList()),
+    );
+  }
+
+  /// Removes a single [BookStudySession] by [sessionId].
+  static Future<void> deleteBookStudySession(String sessionId) async {
+    if (!_initialized) return;
+    final list = [...loadBookStudySessions()]
+      ..removeWhere((item) => item.id == sessionId);
+    await _statsBox.put(
+      _bookStudySessionsKey,
+      jsonEncode(list.map((s) => s.toJson()).toList()),
+    );
+  }
+
+  /// Clears all saved AI Book Buddy sessions.
+  static Future<void> clearBookStudySessions() async {
+    if (!_initialized) return;
+    await _statsBox.delete(_bookStudySessionsKey);
+  }
+
   // -------------------------------------------------- Offline write queue --
 
   /// Queues a Firestore write to be replayed when connectivity returns.
@@ -756,10 +817,11 @@ class HiveService {
     // Meta keeps schema info, only sync markers are reset.
     await _metaBox.delete(metaLastSyncAt);
     await _metaBox.delete(metaLastPullAt);
-    // Clear quiz, purchase and notification history
+    // Clear quiz, purchase, notification and book-buddy history
     await clearQuizHistory();
     await clearPurchaseHistory();
     await clearNotificationHistory();
+    await clearBookStudySessions();
   }
 
   /// Debug helper: a snapshot of what is currently stored.

@@ -327,6 +327,16 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
                     ),
                     const SizedBox(height: 12),
                   ],
+                  if (quiz.isCustomPractice) ...[
+                    NeonButton(
+                      text: S.resultBookBuddyAgain,
+                      gradient: const LinearGradient(
+                        colors: [AppColors.neonCyan, AppColors.neonPurple],
+                      ),
+                      onPressed: () => _retryCustomPractice(),
+                    ),
+                    const SizedBox(height: 12),
+                  ],
                   // Chapter sets: replay this set or continue to the next one.
                   // Daily runs never see these — that flow stays exactly as is.
                   if (!quiz.isDailyQuiz && quiz.isChapterRun) ...[
@@ -626,6 +636,17 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
     final navigator = Navigator.of(context);
 
     await quiz.retryFreePractice();
+    if (!mounted) return;
+    navigator.pushReplacement(
+      MaterialPageRoute(builder: (_) => const DailyQuizScreen()),
+    );
+  }
+
+  Future<void> _retryCustomPractice() async {
+    final quiz = context.read<QuizProvider>();
+    final navigator = Navigator.of(context);
+
+    await quiz.retryCustomPractice();
     if (!mounted) return;
     navigator.pushReplacement(
       MaterialPageRoute(builder: (_) => const DailyQuizScreen()),

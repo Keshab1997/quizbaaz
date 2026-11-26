@@ -695,4 +695,53 @@ class S {
   static String get dashPractice => raw('dashPractice');
   static String get resultPracticeAgain => raw('resultPracticeAgain');
   static String get allSubjects => raw('allSubjects');
+
+  // ---- ai book buddy
+  static String get dashBookBuddy => raw('dashBookBuddy');
+  static String get bookBuddyTitle => raw('bookBuddyTitle');
+  static String get bookBuddyBannerBadge => raw('bookBuddyBannerBadge');
+  static String get bookBuddyBannerTitle => raw('bookBuddyBannerTitle');
+  static String get bookBuddyBannerSubtitle => raw('bookBuddyBannerSubtitle');
+  static String get bookBuddyBannerCta => raw('bookBuddyBannerCta');
+  static String get bookBuddyEmptyTitle => raw('bookBuddyEmptyTitle');
+  static String get bookBuddyEmptySubtitle => raw('bookBuddyEmptySubtitle');
+  static String get bookBuddyScanCamera => raw('bookBuddyScanCamera');
+  static String get bookBuddyScanGallery => raw('bookBuddyScanGallery');
+  static String get bookBuddyNewScan => raw('bookBuddyNewScan');
+  static String get bookBuddyScanning => raw('bookBuddyScanning');
+  static String bookBuddyOcrSaved({required Object label}) =>
+      fill(raw('bookBuddyOcrSaved'), {'label': label});
+  static String get bookBuddyVisionUsed => raw('bookBuddyVisionUsed');
+  static String get bookBuddyExtractedHeader => raw('bookBuddyExtractedHeader');
+  static String get bookBuddyDefaultTitle => raw('bookBuddyDefaultTitle');
+  static String get bookBuddyInitialPrompt => raw('bookBuddyInitialPrompt');
+  static String get bookBuddyQuickSimple => raw('bookBuddyQuickSimple');
+  static String get bookBuddyQuickPoints => raw('bookBuddyQuickPoints');
+  static String get bookBuddyQuickExamples => raw('bookBuddyQuickExamples');
+  static String get bookBuddyAskHint => raw('bookBuddyAskHint');
+  static String get bookBuddyAskSend => raw('bookBuddyAskSend');
+  static String get bookBuddyThinking => raw('bookBuddyThinking');
+  static String get bookBuddyYouAsked => raw('bookBuddyYouAsked');
+  static String get bookBuddyAiTutor => raw('bookBuddyAiTutor');
+  static String get bookBuddyMcqSectionTitle => raw('bookBuddyMcqSectionTitle');
+  static String get bookBuddyMcqSectionSubtitle =>
+      raw('bookBuddyMcqSectionSubtitle');
+  static String get bookBuddyGen5Mcq => raw('bookBuddyGen5Mcq');
+  static String get bookBuddyGen10Mcq => raw('bookBuddyGen10Mcq');
+  static String get bookBuddyGeneratingMcq => raw('bookBuddyGeneratingMcq');
+  static String bookBuddyMcqReady({required Object n}) =>
+      fill(raw('bookBuddyMcqReady'), {'n': n});
+  static String bookBuddyPlayQuiz({required Object n}) =>
+      fill(raw('bookBuddyPlayQuiz'), {'n': n});
+  static String get bookBuddyRegenerateMcq => raw('bookBuddyRegenerateMcq');
+  static String get bookBuddySavedHeader => raw('bookBuddySavedHeader');
+  static String bookBuddySavedMeta({
+    required Object mcqs,
+    required Object turns,
+  }) => fill(raw('bookBuddySavedMeta'), {'mcqs': mcqs, 'turns': turns});
+  static String get bookBuddyDeleteSession => raw('bookBuddyDeleteSession');
+  static String get bookBuddyErrNoKey => raw('bookBuddyErrNoKey');
+  static String get bookBuddyErrEmptyMcq => raw('bookBuddyErrEmptyMcq');
+  static String get bookBuddyErrPickFailed => raw('bookBuddyErrPickFailed');
+  static String get resultBookBuddyAgain => raw('resultBookBuddyAgain');
 }

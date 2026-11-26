@@ -32,6 +32,7 @@ import '../../widgets/neon_button.dart';
 import '../admin/admin_dashboard_screen.dart';
 import '../battle/battle_screen.dart';
 import '../battle/online_battle_screen.dart';
+import '../book_buddy/book_buddy_screen.dart';
 import '../chapter_quiz/chapter_list_screen.dart';
 import '../daily_quiz/daily_quiz_screen.dart';
 import '../leaderboard/leaderboard_screen.dart';
@@ -311,6 +312,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
                           // 5. Stat Strip
                           _buildStatStrip(user, userProvider),
+                          const SizedBox(height: 16),
+
+                          // 5b. AI Book Buddy Card (Scan textbook & practice MCQs)
+                          _buildBookBuddyCard(),
                           if (HiveService.mistakeQuestionCount() > 0) ...[
                             const SizedBox(height: 16),
                             _buildMistakeNotebookCard(
@@ -904,6 +909,107 @@ class _DashboardScreenState extends State<DashboardScreen> {
     );
   }
 
+  Widget _buildBookBuddyCard() {
+    return GlassCard(
+      onTap: () {
+        SoundService.instance.play('ui_click');
+        Haptics.tap();
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => const BookBuddyScreen()),
+        );
+      },
+      borderRadius: 22,
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 14),
+      borderColor: AppColors.neonCyan.withValues(alpha: 0.45),
+      backgroundColor: const Color(0x45122B4A),
+      child: Row(
+        children: [
+          Container(
+            width: 46,
+            height: 46,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              gradient: AppColors.cyanGradient,
+              boxShadow: [
+                BoxShadow(
+                  color: AppColors.neonCyan.withValues(alpha: 0.28),
+                  blurRadius: 14,
+                ),
+              ],
+            ),
+            child: const Icon(
+              Icons.document_scanner_rounded,
+              color: AppColors.bgDark,
+              size: 24,
+            ),
+          ),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 7,
+                    vertical: 2,
+                  ),
+                  decoration: BoxDecoration(
+                    color: AppColors.neonGold.withValues(alpha: 0.16),
+                    borderRadius: BorderRadius.circular(6),
+                  ),
+                  child: Text(
+                    S.bookBuddyBannerBadge,
+                    style: const TextStyle(
+                      color: AppColors.neonGold,
+                      fontSize: 9,
+                      fontWeight: FontWeight.w900,
+                      letterSpacing: 0.6,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  S.bookBuddyBannerTitle,
+                  style: const TextStyle(
+                    color: AppColors.textPrimary,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w900,
+                  ),
+                ),
+                const SizedBox(height: 2),
+                Text(
+                  S.bookBuddyBannerSubtitle,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(
+                    color: AppColors.textSecondary,
+                    fontSize: 11,
+                    fontWeight: FontWeight.w500,
+                    height: 1.3,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(width: 8),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
+            decoration: BoxDecoration(
+              gradient: AppColors.cyanGradient,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: const Icon(
+              Icons.arrow_forward_ios_rounded,
+              color: AppColors.bgDark,
+              size: 14,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   Widget _buildMistakeNotebookCard(int mistakeCount) {
     return GlassCard(
       onTap: _startMistakeQuiz,
@@ -1391,6 +1497,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
         Icons.menu_book_rounded,
         AppColors.neonCyan,
         () => _onNavTap(1),
+      ),
+      _QuickAction(
+        S.dashBookBuddy,
+        Icons.document_scanner_rounded,
+        AppColors.neonGold,
+        () => Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => const BookBuddyScreen()),
+        ),
       ),
       _QuickAction(
         S.dashPractice,

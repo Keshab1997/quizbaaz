@@ -50,6 +50,12 @@ class QuizProvider extends ChangeNotifier {
   /// kept so a replay draws from the same pool.
   String? _practiceCategoryId;
 
+  /// True when this run plays custom AI-generated MCQs from AI Book Buddy.
+  bool _isCustomPractice = false;
+
+  /// Backing list of custom MCQs kept so the result screen can replay them.
+  List<QuestionModel> _customPracticeSource = const [];
+
   /// True after the player quits mid-run.
   ///
   /// Quitting must freeze the run completely: the countdown stops, and the
@@ -446,6 +452,42 @@ class QuizProvider extends ChangeNotifier {
   Future<void> retryFreePractice() =>
       startFreePractice(categoryId: _practiceCategoryId);
 
+  /// True when this run plays AI-generated MCQs from AI Book Buddy.
+  bool get isCustomPractice => _isCustomPractice;
+
+  /// Starts an unranked practice quiz with custom [questions] (for example,
+  /// MCQs generated from a student's textbook scan in AI Book Buddy).
+  ///
+  /// Strictly practice (`_isPractice = true`, `_isDailyQuiz = false`): awards
+  /// 0 coins, 0 gems, 0 XP, writes no ranked history, and touches no leaderboard.
+  Future<void> startCustomPracticeQuiz(
+    List<QuestionModel> questions, {
+    String? title,
+  }) async {
+    _resetQuizState();
+    _isDailyQuiz = false;
+    _isPractice = true;
+    _isCustomPractice = true;
+    _customPracticeSource = List<QuestionModel>.unmodifiable(questions);
+    _chapterId = null;
+    _jsonFile = null;
+    _chapterTitle = title;
+    _chapterTitleBn = title;
+    _questions = _shuffleOptions(questions);
+    _isLoading = false;
+
+    if (_questions.isNotEmpty) _startTimer();
+    SoundService.instance.play('quiz_start');
+    Haptics.tap();
+    notifyListeners();
+  }
+
+  /// Replays the last custom practice quiz with freshly shuffled options.
+  Future<void> retryCustomPractice() {
+    if (_customPracticeSource.isEmpty) return Future.value();
+    return startCustomPracticeQuiz(_customPracticeSource, title: _chapterTitle);
+  }
+
   /// True when the finished run was a chapter set that can offer a replay.
   bool get isChapterRun =>
       !_isDailyQuiz && _chapterId != null && _questions.isNotEmpty;
@@ -578,6 +620,7 @@ class QuizProvider extends ChangeNotifier {
     _isPractice = false;
     _isMistakeRevision = false;
     _isFreePractice = false;
+    _isCustomPractice = false;
     _practiceCategoryId = null;
     _chapterQuestionCount = 0;
     _currentIndex = 0;

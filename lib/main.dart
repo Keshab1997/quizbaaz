@@ -11,10 +11,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:smart_ocr_ai_bridge/smart_ocr_ai_bridge.dart';
 
 import 'core/theme/app_theme.dart';
 import 'data/providers/auth_provider.dart';
 import 'data/providers/battle_provider.dart';
+import 'data/providers/book_buddy_provider.dart';
 import 'data/providers/locale_provider.dart';
 import 'data/providers/quiz_provider.dart';
 import 'data/providers/rewards_provider.dart';
@@ -87,13 +89,14 @@ Future<void> main() async {
     debugPrint('Firebase not configured yet: $e');
   }
 
-  // 3) LLM key pool for the admin question generator. Admin-only — a
-  //    failure here must not stop the app for a student.
+  // 3) LLM key pool for the admin question generator & AI Book Buddy.
+  //    Non-blocking — a failure here must never stop the app for a student.
   unawaited(
     Future(() async {
       try {
         await KeyCache.init().timeout(const Duration(seconds: 5));
         ApiKeyManager.instance.initialize();
+        SmartOcrAiBridge.instance.bindApiKeyManager(ApiKeyManager.instance);
       } catch (e) {
         debugPrint('API key manager unavailable: $e');
       }
@@ -157,6 +160,7 @@ class QuizBaazApp extends StatelessWidget {
           create: (ctx) => BattleProvider(ctx.read<UserProvider>()),
         ),
         ChangeNotifierProvider(create: (_) => RewardsProvider()),
+        ChangeNotifierProvider(create: (_) => BookBuddyProvider()),
       ],
       // Rebuilds the entire MaterialApp when the language changes. The
       // ValueKey is what makes every cached `S.*` string re-read: without it

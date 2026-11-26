@@ -61,6 +61,7 @@ class _UserListScreenState extends State<UserListScreen> {
     return widget.isGuestView ? 'Guest User' : 'User';
   }
 
+  // ignore: unused_element
   String _subtitle(Map<String, dynamic> user) {
     final username = (user['username'] ?? '').toString().trim();
     final id = _userId(user);
@@ -69,6 +70,7 @@ class _UserListScreenState extends State<UserListScreen> {
     return id;
   }
 
+  // ignore: unused_element
   int _todayCount(List<Map<String, dynamic>> users) {
     final now = DateTime.now();
     final today =

@@ -614,4 +614,52 @@ const Map<String, String> kStringsHi = {
   'dashPractice': 'अभ्यास',
   'resultPracticeAgain': 'फिर से अभ्यास करें',
   'allSubjects': 'सभी विषय',
+
+  // ------------------------------------------------------- ai book buddy --
+  'dashBookBuddy': 'AI किताब',
+  'bookBuddyTitle': 'AI बुक बडी',
+  'bookBuddyBannerBadge': 'नया · AI ट्यूटर',
+  'bookBuddyBannerTitle': 'किताब की फोटो लें और AI से समझें',
+  'bookBuddyBannerSubtitle':
+      'अपनी किताब के किसी भी पन्ने की फोटो लें — आसान भाषा में समझें, सवाल पूछें और तुरंत MCQ क्विज़ खेलें!',
+  'bookBuddyBannerCta': 'किताब स्कैन करें',
+  'bookBuddyEmptyTitle': 'आपका अपना AI स्टडी ट्यूटर',
+  'bookBuddyEmptySubtitle':
+      'किताब के पन्ने या नोट्स की फोटो लें। AI हर विषय को आसान भाषा में समझाएगा, आपके सवालों के जवाब देगा और अभ्यास के लिए MCQ बनाएगा!',
+  'bookBuddyScanCamera': 'फोटो लें',
+  'bookBuddyScanGallery': 'गैलरी से चुनें',
+  'bookBuddyNewScan': 'नया पन्ना',
+  'bookBuddyScanning':
+      'किताब का पन्ना पढ़ा जा रहा है और व्याख्या तैयार हो रही है...',
+  'bookBuddyOcrSaved': 'ऑन-डिवाइस OCR · {label}',
+  'bookBuddyVisionUsed': 'AI विज़न मोड · चित्र और हस्तलेखन समर्थित',
+  'bookBuddyExtractedHeader': 'पन्ने से निकाला गया टेक्स्ट',
+  'bookBuddyDefaultTitle': 'स्कैन किया गया पन्ना',
+  'bookBuddyInitialPrompt': 'इस पन्ने को सरल भाषा में समझाएं',
+  'bookBuddyQuickSimple': 'और भी आसान भाषा में समझाएं',
+  'bookBuddyQuickPoints': 'परीक्षा के मुख्य बिंदु बताएं',
+  'bookBuddyQuickExamples': 'उदाहरण के साथ समझाएं',
+  'bookBuddyAskHint': 'इस पन्ने से जुड़ा कोई भी सवाल पूछें...',
+  'bookBuddyAskSend': 'पूछें',
+  'bookBuddyThinking': 'AI ट्यूटर जवाब लिख रहा है...',
+  'bookBuddyYouAsked': 'आपका सवाल',
+  'bookBuddyAiTutor': 'AI बुक बडी',
+  'bookBuddyMcqSectionTitle': 'इस पन्ने से MCQ क्विज़ खेलें',
+  'bookBuddyMcqSectionSubtitle':
+      'जो सीखा उसका अभ्यास करें! यह प्रैक्टिस मोड है — बिना किसी दबाव के खेलें।',
+  'bookBuddyGen5Mcq': '5 MCQ बनाएं',
+  'bookBuddyGen10Mcq': '10 MCQ बनाएं',
+  'bookBuddyGeneratingMcq': 'आपके पन्ने से MCQ तैयार किए जा रहे हैं...',
+  'bookBuddyMcqReady': '{n} MCQ खेलने के लिए तैयार हैं!',
+  'bookBuddyPlayQuiz': 'अभी क्विज़ खेलें ({n})',
+  'bookBuddyRegenerateMcq': 'नए सवाल बनाएं',
+  'bookBuddySavedHeader': 'सेव किए गए स्टडी पन्ने',
+  'bookBuddySavedMeta': '{turns} नोट्स · {mcqs} MCQ',
+  'bookBuddyDeleteSession': 'हटाएं',
+  'bookBuddyErrNoKey':
+      'इस डिवाइस पर अभी कोई सक्रिय AI API Key उपलब्ध नहीं है। कृपया एडमिन पैनल में API Key जोड़ें।',
+  'bookBuddyErrEmptyMcq':
+      'इस पन्ने से स्पष्ट MCQ नहीं बन सके। कृपया साफ़ फोटो लेकर फिर कोशिश करें।',
+  'bookBuddyErrPickFailed': 'चयनित फोटो पढ़ी नहीं जा सकी।',
+  'resultBookBuddyAgain': 'बुक क्विज़ फिर से खेलें',
 };

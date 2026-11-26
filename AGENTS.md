@@ -340,6 +340,7 @@ Gamified Class-10 quiz app for Indian students. Offline-first, Firebase-mirrored
 | Home / streak / champion podium | `presentation/screens/dashboard/` |
 | Daily 10-question timed quiz (+ lifelines) | `presentation/screens/daily_quiz/` |
 | Chapter-wise question bank | `presentation/screens/chapter_quiz/` |
+| AI Book Buddy (scan textbook, Q&A, instant MCQ quiz) | `presentation/screens/book_buddy/` (`docs/23_AI_BOOK_BUDDY_PLAN.md`) |
 | 1 vs 1 bot battle | `presentation/screens/battle/` |
 | Leaderboard, rewards, shop, history, notifications, profile | one folder each under `screens/` |
 | Admin panel (author-only) | `presentation/screens/admin/` |
@@ -411,7 +412,7 @@ One public class per file.
 `context.watch<T>()`; mutate with `context.read<T>()`.
 
 `UserProvider` · `QuizProvider` · `BattleProvider` · `RewardsProvider` ·
-`AuthProvider` · `LocaleProvider`
+`AuthProvider` · `LocaleProvider` · `BookBuddyProvider`
 
 **Hive boxes** (all opened in `HiveService.initialize()`, schema v2):
 
