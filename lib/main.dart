@@ -229,7 +229,6 @@ class QuizBaazApp extends StatelessWidget {
   }
 }
 
-
 /// The replacement for Flutter's grey box.
 ///
 /// Flutter's default `ErrorWidget` in a release build is a plain grey
@@ -266,9 +265,10 @@ class _VisibleErrorPanelState extends State<VisibleErrorPanel> {
         ..writeln(stack.split('\n').take(14).join('\n'));
     }
     // A crash report gets pasted into a chat; an API key must never ride along.
-    final text = buffer
-        .toString()
-        .replaceAll(RegExp(r'sk-[A-Za-z0-9_\-]{6,}'), 'sk-***');
+    final text = buffer.toString().replaceAll(
+      RegExp(r'sk-[A-Za-z0-9_\-]{6,}'),
+      'sk-***',
+    );
     return text.length <= 4000 ? text : '${text.substring(0, 4000)}\n…';
   }
 
