@@ -46,7 +46,7 @@ dependencies:
   # AdMob — banner + interstitial. Ad unit IDs are injected at build time
   # with --dart-define (see the note in lib/core/constants/ad_config.dart);
   # none are hardcoded under lib/.
-  google_mobile_ads: ^9.1.0
+  google_mobile_ads: ^9.2.0
   # SHA-1 for question fingerprints (duplicate detection).
   crypto: ^3.0.3
   # OS-scheduled Daily Quiz reminders (no FCM). See docs/15.
