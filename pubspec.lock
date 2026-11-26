@@ -14,10 +14,10 @@ packages:
     description:
       path: "."
       ref: master
-      resolved-ref: 6acc7e7c057b26ccb726c86fb0dde03d257a4e5d
+      resolved-ref: "2c04069b71cbcbfa5f262fa7a55b618e67c78d0c"
       url: "https://github.com/Keshab1997/admin_api_key_manager"
     source: git
-    version: "1.6.1"
+    version: "1.7.1"
   archive:
     dependency: transitive
     description:
