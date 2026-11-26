@@ -748,5 +748,56 @@ class S {
   static String get bookBuddyLangBn => raw('bookBuddyLangBn');
   static String get bookBuddyLangHi => raw('bookBuddyLangHi');
   static String get bookBuddyFontSize => raw('bookBuddyFontSize');
+  static String get bookBuddyQuotaLabel => raw('bookBuddyQuotaLabel');
+  static String bookBuddyQuotaRemaining({
+    required Object left,
+    required Object total,
+  }) => fill(raw('bookBuddyQuotaRemaining'), {'left': left, 'total': total});
+  static String bookBuddyQuotaUsed({
+    required Object total,
+    required Object used,
+  }) => fill(raw('bookBuddyQuotaUsed'), {'total': total, 'used': used});
+  static String get bookBuddyQuotaUnlimited => raw('bookBuddyQuotaUnlimited');
+  static String get bookBuddyQuotaPausedBadge =>
+      raw('bookBuddyQuotaPausedBadge');
+  static String get bookBuddyQuotaExhaustedBadge =>
+      raw('bookBuddyQuotaExhaustedBadge');
+  static String get bookBuddyQuotaHint => raw('bookBuddyQuotaHint');
+  static String bookBuddyErrDailyLimit({required Object total}) =>
+      fill(raw('bookBuddyErrDailyLimit'), {'total': total});
+  static String get bookBuddyErrPaused => raw('bookBuddyErrPaused');
+  static String get adminBookBuddyCardTitle => raw('adminBookBuddyCardTitle');
+  static String get adminBookBuddyCardDesc => raw('adminBookBuddyCardDesc');
+  static String get adminBookBuddyScreenTitle =>
+      raw('adminBookBuddyScreenTitle');
+  static String get adminBookBuddyLiveLabel => raw('adminBookBuddyLiveLabel');
+  static String get adminBookBuddyPerDayUnit => raw('adminBookBuddyPerDayUnit');
+  static String get adminBookBuddyPausedStatus =>
+      raw('adminBookBuddyPausedStatus');
+  static String adminBookBuddyActiveStatus({required Object n}) =>
+      fill(raw('adminBookBuddyActiveStatus'), {'n': n});
+  static String get adminBookBuddyPresetsLabel =>
+      raw('adminBookBuddyPresetsLabel');
+  static String get adminBookBuddyPauseOption =>
+      raw('adminBookBuddyPauseOption');
+  static String get adminBookBuddyCustomLabel =>
+      raw('adminBookBuddyCustomLabel');
+  static String get adminBookBuddyCustomHint => raw('adminBookBuddyCustomHint');
+  static String get adminBookBuddyAdminBypassTitle =>
+      raw('adminBookBuddyAdminBypassTitle');
+  static String get adminBookBuddyAdminBypassSub =>
+      raw('adminBookBuddyAdminBypassSub');
+  static String get adminBookBuddyHowItWorksTitle =>
+      raw('adminBookBuddyHowItWorksTitle');
+  static String get adminBookBuddyHowItWorksBody =>
+      raw('adminBookBuddyHowItWorksBody');
+  static String get adminBookBuddySaveBtn => raw('adminBookBuddySaveBtn');
+  static String get adminBookBuddySavingBtn => raw('adminBookBuddySavingBtn');
+  static String adminBookBuddySavedToast({required Object n}) =>
+      fill(raw('adminBookBuddySavedToast'), {'n': n});
+  static String get adminBookBuddyPausedToast =>
+      raw('adminBookBuddyPausedToast');
+  static String get adminBookBuddyInvalidToast =>
+      raw('adminBookBuddyInvalidToast');
   static String get resultBookBuddyAgain => raw('resultBookBuddyAgain');
 }

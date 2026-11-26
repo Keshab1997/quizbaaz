@@ -668,5 +668,45 @@ const Map<String, String> kStringsBn = {
   'bookBuddyLangBn': 'বাংলা',
   'bookBuddyLangHi': 'हिन्दी',
   'bookBuddyFontSize': 'লেখার আকার',
+  'bookBuddyQuotaLabel': 'আজকের AI লিমিট',
+  'bookBuddyQuotaRemaining': 'আজ বাকি: {left} / {total}',
+  'bookBuddyQuotaUsed': 'আজ ব্যবহৃত: {used} / {total}',
+  'bookBuddyQuotaUnlimited': 'অ্যাডমিন · আনলিমিটেড',
+  'bookBuddyQuotaPausedBadge': 'সাময়িক বন্ধ',
+  'bookBuddyQuotaExhaustedBadge': 'আজকের লিমিট শেষ',
+  'bookBuddyQuotaHint':
+      'রাত ১২টায় (IST) আবার রিসেট হবে। সেভ করা নোট পড়া ও আগের কুইজ খেলা সবসময় ফ্রি!',
+  'bookBuddyErrDailyLimit':
+      'আপনার আজকের AI বুক বাডি লিমিট ({total} বার) শেষ হয়েছে। আগামীকাল আবার নতুন পাতা স্ক্যান করতে পারবেন, তবে সেভ করা নোট ও কুইজ এখনই পড়তে পারবেন!',
+  'bookBuddyErrPaused':
+      'অ্যাডমিন সাময়িকভাবে নতুন AI ব্যবহার বন্ধ রেখেছেন। তবে আপনার সেভ করা নোট ও কুইজগুলো নির্দ্বিধায় ব্যবহার করতে পারবেন!',
+  'adminBookBuddyCardTitle': 'AI ডেইলি লিমিট',
+  'adminBookBuddyCardDesc': 'ইউজারদের দৈনিক AI ব্যবহারের সীমা নির্ধারণ করুন',
+  'adminBookBuddyScreenTitle': 'AI বুক বাডি ডেইলি লিমিট',
+  'adminBookBuddyLiveLabel': 'প্রতি ইউজারের বর্তমান দৈনিক লিমিট',
+  'adminBookBuddyPerDayUnit': '/ দিন',
+  'adminBookBuddyPausedStatus': 'সাময়িক বন্ধ (০ / দিন)',
+  'adminBookBuddyActiveStatus': 'চালু আছে ({n} / দিন)',
+  'adminBookBuddyPresetsLabel': 'কুইক ডেইলি লিমিট প্রিসেট',
+  'adminBookBuddyPauseOption': 'বন্ধ (০)',
+  'adminBookBuddyCustomLabel': 'কাস্টম ডেইলি লিমিট (০ দিলে সাময়িক বন্ধ থাকবে)',
+  'adminBookBuddyCustomHint': 'লিমিট লিখুন (যেমন: 5)',
+  'adminBookBuddyAdminBypassTitle': 'অ্যাডমিনদের জন্য আনলিমিটেড',
+  'adminBookBuddyAdminBypassSub':
+      'চালু থাকলে অ্যাডমিন অ্যাকাউন্টে ডেইলি লিমিট প্রযোজ্য হবে না',
+  'adminBookBuddyHowItWorksTitle': 'ডেইলি লিমিট যেভাবে কাজ করে',
+  'adminBookBuddyHowItWorksBody':
+      '• প্রতিটি নতুন পাতা স্ক্যান, ফলো-আপ প্রশ্ন বা নতুন MCQ তৈরি ১টি ব্যবহার হিসেবে গণ্য হবে।\n'
+      '• ইউজাররা AI Book Buddy পেজে এবং হোম ব্যানারে তাদের আজকের বাকি থাকা লিমিট (যেমন: আজ বাকি ৩ / ৫) সরাসরি দেখতে পাবে।\n'
+      '• প্রতিদিন রাত ১২টায় (IST) স্বয়ংক্রিয়ভাবে লিমিট রিসেট হবে।\n'
+      '• সেভ করা নোট পড়া এবং আগে তৈরি করা কুইজ খেলা সবসময় ফ্রি থাকবে।',
+  'adminBookBuddySaveBtn': 'ডেইলি লিমিট সেভ করুন',
+  'adminBookBuddySavingBtn': 'সেভ হচ্ছে...',
+  'adminBookBuddySavedToast':
+      'সকল ইউজারের জন্য ডেইলি লিমিট {n}/দিন সেট করা হয়েছে!',
+  'adminBookBuddyPausedToast':
+      'ইউজারদের জন্য নতুন AI ব্যবহার সাময়িক বন্ধ (০/দিন) করা হয়েছে।',
+  'adminBookBuddyInvalidToast':
+      'অনুগ্রহ করে ০ থেকে ৫০০-এর মধ্যে সঠিক সংখ্যা দিন।',
   'resultBookBuddyAgain': 'বইয়ের কুইজ আবার খেলুন',
 };

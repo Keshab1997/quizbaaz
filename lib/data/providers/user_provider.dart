@@ -419,6 +419,24 @@ class UserProvider extends ChangeNotifier {
     }
   }
 
+  /// Updates the cached [AppConfig] in Hive + memory immediately (used after
+  /// an admin edits remote config, or when pulling fresh `config/app`).
+  Future<void> applyAppConfig(AppConfig nextConfig) async {
+    _config = nextConfig;
+    await HiveService.cachePut('app_config', nextConfig.toJson());
+    notifyListeners();
+  }
+
+  /// Pulls the latest `config/app` from Firestore and updates Hive + memory.
+  Future<AppConfig> refreshAppConfig() async {
+    final remote = await SyncService.pullConfig();
+    if (remote != null) {
+      _config = remote;
+      notifyListeners();
+    }
+    return _config;
+  }
+
   /// Resets an impossible lifetime-best daily score left over from the old
   /// time-bonus scoring (10 + seconds-remaining × 2 could reach 500+), so the
   /// profile and the "your position" card stop showing a phantom number like

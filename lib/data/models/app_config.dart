@@ -66,6 +66,15 @@ class AppConfig {
   /// Minutes before cached leaderboard data is considered stale.
   final int leaderboardCacheMinutes;
 
+  /// Daily AI Book Buddy action limit per student (`0` = temporarily paused).
+  /// Each new page scan, AI follow-up question, or AI MCQ generation uses 1
+  /// daily action; reading saved sessions & playing already-generated quizzes
+  /// are always free.
+  final int bookBuddyDailyLimit;
+
+  /// Whether accounts with admin privileges bypass [bookBuddyDailyLimit].
+  final bool bookBuddyAdminUnlimited;
+
   /// Newest release the owner has published notes for, and those notes
   /// (language code → bullet lines). This is how a phone still running the
   /// *previous* build can show the incoming update's notes in the Update
@@ -97,9 +106,68 @@ class AppConfig {
     this.battleSearchSeconds = 6,
     this.adminUserIds = const <String>[],
     this.leaderboardCacheMinutes = 10,
+    this.bookBuddyDailyLimit = 5,
+    this.bookBuddyAdminUnlimited = true,
     this.latestReleaseVersion = '',
     this.latestReleaseNotes = const <String, List<String>>{},
   });
+
+  AppConfig copyWith({
+    int? dailyQuestionCount,
+    int? secondsPerQuestion,
+    int? coinsPerCorrectDaily,
+    int? perfectBonusCoins,
+    int? coinsPerCorrectPractice,
+    int? gemsPerfect,
+    int? gemsHighScore,
+    int? highScoreThreshold,
+    int? signupBonusCoins,
+    int? signupBonusGems,
+    int? streakGoalDays,
+    int? battleQuestionCount,
+    int? battleBasePoints,
+    int? battleSpeedBonus,
+    int? battleFirstBonus,
+    int? battleStreakBonus,
+    int? battleMaxStreakBonus,
+    int? battleSearchSeconds,
+    List<String>? adminUserIds,
+    int? leaderboardCacheMinutes,
+    int? bookBuddyDailyLimit,
+    bool? bookBuddyAdminUnlimited,
+    String? latestReleaseVersion,
+    Map<String, List<String>>? latestReleaseNotes,
+  }) {
+    return AppConfig(
+      dailyQuestionCount: dailyQuestionCount ?? this.dailyQuestionCount,
+      secondsPerQuestion: secondsPerQuestion ?? this.secondsPerQuestion,
+      coinsPerCorrectDaily: coinsPerCorrectDaily ?? this.coinsPerCorrectDaily,
+      perfectBonusCoins: perfectBonusCoins ?? this.perfectBonusCoins,
+      coinsPerCorrectPractice:
+          coinsPerCorrectPractice ?? this.coinsPerCorrectPractice,
+      gemsPerfect: gemsPerfect ?? this.gemsPerfect,
+      gemsHighScore: gemsHighScore ?? this.gemsHighScore,
+      highScoreThreshold: highScoreThreshold ?? this.highScoreThreshold,
+      signupBonusCoins: signupBonusCoins ?? this.signupBonusCoins,
+      signupBonusGems: signupBonusGems ?? this.signupBonusGems,
+      streakGoalDays: streakGoalDays ?? this.streakGoalDays,
+      battleQuestionCount: battleQuestionCount ?? this.battleQuestionCount,
+      battleBasePoints: battleBasePoints ?? this.battleBasePoints,
+      battleSpeedBonus: battleSpeedBonus ?? this.battleSpeedBonus,
+      battleFirstBonus: battleFirstBonus ?? this.battleFirstBonus,
+      battleStreakBonus: battleStreakBonus ?? this.battleStreakBonus,
+      battleMaxStreakBonus: battleMaxStreakBonus ?? this.battleMaxStreakBonus,
+      battleSearchSeconds: battleSearchSeconds ?? this.battleSearchSeconds,
+      adminUserIds: adminUserIds ?? this.adminUserIds,
+      leaderboardCacheMinutes:
+          leaderboardCacheMinutes ?? this.leaderboardCacheMinutes,
+      bookBuddyDailyLimit: bookBuddyDailyLimit ?? this.bookBuddyDailyLimit,
+      bookBuddyAdminUnlimited:
+          bookBuddyAdminUnlimited ?? this.bookBuddyAdminUnlimited,
+      latestReleaseVersion: latestReleaseVersion ?? this.latestReleaseVersion,
+      latestReleaseNotes: latestReleaseNotes ?? this.latestReleaseNotes,
+    );
+  }
 
   /// The published notes for [latestReleaseVersion] in [code], falling back
   /// to English. Empty when nothing has been published (or for a language
@@ -161,6 +229,8 @@ class AppConfig {
     'battle_search_seconds': battleSearchSeconds,
     'admin_user_ids': adminUserIds,
     'leaderboard_cache_minutes': leaderboardCacheMinutes,
+    'book_buddy_daily_limit': bookBuddyDailyLimit,
+    'book_buddy_admin_unlimited': bookBuddyAdminUnlimited,
     'latest_release_version': latestReleaseVersion,
     'latest_release_notes': latestReleaseNotes,
   };
@@ -168,6 +238,11 @@ class AppConfig {
   factory AppConfig.fromJson(Map<String, dynamic> json) {
     const fallback = AppConfig();
     int intOr(String key, int def) => (json[key] as num?)?.toInt() ?? def;
+    bool boolOr(String key, bool def) {
+      final v = json[key];
+      if (v is bool) return v;
+      return def;
+    }
 
     // Release notes arrive as `{en: [...], bn: [...], hi: [...]}`. A plain
     // string is also accepted (one bullet per line, `•` stripped) so the
@@ -255,6 +330,14 @@ class AppConfig {
       leaderboardCacheMinutes: intOr(
         'leaderboard_cache_minutes',
         fallback.leaderboardCacheMinutes,
+      ),
+      bookBuddyDailyLimit: intOr(
+        'book_buddy_daily_limit',
+        fallback.bookBuddyDailyLimit,
+      ).clamp(0, 999),
+      bookBuddyAdminUnlimited: boolOr(
+        'book_buddy_admin_unlimited',
+        fallback.bookBuddyAdminUnlimited,
       ),
       latestReleaseVersion: '${json['latest_release_version'] ?? ''}'.trim(),
       latestReleaseNotes: notes,

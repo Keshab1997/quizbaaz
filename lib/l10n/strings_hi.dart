@@ -666,5 +666,44 @@ const Map<String, String> kStringsHi = {
   'bookBuddyLangBn': 'বাংলা',
   'bookBuddyLangHi': 'हिन्दी',
   'bookBuddyFontSize': 'अक्षर आकार',
+  'bookBuddyQuotaLabel': 'दैनिक AI सीमा',
+  'bookBuddyQuotaRemaining': 'आज शेष: {left} / {total}',
+  'bookBuddyQuotaUsed': 'आज उपयोग: {used} / {total}',
+  'bookBuddyQuotaUnlimited': 'एडमिन · अनलिमिटेड',
+  'bookBuddyQuotaPausedBadge': 'अस्थायी रूप से बंद',
+  'bookBuddyQuotaExhaustedBadge': 'आज की सीमा समाप्त',
+  'bookBuddyQuotaHint':
+      'हर रात 12 बजे (IST) रीसेट होता है। सेव किए गए नोट्स पढ़ना और क्विज़ खेलना हमेशा मुफ़्त है!',
+  'bookBuddyErrDailyLimit':
+      'आपकी आज की AI बुक बडी सीमा ({total}/दिन) पूरी हो गई है। कल फिर आएं, या अभी सेव किए गए नोट्स और क्विज़ का अभ्यास करें!',
+  'bookBuddyErrPaused':
+      'एडमिन ने अभी नया AI उपयोग अस्थायी रूप से रोका है। आप सेव किए गए नोट्स और क्विज़ अभी भी पढ़ व खेल सकते हैं!',
+  'adminBookBuddyCardTitle': 'AI दैनिक सीमा',
+  'adminBookBuddyCardDesc': 'यूज़र्स के लिए दैनिक AI सीमा तय करें',
+  'adminBookBuddyScreenTitle': 'AI बुक बडी दैनिक सीमा',
+  'adminBookBuddyLiveLabel': 'प्रति यूज़र वर्तमान दैनिक सीमा',
+  'adminBookBuddyPerDayUnit': '/ दिन',
+  'adminBookBuddyPausedStatus': 'रोका गया (0 / दिन)',
+  'adminBookBuddyActiveStatus': 'सक्रिय ({n} / दिन)',
+  'adminBookBuddyPresetsLabel': 'त्वरित दैनिक सीमा विकल्प',
+  'adminBookBuddyPauseOption': 'रोकें (0)',
+  'adminBookBuddyCustomLabel': 'कस्टम दैनिक सीमा (0 = अस्थायी बंद)',
+  'adminBookBuddyCustomHint': 'दैनिक सीमा लिखें (जैसे 5)',
+  'adminBookBuddyAdminBypassTitle': 'एडमिन खातों के लिए अनलिमिटेड',
+  'adminBookBuddyAdminBypassSub':
+      'सक्रिय रहने पर एडमिन पर दैनिक सीमा लागू नहीं होगी',
+  'adminBookBuddyHowItWorksTitle': 'दैनिक सीमा कैसे काम करती है',
+  'adminBookBuddyHowItWorksBody':
+      '• हर नया पन्ना स्कैन, AI सवाल या MCQ निर्माण 1 उपयोग माना जाएगा।\n'
+      '• यूज़र्स को AI बुक बडी और होम बैनर पर आज की बची हुई सीमा साफ़ दिखेगी।\n'
+      '• हर रात 12 बजे (IST) सीमा अपने-आप रीसेट हो जाएगी।\n'
+      '• सेव किए गए नोट्स पढ़ना और पुराने क्विज़ खेलना हमेशा मुफ़्त रहेगा।',
+  'adminBookBuddySaveBtn': 'दैनिक सीमा सेव करें',
+  'adminBookBuddySavingBtn': 'सेव हो रहा है...',
+  'adminBookBuddySavedToast':
+      'सभी यूज़र्स के लिए दैनिक सीमा {n}/दिन सेव हो गई!',
+  'adminBookBuddyPausedToast':
+      'यूज़र्स के लिए AI बुक बडी अस्थायी रूप से बंद (0/दिन) किया गया।',
+  'adminBookBuddyInvalidToast': 'कृपया 0 से 500 के बीच सही संख्या दर्ज करें।',
   'resultBookBuddyAgain': 'बुक क्विज़ फिर से खेलें',
 };

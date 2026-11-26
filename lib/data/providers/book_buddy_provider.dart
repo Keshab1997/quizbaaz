@@ -5,29 +5,36 @@ import 'package:flutter/foundation.dart';
 import 'package:smart_ocr_ai_bridge/smart_ocr_ai_bridge.dart';
 
 import '../../l10n/app_strings.dart';
+import '../models/app_config.dart';
 import '../models/book_study_session.dart';
 import '../models/question_model.dart';
 import '../services/book_buddy_service.dart';
+import '../services/competition_clock.dart';
+import '../services/firestore_service.dart';
 import '../services/hive_service.dart';
+import '../services/sync_service.dart';
 
 /// State owner for AI Book Buddy (`BookBuddyScreen`).
 ///
 /// Follows QuizBaaz's core architecture rules:
 /// * Reads and writes `HiveService` directly so study sessions, the student's
-///   chosen AI reply language (`en` / `bn` / `hi`), and reading font scale
-///   survive restarts and work completely offline.
-/// * Holds transient image bytes in memory for vision fallback when a page has
-///   no machine-readable OCR text, while persisting compacted text, Q&A turns,
-///   and generated MCQs in Hive.
+///   chosen AI reply language (`en` / `bn` / `hi`), reading font scale, and
+///   daily usage quota survive restarts and work completely offline.
+/// * Enforces the Admin-configured daily limit (`AppConfig.bookBuddyDailyLimit`
+///   from Firestore `config/app` + Hive cache) per IST competition day
+///   (`CompetitionClock.dateKey`) while keeping saved notes & practice quiz
+///   replays completely free.
 class BookBuddyProvider extends ChangeNotifier {
-  BookBuddyProvider({BookBuddyService? service})
+  BookBuddyProvider({BookBuddyService? service, DateTime Function()? clock})
     : _service =
-          service ?? BookBuddyService(keyManager: ApiKeyManager.instance) {
+          service ?? BookBuddyService(keyManager: ApiKeyManager.instance),
+      _clock = clock ?? DateTime.now {
     _loadPreferences();
     reloadSessions();
   }
 
   final BookBuddyService _service;
+  final DateTime Function() _clock;
 
   static const double minTextScale = 0.9;
   static const double maxTextScale = 1.35;
@@ -39,6 +46,12 @@ class BookBuddyProvider extends ChangeNotifier {
 
   String _replyLanguage = 'bn';
   double _textScale = defaultTextScale;
+
+  int _dailyLimit = const AppConfig().bookBuddyDailyLimit;
+  bool _adminUnlimited = const AppConfig().bookBuddyAdminUnlimited;
+  bool _isAdminUser = false;
+  String _usageDateKey = '';
+  int _usedToday = 0;
 
   bool _isScanning = false;
   bool _isAsking = false;
@@ -57,13 +70,45 @@ class BookBuddyProvider extends ChangeNotifier {
   /// Reader text scale multiplier (`0.9` to `1.35`).
   double get textScale => _textScale;
 
+  /// Admin-configured daily AI Book Buddy limit (`0` = paused).
+  int get dailyLimit => _dailyLimit;
+
+  /// Whether admin accounts bypass [dailyLimit].
+  bool get adminUnlimited => _adminUnlimited;
+
+  /// True when the current signed-in user is an admin with unlimited bypass on.
+  bool get isUnlimitedForUser => _isAdminUser && _adminUnlimited;
+
+  /// True when Admin has set the daily limit to `0` (paused for regular users).
+  bool get isPausedByAdmin => !isUnlimitedForUser && _dailyLimit <= 0;
+
+  /// Number of AI Book Buddy actions used on today's IST competition day.
+  int get usedToday {
+    _refreshUsageBucketIfNeeded();
+    return _usedToday;
+  }
+
+  /// Remaining AI Book Buddy actions available today (`0` when exhausted/paused).
+  int get remainingToday {
+    if (isUnlimitedForUser) return 999;
+    final left = _dailyLimit - usedToday;
+    return left < 0 ? 0 : left;
+  }
+
+  /// True when the student has used up all allowed AI actions for today.
+  bool get isQuotaExhausted =>
+      !isUnlimitedForUser && (_dailyLimit <= 0 || usedToday >= _dailyLimit);
+
   bool get isScanning => _isScanning;
   bool get isAsking => _isAsking;
   bool get isGeneratingMcqs => _isGeneratingMcqs;
   bool get isBusy => _isScanning || _isAsking || _isGeneratingMcqs;
   String? get errorMessage => _errorMessage;
 
+  String _todayKey() => CompetitionClock.dateKey(_clock());
+
   void _loadPreferences() {
+    _usageDateKey = _todayKey();
     if (!HiveService.isInitialized) {
       _replyLanguage = kSupportedLanguageCodes.contains(S.code) ? S.code : 'bn';
       return;
@@ -82,6 +127,133 @@ class BookBuddyProvider extends ChangeNotifier {
     );
     if (savedScale != null) {
       _textScale = savedScale.clamp(minTextScale, maxTextScale);
+    }
+
+    final cachedCfg = SyncService.cachedConfig();
+    _dailyLimit = cachedCfg.bookBuddyDailyLimit;
+    _adminUnlimited = cachedCfg.bookBuddyAdminUnlimited;
+
+    final storedDate = HiveService.getMeta<String>(
+      HiveService.metaBookBuddyUsageDate,
+    );
+    final storedCount =
+        HiveService.getMeta<int>(HiveService.metaBookBuddyUsageCount) ?? 0;
+    if (storedDate == _usageDateKey) {
+      _usedToday = storedCount < 0 ? 0 : storedCount;
+    } else {
+      _usedToday = 0;
+    }
+  }
+
+  void _refreshUsageBucketIfNeeded() {
+    final today = _todayKey();
+    if (_usageDateKey == today) return;
+    _usageDateKey = today;
+    _usedToday = 0;
+    if (HiveService.isInitialized) {
+      unawaited(HiveService.setMeta(HiveService.metaBookBuddyUsageDate, today));
+      unawaited(HiveService.setMeta(HiveService.metaBookBuddyUsageCount, 0));
+    }
+  }
+
+  /// Syncs the Admin-configured limit from [config] and optionally reconciles
+  /// today's usage count with Firestore (`users/{uid}/meta/book_buddy_usage`)
+  /// so reinstalling or switching devices cannot bypass the daily cap.
+  Future<void> syncQuotaPolicy({
+    required AppConfig config,
+    required bool isAdmin,
+    String userId = '',
+    bool pullRemote = true,
+  }) async {
+    _refreshUsageBucketIfNeeded();
+    var changed = false;
+
+    if (_dailyLimit != config.bookBuddyDailyLimit ||
+        _adminUnlimited != config.bookBuddyAdminUnlimited ||
+        _isAdminUser != isAdmin) {
+      _dailyLimit = config.bookBuddyDailyLimit;
+      _adminUnlimited = config.bookBuddyAdminUnlimited;
+      _isAdminUser = isAdmin;
+      changed = true;
+    }
+
+    if (pullRemote && SyncService.isOnline) {
+      final freshCfg = await SyncService.pullConfig();
+      if (freshCfg != null &&
+          (_dailyLimit != freshCfg.bookBuddyDailyLimit ||
+              _adminUnlimited != freshCfg.bookBuddyAdminUnlimited)) {
+        _dailyLimit = freshCfg.bookBuddyDailyLimit;
+        _adminUnlimited = freshCfg.bookBuddyAdminUnlimited;
+        changed = true;
+      }
+
+      if (userId.isNotEmpty && userId != 'guest') {
+        final today = _todayKey();
+        final remoteCount = await FirestoreService.loadBookBuddyDailyUsage(
+          userId,
+          today,
+        );
+        if (remoteCount != null && remoteCount > _usedToday) {
+          _usedToday = remoteCount;
+          if (HiveService.isInitialized) {
+            await HiveService.setMeta(
+              HiveService.metaBookBuddyUsageDate,
+              today,
+            );
+            await HiveService.setMeta(
+              HiveService.metaBookBuddyUsageCount,
+              _usedToday,
+            );
+          }
+          changed = true;
+        }
+      }
+    }
+
+    if (changed) notifyListeners();
+  }
+
+  /// Checks whether the user may spend 1 AI action right now; sets
+  /// [_errorMessage] (`paused_by_admin` or `daily_limit_reached`) if blocked.
+  bool _checkDailyQuotaAllowed() {
+    _refreshUsageBucketIfNeeded();
+    if (isUnlimitedForUser) return true;
+    if (_dailyLimit <= 0) {
+      _errorMessage = 'paused_by_admin';
+      notifyListeners();
+      return false;
+    }
+    if (_usedToday >= _dailyLimit) {
+      _errorMessage = 'daily_limit_reached';
+      notifyListeners();
+      return false;
+    }
+    return true;
+  }
+
+  /// Records 1 successful AI action against today's quota in Hive + Firestore.
+  Future<void> _recordQuotaUsage(String userId) async {
+    _refreshUsageBucketIfNeeded();
+    _usedToday += 1;
+    final today = _usageDateKey;
+    if (HiveService.isInitialized) {
+      await HiveService.setMeta(HiveService.metaBookBuddyUsageDate, today);
+      await HiveService.setMeta(
+        HiveService.metaBookBuddyUsageCount,
+        _usedToday,
+      );
+    }
+    if (userId.isNotEmpty &&
+        userId != 'student' &&
+        userId != 'guest' &&
+        SyncService.isOnline) {
+      unawaited(
+        FirestoreService.saveBookBuddyDailyUsage(
+          userId,
+          dateKey: today,
+          count: _usedToday,
+        ),
+      );
     }
   }
 
@@ -165,6 +337,8 @@ class BookBuddyProvider extends ChangeNotifier {
     String? customPrompt,
     String userId = 'student',
   }) async {
+    if (!_checkDailyQuotaAllowed()) return false;
+
     final targetLang = languageCode ?? _replyLanguage;
     _isScanning = true;
     _errorMessage = null;
@@ -179,7 +353,7 @@ class BookBuddyProvider extends ChangeNotifier {
         userId: userId,
       );
 
-      final nowMs = DateTime.now().millisecondsSinceEpoch;
+      final nowMs = _clock().millisecondsSinceEpoch;
       final session = BookStudySession(
         id: 'book_$nowMs',
         title: analysis.title.isNotEmpty ? analysis.title : defaultTitle,
@@ -202,6 +376,7 @@ class BookBuddyProvider extends ChangeNotifier {
         updatedAtMs: nowMs,
       );
 
+      await _recordQuotaUsage(userId);
       await HiveService.saveBookStudySession(session);
       _activeSession = session;
       _savedSessions = HiveService.loadBookStudySessions();
@@ -227,6 +402,8 @@ class BookBuddyProvider extends ChangeNotifier {
     final current = _activeSession;
     final trimmed = question.trim();
     if (current == null || trimmed.isEmpty) return false;
+    if (!_checkDailyQuotaAllowed()) return false;
+
     final targetLang = languageCode ?? _replyLanguage;
 
     _isAsking = true;
@@ -242,7 +419,7 @@ class BookBuddyProvider extends ChangeNotifier {
         userId: userId,
       );
 
-      final nowMs = DateTime.now().millisecondsSinceEpoch;
+      final nowMs = _clock().millisecondsSinceEpoch;
       final updated = current.copyWith(
         replyLanguage: targetLang,
         turns: [
@@ -252,6 +429,7 @@ class BookBuddyProvider extends ChangeNotifier {
         updatedAtMs: nowMs,
       );
 
+      await _recordQuotaUsage(userId);
       await HiveService.saveBookStudySession(updated);
       _activeSession = updated;
       _savedSessions = HiveService.loadBookStudySessions();
@@ -276,6 +454,8 @@ class BookBuddyProvider extends ChangeNotifier {
   }) async {
     final current = _activeSession;
     if (current == null) return const [];
+    if (!_checkDailyQuotaAllowed()) return const [];
+
     final targetLang = languageCode ?? _replyLanguage;
 
     _isGeneratingMcqs = true;
@@ -296,13 +476,14 @@ class BookBuddyProvider extends ChangeNotifier {
         return const [];
       }
 
-      final nowMs = DateTime.now().millisecondsSinceEpoch;
+      final nowMs = _clock().millisecondsSinceEpoch;
       final updated = current.copyWith(
         replyLanguage: targetLang,
         generatedMcqs: mcqs,
         updatedAtMs: nowMs,
       );
 
+      await _recordQuotaUsage(userId);
       await HiveService.saveBookStudySession(updated);
       _activeSession = updated;
       _savedSessions = HiveService.loadBookStudySessions();

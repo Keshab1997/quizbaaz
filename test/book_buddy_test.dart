@@ -8,6 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
+import 'package:quizbaaz/data/models/app_config.dart';
 import 'package:quizbaaz/data/providers/book_buddy_provider.dart';
 import 'package:quizbaaz/data/providers/quiz_provider.dart';
 import 'package:quizbaaz/data/providers/user_provider.dart';
@@ -34,6 +35,8 @@ void main() {
 
   setUp(() async {
     await HiveService.clearBookStudySessions();
+    await HiveService.setMeta(HiveService.metaBookBuddyUsageDate, null);
+    await HiveService.setMeta(HiveService.metaBookBuddyUsageCount, null);
   });
 
   test(
@@ -334,6 +337,157 @@ void main() {
       expect(find.text('রাসায়নিক শক্তি → শব্দশক্তি'), findsOneWidget);
       expect(find.textContaining('##'), findsNothing);
       expect(find.textContaining('|---'), findsNothing);
+    },
+  );
+
+  test(
+    'enforces Admin daily limit, resets on IST midnight rollover, and honors admin unlimited bypass',
+    () async {
+      // Round-trip AppConfig fields
+      const customCfg = AppConfig(
+        bookBuddyDailyLimit: 2,
+        bookBuddyAdminUnlimited: true,
+      );
+      final roundTrip = AppConfig.fromJson(customCfg.toJson());
+      expect(roundTrip.bookBuddyDailyLimit, equals(2));
+      expect(roundTrip.bookBuddyAdminUnlimited, isTrue);
+
+      var now = DateTime.utc(2026, 11, 26, 10, 0); // 15:30 IST on 2026-11-26
+
+      final extractor = MultilingualOcrExtractor(
+        tempDirOverride: tempDir,
+        scriptRunner: (script, _) async {
+          if (script == OcrScript.latin) {
+            return const ScriptOcrPass(
+              text:
+                  'Newton Second Law: Force equals mass multiplied by acceleration (F = ma).',
+            );
+          }
+          return const ScriptOcrPass(text: '');
+        },
+      );
+
+      final mockHttp = MockClient((http.Request _) async {
+        return http.Response.bytes(
+          utf8.encode(
+            jsonEncode({
+              'choices': [
+                {
+                  'message': {
+                    'content': jsonEncode({
+                      'title': 'নিউটনের দ্বিতীয় সূত্র',
+                      'explanation': 'বল = ভর × ত্বরণ।',
+                    }),
+                  },
+                },
+              ],
+            }),
+          ),
+          200,
+          headers: {'content-type': 'application/json; charset=utf-8'},
+        );
+      });
+
+      final bridge = SmartOcrAiBridge(
+        keyPool: KeyPoolAdapter.fromStaticKeys(const [
+          BridgeApiKey(
+            id: 'k1',
+            name: 'Test Key',
+            key: 'gsk_test_123',
+            baseUrl: 'https://api.groq.com/openai/v1',
+            model: 'llama-3.3-70b-versatile',
+            provider: 'groq',
+          ),
+        ]),
+        ocrExtractor: extractor,
+        httpClient: mockHttp,
+      );
+
+      final provider = BookBuddyProvider(
+        service: BookBuddyService(bridge: bridge),
+        clock: () => now,
+      );
+      addTearDown(provider.dispose);
+
+      // Apply Admin limit = 2/day for a normal student
+      await provider.syncQuotaPolicy(
+        config: customCfg,
+        isAdmin: false,
+        pullRemote: false,
+      );
+      expect(provider.dailyLimit, equals(2));
+      expect(provider.remainingToday, equals(2));
+      expect(provider.isQuotaExhausted, isFalse);
+
+      final fakeImg = Uint8List.fromList([137, 80, 78, 71, 1, 2, 3, 4]);
+
+      // Use #1 (scan) -> allowed (1 left)
+      final ok1 = await provider.scanBookPage(
+        imageBytes: fakeImg,
+        languageCode: 'bn',
+        defaultTitle: 'Page',
+        initialQuestionLabel: 'Explain',
+      );
+      expect(ok1, isTrue);
+      expect(provider.usedToday, equals(1));
+      expect(provider.remainingToday, equals(1));
+
+      // Use #2 (follow-up question) -> allowed (0 left)
+      final ok2 = await provider.askQuestion(
+        question: 'উদাহরণ দাও',
+        languageCode: 'bn',
+      );
+      expect(ok2, isTrue);
+      expect(provider.usedToday, equals(2));
+      expect(provider.remainingToday, equals(0));
+      expect(provider.isQuotaExhausted, isTrue);
+
+      // Use #3 on same day -> blocked with daily_limit_reached!
+      final blocked = await provider.askQuestion(
+        question: 'আরেকটি উদাহরণ দাও',
+        languageCode: 'bn',
+      );
+      expect(blocked, isFalse);
+      expect(provider.errorMessage, equals('daily_limit_reached'));
+
+      // Admin sets limit = 0 (Paused) -> paused_by_admin
+      await provider.syncQuotaPolicy(
+        config: const AppConfig(bookBuddyDailyLimit: 0),
+        isAdmin: false,
+        pullRemote: false,
+      );
+      expect(provider.isPausedByAdmin, isTrue);
+      final pausedAttempt = await provider.scanBookPage(
+        imageBytes: fakeImg,
+        languageCode: 'bn',
+        defaultTitle: 'Page',
+        initialQuestionLabel: 'Explain',
+      );
+      expect(pausedAttempt, isFalse);
+      expect(provider.errorMessage, equals('paused_by_admin'));
+
+      // Admin user with bookBuddyAdminUnlimited = true bypasses even 0 limit
+      await provider.syncQuotaPolicy(
+        config: const AppConfig(
+          bookBuddyDailyLimit: 0,
+          bookBuddyAdminUnlimited: true,
+        ),
+        isAdmin: true,
+        pullRemote: false,
+      );
+      expect(provider.isUnlimitedForUser, isTrue);
+      expect(provider.isQuotaExhausted, isFalse);
+
+      // Next IST day (2026-11-27 01:00 IST) -> student quota resets to 0 used!
+      now = DateTime.utc(2026, 11, 26, 19, 35); // 01:05 IST on 2026-11-27
+      await provider.syncQuotaPolicy(
+        config: customCfg,
+        isAdmin: false,
+        pullRemote: false,
+      );
+      expect(provider.usedToday, equals(0));
+      expect(provider.remainingToday, equals(2));
+      expect(provider.isQuotaExhausted, isFalse);
     },
   );
 }

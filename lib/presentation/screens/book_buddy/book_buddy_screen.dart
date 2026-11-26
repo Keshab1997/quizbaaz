@@ -36,6 +36,20 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
   bool _showExtractedText = false;
 
   @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      final userProvider = context.read<UserProvider>();
+      context.read<BookBuddyProvider>().syncQuotaPolicy(
+        config: userProvider.config,
+        isAdmin: userProvider.isAdmin,
+        userId: userProvider.user.userId,
+      );
+    });
+  }
+
+  @override
   void dispose() {
     _questionCtrl.dispose();
     super.dispose();
@@ -78,6 +92,20 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
   Future<void> _pickAndScan(ImageSource source) async {
     final buddy = context.read<BookBuddyProvider>();
     if (buddy.isBusy) return;
+
+    // Check daily quota before even opening camera/gallery so the user gets
+    // instant feedback when today's limit is reached or paused.
+    if (buddy.isQuotaExhausted) {
+      Haptics.error();
+      final msg =
+          buddy.isPausedByAdmin
+              ? S.bookBuddyErrPaused
+              : S.bookBuddyErrDailyLimit(total: buddy.dailyLimit);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(msg), backgroundColor: AppColors.neonRed),
+      );
+      return;
+    }
 
     SoundService.instance.playClick();
     Haptics.tap();
@@ -172,9 +200,13 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
     );
   }
 
-  String _localizedError(String code) {
+  String _localizedError(BookBuddyProvider buddy, String code) {
     if (code == 'no_api_key') return S.bookBuddyErrNoKey;
     if (code == 'empty_mcq') return S.bookBuddyErrEmptyMcq;
+    if (code == 'paused_by_admin') return S.bookBuddyErrPaused;
+    if (code == 'daily_limit_reached') {
+      return S.bookBuddyErrDailyLimit(total: buddy.dailyLimit);
+    }
     return code;
   }
 
@@ -228,6 +260,9 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
         children: [
           // Top control bar: AI Reply Language selector + Font size A-/A+
           _buildLanguageAndFontBar(buddy, showFontControls: session != null),
+          const SizedBox(height: 10),
+          // Daily AI Quota meter (shows Admin-set limit & today's remaining count)
+          _buildDailyQuotaCard(buddy),
           const SizedBox(height: 14),
           if (buddy.errorMessage != null) ...[
             _buildErrorBanner(buddy),
@@ -432,6 +467,116 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
     );
   }
 
+  /// Live Daily AI Quota card showing the Admin-set daily limit & remaining uses.
+  Widget _buildDailyQuotaCard(BookBuddyProvider buddy) {
+    final isUnlimited = buddy.isUnlimitedForUser;
+    final isPaused = buddy.isPausedByAdmin;
+    final exhausted = buddy.isQuotaExhausted;
+
+    final Color accent;
+    final IconData icon;
+    final String badgeText;
+
+    if (isUnlimited) {
+      accent = AppColors.neonGold;
+      icon = Icons.verified_user_rounded;
+      badgeText = S.bookBuddyQuotaUnlimited;
+    } else if (isPaused) {
+      accent = AppColors.neonRed;
+      icon = Icons.pause_circle_filled_rounded;
+      badgeText = S.bookBuddyQuotaPausedBadge;
+    } else if (exhausted) {
+      accent = AppColors.neonRed;
+      icon = Icons.hourglass_disabled_rounded;
+      badgeText = S.bookBuddyQuotaExhaustedBadge;
+    } else if (buddy.remainingToday <= 1) {
+      accent = AppColors.neonGold;
+      icon = Icons.bolt_rounded;
+      badgeText = S.bookBuddyQuotaRemaining(
+        left: buddy.remainingToday,
+        total: buddy.dailyLimit,
+      );
+    } else {
+      accent = AppColors.neonGreen;
+      icon = Icons.bolt_rounded;
+      badgeText = S.bookBuddyQuotaRemaining(
+        left: buddy.remainingToday,
+        total: buddy.dailyLimit,
+      );
+    }
+
+    final double progress =
+        isUnlimited
+            ? 1.0
+            : (buddy.dailyLimit <= 0
+                ? 0.0
+                : (buddy.remainingToday / buddy.dailyLimit).clamp(0.0, 1.0));
+
+    return GlassCard(
+      borderRadius: 16,
+      padding: const EdgeInsets.symmetric(horizontal: 13, vertical: 10),
+      borderColor: accent.withValues(alpha: 0.38),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Icon(icon, size: 17, color: accent),
+              const SizedBox(width: 7),
+              Expanded(
+                child: Text(
+                  S.bookBuddyQuotaLabel,
+                  style: const TextStyle(
+                    color: AppColors.textPrimary,
+                    fontSize: 12.5,
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 4),
+                decoration: BoxDecoration(
+                  color: accent.withValues(alpha: 0.16),
+                  borderRadius: BorderRadius.circular(9),
+                  border: Border.all(color: accent.withValues(alpha: 0.45)),
+                ),
+                child: Text(
+                  badgeText,
+                  style: TextStyle(
+                    color: accent,
+                    fontSize: 11.5,
+                    fontWeight: FontWeight.w900,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          if (!isUnlimited && buddy.dailyLimit > 0) ...[
+            const SizedBox(height: 8),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(6),
+              child: LinearProgressIndicator(
+                value: progress,
+                minHeight: 6,
+                backgroundColor: Colors.white.withValues(alpha: 0.09),
+                valueColor: AlwaysStoppedAnimation<Color>(accent),
+              ),
+            ),
+          ],
+          const SizedBox(height: 6),
+          Text(
+            S.bookBuddyQuotaHint,
+            style: const TextStyle(
+              color: AppColors.textMuted,
+              fontSize: 11,
+              height: 1.35,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   Widget _buildErrorBanner(BookBuddyProvider buddy) {
     return GlassCard(
       borderRadius: 16,
@@ -448,7 +593,7 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
           const SizedBox(width: 10),
           Expanded(
             child: Text(
-              _localizedError(buddy.errorMessage!),
+              _localizedError(buddy, buddy.errorMessage!),
               style: const TextStyle(
                 color: AppColors.textPrimary,
                 fontSize: 13.5,

@@ -8,6 +8,7 @@ import 'user_list_screen.dart';
 import 'shop_manager_screen.dart';
 import 'avatar_manager_screen.dart';
 import 'chapter_manager_screen.dart';
+import 'book_buddy_limit_screen.dart';
 import '../../../l10n/app_strings.dart';
 import 'widgets/admin_access_banner.dart';
 
@@ -332,6 +333,17 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
               () => Navigator.push(
                 context,
                 MaterialPageRoute(builder: (_) => const AdminApiKeysScreen()),
+              ),
+        ),
+        _buildManagementCard(
+          icon: Icons.speed_rounded,
+          label: S.adminBookBuddyCardTitle,
+          description: S.adminBookBuddyCardDesc,
+          color: AppColors.neonCyan,
+          onTap:
+              () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const BookBuddyLimitScreen()),
               ),
         ),
         _buildManagementCard(

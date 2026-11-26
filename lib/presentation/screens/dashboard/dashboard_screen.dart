@@ -12,6 +12,7 @@ import '../../../data/models/shop_item.dart';
 import '../../../data/models/user_model.dart';
 import '../../../data/models/user_stats.dart';
 import '../../../data/providers/auth_provider.dart';
+import '../../../data/providers/book_buddy_provider.dart';
 import '../../../data/providers/quiz_provider.dart';
 import '../../../data/providers/rewards_provider.dart';
 import '../../../data/providers/user_provider.dart';
@@ -77,6 +78,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
       context.read<RewardsProvider>().initialize(
         userId: userProvider.user.userId,
       );
+      unawaited(
+        context.read<BookBuddyProvider>().syncQuotaPolicy(
+          config: userProvider.config,
+          isAdmin: userProvider.isAdmin,
+          userId: userProvider.user.userId,
+        ),
+      );
 
       // UMP consent: shows Google's consent form only where required
       // (EU/EEA/UK). Ads are gated until this resolves; elsewhere this
@@ -123,11 +131,19 @@ class _DashboardScreenState extends State<DashboardScreen> {
   Future<void> _refresh() async {
     final userProvider = context.read<UserProvider>();
     await Future.wait([
+      userProvider.refreshAppConfig(),
       userProvider.refreshRankings(force: true),
       context.read<RewardsProvider>().initialize(
         userId: userProvider.user.userId,
       ),
     ]);
+    if (!mounted) return;
+    await context.read<BookBuddyProvider>().syncQuotaPolicy(
+      config: userProvider.config,
+      isAdmin: userProvider.isAdmin,
+      userId: userProvider.user.userId,
+      pullRemote: false,
+    );
   }
 
   void _onGoogleSignInTap() {
@@ -910,6 +926,27 @@ class _DashboardScreenState extends State<DashboardScreen> {
   }
 
   Widget _buildBookBuddyCard() {
+    final buddy = context.watch<BookBuddyProvider>();
+    final isUnlimited = buddy.isUnlimitedForUser;
+    final isPaused = buddy.isPausedByAdmin;
+    final isExhausted = buddy.isQuotaExhausted;
+
+    final Color quotaColor =
+        isUnlimited
+            ? AppColors.neonGold
+            : (isPaused || isExhausted
+                ? AppColors.neonRed
+                : AppColors.neonGreen);
+    final String quotaText =
+        isUnlimited
+            ? S.bookBuddyQuotaUnlimited
+            : (isPaused
+                ? S.bookBuddyQuotaPausedBadge
+                : S.bookBuddyQuotaRemaining(
+                  left: buddy.remainingToday,
+                  total: buddy.dailyLimit,
+                ));
+
     return GlassCard(
       onTap: () {
         SoundService.instance.play('ui_click');
@@ -949,24 +986,52 @@ class _DashboardScreenState extends State<DashboardScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 7,
-                    vertical: 2,
-                  ),
-                  decoration: BoxDecoration(
-                    color: AppColors.neonGold.withValues(alpha: 0.16),
-                    borderRadius: BorderRadius.circular(6),
-                  ),
-                  child: Text(
-                    S.bookBuddyBannerBadge,
-                    style: const TextStyle(
-                      color: AppColors.neonGold,
-                      fontSize: 9,
-                      fontWeight: FontWeight.w900,
-                      letterSpacing: 0.6,
+                Wrap(
+                  spacing: 6,
+                  runSpacing: 4,
+                  crossAxisAlignment: WrapCrossAlignment.center,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 7,
+                        vertical: 2,
+                      ),
+                      decoration: BoxDecoration(
+                        color: AppColors.neonGold.withValues(alpha: 0.16),
+                        borderRadius: BorderRadius.circular(6),
+                      ),
+                      child: Text(
+                        S.bookBuddyBannerBadge,
+                        style: const TextStyle(
+                          color: AppColors.neonGold,
+                          fontSize: 9,
+                          fontWeight: FontWeight.w900,
+                          letterSpacing: 0.6,
+                        ),
+                      ),
                     ),
-                  ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 7,
+                        vertical: 2,
+                      ),
+                      decoration: BoxDecoration(
+                        color: quotaColor.withValues(alpha: 0.16),
+                        borderRadius: BorderRadius.circular(6),
+                        border: Border.all(
+                          color: quotaColor.withValues(alpha: 0.4),
+                        ),
+                      ),
+                      child: Text(
+                        quotaText,
+                        style: TextStyle(
+                          color: quotaColor,
+                          fontSize: 9.5,
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
                 const SizedBox(height: 4),
                 Text(

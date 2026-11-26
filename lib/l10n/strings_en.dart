@@ -679,5 +679,42 @@ const Map<String, String> kStringsEn = {
   'bookBuddyLangBn': 'বাংলা',
   'bookBuddyLangHi': 'हिन्दी',
   'bookBuddyFontSize': 'Text Size',
+  'bookBuddyQuotaLabel': 'Daily AI Limit',
+  'bookBuddyQuotaRemaining': '{left} / {total} left today',
+  'bookBuddyQuotaUsed': '{used} of {total} used today',
+  'bookBuddyQuotaUnlimited': 'Admin · Unlimited',
+  'bookBuddyQuotaPausedBadge': 'Paused by Admin',
+  'bookBuddyQuotaExhaustedBadge': '0 left today',
+  'bookBuddyQuotaHint':
+      'Resets every midnight (IST). Reading saved notes & playing saved quizzes is always free!',
+  'bookBuddyErrDailyLimit':
+      'You have reached today\'s AI Book Buddy limit ({total}/day). Come back tomorrow, or revise your saved pages & quizzes anytime!',
+  'bookBuddyErrPaused':
+      'AI Book Buddy is temporarily paused by Admin right now. You can still read saved pages & play saved quizzes!',
+  'adminBookBuddyCardTitle': 'AI Daily Limit',
+  'adminBookBuddyCardDesc': 'Set daily AI Book Buddy quota for users',
+  'adminBookBuddyScreenTitle': 'AI Book Buddy Limit',
+  'adminBookBuddyLiveLabel': 'Current Daily Limit per User',
+  'adminBookBuddyPerDayUnit': '/ day',
+  'adminBookBuddyPausedStatus': 'PAUSED (0 / day)',
+  'adminBookBuddyActiveStatus': 'ACTIVE ({n} / day)',
+  'adminBookBuddyPresetsLabel': 'QUICK DAILY LIMIT PRESETS',
+  'adminBookBuddyPauseOption': 'Pause (0)',
+  'adminBookBuddyCustomLabel': 'Custom Daily Limit (0 = Pause AI)',
+  'adminBookBuddyCustomHint': 'Enter daily limit (e.g. 5)',
+  'adminBookBuddyAdminBypassTitle': 'Unlimited for Admin Accounts',
+  'adminBookBuddyAdminBypassSub':
+      'Admins can scan & test without hitting the student daily cap',
+  'adminBookBuddyHowItWorksTitle': 'How Daily Limit Works',
+  'adminBookBuddyHowItWorksBody':
+      '• Every page scan, follow-up AI question, or MCQ generation counts as 1 action.\n'
+      '• Students see their live remaining count (e.g. 3 / 5 left today) right inside AI Book Buddy and on the Home banner.\n'
+      '• Resets automatically every midnight (12:00 AM IST).\n'
+      '• Reading saved notes & playing already-generated quizzes is always free.',
+  'adminBookBuddySaveBtn': 'Save Daily Limit',
+  'adminBookBuddySavingBtn': 'Saving...',
+  'adminBookBuddySavedToast': 'Daily limit updated to {n}/day for all users!',
+  'adminBookBuddyPausedToast': 'AI Book Buddy paused (0/day) for users.',
+  'adminBookBuddyInvalidToast': 'Please enter a valid limit between 0 and 500.',
   'resultBookBuddyAgain': 'Replay Book Quiz',
 };

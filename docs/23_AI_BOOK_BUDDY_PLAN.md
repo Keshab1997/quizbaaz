@@ -58,7 +58,8 @@ generator for **QuizBaaz**, powered by
 | Persistence | `lib/data/services/hive_service.dart` | `loadBookStudySessions()`, `saveBookStudySessions()`, `clearBookStudySessions()` |
 | State | `lib/data/providers/book_buddy_provider.dart` | `ChangeNotifier` managing active scan, chat turns, generated MCQs, token-savings badge, and saved Hive sessions |
 | Quiz integration | `lib/data/providers/quiz_provider.dart`, `lib/presentation/screens/quiz_result/quiz_result_screen.dart` | `startCustomPracticeQuiz(...)` + `retryCustomPractice()` in unranked practice mode |
-| UI | `lib/presentation/screens/book_buddy/book_buddy_screen.dart`, `dashboard_screen.dart` | Glassmorphism + neon AI Book Buddy screen, quick-action chips, MCQ launcher, and Dashboard entry point |
+| UI | `lib/presentation/screens/book_buddy/book_buddy_screen.dart`, `dashboard_screen.dart` | Glassmorphism + neon AI Book Buddy screen, quick-action chips, MCQ launcher, daily usage quota meter, and Dashboard entry point |
+| Admin limit control | `lib/data/models/app_config.dart`, `lib/presentation/screens/admin/book_buddy_limit_screen.dart`, `admin_dashboard_screen.dart` | Remote-controlled daily usage limit (`bookBuddyDailyLimit` in Firestore `config/app` + Hive cache), per-day IST usage counter (`CompetitionClock`), and Admin panel editor |
 | Localisation | `lib/l10n/strings_{en,bn,hi}.dart` → `tool/gen_strings.py` | Full trilingual UI strings (`S.bookBuddy*`) — zero hardcoded user-facing strings |
 | Tests | `test/book_buddy_test.dart` | Offline unit tests covering OCR/vision routing, Q&A, MCQ JSON parsing, Hive persistence, and 0-reward practice quiz execution |
 
@@ -110,6 +111,12 @@ skipped** to avoid Firebase Blaze/Cloud Functions billing costs right now.
 - [x] **T8 — Rich Study Typography & Independent AI Reply Language:**
   - [x] Add `BookMarkdownView` (`lib/presentation/widgets/book_markdown_view.dart`) rendering styled section banners (`##`), neon study tables (`| ... |`), golden key-takeaway callouts (`**মূল কথা:**`), bullet/numbered lists, Hind Siliguri Bengali font auto-detection, and `A-` / `A+` font-size scaling.
   - [x] Add dedicated AI Reply Language switcher (`বাংলা` / `English` / `हिन्दी`) persisted in Hive (`metaBookBuddyLanguage`) so students can get Bengali/Hindi explanations & MCQs even when the app UI is in English.
+- [x] **T9 — Admin-Controlled Daily Usage Limit & User Quota Meter:**
+  - [x] Add `bookBuddyDailyLimit` (`book_buddy_daily_limit`, default `5`, `0 = Paused`) + `bookBuddyAdminUnlimited` (`book_buddy_admin_unlimited`, default `true`) to `AppConfig` (`config/app` in Firestore + Hive cache) and `UserProvider.applyAppConfig` / `refreshAppConfig`.
+  - [x] Track daily AI Book Buddy usage per IST competition day (`CompetitionClock.dateKey`) in Hive (`metaBookBuddyUsageDate`, `metaBookBuddyUsageCount`) + cross-device sync in Firestore `users/{uid}/meta/book_buddy_usage`.
+  - [x] Build `BookBuddyLimitScreen` in Admin Dashboard so admins can set daily limit (`0` paused, quick presets `3 / 5 / 10 / 15 / 25`, or custom number) and toggle admin bypass.
+  - [x] Show clear daily limit/remaining quota card & progress bar to users on `BookBuddyScreen` + Dashboard badge, and enforce limit cleanly before any AI call (`scanBookPage`, `askQuestion`, `generateMcqs`) while keeping saved sessions & practice quiz replays free.
+  - [x] Add unit & widget tests in `test/book_buddy_test.dart` covering daily limit enforcement, IST day rollover reset, admin bypass, and `AppConfig` round-trip.
 
 ### Remaining / Future Enhancements (Deferred)
 - [ ] **F1 — Non-Admin Student Key Delivery (Zero-Cost Proxy or Student Key Pool):** Keep `firestore.rules` untouched for now; before public student rollout, attach either a free Cloudflare Worker endpoint or a dedicated rate-limited `student_ai_keys` Firestore collection so raw admin keys are never exposed to general players.

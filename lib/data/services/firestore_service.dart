@@ -498,6 +498,68 @@ class FirestoreService {
     }
   }
 
+  /// Writes only `config/app` fields and throws on permission/network errors
+  /// so admin editors can display [AdminAccessBanner] when blocked.
+  static Future<void> updateConfigFields(Map<String, dynamic> fields) async {
+    if (!isReady) {
+      throw StateError('Firestore is not connected yet.');
+    }
+    await _db
+        .collection(_config)
+        .doc('app')
+        .set(fields, SetOptions(merge: true));
+  }
+
+  // --------------------------------------------------- Book Buddy usage --
+
+  /// Loads today's AI Book Buddy usage count for [uid] from
+  /// `users/{uid}/meta/book_buddy_usage` (owner-readable/writable per rules).
+  static Future<int?> loadBookBuddyDailyUsage(
+    String uid,
+    String dateKey,
+  ) async {
+    if (!isReady || uid.isEmpty) return null;
+    try {
+      final doc =
+          await _db
+              .collection(_users)
+              .doc(uid)
+              .collection('meta')
+              .doc('book_buddy_usage')
+              .get();
+      final data = doc.data();
+      if (!doc.exists || data == null) return 0;
+      if ('${data['date'] ?? ''}' != dateKey) return 0;
+      return (data['count'] as num?)?.toInt() ?? 0;
+    } catch (e) {
+      debugPrint('Firestore: loadBookBuddyDailyUsage error – $e');
+      return null;
+    }
+  }
+
+  /// Saves today's AI Book Buddy usage count to `users/{uid}/meta/book_buddy_usage`.
+  static Future<void> saveBookBuddyDailyUsage(
+    String uid, {
+    required String dateKey,
+    required int count,
+  }) async {
+    if (!isReady || uid.isEmpty) return;
+    try {
+      await _db
+          .collection(_users)
+          .doc(uid)
+          .collection('meta')
+          .doc('book_buddy_usage')
+          .set({
+            'date': dateKey,
+            'count': count,
+            'updated_at_ms': DateTime.now().millisecondsSinceEpoch,
+          }, SetOptions(merge: true));
+    } catch (e) {
+      debugPrint('Firestore: saveBookBuddyDailyUsage error – $e');
+    }
+  }
+
   // ------------------------------------------------------- Admin metrics --
 
   /// Real counts for the admin panel (no placeholder numbers).
