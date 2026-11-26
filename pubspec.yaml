@@ -42,7 +42,7 @@ dependencies:
   # Opens external links (privacy policy, terms, Play Store) from the
   # Profile screen, and the system share sheet for "Share with Friends".
   url_launcher: ^6.3.1
-  share_plus: ^10.1.0
+  share_plus: ^13.3.1
   # AdMob — banner + interstitial. Ad unit IDs are injected at build time
   # with --dart-define (see the note in lib/core/constants/ad_config.dart);
   # none are hardcoded under lib/.
@@ -56,7 +56,7 @@ dependencies:
   # Live push via OneSignal (FCM under the hood). See docs/16.
   onesignal_flutter: ^5.3.4
   # Real versionName/versionCode for splash + Profile (never hardcode 1.0.0).
-  package_info_plus: ^9.0.1
+  package_info_plus: ^10.2.2
   # Play in-app updates so Closed testing testers get the new AAB in-app.
   in_app_update: ^4.2.3
   # Auto-fit question + options in one screen without scroll
