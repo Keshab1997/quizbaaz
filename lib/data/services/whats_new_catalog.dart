@@ -7,6 +7,23 @@ class WhatsNewCatalog {
   WhatsNewCatalog._();
 
   static const Map<String, Map<String, List<String>>> _releases = {
+    '1.0.26': {
+      'en': [
+        'New AI Book Buddy — scan any textbook page or note to get clear explanations, ask follow-up doubts, and play instant MCQ quizzes!',
+        'Rich Study Reader & Language Choice — formatted study tables, highlight cards, A-/A+ text size, and separate Bangla / English / Hindi AI reply choice.',
+        'Daily AI Quota Meter — track your free daily AI uses live, while reading saved notes & replaying quizzes stays 100% free offline.',
+      ],
+      'bn': [
+        'নতুন AI বুক বাডি — বই বা নোটের পাতা স্ক্যান করেই সহজ ব্যাখ্যা পান, যেকোনো প্রশ্ন করুন এবং তাৎক্ষণিক MCQ প্র্যাকটিস কুইজ খেলুন!',
+        'সুন্দর স্টাডি রিডার ও ভাষা পছন্দ — সাজানো টেবিল, হাইলাইট নোট কার্ড, A-/A+ ফন্ট সাইজ এবং অ্যাপের ভাষা যাই হোক বাংলা / English / हिन्दी-তে AI উত্তর পাওয়ার সুবিধা।',
+        'ডেইলি AI কোটা মিটার — প্রতিদিনের ফ্রি AI লিমিট লাইভ দেখুন; আর সেভ করা নোট পড়া ও পুরনো কুইজ খেলা অফলাইনে সবসময় ফ্রি।',
+      ],
+      'hi': [
+        'नया AI बुक बडी — किताब या नोट्स का पन्ना स्कैन करें, आसान व्याख्या पाएँ, सवाल पूछें और तुरंत MCQ प्रैक्टिस क्विज़ खेलें!',
+        'रिच स्टडी रीडर व भाषा चयन — साफ़ स्टडी टेबल, हाइलाइट कार्ड, A-/A+ फ़ॉन्ट साइज़ और अपनी पसंद की বাংলা / English / हिन्दी में AI उत्तर।',
+        'दैनिक AI कोटा मीटर — आज की मुफ़्त AI सीमा लाइव देखें; सेव किए गए नोट्स पढ़ना और क्विज़ खेलना ऑफ़लाइन हमेशा मुफ़्त।',
+      ],
+    },
     '1.0.25': {
       'en': [
         'Yesterday\'s Daily Quiz Winner alerts — morning reveal & inbox card showing who topped yesterday (plus personalized cards if you finished #1 or Top 10).',
