@@ -1,5 +1,5 @@
-What's new in 1.0.27:
+What's new in 1.0.29:
 
-• Admin API keys — premium dashboard with gradient avatars, premium cards & instant Test with spinner (max 8s, shows elapsed)
-• Smarter Admin — form draft & scroll stay after refresh, Undo for delete/bulk, new free-model alerts
-• Free Model Explorer — browse OpenRouter free models, copy id or Get API key in one tap
+• Your progress now backs up properly — purchased items, coins & daily streak sync through a secure server, and come back when you sign in with Google on a new phone.
+• AI Book Buddy asks guests to sign in before an AI call, so your questions and answers are saved.
+• A clear error screen replaces the blank grey box; small security and stability fixes.

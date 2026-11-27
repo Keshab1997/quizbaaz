@@ -7,6 +7,23 @@ class WhatsNewCatalog {
   WhatsNewCatalog._();
 
   static const Map<String, Map<String, List<String>>> _releases = {
+    '1.0.29': {
+      'en': [
+        'Your progress now backs up properly — purchased items, coins & daily streak sync through a secure server, and come back when you sign in with Google on a new phone.',
+        'AI Book Buddy asks guests to sign in before an AI call, so your questions and answers are saved.',
+        'A clear error screen replaces the blank grey box; small security and stability fixes.',
+      ],
+      'bn': [
+        'অগ্রগতি এখন ঠিকমতো ব্যাকআপ হয় — কেনা আইটেম, কয়েন ও ডেইলি স্ট্রিক নিরাপদ সার্ভারে সিঙ্ক হয়; নতুন ফোনে Google দিয়ে সাইন-ইন করলেই ফিরে পাবেন।',
+        'AI বুক বাডি এখন গেস্টদের AI কলের আগে সাইন-ইন করতে বলে, যাতে প্রশ্ন ও উত্তর সেভ হয়।',
+        'ধূসর খালি স্ক্রিনের বদলে স্পষ্ট এরর দেখা যায়; নিরাপত্তা ও স্থায়িত্বের ছোট ঠিকঠাক।',
+      ],
+      'hi': [
+        'प्रगति अब सही तरह से बैकअप होती है — खरीदे गए आइटम, coins और डेली स्ट्रीक सुरक्षित सर्वर पर सिंक होते हैं; नए फ़ोन पर Google से साइन-इन करते ही वापस मिलते हैं।',
+        'AI बुक बडी अब अतिथियों से AI कॉल से पहले साइन-इन मांगता है, ताकि सवाल और उत्तर सेव हों।',
+        'ख़ाली ग्रे स्क्रीन के बजाय स्पष्ट त्रुटि; सुरक्षा और स्थिरता के छोटे सुधार।',
+      ],
+    },
     '1.0.27': {
       'en': [
         'Admin API keys — premium dashboard with gradient avatars, premium cards & instant Test with spinner (max 8s, shows elapsed)',
