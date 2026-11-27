@@ -70,11 +70,25 @@ generator for **QuizBaaz**, powered by
 Per owner decision (2026-11-26), Cloud Functions proxy was **intentionally
 skipped** to avoid Firebase Blaze/Cloud Functions billing costs right now.
 
-- Currently in `firestore.rules` (v2.3.0), `admin_api_keys` is readable only by
-  accounts holding the `admin: true` custom claim (`isAdmin()`).
-- Consequently, AI Book Buddy works immediately out-of-the-box on admin/owner
-  devices (and any device with cached keys in `KeyCache`).
-- **When rolling out live AI calls to non-admin student devices**, pick one of:
+**Owner decision (2026-11-27): the pool is open to student devices.** AI Book
+Buddy needs live AI calls on every student install, so `firestore.rules` v2.4.0
+makes the pool readable by any signed-in account:
+
+- `admin_api_keys` and `admin_key_groups`: `allow get, list: if signedIn()`.
+  Writes (`create` / `update` / `delete`) stay `isAdmin()`. `api_error_logs`
+  and `admin_alerts` stay fully admin-only.
+- **Accepted exposure:** Firestore rules cannot hide a field, so any signed-in
+  student can extract the raw LLM keys from the documents (and `KeyCache`
+  persists them on the device). A key with `isActive: false` is still readable;
+  revoke a leaked key by **deleting/rotating it at the provider**, not by
+  disabling it.
+- Student devices cannot write usage counters, flush error logs or
+  auto-deactivate keys — the package swallows those denials, exactly as its
+  comments describe. Admin devices still update the counters and deactivate
+  dead keys globally.
+- Signed-out guests get nothing: the app has no anonymous auth, so
+  `signedIn()` excludes them and Book Buddy shows its empty-pool state.
+- Still the tracked fix (F1) — one of:
   1. **Zero-cost Cloudflare Worker / Vercel Edge proxy** holding free-tier
      Gemini/OpenRouter keys behind a per-UID rate limit, wired via a custom
      `KeyPoolAdapter`; or
@@ -119,6 +133,6 @@ skipped** to avoid Firebase Blaze/Cloud Functions billing costs right now.
   - [x] Add unit & widget tests in `test/book_buddy_test.dart` covering daily limit enforcement, IST day rollover reset, admin bypass, and `AppConfig` round-trip.
 
 ### Remaining / Future Enhancements (Deferred)
-- [ ] **F1 — Non-Admin Student Key Delivery (Zero-Cost Proxy or Student Key Pool):** Keep `firestore.rules` untouched for now; before public student rollout, attach either a free Cloudflare Worker endpoint or a dedicated rate-limited `student_ai_keys` Firestore collection so raw admin keys are never exposed to general players.
+- [ ] **F1 — Non-Admin Student Key Delivery (Zero-Cost Proxy or Student Key Pool):** Rules v2.4.0 currently open `admin_api_keys` read to every signed-in student (owner decision 2026-11-27), which exposes the raw keys. Replace that with either a free Cloudflare Worker endpoint or a dedicated rate-limited `student_ai_keys` Firestore collection so raw admin keys never reach general players.
 - [ ] **F2 — Multi-Page Chapter Stitching:** Allow scanning 2–4 consecutive textbook pages into a single combined study session & 20-question chapter mock test.
 - [ ] **F3 — Image Cropper Before OCR:** Optional crop/rotate step before ML Kit runs so students can isolate a single paragraph or math box on a crowded page.

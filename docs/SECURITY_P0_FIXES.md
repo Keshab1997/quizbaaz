@@ -81,7 +81,30 @@ Deploy like any rules change:
 firebase deploy --only firestore:rules
 ```
 
-Covered by `tool/security/tests/rules.test.mjs` → *llm keys: … admin-only*.
+Covered by `tool/security/tests/rules.test.mjs` → *llm keys: students read the
+pool, writes stay admin-only*.
+
+### v2.4.0 — the key pool is deliberately student-readable
+
+Owner decision (2026-11-27): AI Book Buddy must work on every student device,
+and the zero-cost proxy is still deferred, so `admin_api_keys` and
+`admin_key_groups` became readable by any **signed-in** account
+(`allow get, list: if signedIn()`). Writes remain `isAdmin()`; `api_error_logs`
+and `admin_alerts` remain fully admin-only.
+
+This is an accepted exposure, not a hole that slipped through:
+
+- Firestore rules cannot hide a field, so a signed-in student can read the raw
+  LLM keys and `KeyCache` keeps them on the device. **Disabling a key does not
+  revoke it** — delete/rotate it at the provider.
+- Students cannot write usage counters, error logs or `isActive`, so one player
+  cannot disable the pool. Their failed writes are swallowed by the package.
+- Signed-out guests get nothing (the app has no anonymous auth).
+- The tracked fix is F1 in docs/23 §3: a free Worker proxy or a scoped
+  `student_ai_keys` collection with free-tier keys only.
+
+Covered by the same rules test (`llm keys: students read the pool, writes stay
+admin-only`).
 
 ## ⚠️ YOUR actions (in this order)
 

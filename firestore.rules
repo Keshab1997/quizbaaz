@@ -3,7 +3,13 @@ rules_version = '2';
 // ============================================================================
 // QuizBaaz 3D — Firestore Security Rules
 // ----------------------------------------------------------------------------
-// Version: 2.3.0  (2.3.0: forged battle forfeit + self-challenge + spoofed
+// Version: 2.4.0  (2.4.0: admin_api_keys + admin_key_groups readable by any
+//                         signed-in player so AI Book Buddy works on student
+//                         devices — owner decision 2026-11-27; writes stay
+//                         admin-only. Read docs/23 §3 before changing this:
+//                         the pool holds raw LLM keys, and a deactivated key
+//                         is still readable — rotate/delete to revoke.
+//                  2.3.0: forged battle forfeit + self-challenge + spoofed
 //                         user_id blocked — 2026-10-06;
 //                  2.2.0: admin_api_key_manager collections added — 2026-10-03;
 //                  2.1.0: users collection list is admin-only — 2026-10-02;
@@ -405,22 +411,36 @@ service cloud.firestore {
     // and Admin -> API Keys rendered "Error: [cloud_firestore/permission-
     // denied]" (and every device's startup listener logged the same).
     //
-    // Admin-claim-only, and deliberately so: a signed-in player must never be
-    // able to list these documents, because that would hand the raw keys to
-    // every install. Only an admin device generates questions anyway (the
-    // docs/11 review gate), so only an admin device needs the pool. A student's
-    // startup listener is denied and moves on — ApiKeyManager logs it and keeps
-    // whatever it cached — so the usage counters, the cooldown flushes and the
-    // auto-deactivation it tries from a student device fail silently, which is
-    // the behaviour the package itself documents.
+    // 2.4.0 (owner decision, 2026-11-27): AI Book Buddy runs on student
+    // devices, so a signed-in player may READ the pool and its group configs.
+    // This is a deliberate trade-off, not an oversight: Firestore rules cannot
+    // hide a field, so every signed-in account can extract the raw keys from
+    // these documents. The zero-cost proxy / scoped `student_ai_keys` pool in
+    // docs/23 §3 is still the tracked fix. Writes stay admin-only:
+    //   * a student can therefore not add keys or flip `isActive` (that would
+    //     let one player disable the whole pool),
+    //   * the package's usage counters, error-log flush and auto-deactivation
+    //     from a student device fail silently, exactly as it documents, and
+    //   * `isActive: false` does NOT revoke a key — it stays readable here, so
+    //     a leaked key must be deleted/rotated at the provider.
     match /admin_api_keys/{keyId} {
-      allow get, list, write: if isAdmin();
+      allow get, list: if signedIn();
+      allow create, update, delete: if isAdmin();
     }
 
+    // Group configs (provider, priority, enabled, cooldowns) hold no secret.
+    // Students need them or a provider the admin disabled would still be used
+    // and the priority ordering would be ignored (KeyPoolSelector falls back
+    // to priority 100 / enabled true for every provider).
     match /admin_key_groups/{groupId} {
-      allow get, list, write: if isAdmin();
+      allow get, list: if signedIn();
+      allow create, update, delete: if isAdmin();
     }
 
+    // Error logs and outage alerts stay admin-only. They are write-only from
+    // the client's point of view, so opening `create` would give every student
+    // an unbounded Firestore write channel (free-tier quota / log spam), and
+    // the package already swallows the denied write.
     match /api_error_logs/{logId} {
       allow get, list, write: if isAdmin();
     }

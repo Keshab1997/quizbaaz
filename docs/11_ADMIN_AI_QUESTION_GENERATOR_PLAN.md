@@ -229,10 +229,13 @@ Stream<GenerationProgress> generate({
 
 > **Rules dependency:** the key pool lives in Firestore, so
 > `admin_api_keys` / `admin_key_groups` / `api_error_logs` / `admin_alerts`
-> need a rule. `firestore.rules` v2.2.0 grants them to the `admin` custom claim
-> only — a player-readable pool would hand the raw keys to every install. Until
-> the rules are **deployed**, Admin → API Keys shows
-> `[cloud_firestore/permission-denied]` and no key ever reaches the generator.
+> need a rule. `firestore.rules` v2.4.0 lets **any signed-in player read**
+> `admin_api_keys` and `admin_key_groups` (AI Book Buddy on student devices,
+> owner decision 2026-11-27); every write, plus `api_error_logs` and
+> `admin_alerts`, stays `admin`-claim-only. The pool holds raw keys, so treat
+> read access as exposure — see docs/23 §3. Until the rules are **deployed**,
+> Admin → API Keys shows `[cloud_firestore/permission-denied]` and no key ever
+> reaches the generator.
 
 - [ ] **T4.1** `AiQuestionGenerator` with progress stream
 - [ ] **T4.2** Provider adapters: Gemini native and OpenAI-compatible `/chat/completions`

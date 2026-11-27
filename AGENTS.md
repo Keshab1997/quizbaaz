@@ -438,6 +438,15 @@ rule in `firestore.rules` is denied outright** (there is no catch-all), so a new
 collection is broken the moment the client touches it — that is exactly how Admin
 → API Keys ended up rendering `permission-denied` (rules v2.2.0).
 
+**The LLM key pool is deliberately student-readable** (rules v2.4.0, owner
+decision 2026-11-27): `admin_api_keys` + `admin_key_groups` allow
+`get, list` to any signed-in account so AI Book Buddy works on student devices;
+all writes stay `isAdmin()`, and `api_error_logs` / `admin_alerts` stay
+admin-only. That means the raw keys are exposed to signed-in students —
+`isActive: false` does not revoke one, so delete/rotate a leaked key at the
+provider. The proxy / scoped `student_ai_keys` pool is tracked as F1 in
+`docs/23_AI_BOOK_BUDDY_PLAN.md` §3.
+
 **Deleting content is a registry, not a file delete.** A bundled chapter or
 subject lives in the asset bundle, which no installed app can rewrite, so a
 delete records its id in `config/content_deletions`; every device drops it at
