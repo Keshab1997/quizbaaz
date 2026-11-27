@@ -119,9 +119,7 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
       final signedIn = await auth.signInWithGoogle();
       if (!mounted) return;
       if (!signedIn) {
-        messenger.showSnackBar(
-          SnackBar(content: Text(S.authSignInCanceled)),
-        );
+        messenger.showSnackBar(SnackBar(content: Text(S.authSignInCanceled)));
         return;
       }
 
@@ -137,9 +135,7 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
         uid: account.uid,
       );
       if (!mounted) return;
-      messenger.showSnackBar(
-        SnackBar(content: Text(S.bookBuddySignInSuccess)),
-      );
+      messenger.showSnackBar(SnackBar(content: Text(S.bookBuddySignInSuccess)));
     } on AuthException catch (e) {
       if (!mounted) return;
       messenger.showSnackBar(

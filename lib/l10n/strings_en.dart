@@ -678,8 +678,7 @@ const Map<String, String> kStringsEn = {
   'bookBuddySignInSubtitle':
       'AI explanations and quizzes need a Google account. Sign in to unlock them and keep your progress safe.',
   'bookBuddySignInButton': 'Sign in with Google',
-  'bookBuddySignInRequired':
-      'Sign in with Google to use AI Book Buddy.',
+  'bookBuddySignInRequired': 'Sign in with Google to use AI Book Buddy.',
   'bookBuddySignInSuccess': 'Signed in! AI Book Buddy is ready.',
   'bookBuddyLangLabel': 'AI Reply Language',
   'bookBuddyLangEn': 'English',

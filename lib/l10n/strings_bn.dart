@@ -669,7 +669,8 @@ const Map<String, String> kStringsBn = {
   'bookBuddySignInButton': 'Google দিয়ে সাইন ইন করুন',
   'bookBuddySignInRequired':
       'AI Book Buddy ব্যবহার করতে Google দিয়ে সাইন ইন করুন।',
-  'bookBuddySignInSuccess': 'সাইন ইন সফল! এখন AI Book Buddy ব্যবহার করতে পারবেন।',
+  'bookBuddySignInSuccess':
+      'সাইন ইন সফল! এখন AI Book Buddy ব্যবহার করতে পারবেন।',
   'bookBuddyLangLabel': 'AI উত্তরের ভাষা',
   'bookBuddyLangEn': 'English',
   'bookBuddyLangBn': 'বাংলা',
