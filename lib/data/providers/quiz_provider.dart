@@ -13,7 +13,7 @@ import '../services/competition_clock.dart';
 import '../services/daily_score_lock.dart';
 import '../services/hive_service.dart';
 import '../services/sound_service.dart';
-import '../services/trusted_ops_service.dart';
+import '../services/sync_service.dart';
 import 'user_provider.dart';
 import '../../l10n/app_strings.dart';
 
@@ -1037,7 +1037,7 @@ class QuizProvider extends ChangeNotifier {
         granted &&
         !_userProvider.user.isGuest) {
       final now = DateTime.now();
-      TrustedOpsService.submitDailyResult(
+      SyncService.pushTrustedDailyResult(
         // The competition day, not the device's local date — otherwise two
         // players in different timezones would submit to different days (R12).
         date: CompetitionClock.dateKey(now),

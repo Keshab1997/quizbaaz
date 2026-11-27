@@ -7,6 +7,7 @@
 //   * setAdmin          — issue/revoke the `admin` custom claim (bootstrap).
 //   * submitDailyResult — server-verified, once-per-day daily quiz credit.
 //   * purchaseItem      — atomic server-side wallet check, deduct & grant.
+//   * seedLocalProgress — one-time, bounded local → server wallet/streak seed.
 //   * resolveBattle     — server-declared battle winner (clients can't).
 //
 // Every callable is built through `./options`, which pins the region to
@@ -32,13 +33,20 @@ import {
 } from './broadcast';
 import { submitDailyResult } from './daily';
 import { purchaseItem } from './shop';
+import { seedLocalProgress } from './seed';
 import { resolveBattle } from './battle';
 
 if (!admin.apps.length) {
   admin.initializeApp();
 }
 
-export { setAdmin, submitDailyResult, purchaseItem, resolveBattle };
+export {
+  setAdmin,
+  submitDailyResult,
+  purchaseItem,
+  seedLocalProgress,
+  resolveBattle,
+};
 export {
   broadcastAppUpdate,
   broadcastDailyWinner,

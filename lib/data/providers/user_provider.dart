@@ -22,7 +22,6 @@ import '../services/notification_service.dart';
 import '../services/notification_winner_sync.dart';
 import '../services/push_sync.dart';
 import '../services/sync_service.dart';
-import '../services/trusted_ops_service.dart';
 
 /// Result of a shop purchase attempt.
 enum PurchaseStatus { success, insufficientFunds, alreadyOwned }
@@ -560,10 +559,16 @@ class UserProvider extends ChangeNotifier {
     _savePurchaseHistory(item);
 
     // P0 (R02): mirror the purchase server-side (atomic wallet ledger,
-    // idempotent per purchaseId). Fail-soft for guests/offline/not-deployed.
+    // idempotent per purchaseId). A failed call is queued for the next sync
+    // instead of silently losing the remote copy.
     if (!_user.isGuest) {
       final purchaseId = 'p${DateTime.now().millisecondsSinceEpoch}x${item.id}';
-      TrustedOpsService.purchaseItem(itemId: item.id, purchaseId: purchaseId);
+      unawaited(
+        SyncService.pushTrustedPurchase(
+          itemId: item.id,
+          purchaseId: purchaseId,
+        ),
+      );
     }
     return PurchaseStatus.success;
   }
@@ -1309,6 +1314,11 @@ class UserProvider extends ChangeNotifier {
   bool ownsNameEffect(String effectId) => hasItem(effectId);
 
   /// Links a Google account, keeping all local progress.
+  ///
+  /// The signup bonus is applied *after* the remote pull: `mergeWallet` only
+  /// adopts a remote wallet for a fresh profile (0 coins / 0 gems / no items).
+  /// Giving the bonus first made a reinstall look like an existing account and
+  /// threw away the very items/streak the player was trying to restore.
   Future<void> linkGoogleAccount(
     String fullName,
     String email, {
@@ -1316,35 +1326,69 @@ class UserProvider extends ChangeNotifier {
     String? uid,
   }) async {
     final wasGuest = _user.isGuest;
+    final local = _user;
+    final wasFreshLocal =
+        local.coins == 0 && local.gems == 0 && local.inventory.isEmpty;
+
     _user = UserModel(
       userId: uid ?? email,
       username: email.split('@').first,
       fullName: fullName,
-      avatarPath: _user.avatarPath,
+      avatarPath: local.avatarPath,
       avatarUrl: photoURL,
-      nameEffect: _user.nameEffect,
-      gender: _user.gender,
-      coins: _user.coins + (wasGuest ? _config.signupBonusCoins : 0),
-      gems: _user.gems + (wasGuest ? _config.signupBonusGems : 0),
-      dailyStreak: _user.dailyStreak,
-      xp: _user.xp,
-      level: _user.level,
+      nameEffect: local.nameEffect,
+      gender: local.gender,
+      coins: local.coins,
+      gems: local.gems,
+      dailyStreak: local.dailyStreak,
+      xp: local.xp,
+      level: local.level,
       isGuest: false,
-      playedTodayDailyQuiz: _user.playedTodayDailyQuiz,
-      isAdmin: _user.isAdmin,
-      lastStreakDate: _user.lastStreakDate,
-      streakDates: _user.streakDates,
-      inventory: _user.inventory,
+      playedTodayDailyQuiz: local.playedTodayDailyQuiz,
+      isAdmin: local.isAdmin,
+      lastStreakDate: local.lastStreakDate,
+      streakDates: local.streakDates,
+      inventory: local.inventory,
     );
     notifyListeners();
 
     await HiveService.saveUser(_user);
     _user = await SyncService.pullUser(_user);
+
+    if (grantLinkBonus(
+      wasGuest: wasGuest,
+      wasFreshLocal: wasFreshLocal,
+      merged: _user,
+    )) {
+      _user.coins += _config.signupBonusCoins;
+      _user.gems += _config.signupBonusGems;
+    }
+
+    await HiveService.saveUser(_user);
     _stats = await SyncService.pullStats(_user.userId, _stats);
     notifyListeners();
     await SyncService.pushUser(_user);
     await SyncService.pushStats(_user.userId, _stats);
+    // Seed the server-owned wallet/streak once for a local-only account. The
+    // callable is guarded and idempotent; failures stay in the outbox.
+    unawaited(SyncService.pushTrustedSeed(_user));
     unawaited(PushSync.syncFromHive());
+  }
+
+  /// Whether a guest → Google link still receives the signup bonus.
+  ///
+  /// A fresh local profile may have adopted the remote wallet during
+  /// [SyncService.pullUser]; that is a returning player, not a new signup.
+  static bool grantLinkBonus({
+    required bool wasGuest,
+    required bool wasFreshLocal,
+    required UserModel merged,
+  }) {
+    if (!wasGuest) return false;
+    final adoptedRemoteWallet =
+        wasFreshLocal &&
+        (merged.coins > 0 || merged.gems > 0 || merged.inventory.isNotEmpty);
+    return !adoptedRemoteWallet;
   }
 
   void saveProfile({

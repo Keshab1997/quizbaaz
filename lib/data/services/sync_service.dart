@@ -7,6 +7,7 @@ import 'account_deletion_service.dart';
 import 'competition_clock.dart';
 import 'firestore_service.dart';
 import 'hive_service.dart';
+import 'trusted_ops_service.dart';
 
 /// Keeps Hive (source of truth) and Firestore (mirror) in agreement.
 ///
@@ -138,6 +139,91 @@ class SyncService {
     }
   }
 
+  // ------------------------------------------------- Trusted (server-owned) --
+
+  /// Mirrors a purchase through the trusted backend and queues it when the
+  /// callable fails (offline, unsigned-in, App Check, or server balance).
+  ///
+  /// Server-side purchases are idempotent per [purchaseId], so replaying a
+  /// queued op can never charge twice.
+  static Future<void> pushTrustedPurchase({
+    required String itemId,
+    required String purchaseId,
+  }) async {
+    final payload = {'itemId': itemId, 'purchaseId': purchaseId};
+    if (!isOnline) {
+      await HiveService.enqueuePending('trusted_purchase', payload);
+      return;
+    }
+    final ok = await TrustedOpsService.purchaseItem(
+      itemId: itemId,
+      purchaseId: purchaseId,
+    );
+    if (!ok) await HiveService.enqueuePending('trusted_purchase', payload);
+  }
+
+  /// Mirrors a daily result through the trusted backend, queueing it on
+  /// failure. The server is idempotent per competition day.
+  static Future<void> pushTrustedDailyResult({
+    required String date,
+    required int score,
+    required int correct,
+    required int total,
+    required double timeSeconds,
+    List<Map<String, dynamic>>? answers,
+  }) async {
+    final payload = <String, dynamic>{
+      'date': date,
+      'score': score,
+      'correct': correct,
+      'total': total,
+      'time_seconds': timeSeconds,
+      if (answers != null && answers.isNotEmpty) 'answers': answers,
+    };
+    if (!isOnline) {
+      await HiveService.enqueuePending('trusted_daily_result', payload);
+      return;
+    }
+    final receipt = await TrustedOpsService.submitDailyResult(
+      date: date,
+      score: score,
+      correct: correct,
+      total: total,
+      timeSeconds: timeSeconds,
+      answers: answers,
+    );
+    if (receipt == null || receipt['ok'] != true) {
+      await HiveService.enqueuePending('trusted_daily_result', payload);
+    }
+  }
+
+  /// Seeds the server-owned wallet/streak once, on first link of a local
+  /// profile (see `functions/src/seed.ts` for the server-side guards).
+  static Future<void> pushTrustedSeed(UserModel user) async {
+    if (user.isGuest || user.userId.isEmpty) return;
+    final payload = <String, dynamic>{
+      'coins': user.coins,
+      'gems': user.gems,
+      'daily_streak': user.dailyStreak,
+      'last_streak_date': user.lastStreakDate,
+      'inventory': user.inventory,
+      'streak_dates': user.streakDates,
+    };
+    if (!isOnline) {
+      await HiveService.enqueuePending('trusted_seed', payload);
+      return;
+    }
+    final ok = await TrustedOpsService.seedLocalProgress(
+      coins: user.coins,
+      gems: user.gems,
+      dailyStreak: user.dailyStreak,
+      lastStreakDate: user.lastStreakDate,
+      inventory: user.inventory,
+      streakDates: user.streakDates,
+    );
+    if (!ok) await HiveService.enqueuePending('trusted_seed', payload);
+  }
+
   /// Pulls the user's purchase history from Firestore into Hive cache.
   static Future<List<Map<String, dynamic>>> pullPurchaseHistory(
     String userId, {
@@ -175,6 +261,10 @@ class SyncService {
       final type = op['type'] as String? ?? '';
       final payload = (op['payload'] as Map?)?.cast<String, dynamic>() ?? {};
       var ok = false;
+      // A trusted callable can fail for reasons that will not fix themselves
+      // in this session (no auth token, App Check, empty server balance).
+      // Keep it queued, but never let it block ordinary writes behind it.
+      var blocking = true;
 
       try {
         switch (type) {
@@ -220,6 +310,47 @@ class SyncService {
               (payload['purchase'] as Map?)?.cast<String, dynamic>() ?? {},
             );
             break;
+          case 'trusted_purchase':
+            ok = await TrustedOpsService.purchaseItem(
+              itemId: payload['itemId'] as String? ?? '',
+              purchaseId: payload['purchaseId'] as String? ?? '',
+            );
+            blocking = false;
+            break;
+          case 'trusted_daily_result':
+            final receipt = await TrustedOpsService.submitDailyResult(
+              date: payload['date'] as String? ?? '',
+              score: (payload['score'] as num?)?.toInt() ?? 0,
+              correct: (payload['correct'] as num?)?.toInt() ?? 0,
+              total: (payload['total'] as num?)?.toInt() ?? 0,
+              timeSeconds: (payload['time_seconds'] as num?)?.toDouble() ?? 0,
+              answers:
+                  (payload['answers'] as List?)
+                      ?.map((a) => (a as Map).cast<String, dynamic>())
+                      .toList(),
+            );
+            ok = receipt != null && receipt['ok'] == true;
+            blocking = false;
+            break;
+          case 'trusted_seed':
+            ok = await TrustedOpsService.seedLocalProgress(
+              coins: (payload['coins'] as num?)?.toInt() ?? 0,
+              gems: (payload['gems'] as num?)?.toInt() ?? 0,
+              dailyStreak: (payload['daily_streak'] as num?)?.toInt() ?? 0,
+              lastStreakDate: payload['last_streak_date'] as String?,
+              inventory:
+                  (payload['inventory'] as Map?)?.map(
+                    (k, v) => MapEntry(k.toString(), (v as num).toInt()),
+                  ) ??
+                  const <String, int>{},
+              streakDates:
+                  (payload['streak_dates'] as List?)
+                      ?.map((e) => e.toString())
+                      .toList() ??
+                  const <String>[],
+            );
+            blocking = false;
+            break;
           default:
             ok = true; // unknown op: drop it instead of blocking the queue
         }
@@ -231,7 +362,7 @@ class SyncService {
       if (ok) {
         await HiveService.removePending(entry.key);
         replayed++;
-      } else {
+      } else if (blocking) {
         break; // still offline — keep the rest for later
       }
     }

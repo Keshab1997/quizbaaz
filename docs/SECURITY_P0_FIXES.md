@@ -106,6 +106,49 @@ This is an accepted exposure, not a hole that slipped through:
 Covered by the same rules test (`llm keys: students read the pool, writes stay
 admin-only`).
 
+### v2.5.0 — one-time local progress seed (2026-11-28)
+
+The P0 rules made the wallet/streak server-owned, but left no path to move an
+existing device's balance into the server document: `saveUser()` writes profile
+fields only, while `purchaseItem` checks `users/{uid}.coins` server-side. A
+device that earned coins before the trusted backend was deployed therefore had
+a zero remote balance, and a reinstall had nothing to restore.
+
+`seedLocalProgress` (`functions/src/seed.ts`) is the guarded one-time bridge:
+
+- requires a signed-in caller and passes App Check (`callable()`);
+- refuses when the server profile already has `coins` / `daily_streak`, or any
+  `daily_claims` / `purchase_history` exists — so it cannot top up a live
+  account;
+- bounded to 10 000 coins, 500 gems, 50 inventory keys (100 each) and a
+  365-day streak, so one claim cannot mint an unbounded economy;
+- idempotent via `users/{uid}/meta/local_progress_seed`.
+
+The client calls it from `UserProvider.linkGoogleAccount()` after the remote
+pull, and applies the signup bonus **after** that pull: `mergeWallet()` only
+adopts a remote wallet when the local profile is fresh, so giving the bonus
+first discarded the items being restored. Failed trusted ops (purchase, daily
+result, seed) are queued in `qb_pending` and retried by
+`SyncService.drainPending()` without blocking ordinary writes.
+
+Deployed 2026-11-28 in `asia-south1`: `purchaseItem`, `submitDailyResult`,
+`seedLocalProgress`. `setAdmin` and the broadcast functions remain undeployed —
+they need `INITIAL_ADMIN_UID`, `BROADCAST_HOOK_SECRET` and `ONESIGNAL_REST_KEY`
+set before a full `firebase deploy --only functions`.
+
+**App Check console setup verified 2026-11-28.** Firebase console → App Check →
+Apps shows `com.keshabstudios.quizbaaz` with **Play Integrity — Registered**,
+and `playintegrity.googleapis.com` is enabled in the project. Release builds can
+therefore pass `enforceAppCheck: true`.
+
+Debug tokens are **not** registered (checked in *Manage debug tokens*). For
+debug builds only: run the app on a device/emulator, copy the token printed by
+`firebase_app_check` in logcat, then App Check → Apps → *Manage debug tokens* →
+**Add debug token**. Without it, `AndroidProvider.debug` calls are rejected.
+
+Keep `enforceAppCheck: true`. Do not relax it to make a stuck restore pass — a
+failed trusted op is queued in `qb_pending` and retried once attestation works.
+
 ## ⚠️ YOUR actions (in this order)
 
 1. **Rotate the exposed ImgBB key NOW.**

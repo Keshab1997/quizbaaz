@@ -83,11 +83,41 @@ class TrustedOpsService {
   }
 
   /// Runs the server-side purchase (idempotent per [purchaseId]).
-  static Future<void> purchaseItem({
+  ///
+  /// Returns true only when the server confirmed the write, so the caller can
+  /// queue a retry instead of assuming the local debit was mirrored.
+  static Future<bool> purchaseItem({
     required String itemId,
     required String purchaseId,
   }) async {
-    await _call('purchaseItem', {'itemId': itemId, 'purchaseId': purchaseId});
+    final receipt = await _call('purchaseItem', {
+      'itemId': itemId,
+      'purchaseId': purchaseId,
+    });
+    return receipt != null && receipt['ok'] == true;
+  }
+
+  /// One-time, bounded copy of the device's wallet/streak into the
+  /// server-owned fields (see `functions/src/seed.ts`). A returning account —
+  /// one that already has a remote wallet, daily claim or purchase — is a
+  /// no-op, so this cannot be used to top up an existing balance.
+  static Future<bool> seedLocalProgress({
+    required int coins,
+    required int gems,
+    required int dailyStreak,
+    required String? lastStreakDate,
+    required Map<String, int> inventory,
+    required List<String> streakDates,
+  }) async {
+    final receipt = await _call('seedLocalProgress', {
+      'coins': coins,
+      'gems': gems,
+      'dailyStreak': dailyStreak,
+      'lastStreakDate': lastStreakDate,
+      'inventory': inventory,
+      'streakDates': streakDates,
+    });
+    return receipt != null && receipt['ok'] == true;
   }
 
   /// Grants or revokes the `admin` custom claim for [uid] via the
