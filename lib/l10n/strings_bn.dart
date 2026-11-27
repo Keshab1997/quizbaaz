@@ -663,6 +663,13 @@ const Map<String, String> kStringsBn = {
   'bookBuddyErrEmptyMcq':
       'এই পাতা থেকে স্পষ্ট MCQ তৈরি করা যায়নি। আরেকটু পরিষ্কার ছবি তুলে চেষ্টা করুন।',
   'bookBuddyErrPickFailed': 'ছবিটি পড়া যায়নি। আবার চেষ্টা করুন।',
+  'bookBuddySignInTitle': 'AI Book Buddy ব্যবহার করতে সাইন ইন করুন',
+  'bookBuddySignInSubtitle':
+      'AI ব্যাখ্যা ও কুইজের জন্য Google অ্যাকাউন্ট দরকার। সাইন ইন করলে AI চালু হবে এবং আপনার অগ্রগতি সেভ থাকবে।',
+  'bookBuddySignInButton': 'Google দিয়ে সাইন ইন করুন',
+  'bookBuddySignInRequired':
+      'AI Book Buddy ব্যবহার করতে Google দিয়ে সাইন ইন করুন।',
+  'bookBuddySignInSuccess': 'সাইন ইন সফল! এখন AI Book Buddy ব্যবহার করতে পারবেন।',
   'bookBuddyLangLabel': 'AI উত্তরের ভাষা',
   'bookBuddyLangEn': 'English',
   'bookBuddyLangBn': 'বাংলা',

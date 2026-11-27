@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
@@ -5,6 +7,7 @@ import 'package:provider/provider.dart';
 
 import '../../../core/constants/app_colors.dart';
 import '../../../data/models/book_study_session.dart';
+import '../../../data/providers/auth_provider.dart';
 import '../../../data/providers/book_buddy_provider.dart';
 import '../../../data/providers/quiz_provider.dart';
 import '../../../data/providers/user_provider.dart';
@@ -89,9 +92,78 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
     );
   }
 
+  /// Guests may read saved pages and replay saved quizzes, but every AI call
+  /// needs a signed-in account: `firestore.rules` v2.4.0 only releases the key
+  /// pool to `request.auth`, so a signed-out call would fail with "key pool
+  /// not ready" — a misleading error. Ask for sign-in first instead.
+  bool _guardAiAccess() {
+    if (!context.read<UserProvider>().user.isGuest) return true;
+    Haptics.error();
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(S.bookBuddySignInRequired),
+        backgroundColor: AppColors.neonRed,
+      ),
+    );
+    return false;
+  }
+
+  Future<void> _handleSignIn() async {
+    final auth = context.read<AuthProvider>();
+    if (auth.isBusy) return;
+
+    final userProvider = context.read<UserProvider>();
+    final messenger = ScaffoldMessenger.of(context);
+
+    try {
+      final signedIn = await auth.signInWithGoogle();
+      if (!mounted) return;
+      if (!signedIn) {
+        messenger.showSnackBar(
+          SnackBar(content: Text(S.authSignInCanceled)),
+        );
+        return;
+      }
+
+      final account = auth.firebaseUser;
+      if (account == null) {
+        throw AuthException(S.dashGoogleSignInFailed);
+      }
+
+      await userProvider.linkGoogleAccount(
+        account.displayName ?? account.email ?? S.profilePlayerFallback,
+        account.email ?? account.uid,
+        photoURL: account.photoURL,
+        uid: account.uid,
+      );
+      if (!mounted) return;
+      messenger.showSnackBar(
+        SnackBar(content: Text(S.bookBuddySignInSuccess)),
+      );
+    } on AuthException catch (e) {
+      if (!mounted) return;
+      messenger.showSnackBar(
+        SnackBar(
+          content: Text(e.message),
+          backgroundColor: Colors.red.shade800,
+        ),
+      );
+    } catch (e) {
+      debugPrint('BookBuddyScreen: Google Sign-In failed – $e');
+      if (!mounted) return;
+      messenger.showSnackBar(
+        SnackBar(
+          content: Text(S.dashGoogleSignInFailed),
+          backgroundColor: Colors.red.shade800,
+        ),
+      );
+    }
+  }
+
   Future<void> _pickAndScan(ImageSource source) async {
     final buddy = context.read<BookBuddyProvider>();
     if (buddy.isBusy) return;
+    if (!_guardAiAccess()) return;
 
     // Check daily quota before even opening camera/gallery so the user gets
     // instant feedback when today's limit is reached or paused.
@@ -150,6 +222,7 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
   Future<void> _sendQuestion([String? presetQuestion]) async {
     final buddy = context.read<BookBuddyProvider>();
     if (buddy.isBusy) return;
+    if (!_guardAiAccess()) return;
 
     final text = (presetQuestion ?? _questionCtrl.text).trim();
     if (text.isEmpty) return;
@@ -172,6 +245,7 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
   Future<void> _generateMcqs(int count) async {
     final buddy = context.read<BookBuddyProvider>();
     if (buddy.isBusy) return;
+    if (!_guardAiAccess()) return;
 
     SoundService.instance.play('ui_whoosh');
     Haptics.tap();
@@ -213,6 +287,8 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
   @override
   Widget build(BuildContext context) {
     final buddy = context.watch<BookBuddyProvider>();
+    final auth = context.watch<AuthProvider>();
+    final isGuest = context.watch<UserProvider>().user.isGuest;
     final session = buddy.activeSession;
 
     return Scaffold(
@@ -261,9 +337,16 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
           // Top control bar: AI Reply Language selector + Font size A-/A+
           _buildLanguageAndFontBar(buddy, showFontControls: session != null),
           const SizedBox(height: 10),
-          // Daily AI Quota meter (shows Admin-set limit & today's remaining count)
-          _buildDailyQuotaCard(buddy),
-          const SizedBox(height: 14),
+          // Guests get a sign-in note instead of the quota meter: the key pool
+          // is gated by `request.auth`, so no AI call can succeed signed out.
+          if (isGuest) ...[
+            _buildSignInNoteCard(auth),
+            const SizedBox(height: 14),
+          ] else ...[
+            // Daily AI Quota meter (Admin-set limit & today's remaining count)
+            _buildDailyQuotaCard(buddy),
+            const SizedBox(height: 14),
+          ],
           if (buddy.errorMessage != null) ...[
             _buildErrorBanner(buddy),
             const SizedBox(height: 14),
@@ -468,6 +551,101 @@ class _BookBuddyScreenState extends State<BookBuddyScreen> {
   }
 
   /// Live Daily AI Quota card showing the Admin-set daily limit & remaining uses.
+  /// Guest-only note. Saved pages and saved quizzes still work offline, but
+  /// every AI call needs a Firebase auth token before the rules release a key,
+  /// so the sign-in card replaces the (meaningless) quota meter.
+  Widget _buildSignInNoteCard(AuthProvider auth) {
+    return GlassCard(
+      borderRadius: 22,
+      borderColor: AppColors.neonPurple.withValues(alpha: 0.45),
+      backgroundColor: AppColors.bgCardGlass,
+      padding: const EdgeInsets.all(16),
+      shadows: [
+        BoxShadow(
+          color: AppColors.neonPurple.withValues(alpha: 0.16),
+          blurRadius: 22,
+          offset: const Offset(0, 10),
+        ),
+      ],
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Container(
+                width: 40,
+                height: 40,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: AppColors.neonPurple.withValues(alpha: 0.16),
+                  border: Border.all(
+                    color: AppColors.neonPurple.withValues(alpha: 0.5),
+                  ),
+                ),
+                child: const Icon(
+                  Icons.lock_person_rounded,
+                  color: AppColors.neonPurple,
+                  size: 21,
+                ),
+              ),
+              const SizedBox(width: 10),
+              Expanded(
+                child: Text(
+                  S.bookBuddySignInTitle,
+                  style: const TextStyle(
+                    color: AppColors.textPrimary,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w900,
+                    height: 1.2,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 9),
+          Text(
+            S.bookBuddySignInSubtitle,
+            style: const TextStyle(
+              color: AppColors.textSecondary,
+              fontSize: 12,
+              height: 1.4,
+            ),
+          ),
+          const SizedBox(height: 14),
+          SizedBox(
+            width: double.infinity,
+            child: NeonButton(
+              text: S.bookBuddySignInButton,
+              height: 46,
+              gradient: AppColors.violetGradient,
+              glowColor: AppColors.neonPurple,
+              icon:
+                  auth.isBusy
+                      ? const SizedBox.square(
+                        dimension: 16,
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2.2,
+                          color: Colors.white,
+                        ),
+                      )
+                      : const Icon(
+                        Icons.login_rounded,
+                        color: Colors.white,
+                        size: 19,
+                      ),
+              textStyle: const TextStyle(
+                color: Colors.white,
+                fontSize: 13.5,
+                fontWeight: FontWeight.w900,
+              ),
+              onPressed: () => unawaited(_handleSignIn()),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   Widget _buildDailyQuotaCard(BookBuddyProvider buddy) {
     final isUnlimited = buddy.isUnlimitedForUser;
     final isPaused = buddy.isPausedByAdmin;

@@ -87,7 +87,9 @@ makes the pool readable by any signed-in account:
   comments describe. Admin devices still update the counters and deactivate
   dead keys globally.
 - Signed-out guests get nothing: the app has no anonymous auth, so
-  `signedIn()` excludes them and Book Buddy shows its empty-pool state.
+  `signedIn()` excludes them. The Book Buddy screen shows a sign-in note in
+  place of the quota meter and every AI action asks for Google sign-in before
+  calling the bridge (saved pages and saved quizzes still work offline).
 - Still the tracked fix (F1) — one of:
   1. **Zero-cost Cloudflare Worker / Vercel Edge proxy** holding free-tier
      Gemini/OpenRouter keys behind a per-UID rate limit, wired via a custom
@@ -131,6 +133,7 @@ makes the pool readable by any signed-in account:
   - [x] Build `BookBuddyLimitScreen` in Admin Dashboard so admins can set daily limit (`0` paused, quick presets `3 / 5 / 10 / 15 / 25`, or custom number) and toggle admin bypass.
   - [x] Show clear daily limit/remaining quota card & progress bar to users on `BookBuddyScreen` + Dashboard badge, and enforce limit cleanly before any AI call (`scanBookPage`, `askQuestion`, `generateMcqs`) while keeping saved sessions & practice quiz replays free.
   - [x] Add unit & widget tests in `test/book_buddy_test.dart` covering daily limit enforcement, IST day rollover reset, admin bypass, and `AppConfig` round-trip.
+- [x] **T10 — Guest Sign-In Note:** Signed-out players see a sign-in card in place of the quota meter on `BookBuddyScreen`, and `scanBookPage` / `askQuestion` / `generateMcqs` ask for Google sign-in first (the rules only release a key to `request.auth`). The card reuses `AuthProvider` + `UserProvider.linkGoogleAccount()`, so local progress links on the same path as the dashboard card; saved pages and saved quizzes stay usable offline. Trilingual strings: `bookBuddySignIn*`.
 
 ### Remaining / Future Enhancements (Deferred)
 - [ ] **F1 — Non-Admin Student Key Delivery (Zero-Cost Proxy or Student Key Pool):** Rules v2.4.0 currently open `admin_api_keys` read to every signed-in student (owner decision 2026-11-27), which exposes the raw keys. Replace that with either a free Cloudflare Worker endpoint or a dedicated rate-limited `student_ai_keys` Firestore collection so raw admin keys never reach general players.

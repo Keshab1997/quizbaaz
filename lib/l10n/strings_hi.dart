@@ -661,6 +661,13 @@ const Map<String, String> kStringsHi = {
   'bookBuddyErrEmptyMcq':
       'इस पन्ने से स्पष्ट MCQ नहीं बन सके। कृपया साफ़ फोटो लेकर फिर कोशिश करें।',
   'bookBuddyErrPickFailed': 'चयनित फोटो पढ़ी नहीं जा सकी।',
+  'bookBuddySignInTitle': 'AI Book Buddy उपयोग करने के लिए साइन इन करें',
+  'bookBuddySignInSubtitle':
+      'AI व्याख्या और क्विज़ के लिए Google खाता चाहिए। साइन इन करने पर यह चालू होगा और आपकी प्रगति सुरक्षित रहेगी।',
+  'bookBuddySignInButton': 'Google से साइन इन करें',
+  'bookBuddySignInRequired':
+      'AI Book Buddy उपयोग करने के लिए Google से साइन इन करें।',
+  'bookBuddySignInSuccess': 'साइन इन हो गया! अब AI Book Buddy उपयोग कर सकते हैं।',
   'bookBuddyLangLabel': 'AI उत्तर की भाषा',
   'bookBuddyLangEn': 'English',
   'bookBuddyLangBn': 'বাংলা',

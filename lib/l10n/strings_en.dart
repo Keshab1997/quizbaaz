@@ -674,6 +674,13 @@ const Map<String, String> kStringsEn = {
   'bookBuddyErrEmptyMcq':
       'Could not generate clear MCQs from this page. Try scanning a clearer page.',
   'bookBuddyErrPickFailed': 'Could not read the selected image.',
+  'bookBuddySignInTitle': 'Sign in to use AI Book Buddy',
+  'bookBuddySignInSubtitle':
+      'AI explanations and quizzes need a Google account. Sign in to unlock them and keep your progress safe.',
+  'bookBuddySignInButton': 'Sign in with Google',
+  'bookBuddySignInRequired':
+      'Sign in with Google to use AI Book Buddy.',
+  'bookBuddySignInSuccess': 'Signed in! AI Book Buddy is ready.',
   'bookBuddyLangLabel': 'AI Reply Language',
   'bookBuddyLangEn': 'English',
   'bookBuddyLangBn': 'বাংলা',
