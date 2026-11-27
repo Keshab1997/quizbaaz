@@ -1,5 +1,4 @@
-What's new in 1.0.29:
+What's new in 1.0.30:
 
-• Your progress now backs up properly — purchased items, coins & daily streak sync through a secure server, and come back when you sign in with Google on a new phone.
-• AI Book Buddy asks guests to sign in before an AI call, so your questions and answers are saved.
-• A clear error screen replaces the blank grey box; small security and stability fixes.
+• Better stability on low-memory phones — question banks now load without freezing the quiz or battle screen, even on 2 GB devices.
+• Fewer crashes when many chapters refresh at once; offline play and your progress work exactly as before.

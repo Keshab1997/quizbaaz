@@ -7,6 +7,20 @@ class WhatsNewCatalog {
   WhatsNewCatalog._();
 
   static const Map<String, Map<String, List<String>>> _releases = {
+    '1.0.30': {
+      'en': [
+        'Better stability on low-memory phones — question banks now load without freezing the quiz or battle screen, even on 2 GB devices.',
+        'Fewer crashes when many chapters refresh at once; offline play and your progress work exactly as before.',
+      ],
+      'bn': [
+        'কম-মেমরির ফোনে স্থায়িত্ব বাড়েছে — প্রশ্ন ব্যাংক এখন কুইজ বা ব্যাটল স্ক্রিন ফ্রিজ না করেই লোড হয়।',
+        'অনেক chapter একসাথে আপডেট হলেও ক্রাশের সম্ভাবনা কমেছে; অফলাইন খেলা ও অগ্রগতি আগের মতোই।',
+      ],
+      'hi': [
+        'कम-मेमोरी वाले फ़ोन पर बेहतर स्थिरता — प्रश्न बैंक अब क्विज़ या बैटल स्क्रीन को फ्रीज किए बिना लोड होता है।',
+        'कई chapters एक साथ अपडेट होने पर क्रैश की संभावना कम; ऑफ़लाइन खेल और प्रगति पहले जैसी ही।',
+      ],
+    },
     '1.0.29': {
       'en': [
         'Your progress now backs up properly — purchased items, coins & daily streak sync through a secure server, and come back when you sign in with Google on a new phone.',
