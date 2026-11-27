@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:collection';
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
@@ -51,9 +52,17 @@ class QuizRepository {
   /// background by [_revalidateIfStale].
   static const _remoteCacheTtl = Duration(minutes: 15);
 
-  /// Cache keys with a refresh already in flight, so ten chapter taps do not
-  /// fire ten Firestore reads.
+  /// Cache keys with a refresh already queued or in flight, so ten chapter taps
+  /// do not fire ten Firestore reads.
   static final Set<String> _revalidating = <String>{};
+
+  /// A battle pools every chapter at once. Without a bound, each stale bank
+  /// kicked off its own Firestore refresh and the plugin tried to create a
+  /// thread per read — a 2 GB Redmi 6A hit `pthread_create` OOM (Play Console,
+  /// build 26). Two in flight is plenty for a background refresh.
+  static const _maxConcurrentRevalidations = 2;
+  static final Queue<_PendingRefresh> _refreshQueue = Queue<_PendingRefresh>();
+  static int _activeRevalidations = 0;
 
   /// Today's daily-quiz set **plus** whether the run may be ranked.
   ///
@@ -81,7 +90,7 @@ class QuizRepository {
     bool includeDisabled = false,
   }) async {
     if (!forceRefresh) {
-      final cached = HiveService.cacheGetList(
+      final cached = await HiveService.cacheGetListAsync(
         HiveService.cacheChapters,
         allowStale: true,
       );
@@ -166,7 +175,10 @@ class QuizRepository {
   }) async {
     final cacheKey = 'chapter_questions:$jsonFilePath';
     if (!forceRefresh) {
-      final cached = HiveService.cacheGetList(cacheKey, allowStale: true);
+      final cached = await HiveService.cacheGetListAsync(
+        cacheKey,
+        allowStale: true,
+      );
       if (cached.isNotEmpty) {
         _revalidateIfStale(
           cacheKey,
@@ -327,23 +339,39 @@ class QuizRepository {
   ///
   /// Offline this simply fails and is swallowed — the stale value stays in use,
   /// which is the point: the network decides how *fresh* the data can be, not
-  /// whether it is shown at all. At most one refresh per key at a time.
+  /// whether it is shown at all. At most one refresh per key, and at most
+  /// [_maxConcurrentRevalidations] Firestore reads in flight: an unbounded
+  /// storm of plugin threads is what OOM-ed the low-end device.
   static void _revalidateIfStale(
     String cacheKey,
     Future<void> Function() refresh,
   ) {
     if (HiveService.isCacheFresh(cacheKey, _remoteCacheTtl)) return;
     if (!_revalidating.add(cacheKey)) return;
-    unawaited(
-      refresh()
-          .catchError(
-            (Object error) => debugPrint(
-              'QuizRepository: background refresh of "$cacheKey" failed — '
-              '$error',
-            ),
-          )
-          .whenComplete(() => _revalidating.remove(cacheKey)),
-    );
+    _refreshQueue.add(_PendingRefresh(cacheKey, refresh));
+    unawaited(_drainRevalidations());
+  }
+
+  static Future<void> _drainRevalidations() async {
+    if (_activeRevalidations >= _maxConcurrentRevalidations) return;
+    _activeRevalidations++;
+    try {
+      while (_refreshQueue.isNotEmpty) {
+        final job = _refreshQueue.removeFirst();
+        try {
+          await job.refresh();
+        } catch (error) {
+          debugPrint(
+            'QuizRepository: background refresh of "${job.key}" failed — '
+            '$error',
+          );
+        } finally {
+          _revalidating.remove(job.key);
+        }
+      }
+    } finally {
+      _activeRevalidations--;
+    }
   }
 
   /// True when a background refresh is running for [cacheKey] (tests).
@@ -370,4 +398,11 @@ class QuizRepository {
       return const [];
     }
   }
+}
+
+class _PendingRefresh {
+  const _PendingRefresh(this.key, this.refresh);
+
+  final String key;
+  final Future<void> Function() refresh;
 }

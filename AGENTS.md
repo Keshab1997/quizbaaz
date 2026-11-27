@@ -566,8 +566,10 @@ python3 tool/validate_questions.py --strict
   writes — `tool/apply_content_deletions.py` drops those from the bundle),
   `docs/20` the Play Developer API autopublish of the store listing + AAB,
   `docs/21` the daily competition (one counted score per day, packets, the
-  publishing cron) and `docs/22` the release-push pipeline (dashboard
-  banner, `open: app_update` deep link, Update Center, OneSignal targeting).
+  publishing cron), `docs/22` the release-push pipeline (dashboard
+  banner, `open: app_update` deep link, Update Center, OneSignal targeting)
+  and `docs/24` the Play Console ANR/OOM triage and the bounded Firestore
+  refresh / off-isolate cache decode fixes.
   **Read the matching doc before touching that subsystem.** `ADMIN_TODO.md`
   tracks admin work; `PROJECT_REVIEW.md` holds the audit that the P1 sweep
   worked through.

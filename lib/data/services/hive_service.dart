@@ -495,6 +495,17 @@ class HiveService {
 
   // ------------------------------------------------------------ TTL cache --
 
+  /// Decoded cache values are memoised by key + raw JSON. A battle pools every
+  /// chapter, and every chapter used to decode its bank again on the UI
+  /// isolate — Play Console ANRs on 2 GB devices caught that synchronous
+  /// `jsonDecode` (and the GC it triggers) blocking input dispatch.
+  static final Map<String, _DecodedCacheEntry> _decodedCache = {};
+  static const _decodedCacheLimit = 24;
+
+  /// Serialises off-isolate decodes so pooling 20 chapters cannot spawn 20
+  /// isolates at once on a low-RAM phone.
+  static Future<void> _decodeTail = Future.value();
+
   /// Stores [value] (any JSON-encodable structure) under [key] with the
   /// current timestamp so freshness can be checked later.
   static Future<void> cachePut(String key, Object value) async {
@@ -502,6 +513,7 @@ class HiveService {
       'ts': DateTime.now().millisecondsSinceEpoch,
       'data': jsonEncode(value),
     });
+    _decodedCache.remove(key);
   }
 
   /// Returns the decoded cached value, or null when missing / expired.
@@ -524,6 +536,42 @@ class HiveService {
       final age = DateTime.now().millisecondsSinceEpoch - ts;
       if (age > maxAge.inMilliseconds) return null;
     }
+    final memo = _decodedCache[key];
+    if (memo != null && memo.raw == raw) return memo.value;
+    final decoded = _decodeNow(raw, key);
+    if (decoded != null) _rememberDecoded(key, raw, decoded);
+    return decoded;
+  }
+
+  /// Async counterpart of [cacheGetList] for large banks (chapter questions).
+  ///
+  /// The first decode of a payload runs in a background isolate; later reads
+  /// hit the same memo the synchronous readers use. This keeps the battle and
+  /// practice question-pooling paths off the UI isolate.
+  static Future<List<Map<String, dynamic>>> cacheGetListAsync(
+    String key, {
+    Duration? maxAge,
+    bool allowStale = false,
+  }) async {
+    final entry = _cacheBox.get(key);
+    if (entry is! Map) return const [];
+    final ts = (entry['ts'] as num?)?.toInt();
+    final raw = entry['data'];
+    if (ts == null || raw is! String) return const [];
+    if (maxAge != null && !allowStale) {
+      final age = DateTime.now().millisecondsSinceEpoch - ts;
+      if (age > maxAge.inMilliseconds) return const [];
+    }
+
+    final memo = _decodedCache[key];
+    final value =
+        memo != null && memo.raw == raw
+            ? memo.value
+            : await _decodeOffIsolate(key, raw);
+    return _asMapList(value);
+  }
+
+  static dynamic _decodeNow(String raw, String key) {
     try {
       return jsonDecode(raw);
     } catch (e) {
@@ -532,19 +580,41 @@ class HiveService {
     }
   }
 
-  /// Convenience wrapper returning a typed list of maps.
-  static List<Map<String, dynamic>> cacheGetList(
-    String key, {
-    Duration? maxAge,
-    bool allowStale = false,
-  }) {
-    final value = cacheGet(key, maxAge: maxAge, allowStale: allowStale);
+  static Future<dynamic> _decodeOffIsolate(String key, String raw) async {
+    final result = _decodeTail.then((_) => compute(_decodeRawJson, raw));
+    // Keep the queue alive when one payload is corrupt.
+    _decodeTail = result.then((_) {}, onError: (_) {});
+    try {
+      final decoded = await result;
+      if (decoded != null) _rememberDecoded(key, raw, decoded);
+      return decoded;
+    } catch (e) {
+      debugPrint('Hive: failed to decode cache "$key" – $e');
+      return null;
+    }
+  }
+
+  static void _rememberDecoded(String key, String raw, Object decoded) {
+    if (_decodedCache.length >= _decodedCacheLimit) {
+      _decodedCache.remove(_decodedCache.keys.first);
+    }
+    _decodedCache[key] = _DecodedCacheEntry(raw, decoded);
+  }
+
+  static List<Map<String, dynamic>> _asMapList(dynamic value) {
     if (value is! List) return const [];
     return value
         .whereType<Map>()
         .map((e) => Map<String, dynamic>.from(e))
         .toList();
   }
+
+  /// Convenience wrapper returning a typed list of maps.
+  static List<Map<String, dynamic>> cacheGetList(
+    String key, {
+    Duration? maxAge,
+    bool allowStale = false,
+  }) => _asMapList(cacheGet(key, maxAge: maxAge, allowStale: allowStale));
 
   /// How long ago [key] was cached, or null when absent.
   static Duration? cacheAge(String key) {
@@ -563,10 +633,12 @@ class HiveService {
 
   static Future<void> cacheRemove(String key) async {
     await _cacheBox.delete(key);
+    _decodedCache.remove(key);
   }
 
   static Future<void> clearCache() async {
     await _cacheBox.clear();
+    _decodedCache.clear();
   }
 
   // ----------------------------------------------------- Mistake notebook --
@@ -816,6 +888,7 @@ class HiveService {
     await _userBox.clear();
     await _statsBox.clear();
     await _cacheBox.clear();
+    _decodedCache.clear();
     await _pendingBox.clear();
     await _legacyBox?.clear();
     // Meta keeps schema info, only sync markers are reset.
@@ -838,3 +911,15 @@ class HiveService {
     'lastSyncAt': lastSyncAt?.toIso8601String(),
   };
 }
+
+/// One memoised cache payload. The raw string is the invalidation token: a
+/// rewritten entry has different JSON even when its timestamp collides.
+class _DecodedCacheEntry {
+  const _DecodedCacheEntry(this.raw, this.value);
+
+  final String raw;
+  final Object value;
+}
+
+/// Top-level so `compute` can send it to a background isolate.
+dynamic _decodeRawJson(String raw) => jsonDecode(raw);

@@ -1,4 +1,6 @@
+import 'dart:async';
 import 'dart:io';
+import 'dart:math';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hive/hive.dart';
@@ -24,6 +26,35 @@ class _OfflineBankService extends QuestionBankService {
 
   @override
   Future<Map<String, int>> fetchQuestionCounts() async => const {};
+}
+
+/// Holds every remote read open long enough to observe how many run at once.
+class _CountingBankService extends QuestionBankService {
+  _CountingBankService();
+
+  int active = 0;
+  int maxActive = 0;
+  final List<Completer<void>> _gates = <Completer<void>>[];
+
+  @override
+  Future<List<QuestionModel>> fetchQuestions(String chapterId) async {
+    active++;
+    maxActive = max(maxActive, active);
+    final gate = Completer<void>();
+    _gates.add(gate);
+    await gate.future;
+    active--;
+    return const [];
+  }
+
+  @override
+  Future<Map<String, int>> fetchQuestionCounts() async => const {};
+
+  void releaseAll() {
+    for (final gate in _gates) {
+      if (!gate.isCompleted) gate.complete();
+    }
+  }
 }
 
 void main() {
@@ -201,6 +232,63 @@ void main() {
 
       await Future<void>.delayed(const Duration(milliseconds: 50));
       expect(QuizRepository.isRevalidating(HiveService.cacheChapters), isFalse);
+    });
+  });
+
+  group('heavy cache reads', () {
+    test('async list read works and a rewrite invalidates it', () async {
+      const key = 'async_cache_test';
+      await HiveService.cachePut(key, [
+        {'id': 'q1'},
+        {'id': 'q2'},
+      ]);
+      expect(await HiveService.cacheGetListAsync(key), hasLength(2));
+
+      await HiveService.cachePut(key, [
+        {'id': 'q1'},
+      ]);
+      expect(await HiveService.cacheGetListAsync(key), hasLength(1));
+    });
+
+    test('background refreshes never exceed two at a time', () async {
+      const path = 'assets/data/questions/offline_test_chapter.json';
+      final bank = _CountingBankService();
+      final repository = QuizRepository(bankService: bank);
+      final keys = <String>[];
+
+      for (var i = 0; i < 4; i++) {
+        final key = 'chapter_questions:$path:$i';
+        keys.add(key);
+        await HiveService.cachePut(key, [
+          {
+            'id': 'stale_$i',
+            'question': 'stale',
+            'options': ['a', 'b'],
+            'correct_index': 0,
+          },
+        ]);
+        // Backdate behind the service's back: cachePut always stamps "now",
+        // and a fresh entry is deliberately not revalidated.
+        final box = Hive.box(HiveService.cacheBoxName);
+        final entry = Map<dynamic, dynamic>.from(box.get(key) as Map);
+        entry['ts'] =
+            DateTime.now().millisecondsSinceEpoch -
+            const Duration(hours: 1).inMilliseconds;
+        await box.put(key, entry);
+      }
+
+      for (var i = 0; i < 4; i++) {
+        await repository.getChapterQuestions('$path:$i');
+      }
+      await Future<void>.delayed(const Duration(milliseconds: 100));
+      expect(bank.maxActive, lessThanOrEqualTo(2));
+
+      bank.releaseAll();
+      await Future<void>.delayed(const Duration(milliseconds: 100));
+      expect(bank.active, 0);
+      for (final key in keys) {
+        expect(QuizRepository.isRevalidating(key), isFalse);
+      }
     });
   });
 }
